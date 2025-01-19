@@ -84,6 +84,7 @@ bool QPropertyAnimation_override_virtual_connectNotify(void* self, intptr_t slot
 void QPropertyAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPropertyAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPropertyAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPropertyAnimation_staticMetaObject();
 void QPropertyAnimation_delete(QPropertyAnimation* self);
 
 #ifdef __cplusplus

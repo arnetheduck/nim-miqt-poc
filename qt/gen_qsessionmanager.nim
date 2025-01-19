@@ -80,6 +80,7 @@ proc fcQSessionManager_tr2(s: cstring, c: cstring): struct_miqt_string {.importc
 proc fcQSessionManager_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSessionManager_tr3".}
 proc fcQSessionManager_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSessionManager_trUtf82".}
 proc fcQSessionManager_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSessionManager_trUtf83".}
+proc fcQSessionManager_staticMetaObject(): pointer {.importc: "QSessionManager_staticMetaObject".}
 
 
 func init*(T: type QSessionManager, h: ptr cQSessionManager): QSessionManager =
@@ -236,3 +237,5 @@ proc trUtf83*(_: type QSessionManager, s: cstring, c: cstring, n: cint): string 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QSessionManager): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSessionManager_staticMetaObject())

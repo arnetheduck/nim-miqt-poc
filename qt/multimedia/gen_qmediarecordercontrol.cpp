@@ -246,6 +246,7 @@ struct miqt_string QMediaRecorderControl_trUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
+const QMetaObject* QMediaRecorderControl_staticMetaObject() { return &QMediaRecorderControl::staticMetaObject; }
 void QMediaRecorderControl_delete(QMediaRecorderControl* self) {
 	delete self;
 }

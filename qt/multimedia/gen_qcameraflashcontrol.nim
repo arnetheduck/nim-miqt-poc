@@ -63,6 +63,7 @@ proc fcQCameraFlashControl_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQCameraFlashControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFlashControl_tr3".}
 proc fcQCameraFlashControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraFlashControl_trUtf82".}
 proc fcQCameraFlashControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFlashControl_trUtf83".}
+proc fcQCameraFlashControl_staticMetaObject(): pointer {.importc: "QCameraFlashControl_staticMetaObject".}
 proc fcQCameraFlashControl_delete(self: pointer) {.importc: "QCameraFlashControl_delete".}
 
 
@@ -156,5 +157,7 @@ proc trUtf83*(_: type QCameraFlashControl, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QCameraFlashControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCameraFlashControl_staticMetaObject())
 proc delete*(self: QCameraFlashControl) =
   fcQCameraFlashControl_delete(self.h)

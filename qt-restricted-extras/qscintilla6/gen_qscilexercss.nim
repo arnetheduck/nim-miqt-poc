@@ -205,6 +205,7 @@ proc fQsciLexerCSS_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQsciLexerCSS_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerCSS_override_virtual_connectNotify".}
 proc fQsciLexerCSS_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerCSS_virtualbase_disconnectNotify".}
 proc fcQsciLexerCSS_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerCSS_override_virtual_disconnectNotify".}
+proc fcQsciLexerCSS_staticMetaObject(): pointer {.importc: "QsciLexerCSS_staticMetaObject".}
 proc fcQsciLexerCSS_delete(self: pointer) {.importc: "QsciLexerCSS_delete".}
 
 
@@ -1408,5 +1409,7 @@ proc miqt_exec_callback_QsciLexerCSS_disconnectNotify(self: ptr cQsciLexerCSS, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerCSS): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerCSS_staticMetaObject())
 proc delete*(self: QsciLexerCSS) =
   fcQsciLexerCSS_delete(self.h)

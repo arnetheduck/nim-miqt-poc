@@ -66,6 +66,7 @@ proc fcQMetaDataReaderControl_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQMetaDataReaderControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMetaDataReaderControl_tr3".}
 proc fcQMetaDataReaderControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMetaDataReaderControl_trUtf82".}
 proc fcQMetaDataReaderControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMetaDataReaderControl_trUtf83".}
+proc fcQMetaDataReaderControl_staticMetaObject(): pointer {.importc: "QMetaDataReaderControl_staticMetaObject".}
 proc fcQMetaDataReaderControl_delete(self: pointer) {.importc: "QMetaDataReaderControl_delete".}
 
 
@@ -202,5 +203,7 @@ proc trUtf83*(_: type QMetaDataReaderControl, s: cstring, c: cstring, n: cint): 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QMetaDataReaderControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMetaDataReaderControl_staticMetaObject())
 proc delete*(self: QMetaDataReaderControl) =
   fcQMetaDataReaderControl_delete(self.h)

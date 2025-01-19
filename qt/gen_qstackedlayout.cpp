@@ -1298,6 +1298,7 @@ QSpacerItem* QStackedLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QStackedLayout_staticMetaObject() { return &QStackedLayout::staticMetaObject; }
 void QStackedLayout_delete(QStackedLayout* self) {
 	delete self;
 }

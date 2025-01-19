@@ -79,6 +79,10 @@ const
 import gen_qsurfaceformat_types
 export gen_qsurfaceformat_types
 
+import
+  gen_qobjectdefs
+export
+  gen_qobjectdefs
 
 type cQSurfaceFormat*{.exportc: "QSurfaceFormat", incompleteStruct.} = object
 
@@ -128,6 +132,7 @@ proc fcQSurfaceFormat_setColorSpace(self: pointer, colorSpace: cint): void {.imp
 proc fcQSurfaceFormat_setDefaultFormat(format: pointer): void {.importc: "QSurfaceFormat_setDefaultFormat".}
 proc fcQSurfaceFormat_defaultFormat(): pointer {.importc: "QSurfaceFormat_defaultFormat".}
 proc fcQSurfaceFormat_setOption2(self: pointer, option: cint, on: bool): void {.importc: "QSurfaceFormat_setOption2".}
+proc fcQSurfaceFormat_staticMetaObject(): pointer {.importc: "QSurfaceFormat_staticMetaObject".}
 proc fcQSurfaceFormat_delete(self: pointer) {.importc: "QSurfaceFormat_delete".}
 
 
@@ -321,5 +326,7 @@ proc setOption2*(self: QSurfaceFormat, option: QSurfaceFormatFormatOption, on: b
 
   fcQSurfaceFormat_setOption2(self.h, cint(option), on)
 
+proc staticMetaObject*(_: type QSurfaceFormat): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSurfaceFormat_staticMetaObject())
 proc delete*(self: QSurfaceFormat) =
   fcQSurfaceFormat_delete(self.h)

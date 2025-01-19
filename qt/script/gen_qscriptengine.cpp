@@ -784,6 +784,7 @@ void QScriptEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QScriptEngine_staticMetaObject() { return &QScriptEngine::staticMetaObject; }
 void QScriptEngine_delete(QScriptEngine* self) {
 	delete self;
 }

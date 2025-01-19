@@ -64,6 +64,7 @@ proc fcQImageEncoderControl_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQImageEncoderControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QImageEncoderControl_tr3".}
 proc fcQImageEncoderControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QImageEncoderControl_trUtf82".}
 proc fcQImageEncoderControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QImageEncoderControl_trUtf83".}
+proc fcQImageEncoderControl_staticMetaObject(): pointer {.importc: "QImageEncoderControl_staticMetaObject".}
 proc fcQImageEncoderControl_delete(self: pointer) {.importc: "QImageEncoderControl_delete".}
 
 
@@ -159,5 +160,7 @@ proc trUtf83*(_: type QImageEncoderControl, s: cstring, c: cstring, n: cint): st
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QImageEncoderControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQImageEncoderControl_staticMetaObject())
 proc delete*(self: QImageEncoderControl) =
   fcQImageEncoderControl_delete(self.h)

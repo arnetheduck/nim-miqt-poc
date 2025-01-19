@@ -71,8 +71,10 @@ import gen_qmediametadata_types
 export gen_qmediametadata_types
 
 import
+  gen_qobjectdefs,
   gen_qvariant
 export
+  gen_qobjectdefs,
   gen_qvariant
 
 type cQMediaMetaData*{.exportc: "QMediaMetaData", incompleteStruct.} = object
@@ -88,6 +90,7 @@ proc fcQMediaMetaData_clear(self: pointer, ): void {.importc: "QMediaMetaData_cl
 proc fcQMediaMetaData_isEmpty(self: pointer, ): bool {.importc: "QMediaMetaData_isEmpty".}
 proc fcQMediaMetaData_stringValue(self: pointer, k: cint): struct_miqt_string {.importc: "QMediaMetaData_stringValue".}
 proc fcQMediaMetaData_metaDataKeyToString(k: cint): struct_miqt_string {.importc: "QMediaMetaData_metaDataKeyToString".}
+proc fcQMediaMetaData_staticMetaObject(): pointer {.importc: "QMediaMetaData_staticMetaObject".}
 proc fcQMediaMetaData_delete(self: pointer) {.importc: "QMediaMetaData_delete".}
 
 
@@ -146,5 +149,7 @@ proc metaDataKeyToString*(_: type QMediaMetaData, k: QMediaMetaDataKey): string 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QMediaMetaData): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaMetaData_staticMetaObject())
 proc delete*(self: QMediaMetaData) =
   fcQMediaMetaData_delete(self.h)

@@ -2831,6 +2831,7 @@ void QMessageBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMessageBox_staticMetaObject() { return &QMessageBox::staticMetaObject; }
 void QMessageBox_delete(QMessageBox* self) {
 	delete self;
 }

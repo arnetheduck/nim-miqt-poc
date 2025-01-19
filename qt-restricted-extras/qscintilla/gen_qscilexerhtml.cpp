@@ -1983,6 +1983,7 @@ void QsciLexerHTML_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQsciLexerHTML*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerHTML_staticMetaObject() { return &QsciLexerHTML::staticMetaObject; }
 void QsciLexerHTML_delete(QsciLexerHTML* self) {
 	delete self;
 }

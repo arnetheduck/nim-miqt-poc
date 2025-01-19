@@ -3931,6 +3931,7 @@ void QTableView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTableView_staticMetaObject() { return &QTableView::staticMetaObject; }
 void QTableView_delete(QTableView* self) {
 	delete self;
 }

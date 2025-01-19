@@ -96,6 +96,7 @@ proc fQAudioSystemPlugin_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQAudioSystemPlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioSystemPlugin_override_virtual_connectNotify".}
 proc fQAudioSystemPlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioSystemPlugin_virtualbase_disconnectNotify".}
 proc fcQAudioSystemPlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioSystemPlugin_override_virtual_disconnectNotify".}
+proc fcQAudioSystemPlugin_staticMetaObject(): pointer {.importc: "QAudioSystemPlugin_staticMetaObject".}
 proc fcQAudioSystemPlugin_delete(self: pointer) {.importc: "QAudioSystemPlugin_delete".}
 
 
@@ -501,5 +502,7 @@ proc miqt_exec_callback_QAudioSystemPlugin_disconnectNotify(self: ptr cQAudioSys
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAudioSystemPlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioSystemPlugin_staticMetaObject())
 proc delete*(self: QAudioSystemPlugin) =
   fcQAudioSystemPlugin_delete(self.h)

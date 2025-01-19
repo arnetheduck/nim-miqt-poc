@@ -205,6 +205,7 @@ bool QVideoWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QVideoWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QVideoWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QVideoWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QVideoWidget_staticMetaObject();
 void QVideoWidget_delete(QVideoWidget* self);
 
 #ifdef __cplusplus

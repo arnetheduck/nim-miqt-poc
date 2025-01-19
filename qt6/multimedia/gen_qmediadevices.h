@@ -73,6 +73,7 @@ bool QMediaDevices_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaDevices_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaDevices_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaDevices_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMediaDevices_staticMetaObject();
 void QMediaDevices_delete(QMediaDevices* self);
 
 #ifdef __cplusplus

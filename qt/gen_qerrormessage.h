@@ -207,6 +207,7 @@ bool QErrorMessage_override_virtual_connectNotify(void* self, intptr_t slot);
 void QErrorMessage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QErrorMessage_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QErrorMessage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QErrorMessage_staticMetaObject();
 void QErrorMessage_delete(QErrorMessage* self);
 
 #ifdef __cplusplus

@@ -95,6 +95,7 @@ bool QMediaCaptureSession_override_virtual_connectNotify(void* self, intptr_t sl
 void QMediaCaptureSession_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaCaptureSession_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaCaptureSession_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMediaCaptureSession_staticMetaObject();
 void QMediaCaptureSession_delete(QMediaCaptureSession* self);
 
 #ifdef __cplusplus

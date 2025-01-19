@@ -186,6 +186,7 @@ bool QProcess_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProcess_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProcess_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProcess_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QProcess_staticMetaObject();
 void QProcess_delete(QProcess* self);
 
 #ifdef __cplusplus

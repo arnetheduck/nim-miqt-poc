@@ -2271,6 +2271,7 @@ void QAbstractPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractPrintDialog_staticMetaObject() { return &QAbstractPrintDialog::staticMetaObject; }
 void QAbstractPrintDialog_delete(QAbstractPrintDialog* self) {
 	delete self;
 }

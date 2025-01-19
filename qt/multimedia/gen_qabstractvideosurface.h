@@ -96,6 +96,7 @@ bool QAbstractVideoSurface_override_virtual_connectNotify(void* self, intptr_t s
 void QAbstractVideoSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractVideoSurface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractVideoSurface_staticMetaObject();
 void QAbstractVideoSurface_delete(QAbstractVideoSurface* self);
 
 #ifdef __cplusplus

@@ -122,6 +122,7 @@ proc fQGesture_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQGesture_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGesture_override_virtual_connectNotify".}
 proc fQGesture_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGesture_virtualbase_disconnectNotify".}
 proc fcQGesture_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGesture_override_virtual_disconnectNotify".}
+proc fcQGesture_staticMetaObject(): pointer {.importc: "QGesture_staticMetaObject".}
 proc fcQGesture_delete(self: pointer) {.importc: "QGesture_delete".}
 proc fcQPanGesture_new(): ptr cQPanGesture {.importc: "QPanGesture_new".}
 proc fcQPanGesture_new2(parent: pointer): ptr cQPanGesture {.importc: "QPanGesture_new2".}
@@ -157,6 +158,7 @@ proc fQPanGesture_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQPanGesture_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPanGesture_override_virtual_connectNotify".}
 proc fQPanGesture_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPanGesture_virtualbase_disconnectNotify".}
 proc fcQPanGesture_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPanGesture_override_virtual_disconnectNotify".}
+proc fcQPanGesture_staticMetaObject(): pointer {.importc: "QPanGesture_staticMetaObject".}
 proc fcQPanGesture_delete(self: pointer) {.importc: "QPanGesture_delete".}
 proc fcQPinchGesture_new(): ptr cQPinchGesture {.importc: "QPinchGesture_new".}
 proc fcQPinchGesture_new2(parent: pointer): ptr cQPinchGesture {.importc: "QPinchGesture_new2".}
@@ -207,6 +209,7 @@ proc fQPinchGesture_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQPinchGesture_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPinchGesture_override_virtual_connectNotify".}
 proc fQPinchGesture_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPinchGesture_virtualbase_disconnectNotify".}
 proc fcQPinchGesture_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPinchGesture_override_virtual_disconnectNotify".}
+proc fcQPinchGesture_staticMetaObject(): pointer {.importc: "QPinchGesture_staticMetaObject".}
 proc fcQPinchGesture_delete(self: pointer) {.importc: "QPinchGesture_delete".}
 proc fcQSwipeGesture_new(): ptr cQSwipeGesture {.importc: "QSwipeGesture_new".}
 proc fcQSwipeGesture_new2(parent: pointer): ptr cQSwipeGesture {.importc: "QSwipeGesture_new2".}
@@ -239,6 +242,7 @@ proc fQSwipeGesture_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQSwipeGesture_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSwipeGesture_override_virtual_connectNotify".}
 proc fQSwipeGesture_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSwipeGesture_virtualbase_disconnectNotify".}
 proc fcQSwipeGesture_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSwipeGesture_override_virtual_disconnectNotify".}
+proc fcQSwipeGesture_staticMetaObject(): pointer {.importc: "QSwipeGesture_staticMetaObject".}
 proc fcQSwipeGesture_delete(self: pointer) {.importc: "QSwipeGesture_delete".}
 proc fcQTapGesture_new(): ptr cQTapGesture {.importc: "QTapGesture_new".}
 proc fcQTapGesture_new2(parent: pointer): ptr cQTapGesture {.importc: "QTapGesture_new2".}
@@ -269,6 +273,7 @@ proc fQTapGesture_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQTapGesture_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTapGesture_override_virtual_connectNotify".}
 proc fQTapGesture_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTapGesture_virtualbase_disconnectNotify".}
 proc fcQTapGesture_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTapGesture_override_virtual_disconnectNotify".}
+proc fcQTapGesture_staticMetaObject(): pointer {.importc: "QTapGesture_staticMetaObject".}
 proc fcQTapGesture_delete(self: pointer) {.importc: "QTapGesture_delete".}
 proc fcQTapAndHoldGesture_new(): ptr cQTapAndHoldGesture {.importc: "QTapAndHoldGesture_new".}
 proc fcQTapAndHoldGesture_new2(parent: pointer): ptr cQTapAndHoldGesture {.importc: "QTapAndHoldGesture_new2".}
@@ -301,6 +306,7 @@ proc fQTapAndHoldGesture_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQTapAndHoldGesture_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTapAndHoldGesture_override_virtual_connectNotify".}
 proc fQTapAndHoldGesture_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTapAndHoldGesture_virtualbase_disconnectNotify".}
 proc fcQTapAndHoldGesture_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTapAndHoldGesture_override_virtual_disconnectNotify".}
+proc fcQTapAndHoldGesture_staticMetaObject(): pointer {.importc: "QTapAndHoldGesture_staticMetaObject".}
 proc fcQTapAndHoldGesture_delete(self: pointer) {.importc: "QTapAndHoldGesture_delete".}
 proc fcQGestureEvent_new(gestures: struct_miqt_array): ptr cQGestureEvent {.importc: "QGestureEvent_new".}
 proc fcQGestureEvent_new2(param1: pointer): ptr cQGestureEvent {.importc: "QGestureEvent_new2".}
@@ -612,6 +618,8 @@ proc miqt_exec_callback_QGesture_disconnectNotify(self: ptr cQGesture, slot: int
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QGesture): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGesture_staticMetaObject())
 proc delete*(self: QGesture) =
   fcQGesture_delete(self.h)
 
@@ -901,6 +909,8 @@ proc miqt_exec_callback_QPanGesture_disconnectNotify(self: ptr cQPanGesture, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QPanGesture): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPanGesture_staticMetaObject())
 proc delete*(self: QPanGesture) =
   fcQPanGesture_delete(self.h)
 
@@ -1250,6 +1260,8 @@ proc miqt_exec_callback_QPinchGesture_disconnectNotify(self: ptr cQPinchGesture,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QPinchGesture): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPinchGesture_staticMetaObject())
 proc delete*(self: QPinchGesture) =
   fcQPinchGesture_delete(self.h)
 
@@ -1527,6 +1539,8 @@ proc miqt_exec_callback_QSwipeGesture_disconnectNotify(self: ptr cQSwipeGesture,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSwipeGesture): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSwipeGesture_staticMetaObject())
 proc delete*(self: QSwipeGesture) =
   fcQSwipeGesture_delete(self.h)
 
@@ -1796,6 +1810,8 @@ proc miqt_exec_callback_QTapGesture_disconnectNotify(self: ptr cQTapGesture, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QTapGesture): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTapGesture_staticMetaObject())
 proc delete*(self: QTapGesture) =
   fcQTapGesture_delete(self.h)
 
@@ -2073,6 +2089,8 @@ proc miqt_exec_callback_QTapAndHoldGesture_disconnectNotify(self: ptr cQTapAndHo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QTapAndHoldGesture): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTapAndHoldGesture_staticMetaObject())
 proc delete*(self: QTapAndHoldGesture) =
   fcQTapAndHoldGesture_delete(self.h)
 

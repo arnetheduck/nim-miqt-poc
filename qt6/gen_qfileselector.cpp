@@ -472,6 +472,7 @@ void QFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQFileSelector*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFileSelector_staticMetaObject() { return &QFileSelector::staticMetaObject; }
 void QFileSelector_delete(QFileSelector* self) {
 	delete self;
 }

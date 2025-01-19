@@ -86,6 +86,7 @@ proc fQSyntaxHighlighter_virtualbase_connectNotify(self: pointer, signal: pointe
 proc fcQSyntaxHighlighter_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSyntaxHighlighter_override_virtual_connectNotify".}
 proc fQSyntaxHighlighter_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSyntaxHighlighter_virtualbase_disconnectNotify".}
 proc fcQSyntaxHighlighter_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSyntaxHighlighter_override_virtual_disconnectNotify".}
+proc fcQSyntaxHighlighter_staticMetaObject(): pointer {.importc: "QSyntaxHighlighter_staticMetaObject".}
 proc fcQSyntaxHighlighter_delete(self: pointer) {.importc: "QSyntaxHighlighter_delete".}
 
 
@@ -382,5 +383,7 @@ proc miqt_exec_callback_QSyntaxHighlighter_disconnectNotify(self: ptr cQSyntaxHi
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSyntaxHighlighter): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSyntaxHighlighter_staticMetaObject())
 proc delete*(self: QSyntaxHighlighter) =
   fcQSyntaxHighlighter_delete(self.h)

@@ -128,6 +128,7 @@ struct miqt_string QMediaNetworkAccessControl_trUtf83(const char* s, const char*
 	return _ms;
 }
 
+const QMetaObject* QMediaNetworkAccessControl_staticMetaObject() { return &QMediaNetworkAccessControl::staticMetaObject; }
 void QMediaNetworkAccessControl_delete(QMediaNetworkAccessControl* self) {
 	delete self;
 }

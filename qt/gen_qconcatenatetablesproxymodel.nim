@@ -176,6 +176,7 @@ proc fQConcatenateTablesProxyModel_virtualbase_connectNotify(self: pointer, sign
 proc fcQConcatenateTablesProxyModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QConcatenateTablesProxyModel_override_virtual_connectNotify".}
 proc fQConcatenateTablesProxyModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QConcatenateTablesProxyModel_virtualbase_disconnectNotify".}
 proc fcQConcatenateTablesProxyModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QConcatenateTablesProxyModel_override_virtual_disconnectNotify".}
+proc fcQConcatenateTablesProxyModel_staticMetaObject(): pointer {.importc: "QConcatenateTablesProxyModel_staticMetaObject".}
 proc fcQConcatenateTablesProxyModel_delete(self: pointer) {.importc: "QConcatenateTablesProxyModel_delete".}
 
 
@@ -1555,5 +1556,7 @@ proc miqt_exec_callback_QConcatenateTablesProxyModel_disconnectNotify(self: ptr 
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QConcatenateTablesProxyModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQConcatenateTablesProxyModel_staticMetaObject())
 proc delete*(self: QConcatenateTablesProxyModel) =
   fcQConcatenateTablesProxyModel_delete(self.h)

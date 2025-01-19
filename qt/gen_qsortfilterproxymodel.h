@@ -237,6 +237,7 @@ bool QSortFilterProxyModel_override_virtual_connectNotify(void* self, intptr_t s
 void QSortFilterProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSortFilterProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSortFilterProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSortFilterProxyModel_staticMetaObject();
 void QSortFilterProxyModel_delete(QSortFilterProxyModel* self);
 
 #ifdef __cplusplus

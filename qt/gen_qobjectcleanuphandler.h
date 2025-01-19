@@ -63,6 +63,7 @@ bool QObjectCleanupHandler_override_virtual_connectNotify(void* self, intptr_t s
 void QObjectCleanupHandler_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QObjectCleanupHandler_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QObjectCleanupHandler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QObjectCleanupHandler_staticMetaObject();
 void QObjectCleanupHandler_delete(QObjectCleanupHandler* self);
 
 #ifdef __cplusplus

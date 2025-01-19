@@ -110,6 +110,7 @@ bool QWaveDecoder_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWaveDecoder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWaveDecoder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWaveDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWaveDecoder_staticMetaObject();
 void QWaveDecoder_delete(QWaveDecoder* self);
 
 #ifdef __cplusplus

@@ -2194,6 +2194,7 @@ void QProgressBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQProgressBar*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QProgressBar_staticMetaObject() { return &QProgressBar::staticMetaObject; }
 void QProgressBar_delete(QProgressBar* self) {
 	delete self;
 }

@@ -79,6 +79,7 @@ bool QQmlExtensionPlugin_override_virtual_connectNotify(void* self, intptr_t slo
 void QQmlExtensionPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlExtensionPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQmlExtensionPlugin_staticMetaObject();
 void QQmlExtensionPlugin_delete(QQmlExtensionPlugin* self);
 
 QQmlEngineExtensionPlugin* QQmlEngineExtensionPlugin_new();
@@ -112,6 +113,7 @@ bool QQmlEngineExtensionPlugin_override_virtual_connectNotify(void* self, intptr
 void QQmlEngineExtensionPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlEngineExtensionPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlEngineExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQmlEngineExtensionPlugin_staticMetaObject();
 void QQmlEngineExtensionPlugin_delete(QQmlEngineExtensionPlugin* self);
 
 #ifdef __cplusplus

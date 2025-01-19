@@ -297,6 +297,7 @@ bool QWebPage_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebPage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebPage_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWebPage_staticMetaObject();
 void QWebPage_delete(QWebPage* self);
 
 QWebPage__ViewportAttributes* QWebPage__ViewportAttributes_new();

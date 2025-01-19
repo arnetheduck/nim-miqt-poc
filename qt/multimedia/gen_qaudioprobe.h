@@ -73,6 +73,7 @@ bool QAudioProbe_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioProbe_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAudioProbe_staticMetaObject();
 void QAudioProbe_delete(QAudioProbe* self);
 
 #ifdef __cplusplus

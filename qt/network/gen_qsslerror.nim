@@ -81,8 +81,10 @@ import gen_qsslerror_types
 export gen_qsslerror_types
 
 import
+  gen_qobjectdefs,
   gen_qsslcertificate
 export
+  gen_qobjectdefs,
   gen_qsslcertificate
 
 type cQSslError*{.exportc: "QSslError", incompleteStruct.} = object
@@ -98,6 +100,7 @@ proc fcQSslError_operatorNotEqual(self: pointer, other: pointer): bool {.importc
 proc fcQSslError_error(self: pointer, ): cint {.importc: "QSslError_error".}
 proc fcQSslError_errorString(self: pointer, ): struct_miqt_string {.importc: "QSslError_errorString".}
 proc fcQSslError_certificate(self: pointer, ): pointer {.importc: "QSslError_certificate".}
+proc fcQSslError_staticMetaObject(): pointer {.importc: "QSslError_staticMetaObject".}
 proc fcQSslError_delete(self: pointer) {.importc: "QSslError_delete".}
 
 
@@ -146,5 +149,7 @@ proc certificate*(self: QSslError, ): gen_qsslcertificate.QSslCertificate =
 
   gen_qsslcertificate.QSslCertificate(h: fcQSslError_certificate(self.h))
 
+proc staticMetaObject*(_: type QSslError): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSslError_staticMetaObject())
 proc delete*(self: QSslError) =
   fcQSslError_delete(self.h)

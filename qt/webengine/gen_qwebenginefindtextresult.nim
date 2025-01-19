@@ -37,6 +37,10 @@ const cflags = gorge("pkg-config -cflags Qt5WebEngineWidgets")
 import gen_qwebenginefindtextresult_types
 export gen_qwebenginefindtextresult_types
 
+import
+  gen_qobjectdefs
+export
+  gen_qobjectdefs
 
 type cQWebEngineFindTextResult*{.exportc: "QWebEngineFindTextResult", incompleteStruct.} = object
 
@@ -45,6 +49,7 @@ proc fcQWebEngineFindTextResult_new2(other: pointer): ptr cQWebEngineFindTextRes
 proc fcQWebEngineFindTextResult_numberOfMatches(self: pointer, ): cint {.importc: "QWebEngineFindTextResult_numberOfMatches".}
 proc fcQWebEngineFindTextResult_activeMatch(self: pointer, ): cint {.importc: "QWebEngineFindTextResult_activeMatch".}
 proc fcQWebEngineFindTextResult_operatorAssign(self: pointer, other: pointer): void {.importc: "QWebEngineFindTextResult_operatorAssign".}
+proc fcQWebEngineFindTextResult_staticMetaObject(): pointer {.importc: "QWebEngineFindTextResult_staticMetaObject".}
 proc fcQWebEngineFindTextResult_delete(self: pointer) {.importc: "QWebEngineFindTextResult_delete".}
 
 
@@ -68,5 +73,7 @@ proc operatorAssign*(self: QWebEngineFindTextResult, other: QWebEngineFindTextRe
 
   fcQWebEngineFindTextResult_operatorAssign(self.h, other.h)
 
+proc staticMetaObject*(_: type QWebEngineFindTextResult): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineFindTextResult_staticMetaObject())
 proc delete*(self: QWebEngineFindTextResult) =
   fcQWebEngineFindTextResult_delete(self.h)

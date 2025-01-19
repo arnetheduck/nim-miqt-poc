@@ -89,6 +89,7 @@ proc fQVideoSink_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQVideoSink_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QVideoSink_override_virtual_connectNotify".}
 proc fQVideoSink_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QVideoSink_virtualbase_disconnectNotify".}
 proc fcQVideoSink_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QVideoSink_override_virtual_disconnectNotify".}
+proc fcQVideoSink_staticMetaObject(): pointer {.importc: "QVideoSink_staticMetaObject".}
 proc fcQVideoSink_delete(self: pointer) {.importc: "QVideoSink_delete".}
 
 
@@ -407,5 +408,7 @@ proc miqt_exec_callback_QVideoSink_disconnectNotify(self: ptr cQVideoSink, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QVideoSink): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQVideoSink_staticMetaObject())
 proc delete*(self: QVideoSink) =
   fcQVideoSink_delete(self.h)

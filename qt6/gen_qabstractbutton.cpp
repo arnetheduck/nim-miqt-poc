@@ -2259,6 +2259,7 @@ void QAbstractButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractButton_staticMetaObject() { return &QAbstractButton::staticMetaObject; }
 void QAbstractButton_delete(QAbstractButton* self) {
 	delete self;
 }

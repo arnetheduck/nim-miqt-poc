@@ -253,6 +253,7 @@ bool QQuickWindow_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQuickWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQuickWindow_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQuickWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQuickWindow_staticMetaObject();
 void QQuickWindow_delete(QQuickWindow* self);
 
 void QQuickWindow__GraphicsStateInfo_delete(QQuickWindow__GraphicsStateInfo* self);

@@ -62,6 +62,7 @@ proc fcQPaintDeviceWindow_tr2(s: cstring, c: cstring): struct_miqt_string {.impo
 proc fcQPaintDeviceWindow_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPaintDeviceWindow_tr3".}
 proc fcQPaintDeviceWindow_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QPaintDeviceWindow_trUtf82".}
 proc fcQPaintDeviceWindow_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPaintDeviceWindow_trUtf83".}
+proc fcQPaintDeviceWindow_staticMetaObject(): pointer {.importc: "QPaintDeviceWindow_staticMetaObject".}
 proc fcQPaintDeviceWindow_delete(self: pointer) {.importc: "QPaintDeviceWindow_delete".}
 
 
@@ -133,5 +134,7 @@ proc trUtf83*(_: type QPaintDeviceWindow, s: cstring, c: cstring, n: cint): stri
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QPaintDeviceWindow): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPaintDeviceWindow_staticMetaObject())
 proc delete*(self: QPaintDeviceWindow) =
   fcQPaintDeviceWindow_delete(self.h)

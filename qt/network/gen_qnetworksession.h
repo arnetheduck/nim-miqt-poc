@@ -103,6 +103,7 @@ bool QNetworkSession_override_virtual_childEvent(void* self, intptr_t slot);
 void QNetworkSession_virtualbase_childEvent(void* self, QChildEvent* event);
 bool QNetworkSession_override_virtual_customEvent(void* self, intptr_t slot);
 void QNetworkSession_virtualbase_customEvent(void* self, QEvent* event);
+const QMetaObject* QNetworkSession_staticMetaObject();
 void QNetworkSession_delete(QNetworkSession* self);
 
 #ifdef __cplusplus

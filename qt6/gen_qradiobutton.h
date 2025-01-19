@@ -210,6 +210,7 @@ bool QRadioButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QRadioButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QRadioButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QRadioButton_staticMetaObject();
 void QRadioButton_delete(QRadioButton* self);
 
 #ifdef __cplusplus

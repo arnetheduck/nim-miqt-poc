@@ -147,6 +147,7 @@ proc fQWebEngineProfile_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQWebEngineProfile_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebEngineProfile_override_virtual_connectNotify".}
 proc fQWebEngineProfile_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebEngineProfile_virtualbase_disconnectNotify".}
 proc fcQWebEngineProfile_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebEngineProfile_override_virtual_disconnectNotify".}
+proc fcQWebEngineProfile_staticMetaObject(): pointer {.importc: "QWebEngineProfile_staticMetaObject".}
 proc fcQWebEngineProfile_delete(self: pointer) {.importc: "QWebEngineProfile_delete".}
 
 
@@ -593,5 +594,7 @@ proc miqt_exec_callback_QWebEngineProfile_disconnectNotify(self: ptr cQWebEngine
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QWebEngineProfile): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineProfile_staticMetaObject())
 proc delete*(self: QWebEngineProfile) =
   fcQWebEngineProfile_delete(self.h)

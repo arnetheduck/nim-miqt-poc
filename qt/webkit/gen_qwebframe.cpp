@@ -640,3 +640,4 @@ void QWebFrame_render3(QWebFrame* self, QPainter* param1, int layer, QRegion* cl
 	self->render(param1, static_cast<QWebFrame::RenderLayers>(layer), *clip);
 }
 
+const QMetaObject* QWebFrame_staticMetaObject() { return &QWebFrame::staticMetaObject; }

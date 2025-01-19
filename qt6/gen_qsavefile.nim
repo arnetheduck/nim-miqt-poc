@@ -127,6 +127,7 @@ proc fQSaveFile_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQSaveFile_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSaveFile_override_virtual_connectNotify".}
 proc fQSaveFile_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSaveFile_virtualbase_disconnectNotify".}
 proc fcQSaveFile_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSaveFile_override_virtual_disconnectNotify".}
+proc fcQSaveFile_staticMetaObject(): pointer {.importc: "QSaveFile_staticMetaObject".}
 proc fcQSaveFile_delete(self: pointer) {.importc: "QSaveFile_delete".}
 
 
@@ -893,5 +894,7 @@ proc miqt_exec_callback_QSaveFile_disconnectNotify(self: ptr cQSaveFile, slot: i
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSaveFile): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSaveFile_staticMetaObject())
 proc delete*(self: QSaveFile) =
   fcQSaveFile_delete(self.h)

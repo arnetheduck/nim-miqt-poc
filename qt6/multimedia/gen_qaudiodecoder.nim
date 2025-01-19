@@ -126,6 +126,7 @@ proc fQAudioDecoder_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQAudioDecoder_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioDecoder_override_virtual_connectNotify".}
 proc fQAudioDecoder_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioDecoder_virtualbase_disconnectNotify".}
 proc fcQAudioDecoder_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioDecoder_override_virtual_disconnectNotify".}
+proc fcQAudioDecoder_staticMetaObject(): pointer {.importc: "QAudioDecoder_staticMetaObject".}
 proc fcQAudioDecoder_delete(self: pointer) {.importc: "QAudioDecoder_delete".}
 
 
@@ -589,5 +590,7 @@ proc miqt_exec_callback_QAudioDecoder_disconnectNotify(self: ptr cQAudioDecoder,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAudioDecoder): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioDecoder_staticMetaObject())
 proc delete*(self: QAudioDecoder) =
   fcQAudioDecoder_delete(self.h)

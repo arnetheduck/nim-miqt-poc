@@ -512,6 +512,7 @@ void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSharedMemory_staticMetaObject() { return &QSharedMemory::staticMetaObject; }
 void QSharedMemory_delete(QSharedMemory* self) {
 	delete self;
 }

@@ -148,6 +148,7 @@ bool QDnsLookup_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDnsLookup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDnsLookup_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDnsLookup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDnsLookup_staticMetaObject();
 void QDnsLookup_delete(QDnsLookup* self);
 
 #ifdef __cplusplus

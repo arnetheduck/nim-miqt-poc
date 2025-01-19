@@ -140,6 +140,7 @@ bool QsciLexerOctave_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerOctave_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerOctave_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerOctave_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerOctave_staticMetaObject();
 void QsciLexerOctave_delete(QsciLexerOctave* self);
 
 #ifdef __cplusplus

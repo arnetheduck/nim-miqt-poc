@@ -484,6 +484,7 @@ void QSGEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSGEngine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSGEngine_staticMetaObject() { return &QSGEngine::staticMetaObject; }
 void QSGEngine_delete(QSGEngine* self) {
 	delete self;
 }

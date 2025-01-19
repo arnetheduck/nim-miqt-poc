@@ -494,6 +494,7 @@ void QDtlsClientVerifier_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQDtlsClientVerifier*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDtlsClientVerifier_staticMetaObject() { return &QDtlsClientVerifier::staticMetaObject; }
 void QDtlsClientVerifier_delete(QDtlsClientVerifier* self) {
 	delete self;
 }
@@ -1090,6 +1091,7 @@ void QDtls_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDtls*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDtls_staticMetaObject() { return &QDtls::staticMetaObject; }
 void QDtls_delete(QDtls* self) {
 	delete self;
 }

@@ -96,6 +96,7 @@ bool QSslServer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSslServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSslServer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSslServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSslServer_staticMetaObject();
 void QSslServer_delete(QSslServer* self);
 
 #ifdef __cplusplus

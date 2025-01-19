@@ -2706,6 +2706,7 @@ QVariant* QGraphicsProxyWidget_virtualbase_extension(const void* self, QVariant*
 	return ( (const MiqtVirtualQGraphicsProxyWidget*)(self) )->virtualbase_extension(variant);
 }
 
+const QMetaObject* QGraphicsProxyWidget_staticMetaObject() { return &QGraphicsProxyWidget::staticMetaObject; }
 void QGraphicsProxyWidget_delete(QGraphicsProxyWidget* self) {
 	delete self;
 }

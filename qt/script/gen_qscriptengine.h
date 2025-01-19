@@ -147,6 +147,7 @@ bool QScriptEngine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScriptEngine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QScriptEngine_staticMetaObject();
 void QScriptEngine_delete(QScriptEngine* self);
 
 #ifdef __cplusplus

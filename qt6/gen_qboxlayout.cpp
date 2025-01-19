@@ -1510,6 +1510,7 @@ QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QBoxLayout_staticMetaObject() { return &QBoxLayout::staticMetaObject; }
 void QBoxLayout_delete(QBoxLayout* self) {
 	delete self;
 }
@@ -2738,6 +2739,7 @@ QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QHBoxLayout_staticMetaObject() { return &QHBoxLayout::staticMetaObject; }
 void QHBoxLayout_delete(QHBoxLayout* self) {
 	delete self;
 }
@@ -3966,6 +3968,7 @@ QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QVBoxLayout_staticMetaObject() { return &QVBoxLayout::staticMetaObject; }
 void QVBoxLayout_delete(QVBoxLayout* self) {
 	delete self;
 }

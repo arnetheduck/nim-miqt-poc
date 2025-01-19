@@ -141,6 +141,7 @@ bool QsciLexerMarkdown_override_virtual_connectNotify(void* self, intptr_t slot)
 void QsciLexerMarkdown_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerMarkdown_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerMarkdown_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerMarkdown_staticMetaObject();
 void QsciLexerMarkdown_delete(QsciLexerMarkdown* self);
 
 #ifdef __cplusplus

@@ -2151,6 +2151,7 @@ void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRadioButton_staticMetaObject() { return &QRadioButton::staticMetaObject; }
 void QRadioButton_delete(QRadioButton* self) {
 	delete self;
 }

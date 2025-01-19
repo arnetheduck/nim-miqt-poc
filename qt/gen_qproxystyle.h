@@ -163,6 +163,7 @@ bool QProxyStyle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProxyStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProxyStyle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QProxyStyle_staticMetaObject();
 void QProxyStyle_delete(QProxyStyle* self);
 
 #ifdef __cplusplus

@@ -1960,6 +1960,7 @@ void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsScene_staticMetaObject() { return &QGraphicsScene::staticMetaObject; }
 void QGraphicsScene_delete(QGraphicsScene* self) {
 	delete self;
 }

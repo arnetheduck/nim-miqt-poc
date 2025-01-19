@@ -2524,6 +2524,7 @@ void QSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSpinBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSpinBox_staticMetaObject() { return &QSpinBox::staticMetaObject; }
 void QSpinBox_delete(QSpinBox* self) {
 	delete self;
 }
@@ -4916,6 +4917,7 @@ void QDoubleSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQDoubleSpinBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDoubleSpinBox_staticMetaObject() { return &QDoubleSpinBox::staticMetaObject; }
 void QDoubleSpinBox_delete(QDoubleSpinBox* self) {
 	delete self;
 }

@@ -212,6 +212,7 @@ proc fQMdiSubWindow_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQMdiSubWindow_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMdiSubWindow_override_virtual_connectNotify".}
 proc fQMdiSubWindow_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMdiSubWindow_virtualbase_disconnectNotify".}
 proc fcQMdiSubWindow_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMdiSubWindow_override_virtual_disconnectNotify".}
+proc fcQMdiSubWindow_staticMetaObject(): pointer {.importc: "QMdiSubWindow_staticMetaObject".}
 proc fcQMdiSubWindow_delete(self: pointer) {.importc: "QMdiSubWindow_delete".}
 
 
@@ -1527,5 +1528,7 @@ proc miqt_exec_callback_QMdiSubWindow_disconnectNotify(self: ptr cQMdiSubWindow,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QMdiSubWindow): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMdiSubWindow_staticMetaObject())
 proc delete*(self: QMdiSubWindow) =
   fcQMdiSubWindow_delete(self.h)

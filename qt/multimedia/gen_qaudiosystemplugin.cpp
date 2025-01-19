@@ -650,6 +650,7 @@ void QAudioSystemPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQAudioSystemPlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioSystemPlugin_staticMetaObject() { return &QAudioSystemPlugin::staticMetaObject; }
 void QAudioSystemPlugin_delete(QAudioSystemPlugin* self) {
 	delete self;
 }

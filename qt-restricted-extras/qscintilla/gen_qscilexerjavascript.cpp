@@ -1989,6 +1989,7 @@ void QsciLexerJavaScript_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQsciLexerJavaScript*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerJavaScript_staticMetaObject() { return &QsciLexerJavaScript::staticMetaObject; }
 void QsciLexerJavaScript_delete(QsciLexerJavaScript* self) {
 	delete self;
 }

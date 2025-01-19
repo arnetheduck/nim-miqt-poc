@@ -90,6 +90,7 @@ bool QTimeLine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTimeLine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTimeLine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTimeLine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTimeLine_staticMetaObject();
 void QTimeLine_delete(QTimeLine* self);
 
 #ifdef __cplusplus

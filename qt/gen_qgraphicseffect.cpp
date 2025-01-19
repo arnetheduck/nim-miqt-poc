@@ -637,6 +637,7 @@ void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsEffect_staticMetaObject() { return &QGraphicsEffect::staticMetaObject; }
 void QGraphicsEffect_delete(QGraphicsEffect* self) {
 	delete self;
 }
@@ -1208,6 +1209,7 @@ void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMetho
 	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsColorizeEffect_staticMetaObject() { return &QGraphicsColorizeEffect::staticMetaObject; }
 void QGraphicsColorizeEffect_delete(QGraphicsColorizeEffect* self) {
 	delete self;
 }
@@ -1783,6 +1785,7 @@ void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsBlurEffect_staticMetaObject() { return &QGraphicsBlurEffect::staticMetaObject; }
 void QGraphicsBlurEffect_delete(QGraphicsBlurEffect* self) {
 	delete self;
 }
@@ -2405,6 +2408,7 @@ void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMet
 	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsDropShadowEffect_staticMetaObject() { return &QGraphicsDropShadowEffect::staticMetaObject; }
 void QGraphicsDropShadowEffect_delete(QGraphicsDropShadowEffect* self) {
 	delete self;
 }
@@ -2976,6 +2980,7 @@ void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod
 	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsOpacityEffect_staticMetaObject() { return &QGraphicsOpacityEffect::staticMetaObject; }
 void QGraphicsOpacityEffect_delete(QGraphicsOpacityEffect* self) {
 	delete self;
 }

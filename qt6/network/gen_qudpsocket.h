@@ -146,6 +146,7 @@ bool QUdpSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QUdpSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QUdpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QUdpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QUdpSocket_staticMetaObject();
 void QUdpSocket_delete(QUdpSocket* self);
 
 #ifdef __cplusplus

@@ -156,6 +156,7 @@ bool QsciLexerXML_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerXML_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerXML_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerXML_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerXML_staticMetaObject();
 void QsciLexerXML_delete(QsciLexerXML* self);
 
 #ifdef __cplusplus

@@ -564,6 +564,7 @@ void QAbstractTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractTransition_staticMetaObject() { return &QAbstractTransition::staticMetaObject; }
 void QAbstractTransition_delete(QAbstractTransition* self) {
 	delete self;
 }

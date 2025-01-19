@@ -2162,6 +2162,7 @@ void QPrintPreviewWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPrintPreviewWidget_staticMetaObject() { return &QPrintPreviewWidget::staticMetaObject; }
 void QPrintPreviewWidget_delete(QPrintPreviewWidget* self) {
 	delete self;
 }

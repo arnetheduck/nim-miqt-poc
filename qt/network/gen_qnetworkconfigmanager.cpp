@@ -551,6 +551,7 @@ void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMeta
 	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QNetworkConfigurationManager_staticMetaObject() { return &QNetworkConfigurationManager::staticMetaObject; }
 void QNetworkConfigurationManager_delete(QNetworkConfigurationManager* self) {
 	delete self;
 }

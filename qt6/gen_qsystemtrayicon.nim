@@ -123,6 +123,7 @@ proc fQSystemTrayIcon_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQSystemTrayIcon_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSystemTrayIcon_override_virtual_connectNotify".}
 proc fQSystemTrayIcon_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSystemTrayIcon_virtualbase_disconnectNotify".}
 proc fcQSystemTrayIcon_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSystemTrayIcon_override_virtual_disconnectNotify".}
+proc fcQSystemTrayIcon_staticMetaObject(): pointer {.importc: "QSystemTrayIcon_staticMetaObject".}
 proc fcQSystemTrayIcon_delete(self: pointer) {.importc: "QSystemTrayIcon_delete".}
 
 
@@ -478,5 +479,7 @@ proc miqt_exec_callback_QSystemTrayIcon_disconnectNotify(self: ptr cQSystemTrayI
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSystemTrayIcon): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSystemTrayIcon_staticMetaObject())
 proc delete*(self: QSystemTrayIcon) =
   fcQSystemTrayIcon_delete(self.h)

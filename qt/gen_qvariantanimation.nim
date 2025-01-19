@@ -110,6 +110,7 @@ proc fQVariantAnimation_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQVariantAnimation_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QVariantAnimation_override_virtual_connectNotify".}
 proc fQVariantAnimation_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QVariantAnimation_virtualbase_disconnectNotify".}
 proc fcQVariantAnimation_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QVariantAnimation_override_virtual_disconnectNotify".}
+proc fcQVariantAnimation_staticMetaObject(): pointer {.importc: "QVariantAnimation_staticMetaObject".}
 proc fcQVariantAnimation_delete(self: pointer) {.importc: "QVariantAnimation_delete".}
 
 
@@ -607,5 +608,7 @@ proc miqt_exec_callback_QVariantAnimation_disconnectNotify(self: ptr cQVariantAn
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QVariantAnimation): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQVariantAnimation_staticMetaObject())
 proc delete*(self: QVariantAnimation) =
   fcQVariantAnimation_delete(self.h)

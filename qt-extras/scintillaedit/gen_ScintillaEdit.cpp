@@ -5203,6 +5203,7 @@ void ScintillaEditBase_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* ScintillaEditBase_staticMetaObject() { return &ScintillaEditBase::staticMetaObject; }
 void ScintillaEditBase_delete(ScintillaEditBase* self) {
 	delete self;
 }
@@ -5858,6 +5859,7 @@ void ScintillaDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* ScintillaDocument_staticMetaObject() { return &ScintillaDocument::staticMetaObject; }
 void ScintillaDocument_delete(ScintillaDocument* self) {
 	delete self;
 }
@@ -11702,6 +11704,7 @@ void ScintillaEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* ScintillaEdit_staticMetaObject() { return &ScintillaEdit::staticMetaObject; }
 void ScintillaEdit_delete(ScintillaEdit* self) {
 	delete self;
 }

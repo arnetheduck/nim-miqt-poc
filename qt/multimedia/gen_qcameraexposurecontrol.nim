@@ -83,6 +83,7 @@ proc fcQCameraExposureControl_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQCameraExposureControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraExposureControl_tr3".}
 proc fcQCameraExposureControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraExposureControl_trUtf82".}
 proc fcQCameraExposureControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraExposureControl_trUtf83".}
+proc fcQCameraExposureControl_staticMetaObject(): pointer {.importc: "QCameraExposureControl_staticMetaObject".}
 proc fcQCameraExposureControl_delete(self: pointer) {.importc: "QCameraExposureControl_delete".}
 
 
@@ -212,5 +213,7 @@ proc trUtf83*(_: type QCameraExposureControl, s: cstring, c: cstring, n: cint): 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QCameraExposureControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCameraExposureControl_staticMetaObject())
 proc delete*(self: QCameraExposureControl) =
   fcQCameraExposureControl_delete(self.h)

@@ -2388,6 +2388,7 @@ void QWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebView_staticMetaObject() { return &QWebView::staticMetaObject; }
 void QWebView_delete(QWebView* self) {
 	delete self;
 }

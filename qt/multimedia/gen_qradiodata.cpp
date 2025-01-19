@@ -714,6 +714,7 @@ void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRadioData*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRadioData_staticMetaObject() { return &QRadioData::staticMetaObject; }
 void QRadioData_delete(QRadioData* self) {
 	delete self;
 }

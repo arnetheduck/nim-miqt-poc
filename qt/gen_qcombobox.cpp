@@ -2655,6 +2655,7 @@ void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QComboBox_staticMetaObject() { return &QComboBox::staticMetaObject; }
 void QComboBox_delete(QComboBox* self) {
 	delete self;
 }

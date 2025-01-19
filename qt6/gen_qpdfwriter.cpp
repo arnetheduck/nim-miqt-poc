@@ -962,6 +962,7 @@ QPainter* QPdfWriter_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQPdfWriter*)(self) )->virtualbase_sharedPainter();
 }
 
+const QMetaObject* QPdfWriter_staticMetaObject() { return &QPdfWriter::staticMetaObject; }
 void QPdfWriter_delete(QPdfWriter* self) {
 	delete self;
 }

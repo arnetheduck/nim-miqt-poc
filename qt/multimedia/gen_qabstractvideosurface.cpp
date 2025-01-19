@@ -763,6 +763,7 @@ void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQAbstractVideoSurface*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractVideoSurface_staticMetaObject() { return &QAbstractVideoSurface::staticMetaObject; }
 void QAbstractVideoSurface_delete(QAbstractVideoSurface* self) {
 	delete self;
 }

@@ -196,6 +196,7 @@ proc fQsciLexerPostScript_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQsciLexerPostScript_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_connectNotify".}
 proc fQsciLexerPostScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerPostScript_virtualbase_disconnectNotify".}
 proc fcQsciLexerPostScript_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerPostScript_override_virtual_disconnectNotify".}
+proc fcQsciLexerPostScript_staticMetaObject(): pointer {.importc: "QsciLexerPostScript_staticMetaObject".}
 proc fcQsciLexerPostScript_delete(self: pointer) {.importc: "QsciLexerPostScript_delete".}
 
 
@@ -1425,5 +1426,7 @@ proc miqt_exec_callback_QsciLexerPostScript_disconnectNotify(self: ptr cQsciLexe
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerPostScript): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerPostScript_staticMetaObject())
 proc delete*(self: QsciLexerPostScript) =
   fcQsciLexerPostScript_delete(self.h)

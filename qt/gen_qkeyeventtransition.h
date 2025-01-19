@@ -78,6 +78,7 @@ bool QKeyEventTransition_override_virtual_connectNotify(void* self, intptr_t slo
 void QKeyEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QKeyEventTransition_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QKeyEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QKeyEventTransition_staticMetaObject();
 void QKeyEventTransition_delete(QKeyEventTransition* self);
 
 #ifdef __cplusplus

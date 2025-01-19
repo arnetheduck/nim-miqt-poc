@@ -94,6 +94,7 @@ bool QQmlExpression_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlExpression_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlExpression_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlExpression_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQmlExpression_staticMetaObject();
 void QQmlExpression_delete(QQmlExpression* self);
 
 #ifdef __cplusplus

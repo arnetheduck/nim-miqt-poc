@@ -188,6 +188,7 @@ proc fQDial_virtualbase_connectNotify(self: pointer, signal: pointer): void{.imp
 proc fcQDial_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDial_override_virtual_connectNotify".}
 proc fQDial_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDial_virtualbase_disconnectNotify".}
 proc fcQDial_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDial_override_virtual_disconnectNotify".}
+proc fcQDial_staticMetaObject(): pointer {.importc: "QDial_staticMetaObject".}
 proc fcQDial_delete(self: pointer) {.importc: "QDial_delete".}
 
 
@@ -1447,5 +1448,7 @@ proc miqt_exec_callback_QDial_disconnectNotify(self: ptr cQDial, slot: int, sign
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QDial): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDial_staticMetaObject())
 proc delete*(self: QDial) =
   fcQDial_delete(self.h)

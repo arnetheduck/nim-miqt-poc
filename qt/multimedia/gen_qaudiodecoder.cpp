@@ -848,6 +848,7 @@ void QAudioDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioDecoder_staticMetaObject() { return &QAudioDecoder::staticMetaObject; }
 void QAudioDecoder_delete(QAudioDecoder* self) {
 	delete self;
 }

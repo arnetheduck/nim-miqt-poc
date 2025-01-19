@@ -2039,6 +2039,7 @@ void QKeySequenceEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QKeySequenceEdit_staticMetaObject() { return &QKeySequenceEdit::staticMetaObject; }
 void QKeySequenceEdit_delete(QKeySequenceEdit* self) {
 	delete self;
 }

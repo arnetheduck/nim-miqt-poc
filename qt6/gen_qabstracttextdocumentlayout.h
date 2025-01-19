@@ -141,6 +141,7 @@ bool QAbstractTextDocumentLayout_override_virtual_connectNotify(void* self, intp
 void QAbstractTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractTextDocumentLayout_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractTextDocumentLayout_staticMetaObject();
 void QAbstractTextDocumentLayout_delete(QAbstractTextDocumentLayout* self);
 
 QSizeF* QTextObjectInterface_intrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format);

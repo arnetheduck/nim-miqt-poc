@@ -4222,6 +4222,7 @@ void QHeaderView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQHeaderView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QHeaderView_staticMetaObject() { return &QHeaderView::staticMetaObject; }
 void QHeaderView_delete(QHeaderView* self) {
 	delete self;
 }

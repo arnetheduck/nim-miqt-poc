@@ -2044,6 +2044,7 @@ void QRubberBand_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRubberBand_staticMetaObject() { return &QRubberBand::staticMetaObject; }
 void QRubberBand_delete(QRubberBand* self) {
 	delete self;
 }

@@ -252,6 +252,7 @@ export gen_qaccessible_types
 import
   gen_qcolor,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qpoint,
   gen_qrect,
   gen_qsize,
@@ -261,6 +262,7 @@ import
 export
   gen_qcolor,
   gen_qobject,
+  gen_qobjectdefs,
   gen_qpoint,
   gen_qrect,
   gen_qsize,
@@ -302,6 +304,7 @@ proc fcQAccessible_setActive(active: bool): void {.importc: "QAccessible_setActi
 proc fcQAccessible_setRootObject(objectVal: pointer): void {.importc: "QAccessible_setRootObject".}
 proc fcQAccessible_cleanup(): void {.importc: "QAccessible_cleanup".}
 proc fcQAccessible_qAccessibleTextBoundaryHelper(cursor: pointer, boundaryType: cint): struct_miqt_map {.importc: "QAccessible_qAccessibleTextBoundaryHelper".}
+proc fcQAccessible_staticMetaObject(): pointer {.importc: "QAccessible_staticMetaObject".}
 proc fcQAccessible_delete(self: pointer) {.importc: "QAccessible_delete".}
 proc fcQAccessibleInterface_isValid(self: pointer, ): bool {.importc: "QAccessibleInterface_isValid".}
 proc fcQAccessibleInterface_objectX(self: pointer, ): pointer {.importc: "QAccessibleInterface_object".}
@@ -565,6 +568,8 @@ proc qAccessibleTextBoundaryHelper*(_: type QAccessible, cursor: gen_qtextcursor
 
   (first: v_entry_First , second: v_entry_Second )
 
+proc staticMetaObject*(_: type QAccessible): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAccessible_staticMetaObject())
 proc delete*(self: QAccessible) =
   fcQAccessible_delete(self.h)
 

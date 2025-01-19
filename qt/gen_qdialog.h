@@ -231,6 +231,7 @@ bool QDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDialog_staticMetaObject();
 void QDialog_delete(QDialog* self);
 
 #ifdef __cplusplus

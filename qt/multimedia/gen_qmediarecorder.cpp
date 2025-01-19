@@ -1075,6 +1075,7 @@ void QMediaRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQMediaRecorder*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMediaRecorder_staticMetaObject() { return &QMediaRecorder::staticMetaObject; }
 void QMediaRecorder_delete(QMediaRecorder* self) {
 	delete self;
 }

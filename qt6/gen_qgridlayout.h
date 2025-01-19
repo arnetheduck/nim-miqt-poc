@@ -163,6 +163,7 @@ bool QGridLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QGridLayout_virtualbase_widget(const void* self);
 bool QGridLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self);
+const QMetaObject* QGridLayout_staticMetaObject();
 void QGridLayout_delete(QGridLayout* self);
 
 #ifdef __cplusplus

@@ -215,9 +215,11 @@ import gen_qcoreevent_types
 export gen_qcoreevent_types
 
 import
-  gen_qobject
+  gen_qobject,
+  gen_qobjectdefs
 export
-  gen_qobject
+  gen_qobject,
+  gen_qobjectdefs
 
 type cQEvent*{.exportc: "QEvent", incompleteStruct.} = object
 type cQTimerEvent*{.exportc: "QTimerEvent", incompleteStruct.} = object
@@ -235,6 +237,7 @@ proc fcQEvent_accept(self: pointer, ): void {.importc: "QEvent_accept".}
 proc fcQEvent_ignore(self: pointer, ): void {.importc: "QEvent_ignore".}
 proc fcQEvent_registerEventType(): cint {.importc: "QEvent_registerEventType".}
 proc fcQEvent_registerEventType1(hint: cint): cint {.importc: "QEvent_registerEventType1".}
+proc fcQEvent_staticMetaObject(): pointer {.importc: "QEvent_staticMetaObject".}
 proc fcQEvent_delete(self: pointer) {.importc: "QEvent_delete".}
 proc fcQTimerEvent_new(timerId: cint): ptr cQTimerEvent {.importc: "QTimerEvent_new".}
 proc fcQTimerEvent_new2(param1: pointer): ptr cQTimerEvent {.importc: "QTimerEvent_new2".}
@@ -297,6 +300,8 @@ proc registerEventType1*(_: type QEvent, hint: cint): cint =
 
   fcQEvent_registerEventType1(hint)
 
+proc staticMetaObject*(_: type QEvent): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQEvent_staticMetaObject())
 proc delete*(self: QEvent) =
   fcQEvent_delete(self.h)
 

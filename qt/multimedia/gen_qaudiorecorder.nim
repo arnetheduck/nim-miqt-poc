@@ -94,6 +94,7 @@ proc fQAudioRecorder_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQAudioRecorder_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioRecorder_override_virtual_connectNotify".}
 proc fQAudioRecorder_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioRecorder_virtualbase_disconnectNotify".}
 proc fcQAudioRecorder_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioRecorder_override_virtual_disconnectNotify".}
+proc fcQAudioRecorder_staticMetaObject(): pointer {.importc: "QAudioRecorder_staticMetaObject".}
 proc fcQAudioRecorder_delete(self: pointer) {.importc: "QAudioRecorder_delete".}
 
 
@@ -477,5 +478,7 @@ proc miqt_exec_callback_QAudioRecorder_disconnectNotify(self: ptr cQAudioRecorde
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAudioRecorder): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioRecorder_staticMetaObject())
 proc delete*(self: QAudioRecorder) =
   fcQAudioRecorder_delete(self.h)

@@ -331,6 +331,7 @@ bool QStandardItemModel_override_virtual_connectNotify(void* self, intptr_t slot
 void QStandardItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStandardItemModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStandardItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QStandardItemModel_staticMetaObject();
 void QStandardItemModel_delete(QStandardItemModel* self);
 
 #ifdef __cplusplus

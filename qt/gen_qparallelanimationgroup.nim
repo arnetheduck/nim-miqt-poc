@@ -90,6 +90,7 @@ proc fQParallelAnimationGroup_virtualbase_connectNotify(self: pointer, signal: p
 proc fcQParallelAnimationGroup_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QParallelAnimationGroup_override_virtual_connectNotify".}
 proc fQParallelAnimationGroup_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QParallelAnimationGroup_virtualbase_disconnectNotify".}
 proc fcQParallelAnimationGroup_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QParallelAnimationGroup_override_virtual_disconnectNotify".}
+proc fcQParallelAnimationGroup_staticMetaObject(): pointer {.importc: "QParallelAnimationGroup_staticMetaObject".}
 proc fcQParallelAnimationGroup_delete(self: pointer) {.importc: "QParallelAnimationGroup_delete".}
 
 
@@ -449,5 +450,7 @@ proc miqt_exec_callback_QParallelAnimationGroup_disconnectNotify(self: ptr cQPar
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QParallelAnimationGroup): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQParallelAnimationGroup_staticMetaObject())
 proc delete*(self: QParallelAnimationGroup) =
   fcQParallelAnimationGroup_delete(self.h)

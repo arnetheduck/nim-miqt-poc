@@ -150,6 +150,7 @@ bool QsciLexerJSON_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerJSON_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerJSON_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerJSON_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerJSON_staticMetaObject();
 void QsciLexerJSON_delete(QsciLexerJSON* self);
 
 #ifdef __cplusplus

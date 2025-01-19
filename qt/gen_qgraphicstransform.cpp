@@ -497,6 +497,7 @@ void QGraphicsTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQGraphicsTransform*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsTransform_staticMetaObject() { return &QGraphicsTransform::staticMetaObject; }
 void QGraphicsTransform_delete(QGraphicsTransform* self) {
 	delete self;
 }
@@ -1037,6 +1038,7 @@ void QGraphicsScale_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQGraphicsScale*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsScale_staticMetaObject() { return &QGraphicsScale::staticMetaObject; }
 void QGraphicsScale_delete(QGraphicsScale* self) {
 	delete self;
 }
@@ -1551,6 +1553,7 @@ void QGraphicsRotation_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQGraphicsRotation*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsRotation_staticMetaObject() { return &QGraphicsRotation::staticMetaObject; }
 void QGraphicsRotation_delete(QGraphicsRotation* self) {
 	delete self;
 }

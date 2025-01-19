@@ -982,6 +982,7 @@ void QAbstractItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractItemDelegate_staticMetaObject() { return &QAbstractItemDelegate::staticMetaObject; }
 void QAbstractItemDelegate_delete(QAbstractItemDelegate* self) {
 	delete self;
 }

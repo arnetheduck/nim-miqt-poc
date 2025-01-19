@@ -573,6 +573,7 @@ void QQuickTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQQuickTransform*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickTransform_staticMetaObject() { return &QQuickTransform::staticMetaObject; }
 void QQuickTransform_delete(QQuickTransform* self) {
 	delete self;
 }
@@ -3095,6 +3096,7 @@ void QQuickItem_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickItem*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickItem_staticMetaObject() { return &QQuickItem::staticMetaObject; }
 void QQuickItem_delete(QQuickItem* self) {
 	delete self;
 }

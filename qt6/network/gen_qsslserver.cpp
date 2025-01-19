@@ -687,6 +687,7 @@ void QSslServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSslServer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSslServer_staticMetaObject() { return &QSslServer::staticMetaObject; }
 void QSslServer_delete(QSslServer* self) {
 	delete self;
 }

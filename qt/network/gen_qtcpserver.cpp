@@ -675,6 +675,7 @@ void QTcpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTcpServer_staticMetaObject() { return &QTcpServer::staticMetaObject; }
 void QTcpServer_delete(QTcpServer* self) {
 	delete self;
 }

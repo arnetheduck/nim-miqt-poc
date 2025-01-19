@@ -540,6 +540,7 @@ void QScriptExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod
 	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QScriptExtensionPlugin_staticMetaObject() { return &QScriptExtensionPlugin::staticMetaObject; }
 void QScriptExtensionPlugin_delete(QScriptExtensionPlugin* self) {
 	delete self;
 }

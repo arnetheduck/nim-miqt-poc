@@ -195,6 +195,7 @@ bool QFocusFrame_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFocusFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFocusFrame_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFocusFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QFocusFrame_staticMetaObject();
 void QFocusFrame_delete(QFocusFrame* self);
 
 #ifdef __cplusplus

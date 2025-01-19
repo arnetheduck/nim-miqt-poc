@@ -748,6 +748,7 @@ void QVariantAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QVariantAnimation_staticMetaObject() { return &QVariantAnimation::staticMetaObject; }
 void QVariantAnimation_delete(QVariantAnimation* self) {
 	delete self;
 }

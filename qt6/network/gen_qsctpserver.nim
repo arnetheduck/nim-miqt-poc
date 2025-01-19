@@ -89,6 +89,7 @@ proc fQSctpServer_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQSctpServer_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSctpServer_override_virtual_connectNotify".}
 proc fQSctpServer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSctpServer_virtualbase_disconnectNotify".}
 proc fcQSctpServer_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSctpServer_override_virtual_disconnectNotify".}
+proc fcQSctpServer_staticMetaObject(): pointer {.importc: "QSctpServer_staticMetaObject".}
 proc fcQSctpServer_delete(self: pointer) {.importc: "QSctpServer_delete".}
 
 
@@ -410,5 +411,7 @@ proc miqt_exec_callback_QSctpServer_disconnectNotify(self: ptr cQSctpServer, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSctpServer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSctpServer_staticMetaObject())
 proc delete*(self: QSctpServer) =
   fcQSctpServer_delete(self.h)

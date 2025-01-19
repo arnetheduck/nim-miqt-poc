@@ -840,6 +840,7 @@ void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMediaPlayer_staticMetaObject() { return &QMediaPlayer::staticMetaObject; }
 void QMediaPlayer_delete(QMediaPlayer* self) {
 	delete self;
 }

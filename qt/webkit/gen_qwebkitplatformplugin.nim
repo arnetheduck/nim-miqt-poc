@@ -136,6 +136,7 @@ proc fcQWebSelectMethod_tr2(s: cstring, c: cstring): struct_miqt_string {.import
 proc fcQWebSelectMethod_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebSelectMethod_tr3".}
 proc fcQWebSelectMethod_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebSelectMethod_trUtf82".}
 proc fcQWebSelectMethod_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebSelectMethod_trUtf83".}
+proc fcQWebSelectMethod_staticMetaObject(): pointer {.importc: "QWebSelectMethod_staticMetaObject".}
 proc fcQWebSelectMethod_delete(self: pointer) {.importc: "QWebSelectMethod_delete".}
 proc fcQWebNotificationData_title(self: pointer, ): struct_miqt_string {.importc: "QWebNotificationData_title".}
 proc fcQWebNotificationData_message(self: pointer, ): struct_miqt_string {.importc: "QWebNotificationData_message".}
@@ -157,6 +158,7 @@ proc fcQWebNotificationPresenter_tr2(s: cstring, c: cstring): struct_miqt_string
 proc fcQWebNotificationPresenter_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebNotificationPresenter_tr3".}
 proc fcQWebNotificationPresenter_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebNotificationPresenter_trUtf82".}
 proc fcQWebNotificationPresenter_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebNotificationPresenter_trUtf83".}
+proc fcQWebNotificationPresenter_staticMetaObject(): pointer {.importc: "QWebNotificationPresenter_staticMetaObject".}
 proc fcQWebNotificationPresenter_delete(self: pointer) {.importc: "QWebNotificationPresenter_delete".}
 proc fcQWebHapticFeedbackPlayer_metaObject(self: pointer, ): pointer {.importc: "QWebHapticFeedbackPlayer_metaObject".}
 proc fcQWebHapticFeedbackPlayer_metacast(self: pointer, param1: cstring): pointer {.importc: "QWebHapticFeedbackPlayer_metacast".}
@@ -168,6 +170,7 @@ proc fcQWebHapticFeedbackPlayer_tr2(s: cstring, c: cstring): struct_miqt_string 
 proc fcQWebHapticFeedbackPlayer_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebHapticFeedbackPlayer_tr3".}
 proc fcQWebHapticFeedbackPlayer_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebHapticFeedbackPlayer_trUtf82".}
 proc fcQWebHapticFeedbackPlayer_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebHapticFeedbackPlayer_trUtf83".}
+proc fcQWebHapticFeedbackPlayer_staticMetaObject(): pointer {.importc: "QWebHapticFeedbackPlayer_staticMetaObject".}
 proc fcQWebHapticFeedbackPlayer_delete(self: pointer) {.importc: "QWebHapticFeedbackPlayer_delete".}
 proc fcQWebTouchModifier_metaObject(self: pointer, ): pointer {.importc: "QWebTouchModifier_metaObject".}
 proc fcQWebTouchModifier_metacast(self: pointer, param1: cstring): pointer {.importc: "QWebTouchModifier_metacast".}
@@ -179,6 +182,7 @@ proc fcQWebTouchModifier_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQWebTouchModifier_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebTouchModifier_tr3".}
 proc fcQWebTouchModifier_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebTouchModifier_trUtf82".}
 proc fcQWebTouchModifier_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebTouchModifier_trUtf83".}
+proc fcQWebTouchModifier_staticMetaObject(): pointer {.importc: "QWebTouchModifier_staticMetaObject".}
 proc fcQWebTouchModifier_delete(self: pointer) {.importc: "QWebTouchModifier_delete".}
 proc fcQWebSpellChecker_metaObject(self: pointer, ): pointer {.importc: "QWebSpellChecker_metaObject".}
 proc fcQWebSpellChecker_metacast(self: pointer, param1: cstring): pointer {.importc: "QWebSpellChecker_metacast".}
@@ -199,6 +203,7 @@ proc fcQWebSpellChecker_tr2(s: cstring, c: cstring): struct_miqt_string {.import
 proc fcQWebSpellChecker_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebSpellChecker_tr3".}
 proc fcQWebSpellChecker_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebSpellChecker_trUtf82".}
 proc fcQWebSpellChecker_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebSpellChecker_trUtf83".}
+proc fcQWebSpellChecker_staticMetaObject(): pointer {.importc: "QWebSpellChecker_staticMetaObject".}
 proc fcQWebSpellChecker_delete(self: pointer) {.importc: "QWebSpellChecker_delete".}
 proc fcQWebKitPlatformPlugin_supportsExtension(self: pointer, param1: cint): bool {.importc: "QWebKitPlatformPlugin_supportsExtension".}
 proc fcQWebKitPlatformPlugin_createExtension(self: pointer, param1: cint): pointer {.importc: "QWebKitPlatformPlugin_createExtension".}
@@ -378,6 +383,8 @@ proc trUtf83*(_: type QWebSelectMethod, s: cstring, c: cstring, n: cint): string
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebSelectMethod): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebSelectMethod_staticMetaObject())
 proc delete*(self: QWebSelectMethod) =
   fcQWebSelectMethod_delete(self.h)
 
@@ -504,6 +511,8 @@ proc trUtf83*(_: type QWebNotificationPresenter, s: cstring, c: cstring, n: cint
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebNotificationPresenter): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebNotificationPresenter_staticMetaObject())
 proc delete*(self: QWebNotificationPresenter) =
   fcQWebNotificationPresenter_delete(self.h)
 
@@ -567,6 +576,8 @@ proc trUtf83*(_: type QWebHapticFeedbackPlayer, s: cstring, c: cstring, n: cint)
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebHapticFeedbackPlayer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebHapticFeedbackPlayer_staticMetaObject())
 proc delete*(self: QWebHapticFeedbackPlayer) =
   fcQWebHapticFeedbackPlayer_delete(self.h)
 
@@ -630,6 +641,8 @@ proc trUtf83*(_: type QWebTouchModifier, s: cstring, c: cstring, n: cint): strin
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebTouchModifier): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebTouchModifier_staticMetaObject())
 proc delete*(self: QWebTouchModifier) =
   fcQWebTouchModifier_delete(self.h)
 
@@ -740,6 +753,8 @@ proc trUtf83*(_: type QWebSpellChecker, s: cstring, c: cstring, n: cint): string
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebSpellChecker): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebSpellChecker_staticMetaObject())
 proc delete*(self: QWebSpellChecker) =
   fcQWebSpellChecker_delete(self.h)
 

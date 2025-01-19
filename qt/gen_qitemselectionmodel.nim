@@ -174,6 +174,7 @@ proc fQItemSelectionModel_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQItemSelectionModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QItemSelectionModel_override_virtual_connectNotify".}
 proc fQItemSelectionModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QItemSelectionModel_virtualbase_disconnectNotify".}
 proc fcQItemSelectionModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QItemSelectionModel_override_virtual_disconnectNotify".}
+proc fcQItemSelectionModel_staticMetaObject(): pointer {.importc: "QItemSelectionModel_staticMetaObject".}
 proc fcQItemSelectionModel_delete(self: pointer) {.importc: "QItemSelectionModel_delete".}
 proc fcQItemSelection_new(): ptr cQItemSelection {.importc: "QItemSelection_new".}
 proc fcQItemSelection_new2(topLeft: pointer, bottomRight: pointer): ptr cQItemSelection {.importc: "QItemSelection_new2".}
@@ -926,6 +927,8 @@ proc miqt_exec_callback_QItemSelectionModel_disconnectNotify(self: ptr cQItemSel
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QItemSelectionModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQItemSelectionModel_staticMetaObject())
 proc delete*(self: QItemSelectionModel) =
   fcQItemSelectionModel_delete(self.h)
 

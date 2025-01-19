@@ -628,6 +628,7 @@ void QUndoGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QUndoGroup_staticMetaObject() { return &QUndoGroup::staticMetaObject; }
 void QUndoGroup_delete(QUndoGroup* self) {
 	delete self;
 }

@@ -697,6 +697,7 @@ void QSettings_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSettings*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSettings_staticMetaObject() { return &QSettings::staticMetaObject; }
 void QSettings_delete(QSettings* self) {
 	delete self;
 }

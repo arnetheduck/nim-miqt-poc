@@ -557,6 +557,7 @@ void QValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQValidator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QValidator_staticMetaObject() { return &QValidator::staticMetaObject; }
 void QValidator_delete(QValidator* self) {
 	delete self;
 }
@@ -1093,6 +1094,7 @@ void QIntValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQIntValidator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QIntValidator_staticMetaObject() { return &QIntValidator::staticMetaObject; }
 void QIntValidator_delete(QIntValidator* self) {
 	delete self;
 }
@@ -1673,6 +1675,7 @@ void QDoubleValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQDoubleValidator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDoubleValidator_staticMetaObject() { return &QDoubleValidator::staticMetaObject; }
 void QDoubleValidator_delete(QDoubleValidator* self) {
 	delete self;
 }
@@ -2183,6 +2186,7 @@ void QRegularExpressionValidator_virtualbase_disconnectNotify(void* self, QMetaM
 	( (MiqtVirtualQRegularExpressionValidator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRegularExpressionValidator_staticMetaObject() { return &QRegularExpressionValidator::staticMetaObject; }
 void QRegularExpressionValidator_delete(QRegularExpressionValidator* self) {
 	delete self;
 }

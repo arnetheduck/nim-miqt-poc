@@ -189,3 +189,4 @@ struct miqt_string QNetworkInformation_tr3(const char* s, const char* c, int n) 
 	return _ms;
 }
 
+const QMetaObject* QNetworkInformation_staticMetaObject() { return &QNetworkInformation::staticMetaObject; }

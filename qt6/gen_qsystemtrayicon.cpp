@@ -530,6 +530,7 @@ void QSystemTrayIcon_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSystemTrayIcon_staticMetaObject() { return &QSystemTrayIcon::staticMetaObject; }
 void QSystemTrayIcon_delete(QSystemTrayIcon* self) {
 	delete self;
 }

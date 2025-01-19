@@ -1851,6 +1851,7 @@ void QsciLexerPO_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerPO*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerPO_staticMetaObject() { return &QsciLexerPO::staticMetaObject; }
 void QsciLexerPO_delete(QsciLexerPO* self) {
 	delete self;
 }

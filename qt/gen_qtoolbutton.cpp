@@ -2208,6 +2208,7 @@ void QToolButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QToolButton_staticMetaObject() { return &QToolButton::staticMetaObject; }
 void QToolButton_delete(QToolButton* self) {
 	delete self;
 }

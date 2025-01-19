@@ -396,6 +396,7 @@ bool QTreeView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTreeView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTreeView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTreeView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTreeView_staticMetaObject();
 void QTreeView_delete(QTreeView* self);
 
 #ifdef __cplusplus

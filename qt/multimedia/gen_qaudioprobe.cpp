@@ -476,6 +476,7 @@ void QAudioProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioProbe*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioProbe_staticMetaObject() { return &QAudioProbe::staticMetaObject; }
 void QAudioProbe_delete(QAudioProbe* self) {
 	delete self;
 }

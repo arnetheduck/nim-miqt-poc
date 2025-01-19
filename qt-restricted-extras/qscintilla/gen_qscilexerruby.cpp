@@ -1846,6 +1846,7 @@ void QsciLexerRuby_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQsciLexerRuby*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerRuby_staticMetaObject() { return &QsciLexerRuby::staticMetaObject; }
 void QsciLexerRuby_delete(QsciLexerRuby* self) {
 	delete self;
 }

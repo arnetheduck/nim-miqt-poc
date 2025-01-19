@@ -380,6 +380,7 @@ struct miqt_string QMediaPlayerControl_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
+const QMetaObject* QMediaPlayerControl_staticMetaObject() { return &QMediaPlayerControl::staticMetaObject; }
 void QMediaPlayerControl_delete(QMediaPlayerControl* self) {
 	delete self;
 }

@@ -288,6 +288,7 @@ bool QWebView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWebView_staticMetaObject();
 void QWebView_delete(QWebView* self);
 
 #ifdef __cplusplus

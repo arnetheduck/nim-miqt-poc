@@ -123,6 +123,7 @@ bool QStateMachine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStateMachine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStateMachine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStateMachine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QStateMachine_staticMetaObject();
 void QStateMachine_delete(QStateMachine* self);
 
 QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1);

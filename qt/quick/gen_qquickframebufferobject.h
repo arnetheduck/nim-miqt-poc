@@ -200,6 +200,7 @@ bool QQuickFramebufferObject_override_virtual_connectNotify(void* self, intptr_t
 void QQuickFramebufferObject_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQuickFramebufferObject_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQuickFramebufferObject_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQuickFramebufferObject_staticMetaObject();
 void QQuickFramebufferObject_delete(QQuickFramebufferObject* self);
 
 void QQuickFramebufferObject__Renderer_render(QQuickFramebufferObject__Renderer* self);

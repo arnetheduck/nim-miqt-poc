@@ -2326,6 +2326,7 @@ void QWebEngineView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQWebEngineView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebEngineView_staticMetaObject() { return &QWebEngineView::staticMetaObject; }
 void QWebEngineView_delete(QWebEngineView* self) {
 	delete self;
 }

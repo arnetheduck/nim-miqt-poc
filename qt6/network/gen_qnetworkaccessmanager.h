@@ -144,6 +144,7 @@ bool QNetworkAccessManager_override_virtual_connectNotify(void* self, intptr_t s
 void QNetworkAccessManager_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNetworkAccessManager_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QNetworkAccessManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QNetworkAccessManager_staticMetaObject();
 void QNetworkAccessManager_delete(QNetworkAccessManager* self);
 
 #ifdef __cplusplus

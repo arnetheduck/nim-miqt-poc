@@ -840,6 +840,7 @@ void QCompleter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCompleter*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCompleter_staticMetaObject() { return &QCompleter::staticMetaObject; }
 void QCompleter_delete(QCompleter* self) {
 	delete self;
 }

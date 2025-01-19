@@ -287,6 +287,7 @@ proc fQTabBar_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQTabBar_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTabBar_override_virtual_connectNotify".}
 proc fQTabBar_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTabBar_virtualbase_disconnectNotify".}
 proc fcQTabBar_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTabBar_override_virtual_disconnectNotify".}
+proc fcQTabBar_staticMetaObject(): pointer {.importc: "QTabBar_staticMetaObject".}
 proc fcQTabBar_delete(self: pointer) {.importc: "QTabBar_delete".}
 
 
@@ -1940,5 +1941,7 @@ proc miqt_exec_callback_QTabBar_disconnectNotify(self: ptr cQTabBar, slot: int, 
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QTabBar): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTabBar_staticMetaObject())
 proc delete*(self: QTabBar) =
   fcQTabBar_delete(self.h)

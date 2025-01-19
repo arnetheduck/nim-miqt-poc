@@ -530,6 +530,7 @@ void QActionGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QActionGroup_staticMetaObject() { return &QActionGroup::staticMetaObject; }
 void QActionGroup_delete(QActionGroup* self) {
 	delete self;
 }

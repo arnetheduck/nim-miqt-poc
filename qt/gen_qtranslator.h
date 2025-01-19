@@ -80,6 +80,7 @@ bool QTranslator_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTranslator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTranslator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTranslator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTranslator_staticMetaObject();
 void QTranslator_delete(QTranslator* self);
 
 #ifdef __cplusplus

@@ -210,6 +210,7 @@ proc fQProgressBar_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQProgressBar_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QProgressBar_override_virtual_connectNotify".}
 proc fQProgressBar_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QProgressBar_virtualbase_disconnectNotify".}
 proc fcQProgressBar_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QProgressBar_override_virtual_disconnectNotify".}
+proc fcQProgressBar_staticMetaObject(): pointer {.importc: "QProgressBar_staticMetaObject".}
 proc fcQProgressBar_delete(self: pointer) {.importc: "QProgressBar_delete".}
 
 
@@ -1556,5 +1557,7 @@ proc miqt_exec_callback_QProgressBar_disconnectNotify(self: ptr cQProgressBar, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QProgressBar): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQProgressBar_staticMetaObject())
 proc delete*(self: QProgressBar) =
   fcQProgressBar_delete(self.h)

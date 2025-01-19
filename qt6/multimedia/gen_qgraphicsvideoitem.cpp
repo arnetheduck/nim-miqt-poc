@@ -1851,6 +1851,7 @@ QVariant* QGraphicsVideoItem_virtualbase_extension(const void* self, QVariant* v
 	return ( (const MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_extension(variant);
 }
 
+const QMetaObject* QGraphicsVideoItem_staticMetaObject() { return &QGraphicsVideoItem::staticMetaObject; }
 void QGraphicsVideoItem_delete(QGraphicsVideoItem* self) {
 	delete self;
 }

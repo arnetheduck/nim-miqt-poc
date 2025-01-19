@@ -1003,6 +1003,7 @@ void QItemSelectionModel_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QItemSelectionModel_staticMetaObject() { return &QItemSelectionModel::staticMetaObject; }
 void QItemSelectionModel_delete(QItemSelectionModel* self) {
 	delete self;
 }

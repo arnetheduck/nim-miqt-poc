@@ -88,6 +88,7 @@ proc fQsciMacro_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQsciMacro_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciMacro_override_virtual_connectNotify".}
 proc fQsciMacro_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciMacro_virtualbase_disconnectNotify".}
 proc fcQsciMacro_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciMacro_override_virtual_disconnectNotify".}
+proc fcQsciMacro_staticMetaObject(): pointer {.importc: "QsciMacro_staticMetaObject".}
 proc fcQsciMacro_delete(self: pointer) {.importc: "QsciMacro_delete".}
 
 
@@ -418,5 +419,7 @@ proc miqt_exec_callback_QsciMacro_disconnectNotify(self: ptr cQsciMacro, slot: i
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciMacro): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciMacro_staticMetaObject())
 proc delete*(self: QsciMacro) =
   fcQsciMacro_delete(self.h)

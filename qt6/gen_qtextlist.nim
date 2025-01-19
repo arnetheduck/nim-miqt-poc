@@ -94,6 +94,7 @@ proc fQTextList_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQTextList_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTextList_override_virtual_connectNotify".}
 proc fQTextList_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTextList_virtualbase_disconnectNotify".}
 proc fcQTextList_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTextList_override_virtual_disconnectNotify".}
+proc fcQTextList_staticMetaObject(): pointer {.importc: "QTextList_staticMetaObject".}
 proc fcQTextList_delete(self: pointer) {.importc: "QTextList_delete".}
 
 
@@ -439,5 +440,7 @@ proc miqt_exec_callback_QTextList_disconnectNotify(self: ptr cQTextList, slot: i
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QTextList): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTextList_staticMetaObject())
 proc delete*(self: QTextList) =
   fcQTextList_delete(self.h)

@@ -991,6 +991,7 @@ void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCamera*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCamera_staticMetaObject() { return &QCamera::staticMetaObject; }
 void QCamera_delete(QCamera* self) {
 	delete self;
 }

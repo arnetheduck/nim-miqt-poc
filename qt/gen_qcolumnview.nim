@@ -291,6 +291,7 @@ proc fQColumnView_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQColumnView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QColumnView_override_virtual_connectNotify".}
 proc fQColumnView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QColumnView_virtualbase_disconnectNotify".}
 proc fcQColumnView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QColumnView_override_virtual_disconnectNotify".}
+proc fcQColumnView_staticMetaObject(): pointer {.importc: "QColumnView_staticMetaObject".}
 proc fcQColumnView_delete(self: pointer) {.importc: "QColumnView_delete".}
 
 
@@ -2626,5 +2627,7 @@ proc miqt_exec_callback_QColumnView_disconnectNotify(self: ptr cQColumnView, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QColumnView): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQColumnView_staticMetaObject())
 proc delete*(self: QColumnView) =
   fcQColumnView_delete(self.h)

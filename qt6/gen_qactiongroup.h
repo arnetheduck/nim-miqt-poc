@@ -79,6 +79,7 @@ bool QActionGroup_override_virtual_connectNotify(void* self, intptr_t slot);
 void QActionGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QActionGroup_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QActionGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QActionGroup_staticMetaObject();
 void QActionGroup_delete(QActionGroup* self);
 
 #ifdef __cplusplus

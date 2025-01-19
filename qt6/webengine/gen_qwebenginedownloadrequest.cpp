@@ -302,6 +302,7 @@ struct miqt_string QWebEngineDownloadRequest_tr3(const char* s, const char* c, i
 	return _ms;
 }
 
+const QMetaObject* QWebEngineDownloadRequest_staticMetaObject() { return &QWebEngineDownloadRequest::staticMetaObject; }
 void QWebEngineDownloadRequest_delete(QWebEngineDownloadRequest* self) {
 	delete self;
 }

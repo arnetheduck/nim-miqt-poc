@@ -89,6 +89,7 @@ bool QSignalMapper_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSignalMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSignalMapper_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSignalMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSignalMapper_staticMetaObject();
 void QSignalMapper_delete(QSignalMapper* self);
 
 #ifdef __cplusplus

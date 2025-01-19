@@ -86,6 +86,7 @@ bool QButtonGroup_override_virtual_connectNotify(void* self, intptr_t slot);
 void QButtonGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QButtonGroup_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QButtonGroup_staticMetaObject();
 void QButtonGroup_delete(QButtonGroup* self);
 
 #ifdef __cplusplus

@@ -599,6 +599,7 @@ void QQuickTextureFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQQuickTextureFactory*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickTextureFactory_staticMetaObject() { return &QQuickTextureFactory::staticMetaObject; }
 void QQuickTextureFactory_delete(QQuickTextureFactory* self) {
 	delete self;
 }
@@ -1142,6 +1143,7 @@ void QQuickImageResponse_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQQuickImageResponse*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickImageResponse_staticMetaObject() { return &QQuickImageResponse::staticMetaObject; }
 void QQuickImageResponse_delete(QQuickImageResponse* self) {
 	delete self;
 }

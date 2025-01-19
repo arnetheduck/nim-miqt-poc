@@ -175,6 +175,7 @@ struct miqt_string QMetaDataReaderControl_trUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
+const QMetaObject* QMetaDataReaderControl_staticMetaObject() { return &QMetaDataReaderControl::staticMetaObject; }
 void QMetaDataReaderControl_delete(QMetaDataReaderControl* self) {
 	delete self;
 }

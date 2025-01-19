@@ -149,6 +149,7 @@ bool QsciLexerFortran77_override_virtual_connectNotify(void* self, intptr_t slot
 void QsciLexerFortran77_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerFortran77_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerFortran77_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerFortran77_staticMetaObject();
 void QsciLexerFortran77_delete(QsciLexerFortran77* self);
 
 #ifdef __cplusplus

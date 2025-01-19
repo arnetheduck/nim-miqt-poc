@@ -270,6 +270,7 @@ proc fQQuickWindow_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQQuickWindow_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickWindow_override_virtual_connectNotify".}
 proc fQQuickWindow_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickWindow_virtualbase_disconnectNotify".}
 proc fcQQuickWindow_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickWindow_override_virtual_disconnectNotify".}
+proc fcQQuickWindow_staticMetaObject(): pointer {.importc: "QQuickWindow_staticMetaObject".}
 proc fcQQuickWindow_delete(self: pointer) {.importc: "QQuickWindow_delete".}
 proc fcQQuickWindowGraphicsStateInfo_delete(self: pointer) {.importc: "QQuickWindow__GraphicsStateInfo_delete".}
 
@@ -1466,6 +1467,8 @@ proc miqt_exec_callback_QQuickWindow_disconnectNotify(self: ptr cQQuickWindow, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QQuickWindow): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickWindow_staticMetaObject())
 proc delete*(self: QQuickWindow) =
   fcQQuickWindow_delete(self.h)
 

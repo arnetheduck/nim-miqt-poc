@@ -2347,6 +2347,7 @@ void QTransposeProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTransposeProxyModel_staticMetaObject() { return &QTransposeProxyModel::staticMetaObject; }
 void QTransposeProxyModel_delete(QTransposeProxyModel* self) {
 	delete self;
 }

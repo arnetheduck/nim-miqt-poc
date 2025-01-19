@@ -1288,6 +1288,7 @@ void QTemporaryFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTemporaryFile_staticMetaObject() { return &QTemporaryFile::staticMetaObject; }
 void QTemporaryFile_delete(QTemporaryFile* self) {
 	delete self;
 }

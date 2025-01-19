@@ -107,6 +107,7 @@ import
   gen_qimage,
   gen_qline,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainterpath,
@@ -129,6 +130,7 @@ export
   gen_qimage,
   gen_qline,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainterpath,
@@ -366,6 +368,7 @@ proc fcQPainter_drawText32(self: pointer, r: pointer, text: struct_miqt_string, 
 proc fcQPainter_boundingRect32(self: pointer, rect: pointer, text: struct_miqt_string, o: pointer): pointer {.importc: "QPainter_boundingRect32".}
 proc fcQPainter_setRenderHint2(self: pointer, hint: cint, on: bool): void {.importc: "QPainter_setRenderHint2".}
 proc fcQPainter_setRenderHints2(self: pointer, hints: cint, on: bool): void {.importc: "QPainter_setRenderHints2".}
+proc fcQPainter_staticMetaObject(): pointer {.importc: "QPainter_staticMetaObject".}
 proc fcQPainter_delete(self: pointer) {.importc: "QPainter_delete".}
 proc fcQPainterPixmapFragment_create(pos: pointer, sourceRect: pointer): pointer {.importc: "QPainter__PixmapFragment_create".}
 proc fcQPainterPixmapFragment_create3(pos: pointer, sourceRect: pointer, scaleX: float64): pointer {.importc: "QPainter__PixmapFragment_create3".}
@@ -1283,6 +1286,8 @@ proc setRenderHints2*(self: QPainter, hints: QPainterRenderHint, on: bool): void
 
   fcQPainter_setRenderHints2(self.h, cint(hints), on)
 
+proc staticMetaObject*(_: type QPainter): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPainter_staticMetaObject())
 proc delete*(self: QPainter) =
   fcQPainter_delete(self.h)
 

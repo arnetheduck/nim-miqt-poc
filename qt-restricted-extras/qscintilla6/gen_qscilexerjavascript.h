@@ -154,6 +154,7 @@ bool QsciLexerJavaScript_override_virtual_connectNotify(void* self, intptr_t slo
 void QsciLexerJavaScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerJavaScript_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerJavaScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerJavaScript_staticMetaObject();
 void QsciLexerJavaScript_delete(QsciLexerJavaScript* self);
 
 #ifdef __cplusplus

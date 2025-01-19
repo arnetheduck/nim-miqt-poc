@@ -141,6 +141,7 @@ proc fQStateMachine_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQStateMachine_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QStateMachine_override_virtual_connectNotify".}
 proc fQStateMachine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QStateMachine_virtualbase_disconnectNotify".}
 proc fcQStateMachine_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QStateMachine_override_virtual_disconnectNotify".}
+proc fcQStateMachine_staticMetaObject(): pointer {.importc: "QStateMachine_staticMetaObject".}
 proc fcQStateMachine_delete(self: pointer) {.importc: "QStateMachine_delete".}
 proc fcQStateMachineSignalEvent_new(param1: pointer): ptr cQStateMachineSignalEvent {.importc: "QStateMachine__SignalEvent_new".}
 proc fcQStateMachineSignalEvent_sender(self: pointer, ): pointer {.importc: "QStateMachine__SignalEvent_sender".}
@@ -674,6 +675,8 @@ proc miqt_exec_callback_QStateMachine_disconnectNotify(self: ptr cQStateMachine,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QStateMachine): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQStateMachine_staticMetaObject())
 proc delete*(self: QStateMachine) =
   fcQStateMachine_delete(self.h)
 

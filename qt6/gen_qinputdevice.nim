@@ -128,6 +128,7 @@ proc fQInputDevice_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQInputDevice_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QInputDevice_override_virtual_connectNotify".}
 proc fQInputDevice_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QInputDevice_virtualbase_disconnectNotify".}
 proc fcQInputDevice_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QInputDevice_override_virtual_disconnectNotify".}
+proc fcQInputDevice_staticMetaObject(): pointer {.importc: "QInputDevice_staticMetaObject".}
 proc fcQInputDevice_delete(self: pointer) {.importc: "QInputDevice_delete".}
 
 
@@ -462,5 +463,7 @@ proc miqt_exec_callback_QInputDevice_disconnectNotify(self: ptr cQInputDevice, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QInputDevice): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQInputDevice_staticMetaObject())
 proc delete*(self: QInputDevice) =
   fcQInputDevice_delete(self.h)

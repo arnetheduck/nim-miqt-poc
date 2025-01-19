@@ -489,6 +489,7 @@ void QGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGesture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGesture_staticMetaObject() { return &QGesture::staticMetaObject; }
 void QGesture_delete(QGesture* self) {
 	delete self;
 }
@@ -898,6 +899,7 @@ void QPanGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPanGesture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPanGesture_staticMetaObject() { return &QPanGesture::staticMetaObject; }
 void QPanGesture_delete(QPanGesture* self) {
 	delete self;
 }
@@ -1374,6 +1376,7 @@ void QPinchGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQPinchGesture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPinchGesture_staticMetaObject() { return &QPinchGesture::staticMetaObject; }
 void QPinchGesture_delete(QPinchGesture* self) {
 	delete self;
 }
@@ -1773,6 +1776,7 @@ void QSwipeGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSwipeGesture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSwipeGesture_staticMetaObject() { return &QSwipeGesture::staticMetaObject; }
 void QSwipeGesture_delete(QSwipeGesture* self) {
 	delete self;
 }
@@ -2161,6 +2165,7 @@ void QTapGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTapGesture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTapGesture_staticMetaObject() { return &QTapGesture::staticMetaObject; }
 void QTapGesture_delete(QTapGesture* self) {
 	delete self;
 }
@@ -2557,6 +2562,7 @@ void QTapAndHoldGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQTapAndHoldGesture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTapAndHoldGesture_staticMetaObject() { return &QTapAndHoldGesture::staticMetaObject; }
 void QTapAndHoldGesture_delete(QTapAndHoldGesture* self) {
 	delete self;
 }

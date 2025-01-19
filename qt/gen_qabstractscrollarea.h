@@ -240,6 +240,7 @@ bool QAbstractScrollArea_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractScrollArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractScrollArea_staticMetaObject();
 void QAbstractScrollArea_delete(QAbstractScrollArea* self);
 
 #ifdef __cplusplus

@@ -195,6 +195,7 @@ proc fQCheckBox_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQCheckBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QCheckBox_override_virtual_connectNotify".}
 proc fQCheckBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QCheckBox_virtualbase_disconnectNotify".}
 proc fcQCheckBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QCheckBox_override_virtual_disconnectNotify".}
+proc fcQCheckBox_staticMetaObject(): pointer {.importc: "QCheckBox_staticMetaObject".}
 proc fcQCheckBox_delete(self: pointer) {.importc: "QCheckBox_delete".}
 
 
@@ -1516,5 +1517,7 @@ proc miqt_exec_callback_QCheckBox_disconnectNotify(self: ptr cQCheckBox, slot: i
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QCheckBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCheckBox_staticMetaObject())
 proc delete*(self: QCheckBox) =
   fcQCheckBox_delete(self.h)

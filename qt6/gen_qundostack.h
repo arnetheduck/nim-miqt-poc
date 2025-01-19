@@ -126,6 +126,7 @@ bool QUndoStack_override_virtual_connectNotify(void* self, intptr_t slot);
 void QUndoStack_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QUndoStack_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QUndoStack_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QUndoStack_staticMetaObject();
 void QUndoStack_delete(QUndoStack* self);
 
 #ifdef __cplusplus

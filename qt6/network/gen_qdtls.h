@@ -83,6 +83,7 @@ bool QDtlsClientVerifier_override_virtual_connectNotify(void* self, intptr_t slo
 void QDtlsClientVerifier_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDtlsClientVerifier_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDtlsClientVerifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDtlsClientVerifier_staticMetaObject();
 void QDtlsClientVerifier_delete(QDtlsClientVerifier* self);
 
 QDtls* QDtls_new(int mode);
@@ -143,6 +144,7 @@ bool QDtls_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDtls_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDtls_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDtls_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDtls_staticMetaObject();
 void QDtls_delete(QDtls* self);
 
 QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new();

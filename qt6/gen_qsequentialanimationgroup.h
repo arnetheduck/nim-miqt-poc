@@ -81,6 +81,7 @@ bool QSequentialAnimationGroup_override_virtual_connectNotify(void* self, intptr
 void QSequentialAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSequentialAnimationGroup_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSequentialAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSequentialAnimationGroup_staticMetaObject();
 void QSequentialAnimationGroup_delete(QSequentialAnimationGroup* self);
 
 #ifdef __cplusplus

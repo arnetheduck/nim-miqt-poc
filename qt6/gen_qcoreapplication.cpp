@@ -819,6 +819,7 @@ void QCoreApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQCoreApplication*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCoreApplication_staticMetaObject() { return &QCoreApplication::staticMetaObject; }
 void QCoreApplication_delete(QCoreApplication* self) {
 	delete self;
 }

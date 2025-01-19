@@ -542,6 +542,7 @@ bool QWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWidget_staticMetaObject();
 void QWidget_delete(QWidget* self);
 
 #ifdef __cplusplus

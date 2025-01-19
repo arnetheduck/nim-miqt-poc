@@ -933,6 +933,7 @@ void QDnsLookup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDnsLookup_staticMetaObject() { return &QDnsLookup::staticMetaObject; }
 void QDnsLookup_delete(QDnsLookup* self) {
 	delete self;
 }

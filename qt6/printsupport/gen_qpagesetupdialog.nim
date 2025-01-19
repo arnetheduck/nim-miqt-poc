@@ -191,6 +191,7 @@ proc fQPageSetupDialog_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQPageSetupDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPageSetupDialog_override_virtual_connectNotify".}
 proc fQPageSetupDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPageSetupDialog_virtualbase_disconnectNotify".}
 proc fcQPageSetupDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPageSetupDialog_override_virtual_disconnectNotify".}
+proc fcQPageSetupDialog_staticMetaObject(): pointer {.importc: "QPageSetupDialog_staticMetaObject".}
 proc fcQPageSetupDialog_delete(self: pointer) {.importc: "QPageSetupDialog_delete".}
 
 
@@ -1497,5 +1498,7 @@ proc miqt_exec_callback_QPageSetupDialog_disconnectNotify(self: ptr cQPageSetupD
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QPageSetupDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPageSetupDialog_staticMetaObject())
 proc delete*(self: QPageSetupDialog) =
   fcQPageSetupDialog_delete(self.h)

@@ -245,6 +245,7 @@ struct miqt_string QVideoWindowControl_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
+const QMetaObject* QVideoWindowControl_staticMetaObject() { return &QVideoWindowControl::staticMetaObject; }
 void QVideoWindowControl_delete(QVideoWindowControl* self) {
 	delete self;
 }

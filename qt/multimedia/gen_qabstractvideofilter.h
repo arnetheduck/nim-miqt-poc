@@ -77,6 +77,7 @@ bool QAbstractVideoFilter_override_virtual_connectNotify(void* self, intptr_t sl
 void QAbstractVideoFilter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractVideoFilter_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractVideoFilter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractVideoFilter_staticMetaObject();
 void QAbstractVideoFilter_delete(QAbstractVideoFilter* self);
 
 #ifdef __cplusplus

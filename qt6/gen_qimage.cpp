@@ -945,6 +945,7 @@ QPainter* QImage_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_sharedPainter();
 }
 
+const QMetaObject* QImage_staticMetaObject() { return &QImage::staticMetaObject; }
 void QImage_delete(QImage* self) {
 	delete self;
 }

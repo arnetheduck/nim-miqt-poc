@@ -81,6 +81,7 @@ bool QTextList_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextList_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTextList_staticMetaObject();
 void QTextList_delete(QTextList* self);
 
 #ifdef __cplusplus

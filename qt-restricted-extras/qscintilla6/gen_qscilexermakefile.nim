@@ -170,6 +170,7 @@ proc fQsciLexerMakefile_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQsciLexerMakefile_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerMakefile_override_virtual_connectNotify".}
 proc fQsciLexerMakefile_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerMakefile_virtualbase_disconnectNotify".}
 proc fcQsciLexerMakefile_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerMakefile_override_virtual_disconnectNotify".}
+proc fcQsciLexerMakefile_staticMetaObject(): pointer {.importc: "QsciLexerMakefile_staticMetaObject".}
 proc fcQsciLexerMakefile_delete(self: pointer) {.importc: "QsciLexerMakefile_delete".}
 
 
@@ -1271,5 +1272,7 @@ proc miqt_exec_callback_QsciLexerMakefile_disconnectNotify(self: ptr cQsciLexerM
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerMakefile): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerMakefile_staticMetaObject())
 proc delete*(self: QsciLexerMakefile) =
   fcQsciLexerMakefile_delete(self.h)

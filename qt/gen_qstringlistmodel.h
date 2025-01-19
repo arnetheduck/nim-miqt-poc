@@ -150,6 +150,7 @@ bool QStringListModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStringListModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStringListModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStringListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QStringListModel_staticMetaObject();
 void QStringListModel_delete(QStringListModel* self);
 
 #ifdef __cplusplus

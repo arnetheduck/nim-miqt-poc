@@ -171,6 +171,7 @@ bool QIdentityProxyModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QIdentityProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QIdentityProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QIdentityProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QIdentityProxyModel_staticMetaObject();
 void QIdentityProxyModel_delete(QIdentityProxyModel* self);
 
 #ifdef __cplusplus

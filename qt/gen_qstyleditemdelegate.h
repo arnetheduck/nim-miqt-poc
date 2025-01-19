@@ -120,6 +120,7 @@ bool QStyledItemDelegate_override_virtual_connectNotify(void* self, intptr_t slo
 void QStyledItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStyledItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStyledItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QStyledItemDelegate_staticMetaObject();
 void QStyledItemDelegate_delete(QStyledItemDelegate* self);
 
 #ifdef __cplusplus

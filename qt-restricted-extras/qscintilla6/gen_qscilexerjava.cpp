@@ -1929,6 +1929,7 @@ void QsciLexerJava_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQsciLexerJava*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerJava_staticMetaObject() { return &QsciLexerJava::staticMetaObject; }
 void QsciLexerJava_delete(QsciLexerJava* self) {
 	delete self;
 }

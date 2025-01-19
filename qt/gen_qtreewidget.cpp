@@ -5063,6 +5063,7 @@ void QTreeWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTreeWidget_staticMetaObject() { return &QTreeWidget::staticMetaObject; }
 void QTreeWidget_delete(QTreeWidget* self) {
 	delete self;
 }

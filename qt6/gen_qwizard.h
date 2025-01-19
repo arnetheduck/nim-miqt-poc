@@ -274,6 +274,7 @@ bool QWizard_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWizard_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWizard_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWizard_staticMetaObject();
 void QWizard_delete(QWizard* self);
 
 QWizardPage* QWizardPage_new(QWidget* parent);
@@ -410,6 +411,7 @@ bool QWizardPage_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWizardPage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWizardPage_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWizardPage_staticMetaObject();
 void QWizardPage_delete(QWizardPage* self);
 
 #ifdef __cplusplus

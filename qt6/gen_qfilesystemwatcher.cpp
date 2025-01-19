@@ -532,6 +532,7 @@ void QFileSystemWatcher_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQFileSystemWatcher*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFileSystemWatcher_staticMetaObject() { return &QFileSystemWatcher::staticMetaObject; }
 void QFileSystemWatcher_delete(QFileSystemWatcher* self) {
 	delete self;
 }

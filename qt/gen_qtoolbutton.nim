@@ -212,6 +212,7 @@ proc fQToolButton_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQToolButton_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QToolButton_override_virtual_connectNotify".}
 proc fQToolButton_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QToolButton_virtualbase_disconnectNotify".}
 proc fcQToolButton_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QToolButton_override_virtual_disconnectNotify".}
+proc fcQToolButton_staticMetaObject(): pointer {.importc: "QToolButton_staticMetaObject".}
 proc fcQToolButton_delete(self: pointer) {.importc: "QToolButton_delete".}
 
 
@@ -1557,5 +1558,7 @@ proc miqt_exec_callback_QToolButton_disconnectNotify(self: ptr cQToolButton, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QToolButton): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQToolButton_staticMetaObject())
 proc delete*(self: QToolButton) =
   fcQToolButton_delete(self.h)

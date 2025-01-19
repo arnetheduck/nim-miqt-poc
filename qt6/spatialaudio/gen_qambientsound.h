@@ -80,6 +80,7 @@ bool QAmbientSound_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAmbientSound_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAmbientSound_staticMetaObject();
 void QAmbientSound_delete(QAmbientSound* self);
 
 #ifdef __cplusplus

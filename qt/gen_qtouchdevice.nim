@@ -56,6 +56,10 @@ const
 import gen_qtouchdevice_types
 export gen_qtouchdevice_types
 
+import
+  gen_qobjectdefs
+export
+  gen_qobjectdefs
 
 type cQTouchDevice*{.exportc: "QTouchDevice", incompleteStruct.} = object
 
@@ -69,6 +73,7 @@ proc fcQTouchDevice_setName(self: pointer, name: struct_miqt_string): void {.imp
 proc fcQTouchDevice_setType(self: pointer, devType: cint): void {.importc: "QTouchDevice_setType".}
 proc fcQTouchDevice_setCapabilities(self: pointer, caps: cint): void {.importc: "QTouchDevice_setCapabilities".}
 proc fcQTouchDevice_setMaximumTouchPoints(self: pointer, max: cint): void {.importc: "QTouchDevice_setMaximumTouchPoints".}
+proc fcQTouchDevice_staticMetaObject(): pointer {.importc: "QTouchDevice_staticMetaObject".}
 proc fcQTouchDevice_delete(self: pointer) {.importc: "QTouchDevice_delete".}
 
 
@@ -121,5 +126,7 @@ proc setMaximumTouchPoints*(self: QTouchDevice, max: cint): void =
 
   fcQTouchDevice_setMaximumTouchPoints(self.h, max)
 
+proc staticMetaObject*(_: type QTouchDevice): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTouchDevice_staticMetaObject())
 proc delete*(self: QTouchDevice) =
   fcQTouchDevice_delete(self.h)

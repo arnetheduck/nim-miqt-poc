@@ -538,6 +538,7 @@ void QAudioEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioEngine_staticMetaObject() { return &QAudioEngine::staticMetaObject; }
 void QAudioEngine_delete(QAudioEngine* self) {
 	delete self;
 }

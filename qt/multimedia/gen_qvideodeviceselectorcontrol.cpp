@@ -179,6 +179,7 @@ struct miqt_string QVideoDeviceSelectorControl_trUtf83(const char* s, const char
 	return _ms;
 }
 
+const QMetaObject* QVideoDeviceSelectorControl_staticMetaObject() { return &QVideoDeviceSelectorControl::staticMetaObject; }
 void QVideoDeviceSelectorControl_delete(QVideoDeviceSelectorControl* self) {
 	delete self;
 }

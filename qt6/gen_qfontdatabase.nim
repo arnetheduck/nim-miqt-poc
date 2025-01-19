@@ -89,10 +89,12 @@ export gen_qfontdatabase_types
 
 import
   gen_qfont,
-  gen_qfontinfo
+  gen_qfontinfo,
+  gen_qobjectdefs
 export
   gen_qfont,
-  gen_qfontinfo
+  gen_qfontinfo,
+  gen_qobjectdefs
 
 type cQFontDatabase*{.exportc: "QFontDatabase", incompleteStruct.} = object
 
@@ -130,6 +132,7 @@ proc fcQFontDatabase_isBitmapScalable2(family: struct_miqt_string, style: struct
 proc fcQFontDatabase_isSmoothlyScalable2(family: struct_miqt_string, style: struct_miqt_string): bool {.importc: "QFontDatabase_isSmoothlyScalable2".}
 proc fcQFontDatabase_isScalable2(family: struct_miqt_string, style: struct_miqt_string): bool {.importc: "QFontDatabase_isScalable2".}
 proc fcQFontDatabase_isFixedPitch2(family: struct_miqt_string, style: struct_miqt_string): bool {.importc: "QFontDatabase_isFixedPitch2".}
+proc fcQFontDatabase_staticMetaObject(): pointer {.importc: "QFontDatabase_staticMetaObject".}
 proc fcQFontDatabase_delete(self: pointer) {.importc: "QFontDatabase_delete".}
 
 
@@ -344,5 +347,7 @@ proc isFixedPitch2*(_: type QFontDatabase, family: string, style: string): bool 
 
   fcQFontDatabase_isFixedPitch2(struct_miqt_string(data: family, len: csize_t(len(family))), struct_miqt_string(data: style, len: csize_t(len(style))))
 
+proc staticMetaObject*(_: type QFontDatabase): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFontDatabase_staticMetaObject())
 proc delete*(self: QFontDatabase) =
   fcQFontDatabase_delete(self.h)

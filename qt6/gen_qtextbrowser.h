@@ -276,6 +276,7 @@ bool QTextBrowser_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextBrowser_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextBrowser_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextBrowser_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTextBrowser_staticMetaObject();
 void QTextBrowser_delete(QTextBrowser* self);
 
 #ifdef __cplusplus

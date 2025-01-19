@@ -158,6 +158,7 @@ proc fQCoreApplication_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQCoreApplication_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QCoreApplication_override_virtual_connectNotify".}
 proc fQCoreApplication_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QCoreApplication_virtualbase_disconnectNotify".}
 proc fcQCoreApplication_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QCoreApplication_override_virtual_disconnectNotify".}
+proc fcQCoreApplication_staticMetaObject(): pointer {.importc: "QCoreApplication_staticMetaObject".}
 proc fcQCoreApplication_delete(self: pointer) {.importc: "QCoreApplication_delete".}
 
 
@@ -781,5 +782,7 @@ proc miqt_exec_callback_QCoreApplication_disconnectNotify(self: ptr cQCoreApplic
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QCoreApplication): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCoreApplication_staticMetaObject())
 proc delete*(self: QCoreApplication) =
   fcQCoreApplication_delete(self.h)

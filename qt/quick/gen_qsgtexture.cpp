@@ -790,6 +790,7 @@ void QSGTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSGTexture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSGTexture_staticMetaObject() { return &QSGTexture::staticMetaObject; }
 void QSGTexture_delete(QSGTexture* self) {
 	delete self;
 }
@@ -1460,6 +1461,7 @@ void QSGDynamicTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQSGDynamicTexture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSGDynamicTexture_staticMetaObject() { return &QSGDynamicTexture::staticMetaObject; }
 void QSGDynamicTexture_delete(QSGDynamicTexture* self) {
 	delete self;
 }

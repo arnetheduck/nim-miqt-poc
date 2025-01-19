@@ -71,6 +71,7 @@ bool QAccessibleBridgePlugin_override_virtual_connectNotify(void* self, intptr_t
 void QAccessibleBridgePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAccessibleBridgePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAccessibleBridgePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAccessibleBridgePlugin_staticMetaObject();
 void QAccessibleBridgePlugin_delete(QAccessibleBridgePlugin* self);
 
 #ifdef __cplusplus

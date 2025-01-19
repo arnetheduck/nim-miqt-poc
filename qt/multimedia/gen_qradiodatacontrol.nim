@@ -80,6 +80,7 @@ proc fcQRadioDataControl_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQRadioDataControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QRadioDataControl_tr3".}
 proc fcQRadioDataControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QRadioDataControl_trUtf82".}
 proc fcQRadioDataControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QRadioDataControl_trUtf83".}
+proc fcQRadioDataControl_staticMetaObject(): pointer {.importc: "QRadioDataControl_staticMetaObject".}
 proc fcQRadioDataControl_delete(self: pointer) {.importc: "QRadioDataControl_delete".}
 
 
@@ -328,5 +329,7 @@ proc trUtf83*(_: type QRadioDataControl, s: cstring, c: cstring, n: cint): strin
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QRadioDataControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQRadioDataControl_staticMetaObject())
 proc delete*(self: QRadioDataControl) =
   fcQRadioDataControl_delete(self.h)

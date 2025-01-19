@@ -119,6 +119,7 @@ bool QTextTable_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextTable_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextTable_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextTable_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTextTable_staticMetaObject();
 void QTextTable_delete(QTextTable* self);
 
 #ifdef __cplusplus

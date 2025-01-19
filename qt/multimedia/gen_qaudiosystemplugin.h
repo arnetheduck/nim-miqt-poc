@@ -87,6 +87,7 @@ bool QAudioSystemPlugin_override_virtual_connectNotify(void* self, intptr_t slot
 void QAudioSystemPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioSystemPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioSystemPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAudioSystemPlugin_staticMetaObject();
 void QAudioSystemPlugin_delete(QAudioSystemPlugin* self);
 
 #ifdef __cplusplus

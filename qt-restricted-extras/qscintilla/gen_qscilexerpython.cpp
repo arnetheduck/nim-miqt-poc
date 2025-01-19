@@ -2033,6 +2033,7 @@ void QsciLexerPython_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQsciLexerPython*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerPython_staticMetaObject() { return &QsciLexerPython::staticMetaObject; }
 void QsciLexerPython_delete(QsciLexerPython* self) {
 	delete self;
 }

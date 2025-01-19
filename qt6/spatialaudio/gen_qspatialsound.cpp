@@ -685,6 +685,7 @@ void QSpatialSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSpatialSound*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSpatialSound_staticMetaObject() { return &QSpatialSound::staticMetaObject; }
 void QSpatialSound_delete(QSpatialSound* self) {
 	delete self;
 }

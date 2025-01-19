@@ -60,6 +60,7 @@ proc fcQSGTextureProvider_tr2(s: cstring, c: cstring): struct_miqt_string {.impo
 proc fcQSGTextureProvider_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGTextureProvider_tr3".}
 proc fcQSGTextureProvider_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSGTextureProvider_trUtf82".}
 proc fcQSGTextureProvider_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGTextureProvider_trUtf83".}
+proc fcQSGTextureProvider_staticMetaObject(): pointer {.importc: "QSGTextureProvider_staticMetaObject".}
 proc fcQSGTextureProvider_delete(self: pointer) {.importc: "QSGTextureProvider_delete".}
 
 
@@ -139,5 +140,7 @@ proc trUtf83*(_: type QSGTextureProvider, s: cstring, c: cstring, n: cint): stri
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QSGTextureProvider): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSGTextureProvider_staticMetaObject())
 proc delete*(self: QSGTextureProvider) =
   fcQSGTextureProvider_delete(self.h)

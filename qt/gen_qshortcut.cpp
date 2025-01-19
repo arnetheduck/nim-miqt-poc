@@ -532,6 +532,7 @@ void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQShortcut*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QShortcut_staticMetaObject() { return &QShortcut::staticMetaObject; }
 void QShortcut_delete(QShortcut* self) {
 	delete self;
 }

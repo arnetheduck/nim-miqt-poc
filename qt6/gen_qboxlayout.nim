@@ -188,6 +188,7 @@ proc fQBoxLayout_virtualbase_widget(self: pointer, ): pointer{.importc: "QBoxLay
 proc fcQBoxLayout_override_virtual_widget(self: pointer, slot: int) {.importc: "QBoxLayout_override_virtual_widget".}
 proc fQBoxLayout_virtualbase_spacerItem(self: pointer, ): pointer{.importc: "QBoxLayout_virtualbase_spacerItem".}
 proc fcQBoxLayout_override_virtual_spacerItem(self: pointer, slot: int) {.importc: "QBoxLayout_override_virtual_spacerItem".}
+proc fcQBoxLayout_staticMetaObject(): pointer {.importc: "QBoxLayout_staticMetaObject".}
 proc fcQBoxLayout_delete(self: pointer) {.importc: "QBoxLayout_delete".}
 proc fcQHBoxLayout_new(parent: pointer): ptr cQHBoxLayout {.importc: "QHBoxLayout_new".}
 proc fcQHBoxLayout_new2(): ptr cQHBoxLayout {.importc: "QHBoxLayout_new2".}
@@ -259,6 +260,7 @@ proc fQHBoxLayout_virtualbase_widget(self: pointer, ): pointer{.importc: "QHBoxL
 proc fcQHBoxLayout_override_virtual_widget(self: pointer, slot: int) {.importc: "QHBoxLayout_override_virtual_widget".}
 proc fQHBoxLayout_virtualbase_spacerItem(self: pointer, ): pointer{.importc: "QHBoxLayout_virtualbase_spacerItem".}
 proc fcQHBoxLayout_override_virtual_spacerItem(self: pointer, slot: int) {.importc: "QHBoxLayout_override_virtual_spacerItem".}
+proc fcQHBoxLayout_staticMetaObject(): pointer {.importc: "QHBoxLayout_staticMetaObject".}
 proc fcQHBoxLayout_delete(self: pointer) {.importc: "QHBoxLayout_delete".}
 proc fcQVBoxLayout_new(parent: pointer): ptr cQVBoxLayout {.importc: "QVBoxLayout_new".}
 proc fcQVBoxLayout_new2(): ptr cQVBoxLayout {.importc: "QVBoxLayout_new2".}
@@ -330,6 +332,7 @@ proc fQVBoxLayout_virtualbase_widget(self: pointer, ): pointer{.importc: "QVBoxL
 proc fcQVBoxLayout_override_virtual_widget(self: pointer, slot: int) {.importc: "QVBoxLayout_override_virtual_widget".}
 proc fQVBoxLayout_virtualbase_spacerItem(self: pointer, ): pointer{.importc: "QVBoxLayout_virtualbase_spacerItem".}
 proc fcQVBoxLayout_override_virtual_spacerItem(self: pointer, slot: int) {.importc: "QVBoxLayout_override_virtual_spacerItem".}
+proc fcQVBoxLayout_staticMetaObject(): pointer {.importc: "QVBoxLayout_staticMetaObject".}
 proc fcQVBoxLayout_delete(self: pointer) {.importc: "QVBoxLayout_delete".}
 
 
@@ -1277,6 +1280,8 @@ proc miqt_exec_callback_QBoxLayout_spacerItem(self: ptr cQBoxLayout, slot: int):
   let virtualReturn = nimfunc[](superCall )
 
   virtualReturn.h
+proc staticMetaObject*(_: type QBoxLayout): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQBoxLayout_staticMetaObject())
 proc delete*(self: QBoxLayout) =
   fcQBoxLayout_delete(self.h)
 
@@ -2060,6 +2065,8 @@ proc miqt_exec_callback_QHBoxLayout_spacerItem(self: ptr cQHBoxLayout, slot: int
   let virtualReturn = nimfunc[](superCall )
 
   virtualReturn.h
+proc staticMetaObject*(_: type QHBoxLayout): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQHBoxLayout_staticMetaObject())
 proc delete*(self: QHBoxLayout) =
   fcQHBoxLayout_delete(self.h)
 
@@ -2843,5 +2850,7 @@ proc miqt_exec_callback_QVBoxLayout_spacerItem(self: ptr cQVBoxLayout, slot: int
   let virtualReturn = nimfunc[](superCall )
 
   virtualReturn.h
+proc staticMetaObject*(_: type QVBoxLayout): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQVBoxLayout_staticMetaObject())
 proc delete*(self: QVBoxLayout) =
   fcQVBoxLayout_delete(self.h)

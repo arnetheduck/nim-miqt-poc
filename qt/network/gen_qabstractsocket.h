@@ -183,6 +183,7 @@ bool QAbstractSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractSocket_staticMetaObject();
 void QAbstractSocket_delete(QAbstractSocket* self);
 
 #ifdef __cplusplus

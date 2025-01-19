@@ -531,6 +531,7 @@ void QQmlExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQQmlExtensionPlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlExtensionPlugin_staticMetaObject() { return &QQmlExtensionPlugin::staticMetaObject; }
 void QQmlExtensionPlugin_delete(QQmlExtensionPlugin* self) {
 	delete self;
 }
@@ -988,6 +989,7 @@ void QQmlEngineExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMet
 	( (MiqtVirtualQQmlEngineExtensionPlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlEngineExtensionPlugin_staticMetaObject() { return &QQmlEngineExtensionPlugin::staticMetaObject; }
 void QQmlEngineExtensionPlugin_delete(QQmlEngineExtensionPlugin* self) {
 	delete self;
 }

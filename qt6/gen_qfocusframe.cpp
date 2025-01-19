@@ -2031,6 +2031,7 @@ void QFocusFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFocusFrame*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFocusFrame_staticMetaObject() { return &QFocusFrame::staticMetaObject; }
 void QFocusFrame_delete(QFocusFrame* self) {
 	delete self;
 }

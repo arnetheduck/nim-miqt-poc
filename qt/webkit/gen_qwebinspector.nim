@@ -181,6 +181,7 @@ proc fQWebInspector_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQWebInspector_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebInspector_override_virtual_connectNotify".}
 proc fQWebInspector_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebInspector_virtualbase_disconnectNotify".}
 proc fcQWebInspector_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebInspector_override_virtual_disconnectNotify".}
+proc fcQWebInspector_staticMetaObject(): pointer {.importc: "QWebInspector_staticMetaObject".}
 proc fcQWebInspector_delete(self: pointer) {.importc: "QWebInspector_delete".}
 
 
@@ -1397,5 +1398,7 @@ proc miqt_exec_callback_QWebInspector_disconnectNotify(self: ptr cQWebInspector,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QWebInspector): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebInspector_staticMetaObject())
 proc delete*(self: QWebInspector) =
   fcQWebInspector_delete(self.h)

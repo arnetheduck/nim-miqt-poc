@@ -92,6 +92,7 @@ bool QThread_override_virtual_connectNotify(void* self, intptr_t slot);
 void QThread_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QThread_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QThread_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QThread_staticMetaObject();
 void QThread_delete(QThread* self);
 
 #ifdef __cplusplus

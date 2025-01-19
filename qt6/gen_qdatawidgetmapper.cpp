@@ -571,6 +571,7 @@ void QDataWidgetMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDataWidgetMapper_staticMetaObject() { return &QDataWidgetMapper::staticMetaObject; }
 void QDataWidgetMapper_delete(QDataWidgetMapper* self) {
 	delete self;
 }

@@ -73,6 +73,7 @@ bool QPauseAnimation_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPauseAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPauseAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPauseAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPauseAnimation_staticMetaObject();
 void QPauseAnimation_delete(QPauseAnimation* self);
 
 #ifdef __cplusplus

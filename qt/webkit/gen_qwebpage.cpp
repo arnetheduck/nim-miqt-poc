@@ -1771,6 +1771,7 @@ void QWebPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebPage_staticMetaObject() { return &QWebPage::staticMetaObject; }
 void QWebPage_delete(QWebPage* self) {
 	delete self;
 }

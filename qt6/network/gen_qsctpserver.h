@@ -73,6 +73,7 @@ bool QSctpServer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSctpServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSctpServer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSctpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSctpServer_staticMetaObject();
 void QSctpServer_delete(QSctpServer* self);
 
 #ifdef __cplusplus

@@ -85,6 +85,7 @@ proc fQAbstractEventDispatcher_connect_awake(self: pointer, slot: int) {.importc
 proc fcQAbstractEventDispatcher_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractEventDispatcher_tr2".}
 proc fcQAbstractEventDispatcher_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractEventDispatcher_tr3".}
 proc fcQAbstractEventDispatcher_instance1(thread: pointer): pointer {.importc: "QAbstractEventDispatcher_instance1".}
+proc fcQAbstractEventDispatcher_staticMetaObject(): pointer {.importc: "QAbstractEventDispatcher_staticMetaObject".}
 proc fcQAbstractEventDispatcher_delete(self: pointer) {.importc: "QAbstractEventDispatcher_delete".}
 proc fcQAbstractEventDispatcherTimerInfo_new(id: cint, i: cint, t: cint): ptr cQAbstractEventDispatcherTimerInfo {.importc: "QAbstractEventDispatcher__TimerInfo_new".}
 proc fcQAbstractEventDispatcherTimerInfo_delete(self: pointer) {.importc: "QAbstractEventDispatcher__TimerInfo_delete".}
@@ -234,6 +235,8 @@ proc instance1*(_: type QAbstractEventDispatcher, thread: gen_qthread.QThread): 
 
   QAbstractEventDispatcher(h: fcQAbstractEventDispatcher_instance1(thread.h))
 
+proc staticMetaObject*(_: type QAbstractEventDispatcher): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractEventDispatcher_staticMetaObject())
 proc delete*(self: QAbstractEventDispatcher) =
   fcQAbstractEventDispatcher_delete(self.h)
 

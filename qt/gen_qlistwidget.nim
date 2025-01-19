@@ -428,6 +428,7 @@ proc fQListWidget_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQListWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QListWidget_override_virtual_connectNotify".}
 proc fQListWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QListWidget_virtualbase_disconnectNotify".}
 proc fcQListWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QListWidget_override_virtual_disconnectNotify".}
+proc fcQListWidget_staticMetaObject(): pointer {.importc: "QListWidget_staticMetaObject".}
 proc fcQListWidget_delete(self: pointer) {.importc: "QListWidget_delete".}
 
 
@@ -3496,5 +3497,7 @@ proc miqt_exec_callback_QListWidget_disconnectNotify(self: ptr cQListWidget, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QListWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQListWidget_staticMetaObject())
 proc delete*(self: QListWidget) =
   fcQListWidget_delete(self.h)

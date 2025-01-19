@@ -602,6 +602,7 @@ void QTimeLine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTimeLine_staticMetaObject() { return &QTimeLine::staticMetaObject; }
 void QTimeLine_delete(QTimeLine* self) {
 	delete self;
 }

@@ -68,6 +68,7 @@ bool QSocketNotifier_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSocketNotifier_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSocketNotifier_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSocketNotifier_staticMetaObject();
 void QSocketNotifier_delete(QSocketNotifier* self);
 
 QSocketDescriptor* QSocketDescriptor_new();

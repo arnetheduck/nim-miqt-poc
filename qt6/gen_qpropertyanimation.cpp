@@ -685,6 +685,7 @@ void QPropertyAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPropertyAnimation_staticMetaObject() { return &QPropertyAnimation::staticMetaObject; }
 void QPropertyAnimation_delete(QPropertyAnimation* self) {
 	delete self;
 }

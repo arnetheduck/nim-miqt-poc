@@ -328,6 +328,7 @@ bool QFileDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFileDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFileDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFileDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QFileDialog_staticMetaObject();
 void QFileDialog_delete(QFileDialog* self);
 
 #ifdef __cplusplus

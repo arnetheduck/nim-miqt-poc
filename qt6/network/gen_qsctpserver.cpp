@@ -532,6 +532,7 @@ void QSctpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSctpServer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSctpServer_staticMetaObject() { return &QSctpServer::staticMetaObject; }
 void QSctpServer_delete(QSctpServer* self) {
 	delete self;
 }

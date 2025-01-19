@@ -113,6 +113,7 @@ bool QSaveFile_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSaveFile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSaveFile_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSaveFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSaveFile_staticMetaObject();
 void QSaveFile_delete(QSaveFile* self);
 
 #ifdef __cplusplus

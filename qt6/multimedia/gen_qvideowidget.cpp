@@ -2030,6 +2030,7 @@ void QVideoWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QVideoWidget_staticMetaObject() { return &QVideoWidget::staticMetaObject; }
 void QVideoWidget_delete(QVideoWidget* self) {
 	delete self;
 }

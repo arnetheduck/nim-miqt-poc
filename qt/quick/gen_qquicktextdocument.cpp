@@ -437,6 +437,7 @@ void QQuickTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQQuickTextDocument*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickTextDocument_staticMetaObject() { return &QQuickTextDocument::staticMetaObject; }
 void QQuickTextDocument_delete(QQuickTextDocument* self) {
 	delete self;
 }

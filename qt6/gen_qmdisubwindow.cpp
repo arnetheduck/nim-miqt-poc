@@ -2092,6 +2092,7 @@ void QMdiSubWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMdiSubWindow_staticMetaObject() { return &QMdiSubWindow::staticMetaObject; }
 void QMdiSubWindow_delete(QMdiSubWindow* self) {
 	delete self;
 }

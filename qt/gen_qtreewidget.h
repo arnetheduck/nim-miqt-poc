@@ -492,6 +492,7 @@ bool QTreeWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTreeWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTreeWidget_staticMetaObject();
 void QTreeWidget_delete(QTreeWidget* self);
 
 #ifdef __cplusplus

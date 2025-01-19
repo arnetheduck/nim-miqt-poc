@@ -2275,6 +2275,7 @@ proc fScintillaEditBase_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcScintillaEditBase_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "ScintillaEditBase_override_virtual_connectNotify".}
 proc fScintillaEditBase_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "ScintillaEditBase_virtualbase_disconnectNotify".}
 proc fcScintillaEditBase_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "ScintillaEditBase_override_virtual_disconnectNotify".}
+proc fcScintillaEditBase_staticMetaObject(): pointer {.importc: "ScintillaEditBase_staticMetaObject".}
 proc fcScintillaEditBase_delete(self: pointer) {.importc: "ScintillaEditBase_delete".}
 proc fcScintillaDocument_new(): ptr cScintillaDocument {.importc: "ScintillaDocument_new".}
 proc fcScintillaDocument_new2(parent: pointer): ptr cScintillaDocument {.importc: "ScintillaDocument_new2".}
@@ -2355,6 +2356,7 @@ proc fScintillaDocument_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcScintillaDocument_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "ScintillaDocument_override_virtual_connectNotify".}
 proc fScintillaDocument_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "ScintillaDocument_virtualbase_disconnectNotify".}
 proc fcScintillaDocument_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "ScintillaDocument_override_virtual_disconnectNotify".}
+proc fcScintillaDocument_staticMetaObject(): pointer {.importc: "ScintillaDocument_staticMetaObject".}
 proc fcScintillaDocument_delete(self: pointer) {.importc: "ScintillaDocument_delete".}
 proc fcScintillaEdit_new(parent: pointer): ptr cScintillaEdit {.importc: "ScintillaEdit_new".}
 proc fcScintillaEdit_new2(): ptr cScintillaEdit {.importc: "ScintillaEdit_new2".}
@@ -3284,6 +3286,7 @@ proc fScintillaEdit_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcScintillaEdit_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "ScintillaEdit_override_virtual_connectNotify".}
 proc fScintillaEdit_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "ScintillaEdit_virtualbase_disconnectNotify".}
 proc fcScintillaEdit_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "ScintillaEdit_override_virtual_disconnectNotify".}
+proc fcScintillaEdit_staticMetaObject(): pointer {.importc: "ScintillaEdit_staticMetaObject".}
 proc fcScintillaEdit_delete(self: pointer) {.importc: "ScintillaEdit_delete".}
 
 
@@ -7120,6 +7123,8 @@ proc miqt_exec_callback_ScintillaEditBase_disconnectNotify(self: ptr cScintillaE
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type ScintillaEditBase): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcScintillaEditBase_staticMetaObject())
 proc delete*(self: ScintillaEditBase) =
   fcScintillaEditBase_delete(self.h)
 
@@ -7656,6 +7661,8 @@ proc miqt_exec_callback_ScintillaDocument_disconnectNotify(self: ptr cScintillaD
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type ScintillaDocument): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcScintillaDocument_staticMetaObject())
 proc delete*(self: ScintillaDocument) =
   fcScintillaDocument_delete(self.h)
 
@@ -12371,5 +12378,7 @@ proc miqt_exec_callback_ScintillaEdit_disconnectNotify(self: ptr cScintillaEdit,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type ScintillaEdit): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcScintillaEdit_staticMetaObject())
 proc delete*(self: ScintillaEdit) =
   fcScintillaEdit_delete(self.h)

@@ -127,6 +127,7 @@ bool QQuickTransform_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQuickTransform_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQuickTransform_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQuickTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQuickTransform_staticMetaObject();
 void QQuickTransform_delete(QQuickTransform* self);
 
 QQuickItem* QQuickItem_new();
@@ -424,6 +425,7 @@ bool QQuickItem_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQuickItem_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQuickItem_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQuickItem_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQuickItem_staticMetaObject();
 void QQuickItem_delete(QQuickItem* self);
 
 QQuickItem__ItemChangeData* QQuickItem__ItemChangeData_new(QQuickItem* v);

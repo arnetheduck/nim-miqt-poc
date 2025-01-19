@@ -73,6 +73,7 @@ bool QTimer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTimer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTimer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTimer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTimer_staticMetaObject();
 void QTimer_delete(QTimer* self);
 
 #ifdef __cplusplus

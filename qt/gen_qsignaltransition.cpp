@@ -548,6 +548,7 @@ void QSignalTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSignalTransition_staticMetaObject() { return &QSignalTransition::staticMetaObject; }
 void QSignalTransition_delete(QSignalTransition* self) {
 	delete self;
 }

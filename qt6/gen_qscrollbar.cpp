@@ -2082,6 +2082,7 @@ void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQScrollBar*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QScrollBar_staticMetaObject() { return &QScrollBar::staticMetaObject; }
 void QScrollBar_delete(QScrollBar* self) {
 	delete self;
 }

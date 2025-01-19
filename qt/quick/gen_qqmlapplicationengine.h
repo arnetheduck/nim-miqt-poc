@@ -81,6 +81,7 @@ bool QQmlApplicationEngine_override_virtual_connectNotify(void* self, intptr_t s
 void QQmlApplicationEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlApplicationEngine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlApplicationEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQmlApplicationEngine_staticMetaObject();
 void QQmlApplicationEngine_delete(QQmlApplicationEngine* self);
 
 #ifdef __cplusplus

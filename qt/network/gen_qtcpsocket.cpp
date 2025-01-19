@@ -1462,6 +1462,7 @@ void QTcpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTcpSocket*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTcpSocket_staticMetaObject() { return &QTcpSocket::staticMetaObject; }
 void QTcpSocket_delete(QTcpSocket* self) {
 	delete self;
 }

@@ -873,6 +873,7 @@ void QUndoStack_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QUndoStack_staticMetaObject() { return &QUndoStack::staticMetaObject; }
 void QUndoStack_delete(QUndoStack* self) {
 	delete self;
 }

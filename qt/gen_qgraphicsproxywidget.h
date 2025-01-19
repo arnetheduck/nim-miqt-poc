@@ -261,6 +261,7 @@ bool QGraphicsProxyWidget_override_virtual_setExtension(void* self, intptr_t slo
 void QGraphicsProxyWidget_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsProxyWidget_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsProxyWidget_virtualbase_extension(const void* self, QVariant* variant);
+const QMetaObject* QGraphicsProxyWidget_staticMetaObject();
 void QGraphicsProxyWidget_delete(QGraphicsProxyWidget* self);
 
 #ifdef __cplusplus

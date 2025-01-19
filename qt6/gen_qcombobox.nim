@@ -308,6 +308,7 @@ proc fQComboBox_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQComboBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_connectNotify".}
 proc fQComboBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QComboBox_virtualbase_disconnectNotify".}
 proc fcQComboBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QComboBox_override_virtual_disconnectNotify".}
+proc fcQComboBox_staticMetaObject(): pointer {.importc: "QComboBox_staticMetaObject".}
 proc fcQComboBox_delete(self: pointer) {.importc: "QComboBox_delete".}
 
 
@@ -2042,5 +2043,7 @@ proc miqt_exec_callback_QComboBox_disconnectNotify(self: ptr cQComboBox, slot: i
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QComboBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQComboBox_staticMetaObject())
 proc delete*(self: QComboBox) =
   fcQComboBox_delete(self.h)

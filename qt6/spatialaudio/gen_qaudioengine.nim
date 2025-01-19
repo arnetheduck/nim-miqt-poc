@@ -113,6 +113,7 @@ proc fQAudioEngine_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQAudioEngine_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioEngine_override_virtual_connectNotify".}
 proc fQAudioEngine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioEngine_virtualbase_disconnectNotify".}
 proc fcQAudioEngine_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioEngine_override_virtual_disconnectNotify".}
+proc fcQAudioEngine_staticMetaObject(): pointer {.importc: "QAudioEngine_staticMetaObject".}
 proc fcQAudioEngine_delete(self: pointer) {.importc: "QAudioEngine_delete".}
 
 
@@ -507,5 +508,7 @@ proc miqt_exec_callback_QAudioEngine_disconnectNotify(self: ptr cQAudioEngine, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAudioEngine): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioEngine_staticMetaObject())
 proc delete*(self: QAudioEngine) =
   fcQAudioEngine_delete(self.h)

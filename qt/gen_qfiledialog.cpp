@@ -3277,6 +3277,7 @@ void QFileDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFileDialog_staticMetaObject() { return &QFileDialog::staticMetaObject; }
 void QFileDialog_delete(QFileDialog* self) {
 	delete self;
 }

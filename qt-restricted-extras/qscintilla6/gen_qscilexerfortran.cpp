@@ -1777,6 +1777,7 @@ void QsciLexerFortran_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerFortran_staticMetaObject() { return &QsciLexerFortran::staticMetaObject; }
 void QsciLexerFortran_delete(QsciLexerFortran* self) {
 	delete self;
 }

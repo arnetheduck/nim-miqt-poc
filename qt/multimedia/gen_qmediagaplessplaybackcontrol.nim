@@ -68,6 +68,7 @@ proc fcQMediaGaplessPlaybackControl_tr2(s: cstring, c: cstring): struct_miqt_str
 proc fcQMediaGaplessPlaybackControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaGaplessPlaybackControl_tr3".}
 proc fcQMediaGaplessPlaybackControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaGaplessPlaybackControl_trUtf82".}
 proc fcQMediaGaplessPlaybackControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaGaplessPlaybackControl_trUtf83".}
+proc fcQMediaGaplessPlaybackControl_staticMetaObject(): pointer {.importc: "QMediaGaplessPlaybackControl_staticMetaObject".}
 proc fcQMediaGaplessPlaybackControl_delete(self: pointer) {.importc: "QMediaGaplessPlaybackControl_delete".}
 
 
@@ -199,5 +200,7 @@ proc trUtf83*(_: type QMediaGaplessPlaybackControl, s: cstring, c: cstring, n: c
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QMediaGaplessPlaybackControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaGaplessPlaybackControl_staticMetaObject())
 proc delete*(self: QMediaGaplessPlaybackControl) =
   fcQMediaGaplessPlaybackControl_delete(self.h)

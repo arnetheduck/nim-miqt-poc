@@ -561,6 +561,7 @@ void QJSEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQJSEngine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QJSEngine_staticMetaObject() { return &QJSEngine::staticMetaObject; }
 void QJSEngine_delete(QJSEngine* self) {
 	delete self;
 }

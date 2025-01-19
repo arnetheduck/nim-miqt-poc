@@ -303,6 +303,7 @@ proc fQGraphicsScene_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQGraphicsScene_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGraphicsScene_override_virtual_connectNotify".}
 proc fQGraphicsScene_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGraphicsScene_virtualbase_disconnectNotify".}
 proc fcQGraphicsScene_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGraphicsScene_override_virtual_disconnectNotify".}
+proc fcQGraphicsScene_staticMetaObject(): pointer {.importc: "QGraphicsScene_staticMetaObject".}
 proc fcQGraphicsScene_delete(self: pointer) {.importc: "QGraphicsScene_delete".}
 
 
@@ -1678,5 +1679,7 @@ proc miqt_exec_callback_QGraphicsScene_disconnectNotify(self: ptr cQGraphicsScen
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QGraphicsScene): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsScene_staticMetaObject())
 proc delete*(self: QGraphicsScene) =
   fcQGraphicsScene_delete(self.h)

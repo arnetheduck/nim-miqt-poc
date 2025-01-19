@@ -222,6 +222,7 @@ bool QDockWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDockWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDockWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDockWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDockWidget_staticMetaObject();
 void QDockWidget_delete(QDockWidget* self);
 
 #ifdef __cplusplus

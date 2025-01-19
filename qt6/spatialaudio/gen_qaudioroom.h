@@ -94,6 +94,7 @@ bool QAudioRoom_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioRoom_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioRoom_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioRoom_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAudioRoom_staticMetaObject();
 void QAudioRoom_delete(QAudioRoom* self);
 
 #ifdef __cplusplus

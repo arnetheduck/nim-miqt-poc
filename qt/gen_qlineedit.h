@@ -305,6 +305,7 @@ bool QLineEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLineEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLineEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QLineEdit_staticMetaObject();
 void QLineEdit_delete(QLineEdit* self);
 
 #ifdef __cplusplus

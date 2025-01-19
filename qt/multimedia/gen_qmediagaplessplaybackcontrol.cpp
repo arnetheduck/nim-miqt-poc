@@ -158,6 +158,7 @@ struct miqt_string QMediaGaplessPlaybackControl_trUtf83(const char* s, const cha
 	return _ms;
 }
 
+const QMetaObject* QMediaGaplessPlaybackControl_staticMetaObject() { return &QMediaGaplessPlaybackControl::staticMetaObject; }
 void QMediaGaplessPlaybackControl_delete(QMediaGaplessPlaybackControl* self) {
 	delete self;
 }

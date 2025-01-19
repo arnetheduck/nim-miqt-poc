@@ -86,6 +86,7 @@ bool QAudioSource_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioSource_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioSource_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAudioSource_staticMetaObject();
 void QAudioSource_delete(QAudioSource* self);
 
 #ifdef __cplusplus

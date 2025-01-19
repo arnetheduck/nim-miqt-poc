@@ -367,6 +367,7 @@ bool QListView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QListView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QListView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QListView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QListView_staticMetaObject();
 void QListView_delete(QListView* self);
 
 #ifdef __cplusplus

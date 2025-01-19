@@ -250,6 +250,7 @@ struct miqt_string QAbstractNetworkCache_tr3(const char* s, const char* c, int n
 	return _ms;
 }
 
+const QMetaObject* QAbstractNetworkCache_staticMetaObject() { return &QAbstractNetworkCache::staticMetaObject; }
 void QAbstractNetworkCache_delete(QAbstractNetworkCache* self) {
 	delete self;
 }

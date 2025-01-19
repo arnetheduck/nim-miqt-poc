@@ -196,6 +196,7 @@ struct miqt_string QMetaDataWriterControl_trUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
+const QMetaObject* QMetaDataWriterControl_staticMetaObject() { return &QMetaDataWriterControl::staticMetaObject; }
 void QMetaDataWriterControl_delete(QMetaDataWriterControl* self) {
 	delete self;
 }

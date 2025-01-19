@@ -101,6 +101,7 @@ bool QSoundEffect_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSoundEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSoundEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSoundEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSoundEffect_staticMetaObject();
 void QSoundEffect_delete(QSoundEffect* self);
 
 #ifdef __cplusplus

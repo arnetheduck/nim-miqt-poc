@@ -124,6 +124,7 @@ bool QSpatialSound_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSpatialSound_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSpatialSound_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSpatialSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSpatialSound_staticMetaObject();
 void QSpatialSound_delete(QSpatialSound* self);
 
 #ifdef __cplusplus

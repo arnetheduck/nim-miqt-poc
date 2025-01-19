@@ -94,6 +94,7 @@ proc fQPluginLoader_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQPluginLoader_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPluginLoader_override_virtual_connectNotify".}
 proc fQPluginLoader_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPluginLoader_virtualbase_disconnectNotify".}
 proc fcQPluginLoader_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPluginLoader_override_virtual_disconnectNotify".}
+proc fcQPluginLoader_staticMetaObject(): pointer {.importc: "QPluginLoader_staticMetaObject".}
 proc fcQPluginLoader_delete(self: pointer) {.importc: "QPluginLoader_delete".}
 
 
@@ -404,5 +405,7 @@ proc miqt_exec_callback_QPluginLoader_disconnectNotify(self: ptr cQPluginLoader,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QPluginLoader): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPluginLoader_staticMetaObject())
 proc delete*(self: QPluginLoader) =
   fcQPluginLoader_delete(self.h)

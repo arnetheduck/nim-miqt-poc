@@ -215,6 +215,7 @@ bool QSplashScreen_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplashScreen_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplashScreen_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplashScreen_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSplashScreen_staticMetaObject();
 void QSplashScreen_delete(QSplashScreen* self);
 
 #ifdef __cplusplus

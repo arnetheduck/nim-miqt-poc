@@ -88,6 +88,7 @@ bool QJSEngine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QJSEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QJSEngine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QJSEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QJSEngine_staticMetaObject();
 void QJSEngine_delete(QJSEngine* self);
 
 #ifdef __cplusplus

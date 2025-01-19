@@ -1538,6 +1538,7 @@ void QUdpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QUdpSocket_staticMetaObject() { return &QUdpSocket::staticMetaObject; }
 void QUdpSocket_delete(QUdpSocket* self) {
 	delete self;
 }

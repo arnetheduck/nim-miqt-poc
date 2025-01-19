@@ -202,6 +202,7 @@ proc fQPrintDialog_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQPrintDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPrintDialog_override_virtual_connectNotify".}
 proc fQPrintDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPrintDialog_virtualbase_disconnectNotify".}
 proc fcQPrintDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPrintDialog_override_virtual_disconnectNotify".}
+proc fcQPrintDialog_staticMetaObject(): pointer {.importc: "QPrintDialog_staticMetaObject".}
 proc fcQPrintDialog_delete(self: pointer) {.importc: "QPrintDialog_delete".}
 
 
@@ -1571,5 +1572,7 @@ proc miqt_exec_callback_QPrintDialog_disconnectNotify(self: ptr cQPrintDialog, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QPrintDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPrintDialog_staticMetaObject())
 proc delete*(self: QPrintDialog) =
   fcQPrintDialog_delete(self.h)

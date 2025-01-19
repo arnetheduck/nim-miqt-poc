@@ -4163,6 +4163,7 @@ void QTreeView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTreeView_staticMetaObject() { return &QTreeView::staticMetaObject; }
 void QTreeView_delete(QTreeView* self) {
 	delete self;
 }

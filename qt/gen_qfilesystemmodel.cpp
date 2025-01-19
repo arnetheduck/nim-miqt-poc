@@ -2340,6 +2340,7 @@ void QFileSystemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFileSystemModel_staticMetaObject() { return &QFileSystemModel::staticMetaObject; }
 void QFileSystemModel_delete(QFileSystemModel* self) {
 	delete self;
 }

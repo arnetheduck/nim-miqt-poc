@@ -105,6 +105,7 @@ proc fQAbstractTransition_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQAbstractTransition_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractTransition_override_virtual_connectNotify".}
 proc fQAbstractTransition_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractTransition_virtualbase_disconnectNotify".}
 proc fcQAbstractTransition_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractTransition_override_virtual_disconnectNotify".}
+proc fcQAbstractTransition_staticMetaObject(): pointer {.importc: "QAbstractTransition_staticMetaObject".}
 proc fcQAbstractTransition_delete(self: pointer) {.importc: "QAbstractTransition_delete".}
 
 
@@ -458,5 +459,7 @@ proc miqt_exec_callback_QAbstractTransition_disconnectNotify(self: ptr cQAbstrac
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAbstractTransition): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractTransition_staticMetaObject())
 proc delete*(self: QAbstractTransition) =
   fcQAbstractTransition_delete(self.h)

@@ -136,6 +136,7 @@ bool QSctpSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSctpSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSctpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSctpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSctpSocket_staticMetaObject();
 void QSctpSocket_delete(QSctpSocket* self);
 
 #ifdef __cplusplus

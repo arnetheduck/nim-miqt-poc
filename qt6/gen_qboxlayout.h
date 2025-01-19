@@ -160,6 +160,7 @@ bool QBoxLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QBoxLayout_virtualbase_widget(const void* self);
 bool QBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self);
+const QMetaObject* QBoxLayout_staticMetaObject();
 void QBoxLayout_delete(QBoxLayout* self);
 
 QHBoxLayout* QHBoxLayout_new(QWidget* parent);
@@ -233,6 +234,7 @@ bool QHBoxLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QHBoxLayout_virtualbase_widget(const void* self);
 bool QHBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self);
+const QMetaObject* QHBoxLayout_staticMetaObject();
 void QHBoxLayout_delete(QHBoxLayout* self);
 
 QVBoxLayout* QVBoxLayout_new(QWidget* parent);
@@ -306,6 +308,7 @@ bool QVBoxLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QVBoxLayout_virtualbase_widget(const void* self);
 bool QVBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self);
+const QMetaObject* QVBoxLayout_staticMetaObject();
 void QVBoxLayout_delete(QVBoxLayout* self);
 
 #ifdef __cplusplus

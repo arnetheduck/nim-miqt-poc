@@ -109,6 +109,7 @@ proc fQsciAPIs_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQsciAPIs_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciAPIs_override_virtual_connectNotify".}
 proc fQsciAPIs_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciAPIs_virtualbase_disconnectNotify".}
 proc fcQsciAPIs_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciAPIs_override_virtual_disconnectNotify".}
+proc fcQsciAPIs_staticMetaObject(): pointer {.importc: "QsciAPIs_staticMetaObject".}
 proc fcQsciAPIs_delete(self: pointer) {.importc: "QsciAPIs_delete".}
 
 
@@ -640,5 +641,7 @@ proc miqt_exec_callback_QsciAPIs_disconnectNotify(self: ptr cQsciAPIs, slot: int
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciAPIs): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciAPIs_staticMetaObject())
 proc delete*(self: QsciAPIs) =
   fcQsciAPIs_delete(self.h)

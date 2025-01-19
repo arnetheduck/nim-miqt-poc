@@ -235,6 +235,7 @@ bool QToolButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QToolButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QToolButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QToolButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QToolButton_staticMetaObject();
 void QToolButton_delete(QToolButton* self);
 
 #ifdef __cplusplus

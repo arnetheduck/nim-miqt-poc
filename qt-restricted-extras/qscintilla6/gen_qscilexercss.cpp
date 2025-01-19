@@ -1899,6 +1899,7 @@ void QsciLexerCSS_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQsciLexerCSS*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerCSS_staticMetaObject() { return &QsciLexerCSS::staticMetaObject; }
 void QsciLexerCSS_delete(QsciLexerCSS* self) {
 	delete self;
 }

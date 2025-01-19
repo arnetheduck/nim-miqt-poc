@@ -72,6 +72,7 @@ proc fcQAbstractAudioDeviceInfo_tr2(s: cstring, c: cstring): struct_miqt_string 
 proc fcQAbstractAudioDeviceInfo_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractAudioDeviceInfo_tr3".}
 proc fcQAbstractAudioDeviceInfo_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractAudioDeviceInfo_trUtf82".}
 proc fcQAbstractAudioDeviceInfo_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractAudioDeviceInfo_trUtf83".}
+proc fcQAbstractAudioDeviceInfo_staticMetaObject(): pointer {.importc: "QAbstractAudioDeviceInfo_staticMetaObject".}
 proc fcQAbstractAudioDeviceInfo_delete(self: pointer) {.importc: "QAbstractAudioDeviceInfo_delete".}
 proc fcQAbstractAudioOutput_metaObject(self: pointer, ): pointer {.importc: "QAbstractAudioOutput_metaObject".}
 proc fcQAbstractAudioOutput_metacast(self: pointer, param1: cstring): pointer {.importc: "QAbstractAudioOutput_metacast".}
@@ -110,6 +111,7 @@ proc fcQAbstractAudioOutput_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQAbstractAudioOutput_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractAudioOutput_tr3".}
 proc fcQAbstractAudioOutput_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractAudioOutput_trUtf82".}
 proc fcQAbstractAudioOutput_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractAudioOutput_trUtf83".}
+proc fcQAbstractAudioOutput_staticMetaObject(): pointer {.importc: "QAbstractAudioOutput_staticMetaObject".}
 proc fcQAbstractAudioOutput_delete(self: pointer) {.importc: "QAbstractAudioOutput_delete".}
 proc fcQAbstractAudioInput_metaObject(self: pointer, ): pointer {.importc: "QAbstractAudioInput_metaObject".}
 proc fcQAbstractAudioInput_metacast(self: pointer, param1: cstring): pointer {.importc: "QAbstractAudioInput_metacast".}
@@ -146,6 +148,7 @@ proc fcQAbstractAudioInput_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQAbstractAudioInput_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractAudioInput_tr3".}
 proc fcQAbstractAudioInput_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractAudioInput_trUtf82".}
 proc fcQAbstractAudioInput_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractAudioInput_trUtf83".}
+proc fcQAbstractAudioInput_staticMetaObject(): pointer {.importc: "QAbstractAudioInput_staticMetaObject".}
 proc fcQAbstractAudioInput_delete(self: pointer) {.importc: "QAbstractAudioInput_delete".}
 
 
@@ -277,6 +280,8 @@ proc trUtf83*(_: type QAbstractAudioDeviceInfo, s: cstring, c: cstring, n: cint)
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QAbstractAudioDeviceInfo): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractAudioDeviceInfo_staticMetaObject())
 proc delete*(self: QAbstractAudioDeviceInfo) =
   fcQAbstractAudioDeviceInfo_delete(self.h)
 
@@ -479,6 +484,8 @@ proc trUtf83*(_: type QAbstractAudioOutput, s: cstring, c: cstring, n: cint): st
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QAbstractAudioOutput): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractAudioOutput_staticMetaObject())
 proc delete*(self: QAbstractAudioOutput) =
   fcQAbstractAudioOutput_delete(self.h)
 
@@ -670,5 +677,7 @@ proc trUtf83*(_: type QAbstractAudioInput, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QAbstractAudioInput): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractAudioInput_staticMetaObject())
 proc delete*(self: QAbstractAudioInput) =
   fcQAbstractAudioInput_delete(self.h)

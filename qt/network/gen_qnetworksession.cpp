@@ -625,6 +625,7 @@ void QNetworkSession_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_customEvent(event);
 }
 
+const QMetaObject* QNetworkSession_staticMetaObject() { return &QNetworkSession::staticMetaObject; }
 void QNetworkSession_delete(QNetworkSession* self) {
 	delete self;
 }

@@ -184,6 +184,7 @@ proc fQsciLexerJSON_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQsciLexerJSON_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerJSON_override_virtual_connectNotify".}
 proc fQsciLexerJSON_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerJSON_virtualbase_disconnectNotify".}
 proc fcQsciLexerJSON_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerJSON_override_virtual_disconnectNotify".}
+proc fcQsciLexerJSON_staticMetaObject(): pointer {.importc: "QsciLexerJSON_staticMetaObject".}
 proc fcQsciLexerJSON_delete(self: pointer) {.importc: "QsciLexerJSON_delete".}
 
 
@@ -1313,5 +1314,7 @@ proc miqt_exec_callback_QsciLexerJSON_disconnectNotify(self: ptr cQsciLexerJSON,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerJSON): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerJSON_staticMetaObject())
 proc delete*(self: QsciLexerJSON) =
   fcQsciLexerJSON_delete(self.h)

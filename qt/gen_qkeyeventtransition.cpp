@@ -543,6 +543,7 @@ void QKeyEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQKeyEventTransition*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QKeyEventTransition_staticMetaObject() { return &QKeyEventTransition::staticMetaObject; }
 void QKeyEventTransition_delete(QKeyEventTransition* self) {
 	delete self;
 }

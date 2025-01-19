@@ -2835,6 +2835,7 @@ void QAbstractItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractItemModel_staticMetaObject() { return &QAbstractItemModel::staticMetaObject; }
 void QAbstractItemModel_delete(QAbstractItemModel* self) {
 	delete self;
 }
@@ -4722,6 +4723,7 @@ void QAbstractTableModel_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractTableModel_staticMetaObject() { return &QAbstractTableModel::staticMetaObject; }
 void QAbstractTableModel_delete(QAbstractTableModel* self) {
 	delete self;
 }
@@ -6581,6 +6583,7 @@ void QAbstractListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractListModel_staticMetaObject() { return &QAbstractListModel::staticMetaObject; }
 void QAbstractListModel_delete(QAbstractListModel* self) {
 	delete self;
 }

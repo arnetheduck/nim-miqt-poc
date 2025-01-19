@@ -109,6 +109,7 @@ import
   gen_qline,
   gen_qmatrix,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainterpath,
@@ -132,6 +133,7 @@ export
   gen_qline,
   gen_qmatrix,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainterpath,
@@ -395,6 +397,7 @@ proc fcQPainter_setRenderHint2(self: pointer, hint: cint, on: bool): void {.impo
 proc fcQPainter_setRenderHints2(self: pointer, hints: cint, on: bool): void {.importc: "QPainter_setRenderHints2".}
 proc fcQPainter_setRedirected3(device: pointer, replacement: pointer, offset: pointer): void {.importc: "QPainter_setRedirected3".}
 proc fcQPainter_redirected2(device: pointer, offset: pointer): pointer {.importc: "QPainter_redirected2".}
+proc fcQPainter_staticMetaObject(): pointer {.importc: "QPainter_staticMetaObject".}
 proc fcQPainter_delete(self: pointer) {.importc: "QPainter_delete".}
 proc fcQPainterPixmapFragment_create(pos: pointer, sourceRect: pointer): pointer {.importc: "QPainter__PixmapFragment_create".}
 proc fcQPainterPixmapFragment_create3(pos: pointer, sourceRect: pointer, scaleX: float64): pointer {.importc: "QPainter__PixmapFragment_create3".}
@@ -1416,6 +1419,8 @@ proc redirected2*(_: type QPainter, device: gen_qpaintdevice.QPaintDevice, offse
 
   gen_qpaintdevice.QPaintDevice(h: fcQPainter_redirected2(device.h, offset.h))
 
+proc staticMetaObject*(_: type QPainter): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPainter_staticMetaObject())
 proc delete*(self: QPainter) =
   fcQPainter_delete(self.h)
 

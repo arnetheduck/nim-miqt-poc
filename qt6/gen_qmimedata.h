@@ -90,6 +90,7 @@ bool QMimeData_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMimeData_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMimeData_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMimeData_staticMetaObject();
 void QMimeData_delete(QMimeData* self);
 
 #ifdef __cplusplus

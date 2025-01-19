@@ -260,6 +260,7 @@ proc fQCalendarWidget_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQCalendarWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QCalendarWidget_override_virtual_connectNotify".}
 proc fQCalendarWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QCalendarWidget_virtualbase_disconnectNotify".}
 proc fcQCalendarWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QCalendarWidget_override_virtual_disconnectNotify".}
+proc fcQCalendarWidget_staticMetaObject(): pointer {.importc: "QCalendarWidget_staticMetaObject".}
 proc fcQCalendarWidget_delete(self: pointer) {.importc: "QCalendarWidget_delete".}
 
 
@@ -1741,5 +1742,7 @@ proc miqt_exec_callback_QCalendarWidget_disconnectNotify(self: ptr cQCalendarWid
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QCalendarWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCalendarWidget_staticMetaObject())
 proc delete*(self: QCalendarWidget) =
   fcQCalendarWidget_delete(self.h)

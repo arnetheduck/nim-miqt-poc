@@ -249,6 +249,7 @@ import
   gen_qimage,
   gen_qmatrix,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpixmap,
   gen_qpoint,
   gen_qtransform,
@@ -258,6 +259,7 @@ export
   gen_qimage,
   gen_qmatrix,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpixmap,
   gen_qpoint,
   gen_qtransform,
@@ -323,6 +325,7 @@ proc fcQGradient_interpolationMode(self: pointer, ): cint {.importc: "QGradient_
 proc fcQGradient_setInterpolationMode(self: pointer, mode: cint): void {.importc: "QGradient_setInterpolationMode".}
 proc fcQGradient_operatorEqual(self: pointer, gradient: pointer): bool {.importc: "QGradient_operatorEqual".}
 proc fcQGradient_operatorNotEqual(self: pointer, other: pointer): bool {.importc: "QGradient_operatorNotEqual".}
+proc fcQGradient_staticMetaObject(): pointer {.importc: "QGradient_staticMetaObject".}
 proc fcQGradient_delete(self: pointer) {.importc: "QGradient_delete".}
 proc fcQLinearGradient_new(): ptr cQLinearGradient {.importc: "QLinearGradient_new".}
 proc fcQLinearGradient_new2(start: pointer, finalStop: pointer): ptr cQLinearGradient {.importc: "QLinearGradient_new2".}
@@ -587,6 +590,8 @@ proc operatorNotEqual*(self: QGradient, other: QGradient): bool =
 
   fcQGradient_operatorNotEqual(self.h, other.h)
 
+proc staticMetaObject*(_: type QGradient): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGradient_staticMetaObject())
 proc delete*(self: QGradient) =
   fcQGradient_delete(self.h)
 

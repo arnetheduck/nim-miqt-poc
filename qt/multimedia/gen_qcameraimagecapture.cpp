@@ -829,6 +829,7 @@ void QCameraImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCameraImageCapture_staticMetaObject() { return &QCameraImageCapture::staticMetaObject; }
 void QCameraImageCapture_delete(QCameraImageCapture* self) {
 	delete self;
 }

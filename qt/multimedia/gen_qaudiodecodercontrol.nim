@@ -94,6 +94,7 @@ proc fcQAudioDecoderControl_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQAudioDecoderControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioDecoderControl_tr3".}
 proc fcQAudioDecoderControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioDecoderControl_trUtf82".}
 proc fcQAudioDecoderControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioDecoderControl_trUtf83".}
+proc fcQAudioDecoderControl_staticMetaObject(): pointer {.importc: "QAudioDecoderControl_staticMetaObject".}
 proc fcQAudioDecoderControl_delete(self: pointer) {.importc: "QAudioDecoderControl_delete".}
 
 
@@ -369,5 +370,7 @@ proc trUtf83*(_: type QAudioDecoderControl, s: cstring, c: cstring, n: cint): st
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QAudioDecoderControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioDecoderControl_staticMetaObject())
 proc delete*(self: QAudioDecoderControl) =
   fcQAudioDecoderControl_delete(self.h)

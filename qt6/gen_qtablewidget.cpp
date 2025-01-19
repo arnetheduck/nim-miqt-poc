@@ -4940,6 +4940,7 @@ void QTableWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQTableWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTableWidget_staticMetaObject() { return &QTableWidget::staticMetaObject; }
 void QTableWidget_delete(QTableWidget* self) {
 	delete self;
 }

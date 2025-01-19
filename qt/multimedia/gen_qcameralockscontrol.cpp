@@ -133,6 +133,7 @@ struct miqt_string QCameraLocksControl_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
+const QMetaObject* QCameraLocksControl_staticMetaObject() { return &QCameraLocksControl::staticMetaObject; }
 void QCameraLocksControl_delete(QCameraLocksControl* self) {
 	delete self;
 }

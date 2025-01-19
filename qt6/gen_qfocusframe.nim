@@ -178,6 +178,7 @@ proc fQFocusFrame_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQFocusFrame_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFocusFrame_override_virtual_connectNotify".}
 proc fQFocusFrame_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFocusFrame_virtualbase_disconnectNotify".}
 proc fcQFocusFrame_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFocusFrame_override_virtual_disconnectNotify".}
+proc fcQFocusFrame_staticMetaObject(): pointer {.importc: "QFocusFrame_staticMetaObject".}
 proc fcQFocusFrame_delete(self: pointer) {.importc: "QFocusFrame_delete".}
 
 
@@ -1388,5 +1389,7 @@ proc miqt_exec_callback_QFocusFrame_disconnectNotify(self: ptr cQFocusFrame, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QFocusFrame): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFocusFrame_staticMetaObject())
 proc delete*(self: QFocusFrame) =
   fcQFocusFrame_delete(self.h)

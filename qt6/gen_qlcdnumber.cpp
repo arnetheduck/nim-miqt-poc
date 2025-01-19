@@ -2128,6 +2128,7 @@ void QLCDNumber_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLCDNumber_staticMetaObject() { return &QLCDNumber::staticMetaObject; }
 void QLCDNumber_delete(QLCDNumber* self) {
 	delete self;
 }

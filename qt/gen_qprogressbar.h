@@ -220,6 +220,7 @@ bool QProgressBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProgressBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProgressBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProgressBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QProgressBar_staticMetaObject();
 void QProgressBar_delete(QProgressBar* self);
 
 #ifdef __cplusplus

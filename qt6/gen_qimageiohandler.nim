@@ -179,6 +179,7 @@ proc fQImageIOPlugin_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQImageIOPlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QImageIOPlugin_override_virtual_connectNotify".}
 proc fQImageIOPlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QImageIOPlugin_virtualbase_disconnectNotify".}
 proc fcQImageIOPlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QImageIOPlugin_override_virtual_disconnectNotify".}
+proc fcQImageIOPlugin_staticMetaObject(): pointer {.importc: "QImageIOPlugin_staticMetaObject".}
 proc fcQImageIOPlugin_delete(self: pointer) {.importc: "QImageIOPlugin_delete".}
 
 
@@ -857,5 +858,7 @@ proc miqt_exec_callback_QImageIOPlugin_disconnectNotify(self: ptr cQImageIOPlugi
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QImageIOPlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQImageIOPlugin_staticMetaObject())
 proc delete*(self: QImageIOPlugin) =
   fcQImageIOPlugin_delete(self.h)

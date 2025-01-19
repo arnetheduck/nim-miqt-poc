@@ -240,6 +240,7 @@ bool QMenuBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMenuBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMenuBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMenuBar_staticMetaObject();
 void QMenuBar_delete(QMenuBar* self);
 
 #ifdef __cplusplus

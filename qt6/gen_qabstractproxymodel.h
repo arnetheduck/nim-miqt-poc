@@ -185,6 +185,7 @@ bool QAbstractProxyModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractProxyModel_staticMetaObject();
 void QAbstractProxyModel_delete(QAbstractProxyModel* self);
 
 #ifdef __cplusplus

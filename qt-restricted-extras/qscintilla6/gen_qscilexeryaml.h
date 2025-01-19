@@ -148,6 +148,7 @@ bool QsciLexerYAML_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerYAML_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerYAML_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerYAML_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerYAML_staticMetaObject();
 void QsciLexerYAML_delete(QsciLexerYAML* self);
 
 #ifdef __cplusplus

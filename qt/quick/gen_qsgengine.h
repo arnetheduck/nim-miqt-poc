@@ -86,6 +86,7 @@ bool QSGEngine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSGEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSGEngine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSGEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSGEngine_staticMetaObject();
 void QSGEngine_delete(QSGEngine* self);
 
 #ifdef __cplusplus

@@ -112,6 +112,7 @@ bool QImageCapture_override_virtual_connectNotify(void* self, intptr_t slot);
 void QImageCapture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QImageCapture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QImageCapture_staticMetaObject();
 void QImageCapture_delete(QImageCapture* self);
 
 #ifdef __cplusplus

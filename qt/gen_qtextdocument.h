@@ -229,6 +229,7 @@ bool QTextDocument_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextDocument_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTextDocument_staticMetaObject();
 void QTextDocument_delete(QTextDocument* self);
 
 #ifdef __cplusplus

@@ -2239,6 +2239,7 @@ void QToolBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQToolBar*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QToolBar_staticMetaObject() { return &QToolBar::staticMetaObject; }
 void QToolBar_delete(QToolBar* self) {
 	delete self;
 }

@@ -77,6 +77,7 @@ bool QLibrary_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLibrary_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLibrary_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLibrary_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QLibrary_staticMetaObject();
 void QLibrary_delete(QLibrary* self);
 
 #ifdef __cplusplus

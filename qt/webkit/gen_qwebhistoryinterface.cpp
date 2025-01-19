@@ -522,6 +522,7 @@ void QWebHistoryInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebHistoryInterface_staticMetaObject() { return &QWebHistoryInterface::staticMetaObject; }
 void QWebHistoryInterface_delete(QWebHistoryInterface* self) {
 	delete self;
 }

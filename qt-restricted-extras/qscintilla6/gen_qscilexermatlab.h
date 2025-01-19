@@ -141,6 +141,7 @@ bool QsciLexerMatlab_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerMatlab_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerMatlab_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerMatlab_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerMatlab_staticMetaObject();
 void QsciLexerMatlab_delete(QsciLexerMatlab* self);
 
 #ifdef __cplusplus

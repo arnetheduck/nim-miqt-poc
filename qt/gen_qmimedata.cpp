@@ -730,6 +730,7 @@ void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMimeData*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMimeData_staticMetaObject() { return &QMimeData::staticMetaObject; }
 void QMimeData_delete(QMimeData* self) {
 	delete self;
 }

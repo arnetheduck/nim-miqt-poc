@@ -317,6 +317,7 @@ bool QGraphicsWebView_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsWebView_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsWebView_virtualbase_extension(const void* self, QVariant* variant);
+const QMetaObject* QGraphicsWebView_staticMetaObject();
 void QGraphicsWebView_delete(QGraphicsWebView* self);
 
 #ifdef __cplusplus

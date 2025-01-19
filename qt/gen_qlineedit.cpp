@@ -2459,6 +2459,7 @@ void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLineEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLineEdit_staticMetaObject() { return &QLineEdit::staticMetaObject; }
 void QLineEdit_delete(QLineEdit* self) {
 	delete self;
 }

@@ -111,6 +111,7 @@ struct miqt_string QTextObject_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QTextObject_staticMetaObject() { return &QTextObject::staticMetaObject; }
 void QTextBlockGroup_virtbase(QTextBlockGroup* src, QTextObject** outptr_QTextObject) {
 	*outptr_QTextObject = static_cast<QTextObject*>(src);
 }
@@ -160,6 +161,7 @@ struct miqt_string QTextBlockGroup_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QTextBlockGroup_staticMetaObject() { return &QTextBlockGroup::staticMetaObject; }
 void QTextFrameLayoutData_operatorAssign(QTextFrameLayoutData* self, QTextFrameLayoutData* param1) {
 	self->operator=(*param1);
 }
@@ -596,6 +598,7 @@ void QTextFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextFrame*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTextFrame_staticMetaObject() { return &QTextFrame::staticMetaObject; }
 void QTextFrame_delete(QTextFrame* self) {
 	delete self;
 }

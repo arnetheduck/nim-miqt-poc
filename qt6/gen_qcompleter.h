@@ -119,6 +119,7 @@ bool QCompleter_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCompleter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCompleter_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCompleter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QCompleter_staticMetaObject();
 void QCompleter_delete(QCompleter* self);
 
 #ifdef __cplusplus

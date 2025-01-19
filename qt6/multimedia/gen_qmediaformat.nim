@@ -108,9 +108,11 @@ import gen_qmediaformat_types
 export gen_qmediaformat_types
 
 import
-  gen_qmimetype
+  gen_qmimetype,
+  gen_qobjectdefs
 export
-  gen_qmimetype
+  gen_qmimetype,
+  gen_qobjectdefs
 
 type cQMediaFormat*{.exportc: "QMediaFormat", incompleteStruct.} = object
 
@@ -139,6 +141,7 @@ proc fcQMediaFormat_videoCodecDescription(codec: cint): struct_miqt_string {.imp
 proc fcQMediaFormat_operatorEqual(self: pointer, other: pointer): bool {.importc: "QMediaFormat_operatorEqual".}
 proc fcQMediaFormat_operatorNotEqual(self: pointer, other: pointer): bool {.importc: "QMediaFormat_operatorNotEqual".}
 proc fcQMediaFormat_resolveForEncoding(self: pointer, flags: cint): void {.importc: "QMediaFormat_resolveForEncoding".}
+proc fcQMediaFormat_staticMetaObject(): pointer {.importc: "QMediaFormat_staticMetaObject".}
 proc fcQMediaFormat_delete(self: pointer) {.importc: "QMediaFormat_delete".}
 
 
@@ -274,5 +277,7 @@ proc resolveForEncoding*(self: QMediaFormat, flags: QMediaFormatResolveFlags): v
 
   fcQMediaFormat_resolveForEncoding(self.h, cint(flags))
 
+proc staticMetaObject*(_: type QMediaFormat): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaFormat_staticMetaObject())
 proc delete*(self: QMediaFormat) =
   fcQMediaFormat_delete(self.h)

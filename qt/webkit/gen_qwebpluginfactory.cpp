@@ -707,6 +707,7 @@ void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQWebPluginFactory*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebPluginFactory_staticMetaObject() { return &QWebPluginFactory::staticMetaObject; }
 void QWebPluginFactory_delete(QWebPluginFactory* self) {
 	delete self;
 }

@@ -229,6 +229,7 @@ proc fQGraphicsProxyWidget_virtualbase_setExtension(self: pointer, extension: ci
 proc fcQGraphicsProxyWidget_override_virtual_setExtension(self: pointer, slot: int) {.importc: "QGraphicsProxyWidget_override_virtual_setExtension".}
 proc fQGraphicsProxyWidget_virtualbase_extension(self: pointer, variant: pointer): pointer{.importc: "QGraphicsProxyWidget_virtualbase_extension".}
 proc fcQGraphicsProxyWidget_override_virtual_extension(self: pointer, slot: int) {.importc: "QGraphicsProxyWidget_override_virtual_extension".}
+proc fcQGraphicsProxyWidget_staticMetaObject(): pointer {.importc: "QGraphicsProxyWidget_staticMetaObject".}
 proc fcQGraphicsProxyWidget_delete(self: pointer) {.importc: "QGraphicsProxyWidget_delete".}
 
 
@@ -1866,5 +1867,7 @@ proc miqt_exec_callback_QGraphicsProxyWidget_extension(self: ptr cQGraphicsProxy
   let virtualReturn = nimfunc[](superCall, slotval1 )
 
   virtualReturn.h
+proc staticMetaObject*(_: type QGraphicsProxyWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsProxyWidget_staticMetaObject())
 proc delete*(self: QGraphicsProxyWidget) =
   fcQGraphicsProxyWidget_delete(self.h)

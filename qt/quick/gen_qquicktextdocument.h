@@ -64,6 +64,7 @@ bool QQuickTextDocument_override_virtual_connectNotify(void* self, intptr_t slot
 void QQuickTextDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQuickTextDocument_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQuickTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQuickTextDocument_staticMetaObject();
 void QQuickTextDocument_delete(QQuickTextDocument* self);
 
 #ifdef __cplusplus

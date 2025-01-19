@@ -123,6 +123,7 @@ bool QImageIOPlugin_override_virtual_connectNotify(void* self, intptr_t slot);
 void QImageIOPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QImageIOPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QImageIOPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QImageIOPlugin_staticMetaObject();
 void QImageIOPlugin_delete(QImageIOPlugin* self);
 
 #ifdef __cplusplus

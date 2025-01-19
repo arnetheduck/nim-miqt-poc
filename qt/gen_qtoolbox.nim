@@ -206,6 +206,7 @@ proc fQToolBox_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQToolBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QToolBox_override_virtual_connectNotify".}
 proc fQToolBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QToolBox_virtualbase_disconnectNotify".}
 proc fcQToolBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QToolBox_override_virtual_disconnectNotify".}
+proc fcQToolBox_staticMetaObject(): pointer {.importc: "QToolBox_staticMetaObject".}
 proc fcQToolBox_delete(self: pointer) {.importc: "QToolBox_delete".}
 
 
@@ -1559,5 +1560,7 @@ proc miqt_exec_callback_QToolBox_disconnectNotify(self: ptr cQToolBox, slot: int
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QToolBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQToolBox_staticMetaObject())
 proc delete*(self: QToolBox) =
   fcQToolBox_delete(self.h)

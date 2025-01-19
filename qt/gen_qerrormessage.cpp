@@ -2220,6 +2220,7 @@ void QErrorMessage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QErrorMessage_staticMetaObject() { return &QErrorMessage::staticMetaObject; }
 void QErrorMessage_delete(QErrorMessage* self) {
 	delete self;
 }

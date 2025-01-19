@@ -210,6 +210,7 @@ bool QDial_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDial_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDial_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDial_staticMetaObject();
 void QDial_delete(QDial* self);
 
 #ifdef __cplusplus

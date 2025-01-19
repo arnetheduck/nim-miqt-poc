@@ -103,6 +103,7 @@ proc fQEventLoop_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQEventLoop_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QEventLoop_override_virtual_connectNotify".}
 proc fQEventLoop_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QEventLoop_virtualbase_disconnectNotify".}
 proc fcQEventLoop_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QEventLoop_override_virtual_disconnectNotify".}
+proc fcQEventLoop_staticMetaObject(): pointer {.importc: "QEventLoop_staticMetaObject".}
 proc fcQEventLoop_delete(self: pointer) {.importc: "QEventLoop_delete".}
 proc fcQEventLoopLocker_new(): ptr cQEventLoopLocker {.importc: "QEventLoopLocker_new".}
 proc fcQEventLoopLocker_new2(loop: pointer): ptr cQEventLoopLocker {.importc: "QEventLoopLocker_new2".}
@@ -412,6 +413,8 @@ proc miqt_exec_callback_QEventLoop_disconnectNotify(self: ptr cQEventLoop, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QEventLoop): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQEventLoop_staticMetaObject())
 proc delete*(self: QEventLoop) =
   fcQEventLoop_delete(self.h)
 

@@ -159,6 +159,7 @@ proc fQQmlEngine_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQQmlEngine_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlEngine_override_virtual_connectNotify".}
 proc fQQmlEngine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlEngine_virtualbase_disconnectNotify".}
 proc fcQQmlEngine_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlEngine_override_virtual_disconnectNotify".}
+proc fcQQmlEngine_staticMetaObject(): pointer {.importc: "QQmlEngine_staticMetaObject".}
 proc fcQQmlEngine_delete(self: pointer) {.importc: "QQmlEngine_delete".}
 
 
@@ -660,5 +661,7 @@ proc miqt_exec_callback_QQmlEngine_disconnectNotify(self: ptr cQQmlEngine, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QQmlEngine): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQmlEngine_staticMetaObject())
 proc delete*(self: QQmlEngine) =
   fcQQmlEngine_delete(self.h)

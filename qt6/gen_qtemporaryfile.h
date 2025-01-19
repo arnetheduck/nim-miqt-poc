@@ -119,6 +119,7 @@ bool QTemporaryFile_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTemporaryFile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTemporaryFile_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTemporaryFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTemporaryFile_staticMetaObject();
 void QTemporaryFile_delete(QTemporaryFile* self);
 
 #ifdef __cplusplus

@@ -1845,6 +1845,7 @@ void QsciLexerCMake_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQsciLexerCMake*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerCMake_staticMetaObject() { return &QsciLexerCMake::staticMetaObject; }
 void QsciLexerCMake_delete(QsciLexerCMake* self) {
 	delete self;
 }

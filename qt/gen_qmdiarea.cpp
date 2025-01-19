@@ -2347,6 +2347,7 @@ void QMdiArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMdiArea*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMdiArea_staticMetaObject() { return &QMdiArea::staticMetaObject; }
 void QMdiArea_delete(QMdiArea* self) {
 	delete self;
 }

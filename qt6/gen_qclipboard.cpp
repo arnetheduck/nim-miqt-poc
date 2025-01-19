@@ -245,3 +245,4 @@ void QClipboard_setPixmap2(QClipboard* self, QPixmap* param1, int mode) {
 	self->setPixmap(*param1, static_cast<QClipboard::Mode>(mode));
 }
 
+const QMetaObject* QClipboard_staticMetaObject() { return &QClipboard::staticMetaObject; }

@@ -484,6 +484,7 @@ void QGenericPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGenericPlugin_staticMetaObject() { return &QGenericPlugin::staticMetaObject; }
 void QGenericPlugin_delete(QGenericPlugin* self) {
 	delete self;
 }

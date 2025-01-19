@@ -183,6 +183,7 @@ proc fQsciLexerMarkdown_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQsciLexerMarkdown_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerMarkdown_override_virtual_connectNotify".}
 proc fQsciLexerMarkdown_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerMarkdown_virtualbase_disconnectNotify".}
 proc fcQsciLexerMarkdown_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerMarkdown_override_virtual_disconnectNotify".}
+proc fcQsciLexerMarkdown_staticMetaObject(): pointer {.importc: "QsciLexerMarkdown_staticMetaObject".}
 proc fcQsciLexerMarkdown_delete(self: pointer) {.importc: "QsciLexerMarkdown_delete".}
 
 
@@ -1276,5 +1277,7 @@ proc miqt_exec_callback_QsciLexerMarkdown_disconnectNotify(self: ptr cQsciLexerM
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerMarkdown): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerMarkdown_staticMetaObject())
 proc delete*(self: QsciLexerMarkdown) =
   fcQsciLexerMarkdown_delete(self.h)

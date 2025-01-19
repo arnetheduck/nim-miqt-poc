@@ -88,6 +88,7 @@ bool QSystemTrayIcon_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSystemTrayIcon_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSystemTrayIcon_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSystemTrayIcon_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSystemTrayIcon_staticMetaObject();
 void QSystemTrayIcon_delete(QSystemTrayIcon* self);
 
 #ifdef __cplusplus

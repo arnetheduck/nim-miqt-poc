@@ -1386,6 +1386,7 @@ QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QGridLayout_staticMetaObject() { return &QGridLayout::staticMetaObject; }
 void QGridLayout_delete(QGridLayout* self) {
 	delete self;
 }

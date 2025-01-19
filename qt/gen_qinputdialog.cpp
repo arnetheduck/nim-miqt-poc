@@ -2898,6 +2898,7 @@ void QInputDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QInputDialog_staticMetaObject() { return &QInputDialog::staticMetaObject; }
 void QInputDialog_delete(QInputDialog* self) {
 	delete self;
 }

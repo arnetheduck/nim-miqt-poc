@@ -2392,6 +2392,7 @@ void QAbstractSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractSpinBox_staticMetaObject() { return &QAbstractSpinBox::staticMetaObject; }
 void QAbstractSpinBox_delete(QAbstractSpinBox* self) {
 	delete self;
 }

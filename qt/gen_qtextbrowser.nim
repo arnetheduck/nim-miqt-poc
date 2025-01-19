@@ -249,6 +249,7 @@ proc fQTextBrowser_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQTextBrowser_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTextBrowser_override_virtual_connectNotify".}
 proc fQTextBrowser_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTextBrowser_virtualbase_disconnectNotify".}
 proc fcQTextBrowser_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTextBrowser_override_virtual_disconnectNotify".}
+proc fcQTextBrowser_staticMetaObject(): pointer {.importc: "QTextBrowser_staticMetaObject".}
 proc fcQTextBrowser_delete(self: pointer) {.importc: "QTextBrowser_delete".}
 
 
@@ -2003,5 +2004,7 @@ proc miqt_exec_callback_QTextBrowser_disconnectNotify(self: ptr cQTextBrowser, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QTextBrowser): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTextBrowser_staticMetaObject())
 proc delete*(self: QTextBrowser) =
   fcQTextBrowser_delete(self.h)

@@ -154,6 +154,7 @@ struct miqt_string QImageEncoderControl_trUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
+const QMetaObject* QImageEncoderControl_staticMetaObject() { return &QImageEncoderControl::staticMetaObject; }
 void QImageEncoderControl_delete(QImageEncoderControl* self) {
 	delete self;
 }

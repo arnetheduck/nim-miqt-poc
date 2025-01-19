@@ -60,6 +60,7 @@ bool QGenericPlugin_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGenericPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGenericPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGenericPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGenericPlugin_staticMetaObject();
 void QGenericPlugin_delete(QGenericPlugin* self);
 
 #ifdef __cplusplus

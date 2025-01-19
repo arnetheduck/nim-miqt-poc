@@ -482,6 +482,7 @@ void QEventLoop_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQEventLoop*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QEventLoop_staticMetaObject() { return &QEventLoop::staticMetaObject; }
 void QEventLoop_delete(QEventLoop* self) {
 	delete self;
 }

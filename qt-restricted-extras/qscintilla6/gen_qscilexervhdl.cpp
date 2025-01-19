@@ -2008,6 +2008,7 @@ void QsciLexerVHDL_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQsciLexerVHDL*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerVHDL_staticMetaObject() { return &QsciLexerVHDL::staticMetaObject; }
 void QsciLexerVHDL_delete(QsciLexerVHDL* self) {
 	delete self;
 }

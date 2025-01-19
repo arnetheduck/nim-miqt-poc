@@ -65,6 +65,7 @@ proc fcQVideoEncoderSettingsControl_tr2(s: cstring, c: cstring): struct_miqt_str
 proc fcQVideoEncoderSettingsControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVideoEncoderSettingsControl_tr3".}
 proc fcQVideoEncoderSettingsControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QVideoEncoderSettingsControl_trUtf82".}
 proc fcQVideoEncoderSettingsControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVideoEncoderSettingsControl_trUtf83".}
+proc fcQVideoEncoderSettingsControl_staticMetaObject(): pointer {.importc: "QVideoEncoderSettingsControl_staticMetaObject".}
 proc fcQVideoEncoderSettingsControl_delete(self: pointer) {.importc: "QVideoEncoderSettingsControl_delete".}
 
 
@@ -169,5 +170,7 @@ proc trUtf83*(_: type QVideoEncoderSettingsControl, s: cstring, c: cstring, n: c
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QVideoEncoderSettingsControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQVideoEncoderSettingsControl_staticMetaObject())
 proc delete*(self: QVideoEncoderSettingsControl) =
   fcQVideoEncoderSettingsControl_delete(self.h)

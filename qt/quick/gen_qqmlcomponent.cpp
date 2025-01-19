@@ -771,6 +771,7 @@ void QQmlComponent_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQQmlComponent*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlComponent_staticMetaObject() { return &QQmlComponent::staticMetaObject; }
 void QQmlComponent_delete(QQmlComponent* self) {
 	delete self;
 }

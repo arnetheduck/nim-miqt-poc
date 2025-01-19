@@ -73,6 +73,7 @@ bool QAudioOutput_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioOutput_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAudioOutput_staticMetaObject();
 void QAudioOutput_delete(QAudioOutput* self);
 
 #ifdef __cplusplus

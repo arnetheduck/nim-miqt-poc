@@ -224,6 +224,7 @@ bool QPrintPreviewWidget_override_virtual_connectNotify(void* self, intptr_t slo
 void QPrintPreviewWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPrintPreviewWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPrintPreviewWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPrintPreviewWidget_staticMetaObject();
 void QPrintPreviewWidget_delete(QPrintPreviewWidget* self);
 
 #ifdef __cplusplus

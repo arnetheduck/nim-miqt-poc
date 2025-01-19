@@ -1966,6 +1966,7 @@ void QsciLexerPascal_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQsciLexerPascal*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerPascal_staticMetaObject() { return &QsciLexerPascal::staticMetaObject; }
 void QsciLexerPascal_delete(QsciLexerPascal* self) {
 	delete self;
 }

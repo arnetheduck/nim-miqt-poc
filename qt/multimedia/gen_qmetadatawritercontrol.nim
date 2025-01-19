@@ -70,6 +70,7 @@ proc fcQMetaDataWriterControl_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQMetaDataWriterControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMetaDataWriterControl_tr3".}
 proc fcQMetaDataWriterControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMetaDataWriterControl_trUtf82".}
 proc fcQMetaDataWriterControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMetaDataWriterControl_trUtf83".}
+proc fcQMetaDataWriterControl_staticMetaObject(): pointer {.importc: "QMetaDataWriterControl_staticMetaObject".}
 proc fcQMetaDataWriterControl_delete(self: pointer) {.importc: "QMetaDataWriterControl_delete".}
 
 
@@ -232,5 +233,7 @@ proc trUtf83*(_: type QMetaDataWriterControl, s: cstring, c: cstring, n: cint): 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QMetaDataWriterControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMetaDataWriterControl_staticMetaObject())
 proc delete*(self: QMetaDataWriterControl) =
   fcQMetaDataWriterControl_delete(self.h)

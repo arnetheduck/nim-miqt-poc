@@ -160,6 +160,7 @@ bool QsciLexerPostScript_override_virtual_connectNotify(void* self, intptr_t slo
 void QsciLexerPostScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerPostScript_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerPostScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerPostScript_staticMetaObject();
 void QsciLexerPostScript_delete(QsciLexerPostScript* self);
 
 #ifdef __cplusplus

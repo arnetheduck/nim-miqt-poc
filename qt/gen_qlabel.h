@@ -255,6 +255,7 @@ bool QLabel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLabel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLabel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QLabel_staticMetaObject();
 void QLabel_delete(QLabel* self);
 
 #ifdef __cplusplus

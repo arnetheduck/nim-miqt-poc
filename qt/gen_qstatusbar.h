@@ -211,6 +211,7 @@ bool QStatusBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStatusBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStatusBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStatusBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QStatusBar_staticMetaObject();
 void QStatusBar_delete(QStatusBar* self);
 
 #ifdef __cplusplus

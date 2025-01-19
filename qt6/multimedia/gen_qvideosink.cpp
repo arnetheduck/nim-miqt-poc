@@ -478,6 +478,7 @@ void QVideoSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QVideoSink_staticMetaObject() { return &QVideoSink::staticMetaObject; }
 void QVideoSink_delete(QVideoSink* self) {
 	delete self;
 }

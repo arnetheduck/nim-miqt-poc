@@ -1687,6 +1687,7 @@ void QQuickWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQQuickWindow*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickWindow_staticMetaObject() { return &QQuickWindow::staticMetaObject; }
 void QQuickWindow_delete(QQuickWindow* self) {
 	delete self;
 }

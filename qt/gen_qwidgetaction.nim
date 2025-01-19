@@ -88,6 +88,7 @@ proc fQWidgetAction_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQWidgetAction_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWidgetAction_override_virtual_connectNotify".}
 proc fQWidgetAction_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWidgetAction_virtualbase_disconnectNotify".}
 proc fcQWidgetAction_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWidgetAction_override_virtual_disconnectNotify".}
+proc fcQWidgetAction_staticMetaObject(): pointer {.importc: "QWidgetAction_staticMetaObject".}
 proc fcQWidgetAction_delete(self: pointer) {.importc: "QWidgetAction_delete".}
 
 
@@ -410,5 +411,7 @@ proc miqt_exec_callback_QWidgetAction_disconnectNotify(self: ptr cQWidgetAction,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QWidgetAction): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWidgetAction_staticMetaObject())
 proc delete*(self: QWidgetAction) =
   fcQWidgetAction_delete(self.h)

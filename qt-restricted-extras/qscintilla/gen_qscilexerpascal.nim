@@ -204,6 +204,7 @@ proc fQsciLexerPascal_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQsciLexerPascal_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_connectNotify".}
 proc fQsciLexerPascal_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerPascal_virtualbase_disconnectNotify".}
 proc fcQsciLexerPascal_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_disconnectNotify".}
+proc fcQsciLexerPascal_staticMetaObject(): pointer {.importc: "QsciLexerPascal_staticMetaObject".}
 proc fcQsciLexerPascal_delete(self: pointer) {.importc: "QsciLexerPascal_delete".}
 
 
@@ -1471,5 +1472,7 @@ proc miqt_exec_callback_QsciLexerPascal_disconnectNotify(self: ptr cQsciLexerPas
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerPascal): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerPascal_staticMetaObject())
 proc delete*(self: QsciLexerPascal) =
   fcQsciLexerPascal_delete(self.h)

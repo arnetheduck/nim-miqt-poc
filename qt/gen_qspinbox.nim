@@ -218,6 +218,7 @@ proc fQSpinBox_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQSpinBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSpinBox_override_virtual_connectNotify".}
 proc fQSpinBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSpinBox_virtualbase_disconnectNotify".}
 proc fcQSpinBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSpinBox_override_virtual_disconnectNotify".}
+proc fcQSpinBox_staticMetaObject(): pointer {.importc: "QSpinBox_staticMetaObject".}
 proc fcQSpinBox_delete(self: pointer) {.importc: "QSpinBox_delete".}
 proc fcQDoubleSpinBox_new(parent: pointer): ptr cQDoubleSpinBox {.importc: "QDoubleSpinBox_new".}
 proc fcQDoubleSpinBox_new2(): ptr cQDoubleSpinBox {.importc: "QDoubleSpinBox_new2".}
@@ -368,6 +369,7 @@ proc fQDoubleSpinBox_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQDoubleSpinBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDoubleSpinBox_override_virtual_connectNotify".}
 proc fQDoubleSpinBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDoubleSpinBox_virtualbase_disconnectNotify".}
 proc fcQDoubleSpinBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDoubleSpinBox_override_virtual_disconnectNotify".}
+proc fcQDoubleSpinBox_staticMetaObject(): pointer {.importc: "QDoubleSpinBox_staticMetaObject".}
 proc fcQDoubleSpinBox_delete(self: pointer) {.importc: "QDoubleSpinBox_delete".}
 
 
@@ -1888,6 +1890,8 @@ proc miqt_exec_callback_QSpinBox_disconnectNotify(self: ptr cQSpinBox, slot: int
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSpinBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSpinBox_staticMetaObject())
 proc delete*(self: QSpinBox) =
   fcQSpinBox_delete(self.h)
 
@@ -3427,5 +3431,7 @@ proc miqt_exec_callback_QDoubleSpinBox_disconnectNotify(self: ptr cQDoubleSpinBo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QDoubleSpinBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDoubleSpinBox_staticMetaObject())
 proc delete*(self: QDoubleSpinBox) =
   fcQDoubleSpinBox_delete(self.h)

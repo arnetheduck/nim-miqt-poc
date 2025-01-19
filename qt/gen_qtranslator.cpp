@@ -621,6 +621,7 @@ void QTranslator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTranslator*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTranslator_staticMetaObject() { return &QTranslator::staticMetaObject; }
 void QTranslator_delete(QTranslator* self) {
 	delete self;
 }

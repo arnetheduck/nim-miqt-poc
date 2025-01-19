@@ -98,6 +98,7 @@ bool QDataWidgetMapper_override_virtual_connectNotify(void* self, intptr_t slot)
 void QDataWidgetMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDataWidgetMapper_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDataWidgetMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDataWidgetMapper_staticMetaObject();
 void QDataWidgetMapper_delete(QDataWidgetMapper* self);
 
 #ifdef __cplusplus

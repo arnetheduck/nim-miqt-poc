@@ -121,6 +121,7 @@ proc fQTimeLine_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQTimeLine_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTimeLine_override_virtual_connectNotify".}
 proc fQTimeLine_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTimeLine_virtualbase_disconnectNotify".}
 proc fcQTimeLine_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTimeLine_override_virtual_disconnectNotify".}
+proc fcQTimeLine_staticMetaObject(): pointer {.importc: "QTimeLine_staticMetaObject".}
 proc fcQTimeLine_delete(self: pointer) {.importc: "QTimeLine_delete".}
 
 
@@ -497,5 +498,7 @@ proc miqt_exec_callback_QTimeLine_disconnectNotify(self: ptr cQTimeLine, slot: i
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QTimeLine): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTimeLine_staticMetaObject())
 proc delete*(self: QTimeLine) =
   fcQTimeLine_delete(self.h)

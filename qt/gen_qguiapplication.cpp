@@ -938,6 +938,7 @@ void QGuiApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGuiApplication_staticMetaObject() { return &QGuiApplication::staticMetaObject; }
 void QGuiApplication_delete(QGuiApplication* self) {
 	delete self;
 }

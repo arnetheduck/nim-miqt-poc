@@ -2166,6 +2166,7 @@ void QDialogButtonBox_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQDialogButtonBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDialogButtonBox_staticMetaObject() { return &QDialogButtonBox::staticMetaObject; }
 void QDialogButtonBox_delete(QDialogButtonBox* self) {
 	delete self;
 }

@@ -173,6 +173,7 @@ proc fQsciLexerMatlab_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQsciLexerMatlab_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerMatlab_override_virtual_connectNotify".}
 proc fQsciLexerMatlab_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerMatlab_virtualbase_disconnectNotify".}
 proc fcQsciLexerMatlab_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerMatlab_override_virtual_disconnectNotify".}
+proc fcQsciLexerMatlab_staticMetaObject(): pointer {.importc: "QsciLexerMatlab_staticMetaObject".}
 proc fcQsciLexerMatlab_delete(self: pointer) {.importc: "QsciLexerMatlab_delete".}
 
 
@@ -1287,5 +1288,7 @@ proc miqt_exec_callback_QsciLexerMatlab_disconnectNotify(self: ptr cQsciLexerMat
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerMatlab): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerMatlab_staticMetaObject())
 proc delete*(self: QsciLexerMatlab) =
   fcQsciLexerMatlab_delete(self.h)

@@ -2013,6 +2013,7 @@ void QQuickPaintedItem_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQQuickPaintedItem*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickPaintedItem_staticMetaObject() { return &QQuickPaintedItem::staticMetaObject; }
 void QQuickPaintedItem_delete(QQuickPaintedItem* self) {
 	delete self;
 }

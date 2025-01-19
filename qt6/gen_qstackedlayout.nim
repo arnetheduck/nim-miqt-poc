@@ -164,6 +164,7 @@ proc fQStackedLayout_virtualbase_widget(self: pointer, ): pointer{.importc: "QSt
 proc fcQStackedLayout_override_virtual_widget(self: pointer, slot: int) {.importc: "QStackedLayout_override_virtual_widget".}
 proc fQStackedLayout_virtualbase_spacerItem(self: pointer, ): pointer{.importc: "QStackedLayout_virtualbase_spacerItem".}
 proc fcQStackedLayout_override_virtual_spacerItem(self: pointer, slot: int) {.importc: "QStackedLayout_override_virtual_spacerItem".}
+proc fcQStackedLayout_staticMetaObject(): pointer {.importc: "QStackedLayout_staticMetaObject".}
 proc fcQStackedLayout_delete(self: pointer) {.importc: "QStackedLayout_delete".}
 
 
@@ -1058,5 +1059,7 @@ proc miqt_exec_callback_QStackedLayout_spacerItem(self: ptr cQStackedLayout, slo
   let virtualReturn = nimfunc[](superCall )
 
   virtualReturn.h
+proc staticMetaObject*(_: type QStackedLayout): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQStackedLayout_staticMetaObject())
 proc delete*(self: QStackedLayout) =
   fcQStackedLayout_delete(self.h)

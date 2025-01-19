@@ -1793,6 +1793,7 @@ void QsciLexerJSON_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQsciLexerJSON*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerJSON_staticMetaObject() { return &QsciLexerJSON::staticMetaObject; }
 void QsciLexerJSON_delete(QsciLexerJSON* self) {
 	delete self;
 }

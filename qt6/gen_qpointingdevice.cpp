@@ -53,6 +53,7 @@ long long QPointingDeviceUniqueId_numericId(const QPointingDeviceUniqueId* self)
 	return static_cast<long long>(_ret);
 }
 
+const QMetaObject* QPointingDeviceUniqueId_staticMetaObject() { return &QPointingDeviceUniqueId::staticMetaObject; }
 void QPointingDeviceUniqueId_delete(QPointingDeviceUniqueId* self) {
 	delete self;
 }
@@ -519,6 +520,7 @@ void QPointingDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPointingDevice_staticMetaObject() { return &QPointingDevice::staticMetaObject; }
 void QPointingDevice_delete(QPointingDevice* self) {
 	delete self;
 }

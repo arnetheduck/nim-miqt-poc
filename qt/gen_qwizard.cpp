@@ -2694,6 +2694,7 @@ void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWizard_staticMetaObject() { return &QWizard::staticMetaObject; }
 void QWizard_delete(QWizard* self) {
 	delete self;
 }
@@ -4903,6 +4904,7 @@ void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWizardPage_staticMetaObject() { return &QWizardPage::staticMetaObject; }
 void QWizardPage_delete(QWizardPage* self) {
 	delete self;
 }

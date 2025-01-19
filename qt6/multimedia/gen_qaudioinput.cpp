@@ -473,6 +473,7 @@ void QAudioInput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioInput_staticMetaObject() { return &QAudioInput::staticMetaObject; }
 void QAudioInput_delete(QAudioInput* self) {
 	delete self;
 }

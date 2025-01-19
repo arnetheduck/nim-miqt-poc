@@ -386,6 +386,7 @@ bool QPlainTextEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPlainTextEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPlainTextEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPlainTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPlainTextEdit_staticMetaObject();
 void QPlainTextEdit_delete(QPlainTextEdit* self);
 
 QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document);
@@ -446,6 +447,7 @@ bool QPlainTextDocumentLayout_override_virtual_connectNotify(void* self, intptr_
 void QPlainTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPlainTextDocumentLayout_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPlainTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPlainTextDocumentLayout_staticMetaObject();
 void QPlainTextDocumentLayout_delete(QPlainTextDocumentLayout* self);
 
 #ifdef __cplusplus

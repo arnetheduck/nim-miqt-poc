@@ -1325,6 +1325,7 @@ void QIODevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QIODevice_staticMetaObject() { return &QIODevice::staticMetaObject; }
 void QIODevice_delete(QIODevice* self) {
 	delete self;
 }

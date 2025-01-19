@@ -208,6 +208,7 @@ bool QFontComboBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFontComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFontComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFontComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QFontComboBox_staticMetaObject();
 void QFontComboBox_delete(QFontComboBox* self);
 
 #ifdef __cplusplus

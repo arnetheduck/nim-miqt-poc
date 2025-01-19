@@ -90,6 +90,7 @@ bool QsciAPIs_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciAPIs_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciAPIs_staticMetaObject();
 void QsciAPIs_delete(QsciAPIs* self);
 
 #ifdef __cplusplus

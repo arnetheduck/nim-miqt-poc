@@ -2710,6 +2710,7 @@ bool QGraphicsProxyWidget_virtualbase_isEmpty(const void* self) {
 	return ( (const MiqtVirtualQGraphicsProxyWidget*)(self) )->virtualbase_isEmpty();
 }
 
+const QMetaObject* QGraphicsProxyWidget_staticMetaObject() { return &QGraphicsProxyWidget::staticMetaObject; }
 void QGraphicsProxyWidget_delete(QGraphicsProxyWidget* self) {
 	delete self;
 }

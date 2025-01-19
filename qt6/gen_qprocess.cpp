@@ -1638,6 +1638,7 @@ void QProcess_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQProcess*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QProcess_staticMetaObject() { return &QProcess::staticMetaObject; }
 void QProcess_delete(QProcess* self) {
 	delete self;
 }

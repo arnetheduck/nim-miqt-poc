@@ -4766,6 +4766,7 @@ void QListWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QListWidget_staticMetaObject() { return &QListWidget::staticMetaObject; }
 void QListWidget_delete(QListWidget* self) {
 	delete self;
 }

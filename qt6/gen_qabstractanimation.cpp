@@ -679,6 +679,7 @@ void QAbstractAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractAnimation_staticMetaObject() { return &QAbstractAnimation::staticMetaObject; }
 void QAbstractAnimation_delete(QAbstractAnimation* self) {
 	delete self;
 }
@@ -1248,6 +1249,7 @@ void QAnimationDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAnimationDriver_staticMetaObject() { return &QAnimationDriver::staticMetaObject; }
 void QAnimationDriver_delete(QAnimationDriver* self) {
 	delete self;
 }

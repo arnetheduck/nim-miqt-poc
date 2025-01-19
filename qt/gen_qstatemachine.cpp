@@ -816,6 +816,7 @@ void QStateMachine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QStateMachine_staticMetaObject() { return &QStateMachine::staticMetaObject; }
 void QStateMachine_delete(QStateMachine* self) {
 	delete self;
 }

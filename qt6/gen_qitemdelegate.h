@@ -125,6 +125,7 @@ bool QItemDelegate_override_virtual_connectNotify(void* self, intptr_t slot);
 void QItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QItemDelegate_staticMetaObject();
 void QItemDelegate_delete(QItemDelegate* self);
 
 #ifdef __cplusplus

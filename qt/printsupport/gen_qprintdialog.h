@@ -219,6 +219,7 @@ bool QPrintDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPrintDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPrintDialog_staticMetaObject();
 void QPrintDialog_delete(QPrintDialog* self);
 
 #ifdef __cplusplus

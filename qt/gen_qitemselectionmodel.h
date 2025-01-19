@@ -148,6 +148,7 @@ bool QItemSelectionModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QItemSelectionModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QItemSelectionModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QItemSelectionModel_staticMetaObject();
 void QItemSelectionModel_delete(QItemSelectionModel* self);
 
 QItemSelection* QItemSelection_new();

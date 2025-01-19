@@ -214,6 +214,7 @@ proc fQFontComboBox_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQFontComboBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFontComboBox_override_virtual_connectNotify".}
 proc fQFontComboBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFontComboBox_virtualbase_disconnectNotify".}
 proc fcQFontComboBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFontComboBox_override_virtual_disconnectNotify".}
+proc fcQFontComboBox_staticMetaObject(): pointer {.importc: "QFontComboBox_staticMetaObject".}
 proc fcQFontComboBox_delete(self: pointer) {.importc: "QFontComboBox_delete".}
 
 
@@ -1553,5 +1554,7 @@ proc miqt_exec_callback_QFontComboBox_disconnectNotify(self: ptr cQFontComboBox,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QFontComboBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFontComboBox_staticMetaObject())
 proc delete*(self: QFontComboBox) =
   fcQFontComboBox_delete(self.h)

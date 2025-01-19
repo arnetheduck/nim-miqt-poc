@@ -103,6 +103,7 @@ proc fQShortcut_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQShortcut_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QShortcut_override_virtual_connectNotify".}
 proc fQShortcut_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QShortcut_virtualbase_disconnectNotify".}
 proc fcQShortcut_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QShortcut_override_virtual_disconnectNotify".}
+proc fcQShortcut_staticMetaObject(): pointer {.importc: "QShortcut_staticMetaObject".}
 proc fcQShortcut_delete(self: pointer) {.importc: "QShortcut_delete".}
 
 
@@ -464,5 +465,7 @@ proc miqt_exec_callback_QShortcut_disconnectNotify(self: ptr cQShortcut, slot: i
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QShortcut): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQShortcut_staticMetaObject())
 proc delete*(self: QShortcut) =
   fcQShortcut_delete(self.h)

@@ -1514,6 +1514,7 @@ QSpacerItem* QFormLayout_virtualbase_spacerItem(void* self) {
 	return ( (MiqtVirtualQFormLayout*)(self) )->virtualbase_spacerItem();
 }
 
+const QMetaObject* QFormLayout_staticMetaObject() { return &QFormLayout::staticMetaObject; }
 void QFormLayout_delete(QFormLayout* self) {
 	delete self;
 }

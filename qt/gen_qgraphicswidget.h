@@ -327,6 +327,7 @@ bool QGraphicsWidget_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsWidget_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsWidget_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsWidget_virtualbase_extension(const void* self, QVariant* variant);
+const QMetaObject* QGraphicsWidget_staticMetaObject();
 void QGraphicsWidget_delete(QGraphicsWidget* self);
 
 #ifdef __cplusplus

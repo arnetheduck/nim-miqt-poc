@@ -280,6 +280,7 @@ proc fQDateTimeEdit_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQDateTimeEdit_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDateTimeEdit_override_virtual_connectNotify".}
 proc fQDateTimeEdit_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDateTimeEdit_virtualbase_disconnectNotify".}
 proc fcQDateTimeEdit_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDateTimeEdit_override_virtual_disconnectNotify".}
+proc fcQDateTimeEdit_staticMetaObject(): pointer {.importc: "QDateTimeEdit_staticMetaObject".}
 proc fcQDateTimeEdit_delete(self: pointer) {.importc: "QDateTimeEdit_delete".}
 proc fcQTimeEdit_new(parent: pointer): ptr cQTimeEdit {.importc: "QTimeEdit_new".}
 proc fcQTimeEdit_new2(): ptr cQTimeEdit {.importc: "QTimeEdit_new2".}
@@ -405,6 +406,7 @@ proc fQTimeEdit_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQTimeEdit_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTimeEdit_override_virtual_connectNotify".}
 proc fQTimeEdit_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTimeEdit_virtualbase_disconnectNotify".}
 proc fcQTimeEdit_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTimeEdit_override_virtual_disconnectNotify".}
+proc fcQTimeEdit_staticMetaObject(): pointer {.importc: "QTimeEdit_staticMetaObject".}
 proc fcQTimeEdit_delete(self: pointer) {.importc: "QTimeEdit_delete".}
 proc fcQDateEdit_new(parent: pointer): ptr cQDateEdit {.importc: "QDateEdit_new".}
 proc fcQDateEdit_new2(): ptr cQDateEdit {.importc: "QDateEdit_new2".}
@@ -530,6 +532,7 @@ proc fQDateEdit_virtualbase_connectNotify(self: pointer, signal: pointer): void{
 proc fcQDateEdit_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDateEdit_override_virtual_connectNotify".}
 proc fQDateEdit_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDateEdit_virtualbase_disconnectNotify".}
 proc fcQDateEdit_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDateEdit_override_virtual_disconnectNotify".}
+proc fcQDateEdit_staticMetaObject(): pointer {.importc: "QDateEdit_staticMetaObject".}
 proc fcQDateEdit_delete(self: pointer) {.importc: "QDateEdit_delete".}
 
 
@@ -2189,6 +2192,8 @@ proc miqt_exec_callback_QDateTimeEdit_disconnectNotify(self: ptr cQDateTimeEdit,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QDateTimeEdit): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDateTimeEdit_staticMetaObject())
 proc delete*(self: QDateTimeEdit) =
   fcQDateTimeEdit_delete(self.h)
 
@@ -3594,6 +3599,8 @@ proc miqt_exec_callback_QTimeEdit_disconnectNotify(self: ptr cQTimeEdit, slot: i
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QTimeEdit): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTimeEdit_staticMetaObject())
 proc delete*(self: QTimeEdit) =
   fcQTimeEdit_delete(self.h)
 
@@ -4999,5 +5006,7 @@ proc miqt_exec_callback_QDateEdit_disconnectNotify(self: ptr cQDateEdit, slot: i
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QDateEdit): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDateEdit_staticMetaObject())
 proc delete*(self: QDateEdit) =
   fcQDateEdit_delete(self.h)

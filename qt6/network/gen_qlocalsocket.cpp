@@ -1264,6 +1264,7 @@ void QLocalSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLocalSocket_staticMetaObject() { return &QLocalSocket::staticMetaObject; }
 void QLocalSocket_delete(QLocalSocket* self) {
 	delete self;
 }

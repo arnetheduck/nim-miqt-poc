@@ -112,6 +112,7 @@ proc fQMediaCaptureSession_virtualbase_connectNotify(self: pointer, signal: poin
 proc fcQMediaCaptureSession_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMediaCaptureSession_override_virtual_connectNotify".}
 proc fQMediaCaptureSession_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMediaCaptureSession_virtualbase_disconnectNotify".}
 proc fcQMediaCaptureSession_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMediaCaptureSession_override_virtual_disconnectNotify".}
+proc fcQMediaCaptureSession_staticMetaObject(): pointer {.importc: "QMediaCaptureSession_staticMetaObject".}
 proc fcQMediaCaptureSession_delete(self: pointer) {.importc: "QMediaCaptureSession_delete".}
 
 
@@ -504,5 +505,7 @@ proc miqt_exec_callback_QMediaCaptureSession_disconnectNotify(self: ptr cQMediaC
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QMediaCaptureSession): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaCaptureSession_staticMetaObject())
 proc delete*(self: QMediaCaptureSession) =
   fcQMediaCaptureSession_delete(self.h)

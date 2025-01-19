@@ -127,6 +127,7 @@ bool QRadioTuner_override_virtual_connectNotify(void* self, intptr_t slot);
 void QRadioTuner_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QRadioTuner_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QRadioTuner_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QRadioTuner_staticMetaObject();
 void QRadioTuner_delete(QRadioTuner* self);
 
 #ifdef __cplusplus

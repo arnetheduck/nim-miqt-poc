@@ -2780,6 +2780,7 @@ void QTextBrowser_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTextBrowser_staticMetaObject() { return &QTextBrowser::staticMetaObject; }
 void QTextBrowser_delete(QTextBrowser* self) {
 	delete self;
 }

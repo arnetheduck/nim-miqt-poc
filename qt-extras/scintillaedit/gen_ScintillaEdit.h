@@ -882,6 +882,7 @@ bool ScintillaEditBase_override_virtual_connectNotify(void* self, intptr_t slot)
 void ScintillaEditBase_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool ScintillaEditBase_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void ScintillaEditBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* ScintillaEditBase_staticMetaObject();
 void ScintillaEditBase_delete(ScintillaEditBase* self);
 
 ScintillaDocument* ScintillaDocument_new();
@@ -964,6 +965,7 @@ bool ScintillaDocument_override_virtual_connectNotify(void* self, intptr_t slot)
 void ScintillaDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool ScintillaDocument_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void ScintillaDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* ScintillaDocument_staticMetaObject();
 void ScintillaDocument_delete(ScintillaDocument* self);
 
 ScintillaEdit* ScintillaEdit_new(QWidget* parent);
@@ -1895,6 +1897,7 @@ bool ScintillaEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void ScintillaEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool ScintillaEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void ScintillaEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* ScintillaEdit_staticMetaObject();
 void ScintillaEdit_delete(ScintillaEdit* self);
 
 #ifdef __cplusplus

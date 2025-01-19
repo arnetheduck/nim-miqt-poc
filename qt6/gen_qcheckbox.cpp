@@ -2193,6 +2193,7 @@ void QCheckBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCheckBox_staticMetaObject() { return &QCheckBox::staticMetaObject; }
 void QCheckBox_delete(QCheckBox* self) {
 	delete self;
 }

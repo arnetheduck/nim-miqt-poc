@@ -514,6 +514,7 @@ void QAudioSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQAudioSource*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioSource_staticMetaObject() { return &QAudioSource::staticMetaObject; }
 void QAudioSource_delete(QAudioSource* self) {
 	delete self;
 }

@@ -385,6 +385,7 @@ bool QTextEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTextEdit_staticMetaObject();
 void QTextEdit_delete(QTextEdit* self);
 
 QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelection* param1);

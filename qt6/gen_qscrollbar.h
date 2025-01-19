@@ -210,6 +210,7 @@ bool QScrollBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScrollBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScrollBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QScrollBar_staticMetaObject();
 void QScrollBar_delete(QScrollBar* self);
 
 #ifdef __cplusplus

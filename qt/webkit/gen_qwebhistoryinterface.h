@@ -68,6 +68,7 @@ bool QWebHistoryInterface_override_virtual_connectNotify(void* self, intptr_t sl
 void QWebHistoryInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebHistoryInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebHistoryInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWebHistoryInterface_staticMetaObject();
 void QWebHistoryInterface_delete(QWebHistoryInterface* self);
 
 #ifdef __cplusplus

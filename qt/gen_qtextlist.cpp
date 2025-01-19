@@ -606,6 +606,7 @@ void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextList*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTextList_staticMetaObject() { return &QTextList::staticMetaObject; }
 void QTextList_delete(QTextList* self) {
 	delete self;
 }

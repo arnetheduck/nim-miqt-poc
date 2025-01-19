@@ -223,6 +223,7 @@ proc fQAbstractButton_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQAbstractButton_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractButton_override_virtual_connectNotify".}
 proc fQAbstractButton_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractButton_virtualbase_disconnectNotify".}
 proc fcQAbstractButton_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractButton_override_virtual_disconnectNotify".}
+proc fcQAbstractButton_staticMetaObject(): pointer {.importc: "QAbstractButton_staticMetaObject".}
 proc fcQAbstractButton_delete(self: pointer) {.importc: "QAbstractButton_delete".}
 
 
@@ -1678,5 +1679,7 @@ proc miqt_exec_callback_QAbstractButton_disconnectNotify(self: ptr cQAbstractBut
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAbstractButton): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractButton_staticMetaObject())
 proc delete*(self: QAbstractButton) =
   fcQAbstractButton_delete(self.h)

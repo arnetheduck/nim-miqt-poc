@@ -591,6 +591,7 @@ void QThread_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThread*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QThread_staticMetaObject() { return &QThread::staticMetaObject; }
 void QThread_delete(QThread* self) {
 	delete self;
 }

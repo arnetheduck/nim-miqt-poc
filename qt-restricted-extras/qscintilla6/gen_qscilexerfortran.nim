@@ -155,6 +155,7 @@ proc fQsciLexerFortran_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQsciLexerFortran_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerFortran_override_virtual_connectNotify".}
 proc fQsciLexerFortran_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerFortran_virtualbase_disconnectNotify".}
 proc fcQsciLexerFortran_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerFortran_override_virtual_disconnectNotify".}
+proc fcQsciLexerFortran_staticMetaObject(): pointer {.importc: "QsciLexerFortran_staticMetaObject".}
 proc fcQsciLexerFortran_delete(self: pointer) {.importc: "QsciLexerFortran_delete".}
 
 
@@ -1256,5 +1257,7 @@ proc miqt_exec_callback_QsciLexerFortran_disconnectNotify(self: ptr cQsciLexerFo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerFortran): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerFortran_staticMetaObject())
 proc delete*(self: QsciLexerFortran) =
   fcQsciLexerFortran_delete(self.h)

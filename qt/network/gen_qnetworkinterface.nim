@@ -78,10 +78,12 @@ export gen_qnetworkinterface_types
 
 import
   gen_qdeadlinetimer,
-  gen_qhostaddress
+  gen_qhostaddress,
+  gen_qobjectdefs
 export
   gen_qdeadlinetimer,
-  gen_qhostaddress
+  gen_qhostaddress,
+  gen_qobjectdefs
 
 type cQNetworkAddressEntry*{.exportc: "QNetworkAddressEntry", incompleteStruct.} = object
 type cQNetworkInterface*{.exportc: "QNetworkInterface", incompleteStruct.} = object
@@ -129,6 +131,7 @@ proc fcQNetworkInterface_interfaceFromIndex(index: cint): pointer {.importc: "QN
 proc fcQNetworkInterface_interfaceNameFromIndex(index: cint): struct_miqt_string {.importc: "QNetworkInterface_interfaceNameFromIndex".}
 proc fcQNetworkInterface_allInterfaces(): struct_miqt_array {.importc: "QNetworkInterface_allInterfaces".}
 proc fcQNetworkInterface_allAddresses(): struct_miqt_array {.importc: "QNetworkInterface_allAddresses".}
+proc fcQNetworkInterface_staticMetaObject(): pointer {.importc: "QNetworkInterface_staticMetaObject".}
 proc fcQNetworkInterface_delete(self: pointer) {.importc: "QNetworkInterface_delete".}
 
 
@@ -330,5 +333,7 @@ proc allAddresses*(_: type QNetworkInterface, ): seq[gen_qhostaddress.QHostAddre
     vx_ret[i] = gen_qhostaddress.QHostAddress(h: v_outCast[i])
   vx_ret
 
+proc staticMetaObject*(_: type QNetworkInterface): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQNetworkInterface_staticMetaObject())
 proc delete*(self: QNetworkInterface) =
   fcQNetworkInterface_delete(self.h)

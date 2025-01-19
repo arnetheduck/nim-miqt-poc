@@ -753,6 +753,7 @@ void QSinglePointEvent_setExclusivePointGrabber(QSinglePointEvent* self, QObject
 	self->setExclusivePointGrabber(exclusiveGrabber);
 }
 
+const QMetaObject* QSinglePointEvent_staticMetaObject() { return &QSinglePointEvent::staticMetaObject; }
 void QSinglePointEvent_delete(QSinglePointEvent* self) {
 	delete self;
 }
@@ -1956,6 +1957,7 @@ void QWheelEvent_virtualbase_setAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQWheelEvent*)(self) )->virtualbase_setAccepted(accepted);
 }
 
+const QMetaObject* QWheelEvent_staticMetaObject() { return &QWheelEvent::staticMetaObject; }
 void QWheelEvent_delete(QWheelEvent* self) {
 	delete self;
 }

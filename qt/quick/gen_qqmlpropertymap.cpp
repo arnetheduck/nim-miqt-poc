@@ -574,6 +574,7 @@ void QQmlPropertyMap_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQQmlPropertyMap*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlPropertyMap_staticMetaObject() { return &QQmlPropertyMap::staticMetaObject; }
 void QQmlPropertyMap_delete(QQmlPropertyMap* self) {
 	delete self;
 }

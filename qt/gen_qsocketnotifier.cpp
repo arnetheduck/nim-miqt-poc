@@ -455,6 +455,7 @@ void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSocketNotifier_staticMetaObject() { return &QSocketNotifier::staticMetaObject; }
 void QSocketNotifier_delete(QSocketNotifier* self) {
 	delete self;
 }

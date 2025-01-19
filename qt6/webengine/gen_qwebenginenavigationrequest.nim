@@ -80,6 +80,7 @@ proc fcQWebEngineNavigationRequest_actionChanged(self: pointer, ): void {.import
 proc fQWebEngineNavigationRequest_connect_actionChanged(self: pointer, slot: int) {.importc: "QWebEngineNavigationRequest_connect_actionChanged".}
 proc fcQWebEngineNavigationRequest_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineNavigationRequest_tr2".}
 proc fcQWebEngineNavigationRequest_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineNavigationRequest_tr3".}
+proc fcQWebEngineNavigationRequest_staticMetaObject(): pointer {.importc: "QWebEngineNavigationRequest_staticMetaObject".}
 proc fcQWebEngineNavigationRequest_delete(self: pointer) {.importc: "QWebEngineNavigationRequest_delete".}
 
 
@@ -154,5 +155,7 @@ proc tr3*(_: type QWebEngineNavigationRequest, s: cstring, c: cstring, n: cint):
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebEngineNavigationRequest): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineNavigationRequest_staticMetaObject())
 proc delete*(self: QWebEngineNavigationRequest) =
   fcQWebEngineNavigationRequest_delete(self.h)

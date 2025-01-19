@@ -1954,6 +1954,7 @@ void QsciLexerSQL_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQsciLexerSQL*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerSQL_staticMetaObject() { return &QsciLexerSQL::staticMetaObject; }
 void QsciLexerSQL_delete(QsciLexerSQL* self) {
 	delete self;
 }

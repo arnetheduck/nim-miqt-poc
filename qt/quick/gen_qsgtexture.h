@@ -110,6 +110,7 @@ bool QSGTexture_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSGTexture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSGTexture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSGTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSGTexture_staticMetaObject();
 void QSGTexture_delete(QSGTexture* self);
 
 QSGDynamicTexture* QSGDynamicTexture_new();
@@ -158,6 +159,7 @@ bool QSGDynamicTexture_override_virtual_connectNotify(void* self, intptr_t slot)
 void QSGDynamicTexture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSGDynamicTexture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSGDynamicTexture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSGDynamicTexture_staticMetaObject();
 void QSGDynamicTexture_delete(QSGDynamicTexture* self);
 
 void QSGTexture__NativeTexture_delete(QSGTexture__NativeTexture* self);

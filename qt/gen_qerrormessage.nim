@@ -190,6 +190,7 @@ proc fQErrorMessage_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQErrorMessage_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QErrorMessage_override_virtual_connectNotify".}
 proc fQErrorMessage_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QErrorMessage_virtualbase_disconnectNotify".}
 proc fcQErrorMessage_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QErrorMessage_override_virtual_disconnectNotify".}
+proc fcQErrorMessage_staticMetaObject(): pointer {.importc: "QErrorMessage_staticMetaObject".}
 proc fcQErrorMessage_delete(self: pointer) {.importc: "QErrorMessage_delete".}
 
 
@@ -1511,5 +1512,7 @@ proc miqt_exec_callback_QErrorMessage_disconnectNotify(self: ptr cQErrorMessage,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QErrorMessage): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQErrorMessage_staticMetaObject())
 proc delete*(self: QErrorMessage) =
   fcQErrorMessage_delete(self.h)

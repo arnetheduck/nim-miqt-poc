@@ -205,6 +205,7 @@ proc fQsciLexerCoffeeScript_virtualbase_connectNotify(self: pointer, signal: poi
 proc fcQsciLexerCoffeeScript_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_connectNotify".}
 proc fQsciLexerCoffeeScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerCoffeeScript_virtualbase_disconnectNotify".}
 proc fcQsciLexerCoffeeScript_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_disconnectNotify".}
+proc fcQsciLexerCoffeeScript_staticMetaObject(): pointer {.importc: "QsciLexerCoffeeScript_staticMetaObject".}
 proc fcQsciLexerCoffeeScript_delete(self: pointer) {.importc: "QsciLexerCoffeeScript_delete".}
 
 
@@ -1386,5 +1387,7 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_disconnectNotify(self: ptr cQsciLe
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerCoffeeScript): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerCoffeeScript_staticMetaObject())
 proc delete*(self: QsciLexerCoffeeScript) =
   fcQsciLexerCoffeeScript_delete(self.h)

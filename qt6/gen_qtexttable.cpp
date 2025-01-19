@@ -562,6 +562,7 @@ void QTextTable_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextTable*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTextTable_staticMetaObject() { return &QTextTable::staticMetaObject; }
 void QTextTable_delete(QTextTable* self) {
 	delete self;
 }

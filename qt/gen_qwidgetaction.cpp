@@ -526,6 +526,7 @@ void QWidgetAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWidgetAction_staticMetaObject() { return &QWidgetAction::staticMetaObject; }
 void QWidgetAction_delete(QWidgetAction* self) {
 	delete self;
 }

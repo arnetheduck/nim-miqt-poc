@@ -244,6 +244,7 @@ bool QToolBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QToolBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QToolBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QToolBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QToolBar_staticMetaObject();
 void QToolBar_delete(QToolBar* self);
 
 #ifdef __cplusplus

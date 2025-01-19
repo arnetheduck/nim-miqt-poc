@@ -170,6 +170,7 @@ bool QMediaPlayer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaPlayer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaPlayer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMediaPlayer_staticMetaObject();
 void QMediaPlayer_delete(QMediaPlayer* self);
 
 #ifdef __cplusplus

@@ -159,6 +159,7 @@ bool QsciLexerVerilog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerVerilog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerVerilog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerVerilog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerVerilog_staticMetaObject();
 void QsciLexerVerilog_delete(QsciLexerVerilog* self);
 
 #ifdef __cplusplus

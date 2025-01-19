@@ -2211,6 +2211,7 @@ void QToolBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQToolBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QToolBox_staticMetaObject() { return &QToolBox::staticMetaObject; }
 void QToolBox_delete(QToolBox* self) {
 	delete self;
 }

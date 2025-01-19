@@ -99,6 +99,7 @@ proc fQQmlContext_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQQmlContext_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlContext_override_virtual_connectNotify".}
 proc fQQmlContext_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlContext_virtualbase_disconnectNotify".}
 proc fcQQmlContext_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlContext_override_virtual_disconnectNotify".}
+proc fcQQmlContext_staticMetaObject(): pointer {.importc: "QQmlContext_staticMetaObject".}
 proc fcQQmlContext_delete(self: pointer) {.importc: "QQmlContext_delete".}
 proc fcQQmlContextPropertyPair_new(param1: pointer): ptr cQQmlContextPropertyPair {.importc: "QQmlContext__PropertyPair_new".}
 proc fcQQmlContextPropertyPair_operatorAssign(self: pointer, param1: pointer): void {.importc: "QQmlContext__PropertyPair_operatorAssign".}
@@ -428,6 +429,8 @@ proc miqt_exec_callback_QQmlContext_disconnectNotify(self: ptr cQQmlContext, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QQmlContext): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQmlContext_staticMetaObject())
 proc delete*(self: QQmlContext) =
   fcQQmlContext_delete(self.h)
 

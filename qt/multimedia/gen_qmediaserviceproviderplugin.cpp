@@ -374,6 +374,7 @@ struct miqt_string QMediaServiceProviderPlugin_trUtf83(const char* s, const char
 	return _ms;
 }
 
+const QMetaObject* QMediaServiceProviderPlugin_staticMetaObject() { return &QMediaServiceProviderPlugin::staticMetaObject; }
 void QMediaServiceProviderPlugin_delete(QMediaServiceProviderPlugin* self) {
 	delete self;
 }

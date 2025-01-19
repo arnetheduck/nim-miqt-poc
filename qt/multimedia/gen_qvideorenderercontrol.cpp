@@ -107,6 +107,7 @@ struct miqt_string QVideoRendererControl_trUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
+const QMetaObject* QVideoRendererControl_staticMetaObject() { return &QVideoRendererControl::staticMetaObject; }
 void QVideoRendererControl_delete(QVideoRendererControl* self) {
 	delete self;
 }

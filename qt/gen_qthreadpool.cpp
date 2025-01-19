@@ -515,6 +515,7 @@ void QThreadPool_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThreadPool*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QThreadPool_staticMetaObject() { return &QThreadPool::staticMetaObject; }
 void QThreadPool_delete(QThreadPool* self) {
 	delete self;
 }

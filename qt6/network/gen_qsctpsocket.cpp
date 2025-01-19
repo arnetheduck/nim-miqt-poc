@@ -1545,6 +1545,7 @@ void QSctpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSctpSocket_staticMetaObject() { return &QSctpSocket::staticMetaObject; }
 void QSctpSocket_delete(QSctpSocket* self) {
 	delete self;
 }

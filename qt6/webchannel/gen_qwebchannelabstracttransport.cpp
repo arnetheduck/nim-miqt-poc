@@ -452,6 +452,7 @@ void QWebChannelAbstractTransport_virtualbase_disconnectNotify(void* self, QMeta
 	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebChannelAbstractTransport_staticMetaObject() { return &QWebChannelAbstractTransport::staticMetaObject; }
 void QWebChannelAbstractTransport_delete(QWebChannelAbstractTransport* self) {
 	delete self;
 }

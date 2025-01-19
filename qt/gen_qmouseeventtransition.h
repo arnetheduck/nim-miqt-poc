@@ -82,6 +82,7 @@ bool QMouseEventTransition_override_virtual_connectNotify(void* self, intptr_t s
 void QMouseEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMouseEventTransition_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMouseEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMouseEventTransition_staticMetaObject();
 void QMouseEventTransition_delete(QMouseEventTransition* self);
 
 #ifdef __cplusplus

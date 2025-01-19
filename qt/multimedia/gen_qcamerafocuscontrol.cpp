@@ -199,6 +199,7 @@ struct miqt_string QCameraFocusControl_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
+const QMetaObject* QCameraFocusControl_staticMetaObject() { return &QCameraFocusControl::staticMetaObject; }
 void QCameraFocusControl_delete(QCameraFocusControl* self) {
 	delete self;
 }

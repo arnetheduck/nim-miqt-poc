@@ -2263,6 +2263,7 @@ void QAbstractScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractScrollArea_staticMetaObject() { return &QAbstractScrollArea::staticMetaObject; }
 void QAbstractScrollArea_delete(QAbstractScrollArea* self) {
 	delete self;
 }

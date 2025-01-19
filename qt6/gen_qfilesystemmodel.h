@@ -215,6 +215,7 @@ bool QFileSystemModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFileSystemModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QFileSystemModel_staticMetaObject();
 void QFileSystemModel_delete(QFileSystemModel* self);
 
 #ifdef __cplusplus

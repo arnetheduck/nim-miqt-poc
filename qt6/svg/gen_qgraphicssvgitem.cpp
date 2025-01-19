@@ -1856,6 +1856,7 @@ QVariant* QGraphicsSvgItem_virtualbase_extension(const void* self, QVariant* var
 	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->virtualbase_extension(variant);
 }
 
+const QMetaObject* QGraphicsSvgItem_staticMetaObject() { return &QGraphicsSvgItem::staticMetaObject; }
 void QGraphicsSvgItem_delete(QGraphicsSvgItem* self) {
 	delete self;
 }

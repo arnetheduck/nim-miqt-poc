@@ -96,6 +96,7 @@ bool QGraphicsItemAnimation_override_virtual_connectNotify(void* self, intptr_t 
 void QGraphicsItemAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsItemAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsItemAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsItemAnimation_staticMetaObject();
 void QGraphicsItemAnimation_delete(QGraphicsItemAnimation* self);
 
 #ifdef __cplusplus

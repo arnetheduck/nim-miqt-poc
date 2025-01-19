@@ -207,6 +207,7 @@ bool QKeySequenceEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QKeySequenceEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QKeySequenceEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QKeySequenceEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QKeySequenceEdit_staticMetaObject();
 void QKeySequenceEdit_delete(QKeySequenceEdit* self);
 
 #ifdef __cplusplus

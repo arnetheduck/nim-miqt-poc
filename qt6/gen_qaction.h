@@ -142,6 +142,7 @@ bool QAction_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAction_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAction_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAction_staticMetaObject();
 void QAction_delete(QAction* self);
 
 #ifdef __cplusplus

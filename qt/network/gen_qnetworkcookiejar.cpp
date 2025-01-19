@@ -748,6 +748,7 @@ void QNetworkCookieJar_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQNetworkCookieJar*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QNetworkCookieJar_staticMetaObject() { return &QNetworkCookieJar::staticMetaObject; }
 void QNetworkCookieJar_delete(QNetworkCookieJar* self) {
 	delete self;
 }

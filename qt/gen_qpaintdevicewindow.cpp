@@ -118,6 +118,7 @@ struct miqt_string QPaintDeviceWindow_trUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
+const QMetaObject* QPaintDeviceWindow_staticMetaObject() { return &QPaintDeviceWindow::staticMetaObject; }
 void QPaintDeviceWindow_delete(QPaintDeviceWindow* self) {
 	delete self;
 }

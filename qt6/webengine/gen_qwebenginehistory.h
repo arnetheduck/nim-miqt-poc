@@ -62,6 +62,7 @@ struct miqt_map /* of int to struct miqt_string */  QWebEngineHistoryModel_roleN
 void QWebEngineHistoryModel_reset(QWebEngineHistoryModel* self);
 struct miqt_string QWebEngineHistoryModel_tr2(const char* s, const char* c);
 struct miqt_string QWebEngineHistoryModel_tr3(const char* s, const char* c, int n);
+const QMetaObject* QWebEngineHistoryModel_staticMetaObject();
 
 void QWebEngineHistory_virtbase(QWebEngineHistory* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineHistory_metaObject(const QWebEngineHistory* self);
@@ -88,6 +89,7 @@ QWebEngineHistoryModel* QWebEngineHistory_backItemsModel(const QWebEngineHistory
 QWebEngineHistoryModel* QWebEngineHistory_forwardItemsModel(const QWebEngineHistory* self);
 struct miqt_string QWebEngineHistory_tr2(const char* s, const char* c);
 struct miqt_string QWebEngineHistory_tr3(const char* s, const char* c, int n);
+const QMetaObject* QWebEngineHistory_staticMetaObject();
 
 #ifdef __cplusplus
 } /* extern C */

@@ -142,6 +142,7 @@ bool QsciLexerEDIFACT_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerEDIFACT_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerEDIFACT_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerEDIFACT_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerEDIFACT_staticMetaObject();
 void QsciLexerEDIFACT_delete(QsciLexerEDIFACT* self);
 
 #ifdef __cplusplus

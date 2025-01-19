@@ -619,6 +619,7 @@ void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QOffscreenSurface_staticMetaObject() { return &QOffscreenSurface::staticMetaObject; }
 void QOffscreenSurface_delete(QOffscreenSurface* self) {
 	delete self;
 }

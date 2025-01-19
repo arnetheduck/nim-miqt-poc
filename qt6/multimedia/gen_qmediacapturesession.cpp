@@ -531,6 +531,7 @@ void QMediaCaptureSession_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQMediaCaptureSession*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMediaCaptureSession_staticMetaObject() { return &QMediaCaptureSession::staticMetaObject; }
 void QMediaCaptureSession_delete(QMediaCaptureSession* self) {
 	delete self;
 }

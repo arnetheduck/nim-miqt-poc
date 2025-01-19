@@ -221,6 +221,7 @@ proc fQQuickPaintedItem_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQQuickPaintedItem_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickPaintedItem_override_virtual_connectNotify".}
 proc fQQuickPaintedItem_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickPaintedItem_virtualbase_disconnectNotify".}
 proc fcQQuickPaintedItem_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickPaintedItem_override_virtual_disconnectNotify".}
+proc fcQQuickPaintedItem_staticMetaObject(): pointer {.importc: "QQuickPaintedItem_staticMetaObject".}
 proc fcQQuickPaintedItem_delete(self: pointer) {.importc: "QQuickPaintedItem_delete".}
 
 
@@ -1493,5 +1494,7 @@ proc miqt_exec_callback_QQuickPaintedItem_disconnectNotify(self: ptr cQQuickPain
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QQuickPaintedItem): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickPaintedItem_staticMetaObject())
 proc delete*(self: QQuickPaintedItem) =
   fcQQuickPaintedItem_delete(self.h)

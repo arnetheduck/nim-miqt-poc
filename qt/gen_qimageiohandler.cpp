@@ -1141,6 +1141,7 @@ void QImageIOPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QImageIOPlugin_staticMetaObject() { return &QImageIOPlugin::staticMetaObject; }
 void QImageIOPlugin_delete(QImageIOPlugin* self) {
 	delete self;
 }

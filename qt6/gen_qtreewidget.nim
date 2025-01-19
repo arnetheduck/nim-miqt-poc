@@ -472,6 +472,7 @@ proc fQTreeWidget_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQTreeWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QTreeWidget_override_virtual_connectNotify".}
 proc fQTreeWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QTreeWidget_virtualbase_disconnectNotify".}
 proc fcQTreeWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QTreeWidget_override_virtual_disconnectNotify".}
+proc fcQTreeWidget_staticMetaObject(): pointer {.importc: "QTreeWidget_staticMetaObject".}
 proc fcQTreeWidget_delete(self: pointer) {.importc: "QTreeWidget_delete".}
 
 
@@ -3792,5 +3793,7 @@ proc miqt_exec_callback_QTreeWidget_disconnectNotify(self: ptr cQTreeWidget, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QTreeWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTreeWidget_staticMetaObject())
 proc delete*(self: QTreeWidget) =
   fcQTreeWidget_delete(self.h)

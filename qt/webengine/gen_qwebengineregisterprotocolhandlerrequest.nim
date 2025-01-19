@@ -38,8 +38,10 @@ import gen_qwebengineregisterprotocolhandlerrequest_types
 export gen_qwebengineregisterprotocolhandlerrequest_types
 
 import
+  gen_qobjectdefs,
   gen_qurl
 export
+  gen_qobjectdefs,
   gen_qurl
 
 type cQWebEngineRegisterProtocolHandlerRequest*{.exportc: "QWebEngineRegisterProtocolHandlerRequest", incompleteStruct.} = object
@@ -52,6 +54,7 @@ proc fcQWebEngineRegisterProtocolHandlerRequest_origin(self: pointer, ): pointer
 proc fcQWebEngineRegisterProtocolHandlerRequest_scheme(self: pointer, ): struct_miqt_string {.importc: "QWebEngineRegisterProtocolHandlerRequest_scheme".}
 proc fcQWebEngineRegisterProtocolHandlerRequest_operatorEqual(self: pointer, that: pointer): bool {.importc: "QWebEngineRegisterProtocolHandlerRequest_operatorEqual".}
 proc fcQWebEngineRegisterProtocolHandlerRequest_operatorNotEqual(self: pointer, that: pointer): bool {.importc: "QWebEngineRegisterProtocolHandlerRequest_operatorNotEqual".}
+proc fcQWebEngineRegisterProtocolHandlerRequest_staticMetaObject(): pointer {.importc: "QWebEngineRegisterProtocolHandlerRequest_staticMetaObject".}
 proc fcQWebEngineRegisterProtocolHandlerRequest_delete(self: pointer) {.importc: "QWebEngineRegisterProtocolHandlerRequest_delete".}
 
 
@@ -90,5 +93,7 @@ proc operatorNotEqual*(self: QWebEngineRegisterProtocolHandlerRequest, that: QWe
 
   fcQWebEngineRegisterProtocolHandlerRequest_operatorNotEqual(self.h, that.h)
 
+proc staticMetaObject*(_: type QWebEngineRegisterProtocolHandlerRequest): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineRegisterProtocolHandlerRequest_staticMetaObject())
 proc delete*(self: QWebEngineRegisterProtocolHandlerRequest) =
   fcQWebEngineRegisterProtocolHandlerRequest_delete(self.h)

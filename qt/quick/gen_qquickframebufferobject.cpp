@@ -1899,6 +1899,7 @@ void QQuickFramebufferObject_virtualbase_disconnectNotify(void* self, QMetaMetho
 	( (MiqtVirtualQQuickFramebufferObject*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickFramebufferObject_staticMetaObject() { return &QQuickFramebufferObject::staticMetaObject; }
 void QQuickFramebufferObject_delete(QQuickFramebufferObject* self) {
 	delete self;
 }

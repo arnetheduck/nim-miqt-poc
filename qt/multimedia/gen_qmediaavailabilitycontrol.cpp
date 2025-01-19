@@ -116,6 +116,7 @@ struct miqt_string QMediaAvailabilityControl_trUtf83(const char* s, const char* 
 	return _ms;
 }
 
+const QMetaObject* QMediaAvailabilityControl_staticMetaObject() { return &QMediaAvailabilityControl::staticMetaObject; }
 void QMediaAvailabilityControl_delete(QMediaAvailabilityControl* self) {
 	delete self;
 }

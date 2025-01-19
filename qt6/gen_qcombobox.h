@@ -322,6 +322,7 @@ bool QComboBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QComboBox_staticMetaObject();
 void QComboBox_delete(QComboBox* self);
 
 #ifdef __cplusplus

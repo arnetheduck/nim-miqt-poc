@@ -93,6 +93,7 @@ bool QAudioInput_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioInput_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioInput_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioInput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAudioInput_staticMetaObject();
 void QAudioInput_delete(QAudioInput* self);
 
 #ifdef __cplusplus

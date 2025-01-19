@@ -2990,6 +2990,7 @@ QVariant* QGraphicsWebView_virtualbase_extension(const void* self, QVariant* var
 	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_extension(variant);
 }
 
+const QMetaObject* QGraphicsWebView_staticMetaObject() { return &QGraphicsWebView::staticMetaObject; }
 void QGraphicsWebView_delete(QGraphicsWebView* self) {
 	delete self;
 }

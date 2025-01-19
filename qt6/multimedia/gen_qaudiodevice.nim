@@ -46,9 +46,11 @@ import gen_qaudiodevice_types
 export gen_qaudiodevice_types
 
 import
-  gen_qaudioformat
+  gen_qaudioformat,
+  gen_qobjectdefs
 export
-  gen_qaudioformat
+  gen_qaudioformat,
+  gen_qobjectdefs
 
 type cQAudioDevice*{.exportc: "QAudioDevice", incompleteStruct.} = object
 
@@ -71,6 +73,7 @@ proc fcQAudioDevice_minimumChannelCount(self: pointer, ): cint {.importc: "QAudi
 proc fcQAudioDevice_maximumChannelCount(self: pointer, ): cint {.importc: "QAudioDevice_maximumChannelCount".}
 proc fcQAudioDevice_supportedSampleFormats(self: pointer, ): struct_miqt_array {.importc: "QAudioDevice_supportedSampleFormats".}
 proc fcQAudioDevice_channelConfiguration(self: pointer, ): cint {.importc: "QAudioDevice_channelConfiguration".}
+proc fcQAudioDevice_staticMetaObject(): pointer {.importc: "QAudioDevice_staticMetaObject".}
 proc fcQAudioDevice_delete(self: pointer) {.importc: "QAudioDevice_delete".}
 
 
@@ -161,5 +164,7 @@ proc channelConfiguration*(self: QAudioDevice, ): gen_qaudioformat.QAudioFormatC
 
   gen_qaudioformat.QAudioFormatChannelConfig(fcQAudioDevice_channelConfiguration(self.h))
 
+proc staticMetaObject*(_: type QAudioDevice): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioDevice_staticMetaObject())
 proc delete*(self: QAudioDevice) =
   fcQAudioDevice_delete(self.h)

@@ -233,3 +233,4 @@ struct miqt_string QSessionManager_trUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
+const QMetaObject* QSessionManager_staticMetaObject() { return &QSessionManager::staticMetaObject; }

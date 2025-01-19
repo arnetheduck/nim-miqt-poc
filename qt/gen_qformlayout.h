@@ -168,6 +168,7 @@ bool QFormLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QFormLayout_virtualbase_widget(void* self);
 bool QFormLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QFormLayout_virtualbase_spacerItem(void* self);
+const QMetaObject* QFormLayout_staticMetaObject();
 void QFormLayout_delete(QFormLayout* self);
 
 void QFormLayout__TakeRowResult_delete(QFormLayout__TakeRowResult* self);

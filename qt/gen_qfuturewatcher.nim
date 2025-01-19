@@ -94,6 +94,7 @@ proc fcQFutureWatcherBase_tr2(s: cstring, c: cstring): struct_miqt_string {.impo
 proc fcQFutureWatcherBase_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFutureWatcherBase_tr3".}
 proc fcQFutureWatcherBase_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QFutureWatcherBase_trUtf82".}
 proc fcQFutureWatcherBase_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFutureWatcherBase_trUtf83".}
+proc fcQFutureWatcherBase_staticMetaObject(): pointer {.importc: "QFutureWatcherBase_staticMetaObject".}
 proc fcQFutureWatcherBase_delete(self: pointer) {.importc: "QFutureWatcherBase_delete".}
 
 
@@ -401,5 +402,7 @@ proc trUtf83*(_: type QFutureWatcherBase, s: cstring, c: cstring, n: cint): stri
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QFutureWatcherBase): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFutureWatcherBase_staticMetaObject())
 proc delete*(self: QFutureWatcherBase) =
   fcQFutureWatcherBase_delete(self.h)

@@ -151,6 +151,7 @@ struct miqt_string QCameraExposureControl_trUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
+const QMetaObject* QCameraExposureControl_staticMetaObject() { return &QCameraExposureControl::staticMetaObject; }
 void QCameraExposureControl_delete(QCameraExposureControl* self) {
 	delete self;
 }

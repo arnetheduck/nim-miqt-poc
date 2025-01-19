@@ -88,6 +88,7 @@ struct miqt_string QWebEngineNewWindowRequest_tr3(const char* s, const char* c, 
 	return _ms;
 }
 
+const QMetaObject* QWebEngineNewWindowRequest_staticMetaObject() { return &QWebEngineNewWindowRequest::staticMetaObject; }
 void QWebEngineNewWindowRequest_delete(QWebEngineNewWindowRequest* self) {
 	delete self;
 }

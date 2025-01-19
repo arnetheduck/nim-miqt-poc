@@ -3849,6 +3849,7 @@ void QUndoView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QUndoView_staticMetaObject() { return &QUndoView::staticMetaObject; }
 void QUndoView_delete(QUndoView* self) {
 	delete self;
 }

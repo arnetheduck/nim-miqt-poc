@@ -102,6 +102,7 @@ bool QAbstractAnimation_override_virtual_connectNotify(void* self, intptr_t slot
 void QAbstractAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractAnimation_staticMetaObject();
 void QAbstractAnimation_delete(QAbstractAnimation* self);
 
 QAnimationDriver* QAnimationDriver_new();
@@ -153,6 +154,7 @@ bool QAnimationDriver_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAnimationDriver_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAnimationDriver_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAnimationDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAnimationDriver_staticMetaObject();
 void QAnimationDriver_delete(QAnimationDriver* self);
 
 #ifdef __cplusplus

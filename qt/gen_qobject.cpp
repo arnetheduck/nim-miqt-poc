@@ -721,6 +721,7 @@ void QObject_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQObject*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QObject_staticMetaObject() { return &QObject::staticMetaObject; }
 void QObject_delete(QObject* self) {
 	delete self;
 }

@@ -156,6 +156,7 @@ void QWebEngineCookieStore_deleteCookie2(QWebEngineCookieStore* self, QNetworkCo
 	self->deleteCookie(*cookie, *origin);
 }
 
+const QMetaObject* QWebEngineCookieStore_staticMetaObject() { return &QWebEngineCookieStore::staticMetaObject; }
 void QWebEngineCookieStore_delete(QWebEngineCookieStore* self) {
 	delete self;
 }

@@ -79,6 +79,7 @@ bool QAudioRecorder_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioRecorder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAudioRecorder_staticMetaObject();
 void QAudioRecorder_delete(QAudioRecorder* self);
 
 #ifdef __cplusplus

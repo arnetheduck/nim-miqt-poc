@@ -94,6 +94,7 @@ struct miqt_string QTextObject_tr2(const char* s, const char* c);
 struct miqt_string QTextObject_tr3(const char* s, const char* c, int n);
 struct miqt_string QTextObject_trUtf82(const char* s, const char* c);
 struct miqt_string QTextObject_trUtf83(const char* s, const char* c, int n);
+const QMetaObject* QTextObject_staticMetaObject();
 
 void QTextBlockGroup_virtbase(QTextBlockGroup* src, QTextObject** outptr_QTextObject);
 QMetaObject* QTextBlockGroup_metaObject(const QTextBlockGroup* self);
@@ -108,6 +109,7 @@ struct miqt_string QTextBlockGroup_tr2(const char* s, const char* c);
 struct miqt_string QTextBlockGroup_tr3(const char* s, const char* c, int n);
 struct miqt_string QTextBlockGroup_trUtf82(const char* s, const char* c);
 struct miqt_string QTextBlockGroup_trUtf83(const char* s, const char* c, int n);
+const QMetaObject* QTextBlockGroup_staticMetaObject();
 
 void QTextFrameLayoutData_operatorAssign(QTextFrameLayoutData* self, QTextFrameLayoutData* param1);
 void QTextFrameLayoutData_delete(QTextFrameLayoutData* self);
@@ -151,6 +153,7 @@ bool QTextFrame_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextFrame_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTextFrame_staticMetaObject();
 void QTextFrame_delete(QTextFrame* self);
 
 void QTextBlockUserData_operatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1);

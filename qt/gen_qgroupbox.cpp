@@ -2114,6 +2114,7 @@ void QGroupBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGroupBox_staticMetaObject() { return &QGroupBox::staticMetaObject; }
 void QGroupBox_delete(QGroupBox* self) {
 	delete self;
 }

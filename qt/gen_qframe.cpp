@@ -2078,6 +2078,7 @@ void QFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFrame_staticMetaObject() { return &QFrame::staticMetaObject; }
 void QFrame_delete(QFrame* self) {
 	delete self;
 }

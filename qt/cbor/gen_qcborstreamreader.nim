@@ -67,10 +67,12 @@ export gen_qcborstreamreader_types
 
 import
   gen_qcborcommon,
-  gen_qiodevice
+  gen_qiodevice,
+  gen_qobjectdefs
 export
   gen_qcborcommon,
-  gen_qiodevice
+  gen_qiodevice,
+  gen_qobjectdefs
 
 type cQCborStreamReader*{.exportc: "QCborStreamReader", incompleteStruct.} = object
 
@@ -129,6 +131,7 @@ proc fcQCborStreamReader_toFloat(self: pointer, ): float32 {.importc: "QCborStre
 proc fcQCborStreamReader_toDouble(self: pointer, ): float64 {.importc: "QCborStreamReader_toDouble".}
 proc fcQCborStreamReader_toInteger(self: pointer, ): clonglong {.importc: "QCborStreamReader_toInteger".}
 proc fcQCborStreamReader_next1(self: pointer, maxRecursion: cint): bool {.importc: "QCborStreamReader_next1".}
+proc fcQCborStreamReader_staticMetaObject(): pointer {.importc: "QCborStreamReader_staticMetaObject".}
 proc fcQCborStreamReader_delete(self: pointer) {.importc: "QCborStreamReader_delete".}
 
 
@@ -349,5 +352,7 @@ proc next1*(self: QCborStreamReader, maxRecursion: cint): bool =
 
   fcQCborStreamReader_next1(self.h, maxRecursion)
 
+proc staticMetaObject*(_: type QCborStreamReader): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCborStreamReader_staticMetaObject())
 proc delete*(self: QCborStreamReader) =
   fcQCborStreamReader_delete(self.h)

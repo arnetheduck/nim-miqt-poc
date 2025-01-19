@@ -156,6 +156,7 @@ proc fQSpatialSound_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQSpatialSound_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_connectNotify".}
 proc fQSpatialSound_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSpatialSound_virtualbase_disconnectNotify".}
 proc fcQSpatialSound_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSpatialSound_override_virtual_disconnectNotify".}
+proc fcQSpatialSound_staticMetaObject(): pointer {.importc: "QSpatialSound_staticMetaObject".}
 proc fcQSpatialSound_delete(self: pointer) {.importc: "QSpatialSound_delete".}
 
 
@@ -745,5 +746,7 @@ proc miqt_exec_callback_QSpatialSound_disconnectNotify(self: ptr cQSpatialSound,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSpatialSound): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSpatialSound_staticMetaObject())
 proc delete*(self: QSpatialSound) =
   fcQSpatialSound_delete(self.h)

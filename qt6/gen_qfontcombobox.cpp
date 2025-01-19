@@ -2224,6 +2224,7 @@ void QFontComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFontComboBox_staticMetaObject() { return &QFontComboBox::staticMetaObject; }
 void QFontComboBox_delete(QFontComboBox* self) {
 	delete self;
 }

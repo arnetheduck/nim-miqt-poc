@@ -485,6 +485,7 @@ void QTimer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTimer_staticMetaObject() { return &QTimer::staticMetaObject; }
 void QTimer_delete(QTimer* self) {
 	delete self;
 }

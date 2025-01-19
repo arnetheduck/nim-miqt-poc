@@ -113,6 +113,7 @@ proc fcQMediaPlayerControl_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQMediaPlayerControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaPlayerControl_tr3".}
 proc fcQMediaPlayerControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaPlayerControl_trUtf82".}
 proc fcQMediaPlayerControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaPlayerControl_trUtf83".}
+proc fcQMediaPlayerControl_staticMetaObject(): pointer {.importc: "QMediaPlayerControl_staticMetaObject".}
 proc fcQMediaPlayerControl_delete(self: pointer) {.importc: "QMediaPlayerControl_delete".}
 
 
@@ -517,5 +518,7 @@ proc trUtf83*(_: type QMediaPlayerControl, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QMediaPlayerControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaPlayerControl_staticMetaObject())
 proc delete*(self: QMediaPlayerControl) =
   fcQMediaPlayerControl_delete(self.h)

@@ -293,6 +293,7 @@ bool QDateTimeEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDateTimeEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDateTimeEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDateTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDateTimeEdit_staticMetaObject();
 void QDateTimeEdit_delete(QDateTimeEdit* self);
 
 QTimeEdit* QTimeEdit_new(QWidget* parent);
@@ -421,6 +422,7 @@ bool QTimeEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTimeEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTimeEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTimeEdit_staticMetaObject();
 void QTimeEdit_delete(QTimeEdit* self);
 
 QDateEdit* QDateEdit_new(QWidget* parent);
@@ -549,6 +551,7 @@ bool QDateEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDateEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDateEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDateEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDateEdit_staticMetaObject();
 void QDateEdit_delete(QDateEdit* self);
 
 #ifdef __cplusplus

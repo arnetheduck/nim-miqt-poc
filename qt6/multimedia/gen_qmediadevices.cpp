@@ -490,6 +490,7 @@ void QMediaDevices_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMediaDevices_staticMetaObject() { return &QMediaDevices::staticMetaObject; }
 void QMediaDevices_delete(QMediaDevices* self) {
 	delete self;
 }

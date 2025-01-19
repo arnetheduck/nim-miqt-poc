@@ -922,6 +922,7 @@ void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaM
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractTextDocumentLayout_staticMetaObject() { return &QAbstractTextDocumentLayout::staticMetaObject; }
 void QAbstractTextDocumentLayout_delete(QAbstractTextDocumentLayout* self) {
 	delete self;
 }

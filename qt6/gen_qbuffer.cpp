@@ -1127,6 +1127,7 @@ void QBuffer_virtualbase_customEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQBuffer*)(self) )->virtualbase_customEvent(event);
 }
 
+const QMetaObject* QBuffer_staticMetaObject() { return &QBuffer::staticMetaObject; }
 void QBuffer_delete(QBuffer* self) {
 	delete self;
 }

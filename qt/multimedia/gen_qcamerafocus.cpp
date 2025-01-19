@@ -288,3 +288,4 @@ struct miqt_string QCameraFocus_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+const QMetaObject* QCameraFocus_staticMetaObject() { return &QCameraFocus::staticMetaObject; }

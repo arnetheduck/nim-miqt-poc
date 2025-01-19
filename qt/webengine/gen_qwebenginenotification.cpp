@@ -183,6 +183,7 @@ struct miqt_string QWebEngineNotification_trUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
+const QMetaObject* QWebEngineNotification_staticMetaObject() { return &QWebEngineNotification::staticMetaObject; }
 void QWebEngineNotification_delete(QWebEngineNotification* self) {
 	delete self;
 }

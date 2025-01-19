@@ -202,6 +202,7 @@ bool QCameraViewfinder_override_virtual_connectNotify(void* self, intptr_t slot)
 void QCameraViewfinder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCameraViewfinder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QCameraViewfinder_staticMetaObject();
 void QCameraViewfinder_delete(QCameraViewfinder* self);
 
 #ifdef __cplusplus

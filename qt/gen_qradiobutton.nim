@@ -187,6 +187,7 @@ proc fQRadioButton_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQRadioButton_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QRadioButton_override_virtual_connectNotify".}
 proc fQRadioButton_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QRadioButton_virtualbase_disconnectNotify".}
 proc fcQRadioButton_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QRadioButton_override_virtual_disconnectNotify".}
+proc fcQRadioButton_staticMetaObject(): pointer {.importc: "QRadioButton_staticMetaObject".}
 proc fcQRadioButton_delete(self: pointer) {.importc: "QRadioButton_delete".}
 
 
@@ -1468,5 +1469,7 @@ proc miqt_exec_callback_QRadioButton_disconnectNotify(self: ptr cQRadioButton, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QRadioButton): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQRadioButton_staticMetaObject())
 proc delete*(self: QRadioButton) =
   fcQRadioButton_delete(self.h)

@@ -1817,6 +1817,7 @@ void QsciLexerVerilog_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQsciLexerVerilog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerVerilog_staticMetaObject() { return &QsciLexerVerilog::staticMetaObject; }
 void QsciLexerVerilog_delete(QsciLexerVerilog* self) {
 	delete self;
 }

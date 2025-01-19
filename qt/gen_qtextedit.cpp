@@ -2966,6 +2966,7 @@ void QTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTextEdit_staticMetaObject() { return &QTextEdit::staticMetaObject; }
 void QTextEdit_delete(QTextEdit* self) {
 	delete self;
 }

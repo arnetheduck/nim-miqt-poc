@@ -664,6 +664,7 @@ void QLocalServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLocalServer_staticMetaObject() { return &QLocalServer::staticMetaObject; }
 void QLocalServer_delete(QLocalServer* self) {
 	delete self;
 }

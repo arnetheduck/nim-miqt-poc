@@ -720,6 +720,7 @@ void QQmlEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQmlEngine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlEngine_staticMetaObject() { return &QQmlEngine::staticMetaObject; }
 void QQmlEngine_delete(QQmlEngine* self) {
 	delete self;
 }

@@ -232,6 +232,7 @@ proc fQAbstractSlider_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQAbstractSlider_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractSlider_override_virtual_connectNotify".}
 proc fQAbstractSlider_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractSlider_virtualbase_disconnectNotify".}
 proc fcQAbstractSlider_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractSlider_override_virtual_disconnectNotify".}
+proc fcQAbstractSlider_staticMetaObject(): pointer {.importc: "QAbstractSlider_staticMetaObject".}
 proc fcQAbstractSlider_delete(self: pointer) {.importc: "QAbstractSlider_delete".}
 
 
@@ -1636,5 +1637,7 @@ proc miqt_exec_callback_QAbstractSlider_disconnectNotify(self: ptr cQAbstractSli
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAbstractSlider): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractSlider_staticMetaObject())
 proc delete*(self: QAbstractSlider) =
   fcQAbstractSlider_delete(self.h)

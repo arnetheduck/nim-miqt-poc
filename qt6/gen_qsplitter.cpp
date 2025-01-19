@@ -2264,6 +2264,7 @@ void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSplitter*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSplitter_staticMetaObject() { return &QSplitter::staticMetaObject; }
 void QSplitter_delete(QSplitter* self) {
 	delete self;
 }
@@ -4173,6 +4174,7 @@ void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSplitterHandle_staticMetaObject() { return &QSplitterHandle::staticMetaObject; }
 void QSplitterHandle_delete(QSplitterHandle* self) {
 	delete self;
 }

@@ -1551,6 +1551,7 @@ QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_sharedPainter();
 }
 
+const QMetaObject* QRasterWindow_staticMetaObject() { return &QRasterWindow::staticMetaObject; }
 void QRasterWindow_delete(QRasterWindow* self) {
 	delete self;
 }

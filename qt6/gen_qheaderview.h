@@ -424,6 +424,7 @@ bool QHeaderView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QHeaderView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHeaderView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHeaderView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QHeaderView_staticMetaObject();
 void QHeaderView_delete(QHeaderView* self);
 
 #ifdef __cplusplus

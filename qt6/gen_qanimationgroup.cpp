@@ -571,6 +571,7 @@ void QAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAnimationGroup_staticMetaObject() { return &QAnimationGroup::staticMetaObject; }
 void QAnimationGroup_delete(QAnimationGroup* self) {
 	delete self;
 }

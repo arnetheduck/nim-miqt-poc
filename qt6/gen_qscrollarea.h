@@ -225,6 +225,7 @@ bool QScrollArea_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScrollArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QScrollArea_staticMetaObject();
 void QScrollArea_delete(QScrollArea* self);
 
 #ifdef __cplusplus

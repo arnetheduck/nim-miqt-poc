@@ -2103,6 +2103,7 @@ void QStatusBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QStatusBar_staticMetaObject() { return &QStatusBar::staticMetaObject; }
 void QStatusBar_delete(QStatusBar* self) {
 	delete self;
 }

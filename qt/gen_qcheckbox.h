@@ -215,6 +215,7 @@ bool QCheckBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCheckBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCheckBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCheckBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QCheckBox_staticMetaObject();
 void QCheckBox_delete(QCheckBox* self);
 
 #ifdef __cplusplus

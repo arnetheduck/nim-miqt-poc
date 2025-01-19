@@ -136,6 +136,7 @@ proc fQItemDelegate_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQItemDelegate_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QItemDelegate_override_virtual_connectNotify".}
 proc fQItemDelegate_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QItemDelegate_virtualbase_disconnectNotify".}
 proc fcQItemDelegate_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QItemDelegate_override_virtual_disconnectNotify".}
+proc fcQItemDelegate_staticMetaObject(): pointer {.importc: "QItemDelegate_staticMetaObject".}
 proc fcQItemDelegate_delete(self: pointer) {.importc: "QItemDelegate_delete".}
 
 
@@ -814,5 +815,7 @@ proc miqt_exec_callback_QItemDelegate_disconnectNotify(self: ptr cQItemDelegate,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QItemDelegate): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQItemDelegate_staticMetaObject())
 proc delete*(self: QItemDelegate) =
   fcQItemDelegate_delete(self.h)

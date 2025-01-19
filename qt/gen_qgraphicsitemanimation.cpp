@@ -733,6 +733,7 @@ void QGraphicsItemAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsItemAnimation_staticMetaObject() { return &QGraphicsItemAnimation::staticMetaObject; }
 void QGraphicsItemAnimation_delete(QGraphicsItemAnimation* self) {
 	delete self;
 }

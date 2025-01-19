@@ -1989,6 +1989,7 @@ void QsciLexerCSharp_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQsciLexerCSharp*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerCSharp_staticMetaObject() { return &QsciLexerCSharp::staticMetaObject; }
 void QsciLexerCSharp_delete(QsciLexerCSharp* self) {
 	delete self;
 }

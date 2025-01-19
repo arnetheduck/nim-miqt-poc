@@ -2151,6 +2151,7 @@ void QDockWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDockWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDockWidget_staticMetaObject() { return &QDockWidget::staticMetaObject; }
 void QDockWidget_delete(QDockWidget* self) {
 	delete self;
 }

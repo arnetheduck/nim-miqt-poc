@@ -810,6 +810,7 @@ void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMediaPlaylist_staticMetaObject() { return &QMediaPlaylist::staticMetaObject; }
 void QMediaPlaylist_delete(QMediaPlaylist* self) {
 	delete self;
 }

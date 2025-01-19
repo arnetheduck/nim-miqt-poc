@@ -4484,6 +4484,7 @@ QVariant* QGraphicsObject_virtualbase_extension(const void* self, QVariant* vari
 	return ( (const MiqtVirtualQGraphicsObject*)(self) )->virtualbase_extension(variant);
 }
 
+const QMetaObject* QGraphicsObject_staticMetaObject() { return &QGraphicsObject::staticMetaObject; }
 void QGraphicsObject_delete(QGraphicsObject* self) {
 	delete self;
 }
@@ -16303,6 +16304,7 @@ QVariant* QGraphicsTextItem_virtualbase_itemChange(void* self, int change, QVari
 	return ( (MiqtVirtualQGraphicsTextItem*)(self) )->virtualbase_itemChange(change, value);
 }
 
+const QMetaObject* QGraphicsTextItem_staticMetaObject() { return &QGraphicsTextItem::staticMetaObject; }
 void QGraphicsTextItem_delete(QGraphicsTextItem* self) {
 	delete self;
 }

@@ -289,6 +289,7 @@ bool QAbstractItemModel_override_virtual_connectNotify(void* self, intptr_t slot
 void QAbstractItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractItemModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractItemModel_staticMetaObject();
 void QAbstractItemModel_delete(QAbstractItemModel* self);
 
 QAbstractTableModel* QAbstractTableModel_new();
@@ -390,6 +391,7 @@ bool QAbstractTableModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractTableModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractTableModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractTableModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractTableModel_staticMetaObject();
 void QAbstractTableModel_delete(QAbstractTableModel* self);
 
 QAbstractListModel* QAbstractListModel_new();
@@ -489,6 +491,7 @@ bool QAbstractListModel_override_virtual_connectNotify(void* self, intptr_t slot
 void QAbstractListModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractListModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractListModel_staticMetaObject();
 void QAbstractListModel_delete(QAbstractListModel* self);
 
 #ifdef __cplusplus

@@ -698,6 +698,7 @@ void QMovie_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMovie*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMovie_staticMetaObject() { return &QMovie::staticMetaObject; }
 void QMovie_delete(QMovie* self) {
 	delete self;
 }

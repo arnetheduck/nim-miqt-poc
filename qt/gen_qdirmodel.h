@@ -186,6 +186,7 @@ bool QDirModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDirModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDirModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDirModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDirModel_staticMetaObject();
 void QDirModel_delete(QDirModel* self);
 
 #ifdef __cplusplus

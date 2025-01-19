@@ -73,6 +73,7 @@ struct miqt_string QAbstractNetworkCache_tr2(const char* s, const char* c);
 struct miqt_string QAbstractNetworkCache_tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractNetworkCache_trUtf82(const char* s, const char* c);
 struct miqt_string QAbstractNetworkCache_trUtf83(const char* s, const char* c, int n);
+const QMetaObject* QAbstractNetworkCache_staticMetaObject();
 void QAbstractNetworkCache_delete(QAbstractNetworkCache* self);
 
 #ifdef __cplusplus

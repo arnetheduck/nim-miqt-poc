@@ -59,6 +59,7 @@ proc fcQVideoRendererControl_tr2(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQVideoRendererControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVideoRendererControl_tr3".}
 proc fcQVideoRendererControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QVideoRendererControl_trUtf82".}
 proc fcQVideoRendererControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QVideoRendererControl_trUtf83".}
+proc fcQVideoRendererControl_staticMetaObject(): pointer {.importc: "QVideoRendererControl_staticMetaObject".}
 proc fcQVideoRendererControl_delete(self: pointer) {.importc: "QVideoRendererControl_delete".}
 
 
@@ -126,5 +127,7 @@ proc trUtf83*(_: type QVideoRendererControl, s: cstring, c: cstring, n: cint): s
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QVideoRendererControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQVideoRendererControl_staticMetaObject())
 proc delete*(self: QVideoRendererControl) =
   fcQVideoRendererControl_delete(self.h)

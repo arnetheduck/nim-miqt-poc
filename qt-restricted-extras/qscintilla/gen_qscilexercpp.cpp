@@ -2142,6 +2142,7 @@ void QsciLexerCPP_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerCPP_staticMetaObject() { return &QsciLexerCPP::staticMetaObject; }
 void QsciLexerCPP_delete(QsciLexerCPP* self) {
 	delete self;
 }

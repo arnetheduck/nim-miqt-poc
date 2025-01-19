@@ -189,6 +189,7 @@ struct miqt_string QAudioOutputSelectorControl_trUtf83(const char* s, const char
 	return _ms;
 }
 
+const QMetaObject* QAudioOutputSelectorControl_staticMetaObject() { return &QAudioOutputSelectorControl::staticMetaObject; }
 void QAudioOutputSelectorControl_delete(QAudioOutputSelectorControl* self) {
 	delete self;
 }

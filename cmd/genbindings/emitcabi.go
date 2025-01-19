@@ -66,6 +66,10 @@ func cabiOverrideVirtualName(c CppClass, m CppMethod) string {
 	return cabiClassName(c.ClassName) + `_override_virtual_` + m.SafeMethodName()
 }
 
+func cabiStaticMetaObjectName(c CppClass) string {
+	return cabiClassName(c.ClassName) + `_staticMetaObject`
+}
+
 func (p CppParameter) RenderTypeCabi() string {
 
 	if p.ParameterType == "QString" {
@@ -802,6 +806,12 @@ extern "C" {
 			ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiVirtualBaseName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void" /*className*/ +"*")))
 		}
 
+		for _, p := range c.Props {
+			if p.PropertyName == "staticMetaObject" {
+				ret.WriteString(fmt.Sprintf("const QMetaObject* %s();\n", cabiStaticMetaObjectName(c)))
+			}
+		}
+
 		// delete
 		if c.CanDelete {
 			ret.WriteString(fmt.Sprintf("void %s(%s* self);\n", cabiDeleteName(c), className))
@@ -1259,7 +1269,12 @@ extern "C" {
 				)
 
 			}
+		}
 
+		for _, p := range c.Props {
+			if p.PropertyName == "staticMetaObject" {
+				ret.WriteString(fmt.Sprintf("const QMetaObject* %s() { return &%s::staticMetaObject; }\n", cabiStaticMetaObjectName(c), c.ClassName))
+			}
 		}
 
 		// Delete

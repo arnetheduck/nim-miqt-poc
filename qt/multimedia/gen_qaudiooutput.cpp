@@ -580,6 +580,7 @@ void QAudioOutput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQAudioOutput*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioOutput_staticMetaObject() { return &QAudioOutput::staticMetaObject; }
 void QAudioOutput_delete(QAudioOutput* self) {
 	delete self;
 }

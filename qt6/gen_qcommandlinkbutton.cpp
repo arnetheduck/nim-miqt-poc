@@ -2199,6 +2199,7 @@ void QCommandLinkButton_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCommandLinkButton_staticMetaObject() { return &QCommandLinkButton::staticMetaObject; }
 void QCommandLinkButton_delete(QCommandLinkButton* self) {
 	delete self;
 }

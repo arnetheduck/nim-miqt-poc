@@ -91,6 +91,7 @@ proc fQSignalTransition_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQSignalTransition_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSignalTransition_override_virtual_connectNotify".}
 proc fQSignalTransition_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSignalTransition_virtualbase_disconnectNotify".}
 proc fcQSignalTransition_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSignalTransition_override_virtual_disconnectNotify".}
+proc fcQSignalTransition_staticMetaObject(): pointer {.importc: "QSignalTransition_staticMetaObject".}
 proc fcQSignalTransition_delete(self: pointer) {.importc: "QSignalTransition_delete".}
 
 
@@ -425,5 +426,7 @@ proc miqt_exec_callback_QSignalTransition_disconnectNotify(self: ptr cQSignalTra
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSignalTransition): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSignalTransition_staticMetaObject())
 proc delete*(self: QSignalTransition) =
   fcQSignalTransition_delete(self.h)

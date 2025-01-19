@@ -82,6 +82,7 @@ bool QDrag_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDrag_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDrag_staticMetaObject();
 void QDrag_delete(QDrag* self);
 
 #ifdef __cplusplus

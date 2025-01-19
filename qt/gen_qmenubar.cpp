@@ -2141,6 +2141,7 @@ void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMenuBar_staticMetaObject() { return &QMenuBar::staticMetaObject; }
 void QMenuBar_delete(QMenuBar* self) {
 	delete self;
 }

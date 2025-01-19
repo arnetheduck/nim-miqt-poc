@@ -468,6 +468,7 @@ void QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(void* self, QMetaMe
 	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebEngineUrlSchemeHandler_staticMetaObject() { return &QWebEngineUrlSchemeHandler::staticMetaObject; }
 void QWebEngineUrlSchemeHandler_delete(QWebEngineUrlSchemeHandler* self) {
 	delete self;
 }

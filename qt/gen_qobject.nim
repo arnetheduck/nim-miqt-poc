@@ -136,6 +136,7 @@ proc fQObject_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQObject_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QObject_override_virtual_connectNotify".}
 proc fQObject_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QObject_virtualbase_disconnectNotify".}
 proc fcQObject_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QObject_override_virtual_disconnectNotify".}
+proc fcQObject_staticMetaObject(): pointer {.importc: "QObject_staticMetaObject".}
 proc fcQObject_delete(self: pointer) {.importc: "QObject_delete".}
 proc fcQObjectUserData_new(): ptr cQObjectUserData {.importc: "QObjectUserData_new".}
 proc fcQObjectUserData_delete(self: pointer) {.importc: "QObjectUserData_delete".}
@@ -655,6 +656,8 @@ proc miqt_exec_callback_QObject_disconnectNotify(self: ptr cQObject, slot: int, 
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QObject): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQObject_staticMetaObject())
 proc delete*(self: QObject) =
   fcQObject_delete(self.h)
 

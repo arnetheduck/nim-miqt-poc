@@ -538,6 +538,7 @@ void QLibrary_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLibrary*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLibrary_staticMetaObject() { return &QLibrary::staticMetaObject; }
 void QLibrary_delete(QLibrary* self) {
 	delete self;
 }

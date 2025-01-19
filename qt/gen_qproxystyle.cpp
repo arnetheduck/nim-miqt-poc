@@ -1551,6 +1551,7 @@ void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QProxyStyle_staticMetaObject() { return &QProxyStyle::staticMetaObject; }
 void QProxyStyle_delete(QProxyStyle* self) {
 	delete self;
 }

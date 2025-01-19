@@ -71,6 +71,7 @@ proc fcQWebEngineNotification_closed(self: pointer, ): void {.importc: "QWebEngi
 proc fQWebEngineNotification_connect_closed(self: pointer, slot: int) {.importc: "QWebEngineNotification_connect_closed".}
 proc fcQWebEngineNotification_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineNotification_tr2".}
 proc fcQWebEngineNotification_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineNotification_tr3".}
+proc fcQWebEngineNotification_staticMetaObject(): pointer {.importc: "QWebEngineNotification_staticMetaObject".}
 proc fcQWebEngineNotification_delete(self: pointer) {.importc: "QWebEngineNotification_delete".}
 
 
@@ -181,5 +182,7 @@ proc tr3*(_: type QWebEngineNotification, s: cstring, c: cstring, n: cint): stri
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebEngineNotification): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineNotification_staticMetaObject())
 proc delete*(self: QWebEngineNotification) =
   fcQWebEngineNotification_delete(self.h)

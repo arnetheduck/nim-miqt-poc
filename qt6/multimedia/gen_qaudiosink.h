@@ -86,6 +86,7 @@ bool QAudioSink_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioSink_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioSink_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAudioSink_staticMetaObject();
 void QAudioSink_delete(QAudioSink* self);
 
 #ifdef __cplusplus

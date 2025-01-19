@@ -181,6 +181,7 @@ proc fQsciLexerYAML_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQsciLexerYAML_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerYAML_override_virtual_connectNotify".}
 proc fQsciLexerYAML_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerYAML_virtualbase_disconnectNotify".}
 proc fcQsciLexerYAML_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerYAML_override_virtual_disconnectNotify".}
+proc fcQsciLexerYAML_staticMetaObject(): pointer {.importc: "QsciLexerYAML_staticMetaObject".}
 proc fcQsciLexerYAML_delete(self: pointer) {.importc: "QsciLexerYAML_delete".}
 
 
@@ -1338,5 +1339,7 @@ proc miqt_exec_callback_QsciLexerYAML_disconnectNotify(self: ptr cQsciLexerYAML,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerYAML): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerYAML_staticMetaObject())
 proc delete*(self: QsciLexerYAML) =
   fcQsciLexerYAML_delete(self.h)

@@ -192,6 +192,7 @@ proc fQStackedWidget_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQStackedWidget_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QStackedWidget_override_virtual_connectNotify".}
 proc fQStackedWidget_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QStackedWidget_virtualbase_disconnectNotify".}
 proc fcQStackedWidget_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QStackedWidget_override_virtual_disconnectNotify".}
+proc fcQStackedWidget_staticMetaObject(): pointer {.importc: "QStackedWidget_staticMetaObject".}
 proc fcQStackedWidget_delete(self: pointer) {.importc: "QStackedWidget_delete".}
 
 
@@ -1470,5 +1471,7 @@ proc miqt_exec_callback_QStackedWidget_disconnectNotify(self: ptr cQStackedWidge
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QStackedWidget): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQStackedWidget_staticMetaObject())
 proc delete*(self: QStackedWidget) =
   fcQStackedWidget_delete(self.h)

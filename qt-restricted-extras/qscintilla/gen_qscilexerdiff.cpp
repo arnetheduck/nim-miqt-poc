@@ -1786,6 +1786,7 @@ void QsciLexerDiff_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQsciLexerDiff*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerDiff_staticMetaObject() { return &QsciLexerDiff::staticMetaObject; }
 void QsciLexerDiff_delete(QsciLexerDiff* self) {
 	delete self;
 }

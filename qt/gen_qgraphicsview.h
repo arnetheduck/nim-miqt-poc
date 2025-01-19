@@ -348,6 +348,7 @@ bool QGraphicsView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsView_staticMetaObject();
 void QGraphicsView_delete(QGraphicsView* self);
 
 #ifdef __cplusplus

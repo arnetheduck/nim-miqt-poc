@@ -460,6 +460,7 @@ proc fQWebPage_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQWebPage_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_connectNotify".}
 proc fQWebPage_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebPage_virtualbase_disconnectNotify".}
 proc fcQWebPage_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebPage_override_virtual_disconnectNotify".}
+proc fcQWebPage_staticMetaObject(): pointer {.importc: "QWebPage_staticMetaObject".}
 proc fcQWebPage_delete(self: pointer) {.importc: "QWebPage_delete".}
 proc fcQWebPageViewportAttributes_new(): ptr cQWebPageViewportAttributes {.importc: "QWebPage__ViewportAttributes_new".}
 proc fcQWebPageViewportAttributes_new2(other: pointer): ptr cQWebPageViewportAttributes {.importc: "QWebPage__ViewportAttributes_new2".}
@@ -1941,6 +1942,8 @@ proc miqt_exec_callback_QWebPage_disconnectNotify(self: ptr cQWebPage, slot: int
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QWebPage): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebPage_staticMetaObject())
 proc delete*(self: QWebPage) =
   fcQWebPage_delete(self.h)
 

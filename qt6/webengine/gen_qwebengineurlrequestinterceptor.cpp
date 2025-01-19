@@ -437,6 +437,7 @@ void QWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify(void* self, QM
 	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebEngineUrlRequestInterceptor_staticMetaObject() { return &QWebEngineUrlRequestInterceptor::staticMetaObject; }
 void QWebEngineUrlRequestInterceptor_delete(QWebEngineUrlRequestInterceptor* self) {
 	delete self;
 }

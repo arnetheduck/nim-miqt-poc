@@ -2985,6 +2985,7 @@ QVariant* QGraphicsWidget_virtualbase_extension(const void* self, QVariant* vari
 	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->virtualbase_extension(variant);
 }
 
+const QMetaObject* QGraphicsWidget_staticMetaObject() { return &QGraphicsWidget::staticMetaObject; }
 void QGraphicsWidget_delete(QGraphicsWidget* self) {
 	delete self;
 }

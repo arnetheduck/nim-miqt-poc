@@ -73,6 +73,7 @@ proc fcQWebEngineUrlRequestJob_fail(self: pointer, error: cint): void {.importc:
 proc fcQWebEngineUrlRequestJob_redirect(self: pointer, url: pointer): void {.importc: "QWebEngineUrlRequestJob_redirect".}
 proc fcQWebEngineUrlRequestJob_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineUrlRequestJob_tr2".}
 proc fcQWebEngineUrlRequestJob_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineUrlRequestJob_tr3".}
+proc fcQWebEngineUrlRequestJob_staticMetaObject(): pointer {.importc: "QWebEngineUrlRequestJob_staticMetaObject".}
 proc fcQWebEngineUrlRequestJob_delete(self: pointer) {.importc: "QWebEngineUrlRequestJob_delete".}
 
 
@@ -138,5 +139,7 @@ proc tr3*(_: type QWebEngineUrlRequestJob, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebEngineUrlRequestJob): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlRequestJob_staticMetaObject())
 proc delete*(self: QWebEngineUrlRequestJob) =
   fcQWebEngineUrlRequestJob_delete(self.h)

@@ -97,6 +97,7 @@ struct miqt_string QWebEngineUrlRequestJob_tr3(const char* s, const char* c, int
 	return _ms;
 }
 
+const QMetaObject* QWebEngineUrlRequestJob_staticMetaObject() { return &QWebEngineUrlRequestJob::staticMetaObject; }
 void QWebEngineUrlRequestJob_delete(QWebEngineUrlRequestJob* self) {
 	delete self;
 }

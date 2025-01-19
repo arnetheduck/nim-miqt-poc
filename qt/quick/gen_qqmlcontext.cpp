@@ -519,6 +519,7 @@ void QQmlContext_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQmlContext*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlContext_staticMetaObject() { return &QQmlContext::staticMetaObject; }
 void QQmlContext_delete(QQmlContext* self) {
 	delete self;
 }

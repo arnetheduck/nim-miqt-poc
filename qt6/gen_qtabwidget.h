@@ -270,6 +270,7 @@ bool QTabWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTabWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTabWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTabWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTabWidget_staticMetaObject();
 void QTabWidget_delete(QTabWidget* self);
 
 #ifdef __cplusplus

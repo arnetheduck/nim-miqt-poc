@@ -62,6 +62,7 @@ bool QStylePlugin_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStylePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStylePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStylePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QStylePlugin_staticMetaObject();
 void QStylePlugin_delete(QStylePlugin* self);
 
 #ifdef __cplusplus

@@ -81,6 +81,7 @@ bool QGesture_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGesture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGesture_staticMetaObject();
 void QGesture_delete(QGesture* self);
 
 QPanGesture* QPanGesture_new();
@@ -115,6 +116,7 @@ bool QPanGesture_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPanGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPanGesture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPanGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPanGesture_staticMetaObject();
 void QPanGesture_delete(QPanGesture* self);
 
 QPinchGesture* QPinchGesture_new();
@@ -164,6 +166,7 @@ bool QPinchGesture_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPinchGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPinchGesture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPinchGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPinchGesture_staticMetaObject();
 void QPinchGesture_delete(QPinchGesture* self);
 
 QSwipeGesture* QSwipeGesture_new();
@@ -195,6 +198,7 @@ bool QSwipeGesture_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSwipeGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSwipeGesture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSwipeGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSwipeGesture_staticMetaObject();
 void QSwipeGesture_delete(QSwipeGesture* self);
 
 QTapGesture* QTapGesture_new();
@@ -224,6 +228,7 @@ bool QTapGesture_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTapGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTapGesture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTapGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTapGesture_staticMetaObject();
 void QTapGesture_delete(QTapGesture* self);
 
 QTapAndHoldGesture* QTapAndHoldGesture_new();
@@ -255,6 +260,7 @@ bool QTapAndHoldGesture_override_virtual_connectNotify(void* self, intptr_t slot
 void QTapAndHoldGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTapAndHoldGesture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTapAndHoldGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTapAndHoldGesture_staticMetaObject();
 void QTapAndHoldGesture_delete(QTapAndHoldGesture* self);
 
 QGestureEvent* QGestureEvent_new(struct miqt_array /* of QGesture* */  gestures);

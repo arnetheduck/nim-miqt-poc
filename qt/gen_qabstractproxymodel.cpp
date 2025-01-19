@@ -2253,6 +2253,7 @@ void QAbstractProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractProxyModel_staticMetaObject() { return &QAbstractProxyModel::staticMetaObject; }
 void QAbstractProxyModel_delete(QAbstractProxyModel* self) {
 	delete self;
 }

@@ -211,6 +211,7 @@ bool QCommandLinkButton_override_virtual_connectNotify(void* self, intptr_t slot
 void QCommandLinkButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCommandLinkButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCommandLinkButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QCommandLinkButton_staticMetaObject();
 void QCommandLinkButton_delete(QCommandLinkButton* self);
 
 #ifdef __cplusplus

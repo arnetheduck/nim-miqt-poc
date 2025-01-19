@@ -153,6 +153,7 @@ bool QsciLexerTeX_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerTeX_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerTeX_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerTeX_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerTeX_staticMetaObject();
 void QsciLexerTeX_delete(QsciLexerTeX* self);
 
 #ifdef __cplusplus

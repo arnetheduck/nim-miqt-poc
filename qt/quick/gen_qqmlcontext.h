@@ -87,6 +87,7 @@ bool QQmlContext_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlContext_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlContext_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlContext_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQmlContext_staticMetaObject();
 void QQmlContext_delete(QQmlContext* self);
 
 QQmlContext__PropertyPair* QQmlContext__PropertyPair_new(QQmlContext__PropertyPair* param1);

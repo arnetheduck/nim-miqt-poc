@@ -150,6 +150,7 @@ bool QsciLexerProperties_override_virtual_connectNotify(void* self, intptr_t slo
 void QsciLexerProperties_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerProperties_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerProperties_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerProperties_staticMetaObject();
 void QsciLexerProperties_delete(QsciLexerProperties* self);
 
 #ifdef __cplusplus

@@ -127,6 +127,7 @@ struct miqt_string QCameraFlashControl_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
+const QMetaObject* QCameraFlashControl_staticMetaObject() { return &QCameraFlashControl::staticMetaObject; }
 void QCameraFlashControl_delete(QCameraFlashControl* self) {
 	delete self;
 }

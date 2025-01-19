@@ -7072,6 +7072,7 @@ void QsciScintilla_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciScintilla_staticMetaObject() { return &QsciScintilla::staticMetaObject; }
 void QsciScintilla_delete(QsciScintilla* self) {
 	delete self;
 }

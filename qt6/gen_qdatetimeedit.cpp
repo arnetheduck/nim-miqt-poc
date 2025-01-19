@@ -2736,6 +2736,7 @@ void QDateTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDateTimeEdit_staticMetaObject() { return &QDateTimeEdit::staticMetaObject; }
 void QDateTimeEdit_delete(QDateTimeEdit* self) {
 	delete self;
 }
@@ -4985,6 +4986,7 @@ void QTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTimeEdit_staticMetaObject() { return &QTimeEdit::staticMetaObject; }
 void QTimeEdit_delete(QTimeEdit* self) {
 	delete self;
 }
@@ -7234,6 +7236,7 @@ void QDateEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDateEdit_staticMetaObject() { return &QDateEdit::staticMetaObject; }
 void QDateEdit_delete(QDateEdit* self) {
 	delete self;
 }

@@ -64,6 +64,7 @@ proc fcQAudioInputSelectorControl_tr2(s: cstring, c: cstring): struct_miqt_strin
 proc fcQAudioInputSelectorControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioInputSelectorControl_tr3".}
 proc fcQAudioInputSelectorControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioInputSelectorControl_trUtf82".}
 proc fcQAudioInputSelectorControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioInputSelectorControl_trUtf83".}
+proc fcQAudioInputSelectorControl_staticMetaObject(): pointer {.importc: "QAudioInputSelectorControl_staticMetaObject".}
 proc fcQAudioInputSelectorControl_delete(self: pointer) {.importc: "QAudioInputSelectorControl_delete".}
 
 
@@ -197,5 +198,7 @@ proc trUtf83*(_: type QAudioInputSelectorControl, s: cstring, c: cstring, n: cin
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QAudioInputSelectorControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioInputSelectorControl_staticMetaObject())
 proc delete*(self: QAudioInputSelectorControl) =
   fcQAudioInputSelectorControl_delete(self.h)

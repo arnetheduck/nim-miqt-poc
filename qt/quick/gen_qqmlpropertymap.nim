@@ -93,6 +93,7 @@ proc fQQmlPropertyMap_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQQmlPropertyMap_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQmlPropertyMap_override_virtual_connectNotify".}
 proc fQQmlPropertyMap_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQmlPropertyMap_virtualbase_disconnectNotify".}
 proc fcQQmlPropertyMap_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQmlPropertyMap_override_virtual_disconnectNotify".}
+proc fcQQmlPropertyMap_staticMetaObject(): pointer {.importc: "QQmlPropertyMap_staticMetaObject".}
 proc fcQQmlPropertyMap_delete(self: pointer) {.importc: "QQmlPropertyMap_delete".}
 
 
@@ -455,5 +456,7 @@ proc miqt_exec_callback_QQmlPropertyMap_disconnectNotify(self: ptr cQQmlProperty
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QQmlPropertyMap): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQmlPropertyMap_staticMetaObject())
 proc delete*(self: QQmlPropertyMap) =
   fcQQmlPropertyMap_delete(self.h)

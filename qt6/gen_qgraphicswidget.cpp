@@ -2989,6 +2989,7 @@ bool QGraphicsWidget_virtualbase_isEmpty(const void* self) {
 	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->virtualbase_isEmpty();
 }
 
+const QMetaObject* QGraphicsWidget_staticMetaObject() { return &QGraphicsWidget::staticMetaObject; }
 void QGraphicsWidget_delete(QGraphicsWidget* self) {
 	delete self;
 }

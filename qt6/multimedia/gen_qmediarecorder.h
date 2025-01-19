@@ -133,6 +133,7 @@ bool QMediaRecorder_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaRecorder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMediaRecorder_staticMetaObject();
 void QMediaRecorder_delete(QMediaRecorder* self);
 
 #ifdef __cplusplus

@@ -185,6 +185,7 @@ proc fQLocalSocket_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQLocalSocket_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QLocalSocket_override_virtual_connectNotify".}
 proc fQLocalSocket_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QLocalSocket_virtualbase_disconnectNotify".}
 proc fcQLocalSocket_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QLocalSocket_override_virtual_disconnectNotify".}
+proc fcQLocalSocket_staticMetaObject(): pointer {.importc: "QLocalSocket_staticMetaObject".}
 proc fcQLocalSocket_delete(self: pointer) {.importc: "QLocalSocket_delete".}
 
 
@@ -1042,5 +1043,7 @@ proc miqt_exec_callback_QLocalSocket_disconnectNotify(self: ptr cQLocalSocket, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QLocalSocket): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQLocalSocket_staticMetaObject())
 proc delete*(self: QLocalSocket) =
   fcQLocalSocket_delete(self.h)

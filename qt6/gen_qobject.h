@@ -122,6 +122,7 @@ bool QObject_override_virtual_connectNotify(void* self, intptr_t slot);
 void QObject_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QObject_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QObject_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QObject_staticMetaObject();
 void QObject_delete(QObject* self);
 
 QSignalBlocker* QSignalBlocker_new(QObject* o);

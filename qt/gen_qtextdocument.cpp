@@ -1200,6 +1200,7 @@ void QTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTextDocument_staticMetaObject() { return &QTextDocument::staticMetaObject; }
 void QTextDocument_delete(QTextDocument* self) {
 	delete self;
 }

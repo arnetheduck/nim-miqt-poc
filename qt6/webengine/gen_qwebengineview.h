@@ -290,6 +290,7 @@ bool QWebEngineView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebEngineView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWebEngineView_staticMetaObject();
 void QWebEngineView_delete(QWebEngineView* self);
 
 #ifdef __cplusplus

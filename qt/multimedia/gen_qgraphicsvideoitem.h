@@ -192,6 +192,7 @@ bool QGraphicsVideoItem_override_virtual_setExtension(void* self, intptr_t slot)
 void QGraphicsVideoItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsVideoItem_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsVideoItem_virtualbase_extension(const void* self, QVariant* variant);
+const QMetaObject* QGraphicsVideoItem_staticMetaObject();
 void QGraphicsVideoItem_delete(QGraphicsVideoItem* self);
 
 #ifdef __cplusplus

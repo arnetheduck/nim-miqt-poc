@@ -145,6 +145,7 @@ bool QsciLexerSpice_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerSpice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerSpice_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerSpice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerSpice_staticMetaObject();
 void QsciLexerSpice_delete(QsciLexerSpice* self);
 
 #ifdef __cplusplus

@@ -1977,6 +1977,7 @@ void QsciLexerIDL_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQsciLexerIDL*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerIDL_staticMetaObject() { return &QsciLexerIDL::staticMetaObject; }
 void QsciLexerIDL_delete(QsciLexerIDL* self) {
 	delete self;
 }

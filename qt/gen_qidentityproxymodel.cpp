@@ -2248,6 +2248,7 @@ void QIdentityProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QIdentityProxyModel_staticMetaObject() { return &QIdentityProxyModel::staticMetaObject; }
 void QIdentityProxyModel_delete(QIdentityProxyModel* self) {
 	delete self;
 }

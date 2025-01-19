@@ -268,6 +268,7 @@ bool QMenu_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMenu_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMenu_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMenu_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMenu_staticMetaObject();
 void QMenu_delete(QMenu* self);
 
 #ifdef __cplusplus

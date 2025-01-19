@@ -600,6 +600,7 @@ void QSoundEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSoundEffect_staticMetaObject() { return &QSoundEffect::staticMetaObject; }
 void QSoundEffect_delete(QSoundEffect* self) {
 	delete self;
 }

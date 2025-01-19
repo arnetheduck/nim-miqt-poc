@@ -661,6 +661,7 @@ void QsciAbstractAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciAbstractAPIs_staticMetaObject() { return &QsciAbstractAPIs::staticMetaObject; }
 void QsciAbstractAPIs_delete(QsciAbstractAPIs* self) {
 	delete self;
 }

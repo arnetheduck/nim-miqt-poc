@@ -911,6 +911,7 @@ void QRadioTuner_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRadioTuner*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QRadioTuner_staticMetaObject() { return &QRadioTuner::staticMetaObject; }
 void QRadioTuner_delete(QRadioTuner* self) {
 	delete self;
 }

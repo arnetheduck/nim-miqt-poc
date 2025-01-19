@@ -111,6 +111,7 @@ bool QAbstractItemDelegate_override_virtual_connectNotify(void* self, intptr_t s
 void QAbstractItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractItemDelegate_staticMetaObject();
 void QAbstractItemDelegate_delete(QAbstractItemDelegate* self);
 
 #ifdef __cplusplus

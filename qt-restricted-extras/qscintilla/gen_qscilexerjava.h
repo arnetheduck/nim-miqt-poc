@@ -152,6 +152,7 @@ bool QsciLexerJava_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerJava_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerJava_staticMetaObject();
 void QsciLexerJava_delete(QsciLexerJava* self);
 
 #ifdef __cplusplus

@@ -84,6 +84,7 @@ bool QOffscreenSurface_override_virtual_connectNotify(void* self, intptr_t slot)
 void QOffscreenSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QOffscreenSurface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QOffscreenSurface_staticMetaObject();
 void QOffscreenSurface_delete(QOffscreenSurface* self);
 
 #ifdef __cplusplus

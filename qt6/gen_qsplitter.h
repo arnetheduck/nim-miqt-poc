@@ -235,6 +235,7 @@ bool QSplitter_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplitter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplitter_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSplitter_staticMetaObject();
 void QSplitter_delete(QSplitter* self);
 
 QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent);
@@ -352,6 +353,7 @@ bool QSplitterHandle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSplitterHandle_staticMetaObject();
 void QSplitterHandle_delete(QSplitterHandle* self);
 
 #ifdef __cplusplus

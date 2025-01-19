@@ -75,6 +75,7 @@ bool QScriptExtensionPlugin_override_virtual_connectNotify(void* self, intptr_t 
 void QScriptExtensionPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScriptExtensionPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScriptExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QScriptExtensionPlugin_staticMetaObject();
 void QScriptExtensionPlugin_delete(QScriptExtensionPlugin* self);
 
 #ifdef __cplusplus

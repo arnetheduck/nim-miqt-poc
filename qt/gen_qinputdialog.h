@@ -292,6 +292,7 @@ bool QInputDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QInputDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QInputDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QInputDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QInputDialog_staticMetaObject();
 void QInputDialog_delete(QInputDialog* self);
 
 #ifdef __cplusplus

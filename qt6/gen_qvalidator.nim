@@ -105,6 +105,7 @@ proc fQValidator_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQValidator_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QValidator_override_virtual_connectNotify".}
 proc fQValidator_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QValidator_virtualbase_disconnectNotify".}
 proc fcQValidator_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QValidator_override_virtual_disconnectNotify".}
+proc fcQValidator_staticMetaObject(): pointer {.importc: "QValidator_staticMetaObject".}
 proc fcQValidator_delete(self: pointer) {.importc: "QValidator_delete".}
 proc fcQIntValidator_new(): ptr cQIntValidator {.importc: "QIntValidator_new".}
 proc fcQIntValidator_new2(bottom: cint, top: cint): ptr cQIntValidator {.importc: "QIntValidator_new2".}
@@ -147,6 +148,7 @@ proc fQIntValidator_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQIntValidator_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QIntValidator_override_virtual_connectNotify".}
 proc fQIntValidator_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QIntValidator_virtualbase_disconnectNotify".}
 proc fcQIntValidator_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QIntValidator_override_virtual_disconnectNotify".}
+proc fcQIntValidator_staticMetaObject(): pointer {.importc: "QIntValidator_staticMetaObject".}
 proc fcQIntValidator_delete(self: pointer) {.importc: "QIntValidator_delete".}
 proc fcQDoubleValidator_new(): ptr cQDoubleValidator {.importc: "QDoubleValidator_new".}
 proc fcQDoubleValidator_new2(bottom: float64, top: float64, decimals: cint): ptr cQDoubleValidator {.importc: "QDoubleValidator_new2".}
@@ -198,6 +200,7 @@ proc fQDoubleValidator_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQDoubleValidator_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDoubleValidator_override_virtual_connectNotify".}
 proc fQDoubleValidator_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDoubleValidator_virtualbase_disconnectNotify".}
 proc fcQDoubleValidator_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDoubleValidator_override_virtual_disconnectNotify".}
+proc fcQDoubleValidator_staticMetaObject(): pointer {.importc: "QDoubleValidator_staticMetaObject".}
 proc fcQDoubleValidator_delete(self: pointer) {.importc: "QDoubleValidator_delete".}
 proc fcQRegularExpressionValidator_new(): ptr cQRegularExpressionValidator {.importc: "QRegularExpressionValidator_new".}
 proc fcQRegularExpressionValidator_new2(re: pointer): ptr cQRegularExpressionValidator {.importc: "QRegularExpressionValidator_new2".}
@@ -234,6 +237,7 @@ proc fQRegularExpressionValidator_virtualbase_connectNotify(self: pointer, signa
 proc fcQRegularExpressionValidator_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QRegularExpressionValidator_override_virtual_connectNotify".}
 proc fQRegularExpressionValidator_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QRegularExpressionValidator_virtualbase_disconnectNotify".}
 proc fcQRegularExpressionValidator_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QRegularExpressionValidator_override_virtual_disconnectNotify".}
+proc fcQRegularExpressionValidator_staticMetaObject(): pointer {.importc: "QRegularExpressionValidator_staticMetaObject".}
 proc fcQRegularExpressionValidator_delete(self: pointer) {.importc: "QRegularExpressionValidator_delete".}
 
 
@@ -555,6 +559,8 @@ proc miqt_exec_callback_QValidator_disconnectNotify(self: ptr cQValidator, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QValidator): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQValidator_staticMetaObject())
 proc delete*(self: QValidator) =
   fcQValidator_delete(self.h)
 
@@ -921,6 +927,8 @@ proc miqt_exec_callback_QIntValidator_disconnectNotify(self: ptr cQIntValidator,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QIntValidator): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQIntValidator_staticMetaObject())
 proc delete*(self: QIntValidator) =
   fcQIntValidator_delete(self.h)
 
@@ -1343,6 +1351,8 @@ proc miqt_exec_callback_QDoubleValidator_disconnectNotify(self: ptr cQDoubleVali
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QDoubleValidator): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDoubleValidator_staticMetaObject())
 proc delete*(self: QDoubleValidator) =
   fcQDoubleValidator_delete(self.h)
 
@@ -1675,5 +1685,7 @@ proc miqt_exec_callback_QRegularExpressionValidator_disconnectNotify(self: ptr c
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QRegularExpressionValidator): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQRegularExpressionValidator_staticMetaObject())
 proc delete*(self: QRegularExpressionValidator) =
   fcQRegularExpressionValidator_delete(self.h)

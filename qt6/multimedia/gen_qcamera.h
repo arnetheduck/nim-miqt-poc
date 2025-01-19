@@ -180,6 +180,7 @@ bool QCamera_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCamera_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCamera_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QCamera_staticMetaObject();
 void QCamera_delete(QCamera* self);
 
 #ifdef __cplusplus

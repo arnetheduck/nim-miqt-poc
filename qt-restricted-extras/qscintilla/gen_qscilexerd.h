@@ -168,6 +168,7 @@ bool QsciLexerD_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerD_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerD_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerD_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerD_staticMetaObject();
 void QsciLexerD_delete(QsciLexerD* self);
 
 #ifdef __cplusplus

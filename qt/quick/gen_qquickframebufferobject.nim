@@ -177,6 +177,7 @@ proc fQQuickFramebufferObject_virtualbase_connectNotify(self: pointer, signal: p
 proc fcQQuickFramebufferObject_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QQuickFramebufferObject_override_virtual_connectNotify".}
 proc fQQuickFramebufferObject_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QQuickFramebufferObject_virtualbase_disconnectNotify".}
 proc fcQQuickFramebufferObject_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QQuickFramebufferObject_override_virtual_disconnectNotify".}
+proc fcQQuickFramebufferObject_staticMetaObject(): pointer {.importc: "QQuickFramebufferObject_staticMetaObject".}
 proc fcQQuickFramebufferObject_delete(self: pointer) {.importc: "QQuickFramebufferObject_delete".}
 
 
@@ -1329,6 +1330,8 @@ proc miqt_exec_callback_QQuickFramebufferObject_disconnectNotify(self: ptr cQQui
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QQuickFramebufferObject): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQQuickFramebufferObject_staticMetaObject())
 proc delete*(self: QQuickFramebufferObject) =
   fcQQuickFramebufferObject_delete(self.h)
 

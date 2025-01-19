@@ -192,6 +192,7 @@ struct miqt_string QSGAbstractRenderer_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
+const QMetaObject* QSGAbstractRenderer_staticMetaObject() { return &QSGAbstractRenderer::staticMetaObject; }
 void QSGAbstractRenderer_delete(QSGAbstractRenderer* self) {
 	delete self;
 }

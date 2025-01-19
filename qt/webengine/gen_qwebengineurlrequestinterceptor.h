@@ -65,6 +65,7 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_connectNotify(void* self, 
 void QWebEngineUrlRequestInterceptor_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebEngineUrlRequestInterceptor_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWebEngineUrlRequestInterceptor_staticMetaObject();
 void QWebEngineUrlRequestInterceptor_delete(QWebEngineUrlRequestInterceptor* self);
 
 #ifdef __cplusplus

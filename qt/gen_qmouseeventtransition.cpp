@@ -553,6 +553,7 @@ void QMouseEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMouseEventTransition_staticMetaObject() { return &QMouseEventTransition::staticMetaObject; }
 void QMouseEventTransition_delete(QMouseEventTransition* self) {
 	delete self;
 }

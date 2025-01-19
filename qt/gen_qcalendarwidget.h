@@ -257,6 +257,7 @@ bool QCalendarWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCalendarWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCalendarWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QCalendarWidget_staticMetaObject();
 void QCalendarWidget_delete(QCalendarWidget* self);
 
 #ifdef __cplusplus

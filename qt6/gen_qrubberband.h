@@ -209,6 +209,7 @@ bool QRubberBand_override_virtual_connectNotify(void* self, intptr_t slot);
 void QRubberBand_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QRubberBand_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QRubberBand_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QRubberBand_staticMetaObject();
 void QRubberBand_delete(QRubberBand* self);
 
 #ifdef __cplusplus

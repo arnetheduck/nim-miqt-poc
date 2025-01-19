@@ -458,6 +458,7 @@ void QQmlWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlWebChannel_staticMetaObject() { return &QQmlWebChannel::staticMetaObject; }
 void QQmlWebChannel_delete(QQmlWebChannel* self) {
 	delete self;
 }

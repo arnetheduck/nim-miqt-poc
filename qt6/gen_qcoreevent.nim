@@ -216,9 +216,11 @@ import gen_qcoreevent_types
 export gen_qcoreevent_types
 
 import
-  gen_qobject
+  gen_qobject,
+  gen_qobjectdefs
 export
-  gen_qobject
+  gen_qobject,
+  gen_qobjectdefs
 
 type cQEvent*{.exportc: "QEvent", incompleteStruct.} = object
 type cQTimerEvent*{.exportc: "QTimerEvent", incompleteStruct.} = object
@@ -242,6 +244,7 @@ proc fQEvent_virtualbase_setAccepted(self: pointer, accepted: bool): void{.impor
 proc fcQEvent_override_virtual_setAccepted(self: pointer, slot: int) {.importc: "QEvent_override_virtual_setAccepted".}
 proc fQEvent_virtualbase_clone(self: pointer, ): pointer{.importc: "QEvent_virtualbase_clone".}
 proc fcQEvent_override_virtual_clone(self: pointer, slot: int) {.importc: "QEvent_override_virtual_clone".}
+proc fcQEvent_staticMetaObject(): pointer {.importc: "QEvent_staticMetaObject".}
 proc fcQEvent_delete(self: pointer) {.importc: "QEvent_delete".}
 proc fcQTimerEvent_new(timerId: cint): ptr cQTimerEvent {.importc: "QTimerEvent_new".}
 proc fcQTimerEvent_clone(self: pointer, ): pointer {.importc: "QTimerEvent_clone".}
@@ -371,6 +374,8 @@ proc miqt_exec_callback_QEvent_clone(self: ptr cQEvent, slot: int): pointer {.ex
   let virtualReturn = nimfunc[](superCall )
 
   virtualReturn.h
+proc staticMetaObject*(_: type QEvent): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQEvent_staticMetaObject())
 proc delete*(self: QEvent) =
   fcQEvent_delete(self.h)
 

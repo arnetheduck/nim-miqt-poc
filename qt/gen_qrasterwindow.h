@@ -160,6 +160,7 @@ bool QRasterWindow_override_virtual_initPainter(void* self, intptr_t slot);
 void QRasterWindow_virtualbase_initPainter(const void* self, QPainter* painter);
 bool QRasterWindow_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self);
+const QMetaObject* QRasterWindow_staticMetaObject();
 void QRasterWindow_delete(QRasterWindow* self);
 
 #ifdef __cplusplus

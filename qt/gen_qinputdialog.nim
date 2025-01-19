@@ -295,6 +295,7 @@ proc fQInputDialog_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQInputDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_connectNotify".}
 proc fQInputDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QInputDialog_virtualbase_disconnectNotify".}
 proc fcQInputDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_disconnectNotify".}
+proc fcQInputDialog_staticMetaObject(): pointer {.importc: "QInputDialog_staticMetaObject".}
 proc fcQInputDialog_delete(self: pointer) {.importc: "QInputDialog_delete".}
 
 
@@ -2128,5 +2129,7 @@ proc miqt_exec_callback_QInputDialog_disconnectNotify(self: ptr cQInputDialog, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QInputDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQInputDialog_staticMetaObject())
 proc delete*(self: QInputDialog) =
   fcQInputDialog_delete(self.h)

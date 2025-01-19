@@ -154,6 +154,7 @@ bool QIODevice_override_virtual_connectNotify(void* self, intptr_t slot);
 void QIODevice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QIODevice_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QIODevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QIODevice_staticMetaObject();
 void QIODevice_delete(QIODevice* self);
 
 #ifdef __cplusplus

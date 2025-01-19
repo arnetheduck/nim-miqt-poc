@@ -2306,6 +2306,7 @@ void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCalendarWidget_staticMetaObject() { return &QCalendarWidget::staticMetaObject; }
 void QCalendarWidget_delete(QCalendarWidget* self) {
 	delete self;
 }

@@ -824,6 +824,7 @@ void QNetworkDiskCache_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQNetworkDiskCache*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QNetworkDiskCache_staticMetaObject() { return &QNetworkDiskCache::staticMetaObject; }
 void QNetworkDiskCache_delete(QNetworkDiskCache* self) {
 	delete self;
 }

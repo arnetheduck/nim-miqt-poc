@@ -167,6 +167,7 @@ proc fQsciLexerJavaScript_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQsciLexerJavaScript_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerJavaScript_override_virtual_connectNotify".}
 proc fQsciLexerJavaScript_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerJavaScript_virtualbase_disconnectNotify".}
 proc fcQsciLexerJavaScript_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerJavaScript_override_virtual_disconnectNotify".}
+proc fcQsciLexerJavaScript_staticMetaObject(): pointer {.importc: "QsciLexerJavaScript_staticMetaObject".}
 proc fcQsciLexerJavaScript_delete(self: pointer) {.importc: "QsciLexerJavaScript_delete".}
 
 
@@ -1379,5 +1380,7 @@ proc miqt_exec_callback_QsciLexerJavaScript_disconnectNotify(self: ptr cQsciLexe
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerJavaScript): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerJavaScript_staticMetaObject())
 proc delete*(self: QsciLexerJavaScript) =
   fcQsciLexerJavaScript_delete(self.h)

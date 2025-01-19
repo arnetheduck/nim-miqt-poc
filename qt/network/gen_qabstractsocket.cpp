@@ -1789,6 +1789,7 @@ void QAbstractSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractSocket_staticMetaObject() { return &QAbstractSocket::staticMetaObject; }
 void QAbstractSocket_delete(QAbstractSocket* self) {
 	delete self;
 }

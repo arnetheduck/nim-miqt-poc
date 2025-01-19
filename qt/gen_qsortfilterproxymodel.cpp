@@ -2648,6 +2648,7 @@ void QSortFilterProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSortFilterProxyModel_staticMetaObject() { return &QSortFilterProxyModel::staticMetaObject; }
 void QSortFilterProxyModel_delete(QSortFilterProxyModel* self) {
 	delete self;
 }

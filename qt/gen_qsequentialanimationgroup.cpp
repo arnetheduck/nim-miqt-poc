@@ -625,6 +625,7 @@ void QSequentialAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMet
 	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSequentialAnimationGroup_staticMetaObject() { return &QSequentialAnimationGroup::staticMetaObject; }
 void QSequentialAnimationGroup_delete(QSequentialAnimationGroup* self) {
 	delete self;
 }

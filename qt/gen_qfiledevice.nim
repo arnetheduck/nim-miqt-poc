@@ -136,6 +136,7 @@ proc fcQFileDevice_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.im
 proc fcQFileDevice_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QFileDevice_trUtf82".}
 proc fcQFileDevice_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFileDevice_trUtf83".}
 proc fcQFileDevice_map3(self: pointer, offset: clonglong, size: clonglong, flags: cint): ptr uint8 {.importc: "QFileDevice_map3".}
+proc fcQFileDevice_staticMetaObject(): pointer {.importc: "QFileDevice_staticMetaObject".}
 proc fcQFileDevice_delete(self: pointer) {.importc: "QFileDevice_delete".}
 
 
@@ -274,5 +275,7 @@ proc map3*(self: QFileDevice, offset: clonglong, size: clonglong, flags: QFileDe
 
   fcQFileDevice_map3(self.h, offset, size, cint(flags))
 
+proc staticMetaObject*(_: type QFileDevice): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFileDevice_staticMetaObject())
 proc delete*(self: QFileDevice) =
   fcQFileDevice_delete(self.h)

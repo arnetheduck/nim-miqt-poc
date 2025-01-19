@@ -82,11 +82,13 @@ import
   gen_qbrush,
   gen_qcolor,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qvariant
 export
   gen_qbrush,
   gen_qcolor,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qvariant
 
 type cQPalette*{.exportc: "QPalette", incompleteStruct.} = object
@@ -143,6 +145,7 @@ proc fcQPalette_cacheKey(self: pointer, ): clonglong {.importc: "QPalette_cacheK
 proc fcQPalette_resolve(self: pointer, param1: pointer): pointer {.importc: "QPalette_resolve".}
 proc fcQPalette_resolve2(self: pointer, ): cuint {.importc: "QPalette_resolve2".}
 proc fcQPalette_resolveWithMask(self: pointer, mask: cuint): void {.importc: "QPalette_resolveWithMask".}
+proc fcQPalette_staticMetaObject(): pointer {.importc: "QPalette_staticMetaObject".}
 proc fcQPalette_delete(self: pointer) {.importc: "QPalette_delete".}
 
 
@@ -349,5 +352,7 @@ proc resolveWithMask*(self: QPalette, mask: cuint): void =
 
   fcQPalette_resolveWithMask(self.h, mask)
 
+proc staticMetaObject*(_: type QPalette): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPalette_staticMetaObject())
 proc delete*(self: QPalette) =
   fcQPalette_delete(self.h)

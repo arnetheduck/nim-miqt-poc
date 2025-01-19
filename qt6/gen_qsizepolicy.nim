@@ -80,9 +80,11 @@ export gen_qsizepolicy_types
 
 import
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qvariant
 export
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qvariant
 
 type cQSizePolicy*{.exportc: "QSizePolicy", incompleteStruct.} = object
@@ -113,6 +115,7 @@ proc fcQSizePolicy_retainSizeWhenHidden(self: pointer, ): bool {.importc: "QSize
 proc fcQSizePolicy_setRetainSizeWhenHidden(self: pointer, retainSize: bool): void {.importc: "QSizePolicy_setRetainSizeWhenHidden".}
 proc fcQSizePolicy_transpose(self: pointer, ): void {.importc: "QSizePolicy_transpose".}
 proc fcQSizePolicy_transposed(self: pointer, ): pointer {.importc: "QSizePolicy_transposed".}
+proc fcQSizePolicy_staticMetaObject(): pointer {.importc: "QSizePolicy_staticMetaObject".}
 proc fcQSizePolicy_delete(self: pointer) {.importc: "QSizePolicy_delete".}
 
 
@@ -218,5 +221,7 @@ proc transposed*(self: QSizePolicy, ): QSizePolicy =
 
   QSizePolicy(h: fcQSizePolicy_transposed(self.h))
 
+proc staticMetaObject*(_: type QSizePolicy): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSizePolicy_staticMetaObject())
 proc delete*(self: QSizePolicy) =
   fcQSizePolicy_delete(self.h)

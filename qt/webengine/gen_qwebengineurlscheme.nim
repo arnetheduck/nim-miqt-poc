@@ -65,6 +65,10 @@ const
 import gen_qwebengineurlscheme_types
 export gen_qwebengineurlscheme_types
 
+import
+  gen_qobjectdefs
+export
+  gen_qobjectdefs
 
 type cQWebEngineUrlScheme*{.exportc: "QWebEngineUrlScheme", incompleteStruct.} = object
 
@@ -84,6 +88,7 @@ proc fcQWebEngineUrlScheme_flags(self: pointer, ): cint {.importc: "QWebEngineUr
 proc fcQWebEngineUrlScheme_setFlags(self: pointer, newValue: cint): void {.importc: "QWebEngineUrlScheme_setFlags".}
 proc fcQWebEngineUrlScheme_registerScheme(scheme: pointer): void {.importc: "QWebEngineUrlScheme_registerScheme".}
 proc fcQWebEngineUrlScheme_schemeByName(name: struct_miqt_string): pointer {.importc: "QWebEngineUrlScheme_schemeByName".}
+proc fcQWebEngineUrlScheme_staticMetaObject(): pointer {.importc: "QWebEngineUrlScheme_staticMetaObject".}
 proc fcQWebEngineUrlScheme_delete(self: pointer) {.importc: "QWebEngineUrlScheme_delete".}
 
 
@@ -153,5 +158,7 @@ proc schemeByName*(_: type QWebEngineUrlScheme, name: seq[byte]): QWebEngineUrlS
 
   QWebEngineUrlScheme(h: fcQWebEngineUrlScheme_schemeByName(struct_miqt_string(data: cast[cstring](if len(name) == 0: nil else: unsafeAddr name[0]), len: csize_t(len(name)))))
 
+proc staticMetaObject*(_: type QWebEngineUrlScheme): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlScheme_staticMetaObject())
 proc delete*(self: QWebEngineUrlScheme) =
   fcQWebEngineUrlScheme_delete(self.h)

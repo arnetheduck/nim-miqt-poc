@@ -214,6 +214,7 @@ bool QFrame_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFrame_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QFrame_staticMetaObject();
 void QFrame_delete(QFrame* self);
 
 #ifdef __cplusplus

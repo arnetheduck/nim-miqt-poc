@@ -108,6 +108,7 @@ proc fQUndoGroup_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQUndoGroup_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QUndoGroup_override_virtual_connectNotify".}
 proc fQUndoGroup_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QUndoGroup_virtualbase_disconnectNotify".}
 proc fcQUndoGroup_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QUndoGroup_override_virtual_disconnectNotify".}
+proc fcQUndoGroup_staticMetaObject(): pointer {.importc: "QUndoGroup_staticMetaObject".}
 proc fcQUndoGroup_delete(self: pointer) {.importc: "QUndoGroup_delete".}
 
 
@@ -555,5 +556,7 @@ proc miqt_exec_callback_QUndoGroup_disconnectNotify(self: ptr cQUndoGroup, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QUndoGroup): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQUndoGroup_staticMetaObject())
 proc delete*(self: QUndoGroup) =
   fcQUndoGroup_delete(self.h)

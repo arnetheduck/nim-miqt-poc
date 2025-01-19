@@ -253,6 +253,7 @@ bool QAbstractSpinBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractSpinBox_staticMetaObject();
 void QAbstractSpinBox_delete(QAbstractSpinBox* self);
 
 #ifdef __cplusplus

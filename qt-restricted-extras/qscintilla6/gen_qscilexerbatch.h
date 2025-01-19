@@ -145,6 +145,7 @@ bool QsciLexerBatch_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerBatch_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerBatch_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerBatch_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerBatch_staticMetaObject();
 void QsciLexerBatch_delete(QsciLexerBatch* self);
 
 #ifdef __cplusplus

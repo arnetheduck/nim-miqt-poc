@@ -1957,6 +1957,7 @@ void QsciLexerPostScript_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQsciLexerPostScript*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerPostScript_staticMetaObject() { return &QsciLexerPostScript::staticMetaObject; }
 void QsciLexerPostScript_delete(QsciLexerPostScript* self) {
 	delete self;
 }

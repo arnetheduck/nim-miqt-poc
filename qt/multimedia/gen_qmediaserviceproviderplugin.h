@@ -98,6 +98,7 @@ struct miqt_string QMediaServiceProviderPlugin_tr2(const char* s, const char* c)
 struct miqt_string QMediaServiceProviderPlugin_tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaServiceProviderPlugin_trUtf82(const char* s, const char* c);
 struct miqt_string QMediaServiceProviderPlugin_trUtf83(const char* s, const char* c, int n);
+const QMetaObject* QMediaServiceProviderPlugin_staticMetaObject();
 void QMediaServiceProviderPlugin_delete(QMediaServiceProviderPlugin* self);
 
 #ifdef __cplusplus

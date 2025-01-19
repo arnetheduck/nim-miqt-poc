@@ -81,6 +81,7 @@ proc fQIconEnginePlugin_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQIconEnginePlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QIconEnginePlugin_override_virtual_connectNotify".}
 proc fQIconEnginePlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QIconEnginePlugin_virtualbase_disconnectNotify".}
 proc fcQIconEnginePlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QIconEnginePlugin_override_virtual_disconnectNotify".}
+proc fcQIconEnginePlugin_staticMetaObject(): pointer {.importc: "QIconEnginePlugin_staticMetaObject".}
 proc fcQIconEnginePlugin_delete(self: pointer) {.importc: "QIconEnginePlugin_delete".}
 
 
@@ -367,5 +368,7 @@ proc miqt_exec_callback_QIconEnginePlugin_disconnectNotify(self: ptr cQIconEngin
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QIconEnginePlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQIconEnginePlugin_staticMetaObject())
 proc delete*(self: QIconEnginePlugin) =
   fcQIconEnginePlugin_delete(self.h)

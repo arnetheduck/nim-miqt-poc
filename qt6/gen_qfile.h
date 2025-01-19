@@ -137,6 +137,7 @@ bool QFile_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFile_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QFile_staticMetaObject();
 void QFile_delete(QFile* self);
 
 #ifdef __cplusplus

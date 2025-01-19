@@ -519,6 +519,7 @@ void QHttpMultiPart_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QHttpMultiPart_staticMetaObject() { return &QHttpMultiPart::staticMetaObject; }
 void QHttpMultiPart_delete(QHttpMultiPart* self) {
 	delete self;
 }

@@ -91,6 +91,7 @@ proc fQSocketNotifier_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQSocketNotifier_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSocketNotifier_override_virtual_connectNotify".}
 proc fQSocketNotifier_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSocketNotifier_virtualbase_disconnectNotify".}
 proc fcQSocketNotifier_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSocketNotifier_override_virtual_disconnectNotify".}
+proc fcQSocketNotifier_staticMetaObject(): pointer {.importc: "QSocketNotifier_staticMetaObject".}
 proc fcQSocketNotifier_delete(self: pointer) {.importc: "QSocketNotifier_delete".}
 proc fcQSocketDescriptor_new(): ptr cQSocketDescriptor {.importc: "QSocketDescriptor_new".}
 proc fcQSocketDescriptor_new2(param1: pointer): ptr cQSocketDescriptor {.importc: "QSocketDescriptor_new2".}
@@ -367,6 +368,8 @@ proc miqt_exec_callback_QSocketNotifier_disconnectNotify(self: ptr cQSocketNotif
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSocketNotifier): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSocketNotifier_staticMetaObject())
 proc delete*(self: QSocketNotifier) =
   fcQSocketNotifier_delete(self.h)
 

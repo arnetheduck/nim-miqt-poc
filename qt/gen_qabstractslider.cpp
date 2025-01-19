@@ -2222,6 +2222,7 @@ void QAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractSlider_staticMetaObject() { return &QAbstractSlider::staticMetaObject; }
 void QAbstractSlider_delete(QAbstractSlider* self) {
 	delete self;
 }

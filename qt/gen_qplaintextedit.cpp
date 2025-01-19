@@ -2889,6 +2889,7 @@ void QPlainTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPlainTextEdit_staticMetaObject() { return &QPlainTextEdit::staticMetaObject; }
 void QPlainTextEdit_delete(QPlainTextEdit* self) {
 	delete self;
 }
@@ -3737,6 +3738,7 @@ void QPlainTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMeth
 	( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPlainTextDocumentLayout_staticMetaObject() { return &QPlainTextDocumentLayout::staticMetaObject; }
 void QPlainTextDocumentLayout_delete(QPlainTextDocumentLayout* self) {
 	delete self;
 }

@@ -2101,6 +2101,7 @@ void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDial_staticMetaObject() { return &QDial::staticMetaObject; }
 void QDial_delete(QDial* self) {
 	delete self;
 }

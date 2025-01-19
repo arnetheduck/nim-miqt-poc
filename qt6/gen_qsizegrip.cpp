@@ -1986,6 +1986,7 @@ void QSizeGrip_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSizeGrip*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSizeGrip_staticMetaObject() { return &QSizeGrip::staticMetaObject; }
 void QSizeGrip_delete(QSizeGrip* self) {
 	delete self;
 }

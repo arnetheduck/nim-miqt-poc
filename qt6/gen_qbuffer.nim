@@ -124,6 +124,7 @@ proc fQBuffer_virtualbase_childEvent(self: pointer, event: pointer): void{.impor
 proc fcQBuffer_override_virtual_childEvent(self: pointer, slot: int) {.importc: "QBuffer_override_virtual_childEvent".}
 proc fQBuffer_virtualbase_customEvent(self: pointer, event: pointer): void{.importc: "QBuffer_virtualbase_customEvent".}
 proc fcQBuffer_override_virtual_customEvent(self: pointer, slot: int) {.importc: "QBuffer_override_virtual_customEvent".}
+proc fcQBuffer_staticMetaObject(): pointer {.importc: "QBuffer_staticMetaObject".}
 proc fcQBuffer_delete(self: pointer) {.importc: "QBuffer_delete".}
 
 
@@ -832,5 +833,7 @@ proc miqt_exec_callback_QBuffer_customEvent(self: ptr cQBuffer, slot: int, event
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QBuffer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQBuffer_staticMetaObject())
 proc delete*(self: QBuffer) =
   fcQBuffer_delete(self.h)

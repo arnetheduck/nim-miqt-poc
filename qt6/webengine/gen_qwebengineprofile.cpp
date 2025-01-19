@@ -666,6 +666,7 @@ void QWebEngineProfile_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebEngineProfile_staticMetaObject() { return &QWebEngineProfile::staticMetaObject; }
 void QWebEngineProfile_delete(QWebEngineProfile* self) {
 	delete self;
 }

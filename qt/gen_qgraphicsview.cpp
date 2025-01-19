@@ -2764,6 +2764,7 @@ void QGraphicsView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQGraphicsView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QGraphicsView_staticMetaObject() { return &QGraphicsView::staticMetaObject; }
 void QGraphicsView_delete(QGraphicsView* self) {
 	delete self;
 }

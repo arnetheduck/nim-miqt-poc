@@ -1790,6 +1790,7 @@ void QsciLexerMatlab_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQsciLexerMatlab*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerMatlab_staticMetaObject() { return &QsciLexerMatlab::staticMetaObject; }
 void QsciLexerMatlab_delete(QsciLexerMatlab* self) {
 	delete self;
 }

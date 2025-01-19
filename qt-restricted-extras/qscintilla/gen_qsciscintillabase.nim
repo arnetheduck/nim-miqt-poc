@@ -1468,6 +1468,7 @@ proc fQsciScintillaBase_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQsciScintillaBase_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciScintillaBase_override_virtual_connectNotify".}
 proc fQsciScintillaBase_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciScintillaBase_virtualbase_disconnectNotify".}
 proc fcQsciScintillaBase_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciScintillaBase_override_virtual_disconnectNotify".}
+proc fcQsciScintillaBase_staticMetaObject(): pointer {.importc: "QsciScintillaBase_staticMetaObject".}
 proc fcQsciScintillaBase_delete(self: pointer) {.importc: "QsciScintillaBase_delete".}
 
 
@@ -3645,5 +3646,7 @@ proc miqt_exec_callback_QsciScintillaBase_disconnectNotify(self: ptr cQsciScinti
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciScintillaBase): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciScintillaBase_staticMetaObject())
 proc delete*(self: QsciScintillaBase) =
   fcQsciScintillaBase_delete(self.h)

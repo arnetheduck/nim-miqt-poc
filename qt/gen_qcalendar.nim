@@ -57,10 +57,12 @@ export gen_qcalendar_types
 
 import
   gen_qdatetime,
-  gen_qlocale
+  gen_qlocale,
+  gen_qobjectdefs
 export
   gen_qdatetime,
-  gen_qlocale
+  gen_qlocale,
+  gen_qobjectdefs
 
 type cQCalendar*{.exportc: "QCalendar", incompleteStruct.} = object
 type cQCalendarYearMonthDay*{.exportc: "QCalendar__YearMonthDay", incompleteStruct.} = object
@@ -99,6 +101,7 @@ proc fcQCalendar_standaloneMonthName3(self: pointer, locale: pointer, month: cin
 proc fcQCalendar_standaloneMonthName4(self: pointer, locale: pointer, month: cint, year: cint, format: cint): struct_miqt_string {.importc: "QCalendar_standaloneMonthName4".}
 proc fcQCalendar_weekDayName3(self: pointer, locale: pointer, day: cint, format: cint): struct_miqt_string {.importc: "QCalendar_weekDayName3".}
 proc fcQCalendar_standaloneWeekDayName3(self: pointer, locale: pointer, day: cint, format: cint): struct_miqt_string {.importc: "QCalendar_standaloneWeekDayName3".}
+proc fcQCalendar_staticMetaObject(): pointer {.importc: "QCalendar_staticMetaObject".}
 proc fcQCalendar_delete(self: pointer) {.importc: "QCalendar_delete".}
 proc fcQCalendarYearMonthDay_new(): ptr cQCalendarYearMonthDay {.importc: "QCalendar__YearMonthDay_new".}
 proc fcQCalendarYearMonthDay_new2(y: cint): ptr cQCalendarYearMonthDay {.importc: "QCalendar__YearMonthDay_new2".}
@@ -285,6 +288,8 @@ proc standaloneWeekDayName3*(self: QCalendar, locale: gen_qlocale.QLocale, day: 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QCalendar): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCalendar_staticMetaObject())
 proc delete*(self: QCalendar) =
   fcQCalendar_delete(self.h)
 

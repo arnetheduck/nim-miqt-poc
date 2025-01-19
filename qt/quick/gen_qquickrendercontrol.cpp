@@ -537,6 +537,7 @@ void QQuickRenderControl_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQQuickRenderControl*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickRenderControl_staticMetaObject() { return &QQuickRenderControl::staticMetaObject; }
 void QQuickRenderControl_delete(QQuickRenderControl* self) {
 	delete self;
 }

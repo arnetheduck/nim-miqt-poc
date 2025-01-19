@@ -100,6 +100,7 @@ proc fcQClipboard_image1(self: pointer, mode: cint): pointer {.importc: "QClipbo
 proc fcQClipboard_pixmap1(self: pointer, mode: cint): pointer {.importc: "QClipboard_pixmap1".}
 proc fcQClipboard_setImage2(self: pointer, param1: pointer, mode: cint): void {.importc: "QClipboard_setImage2".}
 proc fcQClipboard_setPixmap2(self: pointer, param1: pointer, mode: cint): void {.importc: "QClipboard_setPixmap2".}
+proc fcQClipboard_staticMetaObject(): pointer {.importc: "QClipboard_staticMetaObject".}
 
 
 func init*(T: type QClipboard, h: ptr cQClipboard): QClipboard =
@@ -315,3 +316,5 @@ proc setPixmap2*(self: QClipboard, param1: gen_qpixmap.QPixmap, mode: QClipboard
 
   fcQClipboard_setPixmap2(self.h, param1.h, cint(mode))
 
+proc staticMetaObject*(_: type QClipboard): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQClipboard_staticMetaObject())

@@ -87,6 +87,7 @@ proc fQPictureFormatPlugin_virtualbase_connectNotify(self: pointer, signal: poin
 proc fcQPictureFormatPlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPictureFormatPlugin_override_virtual_connectNotify".}
 proc fQPictureFormatPlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPictureFormatPlugin_virtualbase_disconnectNotify".}
 proc fcQPictureFormatPlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPictureFormatPlugin_override_virtual_disconnectNotify".}
+proc fcQPictureFormatPlugin_staticMetaObject(): pointer {.importc: "QPictureFormatPlugin_staticMetaObject".}
 proc fcQPictureFormatPlugin_delete(self: pointer) {.importc: "QPictureFormatPlugin_delete".}
 
 
@@ -451,5 +452,7 @@ proc miqt_exec_callback_QPictureFormatPlugin_disconnectNotify(self: ptr cQPictur
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QPictureFormatPlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPictureFormatPlugin_staticMetaObject())
 proc delete*(self: QPictureFormatPlugin) =
   fcQPictureFormatPlugin_delete(self.h)

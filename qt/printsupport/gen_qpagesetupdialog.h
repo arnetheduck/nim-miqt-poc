@@ -209,6 +209,7 @@ bool QPageSetupDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPageSetupDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPageSetupDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPageSetupDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPageSetupDialog_staticMetaObject();
 void QPageSetupDialog_delete(QPageSetupDialog* self);
 
 #ifdef __cplusplus

@@ -476,6 +476,7 @@ void QVideoProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QVideoProbe_staticMetaObject() { return &QVideoProbe::staticMetaObject; }
 void QVideoProbe_delete(QVideoProbe* self) {
 	delete self;
 }

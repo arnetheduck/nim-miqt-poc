@@ -228,6 +228,7 @@ bool QFontDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFontDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFontDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFontDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QFontDialog_staticMetaObject();
 void QFontDialog_delete(QFontDialog* self);
 
 #ifdef __cplusplus

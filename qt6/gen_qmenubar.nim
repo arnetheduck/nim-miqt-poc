@@ -211,6 +211,7 @@ proc fQMenuBar_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQMenuBar_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMenuBar_override_virtual_connectNotify".}
 proc fQMenuBar_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMenuBar_virtualbase_disconnectNotify".}
 proc fcQMenuBar_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMenuBar_override_virtual_disconnectNotify".}
+proc fcQMenuBar_staticMetaObject(): pointer {.importc: "QMenuBar_staticMetaObject".}
 proc fcQMenuBar_delete(self: pointer) {.importc: "QMenuBar_delete".}
 
 
@@ -1543,5 +1544,7 @@ proc miqt_exec_callback_QMenuBar_disconnectNotify(self: ptr cQMenuBar, slot: int
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QMenuBar): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMenuBar_staticMetaObject())
 proc delete*(self: QMenuBar) =
   fcQMenuBar_delete(self.h)

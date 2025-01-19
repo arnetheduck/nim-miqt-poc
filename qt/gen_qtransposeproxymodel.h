@@ -171,6 +171,7 @@ bool QTransposeProxyModel_override_virtual_connectNotify(void* self, intptr_t sl
 void QTransposeProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTransposeProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTransposeProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTransposeProxyModel_staticMetaObject();
 void QTransposeProxyModel_delete(QTransposeProxyModel* self);
 
 #ifdef __cplusplus

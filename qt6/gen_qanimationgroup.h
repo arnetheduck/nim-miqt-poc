@@ -76,6 +76,7 @@ bool QAnimationGroup_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAnimationGroup_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAnimationGroup_staticMetaObject();
 void QAnimationGroup_delete(QAnimationGroup* self);
 
 #ifdef __cplusplus

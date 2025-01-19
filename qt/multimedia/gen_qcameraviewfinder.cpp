@@ -2096,6 +2096,7 @@ void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCameraViewfinder_staticMetaObject() { return &QCameraViewfinder::staticMetaObject; }
 void QCameraViewfinder_delete(QCameraViewfinder* self) {
 	delete self;
 }

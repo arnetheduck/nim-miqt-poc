@@ -107,6 +107,7 @@ bool QSvgRenderer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSvgRenderer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSvgRenderer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSvgRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSvgRenderer_staticMetaObject();
 void QSvgRenderer_delete(QSvgRenderer* self);
 
 #ifdef __cplusplus

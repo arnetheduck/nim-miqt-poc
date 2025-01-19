@@ -70,6 +70,10 @@ const
 import gen_qstandardpaths_types
 export gen_qstandardpaths_types
 
+import
+  gen_qobjectdefs
+export
+  gen_qobjectdefs
 
 type cQStandardPaths*{.exportc: "QStandardPaths", incompleteStruct.} = object
 
@@ -84,6 +88,7 @@ proc fcQStandardPaths_isTestModeEnabled(): bool {.importc: "QStandardPaths_isTes
 proc fcQStandardPaths_locate3(typeVal: cint, fileName: struct_miqt_string, options: cint): struct_miqt_string {.importc: "QStandardPaths_locate3".}
 proc fcQStandardPaths_locateAll3(typeVal: cint, fileName: struct_miqt_string, options: cint): struct_miqt_array {.importc: "QStandardPaths_locateAll3".}
 proc fcQStandardPaths_findExecutable2(executableName: struct_miqt_string, paths: struct_miqt_array): struct_miqt_string {.importc: "QStandardPaths_findExecutable2".}
+proc fcQStandardPaths_staticMetaObject(): pointer {.importc: "QStandardPaths_staticMetaObject".}
 
 
 func init*(T: type QStandardPaths, h: ptr cQStandardPaths): QStandardPaths =
@@ -178,3 +183,5 @@ proc findExecutable2*(_: type QStandardPaths, executableName: string, paths: seq
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QStandardPaths): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQStandardPaths_staticMetaObject())

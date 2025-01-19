@@ -166,6 +166,7 @@ bool QGuiApplication_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGuiApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGuiApplication_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGuiApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGuiApplication_staticMetaObject();
 void QGuiApplication_delete(QGuiApplication* self);
 
 #ifdef __cplusplus

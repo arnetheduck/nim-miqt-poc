@@ -86,6 +86,7 @@ proc fQAccessibleBridgePlugin_virtualbase_connectNotify(self: pointer, signal: p
 proc fcQAccessibleBridgePlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_connectNotify".}
 proc fQAccessibleBridgePlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAccessibleBridgePlugin_virtualbase_disconnectNotify".}
 proc fcQAccessibleBridgePlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_disconnectNotify".}
+proc fcQAccessibleBridgePlugin_staticMetaObject(): pointer {.importc: "QAccessibleBridgePlugin_staticMetaObject".}
 proc fcQAccessibleBridgePlugin_delete(self: pointer) {.importc: "QAccessibleBridgePlugin_delete".}
 
 
@@ -389,5 +390,7 @@ proc miqt_exec_callback_QAccessibleBridgePlugin_disconnectNotify(self: ptr cQAcc
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAccessibleBridgePlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAccessibleBridgePlugin_staticMetaObject())
 proc delete*(self: QAccessibleBridgePlugin) =
   fcQAccessibleBridgePlugin_delete(self.h)

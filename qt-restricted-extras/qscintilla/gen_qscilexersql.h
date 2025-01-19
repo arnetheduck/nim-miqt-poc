@@ -170,6 +170,7 @@ bool QsciLexerSQL_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerSQL_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerSQL_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerSQL_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerSQL_staticMetaObject();
 void QsciLexerSQL_delete(QsciLexerSQL* self);
 
 #ifdef __cplusplus

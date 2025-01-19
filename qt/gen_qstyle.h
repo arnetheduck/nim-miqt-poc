@@ -166,6 +166,7 @@ bool QStyle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStyle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QStyle_staticMetaObject();
 void QStyle_delete(QStyle* self);
 
 #ifdef __cplusplus

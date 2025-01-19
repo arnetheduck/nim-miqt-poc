@@ -315,6 +315,7 @@ bool QWindow_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWindow_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWindow_staticMetaObject();
 void QWindow_delete(QWindow* self);
 
 #ifdef __cplusplus

@@ -159,6 +159,7 @@ struct miqt_string QWebEngineContextMenuRequest_tr3(const char* s, const char* c
 	return _ms;
 }
 
+const QMetaObject* QWebEngineContextMenuRequest_staticMetaObject() { return &QWebEngineContextMenuRequest::staticMetaObject; }
 void QWebEngineContextMenuRequest_delete(QWebEngineContextMenuRequest* self) {
 	delete self;
 }

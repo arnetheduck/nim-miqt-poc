@@ -2315,6 +2315,7 @@ void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QProgressDialog_staticMetaObject() { return &QProgressDialog::staticMetaObject; }
 void QProgressDialog_delete(QProgressDialog* self) {
 	delete self;
 }

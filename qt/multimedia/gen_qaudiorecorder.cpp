@@ -605,6 +605,7 @@ void QAudioRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioRecorder_staticMetaObject() { return &QAudioRecorder::staticMetaObject; }
 void QAudioRecorder_delete(QAudioRecorder* self) {
 	delete self;
 }

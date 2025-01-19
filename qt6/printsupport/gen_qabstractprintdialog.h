@@ -213,6 +213,7 @@ bool QAbstractPrintDialog_override_virtual_connectNotify(void* self, intptr_t sl
 void QAbstractPrintDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractPrintDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractPrintDialog_staticMetaObject();
 void QAbstractPrintDialog_delete(QAbstractPrintDialog* self);
 
 #ifdef __cplusplus

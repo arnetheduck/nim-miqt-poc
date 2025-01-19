@@ -3297,6 +3297,7 @@ void QStandardItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QStandardItemModel_staticMetaObject() { return &QStandardItemModel::staticMetaObject; }
 void QStandardItemModel_delete(QStandardItemModel* self) {
 	delete self;
 }

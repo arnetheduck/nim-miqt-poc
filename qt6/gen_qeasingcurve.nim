@@ -92,8 +92,10 @@ import gen_qeasingcurve_types
 export gen_qeasingcurve_types
 
 import
+  gen_qobjectdefs,
   gen_qpoint
 export
+  gen_qobjectdefs,
   gen_qpoint
 
 type cQEasingCurve*{.exportc: "QEasingCurve", incompleteStruct.} = object
@@ -117,6 +119,7 @@ proc fcQEasingCurve_toCubicSpline(self: pointer, ): struct_miqt_array {.importc:
 proc fcQEasingCurve_typeX(self: pointer, ): cint {.importc: "QEasingCurve_type".}
 proc fcQEasingCurve_setType(self: pointer, typeVal: cint): void {.importc: "QEasingCurve_setType".}
 proc fcQEasingCurve_valueForProgress(self: pointer, progress: float64): float64 {.importc: "QEasingCurve_valueForProgress".}
+proc fcQEasingCurve_staticMetaObject(): pointer {.importc: "QEasingCurve_staticMetaObject".}
 proc fcQEasingCurve_delete(self: pointer) {.importc: "QEasingCurve_delete".}
 
 
@@ -200,5 +203,7 @@ proc valueForProgress*(self: QEasingCurve, progress: float64): float64 =
 
   fcQEasingCurve_valueForProgress(self.h, progress)
 
+proc staticMetaObject*(_: type QEasingCurve): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQEasingCurve_staticMetaObject())
 proc delete*(self: QEasingCurve) =
   fcQEasingCurve_delete(self.h)

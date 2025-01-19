@@ -206,6 +206,7 @@ proc fQsciLexerRuby_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQsciLexerRuby_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerRuby_override_virtual_connectNotify".}
 proc fQsciLexerRuby_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerRuby_virtualbase_disconnectNotify".}
 proc fcQsciLexerRuby_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerRuby_override_virtual_disconnectNotify".}
+proc fcQsciLexerRuby_staticMetaObject(): pointer {.importc: "QsciLexerRuby_staticMetaObject".}
 proc fcQsciLexerRuby_delete(self: pointer) {.importc: "QsciLexerRuby_delete".}
 
 
@@ -1355,5 +1356,7 @@ proc miqt_exec_callback_QsciLexerRuby_disconnectNotify(self: ptr cQsciLexerRuby,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerRuby): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerRuby_staticMetaObject())
 proc delete*(self: QsciLexerRuby) =
   fcQsciLexerRuby_delete(self.h)

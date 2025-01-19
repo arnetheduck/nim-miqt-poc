@@ -484,6 +484,7 @@ bool QTableWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTableWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTableWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTableWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTableWidget_staticMetaObject();
 void QTableWidget_delete(QTableWidget* self);
 
 #ifdef __cplusplus

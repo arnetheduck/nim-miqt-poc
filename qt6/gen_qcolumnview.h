@@ -330,6 +330,7 @@ bool QColumnView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QColumnView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QColumnView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QColumnView_staticMetaObject();
 void QColumnView_delete(QColumnView* self);
 
 #ifdef __cplusplus

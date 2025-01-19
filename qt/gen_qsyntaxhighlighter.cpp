@@ -488,6 +488,7 @@ void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSyntaxHighlighter_staticMetaObject() { return &QSyntaxHighlighter::staticMetaObject; }
 void QSyntaxHighlighter_delete(QSyntaxHighlighter* self) {
 	delete self;
 }

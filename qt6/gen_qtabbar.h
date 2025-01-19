@@ -295,6 +295,7 @@ bool QTabBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTabBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTabBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTabBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTabBar_staticMetaObject();
 void QTabBar_delete(QTabBar* self);
 
 #ifdef __cplusplus

@@ -152,6 +152,7 @@ bool QsciLexerPO_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerPO_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerPO_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerPO_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerPO_staticMetaObject();
 void QsciLexerPO_delete(QsciLexerPO* self);
 
 #ifdef __cplusplus

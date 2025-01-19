@@ -533,6 +533,7 @@ void QPluginLoader_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPluginLoader_staticMetaObject() { return &QPluginLoader::staticMetaObject; }
 void QPluginLoader_delete(QPluginLoader* self) {
 	delete self;
 }

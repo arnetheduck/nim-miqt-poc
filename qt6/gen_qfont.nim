@@ -161,9 +161,11 @@ import gen_qfont_types
 export gen_qfont_types
 
 import
+  gen_qobjectdefs,
   gen_qpaintdevice,
   gen_qvariant
 export
+  gen_qobjectdefs,
   gen_qpaintdevice,
   gen_qvariant
 
@@ -252,6 +254,7 @@ proc fcQFont_setResolveMask(self: pointer, mask: cuint): void {.importc: "QFont_
 proc fcQFont_setLegacyWeight(self: pointer, legacyWeight: cint): void {.importc: "QFont_setLegacyWeight".}
 proc fcQFont_legacyWeight(self: pointer, ): cint {.importc: "QFont_legacyWeight".}
 proc fcQFont_setStyleHint2(self: pointer, param1: cint, param2: cint): void {.importc: "QFont_setStyleHint2".}
+proc fcQFont_staticMetaObject(): pointer {.importc: "QFont_staticMetaObject".}
 proc fcQFont_delete(self: pointer) {.importc: "QFont_delete".}
 
 
@@ -644,5 +647,7 @@ proc setStyleHint2*(self: QFont, param1: QFontStyleHint, param2: QFontStyleStrat
 
   fcQFont_setStyleHint2(self.h, cint(param1), cint(param2))
 
+proc staticMetaObject*(_: type QFont): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFont_staticMetaObject())
 proc delete*(self: QFont) =
   fcQFont_delete(self.h)

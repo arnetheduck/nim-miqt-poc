@@ -255,6 +255,7 @@ proc fQWebView_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQWebView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebView_override_virtual_connectNotify".}
 proc fQWebView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebView_virtualbase_disconnectNotify".}
 proc fcQWebView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebView_override_virtual_disconnectNotify".}
+proc fcQWebView_staticMetaObject(): pointer {.importc: "QWebView_staticMetaObject".}
 proc fcQWebView_delete(self: pointer) {.importc: "QWebView_delete".}
 
 
@@ -1819,5 +1820,7 @@ proc miqt_exec_callback_QWebView_disconnectNotify(self: ptr cQWebView, slot: int
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QWebView): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebView_staticMetaObject())
 proc delete*(self: QWebView) =
   fcQWebView_delete(self.h)

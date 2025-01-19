@@ -1790,6 +1790,7 @@ void QsciLexerMarkdown_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQsciLexerMarkdown*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerMarkdown_staticMetaObject() { return &QsciLexerMarkdown::staticMetaObject; }
 void QsciLexerMarkdown_delete(QsciLexerMarkdown* self) {
 	delete self;
 }

@@ -1232,6 +1232,7 @@ void QSaveFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSaveFile*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSaveFile_staticMetaObject() { return &QSaveFile::staticMetaObject; }
 void QSaveFile_delete(QSaveFile* self) {
 	delete self;
 }

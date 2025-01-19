@@ -98,6 +98,7 @@ bool QTcpServer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTcpServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTcpServer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTcpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QTcpServer_staticMetaObject();
 void QTcpServer_delete(QTcpServer* self);
 
 #ifdef __cplusplus

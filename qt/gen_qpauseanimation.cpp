@@ -613,6 +613,7 @@ void QPauseAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQPauseAnimation*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPauseAnimation_staticMetaObject() { return &QPauseAnimation::staticMetaObject; }
 void QPauseAnimation_delete(QPauseAnimation* self) {
 	delete self;
 }

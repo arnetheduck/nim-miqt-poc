@@ -77,6 +77,7 @@ bool QValidator_override_virtual_connectNotify(void* self, intptr_t slot);
 void QValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QValidator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QValidator_staticMetaObject();
 void QValidator_delete(QValidator* self);
 
 QIntValidator* QIntValidator_new();
@@ -121,6 +122,7 @@ bool QIntValidator_override_virtual_connectNotify(void* self, intptr_t slot);
 void QIntValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QIntValidator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QIntValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QIntValidator_staticMetaObject();
 void QIntValidator_delete(QIntValidator* self);
 
 QDoubleValidator* QDoubleValidator_new();
@@ -174,6 +176,7 @@ bool QDoubleValidator_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDoubleValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDoubleValidator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDoubleValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDoubleValidator_staticMetaObject();
 void QDoubleValidator_delete(QDoubleValidator* self);
 
 QRegularExpressionValidator* QRegularExpressionValidator_new();
@@ -212,6 +215,7 @@ bool QRegularExpressionValidator_override_virtual_connectNotify(void* self, intp
 void QRegularExpressionValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QRegularExpressionValidator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QRegularExpressionValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QRegularExpressionValidator_staticMetaObject();
 void QRegularExpressionValidator_delete(QRegularExpressionValidator* self);
 
 #ifdef __cplusplus

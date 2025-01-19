@@ -89,6 +89,7 @@ bool QState_override_virtual_connectNotify(void* self, intptr_t slot);
 void QState_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QState_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QState_staticMetaObject();
 void QState_delete(QState* self);
 
 #ifdef __cplusplus

@@ -485,6 +485,7 @@ void QSignalMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSignalMapper_staticMetaObject() { return &QSignalMapper::staticMetaObject; }
 void QSignalMapper_delete(QSignalMapper* self) {
 	delete self;
 }

@@ -2045,6 +2045,7 @@ void QSvgWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSvgWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSvgWidget_staticMetaObject() { return &QSvgWidget::staticMetaObject; }
 void QSvgWidget_delete(QSvgWidget* self) {
 	delete self;
 }

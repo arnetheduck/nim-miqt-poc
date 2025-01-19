@@ -87,6 +87,7 @@ import
   gen_qiodevice,
   gen_qmatrix,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainter,
@@ -103,6 +104,7 @@ export
   gen_qiodevice,
   gen_qmatrix,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpaintdevice,
   gen_qpaintengine,
   gen_qpainter,
@@ -265,6 +267,7 @@ proc fQImage_virtualbase_redirected(self: pointer, offset: pointer): pointer{.im
 proc fcQImage_override_virtual_redirected(self: pointer, slot: int) {.importc: "QImage_override_virtual_redirected".}
 proc fQImage_virtualbase_sharedPainter(self: pointer, ): pointer{.importc: "QImage_virtualbase_sharedPainter".}
 proc fcQImage_override_virtual_sharedPainter(self: pointer, slot: int) {.importc: "QImage_override_virtual_sharedPainter".}
+proc fcQImage_staticMetaObject(): pointer {.importc: "QImage_staticMetaObject".}
 proc fcQImage_delete(self: pointer) {.importc: "QImage_delete".}
 
 
@@ -985,5 +988,7 @@ proc miqt_exec_callback_QImage_sharedPainter(self: ptr cQImage, slot: int): poin
   let virtualReturn = nimfunc[](superCall )
 
   virtualReturn.h
+proc staticMetaObject*(_: type QImage): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQImage_staticMetaObject())
 proc delete*(self: QImage) =
   fcQImage_delete(self.h)

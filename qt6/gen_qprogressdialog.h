@@ -240,6 +240,7 @@ bool QProgressDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProgressDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProgressDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QProgressDialog_staticMetaObject();
 void QProgressDialog_delete(QProgressDialog* self);
 
 #ifdef __cplusplus

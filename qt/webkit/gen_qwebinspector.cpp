@@ -2031,6 +2031,7 @@ void QWebInspector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWebInspector_staticMetaObject() { return &QWebInspector::staticMetaObject; }
 void QWebInspector_delete(QWebInspector* self) {
 	delete self;
 }

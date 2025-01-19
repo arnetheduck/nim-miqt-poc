@@ -447,6 +447,7 @@ void QObjectCleanupHandler_virtualbase_disconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QObjectCleanupHandler_staticMetaObject() { return &QObjectCleanupHandler::staticMetaObject; }
 void QObjectCleanupHandler_delete(QObjectCleanupHandler* self) {
 	delete self;
 }

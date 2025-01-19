@@ -3910,6 +3910,7 @@ void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QColumnView_staticMetaObject() { return &QColumnView::staticMetaObject; }
 void QColumnView_delete(QColumnView* self) {
 	delete self;
 }

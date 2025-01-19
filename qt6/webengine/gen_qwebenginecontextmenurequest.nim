@@ -125,6 +125,7 @@ proc fcQWebEngineContextMenuRequest_mediaFlags(self: pointer, ): cint {.importc:
 proc fcQWebEngineContextMenuRequest_editFlags(self: pointer, ): cint {.importc: "QWebEngineContextMenuRequest_editFlags".}
 proc fcQWebEngineContextMenuRequest_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineContextMenuRequest_tr2".}
 proc fcQWebEngineContextMenuRequest_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineContextMenuRequest_tr3".}
+proc fcQWebEngineContextMenuRequest_staticMetaObject(): pointer {.importc: "QWebEngineContextMenuRequest_staticMetaObject".}
 proc fcQWebEngineContextMenuRequest_delete(self: pointer) {.importc: "QWebEngineContextMenuRequest_delete".}
 
 
@@ -232,5 +233,7 @@ proc tr3*(_: type QWebEngineContextMenuRequest, s: cstring, c: cstring, n: cint)
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebEngineContextMenuRequest): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineContextMenuRequest_staticMetaObject())
 proc delete*(self: QWebEngineContextMenuRequest) =
   fcQWebEngineContextMenuRequest_delete(self.h)

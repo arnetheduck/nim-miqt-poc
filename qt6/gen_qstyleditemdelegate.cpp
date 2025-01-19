@@ -998,6 +998,7 @@ void QStyledItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QStyledItemDelegate_staticMetaObject() { return &QStyledItemDelegate::staticMetaObject; }
 void QStyledItemDelegate_delete(QStyledItemDelegate* self) {
 	delete self;
 }

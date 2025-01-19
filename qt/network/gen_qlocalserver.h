@@ -90,6 +90,7 @@ bool QLocalServer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLocalServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLocalServer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLocalServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QLocalServer_staticMetaObject();
 void QLocalServer_delete(QLocalServer* self);
 
 #ifdef __cplusplus

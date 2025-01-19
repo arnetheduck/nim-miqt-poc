@@ -260,6 +260,7 @@ proc fQDialogButtonBox_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQDialogButtonBox_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDialogButtonBox_override_virtual_connectNotify".}
 proc fQDialogButtonBox_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDialogButtonBox_virtualbase_disconnectNotify".}
 proc fcQDialogButtonBox_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDialogButtonBox_override_virtual_disconnectNotify".}
+proc fcQDialogButtonBox_staticMetaObject(): pointer {.importc: "QDialogButtonBox_staticMetaObject".}
 proc fcQDialogButtonBox_delete(self: pointer) {.importc: "QDialogButtonBox_delete".}
 
 
@@ -1609,5 +1610,7 @@ proc miqt_exec_callback_QDialogButtonBox_disconnectNotify(self: ptr cQDialogButt
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QDialogButtonBox): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDialogButtonBox_staticMetaObject())
 proc delete*(self: QDialogButtonBox) =
   fcQDialogButtonBox_delete(self.h)

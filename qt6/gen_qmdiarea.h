@@ -256,6 +256,7 @@ bool QMdiArea_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMdiArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMdiArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMdiArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMdiArea_staticMetaObject();
 void QMdiArea_delete(QMdiArea* self);
 
 #ifdef __cplusplus

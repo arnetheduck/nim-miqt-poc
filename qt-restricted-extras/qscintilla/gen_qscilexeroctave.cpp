@@ -1771,6 +1771,7 @@ void QsciLexerOctave_virtualbase_disconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQsciLexerOctave*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerOctave_staticMetaObject() { return &QsciLexerOctave::staticMetaObject; }
 void QsciLexerOctave_delete(QsciLexerOctave* self) {
 	delete self;
 }

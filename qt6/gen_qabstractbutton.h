@@ -251,6 +251,7 @@ bool QAbstractButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractButton_staticMetaObject();
 void QAbstractButton_delete(QAbstractButton* self);
 
 #ifdef __cplusplus

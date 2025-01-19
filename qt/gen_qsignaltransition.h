@@ -77,6 +77,7 @@ bool QSignalTransition_override_virtual_connectNotify(void* self, intptr_t slot)
 void QSignalTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSignalTransition_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSignalTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSignalTransition_staticMetaObject();
 void QSignalTransition_delete(QSignalTransition* self);
 
 #ifdef __cplusplus

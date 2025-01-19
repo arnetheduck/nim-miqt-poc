@@ -74,6 +74,7 @@ proc fcQWebEngineNotification_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQWebEngineNotification_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineNotification_tr3".}
 proc fcQWebEngineNotification_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineNotification_trUtf82".}
 proc fcQWebEngineNotification_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineNotification_trUtf83".}
+proc fcQWebEngineNotification_staticMetaObject(): pointer {.importc: "QWebEngineNotification_staticMetaObject".}
 proc fcQWebEngineNotification_delete(self: pointer) {.importc: "QWebEngineNotification_delete".}
 
 
@@ -205,5 +206,7 @@ proc trUtf83*(_: type QWebEngineNotification, s: cstring, c: cstring, n: cint): 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QWebEngineNotification): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineNotification_staticMetaObject())
 proc delete*(self: QWebEngineNotification) =
   fcQWebEngineNotification_delete(self.h)

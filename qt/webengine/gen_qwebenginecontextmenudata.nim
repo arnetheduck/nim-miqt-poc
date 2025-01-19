@@ -79,9 +79,11 @@ import gen_qwebenginecontextmenudata_types
 export gen_qwebenginecontextmenudata_types
 
 import
+  gen_qobjectdefs,
   gen_qpoint,
   gen_qurl
 export
+  gen_qobjectdefs,
   gen_qpoint,
   gen_qurl
 
@@ -102,6 +104,7 @@ proc fcQWebEngineContextMenuData_misspelledWord(self: pointer, ): struct_miqt_st
 proc fcQWebEngineContextMenuData_spellCheckerSuggestions(self: pointer, ): struct_miqt_array {.importc: "QWebEngineContextMenuData_spellCheckerSuggestions".}
 proc fcQWebEngineContextMenuData_mediaFlags(self: pointer, ): cint {.importc: "QWebEngineContextMenuData_mediaFlags".}
 proc fcQWebEngineContextMenuData_editFlags(self: pointer, ): cint {.importc: "QWebEngineContextMenuData_editFlags".}
+proc fcQWebEngineContextMenuData_staticMetaObject(): pointer {.importc: "QWebEngineContextMenuData_staticMetaObject".}
 proc fcQWebEngineContextMenuData_delete(self: pointer) {.importc: "QWebEngineContextMenuData_delete".}
 
 
@@ -182,5 +185,7 @@ proc editFlags*(self: QWebEngineContextMenuData, ): QWebEngineContextMenuDataEdi
 
   QWebEngineContextMenuDataEditFlag(fcQWebEngineContextMenuData_editFlags(self.h))
 
+proc staticMetaObject*(_: type QWebEngineContextMenuData): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebEngineContextMenuData_staticMetaObject())
 proc delete*(self: QWebEngineContextMenuData) =
   fcQWebEngineContextMenuData_delete(self.h)

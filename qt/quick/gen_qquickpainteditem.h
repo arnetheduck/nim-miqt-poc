@@ -228,6 +228,7 @@ bool QQuickPaintedItem_override_virtual_connectNotify(void* self, intptr_t slot)
 void QQuickPaintedItem_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQuickPaintedItem_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQuickPaintedItem_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQuickPaintedItem_staticMetaObject();
 void QQuickPaintedItem_delete(QQuickPaintedItem* self);
 
 #ifdef __cplusplus

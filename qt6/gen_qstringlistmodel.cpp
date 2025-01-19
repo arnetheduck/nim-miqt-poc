@@ -2060,6 +2060,7 @@ void QStringListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQStringListModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QStringListModel_staticMetaObject() { return &QStringListModel::staticMetaObject; }
 void QStringListModel_delete(QStringListModel* self) {
 	delete self;
 }

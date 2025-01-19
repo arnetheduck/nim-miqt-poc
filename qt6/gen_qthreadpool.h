@@ -82,6 +82,7 @@ bool QThreadPool_override_virtual_connectNotify(void* self, intptr_t slot);
 void QThreadPool_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QThreadPool_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QThreadPool_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QThreadPool_staticMetaObject();
 void QThreadPool_delete(QThreadPool* self);
 
 #ifdef __cplusplus

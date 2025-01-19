@@ -108,6 +108,7 @@ proc fcQInputMethod_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "
 proc fcQInputMethod_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QInputMethod_tr3".}
 proc fcQInputMethod_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QInputMethod_trUtf82".}
 proc fcQInputMethod_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QInputMethod_trUtf83".}
+proc fcQInputMethod_staticMetaObject(): pointer {.importc: "QInputMethod_staticMetaObject".}
 
 
 func init*(T: type QInputMethod, h: ptr cQInputMethod): QInputMethod =
@@ -376,3 +377,5 @@ proc trUtf83*(_: type QInputMethod, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QInputMethod): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQInputMethod_staticMetaObject())

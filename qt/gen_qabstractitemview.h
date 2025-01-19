@@ -423,6 +423,7 @@ bool QAbstractItemView_override_virtual_connectNotify(void* self, intptr_t slot)
 void QAbstractItemView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractItemView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractItemView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QAbstractItemView_staticMetaObject();
 void QAbstractItemView_delete(QAbstractItemView* self);
 
 #ifdef __cplusplus

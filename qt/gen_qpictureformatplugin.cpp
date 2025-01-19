@@ -602,6 +602,7 @@ void QPictureFormatPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPictureFormatPlugin_staticMetaObject() { return &QPictureFormatPlugin::staticMetaObject; }
 void QPictureFormatPlugin_delete(QPictureFormatPlugin* self) {
 	delete self;
 }

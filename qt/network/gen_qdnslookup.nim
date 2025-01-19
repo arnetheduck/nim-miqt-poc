@@ -185,6 +185,7 @@ proc fQDnsLookup_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQDnsLookup_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QDnsLookup_override_virtual_connectNotify".}
 proc fQDnsLookup_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QDnsLookup_virtualbase_disconnectNotify".}
 proc fcQDnsLookup_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QDnsLookup_override_virtual_disconnectNotify".}
+proc fcQDnsLookup_staticMetaObject(): pointer {.importc: "QDnsLookup_staticMetaObject".}
 proc fcQDnsLookup_delete(self: pointer) {.importc: "QDnsLookup_delete".}
 
 
@@ -847,5 +848,7 @@ proc miqt_exec_callback_QDnsLookup_disconnectNotify(self: ptr cQDnsLookup, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QDnsLookup): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQDnsLookup_staticMetaObject())
 proc delete*(self: QDnsLookup) =
   fcQDnsLookup_delete(self.h)

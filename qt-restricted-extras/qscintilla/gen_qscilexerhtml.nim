@@ -299,6 +299,7 @@ proc fQsciLexerHTML_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQsciLexerHTML_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_connectNotify".}
 proc fQsciLexerHTML_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerHTML_virtualbase_disconnectNotify".}
 proc fcQsciLexerHTML_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_disconnectNotify".}
+proc fcQsciLexerHTML_staticMetaObject(): pointer {.importc: "QsciLexerHTML_staticMetaObject".}
 proc fcQsciLexerHTML_delete(self: pointer) {.importc: "QsciLexerHTML_delete".}
 
 
@@ -1558,5 +1559,7 @@ proc miqt_exec_callback_QsciLexerHTML_disconnectNotify(self: ptr cQsciLexerHTML,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerHTML): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerHTML_staticMetaObject())
 proc delete*(self: QsciLexerHTML) =
   fcQsciLexerHTML_delete(self.h)

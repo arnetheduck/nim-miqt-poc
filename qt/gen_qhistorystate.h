@@ -81,6 +81,7 @@ bool QHistoryState_override_virtual_connectNotify(void* self, intptr_t slot);
 void QHistoryState_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHistoryState_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHistoryState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QHistoryState_staticMetaObject();
 void QHistoryState_delete(QHistoryState* self);
 
 #ifdef __cplusplus

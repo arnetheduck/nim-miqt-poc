@@ -283,6 +283,7 @@ struct miqt_string QAbstractNetworkCache_trUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
+const QMetaObject* QAbstractNetworkCache_staticMetaObject() { return &QAbstractNetworkCache::staticMetaObject; }
 void QAbstractNetworkCache_delete(QAbstractNetworkCache* self) {
 	delete self;
 }

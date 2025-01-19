@@ -71,6 +71,7 @@ bool QSyntaxHighlighter_override_virtual_connectNotify(void* self, intptr_t slot
 void QSyntaxHighlighter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSyntaxHighlighter_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSyntaxHighlighter_staticMetaObject();
 void QSyntaxHighlighter_delete(QSyntaxHighlighter* self);
 
 #ifdef __cplusplus

@@ -45,6 +45,7 @@ QPointingDeviceUniqueId* QPointingDeviceUniqueId_new2(QPointingDeviceUniqueId* p
 QPointingDeviceUniqueId* QPointingDeviceUniqueId_fromNumericId(long long id);
 bool QPointingDeviceUniqueId_isValid(const QPointingDeviceUniqueId* self);
 long long QPointingDeviceUniqueId_numericId(const QPointingDeviceUniqueId* self);
+const QMetaObject* QPointingDeviceUniqueId_staticMetaObject();
 void QPointingDeviceUniqueId_delete(QPointingDeviceUniqueId* self);
 
 QPointingDevice* QPointingDevice_new();
@@ -88,6 +89,7 @@ bool QPointingDevice_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPointingDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPointingDevice_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPointingDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QPointingDevice_staticMetaObject();
 void QPointingDevice_delete(QPointingDevice* self);
 
 #ifdef __cplusplus

@@ -181,6 +181,7 @@ bool QGraphicsSvgItem_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsSvgItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsSvgItem_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsSvgItem_virtualbase_extension(const void* self, QVariant* variant);
+const QMetaObject* QGraphicsSvgItem_staticMetaObject();
 void QGraphicsSvgItem_delete(QGraphicsSvgItem* self);
 
 #ifdef __cplusplus

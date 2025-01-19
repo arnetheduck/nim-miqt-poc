@@ -248,6 +248,7 @@ proc fQFileSystemModel_virtualbase_connectNotify(self: pointer, signal: pointer)
 proc fcQFileSystemModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QFileSystemModel_override_virtual_connectNotify".}
 proc fQFileSystemModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QFileSystemModel_virtualbase_disconnectNotify".}
 proc fcQFileSystemModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QFileSystemModel_override_virtual_disconnectNotify".}
+proc fcQFileSystemModel_staticMetaObject(): pointer {.importc: "QFileSystemModel_staticMetaObject".}
 proc fcQFileSystemModel_delete(self: pointer) {.importc: "QFileSystemModel_delete".}
 
 
@@ -1900,5 +1901,7 @@ proc miqt_exec_callback_QFileSystemModel_disconnectNotify(self: ptr cQFileSystem
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QFileSystemModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQFileSystemModel_staticMetaObject())
 proc delete*(self: QFileSystemModel) =
   fcQFileSystemModel_delete(self.h)

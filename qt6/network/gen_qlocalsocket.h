@@ -140,6 +140,7 @@ bool QLocalSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLocalSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLocalSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLocalSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QLocalSocket_staticMetaObject();
 void QLocalSocket_delete(QLocalSocket* self);
 
 #ifdef __cplusplus

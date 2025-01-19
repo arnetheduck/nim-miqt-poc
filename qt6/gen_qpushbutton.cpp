@@ -2210,6 +2210,7 @@ void QPushButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPushButton_staticMetaObject() { return &QPushButton::staticMetaObject; }
 void QPushButton_delete(QPushButton* self) {
 	delete self;
 }

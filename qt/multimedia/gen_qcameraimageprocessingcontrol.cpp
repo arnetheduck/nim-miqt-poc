@@ -115,6 +115,7 @@ struct miqt_string QCameraImageProcessingControl_trUtf83(const char* s, const ch
 	return _ms;
 }
 
+const QMetaObject* QCameraImageProcessingControl_staticMetaObject() { return &QCameraImageProcessingControl::staticMetaObject; }
 void QCameraImageProcessingControl_delete(QCameraImageProcessingControl* self) {
 	delete self;
 }

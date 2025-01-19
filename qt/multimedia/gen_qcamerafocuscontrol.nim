@@ -76,6 +76,7 @@ proc fcQCameraFocusControl_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQCameraFocusControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFocusControl_tr3".}
 proc fcQCameraFocusControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraFocusControl_trUtf82".}
 proc fcQCameraFocusControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraFocusControl_trUtf83".}
+proc fcQCameraFocusControl_staticMetaObject(): pointer {.importc: "QCameraFocusControl_staticMetaObject".}
 proc fcQCameraFocusControl_delete(self: pointer) {.importc: "QCameraFocusControl_delete".}
 
 
@@ -246,5 +247,7 @@ proc trUtf83*(_: type QCameraFocusControl, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QCameraFocusControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCameraFocusControl_staticMetaObject())
 proc delete*(self: QCameraFocusControl) =
   fcQCameraFocusControl_delete(self.h)

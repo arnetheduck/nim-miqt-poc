@@ -2079,6 +2079,7 @@ void QStackedWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QStackedWidget_staticMetaObject() { return &QStackedWidget::staticMetaObject; }
 void QStackedWidget_delete(QStackedWidget* self) {
 	delete self;
 }

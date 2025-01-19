@@ -312,6 +312,7 @@ bool QGraphicsScene_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsScene_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsScene_staticMetaObject();
 void QGraphicsScene_delete(QGraphicsScene* self);
 
 #ifdef __cplusplus

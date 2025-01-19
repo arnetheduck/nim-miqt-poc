@@ -84,6 +84,7 @@ bool QHttpMultiPart_override_virtual_connectNotify(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHttpMultiPart_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QHttpMultiPart_staticMetaObject();
 void QHttpMultiPart_delete(QHttpMultiPart* self);
 
 #ifdef __cplusplus

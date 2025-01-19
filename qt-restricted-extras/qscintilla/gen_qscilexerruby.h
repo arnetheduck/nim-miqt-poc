@@ -158,6 +158,7 @@ bool QsciLexerRuby_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerRuby_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerRuby_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerRuby_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerRuby_staticMetaObject();
 void QsciLexerRuby_delete(QsciLexerRuby* self);
 
 #ifdef __cplusplus

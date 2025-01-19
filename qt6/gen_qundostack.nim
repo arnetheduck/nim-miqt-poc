@@ -141,6 +141,7 @@ proc fQUndoStack_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQUndoStack_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QUndoStack_override_virtual_connectNotify".}
 proc fQUndoStack_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QUndoStack_virtualbase_disconnectNotify".}
 proc fcQUndoStack_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QUndoStack_override_virtual_disconnectNotify".}
+proc fcQUndoStack_staticMetaObject(): pointer {.importc: "QUndoStack_staticMetaObject".}
 proc fcQUndoStack_delete(self: pointer) {.importc: "QUndoStack_delete".}
 
 
@@ -773,5 +774,7 @@ proc miqt_exec_callback_QUndoStack_disconnectNotify(self: ptr cQUndoStack, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QUndoStack): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQUndoStack_staticMetaObject())
 proc delete*(self: QUndoStack) =
   fcQUndoStack_delete(self.h)

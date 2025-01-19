@@ -554,6 +554,7 @@ void QAudioRoom_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioRoom_staticMetaObject() { return &QAudioRoom::staticMetaObject; }
 void QAudioRoom_delete(QAudioRoom* self) {
 	delete self;
 }

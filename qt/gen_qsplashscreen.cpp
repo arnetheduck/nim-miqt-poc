@@ -2157,6 +2157,7 @@ void QSplashScreen_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSplashScreen*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSplashScreen_staticMetaObject() { return &QSplashScreen::staticMetaObject; }
 void QSplashScreen_delete(QSplashScreen* self) {
 	delete self;
 }

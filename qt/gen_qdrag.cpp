@@ -538,6 +538,7 @@ void QDrag_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDrag*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDrag_staticMetaObject() { return &QDrag::staticMetaObject; }
 void QDrag_delete(QDrag* self) {
 	delete self;
 }

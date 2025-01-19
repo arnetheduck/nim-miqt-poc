@@ -75,6 +75,7 @@ proc fcQGraphicsAnchor_tr2(s: cstring, c: cstring): struct_miqt_string {.importc
 proc fcQGraphicsAnchor_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsAnchor_tr3".}
 proc fcQGraphicsAnchor_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsAnchor_trUtf82".}
 proc fcQGraphicsAnchor_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsAnchor_trUtf83".}
+proc fcQGraphicsAnchor_staticMetaObject(): pointer {.importc: "QGraphicsAnchor_staticMetaObject".}
 proc fcQGraphicsAnchor_delete(self: pointer) {.importc: "QGraphicsAnchor_delete".}
 proc fcQGraphicsAnchorLayout_new(): ptr cQGraphicsAnchorLayout {.importc: "QGraphicsAnchorLayout_new".}
 proc fcQGraphicsAnchorLayout_new2(parent: pointer): ptr cQGraphicsAnchorLayout {.importc: "QGraphicsAnchorLayout_new2".}
@@ -190,6 +191,8 @@ proc trUtf83*(_: type QGraphicsAnchor, s: cstring, c: cstring, n: cint): string 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QGraphicsAnchor): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGraphicsAnchor_staticMetaObject())
 proc delete*(self: QGraphicsAnchor) =
   fcQGraphicsAnchor_delete(self.h)
 

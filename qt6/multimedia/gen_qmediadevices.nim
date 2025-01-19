@@ -90,6 +90,7 @@ proc fQMediaDevices_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQMediaDevices_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QMediaDevices_override_virtual_connectNotify".}
 proc fQMediaDevices_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QMediaDevices_virtualbase_disconnectNotify".}
 proc fcQMediaDevices_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QMediaDevices_override_virtual_disconnectNotify".}
+proc fcQMediaDevices_staticMetaObject(): pointer {.importc: "QMediaDevices_staticMetaObject".}
 proc fcQMediaDevices_delete(self: pointer) {.importc: "QMediaDevices_delete".}
 
 
@@ -417,5 +418,7 @@ proc miqt_exec_callback_QMediaDevices_disconnectNotify(self: ptr cQMediaDevices,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QMediaDevices): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaDevices_staticMetaObject())
 proc delete*(self: QMediaDevices) =
   fcQMediaDevices_delete(self.h)

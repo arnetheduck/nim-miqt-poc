@@ -638,6 +638,7 @@ void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QButtonGroup_staticMetaObject() { return &QButtonGroup::staticMetaObject; }
 void QButtonGroup_delete(QButtonGroup* self) {
 	delete self;
 }

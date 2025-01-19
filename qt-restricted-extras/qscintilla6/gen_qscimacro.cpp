@@ -549,6 +549,7 @@ void QsciMacro_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciMacro_staticMetaObject() { return &QsciMacro::staticMetaObject; }
 void QsciMacro_delete(QsciMacro* self) {
 	delete self;
 }

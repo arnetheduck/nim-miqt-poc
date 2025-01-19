@@ -69,6 +69,7 @@ bool QQmlFileSelector_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlFileSelector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlFileSelector_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQmlFileSelector_staticMetaObject();
 void QQmlFileSelector_delete(QQmlFileSelector* self);
 
 #ifdef __cplusplus

@@ -2215,6 +2215,7 @@ void QDirModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDirModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDirModel_staticMetaObject() { return &QDirModel::staticMetaObject; }
 void QDirModel_delete(QDirModel* self) {
 	delete self;
 }

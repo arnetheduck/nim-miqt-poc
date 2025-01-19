@@ -443,6 +443,7 @@ void QStylePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQStylePlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QStylePlugin_staticMetaObject() { return &QStylePlugin::staticMetaObject; }
 void QStylePlugin_delete(QStylePlugin* self) {
 	delete self;
 }

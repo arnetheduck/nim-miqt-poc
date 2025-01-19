@@ -513,6 +513,7 @@ bool QGraphicsObject_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsObject_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsObject_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsObject_virtualbase_extension(const void* self, QVariant* variant);
+const QMetaObject* QGraphicsObject_staticMetaObject();
 void QGraphicsObject_delete(QGraphicsObject* self);
 
 QAbstractGraphicsShapeItem* QAbstractGraphicsShapeItem_new();
@@ -1301,6 +1302,7 @@ bool QGraphicsTextItem_override_virtual_wheelEvent(void* self, intptr_t slot);
 void QGraphicsTextItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEvent* event);
 bool QGraphicsTextItem_override_virtual_itemChange(void* self, intptr_t slot);
 QVariant* QGraphicsTextItem_virtualbase_itemChange(void* self, int change, QVariant* value);
+const QMetaObject* QGraphicsTextItem_staticMetaObject();
 void QGraphicsTextItem_delete(QGraphicsTextItem* self);
 
 QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new();

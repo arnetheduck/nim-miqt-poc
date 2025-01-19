@@ -1964,6 +1964,7 @@ void QsciLexerPerl_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQsciLexerPerl*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerPerl_staticMetaObject() { return &QsciLexerPerl::staticMetaObject; }
 void QsciLexerPerl_delete(QsciLexerPerl* self) {
 	delete self;
 }

@@ -128,6 +128,7 @@ bool QApplication_override_virtual_connectNotify(void* self, intptr_t slot);
 void QApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QApplication_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QApplication_staticMetaObject();
 void QApplication_delete(QApplication* self);
 
 #ifdef __cplusplus

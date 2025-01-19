@@ -62,9 +62,11 @@ import gen_qcryptographichash_types
 export gen_qcryptographichash_types
 
 import
-  gen_qiodevice
+  gen_qiodevice,
+  gen_qobjectdefs
 export
-  gen_qiodevice
+  gen_qiodevice,
+  gen_qobjectdefs
 
 type cQCryptographicHash*{.exportc: "QCryptographicHash", incompleteStruct.} = object
 
@@ -76,6 +78,7 @@ proc fcQCryptographicHash_addDataWithDevice(self: pointer, device: pointer): boo
 proc fcQCryptographicHash_resultX(self: pointer, ): struct_miqt_string {.importc: "QCryptographicHash_result".}
 proc fcQCryptographicHash_hash(data: struct_miqt_string, methodVal: cint): struct_miqt_string {.importc: "QCryptographicHash_hash".}
 proc fcQCryptographicHash_hashLength(methodVal: cint): cint {.importc: "QCryptographicHash_hashLength".}
+proc fcQCryptographicHash_staticMetaObject(): pointer {.importc: "QCryptographicHash_staticMetaObject".}
 proc fcQCryptographicHash_delete(self: pointer) {.importc: "QCryptographicHash_delete".}
 
 
@@ -118,5 +121,7 @@ proc hashLength*(_: type QCryptographicHash, methodVal: QCryptographicHashAlgori
 
   fcQCryptographicHash_hashLength(cint(methodVal))
 
+proc staticMetaObject*(_: type QCryptographicHash): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCryptographicHash_staticMetaObject())
 proc delete*(self: QCryptographicHash) =
   fcQCryptographicHash_delete(self.h)

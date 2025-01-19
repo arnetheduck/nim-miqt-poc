@@ -600,6 +600,7 @@ void QParallelAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMetho
 	( (MiqtVirtualQParallelAnimationGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QParallelAnimationGroup_staticMetaObject() { return &QParallelAnimationGroup::staticMetaObject; }
 void QParallelAnimationGroup_delete(QParallelAnimationGroup* self) {
 	delete self;
 }

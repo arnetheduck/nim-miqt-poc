@@ -170,6 +170,7 @@ proc fQNetworkAccessManager_virtualbase_connectNotify(self: pointer, signal: poi
 proc fcQNetworkAccessManager_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QNetworkAccessManager_override_virtual_connectNotify".}
 proc fQNetworkAccessManager_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QNetworkAccessManager_virtualbase_disconnectNotify".}
 proc fcQNetworkAccessManager_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QNetworkAccessManager_override_virtual_disconnectNotify".}
+proc fcQNetworkAccessManager_staticMetaObject(): pointer {.importc: "QNetworkAccessManager_staticMetaObject".}
 proc fcQNetworkAccessManager_delete(self: pointer) {.importc: "QNetworkAccessManager_delete".}
 
 
@@ -792,5 +793,7 @@ proc miqt_exec_callback_QNetworkAccessManager_disconnectNotify(self: ptr cQNetwo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QNetworkAccessManager): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQNetworkAccessManager_staticMetaObject())
 proc delete*(self: QNetworkAccessManager) =
   fcQNetworkAccessManager_delete(self.h)

@@ -238,6 +238,7 @@ bool QSpinBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QSpinBox_staticMetaObject();
 void QSpinBox_delete(QSpinBox* self);
 
 QDoubleSpinBox* QDoubleSpinBox_new(QWidget* parent);
@@ -387,6 +388,7 @@ bool QDoubleSpinBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDoubleSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDoubleSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDoubleSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QDoubleSpinBox_staticMetaObject();
 void QDoubleSpinBox_delete(QDoubleSpinBox* self);
 
 #ifdef __cplusplus

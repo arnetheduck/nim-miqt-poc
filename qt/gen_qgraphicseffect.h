@@ -93,6 +93,7 @@ bool QGraphicsEffect_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsEffect_staticMetaObject();
 void QGraphicsEffect_delete(QGraphicsEffect* self);
 
 QGraphicsColorizeEffect* QGraphicsColorizeEffect_new();
@@ -138,6 +139,7 @@ bool QGraphicsColorizeEffect_override_virtual_connectNotify(void* self, intptr_t
 void QGraphicsColorizeEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsColorizeEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsColorizeEffect_staticMetaObject();
 void QGraphicsColorizeEffect_delete(QGraphicsColorizeEffect* self);
 
 QGraphicsBlurEffect* QGraphicsBlurEffect_new();
@@ -184,6 +186,7 @@ bool QGraphicsBlurEffect_override_virtual_connectNotify(void* self, intptr_t slo
 void QGraphicsBlurEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsBlurEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsBlurEffect_staticMetaObject();
 void QGraphicsBlurEffect_delete(QGraphicsBlurEffect* self);
 
 QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new();
@@ -240,6 +243,7 @@ bool QGraphicsDropShadowEffect_override_virtual_connectNotify(void* self, intptr
 void QGraphicsDropShadowEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsDropShadowEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsDropShadowEffect_staticMetaObject();
 void QGraphicsDropShadowEffect_delete(QGraphicsDropShadowEffect* self);
 
 QGraphicsOpacityEffect* QGraphicsOpacityEffect_new();
@@ -285,6 +289,7 @@ bool QGraphicsOpacityEffect_override_virtual_connectNotify(void* self, intptr_t 
 void QGraphicsOpacityEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsOpacityEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsOpacityEffect_staticMetaObject();
 void QGraphicsOpacityEffect_delete(QGraphicsOpacityEffect* self);
 
 #ifdef __cplusplus

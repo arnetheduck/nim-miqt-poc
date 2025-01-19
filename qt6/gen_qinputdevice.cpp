@@ -528,6 +528,7 @@ void QInputDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQInputDevice*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QInputDevice_staticMetaObject() { return &QInputDevice::staticMetaObject; }
 void QInputDevice_delete(QInputDevice* self) {
 	delete self;
 }

@@ -116,6 +116,7 @@ proc fQSslServer_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQSslServer_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSslServer_override_virtual_connectNotify".}
 proc fQSslServer_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSslServer_virtualbase_disconnectNotify".}
 proc fcQSslServer_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSslServer_override_virtual_disconnectNotify".}
+proc fcQSslServer_staticMetaObject(): pointer {.importc: "QSslServer_staticMetaObject".}
 proc fcQSslServer_delete(self: pointer) {.importc: "QSslServer_delete".}
 
 
@@ -622,5 +623,7 @@ proc miqt_exec_callback_QSslServer_disconnectNotify(self: ptr cQSslServer, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSslServer): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSslServer_staticMetaObject())
 proc delete*(self: QSslServer) =
   fcQSslServer_delete(self.h)

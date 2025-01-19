@@ -158,6 +158,7 @@ bool QConcatenateTablesProxyModel_override_virtual_connectNotify(void* self, int
 void QConcatenateTablesProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QConcatenateTablesProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QConcatenateTablesProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QConcatenateTablesProxyModel_staticMetaObject();
 void QConcatenateTablesProxyModel_delete(QConcatenateTablesProxyModel* self);
 
 #ifdef __cplusplus

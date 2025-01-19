@@ -61,6 +61,7 @@ proc fcQMediaNetworkAccessControl_tr2(s: cstring, c: cstring): struct_miqt_strin
 proc fcQMediaNetworkAccessControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaNetworkAccessControl_tr3".}
 proc fcQMediaNetworkAccessControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QMediaNetworkAccessControl_trUtf82".}
 proc fcQMediaNetworkAccessControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QMediaNetworkAccessControl_trUtf83".}
+proc fcQMediaNetworkAccessControl_staticMetaObject(): pointer {.importc: "QMediaNetworkAccessControl_staticMetaObject".}
 proc fcQMediaNetworkAccessControl_delete(self: pointer) {.importc: "QMediaNetworkAccessControl_delete".}
 
 
@@ -150,5 +151,7 @@ proc trUtf83*(_: type QMediaNetworkAccessControl, s: cstring, c: cstring, n: cin
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QMediaNetworkAccessControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQMediaNetworkAccessControl_staticMetaObject())
 proc delete*(self: QMediaNetworkAccessControl) =
   fcQMediaNetworkAccessControl_delete(self.h)

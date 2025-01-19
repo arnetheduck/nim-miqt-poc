@@ -440,6 +440,7 @@ proc fQAbstractItemView_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQAbstractItemView_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractItemView_override_virtual_connectNotify".}
 proc fQAbstractItemView_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractItemView_virtualbase_disconnectNotify".}
 proc fcQAbstractItemView_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractItemView_override_virtual_disconnectNotify".}
+proc fcQAbstractItemView_staticMetaObject(): pointer {.importc: "QAbstractItemView_staticMetaObject".}
 proc fcQAbstractItemView_delete(self: pointer) {.importc: "QAbstractItemView_delete".}
 
 
@@ -3008,5 +3009,7 @@ proc miqt_exec_callback_QAbstractItemView_disconnectNotify(self: ptr cQAbstractI
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAbstractItemView): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractItemView_staticMetaObject())
 proc delete*(self: QAbstractItemView) =
   fcQAbstractItemView_delete(self.h)

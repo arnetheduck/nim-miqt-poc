@@ -2251,6 +2251,7 @@ void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QLabel_staticMetaObject() { return &QLabel::staticMetaObject; }
 void QLabel_delete(QLabel* self) {
 	delete self;
 }

@@ -2381,6 +2381,7 @@ void QTabWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QTabWidget_staticMetaObject() { return &QTabWidget::staticMetaObject; }
 void QTabWidget_delete(QTabWidget* self) {
 	delete self;
 }

@@ -284,6 +284,7 @@ import
   gen_qcolor,
   gen_qfont,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpen,
   gen_qtextoption,
   gen_qvariant,
@@ -293,6 +294,7 @@ export
   gen_qcolor,
   gen_qfont,
   gen_qnamespace,
+  gen_qobjectdefs,
   gen_qpen,
   gen_qtextoption,
   gen_qvariant
@@ -371,6 +373,7 @@ proc fcQTextFormat_clearBackground(self: pointer, ): void {.importc: "QTextForma
 proc fcQTextFormat_setForeground(self: pointer, brush: pointer): void {.importc: "QTextFormat_setForeground".}
 proc fcQTextFormat_foreground(self: pointer, ): pointer {.importc: "QTextFormat_foreground".}
 proc fcQTextFormat_clearForeground(self: pointer, ): void {.importc: "QTextFormat_clearForeground".}
+proc fcQTextFormat_staticMetaObject(): pointer {.importc: "QTextFormat_staticMetaObject".}
 proc fcQTextFormat_delete(self: pointer) {.importc: "QTextFormat_delete".}
 proc fcQTextCharFormat_new(): ptr cQTextCharFormat {.importc: "QTextCharFormat_new".}
 proc fcQTextCharFormat_new2(param1: pointer): ptr cQTextCharFormat {.importc: "QTextCharFormat_new2".}
@@ -866,6 +869,8 @@ proc clearForeground*(self: QTextFormat, ): void =
 
   fcQTextFormat_clearForeground(self.h)
 
+proc staticMetaObject*(_: type QTextFormat): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQTextFormat_staticMetaObject())
 proc delete*(self: QTextFormat) =
   fcQTextFormat_delete(self.h)
 

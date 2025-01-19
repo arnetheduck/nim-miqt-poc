@@ -1059,6 +1059,7 @@ void QWaveDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QWaveDecoder_staticMetaObject() { return &QWaveDecoder::staticMetaObject; }
 void QWaveDecoder_delete(QWaveDecoder* self) {
 	delete self;
 }

@@ -71,6 +71,7 @@ bool QFinalState_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFinalState_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFinalState_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFinalState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QFinalState_staticMetaObject();
 void QFinalState_delete(QFinalState* self);
 
 #ifdef __cplusplus

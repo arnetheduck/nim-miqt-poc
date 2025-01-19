@@ -598,6 +598,7 @@ void QSvgRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQSvgRenderer*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSvgRenderer_staticMetaObject() { return &QSvgRenderer::staticMetaObject; }
 void QSvgRenderer_delete(QSvgRenderer* self) {
 	delete self;
 }

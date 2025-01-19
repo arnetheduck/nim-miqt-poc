@@ -227,6 +227,7 @@ proc fQsciLexerPython_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQsciLexerPython_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerPython_override_virtual_connectNotify".}
 proc fQsciLexerPython_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerPython_virtualbase_disconnectNotify".}
 proc fcQsciLexerPython_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerPython_override_virtual_disconnectNotify".}
+proc fcQsciLexerPython_staticMetaObject(): pointer {.importc: "QsciLexerPython_staticMetaObject".}
 proc fcQsciLexerPython_delete(self: pointer) {.importc: "QsciLexerPython_delete".}
 
 
@@ -1526,5 +1527,7 @@ proc miqt_exec_callback_QsciLexerPython_disconnectNotify(self: ptr cQsciLexerPyt
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerPython): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerPython_staticMetaObject())
 proc delete*(self: QsciLexerPython) =
   fcQsciLexerPython_delete(self.h)

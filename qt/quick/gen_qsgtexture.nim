@@ -142,6 +142,7 @@ proc fQSGTexture_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQSGTexture_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSGTexture_override_virtual_connectNotify".}
 proc fQSGTexture_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSGTexture_virtualbase_disconnectNotify".}
 proc fcQSGTexture_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSGTexture_override_virtual_disconnectNotify".}
+proc fcQSGTexture_staticMetaObject(): pointer {.importc: "QSGTexture_staticMetaObject".}
 proc fcQSGTexture_delete(self: pointer) {.importc: "QSGTexture_delete".}
 proc fcQSGDynamicTexture_new(): ptr cQSGDynamicTexture {.importc: "QSGDynamicTexture_new".}
 proc fcQSGDynamicTexture_metaObject(self: pointer, ): pointer {.importc: "QSGDynamicTexture_metaObject".}
@@ -182,6 +183,7 @@ proc fQSGDynamicTexture_virtualbase_connectNotify(self: pointer, signal: pointer
 proc fcQSGDynamicTexture_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSGDynamicTexture_override_virtual_connectNotify".}
 proc fQSGDynamicTexture_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSGDynamicTexture_virtualbase_disconnectNotify".}
 proc fcQSGDynamicTexture_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSGDynamicTexture_override_virtual_disconnectNotify".}
+proc fcQSGDynamicTexture_staticMetaObject(): pointer {.importc: "QSGDynamicTexture_staticMetaObject".}
 proc fcQSGDynamicTexture_delete(self: pointer) {.importc: "QSGDynamicTexture_delete".}
 proc fcQSGTextureNativeTexture_delete(self: pointer) {.importc: "QSGTexture__NativeTexture_delete".}
 
@@ -680,6 +682,8 @@ proc miqt_exec_callback_QSGTexture_disconnectNotify(self: ptr cQSGTexture, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSGTexture): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSGTexture_staticMetaObject())
 proc delete*(self: QSGTexture) =
   fcQSGTexture_delete(self.h)
 
@@ -1105,6 +1109,8 @@ proc miqt_exec_callback_QSGDynamicTexture_disconnectNotify(self: ptr cQSGDynamic
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSGDynamicTexture): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSGDynamicTexture_staticMetaObject())
 proc delete*(self: QSGDynamicTexture) =
   fcQSGDynamicTexture_delete(self.h)
 

@@ -461,6 +461,7 @@ void QAccessibleBridgePlugin_virtualbase_disconnectNotify(void* self, QMetaMetho
 	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAccessibleBridgePlugin_staticMetaObject() { return &QAccessibleBridgePlugin::staticMetaObject; }
 void QAccessibleBridgePlugin_delete(QAccessibleBridgePlugin* self) {
 	delete self;
 }

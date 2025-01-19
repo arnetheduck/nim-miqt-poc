@@ -2276,6 +2276,7 @@ void QFontDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFontDialog_staticMetaObject() { return &QFontDialog::staticMetaObject; }
 void QFontDialog_delete(QFontDialog* self) {
 	delete self;
 }

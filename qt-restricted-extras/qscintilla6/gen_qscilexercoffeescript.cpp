@@ -1853,6 +1853,7 @@ void QsciLexerCoffeeScript_virtualbase_disconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QsciLexerCoffeeScript_staticMetaObject() { return &QsciLexerCoffeeScript::staticMetaObject; }
 void QsciLexerCoffeeScript_delete(QsciLexerCoffeeScript* self) {
 	delete self;
 }

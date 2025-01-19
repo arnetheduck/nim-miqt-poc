@@ -91,6 +91,7 @@ proc fQPauseAnimation_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQPauseAnimation_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QPauseAnimation_override_virtual_connectNotify".}
 proc fQPauseAnimation_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QPauseAnimation_virtualbase_disconnectNotify".}
 proc fcQPauseAnimation_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QPauseAnimation_override_virtual_disconnectNotify".}
+proc fcQPauseAnimation_staticMetaObject(): pointer {.importc: "QPauseAnimation_staticMetaObject".}
 proc fcQPauseAnimation_delete(self: pointer) {.importc: "QPauseAnimation_delete".}
 
 
@@ -460,5 +461,7 @@ proc miqt_exec_callback_QPauseAnimation_disconnectNotify(self: ptr cQPauseAnimat
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QPauseAnimation): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPauseAnimation_staticMetaObject())
 proc delete*(self: QPauseAnimation) =
   fcQPauseAnimation_delete(self.h)

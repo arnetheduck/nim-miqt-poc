@@ -1428,6 +1428,7 @@ void QFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFile*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QFile_staticMetaObject() { return &QFile::staticMetaObject; }
 void QFile_delete(QFile* self) {
 	delete self;
 }

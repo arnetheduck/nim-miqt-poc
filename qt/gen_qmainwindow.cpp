@@ -2362,6 +2362,7 @@ void QMainWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMainWindow*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QMainWindow_staticMetaObject() { return &QMainWindow::staticMetaObject; }
 void QMainWindow_delete(QMainWindow* self) {
 	delete self;
 }

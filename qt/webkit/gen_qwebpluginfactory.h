@@ -101,6 +101,7 @@ bool QWebPluginFactory_override_virtual_connectNotify(void* self, intptr_t slot)
 void QWebPluginFactory_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebPluginFactory_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWebPluginFactory_staticMetaObject();
 void QWebPluginFactory_delete(QWebPluginFactory* self);
 
 QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1);

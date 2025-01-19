@@ -235,6 +235,7 @@ bool QColorDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QColorDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QColorDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QColorDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QColorDialog_staticMetaObject();
 void QColorDialog_delete(QColorDialog* self);
 
 #ifdef __cplusplus

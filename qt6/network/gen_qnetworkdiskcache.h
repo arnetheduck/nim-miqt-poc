@@ -97,6 +97,7 @@ bool QNetworkDiskCache_override_virtual_connectNotify(void* self, intptr_t slot)
 void QNetworkDiskCache_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNetworkDiskCache_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QNetworkDiskCache_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QNetworkDiskCache_staticMetaObject();
 void QNetworkDiskCache_delete(QNetworkDiskCache* self);
 
 #ifdef __cplusplus

@@ -216,6 +216,7 @@ proc fQAbstractScrollArea_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQAbstractScrollArea_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractScrollArea_override_virtual_connectNotify".}
 proc fQAbstractScrollArea_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractScrollArea_virtualbase_disconnectNotify".}
 proc fcQAbstractScrollArea_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractScrollArea_override_virtual_disconnectNotify".}
+proc fcQAbstractScrollArea_staticMetaObject(): pointer {.importc: "QAbstractScrollArea_staticMetaObject".}
 proc fcQAbstractScrollArea_delete(self: pointer) {.importc: "QAbstractScrollArea_delete".}
 
 
@@ -1599,5 +1600,7 @@ proc miqt_exec_callback_QAbstractScrollArea_disconnectNotify(self: ptr cQAbstrac
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAbstractScrollArea): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractScrollArea_staticMetaObject())
 proc delete*(self: QAbstractScrollArea) =
   fcQAbstractScrollArea_delete(self.h)

@@ -190,6 +190,7 @@ proc fQAbstractProxyModel_virtualbase_connectNotify(self: pointer, signal: point
 proc fcQAbstractProxyModel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAbstractProxyModel_override_virtual_connectNotify".}
 proc fQAbstractProxyModel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAbstractProxyModel_virtualbase_disconnectNotify".}
 proc fcQAbstractProxyModel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAbstractProxyModel_override_virtual_disconnectNotify".}
+proc fcQAbstractProxyModel_staticMetaObject(): pointer {.importc: "QAbstractProxyModel_staticMetaObject".}
 proc fcQAbstractProxyModel_delete(self: pointer) {.importc: "QAbstractProxyModel_delete".}
 
 
@@ -1677,5 +1678,7 @@ proc miqt_exec_callback_QAbstractProxyModel_disconnectNotify(self: ptr cQAbstrac
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAbstractProxyModel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAbstractProxyModel_staticMetaObject())
 proc delete*(self: QAbstractProxyModel) =
   fcQAbstractProxyModel_delete(self.h)

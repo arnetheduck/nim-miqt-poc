@@ -76,6 +76,7 @@ proc fQGenericPlugin_virtualbase_connectNotify(self: pointer, signal: pointer): 
 proc fcQGenericPlugin_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QGenericPlugin_override_virtual_connectNotify".}
 proc fQGenericPlugin_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QGenericPlugin_virtualbase_disconnectNotify".}
 proc fcQGenericPlugin_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QGenericPlugin_override_virtual_disconnectNotify".}
+proc fcQGenericPlugin_staticMetaObject(): pointer {.importc: "QGenericPlugin_staticMetaObject".}
 proc fcQGenericPlugin_delete(self: pointer) {.importc: "QGenericPlugin_delete".}
 
 
@@ -346,5 +347,7 @@ proc miqt_exec_callback_QGenericPlugin_disconnectNotify(self: ptr cQGenericPlugi
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QGenericPlugin): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQGenericPlugin_staticMetaObject())
 proc delete*(self: QGenericPlugin) =
   fcQGenericPlugin_delete(self.h)

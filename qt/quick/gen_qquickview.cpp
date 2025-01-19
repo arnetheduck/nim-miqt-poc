@@ -1423,6 +1423,7 @@ void QQuickView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQQuickView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQuickView_staticMetaObject() { return &QQuickView::staticMetaObject; }
 void QQuickView_delete(QQuickView* self) {
 	delete self;
 }

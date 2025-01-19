@@ -313,6 +313,7 @@ bool QMessageBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMessageBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMessageBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMessageBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMessageBox_staticMetaObject();
 void QMessageBox_delete(QMessageBox* self);
 
 #ifdef __cplusplus

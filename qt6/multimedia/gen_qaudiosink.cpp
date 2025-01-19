@@ -514,6 +514,7 @@ void QAudioSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioSink*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAudioSink_staticMetaObject() { return &QAudioSink::staticMetaObject; }
 void QAudioSink_delete(QAudioSink* self) {
 	delete self;
 }

@@ -2094,6 +2094,7 @@ void QSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSlider_staticMetaObject() { return &QSlider::staticMetaObject; }
 void QSlider_delete(QSlider* self) {
 	delete self;
 }

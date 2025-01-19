@@ -564,6 +564,7 @@ void QQmlExpression_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQQmlExpression*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QQmlExpression_staticMetaObject() { return &QQmlExpression::staticMetaObject; }
 void QQmlExpression_delete(QQmlExpression* self) {
 	delete self;
 }

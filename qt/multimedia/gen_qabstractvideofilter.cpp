@@ -500,6 +500,7 @@ void QAbstractVideoFilter_virtualbase_disconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractVideoFilter_staticMetaObject() { return &QAbstractVideoFilter::staticMetaObject; }
 void QAbstractVideoFilter_delete(QAbstractVideoFilter* self) {
 	delete self;
 }

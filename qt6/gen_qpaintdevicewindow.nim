@@ -59,6 +59,7 @@ proc fcQPaintDeviceWindow_updateWithRegion(self: pointer, region: pointer): void
 proc fcQPaintDeviceWindow_update2(self: pointer, ): void {.importc: "QPaintDeviceWindow_update2".}
 proc fcQPaintDeviceWindow_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QPaintDeviceWindow_tr2".}
 proc fcQPaintDeviceWindow_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPaintDeviceWindow_tr3".}
+proc fcQPaintDeviceWindow_staticMetaObject(): pointer {.importc: "QPaintDeviceWindow_staticMetaObject".}
 proc fcQPaintDeviceWindow_delete(self: pointer) {.importc: "QPaintDeviceWindow_delete".}
 
 
@@ -109,5 +110,7 @@ proc tr3*(_: type QPaintDeviceWindow, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QPaintDeviceWindow): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQPaintDeviceWindow_staticMetaObject())
 proc delete*(self: QPaintDeviceWindow) =
   fcQPaintDeviceWindow_delete(self.h)

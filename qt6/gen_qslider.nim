@@ -200,6 +200,7 @@ proc fQSlider_virtualbase_connectNotify(self: pointer, signal: pointer): void{.i
 proc fcQSlider_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QSlider_override_virtual_connectNotify".}
 proc fQSlider_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QSlider_virtualbase_disconnectNotify".}
 proc fcQSlider_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QSlider_override_virtual_disconnectNotify".}
+proc fcQSlider_staticMetaObject(): pointer {.importc: "QSlider_staticMetaObject".}
 proc fcQSlider_delete(self: pointer) {.importc: "QSlider_delete".}
 
 
@@ -1459,5 +1460,7 @@ proc miqt_exec_callback_QSlider_disconnectNotify(self: ptr cQSlider, slot: int, 
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QSlider): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQSlider_staticMetaObject())
 proc delete*(self: QSlider) =
   fcQSlider_delete(self.h)

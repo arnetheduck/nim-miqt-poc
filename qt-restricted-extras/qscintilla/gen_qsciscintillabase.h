@@ -336,6 +336,7 @@ bool QsciScintillaBase_override_virtual_connectNotify(void* self, intptr_t slot)
 void QsciScintillaBase_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciScintillaBase_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciScintillaBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciScintillaBase_staticMetaObject();
 void QsciScintillaBase_delete(QsciScintillaBase* self);
 
 #ifdef __cplusplus

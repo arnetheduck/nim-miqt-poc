@@ -104,6 +104,7 @@ proc fQLibrary_virtualbase_connectNotify(self: pointer, signal: pointer): void{.
 proc fcQLibrary_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QLibrary_override_virtual_connectNotify".}
 proc fQLibrary_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QLibrary_virtualbase_disconnectNotify".}
 proc fcQLibrary_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QLibrary_override_virtual_disconnectNotify".}
+proc fcQLibrary_staticMetaObject(): pointer {.importc: "QLibrary_staticMetaObject".}
 proc fcQLibrary_delete(self: pointer) {.importc: "QLibrary_delete".}
 
 
@@ -433,5 +434,7 @@ proc miqt_exec_callback_QLibrary_disconnectNotify(self: ptr cQLibrary, slot: int
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QLibrary): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQLibrary_staticMetaObject())
 proc delete*(self: QLibrary) =
   fcQLibrary_delete(self.h)

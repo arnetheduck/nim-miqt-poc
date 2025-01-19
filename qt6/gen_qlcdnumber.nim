@@ -219,6 +219,7 @@ proc fQLCDNumber_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQLCDNumber_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QLCDNumber_override_virtual_connectNotify".}
 proc fQLCDNumber_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QLCDNumber_virtualbase_disconnectNotify".}
 proc fcQLCDNumber_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QLCDNumber_override_virtual_disconnectNotify".}
+proc fcQLCDNumber_staticMetaObject(): pointer {.importc: "QLCDNumber_staticMetaObject".}
 proc fcQLCDNumber_delete(self: pointer) {.importc: "QLCDNumber_delete".}
 
 
@@ -1523,5 +1524,7 @@ proc miqt_exec_callback_QLCDNumber_disconnectNotify(self: ptr cQLCDNumber, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QLCDNumber): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQLCDNumber_staticMetaObject())
 proc delete*(self: QLCDNumber) =
   fcQLCDNumber_delete(self.h)

@@ -77,6 +77,7 @@ bool QQmlPropertyMap_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlPropertyMap_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlPropertyMap_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlPropertyMap_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQmlPropertyMap_staticMetaObject();
 void QQmlPropertyMap_delete(QQmlPropertyMap* self);
 
 #ifdef __cplusplus

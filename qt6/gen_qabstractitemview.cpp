@@ -4071,6 +4071,7 @@ void QAbstractItemView_virtualbase_disconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QAbstractItemView_staticMetaObject() { return &QAbstractItemView::staticMetaObject; }
 void QAbstractItemView_delete(QAbstractItemView* self) {
 	delete self;
 }

@@ -210,6 +210,7 @@ struct miqt_string QCameraZoomControl_trUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
+const QMetaObject* QCameraZoomControl_staticMetaObject() { return &QCameraZoomControl::staticMetaObject; }
 void QCameraZoomControl_delete(QCameraZoomControl* self) {
 	delete self;
 }

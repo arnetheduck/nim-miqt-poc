@@ -64,6 +64,7 @@ bool QQmlWebChannel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlWebChannel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlWebChannel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQmlWebChannel_staticMetaObject();
 void QQmlWebChannel_delete(QQmlWebChannel* self);
 
 #ifdef __cplusplus

@@ -120,6 +120,7 @@ proc fcQScroller_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQScroller_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QScroller_trUtf83".}
 proc fcQScroller_grabGesture2(target: pointer, gestureType: cint): cint {.importc: "QScroller_grabGesture2".}
 proc fcQScroller_handleInput3(self: pointer, input: cint, position: pointer, timestamp: clonglong): bool {.importc: "QScroller_handleInput3".}
+proc fcQScroller_staticMetaObject(): pointer {.importc: "QScroller_staticMetaObject".}
 
 
 func init*(T: type QScroller, h: ptr cQScroller): QScroller =
@@ -335,3 +336,5 @@ proc handleInput3*(self: QScroller, input: QScrollerInput, position: gen_qpoint.
 
   fcQScroller_handleInput3(self.h, cint(input), position.h, timestamp)
 
+proc staticMetaObject*(_: type QScroller): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQScroller_staticMetaObject())

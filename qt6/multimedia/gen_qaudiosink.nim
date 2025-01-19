@@ -105,6 +105,7 @@ proc fQAudioSink_virtualbase_connectNotify(self: pointer, signal: pointer): void
 proc fcQAudioSink_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QAudioSink_override_virtual_connectNotify".}
 proc fQAudioSink_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QAudioSink_virtualbase_disconnectNotify".}
 proc fcQAudioSink_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QAudioSink_override_virtual_disconnectNotify".}
+proc fcQAudioSink_staticMetaObject(): pointer {.importc: "QAudioSink_staticMetaObject".}
 proc fcQAudioSink_delete(self: pointer) {.importc: "QAudioSink_delete".}
 
 
@@ -443,5 +444,7 @@ proc miqt_exec_callback_QAudioSink_disconnectNotify(self: ptr cQAudioSink, slot:
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QAudioSink): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQAudioSink_staticMetaObject())
 proc delete*(self: QAudioSink) =
   fcQAudioSink_delete(self.h)

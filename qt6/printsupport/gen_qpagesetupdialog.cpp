@@ -2197,6 +2197,7 @@ void QPageSetupDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QPageSetupDialog_staticMetaObject() { return &QPageSetupDialog::staticMetaObject; }
 void QPageSetupDialog_delete(QPageSetupDialog* self) {
 	delete self;
 }

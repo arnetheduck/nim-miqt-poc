@@ -84,6 +84,7 @@ bool QShortcut_override_virtual_connectNotify(void* self, intptr_t slot);
 void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QShortcut_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QShortcut_staticMetaObject();
 void QShortcut_delete(QShortcut* self);
 
 #ifdef __cplusplus

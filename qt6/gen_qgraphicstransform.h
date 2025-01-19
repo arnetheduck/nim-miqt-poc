@@ -68,6 +68,7 @@ bool QGraphicsTransform_override_virtual_connectNotify(void* self, intptr_t slot
 void QGraphicsTransform_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsTransform_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsTransform_staticMetaObject();
 void QGraphicsTransform_delete(QGraphicsTransform* self);
 
 QGraphicsScale* QGraphicsScale_new();
@@ -116,6 +117,7 @@ bool QGraphicsScale_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsScale_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsScale_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsScale_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsScale_staticMetaObject();
 void QGraphicsScale_delete(QGraphicsScale* self);
 
 QGraphicsRotation* QGraphicsRotation_new();
@@ -159,6 +161,7 @@ bool QGraphicsRotation_override_virtual_connectNotify(void* self, intptr_t slot)
 void QGraphicsRotation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsRotation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsRotation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QGraphicsRotation_staticMetaObject();
 void QGraphicsRotation_delete(QGraphicsRotation* self);
 
 #ifdef __cplusplus

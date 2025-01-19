@@ -143,6 +143,7 @@ bool QsciLexerMakefile_override_virtual_connectNotify(void* self, intptr_t slot)
 void QsciLexerMakefile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerMakefile_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerMakefile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QsciLexerMakefile_staticMetaObject();
 void QsciLexerMakefile_delete(QsciLexerMakefile* self);
 
 #ifdef __cplusplus

@@ -110,6 +110,7 @@ bool QBuffer_override_virtual_childEvent(void* self, intptr_t slot);
 void QBuffer_virtualbase_childEvent(void* self, QChildEvent* event);
 bool QBuffer_override_virtual_customEvent(void* self, intptr_t slot);
 void QBuffer_virtualbase_customEvent(void* self, QEvent* event);
+const QMetaObject* QBuffer_staticMetaObject();
 void QBuffer_delete(QBuffer* self);
 
 #ifdef __cplusplus

@@ -2197,6 +2197,7 @@ void QSslSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSslSocket*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QSslSocket_staticMetaObject() { return &QSslSocket::staticMetaObject; }
 void QSslSocket_delete(QSslSocket* self) {
 	delete self;
 }

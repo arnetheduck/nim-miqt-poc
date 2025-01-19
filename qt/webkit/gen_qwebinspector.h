@@ -200,6 +200,7 @@ bool QWebInspector_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebInspector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebInspector_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebInspector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QWebInspector_staticMetaObject();
 void QWebInspector_delete(QWebInspector* self);
 
 #ifdef __cplusplus

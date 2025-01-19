@@ -85,6 +85,7 @@ bool QQuickRenderControl_override_virtual_connectNotify(void* self, intptr_t slo
 void QQuickRenderControl_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQuickRenderControl_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQuickRenderControl_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQuickRenderControl_staticMetaObject();
 void QQuickRenderControl_delete(QQuickRenderControl* self);
 
 #ifdef __cplusplus

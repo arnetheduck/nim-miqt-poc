@@ -138,6 +138,7 @@ bool QStackedLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QStackedLayout_virtualbase_widget(const void* self);
 bool QStackedLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QStackedLayout_virtualbase_spacerItem(void* self);
+const QMetaObject* QStackedLayout_staticMetaObject();
 void QStackedLayout_delete(QStackedLayout* self);
 
 #ifdef __cplusplus

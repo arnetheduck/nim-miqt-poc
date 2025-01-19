@@ -165,6 +165,7 @@ proc fQsciLexerJava_virtualbase_connectNotify(self: pointer, signal: pointer): v
 proc fcQsciLexerJava_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QsciLexerJava_override_virtual_connectNotify".}
 proc fQsciLexerJava_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QsciLexerJava_virtualbase_disconnectNotify".}
 proc fcQsciLexerJava_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QsciLexerJava_override_virtual_disconnectNotify".}
+proc fcQsciLexerJava_staticMetaObject(): pointer {.importc: "QsciLexerJava_staticMetaObject".}
 proc fcQsciLexerJava_delete(self: pointer) {.importc: "QsciLexerJava_delete".}
 
 
@@ -1375,5 +1376,7 @@ proc miqt_exec_callback_QsciLexerJava_disconnectNotify(self: ptr cQsciLexerJava,
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QsciLexerJava): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQsciLexerJava_staticMetaObject())
 proc delete*(self: QsciLexerJava) =
   fcQsciLexerJava_delete(self.h)

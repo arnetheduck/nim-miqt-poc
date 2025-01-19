@@ -226,6 +226,7 @@ proc fQColorDialog_virtualbase_connectNotify(self: pointer, signal: pointer): vo
 proc fcQColorDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QColorDialog_override_virtual_connectNotify".}
 proc fQColorDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QColorDialog_virtualbase_disconnectNotify".}
 proc fcQColorDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QColorDialog_override_virtual_disconnectNotify".}
+proc fcQColorDialog_staticMetaObject(): pointer {.importc: "QColorDialog_staticMetaObject".}
 proc fcQColorDialog_delete(self: pointer) {.importc: "QColorDialog_delete".}
 
 
@@ -1669,5 +1670,7 @@ proc miqt_exec_callback_QColorDialog_disconnectNotify(self: ptr cQColorDialog, s
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QColorDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQColorDialog_staticMetaObject())
 proc delete*(self: QColorDialog) =
   fcQColorDialog_delete(self.h)

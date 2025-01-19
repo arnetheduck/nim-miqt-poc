@@ -90,6 +90,7 @@ bool QQuickTextureFactory_override_virtual_connectNotify(void* self, intptr_t sl
 void QQuickTextureFactory_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQuickTextureFactory_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQuickTextureFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQuickTextureFactory_staticMetaObject();
 void QQuickTextureFactory_delete(QQuickTextureFactory* self);
 
 QQuickImageResponse* QQuickImageResponse_new();
@@ -130,6 +131,7 @@ bool QQuickImageResponse_override_virtual_connectNotify(void* self, intptr_t slo
 void QQuickImageResponse_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQuickImageResponse_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQuickImageResponse_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QQuickImageResponse_staticMetaObject();
 void QQuickImageResponse_delete(QQuickImageResponse* self);
 
 QQuickImageProvider* QQuickImageProvider_new(int type);

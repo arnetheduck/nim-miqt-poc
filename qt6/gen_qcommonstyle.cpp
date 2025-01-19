@@ -1476,6 +1476,7 @@ void QCommonStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QCommonStyle_staticMetaObject() { return &QCommonStyle::staticMetaObject; }
 void QCommonStyle_delete(QCommonStyle* self) {
 	delete self;
 }

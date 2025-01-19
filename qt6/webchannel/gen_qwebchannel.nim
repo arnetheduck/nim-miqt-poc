@@ -89,6 +89,7 @@ proc fQWebChannel_virtualbase_connectNotify(self: pointer, signal: pointer): voi
 proc fcQWebChannel_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QWebChannel_override_virtual_connectNotify".}
 proc fQWebChannel_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QWebChannel_virtualbase_disconnectNotify".}
 proc fcQWebChannel_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QWebChannel_override_virtual_disconnectNotify".}
+proc fcQWebChannel_staticMetaObject(): pointer {.importc: "QWebChannel_staticMetaObject".}
 proc fcQWebChannel_delete(self: pointer) {.importc: "QWebChannel_delete".}
 
 
@@ -408,5 +409,7 @@ proc miqt_exec_callback_QWebChannel_disconnectNotify(self: ptr cQWebChannel, slo
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QWebChannel): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQWebChannel_staticMetaObject())
 proc delete*(self: QWebChannel) =
   fcQWebChannel_delete(self.h)

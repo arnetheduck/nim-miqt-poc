@@ -237,6 +237,7 @@ bool QMdiSubWindow_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMdiSubWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMdiSubWindow_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMdiSubWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QMdiSubWindow_staticMetaObject();
 void QMdiSubWindow_delete(QMdiSubWindow* self);
 
 #ifdef __cplusplus

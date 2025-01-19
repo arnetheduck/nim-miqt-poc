@@ -2125,6 +2125,7 @@ void QDesktopWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QDesktopWidget_staticMetaObject() { return &QDesktopWidget::staticMetaObject; }
 void QDesktopWidget_delete(QDesktopWidget* self) {
 	delete self;
 }

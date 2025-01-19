@@ -80,6 +80,7 @@ proc fcQCameraImageProcessingControl_tr2(s: cstring, c: cstring): struct_miqt_st
 proc fcQCameraImageProcessingControl_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraImageProcessingControl_tr3".}
 proc fcQCameraImageProcessingControl_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCameraImageProcessingControl_trUtf82".}
 proc fcQCameraImageProcessingControl_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCameraImageProcessingControl_trUtf83".}
+proc fcQCameraImageProcessingControl_staticMetaObject(): pointer {.importc: "QCameraImageProcessingControl_staticMetaObject".}
 proc fcQCameraImageProcessingControl_delete(self: pointer) {.importc: "QCameraImageProcessingControl_delete".}
 
 
@@ -155,5 +156,7 @@ proc trUtf83*(_: type QCameraImageProcessingControl, s: cstring, c: cstring, n: 
   c_free(v_ms.data)
   vx_ret
 
+proc staticMetaObject*(_: type QCameraImageProcessingControl): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQCameraImageProcessingControl_staticMetaObject())
 proc delete*(self: QCameraImageProcessingControl) =
   fcQCameraImageProcessingControl_delete(self.h)

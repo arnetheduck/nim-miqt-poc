@@ -218,6 +218,7 @@ bool QLCDNumber_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLCDNumber_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+const QMetaObject* QLCDNumber_staticMetaObject();
 void QLCDNumber_delete(QLCDNumber* self);
 
 #ifdef __cplusplus

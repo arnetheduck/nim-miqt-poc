@@ -552,6 +552,7 @@ void QHistoryState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQHistoryState*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
+const QMetaObject* QHistoryState_staticMetaObject() { return &QHistoryState::staticMetaObject; }
 void QHistoryState_delete(QHistoryState* self) {
 	delete self;
 }

@@ -222,6 +222,7 @@ proc fQProgressDialog_virtualbase_connectNotify(self: pointer, signal: pointer):
 proc fcQProgressDialog_override_virtual_connectNotify(self: pointer, slot: int) {.importc: "QProgressDialog_override_virtual_connectNotify".}
 proc fQProgressDialog_virtualbase_disconnectNotify(self: pointer, signal: pointer): void{.importc: "QProgressDialog_virtualbase_disconnectNotify".}
 proc fcQProgressDialog_override_virtual_disconnectNotify(self: pointer, slot: int) {.importc: "QProgressDialog_override_virtual_disconnectNotify".}
+proc fcQProgressDialog_staticMetaObject(): pointer {.importc: "QProgressDialog_staticMetaObject".}
 proc fcQProgressDialog_delete(self: pointer) {.importc: "QProgressDialog_delete".}
 
 
@@ -1654,5 +1655,7 @@ proc miqt_exec_callback_QProgressDialog_disconnectNotify(self: ptr cQProgressDia
 
 
   nimfunc[](superCall, slotval1)
+proc staticMetaObject*(_: type QProgressDialog): gen_qobjectdefs.QMetaObject =
+  gen_qobjectdefs.QMetaObject(h: fcQProgressDialog_staticMetaObject())
 proc delete*(self: QProgressDialog) =
   fcQProgressDialog_delete(self.h)
