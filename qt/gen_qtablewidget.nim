@@ -465,40 +465,33 @@ proc fcQTableWidget_delete(self: pointer) {.importc: "QTableWidget_delete".}
 func init*(T: type gen_qtablewidget_types.QTableWidgetSelectionRange, h: ptr cQTableWidgetSelectionRange): gen_qtablewidget_types.QTableWidgetSelectionRange =
   T(h: h)
 proc create*(T: type gen_qtablewidget_types.QTableWidgetSelectionRange, ): gen_qtablewidget_types.QTableWidgetSelectionRange =
-
   gen_qtablewidget_types.QTableWidgetSelectionRange.init(fcQTableWidgetSelectionRange_new())
+
 proc create*(T: type gen_qtablewidget_types.QTableWidgetSelectionRange, top: cint, left: cint, bottom: cint, right: cint): gen_qtablewidget_types.QTableWidgetSelectionRange =
-
   gen_qtablewidget_types.QTableWidgetSelectionRange.init(fcQTableWidgetSelectionRange_new2(top, left, bottom, right))
+
 proc create*(T: type gen_qtablewidget_types.QTableWidgetSelectionRange, other: gen_qtablewidget_types.QTableWidgetSelectionRange): gen_qtablewidget_types.QTableWidgetSelectionRange =
-
   gen_qtablewidget_types.QTableWidgetSelectionRange.init(fcQTableWidgetSelectionRange_new3(other.h))
-proc operatorAssign*(self: gen_qtablewidget_types.QTableWidgetSelectionRange, other: gen_qtablewidget_types.QTableWidgetSelectionRange): void =
 
+proc operatorAssign*(self: gen_qtablewidget_types.QTableWidgetSelectionRange, other: gen_qtablewidget_types.QTableWidgetSelectionRange): void =
   fcQTableWidgetSelectionRange_operatorAssign(self.h, other.h)
 
 proc topRow*(self: gen_qtablewidget_types.QTableWidgetSelectionRange, ): cint =
-
   fcQTableWidgetSelectionRange_topRow(self.h)
 
 proc bottomRow*(self: gen_qtablewidget_types.QTableWidgetSelectionRange, ): cint =
-
   fcQTableWidgetSelectionRange_bottomRow(self.h)
 
 proc leftColumn*(self: gen_qtablewidget_types.QTableWidgetSelectionRange, ): cint =
-
   fcQTableWidgetSelectionRange_leftColumn(self.h)
 
 proc rightColumn*(self: gen_qtablewidget_types.QTableWidgetSelectionRange, ): cint =
-
   fcQTableWidgetSelectionRange_rightColumn(self.h)
 
 proc rowCount*(self: gen_qtablewidget_types.QTableWidgetSelectionRange, ): cint =
-
   fcQTableWidgetSelectionRange_rowCount(self.h)
 
 proc columnCount*(self: gen_qtablewidget_types.QTableWidgetSelectionRange, ): cint =
-
   fcQTableWidgetSelectionRange_columnCount(self.h)
 
 proc delete*(self: gen_qtablewidget_types.QTableWidgetSelectionRange) =
@@ -507,204 +500,162 @@ proc delete*(self: gen_qtablewidget_types.QTableWidgetSelectionRange) =
 func init*(T: type gen_qtablewidget_types.QTableWidgetItem, h: ptr cQTableWidgetItem): gen_qtablewidget_types.QTableWidgetItem =
   T(h: h)
 proc create*(T: type gen_qtablewidget_types.QTableWidgetItem, ): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem.init(fcQTableWidgetItem_new())
+
 proc create*(T: type gen_qtablewidget_types.QTableWidgetItem, text: string): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem.init(fcQTableWidgetItem_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qtablewidget_types.QTableWidgetItem, icon: gen_qicon.QIcon, text: string): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem.init(fcQTableWidgetItem_new3(icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qtablewidget_types.QTableWidgetItem, other: gen_qtablewidget_types.QTableWidgetItem): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem.init(fcQTableWidgetItem_new4(other.h))
+
 proc create*(T: type gen_qtablewidget_types.QTableWidgetItem, typeVal: cint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem.init(fcQTableWidgetItem_new5(typeVal))
+
 proc create*(T: type gen_qtablewidget_types.QTableWidgetItem, text: string, typeVal: cint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem.init(fcQTableWidgetItem_new6(struct_miqt_string(data: text, len: csize_t(len(text))), typeVal))
+
 proc create*(T: type gen_qtablewidget_types.QTableWidgetItem, icon: gen_qicon.QIcon, text: string, typeVal: cint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem.init(fcQTableWidgetItem_new7(icon.h, struct_miqt_string(data: text, len: csize_t(len(text))), typeVal))
-proc clone*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qtablewidget_types.QTableWidgetItem =
 
+proc clone*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qtablewidget_types.QTableWidgetItem =
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidgetItem_clone(self.h))
 
 proc tableWidget*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qtablewidget_types.QTableWidget =
-
   gen_qtablewidget_types.QTableWidget(h: fcQTableWidgetItem_tableWidget(self.h))
 
 proc row*(self: gen_qtablewidget_types.QTableWidgetItem, ): cint =
-
   fcQTableWidgetItem_row(self.h)
 
 proc column*(self: gen_qtablewidget_types.QTableWidgetItem, ): cint =
-
   fcQTableWidgetItem_column(self.h)
 
 proc setSelected*(self: gen_qtablewidget_types.QTableWidgetItem, select: bool): void =
-
   fcQTableWidgetItem_setSelected(self.h, select)
 
 proc isSelected*(self: gen_qtablewidget_types.QTableWidgetItem, ): bool =
-
   fcQTableWidgetItem_isSelected(self.h)
 
 proc flags*(self: gen_qtablewidget_types.QTableWidgetItem, ): cint =
-
   cint(fcQTableWidgetItem_flags(self.h))
 
 proc setFlags*(self: gen_qtablewidget_types.QTableWidgetItem, flags: cint): void =
-
   fcQTableWidgetItem_setFlags(self.h, cint(flags))
 
 proc text*(self: gen_qtablewidget_types.QTableWidgetItem, ): string =
-
   let v_ms = fcQTableWidgetItem_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setText*(self: gen_qtablewidget_types.QTableWidgetItem, text: string): void =
-
   fcQTableWidgetItem_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc icon*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQTableWidgetItem_icon(self.h))
 
 proc setIcon*(self: gen_qtablewidget_types.QTableWidgetItem, icon: gen_qicon.QIcon): void =
-
   fcQTableWidgetItem_setIcon(self.h, icon.h)
 
 proc statusTip*(self: gen_qtablewidget_types.QTableWidgetItem, ): string =
-
   let v_ms = fcQTableWidgetItem_statusTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setStatusTip*(self: gen_qtablewidget_types.QTableWidgetItem, statusTip: string): void =
-
   fcQTableWidgetItem_setStatusTip(self.h, struct_miqt_string(data: statusTip, len: csize_t(len(statusTip))))
 
 proc toolTip*(self: gen_qtablewidget_types.QTableWidgetItem, ): string =
-
   let v_ms = fcQTableWidgetItem_toolTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setToolTip*(self: gen_qtablewidget_types.QTableWidgetItem, toolTip: string): void =
-
   fcQTableWidgetItem_setToolTip(self.h, struct_miqt_string(data: toolTip, len: csize_t(len(toolTip))))
 
 proc whatsThis*(self: gen_qtablewidget_types.QTableWidgetItem, ): string =
-
   let v_ms = fcQTableWidgetItem_whatsThis(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWhatsThis*(self: gen_qtablewidget_types.QTableWidgetItem, whatsThis: string): void =
-
   fcQTableWidgetItem_setWhatsThis(self.h, struct_miqt_string(data: whatsThis, len: csize_t(len(whatsThis))))
 
 proc font*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQTableWidgetItem_font(self.h))
 
 proc setFont*(self: gen_qtablewidget_types.QTableWidgetItem, font: gen_qfont.QFont): void =
-
   fcQTableWidgetItem_setFont(self.h, font.h)
 
 proc textAlignment*(self: gen_qtablewidget_types.QTableWidgetItem, ): cint =
-
   fcQTableWidgetItem_textAlignment(self.h)
 
 proc setTextAlignment*(self: gen_qtablewidget_types.QTableWidgetItem, alignment: cint): void =
-
   fcQTableWidgetItem_setTextAlignment(self.h, alignment)
 
 proc backgroundColor*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQTableWidgetItem_backgroundColor(self.h))
 
 proc setBackgroundColor*(self: gen_qtablewidget_types.QTableWidgetItem, color: gen_qcolor.QColor): void =
-
   fcQTableWidgetItem_setBackgroundColor(self.h, color.h)
 
 proc background*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTableWidgetItem_background(self.h))
 
 proc setBackground*(self: gen_qtablewidget_types.QTableWidgetItem, brush: gen_qbrush.QBrush): void =
-
   fcQTableWidgetItem_setBackground(self.h, brush.h)
 
 proc textColor*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQTableWidgetItem_textColor(self.h))
 
 proc setTextColor*(self: gen_qtablewidget_types.QTableWidgetItem, color: gen_qcolor.QColor): void =
-
   fcQTableWidgetItem_setTextColor(self.h, color.h)
 
 proc foreground*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTableWidgetItem_foreground(self.h))
 
 proc setForeground*(self: gen_qtablewidget_types.QTableWidgetItem, brush: gen_qbrush.QBrush): void =
-
   fcQTableWidgetItem_setForeground(self.h, brush.h)
 
 proc checkState*(self: gen_qtablewidget_types.QTableWidgetItem, ): cint =
-
   cint(fcQTableWidgetItem_checkState(self.h))
 
 proc setCheckState*(self: gen_qtablewidget_types.QTableWidgetItem, state: cint): void =
-
   fcQTableWidgetItem_setCheckState(self.h, cint(state))
 
 proc sizeHint*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQTableWidgetItem_sizeHint(self.h))
 
 proc setSizeHint*(self: gen_qtablewidget_types.QTableWidgetItem, size: gen_qsize.QSize): void =
-
   fcQTableWidgetItem_setSizeHint(self.h, size.h)
 
 proc data*(self: gen_qtablewidget_types.QTableWidgetItem, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQTableWidgetItem_data(self.h, role))
 
 proc setData*(self: gen_qtablewidget_types.QTableWidgetItem, role: cint, value: gen_qvariant.QVariant): void =
-
   fcQTableWidgetItem_setData(self.h, role, value.h)
 
 proc operatorLesser*(self: gen_qtablewidget_types.QTableWidgetItem, other: gen_qtablewidget_types.QTableWidgetItem): bool =
-
   fcQTableWidgetItem_operatorLesser(self.h, other.h)
 
 proc read*(self: gen_qtablewidget_types.QTableWidgetItem, inVal: gen_qdatastream.QDataStream): void =
-
   fcQTableWidgetItem_read(self.h, inVal.h)
 
 proc write*(self: gen_qtablewidget_types.QTableWidgetItem, outVal: gen_qdatastream.QDataStream): void =
-
   fcQTableWidgetItem_write(self.h, outVal.h)
 
 proc operatorAssign*(self: gen_qtablewidget_types.QTableWidgetItem, other: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidgetItem_operatorAssign(self.h, other.h)
 
 proc typeX*(self: gen_qtablewidget_types.QTableWidgetItem, ): cint =
-
   fcQTableWidgetItem_typeX(self.h)
 
 proc QTableWidgetItemclone*(self: gen_qtablewidget_types.QTableWidgetItem, ): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fQTableWidgetItem_virtualbase_clone(self.h))
 
 type QTableWidgetItemcloneProc* = proc(): gen_qtablewidget_types.QTableWidgetItem
@@ -722,7 +673,6 @@ proc miqt_exec_callback_QTableWidgetItem_clone(self: ptr cQTableWidgetItem, slot
 
   virtualReturn.h
 proc QTableWidgetItemdata*(self: gen_qtablewidget_types.QTableWidgetItem, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQTableWidgetItem_virtualbase_data(self.h, role))
 
 type QTableWidgetItemdataProc* = proc(role: cint): gen_qvariant.QVariant
@@ -742,7 +692,6 @@ proc miqt_exec_callback_QTableWidgetItem_data(self: ptr cQTableWidgetItem, slot:
 
   virtualReturn.h
 proc QTableWidgetItemsetData*(self: gen_qtablewidget_types.QTableWidgetItem, role: cint, value: gen_qvariant.QVariant): void =
-
   fQTableWidgetItem_virtualbase_setData(self.h, role, value.h)
 
 type QTableWidgetItemsetDataProc* = proc(role: cint, value: gen_qvariant.QVariant): void
@@ -762,7 +711,6 @@ proc miqt_exec_callback_QTableWidgetItem_setData(self: ptr cQTableWidgetItem, sl
 
   nimfunc[](slotval1, slotval2)
 proc QTableWidgetItemoperatorLesser*(self: gen_qtablewidget_types.QTableWidgetItem, other: gen_qtablewidget_types.QTableWidgetItem): bool =
-
   fQTableWidgetItem_virtualbase_operatorLesser(self.h, other.h)
 
 type QTableWidgetItemoperatorLesserProc* = proc(other: gen_qtablewidget_types.QTableWidgetItem): bool
@@ -782,7 +730,6 @@ proc miqt_exec_callback_QTableWidgetItem_operatorLesser(self: ptr cQTableWidgetI
 
   virtualReturn
 proc QTableWidgetItemread*(self: gen_qtablewidget_types.QTableWidgetItem, inVal: gen_qdatastream.QDataStream): void =
-
   fQTableWidgetItem_virtualbase_read(self.h, inVal.h)
 
 type QTableWidgetItemreadProc* = proc(inVal: gen_qdatastream.QDataStream): void
@@ -800,7 +747,6 @@ proc miqt_exec_callback_QTableWidgetItem_read(self: ptr cQTableWidgetItem, slot:
 
   nimfunc[](slotval1)
 proc QTableWidgetItemwrite*(self: gen_qtablewidget_types.QTableWidgetItem, outVal: gen_qdatastream.QDataStream): void =
-
   fQTableWidgetItem_virtualbase_write(self.h, outVal.h)
 
 type QTableWidgetItemwriteProc* = proc(outVal: gen_qdatastream.QDataStream): void
@@ -823,105 +769,84 @@ proc delete*(self: gen_qtablewidget_types.QTableWidgetItem) =
 func init*(T: type gen_qtablewidget_types.QTableWidget, h: ptr cQTableWidget): gen_qtablewidget_types.QTableWidget =
   T(h: h)
 proc create*(T: type gen_qtablewidget_types.QTableWidget, parent: gen_qwidget.QWidget): gen_qtablewidget_types.QTableWidget =
-
   gen_qtablewidget_types.QTableWidget.init(fcQTableWidget_new(parent.h))
+
 proc create*(T: type gen_qtablewidget_types.QTableWidget, ): gen_qtablewidget_types.QTableWidget =
-
   gen_qtablewidget_types.QTableWidget.init(fcQTableWidget_new2())
+
 proc create*(T: type gen_qtablewidget_types.QTableWidget, rows: cint, columns: cint): gen_qtablewidget_types.QTableWidget =
-
   gen_qtablewidget_types.QTableWidget.init(fcQTableWidget_new3(rows, columns))
+
 proc create*(T: type gen_qtablewidget_types.QTableWidget, rows: cint, columns: cint, parent: gen_qwidget.QWidget): gen_qtablewidget_types.QTableWidget =
-
   gen_qtablewidget_types.QTableWidget.init(fcQTableWidget_new4(rows, columns, parent.h))
-proc metaObject*(self: gen_qtablewidget_types.QTableWidget, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtablewidget_types.QTableWidget, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTableWidget_metaObject(self.h))
 
 proc metacast*(self: gen_qtablewidget_types.QTableWidget, param1: cstring): pointer =
-
   fcQTableWidget_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtablewidget_types.QTableWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTableWidget_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtablewidget_types.QTableWidget, s: cstring): string =
-
   let v_ms = fcQTableWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtablewidget_types.QTableWidget, s: cstring): string =
-
   let v_ms = fcQTableWidget_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setRowCount*(self: gen_qtablewidget_types.QTableWidget, rows: cint): void =
-
   fcQTableWidget_setRowCount(self.h, rows)
 
 proc rowCount*(self: gen_qtablewidget_types.QTableWidget, ): cint =
-
   fcQTableWidget_rowCount(self.h)
 
 proc setColumnCount*(self: gen_qtablewidget_types.QTableWidget, columns: cint): void =
-
   fcQTableWidget_setColumnCount(self.h, columns)
 
 proc columnCount*(self: gen_qtablewidget_types.QTableWidget, ): cint =
-
   fcQTableWidget_columnCount(self.h)
 
 proc row*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): cint =
-
   fcQTableWidget_row(self.h, item.h)
 
 proc column*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): cint =
-
   fcQTableWidget_column(self.h, item.h)
 
 proc item*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_item(self.h, row, column))
 
 proc setItem*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_setItem(self.h, row, column, item.h)
 
 proc takeItem*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_takeItem(self.h, row, column))
 
 proc verticalHeaderItem*(self: gen_qtablewidget_types.QTableWidget, row: cint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_verticalHeaderItem(self.h, row))
 
 proc setVerticalHeaderItem*(self: gen_qtablewidget_types.QTableWidget, row: cint, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_setVerticalHeaderItem(self.h, row, item.h)
 
 proc takeVerticalHeaderItem*(self: gen_qtablewidget_types.QTableWidget, row: cint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_takeVerticalHeaderItem(self.h, row))
 
 proc horizontalHeaderItem*(self: gen_qtablewidget_types.QTableWidget, column: cint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_horizontalHeaderItem(self.h, column))
 
 proc setHorizontalHeaderItem*(self: gen_qtablewidget_types.QTableWidget, column: cint, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_setHorizontalHeaderItem(self.h, column, item.h)
 
 proc takeHorizontalHeaderItem*(self: gen_qtablewidget_types.QTableWidget, column: cint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_takeHorizontalHeaderItem(self.h, column))
 
 proc setVerticalHeaderLabels*(self: gen_qtablewidget_types.QTableWidget, labels: seq[string]): void =
-
   var labels_CArray = newSeq[struct_miqt_string](len(labels))
   for i in 0..<len(labels):
     labels_CArray[i] = struct_miqt_string(data: labels[i], len: csize_t(len(labels[i])))
@@ -929,7 +854,6 @@ proc setVerticalHeaderLabels*(self: gen_qtablewidget_types.QTableWidget, labels:
   fcQTableWidget_setVerticalHeaderLabels(self.h, struct_miqt_array(len: csize_t(len(labels)), data: if len(labels) == 0: nil else: addr(labels_CArray[0])))
 
 proc setHorizontalHeaderLabels*(self: gen_qtablewidget_types.QTableWidget, labels: seq[string]): void =
-
   var labels_CArray = newSeq[struct_miqt_string](len(labels))
   for i in 0..<len(labels):
     labels_CArray[i] = struct_miqt_string(data: labels[i], len: csize_t(len(labels[i])))
@@ -937,87 +861,66 @@ proc setHorizontalHeaderLabels*(self: gen_qtablewidget_types.QTableWidget, label
   fcQTableWidget_setHorizontalHeaderLabels(self.h, struct_miqt_array(len: csize_t(len(labels)), data: if len(labels) == 0: nil else: addr(labels_CArray[0])))
 
 proc currentRow*(self: gen_qtablewidget_types.QTableWidget, ): cint =
-
   fcQTableWidget_currentRow(self.h)
 
 proc currentColumn*(self: gen_qtablewidget_types.QTableWidget, ): cint =
-
   fcQTableWidget_currentColumn(self.h)
 
 proc currentItem*(self: gen_qtablewidget_types.QTableWidget, ): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_currentItem(self.h))
 
 proc setCurrentItem*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_setCurrentItem(self.h, item.h)
 
-proc setCurrentItem2*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem, command: cint): void =
-
+proc setCurrentItem*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem, command: cint): void =
   fcQTableWidget_setCurrentItem2(self.h, item.h, cint(command))
 
 proc setCurrentCell*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
-
   fcQTableWidget_setCurrentCell(self.h, row, column)
 
-proc setCurrentCell2*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint, command: cint): void =
-
+proc setCurrentCell*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint, command: cint): void =
   fcQTableWidget_setCurrentCell2(self.h, row, column, cint(command))
 
 proc sortItems*(self: gen_qtablewidget_types.QTableWidget, column: cint): void =
-
   fcQTableWidget_sortItems(self.h, column)
 
 proc setSortingEnabled*(self: gen_qtablewidget_types.QTableWidget, enable: bool): void =
-
   fcQTableWidget_setSortingEnabled(self.h, enable)
 
 proc isSortingEnabled*(self: gen_qtablewidget_types.QTableWidget, ): bool =
-
   fcQTableWidget_isSortingEnabled(self.h)
 
 proc editItem*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_editItem(self.h, item.h)
 
 proc openPersistentEditor*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_openPersistentEditor(self.h, item.h)
 
 proc closePersistentEditor*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_closePersistentEditor(self.h, item.h)
 
 proc isPersistentEditorOpen*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): bool =
-
   fcQTableWidget_isPersistentEditorOpen(self.h, item.h)
 
 proc cellWidget*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQTableWidget_cellWidget(self.h, row, column))
 
 proc setCellWidget*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint, widget: gen_qwidget.QWidget): void =
-
   fcQTableWidget_setCellWidget(self.h, row, column, widget.h)
 
 proc removeCellWidget*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
-
   fcQTableWidget_removeCellWidget(self.h, row, column)
 
 proc isItemSelected*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): bool =
-
   fcQTableWidget_isItemSelected(self.h, item.h)
 
 proc setItemSelected*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem, select: bool): void =
-
   fcQTableWidget_setItemSelected(self.h, item.h, select)
 
 proc setRangeSelected*(self: gen_qtablewidget_types.QTableWidget, range: gen_qtablewidget_types.QTableWidgetSelectionRange, select: bool): void =
-
   fcQTableWidget_setRangeSelected(self.h, range.h, select)
 
 proc selectedRanges*(self: gen_qtablewidget_types.QTableWidget, ): seq[gen_qtablewidget_types.QTableWidgetSelectionRange] =
-
   var v_ma = fcQTableWidget_selectedRanges(self.h)
   var vx_ret = newSeq[gen_qtablewidget_types.QTableWidgetSelectionRange](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1026,7 +929,6 @@ proc selectedRanges*(self: gen_qtablewidget_types.QTableWidget, ): seq[gen_qtabl
   vx_ret
 
 proc selectedItems*(self: gen_qtablewidget_types.QTableWidget, ): seq[gen_qtablewidget_types.QTableWidgetItem] =
-
   var v_ma = fcQTableWidget_selectedItems(self.h)
   var vx_ret = newSeq[gen_qtablewidget_types.QTableWidgetItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1035,7 +937,6 @@ proc selectedItems*(self: gen_qtablewidget_types.QTableWidget, ): seq[gen_qtable
   vx_ret
 
 proc findItems*(self: gen_qtablewidget_types.QTableWidget, text: string, flags: cint): seq[gen_qtablewidget_types.QTableWidgetItem] =
-
   var v_ma = fcQTableWidget_findItems(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(flags))
   var vx_ret = newSeq[gen_qtablewidget_types.QTableWidgetItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1044,332 +945,289 @@ proc findItems*(self: gen_qtablewidget_types.QTableWidget, text: string, flags: 
   vx_ret
 
 proc visualRow*(self: gen_qtablewidget_types.QTableWidget, logicalRow: cint): cint =
-
   fcQTableWidget_visualRow(self.h, logicalRow)
 
 proc visualColumn*(self: gen_qtablewidget_types.QTableWidget, logicalColumn: cint): cint =
-
   fcQTableWidget_visualColumn(self.h, logicalColumn)
 
 proc itemAt*(self: gen_qtablewidget_types.QTableWidget, p: gen_qpoint.QPoint): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_itemAt(self.h, p.h))
 
-proc itemAt2*(self: gen_qtablewidget_types.QTableWidget, x: cint, y: cint): gen_qtablewidget_types.QTableWidgetItem =
-
+proc itemAt*(self: gen_qtablewidget_types.QTableWidget, x: cint, y: cint): gen_qtablewidget_types.QTableWidgetItem =
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_itemAt2(self.h, x, y))
 
 proc visualItemRect*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQTableWidget_visualItemRect(self.h, item.h))
 
 proc itemPrototype*(self: gen_qtablewidget_types.QTableWidget, ): gen_qtablewidget_types.QTableWidgetItem =
-
   gen_qtablewidget_types.QTableWidgetItem(h: fcQTableWidget_itemPrototype(self.h))
 
 proc setItemPrototype*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_setItemPrototype(self.h, item.h)
 
 proc scrollToItem*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_scrollToItem(self.h, item.h)
 
 proc insertRow*(self: gen_qtablewidget_types.QTableWidget, row: cint): void =
-
   fcQTableWidget_insertRow(self.h, row)
 
 proc insertColumn*(self: gen_qtablewidget_types.QTableWidget, column: cint): void =
-
   fcQTableWidget_insertColumn(self.h, column)
 
 proc removeRow*(self: gen_qtablewidget_types.QTableWidget, row: cint): void =
-
   fcQTableWidget_removeRow(self.h, row)
 
 proc removeColumn*(self: gen_qtablewidget_types.QTableWidget, column: cint): void =
-
   fcQTableWidget_removeColumn(self.h, column)
 
 proc clear*(self: gen_qtablewidget_types.QTableWidget, ): void =
-
   fcQTableWidget_clear(self.h)
 
 proc clearContents*(self: gen_qtablewidget_types.QTableWidget, ): void =
-
   fcQTableWidget_clearContents(self.h)
 
 proc itemPressed*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
-
   fcQTableWidget_itemPressed(self.h, item.h)
 
+type QTableWidgetitemPressedSlot* = proc(item: gen_qtablewidget_types.QTableWidgetItem)
 proc miqt_exec_callback_QTableWidget_itemPressed(slot: int, item: pointer) {.exportc.} =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetitemPressedSlot](cast[pointer](slot))
   let slotval1 = gen_qtablewidget_types.QTableWidgetItem(h: item)
-
 
   nimfunc[](slotval1)
 
-proc onitemPressed*(self: gen_qtablewidget_types.QTableWidget, slot: proc(item: gen_qtablewidget_types.QTableWidgetItem)) =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  var tmp = new Cb
+proc onitemPressed*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetitemPressedSlot) =
+  var tmp = new QTableWidgetitemPressedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_itemPressed(self.h, cast[int](addr tmp[]))
-proc itemClicked*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
 
+proc itemClicked*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
   fcQTableWidget_itemClicked(self.h, item.h)
 
+type QTableWidgetitemClickedSlot* = proc(item: gen_qtablewidget_types.QTableWidgetItem)
 proc miqt_exec_callback_QTableWidget_itemClicked(slot: int, item: pointer) {.exportc.} =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetitemClickedSlot](cast[pointer](slot))
   let slotval1 = gen_qtablewidget_types.QTableWidgetItem(h: item)
-
 
   nimfunc[](slotval1)
 
-proc onitemClicked*(self: gen_qtablewidget_types.QTableWidget, slot: proc(item: gen_qtablewidget_types.QTableWidgetItem)) =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  var tmp = new Cb
+proc onitemClicked*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetitemClickedSlot) =
+  var tmp = new QTableWidgetitemClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_itemClicked(self.h, cast[int](addr tmp[]))
-proc itemDoubleClicked*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
 
+proc itemDoubleClicked*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
   fcQTableWidget_itemDoubleClicked(self.h, item.h)
 
+type QTableWidgetitemDoubleClickedSlot* = proc(item: gen_qtablewidget_types.QTableWidgetItem)
 proc miqt_exec_callback_QTableWidget_itemDoubleClicked(slot: int, item: pointer) {.exportc.} =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetitemDoubleClickedSlot](cast[pointer](slot))
   let slotval1 = gen_qtablewidget_types.QTableWidgetItem(h: item)
-
 
   nimfunc[](slotval1)
 
-proc onitemDoubleClicked*(self: gen_qtablewidget_types.QTableWidget, slot: proc(item: gen_qtablewidget_types.QTableWidgetItem)) =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  var tmp = new Cb
+proc onitemDoubleClicked*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetitemDoubleClickedSlot) =
+  var tmp = new QTableWidgetitemDoubleClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_itemDoubleClicked(self.h, cast[int](addr tmp[]))
-proc itemActivated*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
 
+proc itemActivated*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
   fcQTableWidget_itemActivated(self.h, item.h)
 
+type QTableWidgetitemActivatedSlot* = proc(item: gen_qtablewidget_types.QTableWidgetItem)
 proc miqt_exec_callback_QTableWidget_itemActivated(slot: int, item: pointer) {.exportc.} =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetitemActivatedSlot](cast[pointer](slot))
   let slotval1 = gen_qtablewidget_types.QTableWidgetItem(h: item)
-
 
   nimfunc[](slotval1)
 
-proc onitemActivated*(self: gen_qtablewidget_types.QTableWidget, slot: proc(item: gen_qtablewidget_types.QTableWidgetItem)) =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  var tmp = new Cb
+proc onitemActivated*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetitemActivatedSlot) =
+  var tmp = new QTableWidgetitemActivatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_itemActivated(self.h, cast[int](addr tmp[]))
-proc itemEntered*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
 
+proc itemEntered*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
   fcQTableWidget_itemEntered(self.h, item.h)
 
+type QTableWidgetitemEnteredSlot* = proc(item: gen_qtablewidget_types.QTableWidgetItem)
 proc miqt_exec_callback_QTableWidget_itemEntered(slot: int, item: pointer) {.exportc.} =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetitemEnteredSlot](cast[pointer](slot))
   let slotval1 = gen_qtablewidget_types.QTableWidgetItem(h: item)
-
 
   nimfunc[](slotval1)
 
-proc onitemEntered*(self: gen_qtablewidget_types.QTableWidget, slot: proc(item: gen_qtablewidget_types.QTableWidgetItem)) =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  var tmp = new Cb
+proc onitemEntered*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetitemEnteredSlot) =
+  var tmp = new QTableWidgetitemEnteredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_itemEntered(self.h, cast[int](addr tmp[]))
-proc itemChanged*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
 
+proc itemChanged*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem): void =
   fcQTableWidget_itemChanged(self.h, item.h)
 
+type QTableWidgetitemChangedSlot* = proc(item: gen_qtablewidget_types.QTableWidgetItem)
 proc miqt_exec_callback_QTableWidget_itemChanged(slot: int, item: pointer) {.exportc.} =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetitemChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qtablewidget_types.QTableWidgetItem(h: item)
-
 
   nimfunc[](slotval1)
 
-proc onitemChanged*(self: gen_qtablewidget_types.QTableWidget, slot: proc(item: gen_qtablewidget_types.QTableWidgetItem)) =
-  type Cb = proc(item: gen_qtablewidget_types.QTableWidgetItem)
-  var tmp = new Cb
+proc onitemChanged*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetitemChangedSlot) =
+  var tmp = new QTableWidgetitemChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_itemChanged(self.h, cast[int](addr tmp[]))
-proc currentItemChanged*(self: gen_qtablewidget_types.QTableWidget, current: gen_qtablewidget_types.QTableWidgetItem, previous: gen_qtablewidget_types.QTableWidgetItem): void =
 
+proc currentItemChanged*(self: gen_qtablewidget_types.QTableWidget, current: gen_qtablewidget_types.QTableWidgetItem, previous: gen_qtablewidget_types.QTableWidgetItem): void =
   fcQTableWidget_currentItemChanged(self.h, current.h, previous.h)
 
+type QTableWidgetcurrentItemChangedSlot* = proc(current: gen_qtablewidget_types.QTableWidgetItem, previous: gen_qtablewidget_types.QTableWidgetItem)
 proc miqt_exec_callback_QTableWidget_currentItemChanged(slot: int, current: pointer, previous: pointer) {.exportc.} =
-  type Cb = proc(current: gen_qtablewidget_types.QTableWidgetItem, previous: gen_qtablewidget_types.QTableWidgetItem)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetcurrentItemChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qtablewidget_types.QTableWidgetItem(h: current)
 
   let slotval2 = gen_qtablewidget_types.QTableWidgetItem(h: previous)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncurrentItemChanged*(self: gen_qtablewidget_types.QTableWidget, slot: proc(current: gen_qtablewidget_types.QTableWidgetItem, previous: gen_qtablewidget_types.QTableWidgetItem)) =
-  type Cb = proc(current: gen_qtablewidget_types.QTableWidgetItem, previous: gen_qtablewidget_types.QTableWidgetItem)
-  var tmp = new Cb
+proc oncurrentItemChanged*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetcurrentItemChangedSlot) =
+  var tmp = new QTableWidgetcurrentItemChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_currentItemChanged(self.h, cast[int](addr tmp[]))
-proc itemSelectionChanged*(self: gen_qtablewidget_types.QTableWidget, ): void =
 
+proc itemSelectionChanged*(self: gen_qtablewidget_types.QTableWidget, ): void =
   fcQTableWidget_itemSelectionChanged(self.h)
 
+type QTableWidgetitemSelectionChangedSlot* = proc()
 proc miqt_exec_callback_QTableWidget_itemSelectionChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QTableWidgetitemSelectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onitemSelectionChanged*(self: gen_qtablewidget_types.QTableWidget, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onitemSelectionChanged*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetitemSelectionChangedSlot) =
+  var tmp = new QTableWidgetitemSelectionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_itemSelectionChanged(self.h, cast[int](addr tmp[]))
-proc cellPressed*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
 
+proc cellPressed*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
   fcQTableWidget_cellPressed(self.h, row, column)
 
+type QTableWidgetcellPressedSlot* = proc(row: cint, column: cint)
 proc miqt_exec_callback_QTableWidget_cellPressed(slot: int, row: cint, column: cint) {.exportc.} =
-  type Cb = proc(row: cint, column: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetcellPressedSlot](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncellPressed*(self: gen_qtablewidget_types.QTableWidget, slot: proc(row: cint, column: cint)) =
-  type Cb = proc(row: cint, column: cint)
-  var tmp = new Cb
+proc oncellPressed*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetcellPressedSlot) =
+  var tmp = new QTableWidgetcellPressedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_cellPressed(self.h, cast[int](addr tmp[]))
-proc cellClicked*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
 
+proc cellClicked*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
   fcQTableWidget_cellClicked(self.h, row, column)
 
+type QTableWidgetcellClickedSlot* = proc(row: cint, column: cint)
 proc miqt_exec_callback_QTableWidget_cellClicked(slot: int, row: cint, column: cint) {.exportc.} =
-  type Cb = proc(row: cint, column: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetcellClickedSlot](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncellClicked*(self: gen_qtablewidget_types.QTableWidget, slot: proc(row: cint, column: cint)) =
-  type Cb = proc(row: cint, column: cint)
-  var tmp = new Cb
+proc oncellClicked*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetcellClickedSlot) =
+  var tmp = new QTableWidgetcellClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_cellClicked(self.h, cast[int](addr tmp[]))
-proc cellDoubleClicked*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
 
+proc cellDoubleClicked*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
   fcQTableWidget_cellDoubleClicked(self.h, row, column)
 
+type QTableWidgetcellDoubleClickedSlot* = proc(row: cint, column: cint)
 proc miqt_exec_callback_QTableWidget_cellDoubleClicked(slot: int, row: cint, column: cint) {.exportc.} =
-  type Cb = proc(row: cint, column: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetcellDoubleClickedSlot](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncellDoubleClicked*(self: gen_qtablewidget_types.QTableWidget, slot: proc(row: cint, column: cint)) =
-  type Cb = proc(row: cint, column: cint)
-  var tmp = new Cb
+proc oncellDoubleClicked*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetcellDoubleClickedSlot) =
+  var tmp = new QTableWidgetcellDoubleClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_cellDoubleClicked(self.h, cast[int](addr tmp[]))
-proc cellActivated*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
 
+proc cellActivated*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
   fcQTableWidget_cellActivated(self.h, row, column)
 
+type QTableWidgetcellActivatedSlot* = proc(row: cint, column: cint)
 proc miqt_exec_callback_QTableWidget_cellActivated(slot: int, row: cint, column: cint) {.exportc.} =
-  type Cb = proc(row: cint, column: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetcellActivatedSlot](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncellActivated*(self: gen_qtablewidget_types.QTableWidget, slot: proc(row: cint, column: cint)) =
-  type Cb = proc(row: cint, column: cint)
-  var tmp = new Cb
+proc oncellActivated*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetcellActivatedSlot) =
+  var tmp = new QTableWidgetcellActivatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_cellActivated(self.h, cast[int](addr tmp[]))
-proc cellEntered*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
 
+proc cellEntered*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
   fcQTableWidget_cellEntered(self.h, row, column)
 
+type QTableWidgetcellEnteredSlot* = proc(row: cint, column: cint)
 proc miqt_exec_callback_QTableWidget_cellEntered(slot: int, row: cint, column: cint) {.exportc.} =
-  type Cb = proc(row: cint, column: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetcellEnteredSlot](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncellEntered*(self: gen_qtablewidget_types.QTableWidget, slot: proc(row: cint, column: cint)) =
-  type Cb = proc(row: cint, column: cint)
-  var tmp = new Cb
+proc oncellEntered*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetcellEnteredSlot) =
+  var tmp = new QTableWidgetcellEnteredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_cellEntered(self.h, cast[int](addr tmp[]))
-proc cellChanged*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
 
+proc cellChanged*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint): void =
   fcQTableWidget_cellChanged(self.h, row, column)
 
+type QTableWidgetcellChangedSlot* = proc(row: cint, column: cint)
 proc miqt_exec_callback_QTableWidget_cellChanged(slot: int, row: cint, column: cint) {.exportc.} =
-  type Cb = proc(row: cint, column: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetcellChangedSlot](cast[pointer](slot))
   let slotval1 = row
 
   let slotval2 = column
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncellChanged*(self: gen_qtablewidget_types.QTableWidget, slot: proc(row: cint, column: cint)) =
-  type Cb = proc(row: cint, column: cint)
-  var tmp = new Cb
+proc oncellChanged*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetcellChangedSlot) =
+  var tmp = new QTableWidgetcellChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_cellChanged(self.h, cast[int](addr tmp[]))
-proc currentCellChanged*(self: gen_qtablewidget_types.QTableWidget, currentRow: cint, currentColumn: cint, previousRow: cint, previousColumn: cint): void =
 
+proc currentCellChanged*(self: gen_qtablewidget_types.QTableWidget, currentRow: cint, currentColumn: cint, previousRow: cint, previousColumn: cint): void =
   fcQTableWidget_currentCellChanged(self.h, currentRow, currentColumn, previousRow, previousColumn)
 
+type QTableWidgetcurrentCellChangedSlot* = proc(currentRow: cint, currentColumn: cint, previousRow: cint, previousColumn: cint)
 proc miqt_exec_callback_QTableWidget_currentCellChanged(slot: int, currentRow: cint, currentColumn: cint, previousRow: cint, previousColumn: cint) {.exportc.} =
-  type Cb = proc(currentRow: cint, currentColumn: cint, previousRow: cint, previousColumn: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTableWidgetcurrentCellChangedSlot](cast[pointer](slot))
   let slotval1 = currentRow
 
   let slotval2 = currentColumn
@@ -1378,53 +1236,45 @@ proc miqt_exec_callback_QTableWidget_currentCellChanged(slot: int, currentRow: c
 
   let slotval4 = previousColumn
 
-
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
-proc oncurrentCellChanged*(self: gen_qtablewidget_types.QTableWidget, slot: proc(currentRow: cint, currentColumn: cint, previousRow: cint, previousColumn: cint)) =
-  type Cb = proc(currentRow: cint, currentColumn: cint, previousRow: cint, previousColumn: cint)
-  var tmp = new Cb
+proc oncurrentCellChanged*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetcurrentCellChangedSlot) =
+  var tmp = new QTableWidgetcurrentCellChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTableWidget_connect_currentCellChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qtablewidget_types.QTableWidget, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qtablewidget_types.QTableWidget, s: cstring, c: cstring): string =
   let v_ms = fcQTableWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtablewidget_types.QTableWidget, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtablewidget_types.QTableWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTableWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtablewidget_types.QTableWidget, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtablewidget_types.QTableWidget, s: cstring, c: cstring): string =
   let v_ms = fcQTableWidget_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtablewidget_types.QTableWidget, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtablewidget_types.QTableWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTableWidget_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sortItems2*(self: gen_qtablewidget_types.QTableWidget, column: cint, order: cint): void =
-
+proc sortItems*(self: gen_qtablewidget_types.QTableWidget, column: cint, order: cint): void =
   fcQTableWidget_sortItems2(self.h, column, cint(order))
 
-proc scrollToItem2*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem, hint: cint): void =
-
+proc scrollToItem*(self: gen_qtablewidget_types.QTableWidget, item: gen_qtablewidget_types.QTableWidgetItem, hint: cint): void =
   fcQTableWidget_scrollToItem2(self.h, item.h, cint(hint))
 
 proc QTableWidgetmetaObject*(self: gen_qtablewidget_types.QTableWidget, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTableWidget_virtualbase_metaObject(self.h))
 
 type QTableWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -1442,7 +1292,6 @@ proc miqt_exec_callback_QTableWidget_metaObject(self: ptr cQTableWidget, slot: i
 
   virtualReturn.h
 proc QTableWidgetmetacast*(self: gen_qtablewidget_types.QTableWidget, param1: cstring): pointer =
-
   fQTableWidget_virtualbase_metacast(self.h, param1)
 
 type QTableWidgetmetacastProc* = proc(param1: cstring): pointer
@@ -1462,7 +1311,6 @@ proc miqt_exec_callback_QTableWidget_metacast(self: ptr cQTableWidget, slot: int
 
   virtualReturn
 proc QTableWidgetmetacall*(self: gen_qtablewidget_types.QTableWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTableWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTableWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -1486,7 +1334,6 @@ proc miqt_exec_callback_QTableWidget_metacall(self: ptr cQTableWidget, slot: int
 
   virtualReturn
 proc QTableWidgetevent*(self: gen_qtablewidget_types.QTableWidget, e: gen_qcoreevent.QEvent): bool =
-
   fQTableWidget_virtualbase_event(self.h, e.h)
 
 type QTableWidgeteventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -1506,7 +1353,6 @@ proc miqt_exec_callback_QTableWidget_event(self: ptr cQTableWidget, slot: int, e
 
   virtualReturn
 proc QTableWidgetmimeTypes*(self: gen_qtablewidget_types.QTableWidget, ): seq[string] =
-
   var v_ma = fQTableWidget_virtualbase_mimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -1536,7 +1382,6 @@ proc miqt_exec_callback_QTableWidget_mimeTypes(self: ptr cQTableWidget, slot: in
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QTableWidgetmimeData*(self: gen_qtablewidget_types.QTableWidget, items: seq[gen_qtablewidget_types.QTableWidgetItem]): gen_qmimedata.QMimeData =
-
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
     items_CArray[i] = items[i].h
@@ -1565,7 +1410,6 @@ proc miqt_exec_callback_QTableWidget_mimeData(self: ptr cQTableWidget, slot: int
 
   virtualReturn.h
 proc QTableWidgetdropMimeData*(self: gen_qtablewidget_types.QTableWidget, row: cint, column: cint, data: gen_qmimedata.QMimeData, action: cint): bool =
-
   fQTableWidget_virtualbase_dropMimeData(self.h, row, column, data.h, cint(action))
 
 type QTableWidgetdropMimeDataProc* = proc(row: cint, column: cint, data: gen_qmimedata.QMimeData, action: cint): bool
@@ -1591,7 +1435,6 @@ proc miqt_exec_callback_QTableWidget_dropMimeData(self: ptr cQTableWidget, slot:
 
   virtualReturn
 proc QTableWidgetsupportedDropActions*(self: gen_qtablewidget_types.QTableWidget, ): cint =
-
   cint(fQTableWidget_virtualbase_supportedDropActions(self.h))
 
 type QTableWidgetsupportedDropActionsProc* = proc(): cint
@@ -1609,7 +1452,6 @@ proc miqt_exec_callback_QTableWidget_supportedDropActions(self: ptr cQTableWidge
 
   cint(virtualReturn)
 proc QTableWidgetdropEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QDropEvent): void =
-
   fQTableWidget_virtualbase_dropEvent(self.h, event.h)
 
 type QTableWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1627,7 +1469,6 @@ proc miqt_exec_callback_QTableWidget_dropEvent(self: ptr cQTableWidget, slot: in
 
   nimfunc[](slotval1)
 proc QTableWidgetsetRootIndex*(self: gen_qtablewidget_types.QTableWidget, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQTableWidget_virtualbase_setRootIndex(self.h, index.h)
 
 type QTableWidgetsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
@@ -1645,7 +1486,6 @@ proc miqt_exec_callback_QTableWidget_setRootIndex(self: ptr cQTableWidget, slot:
 
   nimfunc[](slotval1)
 proc QTableWidgetsetSelectionModel*(self: gen_qtablewidget_types.QTableWidget, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
   fQTableWidget_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
 type QTableWidgetsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
@@ -1663,7 +1503,6 @@ proc miqt_exec_callback_QTableWidget_setSelectionModel(self: ptr cQTableWidget, 
 
   nimfunc[](slotval1)
 proc QTableWidgetdoItemsLayout*(self: gen_qtablewidget_types.QTableWidget, ): void =
-
   fQTableWidget_virtualbase_doItemsLayout(self.h)
 
 type QTableWidgetdoItemsLayoutProc* = proc(): void
@@ -1679,7 +1518,6 @@ proc miqt_exec_callback_QTableWidget_doItemsLayout(self: ptr cQTableWidget, slot
 
   nimfunc[]()
 proc QTableWidgetvisualRect*(self: gen_qtablewidget_types.QTableWidget, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQTableWidget_virtualbase_visualRect(self.h, index.h))
 
 type QTableWidgetvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
@@ -1699,7 +1537,6 @@ proc miqt_exec_callback_QTableWidget_visualRect(self: ptr cQTableWidget, slot: i
 
   virtualReturn.h
 proc QTableWidgetscrollTo*(self: gen_qtablewidget_types.QTableWidget, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fQTableWidget_virtualbase_scrollTo(self.h, index.h, cint(hint))
 
 type QTableWidgetscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
@@ -1719,7 +1556,6 @@ proc miqt_exec_callback_QTableWidget_scrollTo(self: ptr cQTableWidget, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QTableWidgetindexAt*(self: gen_qtablewidget_types.QTableWidget, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQTableWidget_virtualbase_indexAt(self.h, p.h))
 
 type QTableWidgetindexAtProc* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
@@ -1739,7 +1575,6 @@ proc miqt_exec_callback_QTableWidget_indexAt(self: ptr cQTableWidget, slot: int,
 
   virtualReturn.h
 proc QTableWidgetscrollContentsBy*(self: gen_qtablewidget_types.QTableWidget, dx: cint, dy: cint): void =
-
   fQTableWidget_virtualbase_scrollContentsBy(self.h, dx, dy)
 
 type QTableWidgetscrollContentsByProc* = proc(dx: cint, dy: cint): void
@@ -1759,7 +1594,6 @@ proc miqt_exec_callback_QTableWidget_scrollContentsBy(self: ptr cQTableWidget, s
 
   nimfunc[](slotval1, slotval2)
 proc QTableWidgetviewOptions*(self: gen_qtablewidget_types.QTableWidget, ): gen_qstyleoption.QStyleOptionViewItem =
-
   gen_qstyleoption.QStyleOptionViewItem(h: fQTableWidget_virtualbase_viewOptions(self.h))
 
 type QTableWidgetviewOptionsProc* = proc(): gen_qstyleoption.QStyleOptionViewItem
@@ -1777,7 +1611,6 @@ proc miqt_exec_callback_QTableWidget_viewOptions(self: ptr cQTableWidget, slot: 
 
   virtualReturn.h
 proc QTableWidgetpaintEvent*(self: gen_qtablewidget_types.QTableWidget, e: gen_qevent.QPaintEvent): void =
-
   fQTableWidget_virtualbase_paintEvent(self.h, e.h)
 
 type QTableWidgetpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
@@ -1795,7 +1628,6 @@ proc miqt_exec_callback_QTableWidget_paintEvent(self: ptr cQTableWidget, slot: i
 
   nimfunc[](slotval1)
 proc QTableWidgettimerEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTableWidget_virtualbase_timerEvent(self.h, event.h)
 
 type QTableWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1813,7 +1645,6 @@ proc miqt_exec_callback_QTableWidget_timerEvent(self: ptr cQTableWidget, slot: i
 
   nimfunc[](slotval1)
 proc QTableWidgethorizontalOffset*(self: gen_qtablewidget_types.QTableWidget, ): cint =
-
   fQTableWidget_virtualbase_horizontalOffset(self.h)
 
 type QTableWidgethorizontalOffsetProc* = proc(): cint
@@ -1831,7 +1662,6 @@ proc miqt_exec_callback_QTableWidget_horizontalOffset(self: ptr cQTableWidget, s
 
   virtualReturn
 proc QTableWidgetverticalOffset*(self: gen_qtablewidget_types.QTableWidget, ): cint =
-
   fQTableWidget_virtualbase_verticalOffset(self.h)
 
 type QTableWidgetverticalOffsetProc* = proc(): cint
@@ -1849,7 +1679,6 @@ proc miqt_exec_callback_QTableWidget_verticalOffset(self: ptr cQTableWidget, slo
 
   virtualReturn
 proc QTableWidgetmoveCursor*(self: gen_qtablewidget_types.QTableWidget, cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQTableWidget_virtualbase_moveCursor(self.h, cint(cursorAction), cint(modifiers)))
 
 type QTableWidgetmoveCursorProc* = proc(cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex
@@ -1871,7 +1700,6 @@ proc miqt_exec_callback_QTableWidget_moveCursor(self: ptr cQTableWidget, slot: i
 
   virtualReturn.h
 proc QTableWidgetsetSelection*(self: gen_qtablewidget_types.QTableWidget, rect: gen_qrect.QRect, command: cint): void =
-
   fQTableWidget_virtualbase_setSelection(self.h, rect.h, cint(command))
 
 type QTableWidgetsetSelectionProc* = proc(rect: gen_qrect.QRect, command: cint): void
@@ -1891,7 +1719,6 @@ proc miqt_exec_callback_QTableWidget_setSelection(self: ptr cQTableWidget, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QTableWidgetvisualRegionForSelection*(self: gen_qtablewidget_types.QTableWidget, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fQTableWidget_virtualbase_visualRegionForSelection(self.h, selection.h))
 
 type QTableWidgetvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
@@ -1911,7 +1738,6 @@ proc miqt_exec_callback_QTableWidget_visualRegionForSelection(self: ptr cQTableW
 
   virtualReturn.h
 proc QTableWidgetselectedIndexes*(self: gen_qtablewidget_types.QTableWidget, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fQTableWidget_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1938,7 +1764,6 @@ proc miqt_exec_callback_QTableWidget_selectedIndexes(self: ptr cQTableWidget, sl
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QTableWidgetupdateGeometries*(self: gen_qtablewidget_types.QTableWidget, ): void =
-
   fQTableWidget_virtualbase_updateGeometries(self.h)
 
 type QTableWidgetupdateGeometriesProc* = proc(): void
@@ -1954,7 +1779,6 @@ proc miqt_exec_callback_QTableWidget_updateGeometries(self: ptr cQTableWidget, s
 
   nimfunc[]()
 proc QTableWidgetviewportSizeHint*(self: gen_qtablewidget_types.QTableWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTableWidget_virtualbase_viewportSizeHint(self.h))
 
 type QTableWidgetviewportSizeHintProc* = proc(): gen_qsize.QSize
@@ -1972,7 +1796,6 @@ proc miqt_exec_callback_QTableWidget_viewportSizeHint(self: ptr cQTableWidget, s
 
   virtualReturn.h
 proc QTableWidgetsizeHintForRow*(self: gen_qtablewidget_types.QTableWidget, row: cint): cint =
-
   fQTableWidget_virtualbase_sizeHintForRow(self.h, row)
 
 type QTableWidgetsizeHintForRowProc* = proc(row: cint): cint
@@ -1992,7 +1815,6 @@ proc miqt_exec_callback_QTableWidget_sizeHintForRow(self: ptr cQTableWidget, slo
 
   virtualReturn
 proc QTableWidgetsizeHintForColumn*(self: gen_qtablewidget_types.QTableWidget, column: cint): cint =
-
   fQTableWidget_virtualbase_sizeHintForColumn(self.h, column)
 
 type QTableWidgetsizeHintForColumnProc* = proc(column: cint): cint
@@ -2012,7 +1834,6 @@ proc miqt_exec_callback_QTableWidget_sizeHintForColumn(self: ptr cQTableWidget, 
 
   virtualReturn
 proc QTableWidgetverticalScrollbarAction*(self: gen_qtablewidget_types.QTableWidget, action: cint): void =
-
   fQTableWidget_virtualbase_verticalScrollbarAction(self.h, action)
 
 type QTableWidgetverticalScrollbarActionProc* = proc(action: cint): void
@@ -2030,7 +1851,6 @@ proc miqt_exec_callback_QTableWidget_verticalScrollbarAction(self: ptr cQTableWi
 
   nimfunc[](slotval1)
 proc QTableWidgethorizontalScrollbarAction*(self: gen_qtablewidget_types.QTableWidget, action: cint): void =
-
   fQTableWidget_virtualbase_horizontalScrollbarAction(self.h, action)
 
 type QTableWidgethorizontalScrollbarActionProc* = proc(action: cint): void
@@ -2048,7 +1868,6 @@ proc miqt_exec_callback_QTableWidget_horizontalScrollbarAction(self: ptr cQTable
 
   nimfunc[](slotval1)
 proc QTableWidgetisIndexHidden*(self: gen_qtablewidget_types.QTableWidget, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQTableWidget_virtualbase_isIndexHidden(self.h, index.h)
 
 type QTableWidgetisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
@@ -2068,7 +1887,6 @@ proc miqt_exec_callback_QTableWidget_isIndexHidden(self: ptr cQTableWidget, slot
 
   virtualReturn
 proc QTableWidgetselectionChanged*(self: gen_qtablewidget_types.QTableWidget, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
   fQTableWidget_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
 type QTableWidgetselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
@@ -2088,7 +1906,6 @@ proc miqt_exec_callback_QTableWidget_selectionChanged(self: ptr cQTableWidget, s
 
   nimfunc[](slotval1, slotval2)
 proc QTableWidgetcurrentChanged*(self: gen_qtablewidget_types.QTableWidget, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
-
   fQTableWidget_virtualbase_currentChanged(self.h, current.h, previous.h)
 
 type QTableWidgetcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
@@ -2108,7 +1925,6 @@ proc miqt_exec_callback_QTableWidget_currentChanged(self: ptr cQTableWidget, slo
 
   nimfunc[](slotval1, slotval2)
 proc QTableWidgetkeyboardSearch*(self: gen_qtablewidget_types.QTableWidget, search: string): void =
-
   fQTableWidget_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
 type QTableWidgetkeyboardSearchProc* = proc(search: string): void
@@ -2129,7 +1945,6 @@ proc miqt_exec_callback_QTableWidget_keyboardSearch(self: ptr cQTableWidget, slo
 
   nimfunc[](slotval1)
 proc QTableWidgetinputMethodQuery*(self: gen_qtablewidget_types.QTableWidget, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQTableWidget_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QTableWidgetinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -2149,7 +1964,6 @@ proc miqt_exec_callback_QTableWidget_inputMethodQuery(self: ptr cQTableWidget, s
 
   virtualReturn.h
 proc QTableWidgetreset*(self: gen_qtablewidget_types.QTableWidget, ): void =
-
   fQTableWidget_virtualbase_reset(self.h)
 
 type QTableWidgetresetProc* = proc(): void
@@ -2165,7 +1979,6 @@ proc miqt_exec_callback_QTableWidget_reset(self: ptr cQTableWidget, slot: int): 
 
   nimfunc[]()
 proc QTableWidgetselectAll*(self: gen_qtablewidget_types.QTableWidget, ): void =
-
   fQTableWidget_virtualbase_selectAll(self.h)
 
 type QTableWidgetselectAllProc* = proc(): void
@@ -2181,7 +1994,6 @@ proc miqt_exec_callback_QTableWidget_selectAll(self: ptr cQTableWidget, slot: in
 
   nimfunc[]()
 proc QTableWidgetdataChanged*(self: gen_qtablewidget_types.QTableWidget, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
-
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
@@ -2212,7 +2024,6 @@ proc miqt_exec_callback_QTableWidget_dataChanged(self: ptr cQTableWidget, slot: 
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTableWidgetrowsInserted*(self: gen_qtablewidget_types.QTableWidget, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQTableWidget_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
 type QTableWidgetrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -2234,7 +2045,6 @@ proc miqt_exec_callback_QTableWidget_rowsInserted(self: ptr cQTableWidget, slot:
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTableWidgetrowsAboutToBeRemoved*(self: gen_qtablewidget_types.QTableWidget, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQTableWidget_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
 type QTableWidgetrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -2256,7 +2066,6 @@ proc miqt_exec_callback_QTableWidget_rowsAboutToBeRemoved(self: ptr cQTableWidge
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTableWidgetupdateEditorData*(self: gen_qtablewidget_types.QTableWidget, ): void =
-
   fQTableWidget_virtualbase_updateEditorData(self.h)
 
 type QTableWidgetupdateEditorDataProc* = proc(): void
@@ -2272,7 +2081,6 @@ proc miqt_exec_callback_QTableWidget_updateEditorData(self: ptr cQTableWidget, s
 
   nimfunc[]()
 proc QTableWidgetupdateEditorGeometries*(self: gen_qtablewidget_types.QTableWidget, ): void =
-
   fQTableWidget_virtualbase_updateEditorGeometries(self.h)
 
 type QTableWidgetupdateEditorGeometriesProc* = proc(): void
@@ -2288,7 +2096,6 @@ proc miqt_exec_callback_QTableWidget_updateEditorGeometries(self: ptr cQTableWid
 
   nimfunc[]()
 proc QTableWidgetverticalScrollbarValueChanged*(self: gen_qtablewidget_types.QTableWidget, value: cint): void =
-
   fQTableWidget_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
 type QTableWidgetverticalScrollbarValueChangedProc* = proc(value: cint): void
@@ -2306,7 +2113,6 @@ proc miqt_exec_callback_QTableWidget_verticalScrollbarValueChanged(self: ptr cQT
 
   nimfunc[](slotval1)
 proc QTableWidgethorizontalScrollbarValueChanged*(self: gen_qtablewidget_types.QTableWidget, value: cint): void =
-
   fQTableWidget_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
 type QTableWidgethorizontalScrollbarValueChangedProc* = proc(value: cint): void
@@ -2324,7 +2130,6 @@ proc miqt_exec_callback_QTableWidget_horizontalScrollbarValueChanged(self: ptr c
 
   nimfunc[](slotval1)
 proc QTableWidgetcloseEditor*(self: gen_qtablewidget_types.QTableWidget, editor: gen_qwidget.QWidget, hint: cint): void =
-
   fQTableWidget_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
 type QTableWidgetcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
@@ -2344,7 +2149,6 @@ proc miqt_exec_callback_QTableWidget_closeEditor(self: ptr cQTableWidget, slot: 
 
   nimfunc[](slotval1, slotval2)
 proc QTableWidgetcommitData*(self: gen_qtablewidget_types.QTableWidget, editor: gen_qwidget.QWidget): void =
-
   fQTableWidget_virtualbase_commitData(self.h, editor.h)
 
 type QTableWidgetcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
@@ -2362,7 +2166,6 @@ proc miqt_exec_callback_QTableWidget_commitData(self: ptr cQTableWidget, slot: i
 
   nimfunc[](slotval1)
 proc QTableWidgeteditorDestroyed*(self: gen_qtablewidget_types.QTableWidget, editor: gen_qobject.QObject): void =
-
   fQTableWidget_virtualbase_editorDestroyed(self.h, editor.h)
 
 type QTableWidgeteditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
@@ -2379,12 +2182,11 @@ proc miqt_exec_callback_QTableWidget_editorDestroyed(self: ptr cQTableWidget, sl
 
 
   nimfunc[](slotval1)
-proc QTableWidgetedit2*(self: gen_qtablewidget_types.QTableWidget, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
-
+proc QTableWidgetedit*(self: gen_qtablewidget_types.QTableWidget, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
   fQTableWidget_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
 type QTableWidgetedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetedit2Proc) =
+proc onedit*(self: gen_qtablewidget_types.QTableWidget, slot: QTableWidgetedit2Proc) =
   # TODO check subclass
   var tmp = new QTableWidgetedit2Proc
   tmp[] = slot
@@ -2404,7 +2206,6 @@ proc miqt_exec_callback_QTableWidget_edit2(self: ptr cQTableWidget, slot: int, i
 
   virtualReturn
 proc QTableWidgetselectionCommand*(self: gen_qtablewidget_types.QTableWidget, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
-
   cint(fQTableWidget_virtualbase_selectionCommand(self.h, index.h, event.h))
 
 type QTableWidgetselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
@@ -2426,7 +2227,6 @@ proc miqt_exec_callback_QTableWidget_selectionCommand(self: ptr cQTableWidget, s
 
   cint(virtualReturn)
 proc QTableWidgetstartDrag*(self: gen_qtablewidget_types.QTableWidget, supportedActions: cint): void =
-
   fQTableWidget_virtualbase_startDrag(self.h, cint(supportedActions))
 
 type QTableWidgetstartDragProc* = proc(supportedActions: cint): void
@@ -2444,7 +2244,6 @@ proc miqt_exec_callback_QTableWidget_startDrag(self: ptr cQTableWidget, slot: in
 
   nimfunc[](slotval1)
 proc QTableWidgetfocusNextPrevChild*(self: gen_qtablewidget_types.QTableWidget, next: bool): bool =
-
   fQTableWidget_virtualbase_focusNextPrevChild(self.h, next)
 
 type QTableWidgetfocusNextPrevChildProc* = proc(next: bool): bool
@@ -2464,7 +2263,6 @@ proc miqt_exec_callback_QTableWidget_focusNextPrevChild(self: ptr cQTableWidget,
 
   virtualReturn
 proc QTableWidgetviewportEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qcoreevent.QEvent): bool =
-
   fQTableWidget_virtualbase_viewportEvent(self.h, event.h)
 
 type QTableWidgetviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -2484,7 +2282,6 @@ proc miqt_exec_callback_QTableWidget_viewportEvent(self: ptr cQTableWidget, slot
 
   virtualReturn
 proc QTableWidgetmousePressEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QMouseEvent): void =
-
   fQTableWidget_virtualbase_mousePressEvent(self.h, event.h)
 
 type QTableWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2502,7 +2299,6 @@ proc miqt_exec_callback_QTableWidget_mousePressEvent(self: ptr cQTableWidget, sl
 
   nimfunc[](slotval1)
 proc QTableWidgetmouseMoveEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QMouseEvent): void =
-
   fQTableWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QTableWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2520,7 +2316,6 @@ proc miqt_exec_callback_QTableWidget_mouseMoveEvent(self: ptr cQTableWidget, slo
 
   nimfunc[](slotval1)
 proc QTableWidgetmouseReleaseEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QMouseEvent): void =
-
   fQTableWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QTableWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2538,7 +2333,6 @@ proc miqt_exec_callback_QTableWidget_mouseReleaseEvent(self: ptr cQTableWidget, 
 
   nimfunc[](slotval1)
 proc QTableWidgetmouseDoubleClickEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QMouseEvent): void =
-
   fQTableWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QTableWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2556,7 +2350,6 @@ proc miqt_exec_callback_QTableWidget_mouseDoubleClickEvent(self: ptr cQTableWidg
 
   nimfunc[](slotval1)
 proc QTableWidgetdragEnterEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QDragEnterEvent): void =
-
   fQTableWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QTableWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -2574,7 +2367,6 @@ proc miqt_exec_callback_QTableWidget_dragEnterEvent(self: ptr cQTableWidget, slo
 
   nimfunc[](slotval1)
 proc QTableWidgetdragMoveEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QDragMoveEvent): void =
-
   fQTableWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QTableWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -2592,7 +2384,6 @@ proc miqt_exec_callback_QTableWidget_dragMoveEvent(self: ptr cQTableWidget, slot
 
   nimfunc[](slotval1)
 proc QTableWidgetdragLeaveEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QDragLeaveEvent): void =
-
   fQTableWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QTableWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -2610,7 +2401,6 @@ proc miqt_exec_callback_QTableWidget_dragLeaveEvent(self: ptr cQTableWidget, slo
 
   nimfunc[](slotval1)
 proc QTableWidgetfocusInEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QFocusEvent): void =
-
   fQTableWidget_virtualbase_focusInEvent(self.h, event.h)
 
 type QTableWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2628,7 +2418,6 @@ proc miqt_exec_callback_QTableWidget_focusInEvent(self: ptr cQTableWidget, slot:
 
   nimfunc[](slotval1)
 proc QTableWidgetfocusOutEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QFocusEvent): void =
-
   fQTableWidget_virtualbase_focusOutEvent(self.h, event.h)
 
 type QTableWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2646,7 +2435,6 @@ proc miqt_exec_callback_QTableWidget_focusOutEvent(self: ptr cQTableWidget, slot
 
   nimfunc[](slotval1)
 proc QTableWidgetkeyPressEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QKeyEvent): void =
-
   fQTableWidget_virtualbase_keyPressEvent(self.h, event.h)
 
 type QTableWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2664,7 +2452,6 @@ proc miqt_exec_callback_QTableWidget_keyPressEvent(self: ptr cQTableWidget, slot
 
   nimfunc[](slotval1)
 proc QTableWidgetresizeEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QResizeEvent): void =
-
   fQTableWidget_virtualbase_resizeEvent(self.h, event.h)
 
 type QTableWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -2682,7 +2469,6 @@ proc miqt_exec_callback_QTableWidget_resizeEvent(self: ptr cQTableWidget, slot: 
 
   nimfunc[](slotval1)
 proc QTableWidgetinputMethodEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QInputMethodEvent): void =
-
   fQTableWidget_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QTableWidgetinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -2700,7 +2486,6 @@ proc miqt_exec_callback_QTableWidget_inputMethodEvent(self: ptr cQTableWidget, s
 
   nimfunc[](slotval1)
 proc QTableWidgeteventFilter*(self: gen_qtablewidget_types.QTableWidget, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTableWidget_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
 type QTableWidgeteventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -2722,7 +2507,6 @@ proc miqt_exec_callback_QTableWidget_eventFilter(self: ptr cQTableWidget, slot: 
 
   virtualReturn
 proc QTableWidgetminimumSizeHint*(self: gen_qtablewidget_types.QTableWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTableWidget_virtualbase_minimumSizeHint(self.h))
 
 type QTableWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -2740,7 +2524,6 @@ proc miqt_exec_callback_QTableWidget_minimumSizeHint(self: ptr cQTableWidget, sl
 
   virtualReturn.h
 proc QTableWidgetsizeHint*(self: gen_qtablewidget_types.QTableWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTableWidget_virtualbase_sizeHint(self.h))
 
 type QTableWidgetsizeHintProc* = proc(): gen_qsize.QSize
@@ -2758,7 +2541,6 @@ proc miqt_exec_callback_QTableWidget_sizeHint(self: ptr cQTableWidget, slot: int
 
   virtualReturn.h
 proc QTableWidgetsetupViewport*(self: gen_qtablewidget_types.QTableWidget, viewport: gen_qwidget.QWidget): void =
-
   fQTableWidget_virtualbase_setupViewport(self.h, viewport.h)
 
 type QTableWidgetsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
@@ -2776,7 +2558,6 @@ proc miqt_exec_callback_QTableWidget_setupViewport(self: ptr cQTableWidget, slot
 
   nimfunc[](slotval1)
 proc QTableWidgetwheelEvent*(self: gen_qtablewidget_types.QTableWidget, param1: gen_qevent.QWheelEvent): void =
-
   fQTableWidget_virtualbase_wheelEvent(self.h, param1.h)
 
 type QTableWidgetwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -2794,7 +2575,6 @@ proc miqt_exec_callback_QTableWidget_wheelEvent(self: ptr cQTableWidget, slot: i
 
   nimfunc[](slotval1)
 proc QTableWidgetcontextMenuEvent*(self: gen_qtablewidget_types.QTableWidget, param1: gen_qevent.QContextMenuEvent): void =
-
   fQTableWidget_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QTableWidgetcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -2812,7 +2592,6 @@ proc miqt_exec_callback_QTableWidget_contextMenuEvent(self: ptr cQTableWidget, s
 
   nimfunc[](slotval1)
 proc QTableWidgetchangeEvent*(self: gen_qtablewidget_types.QTableWidget, param1: gen_qcoreevent.QEvent): void =
-
   fQTableWidget_virtualbase_changeEvent(self.h, param1.h)
 
 type QTableWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -2830,7 +2609,6 @@ proc miqt_exec_callback_QTableWidget_changeEvent(self: ptr cQTableWidget, slot: 
 
   nimfunc[](slotval1)
 proc QTableWidgetdevType*(self: gen_qtablewidget_types.QTableWidget, ): cint =
-
   fQTableWidget_virtualbase_devType(self.h)
 
 type QTableWidgetdevTypeProc* = proc(): cint
@@ -2848,7 +2626,6 @@ proc miqt_exec_callback_QTableWidget_devType(self: ptr cQTableWidget, slot: int)
 
   virtualReturn
 proc QTableWidgetsetVisible*(self: gen_qtablewidget_types.QTableWidget, visible: bool): void =
-
   fQTableWidget_virtualbase_setVisible(self.h, visible)
 
 type QTableWidgetsetVisibleProc* = proc(visible: bool): void
@@ -2866,7 +2643,6 @@ proc miqt_exec_callback_QTableWidget_setVisible(self: ptr cQTableWidget, slot: i
 
   nimfunc[](slotval1)
 proc QTableWidgetheightForWidth*(self: gen_qtablewidget_types.QTableWidget, param1: cint): cint =
-
   fQTableWidget_virtualbase_heightForWidth(self.h, param1)
 
 type QTableWidgetheightForWidthProc* = proc(param1: cint): cint
@@ -2886,7 +2662,6 @@ proc miqt_exec_callback_QTableWidget_heightForWidth(self: ptr cQTableWidget, slo
 
   virtualReturn
 proc QTableWidgethasHeightForWidth*(self: gen_qtablewidget_types.QTableWidget, ): bool =
-
   fQTableWidget_virtualbase_hasHeightForWidth(self.h)
 
 type QTableWidgethasHeightForWidthProc* = proc(): bool
@@ -2904,7 +2679,6 @@ proc miqt_exec_callback_QTableWidget_hasHeightForWidth(self: ptr cQTableWidget, 
 
   virtualReturn
 proc QTableWidgetpaintEngine*(self: gen_qtablewidget_types.QTableWidget, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQTableWidget_virtualbase_paintEngine(self.h))
 
 type QTableWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -2922,7 +2696,6 @@ proc miqt_exec_callback_QTableWidget_paintEngine(self: ptr cQTableWidget, slot: 
 
   virtualReturn.h
 proc QTableWidgetkeyReleaseEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QKeyEvent): void =
-
   fQTableWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QTableWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2940,7 +2713,6 @@ proc miqt_exec_callback_QTableWidget_keyReleaseEvent(self: ptr cQTableWidget, sl
 
   nimfunc[](slotval1)
 proc QTableWidgetenterEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qcoreevent.QEvent): void =
-
   fQTableWidget_virtualbase_enterEvent(self.h, event.h)
 
 type QTableWidgetenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2958,7 +2730,6 @@ proc miqt_exec_callback_QTableWidget_enterEvent(self: ptr cQTableWidget, slot: i
 
   nimfunc[](slotval1)
 proc QTableWidgetleaveEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qcoreevent.QEvent): void =
-
   fQTableWidget_virtualbase_leaveEvent(self.h, event.h)
 
 type QTableWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2976,7 +2747,6 @@ proc miqt_exec_callback_QTableWidget_leaveEvent(self: ptr cQTableWidget, slot: i
 
   nimfunc[](slotval1)
 proc QTableWidgetmoveEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QMoveEvent): void =
-
   fQTableWidget_virtualbase_moveEvent(self.h, event.h)
 
 type QTableWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -2994,7 +2764,6 @@ proc miqt_exec_callback_QTableWidget_moveEvent(self: ptr cQTableWidget, slot: in
 
   nimfunc[](slotval1)
 proc QTableWidgetcloseEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QCloseEvent): void =
-
   fQTableWidget_virtualbase_closeEvent(self.h, event.h)
 
 type QTableWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -3012,7 +2781,6 @@ proc miqt_exec_callback_QTableWidget_closeEvent(self: ptr cQTableWidget, slot: i
 
   nimfunc[](slotval1)
 proc QTableWidgettabletEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QTabletEvent): void =
-
   fQTableWidget_virtualbase_tabletEvent(self.h, event.h)
 
 type QTableWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -3030,7 +2798,6 @@ proc miqt_exec_callback_QTableWidget_tabletEvent(self: ptr cQTableWidget, slot: 
 
   nimfunc[](slotval1)
 proc QTableWidgetactionEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QActionEvent): void =
-
   fQTableWidget_virtualbase_actionEvent(self.h, event.h)
 
 type QTableWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -3048,7 +2815,6 @@ proc miqt_exec_callback_QTableWidget_actionEvent(self: ptr cQTableWidget, slot: 
 
   nimfunc[](slotval1)
 proc QTableWidgetshowEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QShowEvent): void =
-
   fQTableWidget_virtualbase_showEvent(self.h, event.h)
 
 type QTableWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -3066,7 +2832,6 @@ proc miqt_exec_callback_QTableWidget_showEvent(self: ptr cQTableWidget, slot: in
 
   nimfunc[](slotval1)
 proc QTableWidgethideEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qevent.QHideEvent): void =
-
   fQTableWidget_virtualbase_hideEvent(self.h, event.h)
 
 type QTableWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -3084,7 +2849,6 @@ proc miqt_exec_callback_QTableWidget_hideEvent(self: ptr cQTableWidget, slot: in
 
   nimfunc[](slotval1)
 proc QTableWidgetnativeEvent*(self: gen_qtablewidget_types.QTableWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQTableWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QTableWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -3111,7 +2875,6 @@ proc miqt_exec_callback_QTableWidget_nativeEvent(self: ptr cQTableWidget, slot: 
 
   virtualReturn
 proc QTableWidgetmetric*(self: gen_qtablewidget_types.QTableWidget, param1: cint): cint =
-
   fQTableWidget_virtualbase_metric(self.h, cint(param1))
 
 type QTableWidgetmetricProc* = proc(param1: cint): cint
@@ -3131,7 +2894,6 @@ proc miqt_exec_callback_QTableWidget_metric(self: ptr cQTableWidget, slot: int, 
 
   virtualReturn
 proc QTableWidgetinitPainter*(self: gen_qtablewidget_types.QTableWidget, painter: gen_qpainter.QPainter): void =
-
   fQTableWidget_virtualbase_initPainter(self.h, painter.h)
 
 type QTableWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -3149,7 +2911,6 @@ proc miqt_exec_callback_QTableWidget_initPainter(self: ptr cQTableWidget, slot: 
 
   nimfunc[](slotval1)
 proc QTableWidgetredirected*(self: gen_qtablewidget_types.QTableWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQTableWidget_virtualbase_redirected(self.h, offset.h))
 
 type QTableWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -3169,7 +2930,6 @@ proc miqt_exec_callback_QTableWidget_redirected(self: ptr cQTableWidget, slot: i
 
   virtualReturn.h
 proc QTableWidgetsharedPainter*(self: gen_qtablewidget_types.QTableWidget, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQTableWidget_virtualbase_sharedPainter(self.h))
 
 type QTableWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -3187,7 +2947,6 @@ proc miqt_exec_callback_QTableWidget_sharedPainter(self: ptr cQTableWidget, slot
 
   virtualReturn.h
 proc QTableWidgetchildEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qcoreevent.QChildEvent): void =
-
   fQTableWidget_virtualbase_childEvent(self.h, event.h)
 
 type QTableWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -3205,7 +2964,6 @@ proc miqt_exec_callback_QTableWidget_childEvent(self: ptr cQTableWidget, slot: i
 
   nimfunc[](slotval1)
 proc QTableWidgetcustomEvent*(self: gen_qtablewidget_types.QTableWidget, event: gen_qcoreevent.QEvent): void =
-
   fQTableWidget_virtualbase_customEvent(self.h, event.h)
 
 type QTableWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -3223,7 +2981,6 @@ proc miqt_exec_callback_QTableWidget_customEvent(self: ptr cQTableWidget, slot: 
 
   nimfunc[](slotval1)
 proc QTableWidgetconnectNotify*(self: gen_qtablewidget_types.QTableWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTableWidget_virtualbase_connectNotify(self.h, signal.h)
 
 type QTableWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -3241,7 +2998,6 @@ proc miqt_exec_callback_QTableWidget_connectNotify(self: ptr cQTableWidget, slot
 
   nimfunc[](slotval1)
 proc QTableWidgetdisconnectNotify*(self: gen_qtablewidget_types.QTableWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTableWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTableWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

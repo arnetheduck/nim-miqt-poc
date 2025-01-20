@@ -113,41 +113,33 @@ proc fcQsciPrinter_delete(self: pointer) {.importc: "QsciPrinter_delete".}
 func init*(T: type gen_qsciprinter_types.QsciPrinter, h: ptr cQsciPrinter): gen_qsciprinter_types.QsciPrinter =
   T(h: h)
 proc create*(T: type gen_qsciprinter_types.QsciPrinter, ): gen_qsciprinter_types.QsciPrinter =
-
   gen_qsciprinter_types.QsciPrinter.init(fcQsciPrinter_new())
+
 proc create*(T: type gen_qsciprinter_types.QsciPrinter, mode: cint): gen_qsciprinter_types.QsciPrinter =
-
   gen_qsciprinter_types.QsciPrinter.init(fcQsciPrinter_new2(cint(mode)))
-proc formatPage*(self: gen_qsciprinter_types.QsciPrinter, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void =
 
+proc formatPage*(self: gen_qsciprinter_types.QsciPrinter, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void =
   fcQsciPrinter_formatPage(self.h, painter.h, drawing, area.h, pagenr)
 
 proc magnification*(self: gen_qsciprinter_types.QsciPrinter, ): cint =
-
   fcQsciPrinter_magnification(self.h)
 
 proc setMagnification*(self: gen_qsciprinter_types.QsciPrinter, magnification: cint): void =
-
   fcQsciPrinter_setMagnification(self.h, magnification)
 
 proc printRange*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint =
-
   fcQsciPrinter_printRange(self.h, qsb.h, painter.h, fromVal, to)
 
-proc printRange2*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint =
-
+proc printRange*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint =
   fcQsciPrinter_printRange2(self.h, qsb.h, fromVal, to)
 
 proc wrapMode*(self: gen_qsciprinter_types.QsciPrinter, ): cint =
-
   cint(fcQsciPrinter_wrapMode(self.h))
 
 proc setWrapMode*(self: gen_qsciprinter_types.QsciPrinter, wmode: cint): void =
-
   fcQsciPrinter_setWrapMode(self.h, cint(wmode))
 
 proc QsciPrinterformatPage*(self: gen_qsciprinter_types.QsciPrinter, painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void =
-
   fQsciPrinter_virtualbase_formatPage(self.h, painter.h, drawing, area.h, pagenr)
 
 type QsciPrinterformatPageProc* = proc(painter: gen_qpainter.QPainter, drawing: bool, area: gen_qrect.QRect, pagenr: cint): void
@@ -171,7 +163,6 @@ proc miqt_exec_callback_QsciPrinter_formatPage(self: ptr cQsciPrinter, slot: int
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QsciPrintersetMagnification*(self: gen_qsciprinter_types.QsciPrinter, magnification: cint): void =
-
   fQsciPrinter_virtualbase_setMagnification(self.h, magnification)
 
 type QsciPrintersetMagnificationProc* = proc(magnification: cint): void
@@ -189,7 +180,6 @@ proc miqt_exec_callback_QsciPrinter_setMagnification(self: ptr cQsciPrinter, slo
 
   nimfunc[](slotval1)
 proc QsciPrinterprintRange*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint =
-
   fQsciPrinter_virtualbase_printRange(self.h, qsb.h, painter.h, fromVal, to)
 
 type QsciPrinterprintRangeProc* = proc(qsb: gen_qsciscintillabase.QsciScintillaBase, painter: gen_qpainter.QPainter, fromVal: cint, to: cint): cint
@@ -214,12 +204,11 @@ proc miqt_exec_callback_QsciPrinter_printRange(self: ptr cQsciPrinter, slot: int
   let virtualReturn = nimfunc[](slotval1, slotval2, slotval3, slotval4 )
 
   virtualReturn
-proc QsciPrinterprintRange2*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint =
-
+proc QsciPrinterprintRange*(self: gen_qsciprinter_types.QsciPrinter, qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint =
   fQsciPrinter_virtualbase_printRange2(self.h, qsb.h, fromVal, to)
 
 type QsciPrinterprintRange2Proc* = proc(qsb: gen_qsciscintillabase.QsciScintillaBase, fromVal: cint, to: cint): cint
-proc onprintRange2*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinterprintRange2Proc) =
+proc onprintRange*(self: gen_qsciprinter_types.QsciPrinter, slot: QsciPrinterprintRange2Proc) =
   # TODO check subclass
   var tmp = new QsciPrinterprintRange2Proc
   tmp[] = slot
@@ -239,7 +228,6 @@ proc miqt_exec_callback_QsciPrinter_printRange2(self: ptr cQsciPrinter, slot: in
 
   virtualReturn
 proc QsciPrintersetWrapMode*(self: gen_qsciprinter_types.QsciPrinter, wmode: cint): void =
-
   fQsciPrinter_virtualbase_setWrapMode(self.h, cint(wmode))
 
 type QsciPrintersetWrapModeProc* = proc(wmode: cint): void
@@ -257,7 +245,6 @@ proc miqt_exec_callback_QsciPrinter_setWrapMode(self: ptr cQsciPrinter, slot: in
 
   nimfunc[](slotval1)
 proc QsciPrinterdevType*(self: gen_qsciprinter_types.QsciPrinter, ): cint =
-
   fQsciPrinter_virtualbase_devType(self.h)
 
 type QsciPrinterdevTypeProc* = proc(): cint
@@ -275,7 +262,6 @@ proc miqt_exec_callback_QsciPrinter_devType(self: ptr cQsciPrinter, slot: int): 
 
   virtualReturn
 proc QsciPrinternewPage*(self: gen_qsciprinter_types.QsciPrinter, ): bool =
-
   fQsciPrinter_virtualbase_newPage(self.h)
 
 type QsciPrinternewPageProc* = proc(): bool
@@ -293,7 +279,6 @@ proc miqt_exec_callback_QsciPrinter_newPage(self: ptr cQsciPrinter, slot: int): 
 
   virtualReturn
 proc QsciPrinterpaintEngine*(self: gen_qsciprinter_types.QsciPrinter, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQsciPrinter_virtualbase_paintEngine(self.h))
 
 type QsciPrinterpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -311,7 +296,6 @@ proc miqt_exec_callback_QsciPrinter_paintEngine(self: ptr cQsciPrinter, slot: in
 
   virtualReturn.h
 proc QsciPrintermetric*(self: gen_qsciprinter_types.QsciPrinter, param1: cint): cint =
-
   fQsciPrinter_virtualbase_metric(self.h, cint(param1))
 
 type QsciPrintermetricProc* = proc(param1: cint): cint
@@ -331,7 +315,6 @@ proc miqt_exec_callback_QsciPrinter_metric(self: ptr cQsciPrinter, slot: int, pa
 
   virtualReturn
 proc QsciPrintersetPageLayout*(self: gen_qsciprinter_types.QsciPrinter, pageLayout: gen_qpagelayout.QPageLayout): bool =
-
   fQsciPrinter_virtualbase_setPageLayout(self.h, pageLayout.h)
 
 type QsciPrintersetPageLayoutProc* = proc(pageLayout: gen_qpagelayout.QPageLayout): bool
@@ -351,7 +334,6 @@ proc miqt_exec_callback_QsciPrinter_setPageLayout(self: ptr cQsciPrinter, slot: 
 
   virtualReturn
 proc QsciPrintersetPageSize*(self: gen_qsciprinter_types.QsciPrinter, pageSize: gen_qpagesize.QPageSize): bool =
-
   fQsciPrinter_virtualbase_setPageSize(self.h, pageSize.h)
 
 type QsciPrintersetPageSizeProc* = proc(pageSize: gen_qpagesize.QPageSize): bool
@@ -371,7 +353,6 @@ proc miqt_exec_callback_QsciPrinter_setPageSize(self: ptr cQsciPrinter, slot: in
 
   virtualReturn
 proc QsciPrintersetPageOrientation*(self: gen_qsciprinter_types.QsciPrinter, orientation: cint): bool =
-
   fQsciPrinter_virtualbase_setPageOrientation(self.h, cint(orientation))
 
 type QsciPrintersetPageOrientationProc* = proc(orientation: cint): bool
@@ -391,7 +372,6 @@ proc miqt_exec_callback_QsciPrinter_setPageOrientation(self: ptr cQsciPrinter, s
 
   virtualReturn
 proc QsciPrintersetPageMargins*(self: gen_qsciprinter_types.QsciPrinter, margins: gen_qmargins.QMarginsF, units: cint): bool =
-
   fQsciPrinter_virtualbase_setPageMargins(self.h, margins.h, cint(units))
 
 type QsciPrintersetPageMarginsProc* = proc(margins: gen_qmargins.QMarginsF, units: cint): bool
@@ -413,7 +393,6 @@ proc miqt_exec_callback_QsciPrinter_setPageMargins(self: ptr cQsciPrinter, slot:
 
   virtualReturn
 proc QsciPrintersetPageRanges*(self: gen_qsciprinter_types.QsciPrinter, ranges: gen_qpageranges.QPageRanges): void =
-
   fQsciPrinter_virtualbase_setPageRanges(self.h, ranges.h)
 
 type QsciPrintersetPageRangesProc* = proc(ranges: gen_qpageranges.QPageRanges): void
@@ -431,7 +410,6 @@ proc miqt_exec_callback_QsciPrinter_setPageRanges(self: ptr cQsciPrinter, slot: 
 
   nimfunc[](slotval1)
 proc QsciPrinterinitPainter*(self: gen_qsciprinter_types.QsciPrinter, painter: gen_qpainter.QPainter): void =
-
   fQsciPrinter_virtualbase_initPainter(self.h, painter.h)
 
 type QsciPrinterinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -449,7 +427,6 @@ proc miqt_exec_callback_QsciPrinter_initPainter(self: ptr cQsciPrinter, slot: in
 
   nimfunc[](slotval1)
 proc QsciPrinterredirected*(self: gen_qsciprinter_types.QsciPrinter, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQsciPrinter_virtualbase_redirected(self.h, offset.h))
 
 type QsciPrinterredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -469,7 +446,6 @@ proc miqt_exec_callback_QsciPrinter_redirected(self: ptr cQsciPrinter, slot: int
 
   virtualReturn.h
 proc QsciPrintersharedPainter*(self: gen_qsciprinter_types.QsciPrinter, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQsciPrinter_virtualbase_sharedPainter(self.h))
 
 type QsciPrintersharedPainterProc* = proc(): gen_qpainter.QPainter

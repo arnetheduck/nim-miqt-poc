@@ -118,56 +118,45 @@ proc fcQVariantAnimation_delete(self: pointer) {.importc: "QVariantAnimation_del
 func init*(T: type gen_qvariantanimation_types.QVariantAnimation, h: ptr cQVariantAnimation): gen_qvariantanimation_types.QVariantAnimation =
   T(h: h)
 proc create*(T: type gen_qvariantanimation_types.QVariantAnimation, ): gen_qvariantanimation_types.QVariantAnimation =
-
   gen_qvariantanimation_types.QVariantAnimation.init(fcQVariantAnimation_new())
+
 proc create*(T: type gen_qvariantanimation_types.QVariantAnimation, parent: gen_qobject.QObject): gen_qvariantanimation_types.QVariantAnimation =
-
   gen_qvariantanimation_types.QVariantAnimation.init(fcQVariantAnimation_new2(parent.h))
-proc metaObject*(self: gen_qvariantanimation_types.QVariantAnimation, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qvariantanimation_types.QVariantAnimation, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQVariantAnimation_metaObject(self.h))
 
 proc metacast*(self: gen_qvariantanimation_types.QVariantAnimation, param1: cstring): pointer =
-
   fcQVariantAnimation_metacast(self.h, param1)
 
 proc metacall*(self: gen_qvariantanimation_types.QVariantAnimation, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQVariantAnimation_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qvariantanimation_types.QVariantAnimation, s: cstring): string =
-
   let v_ms = fcQVariantAnimation_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc startValue*(self: gen_qvariantanimation_types.QVariantAnimation, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQVariantAnimation_startValue(self.h))
 
 proc setStartValue*(self: gen_qvariantanimation_types.QVariantAnimation, value: gen_qvariant.QVariant): void =
-
   fcQVariantAnimation_setStartValue(self.h, value.h)
 
 proc endValue*(self: gen_qvariantanimation_types.QVariantAnimation, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQVariantAnimation_endValue(self.h))
 
 proc setEndValue*(self: gen_qvariantanimation_types.QVariantAnimation, value: gen_qvariant.QVariant): void =
-
   fcQVariantAnimation_setEndValue(self.h, value.h)
 
 proc keyValueAt*(self: gen_qvariantanimation_types.QVariantAnimation, step: float64): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQVariantAnimation_keyValueAt(self.h, step))
 
 proc setKeyValueAt*(self: gen_qvariantanimation_types.QVariantAnimation, step: float64, value: gen_qvariant.QVariant): void =
-
   fcQVariantAnimation_setKeyValueAt(self.h, step, value.h)
 
 proc keyValues*(self: gen_qvariantanimation_types.QVariantAnimation, ): seq[tuple[first: float64, second: gen_qvariant.QVariant]] =
-
   var v_ma = fcQVariantAnimation_keyValues(self.h)
   var vx_ret = newSeq[tuple[first: float64, second: gen_qvariant.QVariant]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
@@ -183,7 +172,6 @@ proc keyValues*(self: gen_qvariantanimation_types.QVariantAnimation, ): seq[tupl
   vx_ret
 
 proc setKeyValues*(self: gen_qvariantanimation_types.QVariantAnimation, values: seq[tuple[first: float64, second: gen_qvariant.QVariant]]): void =
-
   var values_CArray = newSeq[struct_miqt_map](len(values))
   for i in 0..<len(values):
     var values_i_CArray_First: float64
@@ -195,59 +183,49 @@ proc setKeyValues*(self: gen_qvariantanimation_types.QVariantAnimation, values: 
   fcQVariantAnimation_setKeyValues(self.h, struct_miqt_array(len: csize_t(len(values)), data: if len(values) == 0: nil else: addr(values_CArray[0])))
 
 proc currentValue*(self: gen_qvariantanimation_types.QVariantAnimation, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQVariantAnimation_currentValue(self.h))
 
 proc duration*(self: gen_qvariantanimation_types.QVariantAnimation, ): cint =
-
   fcQVariantAnimation_duration(self.h)
 
 proc setDuration*(self: gen_qvariantanimation_types.QVariantAnimation, msecs: cint): void =
-
   fcQVariantAnimation_setDuration(self.h, msecs)
 
 proc easingCurve*(self: gen_qvariantanimation_types.QVariantAnimation, ): gen_qeasingcurve.QEasingCurve =
-
   gen_qeasingcurve.QEasingCurve(h: fcQVariantAnimation_easingCurve(self.h))
 
 proc setEasingCurve*(self: gen_qvariantanimation_types.QVariantAnimation, easing: gen_qeasingcurve.QEasingCurve): void =
-
   fcQVariantAnimation_setEasingCurve(self.h, easing.h)
 
 proc valueChanged*(self: gen_qvariantanimation_types.QVariantAnimation, value: gen_qvariant.QVariant): void =
-
   fcQVariantAnimation_valueChanged(self.h, value.h)
 
+type QVariantAnimationvalueChangedSlot* = proc(value: gen_qvariant.QVariant)
 proc miqt_exec_callback_QVariantAnimation_valueChanged(slot: int, value: pointer) {.exportc.} =
-  type Cb = proc(value: gen_qvariant.QVariant)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QVariantAnimationvalueChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qvariant.QVariant(h: value)
-
 
   nimfunc[](slotval1)
 
-proc onvalueChanged*(self: gen_qvariantanimation_types.QVariantAnimation, slot: proc(value: gen_qvariant.QVariant)) =
-  type Cb = proc(value: gen_qvariant.QVariant)
-  var tmp = new Cb
+proc onvalueChanged*(self: gen_qvariantanimation_types.QVariantAnimation, slot: QVariantAnimationvalueChangedSlot) =
+  var tmp = new QVariantAnimationvalueChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQVariantAnimation_connect_valueChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qvariantanimation_types.QVariantAnimation, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qvariantanimation_types.QVariantAnimation, s: cstring, c: cstring): string =
   let v_ms = fcQVariantAnimation_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qvariantanimation_types.QVariantAnimation, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qvariantanimation_types.QVariantAnimation, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQVariantAnimation_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QVariantAnimationmetaObject*(self: gen_qvariantanimation_types.QVariantAnimation, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQVariantAnimation_virtualbase_metaObject(self.h))
 
 type QVariantAnimationmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -265,7 +243,6 @@ proc miqt_exec_callback_QVariantAnimation_metaObject(self: ptr cQVariantAnimatio
 
   virtualReturn.h
 proc QVariantAnimationmetacast*(self: gen_qvariantanimation_types.QVariantAnimation, param1: cstring): pointer =
-
   fQVariantAnimation_virtualbase_metacast(self.h, param1)
 
 type QVariantAnimationmetacastProc* = proc(param1: cstring): pointer
@@ -285,7 +262,6 @@ proc miqt_exec_callback_QVariantAnimation_metacast(self: ptr cQVariantAnimation,
 
   virtualReturn
 proc QVariantAnimationmetacall*(self: gen_qvariantanimation_types.QVariantAnimation, param1: cint, param2: cint, param3: pointer): cint =
-
   fQVariantAnimation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QVariantAnimationmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -309,7 +285,6 @@ proc miqt_exec_callback_QVariantAnimation_metacall(self: ptr cQVariantAnimation,
 
   virtualReturn
 proc QVariantAnimationduration*(self: gen_qvariantanimation_types.QVariantAnimation, ): cint =
-
   fQVariantAnimation_virtualbase_duration(self.h)
 
 type QVariantAnimationdurationProc* = proc(): cint
@@ -327,7 +302,6 @@ proc miqt_exec_callback_QVariantAnimation_duration(self: ptr cQVariantAnimation,
 
   virtualReturn
 proc QVariantAnimationevent*(self: gen_qvariantanimation_types.QVariantAnimation, event: gen_qcoreevent.QEvent): bool =
-
   fQVariantAnimation_virtualbase_event(self.h, event.h)
 
 type QVariantAnimationeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -347,7 +321,6 @@ proc miqt_exec_callback_QVariantAnimation_event(self: ptr cQVariantAnimation, sl
 
   virtualReturn
 proc QVariantAnimationupdateCurrentTime*(self: gen_qvariantanimation_types.QVariantAnimation, param1: cint): void =
-
   fQVariantAnimation_virtualbase_updateCurrentTime(self.h, param1)
 
 type QVariantAnimationupdateCurrentTimeProc* = proc(param1: cint): void
@@ -365,7 +338,6 @@ proc miqt_exec_callback_QVariantAnimation_updateCurrentTime(self: ptr cQVariantA
 
   nimfunc[](slotval1)
 proc QVariantAnimationupdateState*(self: gen_qvariantanimation_types.QVariantAnimation, newState: cint, oldState: cint): void =
-
   fQVariantAnimation_virtualbase_updateState(self.h, cint(newState), cint(oldState))
 
 type QVariantAnimationupdateStateProc* = proc(newState: cint, oldState: cint): void
@@ -385,7 +357,6 @@ proc miqt_exec_callback_QVariantAnimation_updateState(self: ptr cQVariantAnimati
 
   nimfunc[](slotval1, slotval2)
 proc QVariantAnimationupdateCurrentValue*(self: gen_qvariantanimation_types.QVariantAnimation, value: gen_qvariant.QVariant): void =
-
   fQVariantAnimation_virtualbase_updateCurrentValue(self.h, value.h)
 
 type QVariantAnimationupdateCurrentValueProc* = proc(value: gen_qvariant.QVariant): void
@@ -403,7 +374,6 @@ proc miqt_exec_callback_QVariantAnimation_updateCurrentValue(self: ptr cQVariant
 
   nimfunc[](slotval1)
 proc QVariantAnimationinterpolated*(self: gen_qvariantanimation_types.QVariantAnimation, fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQVariantAnimation_virtualbase_interpolated(self.h, fromVal.h, to.h, progress))
 
 type QVariantAnimationinterpolatedProc* = proc(fromVal: gen_qvariant.QVariant, to: gen_qvariant.QVariant, progress: float64): gen_qvariant.QVariant
@@ -427,7 +397,6 @@ proc miqt_exec_callback_QVariantAnimation_interpolated(self: ptr cQVariantAnimat
 
   virtualReturn.h
 proc QVariantAnimationupdateDirection*(self: gen_qvariantanimation_types.QVariantAnimation, direction: cint): void =
-
   fQVariantAnimation_virtualbase_updateDirection(self.h, cint(direction))
 
 type QVariantAnimationupdateDirectionProc* = proc(direction: cint): void
@@ -445,7 +414,6 @@ proc miqt_exec_callback_QVariantAnimation_updateDirection(self: ptr cQVariantAni
 
   nimfunc[](slotval1)
 proc QVariantAnimationeventFilter*(self: gen_qvariantanimation_types.QVariantAnimation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQVariantAnimation_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QVariantAnimationeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -467,7 +435,6 @@ proc miqt_exec_callback_QVariantAnimation_eventFilter(self: ptr cQVariantAnimati
 
   virtualReturn
 proc QVariantAnimationtimerEvent*(self: gen_qvariantanimation_types.QVariantAnimation, event: gen_qcoreevent.QTimerEvent): void =
-
   fQVariantAnimation_virtualbase_timerEvent(self.h, event.h)
 
 type QVariantAnimationtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -485,7 +452,6 @@ proc miqt_exec_callback_QVariantAnimation_timerEvent(self: ptr cQVariantAnimatio
 
   nimfunc[](slotval1)
 proc QVariantAnimationchildEvent*(self: gen_qvariantanimation_types.QVariantAnimation, event: gen_qcoreevent.QChildEvent): void =
-
   fQVariantAnimation_virtualbase_childEvent(self.h, event.h)
 
 type QVariantAnimationchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -503,7 +469,6 @@ proc miqt_exec_callback_QVariantAnimation_childEvent(self: ptr cQVariantAnimatio
 
   nimfunc[](slotval1)
 proc QVariantAnimationcustomEvent*(self: gen_qvariantanimation_types.QVariantAnimation, event: gen_qcoreevent.QEvent): void =
-
   fQVariantAnimation_virtualbase_customEvent(self.h, event.h)
 
 type QVariantAnimationcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -521,7 +486,6 @@ proc miqt_exec_callback_QVariantAnimation_customEvent(self: ptr cQVariantAnimati
 
   nimfunc[](slotval1)
 proc QVariantAnimationconnectNotify*(self: gen_qvariantanimation_types.QVariantAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQVariantAnimation_virtualbase_connectNotify(self.h, signal.h)
 
 type QVariantAnimationconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -539,7 +503,6 @@ proc miqt_exec_callback_QVariantAnimation_connectNotify(self: ptr cQVariantAnima
 
   nimfunc[](slotval1)
 proc QVariantAnimationdisconnectNotify*(self: gen_qvariantanimation_types.QVariantAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQVariantAnimation_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QVariantAnimationdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

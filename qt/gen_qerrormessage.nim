@@ -199,79 +199,66 @@ proc fcQErrorMessage_delete(self: pointer) {.importc: "QErrorMessage_delete".}
 func init*(T: type gen_qerrormessage_types.QErrorMessage, h: ptr cQErrorMessage): gen_qerrormessage_types.QErrorMessage =
   T(h: h)
 proc create*(T: type gen_qerrormessage_types.QErrorMessage, parent: gen_qwidget.QWidget): gen_qerrormessage_types.QErrorMessage =
-
   gen_qerrormessage_types.QErrorMessage.init(fcQErrorMessage_new(parent.h))
+
 proc create*(T: type gen_qerrormessage_types.QErrorMessage, ): gen_qerrormessage_types.QErrorMessage =
-
   gen_qerrormessage_types.QErrorMessage.init(fcQErrorMessage_new2())
-proc metaObject*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQErrorMessage_metaObject(self.h))
 
 proc metacast*(self: gen_qerrormessage_types.QErrorMessage, param1: cstring): pointer =
-
   fcQErrorMessage_metacast(self.h, param1)
 
 proc metacall*(self: gen_qerrormessage_types.QErrorMessage, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQErrorMessage_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring): string =
-
   let v_ms = fcQErrorMessage_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring): string =
-
   let v_ms = fcQErrorMessage_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc qtHandler*(_: type gen_qerrormessage_types.QErrorMessage, ): gen_qerrormessage_types.QErrorMessage =
-
   gen_qerrormessage_types.QErrorMessage(h: fcQErrorMessage_qtHandler())
 
 proc showMessage*(self: gen_qerrormessage_types.QErrorMessage, message: string): void =
-
   fcQErrorMessage_showMessage(self.h, struct_miqt_string(data: message, len: csize_t(len(message))))
 
-proc showMessage2*(self: gen_qerrormessage_types.QErrorMessage, message: string, typeVal: string): void =
-
+proc showMessage*(self: gen_qerrormessage_types.QErrorMessage, message: string, typeVal: string): void =
   fcQErrorMessage_showMessage2(self.h, struct_miqt_string(data: message, len: csize_t(len(message))), struct_miqt_string(data: typeVal, len: csize_t(len(typeVal))))
 
-proc tr2*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring): string =
   let v_ms = fcQErrorMessage_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQErrorMessage_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring): string =
   let v_ms = fcQErrorMessage_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qerrormessage_types.QErrorMessage, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQErrorMessage_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QErrorMessagemetaObject*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQErrorMessage_virtualbase_metaObject(self.h))
 
 type QErrorMessagemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -289,7 +276,6 @@ proc miqt_exec_callback_QErrorMessage_metaObject(self: ptr cQErrorMessage, slot:
 
   virtualReturn.h
 proc QErrorMessagemetacast*(self: gen_qerrormessage_types.QErrorMessage, param1: cstring): pointer =
-
   fQErrorMessage_virtualbase_metacast(self.h, param1)
 
 type QErrorMessagemetacastProc* = proc(param1: cstring): pointer
@@ -309,7 +295,6 @@ proc miqt_exec_callback_QErrorMessage_metacast(self: ptr cQErrorMessage, slot: i
 
   virtualReturn
 proc QErrorMessagemetacall*(self: gen_qerrormessage_types.QErrorMessage, param1: cint, param2: cint, param3: pointer): cint =
-
   fQErrorMessage_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QErrorMessagemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -333,7 +318,6 @@ proc miqt_exec_callback_QErrorMessage_metacall(self: ptr cQErrorMessage, slot: i
 
   virtualReturn
 proc QErrorMessagedone*(self: gen_qerrormessage_types.QErrorMessage, param1: cint): void =
-
   fQErrorMessage_virtualbase_done(self.h, param1)
 
 type QErrorMessagedoneProc* = proc(param1: cint): void
@@ -351,7 +335,6 @@ proc miqt_exec_callback_QErrorMessage_done(self: ptr cQErrorMessage, slot: int, 
 
   nimfunc[](slotval1)
 proc QErrorMessagechangeEvent*(self: gen_qerrormessage_types.QErrorMessage, e: gen_qcoreevent.QEvent): void =
-
   fQErrorMessage_virtualbase_changeEvent(self.h, e.h)
 
 type QErrorMessagechangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -369,7 +352,6 @@ proc miqt_exec_callback_QErrorMessage_changeEvent(self: ptr cQErrorMessage, slot
 
   nimfunc[](slotval1)
 proc QErrorMessagesetVisible*(self: gen_qerrormessage_types.QErrorMessage, visible: bool): void =
-
   fQErrorMessage_virtualbase_setVisible(self.h, visible)
 
 type QErrorMessagesetVisibleProc* = proc(visible: bool): void
@@ -387,7 +369,6 @@ proc miqt_exec_callback_QErrorMessage_setVisible(self: ptr cQErrorMessage, slot:
 
   nimfunc[](slotval1)
 proc QErrorMessagesizeHint*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQErrorMessage_virtualbase_sizeHint(self.h))
 
 type QErrorMessagesizeHintProc* = proc(): gen_qsize.QSize
@@ -405,7 +386,6 @@ proc miqt_exec_callback_QErrorMessage_sizeHint(self: ptr cQErrorMessage, slot: i
 
   virtualReturn.h
 proc QErrorMessageminimumSizeHint*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQErrorMessage_virtualbase_minimumSizeHint(self.h))
 
 type QErrorMessageminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -423,7 +403,6 @@ proc miqt_exec_callback_QErrorMessage_minimumSizeHint(self: ptr cQErrorMessage, 
 
   virtualReturn.h
 proc QErrorMessageopen*(self: gen_qerrormessage_types.QErrorMessage, ): void =
-
   fQErrorMessage_virtualbase_open(self.h)
 
 type QErrorMessageopenProc* = proc(): void
@@ -439,7 +418,6 @@ proc miqt_exec_callback_QErrorMessage_open(self: ptr cQErrorMessage, slot: int):
 
   nimfunc[]()
 proc QErrorMessageexec*(self: gen_qerrormessage_types.QErrorMessage, ): cint =
-
   fQErrorMessage_virtualbase_exec(self.h)
 
 type QErrorMessageexecProc* = proc(): cint
@@ -457,7 +435,6 @@ proc miqt_exec_callback_QErrorMessage_exec(self: ptr cQErrorMessage, slot: int):
 
   virtualReturn
 proc QErrorMessageaccept*(self: gen_qerrormessage_types.QErrorMessage, ): void =
-
   fQErrorMessage_virtualbase_accept(self.h)
 
 type QErrorMessageacceptProc* = proc(): void
@@ -473,7 +450,6 @@ proc miqt_exec_callback_QErrorMessage_accept(self: ptr cQErrorMessage, slot: int
 
   nimfunc[]()
 proc QErrorMessagereject*(self: gen_qerrormessage_types.QErrorMessage, ): void =
-
   fQErrorMessage_virtualbase_reject(self.h)
 
 type QErrorMessagerejectProc* = proc(): void
@@ -489,7 +465,6 @@ proc miqt_exec_callback_QErrorMessage_reject(self: ptr cQErrorMessage, slot: int
 
   nimfunc[]()
 proc QErrorMessagekeyPressEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QKeyEvent): void =
-
   fQErrorMessage_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QErrorMessagekeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -507,7 +482,6 @@ proc miqt_exec_callback_QErrorMessage_keyPressEvent(self: ptr cQErrorMessage, sl
 
   nimfunc[](slotval1)
 proc QErrorMessagecloseEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QCloseEvent): void =
-
   fQErrorMessage_virtualbase_closeEvent(self.h, param1.h)
 
 type QErrorMessagecloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
@@ -525,7 +499,6 @@ proc miqt_exec_callback_QErrorMessage_closeEvent(self: ptr cQErrorMessage, slot:
 
   nimfunc[](slotval1)
 proc QErrorMessageshowEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QShowEvent): void =
-
   fQErrorMessage_virtualbase_showEvent(self.h, param1.h)
 
 type QErrorMessageshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -543,7 +516,6 @@ proc miqt_exec_callback_QErrorMessage_showEvent(self: ptr cQErrorMessage, slot: 
 
   nimfunc[](slotval1)
 proc QErrorMessageresizeEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QResizeEvent): void =
-
   fQErrorMessage_virtualbase_resizeEvent(self.h, param1.h)
 
 type QErrorMessageresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -561,7 +533,6 @@ proc miqt_exec_callback_QErrorMessage_resizeEvent(self: ptr cQErrorMessage, slot
 
   nimfunc[](slotval1)
 proc QErrorMessagecontextMenuEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QContextMenuEvent): void =
-
   fQErrorMessage_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QErrorMessagecontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -579,7 +550,6 @@ proc miqt_exec_callback_QErrorMessage_contextMenuEvent(self: ptr cQErrorMessage,
 
   nimfunc[](slotval1)
 proc QErrorMessageeventFilter*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQErrorMessage_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QErrorMessageeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -601,7 +571,6 @@ proc miqt_exec_callback_QErrorMessage_eventFilter(self: ptr cQErrorMessage, slot
 
   virtualReturn
 proc QErrorMessagedevType*(self: gen_qerrormessage_types.QErrorMessage, ): cint =
-
   fQErrorMessage_virtualbase_devType(self.h)
 
 type QErrorMessagedevTypeProc* = proc(): cint
@@ -619,7 +588,6 @@ proc miqt_exec_callback_QErrorMessage_devType(self: ptr cQErrorMessage, slot: in
 
   virtualReturn
 proc QErrorMessageheightForWidth*(self: gen_qerrormessage_types.QErrorMessage, param1: cint): cint =
-
   fQErrorMessage_virtualbase_heightForWidth(self.h, param1)
 
 type QErrorMessageheightForWidthProc* = proc(param1: cint): cint
@@ -639,7 +607,6 @@ proc miqt_exec_callback_QErrorMessage_heightForWidth(self: ptr cQErrorMessage, s
 
   virtualReturn
 proc QErrorMessagehasHeightForWidth*(self: gen_qerrormessage_types.QErrorMessage, ): bool =
-
   fQErrorMessage_virtualbase_hasHeightForWidth(self.h)
 
 type QErrorMessagehasHeightForWidthProc* = proc(): bool
@@ -657,7 +624,6 @@ proc miqt_exec_callback_QErrorMessage_hasHeightForWidth(self: ptr cQErrorMessage
 
   virtualReturn
 proc QErrorMessagepaintEngine*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQErrorMessage_virtualbase_paintEngine(self.h))
 
 type QErrorMessagepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -675,7 +641,6 @@ proc miqt_exec_callback_QErrorMessage_paintEngine(self: ptr cQErrorMessage, slot
 
   virtualReturn.h
 proc QErrorMessageevent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QEvent): bool =
-
   fQErrorMessage_virtualbase_event(self.h, event.h)
 
 type QErrorMessageeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -695,7 +660,6 @@ proc miqt_exec_callback_QErrorMessage_event(self: ptr cQErrorMessage, slot: int,
 
   virtualReturn
 proc QErrorMessagemousePressEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMouseEvent): void =
-
   fQErrorMessage_virtualbase_mousePressEvent(self.h, event.h)
 
 type QErrorMessagemousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -713,7 +677,6 @@ proc miqt_exec_callback_QErrorMessage_mousePressEvent(self: ptr cQErrorMessage, 
 
   nimfunc[](slotval1)
 proc QErrorMessagemouseReleaseEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMouseEvent): void =
-
   fQErrorMessage_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QErrorMessagemouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -731,7 +694,6 @@ proc miqt_exec_callback_QErrorMessage_mouseReleaseEvent(self: ptr cQErrorMessage
 
   nimfunc[](slotval1)
 proc QErrorMessagemouseDoubleClickEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMouseEvent): void =
-
   fQErrorMessage_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QErrorMessagemouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -749,7 +711,6 @@ proc miqt_exec_callback_QErrorMessage_mouseDoubleClickEvent(self: ptr cQErrorMes
 
   nimfunc[](slotval1)
 proc QErrorMessagemouseMoveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMouseEvent): void =
-
   fQErrorMessage_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QErrorMessagemouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -767,7 +728,6 @@ proc miqt_exec_callback_QErrorMessage_mouseMoveEvent(self: ptr cQErrorMessage, s
 
   nimfunc[](slotval1)
 proc QErrorMessagewheelEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QWheelEvent): void =
-
   fQErrorMessage_virtualbase_wheelEvent(self.h, event.h)
 
 type QErrorMessagewheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -785,7 +745,6 @@ proc miqt_exec_callback_QErrorMessage_wheelEvent(self: ptr cQErrorMessage, slot:
 
   nimfunc[](slotval1)
 proc QErrorMessagekeyReleaseEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QKeyEvent): void =
-
   fQErrorMessage_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QErrorMessagekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -803,7 +762,6 @@ proc miqt_exec_callback_QErrorMessage_keyReleaseEvent(self: ptr cQErrorMessage, 
 
   nimfunc[](slotval1)
 proc QErrorMessagefocusInEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QFocusEvent): void =
-
   fQErrorMessage_virtualbase_focusInEvent(self.h, event.h)
 
 type QErrorMessagefocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -821,7 +779,6 @@ proc miqt_exec_callback_QErrorMessage_focusInEvent(self: ptr cQErrorMessage, slo
 
   nimfunc[](slotval1)
 proc QErrorMessagefocusOutEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QFocusEvent): void =
-
   fQErrorMessage_virtualbase_focusOutEvent(self.h, event.h)
 
 type QErrorMessagefocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -839,7 +796,6 @@ proc miqt_exec_callback_QErrorMessage_focusOutEvent(self: ptr cQErrorMessage, sl
 
   nimfunc[](slotval1)
 proc QErrorMessageenterEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QEvent): void =
-
   fQErrorMessage_virtualbase_enterEvent(self.h, event.h)
 
 type QErrorMessageenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -857,7 +813,6 @@ proc miqt_exec_callback_QErrorMessage_enterEvent(self: ptr cQErrorMessage, slot:
 
   nimfunc[](slotval1)
 proc QErrorMessageleaveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QEvent): void =
-
   fQErrorMessage_virtualbase_leaveEvent(self.h, event.h)
 
 type QErrorMessageleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -875,7 +830,6 @@ proc miqt_exec_callback_QErrorMessage_leaveEvent(self: ptr cQErrorMessage, slot:
 
   nimfunc[](slotval1)
 proc QErrorMessagepaintEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QPaintEvent): void =
-
   fQErrorMessage_virtualbase_paintEvent(self.h, event.h)
 
 type QErrorMessagepaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -893,7 +847,6 @@ proc miqt_exec_callback_QErrorMessage_paintEvent(self: ptr cQErrorMessage, slot:
 
   nimfunc[](slotval1)
 proc QErrorMessagemoveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QMoveEvent): void =
-
   fQErrorMessage_virtualbase_moveEvent(self.h, event.h)
 
 type QErrorMessagemoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -911,7 +864,6 @@ proc miqt_exec_callback_QErrorMessage_moveEvent(self: ptr cQErrorMessage, slot: 
 
   nimfunc[](slotval1)
 proc QErrorMessagetabletEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QTabletEvent): void =
-
   fQErrorMessage_virtualbase_tabletEvent(self.h, event.h)
 
 type QErrorMessagetabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -929,7 +881,6 @@ proc miqt_exec_callback_QErrorMessage_tabletEvent(self: ptr cQErrorMessage, slot
 
   nimfunc[](slotval1)
 proc QErrorMessageactionEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QActionEvent): void =
-
   fQErrorMessage_virtualbase_actionEvent(self.h, event.h)
 
 type QErrorMessageactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -947,7 +898,6 @@ proc miqt_exec_callback_QErrorMessage_actionEvent(self: ptr cQErrorMessage, slot
 
   nimfunc[](slotval1)
 proc QErrorMessagedragEnterEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QDragEnterEvent): void =
-
   fQErrorMessage_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QErrorMessagedragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -965,7 +915,6 @@ proc miqt_exec_callback_QErrorMessage_dragEnterEvent(self: ptr cQErrorMessage, s
 
   nimfunc[](slotval1)
 proc QErrorMessagedragMoveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QDragMoveEvent): void =
-
   fQErrorMessage_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QErrorMessagedragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -983,7 +932,6 @@ proc miqt_exec_callback_QErrorMessage_dragMoveEvent(self: ptr cQErrorMessage, sl
 
   nimfunc[](slotval1)
 proc QErrorMessagedragLeaveEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QDragLeaveEvent): void =
-
   fQErrorMessage_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QErrorMessagedragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1001,7 +949,6 @@ proc miqt_exec_callback_QErrorMessage_dragLeaveEvent(self: ptr cQErrorMessage, s
 
   nimfunc[](slotval1)
 proc QErrorMessagedropEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QDropEvent): void =
-
   fQErrorMessage_virtualbase_dropEvent(self.h, event.h)
 
 type QErrorMessagedropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1019,7 +966,6 @@ proc miqt_exec_callback_QErrorMessage_dropEvent(self: ptr cQErrorMessage, slot: 
 
   nimfunc[](slotval1)
 proc QErrorMessagehideEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qevent.QHideEvent): void =
-
   fQErrorMessage_virtualbase_hideEvent(self.h, event.h)
 
 type QErrorMessagehideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1037,7 +983,6 @@ proc miqt_exec_callback_QErrorMessage_hideEvent(self: ptr cQErrorMessage, slot: 
 
   nimfunc[](slotval1)
 proc QErrorMessagenativeEvent*(self: gen_qerrormessage_types.QErrorMessage, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQErrorMessage_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QErrorMessagenativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1064,7 +1009,6 @@ proc miqt_exec_callback_QErrorMessage_nativeEvent(self: ptr cQErrorMessage, slot
 
   virtualReturn
 proc QErrorMessagemetric*(self: gen_qerrormessage_types.QErrorMessage, param1: cint): cint =
-
   fQErrorMessage_virtualbase_metric(self.h, cint(param1))
 
 type QErrorMessagemetricProc* = proc(param1: cint): cint
@@ -1084,7 +1028,6 @@ proc miqt_exec_callback_QErrorMessage_metric(self: ptr cQErrorMessage, slot: int
 
   virtualReturn
 proc QErrorMessageinitPainter*(self: gen_qerrormessage_types.QErrorMessage, painter: gen_qpainter.QPainter): void =
-
   fQErrorMessage_virtualbase_initPainter(self.h, painter.h)
 
 type QErrorMessageinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1102,7 +1045,6 @@ proc miqt_exec_callback_QErrorMessage_initPainter(self: ptr cQErrorMessage, slot
 
   nimfunc[](slotval1)
 proc QErrorMessageredirected*(self: gen_qerrormessage_types.QErrorMessage, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQErrorMessage_virtualbase_redirected(self.h, offset.h))
 
 type QErrorMessageredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1122,7 +1064,6 @@ proc miqt_exec_callback_QErrorMessage_redirected(self: ptr cQErrorMessage, slot:
 
   virtualReturn.h
 proc QErrorMessagesharedPainter*(self: gen_qerrormessage_types.QErrorMessage, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQErrorMessage_virtualbase_sharedPainter(self.h))
 
 type QErrorMessagesharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1140,7 +1081,6 @@ proc miqt_exec_callback_QErrorMessage_sharedPainter(self: ptr cQErrorMessage, sl
 
   virtualReturn.h
 proc QErrorMessageinputMethodEvent*(self: gen_qerrormessage_types.QErrorMessage, param1: gen_qevent.QInputMethodEvent): void =
-
   fQErrorMessage_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QErrorMessageinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1158,7 +1098,6 @@ proc miqt_exec_callback_QErrorMessage_inputMethodEvent(self: ptr cQErrorMessage,
 
   nimfunc[](slotval1)
 proc QErrorMessageinputMethodQuery*(self: gen_qerrormessage_types.QErrorMessage, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQErrorMessage_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QErrorMessageinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1178,7 +1117,6 @@ proc miqt_exec_callback_QErrorMessage_inputMethodQuery(self: ptr cQErrorMessage,
 
   virtualReturn.h
 proc QErrorMessagefocusNextPrevChild*(self: gen_qerrormessage_types.QErrorMessage, next: bool): bool =
-
   fQErrorMessage_virtualbase_focusNextPrevChild(self.h, next)
 
 type QErrorMessagefocusNextPrevChildProc* = proc(next: bool): bool
@@ -1198,7 +1136,6 @@ proc miqt_exec_callback_QErrorMessage_focusNextPrevChild(self: ptr cQErrorMessag
 
   virtualReturn
 proc QErrorMessagetimerEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QTimerEvent): void =
-
   fQErrorMessage_virtualbase_timerEvent(self.h, event.h)
 
 type QErrorMessagetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1216,7 +1153,6 @@ proc miqt_exec_callback_QErrorMessage_timerEvent(self: ptr cQErrorMessage, slot:
 
   nimfunc[](slotval1)
 proc QErrorMessagechildEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QChildEvent): void =
-
   fQErrorMessage_virtualbase_childEvent(self.h, event.h)
 
 type QErrorMessagechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1234,7 +1170,6 @@ proc miqt_exec_callback_QErrorMessage_childEvent(self: ptr cQErrorMessage, slot:
 
   nimfunc[](slotval1)
 proc QErrorMessagecustomEvent*(self: gen_qerrormessage_types.QErrorMessage, event: gen_qcoreevent.QEvent): void =
-
   fQErrorMessage_virtualbase_customEvent(self.h, event.h)
 
 type QErrorMessagecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1252,7 +1187,6 @@ proc miqt_exec_callback_QErrorMessage_customEvent(self: ptr cQErrorMessage, slot
 
   nimfunc[](slotval1)
 proc QErrorMessageconnectNotify*(self: gen_qerrormessage_types.QErrorMessage, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQErrorMessage_virtualbase_connectNotify(self.h, signal.h)
 
 type QErrorMessageconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1270,7 +1204,6 @@ proc miqt_exec_callback_QErrorMessage_connectNotify(self: ptr cQErrorMessage, sl
 
   nimfunc[](slotval1)
 proc QErrorMessagedisconnectNotify*(self: gen_qerrormessage_types.QErrorMessage, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQErrorMessage_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QErrorMessagedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

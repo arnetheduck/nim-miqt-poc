@@ -270,392 +270,323 @@ proc fcQQuickWindowGraphicsStateInfo_delete(self: pointer) {.importc: "QQuickWin
 func init*(T: type gen_qquickwindow_types.QQuickWindow, h: ptr cQQuickWindow): gen_qquickwindow_types.QQuickWindow =
   T(h: h)
 proc create*(T: type gen_qquickwindow_types.QQuickWindow, ): gen_qquickwindow_types.QQuickWindow =
-
   gen_qquickwindow_types.QQuickWindow.init(fcQQuickWindow_new())
+
 proc create*(T: type gen_qquickwindow_types.QQuickWindow, renderControl: gen_qquickrendercontrol.QQuickRenderControl): gen_qquickwindow_types.QQuickWindow =
-
   gen_qquickwindow_types.QQuickWindow.init(fcQQuickWindow_new2(renderControl.h))
-proc create2*(T: type gen_qquickwindow_types.QQuickWindow, parent: gen_qwindow.QWindow): gen_qquickwindow_types.QQuickWindow =
 
+proc create*(T: type gen_qquickwindow_types.QQuickWindow, parent: gen_qwindow.QWindow): gen_qquickwindow_types.QQuickWindow =
   gen_qquickwindow_types.QQuickWindow.init(fcQQuickWindow_new3(parent.h))
-proc metaObject*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickWindow_metaObject(self.h))
 
 proc metacast*(self: gen_qquickwindow_types.QQuickWindow, param1: cstring): pointer =
-
   fcQQuickWindow_metacast(self.h, param1)
 
 proc metacall*(self: gen_qquickwindow_types.QQuickWindow, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQuickWindow_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring): string =
-
   let v_ms = fcQQuickWindow_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring): string =
-
   let v_ms = fcQQuickWindow_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc contentItem*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qquickitem.QQuickItem =
-
   gen_qquickitem.QQuickItem(h: fcQQuickWindow_contentItem(self.h))
 
 proc activeFocusItem*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qquickitem.QQuickItem =
-
   gen_qquickitem.QQuickItem(h: fcQQuickWindow_activeFocusItem(self.h))
 
 proc focusObject*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQQuickWindow_focusObject(self.h))
 
 proc mouseGrabberItem*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qquickitem.QQuickItem =
-
   gen_qquickitem.QQuickItem(h: fcQQuickWindow_mouseGrabberItem(self.h))
 
 proc sendEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qquickitem.QQuickItem, param2: gen_qcoreevent.QEvent): bool =
-
   fcQQuickWindow_sendEvent(self.h, param1.h, param2.h)
 
 proc grabWindow*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fcQQuickWindow_grabWindow(self.h))
 
-proc setRenderTarget2*(self: gen_qquickwindow_types.QQuickWindow, fboId: cuint, size: gen_qsize.QSize): void =
-
+proc setRenderTarget*(self: gen_qquickwindow_types.QQuickWindow, fboId: cuint, size: gen_qsize.QSize): void =
   fcQQuickWindow_setRenderTarget2(self.h, fboId, size.h)
 
 proc renderTargetId*(self: gen_qquickwindow_types.QQuickWindow, ): cuint =
-
   fcQQuickWindow_renderTargetId(self.h)
 
 proc renderTargetSize*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQQuickWindow_renderTargetSize(self.h))
 
 proc resetOpenGLState*(self: gen_qquickwindow_types.QQuickWindow, ): void =
-
   fcQQuickWindow_resetOpenGLState(self.h)
 
 proc graphicsStateInfo*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qquickwindow_types.QQuickWindowGraphicsStateInfo =
-
   gen_qquickwindow_types.QQuickWindowGraphicsStateInfo(h: fcQQuickWindow_graphicsStateInfo(self.h))
 
 proc beginExternalCommands*(self: gen_qquickwindow_types.QQuickWindow, ): void =
-
   fcQQuickWindow_beginExternalCommands(self.h)
 
 proc endExternalCommands*(self: gen_qquickwindow_types.QQuickWindow, ): void =
-
   fcQQuickWindow_endExternalCommands(self.h)
 
 proc incubationController*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qqmlincubator.QQmlIncubationController =
-
   gen_qqmlincubator.QQmlIncubationController(h: fcQQuickWindow_incubationController(self.h))
 
 proc accessibleRoot*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fcQQuickWindow_accessibleRoot(self.h))
 
 proc createTextureFromImage*(self: gen_qquickwindow_types.QQuickWindow, image: gen_qimage.QImage): gen_qsgtexture.QSGTexture =
-
   gen_qsgtexture.QSGTexture(h: fcQQuickWindow_createTextureFromImage(self.h, image.h))
 
-proc createTextureFromImage2*(self: gen_qquickwindow_types.QQuickWindow, image: gen_qimage.QImage, options: cint): gen_qsgtexture.QSGTexture =
-
+proc createTextureFromImage*(self: gen_qquickwindow_types.QQuickWindow, image: gen_qimage.QImage, options: cint): gen_qsgtexture.QSGTexture =
   gen_qsgtexture.QSGTexture(h: fcQQuickWindow_createTextureFromImage2(self.h, image.h, cint(options)))
 
 proc createTextureFromId*(self: gen_qquickwindow_types.QQuickWindow, id: cuint, size: gen_qsize.QSize): gen_qsgtexture.QSGTexture =
-
   gen_qsgtexture.QSGTexture(h: fcQQuickWindow_createTextureFromId(self.h, id, size.h))
 
 proc createTextureFromNativeObject*(self: gen_qquickwindow_types.QQuickWindow, typeVal: cint, nativeObjectPtr: pointer, nativeLayout: cint, size: gen_qsize.QSize): gen_qsgtexture.QSGTexture =
-
   gen_qsgtexture.QSGTexture(h: fcQQuickWindow_createTextureFromNativeObject(self.h, cint(typeVal), nativeObjectPtr, nativeLayout, size.h))
 
 proc setClearBeforeRendering*(self: gen_qquickwindow_types.QQuickWindow, enabled: bool): void =
-
   fcQQuickWindow_setClearBeforeRendering(self.h, enabled)
 
 proc clearBeforeRendering*(self: gen_qquickwindow_types.QQuickWindow, ): bool =
-
   fcQQuickWindow_clearBeforeRendering(self.h)
 
 proc setColor*(self: gen_qquickwindow_types.QQuickWindow, color: gen_qcolor.QColor): void =
-
   fcQQuickWindow_setColor(self.h, color.h)
 
 proc color*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQQuickWindow_color(self.h))
 
 proc hasDefaultAlphaBuffer*(_: type gen_qquickwindow_types.QQuickWindow, ): bool =
-
   fcQQuickWindow_hasDefaultAlphaBuffer()
 
 proc setDefaultAlphaBuffer*(_: type gen_qquickwindow_types.QQuickWindow, useAlpha: bool): void =
-
   fcQQuickWindow_setDefaultAlphaBuffer(useAlpha)
 
 proc setPersistentOpenGLContext*(self: gen_qquickwindow_types.QQuickWindow, persistent: bool): void =
-
   fcQQuickWindow_setPersistentOpenGLContext(self.h, persistent)
 
 proc isPersistentOpenGLContext*(self: gen_qquickwindow_types.QQuickWindow, ): bool =
-
   fcQQuickWindow_isPersistentOpenGLContext(self.h)
 
 proc setPersistentSceneGraph*(self: gen_qquickwindow_types.QQuickWindow, persistent: bool): void =
-
   fcQQuickWindow_setPersistentSceneGraph(self.h, persistent)
 
 proc isPersistentSceneGraph*(self: gen_qquickwindow_types.QQuickWindow, ): bool =
-
   fcQQuickWindow_isPersistentSceneGraph(self.h)
 
 proc isSceneGraphInitialized*(self: gen_qquickwindow_types.QQuickWindow, ): bool =
-
   fcQQuickWindow_isSceneGraphInitialized(self.h)
 
 proc scheduleRenderJob*(self: gen_qquickwindow_types.QQuickWindow, job: gen_qrunnable.QRunnable, schedule: cint): void =
-
   fcQQuickWindow_scheduleRenderJob(self.h, job.h, cint(schedule))
 
 proc effectiveDevicePixelRatio*(self: gen_qquickwindow_types.QQuickWindow, ): float64 =
-
   fcQQuickWindow_effectiveDevicePixelRatio(self.h)
 
 proc rendererInterface*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qsgrendererinterface.QSGRendererInterface =
-
   gen_qsgrendererinterface.QSGRendererInterface(h: fcQQuickWindow_rendererInterface(self.h))
 
 proc setSceneGraphBackend*(_: type gen_qquickwindow_types.QQuickWindow, api: cint): void =
-
   fcQQuickWindow_setSceneGraphBackend(cint(api))
 
-proc setSceneGraphBackendWithBackend*(_: type gen_qquickwindow_types.QQuickWindow, backend: string): void =
-
+proc setSceneGraphBackend*(_: type gen_qquickwindow_types.QQuickWindow, backend: string): void =
   fcQQuickWindow_setSceneGraphBackendWithBackend(struct_miqt_string(data: backend, len: csize_t(len(backend))))
 
 proc sceneGraphBackend*(_: type gen_qquickwindow_types.QQuickWindow, ): string =
-
   let v_ms = fcQQuickWindow_sceneGraphBackend()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc createRectangleNode*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qsgrectanglenode.QSGRectangleNode =
-
   gen_qsgrectanglenode.QSGRectangleNode(h: fcQQuickWindow_createRectangleNode(self.h))
 
 proc createImageNode*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qsgimagenode.QSGImageNode =
-
   gen_qsgimagenode.QSGImageNode(h: fcQQuickWindow_createImageNode(self.h))
 
 proc createNinePatchNode*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qsgninepatchnode.QSGNinePatchNode =
-
   gen_qsgninepatchnode.QSGNinePatchNode(h: fcQQuickWindow_createNinePatchNode(self.h))
 
 proc textRenderType*(_: type gen_qquickwindow_types.QQuickWindow, ): cint =
-
   cint(fcQQuickWindow_textRenderType())
 
 proc setTextRenderType*(_: type gen_qquickwindow_types.QQuickWindow, renderType: cint): void =
-
   fcQQuickWindow_setTextRenderType(cint(renderType))
 
 proc frameSwapped*(self: gen_qquickwindow_types.QQuickWindow, ): void =
-
   fcQQuickWindow_frameSwapped(self.h)
 
+type QQuickWindowframeSwappedSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_frameSwapped(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowframeSwappedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onframeSwapped*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onframeSwapped*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowframeSwappedSlot) =
+  var tmp = new QQuickWindowframeSwappedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_frameSwapped(self.h, cast[int](addr tmp[]))
-proc sceneGraphInitialized*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc sceneGraphInitialized*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_sceneGraphInitialized(self.h)
 
+type QQuickWindowsceneGraphInitializedSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_sceneGraphInitialized(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowsceneGraphInitializedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onsceneGraphInitialized*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onsceneGraphInitialized*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowsceneGraphInitializedSlot) =
+  var tmp = new QQuickWindowsceneGraphInitializedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_sceneGraphInitialized(self.h, cast[int](addr tmp[]))
-proc sceneGraphInvalidated*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc sceneGraphInvalidated*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_sceneGraphInvalidated(self.h)
 
+type QQuickWindowsceneGraphInvalidatedSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_sceneGraphInvalidated(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowsceneGraphInvalidatedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onsceneGraphInvalidated*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onsceneGraphInvalidated*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowsceneGraphInvalidatedSlot) =
+  var tmp = new QQuickWindowsceneGraphInvalidatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_sceneGraphInvalidated(self.h, cast[int](addr tmp[]))
-proc beforeSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc beforeSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_beforeSynchronizing(self.h)
 
+type QQuickWindowbeforeSynchronizingSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_beforeSynchronizing(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowbeforeSynchronizingSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onbeforeSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onbeforeSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowbeforeSynchronizingSlot) =
+  var tmp = new QQuickWindowbeforeSynchronizingSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_beforeSynchronizing(self.h, cast[int](addr tmp[]))
-proc afterSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc afterSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_afterSynchronizing(self.h)
 
+type QQuickWindowafterSynchronizingSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_afterSynchronizing(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowafterSynchronizingSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onafterSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onafterSynchronizing*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowafterSynchronizingSlot) =
+  var tmp = new QQuickWindowafterSynchronizingSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_afterSynchronizing(self.h, cast[int](addr tmp[]))
-proc beforeRendering*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc beforeRendering*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_beforeRendering(self.h)
 
+type QQuickWindowbeforeRenderingSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_beforeRendering(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowbeforeRenderingSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onbeforeRendering*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onbeforeRendering*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowbeforeRenderingSlot) =
+  var tmp = new QQuickWindowbeforeRenderingSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_beforeRendering(self.h, cast[int](addr tmp[]))
-proc afterRendering*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc afterRendering*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_afterRendering(self.h)
 
+type QQuickWindowafterRenderingSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_afterRendering(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowafterRenderingSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onafterRendering*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onafterRendering*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowafterRenderingSlot) =
+  var tmp = new QQuickWindowafterRenderingSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_afterRendering(self.h, cast[int](addr tmp[]))
-proc afterAnimating*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc afterAnimating*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_afterAnimating(self.h)
 
+type QQuickWindowafterAnimatingSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_afterAnimating(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowafterAnimatingSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onafterAnimating*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onafterAnimating*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowafterAnimatingSlot) =
+  var tmp = new QQuickWindowafterAnimatingSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_afterAnimating(self.h, cast[int](addr tmp[]))
-proc sceneGraphAboutToStop*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc sceneGraphAboutToStop*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_sceneGraphAboutToStop(self.h)
 
+type QQuickWindowsceneGraphAboutToStopSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_sceneGraphAboutToStop(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowsceneGraphAboutToStopSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onsceneGraphAboutToStop*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onsceneGraphAboutToStop*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowsceneGraphAboutToStopSlot) =
+  var tmp = new QQuickWindowsceneGraphAboutToStopSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_sceneGraphAboutToStop(self.h, cast[int](addr tmp[]))
-proc colorChanged*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qcolor.QColor): void =
 
+proc colorChanged*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qcolor.QColor): void =
   fcQQuickWindow_colorChanged(self.h, param1.h)
 
+type QQuickWindowcolorChangedSlot* = proc(param1: gen_qcolor.QColor)
 proc miqt_exec_callback_QQuickWindow_colorChanged(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qcolor.QColor)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QQuickWindowcolorChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qcolor.QColor(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc oncolorChanged*(self: gen_qquickwindow_types.QQuickWindow, slot: proc(param1: gen_qcolor.QColor)) =
-  type Cb = proc(param1: gen_qcolor.QColor)
-  var tmp = new Cb
+proc oncolorChanged*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowcolorChangedSlot) =
+  var tmp = new QQuickWindowcolorChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_colorChanged(self.h, cast[int](addr tmp[]))
-proc activeFocusItemChanged*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc activeFocusItemChanged*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_activeFocusItemChanged(self.h)
 
+type QQuickWindowactiveFocusItemChangedSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_activeFocusItemChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowactiveFocusItemChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onactiveFocusItemChanged*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onactiveFocusItemChanged*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowactiveFocusItemChangedSlot) =
+  var tmp = new QQuickWindowactiveFocusItemChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_activeFocusItemChanged(self.h, cast[int](addr tmp[]))
-proc sceneGraphError*(self: gen_qquickwindow_types.QQuickWindow, error: cint, message: string): void =
 
+proc sceneGraphError*(self: gen_qquickwindow_types.QQuickWindow, error: cint, message: string): void =
   fcQQuickWindow_sceneGraphError(self.h, cint(error), struct_miqt_string(data: message, len: csize_t(len(message))))
 
+type QQuickWindowsceneGraphErrorSlot* = proc(error: cint, message: string)
 proc miqt_exec_callback_QQuickWindow_sceneGraphError(slot: int, error: cint, message: struct_miqt_string) {.exportc.} =
-  type Cb = proc(error: cint, message: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QQuickWindowsceneGraphErrorSlot](cast[pointer](slot))
   let slotval1 = cint(error)
 
   let vmessage_ms = message
@@ -663,93 +594,79 @@ proc miqt_exec_callback_QQuickWindow_sceneGraphError(slot: int, error: cint, mes
   c_free(vmessage_ms.data)
   let slotval2 = vmessagex_ret
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onsceneGraphError*(self: gen_qquickwindow_types.QQuickWindow, slot: proc(error: cint, message: string)) =
-  type Cb = proc(error: cint, message: string)
-  var tmp = new Cb
+proc onsceneGraphError*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowsceneGraphErrorSlot) =
+  var tmp = new QQuickWindowsceneGraphErrorSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_sceneGraphError(self.h, cast[int](addr tmp[]))
-proc beforeRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc beforeRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_beforeRenderPassRecording(self.h)
 
+type QQuickWindowbeforeRenderPassRecordingSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_beforeRenderPassRecording(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowbeforeRenderPassRecordingSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onbeforeRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onbeforeRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowbeforeRenderPassRecordingSlot) =
+  var tmp = new QQuickWindowbeforeRenderPassRecordingSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_beforeRenderPassRecording(self.h, cast[int](addr tmp[]))
-proc afterRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc afterRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_afterRenderPassRecording(self.h)
 
+type QQuickWindowafterRenderPassRecordingSlot* = proc()
 proc miqt_exec_callback_QQuickWindow_afterRenderPassRecording(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickWindowafterRenderPassRecordingSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onafterRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onafterRenderPassRecording*(self: gen_qquickwindow_types.QQuickWindow, slot: QQuickWindowafterRenderPassRecordingSlot) =
+  var tmp = new QQuickWindowafterRenderPassRecordingSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickWindow_connect_afterRenderPassRecording(self.h, cast[int](addr tmp[]))
-proc update*(self: gen_qquickwindow_types.QQuickWindow, ): void =
 
+proc update*(self: gen_qquickwindow_types.QQuickWindow, ): void =
   fcQQuickWindow_update(self.h)
 
 proc releaseResources*(self: gen_qquickwindow_types.QQuickWindow, ): void =
-
   fcQQuickWindow_releaseResources(self.h)
 
-proc tr2*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring, c: cstring): string =
   let v_ms = fcQQuickWindow_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickWindow_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring, c: cstring): string =
   let v_ms = fcQQuickWindow_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qquickwindow_types.QQuickWindow, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickWindow_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc createTextureFromId3*(self: gen_qquickwindow_types.QQuickWindow, id: cuint, size: gen_qsize.QSize, options: cint): gen_qsgtexture.QSGTexture =
-
+proc createTextureFromId*(self: gen_qquickwindow_types.QQuickWindow, id: cuint, size: gen_qsize.QSize, options: cint): gen_qsgtexture.QSGTexture =
   gen_qsgtexture.QSGTexture(h: fcQQuickWindow_createTextureFromId3(self.h, id, size.h, cint(options)))
 
-proc createTextureFromNativeObject5*(self: gen_qquickwindow_types.QQuickWindow, typeVal: cint, nativeObjectPtr: pointer, nativeLayout: cint, size: gen_qsize.QSize, options: cint): gen_qsgtexture.QSGTexture =
-
+proc createTextureFromNativeObject*(self: gen_qquickwindow_types.QQuickWindow, typeVal: cint, nativeObjectPtr: pointer, nativeLayout: cint, size: gen_qsize.QSize, options: cint): gen_qsgtexture.QSGTexture =
   gen_qsgtexture.QSGTexture(h: fcQQuickWindow_createTextureFromNativeObject5(self.h, cint(typeVal), nativeObjectPtr, nativeLayout, size.h, cint(options)))
 
 proc QQuickWindowmetaObject*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQuickWindow_virtualbase_metaObject(self.h))
 
 type QQuickWindowmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -767,7 +684,6 @@ proc miqt_exec_callback_QQuickWindow_metaObject(self: ptr cQQuickWindow, slot: i
 
   virtualReturn.h
 proc QQuickWindowmetacast*(self: gen_qquickwindow_types.QQuickWindow, param1: cstring): pointer =
-
   fQQuickWindow_virtualbase_metacast(self.h, param1)
 
 type QQuickWindowmetacastProc* = proc(param1: cstring): pointer
@@ -787,7 +703,6 @@ proc miqt_exec_callback_QQuickWindow_metacast(self: ptr cQQuickWindow, slot: int
 
   virtualReturn
 proc QQuickWindowmetacall*(self: gen_qquickwindow_types.QQuickWindow, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQuickWindow_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQuickWindowmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -811,7 +726,6 @@ proc miqt_exec_callback_QQuickWindow_metacall(self: ptr cQQuickWindow, slot: int
 
   virtualReturn
 proc QQuickWindowfocusObject*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fQQuickWindow_virtualbase_focusObject(self.h))
 
 type QQuickWindowfocusObjectProc* = proc(): gen_qobject.QObject
@@ -829,7 +743,6 @@ proc miqt_exec_callback_QQuickWindow_focusObject(self: ptr cQQuickWindow, slot: 
 
   virtualReturn.h
 proc QQuickWindowaccessibleRoot*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fQQuickWindow_virtualbase_accessibleRoot(self.h))
 
 type QQuickWindowaccessibleRootProc* = proc(): gen_qaccessible.QAccessibleInterface
@@ -847,7 +760,6 @@ proc miqt_exec_callback_QQuickWindow_accessibleRoot(self: ptr cQQuickWindow, slo
 
   virtualReturn.h
 proc QQuickWindowexposeEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QExposeEvent): void =
-
   fQQuickWindow_virtualbase_exposeEvent(self.h, param1.h)
 
 type QQuickWindowexposeEventProc* = proc(param1: gen_qevent.QExposeEvent): void
@@ -865,7 +777,6 @@ proc miqt_exec_callback_QQuickWindow_exposeEvent(self: ptr cQQuickWindow, slot: 
 
   nimfunc[](slotval1)
 proc QQuickWindowresizeEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QResizeEvent): void =
-
   fQQuickWindow_virtualbase_resizeEvent(self.h, param1.h)
 
 type QQuickWindowresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -883,7 +794,6 @@ proc miqt_exec_callback_QQuickWindow_resizeEvent(self: ptr cQQuickWindow, slot: 
 
   nimfunc[](slotval1)
 proc QQuickWindowshowEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QShowEvent): void =
-
   fQQuickWindow_virtualbase_showEvent(self.h, param1.h)
 
 type QQuickWindowshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -901,7 +811,6 @@ proc miqt_exec_callback_QQuickWindow_showEvent(self: ptr cQQuickWindow, slot: in
 
   nimfunc[](slotval1)
 proc QQuickWindowhideEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QHideEvent): void =
-
   fQQuickWindow_virtualbase_hideEvent(self.h, param1.h)
 
 type QQuickWindowhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
@@ -919,7 +828,6 @@ proc miqt_exec_callback_QQuickWindow_hideEvent(self: ptr cQQuickWindow, slot: in
 
   nimfunc[](slotval1)
 proc QQuickWindowfocusInEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QFocusEvent): void =
-
   fQQuickWindow_virtualbase_focusInEvent(self.h, param1.h)
 
 type QQuickWindowfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -937,7 +845,6 @@ proc miqt_exec_callback_QQuickWindow_focusInEvent(self: ptr cQQuickWindow, slot:
 
   nimfunc[](slotval1)
 proc QQuickWindowfocusOutEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QFocusEvent): void =
-
   fQQuickWindow_virtualbase_focusOutEvent(self.h, param1.h)
 
 type QQuickWindowfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -955,7 +862,6 @@ proc miqt_exec_callback_QQuickWindow_focusOutEvent(self: ptr cQQuickWindow, slot
 
   nimfunc[](slotval1)
 proc QQuickWindowevent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qcoreevent.QEvent): bool =
-
   fQQuickWindow_virtualbase_event(self.h, param1.h)
 
 type QQuickWindoweventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -975,7 +881,6 @@ proc miqt_exec_callback_QQuickWindow_event(self: ptr cQQuickWindow, slot: int, p
 
   virtualReturn
 proc QQuickWindowkeyPressEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QKeyEvent): void =
-
   fQQuickWindow_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QQuickWindowkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -993,7 +898,6 @@ proc miqt_exec_callback_QQuickWindow_keyPressEvent(self: ptr cQQuickWindow, slot
 
   nimfunc[](slotval1)
 proc QQuickWindowkeyReleaseEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QKeyEvent): void =
-
   fQQuickWindow_virtualbase_keyReleaseEvent(self.h, param1.h)
 
 type QQuickWindowkeyReleaseEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -1011,7 +915,6 @@ proc miqt_exec_callback_QQuickWindow_keyReleaseEvent(self: ptr cQQuickWindow, sl
 
   nimfunc[](slotval1)
 proc QQuickWindowmousePressEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QMouseEvent): void =
-
   fQQuickWindow_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QQuickWindowmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -1029,7 +932,6 @@ proc miqt_exec_callback_QQuickWindow_mousePressEvent(self: ptr cQQuickWindow, sl
 
   nimfunc[](slotval1)
 proc QQuickWindowmouseReleaseEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QMouseEvent): void =
-
   fQQuickWindow_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QQuickWindowmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -1047,7 +949,6 @@ proc miqt_exec_callback_QQuickWindow_mouseReleaseEvent(self: ptr cQQuickWindow, 
 
   nimfunc[](slotval1)
 proc QQuickWindowmouseDoubleClickEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QMouseEvent): void =
-
   fQQuickWindow_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
 type QQuickWindowmouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -1065,7 +966,6 @@ proc miqt_exec_callback_QQuickWindow_mouseDoubleClickEvent(self: ptr cQQuickWind
 
   nimfunc[](slotval1)
 proc QQuickWindowmouseMoveEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QMouseEvent): void =
-
   fQQuickWindow_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QQuickWindowmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -1083,7 +983,6 @@ proc miqt_exec_callback_QQuickWindow_mouseMoveEvent(self: ptr cQQuickWindow, slo
 
   nimfunc[](slotval1)
 proc QQuickWindowwheelEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QWheelEvent): void =
-
   fQQuickWindow_virtualbase_wheelEvent(self.h, param1.h)
 
 type QQuickWindowwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -1101,7 +1000,6 @@ proc miqt_exec_callback_QQuickWindow_wheelEvent(self: ptr cQQuickWindow, slot: i
 
   nimfunc[](slotval1)
 proc QQuickWindowtabletEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QTabletEvent): void =
-
   fQQuickWindow_virtualbase_tabletEvent(self.h, param1.h)
 
 type QQuickWindowtabletEventProc* = proc(param1: gen_qevent.QTabletEvent): void
@@ -1119,7 +1017,6 @@ proc miqt_exec_callback_QQuickWindow_tabletEvent(self: ptr cQQuickWindow, slot: 
 
   nimfunc[](slotval1)
 proc QQuickWindowsurfaceType*(self: gen_qquickwindow_types.QQuickWindow, ): cint =
-
   cint(fQQuickWindow_virtualbase_surfaceType(self.h))
 
 type QQuickWindowsurfaceTypeProc* = proc(): cint
@@ -1137,7 +1034,6 @@ proc miqt_exec_callback_QQuickWindow_surfaceType(self: ptr cQQuickWindow, slot: 
 
   cint(virtualReturn)
 proc QQuickWindowformat*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qsurfaceformat.QSurfaceFormat =
-
   gen_qsurfaceformat.QSurfaceFormat(h: fQQuickWindow_virtualbase_format(self.h))
 
 type QQuickWindowformatProc* = proc(): gen_qsurfaceformat.QSurfaceFormat
@@ -1155,7 +1051,6 @@ proc miqt_exec_callback_QQuickWindow_format(self: ptr cQQuickWindow, slot: int):
 
   virtualReturn.h
 proc QQuickWindowsize*(self: gen_qquickwindow_types.QQuickWindow, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQQuickWindow_virtualbase_size(self.h))
 
 type QQuickWindowsizeProc* = proc(): gen_qsize.QSize
@@ -1173,7 +1068,6 @@ proc miqt_exec_callback_QQuickWindow_size(self: ptr cQQuickWindow, slot: int): p
 
   virtualReturn.h
 proc QQuickWindowmoveEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QMoveEvent): void =
-
   fQQuickWindow_virtualbase_moveEvent(self.h, param1.h)
 
 type QQuickWindowmoveEventProc* = proc(param1: gen_qevent.QMoveEvent): void
@@ -1191,7 +1085,6 @@ proc miqt_exec_callback_QQuickWindow_moveEvent(self: ptr cQQuickWindow, slot: in
 
   nimfunc[](slotval1)
 proc QQuickWindowtouchEvent*(self: gen_qquickwindow_types.QQuickWindow, param1: gen_qevent.QTouchEvent): void =
-
   fQQuickWindow_virtualbase_touchEvent(self.h, param1.h)
 
 type QQuickWindowtouchEventProc* = proc(param1: gen_qevent.QTouchEvent): void
@@ -1209,7 +1102,6 @@ proc miqt_exec_callback_QQuickWindow_touchEvent(self: ptr cQQuickWindow, slot: i
 
   nimfunc[](slotval1)
 proc QQuickWindownativeEvent*(self: gen_qquickwindow_types.QQuickWindow, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQQuickWindow_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QQuickWindownativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1236,7 +1128,6 @@ proc miqt_exec_callback_QQuickWindow_nativeEvent(self: ptr cQQuickWindow, slot: 
 
   virtualReturn
 proc QQuickWindoweventFilter*(self: gen_qquickwindow_types.QQuickWindow, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickWindow_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQuickWindoweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1258,7 +1149,6 @@ proc miqt_exec_callback_QQuickWindow_eventFilter(self: ptr cQQuickWindow, slot: 
 
   virtualReturn
 proc QQuickWindowtimerEvent*(self: gen_qquickwindow_types.QQuickWindow, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQuickWindow_virtualbase_timerEvent(self.h, event.h)
 
 type QQuickWindowtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1276,7 +1166,6 @@ proc miqt_exec_callback_QQuickWindow_timerEvent(self: ptr cQQuickWindow, slot: i
 
   nimfunc[](slotval1)
 proc QQuickWindowchildEvent*(self: gen_qquickwindow_types.QQuickWindow, event: gen_qcoreevent.QChildEvent): void =
-
   fQQuickWindow_virtualbase_childEvent(self.h, event.h)
 
 type QQuickWindowchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1294,7 +1183,6 @@ proc miqt_exec_callback_QQuickWindow_childEvent(self: ptr cQQuickWindow, slot: i
 
   nimfunc[](slotval1)
 proc QQuickWindowcustomEvent*(self: gen_qquickwindow_types.QQuickWindow, event: gen_qcoreevent.QEvent): void =
-
   fQQuickWindow_virtualbase_customEvent(self.h, event.h)
 
 type QQuickWindowcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1312,7 +1200,6 @@ proc miqt_exec_callback_QQuickWindow_customEvent(self: ptr cQQuickWindow, slot: 
 
   nimfunc[](slotval1)
 proc QQuickWindowconnectNotify*(self: gen_qquickwindow_types.QQuickWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickWindow_virtualbase_connectNotify(self.h, signal.h)
 
 type QQuickWindowconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1330,7 +1217,6 @@ proc miqt_exec_callback_QQuickWindow_connectNotify(self: ptr cQQuickWindow, slot
 
   nimfunc[](slotval1)
 proc QQuickWindowdisconnectNotify*(self: gen_qquickwindow_types.QQuickWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickWindow_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQuickWindowdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

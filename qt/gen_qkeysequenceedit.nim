@@ -195,119 +195,102 @@ proc fcQKeySequenceEdit_delete(self: pointer) {.importc: "QKeySequenceEdit_delet
 func init*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, h: ptr cQKeySequenceEdit): gen_qkeysequenceedit_types.QKeySequenceEdit =
   T(h: h)
 proc create*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, parent: gen_qwidget.QWidget): gen_qkeysequenceedit_types.QKeySequenceEdit =
-
   gen_qkeysequenceedit_types.QKeySequenceEdit.init(fcQKeySequenceEdit_new(parent.h))
+
 proc create*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qkeysequenceedit_types.QKeySequenceEdit =
-
   gen_qkeysequenceedit_types.QKeySequenceEdit.init(fcQKeySequenceEdit_new2())
-proc create2*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): gen_qkeysequenceedit_types.QKeySequenceEdit =
 
+proc create*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): gen_qkeysequenceedit_types.QKeySequenceEdit =
   gen_qkeysequenceedit_types.QKeySequenceEdit.init(fcQKeySequenceEdit_new3(keySequence.h))
+
 proc create*(T: type gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence, parent: gen_qwidget.QWidget): gen_qkeysequenceedit_types.QKeySequenceEdit =
-
   gen_qkeysequenceedit_types.QKeySequenceEdit.init(fcQKeySequenceEdit_new4(keySequence.h, parent.h))
-proc metaObject*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQKeySequenceEdit_metaObject(self.h))
 
 proc metacast*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cstring): pointer =
-
   fcQKeySequenceEdit_metacast(self.h, param1)
 
 proc metacall*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQKeySequenceEdit_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring): string =
-
   let v_ms = fcQKeySequenceEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring): string =
-
   let v_ms = fcQKeySequenceEdit_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc keySequence*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qkeysequence.QKeySequence =
-
   gen_qkeysequence.QKeySequence(h: fcQKeySequenceEdit_keySequence(self.h))
 
 proc setKeySequence*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): void =
-
   fcQKeySequenceEdit_setKeySequence(self.h, keySequence.h)
 
 proc clear*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): void =
-
   fcQKeySequenceEdit_clear(self.h)
 
 proc editingFinished*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): void =
-
   fcQKeySequenceEdit_editingFinished(self.h)
 
+type QKeySequenceEditeditingFinishedSlot* = proc()
 proc miqt_exec_callback_QKeySequenceEdit_editingFinished(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QKeySequenceEditeditingFinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc oneditingFinished*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc oneditingFinished*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditeditingFinishedSlot) =
+  var tmp = new QKeySequenceEditeditingFinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQKeySequenceEdit_connect_editingFinished(self.h, cast[int](addr tmp[]))
-proc keySequenceChanged*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): void =
 
+proc keySequenceChanged*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, keySequence: gen_qkeysequence.QKeySequence): void =
   fcQKeySequenceEdit_keySequenceChanged(self.h, keySequence.h)
 
+type QKeySequenceEditkeySequenceChangedSlot* = proc(keySequence: gen_qkeysequence.QKeySequence)
 proc miqt_exec_callback_QKeySequenceEdit_keySequenceChanged(slot: int, keySequence: pointer) {.exportc.} =
-  type Cb = proc(keySequence: gen_qkeysequence.QKeySequence)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QKeySequenceEditkeySequenceChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qkeysequence.QKeySequence(h: keySequence)
-
 
   nimfunc[](slotval1)
 
-proc onkeySequenceChanged*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: proc(keySequence: gen_qkeysequence.QKeySequence)) =
-  type Cb = proc(keySequence: gen_qkeysequence.QKeySequence)
-  var tmp = new Cb
+proc onkeySequenceChanged*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, slot: QKeySequenceEditkeySequenceChangedSlot) =
+  var tmp = new QKeySequenceEditkeySequenceChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQKeySequenceEdit_connect_keySequenceChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring): string =
   let v_ms = fcQKeySequenceEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQKeySequenceEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring): string =
   let v_ms = fcQKeySequenceEdit_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qkeysequenceedit_types.QKeySequenceEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQKeySequenceEdit_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QKeySequenceEditmetaObject*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQKeySequenceEdit_virtualbase_metaObject(self.h))
 
 type QKeySequenceEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -325,7 +308,6 @@ proc miqt_exec_callback_QKeySequenceEdit_metaObject(self: ptr cQKeySequenceEdit,
 
   virtualReturn.h
 proc QKeySequenceEditmetacast*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cstring): pointer =
-
   fQKeySequenceEdit_virtualbase_metacast(self.h, param1)
 
 type QKeySequenceEditmetacastProc* = proc(param1: cstring): pointer
@@ -345,7 +327,6 @@ proc miqt_exec_callback_QKeySequenceEdit_metacast(self: ptr cQKeySequenceEdit, s
 
   virtualReturn
 proc QKeySequenceEditmetacall*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fQKeySequenceEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QKeySequenceEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -369,7 +350,6 @@ proc miqt_exec_callback_QKeySequenceEdit_metacall(self: ptr cQKeySequenceEdit, s
 
   virtualReturn
 proc QKeySequenceEditevent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qcoreevent.QEvent): bool =
-
   fQKeySequenceEdit_virtualbase_event(self.h, param1.h)
 
 type QKeySequenceEditeventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -389,7 +369,6 @@ proc miqt_exec_callback_QKeySequenceEdit_event(self: ptr cQKeySequenceEdit, slot
 
   virtualReturn
 proc QKeySequenceEditkeyPressEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qevent.QKeyEvent): void =
-
   fQKeySequenceEdit_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QKeySequenceEditkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -407,7 +386,6 @@ proc miqt_exec_callback_QKeySequenceEdit_keyPressEvent(self: ptr cQKeySequenceEd
 
   nimfunc[](slotval1)
 proc QKeySequenceEditkeyReleaseEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qevent.QKeyEvent): void =
-
   fQKeySequenceEdit_virtualbase_keyReleaseEvent(self.h, param1.h)
 
 type QKeySequenceEditkeyReleaseEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -425,7 +403,6 @@ proc miqt_exec_callback_QKeySequenceEdit_keyReleaseEvent(self: ptr cQKeySequence
 
   nimfunc[](slotval1)
 proc QKeySequenceEdittimerEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qcoreevent.QTimerEvent): void =
-
   fQKeySequenceEdit_virtualbase_timerEvent(self.h, param1.h)
 
 type QKeySequenceEdittimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
@@ -443,7 +420,6 @@ proc miqt_exec_callback_QKeySequenceEdit_timerEvent(self: ptr cQKeySequenceEdit,
 
   nimfunc[](slotval1)
 proc QKeySequenceEditdevType*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): cint =
-
   fQKeySequenceEdit_virtualbase_devType(self.h)
 
 type QKeySequenceEditdevTypeProc* = proc(): cint
@@ -461,7 +437,6 @@ proc miqt_exec_callback_QKeySequenceEdit_devType(self: ptr cQKeySequenceEdit, sl
 
   virtualReturn
 proc QKeySequenceEditsetVisible*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, visible: bool): void =
-
   fQKeySequenceEdit_virtualbase_setVisible(self.h, visible)
 
 type QKeySequenceEditsetVisibleProc* = proc(visible: bool): void
@@ -479,7 +454,6 @@ proc miqt_exec_callback_QKeySequenceEdit_setVisible(self: ptr cQKeySequenceEdit,
 
   nimfunc[](slotval1)
 proc QKeySequenceEditsizeHint*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQKeySequenceEdit_virtualbase_sizeHint(self.h))
 
 type QKeySequenceEditsizeHintProc* = proc(): gen_qsize.QSize
@@ -497,7 +471,6 @@ proc miqt_exec_callback_QKeySequenceEdit_sizeHint(self: ptr cQKeySequenceEdit, s
 
   virtualReturn.h
 proc QKeySequenceEditminimumSizeHint*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQKeySequenceEdit_virtualbase_minimumSizeHint(self.h))
 
 type QKeySequenceEditminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -515,7 +488,6 @@ proc miqt_exec_callback_QKeySequenceEdit_minimumSizeHint(self: ptr cQKeySequence
 
   virtualReturn.h
 proc QKeySequenceEditheightForWidth*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint): cint =
-
   fQKeySequenceEdit_virtualbase_heightForWidth(self.h, param1)
 
 type QKeySequenceEditheightForWidthProc* = proc(param1: cint): cint
@@ -535,7 +507,6 @@ proc miqt_exec_callback_QKeySequenceEdit_heightForWidth(self: ptr cQKeySequenceE
 
   virtualReturn
 proc QKeySequenceEdithasHeightForWidth*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): bool =
-
   fQKeySequenceEdit_virtualbase_hasHeightForWidth(self.h)
 
 type QKeySequenceEdithasHeightForWidthProc* = proc(): bool
@@ -553,7 +524,6 @@ proc miqt_exec_callback_QKeySequenceEdit_hasHeightForWidth(self: ptr cQKeySequen
 
   virtualReturn
 proc QKeySequenceEditpaintEngine*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQKeySequenceEdit_virtualbase_paintEngine(self.h))
 
 type QKeySequenceEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -571,7 +541,6 @@ proc miqt_exec_callback_QKeySequenceEdit_paintEngine(self: ptr cQKeySequenceEdit
 
   virtualReturn.h
 proc QKeySequenceEditmousePressEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
-
   fQKeySequenceEdit_virtualbase_mousePressEvent(self.h, event.h)
 
 type QKeySequenceEditmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -589,7 +558,6 @@ proc miqt_exec_callback_QKeySequenceEdit_mousePressEvent(self: ptr cQKeySequence
 
   nimfunc[](slotval1)
 proc QKeySequenceEditmouseReleaseEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
-
   fQKeySequenceEdit_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QKeySequenceEditmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -607,7 +575,6 @@ proc miqt_exec_callback_QKeySequenceEdit_mouseReleaseEvent(self: ptr cQKeySequen
 
   nimfunc[](slotval1)
 proc QKeySequenceEditmouseDoubleClickEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
-
   fQKeySequenceEdit_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QKeySequenceEditmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -625,7 +592,6 @@ proc miqt_exec_callback_QKeySequenceEdit_mouseDoubleClickEvent(self: ptr cQKeySe
 
   nimfunc[](slotval1)
 proc QKeySequenceEditmouseMoveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMouseEvent): void =
-
   fQKeySequenceEdit_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QKeySequenceEditmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -643,7 +609,6 @@ proc miqt_exec_callback_QKeySequenceEdit_mouseMoveEvent(self: ptr cQKeySequenceE
 
   nimfunc[](slotval1)
 proc QKeySequenceEditwheelEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QWheelEvent): void =
-
   fQKeySequenceEdit_virtualbase_wheelEvent(self.h, event.h)
 
 type QKeySequenceEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -661,7 +626,6 @@ proc miqt_exec_callback_QKeySequenceEdit_wheelEvent(self: ptr cQKeySequenceEdit,
 
   nimfunc[](slotval1)
 proc QKeySequenceEditfocusInEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QFocusEvent): void =
-
   fQKeySequenceEdit_virtualbase_focusInEvent(self.h, event.h)
 
 type QKeySequenceEditfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -679,7 +643,6 @@ proc miqt_exec_callback_QKeySequenceEdit_focusInEvent(self: ptr cQKeySequenceEdi
 
   nimfunc[](slotval1)
 proc QKeySequenceEditfocusOutEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QFocusEvent): void =
-
   fQKeySequenceEdit_virtualbase_focusOutEvent(self.h, event.h)
 
 type QKeySequenceEditfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -697,7 +660,6 @@ proc miqt_exec_callback_QKeySequenceEdit_focusOutEvent(self: ptr cQKeySequenceEd
 
   nimfunc[](slotval1)
 proc QKeySequenceEditenterEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qcoreevent.QEvent): void =
-
   fQKeySequenceEdit_virtualbase_enterEvent(self.h, event.h)
 
 type QKeySequenceEditenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -715,7 +677,6 @@ proc miqt_exec_callback_QKeySequenceEdit_enterEvent(self: ptr cQKeySequenceEdit,
 
   nimfunc[](slotval1)
 proc QKeySequenceEditleaveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qcoreevent.QEvent): void =
-
   fQKeySequenceEdit_virtualbase_leaveEvent(self.h, event.h)
 
 type QKeySequenceEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -733,7 +694,6 @@ proc miqt_exec_callback_QKeySequenceEdit_leaveEvent(self: ptr cQKeySequenceEdit,
 
   nimfunc[](slotval1)
 proc QKeySequenceEditpaintEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QPaintEvent): void =
-
   fQKeySequenceEdit_virtualbase_paintEvent(self.h, event.h)
 
 type QKeySequenceEditpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -751,7 +711,6 @@ proc miqt_exec_callback_QKeySequenceEdit_paintEvent(self: ptr cQKeySequenceEdit,
 
   nimfunc[](slotval1)
 proc QKeySequenceEditmoveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QMoveEvent): void =
-
   fQKeySequenceEdit_virtualbase_moveEvent(self.h, event.h)
 
 type QKeySequenceEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -769,7 +728,6 @@ proc miqt_exec_callback_QKeySequenceEdit_moveEvent(self: ptr cQKeySequenceEdit, 
 
   nimfunc[](slotval1)
 proc QKeySequenceEditresizeEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QResizeEvent): void =
-
   fQKeySequenceEdit_virtualbase_resizeEvent(self.h, event.h)
 
 type QKeySequenceEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -787,7 +745,6 @@ proc miqt_exec_callback_QKeySequenceEdit_resizeEvent(self: ptr cQKeySequenceEdit
 
   nimfunc[](slotval1)
 proc QKeySequenceEditcloseEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QCloseEvent): void =
-
   fQKeySequenceEdit_virtualbase_closeEvent(self.h, event.h)
 
 type QKeySequenceEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -805,7 +762,6 @@ proc miqt_exec_callback_QKeySequenceEdit_closeEvent(self: ptr cQKeySequenceEdit,
 
   nimfunc[](slotval1)
 proc QKeySequenceEditcontextMenuEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QContextMenuEvent): void =
-
   fQKeySequenceEdit_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QKeySequenceEditcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -823,7 +779,6 @@ proc miqt_exec_callback_QKeySequenceEdit_contextMenuEvent(self: ptr cQKeySequenc
 
   nimfunc[](slotval1)
 proc QKeySequenceEdittabletEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QTabletEvent): void =
-
   fQKeySequenceEdit_virtualbase_tabletEvent(self.h, event.h)
 
 type QKeySequenceEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -841,7 +796,6 @@ proc miqt_exec_callback_QKeySequenceEdit_tabletEvent(self: ptr cQKeySequenceEdit
 
   nimfunc[](slotval1)
 proc QKeySequenceEditactionEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QActionEvent): void =
-
   fQKeySequenceEdit_virtualbase_actionEvent(self.h, event.h)
 
 type QKeySequenceEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -859,7 +813,6 @@ proc miqt_exec_callback_QKeySequenceEdit_actionEvent(self: ptr cQKeySequenceEdit
 
   nimfunc[](slotval1)
 proc QKeySequenceEditdragEnterEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QDragEnterEvent): void =
-
   fQKeySequenceEdit_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QKeySequenceEditdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -877,7 +830,6 @@ proc miqt_exec_callback_QKeySequenceEdit_dragEnterEvent(self: ptr cQKeySequenceE
 
   nimfunc[](slotval1)
 proc QKeySequenceEditdragMoveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QDragMoveEvent): void =
-
   fQKeySequenceEdit_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QKeySequenceEditdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -895,7 +847,6 @@ proc miqt_exec_callback_QKeySequenceEdit_dragMoveEvent(self: ptr cQKeySequenceEd
 
   nimfunc[](slotval1)
 proc QKeySequenceEditdragLeaveEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QDragLeaveEvent): void =
-
   fQKeySequenceEdit_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QKeySequenceEditdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -913,7 +864,6 @@ proc miqt_exec_callback_QKeySequenceEdit_dragLeaveEvent(self: ptr cQKeySequenceE
 
   nimfunc[](slotval1)
 proc QKeySequenceEditdropEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QDropEvent): void =
-
   fQKeySequenceEdit_virtualbase_dropEvent(self.h, event.h)
 
 type QKeySequenceEditdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -931,7 +881,6 @@ proc miqt_exec_callback_QKeySequenceEdit_dropEvent(self: ptr cQKeySequenceEdit, 
 
   nimfunc[](slotval1)
 proc QKeySequenceEditshowEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QShowEvent): void =
-
   fQKeySequenceEdit_virtualbase_showEvent(self.h, event.h)
 
 type QKeySequenceEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -949,7 +898,6 @@ proc miqt_exec_callback_QKeySequenceEdit_showEvent(self: ptr cQKeySequenceEdit, 
 
   nimfunc[](slotval1)
 proc QKeySequenceEdithideEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qevent.QHideEvent): void =
-
   fQKeySequenceEdit_virtualbase_hideEvent(self.h, event.h)
 
 type QKeySequenceEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -967,7 +915,6 @@ proc miqt_exec_callback_QKeySequenceEdit_hideEvent(self: ptr cQKeySequenceEdit, 
 
   nimfunc[](slotval1)
 proc QKeySequenceEditnativeEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQKeySequenceEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QKeySequenceEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -994,7 +941,6 @@ proc miqt_exec_callback_QKeySequenceEdit_nativeEvent(self: ptr cQKeySequenceEdit
 
   virtualReturn
 proc QKeySequenceEditchangeEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qcoreevent.QEvent): void =
-
   fQKeySequenceEdit_virtualbase_changeEvent(self.h, param1.h)
 
 type QKeySequenceEditchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1012,7 +958,6 @@ proc miqt_exec_callback_QKeySequenceEdit_changeEvent(self: ptr cQKeySequenceEdit
 
   nimfunc[](slotval1)
 proc QKeySequenceEditmetric*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint): cint =
-
   fQKeySequenceEdit_virtualbase_metric(self.h, cint(param1))
 
 type QKeySequenceEditmetricProc* = proc(param1: cint): cint
@@ -1032,7 +977,6 @@ proc miqt_exec_callback_QKeySequenceEdit_metric(self: ptr cQKeySequenceEdit, slo
 
   virtualReturn
 proc QKeySequenceEditinitPainter*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, painter: gen_qpainter.QPainter): void =
-
   fQKeySequenceEdit_virtualbase_initPainter(self.h, painter.h)
 
 type QKeySequenceEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1050,7 +994,6 @@ proc miqt_exec_callback_QKeySequenceEdit_initPainter(self: ptr cQKeySequenceEdit
 
   nimfunc[](slotval1)
 proc QKeySequenceEditredirected*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQKeySequenceEdit_virtualbase_redirected(self.h, offset.h))
 
 type QKeySequenceEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1070,7 +1013,6 @@ proc miqt_exec_callback_QKeySequenceEdit_redirected(self: ptr cQKeySequenceEdit,
 
   virtualReturn.h
 proc QKeySequenceEditsharedPainter*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQKeySequenceEdit_virtualbase_sharedPainter(self.h))
 
 type QKeySequenceEditsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1088,7 +1030,6 @@ proc miqt_exec_callback_QKeySequenceEdit_sharedPainter(self: ptr cQKeySequenceEd
 
   virtualReturn.h
 proc QKeySequenceEditinputMethodEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: gen_qevent.QInputMethodEvent): void =
-
   fQKeySequenceEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QKeySequenceEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1106,7 +1047,6 @@ proc miqt_exec_callback_QKeySequenceEdit_inputMethodEvent(self: ptr cQKeySequenc
 
   nimfunc[](slotval1)
 proc QKeySequenceEditinputMethodQuery*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQKeySequenceEdit_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QKeySequenceEditinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1126,7 +1066,6 @@ proc miqt_exec_callback_QKeySequenceEdit_inputMethodQuery(self: ptr cQKeySequenc
 
   virtualReturn.h
 proc QKeySequenceEditfocusNextPrevChild*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, next: bool): bool =
-
   fQKeySequenceEdit_virtualbase_focusNextPrevChild(self.h, next)
 
 type QKeySequenceEditfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1146,7 +1085,6 @@ proc miqt_exec_callback_QKeySequenceEdit_focusNextPrevChild(self: ptr cQKeySeque
 
   virtualReturn
 proc QKeySequenceEditeventFilter*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQKeySequenceEdit_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QKeySequenceEditeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1168,7 +1106,6 @@ proc miqt_exec_callback_QKeySequenceEdit_eventFilter(self: ptr cQKeySequenceEdit
 
   virtualReturn
 proc QKeySequenceEditchildEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qcoreevent.QChildEvent): void =
-
   fQKeySequenceEdit_virtualbase_childEvent(self.h, event.h)
 
 type QKeySequenceEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1186,7 +1123,6 @@ proc miqt_exec_callback_QKeySequenceEdit_childEvent(self: ptr cQKeySequenceEdit,
 
   nimfunc[](slotval1)
 proc QKeySequenceEditcustomEvent*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, event: gen_qcoreevent.QEvent): void =
-
   fQKeySequenceEdit_virtualbase_customEvent(self.h, event.h)
 
 type QKeySequenceEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1204,7 +1140,6 @@ proc miqt_exec_callback_QKeySequenceEdit_customEvent(self: ptr cQKeySequenceEdit
 
   nimfunc[](slotval1)
 proc QKeySequenceEditconnectNotify*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQKeySequenceEdit_virtualbase_connectNotify(self.h, signal.h)
 
 type QKeySequenceEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1222,7 +1157,6 @@ proc miqt_exec_callback_QKeySequenceEdit_connectNotify(self: ptr cQKeySequenceEd
 
   nimfunc[](slotval1)
 proc QKeySequenceEditdisconnectNotify*(self: gen_qkeysequenceedit_types.QKeySequenceEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQKeySequenceEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QKeySequenceEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

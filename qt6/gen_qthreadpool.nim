@@ -110,130 +110,102 @@ proc fcQThreadPool_delete(self: pointer) {.importc: "QThreadPool_delete".}
 func init*(T: type gen_qthreadpool_types.QThreadPool, h: ptr cQThreadPool): gen_qthreadpool_types.QThreadPool =
   T(h: h)
 proc create*(T: type gen_qthreadpool_types.QThreadPool, ): gen_qthreadpool_types.QThreadPool =
-
   gen_qthreadpool_types.QThreadPool.init(fcQThreadPool_new())
+
 proc create*(T: type gen_qthreadpool_types.QThreadPool, parent: gen_qobject.QObject): gen_qthreadpool_types.QThreadPool =
-
   gen_qthreadpool_types.QThreadPool.init(fcQThreadPool_new2(parent.h))
-proc metaObject*(self: gen_qthreadpool_types.QThreadPool, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qthreadpool_types.QThreadPool, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQThreadPool_metaObject(self.h))
 
 proc metacast*(self: gen_qthreadpool_types.QThreadPool, param1: cstring): pointer =
-
   fcQThreadPool_metacast(self.h, param1)
 
 proc metacall*(self: gen_qthreadpool_types.QThreadPool, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQThreadPool_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qthreadpool_types.QThreadPool, s: cstring): string =
-
   let v_ms = fcQThreadPool_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc globalInstance*(_: type gen_qthreadpool_types.QThreadPool, ): gen_qthreadpool_types.QThreadPool =
-
   gen_qthreadpool_types.QThreadPool(h: fcQThreadPool_globalInstance())
 
 proc start*(self: gen_qthreadpool_types.QThreadPool, runnable: gen_qrunnable.QRunnable): void =
-
   fcQThreadPool_start(self.h, runnable.h)
 
 proc tryStart*(self: gen_qthreadpool_types.QThreadPool, runnable: gen_qrunnable.QRunnable): bool =
-
   fcQThreadPool_tryStart(self.h, runnable.h)
 
 proc startOnReservedThread*(self: gen_qthreadpool_types.QThreadPool, runnable: gen_qrunnable.QRunnable): void =
-
   fcQThreadPool_startOnReservedThread(self.h, runnable.h)
 
 proc expiryTimeout*(self: gen_qthreadpool_types.QThreadPool, ): cint =
-
   fcQThreadPool_expiryTimeout(self.h)
 
 proc setExpiryTimeout*(self: gen_qthreadpool_types.QThreadPool, expiryTimeout: cint): void =
-
   fcQThreadPool_setExpiryTimeout(self.h, expiryTimeout)
 
 proc maxThreadCount*(self: gen_qthreadpool_types.QThreadPool, ): cint =
-
   fcQThreadPool_maxThreadCount(self.h)
 
 proc setMaxThreadCount*(self: gen_qthreadpool_types.QThreadPool, maxThreadCount: cint): void =
-
   fcQThreadPool_setMaxThreadCount(self.h, maxThreadCount)
 
 proc activeThreadCount*(self: gen_qthreadpool_types.QThreadPool, ): cint =
-
   fcQThreadPool_activeThreadCount(self.h)
 
 proc setStackSize*(self: gen_qthreadpool_types.QThreadPool, stackSize: cuint): void =
-
   fcQThreadPool_setStackSize(self.h, stackSize)
 
 proc stackSize*(self: gen_qthreadpool_types.QThreadPool, ): cuint =
-
   fcQThreadPool_stackSize(self.h)
 
 proc setThreadPriority*(self: gen_qthreadpool_types.QThreadPool, priority: cint): void =
-
   fcQThreadPool_setThreadPriority(self.h, cint(priority))
 
 proc threadPriority*(self: gen_qthreadpool_types.QThreadPool, ): cint =
-
   cint(fcQThreadPool_threadPriority(self.h))
 
 proc reserveThread*(self: gen_qthreadpool_types.QThreadPool, ): void =
-
   fcQThreadPool_reserveThread(self.h)
 
 proc releaseThread*(self: gen_qthreadpool_types.QThreadPool, ): void =
-
   fcQThreadPool_releaseThread(self.h)
 
 proc waitForDone*(self: gen_qthreadpool_types.QThreadPool, ): bool =
-
   fcQThreadPool_waitForDone(self.h)
 
 proc clear*(self: gen_qthreadpool_types.QThreadPool, ): void =
-
   fcQThreadPool_clear(self.h)
 
 proc contains*(self: gen_qthreadpool_types.QThreadPool, thread: gen_qthread.QThread): bool =
-
   fcQThreadPool_contains(self.h, thread.h)
 
 proc tryTake*(self: gen_qthreadpool_types.QThreadPool, runnable: gen_qrunnable.QRunnable): bool =
-
   fcQThreadPool_tryTake(self.h, runnable.h)
 
-proc tr2*(_: type gen_qthreadpool_types.QThreadPool, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qthreadpool_types.QThreadPool, s: cstring, c: cstring): string =
   let v_ms = fcQThreadPool_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qthreadpool_types.QThreadPool, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qthreadpool_types.QThreadPool, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQThreadPool_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc start2*(self: gen_qthreadpool_types.QThreadPool, runnable: gen_qrunnable.QRunnable, priority: cint): void =
-
+proc start*(self: gen_qthreadpool_types.QThreadPool, runnable: gen_qrunnable.QRunnable, priority: cint): void =
   fcQThreadPool_start2(self.h, runnable.h, priority)
 
-proc waitForDone1*(self: gen_qthreadpool_types.QThreadPool, msecs: cint): bool =
-
+proc waitForDone*(self: gen_qthreadpool_types.QThreadPool, msecs: cint): bool =
   fcQThreadPool_waitForDone1(self.h, msecs)
 
 proc QThreadPoolmetaObject*(self: gen_qthreadpool_types.QThreadPool, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQThreadPool_virtualbase_metaObject(self.h))
 
 type QThreadPoolmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -251,7 +223,6 @@ proc miqt_exec_callback_QThreadPool_metaObject(self: ptr cQThreadPool, slot: int
 
   virtualReturn.h
 proc QThreadPoolmetacast*(self: gen_qthreadpool_types.QThreadPool, param1: cstring): pointer =
-
   fQThreadPool_virtualbase_metacast(self.h, param1)
 
 type QThreadPoolmetacastProc* = proc(param1: cstring): pointer
@@ -271,7 +242,6 @@ proc miqt_exec_callback_QThreadPool_metacast(self: ptr cQThreadPool, slot: int, 
 
   virtualReturn
 proc QThreadPoolmetacall*(self: gen_qthreadpool_types.QThreadPool, param1: cint, param2: cint, param3: pointer): cint =
-
   fQThreadPool_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QThreadPoolmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -295,7 +265,6 @@ proc miqt_exec_callback_QThreadPool_metacall(self: ptr cQThreadPool, slot: int, 
 
   virtualReturn
 proc QThreadPoolevent*(self: gen_qthreadpool_types.QThreadPool, event: gen_qcoreevent.QEvent): bool =
-
   fQThreadPool_virtualbase_event(self.h, event.h)
 
 type QThreadPooleventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -315,7 +284,6 @@ proc miqt_exec_callback_QThreadPool_event(self: ptr cQThreadPool, slot: int, eve
 
   virtualReturn
 proc QThreadPooleventFilter*(self: gen_qthreadpool_types.QThreadPool, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQThreadPool_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QThreadPooleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -337,7 +305,6 @@ proc miqt_exec_callback_QThreadPool_eventFilter(self: ptr cQThreadPool, slot: in
 
   virtualReturn
 proc QThreadPooltimerEvent*(self: gen_qthreadpool_types.QThreadPool, event: gen_qcoreevent.QTimerEvent): void =
-
   fQThreadPool_virtualbase_timerEvent(self.h, event.h)
 
 type QThreadPooltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -355,7 +322,6 @@ proc miqt_exec_callback_QThreadPool_timerEvent(self: ptr cQThreadPool, slot: int
 
   nimfunc[](slotval1)
 proc QThreadPoolchildEvent*(self: gen_qthreadpool_types.QThreadPool, event: gen_qcoreevent.QChildEvent): void =
-
   fQThreadPool_virtualbase_childEvent(self.h, event.h)
 
 type QThreadPoolchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -373,7 +339,6 @@ proc miqt_exec_callback_QThreadPool_childEvent(self: ptr cQThreadPool, slot: int
 
   nimfunc[](slotval1)
 proc QThreadPoolcustomEvent*(self: gen_qthreadpool_types.QThreadPool, event: gen_qcoreevent.QEvent): void =
-
   fQThreadPool_virtualbase_customEvent(self.h, event.h)
 
 type QThreadPoolcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -391,7 +356,6 @@ proc miqt_exec_callback_QThreadPool_customEvent(self: ptr cQThreadPool, slot: in
 
   nimfunc[](slotval1)
 proc QThreadPoolconnectNotify*(self: gen_qthreadpool_types.QThreadPool, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQThreadPool_virtualbase_connectNotify(self.h, signal.h)
 
 type QThreadPoolconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -409,7 +373,6 @@ proc miqt_exec_callback_QThreadPool_connectNotify(self: ptr cQThreadPool, slot: 
 
   nimfunc[](slotval1)
 proc QThreadPooldisconnectNotify*(self: gen_qthreadpool_types.QThreadPool, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQThreadPool_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QThreadPooldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

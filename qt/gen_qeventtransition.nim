@@ -102,89 +102,75 @@ proc fcQEventTransition_delete(self: pointer) {.importc: "QEventTransition_delet
 func init*(T: type gen_qeventtransition_types.QEventTransition, h: ptr cQEventTransition): gen_qeventtransition_types.QEventTransition =
   T(h: h)
 proc create*(T: type gen_qeventtransition_types.QEventTransition, ): gen_qeventtransition_types.QEventTransition =
-
   gen_qeventtransition_types.QEventTransition.init(fcQEventTransition_new())
+
 proc create*(T: type gen_qeventtransition_types.QEventTransition, objectVal: gen_qobject.QObject, typeVal: cint): gen_qeventtransition_types.QEventTransition =
-
   gen_qeventtransition_types.QEventTransition.init(fcQEventTransition_new2(objectVal.h, cint(typeVal)))
+
 proc create*(T: type gen_qeventtransition_types.QEventTransition, sourceState: gen_qstate.QState): gen_qeventtransition_types.QEventTransition =
-
   gen_qeventtransition_types.QEventTransition.init(fcQEventTransition_new3(sourceState.h))
+
 proc create*(T: type gen_qeventtransition_types.QEventTransition, objectVal: gen_qobject.QObject, typeVal: cint, sourceState: gen_qstate.QState): gen_qeventtransition_types.QEventTransition =
-
   gen_qeventtransition_types.QEventTransition.init(fcQEventTransition_new4(objectVal.h, cint(typeVal), sourceState.h))
-proc metaObject*(self: gen_qeventtransition_types.QEventTransition, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qeventtransition_types.QEventTransition, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQEventTransition_metaObject(self.h))
 
 proc metacast*(self: gen_qeventtransition_types.QEventTransition, param1: cstring): pointer =
-
   fcQEventTransition_metacast(self.h, param1)
 
 proc metacall*(self: gen_qeventtransition_types.QEventTransition, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQEventTransition_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qeventtransition_types.QEventTransition, s: cstring): string =
-
   let v_ms = fcQEventTransition_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qeventtransition_types.QEventTransition, s: cstring): string =
-
   let v_ms = fcQEventTransition_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc eventSource*(self: gen_qeventtransition_types.QEventTransition, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQEventTransition_eventSource(self.h))
 
 proc setEventSource*(self: gen_qeventtransition_types.QEventTransition, objectVal: gen_qobject.QObject): void =
-
   fcQEventTransition_setEventSource(self.h, objectVal.h)
 
 proc eventType*(self: gen_qeventtransition_types.QEventTransition, ): cint =
-
   cint(fcQEventTransition_eventType(self.h))
 
 proc setEventType*(self: gen_qeventtransition_types.QEventTransition, typeVal: cint): void =
-
   fcQEventTransition_setEventType(self.h, cint(typeVal))
 
-proc tr2*(_: type gen_qeventtransition_types.QEventTransition, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qeventtransition_types.QEventTransition, s: cstring, c: cstring): string =
   let v_ms = fcQEventTransition_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qeventtransition_types.QEventTransition, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qeventtransition_types.QEventTransition, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQEventTransition_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qeventtransition_types.QEventTransition, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qeventtransition_types.QEventTransition, s: cstring, c: cstring): string =
   let v_ms = fcQEventTransition_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qeventtransition_types.QEventTransition, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qeventtransition_types.QEventTransition, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQEventTransition_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QEventTransitionmetaObject*(self: gen_qeventtransition_types.QEventTransition, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQEventTransition_virtualbase_metaObject(self.h))
 
 type QEventTransitionmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -202,7 +188,6 @@ proc miqt_exec_callback_QEventTransition_metaObject(self: ptr cQEventTransition,
 
   virtualReturn.h
 proc QEventTransitionmetacast*(self: gen_qeventtransition_types.QEventTransition, param1: cstring): pointer =
-
   fQEventTransition_virtualbase_metacast(self.h, param1)
 
 type QEventTransitionmetacastProc* = proc(param1: cstring): pointer
@@ -222,7 +207,6 @@ proc miqt_exec_callback_QEventTransition_metacast(self: ptr cQEventTransition, s
 
   virtualReturn
 proc QEventTransitionmetacall*(self: gen_qeventtransition_types.QEventTransition, param1: cint, param2: cint, param3: pointer): cint =
-
   fQEventTransition_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QEventTransitionmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -246,7 +230,6 @@ proc miqt_exec_callback_QEventTransition_metacall(self: ptr cQEventTransition, s
 
   virtualReturn
 proc QEventTransitioneventTest*(self: gen_qeventtransition_types.QEventTransition, event: gen_qcoreevent.QEvent): bool =
-
   fQEventTransition_virtualbase_eventTest(self.h, event.h)
 
 type QEventTransitioneventTestProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -266,7 +249,6 @@ proc miqt_exec_callback_QEventTransition_eventTest(self: ptr cQEventTransition, 
 
   virtualReturn
 proc QEventTransitiononTransition*(self: gen_qeventtransition_types.QEventTransition, event: gen_qcoreevent.QEvent): void =
-
   fQEventTransition_virtualbase_onTransition(self.h, event.h)
 
 type QEventTransitiononTransitionProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -284,7 +266,6 @@ proc miqt_exec_callback_QEventTransition_onTransition(self: ptr cQEventTransitio
 
   nimfunc[](slotval1)
 proc QEventTransitionevent*(self: gen_qeventtransition_types.QEventTransition, e: gen_qcoreevent.QEvent): bool =
-
   fQEventTransition_virtualbase_event(self.h, e.h)
 
 type QEventTransitioneventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -304,7 +285,6 @@ proc miqt_exec_callback_QEventTransition_event(self: ptr cQEventTransition, slot
 
   virtualReturn
 proc QEventTransitioneventFilter*(self: gen_qeventtransition_types.QEventTransition, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQEventTransition_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QEventTransitioneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -326,7 +306,6 @@ proc miqt_exec_callback_QEventTransition_eventFilter(self: ptr cQEventTransition
 
   virtualReturn
 proc QEventTransitiontimerEvent*(self: gen_qeventtransition_types.QEventTransition, event: gen_qcoreevent.QTimerEvent): void =
-
   fQEventTransition_virtualbase_timerEvent(self.h, event.h)
 
 type QEventTransitiontimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -344,7 +323,6 @@ proc miqt_exec_callback_QEventTransition_timerEvent(self: ptr cQEventTransition,
 
   nimfunc[](slotval1)
 proc QEventTransitionchildEvent*(self: gen_qeventtransition_types.QEventTransition, event: gen_qcoreevent.QChildEvent): void =
-
   fQEventTransition_virtualbase_childEvent(self.h, event.h)
 
 type QEventTransitionchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -362,7 +340,6 @@ proc miqt_exec_callback_QEventTransition_childEvent(self: ptr cQEventTransition,
 
   nimfunc[](slotval1)
 proc QEventTransitioncustomEvent*(self: gen_qeventtransition_types.QEventTransition, event: gen_qcoreevent.QEvent): void =
-
   fQEventTransition_virtualbase_customEvent(self.h, event.h)
 
 type QEventTransitioncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -380,7 +357,6 @@ proc miqt_exec_callback_QEventTransition_customEvent(self: ptr cQEventTransition
 
   nimfunc[](slotval1)
 proc QEventTransitionconnectNotify*(self: gen_qeventtransition_types.QEventTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQEventTransition_virtualbase_connectNotify(self.h, signal.h)
 
 type QEventTransitionconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -398,7 +374,6 @@ proc miqt_exec_callback_QEventTransition_connectNotify(self: ptr cQEventTransiti
 
   nimfunc[](slotval1)
 proc QEventTransitiondisconnectNotify*(self: gen_qeventtransition_types.QEventTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQEventTransition_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QEventTransitiondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

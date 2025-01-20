@@ -169,79 +169,66 @@ proc fcQsciLexerFortran_delete(self: pointer) {.importc: "QsciLexerFortran_delet
 func init*(T: type gen_qscilexerfortran_types.QsciLexerFortran, h: ptr cQsciLexerFortran): gen_qscilexerfortran_types.QsciLexerFortran =
   T(h: h)
 proc create*(T: type gen_qscilexerfortran_types.QsciLexerFortran, ): gen_qscilexerfortran_types.QsciLexerFortran =
-
   gen_qscilexerfortran_types.QsciLexerFortran.init(fcQsciLexerFortran_new())
+
 proc create*(T: type gen_qscilexerfortran_types.QsciLexerFortran, parent: gen_qobject.QObject): gen_qscilexerfortran_types.QsciLexerFortran =
-
   gen_qscilexerfortran_types.QsciLexerFortran.init(fcQsciLexerFortran_new2(parent.h))
-proc metaObject*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerFortran_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerfortran_types.QsciLexerFortran, param1: cstring): pointer =
-
   fcQsciLexerFortran_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerfortran_types.QsciLexerFortran, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerFortran_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring): string =
-
   let v_ms = fcQsciLexerFortran_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring): string =
-
   let v_ms = fcQsciLexerFortran_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cstring =
-
   (fcQsciLexerFortran_language(self.h))
 
 proc lexer*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cstring =
-
   (fcQsciLexerFortran_lexer(self.h))
 
 proc keywords*(self: gen_qscilexerfortran_types.QsciLexerFortran, set: cint): cstring =
-
   (fcQsciLexerFortran_keywords(self.h, set))
 
-proc tr2*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerFortran_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerFortran_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerFortran_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexerfortran_types.QsciLexerFortran, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerFortran_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerFortranmetaObject*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerFortran_virtualbase_metaObject(self.h))
 
 type QsciLexerFortranmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -259,7 +246,6 @@ proc miqt_exec_callback_QsciLexerFortran_metaObject(self: ptr cQsciLexerFortran,
 
   virtualReturn.h
 proc QsciLexerFortranmetacast*(self: gen_qscilexerfortran_types.QsciLexerFortran, param1: cstring): pointer =
-
   fQsciLexerFortran_virtualbase_metacast(self.h, param1)
 
 type QsciLexerFortranmetacastProc* = proc(param1: cstring): pointer
@@ -279,7 +265,6 @@ proc miqt_exec_callback_QsciLexerFortran_metacast(self: ptr cQsciLexerFortran, s
 
   virtualReturn
 proc QsciLexerFortranmetacall*(self: gen_qscilexerfortran_types.QsciLexerFortran, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerFortran_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerFortranmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -303,7 +288,6 @@ proc miqt_exec_callback_QsciLexerFortran_metacall(self: ptr cQsciLexerFortran, s
 
   virtualReturn
 proc QsciLexerFortransetFoldCompact*(self: gen_qscilexerfortran_types.QsciLexerFortran, fold: bool): void =
-
   fQsciLexerFortran_virtualbase_setFoldCompact(self.h, fold)
 
 type QsciLexerFortransetFoldCompactProc* = proc(fold: bool): void
@@ -335,7 +319,6 @@ proc miqt_exec_callback_QsciLexerFortran_language(self: ptr cQsciLexerFortran, s
 
   virtualReturn
 proc QsciLexerFortranlexer*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cstring =
-
   (fQsciLexerFortran_virtualbase_lexer(self.h))
 
 type QsciLexerFortranlexerProc* = proc(): cstring
@@ -353,7 +336,6 @@ proc miqt_exec_callback_QsciLexerFortran_lexer(self: ptr cQsciLexerFortran, slot
 
   virtualReturn
 proc QsciLexerFortranlexerId*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cint =
-
   fQsciLexerFortran_virtualbase_lexerId(self.h)
 
 type QsciLexerFortranlexerIdProc* = proc(): cint
@@ -371,7 +353,6 @@ proc miqt_exec_callback_QsciLexerFortran_lexerId(self: ptr cQsciLexerFortran, sl
 
   virtualReturn
 proc QsciLexerFortranautoCompletionFillups*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cstring =
-
   (fQsciLexerFortran_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerFortranautoCompletionFillupsProc* = proc(): cstring
@@ -389,7 +370,6 @@ proc miqt_exec_callback_QsciLexerFortran_autoCompletionFillups(self: ptr cQsciLe
 
   virtualReturn
 proc QsciLexerFortranautoCompletionWordSeparators*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): seq[string] =
-
   var v_ma = fQsciLexerFortran_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -419,7 +399,6 @@ proc miqt_exec_callback_QsciLexerFortran_autoCompletionWordSeparators(self: ptr 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerFortranblockEnd*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: ptr cint): cstring =
-
   (fQsciLexerFortran_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerFortranblockEndProc* = proc(style: ptr cint): cstring
@@ -439,7 +418,6 @@ proc miqt_exec_callback_QsciLexerFortran_blockEnd(self: ptr cQsciLexerFortran, s
 
   virtualReturn
 proc QsciLexerFortranblockLookback*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cint =
-
   fQsciLexerFortran_virtualbase_blockLookback(self.h)
 
 type QsciLexerFortranblockLookbackProc* = proc(): cint
@@ -457,7 +435,6 @@ proc miqt_exec_callback_QsciLexerFortran_blockLookback(self: ptr cQsciLexerFortr
 
   virtualReturn
 proc QsciLexerFortranblockStart*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: ptr cint): cstring =
-
   (fQsciLexerFortran_virtualbase_blockStart(self.h, style))
 
 type QsciLexerFortranblockStartProc* = proc(style: ptr cint): cstring
@@ -477,7 +454,6 @@ proc miqt_exec_callback_QsciLexerFortran_blockStart(self: ptr cQsciLexerFortran,
 
   virtualReturn
 proc QsciLexerFortranblockStartKeyword*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: ptr cint): cstring =
-
   (fQsciLexerFortran_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerFortranblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -497,7 +473,6 @@ proc miqt_exec_callback_QsciLexerFortran_blockStartKeyword(self: ptr cQsciLexerF
 
   virtualReturn
 proc QsciLexerFortranbraceStyle*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cint =
-
   fQsciLexerFortran_virtualbase_braceStyle(self.h)
 
 type QsciLexerFortranbraceStyleProc* = proc(): cint
@@ -515,7 +490,6 @@ proc miqt_exec_callback_QsciLexerFortran_braceStyle(self: ptr cQsciLexerFortran,
 
   virtualReturn
 proc QsciLexerFortrancaseSensitive*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): bool =
-
   fQsciLexerFortran_virtualbase_caseSensitive(self.h)
 
 type QsciLexerFortrancaseSensitiveProc* = proc(): bool
@@ -533,7 +507,6 @@ proc miqt_exec_callback_QsciLexerFortran_caseSensitive(self: ptr cQsciLexerFortr
 
   virtualReturn
 proc QsciLexerFortrancolor*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerFortran_virtualbase_color(self.h, style))
 
 type QsciLexerFortrancolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -553,7 +526,6 @@ proc miqt_exec_callback_QsciLexerFortran_color(self: ptr cQsciLexerFortran, slot
 
   virtualReturn.h
 proc QsciLexerFortraneolFill*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): bool =
-
   fQsciLexerFortran_virtualbase_eolFill(self.h, style)
 
 type QsciLexerFortraneolFillProc* = proc(style: cint): bool
@@ -573,7 +545,6 @@ proc miqt_exec_callback_QsciLexerFortran_eolFill(self: ptr cQsciLexerFortran, sl
 
   virtualReturn
 proc QsciLexerFortranfont*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerFortran_virtualbase_font(self.h, style))
 
 type QsciLexerFortranfontProc* = proc(style: cint): gen_qfont.QFont
@@ -593,7 +564,6 @@ proc miqt_exec_callback_QsciLexerFortran_font(self: ptr cQsciLexerFortran, slot:
 
   virtualReturn.h
 proc QsciLexerFortranindentationGuideView*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cint =
-
   fQsciLexerFortran_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerFortranindentationGuideViewProc* = proc(): cint
@@ -611,7 +581,6 @@ proc miqt_exec_callback_QsciLexerFortran_indentationGuideView(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerFortrankeywords*(self: gen_qscilexerfortran_types.QsciLexerFortran, set: cint): cstring =
-
   (fQsciLexerFortran_virtualbase_keywords(self.h, set))
 
 type QsciLexerFortrankeywordsProc* = proc(set: cint): cstring
@@ -631,7 +600,6 @@ proc miqt_exec_callback_QsciLexerFortran_keywords(self: ptr cQsciLexerFortran, s
 
   virtualReturn
 proc QsciLexerFortrandefaultStyle*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cint =
-
   fQsciLexerFortran_virtualbase_defaultStyle(self.h)
 
 type QsciLexerFortrandefaultStyleProc* = proc(): cint
@@ -665,7 +633,6 @@ proc miqt_exec_callback_QsciLexerFortran_description(self: ptr cQsciLexerFortran
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerFortranpaper*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerFortran_virtualbase_paper(self.h, style))
 
 type QsciLexerFortranpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -684,12 +651,11 @@ proc miqt_exec_callback_QsciLexerFortran_paper(self: ptr cQsciLexerFortran, slot
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerFortrandefaultColorWithStyle*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerFortrandefaultColor*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerFortran_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerFortrandefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerfortran_types.QsciLexerFortran, slot: QsciLexerFortrandefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerfortran_types.QsciLexerFortran, slot: QsciLexerFortrandefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerFortrandefaultColorWithStyleProc
   tmp[] = slot
@@ -705,7 +671,6 @@ proc miqt_exec_callback_QsciLexerFortran_defaultColorWithStyle(self: ptr cQsciLe
 
   virtualReturn.h
 proc QsciLexerFortrandefaultEolFill*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): bool =
-
   fQsciLexerFortran_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerFortrandefaultEolFillProc* = proc(style: cint): bool
@@ -724,12 +689,11 @@ proc miqt_exec_callback_QsciLexerFortran_defaultEolFill(self: ptr cQsciLexerFort
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerFortrandefaultFontWithStyle*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): gen_qfont.QFont =
-
+proc QsciLexerFortrandefaultFont*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerFortran_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerFortrandefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerfortran_types.QsciLexerFortran, slot: QsciLexerFortrandefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerfortran_types.QsciLexerFortran, slot: QsciLexerFortrandefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerFortrandefaultFontWithStyleProc
   tmp[] = slot
@@ -744,12 +708,11 @@ proc miqt_exec_callback_QsciLexerFortran_defaultFontWithStyle(self: ptr cQsciLex
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerFortrandefaultPaperWithStyle*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerFortrandefaultPaper*(self: gen_qscilexerfortran_types.QsciLexerFortran, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerFortran_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerFortrandefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerfortran_types.QsciLexerFortran, slot: QsciLexerFortrandefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerfortran_types.QsciLexerFortran, slot: QsciLexerFortrandefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerFortrandefaultPaperWithStyleProc
   tmp[] = slot
@@ -765,7 +728,6 @@ proc miqt_exec_callback_QsciLexerFortran_defaultPaperWithStyle(self: ptr cQsciLe
 
   virtualReturn.h
 proc QsciLexerFortransetEditor*(self: gen_qscilexerfortran_types.QsciLexerFortran, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerFortran_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerFortransetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -783,7 +745,6 @@ proc miqt_exec_callback_QsciLexerFortran_setEditor(self: ptr cQsciLexerFortran, 
 
   nimfunc[](slotval1)
 proc QsciLexerFortranrefreshProperties*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): void =
-
   fQsciLexerFortran_virtualbase_refreshProperties(self.h)
 
 type QsciLexerFortranrefreshPropertiesProc* = proc(): void
@@ -799,7 +760,6 @@ proc miqt_exec_callback_QsciLexerFortran_refreshProperties(self: ptr cQsciLexerF
 
   nimfunc[]()
 proc QsciLexerFortranstyleBitsNeeded*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cint =
-
   fQsciLexerFortran_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerFortranstyleBitsNeededProc* = proc(): cint
@@ -817,7 +777,6 @@ proc miqt_exec_callback_QsciLexerFortran_styleBitsNeeded(self: ptr cQsciLexerFor
 
   virtualReturn
 proc QsciLexerFortranwordCharacters*(self: gen_qscilexerfortran_types.QsciLexerFortran, ): cstring =
-
   (fQsciLexerFortran_virtualbase_wordCharacters(self.h))
 
 type QsciLexerFortranwordCharactersProc* = proc(): cstring
@@ -835,7 +794,6 @@ proc miqt_exec_callback_QsciLexerFortran_wordCharacters(self: ptr cQsciLexerFort
 
   virtualReturn
 proc QsciLexerFortransetAutoIndentStyle*(self: gen_qscilexerfortran_types.QsciLexerFortran, autoindentstyle: cint): void =
-
   fQsciLexerFortran_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerFortransetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -853,7 +811,6 @@ proc miqt_exec_callback_QsciLexerFortran_setAutoIndentStyle(self: ptr cQsciLexer
 
   nimfunc[](slotval1)
 proc QsciLexerFortransetColor*(self: gen_qscilexerfortran_types.QsciLexerFortran, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerFortran_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerFortransetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -873,7 +830,6 @@ proc miqt_exec_callback_QsciLexerFortran_setColor(self: ptr cQsciLexerFortran, s
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerFortransetEolFill*(self: gen_qscilexerfortran_types.QsciLexerFortran, eoffill: bool, style: cint): void =
-
   fQsciLexerFortran_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerFortransetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -893,7 +849,6 @@ proc miqt_exec_callback_QsciLexerFortran_setEolFill(self: ptr cQsciLexerFortran,
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerFortransetFont*(self: gen_qscilexerfortran_types.QsciLexerFortran, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerFortran_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerFortransetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -913,7 +868,6 @@ proc miqt_exec_callback_QsciLexerFortran_setFont(self: ptr cQsciLexerFortran, sl
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerFortransetPaper*(self: gen_qscilexerfortran_types.QsciLexerFortran, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerFortran_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerFortransetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -933,7 +887,6 @@ proc miqt_exec_callback_QsciLexerFortran_setPaper(self: ptr cQsciLexerFortran, s
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerFortranreadProperties*(self: gen_qscilexerfortran_types.QsciLexerFortran, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerFortran_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerFortranreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -958,7 +911,6 @@ proc miqt_exec_callback_QsciLexerFortran_readProperties(self: ptr cQsciLexerFort
 
   virtualReturn
 proc QsciLexerFortranwriteProperties*(self: gen_qscilexerfortran_types.QsciLexerFortran, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerFortran_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerFortranwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -983,7 +935,6 @@ proc miqt_exec_callback_QsciLexerFortran_writeProperties(self: ptr cQsciLexerFor
 
   virtualReturn
 proc QsciLexerFortranevent*(self: gen_qscilexerfortran_types.QsciLexerFortran, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerFortran_virtualbase_event(self.h, event.h)
 
 type QsciLexerFortraneventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1003,7 +954,6 @@ proc miqt_exec_callback_QsciLexerFortran_event(self: ptr cQsciLexerFortran, slot
 
   virtualReturn
 proc QsciLexerFortraneventFilter*(self: gen_qscilexerfortran_types.QsciLexerFortran, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerFortran_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerFortraneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1025,7 +975,6 @@ proc miqt_exec_callback_QsciLexerFortran_eventFilter(self: ptr cQsciLexerFortran
 
   virtualReturn
 proc QsciLexerFortrantimerEvent*(self: gen_qscilexerfortran_types.QsciLexerFortran, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerFortran_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerFortrantimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1043,7 +992,6 @@ proc miqt_exec_callback_QsciLexerFortran_timerEvent(self: ptr cQsciLexerFortran,
 
   nimfunc[](slotval1)
 proc QsciLexerFortranchildEvent*(self: gen_qscilexerfortran_types.QsciLexerFortran, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerFortran_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerFortranchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1061,7 +1009,6 @@ proc miqt_exec_callback_QsciLexerFortran_childEvent(self: ptr cQsciLexerFortran,
 
   nimfunc[](slotval1)
 proc QsciLexerFortrancustomEvent*(self: gen_qscilexerfortran_types.QsciLexerFortran, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerFortran_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerFortrancustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1079,7 +1026,6 @@ proc miqt_exec_callback_QsciLexerFortran_customEvent(self: ptr cQsciLexerFortran
 
   nimfunc[](slotval1)
 proc QsciLexerFortranconnectNotify*(self: gen_qscilexerfortran_types.QsciLexerFortran, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerFortran_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerFortranconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1097,7 +1043,6 @@ proc miqt_exec_callback_QsciLexerFortran_connectNotify(self: ptr cQsciLexerFortr
 
   nimfunc[](slotval1)
 proc QsciLexerFortrandisconnectNotify*(self: gen_qscilexerfortran_types.QsciLexerFortran, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerFortran_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerFortrandisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -97,55 +97,46 @@ proc fcQQmlFileSelector_delete(self: pointer) {.importc: "QQmlFileSelector_delet
 func init*(T: type gen_qqmlfileselector_types.QQmlFileSelector, h: ptr cQQmlFileSelector): gen_qqmlfileselector_types.QQmlFileSelector =
   T(h: h)
 proc create*(T: type gen_qqmlfileselector_types.QQmlFileSelector, engine: gen_qqmlengine.QQmlEngine): gen_qqmlfileselector_types.QQmlFileSelector =
-
   gen_qqmlfileselector_types.QQmlFileSelector.init(fcQQmlFileSelector_new(engine.h))
+
 proc create*(T: type gen_qqmlfileselector_types.QQmlFileSelector, engine: gen_qqmlengine.QQmlEngine, parent: gen_qobject.QObject): gen_qqmlfileselector_types.QQmlFileSelector =
-
   gen_qqmlfileselector_types.QQmlFileSelector.init(fcQQmlFileSelector_new2(engine.h, parent.h))
-proc metaObject*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQmlFileSelector_metaObject(self.h))
 
 proc metacast*(self: gen_qqmlfileselector_types.QQmlFileSelector, param1: cstring): pointer =
-
   fcQQmlFileSelector_metacast(self.h, param1)
 
 proc metacall*(self: gen_qqmlfileselector_types.QQmlFileSelector, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQmlFileSelector_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring): string =
-
   let v_ms = fcQQmlFileSelector_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring): string =
-
   let v_ms = fcQQmlFileSelector_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc selector*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qfileselector.QFileSelector =
-
   gen_qfileselector.QFileSelector(h: fcQQmlFileSelector_selector(self.h))
 
 proc setSelector*(self: gen_qqmlfileselector_types.QQmlFileSelector, selector: gen_qfileselector.QFileSelector): void =
-
   fcQQmlFileSelector_setSelector(self.h, selector.h)
 
 proc setExtraSelectors*(self: gen_qqmlfileselector_types.QQmlFileSelector, strings: seq[string]): void =
-
   var strings_CArray = newSeq[struct_miqt_string](len(strings))
   for i in 0..<len(strings):
     strings_CArray[i] = struct_miqt_string(data: strings[i], len: csize_t(len(strings[i])))
 
   fcQQmlFileSelector_setExtraSelectors(self.h, struct_miqt_array(len: csize_t(len(strings)), data: if len(strings) == 0: nil else: addr(strings_CArray[0])))
 
-proc setExtraSelectorsWithStrings*(self: gen_qqmlfileselector_types.QQmlFileSelector, strings: seq[string]): void =
-
+proc setExtraSelectors2*(self: gen_qqmlfileselector_types.QQmlFileSelector, strings: seq[string]): void =
   var strings_CArray = newSeq[struct_miqt_string](len(strings))
   for i in 0..<len(strings):
     strings_CArray[i] = struct_miqt_string(data: strings[i], len: csize_t(len(strings[i])))
@@ -153,39 +144,33 @@ proc setExtraSelectorsWithStrings*(self: gen_qqmlfileselector_types.QQmlFileSele
   fcQQmlFileSelector_setExtraSelectorsWithStrings(self.h, struct_miqt_array(len: csize_t(len(strings)), data: if len(strings) == 0: nil else: addr(strings_CArray[0])))
 
 proc get*(_: type gen_qqmlfileselector_types.QQmlFileSelector, param1: gen_qqmlengine.QQmlEngine): gen_qqmlfileselector_types.QQmlFileSelector =
-
   gen_qqmlfileselector_types.QQmlFileSelector(h: fcQQmlFileSelector_get(param1.h))
 
-proc tr2*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c: cstring): string =
   let v_ms = fcQQmlFileSelector_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQmlFileSelector_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c: cstring): string =
   let v_ms = fcQQmlFileSelector_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qqmlfileselector_types.QQmlFileSelector, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQmlFileSelector_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QQmlFileSelectormetaObject*(self: gen_qqmlfileselector_types.QQmlFileSelector, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQmlFileSelector_virtualbase_metaObject(self.h))
 
 type QQmlFileSelectormetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -203,7 +188,6 @@ proc miqt_exec_callback_QQmlFileSelector_metaObject(self: ptr cQQmlFileSelector,
 
   virtualReturn.h
 proc QQmlFileSelectormetacast*(self: gen_qqmlfileselector_types.QQmlFileSelector, param1: cstring): pointer =
-
   fQQmlFileSelector_virtualbase_metacast(self.h, param1)
 
 type QQmlFileSelectormetacastProc* = proc(param1: cstring): pointer
@@ -223,7 +207,6 @@ proc miqt_exec_callback_QQmlFileSelector_metacast(self: ptr cQQmlFileSelector, s
 
   virtualReturn
 proc QQmlFileSelectormetacall*(self: gen_qqmlfileselector_types.QQmlFileSelector, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQmlFileSelector_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQmlFileSelectormetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -247,7 +230,6 @@ proc miqt_exec_callback_QQmlFileSelector_metacall(self: ptr cQQmlFileSelector, s
 
   virtualReturn
 proc QQmlFileSelectorevent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent.QEvent): bool =
-
   fQQmlFileSelector_virtualbase_event(self.h, event.h)
 
 type QQmlFileSelectoreventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -267,7 +249,6 @@ proc miqt_exec_callback_QQmlFileSelector_event(self: ptr cQQmlFileSelector, slot
 
   virtualReturn
 proc QQmlFileSelectoreventFilter*(self: gen_qqmlfileselector_types.QQmlFileSelector, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQmlFileSelector_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQmlFileSelectoreventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -289,7 +270,6 @@ proc miqt_exec_callback_QQmlFileSelector_eventFilter(self: ptr cQQmlFileSelector
 
   virtualReturn
 proc QQmlFileSelectortimerEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQmlFileSelector_virtualbase_timerEvent(self.h, event.h)
 
 type QQmlFileSelectortimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -307,7 +287,6 @@ proc miqt_exec_callback_QQmlFileSelector_timerEvent(self: ptr cQQmlFileSelector,
 
   nimfunc[](slotval1)
 proc QQmlFileSelectorchildEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent.QChildEvent): void =
-
   fQQmlFileSelector_virtualbase_childEvent(self.h, event.h)
 
 type QQmlFileSelectorchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -325,7 +304,6 @@ proc miqt_exec_callback_QQmlFileSelector_childEvent(self: ptr cQQmlFileSelector,
 
   nimfunc[](slotval1)
 proc QQmlFileSelectorcustomEvent*(self: gen_qqmlfileselector_types.QQmlFileSelector, event: gen_qcoreevent.QEvent): void =
-
   fQQmlFileSelector_virtualbase_customEvent(self.h, event.h)
 
 type QQmlFileSelectorcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -343,7 +321,6 @@ proc miqt_exec_callback_QQmlFileSelector_customEvent(self: ptr cQQmlFileSelector
 
   nimfunc[](slotval1)
 proc QQmlFileSelectorconnectNotify*(self: gen_qqmlfileselector_types.QQmlFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQmlFileSelector_virtualbase_connectNotify(self.h, signal.h)
 
 type QQmlFileSelectorconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -361,7 +338,6 @@ proc miqt_exec_callback_QQmlFileSelector_connectNotify(self: ptr cQQmlFileSelect
 
   nimfunc[](slotval1)
 proc QQmlFileSelectordisconnectNotify*(self: gen_qqmlfileselector_types.QQmlFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQmlFileSelector_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQmlFileSelectordisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

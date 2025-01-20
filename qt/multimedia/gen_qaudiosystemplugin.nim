@@ -105,7 +105,6 @@ proc fcQAudioSystemPlugin_delete(self: pointer) {.importc: "QAudioSystemPlugin_d
 func init*(T: type gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface, h: ptr cQAudioSystemFactoryInterface): gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface =
   T(h: h)
 proc availableDevices*(self: gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface, param1: cint): seq[seq[byte]] =
-
   var v_ma = fcQAudioSystemFactoryInterface_availableDevices(self.h, cint(param1))
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -117,19 +116,15 @@ proc availableDevices*(self: gen_qaudiosystemplugin_types.QAudioSystemFactoryInt
   vx_ret
 
 proc createInput*(self: gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface, device: seq[byte]): gen_qaudiosystem.QAbstractAudioInput =
-
   gen_qaudiosystem.QAbstractAudioInput(h: fcQAudioSystemFactoryInterface_createInput(self.h, struct_miqt_string(data: cast[cstring](if len(device) == 0: nil else: unsafeAddr device[0]), len: csize_t(len(device)))))
 
 proc createOutput*(self: gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface, device: seq[byte]): gen_qaudiosystem.QAbstractAudioOutput =
-
   gen_qaudiosystem.QAbstractAudioOutput(h: fcQAudioSystemFactoryInterface_createOutput(self.h, struct_miqt_string(data: cast[cstring](if len(device) == 0: nil else: unsafeAddr device[0]), len: csize_t(len(device)))))
 
 proc createDeviceInfo*(self: gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface, device: seq[byte], mode: cint): gen_qaudiosystem.QAbstractAudioDeviceInfo =
-
   gen_qaudiosystem.QAbstractAudioDeviceInfo(h: fcQAudioSystemFactoryInterface_createDeviceInfo(self.h, struct_miqt_string(data: cast[cstring](if len(device) == 0: nil else: unsafeAddr device[0]), len: csize_t(len(device))), cint(mode)))
 
 proc operatorAssign*(self: gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface, param1: gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface): void =
-
   fcQAudioSystemFactoryInterface_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface) =
@@ -138,39 +133,33 @@ proc delete*(self: gen_qaudiosystemplugin_types.QAudioSystemFactoryInterface) =
 func init*(T: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, h: ptr cQAudioSystemPlugin): gen_qaudiosystemplugin_types.QAudioSystemPlugin =
   T(h: h)
 proc create*(T: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, ): gen_qaudiosystemplugin_types.QAudioSystemPlugin =
-
   gen_qaudiosystemplugin_types.QAudioSystemPlugin.init(fcQAudioSystemPlugin_new())
+
 proc create*(T: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, parent: gen_qobject.QObject): gen_qaudiosystemplugin_types.QAudioSystemPlugin =
-
   gen_qaudiosystemplugin_types.QAudioSystemPlugin.init(fcQAudioSystemPlugin_new2(parent.h))
-proc metaObject*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioSystemPlugin_metaObject(self.h))
 
 proc metacast*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, param1: cstring): pointer =
-
   fcQAudioSystemPlugin_metacast(self.h, param1)
 
 proc metacall*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAudioSystemPlugin_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring): string =
-
   let v_ms = fcQAudioSystemPlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring): string =
-
   let v_ms = fcQAudioSystemPlugin_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc availableDevices*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, param1: cint): seq[seq[byte]] =
-
   var v_ma = fcQAudioSystemPlugin_availableDevices(self.h, cint(param1))
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -182,47 +171,39 @@ proc availableDevices*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, pa
   vx_ret
 
 proc createInput*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, device: seq[byte]): gen_qaudiosystem.QAbstractAudioInput =
-
   gen_qaudiosystem.QAbstractAudioInput(h: fcQAudioSystemPlugin_createInput(self.h, struct_miqt_string(data: cast[cstring](if len(device) == 0: nil else: unsafeAddr device[0]), len: csize_t(len(device)))))
 
 proc createOutput*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, device: seq[byte]): gen_qaudiosystem.QAbstractAudioOutput =
-
   gen_qaudiosystem.QAbstractAudioOutput(h: fcQAudioSystemPlugin_createOutput(self.h, struct_miqt_string(data: cast[cstring](if len(device) == 0: nil else: unsafeAddr device[0]), len: csize_t(len(device)))))
 
 proc createDeviceInfo*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, device: seq[byte], mode: cint): gen_qaudiosystem.QAbstractAudioDeviceInfo =
-
   gen_qaudiosystem.QAbstractAudioDeviceInfo(h: fcQAudioSystemPlugin_createDeviceInfo(self.h, struct_miqt_string(data: cast[cstring](if len(device) == 0: nil else: unsafeAddr device[0]), len: csize_t(len(device))), cint(mode)))
 
-proc tr2*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQAudioSystemPlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAudioSystemPlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQAudioSystemPlugin_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qaudiosystemplugin_types.QAudioSystemPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAudioSystemPlugin_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QAudioSystemPluginmetaObject*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQAudioSystemPlugin_virtualbase_metaObject(self.h))
 
 type QAudioSystemPluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -240,7 +221,6 @@ proc miqt_exec_callback_QAudioSystemPlugin_metaObject(self: ptr cQAudioSystemPlu
 
   virtualReturn.h
 proc QAudioSystemPluginmetacast*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, param1: cstring): pointer =
-
   fQAudioSystemPlugin_virtualbase_metacast(self.h, param1)
 
 type QAudioSystemPluginmetacastProc* = proc(param1: cstring): pointer
@@ -260,7 +240,6 @@ proc miqt_exec_callback_QAudioSystemPlugin_metacast(self: ptr cQAudioSystemPlugi
 
   virtualReturn
 proc QAudioSystemPluginmetacall*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAudioSystemPlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAudioSystemPluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -363,7 +342,6 @@ proc miqt_exec_callback_QAudioSystemPlugin_createDeviceInfo(self: ptr cQAudioSys
 
   virtualReturn.h
 proc QAudioSystemPluginevent*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioSystemPlugin_virtualbase_event(self.h, event.h)
 
 type QAudioSystemPlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -383,7 +361,6 @@ proc miqt_exec_callback_QAudioSystemPlugin_event(self: ptr cQAudioSystemPlugin, 
 
   virtualReturn
 proc QAudioSystemPlugineventFilter*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioSystemPlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAudioSystemPlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -405,7 +382,6 @@ proc miqt_exec_callback_QAudioSystemPlugin_eventFilter(self: ptr cQAudioSystemPl
 
   virtualReturn
 proc QAudioSystemPlugintimerEvent*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAudioSystemPlugin_virtualbase_timerEvent(self.h, event.h)
 
 type QAudioSystemPlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -423,7 +399,6 @@ proc miqt_exec_callback_QAudioSystemPlugin_timerEvent(self: ptr cQAudioSystemPlu
 
   nimfunc[](slotval1)
 proc QAudioSystemPluginchildEvent*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, event: gen_qcoreevent.QChildEvent): void =
-
   fQAudioSystemPlugin_virtualbase_childEvent(self.h, event.h)
 
 type QAudioSystemPluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -441,7 +416,6 @@ proc miqt_exec_callback_QAudioSystemPlugin_childEvent(self: ptr cQAudioSystemPlu
 
   nimfunc[](slotval1)
 proc QAudioSystemPlugincustomEvent*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, event: gen_qcoreevent.QEvent): void =
-
   fQAudioSystemPlugin_virtualbase_customEvent(self.h, event.h)
 
 type QAudioSystemPlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -459,7 +433,6 @@ proc miqt_exec_callback_QAudioSystemPlugin_customEvent(self: ptr cQAudioSystemPl
 
   nimfunc[](slotval1)
 proc QAudioSystemPluginconnectNotify*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioSystemPlugin_virtualbase_connectNotify(self.h, signal.h)
 
 type QAudioSystemPluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -477,7 +450,6 @@ proc miqt_exec_callback_QAudioSystemPlugin_connectNotify(self: ptr cQAudioSystem
 
   nimfunc[](slotval1)
 proc QAudioSystemPlugindisconnectNotify*(self: gen_qaudiosystemplugin_types.QAudioSystemPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioSystemPlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAudioSystemPlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

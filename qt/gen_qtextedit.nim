@@ -361,306 +361,240 @@ proc fcQTextEditExtraSelection_delete(self: pointer) {.importc: "QTextEdit__Extr
 func init*(T: type gen_qtextedit_types.QTextEdit, h: ptr cQTextEdit): gen_qtextedit_types.QTextEdit =
   T(h: h)
 proc create*(T: type gen_qtextedit_types.QTextEdit, parent: gen_qwidget.QWidget): gen_qtextedit_types.QTextEdit =
-
   gen_qtextedit_types.QTextEdit.init(fcQTextEdit_new(parent.h))
+
 proc create*(T: type gen_qtextedit_types.QTextEdit, ): gen_qtextedit_types.QTextEdit =
-
   gen_qtextedit_types.QTextEdit.init(fcQTextEdit_new2())
+
 proc create*(T: type gen_qtextedit_types.QTextEdit, text: string): gen_qtextedit_types.QTextEdit =
-
   gen_qtextedit_types.QTextEdit.init(fcQTextEdit_new3(struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qtextedit_types.QTextEdit, text: string, parent: gen_qwidget.QWidget): gen_qtextedit_types.QTextEdit =
-
   gen_qtextedit_types.QTextEdit.init(fcQTextEdit_new4(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
-proc metaObject*(self: gen_qtextedit_types.QTextEdit, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtextedit_types.QTextEdit, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTextEdit_metaObject(self.h))
 
 proc metacast*(self: gen_qtextedit_types.QTextEdit, param1: cstring): pointer =
-
   fcQTextEdit_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtextedit_types.QTextEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTextEdit_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtextedit_types.QTextEdit, s: cstring): string =
-
   let v_ms = fcQTextEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtextedit_types.QTextEdit, s: cstring): string =
-
   let v_ms = fcQTextEdit_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDocument*(self: gen_qtextedit_types.QTextEdit, document: gen_qtextdocument.QTextDocument): void =
-
   fcQTextEdit_setDocument(self.h, document.h)
 
 proc document*(self: gen_qtextedit_types.QTextEdit, ): gen_qtextdocument.QTextDocument =
-
   gen_qtextdocument.QTextDocument(h: fcQTextEdit_document(self.h))
 
 proc setPlaceholderText*(self: gen_qtextedit_types.QTextEdit, placeholderText: string): void =
-
   fcQTextEdit_setPlaceholderText(self.h, struct_miqt_string(data: placeholderText, len: csize_t(len(placeholderText))))
 
 proc placeholderText*(self: gen_qtextedit_types.QTextEdit, ): string =
-
   let v_ms = fcQTextEdit_placeholderText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTextCursor*(self: gen_qtextedit_types.QTextEdit, cursor: gen_qtextcursor.QTextCursor): void =
-
   fcQTextEdit_setTextCursor(self.h, cursor.h)
 
 proc textCursor*(self: gen_qtextedit_types.QTextEdit, ): gen_qtextcursor.QTextCursor =
-
   gen_qtextcursor.QTextCursor(h: fcQTextEdit_textCursor(self.h))
 
 proc isReadOnly*(self: gen_qtextedit_types.QTextEdit, ): bool =
-
   fcQTextEdit_isReadOnly(self.h)
 
 proc setReadOnly*(self: gen_qtextedit_types.QTextEdit, ro: bool): void =
-
   fcQTextEdit_setReadOnly(self.h, ro)
 
 proc setTextInteractionFlags*(self: gen_qtextedit_types.QTextEdit, flags: cint): void =
-
   fcQTextEdit_setTextInteractionFlags(self.h, cint(flags))
 
 proc textInteractionFlags*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   cint(fcQTextEdit_textInteractionFlags(self.h))
 
 proc fontPointSize*(self: gen_qtextedit_types.QTextEdit, ): float64 =
-
   fcQTextEdit_fontPointSize(self.h)
 
 proc fontFamily*(self: gen_qtextedit_types.QTextEdit, ): string =
-
   let v_ms = fcQTextEdit_fontFamily(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc fontWeight*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   fcQTextEdit_fontWeight(self.h)
 
 proc fontUnderline*(self: gen_qtextedit_types.QTextEdit, ): bool =
-
   fcQTextEdit_fontUnderline(self.h)
 
 proc fontItalic*(self: gen_qtextedit_types.QTextEdit, ): bool =
-
   fcQTextEdit_fontItalic(self.h)
 
 proc textColor*(self: gen_qtextedit_types.QTextEdit, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQTextEdit_textColor(self.h))
 
 proc textBackgroundColor*(self: gen_qtextedit_types.QTextEdit, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQTextEdit_textBackgroundColor(self.h))
 
 proc currentFont*(self: gen_qtextedit_types.QTextEdit, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQTextEdit_currentFont(self.h))
 
 proc alignment*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   cint(fcQTextEdit_alignment(self.h))
 
 proc mergeCurrentCharFormat*(self: gen_qtextedit_types.QTextEdit, modifier: gen_qtextformat.QTextCharFormat): void =
-
   fcQTextEdit_mergeCurrentCharFormat(self.h, modifier.h)
 
 proc setCurrentCharFormat*(self: gen_qtextedit_types.QTextEdit, format: gen_qtextformat.QTextCharFormat): void =
-
   fcQTextEdit_setCurrentCharFormat(self.h, format.h)
 
 proc currentCharFormat*(self: gen_qtextedit_types.QTextEdit, ): gen_qtextformat.QTextCharFormat =
-
   gen_qtextformat.QTextCharFormat(h: fcQTextEdit_currentCharFormat(self.h))
 
 proc autoFormatting*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   cint(fcQTextEdit_autoFormatting(self.h))
 
 proc setAutoFormatting*(self: gen_qtextedit_types.QTextEdit, features: cint): void =
-
   fcQTextEdit_setAutoFormatting(self.h, cint(features))
 
 proc tabChangesFocus*(self: gen_qtextedit_types.QTextEdit, ): bool =
-
   fcQTextEdit_tabChangesFocus(self.h)
 
 proc setTabChangesFocus*(self: gen_qtextedit_types.QTextEdit, b: bool): void =
-
   fcQTextEdit_setTabChangesFocus(self.h, b)
 
 proc setDocumentTitle*(self: gen_qtextedit_types.QTextEdit, title: string): void =
-
   fcQTextEdit_setDocumentTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
 proc documentTitle*(self: gen_qtextedit_types.QTextEdit, ): string =
-
   let v_ms = fcQTextEdit_documentTitle(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isUndoRedoEnabled*(self: gen_qtextedit_types.QTextEdit, ): bool =
-
   fcQTextEdit_isUndoRedoEnabled(self.h)
 
 proc setUndoRedoEnabled*(self: gen_qtextedit_types.QTextEdit, enable: bool): void =
-
   fcQTextEdit_setUndoRedoEnabled(self.h, enable)
 
 proc lineWrapMode*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   cint(fcQTextEdit_lineWrapMode(self.h))
 
 proc setLineWrapMode*(self: gen_qtextedit_types.QTextEdit, mode: cint): void =
-
   fcQTextEdit_setLineWrapMode(self.h, cint(mode))
 
 proc lineWrapColumnOrWidth*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   fcQTextEdit_lineWrapColumnOrWidth(self.h)
 
 proc setLineWrapColumnOrWidth*(self: gen_qtextedit_types.QTextEdit, w: cint): void =
-
   fcQTextEdit_setLineWrapColumnOrWidth(self.h, w)
 
 proc wordWrapMode*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   cint(fcQTextEdit_wordWrapMode(self.h))
 
 proc setWordWrapMode*(self: gen_qtextedit_types.QTextEdit, policy: cint): void =
-
   fcQTextEdit_setWordWrapMode(self.h, cint(policy))
 
 proc find*(self: gen_qtextedit_types.QTextEdit, exp: string): bool =
-
   fcQTextEdit_find(self.h, struct_miqt_string(data: exp, len: csize_t(len(exp))))
 
-proc findWithExp*(self: gen_qtextedit_types.QTextEdit, exp: gen_qregexp.QRegExp): bool =
-
+proc find*(self: gen_qtextedit_types.QTextEdit, exp: gen_qregexp.QRegExp): bool =
   fcQTextEdit_findWithExp(self.h, exp.h)
 
-proc find2*(self: gen_qtextedit_types.QTextEdit, exp: gen_qregularexpression.QRegularExpression): bool =
-
+proc find*(self: gen_qtextedit_types.QTextEdit, exp: gen_qregularexpression.QRegularExpression): bool =
   fcQTextEdit_find2(self.h, exp.h)
 
 proc toPlainText*(self: gen_qtextedit_types.QTextEdit, ): string =
-
   let v_ms = fcQTextEdit_toPlainText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc toHtml*(self: gen_qtextedit_types.QTextEdit, ): string =
-
   let v_ms = fcQTextEdit_toHtml(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc toMarkdown*(self: gen_qtextedit_types.QTextEdit, ): string =
-
   let v_ms = fcQTextEdit_toMarkdown(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc ensureCursorVisible*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_ensureCursorVisible(self.h)
 
 proc loadResource*(self: gen_qtextedit_types.QTextEdit, typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQTextEdit_loadResource(self.h, typeVal, name.h))
 
 proc createStandardContextMenu*(self: gen_qtextedit_types.QTextEdit, ): gen_qmenu.QMenu =
-
   gen_qmenu.QMenu(h: fcQTextEdit_createStandardContextMenu(self.h))
 
-proc createStandardContextMenuWithPosition*(self: gen_qtextedit_types.QTextEdit, position: gen_qpoint.QPoint): gen_qmenu.QMenu =
-
+proc createStandardContextMenu*(self: gen_qtextedit_types.QTextEdit, position: gen_qpoint.QPoint): gen_qmenu.QMenu =
   gen_qmenu.QMenu(h: fcQTextEdit_createStandardContextMenuWithPosition(self.h, position.h))
 
 proc cursorForPosition*(self: gen_qtextedit_types.QTextEdit, pos: gen_qpoint.QPoint): gen_qtextcursor.QTextCursor =
-
   gen_qtextcursor.QTextCursor(h: fcQTextEdit_cursorForPosition(self.h, pos.h))
 
 proc cursorRect*(self: gen_qtextedit_types.QTextEdit, cursor: gen_qtextcursor.QTextCursor): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQTextEdit_cursorRect(self.h, cursor.h))
 
-proc cursorRect2*(self: gen_qtextedit_types.QTextEdit, ): gen_qrect.QRect =
-
+proc cursorRect*(self: gen_qtextedit_types.QTextEdit, ): gen_qrect.QRect =
   gen_qrect.QRect(h: fcQTextEdit_cursorRect2(self.h))
 
 proc anchorAt*(self: gen_qtextedit_types.QTextEdit, pos: gen_qpoint.QPoint): string =
-
   let v_ms = fcQTextEdit_anchorAt(self.h, pos.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc overwriteMode*(self: gen_qtextedit_types.QTextEdit, ): bool =
-
   fcQTextEdit_overwriteMode(self.h)
 
 proc setOverwriteMode*(self: gen_qtextedit_types.QTextEdit, overwrite: bool): void =
-
   fcQTextEdit_setOverwriteMode(self.h, overwrite)
 
 proc tabStopWidth*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   fcQTextEdit_tabStopWidth(self.h)
 
 proc setTabStopWidth*(self: gen_qtextedit_types.QTextEdit, width: cint): void =
-
   fcQTextEdit_setTabStopWidth(self.h, width)
 
 proc tabStopDistance*(self: gen_qtextedit_types.QTextEdit, ): float64 =
-
   fcQTextEdit_tabStopDistance(self.h)
 
 proc setTabStopDistance*(self: gen_qtextedit_types.QTextEdit, distance: float64): void =
-
   fcQTextEdit_setTabStopDistance(self.h, distance)
 
 proc cursorWidth*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   fcQTextEdit_cursorWidth(self.h)
 
 proc setCursorWidth*(self: gen_qtextedit_types.QTextEdit, width: cint): void =
-
   fcQTextEdit_setCursorWidth(self.h, width)
 
 proc acceptRichText*(self: gen_qtextedit_types.QTextEdit, ): bool =
-
   fcQTextEdit_acceptRichText(self.h)
 
 proc setAcceptRichText*(self: gen_qtextedit_types.QTextEdit, accept: bool): void =
-
   fcQTextEdit_setAcceptRichText(self.h, accept)
 
 proc setExtraSelections*(self: gen_qtextedit_types.QTextEdit, selections: seq[gen_qtextedit_types.QTextEditExtraSelection]): void =
-
   var selections_CArray = newSeq[pointer](len(selections))
   for i in 0..<len(selections):
     selections_CArray[i] = selections[i].h
@@ -668,7 +602,6 @@ proc setExtraSelections*(self: gen_qtextedit_types.QTextEdit, selections: seq[ge
   fcQTextEdit_setExtraSelections(self.h, struct_miqt_array(len: csize_t(len(selections)), data: if len(selections) == 0: nil else: addr(selections_CArray[0])))
 
 proc extraSelections*(self: gen_qtextedit_types.QTextEdit, ): seq[gen_qtextedit_types.QTextEditExtraSelection] =
-
   var v_ma = fcQTextEdit_extraSelections(self.h)
   var vx_ret = newSeq[gen_qtextedit_types.QTextEditExtraSelection](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -677,310 +610,253 @@ proc extraSelections*(self: gen_qtextedit_types.QTextEdit, ): seq[gen_qtextedit_
   vx_ret
 
 proc moveCursor*(self: gen_qtextedit_types.QTextEdit, operation: cint): void =
-
   fcQTextEdit_moveCursor(self.h, cint(operation))
 
 proc canPaste*(self: gen_qtextedit_types.QTextEdit, ): bool =
-
   fcQTextEdit_canPaste(self.h)
 
 proc print*(self: gen_qtextedit_types.QTextEdit, printer: gen_qpagedpaintdevice.QPagedPaintDevice): void =
-
   fcQTextEdit_print(self.h, printer.h)
 
 proc inputMethodQuery*(self: gen_qtextedit_types.QTextEdit, property: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQTextEdit_inputMethodQuery(self.h, cint(property)))
 
-proc inputMethodQuery2*(self: gen_qtextedit_types.QTextEdit, query: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
+proc inputMethodQuery*(self: gen_qtextedit_types.QTextEdit, query: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
   gen_qvariant.QVariant(h: fcQTextEdit_inputMethodQuery2(self.h, cint(query), argument.h))
 
 proc setFontPointSize*(self: gen_qtextedit_types.QTextEdit, s: float64): void =
-
   fcQTextEdit_setFontPointSize(self.h, s)
 
 proc setFontFamily*(self: gen_qtextedit_types.QTextEdit, fontFamily: string): void =
-
   fcQTextEdit_setFontFamily(self.h, struct_miqt_string(data: fontFamily, len: csize_t(len(fontFamily))))
 
 proc setFontWeight*(self: gen_qtextedit_types.QTextEdit, w: cint): void =
-
   fcQTextEdit_setFontWeight(self.h, w)
 
 proc setFontUnderline*(self: gen_qtextedit_types.QTextEdit, b: bool): void =
-
   fcQTextEdit_setFontUnderline(self.h, b)
 
 proc setFontItalic*(self: gen_qtextedit_types.QTextEdit, b: bool): void =
-
   fcQTextEdit_setFontItalic(self.h, b)
 
 proc setTextColor*(self: gen_qtextedit_types.QTextEdit, c: gen_qcolor.QColor): void =
-
   fcQTextEdit_setTextColor(self.h, c.h)
 
 proc setTextBackgroundColor*(self: gen_qtextedit_types.QTextEdit, c: gen_qcolor.QColor): void =
-
   fcQTextEdit_setTextBackgroundColor(self.h, c.h)
 
 proc setCurrentFont*(self: gen_qtextedit_types.QTextEdit, f: gen_qfont.QFont): void =
-
   fcQTextEdit_setCurrentFont(self.h, f.h)
 
 proc setAlignment*(self: gen_qtextedit_types.QTextEdit, a: cint): void =
-
   fcQTextEdit_setAlignment(self.h, cint(a))
 
 proc setPlainText*(self: gen_qtextedit_types.QTextEdit, text: string): void =
-
   fcQTextEdit_setPlainText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc setHtml*(self: gen_qtextedit_types.QTextEdit, text: string): void =
-
   fcQTextEdit_setHtml(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc setMarkdown*(self: gen_qtextedit_types.QTextEdit, markdown: string): void =
-
   fcQTextEdit_setMarkdown(self.h, struct_miqt_string(data: markdown, len: csize_t(len(markdown))))
 
 proc setText*(self: gen_qtextedit_types.QTextEdit, text: string): void =
-
   fcQTextEdit_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc cut*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_cut(self.h)
 
 proc copy*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_copy(self.h)
 
 proc paste*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_paste(self.h)
 
 proc undo*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_undo(self.h)
 
 proc redo*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_redo(self.h)
 
 proc clear*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_clear(self.h)
 
 proc selectAll*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_selectAll(self.h)
 
 proc insertPlainText*(self: gen_qtextedit_types.QTextEdit, text: string): void =
-
   fcQTextEdit_insertPlainText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc insertHtml*(self: gen_qtextedit_types.QTextEdit, text: string): void =
-
   fcQTextEdit_insertHtml(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc append*(self: gen_qtextedit_types.QTextEdit, text: string): void =
-
   fcQTextEdit_append(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc scrollToAnchor*(self: gen_qtextedit_types.QTextEdit, name: string): void =
-
   fcQTextEdit_scrollToAnchor(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc zoomIn*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_zoomIn(self.h)
 
 proc zoomOut*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_zoomOut(self.h)
 
 proc textChanged*(self: gen_qtextedit_types.QTextEdit, ): void =
-
   fcQTextEdit_textChanged(self.h)
 
+type QTextEdittextChangedSlot* = proc()
 proc miqt_exec_callback_QTextEdit_textChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QTextEdittextChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc ontextChanged*(self: gen_qtextedit_types.QTextEdit, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc ontextChanged*(self: gen_qtextedit_types.QTextEdit, slot: QTextEdittextChangedSlot) =
+  var tmp = new QTextEdittextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTextEdit_connect_textChanged(self.h, cast[int](addr tmp[]))
-proc undoAvailable*(self: gen_qtextedit_types.QTextEdit, b: bool): void =
 
+proc undoAvailable*(self: gen_qtextedit_types.QTextEdit, b: bool): void =
   fcQTextEdit_undoAvailable(self.h, b)
 
+type QTextEditundoAvailableSlot* = proc(b: bool)
 proc miqt_exec_callback_QTextEdit_undoAvailable(slot: int, b: bool) {.exportc.} =
-  type Cb = proc(b: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTextEditundoAvailableSlot](cast[pointer](slot))
   let slotval1 = b
-
 
   nimfunc[](slotval1)
 
-proc onundoAvailable*(self: gen_qtextedit_types.QTextEdit, slot: proc(b: bool)) =
-  type Cb = proc(b: bool)
-  var tmp = new Cb
+proc onundoAvailable*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditundoAvailableSlot) =
+  var tmp = new QTextEditundoAvailableSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTextEdit_connect_undoAvailable(self.h, cast[int](addr tmp[]))
-proc redoAvailable*(self: gen_qtextedit_types.QTextEdit, b: bool): void =
 
+proc redoAvailable*(self: gen_qtextedit_types.QTextEdit, b: bool): void =
   fcQTextEdit_redoAvailable(self.h, b)
 
+type QTextEditredoAvailableSlot* = proc(b: bool)
 proc miqt_exec_callback_QTextEdit_redoAvailable(slot: int, b: bool) {.exportc.} =
-  type Cb = proc(b: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTextEditredoAvailableSlot](cast[pointer](slot))
   let slotval1 = b
-
 
   nimfunc[](slotval1)
 
-proc onredoAvailable*(self: gen_qtextedit_types.QTextEdit, slot: proc(b: bool)) =
-  type Cb = proc(b: bool)
-  var tmp = new Cb
+proc onredoAvailable*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditredoAvailableSlot) =
+  var tmp = new QTextEditredoAvailableSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTextEdit_connect_redoAvailable(self.h, cast[int](addr tmp[]))
-proc currentCharFormatChanged*(self: gen_qtextedit_types.QTextEdit, format: gen_qtextformat.QTextCharFormat): void =
 
+proc currentCharFormatChanged*(self: gen_qtextedit_types.QTextEdit, format: gen_qtextformat.QTextCharFormat): void =
   fcQTextEdit_currentCharFormatChanged(self.h, format.h)
 
+type QTextEditcurrentCharFormatChangedSlot* = proc(format: gen_qtextformat.QTextCharFormat)
 proc miqt_exec_callback_QTextEdit_currentCharFormatChanged(slot: int, format: pointer) {.exportc.} =
-  type Cb = proc(format: gen_qtextformat.QTextCharFormat)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTextEditcurrentCharFormatChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qtextformat.QTextCharFormat(h: format)
-
 
   nimfunc[](slotval1)
 
-proc oncurrentCharFormatChanged*(self: gen_qtextedit_types.QTextEdit, slot: proc(format: gen_qtextformat.QTextCharFormat)) =
-  type Cb = proc(format: gen_qtextformat.QTextCharFormat)
-  var tmp = new Cb
+proc oncurrentCharFormatChanged*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditcurrentCharFormatChangedSlot) =
+  var tmp = new QTextEditcurrentCharFormatChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTextEdit_connect_currentCharFormatChanged(self.h, cast[int](addr tmp[]))
-proc copyAvailable*(self: gen_qtextedit_types.QTextEdit, b: bool): void =
 
+proc copyAvailable*(self: gen_qtextedit_types.QTextEdit, b: bool): void =
   fcQTextEdit_copyAvailable(self.h, b)
 
+type QTextEditcopyAvailableSlot* = proc(b: bool)
 proc miqt_exec_callback_QTextEdit_copyAvailable(slot: int, b: bool) {.exportc.} =
-  type Cb = proc(b: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTextEditcopyAvailableSlot](cast[pointer](slot))
   let slotval1 = b
-
 
   nimfunc[](slotval1)
 
-proc oncopyAvailable*(self: gen_qtextedit_types.QTextEdit, slot: proc(b: bool)) =
-  type Cb = proc(b: bool)
-  var tmp = new Cb
+proc oncopyAvailable*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditcopyAvailableSlot) =
+  var tmp = new QTextEditcopyAvailableSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTextEdit_connect_copyAvailable(self.h, cast[int](addr tmp[]))
-proc selectionChanged*(self: gen_qtextedit_types.QTextEdit, ): void =
 
+proc selectionChanged*(self: gen_qtextedit_types.QTextEdit, ): void =
   fcQTextEdit_selectionChanged(self.h)
 
+type QTextEditselectionChangedSlot* = proc()
 proc miqt_exec_callback_QTextEdit_selectionChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QTextEditselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onselectionChanged*(self: gen_qtextedit_types.QTextEdit, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onselectionChanged*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditselectionChangedSlot) =
+  var tmp = new QTextEditselectionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTextEdit_connect_selectionChanged(self.h, cast[int](addr tmp[]))
-proc cursorPositionChanged*(self: gen_qtextedit_types.QTextEdit, ): void =
 
+proc cursorPositionChanged*(self: gen_qtextedit_types.QTextEdit, ): void =
   fcQTextEdit_cursorPositionChanged(self.h)
 
+type QTextEditcursorPositionChangedSlot* = proc()
 proc miqt_exec_callback_QTextEdit_cursorPositionChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QTextEditcursorPositionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc oncursorPositionChanged*(self: gen_qtextedit_types.QTextEdit, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc oncursorPositionChanged*(self: gen_qtextedit_types.QTextEdit, slot: QTextEditcursorPositionChangedSlot) =
+  var tmp = new QTextEditcursorPositionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTextEdit_connect_cursorPositionChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qtextedit_types.QTextEdit, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qtextedit_types.QTextEdit, s: cstring, c: cstring): string =
   let v_ms = fcQTextEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtextedit_types.QTextEdit, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtextedit_types.QTextEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTextEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtextedit_types.QTextEdit, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtextedit_types.QTextEdit, s: cstring, c: cstring): string =
   let v_ms = fcQTextEdit_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtextedit_types.QTextEdit, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtextedit_types.QTextEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTextEdit_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc find22*(self: gen_qtextedit_types.QTextEdit, exp: string, options: cint): bool =
-
+proc find*(self: gen_qtextedit_types.QTextEdit, exp: string, options: cint): bool =
   fcQTextEdit_find22(self.h, struct_miqt_string(data: exp, len: csize_t(len(exp))), cint(options))
 
-proc find23*(self: gen_qtextedit_types.QTextEdit, exp: gen_qregexp.QRegExp, options: cint): bool =
-
+proc find*(self: gen_qtextedit_types.QTextEdit, exp: gen_qregexp.QRegExp, options: cint): bool =
   fcQTextEdit_find23(self.h, exp.h, cint(options))
 
-proc find24*(self: gen_qtextedit_types.QTextEdit, exp: gen_qregularexpression.QRegularExpression, options: cint): bool =
-
+proc find*(self: gen_qtextedit_types.QTextEdit, exp: gen_qregularexpression.QRegularExpression, options: cint): bool =
   fcQTextEdit_find24(self.h, exp.h, cint(options))
 
-proc toMarkdown1*(self: gen_qtextedit_types.QTextEdit, features: cint): string =
-
+proc toMarkdown*(self: gen_qtextedit_types.QTextEdit, features: cint): string =
   let v_ms = fcQTextEdit_toMarkdown1(self.h, cint(features))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc moveCursor2*(self: gen_qtextedit_types.QTextEdit, operation: cint, mode: cint): void =
-
+proc moveCursor*(self: gen_qtextedit_types.QTextEdit, operation: cint, mode: cint): void =
   fcQTextEdit_moveCursor2(self.h, cint(operation), cint(mode))
 
-proc zoomIn1*(self: gen_qtextedit_types.QTextEdit, range: cint): void =
-
+proc zoomIn*(self: gen_qtextedit_types.QTextEdit, range: cint): void =
   fcQTextEdit_zoomIn1(self.h, range)
 
-proc zoomOut1*(self: gen_qtextedit_types.QTextEdit, range: cint): void =
-
+proc zoomOut*(self: gen_qtextedit_types.QTextEdit, range: cint): void =
   fcQTextEdit_zoomOut1(self.h, range)
 
 proc QTextEditmetaObject*(self: gen_qtextedit_types.QTextEdit, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTextEdit_virtualbase_metaObject(self.h))
 
 type QTextEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -998,7 +874,6 @@ proc miqt_exec_callback_QTextEdit_metaObject(self: ptr cQTextEdit, slot: int): p
 
   virtualReturn.h
 proc QTextEditmetacast*(self: gen_qtextedit_types.QTextEdit, param1: cstring): pointer =
-
   fQTextEdit_virtualbase_metacast(self.h, param1)
 
 type QTextEditmetacastProc* = proc(param1: cstring): pointer
@@ -1018,7 +893,6 @@ proc miqt_exec_callback_QTextEdit_metacast(self: ptr cQTextEdit, slot: int, para
 
   virtualReturn
 proc QTextEditmetacall*(self: gen_qtextedit_types.QTextEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTextEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTextEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -1042,7 +916,6 @@ proc miqt_exec_callback_QTextEdit_metacall(self: ptr cQTextEdit, slot: int, para
 
   virtualReturn
 proc QTextEditloadResource*(self: gen_qtextedit_types.QTextEdit, typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQTextEdit_virtualbase_loadResource(self.h, typeVal, name.h))
 
 type QTextEditloadResourceProc* = proc(typeVal: cint, name: gen_qurl.QUrl): gen_qvariant.QVariant
@@ -1064,7 +937,6 @@ proc miqt_exec_callback_QTextEdit_loadResource(self: ptr cQTextEdit, slot: int, 
 
   virtualReturn.h
 proc QTextEditinputMethodQuery*(self: gen_qtextedit_types.QTextEdit, property: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQTextEdit_virtualbase_inputMethodQuery(self.h, cint(property)))
 
 type QTextEditinputMethodQueryProc* = proc(property: cint): gen_qvariant.QVariant
@@ -1084,7 +956,6 @@ proc miqt_exec_callback_QTextEdit_inputMethodQuery(self: ptr cQTextEdit, slot: i
 
   virtualReturn.h
 proc QTextEditevent*(self: gen_qtextedit_types.QTextEdit, e: gen_qcoreevent.QEvent): bool =
-
   fQTextEdit_virtualbase_event(self.h, e.h)
 
 type QTextEditeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -1104,7 +975,6 @@ proc miqt_exec_callback_QTextEdit_event(self: ptr cQTextEdit, slot: int, e: poin
 
   virtualReturn
 proc QTextEdittimerEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qcoreevent.QTimerEvent): void =
-
   fQTextEdit_virtualbase_timerEvent(self.h, e.h)
 
 type QTextEdittimerEventProc* = proc(e: gen_qcoreevent.QTimerEvent): void
@@ -1122,7 +992,6 @@ proc miqt_exec_callback_QTextEdit_timerEvent(self: ptr cQTextEdit, slot: int, e:
 
   nimfunc[](slotval1)
 proc QTextEditkeyPressEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QKeyEvent): void =
-
   fQTextEdit_virtualbase_keyPressEvent(self.h, e.h)
 
 type QTextEditkeyPressEventProc* = proc(e: gen_qevent.QKeyEvent): void
@@ -1140,7 +1009,6 @@ proc miqt_exec_callback_QTextEdit_keyPressEvent(self: ptr cQTextEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QTextEditkeyReleaseEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QKeyEvent): void =
-
   fQTextEdit_virtualbase_keyReleaseEvent(self.h, e.h)
 
 type QTextEditkeyReleaseEventProc* = proc(e: gen_qevent.QKeyEvent): void
@@ -1158,7 +1026,6 @@ proc miqt_exec_callback_QTextEdit_keyReleaseEvent(self: ptr cQTextEdit, slot: in
 
   nimfunc[](slotval1)
 proc QTextEditresizeEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QResizeEvent): void =
-
   fQTextEdit_virtualbase_resizeEvent(self.h, e.h)
 
 type QTextEditresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
@@ -1176,7 +1043,6 @@ proc miqt_exec_callback_QTextEdit_resizeEvent(self: ptr cQTextEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTextEditpaintEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QPaintEvent): void =
-
   fQTextEdit_virtualbase_paintEvent(self.h, e.h)
 
 type QTextEditpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
@@ -1194,7 +1060,6 @@ proc miqt_exec_callback_QTextEdit_paintEvent(self: ptr cQTextEdit, slot: int, e:
 
   nimfunc[](slotval1)
 proc QTextEditmousePressEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QMouseEvent): void =
-
   fQTextEdit_virtualbase_mousePressEvent(self.h, e.h)
 
 type QTextEditmousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -1212,7 +1077,6 @@ proc miqt_exec_callback_QTextEdit_mousePressEvent(self: ptr cQTextEdit, slot: in
 
   nimfunc[](slotval1)
 proc QTextEditmouseMoveEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QMouseEvent): void =
-
   fQTextEdit_virtualbase_mouseMoveEvent(self.h, e.h)
 
 type QTextEditmouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -1230,7 +1094,6 @@ proc miqt_exec_callback_QTextEdit_mouseMoveEvent(self: ptr cQTextEdit, slot: int
 
   nimfunc[](slotval1)
 proc QTextEditmouseReleaseEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QMouseEvent): void =
-
   fQTextEdit_virtualbase_mouseReleaseEvent(self.h, e.h)
 
 type QTextEditmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -1248,7 +1111,6 @@ proc miqt_exec_callback_QTextEdit_mouseReleaseEvent(self: ptr cQTextEdit, slot: 
 
   nimfunc[](slotval1)
 proc QTextEditmouseDoubleClickEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QMouseEvent): void =
-
   fQTextEdit_virtualbase_mouseDoubleClickEvent(self.h, e.h)
 
 type QTextEditmouseDoubleClickEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -1266,7 +1128,6 @@ proc miqt_exec_callback_QTextEdit_mouseDoubleClickEvent(self: ptr cQTextEdit, sl
 
   nimfunc[](slotval1)
 proc QTextEditfocusNextPrevChild*(self: gen_qtextedit_types.QTextEdit, next: bool): bool =
-
   fQTextEdit_virtualbase_focusNextPrevChild(self.h, next)
 
 type QTextEditfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1286,7 +1147,6 @@ proc miqt_exec_callback_QTextEdit_focusNextPrevChild(self: ptr cQTextEdit, slot:
 
   virtualReturn
 proc QTextEditcontextMenuEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QContextMenuEvent): void =
-
   fQTextEdit_virtualbase_contextMenuEvent(self.h, e.h)
 
 type QTextEditcontextMenuEventProc* = proc(e: gen_qevent.QContextMenuEvent): void
@@ -1304,7 +1164,6 @@ proc miqt_exec_callback_QTextEdit_contextMenuEvent(self: ptr cQTextEdit, slot: i
 
   nimfunc[](slotval1)
 proc QTextEditdragEnterEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QDragEnterEvent): void =
-
   fQTextEdit_virtualbase_dragEnterEvent(self.h, e.h)
 
 type QTextEditdragEnterEventProc* = proc(e: gen_qevent.QDragEnterEvent): void
@@ -1322,7 +1181,6 @@ proc miqt_exec_callback_QTextEdit_dragEnterEvent(self: ptr cQTextEdit, slot: int
 
   nimfunc[](slotval1)
 proc QTextEditdragLeaveEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QDragLeaveEvent): void =
-
   fQTextEdit_virtualbase_dragLeaveEvent(self.h, e.h)
 
 type QTextEditdragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
@@ -1340,7 +1198,6 @@ proc miqt_exec_callback_QTextEdit_dragLeaveEvent(self: ptr cQTextEdit, slot: int
 
   nimfunc[](slotval1)
 proc QTextEditdragMoveEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QDragMoveEvent): void =
-
   fQTextEdit_virtualbase_dragMoveEvent(self.h, e.h)
 
 type QTextEditdragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
@@ -1358,7 +1215,6 @@ proc miqt_exec_callback_QTextEdit_dragMoveEvent(self: ptr cQTextEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QTextEditdropEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QDropEvent): void =
-
   fQTextEdit_virtualbase_dropEvent(self.h, e.h)
 
 type QTextEditdropEventProc* = proc(e: gen_qevent.QDropEvent): void
@@ -1376,7 +1232,6 @@ proc miqt_exec_callback_QTextEdit_dropEvent(self: ptr cQTextEdit, slot: int, e: 
 
   nimfunc[](slotval1)
 proc QTextEditfocusInEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QFocusEvent): void =
-
   fQTextEdit_virtualbase_focusInEvent(self.h, e.h)
 
 type QTextEditfocusInEventProc* = proc(e: gen_qevent.QFocusEvent): void
@@ -1394,7 +1249,6 @@ proc miqt_exec_callback_QTextEdit_focusInEvent(self: ptr cQTextEdit, slot: int, 
 
   nimfunc[](slotval1)
 proc QTextEditfocusOutEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QFocusEvent): void =
-
   fQTextEdit_virtualbase_focusOutEvent(self.h, e.h)
 
 type QTextEditfocusOutEventProc* = proc(e: gen_qevent.QFocusEvent): void
@@ -1412,7 +1266,6 @@ proc miqt_exec_callback_QTextEdit_focusOutEvent(self: ptr cQTextEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QTextEditshowEvent*(self: gen_qtextedit_types.QTextEdit, param1: gen_qevent.QShowEvent): void =
-
   fQTextEdit_virtualbase_showEvent(self.h, param1.h)
 
 type QTextEditshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -1430,7 +1283,6 @@ proc miqt_exec_callback_QTextEdit_showEvent(self: ptr cQTextEdit, slot: int, par
 
   nimfunc[](slotval1)
 proc QTextEditchangeEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qcoreevent.QEvent): void =
-
   fQTextEdit_virtualbase_changeEvent(self.h, e.h)
 
 type QTextEditchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -1448,7 +1300,6 @@ proc miqt_exec_callback_QTextEdit_changeEvent(self: ptr cQTextEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTextEditwheelEvent*(self: gen_qtextedit_types.QTextEdit, e: gen_qevent.QWheelEvent): void =
-
   fQTextEdit_virtualbase_wheelEvent(self.h, e.h)
 
 type QTextEditwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
@@ -1466,7 +1317,6 @@ proc miqt_exec_callback_QTextEdit_wheelEvent(self: ptr cQTextEdit, slot: int, e:
 
   nimfunc[](slotval1)
 proc QTextEditcreateMimeDataFromSelection*(self: gen_qtextedit_types.QTextEdit, ): gen_qmimedata.QMimeData =
-
   gen_qmimedata.QMimeData(h: fQTextEdit_virtualbase_createMimeDataFromSelection(self.h))
 
 type QTextEditcreateMimeDataFromSelectionProc* = proc(): gen_qmimedata.QMimeData
@@ -1484,7 +1334,6 @@ proc miqt_exec_callback_QTextEdit_createMimeDataFromSelection(self: ptr cQTextEd
 
   virtualReturn.h
 proc QTextEditcanInsertFromMimeData*(self: gen_qtextedit_types.QTextEdit, source: gen_qmimedata.QMimeData): bool =
-
   fQTextEdit_virtualbase_canInsertFromMimeData(self.h, source.h)
 
 type QTextEditcanInsertFromMimeDataProc* = proc(source: gen_qmimedata.QMimeData): bool
@@ -1504,7 +1353,6 @@ proc miqt_exec_callback_QTextEdit_canInsertFromMimeData(self: ptr cQTextEdit, sl
 
   virtualReturn
 proc QTextEditinsertFromMimeData*(self: gen_qtextedit_types.QTextEdit, source: gen_qmimedata.QMimeData): void =
-
   fQTextEdit_virtualbase_insertFromMimeData(self.h, source.h)
 
 type QTextEditinsertFromMimeDataProc* = proc(source: gen_qmimedata.QMimeData): void
@@ -1522,7 +1370,6 @@ proc miqt_exec_callback_QTextEdit_insertFromMimeData(self: ptr cQTextEdit, slot:
 
   nimfunc[](slotval1)
 proc QTextEditinputMethodEvent*(self: gen_qtextedit_types.QTextEdit, param1: gen_qevent.QInputMethodEvent): void =
-
   fQTextEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QTextEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1540,7 +1387,6 @@ proc miqt_exec_callback_QTextEdit_inputMethodEvent(self: ptr cQTextEdit, slot: i
 
   nimfunc[](slotval1)
 proc QTextEditscrollContentsBy*(self: gen_qtextedit_types.QTextEdit, dx: cint, dy: cint): void =
-
   fQTextEdit_virtualbase_scrollContentsBy(self.h, dx, dy)
 
 type QTextEditscrollContentsByProc* = proc(dx: cint, dy: cint): void
@@ -1560,7 +1406,6 @@ proc miqt_exec_callback_QTextEdit_scrollContentsBy(self: ptr cQTextEdit, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QTextEditdoSetTextCursor*(self: gen_qtextedit_types.QTextEdit, cursor: gen_qtextcursor.QTextCursor): void =
-
   fQTextEdit_virtualbase_doSetTextCursor(self.h, cursor.h)
 
 type QTextEditdoSetTextCursorProc* = proc(cursor: gen_qtextcursor.QTextCursor): void
@@ -1578,7 +1423,6 @@ proc miqt_exec_callback_QTextEdit_doSetTextCursor(self: ptr cQTextEdit, slot: in
 
   nimfunc[](slotval1)
 proc QTextEditminimumSizeHint*(self: gen_qtextedit_types.QTextEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTextEdit_virtualbase_minimumSizeHint(self.h))
 
 type QTextEditminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1596,7 +1440,6 @@ proc miqt_exec_callback_QTextEdit_minimumSizeHint(self: ptr cQTextEdit, slot: in
 
   virtualReturn.h
 proc QTextEditsizeHint*(self: gen_qtextedit_types.QTextEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTextEdit_virtualbase_sizeHint(self.h))
 
 type QTextEditsizeHintProc* = proc(): gen_qsize.QSize
@@ -1614,7 +1457,6 @@ proc miqt_exec_callback_QTextEdit_sizeHint(self: ptr cQTextEdit, slot: int): poi
 
   virtualReturn.h
 proc QTextEditsetupViewport*(self: gen_qtextedit_types.QTextEdit, viewport: gen_qwidget.QWidget): void =
-
   fQTextEdit_virtualbase_setupViewport(self.h, viewport.h)
 
 type QTextEditsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
@@ -1632,7 +1474,6 @@ proc miqt_exec_callback_QTextEdit_setupViewport(self: ptr cQTextEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QTextEditeventFilter*(self: gen_qtextedit_types.QTextEdit, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQTextEdit_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QTextEditeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -1654,7 +1495,6 @@ proc miqt_exec_callback_QTextEdit_eventFilter(self: ptr cQTextEdit, slot: int, p
 
   virtualReturn
 proc QTextEditviewportEvent*(self: gen_qtextedit_types.QTextEdit, param1: gen_qcoreevent.QEvent): bool =
-
   fQTextEdit_virtualbase_viewportEvent(self.h, param1.h)
 
 type QTextEditviewportEventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -1674,7 +1514,6 @@ proc miqt_exec_callback_QTextEdit_viewportEvent(self: ptr cQTextEdit, slot: int,
 
   virtualReturn
 proc QTextEditviewportSizeHint*(self: gen_qtextedit_types.QTextEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTextEdit_virtualbase_viewportSizeHint(self.h))
 
 type QTextEditviewportSizeHintProc* = proc(): gen_qsize.QSize
@@ -1692,7 +1531,6 @@ proc miqt_exec_callback_QTextEdit_viewportSizeHint(self: ptr cQTextEdit, slot: i
 
   virtualReturn.h
 proc QTextEditdevType*(self: gen_qtextedit_types.QTextEdit, ): cint =
-
   fQTextEdit_virtualbase_devType(self.h)
 
 type QTextEditdevTypeProc* = proc(): cint
@@ -1710,7 +1548,6 @@ proc miqt_exec_callback_QTextEdit_devType(self: ptr cQTextEdit, slot: int): cint
 
   virtualReturn
 proc QTextEditsetVisible*(self: gen_qtextedit_types.QTextEdit, visible: bool): void =
-
   fQTextEdit_virtualbase_setVisible(self.h, visible)
 
 type QTextEditsetVisibleProc* = proc(visible: bool): void
@@ -1728,7 +1565,6 @@ proc miqt_exec_callback_QTextEdit_setVisible(self: ptr cQTextEdit, slot: int, vi
 
   nimfunc[](slotval1)
 proc QTextEditheightForWidth*(self: gen_qtextedit_types.QTextEdit, param1: cint): cint =
-
   fQTextEdit_virtualbase_heightForWidth(self.h, param1)
 
 type QTextEditheightForWidthProc* = proc(param1: cint): cint
@@ -1748,7 +1584,6 @@ proc miqt_exec_callback_QTextEdit_heightForWidth(self: ptr cQTextEdit, slot: int
 
   virtualReturn
 proc QTextEdithasHeightForWidth*(self: gen_qtextedit_types.QTextEdit, ): bool =
-
   fQTextEdit_virtualbase_hasHeightForWidth(self.h)
 
 type QTextEdithasHeightForWidthProc* = proc(): bool
@@ -1766,7 +1601,6 @@ proc miqt_exec_callback_QTextEdit_hasHeightForWidth(self: ptr cQTextEdit, slot: 
 
   virtualReturn
 proc QTextEditpaintEngine*(self: gen_qtextedit_types.QTextEdit, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQTextEdit_virtualbase_paintEngine(self.h))
 
 type QTextEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1784,7 +1618,6 @@ proc miqt_exec_callback_QTextEdit_paintEngine(self: ptr cQTextEdit, slot: int): 
 
   virtualReturn.h
 proc QTextEditenterEvent*(self: gen_qtextedit_types.QTextEdit, event: gen_qcoreevent.QEvent): void =
-
   fQTextEdit_virtualbase_enterEvent(self.h, event.h)
 
 type QTextEditenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1802,7 +1635,6 @@ proc miqt_exec_callback_QTextEdit_enterEvent(self: ptr cQTextEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTextEditleaveEvent*(self: gen_qtextedit_types.QTextEdit, event: gen_qcoreevent.QEvent): void =
-
   fQTextEdit_virtualbase_leaveEvent(self.h, event.h)
 
 type QTextEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1820,7 +1652,6 @@ proc miqt_exec_callback_QTextEdit_leaveEvent(self: ptr cQTextEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTextEditmoveEvent*(self: gen_qtextedit_types.QTextEdit, event: gen_qevent.QMoveEvent): void =
-
   fQTextEdit_virtualbase_moveEvent(self.h, event.h)
 
 type QTextEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1838,7 +1669,6 @@ proc miqt_exec_callback_QTextEdit_moveEvent(self: ptr cQTextEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTextEditcloseEvent*(self: gen_qtextedit_types.QTextEdit, event: gen_qevent.QCloseEvent): void =
-
   fQTextEdit_virtualbase_closeEvent(self.h, event.h)
 
 type QTextEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1856,7 +1686,6 @@ proc miqt_exec_callback_QTextEdit_closeEvent(self: ptr cQTextEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTextEdittabletEvent*(self: gen_qtextedit_types.QTextEdit, event: gen_qevent.QTabletEvent): void =
-
   fQTextEdit_virtualbase_tabletEvent(self.h, event.h)
 
 type QTextEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1874,7 +1703,6 @@ proc miqt_exec_callback_QTextEdit_tabletEvent(self: ptr cQTextEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTextEditactionEvent*(self: gen_qtextedit_types.QTextEdit, event: gen_qevent.QActionEvent): void =
-
   fQTextEdit_virtualbase_actionEvent(self.h, event.h)
 
 type QTextEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1892,7 +1720,6 @@ proc miqt_exec_callback_QTextEdit_actionEvent(self: ptr cQTextEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTextEdithideEvent*(self: gen_qtextedit_types.QTextEdit, event: gen_qevent.QHideEvent): void =
-
   fQTextEdit_virtualbase_hideEvent(self.h, event.h)
 
 type QTextEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1910,7 +1737,6 @@ proc miqt_exec_callback_QTextEdit_hideEvent(self: ptr cQTextEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTextEditnativeEvent*(self: gen_qtextedit_types.QTextEdit, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQTextEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QTextEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1937,7 +1763,6 @@ proc miqt_exec_callback_QTextEdit_nativeEvent(self: ptr cQTextEdit, slot: int, e
 
   virtualReturn
 proc QTextEditmetric*(self: gen_qtextedit_types.QTextEdit, param1: cint): cint =
-
   fQTextEdit_virtualbase_metric(self.h, cint(param1))
 
 type QTextEditmetricProc* = proc(param1: cint): cint
@@ -1957,7 +1782,6 @@ proc miqt_exec_callback_QTextEdit_metric(self: ptr cQTextEdit, slot: int, param1
 
   virtualReturn
 proc QTextEditinitPainter*(self: gen_qtextedit_types.QTextEdit, painter: gen_qpainter.QPainter): void =
-
   fQTextEdit_virtualbase_initPainter(self.h, painter.h)
 
 type QTextEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1975,7 +1799,6 @@ proc miqt_exec_callback_QTextEdit_initPainter(self: ptr cQTextEdit, slot: int, p
 
   nimfunc[](slotval1)
 proc QTextEditredirected*(self: gen_qtextedit_types.QTextEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQTextEdit_virtualbase_redirected(self.h, offset.h))
 
 type QTextEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1995,7 +1818,6 @@ proc miqt_exec_callback_QTextEdit_redirected(self: ptr cQTextEdit, slot: int, of
 
   virtualReturn.h
 proc QTextEditsharedPainter*(self: gen_qtextedit_types.QTextEdit, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQTextEdit_virtualbase_sharedPainter(self.h))
 
 type QTextEditsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -2013,7 +1835,6 @@ proc miqt_exec_callback_QTextEdit_sharedPainter(self: ptr cQTextEdit, slot: int)
 
   virtualReturn.h
 proc QTextEditchildEvent*(self: gen_qtextedit_types.QTextEdit, event: gen_qcoreevent.QChildEvent): void =
-
   fQTextEdit_virtualbase_childEvent(self.h, event.h)
 
 type QTextEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -2031,7 +1852,6 @@ proc miqt_exec_callback_QTextEdit_childEvent(self: ptr cQTextEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTextEditcustomEvent*(self: gen_qtextedit_types.QTextEdit, event: gen_qcoreevent.QEvent): void =
-
   fQTextEdit_virtualbase_customEvent(self.h, event.h)
 
 type QTextEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2049,7 +1869,6 @@ proc miqt_exec_callback_QTextEdit_customEvent(self: ptr cQTextEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTextEditconnectNotify*(self: gen_qtextedit_types.QTextEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTextEdit_virtualbase_connectNotify(self.h, signal.h)
 
 type QTextEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2067,7 +1886,6 @@ proc miqt_exec_callback_QTextEdit_connectNotify(self: ptr cQTextEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QTextEditdisconnectNotify*(self: gen_qtextedit_types.QTextEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTextEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTextEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2092,10 +1910,9 @@ proc delete*(self: gen_qtextedit_types.QTextEdit) =
 func init*(T: type gen_qtextedit_types.QTextEditExtraSelection, h: ptr cQTextEditExtraSelection): gen_qtextedit_types.QTextEditExtraSelection =
   T(h: h)
 proc create*(T: type gen_qtextedit_types.QTextEditExtraSelection, param1: gen_qtextedit_types.QTextEditExtraSelection): gen_qtextedit_types.QTextEditExtraSelection =
-
   gen_qtextedit_types.QTextEditExtraSelection.init(fcQTextEditExtraSelection_new(param1.h))
-proc operatorAssign*(self: gen_qtextedit_types.QTextEditExtraSelection, param1: gen_qtextedit_types.QTextEditExtraSelection): void =
 
+proc operatorAssign*(self: gen_qtextedit_types.QTextEditExtraSelection, param1: gen_qtextedit_types.QTextEditExtraSelection): void =
   fcQTextEditExtraSelection_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qtextedit_types.QTextEditExtraSelection) =

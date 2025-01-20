@@ -50,18 +50,15 @@ proc fcQThreadStorageData_delete(self: pointer) {.importc: "QThreadStorageData_d
 func init*(T: type gen_qthreadstorage_types.QThreadStorageData, h: ptr cQThreadStorageData): gen_qthreadstorage_types.QThreadStorageData =
   T(h: h)
 proc create*(T: type gen_qthreadstorage_types.QThreadStorageData, param1: gen_qthreadstorage_types.QThreadStorageData): gen_qthreadstorage_types.QThreadStorageData =
-
   gen_qthreadstorage_types.QThreadStorageData.init(fcQThreadStorageData_new(param1.h))
-proc get*(self: gen_qthreadstorage_types.QThreadStorageData, ): pointer =
 
+proc get*(self: gen_qthreadstorage_types.QThreadStorageData, ): pointer =
   fcQThreadStorageData_get(self.h)
 
 proc set*(self: gen_qthreadstorage_types.QThreadStorageData, p: pointer): pointer =
-
   fcQThreadStorageData_set(self.h, p)
 
 proc finish*(_: type gen_qthreadstorage_types.QThreadStorageData, param1: pointer): void =
-
   fcQThreadStorageData_finish(param1)
 
 proc delete*(self: gen_qthreadstorage_types.QThreadStorageData) =

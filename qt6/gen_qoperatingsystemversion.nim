@@ -100,58 +100,48 @@ proc fcQOperatingSystemVersion_delete(self: pointer) {.importc: "QOperatingSyste
 func init*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, h: ptr cQOperatingSystemVersionBase): gen_qoperatingsystemversion_types.QOperatingSystemVersionBase =
   T(h: h)
 proc create*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, osType: cint, vmajor: cint): gen_qoperatingsystemversion_types.QOperatingSystemVersionBase =
-
   gen_qoperatingsystemversion_types.QOperatingSystemVersionBase.init(fcQOperatingSystemVersionBase_new(cint(osType), vmajor))
+
 proc create*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, param1: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase): gen_qoperatingsystemversion_types.QOperatingSystemVersionBase =
-
   gen_qoperatingsystemversion_types.QOperatingSystemVersionBase.init(fcQOperatingSystemVersionBase_new2(param1.h))
+
 proc create*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, osType: cint, vmajor: cint, vminor: cint): gen_qoperatingsystemversion_types.QOperatingSystemVersionBase =
-
   gen_qoperatingsystemversion_types.QOperatingSystemVersionBase.init(fcQOperatingSystemVersionBase_new3(cint(osType), vmajor, vminor))
+
 proc create*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, osType: cint, vmajor: cint, vminor: cint, vmicro: cint): gen_qoperatingsystemversion_types.QOperatingSystemVersionBase =
-
   gen_qoperatingsystemversion_types.QOperatingSystemVersionBase.init(fcQOperatingSystemVersionBase_new4(cint(osType), vmajor, vminor, vmicro))
-proc current*(_: type gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): gen_qoperatingsystemversion_types.QOperatingSystemVersionBase =
 
+proc current*(_: type gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): gen_qoperatingsystemversion_types.QOperatingSystemVersionBase =
   gen_qoperatingsystemversion_types.QOperatingSystemVersionBase(h: fcQOperatingSystemVersionBase_current())
 
 proc name*(_: type gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, osversion: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase): string =
-
   let v_ms = fcQOperatingSystemVersionBase_name(osversion.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc currentType*(_: type gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): cint =
-
   cint(fcQOperatingSystemVersionBase_currentType())
 
 proc version*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): gen_qversionnumber.QVersionNumber =
-
   gen_qversionnumber.QVersionNumber(h: fcQOperatingSystemVersionBase_version(self.h))
 
 proc majorVersion*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): cint =
-
   fcQOperatingSystemVersionBase_majorVersion(self.h)
 
 proc minorVersion*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): cint =
-
   fcQOperatingSystemVersionBase_minorVersion(self.h)
 
 proc microVersion*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): cint =
-
   fcQOperatingSystemVersionBase_microVersion(self.h)
 
 proc segmentCount*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): cint =
-
   fcQOperatingSystemVersionBase_segmentCount(self.h)
 
 proc typeX*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): cint =
-
   cint(fcQOperatingSystemVersionBase_typeX(self.h))
 
-proc name2*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): string =
-
+proc name*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase, ): string =
   let v_ms = fcQOperatingSystemVersionBase_name2(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -163,54 +153,45 @@ proc delete*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase
 func init*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, h: ptr cQOperatingSystemVersion): gen_qoperatingsystemversion_types.QOperatingSystemVersion =
   T(h: h)
 proc create*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, osversion: gen_qoperatingsystemversion_types.QOperatingSystemVersionBase): gen_qoperatingsystemversion_types.QOperatingSystemVersion =
-
   gen_qoperatingsystemversion_types.QOperatingSystemVersion.init(fcQOperatingSystemVersion_new(osversion.h))
+
 proc create*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, osType: cint, vmajor: cint): gen_qoperatingsystemversion_types.QOperatingSystemVersion =
-
   gen_qoperatingsystemversion_types.QOperatingSystemVersion.init(fcQOperatingSystemVersion_new2(cint(osType), vmajor))
-proc create2*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, param1: gen_qoperatingsystemversion_types.QOperatingSystemVersion): gen_qoperatingsystemversion_types.QOperatingSystemVersion =
 
+proc create*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, param1: gen_qoperatingsystemversion_types.QOperatingSystemVersion): gen_qoperatingsystemversion_types.QOperatingSystemVersion =
   gen_qoperatingsystemversion_types.QOperatingSystemVersion.init(fcQOperatingSystemVersion_new3(param1.h))
+
 proc create*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, osType: cint, vmajor: cint, vminor: cint): gen_qoperatingsystemversion_types.QOperatingSystemVersion =
-
   gen_qoperatingsystemversion_types.QOperatingSystemVersion.init(fcQOperatingSystemVersion_new4(cint(osType), vmajor, vminor))
+
 proc create*(T: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, osType: cint, vmajor: cint, vminor: cint, vmicro: cint): gen_qoperatingsystemversion_types.QOperatingSystemVersion =
-
   gen_qoperatingsystemversion_types.QOperatingSystemVersion.init(fcQOperatingSystemVersion_new5(cint(osType), vmajor, vminor, vmicro))
-proc current*(_: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): gen_qoperatingsystemversion_types.QOperatingSystemVersion =
 
+proc current*(_: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): gen_qoperatingsystemversion_types.QOperatingSystemVersion =
   gen_qoperatingsystemversion_types.QOperatingSystemVersion(h: fcQOperatingSystemVersion_current())
 
 proc currentType*(_: type gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): cint =
-
   cint(fcQOperatingSystemVersion_currentType())
 
 proc version*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): gen_qversionnumber.QVersionNumber =
-
   gen_qversionnumber.QVersionNumber(h: fcQOperatingSystemVersion_version(self.h))
 
 proc majorVersion*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): cint =
-
   fcQOperatingSystemVersion_majorVersion(self.h)
 
 proc minorVersion*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): cint =
-
   fcQOperatingSystemVersion_minorVersion(self.h)
 
 proc microVersion*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): cint =
-
   fcQOperatingSystemVersion_microVersion(self.h)
 
 proc segmentCount*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): cint =
-
   fcQOperatingSystemVersion_segmentCount(self.h)
 
 proc typeX*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): cint =
-
   cint(fcQOperatingSystemVersion_typeX(self.h))
 
 proc name*(self: gen_qoperatingsystemversion_types.QOperatingSystemVersion, ): string =
-
   let v_ms = fcQOperatingSystemVersion_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

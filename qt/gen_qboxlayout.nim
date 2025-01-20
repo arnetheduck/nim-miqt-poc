@@ -336,231 +336,180 @@ proc fcQVBoxLayout_delete(self: pointer) {.importc: "QVBoxLayout_delete".}
 func init*(T: type gen_qboxlayout_types.QBoxLayout, h: ptr cQBoxLayout): gen_qboxlayout_types.QBoxLayout =
   T(h: h)
 proc create*(T: type gen_qboxlayout_types.QBoxLayout, param1: cint): gen_qboxlayout_types.QBoxLayout =
-
   gen_qboxlayout_types.QBoxLayout.init(fcQBoxLayout_new(cint(param1)))
+
 proc create*(T: type gen_qboxlayout_types.QBoxLayout, param1: cint, parent: gen_qwidget.QWidget): gen_qboxlayout_types.QBoxLayout =
-
   gen_qboxlayout_types.QBoxLayout.init(fcQBoxLayout_new2(cint(param1), parent.h))
-proc metaObject*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQBoxLayout_metaObject(self.h))
 
 proc metacast*(self: gen_qboxlayout_types.QBoxLayout, param1: cstring): pointer =
-
   fcQBoxLayout_metacast(self.h, param1)
 
 proc metacall*(self: gen_qboxlayout_types.QBoxLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQBoxLayout_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring): string =
-
   let v_ms = fcQBoxLayout_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring): string =
-
   let v_ms = fcQBoxLayout_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc direction*(self: gen_qboxlayout_types.QBoxLayout, ): cint =
-
   cint(fcQBoxLayout_direction(self.h))
 
 proc setDirection*(self: gen_qboxlayout_types.QBoxLayout, direction: cint): void =
-
   fcQBoxLayout_setDirection(self.h, cint(direction))
 
 proc addSpacing*(self: gen_qboxlayout_types.QBoxLayout, size: cint): void =
-
   fcQBoxLayout_addSpacing(self.h, size)
 
 proc addStretch*(self: gen_qboxlayout_types.QBoxLayout, ): void =
-
   fcQBoxLayout_addStretch(self.h)
 
 proc addSpacerItem*(self: gen_qboxlayout_types.QBoxLayout, spacerItem: gen_qlayoutitem.QSpacerItem): void =
-
   fcQBoxLayout_addSpacerItem(self.h, spacerItem.h)
 
 proc addWidget*(self: gen_qboxlayout_types.QBoxLayout, param1: gen_qwidget.QWidget): void =
-
   fcQBoxLayout_addWidget(self.h, param1.h)
 
 proc addLayout*(self: gen_qboxlayout_types.QBoxLayout, layout: gen_qlayout.QLayout): void =
-
   fcQBoxLayout_addLayout(self.h, layout.h)
 
 proc addStrut*(self: gen_qboxlayout_types.QBoxLayout, param1: cint): void =
-
   fcQBoxLayout_addStrut(self.h, param1)
 
 proc addItem*(self: gen_qboxlayout_types.QBoxLayout, param1: gen_qlayoutitem.QLayoutItem): void =
-
   fcQBoxLayout_addItem(self.h, param1.h)
 
 proc insertSpacing*(self: gen_qboxlayout_types.QBoxLayout, index: cint, size: cint): void =
-
   fcQBoxLayout_insertSpacing(self.h, index, size)
 
 proc insertStretch*(self: gen_qboxlayout_types.QBoxLayout, index: cint): void =
-
   fcQBoxLayout_insertStretch(self.h, index)
 
 proc insertSpacerItem*(self: gen_qboxlayout_types.QBoxLayout, index: cint, spacerItem: gen_qlayoutitem.QSpacerItem): void =
-
   fcQBoxLayout_insertSpacerItem(self.h, index, spacerItem.h)
 
 proc insertWidget*(self: gen_qboxlayout_types.QBoxLayout, index: cint, widget: gen_qwidget.QWidget): void =
-
   fcQBoxLayout_insertWidget(self.h, index, widget.h)
 
 proc insertLayout*(self: gen_qboxlayout_types.QBoxLayout, index: cint, layout: gen_qlayout.QLayout): void =
-
   fcQBoxLayout_insertLayout(self.h, index, layout.h)
 
 proc insertItem*(self: gen_qboxlayout_types.QBoxLayout, index: cint, param2: gen_qlayoutitem.QLayoutItem): void =
-
   fcQBoxLayout_insertItem(self.h, index, param2.h)
 
 proc spacing*(self: gen_qboxlayout_types.QBoxLayout, ): cint =
-
   fcQBoxLayout_spacing(self.h)
 
 proc setSpacing*(self: gen_qboxlayout_types.QBoxLayout, spacing: cint): void =
-
   fcQBoxLayout_setSpacing(self.h, spacing)
 
 proc setStretchFactor*(self: gen_qboxlayout_types.QBoxLayout, w: gen_qwidget.QWidget, stretch: cint): bool =
-
   fcQBoxLayout_setStretchFactor(self.h, w.h, stretch)
 
-proc setStretchFactor2*(self: gen_qboxlayout_types.QBoxLayout, l: gen_qlayout.QLayout, stretch: cint): bool =
-
+proc setStretchFactor*(self: gen_qboxlayout_types.QBoxLayout, l: gen_qlayout.QLayout, stretch: cint): bool =
   fcQBoxLayout_setStretchFactor2(self.h, l.h, stretch)
 
 proc setStretch*(self: gen_qboxlayout_types.QBoxLayout, index: cint, stretch: cint): void =
-
   fcQBoxLayout_setStretch(self.h, index, stretch)
 
 proc stretch*(self: gen_qboxlayout_types.QBoxLayout, index: cint): cint =
-
   fcQBoxLayout_stretch(self.h, index)
 
 proc sizeHint*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQBoxLayout_sizeHint(self.h))
 
 proc minimumSize*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQBoxLayout_minimumSize(self.h))
 
 proc maximumSize*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQBoxLayout_maximumSize(self.h))
 
 proc hasHeightForWidth*(self: gen_qboxlayout_types.QBoxLayout, ): bool =
-
   fcQBoxLayout_hasHeightForWidth(self.h)
 
 proc heightForWidth*(self: gen_qboxlayout_types.QBoxLayout, param1: cint): cint =
-
   fcQBoxLayout_heightForWidth(self.h, param1)
 
 proc minimumHeightForWidth*(self: gen_qboxlayout_types.QBoxLayout, param1: cint): cint =
-
   fcQBoxLayout_minimumHeightForWidth(self.h, param1)
 
 proc expandingDirections*(self: gen_qboxlayout_types.QBoxLayout, ): cint =
-
   cint(fcQBoxLayout_expandingDirections(self.h))
 
 proc invalidate*(self: gen_qboxlayout_types.QBoxLayout, ): void =
-
   fcQBoxLayout_invalidate(self.h)
 
 proc itemAt*(self: gen_qboxlayout_types.QBoxLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fcQBoxLayout_itemAt(self.h, param1))
 
 proc takeAt*(self: gen_qboxlayout_types.QBoxLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fcQBoxLayout_takeAt(self.h, param1))
 
 proc count*(self: gen_qboxlayout_types.QBoxLayout, ): cint =
-
   fcQBoxLayout_count(self.h)
 
 proc setGeometry*(self: gen_qboxlayout_types.QBoxLayout, geometry: gen_qrect.QRect): void =
-
   fcQBoxLayout_setGeometry(self.h, geometry.h)
 
-proc tr2*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring, c: cstring): string =
   let v_ms = fcQBoxLayout_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQBoxLayout_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring, c: cstring): string =
   let v_ms = fcQBoxLayout_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qboxlayout_types.QBoxLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQBoxLayout_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addStretch1*(self: gen_qboxlayout_types.QBoxLayout, stretch: cint): void =
-
+proc addStretch*(self: gen_qboxlayout_types.QBoxLayout, stretch: cint): void =
   fcQBoxLayout_addStretch1(self.h, stretch)
 
-proc addWidget2*(self: gen_qboxlayout_types.QBoxLayout, param1: gen_qwidget.QWidget, stretch: cint): void =
-
+proc addWidget*(self: gen_qboxlayout_types.QBoxLayout, param1: gen_qwidget.QWidget, stretch: cint): void =
   fcQBoxLayout_addWidget2(self.h, param1.h, stretch)
 
-proc addWidget3*(self: gen_qboxlayout_types.QBoxLayout, param1: gen_qwidget.QWidget, stretch: cint, alignment: cint): void =
-
+proc addWidget*(self: gen_qboxlayout_types.QBoxLayout, param1: gen_qwidget.QWidget, stretch: cint, alignment: cint): void =
   fcQBoxLayout_addWidget3(self.h, param1.h, stretch, cint(alignment))
 
-proc addLayout2*(self: gen_qboxlayout_types.QBoxLayout, layout: gen_qlayout.QLayout, stretch: cint): void =
-
+proc addLayout*(self: gen_qboxlayout_types.QBoxLayout, layout: gen_qlayout.QLayout, stretch: cint): void =
   fcQBoxLayout_addLayout2(self.h, layout.h, stretch)
 
-proc insertStretch2*(self: gen_qboxlayout_types.QBoxLayout, index: cint, stretch: cint): void =
-
+proc insertStretch*(self: gen_qboxlayout_types.QBoxLayout, index: cint, stretch: cint): void =
   fcQBoxLayout_insertStretch2(self.h, index, stretch)
 
-proc insertWidget3*(self: gen_qboxlayout_types.QBoxLayout, index: cint, widget: gen_qwidget.QWidget, stretch: cint): void =
-
+proc insertWidget*(self: gen_qboxlayout_types.QBoxLayout, index: cint, widget: gen_qwidget.QWidget, stretch: cint): void =
   fcQBoxLayout_insertWidget3(self.h, index, widget.h, stretch)
 
-proc insertWidget4*(self: gen_qboxlayout_types.QBoxLayout, index: cint, widget: gen_qwidget.QWidget, stretch: cint, alignment: cint): void =
-
+proc insertWidget*(self: gen_qboxlayout_types.QBoxLayout, index: cint, widget: gen_qwidget.QWidget, stretch: cint, alignment: cint): void =
   fcQBoxLayout_insertWidget4(self.h, index, widget.h, stretch, cint(alignment))
 
-proc insertLayout3*(self: gen_qboxlayout_types.QBoxLayout, index: cint, layout: gen_qlayout.QLayout, stretch: cint): void =
-
+proc insertLayout*(self: gen_qboxlayout_types.QBoxLayout, index: cint, layout: gen_qlayout.QLayout, stretch: cint): void =
   fcQBoxLayout_insertLayout3(self.h, index, layout.h, stretch)
 
 proc QBoxLayoutmetaObject*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQBoxLayout_virtualbase_metaObject(self.h))
 
 type QBoxLayoutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -578,7 +527,6 @@ proc miqt_exec_callback_QBoxLayout_metaObject(self: ptr cQBoxLayout, slot: int):
 
   virtualReturn.h
 proc QBoxLayoutmetacast*(self: gen_qboxlayout_types.QBoxLayout, param1: cstring): pointer =
-
   fQBoxLayout_virtualbase_metacast(self.h, param1)
 
 type QBoxLayoutmetacastProc* = proc(param1: cstring): pointer
@@ -598,7 +546,6 @@ proc miqt_exec_callback_QBoxLayout_metacast(self: ptr cQBoxLayout, slot: int, pa
 
   virtualReturn
 proc QBoxLayoutmetacall*(self: gen_qboxlayout_types.QBoxLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fQBoxLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QBoxLayoutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -622,7 +569,6 @@ proc miqt_exec_callback_QBoxLayout_metacall(self: ptr cQBoxLayout, slot: int, pa
 
   virtualReturn
 proc QBoxLayoutaddItem*(self: gen_qboxlayout_types.QBoxLayout, param1: gen_qlayoutitem.QLayoutItem): void =
-
   fQBoxLayout_virtualbase_addItem(self.h, param1.h)
 
 type QBoxLayoutaddItemProc* = proc(param1: gen_qlayoutitem.QLayoutItem): void
@@ -640,7 +586,6 @@ proc miqt_exec_callback_QBoxLayout_addItem(self: ptr cQBoxLayout, slot: int, par
 
   nimfunc[](slotval1)
 proc QBoxLayoutsizeHint*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQBoxLayout_virtualbase_sizeHint(self.h))
 
 type QBoxLayoutsizeHintProc* = proc(): gen_qsize.QSize
@@ -658,7 +603,6 @@ proc miqt_exec_callback_QBoxLayout_sizeHint(self: ptr cQBoxLayout, slot: int): p
 
   virtualReturn.h
 proc QBoxLayoutminimumSize*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQBoxLayout_virtualbase_minimumSize(self.h))
 
 type QBoxLayoutminimumSizeProc* = proc(): gen_qsize.QSize
@@ -676,7 +620,6 @@ proc miqt_exec_callback_QBoxLayout_minimumSize(self: ptr cQBoxLayout, slot: int)
 
   virtualReturn.h
 proc QBoxLayoutmaximumSize*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQBoxLayout_virtualbase_maximumSize(self.h))
 
 type QBoxLayoutmaximumSizeProc* = proc(): gen_qsize.QSize
@@ -694,7 +637,6 @@ proc miqt_exec_callback_QBoxLayout_maximumSize(self: ptr cQBoxLayout, slot: int)
 
   virtualReturn.h
 proc QBoxLayouthasHeightForWidth*(self: gen_qboxlayout_types.QBoxLayout, ): bool =
-
   fQBoxLayout_virtualbase_hasHeightForWidth(self.h)
 
 type QBoxLayouthasHeightForWidthProc* = proc(): bool
@@ -712,7 +654,6 @@ proc miqt_exec_callback_QBoxLayout_hasHeightForWidth(self: ptr cQBoxLayout, slot
 
   virtualReturn
 proc QBoxLayoutheightForWidth*(self: gen_qboxlayout_types.QBoxLayout, param1: cint): cint =
-
   fQBoxLayout_virtualbase_heightForWidth(self.h, param1)
 
 type QBoxLayoutheightForWidthProc* = proc(param1: cint): cint
@@ -732,7 +673,6 @@ proc miqt_exec_callback_QBoxLayout_heightForWidth(self: ptr cQBoxLayout, slot: i
 
   virtualReturn
 proc QBoxLayoutminimumHeightForWidth*(self: gen_qboxlayout_types.QBoxLayout, param1: cint): cint =
-
   fQBoxLayout_virtualbase_minimumHeightForWidth(self.h, param1)
 
 type QBoxLayoutminimumHeightForWidthProc* = proc(param1: cint): cint
@@ -752,7 +692,6 @@ proc miqt_exec_callback_QBoxLayout_minimumHeightForWidth(self: ptr cQBoxLayout, 
 
   virtualReturn
 proc QBoxLayoutexpandingDirections*(self: gen_qboxlayout_types.QBoxLayout, ): cint =
-
   cint(fQBoxLayout_virtualbase_expandingDirections(self.h))
 
 type QBoxLayoutexpandingDirectionsProc* = proc(): cint
@@ -770,7 +709,6 @@ proc miqt_exec_callback_QBoxLayout_expandingDirections(self: ptr cQBoxLayout, sl
 
   cint(virtualReturn)
 proc QBoxLayoutinvalidate*(self: gen_qboxlayout_types.QBoxLayout, ): void =
-
   fQBoxLayout_virtualbase_invalidate(self.h)
 
 type QBoxLayoutinvalidateProc* = proc(): void
@@ -786,7 +724,6 @@ proc miqt_exec_callback_QBoxLayout_invalidate(self: ptr cQBoxLayout, slot: int):
 
   nimfunc[]()
 proc QBoxLayoutitemAt*(self: gen_qboxlayout_types.QBoxLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fQBoxLayout_virtualbase_itemAt(self.h, param1))
 
 type QBoxLayoutitemAtProc* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
@@ -806,7 +743,6 @@ proc miqt_exec_callback_QBoxLayout_itemAt(self: ptr cQBoxLayout, slot: int, para
 
   virtualReturn.h
 proc QBoxLayouttakeAt*(self: gen_qboxlayout_types.QBoxLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fQBoxLayout_virtualbase_takeAt(self.h, param1))
 
 type QBoxLayouttakeAtProc* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
@@ -826,7 +762,6 @@ proc miqt_exec_callback_QBoxLayout_takeAt(self: ptr cQBoxLayout, slot: int, para
 
   virtualReturn.h
 proc QBoxLayoutcount*(self: gen_qboxlayout_types.QBoxLayout, ): cint =
-
   fQBoxLayout_virtualbase_count(self.h)
 
 type QBoxLayoutcountProc* = proc(): cint
@@ -844,7 +779,6 @@ proc miqt_exec_callback_QBoxLayout_count(self: ptr cQBoxLayout, slot: int): cint
 
   virtualReturn
 proc QBoxLayoutsetGeometry*(self: gen_qboxlayout_types.QBoxLayout, geometry: gen_qrect.QRect): void =
-
   fQBoxLayout_virtualbase_setGeometry(self.h, geometry.h)
 
 type QBoxLayoutsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
@@ -862,7 +796,6 @@ proc miqt_exec_callback_QBoxLayout_setGeometry(self: ptr cQBoxLayout, slot: int,
 
   nimfunc[](slotval1)
 proc QBoxLayoutgeometry*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQBoxLayout_virtualbase_geometry(self.h))
 
 type QBoxLayoutgeometryProc* = proc(): gen_qrect.QRect
@@ -880,7 +813,6 @@ proc miqt_exec_callback_QBoxLayout_geometry(self: ptr cQBoxLayout, slot: int): p
 
   virtualReturn.h
 proc QBoxLayoutindexOf*(self: gen_qboxlayout_types.QBoxLayout, param1: gen_qwidget.QWidget): cint =
-
   fQBoxLayout_virtualbase_indexOf(self.h, param1.h)
 
 type QBoxLayoutindexOfProc* = proc(param1: gen_qwidget.QWidget): cint
@@ -900,7 +832,6 @@ proc miqt_exec_callback_QBoxLayout_indexOf(self: ptr cQBoxLayout, slot: int, par
 
   virtualReturn
 proc QBoxLayoutisEmpty*(self: gen_qboxlayout_types.QBoxLayout, ): bool =
-
   fQBoxLayout_virtualbase_isEmpty(self.h)
 
 type QBoxLayoutisEmptyProc* = proc(): bool
@@ -918,7 +849,6 @@ proc miqt_exec_callback_QBoxLayout_isEmpty(self: ptr cQBoxLayout, slot: int): bo
 
   virtualReturn
 proc QBoxLayoutcontrolTypes*(self: gen_qboxlayout_types.QBoxLayout, ): cint =
-
   cint(fQBoxLayout_virtualbase_controlTypes(self.h))
 
 type QBoxLayoutcontrolTypesProc* = proc(): cint
@@ -936,7 +866,6 @@ proc miqt_exec_callback_QBoxLayout_controlTypes(self: ptr cQBoxLayout, slot: int
 
   cint(virtualReturn)
 proc QBoxLayoutlayout*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fQBoxLayout_virtualbase_layout(self.h))
 
 type QBoxLayoutlayoutProc* = proc(): gen_qlayout.QLayout
@@ -954,7 +883,6 @@ proc miqt_exec_callback_QBoxLayout_layout(self: ptr cQBoxLayout, slot: int): poi
 
   virtualReturn.h
 proc QBoxLayoutchildEvent*(self: gen_qboxlayout_types.QBoxLayout, e: gen_qcoreevent.QChildEvent): void =
-
   fQBoxLayout_virtualbase_childEvent(self.h, e.h)
 
 type QBoxLayoutchildEventProc* = proc(e: gen_qcoreevent.QChildEvent): void
@@ -972,7 +900,6 @@ proc miqt_exec_callback_QBoxLayout_childEvent(self: ptr cQBoxLayout, slot: int, 
 
   nimfunc[](slotval1)
 proc QBoxLayoutevent*(self: gen_qboxlayout_types.QBoxLayout, event: gen_qcoreevent.QEvent): bool =
-
   fQBoxLayout_virtualbase_event(self.h, event.h)
 
 type QBoxLayouteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -992,7 +919,6 @@ proc miqt_exec_callback_QBoxLayout_event(self: ptr cQBoxLayout, slot: int, event
 
   virtualReturn
 proc QBoxLayouteventFilter*(self: gen_qboxlayout_types.QBoxLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQBoxLayout_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QBoxLayouteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1014,7 +940,6 @@ proc miqt_exec_callback_QBoxLayout_eventFilter(self: ptr cQBoxLayout, slot: int,
 
   virtualReturn
 proc QBoxLayouttimerEvent*(self: gen_qboxlayout_types.QBoxLayout, event: gen_qcoreevent.QTimerEvent): void =
-
   fQBoxLayout_virtualbase_timerEvent(self.h, event.h)
 
 type QBoxLayouttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1032,7 +957,6 @@ proc miqt_exec_callback_QBoxLayout_timerEvent(self: ptr cQBoxLayout, slot: int, 
 
   nimfunc[](slotval1)
 proc QBoxLayoutcustomEvent*(self: gen_qboxlayout_types.QBoxLayout, event: gen_qcoreevent.QEvent): void =
-
   fQBoxLayout_virtualbase_customEvent(self.h, event.h)
 
 type QBoxLayoutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1050,7 +974,6 @@ proc miqt_exec_callback_QBoxLayout_customEvent(self: ptr cQBoxLayout, slot: int,
 
   nimfunc[](slotval1)
 proc QBoxLayoutconnectNotify*(self: gen_qboxlayout_types.QBoxLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQBoxLayout_virtualbase_connectNotify(self.h, signal.h)
 
 type QBoxLayoutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1068,7 +991,6 @@ proc miqt_exec_callback_QBoxLayout_connectNotify(self: ptr cQBoxLayout, slot: in
 
   nimfunc[](slotval1)
 proc QBoxLayoutdisconnectNotify*(self: gen_qboxlayout_types.QBoxLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQBoxLayout_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QBoxLayoutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1086,7 +1008,6 @@ proc miqt_exec_callback_QBoxLayout_disconnectNotify(self: ptr cQBoxLayout, slot:
 
   nimfunc[](slotval1)
 proc QBoxLayoutwidget*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQBoxLayout_virtualbase_widget(self.h))
 
 type QBoxLayoutwidgetProc* = proc(): gen_qwidget.QWidget
@@ -1104,7 +1025,6 @@ proc miqt_exec_callback_QBoxLayout_widget(self: ptr cQBoxLayout, slot: int): poi
 
   virtualReturn.h
 proc QBoxLayoutspacerItem*(self: gen_qboxlayout_types.QBoxLayout, ): gen_qlayoutitem.QSpacerItem =
-
   gen_qlayoutitem.QSpacerItem(h: fQBoxLayout_virtualbase_spacerItem(self.h))
 
 type QBoxLayoutspacerItemProc* = proc(): gen_qlayoutitem.QSpacerItem
@@ -1129,67 +1049,57 @@ proc delete*(self: gen_qboxlayout_types.QBoxLayout) =
 func init*(T: type gen_qboxlayout_types.QHBoxLayout, h: ptr cQHBoxLayout): gen_qboxlayout_types.QHBoxLayout =
   T(h: h)
 proc create*(T: type gen_qboxlayout_types.QHBoxLayout, parent: gen_qwidget.QWidget): gen_qboxlayout_types.QHBoxLayout =
-
   gen_qboxlayout_types.QHBoxLayout.init(fcQHBoxLayout_new(parent.h))
+
 proc create*(T: type gen_qboxlayout_types.QHBoxLayout, ): gen_qboxlayout_types.QHBoxLayout =
-
   gen_qboxlayout_types.QHBoxLayout.init(fcQHBoxLayout_new2())
-proc metaObject*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQHBoxLayout_metaObject(self.h))
 
 proc metacast*(self: gen_qboxlayout_types.QHBoxLayout, param1: cstring): pointer =
-
   fcQHBoxLayout_metacast(self.h, param1)
 
 proc metacall*(self: gen_qboxlayout_types.QHBoxLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQHBoxLayout_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring): string =
-
   let v_ms = fcQHBoxLayout_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring): string =
-
   let v_ms = fcQHBoxLayout_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring, c: cstring): string =
   let v_ms = fcQHBoxLayout_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQHBoxLayout_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring, c: cstring): string =
   let v_ms = fcQHBoxLayout_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qboxlayout_types.QHBoxLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQHBoxLayout_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QHBoxLayoutmetaObject*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQHBoxLayout_virtualbase_metaObject(self.h))
 
 type QHBoxLayoutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -1207,7 +1117,6 @@ proc miqt_exec_callback_QHBoxLayout_metaObject(self: ptr cQHBoxLayout, slot: int
 
   virtualReturn.h
 proc QHBoxLayoutmetacast*(self: gen_qboxlayout_types.QHBoxLayout, param1: cstring): pointer =
-
   fQHBoxLayout_virtualbase_metacast(self.h, param1)
 
 type QHBoxLayoutmetacastProc* = proc(param1: cstring): pointer
@@ -1227,7 +1136,6 @@ proc miqt_exec_callback_QHBoxLayout_metacast(self: ptr cQHBoxLayout, slot: int, 
 
   virtualReturn
 proc QHBoxLayoutmetacall*(self: gen_qboxlayout_types.QHBoxLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fQHBoxLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QHBoxLayoutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -1251,7 +1159,6 @@ proc miqt_exec_callback_QHBoxLayout_metacall(self: ptr cQHBoxLayout, slot: int, 
 
   virtualReturn
 proc QHBoxLayoutaddItem*(self: gen_qboxlayout_types.QHBoxLayout, param1: gen_qlayoutitem.QLayoutItem): void =
-
   fQHBoxLayout_virtualbase_addItem(self.h, param1.h)
 
 type QHBoxLayoutaddItemProc* = proc(param1: gen_qlayoutitem.QLayoutItem): void
@@ -1269,7 +1176,6 @@ proc miqt_exec_callback_QHBoxLayout_addItem(self: ptr cQHBoxLayout, slot: int, p
 
   nimfunc[](slotval1)
 proc QHBoxLayoutsizeHint*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQHBoxLayout_virtualbase_sizeHint(self.h))
 
 type QHBoxLayoutsizeHintProc* = proc(): gen_qsize.QSize
@@ -1287,7 +1193,6 @@ proc miqt_exec_callback_QHBoxLayout_sizeHint(self: ptr cQHBoxLayout, slot: int):
 
   virtualReturn.h
 proc QHBoxLayoutminimumSize*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQHBoxLayout_virtualbase_minimumSize(self.h))
 
 type QHBoxLayoutminimumSizeProc* = proc(): gen_qsize.QSize
@@ -1305,7 +1210,6 @@ proc miqt_exec_callback_QHBoxLayout_minimumSize(self: ptr cQHBoxLayout, slot: in
 
   virtualReturn.h
 proc QHBoxLayoutmaximumSize*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQHBoxLayout_virtualbase_maximumSize(self.h))
 
 type QHBoxLayoutmaximumSizeProc* = proc(): gen_qsize.QSize
@@ -1323,7 +1227,6 @@ proc miqt_exec_callback_QHBoxLayout_maximumSize(self: ptr cQHBoxLayout, slot: in
 
   virtualReturn.h
 proc QHBoxLayouthasHeightForWidth*(self: gen_qboxlayout_types.QHBoxLayout, ): bool =
-
   fQHBoxLayout_virtualbase_hasHeightForWidth(self.h)
 
 type QHBoxLayouthasHeightForWidthProc* = proc(): bool
@@ -1341,7 +1244,6 @@ proc miqt_exec_callback_QHBoxLayout_hasHeightForWidth(self: ptr cQHBoxLayout, sl
 
   virtualReturn
 proc QHBoxLayoutheightForWidth*(self: gen_qboxlayout_types.QHBoxLayout, param1: cint): cint =
-
   fQHBoxLayout_virtualbase_heightForWidth(self.h, param1)
 
 type QHBoxLayoutheightForWidthProc* = proc(param1: cint): cint
@@ -1361,7 +1263,6 @@ proc miqt_exec_callback_QHBoxLayout_heightForWidth(self: ptr cQHBoxLayout, slot:
 
   virtualReturn
 proc QHBoxLayoutminimumHeightForWidth*(self: gen_qboxlayout_types.QHBoxLayout, param1: cint): cint =
-
   fQHBoxLayout_virtualbase_minimumHeightForWidth(self.h, param1)
 
 type QHBoxLayoutminimumHeightForWidthProc* = proc(param1: cint): cint
@@ -1381,7 +1282,6 @@ proc miqt_exec_callback_QHBoxLayout_minimumHeightForWidth(self: ptr cQHBoxLayout
 
   virtualReturn
 proc QHBoxLayoutexpandingDirections*(self: gen_qboxlayout_types.QHBoxLayout, ): cint =
-
   cint(fQHBoxLayout_virtualbase_expandingDirections(self.h))
 
 type QHBoxLayoutexpandingDirectionsProc* = proc(): cint
@@ -1399,7 +1299,6 @@ proc miqt_exec_callback_QHBoxLayout_expandingDirections(self: ptr cQHBoxLayout, 
 
   cint(virtualReturn)
 proc QHBoxLayoutinvalidate*(self: gen_qboxlayout_types.QHBoxLayout, ): void =
-
   fQHBoxLayout_virtualbase_invalidate(self.h)
 
 type QHBoxLayoutinvalidateProc* = proc(): void
@@ -1415,7 +1314,6 @@ proc miqt_exec_callback_QHBoxLayout_invalidate(self: ptr cQHBoxLayout, slot: int
 
   nimfunc[]()
 proc QHBoxLayoutitemAt*(self: gen_qboxlayout_types.QHBoxLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fQHBoxLayout_virtualbase_itemAt(self.h, param1))
 
 type QHBoxLayoutitemAtProc* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
@@ -1435,7 +1333,6 @@ proc miqt_exec_callback_QHBoxLayout_itemAt(self: ptr cQHBoxLayout, slot: int, pa
 
   virtualReturn.h
 proc QHBoxLayouttakeAt*(self: gen_qboxlayout_types.QHBoxLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fQHBoxLayout_virtualbase_takeAt(self.h, param1))
 
 type QHBoxLayouttakeAtProc* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
@@ -1455,7 +1352,6 @@ proc miqt_exec_callback_QHBoxLayout_takeAt(self: ptr cQHBoxLayout, slot: int, pa
 
   virtualReturn.h
 proc QHBoxLayoutcount*(self: gen_qboxlayout_types.QHBoxLayout, ): cint =
-
   fQHBoxLayout_virtualbase_count(self.h)
 
 type QHBoxLayoutcountProc* = proc(): cint
@@ -1473,7 +1369,6 @@ proc miqt_exec_callback_QHBoxLayout_count(self: ptr cQHBoxLayout, slot: int): ci
 
   virtualReturn
 proc QHBoxLayoutsetGeometry*(self: gen_qboxlayout_types.QHBoxLayout, geometry: gen_qrect.QRect): void =
-
   fQHBoxLayout_virtualbase_setGeometry(self.h, geometry.h)
 
 type QHBoxLayoutsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
@@ -1491,7 +1386,6 @@ proc miqt_exec_callback_QHBoxLayout_setGeometry(self: ptr cQHBoxLayout, slot: in
 
   nimfunc[](slotval1)
 proc QHBoxLayoutgeometry*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQHBoxLayout_virtualbase_geometry(self.h))
 
 type QHBoxLayoutgeometryProc* = proc(): gen_qrect.QRect
@@ -1509,7 +1403,6 @@ proc miqt_exec_callback_QHBoxLayout_geometry(self: ptr cQHBoxLayout, slot: int):
 
   virtualReturn.h
 proc QHBoxLayoutindexOf*(self: gen_qboxlayout_types.QHBoxLayout, param1: gen_qwidget.QWidget): cint =
-
   fQHBoxLayout_virtualbase_indexOf(self.h, param1.h)
 
 type QHBoxLayoutindexOfProc* = proc(param1: gen_qwidget.QWidget): cint
@@ -1529,7 +1422,6 @@ proc miqt_exec_callback_QHBoxLayout_indexOf(self: ptr cQHBoxLayout, slot: int, p
 
   virtualReturn
 proc QHBoxLayoutisEmpty*(self: gen_qboxlayout_types.QHBoxLayout, ): bool =
-
   fQHBoxLayout_virtualbase_isEmpty(self.h)
 
 type QHBoxLayoutisEmptyProc* = proc(): bool
@@ -1547,7 +1439,6 @@ proc miqt_exec_callback_QHBoxLayout_isEmpty(self: ptr cQHBoxLayout, slot: int): 
 
   virtualReturn
 proc QHBoxLayoutcontrolTypes*(self: gen_qboxlayout_types.QHBoxLayout, ): cint =
-
   cint(fQHBoxLayout_virtualbase_controlTypes(self.h))
 
 type QHBoxLayoutcontrolTypesProc* = proc(): cint
@@ -1565,7 +1456,6 @@ proc miqt_exec_callback_QHBoxLayout_controlTypes(self: ptr cQHBoxLayout, slot: i
 
   cint(virtualReturn)
 proc QHBoxLayoutlayout*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fQHBoxLayout_virtualbase_layout(self.h))
 
 type QHBoxLayoutlayoutProc* = proc(): gen_qlayout.QLayout
@@ -1583,7 +1473,6 @@ proc miqt_exec_callback_QHBoxLayout_layout(self: ptr cQHBoxLayout, slot: int): p
 
   virtualReturn.h
 proc QHBoxLayoutchildEvent*(self: gen_qboxlayout_types.QHBoxLayout, e: gen_qcoreevent.QChildEvent): void =
-
   fQHBoxLayout_virtualbase_childEvent(self.h, e.h)
 
 type QHBoxLayoutchildEventProc* = proc(e: gen_qcoreevent.QChildEvent): void
@@ -1601,7 +1490,6 @@ proc miqt_exec_callback_QHBoxLayout_childEvent(self: ptr cQHBoxLayout, slot: int
 
   nimfunc[](slotval1)
 proc QHBoxLayoutevent*(self: gen_qboxlayout_types.QHBoxLayout, event: gen_qcoreevent.QEvent): bool =
-
   fQHBoxLayout_virtualbase_event(self.h, event.h)
 
 type QHBoxLayouteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1621,7 +1509,6 @@ proc miqt_exec_callback_QHBoxLayout_event(self: ptr cQHBoxLayout, slot: int, eve
 
   virtualReturn
 proc QHBoxLayouteventFilter*(self: gen_qboxlayout_types.QHBoxLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQHBoxLayout_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QHBoxLayouteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1643,7 +1530,6 @@ proc miqt_exec_callback_QHBoxLayout_eventFilter(self: ptr cQHBoxLayout, slot: in
 
   virtualReturn
 proc QHBoxLayouttimerEvent*(self: gen_qboxlayout_types.QHBoxLayout, event: gen_qcoreevent.QTimerEvent): void =
-
   fQHBoxLayout_virtualbase_timerEvent(self.h, event.h)
 
 type QHBoxLayouttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1661,7 +1547,6 @@ proc miqt_exec_callback_QHBoxLayout_timerEvent(self: ptr cQHBoxLayout, slot: int
 
   nimfunc[](slotval1)
 proc QHBoxLayoutcustomEvent*(self: gen_qboxlayout_types.QHBoxLayout, event: gen_qcoreevent.QEvent): void =
-
   fQHBoxLayout_virtualbase_customEvent(self.h, event.h)
 
 type QHBoxLayoutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1679,7 +1564,6 @@ proc miqt_exec_callback_QHBoxLayout_customEvent(self: ptr cQHBoxLayout, slot: in
 
   nimfunc[](slotval1)
 proc QHBoxLayoutconnectNotify*(self: gen_qboxlayout_types.QHBoxLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQHBoxLayout_virtualbase_connectNotify(self.h, signal.h)
 
 type QHBoxLayoutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1697,7 +1581,6 @@ proc miqt_exec_callback_QHBoxLayout_connectNotify(self: ptr cQHBoxLayout, slot: 
 
   nimfunc[](slotval1)
 proc QHBoxLayoutdisconnectNotify*(self: gen_qboxlayout_types.QHBoxLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQHBoxLayout_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QHBoxLayoutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1715,7 +1598,6 @@ proc miqt_exec_callback_QHBoxLayout_disconnectNotify(self: ptr cQHBoxLayout, slo
 
   nimfunc[](slotval1)
 proc QHBoxLayoutwidget*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQHBoxLayout_virtualbase_widget(self.h))
 
 type QHBoxLayoutwidgetProc* = proc(): gen_qwidget.QWidget
@@ -1733,7 +1615,6 @@ proc miqt_exec_callback_QHBoxLayout_widget(self: ptr cQHBoxLayout, slot: int): p
 
   virtualReturn.h
 proc QHBoxLayoutspacerItem*(self: gen_qboxlayout_types.QHBoxLayout, ): gen_qlayoutitem.QSpacerItem =
-
   gen_qlayoutitem.QSpacerItem(h: fQHBoxLayout_virtualbase_spacerItem(self.h))
 
 type QHBoxLayoutspacerItemProc* = proc(): gen_qlayoutitem.QSpacerItem
@@ -1758,67 +1639,57 @@ proc delete*(self: gen_qboxlayout_types.QHBoxLayout) =
 func init*(T: type gen_qboxlayout_types.QVBoxLayout, h: ptr cQVBoxLayout): gen_qboxlayout_types.QVBoxLayout =
   T(h: h)
 proc create*(T: type gen_qboxlayout_types.QVBoxLayout, parent: gen_qwidget.QWidget): gen_qboxlayout_types.QVBoxLayout =
-
   gen_qboxlayout_types.QVBoxLayout.init(fcQVBoxLayout_new(parent.h))
+
 proc create*(T: type gen_qboxlayout_types.QVBoxLayout, ): gen_qboxlayout_types.QVBoxLayout =
-
   gen_qboxlayout_types.QVBoxLayout.init(fcQVBoxLayout_new2())
-proc metaObject*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQVBoxLayout_metaObject(self.h))
 
 proc metacast*(self: gen_qboxlayout_types.QVBoxLayout, param1: cstring): pointer =
-
   fcQVBoxLayout_metacast(self.h, param1)
 
 proc metacall*(self: gen_qboxlayout_types.QVBoxLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQVBoxLayout_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring): string =
-
   let v_ms = fcQVBoxLayout_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring): string =
-
   let v_ms = fcQVBoxLayout_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring, c: cstring): string =
   let v_ms = fcQVBoxLayout_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQVBoxLayout_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring, c: cstring): string =
   let v_ms = fcQVBoxLayout_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qboxlayout_types.QVBoxLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQVBoxLayout_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QVBoxLayoutmetaObject*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQVBoxLayout_virtualbase_metaObject(self.h))
 
 type QVBoxLayoutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -1836,7 +1707,6 @@ proc miqt_exec_callback_QVBoxLayout_metaObject(self: ptr cQVBoxLayout, slot: int
 
   virtualReturn.h
 proc QVBoxLayoutmetacast*(self: gen_qboxlayout_types.QVBoxLayout, param1: cstring): pointer =
-
   fQVBoxLayout_virtualbase_metacast(self.h, param1)
 
 type QVBoxLayoutmetacastProc* = proc(param1: cstring): pointer
@@ -1856,7 +1726,6 @@ proc miqt_exec_callback_QVBoxLayout_metacast(self: ptr cQVBoxLayout, slot: int, 
 
   virtualReturn
 proc QVBoxLayoutmetacall*(self: gen_qboxlayout_types.QVBoxLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fQVBoxLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QVBoxLayoutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -1880,7 +1749,6 @@ proc miqt_exec_callback_QVBoxLayout_metacall(self: ptr cQVBoxLayout, slot: int, 
 
   virtualReturn
 proc QVBoxLayoutaddItem*(self: gen_qboxlayout_types.QVBoxLayout, param1: gen_qlayoutitem.QLayoutItem): void =
-
   fQVBoxLayout_virtualbase_addItem(self.h, param1.h)
 
 type QVBoxLayoutaddItemProc* = proc(param1: gen_qlayoutitem.QLayoutItem): void
@@ -1898,7 +1766,6 @@ proc miqt_exec_callback_QVBoxLayout_addItem(self: ptr cQVBoxLayout, slot: int, p
 
   nimfunc[](slotval1)
 proc QVBoxLayoutsizeHint*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQVBoxLayout_virtualbase_sizeHint(self.h))
 
 type QVBoxLayoutsizeHintProc* = proc(): gen_qsize.QSize
@@ -1916,7 +1783,6 @@ proc miqt_exec_callback_QVBoxLayout_sizeHint(self: ptr cQVBoxLayout, slot: int):
 
   virtualReturn.h
 proc QVBoxLayoutminimumSize*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQVBoxLayout_virtualbase_minimumSize(self.h))
 
 type QVBoxLayoutminimumSizeProc* = proc(): gen_qsize.QSize
@@ -1934,7 +1800,6 @@ proc miqt_exec_callback_QVBoxLayout_minimumSize(self: ptr cQVBoxLayout, slot: in
 
   virtualReturn.h
 proc QVBoxLayoutmaximumSize*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQVBoxLayout_virtualbase_maximumSize(self.h))
 
 type QVBoxLayoutmaximumSizeProc* = proc(): gen_qsize.QSize
@@ -1952,7 +1817,6 @@ proc miqt_exec_callback_QVBoxLayout_maximumSize(self: ptr cQVBoxLayout, slot: in
 
   virtualReturn.h
 proc QVBoxLayouthasHeightForWidth*(self: gen_qboxlayout_types.QVBoxLayout, ): bool =
-
   fQVBoxLayout_virtualbase_hasHeightForWidth(self.h)
 
 type QVBoxLayouthasHeightForWidthProc* = proc(): bool
@@ -1970,7 +1834,6 @@ proc miqt_exec_callback_QVBoxLayout_hasHeightForWidth(self: ptr cQVBoxLayout, sl
 
   virtualReturn
 proc QVBoxLayoutheightForWidth*(self: gen_qboxlayout_types.QVBoxLayout, param1: cint): cint =
-
   fQVBoxLayout_virtualbase_heightForWidth(self.h, param1)
 
 type QVBoxLayoutheightForWidthProc* = proc(param1: cint): cint
@@ -1990,7 +1853,6 @@ proc miqt_exec_callback_QVBoxLayout_heightForWidth(self: ptr cQVBoxLayout, slot:
 
   virtualReturn
 proc QVBoxLayoutminimumHeightForWidth*(self: gen_qboxlayout_types.QVBoxLayout, param1: cint): cint =
-
   fQVBoxLayout_virtualbase_minimumHeightForWidth(self.h, param1)
 
 type QVBoxLayoutminimumHeightForWidthProc* = proc(param1: cint): cint
@@ -2010,7 +1872,6 @@ proc miqt_exec_callback_QVBoxLayout_minimumHeightForWidth(self: ptr cQVBoxLayout
 
   virtualReturn
 proc QVBoxLayoutexpandingDirections*(self: gen_qboxlayout_types.QVBoxLayout, ): cint =
-
   cint(fQVBoxLayout_virtualbase_expandingDirections(self.h))
 
 type QVBoxLayoutexpandingDirectionsProc* = proc(): cint
@@ -2028,7 +1889,6 @@ proc miqt_exec_callback_QVBoxLayout_expandingDirections(self: ptr cQVBoxLayout, 
 
   cint(virtualReturn)
 proc QVBoxLayoutinvalidate*(self: gen_qboxlayout_types.QVBoxLayout, ): void =
-
   fQVBoxLayout_virtualbase_invalidate(self.h)
 
 type QVBoxLayoutinvalidateProc* = proc(): void
@@ -2044,7 +1904,6 @@ proc miqt_exec_callback_QVBoxLayout_invalidate(self: ptr cQVBoxLayout, slot: int
 
   nimfunc[]()
 proc QVBoxLayoutitemAt*(self: gen_qboxlayout_types.QVBoxLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fQVBoxLayout_virtualbase_itemAt(self.h, param1))
 
 type QVBoxLayoutitemAtProc* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
@@ -2064,7 +1923,6 @@ proc miqt_exec_callback_QVBoxLayout_itemAt(self: ptr cQVBoxLayout, slot: int, pa
 
   virtualReturn.h
 proc QVBoxLayouttakeAt*(self: gen_qboxlayout_types.QVBoxLayout, param1: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fQVBoxLayout_virtualbase_takeAt(self.h, param1))
 
 type QVBoxLayouttakeAtProc* = proc(param1: cint): gen_qlayoutitem.QLayoutItem
@@ -2084,7 +1942,6 @@ proc miqt_exec_callback_QVBoxLayout_takeAt(self: ptr cQVBoxLayout, slot: int, pa
 
   virtualReturn.h
 proc QVBoxLayoutcount*(self: gen_qboxlayout_types.QVBoxLayout, ): cint =
-
   fQVBoxLayout_virtualbase_count(self.h)
 
 type QVBoxLayoutcountProc* = proc(): cint
@@ -2102,7 +1959,6 @@ proc miqt_exec_callback_QVBoxLayout_count(self: ptr cQVBoxLayout, slot: int): ci
 
   virtualReturn
 proc QVBoxLayoutsetGeometry*(self: gen_qboxlayout_types.QVBoxLayout, geometry: gen_qrect.QRect): void =
-
   fQVBoxLayout_virtualbase_setGeometry(self.h, geometry.h)
 
 type QVBoxLayoutsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
@@ -2120,7 +1976,6 @@ proc miqt_exec_callback_QVBoxLayout_setGeometry(self: ptr cQVBoxLayout, slot: in
 
   nimfunc[](slotval1)
 proc QVBoxLayoutgeometry*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQVBoxLayout_virtualbase_geometry(self.h))
 
 type QVBoxLayoutgeometryProc* = proc(): gen_qrect.QRect
@@ -2138,7 +1993,6 @@ proc miqt_exec_callback_QVBoxLayout_geometry(self: ptr cQVBoxLayout, slot: int):
 
   virtualReturn.h
 proc QVBoxLayoutindexOf*(self: gen_qboxlayout_types.QVBoxLayout, param1: gen_qwidget.QWidget): cint =
-
   fQVBoxLayout_virtualbase_indexOf(self.h, param1.h)
 
 type QVBoxLayoutindexOfProc* = proc(param1: gen_qwidget.QWidget): cint
@@ -2158,7 +2012,6 @@ proc miqt_exec_callback_QVBoxLayout_indexOf(self: ptr cQVBoxLayout, slot: int, p
 
   virtualReturn
 proc QVBoxLayoutisEmpty*(self: gen_qboxlayout_types.QVBoxLayout, ): bool =
-
   fQVBoxLayout_virtualbase_isEmpty(self.h)
 
 type QVBoxLayoutisEmptyProc* = proc(): bool
@@ -2176,7 +2029,6 @@ proc miqt_exec_callback_QVBoxLayout_isEmpty(self: ptr cQVBoxLayout, slot: int): 
 
   virtualReturn
 proc QVBoxLayoutcontrolTypes*(self: gen_qboxlayout_types.QVBoxLayout, ): cint =
-
   cint(fQVBoxLayout_virtualbase_controlTypes(self.h))
 
 type QVBoxLayoutcontrolTypesProc* = proc(): cint
@@ -2194,7 +2046,6 @@ proc miqt_exec_callback_QVBoxLayout_controlTypes(self: ptr cQVBoxLayout, slot: i
 
   cint(virtualReturn)
 proc QVBoxLayoutlayout*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fQVBoxLayout_virtualbase_layout(self.h))
 
 type QVBoxLayoutlayoutProc* = proc(): gen_qlayout.QLayout
@@ -2212,7 +2063,6 @@ proc miqt_exec_callback_QVBoxLayout_layout(self: ptr cQVBoxLayout, slot: int): p
 
   virtualReturn.h
 proc QVBoxLayoutchildEvent*(self: gen_qboxlayout_types.QVBoxLayout, e: gen_qcoreevent.QChildEvent): void =
-
   fQVBoxLayout_virtualbase_childEvent(self.h, e.h)
 
 type QVBoxLayoutchildEventProc* = proc(e: gen_qcoreevent.QChildEvent): void
@@ -2230,7 +2080,6 @@ proc miqt_exec_callback_QVBoxLayout_childEvent(self: ptr cQVBoxLayout, slot: int
 
   nimfunc[](slotval1)
 proc QVBoxLayoutevent*(self: gen_qboxlayout_types.QVBoxLayout, event: gen_qcoreevent.QEvent): bool =
-
   fQVBoxLayout_virtualbase_event(self.h, event.h)
 
 type QVBoxLayouteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -2250,7 +2099,6 @@ proc miqt_exec_callback_QVBoxLayout_event(self: ptr cQVBoxLayout, slot: int, eve
 
   virtualReturn
 proc QVBoxLayouteventFilter*(self: gen_qboxlayout_types.QVBoxLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQVBoxLayout_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QVBoxLayouteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -2272,7 +2120,6 @@ proc miqt_exec_callback_QVBoxLayout_eventFilter(self: ptr cQVBoxLayout, slot: in
 
   virtualReturn
 proc QVBoxLayouttimerEvent*(self: gen_qboxlayout_types.QVBoxLayout, event: gen_qcoreevent.QTimerEvent): void =
-
   fQVBoxLayout_virtualbase_timerEvent(self.h, event.h)
 
 type QVBoxLayouttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -2290,7 +2137,6 @@ proc miqt_exec_callback_QVBoxLayout_timerEvent(self: ptr cQVBoxLayout, slot: int
 
   nimfunc[](slotval1)
 proc QVBoxLayoutcustomEvent*(self: gen_qboxlayout_types.QVBoxLayout, event: gen_qcoreevent.QEvent): void =
-
   fQVBoxLayout_virtualbase_customEvent(self.h, event.h)
 
 type QVBoxLayoutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2308,7 +2154,6 @@ proc miqt_exec_callback_QVBoxLayout_customEvent(self: ptr cQVBoxLayout, slot: in
 
   nimfunc[](slotval1)
 proc QVBoxLayoutconnectNotify*(self: gen_qboxlayout_types.QVBoxLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQVBoxLayout_virtualbase_connectNotify(self.h, signal.h)
 
 type QVBoxLayoutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2326,7 +2171,6 @@ proc miqt_exec_callback_QVBoxLayout_connectNotify(self: ptr cQVBoxLayout, slot: 
 
   nimfunc[](slotval1)
 proc QVBoxLayoutdisconnectNotify*(self: gen_qboxlayout_types.QVBoxLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQVBoxLayout_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QVBoxLayoutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2344,7 +2188,6 @@ proc miqt_exec_callback_QVBoxLayout_disconnectNotify(self: ptr cQVBoxLayout, slo
 
   nimfunc[](slotval1)
 proc QVBoxLayoutwidget*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQVBoxLayout_virtualbase_widget(self.h))
 
 type QVBoxLayoutwidgetProc* = proc(): gen_qwidget.QWidget
@@ -2362,7 +2205,6 @@ proc miqt_exec_callback_QVBoxLayout_widget(self: ptr cQVBoxLayout, slot: int): p
 
   virtualReturn.h
 proc QVBoxLayoutspacerItem*(self: gen_qboxlayout_types.QVBoxLayout, ): gen_qlayoutitem.QSpacerItem =
-
   gen_qlayoutitem.QSpacerItem(h: fQVBoxLayout_virtualbase_spacerItem(self.h))
 
 type QVBoxLayoutspacerItemProc* = proc(): gen_qlayoutitem.QSpacerItem

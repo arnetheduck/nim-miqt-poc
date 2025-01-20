@@ -65,76 +65,64 @@ proc fcQMediaAvailabilityControl_delete(self: pointer) {.importc: "QMediaAvailab
 func init*(T: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, h: ptr cQMediaAvailabilityControl): gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl =
   T(h: h)
 proc metaObject*(self: gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQMediaAvailabilityControl_metaObject(self.h))
 
 proc metacast*(self: gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, param1: cstring): pointer =
-
   fcQMediaAvailabilityControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMediaAvailabilityControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring): string =
-
   let v_ms = fcQMediaAvailabilityControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring): string =
-
   let v_ms = fcQMediaAvailabilityControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc availability*(self: gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, ): cint =
-
   cint(fcQMediaAvailabilityControl_availability(self.h))
 
 proc availabilityChanged*(self: gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, availability: cint): void =
-
   fcQMediaAvailabilityControl_availabilityChanged(self.h, cint(availability))
 
+type QMediaAvailabilityControlavailabilityChangedSlot* = proc(availability: cint)
 proc miqt_exec_callback_QMediaAvailabilityControl_availabilityChanged(slot: int, availability: cint) {.exportc.} =
-  type Cb = proc(availability: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMediaAvailabilityControlavailabilityChangedSlot](cast[pointer](slot))
   let slotval1 = cint(availability)
-
 
   nimfunc[](slotval1)
 
-proc onavailabilityChanged*(self: gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, slot: proc(availability: cint)) =
-  type Cb = proc(availability: cint)
-  var tmp = new Cb
+proc onavailabilityChanged*(self: gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, slot: QMediaAvailabilityControlavailabilityChangedSlot) =
+  var tmp = new QMediaAvailabilityControlavailabilityChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMediaAvailabilityControl_connect_availabilityChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring, c: cstring): string =
   let v_ms = fcQMediaAvailabilityControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMediaAvailabilityControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring, c: cstring): string =
   let v_ms = fcQMediaAvailabilityControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qmediaavailabilitycontrol_types.QMediaAvailabilityControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMediaAvailabilityControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

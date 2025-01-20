@@ -214,40 +214,33 @@ proc fcQsciLexerCoffeeScript_delete(self: pointer) {.importc: "QsciLexerCoffeeSc
 func init*(T: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, h: ptr cQsciLexerCoffeeScript): gen_qscilexercoffeescript_types.QsciLexerCoffeeScript =
   T(h: h)
 proc create*(T: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qscilexercoffeescript_types.QsciLexerCoffeeScript =
-
   gen_qscilexercoffeescript_types.QsciLexerCoffeeScript.init(fcQsciLexerCoffeeScript_new())
+
 proc create*(T: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, parent: gen_qobject.QObject): gen_qscilexercoffeescript_types.QsciLexerCoffeeScript =
-
   gen_qscilexercoffeescript_types.QsciLexerCoffeeScript.init(fcQsciLexerCoffeeScript_new2(parent.h))
-proc metaObject*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerCoffeeScript_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, param1: cstring): pointer =
-
   fcQsciLexerCoffeeScript_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerCoffeeScript_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, s: cstring): string =
-
   let v_ms = fcQsciLexerCoffeeScript_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-
   (fcQsciLexerCoffeeScript_language(self.h))
 
 proc lexer*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-
   (fcQsciLexerCoffeeScript_lexer(self.h))
 
 proc autoCompletionWordSeparators*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): seq[string] =
-
   var v_ma = fcQsciLexerCoffeeScript_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -259,116 +252,90 @@ proc autoCompletionWordSeparators*(self: gen_qscilexercoffeescript_types.QsciLex
   vx_ret
 
 proc blockEnd*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-
   (fcQsciLexerCoffeeScript_blockEnd(self.h))
 
 proc blockStart*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-
   (fcQsciLexerCoffeeScript_blockStart(self.h))
 
 proc blockStartKeyword*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-
   (fcQsciLexerCoffeeScript_blockStartKeyword(self.h))
 
 proc braceStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-
   fcQsciLexerCoffeeScript_braceStyle(self.h)
 
 proc wordCharacters*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-
   (fcQsciLexerCoffeeScript_wordCharacters(self.h))
 
 proc defaultColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerCoffeeScript_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): bool =
-
   fcQsciLexerCoffeeScript_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerCoffeeScript_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerCoffeeScript_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, set: cint): cstring =
-
   (fcQsciLexerCoffeeScript_keywords(self.h, set))
 
 proc description*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): string =
-
   let v_ms = fcQsciLexerCoffeeScript_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): void =
-
   fcQsciLexerCoffeeScript_refreshProperties(self.h)
 
 proc dollarsAllowed*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): bool =
-
   fcQsciLexerCoffeeScript_dollarsAllowed(self.h)
 
 proc setDollarsAllowed*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, allowed: bool): void =
-
   fcQsciLexerCoffeeScript_setDollarsAllowed(self.h, allowed)
 
 proc foldComments*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): bool =
-
   fcQsciLexerCoffeeScript_foldComments(self.h)
 
 proc setFoldComments*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, fold: bool): void =
-
   fcQsciLexerCoffeeScript_setFoldComments(self.h, fold)
 
 proc foldCompact*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): bool =
-
   fcQsciLexerCoffeeScript_foldCompact(self.h)
 
 proc setFoldCompact*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, fold: bool): void =
-
   fcQsciLexerCoffeeScript_setFoldCompact(self.h, fold)
 
 proc stylePreprocessor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): bool =
-
   fcQsciLexerCoffeeScript_stylePreprocessor(self.h)
 
 proc setStylePreprocessor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: bool): void =
-
   fcQsciLexerCoffeeScript_setStylePreprocessor(self.h, style)
 
-proc tr2*(_: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerCoffeeScript_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerCoffeeScript_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc blockEnd1*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
-
+proc blockEnd*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
   (fcQsciLexerCoffeeScript_blockEnd1(self.h, style))
 
-proc blockStart1*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
-
+proc blockStart*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
   (fcQsciLexerCoffeeScript_blockStart1(self.h, style))
 
-proc blockStartKeyword1*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
-
+proc blockStartKeyword*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
   (fcQsciLexerCoffeeScript_blockStartKeyword1(self.h, style))
 
 proc QsciLexerCoffeeScriptmetaObject*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerCoffeeScript_virtualbase_metaObject(self.h))
 
 type QsciLexerCoffeeScriptmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -386,7 +353,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_metaObject(self: ptr cQsciLexerCof
 
   virtualReturn.h
 proc QsciLexerCoffeeScriptmetacast*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, param1: cstring): pointer =
-
   fQsciLexerCoffeeScript_virtualbase_metacast(self.h, param1)
 
 type QsciLexerCoffeeScriptmetacastProc* = proc(param1: cstring): pointer
@@ -406,7 +372,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_metacast(self: ptr cQsciLexerCoffe
 
   virtualReturn
 proc QsciLexerCoffeeScriptmetacall*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerCoffeeScript_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerCoffeeScriptmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -444,7 +409,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_language(self: ptr cQsciLexerCoffe
 
   virtualReturn
 proc QsciLexerCoffeeScriptlexer*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-
   (fQsciLexerCoffeeScript_virtualbase_lexer(self.h))
 
 type QsciLexerCoffeeScriptlexerProc* = proc(): cstring
@@ -462,7 +426,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_lexer(self: ptr cQsciLexerCoffeeSc
 
   virtualReturn
 proc QsciLexerCoffeeScriptlexerId*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-
   fQsciLexerCoffeeScript_virtualbase_lexerId(self.h)
 
 type QsciLexerCoffeeScriptlexerIdProc* = proc(): cint
@@ -480,7 +443,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_lexerId(self: ptr cQsciLexerCoffee
 
   virtualReturn
 proc QsciLexerCoffeeScriptautoCompletionFillups*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-
   (fQsciLexerCoffeeScript_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerCoffeeScriptautoCompletionFillupsProc* = proc(): cstring
@@ -498,7 +460,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_autoCompletionFillups(self: ptr cQ
 
   virtualReturn
 proc QsciLexerCoffeeScriptautoCompletionWordSeparators*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): seq[string] =
-
   var v_ma = fQsciLexerCoffeeScript_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -528,7 +489,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_autoCompletionWordSeparators(self:
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerCoffeeScriptblockEnd*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
-
   (fQsciLexerCoffeeScript_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerCoffeeScriptblockEndProc* = proc(style: ptr cint): cstring
@@ -548,7 +508,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_blockEnd(self: ptr cQsciLexerCoffe
 
   virtualReturn
 proc QsciLexerCoffeeScriptblockLookback*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-
   fQsciLexerCoffeeScript_virtualbase_blockLookback(self.h)
 
 type QsciLexerCoffeeScriptblockLookbackProc* = proc(): cint
@@ -566,7 +525,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_blockLookback(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerCoffeeScriptblockStart*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
-
   (fQsciLexerCoffeeScript_virtualbase_blockStart(self.h, style))
 
 type QsciLexerCoffeeScriptblockStartProc* = proc(style: ptr cint): cstring
@@ -586,7 +544,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_blockStart(self: ptr cQsciLexerCof
 
   virtualReturn
 proc QsciLexerCoffeeScriptblockStartKeyword*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: ptr cint): cstring =
-
   (fQsciLexerCoffeeScript_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerCoffeeScriptblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -606,7 +563,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_blockStartKeyword(self: ptr cQsciL
 
   virtualReturn
 proc QsciLexerCoffeeScriptbraceStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-
   fQsciLexerCoffeeScript_virtualbase_braceStyle(self.h)
 
 type QsciLexerCoffeeScriptbraceStyleProc* = proc(): cint
@@ -624,7 +580,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_braceStyle(self: ptr cQsciLexerCof
 
   virtualReturn
 proc QsciLexerCoffeeScriptcaseSensitive*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): bool =
-
   fQsciLexerCoffeeScript_virtualbase_caseSensitive(self.h)
 
 type QsciLexerCoffeeScriptcaseSensitiveProc* = proc(): bool
@@ -642,7 +597,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_caseSensitive(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerCoffeeScriptcolor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerCoffeeScript_virtualbase_color(self.h, style))
 
 type QsciLexerCoffeeScriptcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -662,7 +616,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_color(self: ptr cQsciLexerCoffeeSc
 
   virtualReturn.h
 proc QsciLexerCoffeeScripteolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): bool =
-
   fQsciLexerCoffeeScript_virtualbase_eolFill(self.h, style)
 
 type QsciLexerCoffeeScripteolFillProc* = proc(style: cint): bool
@@ -682,7 +635,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_eolFill(self: ptr cQsciLexerCoffee
 
   virtualReturn
 proc QsciLexerCoffeeScriptfont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerCoffeeScript_virtualbase_font(self.h, style))
 
 type QsciLexerCoffeeScriptfontProc* = proc(style: cint): gen_qfont.QFont
@@ -702,7 +654,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_font(self: ptr cQsciLexerCoffeeScr
 
   virtualReturn.h
 proc QsciLexerCoffeeScriptindentationGuideView*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-
   fQsciLexerCoffeeScript_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerCoffeeScriptindentationGuideViewProc* = proc(): cint
@@ -720,7 +671,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_indentationGuideView(self: ptr cQs
 
   virtualReturn
 proc QsciLexerCoffeeScriptkeywords*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, set: cint): cstring =
-
   (fQsciLexerCoffeeScript_virtualbase_keywords(self.h, set))
 
 type QsciLexerCoffeeScriptkeywordsProc* = proc(set: cint): cstring
@@ -740,7 +690,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_keywords(self: ptr cQsciLexerCoffe
 
   virtualReturn
 proc QsciLexerCoffeeScriptdefaultStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-
   fQsciLexerCoffeeScript_virtualbase_defaultStyle(self.h)
 
 type QsciLexerCoffeeScriptdefaultStyleProc* = proc(): cint
@@ -774,7 +723,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_description(self: ptr cQsciLexerCo
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerCoffeeScriptpaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerCoffeeScript_virtualbase_paper(self.h, style))
 
 type QsciLexerCoffeeScriptpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -793,12 +741,11 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_paper(self: ptr cQsciLexerCoffeeSc
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerCoffeeScriptdefaultColorWithStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerCoffeeScriptdefaultColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerCoffeeScript_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerCoffeeScriptdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerCoffeeScriptdefaultColorWithStyleProc
   tmp[] = slot
@@ -814,7 +761,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_defaultColorWithStyle(self: ptr cQ
 
   virtualReturn.h
 proc QsciLexerCoffeeScriptdefaultEolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): bool =
-
   fQsciLexerCoffeeScript_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerCoffeeScriptdefaultEolFillProc* = proc(style: cint): bool
@@ -833,12 +779,11 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_defaultEolFill(self: ptr cQsciLexe
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerCoffeeScriptdefaultFontWithStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont.QFont =
-
+proc QsciLexerCoffeeScriptdefaultFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerCoffeeScript_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerCoffeeScriptdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerCoffeeScriptdefaultFontWithStyleProc
   tmp[] = slot
@@ -853,12 +798,11 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_defaultFontWithStyle(self: ptr cQs
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerCoffeeScriptdefaultPaperWithStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerCoffeeScriptdefaultPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerCoffeeScript_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerCoffeeScriptdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, slot: QsciLexerCoffeeScriptdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerCoffeeScriptdefaultPaperWithStyleProc
   tmp[] = slot
@@ -874,7 +818,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_defaultPaperWithStyle(self: ptr cQ
 
   virtualReturn.h
 proc QsciLexerCoffeeScriptsetEditor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerCoffeeScript_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerCoffeeScriptsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -892,7 +835,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_setEditor(self: ptr cQsciLexerCoff
 
   nimfunc[](slotval1)
 proc QsciLexerCoffeeScriptrefreshProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): void =
-
   fQsciLexerCoffeeScript_virtualbase_refreshProperties(self.h)
 
 type QsciLexerCoffeeScriptrefreshPropertiesProc* = proc(): void
@@ -908,7 +850,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_refreshProperties(self: ptr cQsciL
 
   nimfunc[]()
 proc QsciLexerCoffeeScriptstyleBitsNeeded*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cint =
-
   fQsciLexerCoffeeScript_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerCoffeeScriptstyleBitsNeededProc* = proc(): cint
@@ -926,7 +867,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_styleBitsNeeded(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerCoffeeScriptwordCharacters*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, ): cstring =
-
   (fQsciLexerCoffeeScript_virtualbase_wordCharacters(self.h))
 
 type QsciLexerCoffeeScriptwordCharactersProc* = proc(): cstring
@@ -944,7 +884,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_wordCharacters(self: ptr cQsciLexe
 
   virtualReturn
 proc QsciLexerCoffeeScriptsetAutoIndentStyle*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, autoindentstyle: cint): void =
-
   fQsciLexerCoffeeScript_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerCoffeeScriptsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -962,7 +901,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_setAutoIndentStyle(self: ptr cQsci
 
   nimfunc[](slotval1)
 proc QsciLexerCoffeeScriptsetColor*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerCoffeeScript_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerCoffeeScriptsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -982,7 +920,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_setColor(self: ptr cQsciLexerCoffe
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerCoffeeScriptsetEolFill*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, eoffill: bool, style: cint): void =
-
   fQsciLexerCoffeeScript_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerCoffeeScriptsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -1002,7 +939,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_setEolFill(self: ptr cQsciLexerCof
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerCoffeeScriptsetFont*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerCoffeeScript_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerCoffeeScriptsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1022,7 +958,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_setFont(self: ptr cQsciLexerCoffee
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerCoffeeScriptsetPaper*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerCoffeeScript_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerCoffeeScriptsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1042,7 +977,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_setPaper(self: ptr cQsciLexerCoffe
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerCoffeeScriptreadProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerCoffeeScript_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerCoffeeScriptreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1067,7 +1001,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_readProperties(self: ptr cQsciLexe
 
   virtualReturn
 proc QsciLexerCoffeeScriptwriteProperties*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerCoffeeScript_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerCoffeeScriptwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1092,7 +1025,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_writeProperties(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerCoffeeScriptevent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerCoffeeScript_virtualbase_event(self.h, event.h)
 
 type QsciLexerCoffeeScripteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1112,7 +1044,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_event(self: ptr cQsciLexerCoffeeSc
 
   virtualReturn
 proc QsciLexerCoffeeScripteventFilter*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerCoffeeScript_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerCoffeeScripteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1134,7 +1065,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_eventFilter(self: ptr cQsciLexerCo
 
   virtualReturn
 proc QsciLexerCoffeeScripttimerEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerCoffeeScript_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerCoffeeScripttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1152,7 +1082,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_timerEvent(self: ptr cQsciLexerCof
 
   nimfunc[](slotval1)
 proc QsciLexerCoffeeScriptchildEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerCoffeeScript_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerCoffeeScriptchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1170,7 +1099,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_childEvent(self: ptr cQsciLexerCof
 
   nimfunc[](slotval1)
 proc QsciLexerCoffeeScriptcustomEvent*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerCoffeeScript_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerCoffeeScriptcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1188,7 +1116,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_customEvent(self: ptr cQsciLexerCo
 
   nimfunc[](slotval1)
 proc QsciLexerCoffeeScriptconnectNotify*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerCoffeeScript_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerCoffeeScriptconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1206,7 +1133,6 @@ proc miqt_exec_callback_QsciLexerCoffeeScript_connectNotify(self: ptr cQsciLexer
 
   nimfunc[](slotval1)
 proc QsciLexerCoffeeScriptdisconnectNotify*(self: gen_qscilexercoffeescript_types.QsciLexerCoffeeScript, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerCoffeeScript_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerCoffeeScriptdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -56,42 +56,33 @@ proc fcQLoggingCategory_delete(self: pointer) {.importc: "QLoggingCategory_delet
 func init*(T: type gen_qloggingcategory_types.QLoggingCategory, h: ptr cQLoggingCategory): gen_qloggingcategory_types.QLoggingCategory =
   T(h: h)
 proc create*(T: type gen_qloggingcategory_types.QLoggingCategory, category: cstring): gen_qloggingcategory_types.QLoggingCategory =
-
   gen_qloggingcategory_types.QLoggingCategory.init(fcQLoggingCategory_new(category))
-proc isDebugEnabled*(self: gen_qloggingcategory_types.QLoggingCategory, ): bool =
 
+proc isDebugEnabled*(self: gen_qloggingcategory_types.QLoggingCategory, ): bool =
   fcQLoggingCategory_isDebugEnabled(self.h)
 
 proc isInfoEnabled*(self: gen_qloggingcategory_types.QLoggingCategory, ): bool =
-
   fcQLoggingCategory_isInfoEnabled(self.h)
 
 proc isWarningEnabled*(self: gen_qloggingcategory_types.QLoggingCategory, ): bool =
-
   fcQLoggingCategory_isWarningEnabled(self.h)
 
 proc isCriticalEnabled*(self: gen_qloggingcategory_types.QLoggingCategory, ): bool =
-
   fcQLoggingCategory_isCriticalEnabled(self.h)
 
 proc categoryName*(self: gen_qloggingcategory_types.QLoggingCategory, ): cstring =
-
   (fcQLoggingCategory_categoryName(self.h))
 
 proc operatorCall*(self: gen_qloggingcategory_types.QLoggingCategory, ): gen_qloggingcategory_types.QLoggingCategory =
-
   gen_qloggingcategory_types.QLoggingCategory(h: fcQLoggingCategory_operatorCall(self.h))
 
 proc operatorCall2*(self: gen_qloggingcategory_types.QLoggingCategory, ): gen_qloggingcategory_types.QLoggingCategory =
-
   gen_qloggingcategory_types.QLoggingCategory(h: fcQLoggingCategory_operatorCall2(self.h))
 
 proc defaultCategory*(_: type gen_qloggingcategory_types.QLoggingCategory, ): gen_qloggingcategory_types.QLoggingCategory =
-
   gen_qloggingcategory_types.QLoggingCategory(h: fcQLoggingCategory_defaultCategory())
 
 proc setFilterRules*(_: type gen_qloggingcategory_types.QLoggingCategory, rules: string): void =
-
   fcQLoggingCategory_setFilterRules(struct_miqt_string(data: rules, len: csize_t(len(rules))))
 
 proc delete*(self: gen_qloggingcategory_types.QLoggingCategory) =

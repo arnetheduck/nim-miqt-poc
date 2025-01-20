@@ -94,44 +94,36 @@ proc fcQCryptographicHash_delete(self: pointer) {.importc: "QCryptographicHash_d
 func init*(T: type gen_qcryptographichash_types.QCryptographicHash, h: ptr cQCryptographicHash): gen_qcryptographichash_types.QCryptographicHash =
   T(h: h)
 proc create*(T: type gen_qcryptographichash_types.QCryptographicHash, methodVal: cint): gen_qcryptographichash_types.QCryptographicHash =
-
   gen_qcryptographichash_types.QCryptographicHash.init(fcQCryptographicHash_new(cint(methodVal)))
-proc reset*(self: gen_qcryptographichash_types.QCryptographicHash, ): void =
 
+proc reset*(self: gen_qcryptographichash_types.QCryptographicHash, ): void =
   fcQCryptographicHash_reset(self.h)
 
 proc addData*(self: gen_qcryptographichash_types.QCryptographicHash, data: cstring, length: int64): void =
-
   fcQCryptographicHash_addData(self.h, data, length)
 
-proc addDataWithData*(self: gen_qcryptographichash_types.QCryptographicHash, data: gen_qbytearrayview.QByteArrayView): void =
-
+proc addData*(self: gen_qcryptographichash_types.QCryptographicHash, data: gen_qbytearrayview.QByteArrayView): void =
   fcQCryptographicHash_addDataWithData(self.h, data.h)
 
-proc addDataWithDevice*(self: gen_qcryptographichash_types.QCryptographicHash, device: gen_qiodevice.QIODevice): bool =
-
+proc addData*(self: gen_qcryptographichash_types.QCryptographicHash, device: gen_qiodevice.QIODevice): bool =
   fcQCryptographicHash_addDataWithDevice(self.h, device.h)
 
 proc resultX*(self: gen_qcryptographichash_types.QCryptographicHash, ): seq[byte] =
-
   var v_bytearray = fcQCryptographicHash_resultX(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc resultView*(self: gen_qcryptographichash_types.QCryptographicHash, ): gen_qbytearrayview.QByteArrayView =
-
   gen_qbytearrayview.QByteArrayView(h: fcQCryptographicHash_resultView(self.h))
 
 proc hash*(_: type gen_qcryptographichash_types.QCryptographicHash, data: gen_qbytearrayview.QByteArrayView, methodVal: cint): seq[byte] =
-
   var v_bytearray = fcQCryptographicHash_hash(data.h, cint(methodVal))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc hashLength*(_: type gen_qcryptographichash_types.QCryptographicHash, methodVal: cint): cint =
-
   fcQCryptographicHash_hashLength(cint(methodVal))
 
 proc staticMetaObject*(_: type gen_qcryptographichash_types.QCryptographicHash): gen_qobjectdefs.QMetaObject =

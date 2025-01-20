@@ -83,69 +83,56 @@ proc fcQWebEngineNavigationRequest_delete(self: pointer) {.importc: "QWebEngineN
 func init*(T: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, h: ptr cQWebEngineNavigationRequest): gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest =
   T(h: h)
 proc metaObject*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineNavigationRequest_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, param1: cstring): pointer =
-
   fcQWebEngineNavigationRequest_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebEngineNavigationRequest_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, s: cstring): string =
-
   let v_ms = fcQWebEngineNavigationRequest_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc url*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineNavigationRequest_url(self.h))
 
 proc isMainFrame*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): bool =
-
   fcQWebEngineNavigationRequest_isMainFrame(self.h)
 
 proc navigationType*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): cint =
-
   cint(fcQWebEngineNavigationRequest_navigationType(self.h))
 
 proc accept*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): void =
-
   fcQWebEngineNavigationRequest_accept(self.h)
 
 proc reject*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): void =
-
   fcQWebEngineNavigationRequest_reject(self.h)
 
 proc actionChanged*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, ): void =
-
   fcQWebEngineNavigationRequest_actionChanged(self.h)
 
+type QWebEngineNavigationRequestactionChangedSlot* = proc()
 proc miqt_exec_callback_QWebEngineNavigationRequest_actionChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QWebEngineNavigationRequestactionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onactionChanged*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onactionChanged*(self: gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, slot: QWebEngineNavigationRequestactionChangedSlot) =
+  var tmp = new QWebEngineNavigationRequestactionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineNavigationRequest_connect_actionChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineNavigationRequest_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebenginenavigationrequest_types.QWebEngineNavigationRequest, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineNavigationRequest_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

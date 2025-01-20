@@ -210,148 +210,127 @@ proc fcQSplashScreen_delete(self: pointer) {.importc: "QSplashScreen_delete".}
 func init*(T: type gen_qsplashscreen_types.QSplashScreen, h: ptr cQSplashScreen): gen_qsplashscreen_types.QSplashScreen =
   T(h: h)
 proc create*(T: type gen_qsplashscreen_types.QSplashScreen, parent: gen_qwidget.QWidget): gen_qsplashscreen_types.QSplashScreen =
-
   gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new(parent.h))
+
 proc create*(T: type gen_qsplashscreen_types.QSplashScreen, ): gen_qsplashscreen_types.QSplashScreen =
-
   gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new2())
-proc create2*(T: type gen_qsplashscreen_types.QSplashScreen, screen: gen_qscreen.QScreen): gen_qsplashscreen_types.QSplashScreen =
 
+proc create*(T: type gen_qsplashscreen_types.QSplashScreen, screen: gen_qscreen.QScreen): gen_qsplashscreen_types.QSplashScreen =
   gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new3(screen.h))
-proc create2*(T: type gen_qsplashscreen_types.QSplashScreen, pixmap: gen_qpixmap.QPixmap): gen_qsplashscreen_types.QSplashScreen =
 
+proc create*(T: type gen_qsplashscreen_types.QSplashScreen, pixmap: gen_qpixmap.QPixmap): gen_qsplashscreen_types.QSplashScreen =
   gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new4(pixmap.h))
+
 proc create*(T: type gen_qsplashscreen_types.QSplashScreen, pixmap: gen_qpixmap.QPixmap, f: cint): gen_qsplashscreen_types.QSplashScreen =
-
   gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new5(pixmap.h, cint(f)))
+
 proc create*(T: type gen_qsplashscreen_types.QSplashScreen, screen: gen_qscreen.QScreen, pixmap: gen_qpixmap.QPixmap): gen_qsplashscreen_types.QSplashScreen =
-
   gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new6(screen.h, pixmap.h))
+
 proc create*(T: type gen_qsplashscreen_types.QSplashScreen, screen: gen_qscreen.QScreen, pixmap: gen_qpixmap.QPixmap, f: cint): gen_qsplashscreen_types.QSplashScreen =
-
   gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new7(screen.h, pixmap.h, cint(f)))
-proc create2*(T: type gen_qsplashscreen_types.QSplashScreen, parent: gen_qwidget.QWidget, pixmap: gen_qpixmap.QPixmap): gen_qsplashscreen_types.QSplashScreen =
 
+proc create*(T: type gen_qsplashscreen_types.QSplashScreen, parent: gen_qwidget.QWidget, pixmap: gen_qpixmap.QPixmap): gen_qsplashscreen_types.QSplashScreen =
   gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new8(parent.h, pixmap.h))
-proc create2*(T: type gen_qsplashscreen_types.QSplashScreen, parent: gen_qwidget.QWidget, pixmap: gen_qpixmap.QPixmap, f: cint): gen_qsplashscreen_types.QSplashScreen =
 
+proc create*(T: type gen_qsplashscreen_types.QSplashScreen, parent: gen_qwidget.QWidget, pixmap: gen_qpixmap.QPixmap, f: cint): gen_qsplashscreen_types.QSplashScreen =
   gen_qsplashscreen_types.QSplashScreen.init(fcQSplashScreen_new9(parent.h, pixmap.h, cint(f)))
-proc metaObject*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSplashScreen_metaObject(self.h))
 
 proc metacast*(self: gen_qsplashscreen_types.QSplashScreen, param1: cstring): pointer =
-
   fcQSplashScreen_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSplashScreen_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring): string =
-
   let v_ms = fcQSplashScreen_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring): string =
-
   let v_ms = fcQSplashScreen_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPixmap*(self: gen_qsplashscreen_types.QSplashScreen, pixmap: gen_qpixmap.QPixmap): void =
-
   fcQSplashScreen_setPixmap(self.h, pixmap.h)
 
 proc pixmap*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQSplashScreen_pixmap(self.h))
 
 proc finish*(self: gen_qsplashscreen_types.QSplashScreen, w: gen_qwidget.QWidget): void =
-
   fcQSplashScreen_finish(self.h, w.h)
 
 proc repaint*(self: gen_qsplashscreen_types.QSplashScreen, ): void =
-
   fcQSplashScreen_repaint(self.h)
 
 proc message*(self: gen_qsplashscreen_types.QSplashScreen, ): string =
-
   let v_ms = fcQSplashScreen_message(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc showMessage*(self: gen_qsplashscreen_types.QSplashScreen, message: string): void =
-
   fcQSplashScreen_showMessage(self.h, struct_miqt_string(data: message, len: csize_t(len(message))))
 
 proc clearMessage*(self: gen_qsplashscreen_types.QSplashScreen, ): void =
-
   fcQSplashScreen_clearMessage(self.h)
 
 proc messageChanged*(self: gen_qsplashscreen_types.QSplashScreen, message: string): void =
-
   fcQSplashScreen_messageChanged(self.h, struct_miqt_string(data: message, len: csize_t(len(message))))
 
+type QSplashScreenmessageChangedSlot* = proc(message: string)
 proc miqt_exec_callback_QSplashScreen_messageChanged(slot: int, message: struct_miqt_string) {.exportc.} =
-  type Cb = proc(message: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSplashScreenmessageChangedSlot](cast[pointer](slot))
   let vmessage_ms = message
   let vmessagex_ret = string.fromBytes(toOpenArrayByte(vmessage_ms.data, 0, int(vmessage_ms.len)-1))
   c_free(vmessage_ms.data)
   let slotval1 = vmessagex_ret
 
-
   nimfunc[](slotval1)
 
-proc onmessageChanged*(self: gen_qsplashscreen_types.QSplashScreen, slot: proc(message: string)) =
-  type Cb = proc(message: string)
-  var tmp = new Cb
+proc onmessageChanged*(self: gen_qsplashscreen_types.QSplashScreen, slot: QSplashScreenmessageChangedSlot) =
+  var tmp = new QSplashScreenmessageChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSplashScreen_connect_messageChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring): string =
   let v_ms = fcQSplashScreen_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSplashScreen_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring): string =
   let v_ms = fcQSplashScreen_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qsplashscreen_types.QSplashScreen, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSplashScreen_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc showMessage2*(self: gen_qsplashscreen_types.QSplashScreen, message: string, alignment: cint): void =
-
+proc showMessage*(self: gen_qsplashscreen_types.QSplashScreen, message: string, alignment: cint): void =
   fcQSplashScreen_showMessage2(self.h, struct_miqt_string(data: message, len: csize_t(len(message))), alignment)
 
-proc showMessage3*(self: gen_qsplashscreen_types.QSplashScreen, message: string, alignment: cint, color: gen_qcolor.QColor): void =
-
+proc showMessage*(self: gen_qsplashscreen_types.QSplashScreen, message: string, alignment: cint, color: gen_qcolor.QColor): void =
   fcQSplashScreen_showMessage3(self.h, struct_miqt_string(data: message, len: csize_t(len(message))), alignment, color.h)
 
 proc QSplashScreenmetaObject*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSplashScreen_virtualbase_metaObject(self.h))
 
 type QSplashScreenmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -369,7 +348,6 @@ proc miqt_exec_callback_QSplashScreen_metaObject(self: ptr cQSplashScreen, slot:
 
   virtualReturn.h
 proc QSplashScreenmetacast*(self: gen_qsplashscreen_types.QSplashScreen, param1: cstring): pointer =
-
   fQSplashScreen_virtualbase_metacast(self.h, param1)
 
 type QSplashScreenmetacastProc* = proc(param1: cstring): pointer
@@ -389,7 +367,6 @@ proc miqt_exec_callback_QSplashScreen_metacast(self: ptr cQSplashScreen, slot: i
 
   virtualReturn
 proc QSplashScreenmetacall*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSplashScreen_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSplashScreenmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -413,7 +390,6 @@ proc miqt_exec_callback_QSplashScreen_metacall(self: ptr cQSplashScreen, slot: i
 
   virtualReturn
 proc QSplashScreenevent*(self: gen_qsplashscreen_types.QSplashScreen, e: gen_qcoreevent.QEvent): bool =
-
   fQSplashScreen_virtualbase_event(self.h, e.h)
 
 type QSplashScreeneventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -433,7 +409,6 @@ proc miqt_exec_callback_QSplashScreen_event(self: ptr cQSplashScreen, slot: int,
 
   virtualReturn
 proc QSplashScreendrawContents*(self: gen_qsplashscreen_types.QSplashScreen, painter: gen_qpainter.QPainter): void =
-
   fQSplashScreen_virtualbase_drawContents(self.h, painter.h)
 
 type QSplashScreendrawContentsProc* = proc(painter: gen_qpainter.QPainter): void
@@ -451,7 +426,6 @@ proc miqt_exec_callback_QSplashScreen_drawContents(self: ptr cQSplashScreen, slo
 
   nimfunc[](slotval1)
 proc QSplashScreenmousePressEvent*(self: gen_qsplashscreen_types.QSplashScreen, param1: gen_qevent.QMouseEvent): void =
-
   fQSplashScreen_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QSplashScreenmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -469,7 +443,6 @@ proc miqt_exec_callback_QSplashScreen_mousePressEvent(self: ptr cQSplashScreen, 
 
   nimfunc[](slotval1)
 proc QSplashScreendevType*(self: gen_qsplashscreen_types.QSplashScreen, ): cint =
-
   fQSplashScreen_virtualbase_devType(self.h)
 
 type QSplashScreendevTypeProc* = proc(): cint
@@ -487,7 +460,6 @@ proc miqt_exec_callback_QSplashScreen_devType(self: ptr cQSplashScreen, slot: in
 
   virtualReturn
 proc QSplashScreensetVisible*(self: gen_qsplashscreen_types.QSplashScreen, visible: bool): void =
-
   fQSplashScreen_virtualbase_setVisible(self.h, visible)
 
 type QSplashScreensetVisibleProc* = proc(visible: bool): void
@@ -505,7 +477,6 @@ proc miqt_exec_callback_QSplashScreen_setVisible(self: ptr cQSplashScreen, slot:
 
   nimfunc[](slotval1)
 proc QSplashScreensizeHint*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSplashScreen_virtualbase_sizeHint(self.h))
 
 type QSplashScreensizeHintProc* = proc(): gen_qsize.QSize
@@ -523,7 +494,6 @@ proc miqt_exec_callback_QSplashScreen_sizeHint(self: ptr cQSplashScreen, slot: i
 
   virtualReturn.h
 proc QSplashScreenminimumSizeHint*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSplashScreen_virtualbase_minimumSizeHint(self.h))
 
 type QSplashScreenminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -541,7 +511,6 @@ proc miqt_exec_callback_QSplashScreen_minimumSizeHint(self: ptr cQSplashScreen, 
 
   virtualReturn.h
 proc QSplashScreenheightForWidth*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint): cint =
-
   fQSplashScreen_virtualbase_heightForWidth(self.h, param1)
 
 type QSplashScreenheightForWidthProc* = proc(param1: cint): cint
@@ -561,7 +530,6 @@ proc miqt_exec_callback_QSplashScreen_heightForWidth(self: ptr cQSplashScreen, s
 
   virtualReturn
 proc QSplashScreenhasHeightForWidth*(self: gen_qsplashscreen_types.QSplashScreen, ): bool =
-
   fQSplashScreen_virtualbase_hasHeightForWidth(self.h)
 
 type QSplashScreenhasHeightForWidthProc* = proc(): bool
@@ -579,7 +547,6 @@ proc miqt_exec_callback_QSplashScreen_hasHeightForWidth(self: ptr cQSplashScreen
 
   virtualReturn
 proc QSplashScreenpaintEngine*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQSplashScreen_virtualbase_paintEngine(self.h))
 
 type QSplashScreenpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -597,7 +564,6 @@ proc miqt_exec_callback_QSplashScreen_paintEngine(self: ptr cQSplashScreen, slot
 
   virtualReturn.h
 proc QSplashScreenmouseReleaseEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QMouseEvent): void =
-
   fQSplashScreen_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QSplashScreenmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -615,7 +581,6 @@ proc miqt_exec_callback_QSplashScreen_mouseReleaseEvent(self: ptr cQSplashScreen
 
   nimfunc[](slotval1)
 proc QSplashScreenmouseDoubleClickEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QMouseEvent): void =
-
   fQSplashScreen_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QSplashScreenmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -633,7 +598,6 @@ proc miqt_exec_callback_QSplashScreen_mouseDoubleClickEvent(self: ptr cQSplashSc
 
   nimfunc[](slotval1)
 proc QSplashScreenmouseMoveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QMouseEvent): void =
-
   fQSplashScreen_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QSplashScreenmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -651,7 +615,6 @@ proc miqt_exec_callback_QSplashScreen_mouseMoveEvent(self: ptr cQSplashScreen, s
 
   nimfunc[](slotval1)
 proc QSplashScreenwheelEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QWheelEvent): void =
-
   fQSplashScreen_virtualbase_wheelEvent(self.h, event.h)
 
 type QSplashScreenwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -669,7 +632,6 @@ proc miqt_exec_callback_QSplashScreen_wheelEvent(self: ptr cQSplashScreen, slot:
 
   nimfunc[](slotval1)
 proc QSplashScreenkeyPressEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QKeyEvent): void =
-
   fQSplashScreen_virtualbase_keyPressEvent(self.h, event.h)
 
 type QSplashScreenkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -687,7 +649,6 @@ proc miqt_exec_callback_QSplashScreen_keyPressEvent(self: ptr cQSplashScreen, sl
 
   nimfunc[](slotval1)
 proc QSplashScreenkeyReleaseEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QKeyEvent): void =
-
   fQSplashScreen_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QSplashScreenkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -705,7 +666,6 @@ proc miqt_exec_callback_QSplashScreen_keyReleaseEvent(self: ptr cQSplashScreen, 
 
   nimfunc[](slotval1)
 proc QSplashScreenfocusInEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QFocusEvent): void =
-
   fQSplashScreen_virtualbase_focusInEvent(self.h, event.h)
 
 type QSplashScreenfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -723,7 +683,6 @@ proc miqt_exec_callback_QSplashScreen_focusInEvent(self: ptr cQSplashScreen, slo
 
   nimfunc[](slotval1)
 proc QSplashScreenfocusOutEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QFocusEvent): void =
-
   fQSplashScreen_virtualbase_focusOutEvent(self.h, event.h)
 
 type QSplashScreenfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -741,7 +700,6 @@ proc miqt_exec_callback_QSplashScreen_focusOutEvent(self: ptr cQSplashScreen, sl
 
   nimfunc[](slotval1)
 proc QSplashScreenenterEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qcoreevent.QEvent): void =
-
   fQSplashScreen_virtualbase_enterEvent(self.h, event.h)
 
 type QSplashScreenenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -759,7 +717,6 @@ proc miqt_exec_callback_QSplashScreen_enterEvent(self: ptr cQSplashScreen, slot:
 
   nimfunc[](slotval1)
 proc QSplashScreenleaveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qcoreevent.QEvent): void =
-
   fQSplashScreen_virtualbase_leaveEvent(self.h, event.h)
 
 type QSplashScreenleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -777,7 +734,6 @@ proc miqt_exec_callback_QSplashScreen_leaveEvent(self: ptr cQSplashScreen, slot:
 
   nimfunc[](slotval1)
 proc QSplashScreenpaintEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QPaintEvent): void =
-
   fQSplashScreen_virtualbase_paintEvent(self.h, event.h)
 
 type QSplashScreenpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -795,7 +751,6 @@ proc miqt_exec_callback_QSplashScreen_paintEvent(self: ptr cQSplashScreen, slot:
 
   nimfunc[](slotval1)
 proc QSplashScreenmoveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QMoveEvent): void =
-
   fQSplashScreen_virtualbase_moveEvent(self.h, event.h)
 
 type QSplashScreenmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -813,7 +768,6 @@ proc miqt_exec_callback_QSplashScreen_moveEvent(self: ptr cQSplashScreen, slot: 
 
   nimfunc[](slotval1)
 proc QSplashScreenresizeEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QResizeEvent): void =
-
   fQSplashScreen_virtualbase_resizeEvent(self.h, event.h)
 
 type QSplashScreenresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -831,7 +785,6 @@ proc miqt_exec_callback_QSplashScreen_resizeEvent(self: ptr cQSplashScreen, slot
 
   nimfunc[](slotval1)
 proc QSplashScreencloseEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QCloseEvent): void =
-
   fQSplashScreen_virtualbase_closeEvent(self.h, event.h)
 
 type QSplashScreencloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -849,7 +802,6 @@ proc miqt_exec_callback_QSplashScreen_closeEvent(self: ptr cQSplashScreen, slot:
 
   nimfunc[](slotval1)
 proc QSplashScreencontextMenuEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QContextMenuEvent): void =
-
   fQSplashScreen_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QSplashScreencontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -867,7 +819,6 @@ proc miqt_exec_callback_QSplashScreen_contextMenuEvent(self: ptr cQSplashScreen,
 
   nimfunc[](slotval1)
 proc QSplashScreentabletEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QTabletEvent): void =
-
   fQSplashScreen_virtualbase_tabletEvent(self.h, event.h)
 
 type QSplashScreentabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -885,7 +836,6 @@ proc miqt_exec_callback_QSplashScreen_tabletEvent(self: ptr cQSplashScreen, slot
 
   nimfunc[](slotval1)
 proc QSplashScreenactionEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QActionEvent): void =
-
   fQSplashScreen_virtualbase_actionEvent(self.h, event.h)
 
 type QSplashScreenactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -903,7 +853,6 @@ proc miqt_exec_callback_QSplashScreen_actionEvent(self: ptr cQSplashScreen, slot
 
   nimfunc[](slotval1)
 proc QSplashScreendragEnterEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QDragEnterEvent): void =
-
   fQSplashScreen_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QSplashScreendragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -921,7 +870,6 @@ proc miqt_exec_callback_QSplashScreen_dragEnterEvent(self: ptr cQSplashScreen, s
 
   nimfunc[](slotval1)
 proc QSplashScreendragMoveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QDragMoveEvent): void =
-
   fQSplashScreen_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QSplashScreendragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -939,7 +887,6 @@ proc miqt_exec_callback_QSplashScreen_dragMoveEvent(self: ptr cQSplashScreen, sl
 
   nimfunc[](slotval1)
 proc QSplashScreendragLeaveEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QDragLeaveEvent): void =
-
   fQSplashScreen_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QSplashScreendragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -957,7 +904,6 @@ proc miqt_exec_callback_QSplashScreen_dragLeaveEvent(self: ptr cQSplashScreen, s
 
   nimfunc[](slotval1)
 proc QSplashScreendropEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QDropEvent): void =
-
   fQSplashScreen_virtualbase_dropEvent(self.h, event.h)
 
 type QSplashScreendropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -975,7 +921,6 @@ proc miqt_exec_callback_QSplashScreen_dropEvent(self: ptr cQSplashScreen, slot: 
 
   nimfunc[](slotval1)
 proc QSplashScreenshowEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QShowEvent): void =
-
   fQSplashScreen_virtualbase_showEvent(self.h, event.h)
 
 type QSplashScreenshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -993,7 +938,6 @@ proc miqt_exec_callback_QSplashScreen_showEvent(self: ptr cQSplashScreen, slot: 
 
   nimfunc[](slotval1)
 proc QSplashScreenhideEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qevent.QHideEvent): void =
-
   fQSplashScreen_virtualbase_hideEvent(self.h, event.h)
 
 type QSplashScreenhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1011,7 +955,6 @@ proc miqt_exec_callback_QSplashScreen_hideEvent(self: ptr cQSplashScreen, slot: 
 
   nimfunc[](slotval1)
 proc QSplashScreennativeEvent*(self: gen_qsplashscreen_types.QSplashScreen, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQSplashScreen_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QSplashScreennativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1038,7 +981,6 @@ proc miqt_exec_callback_QSplashScreen_nativeEvent(self: ptr cQSplashScreen, slot
 
   virtualReturn
 proc QSplashScreenchangeEvent*(self: gen_qsplashscreen_types.QSplashScreen, param1: gen_qcoreevent.QEvent): void =
-
   fQSplashScreen_virtualbase_changeEvent(self.h, param1.h)
 
 type QSplashScreenchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1056,7 +998,6 @@ proc miqt_exec_callback_QSplashScreen_changeEvent(self: ptr cQSplashScreen, slot
 
   nimfunc[](slotval1)
 proc QSplashScreenmetric*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint): cint =
-
   fQSplashScreen_virtualbase_metric(self.h, cint(param1))
 
 type QSplashScreenmetricProc* = proc(param1: cint): cint
@@ -1076,7 +1017,6 @@ proc miqt_exec_callback_QSplashScreen_metric(self: ptr cQSplashScreen, slot: int
 
   virtualReturn
 proc QSplashScreeninitPainter*(self: gen_qsplashscreen_types.QSplashScreen, painter: gen_qpainter.QPainter): void =
-
   fQSplashScreen_virtualbase_initPainter(self.h, painter.h)
 
 type QSplashScreeninitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1094,7 +1034,6 @@ proc miqt_exec_callback_QSplashScreen_initPainter(self: ptr cQSplashScreen, slot
 
   nimfunc[](slotval1)
 proc QSplashScreenredirected*(self: gen_qsplashscreen_types.QSplashScreen, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQSplashScreen_virtualbase_redirected(self.h, offset.h))
 
 type QSplashScreenredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1114,7 +1053,6 @@ proc miqt_exec_callback_QSplashScreen_redirected(self: ptr cQSplashScreen, slot:
 
   virtualReturn.h
 proc QSplashScreensharedPainter*(self: gen_qsplashscreen_types.QSplashScreen, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQSplashScreen_virtualbase_sharedPainter(self.h))
 
 type QSplashScreensharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1132,7 +1070,6 @@ proc miqt_exec_callback_QSplashScreen_sharedPainter(self: ptr cQSplashScreen, sl
 
   virtualReturn.h
 proc QSplashScreeninputMethodEvent*(self: gen_qsplashscreen_types.QSplashScreen, param1: gen_qevent.QInputMethodEvent): void =
-
   fQSplashScreen_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QSplashScreeninputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1150,7 +1087,6 @@ proc miqt_exec_callback_QSplashScreen_inputMethodEvent(self: ptr cQSplashScreen,
 
   nimfunc[](slotval1)
 proc QSplashScreeninputMethodQuery*(self: gen_qsplashscreen_types.QSplashScreen, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQSplashScreen_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QSplashScreeninputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1170,7 +1106,6 @@ proc miqt_exec_callback_QSplashScreen_inputMethodQuery(self: ptr cQSplashScreen,
 
   virtualReturn.h
 proc QSplashScreenfocusNextPrevChild*(self: gen_qsplashscreen_types.QSplashScreen, next: bool): bool =
-
   fQSplashScreen_virtualbase_focusNextPrevChild(self.h, next)
 
 type QSplashScreenfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1190,7 +1125,6 @@ proc miqt_exec_callback_QSplashScreen_focusNextPrevChild(self: ptr cQSplashScree
 
   virtualReturn
 proc QSplashScreeneventFilter*(self: gen_qsplashscreen_types.QSplashScreen, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSplashScreen_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSplashScreeneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1212,7 +1146,6 @@ proc miqt_exec_callback_QSplashScreen_eventFilter(self: ptr cQSplashScreen, slot
 
   virtualReturn
 proc QSplashScreentimerEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSplashScreen_virtualbase_timerEvent(self.h, event.h)
 
 type QSplashScreentimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1230,7 +1163,6 @@ proc miqt_exec_callback_QSplashScreen_timerEvent(self: ptr cQSplashScreen, slot:
 
   nimfunc[](slotval1)
 proc QSplashScreenchildEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qcoreevent.QChildEvent): void =
-
   fQSplashScreen_virtualbase_childEvent(self.h, event.h)
 
 type QSplashScreenchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1248,7 +1180,6 @@ proc miqt_exec_callback_QSplashScreen_childEvent(self: ptr cQSplashScreen, slot:
 
   nimfunc[](slotval1)
 proc QSplashScreencustomEvent*(self: gen_qsplashscreen_types.QSplashScreen, event: gen_qcoreevent.QEvent): void =
-
   fQSplashScreen_virtualbase_customEvent(self.h, event.h)
 
 type QSplashScreencustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1266,7 +1197,6 @@ proc miqt_exec_callback_QSplashScreen_customEvent(self: ptr cQSplashScreen, slot
 
   nimfunc[](slotval1)
 proc QSplashScreenconnectNotify*(self: gen_qsplashscreen_types.QSplashScreen, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSplashScreen_virtualbase_connectNotify(self.h, signal.h)
 
 type QSplashScreenconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1284,7 +1214,6 @@ proc miqt_exec_callback_QSplashScreen_connectNotify(self: ptr cQSplashScreen, sl
 
   nimfunc[](slotval1)
 proc QSplashScreendisconnectNotify*(self: gen_qsplashscreen_types.QSplashScreen, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSplashScreen_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSplashScreendisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

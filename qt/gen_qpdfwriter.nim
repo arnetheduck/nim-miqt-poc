@@ -138,140 +138,114 @@ proc fcQPdfWriter_delete(self: pointer) {.importc: "QPdfWriter_delete".}
 func init*(T: type gen_qpdfwriter_types.QPdfWriter, h: ptr cQPdfWriter): gen_qpdfwriter_types.QPdfWriter =
   T(h: h)
 proc create*(T: type gen_qpdfwriter_types.QPdfWriter, filename: string): gen_qpdfwriter_types.QPdfWriter =
-
   gen_qpdfwriter_types.QPdfWriter.init(fcQPdfWriter_new(struct_miqt_string(data: filename, len: csize_t(len(filename)))))
+
 proc create*(T: type gen_qpdfwriter_types.QPdfWriter, device: gen_qiodevice.QIODevice): gen_qpdfwriter_types.QPdfWriter =
-
   gen_qpdfwriter_types.QPdfWriter.init(fcQPdfWriter_new2(device.h))
-proc metaObject*(self: gen_qpdfwriter_types.QPdfWriter, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qpdfwriter_types.QPdfWriter, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPdfWriter_metaObject(self.h))
 
 proc metacast*(self: gen_qpdfwriter_types.QPdfWriter, param1: cstring): pointer =
-
   fcQPdfWriter_metacast(self.h, param1)
 
 proc metacall*(self: gen_qpdfwriter_types.QPdfWriter, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQPdfWriter_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring): string =
-
   let v_ms = fcQPdfWriter_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring): string =
-
   let v_ms = fcQPdfWriter_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPdfVersion*(self: gen_qpdfwriter_types.QPdfWriter, version: cint): void =
-
   fcQPdfWriter_setPdfVersion(self.h, cint(version))
 
 proc pdfVersion*(self: gen_qpdfwriter_types.QPdfWriter, ): cint =
-
   cint(fcQPdfWriter_pdfVersion(self.h))
 
 proc title*(self: gen_qpdfwriter_types.QPdfWriter, ): string =
-
   let v_ms = fcQPdfWriter_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTitle*(self: gen_qpdfwriter_types.QPdfWriter, title: string): void =
-
   fcQPdfWriter_setTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
 proc creator*(self: gen_qpdfwriter_types.QPdfWriter, ): string =
-
   let v_ms = fcQPdfWriter_creator(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setCreator*(self: gen_qpdfwriter_types.QPdfWriter, creator: string): void =
-
   fcQPdfWriter_setCreator(self.h, struct_miqt_string(data: creator, len: csize_t(len(creator))))
 
 proc newPage*(self: gen_qpdfwriter_types.QPdfWriter, ): bool =
-
   fcQPdfWriter_newPage(self.h)
 
 proc setResolution*(self: gen_qpdfwriter_types.QPdfWriter, resolution: cint): void =
-
   fcQPdfWriter_setResolution(self.h, resolution)
 
 proc resolution*(self: gen_qpdfwriter_types.QPdfWriter, ): cint =
-
   fcQPdfWriter_resolution(self.h)
 
 proc setDocumentXmpMetadata*(self: gen_qpdfwriter_types.QPdfWriter, xmpMetadata: seq[byte]): void =
-
   fcQPdfWriter_setDocumentXmpMetadata(self.h, struct_miqt_string(data: cast[cstring](if len(xmpMetadata) == 0: nil else: unsafeAddr xmpMetadata[0]), len: csize_t(len(xmpMetadata))))
 
 proc documentXmpMetadata*(self: gen_qpdfwriter_types.QPdfWriter, ): seq[byte] =
-
   var v_bytearray = fcQPdfWriter_documentXmpMetadata(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc addFileAttachment*(self: gen_qpdfwriter_types.QPdfWriter, fileName: string, data: seq[byte]): void =
-
   fcQPdfWriter_addFileAttachment(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
 proc setPageSize*(self: gen_qpdfwriter_types.QPdfWriter, size: cint): void =
-
   fcQPdfWriter_setPageSize(self.h, cint(size))
 
 proc setPageSizeMM*(self: gen_qpdfwriter_types.QPdfWriter, size: gen_qsize.QSizeF): void =
-
   fcQPdfWriter_setPageSizeMM(self.h, size.h)
 
 proc setMargins*(self: gen_qpdfwriter_types.QPdfWriter, m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void =
-
   fcQPdfWriter_setMargins(self.h, m.h)
 
-proc tr2*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring, c: cstring): string =
   let v_ms = fcQPdfWriter_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPdfWriter_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring, c: cstring): string =
   let v_ms = fcQPdfWriter_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qpdfwriter_types.QPdfWriter, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPdfWriter_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addFileAttachment3*(self: gen_qpdfwriter_types.QPdfWriter, fileName: string, data: seq[byte], mimeType: string): void =
-
+proc addFileAttachment*(self: gen_qpdfwriter_types.QPdfWriter, fileName: string, data: seq[byte], mimeType: string): void =
   fcQPdfWriter_addFileAttachment3(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))))
 
 proc QPdfWritermetaObject*(self: gen_qpdfwriter_types.QPdfWriter, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQPdfWriter_virtualbase_metaObject(self.h))
 
 type QPdfWritermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -289,7 +263,6 @@ proc miqt_exec_callback_QPdfWriter_metaObject(self: ptr cQPdfWriter, slot: int):
 
   virtualReturn.h
 proc QPdfWritermetacast*(self: gen_qpdfwriter_types.QPdfWriter, param1: cstring): pointer =
-
   fQPdfWriter_virtualbase_metacast(self.h, param1)
 
 type QPdfWritermetacastProc* = proc(param1: cstring): pointer
@@ -309,7 +282,6 @@ proc miqt_exec_callback_QPdfWriter_metacast(self: ptr cQPdfWriter, slot: int, pa
 
   virtualReturn
 proc QPdfWritermetacall*(self: gen_qpdfwriter_types.QPdfWriter, param1: cint, param2: cint, param3: pointer): cint =
-
   fQPdfWriter_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QPdfWritermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -333,7 +305,6 @@ proc miqt_exec_callback_QPdfWriter_metacall(self: ptr cQPdfWriter, slot: int, pa
 
   virtualReturn
 proc QPdfWriternewPage*(self: gen_qpdfwriter_types.QPdfWriter, ): bool =
-
   fQPdfWriter_virtualbase_newPage(self.h)
 
 type QPdfWriternewPageProc* = proc(): bool
@@ -351,7 +322,6 @@ proc miqt_exec_callback_QPdfWriter_newPage(self: ptr cQPdfWriter, slot: int): bo
 
   virtualReturn
 proc QPdfWritersetPageSize*(self: gen_qpdfwriter_types.QPdfWriter, size: cint): void =
-
   fQPdfWriter_virtualbase_setPageSize(self.h, cint(size))
 
 type QPdfWritersetPageSizeProc* = proc(size: cint): void
@@ -369,7 +339,6 @@ proc miqt_exec_callback_QPdfWriter_setPageSize(self: ptr cQPdfWriter, slot: int,
 
   nimfunc[](slotval1)
 proc QPdfWritersetPageSizeMM*(self: gen_qpdfwriter_types.QPdfWriter, size: gen_qsize.QSizeF): void =
-
   fQPdfWriter_virtualbase_setPageSizeMM(self.h, size.h)
 
 type QPdfWritersetPageSizeMMProc* = proc(size: gen_qsize.QSizeF): void
@@ -387,7 +356,6 @@ proc miqt_exec_callback_QPdfWriter_setPageSizeMM(self: ptr cQPdfWriter, slot: in
 
   nimfunc[](slotval1)
 proc QPdfWritersetMargins*(self: gen_qpdfwriter_types.QPdfWriter, m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void =
-
   fQPdfWriter_virtualbase_setMargins(self.h, m.h)
 
 type QPdfWritersetMarginsProc* = proc(m: gen_qpagedpaintdevice.QPagedPaintDeviceMargins): void
@@ -405,7 +373,6 @@ proc miqt_exec_callback_QPdfWriter_setMargins(self: ptr cQPdfWriter, slot: int, 
 
   nimfunc[](slotval1)
 proc QPdfWriterpaintEngine*(self: gen_qpdfwriter_types.QPdfWriter, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQPdfWriter_virtualbase_paintEngine(self.h))
 
 type QPdfWriterpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -423,7 +390,6 @@ proc miqt_exec_callback_QPdfWriter_paintEngine(self: ptr cQPdfWriter, slot: int)
 
   virtualReturn.h
 proc QPdfWritermetric*(self: gen_qpdfwriter_types.QPdfWriter, id: cint): cint =
-
   fQPdfWriter_virtualbase_metric(self.h, cint(id))
 
 type QPdfWritermetricProc* = proc(id: cint): cint
@@ -443,7 +409,6 @@ proc miqt_exec_callback_QPdfWriter_metric(self: ptr cQPdfWriter, slot: int, id: 
 
   virtualReturn
 proc QPdfWriterevent*(self: gen_qpdfwriter_types.QPdfWriter, event: gen_qcoreevent.QEvent): bool =
-
   fQPdfWriter_virtualbase_event(self.h, event.h)
 
 type QPdfWritereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -463,7 +428,6 @@ proc miqt_exec_callback_QPdfWriter_event(self: ptr cQPdfWriter, slot: int, event
 
   virtualReturn
 proc QPdfWritereventFilter*(self: gen_qpdfwriter_types.QPdfWriter, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQPdfWriter_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QPdfWritereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -485,7 +449,6 @@ proc miqt_exec_callback_QPdfWriter_eventFilter(self: ptr cQPdfWriter, slot: int,
 
   virtualReturn
 proc QPdfWritertimerEvent*(self: gen_qpdfwriter_types.QPdfWriter, event: gen_qcoreevent.QTimerEvent): void =
-
   fQPdfWriter_virtualbase_timerEvent(self.h, event.h)
 
 type QPdfWritertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -503,7 +466,6 @@ proc miqt_exec_callback_QPdfWriter_timerEvent(self: ptr cQPdfWriter, slot: int, 
 
   nimfunc[](slotval1)
 proc QPdfWriterchildEvent*(self: gen_qpdfwriter_types.QPdfWriter, event: gen_qcoreevent.QChildEvent): void =
-
   fQPdfWriter_virtualbase_childEvent(self.h, event.h)
 
 type QPdfWriterchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -521,7 +483,6 @@ proc miqt_exec_callback_QPdfWriter_childEvent(self: ptr cQPdfWriter, slot: int, 
 
   nimfunc[](slotval1)
 proc QPdfWritercustomEvent*(self: gen_qpdfwriter_types.QPdfWriter, event: gen_qcoreevent.QEvent): void =
-
   fQPdfWriter_virtualbase_customEvent(self.h, event.h)
 
 type QPdfWritercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -539,7 +500,6 @@ proc miqt_exec_callback_QPdfWriter_customEvent(self: ptr cQPdfWriter, slot: int,
 
   nimfunc[](slotval1)
 proc QPdfWriterconnectNotify*(self: gen_qpdfwriter_types.QPdfWriter, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPdfWriter_virtualbase_connectNotify(self.h, signal.h)
 
 type QPdfWriterconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -557,7 +517,6 @@ proc miqt_exec_callback_QPdfWriter_connectNotify(self: ptr cQPdfWriter, slot: in
 
   nimfunc[](slotval1)
 proc QPdfWriterdisconnectNotify*(self: gen_qpdfwriter_types.QPdfWriter, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPdfWriter_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QPdfWriterdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -575,7 +534,6 @@ proc miqt_exec_callback_QPdfWriter_disconnectNotify(self: ptr cQPdfWriter, slot:
 
   nimfunc[](slotval1)
 proc QPdfWriterdevType*(self: gen_qpdfwriter_types.QPdfWriter, ): cint =
-
   fQPdfWriter_virtualbase_devType(self.h)
 
 type QPdfWriterdevTypeProc* = proc(): cint
@@ -593,7 +551,6 @@ proc miqt_exec_callback_QPdfWriter_devType(self: ptr cQPdfWriter, slot: int): ci
 
   virtualReturn
 proc QPdfWriterinitPainter*(self: gen_qpdfwriter_types.QPdfWriter, painter: gen_qpainter.QPainter): void =
-
   fQPdfWriter_virtualbase_initPainter(self.h, painter.h)
 
 type QPdfWriterinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -611,7 +568,6 @@ proc miqt_exec_callback_QPdfWriter_initPainter(self: ptr cQPdfWriter, slot: int,
 
   nimfunc[](slotval1)
 proc QPdfWriterredirected*(self: gen_qpdfwriter_types.QPdfWriter, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQPdfWriter_virtualbase_redirected(self.h, offset.h))
 
 type QPdfWriterredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -631,7 +587,6 @@ proc miqt_exec_callback_QPdfWriter_redirected(self: ptr cQPdfWriter, slot: int, 
 
   virtualReturn.h
 proc QPdfWritersharedPainter*(self: gen_qpdfwriter_types.QPdfWriter, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQPdfWriter_virtualbase_sharedPainter(self.h))
 
 type QPdfWritersharedPainterProc* = proc(): gen_qpainter.QPainter

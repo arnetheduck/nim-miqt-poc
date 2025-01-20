@@ -345,196 +345,153 @@ proc fcQListView_delete(self: pointer) {.importc: "QListView_delete".}
 func init*(T: type gen_qlistview_types.QListView, h: ptr cQListView): gen_qlistview_types.QListView =
   T(h: h)
 proc create*(T: type gen_qlistview_types.QListView, parent: gen_qwidget.QWidget): gen_qlistview_types.QListView =
-
   gen_qlistview_types.QListView.init(fcQListView_new(parent.h))
+
 proc create*(T: type gen_qlistview_types.QListView, ): gen_qlistview_types.QListView =
-
   gen_qlistview_types.QListView.init(fcQListView_new2())
-proc metaObject*(self: gen_qlistview_types.QListView, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qlistview_types.QListView, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQListView_metaObject(self.h))
 
 proc metacast*(self: gen_qlistview_types.QListView, param1: cstring): pointer =
-
   fcQListView_metacast(self.h, param1)
 
 proc metacall*(self: gen_qlistview_types.QListView, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQListView_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qlistview_types.QListView, s: cstring): string =
-
   let v_ms = fcQListView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qlistview_types.QListView, s: cstring): string =
-
   let v_ms = fcQListView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setMovement*(self: gen_qlistview_types.QListView, movement: cint): void =
-
   fcQListView_setMovement(self.h, cint(movement))
 
 proc movement*(self: gen_qlistview_types.QListView, ): cint =
-
   cint(fcQListView_movement(self.h))
 
 proc setFlow*(self: gen_qlistview_types.QListView, flow: cint): void =
-
   fcQListView_setFlow(self.h, cint(flow))
 
 proc flow*(self: gen_qlistview_types.QListView, ): cint =
-
   cint(fcQListView_flow(self.h))
 
 proc setWrapping*(self: gen_qlistview_types.QListView, enable: bool): void =
-
   fcQListView_setWrapping(self.h, enable)
 
 proc isWrapping*(self: gen_qlistview_types.QListView, ): bool =
-
   fcQListView_isWrapping(self.h)
 
 proc setResizeMode*(self: gen_qlistview_types.QListView, mode: cint): void =
-
   fcQListView_setResizeMode(self.h, cint(mode))
 
 proc resizeMode*(self: gen_qlistview_types.QListView, ): cint =
-
   cint(fcQListView_resizeMode(self.h))
 
 proc setLayoutMode*(self: gen_qlistview_types.QListView, mode: cint): void =
-
   fcQListView_setLayoutMode(self.h, cint(mode))
 
 proc layoutMode*(self: gen_qlistview_types.QListView, ): cint =
-
   cint(fcQListView_layoutMode(self.h))
 
 proc setSpacing*(self: gen_qlistview_types.QListView, space: cint): void =
-
   fcQListView_setSpacing(self.h, space)
 
 proc spacing*(self: gen_qlistview_types.QListView, ): cint =
-
   fcQListView_spacing(self.h)
 
 proc setBatchSize*(self: gen_qlistview_types.QListView, batchSize: cint): void =
-
   fcQListView_setBatchSize(self.h, batchSize)
 
 proc batchSize*(self: gen_qlistview_types.QListView, ): cint =
-
   fcQListView_batchSize(self.h)
 
 proc setGridSize*(self: gen_qlistview_types.QListView, size: gen_qsize.QSize): void =
-
   fcQListView_setGridSize(self.h, size.h)
 
 proc gridSize*(self: gen_qlistview_types.QListView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQListView_gridSize(self.h))
 
 proc setViewMode*(self: gen_qlistview_types.QListView, mode: cint): void =
-
   fcQListView_setViewMode(self.h, cint(mode))
 
 proc viewMode*(self: gen_qlistview_types.QListView, ): cint =
-
   cint(fcQListView_viewMode(self.h))
 
 proc clearPropertyFlags*(self: gen_qlistview_types.QListView, ): void =
-
   fcQListView_clearPropertyFlags(self.h)
 
 proc isRowHidden*(self: gen_qlistview_types.QListView, row: cint): bool =
-
   fcQListView_isRowHidden(self.h, row)
 
 proc setRowHidden*(self: gen_qlistview_types.QListView, row: cint, hide: bool): void =
-
   fcQListView_setRowHidden(self.h, row, hide)
 
 proc setModelColumn*(self: gen_qlistview_types.QListView, column: cint): void =
-
   fcQListView_setModelColumn(self.h, column)
 
 proc modelColumn*(self: gen_qlistview_types.QListView, ): cint =
-
   fcQListView_modelColumn(self.h)
 
 proc setUniformItemSizes*(self: gen_qlistview_types.QListView, enable: bool): void =
-
   fcQListView_setUniformItemSizes(self.h, enable)
 
 proc uniformItemSizes*(self: gen_qlistview_types.QListView, ): bool =
-
   fcQListView_uniformItemSizes(self.h)
 
 proc setWordWrap*(self: gen_qlistview_types.QListView, on: bool): void =
-
   fcQListView_setWordWrap(self.h, on)
 
 proc wordWrap*(self: gen_qlistview_types.QListView, ): bool =
-
   fcQListView_wordWrap(self.h)
 
 proc setSelectionRectVisible*(self: gen_qlistview_types.QListView, show: bool): void =
-
   fcQListView_setSelectionRectVisible(self.h, show)
 
 proc isSelectionRectVisible*(self: gen_qlistview_types.QListView, ): bool =
-
   fcQListView_isSelectionRectVisible(self.h)
 
 proc setItemAlignment*(self: gen_qlistview_types.QListView, alignment: cint): void =
-
   fcQListView_setItemAlignment(self.h, cint(alignment))
 
 proc itemAlignment*(self: gen_qlistview_types.QListView, ): cint =
-
   cint(fcQListView_itemAlignment(self.h))
 
 proc visualRect*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQListView_visualRect(self.h, index.h))
 
 proc scrollTo*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fcQListView_scrollTo(self.h, index.h, cint(hint))
 
 proc indexAt*(self: gen_qlistview_types.QListView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQListView_indexAt(self.h, p.h))
 
 proc doItemsLayout*(self: gen_qlistview_types.QListView, ): void =
-
   fcQListView_doItemsLayout(self.h)
 
 proc reset*(self: gen_qlistview_types.QListView, ): void =
-
   fcQListView_reset(self.h)
 
 proc setRootIndex*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQListView_setRootIndex(self.h, index.h)
 
 proc indexesMoved*(self: gen_qlistview_types.QListView, indexes: seq[gen_qabstractitemmodel.QModelIndex]): void =
-
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
     indexes_CArray[i] = indexes[i].h
 
   fcQListView_indexesMoved(self.h, struct_miqt_array(len: csize_t(len(indexes)), data: if len(indexes) == 0: nil else: addr(indexes_CArray[0])))
 
+type QListViewindexesMovedSlot* = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex])
 proc miqt_exec_callback_QListView_indexesMoved(slot: int, indexes: struct_miqt_array) {.exportc.} =
-  type Cb = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex])
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QListViewindexesMovedSlot](cast[pointer](slot))
   var vindexes_ma = indexes
   var vindexesx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(vindexes_ma.len))
   let vindexes_outCast = cast[ptr UncheckedArray[pointer]](vindexes_ma.data)
@@ -542,45 +499,39 @@ proc miqt_exec_callback_QListView_indexesMoved(slot: int, indexes: struct_miqt_a
     vindexesx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: vindexes_outCast[i])
   let slotval1 = vindexesx_ret
 
-
   nimfunc[](slotval1)
 
-proc onindexesMoved*(self: gen_qlistview_types.QListView, slot: proc(indexes: seq[gen_qabstractitemmodel.QModelIndex])) =
-  type Cb = proc(indexes: seq[gen_qabstractitemmodel.QModelIndex])
-  var tmp = new Cb
+proc onindexesMoved*(self: gen_qlistview_types.QListView, slot: QListViewindexesMovedSlot) =
+  var tmp = new QListViewindexesMovedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQListView_connect_indexesMoved(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring): string =
   let v_ms = fcQListView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQListView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring): string =
   let v_ms = fcQListView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qlistview_types.QListView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQListView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QListViewmetaObject*(self: gen_qlistview_types.QListView, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQListView_virtualbase_metaObject(self.h))
 
 type QListViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -598,7 +549,6 @@ proc miqt_exec_callback_QListView_metaObject(self: ptr cQListView, slot: int): p
 
   virtualReturn.h
 proc QListViewmetacast*(self: gen_qlistview_types.QListView, param1: cstring): pointer =
-
   fQListView_virtualbase_metacast(self.h, param1)
 
 type QListViewmetacastProc* = proc(param1: cstring): pointer
@@ -618,7 +568,6 @@ proc miqt_exec_callback_QListView_metacast(self: ptr cQListView, slot: int, para
 
   virtualReturn
 proc QListViewmetacall*(self: gen_qlistview_types.QListView, param1: cint, param2: cint, param3: pointer): cint =
-
   fQListView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QListViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -642,7 +591,6 @@ proc miqt_exec_callback_QListView_metacall(self: ptr cQListView, slot: int, para
 
   virtualReturn
 proc QListViewvisualRect*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQListView_virtualbase_visualRect(self.h, index.h))
 
 type QListViewvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
@@ -662,7 +610,6 @@ proc miqt_exec_callback_QListView_visualRect(self: ptr cQListView, slot: int, in
 
   virtualReturn.h
 proc QListViewscrollTo*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fQListView_virtualbase_scrollTo(self.h, index.h, cint(hint))
 
 type QListViewscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
@@ -682,7 +629,6 @@ proc miqt_exec_callback_QListView_scrollTo(self: ptr cQListView, slot: int, inde
 
   nimfunc[](slotval1, slotval2)
 proc QListViewindexAt*(self: gen_qlistview_types.QListView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQListView_virtualbase_indexAt(self.h, p.h))
 
 type QListViewindexAtProc* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
@@ -702,7 +648,6 @@ proc miqt_exec_callback_QListView_indexAt(self: ptr cQListView, slot: int, p: po
 
   virtualReturn.h
 proc QListViewdoItemsLayout*(self: gen_qlistview_types.QListView, ): void =
-
   fQListView_virtualbase_doItemsLayout(self.h)
 
 type QListViewdoItemsLayoutProc* = proc(): void
@@ -718,7 +663,6 @@ proc miqt_exec_callback_QListView_doItemsLayout(self: ptr cQListView, slot: int)
 
   nimfunc[]()
 proc QListViewreset*(self: gen_qlistview_types.QListView, ): void =
-
   fQListView_virtualbase_reset(self.h)
 
 type QListViewresetProc* = proc(): void
@@ -734,7 +678,6 @@ proc miqt_exec_callback_QListView_reset(self: ptr cQListView, slot: int): void {
 
   nimfunc[]()
 proc QListViewsetRootIndex*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQListView_virtualbase_setRootIndex(self.h, index.h)
 
 type QListViewsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
@@ -752,7 +695,6 @@ proc miqt_exec_callback_QListView_setRootIndex(self: ptr cQListView, slot: int, 
 
   nimfunc[](slotval1)
 proc QListViewevent*(self: gen_qlistview_types.QListView, e: gen_qcoreevent.QEvent): bool =
-
   fQListView_virtualbase_event(self.h, e.h)
 
 type QListVieweventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -772,7 +714,6 @@ proc miqt_exec_callback_QListView_event(self: ptr cQListView, slot: int, e: poin
 
   virtualReturn
 proc QListViewscrollContentsBy*(self: gen_qlistview_types.QListView, dx: cint, dy: cint): void =
-
   fQListView_virtualbase_scrollContentsBy(self.h, dx, dy)
 
 type QListViewscrollContentsByProc* = proc(dx: cint, dy: cint): void
@@ -792,7 +733,6 @@ proc miqt_exec_callback_QListView_scrollContentsBy(self: ptr cQListView, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QListViewdataChanged*(self: gen_qlistview_types.QListView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
-
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
@@ -823,7 +763,6 @@ proc miqt_exec_callback_QListView_dataChanged(self: ptr cQListView, slot: int, t
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QListViewrowsInserted*(self: gen_qlistview_types.QListView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQListView_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
 type QListViewrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -845,7 +784,6 @@ proc miqt_exec_callback_QListView_rowsInserted(self: ptr cQListView, slot: int, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QListViewrowsAboutToBeRemoved*(self: gen_qlistview_types.QListView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQListView_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
 type QListViewrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -867,7 +805,6 @@ proc miqt_exec_callback_QListView_rowsAboutToBeRemoved(self: ptr cQListView, slo
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QListViewmouseMoveEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QMouseEvent): void =
-
   fQListView_virtualbase_mouseMoveEvent(self.h, e.h)
 
 type QListViewmouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -885,7 +822,6 @@ proc miqt_exec_callback_QListView_mouseMoveEvent(self: ptr cQListView, slot: int
 
   nimfunc[](slotval1)
 proc QListViewmouseReleaseEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QMouseEvent): void =
-
   fQListView_virtualbase_mouseReleaseEvent(self.h, e.h)
 
 type QListViewmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -903,7 +839,6 @@ proc miqt_exec_callback_QListView_mouseReleaseEvent(self: ptr cQListView, slot: 
 
   nimfunc[](slotval1)
 proc QListViewwheelEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QWheelEvent): void =
-
   fQListView_virtualbase_wheelEvent(self.h, e.h)
 
 type QListViewwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
@@ -921,7 +856,6 @@ proc miqt_exec_callback_QListView_wheelEvent(self: ptr cQListView, slot: int, e:
 
   nimfunc[](slotval1)
 proc QListViewtimerEvent*(self: gen_qlistview_types.QListView, e: gen_qcoreevent.QTimerEvent): void =
-
   fQListView_virtualbase_timerEvent(self.h, e.h)
 
 type QListViewtimerEventProc* = proc(e: gen_qcoreevent.QTimerEvent): void
@@ -939,7 +873,6 @@ proc miqt_exec_callback_QListView_timerEvent(self: ptr cQListView, slot: int, e:
 
   nimfunc[](slotval1)
 proc QListViewresizeEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QResizeEvent): void =
-
   fQListView_virtualbase_resizeEvent(self.h, e.h)
 
 type QListViewresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
@@ -957,7 +890,6 @@ proc miqt_exec_callback_QListView_resizeEvent(self: ptr cQListView, slot: int, e
 
   nimfunc[](slotval1)
 proc QListViewdragMoveEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QDragMoveEvent): void =
-
   fQListView_virtualbase_dragMoveEvent(self.h, e.h)
 
 type QListViewdragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
@@ -975,7 +907,6 @@ proc miqt_exec_callback_QListView_dragMoveEvent(self: ptr cQListView, slot: int,
 
   nimfunc[](slotval1)
 proc QListViewdragLeaveEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QDragLeaveEvent): void =
-
   fQListView_virtualbase_dragLeaveEvent(self.h, e.h)
 
 type QListViewdragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
@@ -993,7 +924,6 @@ proc miqt_exec_callback_QListView_dragLeaveEvent(self: ptr cQListView, slot: int
 
   nimfunc[](slotval1)
 proc QListViewdropEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QDropEvent): void =
-
   fQListView_virtualbase_dropEvent(self.h, e.h)
 
 type QListViewdropEventProc* = proc(e: gen_qevent.QDropEvent): void
@@ -1011,7 +941,6 @@ proc miqt_exec_callback_QListView_dropEvent(self: ptr cQListView, slot: int, e: 
 
   nimfunc[](slotval1)
 proc QListViewstartDrag*(self: gen_qlistview_types.QListView, supportedActions: cint): void =
-
   fQListView_virtualbase_startDrag(self.h, cint(supportedActions))
 
 type QListViewstartDragProc* = proc(supportedActions: cint): void
@@ -1029,7 +958,6 @@ proc miqt_exec_callback_QListView_startDrag(self: ptr cQListView, slot: int, sup
 
   nimfunc[](slotval1)
 proc QListViewviewOptions*(self: gen_qlistview_types.QListView, ): gen_qstyleoption.QStyleOptionViewItem =
-
   gen_qstyleoption.QStyleOptionViewItem(h: fQListView_virtualbase_viewOptions(self.h))
 
 type QListViewviewOptionsProc* = proc(): gen_qstyleoption.QStyleOptionViewItem
@@ -1047,7 +975,6 @@ proc miqt_exec_callback_QListView_viewOptions(self: ptr cQListView, slot: int): 
 
   virtualReturn.h
 proc QListViewpaintEvent*(self: gen_qlistview_types.QListView, e: gen_qevent.QPaintEvent): void =
-
   fQListView_virtualbase_paintEvent(self.h, e.h)
 
 type QListViewpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
@@ -1065,7 +992,6 @@ proc miqt_exec_callback_QListView_paintEvent(self: ptr cQListView, slot: int, e:
 
   nimfunc[](slotval1)
 proc QListViewhorizontalOffset*(self: gen_qlistview_types.QListView, ): cint =
-
   fQListView_virtualbase_horizontalOffset(self.h)
 
 type QListViewhorizontalOffsetProc* = proc(): cint
@@ -1083,7 +1009,6 @@ proc miqt_exec_callback_QListView_horizontalOffset(self: ptr cQListView, slot: i
 
   virtualReturn
 proc QListViewverticalOffset*(self: gen_qlistview_types.QListView, ): cint =
-
   fQListView_virtualbase_verticalOffset(self.h)
 
 type QListViewverticalOffsetProc* = proc(): cint
@@ -1101,7 +1026,6 @@ proc miqt_exec_callback_QListView_verticalOffset(self: ptr cQListView, slot: int
 
   virtualReturn
 proc QListViewmoveCursor*(self: gen_qlistview_types.QListView, cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQListView_virtualbase_moveCursor(self.h, cint(cursorAction), cint(modifiers)))
 
 type QListViewmoveCursorProc* = proc(cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex
@@ -1123,7 +1047,6 @@ proc miqt_exec_callback_QListView_moveCursor(self: ptr cQListView, slot: int, cu
 
   virtualReturn.h
 proc QListViewsetSelection*(self: gen_qlistview_types.QListView, rect: gen_qrect.QRect, command: cint): void =
-
   fQListView_virtualbase_setSelection(self.h, rect.h, cint(command))
 
 type QListViewsetSelectionProc* = proc(rect: gen_qrect.QRect, command: cint): void
@@ -1143,7 +1066,6 @@ proc miqt_exec_callback_QListView_setSelection(self: ptr cQListView, slot: int, 
 
   nimfunc[](slotval1, slotval2)
 proc QListViewvisualRegionForSelection*(self: gen_qlistview_types.QListView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fQListView_virtualbase_visualRegionForSelection(self.h, selection.h))
 
 type QListViewvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
@@ -1163,7 +1085,6 @@ proc miqt_exec_callback_QListView_visualRegionForSelection(self: ptr cQListView,
 
   virtualReturn.h
 proc QListViewselectedIndexes*(self: gen_qlistview_types.QListView, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fQListView_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1190,7 +1111,6 @@ proc miqt_exec_callback_QListView_selectedIndexes(self: ptr cQListView, slot: in
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QListViewupdateGeometries*(self: gen_qlistview_types.QListView, ): void =
-
   fQListView_virtualbase_updateGeometries(self.h)
 
 type QListViewupdateGeometriesProc* = proc(): void
@@ -1206,7 +1126,6 @@ proc miqt_exec_callback_QListView_updateGeometries(self: ptr cQListView, slot: i
 
   nimfunc[]()
 proc QListViewisIndexHidden*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQListView_virtualbase_isIndexHidden(self.h, index.h)
 
 type QListViewisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
@@ -1226,7 +1145,6 @@ proc miqt_exec_callback_QListView_isIndexHidden(self: ptr cQListView, slot: int,
 
   virtualReturn
 proc QListViewselectionChanged*(self: gen_qlistview_types.QListView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
   fQListView_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
 type QListViewselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
@@ -1246,7 +1164,6 @@ proc miqt_exec_callback_QListView_selectionChanged(self: ptr cQListView, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QListViewcurrentChanged*(self: gen_qlistview_types.QListView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
-
   fQListView_virtualbase_currentChanged(self.h, current.h, previous.h)
 
 type QListViewcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
@@ -1266,7 +1183,6 @@ proc miqt_exec_callback_QListView_currentChanged(self: ptr cQListView, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QListViewviewportSizeHint*(self: gen_qlistview_types.QListView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQListView_virtualbase_viewportSizeHint(self.h))
 
 type QListViewviewportSizeHintProc* = proc(): gen_qsize.QSize
@@ -1284,7 +1200,6 @@ proc miqt_exec_callback_QListView_viewportSizeHint(self: ptr cQListView, slot: i
 
   virtualReturn.h
 proc QListViewsetModel*(self: gen_qlistview_types.QListView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fQListView_virtualbase_setModel(self.h, model.h)
 
 type QListViewsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
@@ -1302,7 +1217,6 @@ proc miqt_exec_callback_QListView_setModel(self: ptr cQListView, slot: int, mode
 
   nimfunc[](slotval1)
 proc QListViewsetSelectionModel*(self: gen_qlistview_types.QListView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
   fQListView_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
 type QListViewsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
@@ -1320,7 +1234,6 @@ proc miqt_exec_callback_QListView_setSelectionModel(self: ptr cQListView, slot: 
 
   nimfunc[](slotval1)
 proc QListViewkeyboardSearch*(self: gen_qlistview_types.QListView, search: string): void =
-
   fQListView_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
 type QListViewkeyboardSearchProc* = proc(search: string): void
@@ -1341,7 +1254,6 @@ proc miqt_exec_callback_QListView_keyboardSearch(self: ptr cQListView, slot: int
 
   nimfunc[](slotval1)
 proc QListViewsizeHintForRow*(self: gen_qlistview_types.QListView, row: cint): cint =
-
   fQListView_virtualbase_sizeHintForRow(self.h, row)
 
 type QListViewsizeHintForRowProc* = proc(row: cint): cint
@@ -1361,7 +1273,6 @@ proc miqt_exec_callback_QListView_sizeHintForRow(self: ptr cQListView, slot: int
 
   virtualReturn
 proc QListViewsizeHintForColumn*(self: gen_qlistview_types.QListView, column: cint): cint =
-
   fQListView_virtualbase_sizeHintForColumn(self.h, column)
 
 type QListViewsizeHintForColumnProc* = proc(column: cint): cint
@@ -1381,7 +1292,6 @@ proc miqt_exec_callback_QListView_sizeHintForColumn(self: ptr cQListView, slot: 
 
   virtualReturn
 proc QListViewinputMethodQuery*(self: gen_qlistview_types.QListView, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQListView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QListViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -1401,7 +1311,6 @@ proc miqt_exec_callback_QListView_inputMethodQuery(self: ptr cQListView, slot: i
 
   virtualReturn.h
 proc QListViewselectAll*(self: gen_qlistview_types.QListView, ): void =
-
   fQListView_virtualbase_selectAll(self.h)
 
 type QListViewselectAllProc* = proc(): void
@@ -1417,7 +1326,6 @@ proc miqt_exec_callback_QListView_selectAll(self: ptr cQListView, slot: int): vo
 
   nimfunc[]()
 proc QListViewupdateEditorData*(self: gen_qlistview_types.QListView, ): void =
-
   fQListView_virtualbase_updateEditorData(self.h)
 
 type QListViewupdateEditorDataProc* = proc(): void
@@ -1433,7 +1341,6 @@ proc miqt_exec_callback_QListView_updateEditorData(self: ptr cQListView, slot: i
 
   nimfunc[]()
 proc QListViewupdateEditorGeometries*(self: gen_qlistview_types.QListView, ): void =
-
   fQListView_virtualbase_updateEditorGeometries(self.h)
 
 type QListViewupdateEditorGeometriesProc* = proc(): void
@@ -1449,7 +1356,6 @@ proc miqt_exec_callback_QListView_updateEditorGeometries(self: ptr cQListView, s
 
   nimfunc[]()
 proc QListViewverticalScrollbarAction*(self: gen_qlistview_types.QListView, action: cint): void =
-
   fQListView_virtualbase_verticalScrollbarAction(self.h, action)
 
 type QListViewverticalScrollbarActionProc* = proc(action: cint): void
@@ -1467,7 +1373,6 @@ proc miqt_exec_callback_QListView_verticalScrollbarAction(self: ptr cQListView, 
 
   nimfunc[](slotval1)
 proc QListViewhorizontalScrollbarAction*(self: gen_qlistview_types.QListView, action: cint): void =
-
   fQListView_virtualbase_horizontalScrollbarAction(self.h, action)
 
 type QListViewhorizontalScrollbarActionProc* = proc(action: cint): void
@@ -1485,7 +1390,6 @@ proc miqt_exec_callback_QListView_horizontalScrollbarAction(self: ptr cQListView
 
   nimfunc[](slotval1)
 proc QListViewverticalScrollbarValueChanged*(self: gen_qlistview_types.QListView, value: cint): void =
-
   fQListView_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
 type QListViewverticalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1503,7 +1407,6 @@ proc miqt_exec_callback_QListView_verticalScrollbarValueChanged(self: ptr cQList
 
   nimfunc[](slotval1)
 proc QListViewhorizontalScrollbarValueChanged*(self: gen_qlistview_types.QListView, value: cint): void =
-
   fQListView_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
 type QListViewhorizontalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1521,7 +1424,6 @@ proc miqt_exec_callback_QListView_horizontalScrollbarValueChanged(self: ptr cQLi
 
   nimfunc[](slotval1)
 proc QListViewcloseEditor*(self: gen_qlistview_types.QListView, editor: gen_qwidget.QWidget, hint: cint): void =
-
   fQListView_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
 type QListViewcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
@@ -1541,7 +1443,6 @@ proc miqt_exec_callback_QListView_closeEditor(self: ptr cQListView, slot: int, e
 
   nimfunc[](slotval1, slotval2)
 proc QListViewcommitData*(self: gen_qlistview_types.QListView, editor: gen_qwidget.QWidget): void =
-
   fQListView_virtualbase_commitData(self.h, editor.h)
 
 type QListViewcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
@@ -1559,7 +1460,6 @@ proc miqt_exec_callback_QListView_commitData(self: ptr cQListView, slot: int, ed
 
   nimfunc[](slotval1)
 proc QListVieweditorDestroyed*(self: gen_qlistview_types.QListView, editor: gen_qobject.QObject): void =
-
   fQListView_virtualbase_editorDestroyed(self.h, editor.h)
 
 type QListVieweditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
@@ -1576,12 +1476,11 @@ proc miqt_exec_callback_QListView_editorDestroyed(self: ptr cQListView, slot: in
 
 
   nimfunc[](slotval1)
-proc QListViewedit2*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
-
+proc QListViewedit*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
   fQListView_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
 type QListViewedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: gen_qlistview_types.QListView, slot: QListViewedit2Proc) =
+proc onedit*(self: gen_qlistview_types.QListView, slot: QListViewedit2Proc) =
   # TODO check subclass
   var tmp = new QListViewedit2Proc
   tmp[] = slot
@@ -1601,7 +1500,6 @@ proc miqt_exec_callback_QListView_edit2(self: ptr cQListView, slot: int, index: 
 
   virtualReturn
 proc QListViewselectionCommand*(self: gen_qlistview_types.QListView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
-
   cint(fQListView_virtualbase_selectionCommand(self.h, index.h, event.h))
 
 type QListViewselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
@@ -1623,7 +1521,6 @@ proc miqt_exec_callback_QListView_selectionCommand(self: ptr cQListView, slot: i
 
   cint(virtualReturn)
 proc QListViewfocusNextPrevChild*(self: gen_qlistview_types.QListView, next: bool): bool =
-
   fQListView_virtualbase_focusNextPrevChild(self.h, next)
 
 type QListViewfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1643,7 +1540,6 @@ proc miqt_exec_callback_QListView_focusNextPrevChild(self: ptr cQListView, slot:
 
   virtualReturn
 proc QListViewviewportEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QEvent): bool =
-
   fQListView_virtualbase_viewportEvent(self.h, event.h)
 
 type QListViewviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1663,7 +1559,6 @@ proc miqt_exec_callback_QListView_viewportEvent(self: ptr cQListView, slot: int,
 
   virtualReturn
 proc QListViewmousePressEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QMouseEvent): void =
-
   fQListView_virtualbase_mousePressEvent(self.h, event.h)
 
 type QListViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1681,7 +1576,6 @@ proc miqt_exec_callback_QListView_mousePressEvent(self: ptr cQListView, slot: in
 
   nimfunc[](slotval1)
 proc QListViewmouseDoubleClickEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QMouseEvent): void =
-
   fQListView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QListViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1699,7 +1593,6 @@ proc miqt_exec_callback_QListView_mouseDoubleClickEvent(self: ptr cQListView, sl
 
   nimfunc[](slotval1)
 proc QListViewdragEnterEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QDragEnterEvent): void =
-
   fQListView_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QListViewdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1717,7 +1610,6 @@ proc miqt_exec_callback_QListView_dragEnterEvent(self: ptr cQListView, slot: int
 
   nimfunc[](slotval1)
 proc QListViewfocusInEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QFocusEvent): void =
-
   fQListView_virtualbase_focusInEvent(self.h, event.h)
 
 type QListViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1735,7 +1627,6 @@ proc miqt_exec_callback_QListView_focusInEvent(self: ptr cQListView, slot: int, 
 
   nimfunc[](slotval1)
 proc QListViewfocusOutEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QFocusEvent): void =
-
   fQListView_virtualbase_focusOutEvent(self.h, event.h)
 
 type QListViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1753,7 +1644,6 @@ proc miqt_exec_callback_QListView_focusOutEvent(self: ptr cQListView, slot: int,
 
   nimfunc[](slotval1)
 proc QListViewkeyPressEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QKeyEvent): void =
-
   fQListView_virtualbase_keyPressEvent(self.h, event.h)
 
 type QListViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1771,7 +1661,6 @@ proc miqt_exec_callback_QListView_keyPressEvent(self: ptr cQListView, slot: int,
 
   nimfunc[](slotval1)
 proc QListViewinputMethodEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QInputMethodEvent): void =
-
   fQListView_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QListViewinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -1789,7 +1678,6 @@ proc miqt_exec_callback_QListView_inputMethodEvent(self: ptr cQListView, slot: i
 
   nimfunc[](slotval1)
 proc QListVieweventFilter*(self: gen_qlistview_types.QListView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQListView_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
 type QListVieweventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1811,7 +1699,6 @@ proc miqt_exec_callback_QListView_eventFilter(self: ptr cQListView, slot: int, o
 
   virtualReturn
 proc QListViewminimumSizeHint*(self: gen_qlistview_types.QListView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQListView_virtualbase_minimumSizeHint(self.h))
 
 type QListViewminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1829,7 +1716,6 @@ proc miqt_exec_callback_QListView_minimumSizeHint(self: ptr cQListView, slot: in
 
   virtualReturn.h
 proc QListViewsizeHint*(self: gen_qlistview_types.QListView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQListView_virtualbase_sizeHint(self.h))
 
 type QListViewsizeHintProc* = proc(): gen_qsize.QSize
@@ -1847,7 +1733,6 @@ proc miqt_exec_callback_QListView_sizeHint(self: ptr cQListView, slot: int): poi
 
   virtualReturn.h
 proc QListViewsetupViewport*(self: gen_qlistview_types.QListView, viewport: gen_qwidget.QWidget): void =
-
   fQListView_virtualbase_setupViewport(self.h, viewport.h)
 
 type QListViewsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
@@ -1865,7 +1750,6 @@ proc miqt_exec_callback_QListView_setupViewport(self: ptr cQListView, slot: int,
 
   nimfunc[](slotval1)
 proc QListViewcontextMenuEvent*(self: gen_qlistview_types.QListView, param1: gen_qevent.QContextMenuEvent): void =
-
   fQListView_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QListViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -1883,7 +1767,6 @@ proc miqt_exec_callback_QListView_contextMenuEvent(self: ptr cQListView, slot: i
 
   nimfunc[](slotval1)
 proc QListViewchangeEvent*(self: gen_qlistview_types.QListView, param1: gen_qcoreevent.QEvent): void =
-
   fQListView_virtualbase_changeEvent(self.h, param1.h)
 
 type QListViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1901,7 +1784,6 @@ proc miqt_exec_callback_QListView_changeEvent(self: ptr cQListView, slot: int, p
 
   nimfunc[](slotval1)
 proc QListViewdevType*(self: gen_qlistview_types.QListView, ): cint =
-
   fQListView_virtualbase_devType(self.h)
 
 type QListViewdevTypeProc* = proc(): cint
@@ -1919,7 +1801,6 @@ proc miqt_exec_callback_QListView_devType(self: ptr cQListView, slot: int): cint
 
   virtualReturn
 proc QListViewsetVisible*(self: gen_qlistview_types.QListView, visible: bool): void =
-
   fQListView_virtualbase_setVisible(self.h, visible)
 
 type QListViewsetVisibleProc* = proc(visible: bool): void
@@ -1937,7 +1818,6 @@ proc miqt_exec_callback_QListView_setVisible(self: ptr cQListView, slot: int, vi
 
   nimfunc[](slotval1)
 proc QListViewheightForWidth*(self: gen_qlistview_types.QListView, param1: cint): cint =
-
   fQListView_virtualbase_heightForWidth(self.h, param1)
 
 type QListViewheightForWidthProc* = proc(param1: cint): cint
@@ -1957,7 +1837,6 @@ proc miqt_exec_callback_QListView_heightForWidth(self: ptr cQListView, slot: int
 
   virtualReturn
 proc QListViewhasHeightForWidth*(self: gen_qlistview_types.QListView, ): bool =
-
   fQListView_virtualbase_hasHeightForWidth(self.h)
 
 type QListViewhasHeightForWidthProc* = proc(): bool
@@ -1975,7 +1854,6 @@ proc miqt_exec_callback_QListView_hasHeightForWidth(self: ptr cQListView, slot: 
 
   virtualReturn
 proc QListViewpaintEngine*(self: gen_qlistview_types.QListView, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQListView_virtualbase_paintEngine(self.h))
 
 type QListViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1993,7 +1871,6 @@ proc miqt_exec_callback_QListView_paintEngine(self: ptr cQListView, slot: int): 
 
   virtualReturn.h
 proc QListViewkeyReleaseEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QKeyEvent): void =
-
   fQListView_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QListViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2011,7 +1888,6 @@ proc miqt_exec_callback_QListView_keyReleaseEvent(self: ptr cQListView, slot: in
 
   nimfunc[](slotval1)
 proc QListViewenterEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QEvent): void =
-
   fQListView_virtualbase_enterEvent(self.h, event.h)
 
 type QListViewenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2029,7 +1905,6 @@ proc miqt_exec_callback_QListView_enterEvent(self: ptr cQListView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QListViewleaveEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QEvent): void =
-
   fQListView_virtualbase_leaveEvent(self.h, event.h)
 
 type QListViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2047,7 +1922,6 @@ proc miqt_exec_callback_QListView_leaveEvent(self: ptr cQListView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QListViewmoveEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QMoveEvent): void =
-
   fQListView_virtualbase_moveEvent(self.h, event.h)
 
 type QListViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -2065,7 +1939,6 @@ proc miqt_exec_callback_QListView_moveEvent(self: ptr cQListView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QListViewcloseEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QCloseEvent): void =
-
   fQListView_virtualbase_closeEvent(self.h, event.h)
 
 type QListViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -2083,7 +1956,6 @@ proc miqt_exec_callback_QListView_closeEvent(self: ptr cQListView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QListViewtabletEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QTabletEvent): void =
-
   fQListView_virtualbase_tabletEvent(self.h, event.h)
 
 type QListViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -2101,7 +1973,6 @@ proc miqt_exec_callback_QListView_tabletEvent(self: ptr cQListView, slot: int, e
 
   nimfunc[](slotval1)
 proc QListViewactionEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QActionEvent): void =
-
   fQListView_virtualbase_actionEvent(self.h, event.h)
 
 type QListViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -2119,7 +1990,6 @@ proc miqt_exec_callback_QListView_actionEvent(self: ptr cQListView, slot: int, e
 
   nimfunc[](slotval1)
 proc QListViewshowEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QShowEvent): void =
-
   fQListView_virtualbase_showEvent(self.h, event.h)
 
 type QListViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -2137,7 +2007,6 @@ proc miqt_exec_callback_QListView_showEvent(self: ptr cQListView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QListViewhideEvent*(self: gen_qlistview_types.QListView, event: gen_qevent.QHideEvent): void =
-
   fQListView_virtualbase_hideEvent(self.h, event.h)
 
 type QListViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -2155,7 +2024,6 @@ proc miqt_exec_callback_QListView_hideEvent(self: ptr cQListView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QListViewnativeEvent*(self: gen_qlistview_types.QListView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQListView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QListViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -2182,7 +2050,6 @@ proc miqt_exec_callback_QListView_nativeEvent(self: ptr cQListView, slot: int, e
 
   virtualReturn
 proc QListViewmetric*(self: gen_qlistview_types.QListView, param1: cint): cint =
-
   fQListView_virtualbase_metric(self.h, cint(param1))
 
 type QListViewmetricProc* = proc(param1: cint): cint
@@ -2202,7 +2069,6 @@ proc miqt_exec_callback_QListView_metric(self: ptr cQListView, slot: int, param1
 
   virtualReturn
 proc QListViewinitPainter*(self: gen_qlistview_types.QListView, painter: gen_qpainter.QPainter): void =
-
   fQListView_virtualbase_initPainter(self.h, painter.h)
 
 type QListViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -2220,7 +2086,6 @@ proc miqt_exec_callback_QListView_initPainter(self: ptr cQListView, slot: int, p
 
   nimfunc[](slotval1)
 proc QListViewredirected*(self: gen_qlistview_types.QListView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQListView_virtualbase_redirected(self.h, offset.h))
 
 type QListViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -2240,7 +2105,6 @@ proc miqt_exec_callback_QListView_redirected(self: ptr cQListView, slot: int, of
 
   virtualReturn.h
 proc QListViewsharedPainter*(self: gen_qlistview_types.QListView, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQListView_virtualbase_sharedPainter(self.h))
 
 type QListViewsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -2258,7 +2122,6 @@ proc miqt_exec_callback_QListView_sharedPainter(self: ptr cQListView, slot: int)
 
   virtualReturn.h
 proc QListViewchildEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QChildEvent): void =
-
   fQListView_virtualbase_childEvent(self.h, event.h)
 
 type QListViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -2276,7 +2139,6 @@ proc miqt_exec_callback_QListView_childEvent(self: ptr cQListView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QListViewcustomEvent*(self: gen_qlistview_types.QListView, event: gen_qcoreevent.QEvent): void =
-
   fQListView_virtualbase_customEvent(self.h, event.h)
 
 type QListViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2294,7 +2156,6 @@ proc miqt_exec_callback_QListView_customEvent(self: ptr cQListView, slot: int, e
 
   nimfunc[](slotval1)
 proc QListViewconnectNotify*(self: gen_qlistview_types.QListView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQListView_virtualbase_connectNotify(self.h, signal.h)
 
 type QListViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2312,7 +2173,6 @@ proc miqt_exec_callback_QListView_connectNotify(self: ptr cQListView, slot: int,
 
   nimfunc[](slotval1)
 proc QListViewdisconnectNotify*(self: gen_qlistview_types.QListView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQListView_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QListViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

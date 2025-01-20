@@ -188,252 +188,204 @@ proc fcQLocalSocket_delete(self: pointer) {.importc: "QLocalSocket_delete".}
 func init*(T: type gen_qlocalsocket_types.QLocalSocket, h: ptr cQLocalSocket): gen_qlocalsocket_types.QLocalSocket =
   T(h: h)
 proc create*(T: type gen_qlocalsocket_types.QLocalSocket, ): gen_qlocalsocket_types.QLocalSocket =
-
   gen_qlocalsocket_types.QLocalSocket.init(fcQLocalSocket_new())
+
 proc create*(T: type gen_qlocalsocket_types.QLocalSocket, parent: gen_qobject.QObject): gen_qlocalsocket_types.QLocalSocket =
-
   gen_qlocalsocket_types.QLocalSocket.init(fcQLocalSocket_new2(parent.h))
-proc metaObject*(self: gen_qlocalsocket_types.QLocalSocket, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qlocalsocket_types.QLocalSocket, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQLocalSocket_metaObject(self.h))
 
 proc metacast*(self: gen_qlocalsocket_types.QLocalSocket, param1: cstring): pointer =
-
   fcQLocalSocket_metacast(self.h, param1)
 
 proc metacall*(self: gen_qlocalsocket_types.QLocalSocket, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQLocalSocket_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qlocalsocket_types.QLocalSocket, s: cstring): string =
-
   let v_ms = fcQLocalSocket_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc connectToServer*(self: gen_qlocalsocket_types.QLocalSocket, ): void =
-
   fcQLocalSocket_connectToServer(self.h)
 
-proc connectToServerWithName*(self: gen_qlocalsocket_types.QLocalSocket, name: string): void =
-
+proc connectToServer*(self: gen_qlocalsocket_types.QLocalSocket, name: string): void =
   fcQLocalSocket_connectToServerWithName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc disconnectFromServer*(self: gen_qlocalsocket_types.QLocalSocket, ): void =
-
   fcQLocalSocket_disconnectFromServer(self.h)
 
 proc setServerName*(self: gen_qlocalsocket_types.QLocalSocket, name: string): void =
-
   fcQLocalSocket_setServerName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc serverName*(self: gen_qlocalsocket_types.QLocalSocket, ): string =
-
   let v_ms = fcQLocalSocket_serverName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc fullServerName*(self: gen_qlocalsocket_types.QLocalSocket, ): string =
-
   let v_ms = fcQLocalSocket_fullServerName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc abort*(self: gen_qlocalsocket_types.QLocalSocket, ): void =
-
   fcQLocalSocket_abort(self.h)
 
 proc isSequential*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fcQLocalSocket_isSequential(self.h)
 
 proc bytesAvailable*(self: gen_qlocalsocket_types.QLocalSocket, ): clonglong =
-
   fcQLocalSocket_bytesAvailable(self.h)
 
 proc bytesToWrite*(self: gen_qlocalsocket_types.QLocalSocket, ): clonglong =
-
   fcQLocalSocket_bytesToWrite(self.h)
 
 proc canReadLine*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fcQLocalSocket_canReadLine(self.h)
 
 proc open*(self: gen_qlocalsocket_types.QLocalSocket, openMode: cint): bool =
-
   fcQLocalSocket_open(self.h, cint(openMode))
 
 proc close*(self: gen_qlocalsocket_types.QLocalSocket, ): void =
-
   fcQLocalSocket_close(self.h)
 
 proc error*(self: gen_qlocalsocket_types.QLocalSocket, ): cint =
-
   cint(fcQLocalSocket_error(self.h))
 
 proc flush*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fcQLocalSocket_flush(self.h)
 
 proc isValid*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fcQLocalSocket_isValid(self.h)
 
 proc readBufferSize*(self: gen_qlocalsocket_types.QLocalSocket, ): clonglong =
-
   fcQLocalSocket_readBufferSize(self.h)
 
 proc setReadBufferSize*(self: gen_qlocalsocket_types.QLocalSocket, size: clonglong): void =
-
   fcQLocalSocket_setReadBufferSize(self.h, size)
 
 proc setSocketDescriptor*(self: gen_qlocalsocket_types.QLocalSocket, socketDescriptor: uint): bool =
-
   fcQLocalSocket_setSocketDescriptor(self.h, socketDescriptor)
 
 proc socketDescriptor*(self: gen_qlocalsocket_types.QLocalSocket, ): uint =
-
   fcQLocalSocket_socketDescriptor(self.h)
 
 proc setSocketOptions*(self: gen_qlocalsocket_types.QLocalSocket, option: cint): void =
-
   fcQLocalSocket_setSocketOptions(self.h, cint(option))
 
 proc socketOptions*(self: gen_qlocalsocket_types.QLocalSocket, ): cint =
-
   cint(fcQLocalSocket_socketOptions(self.h))
 
 proc state*(self: gen_qlocalsocket_types.QLocalSocket, ): cint =
-
   cint(fcQLocalSocket_state(self.h))
 
 proc waitForBytesWritten*(self: gen_qlocalsocket_types.QLocalSocket, msecs: cint): bool =
-
   fcQLocalSocket_waitForBytesWritten(self.h, msecs)
 
 proc waitForConnected*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fcQLocalSocket_waitForConnected(self.h)
 
 proc waitForDisconnected*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fcQLocalSocket_waitForDisconnected(self.h)
 
 proc waitForReadyRead*(self: gen_qlocalsocket_types.QLocalSocket, msecs: cint): bool =
-
   fcQLocalSocket_waitForReadyRead(self.h, msecs)
 
 proc connected*(self: gen_qlocalsocket_types.QLocalSocket, ): void =
-
   fcQLocalSocket_connected(self.h)
 
+type QLocalSocketconnectedSlot* = proc()
 proc miqt_exec_callback_QLocalSocket_connected(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QLocalSocketconnectedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onconnected*(self: gen_qlocalsocket_types.QLocalSocket, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onconnected*(self: gen_qlocalsocket_types.QLocalSocket, slot: QLocalSocketconnectedSlot) =
+  var tmp = new QLocalSocketconnectedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLocalSocket_connect_connected(self.h, cast[int](addr tmp[]))
-proc disconnected*(self: gen_qlocalsocket_types.QLocalSocket, ): void =
 
+proc disconnected*(self: gen_qlocalsocket_types.QLocalSocket, ): void =
   fcQLocalSocket_disconnected(self.h)
 
+type QLocalSocketdisconnectedSlot* = proc()
 proc miqt_exec_callback_QLocalSocket_disconnected(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QLocalSocketdisconnectedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc ondisconnected*(self: gen_qlocalsocket_types.QLocalSocket, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc ondisconnected*(self: gen_qlocalsocket_types.QLocalSocket, slot: QLocalSocketdisconnectedSlot) =
+  var tmp = new QLocalSocketdisconnectedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLocalSocket_connect_disconnected(self.h, cast[int](addr tmp[]))
-proc errorOccurred*(self: gen_qlocalsocket_types.QLocalSocket, socketError: cint): void =
 
+proc errorOccurred*(self: gen_qlocalsocket_types.QLocalSocket, socketError: cint): void =
   fcQLocalSocket_errorOccurred(self.h, cint(socketError))
 
+type QLocalSocketerrorOccurredSlot* = proc(socketError: cint)
 proc miqt_exec_callback_QLocalSocket_errorOccurred(slot: int, socketError: cint) {.exportc.} =
-  type Cb = proc(socketError: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QLocalSocketerrorOccurredSlot](cast[pointer](slot))
   let slotval1 = cint(socketError)
-
 
   nimfunc[](slotval1)
 
-proc onerrorOccurred*(self: gen_qlocalsocket_types.QLocalSocket, slot: proc(socketError: cint)) =
-  type Cb = proc(socketError: cint)
-  var tmp = new Cb
+proc onerrorOccurred*(self: gen_qlocalsocket_types.QLocalSocket, slot: QLocalSocketerrorOccurredSlot) =
+  var tmp = new QLocalSocketerrorOccurredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLocalSocket_connect_errorOccurred(self.h, cast[int](addr tmp[]))
-proc stateChanged*(self: gen_qlocalsocket_types.QLocalSocket, socketState: cint): void =
 
+proc stateChanged*(self: gen_qlocalsocket_types.QLocalSocket, socketState: cint): void =
   fcQLocalSocket_stateChanged(self.h, cint(socketState))
 
+type QLocalSocketstateChangedSlot* = proc(socketState: cint)
 proc miqt_exec_callback_QLocalSocket_stateChanged(slot: int, socketState: cint) {.exportc.} =
-  type Cb = proc(socketState: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QLocalSocketstateChangedSlot](cast[pointer](slot))
   let slotval1 = cint(socketState)
-
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: gen_qlocalsocket_types.QLocalSocket, slot: proc(socketState: cint)) =
-  type Cb = proc(socketState: cint)
-  var tmp = new Cb
+proc onstateChanged*(self: gen_qlocalsocket_types.QLocalSocket, slot: QLocalSocketstateChangedSlot) =
+  var tmp = new QLocalSocketstateChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLocalSocket_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qlocalsocket_types.QLocalSocket, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qlocalsocket_types.QLocalSocket, s: cstring, c: cstring): string =
   let v_ms = fcQLocalSocket_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qlocalsocket_types.QLocalSocket, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qlocalsocket_types.QLocalSocket, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQLocalSocket_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc connectToServer1*(self: gen_qlocalsocket_types.QLocalSocket, openMode: cint): void =
-
+proc connectToServer*(self: gen_qlocalsocket_types.QLocalSocket, openMode: cint): void =
   fcQLocalSocket_connectToServer1(self.h, cint(openMode))
 
-proc connectToServer2*(self: gen_qlocalsocket_types.QLocalSocket, name: string, openMode: cint): void =
-
+proc connectToServer*(self: gen_qlocalsocket_types.QLocalSocket, name: string, openMode: cint): void =
   fcQLocalSocket_connectToServer2(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), cint(openMode))
 
-proc setSocketDescriptor2*(self: gen_qlocalsocket_types.QLocalSocket, socketDescriptor: uint, socketState: cint): bool =
-
+proc setSocketDescriptor*(self: gen_qlocalsocket_types.QLocalSocket, socketDescriptor: uint, socketState: cint): bool =
   fcQLocalSocket_setSocketDescriptor2(self.h, socketDescriptor, cint(socketState))
 
-proc setSocketDescriptor3*(self: gen_qlocalsocket_types.QLocalSocket, socketDescriptor: uint, socketState: cint, openMode: cint): bool =
-
+proc setSocketDescriptor*(self: gen_qlocalsocket_types.QLocalSocket, socketDescriptor: uint, socketState: cint, openMode: cint): bool =
   fcQLocalSocket_setSocketDescriptor3(self.h, socketDescriptor, cint(socketState), cint(openMode))
 
-proc waitForConnected1*(self: gen_qlocalsocket_types.QLocalSocket, msecs: cint): bool =
-
+proc waitForConnected*(self: gen_qlocalsocket_types.QLocalSocket, msecs: cint): bool =
   fcQLocalSocket_waitForConnected1(self.h, msecs)
 
-proc waitForDisconnected1*(self: gen_qlocalsocket_types.QLocalSocket, msecs: cint): bool =
-
+proc waitForDisconnected*(self: gen_qlocalsocket_types.QLocalSocket, msecs: cint): bool =
   fcQLocalSocket_waitForDisconnected1(self.h, msecs)
 
 proc QLocalSocketmetaObject*(self: gen_qlocalsocket_types.QLocalSocket, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQLocalSocket_virtualbase_metaObject(self.h))
 
 type QLocalSocketmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -451,7 +403,6 @@ proc miqt_exec_callback_QLocalSocket_metaObject(self: ptr cQLocalSocket, slot: i
 
   virtualReturn.h
 proc QLocalSocketmetacast*(self: gen_qlocalsocket_types.QLocalSocket, param1: cstring): pointer =
-
   fQLocalSocket_virtualbase_metacast(self.h, param1)
 
 type QLocalSocketmetacastProc* = proc(param1: cstring): pointer
@@ -471,7 +422,6 @@ proc miqt_exec_callback_QLocalSocket_metacast(self: ptr cQLocalSocket, slot: int
 
   virtualReturn
 proc QLocalSocketmetacall*(self: gen_qlocalsocket_types.QLocalSocket, param1: cint, param2: cint, param3: pointer): cint =
-
   fQLocalSocket_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QLocalSocketmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -495,7 +445,6 @@ proc miqt_exec_callback_QLocalSocket_metacall(self: ptr cQLocalSocket, slot: int
 
   virtualReturn
 proc QLocalSocketisSequential*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fQLocalSocket_virtualbase_isSequential(self.h)
 
 type QLocalSocketisSequentialProc* = proc(): bool
@@ -513,7 +462,6 @@ proc miqt_exec_callback_QLocalSocket_isSequential(self: ptr cQLocalSocket, slot:
 
   virtualReturn
 proc QLocalSocketbytesAvailable*(self: gen_qlocalsocket_types.QLocalSocket, ): clonglong =
-
   fQLocalSocket_virtualbase_bytesAvailable(self.h)
 
 type QLocalSocketbytesAvailableProc* = proc(): clonglong
@@ -531,7 +479,6 @@ proc miqt_exec_callback_QLocalSocket_bytesAvailable(self: ptr cQLocalSocket, slo
 
   virtualReturn
 proc QLocalSocketbytesToWrite*(self: gen_qlocalsocket_types.QLocalSocket, ): clonglong =
-
   fQLocalSocket_virtualbase_bytesToWrite(self.h)
 
 type QLocalSocketbytesToWriteProc* = proc(): clonglong
@@ -549,7 +496,6 @@ proc miqt_exec_callback_QLocalSocket_bytesToWrite(self: ptr cQLocalSocket, slot:
 
   virtualReturn
 proc QLocalSocketcanReadLine*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fQLocalSocket_virtualbase_canReadLine(self.h)
 
 type QLocalSocketcanReadLineProc* = proc(): bool
@@ -567,7 +513,6 @@ proc miqt_exec_callback_QLocalSocket_canReadLine(self: ptr cQLocalSocket, slot: 
 
   virtualReturn
 proc QLocalSocketopen*(self: gen_qlocalsocket_types.QLocalSocket, openMode: cint): bool =
-
   fQLocalSocket_virtualbase_open(self.h, cint(openMode))
 
 type QLocalSocketopenProc* = proc(openMode: cint): bool
@@ -587,7 +532,6 @@ proc miqt_exec_callback_QLocalSocket_open(self: ptr cQLocalSocket, slot: int, op
 
   virtualReturn
 proc QLocalSocketclose*(self: gen_qlocalsocket_types.QLocalSocket, ): void =
-
   fQLocalSocket_virtualbase_close(self.h)
 
 type QLocalSocketcloseProc* = proc(): void
@@ -603,7 +547,6 @@ proc miqt_exec_callback_QLocalSocket_close(self: ptr cQLocalSocket, slot: int): 
 
   nimfunc[]()
 proc QLocalSocketwaitForBytesWritten*(self: gen_qlocalsocket_types.QLocalSocket, msecs: cint): bool =
-
   fQLocalSocket_virtualbase_waitForBytesWritten(self.h, msecs)
 
 type QLocalSocketwaitForBytesWrittenProc* = proc(msecs: cint): bool
@@ -623,7 +566,6 @@ proc miqt_exec_callback_QLocalSocket_waitForBytesWritten(self: ptr cQLocalSocket
 
   virtualReturn
 proc QLocalSocketwaitForReadyRead*(self: gen_qlocalsocket_types.QLocalSocket, msecs: cint): bool =
-
   fQLocalSocket_virtualbase_waitForReadyRead(self.h, msecs)
 
 type QLocalSocketwaitForReadyReadProc* = proc(msecs: cint): bool
@@ -643,7 +585,6 @@ proc miqt_exec_callback_QLocalSocket_waitForReadyRead(self: ptr cQLocalSocket, s
 
   virtualReturn
 proc QLocalSocketreadData*(self: gen_qlocalsocket_types.QLocalSocket, param1: cstring, param2: clonglong): clonglong =
-
   fQLocalSocket_virtualbase_readData(self.h, param1, param2)
 
 type QLocalSocketreadDataProc* = proc(param1: cstring, param2: clonglong): clonglong
@@ -665,7 +606,6 @@ proc miqt_exec_callback_QLocalSocket_readData(self: ptr cQLocalSocket, slot: int
 
   virtualReturn
 proc QLocalSocketreadLineData*(self: gen_qlocalsocket_types.QLocalSocket, data: cstring, maxSize: clonglong): clonglong =
-
   fQLocalSocket_virtualbase_readLineData(self.h, data, maxSize)
 
 type QLocalSocketreadLineDataProc* = proc(data: cstring, maxSize: clonglong): clonglong
@@ -687,7 +627,6 @@ proc miqt_exec_callback_QLocalSocket_readLineData(self: ptr cQLocalSocket, slot:
 
   virtualReturn
 proc QLocalSocketskipData*(self: gen_qlocalsocket_types.QLocalSocket, maxSize: clonglong): clonglong =
-
   fQLocalSocket_virtualbase_skipData(self.h, maxSize)
 
 type QLocalSocketskipDataProc* = proc(maxSize: clonglong): clonglong
@@ -707,7 +646,6 @@ proc miqt_exec_callback_QLocalSocket_skipData(self: ptr cQLocalSocket, slot: int
 
   virtualReturn
 proc QLocalSocketwriteData*(self: gen_qlocalsocket_types.QLocalSocket, param1: cstring, param2: clonglong): clonglong =
-
   fQLocalSocket_virtualbase_writeData(self.h, param1, param2)
 
 type QLocalSocketwriteDataProc* = proc(param1: cstring, param2: clonglong): clonglong
@@ -729,7 +667,6 @@ proc miqt_exec_callback_QLocalSocket_writeData(self: ptr cQLocalSocket, slot: in
 
   virtualReturn
 proc QLocalSocketpos*(self: gen_qlocalsocket_types.QLocalSocket, ): clonglong =
-
   fQLocalSocket_virtualbase_pos(self.h)
 
 type QLocalSocketposProc* = proc(): clonglong
@@ -747,7 +684,6 @@ proc miqt_exec_callback_QLocalSocket_pos(self: ptr cQLocalSocket, slot: int): cl
 
   virtualReturn
 proc QLocalSocketsize*(self: gen_qlocalsocket_types.QLocalSocket, ): clonglong =
-
   fQLocalSocket_virtualbase_size(self.h)
 
 type QLocalSocketsizeProc* = proc(): clonglong
@@ -765,7 +701,6 @@ proc miqt_exec_callback_QLocalSocket_size(self: ptr cQLocalSocket, slot: int): c
 
   virtualReturn
 proc QLocalSocketseek*(self: gen_qlocalsocket_types.QLocalSocket, pos: clonglong): bool =
-
   fQLocalSocket_virtualbase_seek(self.h, pos)
 
 type QLocalSocketseekProc* = proc(pos: clonglong): bool
@@ -785,7 +720,6 @@ proc miqt_exec_callback_QLocalSocket_seek(self: ptr cQLocalSocket, slot: int, po
 
   virtualReturn
 proc QLocalSocketatEnd*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fQLocalSocket_virtualbase_atEnd(self.h)
 
 type QLocalSocketatEndProc* = proc(): bool
@@ -803,7 +737,6 @@ proc miqt_exec_callback_QLocalSocket_atEnd(self: ptr cQLocalSocket, slot: int): 
 
   virtualReturn
 proc QLocalSocketreset*(self: gen_qlocalsocket_types.QLocalSocket, ): bool =
-
   fQLocalSocket_virtualbase_reset(self.h)
 
 type QLocalSocketresetProc* = proc(): bool
@@ -821,7 +754,6 @@ proc miqt_exec_callback_QLocalSocket_reset(self: ptr cQLocalSocket, slot: int): 
 
   virtualReturn
 proc QLocalSocketevent*(self: gen_qlocalsocket_types.QLocalSocket, event: gen_qcoreevent.QEvent): bool =
-
   fQLocalSocket_virtualbase_event(self.h, event.h)
 
 type QLocalSocketeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -841,7 +773,6 @@ proc miqt_exec_callback_QLocalSocket_event(self: ptr cQLocalSocket, slot: int, e
 
   virtualReturn
 proc QLocalSocketeventFilter*(self: gen_qlocalsocket_types.QLocalSocket, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQLocalSocket_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QLocalSocketeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -863,7 +794,6 @@ proc miqt_exec_callback_QLocalSocket_eventFilter(self: ptr cQLocalSocket, slot: 
 
   virtualReturn
 proc QLocalSockettimerEvent*(self: gen_qlocalsocket_types.QLocalSocket, event: gen_qcoreevent.QTimerEvent): void =
-
   fQLocalSocket_virtualbase_timerEvent(self.h, event.h)
 
 type QLocalSockettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -881,7 +811,6 @@ proc miqt_exec_callback_QLocalSocket_timerEvent(self: ptr cQLocalSocket, slot: i
 
   nimfunc[](slotval1)
 proc QLocalSocketchildEvent*(self: gen_qlocalsocket_types.QLocalSocket, event: gen_qcoreevent.QChildEvent): void =
-
   fQLocalSocket_virtualbase_childEvent(self.h, event.h)
 
 type QLocalSocketchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -899,7 +828,6 @@ proc miqt_exec_callback_QLocalSocket_childEvent(self: ptr cQLocalSocket, slot: i
 
   nimfunc[](slotval1)
 proc QLocalSocketcustomEvent*(self: gen_qlocalsocket_types.QLocalSocket, event: gen_qcoreevent.QEvent): void =
-
   fQLocalSocket_virtualbase_customEvent(self.h, event.h)
 
 type QLocalSocketcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -917,7 +845,6 @@ proc miqt_exec_callback_QLocalSocket_customEvent(self: ptr cQLocalSocket, slot: 
 
   nimfunc[](slotval1)
 proc QLocalSocketconnectNotify*(self: gen_qlocalsocket_types.QLocalSocket, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLocalSocket_virtualbase_connectNotify(self.h, signal.h)
 
 type QLocalSocketconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -935,7 +862,6 @@ proc miqt_exec_callback_QLocalSocket_connectNotify(self: ptr cQLocalSocket, slot
 
   nimfunc[](slotval1)
 proc QLocalSocketdisconnectNotify*(self: gen_qlocalsocket_types.QLocalSocket, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLocalSocket_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QLocalSocketdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

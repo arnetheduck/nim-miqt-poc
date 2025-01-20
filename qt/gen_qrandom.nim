@@ -87,94 +87,75 @@ proc fcQRandomGenerator64_delete(self: pointer) {.importc: "QRandomGenerator64_d
 func init*(T: type gen_qrandom_types.QRandomGenerator, h: ptr cQRandomGenerator): gen_qrandom_types.QRandomGenerator =
   T(h: h)
 proc create*(T: type gen_qrandom_types.QRandomGenerator, ): gen_qrandom_types.QRandomGenerator =
-
   gen_qrandom_types.QRandomGenerator.init(fcQRandomGenerator_new())
+
 proc create*(T: type gen_qrandom_types.QRandomGenerator, seedBuffer: ptr cuint, len: int64): gen_qrandom_types.QRandomGenerator =
-
   gen_qrandom_types.QRandomGenerator.init(fcQRandomGenerator_new2(seedBuffer, len))
+
 proc create*(T: type gen_qrandom_types.QRandomGenerator, begin: ptr cuint, endVal: ptr cuint): gen_qrandom_types.QRandomGenerator =
-
   gen_qrandom_types.QRandomGenerator.init(fcQRandomGenerator_new3(begin, endVal))
+
 proc create*(T: type gen_qrandom_types.QRandomGenerator, other: gen_qrandom_types.QRandomGenerator): gen_qrandom_types.QRandomGenerator =
-
   gen_qrandom_types.QRandomGenerator.init(fcQRandomGenerator_new4(other.h))
+
 proc create*(T: type gen_qrandom_types.QRandomGenerator, seedValue: cuint): gen_qrandom_types.QRandomGenerator =
-
   gen_qrandom_types.QRandomGenerator.init(fcQRandomGenerator_new5(seedValue))
-proc operatorAssign*(self: gen_qrandom_types.QRandomGenerator, other: gen_qrandom_types.QRandomGenerator): void =
 
+proc operatorAssign*(self: gen_qrandom_types.QRandomGenerator, other: gen_qrandom_types.QRandomGenerator): void =
   fcQRandomGenerator_operatorAssign(self.h, other.h)
 
 proc generate*(self: gen_qrandom_types.QRandomGenerator, ): cuint =
-
   fcQRandomGenerator_generate(self.h)
 
 proc generate64*(self: gen_qrandom_types.QRandomGenerator, ): culonglong =
-
   fcQRandomGenerator_generate64(self.h)
 
 proc generateDouble*(self: gen_qrandom_types.QRandomGenerator, ): float64 =
-
   fcQRandomGenerator_generateDouble(self.h)
 
 proc bounded*(self: gen_qrandom_types.QRandomGenerator, highest: float64): float64 =
-
   fcQRandomGenerator_bounded(self.h, highest)
 
-proc boundedWithHighest*(self: gen_qrandom_types.QRandomGenerator, highest: cuint): cuint =
-
+proc bounded*(self: gen_qrandom_types.QRandomGenerator, highest: cuint): cuint =
   fcQRandomGenerator_boundedWithHighest(self.h, highest)
 
-proc bounded2*(self: gen_qrandom_types.QRandomGenerator, lowest: cuint, highest: cuint): cuint =
-
+proc bounded*(self: gen_qrandom_types.QRandomGenerator, lowest: cuint, highest: cuint): cuint =
   fcQRandomGenerator_bounded2(self.h, lowest, highest)
 
-proc bounded3*(self: gen_qrandom_types.QRandomGenerator, highest: cint): cint =
-
+proc bounded*(self: gen_qrandom_types.QRandomGenerator, highest: cint): cint =
   fcQRandomGenerator_bounded3(self.h, highest)
 
-proc bounded4*(self: gen_qrandom_types.QRandomGenerator, lowest: cint, highest: cint): cint =
-
+proc bounded*(self: gen_qrandom_types.QRandomGenerator, lowest: cint, highest: cint): cint =
   fcQRandomGenerator_bounded4(self.h, lowest, highest)
 
-proc generate2*(self: gen_qrandom_types.QRandomGenerator, begin: ptr cuint, endVal: ptr cuint): void =
-
+proc generate*(self: gen_qrandom_types.QRandomGenerator, begin: ptr cuint, endVal: ptr cuint): void =
   fcQRandomGenerator_generate2(self.h, begin, endVal)
 
 proc operatorCall*(self: gen_qrandom_types.QRandomGenerator, ): cuint =
-
   fcQRandomGenerator_operatorCall(self.h)
 
 proc seed*(self: gen_qrandom_types.QRandomGenerator, ): void =
-
   fcQRandomGenerator_seed(self.h)
 
 proc discardX*(self: gen_qrandom_types.QRandomGenerator, z: culonglong): void =
-
   fcQRandomGenerator_discardX(self.h, z)
 
 proc min*(_: type gen_qrandom_types.QRandomGenerator, ): cuint =
-
   fcQRandomGenerator_min()
 
 proc max*(_: type gen_qrandom_types.QRandomGenerator, ): cuint =
-
   fcQRandomGenerator_max()
 
 proc system*(_: type gen_qrandom_types.QRandomGenerator, ): gen_qrandom_types.QRandomGenerator =
-
   gen_qrandom_types.QRandomGenerator(h: fcQRandomGenerator_system())
 
 proc global*(_: type gen_qrandom_types.QRandomGenerator, ): gen_qrandom_types.QRandomGenerator =
-
   gen_qrandom_types.QRandomGenerator(h: fcQRandomGenerator_global())
 
 proc securelySeeded*(_: type gen_qrandom_types.QRandomGenerator, ): gen_qrandom_types.QRandomGenerator =
-
   gen_qrandom_types.QRandomGenerator(h: fcQRandomGenerator_securelySeeded())
 
-proc seed1*(self: gen_qrandom_types.QRandomGenerator, s: cuint): void =
-
+proc seed*(self: gen_qrandom_types.QRandomGenerator, s: cuint): void =
   fcQRandomGenerator_seed1(self.h, s)
 
 proc delete*(self: gen_qrandom_types.QRandomGenerator) =
@@ -183,57 +164,48 @@ proc delete*(self: gen_qrandom_types.QRandomGenerator) =
 func init*(T: type gen_qrandom_types.QRandomGenerator64, h: ptr cQRandomGenerator64): gen_qrandom_types.QRandomGenerator64 =
   T(h: h)
 proc create*(T: type gen_qrandom_types.QRandomGenerator64, ): gen_qrandom_types.QRandomGenerator64 =
-
   gen_qrandom_types.QRandomGenerator64.init(fcQRandomGenerator64_new())
+
 proc create*(T: type gen_qrandom_types.QRandomGenerator64, seedBuffer: ptr cuint, len: int64): gen_qrandom_types.QRandomGenerator64 =
-
   gen_qrandom_types.QRandomGenerator64.init(fcQRandomGenerator64_new2(seedBuffer, len))
+
 proc create*(T: type gen_qrandom_types.QRandomGenerator64, begin: ptr cuint, endVal: ptr cuint): gen_qrandom_types.QRandomGenerator64 =
-
   gen_qrandom_types.QRandomGenerator64.init(fcQRandomGenerator64_new3(begin, endVal))
+
 proc create*(T: type gen_qrandom_types.QRandomGenerator64, other: gen_qrandom_types.QRandomGenerator): gen_qrandom_types.QRandomGenerator64 =
-
   gen_qrandom_types.QRandomGenerator64.init(fcQRandomGenerator64_new4(other.h))
-proc create2*(T: type gen_qrandom_types.QRandomGenerator64, param1: gen_qrandom_types.QRandomGenerator64): gen_qrandom_types.QRandomGenerator64 =
 
+proc create*(T: type gen_qrandom_types.QRandomGenerator64, param1: gen_qrandom_types.QRandomGenerator64): gen_qrandom_types.QRandomGenerator64 =
   gen_qrandom_types.QRandomGenerator64.init(fcQRandomGenerator64_new5(param1.h))
+
 proc create*(T: type gen_qrandom_types.QRandomGenerator64, seedValue: cuint): gen_qrandom_types.QRandomGenerator64 =
-
   gen_qrandom_types.QRandomGenerator64.init(fcQRandomGenerator64_new6(seedValue))
-proc generate*(self: gen_qrandom_types.QRandomGenerator64, ): culonglong =
 
+proc generate*(self: gen_qrandom_types.QRandomGenerator64, ): culonglong =
   fcQRandomGenerator64_generate(self.h)
 
 proc operatorCall*(self: gen_qrandom_types.QRandomGenerator64, ): culonglong =
-
   fcQRandomGenerator64_operatorCall(self.h)
 
 proc discardX*(self: gen_qrandom_types.QRandomGenerator64, z: culonglong): void =
-
   fcQRandomGenerator64_discardX(self.h, z)
 
 proc min*(_: type gen_qrandom_types.QRandomGenerator64, ): culonglong =
-
   fcQRandomGenerator64_min()
 
 proc max*(_: type gen_qrandom_types.QRandomGenerator64, ): culonglong =
-
   fcQRandomGenerator64_max()
 
 proc system*(_: type gen_qrandom_types.QRandomGenerator64, ): gen_qrandom_types.QRandomGenerator64 =
-
   gen_qrandom_types.QRandomGenerator64(h: fcQRandomGenerator64_system())
 
 proc global*(_: type gen_qrandom_types.QRandomGenerator64, ): gen_qrandom_types.QRandomGenerator64 =
-
   gen_qrandom_types.QRandomGenerator64(h: fcQRandomGenerator64_global())
 
 proc securelySeeded*(_: type gen_qrandom_types.QRandomGenerator64, ): gen_qrandom_types.QRandomGenerator64 =
-
   gen_qrandom_types.QRandomGenerator64(h: fcQRandomGenerator64_securelySeeded())
 
 proc operatorAssign*(self: gen_qrandom_types.QRandomGenerator64, param1: gen_qrandom_types.QRandomGenerator64): void =
-
   fcQRandomGenerator64_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qrandom_types.QRandomGenerator64) =

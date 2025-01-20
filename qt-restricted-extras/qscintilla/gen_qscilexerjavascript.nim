@@ -181,98 +181,81 @@ proc fcQsciLexerJavaScript_delete(self: pointer) {.importc: "QsciLexerJavaScript
 func init*(T: type gen_qscilexerjavascript_types.QsciLexerJavaScript, h: ptr cQsciLexerJavaScript): gen_qscilexerjavascript_types.QsciLexerJavaScript =
   T(h: h)
 proc create*(T: type gen_qscilexerjavascript_types.QsciLexerJavaScript, ): gen_qscilexerjavascript_types.QsciLexerJavaScript =
-
   gen_qscilexerjavascript_types.QsciLexerJavaScript.init(fcQsciLexerJavaScript_new())
+
 proc create*(T: type gen_qscilexerjavascript_types.QsciLexerJavaScript, parent: gen_qobject.QObject): gen_qscilexerjavascript_types.QsciLexerJavaScript =
-
   gen_qscilexerjavascript_types.QsciLexerJavaScript.init(fcQsciLexerJavaScript_new2(parent.h))
-proc metaObject*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerJavaScript_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, param1: cstring): pointer =
-
   fcQsciLexerJavaScript_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerJavaScript_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring): string =
-
   let v_ms = fcQsciLexerJavaScript_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring): string =
-
   let v_ms = fcQsciLexerJavaScript_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cstring =
-
   (fcQsciLexerJavaScript_language(self.h))
 
 proc defaultColor*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerJavaScript_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): bool =
-
   fcQsciLexerJavaScript_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerJavaScript_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerJavaScript_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, set: cint): cstring =
-
   (fcQsciLexerJavaScript_keywords(self.h, set))
 
 proc description*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): string =
-
   let v_ms = fcQsciLexerJavaScript_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerJavaScript_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerJavaScript_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerJavaScript_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexerjavascript_types.QsciLexerJavaScript, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerJavaScript_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerJavaScriptmetaObject*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerJavaScript_virtualbase_metaObject(self.h))
 
 type QsciLexerJavaScriptmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -290,7 +273,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_metaObject(self: ptr cQsciLexerJavaS
 
   virtualReturn.h
 proc QsciLexerJavaScriptmetacast*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, param1: cstring): pointer =
-
   fQsciLexerJavaScript_virtualbase_metacast(self.h, param1)
 
 type QsciLexerJavaScriptmetacastProc* = proc(param1: cstring): pointer
@@ -310,7 +292,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_metacast(self: ptr cQsciLexerJavaScr
 
   virtualReturn
 proc QsciLexerJavaScriptmetacall*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerJavaScript_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerJavaScriptmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -334,7 +315,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_metacall(self: ptr cQsciLexerJavaScr
 
   virtualReturn
 proc QsciLexerJavaScriptsetFoldAtElse*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, fold: bool): void =
-
   fQsciLexerJavaScript_virtualbase_setFoldAtElse(self.h, fold)
 
 type QsciLexerJavaScriptsetFoldAtElseProc* = proc(fold: bool): void
@@ -352,7 +332,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setFoldAtElse(self: ptr cQsciLexerJa
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptsetFoldComments*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, fold: bool): void =
-
   fQsciLexerJavaScript_virtualbase_setFoldComments(self.h, fold)
 
 type QsciLexerJavaScriptsetFoldCommentsProc* = proc(fold: bool): void
@@ -370,7 +349,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setFoldComments(self: ptr cQsciLexer
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptsetFoldCompact*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, fold: bool): void =
-
   fQsciLexerJavaScript_virtualbase_setFoldCompact(self.h, fold)
 
 type QsciLexerJavaScriptsetFoldCompactProc* = proc(fold: bool): void
@@ -388,7 +366,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setFoldCompact(self: ptr cQsciLexerJ
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptsetFoldPreprocessor*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, fold: bool): void =
-
   fQsciLexerJavaScript_virtualbase_setFoldPreprocessor(self.h, fold)
 
 type QsciLexerJavaScriptsetFoldPreprocessorProc* = proc(fold: bool): void
@@ -406,7 +383,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setFoldPreprocessor(self: ptr cQsciL
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptsetStylePreprocessor*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: bool): void =
-
   fQsciLexerJavaScript_virtualbase_setStylePreprocessor(self.h, style)
 
 type QsciLexerJavaScriptsetStylePreprocessorProc* = proc(style: bool): void
@@ -438,7 +414,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_language(self: ptr cQsciLexerJavaScr
 
   virtualReturn
 proc QsciLexerJavaScriptlexer*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cstring =
-
   (fQsciLexerJavaScript_virtualbase_lexer(self.h))
 
 type QsciLexerJavaScriptlexerProc* = proc(): cstring
@@ -456,7 +431,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_lexer(self: ptr cQsciLexerJavaScript
 
   virtualReturn
 proc QsciLexerJavaScriptlexerId*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cint =
-
   fQsciLexerJavaScript_virtualbase_lexerId(self.h)
 
 type QsciLexerJavaScriptlexerIdProc* = proc(): cint
@@ -474,7 +448,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_lexerId(self: ptr cQsciLexerJavaScri
 
   virtualReturn
 proc QsciLexerJavaScriptautoCompletionFillups*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cstring =
-
   (fQsciLexerJavaScript_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerJavaScriptautoCompletionFillupsProc* = proc(): cstring
@@ -492,7 +465,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_autoCompletionFillups(self: ptr cQsc
 
   virtualReturn
 proc QsciLexerJavaScriptautoCompletionWordSeparators*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): seq[string] =
-
   var v_ma = fQsciLexerJavaScript_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -522,7 +494,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_autoCompletionWordSeparators(self: p
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerJavaScriptblockEnd*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: ptr cint): cstring =
-
   (fQsciLexerJavaScript_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerJavaScriptblockEndProc* = proc(style: ptr cint): cstring
@@ -542,7 +513,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_blockEnd(self: ptr cQsciLexerJavaScr
 
   virtualReturn
 proc QsciLexerJavaScriptblockLookback*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cint =
-
   fQsciLexerJavaScript_virtualbase_blockLookback(self.h)
 
 type QsciLexerJavaScriptblockLookbackProc* = proc(): cint
@@ -560,7 +530,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_blockLookback(self: ptr cQsciLexerJa
 
   virtualReturn
 proc QsciLexerJavaScriptblockStart*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: ptr cint): cstring =
-
   (fQsciLexerJavaScript_virtualbase_blockStart(self.h, style))
 
 type QsciLexerJavaScriptblockStartProc* = proc(style: ptr cint): cstring
@@ -580,7 +549,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_blockStart(self: ptr cQsciLexerJavaS
 
   virtualReturn
 proc QsciLexerJavaScriptblockStartKeyword*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: ptr cint): cstring =
-
   (fQsciLexerJavaScript_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerJavaScriptblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -600,7 +568,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_blockStartKeyword(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerJavaScriptbraceStyle*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cint =
-
   fQsciLexerJavaScript_virtualbase_braceStyle(self.h)
 
 type QsciLexerJavaScriptbraceStyleProc* = proc(): cint
@@ -618,7 +585,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_braceStyle(self: ptr cQsciLexerJavaS
 
   virtualReturn
 proc QsciLexerJavaScriptcaseSensitive*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): bool =
-
   fQsciLexerJavaScript_virtualbase_caseSensitive(self.h)
 
 type QsciLexerJavaScriptcaseSensitiveProc* = proc(): bool
@@ -636,7 +602,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_caseSensitive(self: ptr cQsciLexerJa
 
   virtualReturn
 proc QsciLexerJavaScriptcolor*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerJavaScript_virtualbase_color(self.h, style))
 
 type QsciLexerJavaScriptcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -656,7 +621,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_color(self: ptr cQsciLexerJavaScript
 
   virtualReturn.h
 proc QsciLexerJavaScripteolFill*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): bool =
-
   fQsciLexerJavaScript_virtualbase_eolFill(self.h, style)
 
 type QsciLexerJavaScripteolFillProc* = proc(style: cint): bool
@@ -676,7 +640,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_eolFill(self: ptr cQsciLexerJavaScri
 
   virtualReturn
 proc QsciLexerJavaScriptfont*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerJavaScript_virtualbase_font(self.h, style))
 
 type QsciLexerJavaScriptfontProc* = proc(style: cint): gen_qfont.QFont
@@ -696,7 +659,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_font(self: ptr cQsciLexerJavaScript,
 
   virtualReturn.h
 proc QsciLexerJavaScriptindentationGuideView*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cint =
-
   fQsciLexerJavaScript_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerJavaScriptindentationGuideViewProc* = proc(): cint
@@ -714,7 +676,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_indentationGuideView(self: ptr cQsci
 
   virtualReturn
 proc QsciLexerJavaScriptkeywords*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, set: cint): cstring =
-
   (fQsciLexerJavaScript_virtualbase_keywords(self.h, set))
 
 type QsciLexerJavaScriptkeywordsProc* = proc(set: cint): cstring
@@ -734,7 +695,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_keywords(self: ptr cQsciLexerJavaScr
 
   virtualReturn
 proc QsciLexerJavaScriptdefaultStyle*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cint =
-
   fQsciLexerJavaScript_virtualbase_defaultStyle(self.h)
 
 type QsciLexerJavaScriptdefaultStyleProc* = proc(): cint
@@ -768,7 +728,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_description(self: ptr cQsciLexerJava
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerJavaScriptpaper*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerJavaScript_virtualbase_paper(self.h, style))
 
 type QsciLexerJavaScriptpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -787,12 +746,11 @@ proc miqt_exec_callback_QsciLexerJavaScript_paper(self: ptr cQsciLexerJavaScript
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerJavaScriptdefaultColorWithStyle*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJavaScriptdefaultColor*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerJavaScript_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerJavaScriptdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, slot: QsciLexerJavaScriptdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, slot: QsciLexerJavaScriptdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerJavaScriptdefaultColorWithStyleProc
   tmp[] = slot
@@ -808,7 +766,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_defaultColorWithStyle(self: ptr cQsc
 
   virtualReturn.h
 proc QsciLexerJavaScriptdefaultEolFill*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): bool =
-
   fQsciLexerJavaScript_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerJavaScriptdefaultEolFillProc* = proc(style: cint): bool
@@ -827,12 +784,11 @@ proc miqt_exec_callback_QsciLexerJavaScript_defaultEolFill(self: ptr cQsciLexerJ
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerJavaScriptdefaultFontWithStyle*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qfont.QFont =
-
+proc QsciLexerJavaScriptdefaultFont*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerJavaScript_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerJavaScriptdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, slot: QsciLexerJavaScriptdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, slot: QsciLexerJavaScriptdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerJavaScriptdefaultFontWithStyleProc
   tmp[] = slot
@@ -847,12 +803,11 @@ proc miqt_exec_callback_QsciLexerJavaScript_defaultFontWithStyle(self: ptr cQsci
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerJavaScriptdefaultPaperWithStyle*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJavaScriptdefaultPaper*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerJavaScript_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerJavaScriptdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, slot: QsciLexerJavaScriptdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, slot: QsciLexerJavaScriptdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerJavaScriptdefaultPaperWithStyleProc
   tmp[] = slot
@@ -868,7 +823,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_defaultPaperWithStyle(self: ptr cQsc
 
   virtualReturn.h
 proc QsciLexerJavaScriptsetEditor*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerJavaScript_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerJavaScriptsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -886,7 +840,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setEditor(self: ptr cQsciLexerJavaSc
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptrefreshProperties*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): void =
-
   fQsciLexerJavaScript_virtualbase_refreshProperties(self.h)
 
 type QsciLexerJavaScriptrefreshPropertiesProc* = proc(): void
@@ -902,7 +855,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_refreshProperties(self: ptr cQsciLex
 
   nimfunc[]()
 proc QsciLexerJavaScriptstyleBitsNeeded*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cint =
-
   fQsciLexerJavaScript_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerJavaScriptstyleBitsNeededProc* = proc(): cint
@@ -920,7 +872,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_styleBitsNeeded(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerJavaScriptwordCharacters*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, ): cstring =
-
   (fQsciLexerJavaScript_virtualbase_wordCharacters(self.h))
 
 type QsciLexerJavaScriptwordCharactersProc* = proc(): cstring
@@ -938,7 +889,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_wordCharacters(self: ptr cQsciLexerJ
 
   virtualReturn
 proc QsciLexerJavaScriptsetAutoIndentStyle*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, autoindentstyle: cint): void =
-
   fQsciLexerJavaScript_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerJavaScriptsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -956,7 +906,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setAutoIndentStyle(self: ptr cQsciLe
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptsetColor*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerJavaScript_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerJavaScriptsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -976,7 +925,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setColor(self: ptr cQsciLexerJavaScr
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJavaScriptsetEolFill*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, eoffill: bool, style: cint): void =
-
   fQsciLexerJavaScript_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerJavaScriptsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -996,7 +944,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setEolFill(self: ptr cQsciLexerJavaS
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJavaScriptsetFont*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerJavaScript_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerJavaScriptsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1016,7 +963,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setFont(self: ptr cQsciLexerJavaScri
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJavaScriptsetPaper*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerJavaScript_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerJavaScriptsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1036,7 +982,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_setPaper(self: ptr cQsciLexerJavaScr
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJavaScriptreadProperties*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerJavaScript_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerJavaScriptreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1061,7 +1006,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_readProperties(self: ptr cQsciLexerJ
 
   virtualReturn
 proc QsciLexerJavaScriptwriteProperties*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerJavaScript_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerJavaScriptwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1086,7 +1030,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_writeProperties(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerJavaScriptevent*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerJavaScript_virtualbase_event(self.h, event.h)
 
 type QsciLexerJavaScripteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1106,7 +1049,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_event(self: ptr cQsciLexerJavaScript
 
   virtualReturn
 proc QsciLexerJavaScripteventFilter*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerJavaScript_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerJavaScripteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1128,7 +1070,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_eventFilter(self: ptr cQsciLexerJava
 
   virtualReturn
 proc QsciLexerJavaScripttimerEvent*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerJavaScript_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerJavaScripttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1146,7 +1087,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_timerEvent(self: ptr cQsciLexerJavaS
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptchildEvent*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerJavaScript_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerJavaScriptchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1164,7 +1104,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_childEvent(self: ptr cQsciLexerJavaS
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptcustomEvent*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerJavaScript_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerJavaScriptcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1182,7 +1121,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_customEvent(self: ptr cQsciLexerJava
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptconnectNotify*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerJavaScript_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerJavaScriptconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1200,7 +1138,6 @@ proc miqt_exec_callback_QsciLexerJavaScript_connectNotify(self: ptr cQsciLexerJa
 
   nimfunc[](slotval1)
 proc QsciLexerJavaScriptdisconnectNotify*(self: gen_qscilexerjavascript_types.QsciLexerJavaScript, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerJavaScript_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerJavaScriptdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

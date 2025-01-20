@@ -210,40 +210,33 @@ proc fcQsciLexerPascal_delete(self: pointer) {.importc: "QsciLexerPascal_delete"
 func init*(T: type gen_qscilexerpascal_types.QsciLexerPascal, h: ptr cQsciLexerPascal): gen_qscilexerpascal_types.QsciLexerPascal =
   T(h: h)
 proc create*(T: type gen_qscilexerpascal_types.QsciLexerPascal, ): gen_qscilexerpascal_types.QsciLexerPascal =
-
   gen_qscilexerpascal_types.QsciLexerPascal.init(fcQsciLexerPascal_new())
+
 proc create*(T: type gen_qscilexerpascal_types.QsciLexerPascal, parent: gen_qobject.QObject): gen_qscilexerpascal_types.QsciLexerPascal =
-
   gen_qscilexerpascal_types.QsciLexerPascal.init(fcQsciLexerPascal_new2(parent.h))
-proc metaObject*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerPascal_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerpascal_types.QsciLexerPascal, param1: cstring): pointer =
-
   fcQsciLexerPascal_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerpascal_types.QsciLexerPascal, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerPascal_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerpascal_types.QsciLexerPascal, s: cstring): string =
-
   let v_ms = fcQsciLexerPascal_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-
   (fcQsciLexerPascal_language(self.h))
 
 proc lexer*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-
   (fcQsciLexerPascal_lexer(self.h))
 
 proc autoCompletionWordSeparators*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): seq[string] =
-
   var v_ma = fcQsciLexerPascal_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -255,112 +248,87 @@ proc autoCompletionWordSeparators*(self: gen_qscilexerpascal_types.QsciLexerPasc
   vx_ret
 
 proc blockEnd*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-
   (fcQsciLexerPascal_blockEnd(self.h))
 
 proc blockStart*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-
   (fcQsciLexerPascal_blockStart(self.h))
 
 proc blockStartKeyword*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-
   (fcQsciLexerPascal_blockStartKeyword(self.h))
 
 proc braceStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-
   fcQsciLexerPascal_braceStyle(self.h)
 
 proc defaultColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerPascal_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): bool =
-
   fcQsciLexerPascal_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerPascal_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerPascal_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerpascal_types.QsciLexerPascal, set: cint): cstring =
-
   (fcQsciLexerPascal_keywords(self.h, set))
 
 proc description*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): string =
-
   let v_ms = fcQsciLexerPascal_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): void =
-
   fcQsciLexerPascal_refreshProperties(self.h)
 
 proc foldComments*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): bool =
-
   fcQsciLexerPascal_foldComments(self.h)
 
 proc foldCompact*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): bool =
-
   fcQsciLexerPascal_foldCompact(self.h)
 
 proc foldPreprocessor*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): bool =
-
   fcQsciLexerPascal_foldPreprocessor(self.h)
 
 proc setSmartHighlighting*(self: gen_qscilexerpascal_types.QsciLexerPascal, enabled: bool): void =
-
   fcQsciLexerPascal_setSmartHighlighting(self.h, enabled)
 
 proc smartHighlighting*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): bool =
-
   fcQsciLexerPascal_smartHighlighting(self.h)
 
 proc setFoldComments*(self: gen_qscilexerpascal_types.QsciLexerPascal, fold: bool): void =
-
   fcQsciLexerPascal_setFoldComments(self.h, fold)
 
 proc setFoldCompact*(self: gen_qscilexerpascal_types.QsciLexerPascal, fold: bool): void =
-
   fcQsciLexerPascal_setFoldCompact(self.h, fold)
 
 proc setFoldPreprocessor*(self: gen_qscilexerpascal_types.QsciLexerPascal, fold: bool): void =
-
   fcQsciLexerPascal_setFoldPreprocessor(self.h, fold)
 
-proc tr2*(_: type gen_qscilexerpascal_types.QsciLexerPascal, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerpascal_types.QsciLexerPascal, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerPascal_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerpascal_types.QsciLexerPascal, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerpascal_types.QsciLexerPascal, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerPascal_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc blockEnd1*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
-
+proc blockEnd*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
   (fcQsciLexerPascal_blockEnd1(self.h, style))
 
-proc blockStart1*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
-
+proc blockStart*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
   (fcQsciLexerPascal_blockStart1(self.h, style))
 
-proc blockStartKeyword1*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
-
+proc blockStartKeyword*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
   (fcQsciLexerPascal_blockStartKeyword1(self.h, style))
 
 proc QsciLexerPascalmetaObject*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerPascal_virtualbase_metaObject(self.h))
 
 type QsciLexerPascalmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -378,7 +346,6 @@ proc miqt_exec_callback_QsciLexerPascal_metaObject(self: ptr cQsciLexerPascal, s
 
   virtualReturn.h
 proc QsciLexerPascalmetacast*(self: gen_qscilexerpascal_types.QsciLexerPascal, param1: cstring): pointer =
-
   fQsciLexerPascal_virtualbase_metacast(self.h, param1)
 
 type QsciLexerPascalmetacastProc* = proc(param1: cstring): pointer
@@ -398,7 +365,6 @@ proc miqt_exec_callback_QsciLexerPascal_metacast(self: ptr cQsciLexerPascal, slo
 
   virtualReturn
 proc QsciLexerPascalmetacall*(self: gen_qscilexerpascal_types.QsciLexerPascal, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerPascal_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerPascalmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -422,7 +388,6 @@ proc miqt_exec_callback_QsciLexerPascal_metacall(self: ptr cQsciLexerPascal, slo
 
   virtualReturn
 proc QsciLexerPascalsetFoldComments*(self: gen_qscilexerpascal_types.QsciLexerPascal, fold: bool): void =
-
   fQsciLexerPascal_virtualbase_setFoldComments(self.h, fold)
 
 type QsciLexerPascalsetFoldCommentsProc* = proc(fold: bool): void
@@ -440,7 +405,6 @@ proc miqt_exec_callback_QsciLexerPascal_setFoldComments(self: ptr cQsciLexerPasc
 
   nimfunc[](slotval1)
 proc QsciLexerPascalsetFoldCompact*(self: gen_qscilexerpascal_types.QsciLexerPascal, fold: bool): void =
-
   fQsciLexerPascal_virtualbase_setFoldCompact(self.h, fold)
 
 type QsciLexerPascalsetFoldCompactProc* = proc(fold: bool): void
@@ -458,7 +422,6 @@ proc miqt_exec_callback_QsciLexerPascal_setFoldCompact(self: ptr cQsciLexerPasca
 
   nimfunc[](slotval1)
 proc QsciLexerPascalsetFoldPreprocessor*(self: gen_qscilexerpascal_types.QsciLexerPascal, fold: bool): void =
-
   fQsciLexerPascal_virtualbase_setFoldPreprocessor(self.h, fold)
 
 type QsciLexerPascalsetFoldPreprocessorProc* = proc(fold: bool): void
@@ -490,7 +453,6 @@ proc miqt_exec_callback_QsciLexerPascal_language(self: ptr cQsciLexerPascal, slo
 
   virtualReturn
 proc QsciLexerPascallexer*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-
   (fQsciLexerPascal_virtualbase_lexer(self.h))
 
 type QsciLexerPascallexerProc* = proc(): cstring
@@ -508,7 +470,6 @@ proc miqt_exec_callback_QsciLexerPascal_lexer(self: ptr cQsciLexerPascal, slot: 
 
   virtualReturn
 proc QsciLexerPascallexerId*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-
   fQsciLexerPascal_virtualbase_lexerId(self.h)
 
 type QsciLexerPascallexerIdProc* = proc(): cint
@@ -526,7 +487,6 @@ proc miqt_exec_callback_QsciLexerPascal_lexerId(self: ptr cQsciLexerPascal, slot
 
   virtualReturn
 proc QsciLexerPascalautoCompletionFillups*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-
   (fQsciLexerPascal_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerPascalautoCompletionFillupsProc* = proc(): cstring
@@ -544,7 +504,6 @@ proc miqt_exec_callback_QsciLexerPascal_autoCompletionFillups(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerPascalautoCompletionWordSeparators*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): seq[string] =
-
   var v_ma = fQsciLexerPascal_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -574,7 +533,6 @@ proc miqt_exec_callback_QsciLexerPascal_autoCompletionWordSeparators(self: ptr c
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerPascalblockEnd*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
-
   (fQsciLexerPascal_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerPascalblockEndProc* = proc(style: ptr cint): cstring
@@ -594,7 +552,6 @@ proc miqt_exec_callback_QsciLexerPascal_blockEnd(self: ptr cQsciLexerPascal, slo
 
   virtualReturn
 proc QsciLexerPascalblockLookback*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-
   fQsciLexerPascal_virtualbase_blockLookback(self.h)
 
 type QsciLexerPascalblockLookbackProc* = proc(): cint
@@ -612,7 +569,6 @@ proc miqt_exec_callback_QsciLexerPascal_blockLookback(self: ptr cQsciLexerPascal
 
   virtualReturn
 proc QsciLexerPascalblockStart*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
-
   (fQsciLexerPascal_virtualbase_blockStart(self.h, style))
 
 type QsciLexerPascalblockStartProc* = proc(style: ptr cint): cstring
@@ -632,7 +588,6 @@ proc miqt_exec_callback_QsciLexerPascal_blockStart(self: ptr cQsciLexerPascal, s
 
   virtualReturn
 proc QsciLexerPascalblockStartKeyword*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: ptr cint): cstring =
-
   (fQsciLexerPascal_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerPascalblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -652,7 +607,6 @@ proc miqt_exec_callback_QsciLexerPascal_blockStartKeyword(self: ptr cQsciLexerPa
 
   virtualReturn
 proc QsciLexerPascalbraceStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-
   fQsciLexerPascal_virtualbase_braceStyle(self.h)
 
 type QsciLexerPascalbraceStyleProc* = proc(): cint
@@ -670,7 +624,6 @@ proc miqt_exec_callback_QsciLexerPascal_braceStyle(self: ptr cQsciLexerPascal, s
 
   virtualReturn
 proc QsciLexerPascalcaseSensitive*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): bool =
-
   fQsciLexerPascal_virtualbase_caseSensitive(self.h)
 
 type QsciLexerPascalcaseSensitiveProc* = proc(): bool
@@ -688,7 +641,6 @@ proc miqt_exec_callback_QsciLexerPascal_caseSensitive(self: ptr cQsciLexerPascal
 
   virtualReturn
 proc QsciLexerPascalcolor*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerPascal_virtualbase_color(self.h, style))
 
 type QsciLexerPascalcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -708,7 +660,6 @@ proc miqt_exec_callback_QsciLexerPascal_color(self: ptr cQsciLexerPascal, slot: 
 
   virtualReturn.h
 proc QsciLexerPascaleolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): bool =
-
   fQsciLexerPascal_virtualbase_eolFill(self.h, style)
 
 type QsciLexerPascaleolFillProc* = proc(style: cint): bool
@@ -728,7 +679,6 @@ proc miqt_exec_callback_QsciLexerPascal_eolFill(self: ptr cQsciLexerPascal, slot
 
   virtualReturn
 proc QsciLexerPascalfont*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerPascal_virtualbase_font(self.h, style))
 
 type QsciLexerPascalfontProc* = proc(style: cint): gen_qfont.QFont
@@ -748,7 +698,6 @@ proc miqt_exec_callback_QsciLexerPascal_font(self: ptr cQsciLexerPascal, slot: i
 
   virtualReturn.h
 proc QsciLexerPascalindentationGuideView*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-
   fQsciLexerPascal_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerPascalindentationGuideViewProc* = proc(): cint
@@ -766,7 +715,6 @@ proc miqt_exec_callback_QsciLexerPascal_indentationGuideView(self: ptr cQsciLexe
 
   virtualReturn
 proc QsciLexerPascalkeywords*(self: gen_qscilexerpascal_types.QsciLexerPascal, set: cint): cstring =
-
   (fQsciLexerPascal_virtualbase_keywords(self.h, set))
 
 type QsciLexerPascalkeywordsProc* = proc(set: cint): cstring
@@ -786,7 +734,6 @@ proc miqt_exec_callback_QsciLexerPascal_keywords(self: ptr cQsciLexerPascal, slo
 
   virtualReturn
 proc QsciLexerPascaldefaultStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-
   fQsciLexerPascal_virtualbase_defaultStyle(self.h)
 
 type QsciLexerPascaldefaultStyleProc* = proc(): cint
@@ -820,7 +767,6 @@ proc miqt_exec_callback_QsciLexerPascal_description(self: ptr cQsciLexerPascal, 
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerPascalpaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerPascal_virtualbase_paper(self.h, style))
 
 type QsciLexerPascalpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -839,12 +785,11 @@ proc miqt_exec_callback_QsciLexerPascal_paper(self: ptr cQsciLexerPascal, slot: 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerPascaldefaultColorWithStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerPascaldefaultColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerPascal_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerPascaldefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerPascaldefaultColorWithStyleProc
   tmp[] = slot
@@ -860,7 +805,6 @@ proc miqt_exec_callback_QsciLexerPascal_defaultColorWithStyle(self: ptr cQsciLex
 
   virtualReturn.h
 proc QsciLexerPascaldefaultEolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): bool =
-
   fQsciLexerPascal_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerPascaldefaultEolFillProc* = proc(style: cint): bool
@@ -879,12 +823,11 @@ proc miqt_exec_callback_QsciLexerPascal_defaultEolFill(self: ptr cQsciLexerPasca
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerPascaldefaultFontWithStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont.QFont =
-
+proc QsciLexerPascaldefaultFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerPascal_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerPascaldefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerPascaldefaultFontWithStyleProc
   tmp[] = slot
@@ -899,12 +842,11 @@ proc miqt_exec_callback_QsciLexerPascal_defaultFontWithStyle(self: ptr cQsciLexe
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerPascaldefaultPaperWithStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerPascaldefaultPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerPascal_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerPascaldefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, slot: QsciLexerPascaldefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerPascaldefaultPaperWithStyleProc
   tmp[] = slot
@@ -920,7 +862,6 @@ proc miqt_exec_callback_QsciLexerPascal_defaultPaperWithStyle(self: ptr cQsciLex
 
   virtualReturn.h
 proc QsciLexerPascalsetEditor*(self: gen_qscilexerpascal_types.QsciLexerPascal, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerPascal_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerPascalsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -938,7 +879,6 @@ proc miqt_exec_callback_QsciLexerPascal_setEditor(self: ptr cQsciLexerPascal, sl
 
   nimfunc[](slotval1)
 proc QsciLexerPascalrefreshProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): void =
-
   fQsciLexerPascal_virtualbase_refreshProperties(self.h)
 
 type QsciLexerPascalrefreshPropertiesProc* = proc(): void
@@ -954,7 +894,6 @@ proc miqt_exec_callback_QsciLexerPascal_refreshProperties(self: ptr cQsciLexerPa
 
   nimfunc[]()
 proc QsciLexerPascalstyleBitsNeeded*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cint =
-
   fQsciLexerPascal_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerPascalstyleBitsNeededProc* = proc(): cint
@@ -972,7 +911,6 @@ proc miqt_exec_callback_QsciLexerPascal_styleBitsNeeded(self: ptr cQsciLexerPasc
 
   virtualReturn
 proc QsciLexerPascalwordCharacters*(self: gen_qscilexerpascal_types.QsciLexerPascal, ): cstring =
-
   (fQsciLexerPascal_virtualbase_wordCharacters(self.h))
 
 type QsciLexerPascalwordCharactersProc* = proc(): cstring
@@ -990,7 +928,6 @@ proc miqt_exec_callback_QsciLexerPascal_wordCharacters(self: ptr cQsciLexerPasca
 
   virtualReturn
 proc QsciLexerPascalsetAutoIndentStyle*(self: gen_qscilexerpascal_types.QsciLexerPascal, autoindentstyle: cint): void =
-
   fQsciLexerPascal_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerPascalsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -1008,7 +945,6 @@ proc miqt_exec_callback_QsciLexerPascal_setAutoIndentStyle(self: ptr cQsciLexerP
 
   nimfunc[](slotval1)
 proc QsciLexerPascalsetColor*(self: gen_qscilexerpascal_types.QsciLexerPascal, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerPascal_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerPascalsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1028,7 +964,6 @@ proc miqt_exec_callback_QsciLexerPascal_setColor(self: ptr cQsciLexerPascal, slo
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPascalsetEolFill*(self: gen_qscilexerpascal_types.QsciLexerPascal, eoffill: bool, style: cint): void =
-
   fQsciLexerPascal_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerPascalsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -1048,7 +983,6 @@ proc miqt_exec_callback_QsciLexerPascal_setEolFill(self: ptr cQsciLexerPascal, s
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPascalsetFont*(self: gen_qscilexerpascal_types.QsciLexerPascal, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerPascal_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerPascalsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1068,7 +1002,6 @@ proc miqt_exec_callback_QsciLexerPascal_setFont(self: ptr cQsciLexerPascal, slot
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPascalsetPaper*(self: gen_qscilexerpascal_types.QsciLexerPascal, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerPascal_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerPascalsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1088,7 +1021,6 @@ proc miqt_exec_callback_QsciLexerPascal_setPaper(self: ptr cQsciLexerPascal, slo
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPascalreadProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerPascal_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerPascalreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1113,7 +1045,6 @@ proc miqt_exec_callback_QsciLexerPascal_readProperties(self: ptr cQsciLexerPasca
 
   virtualReturn
 proc QsciLexerPascalwriteProperties*(self: gen_qscilexerpascal_types.QsciLexerPascal, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerPascal_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerPascalwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1138,7 +1069,6 @@ proc miqt_exec_callback_QsciLexerPascal_writeProperties(self: ptr cQsciLexerPasc
 
   virtualReturn
 proc QsciLexerPascalevent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerPascal_virtualbase_event(self.h, event.h)
 
 type QsciLexerPascaleventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1158,7 +1088,6 @@ proc miqt_exec_callback_QsciLexerPascal_event(self: ptr cQsciLexerPascal, slot: 
 
   virtualReturn
 proc QsciLexerPascaleventFilter*(self: gen_qscilexerpascal_types.QsciLexerPascal, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerPascal_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerPascaleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1180,7 +1109,6 @@ proc miqt_exec_callback_QsciLexerPascal_eventFilter(self: ptr cQsciLexerPascal, 
 
   virtualReturn
 proc QsciLexerPascaltimerEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerPascal_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerPascaltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1198,7 +1126,6 @@ proc miqt_exec_callback_QsciLexerPascal_timerEvent(self: ptr cQsciLexerPascal, s
 
   nimfunc[](slotval1)
 proc QsciLexerPascalchildEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerPascal_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerPascalchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1216,7 +1143,6 @@ proc miqt_exec_callback_QsciLexerPascal_childEvent(self: ptr cQsciLexerPascal, s
 
   nimfunc[](slotval1)
 proc QsciLexerPascalcustomEvent*(self: gen_qscilexerpascal_types.QsciLexerPascal, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerPascal_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerPascalcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1234,7 +1160,6 @@ proc miqt_exec_callback_QsciLexerPascal_customEvent(self: ptr cQsciLexerPascal, 
 
   nimfunc[](slotval1)
 proc QsciLexerPascalconnectNotify*(self: gen_qscilexerpascal_types.QsciLexerPascal, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerPascal_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerPascalconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1252,7 +1177,6 @@ proc miqt_exec_callback_QsciLexerPascal_connectNotify(self: ptr cQsciLexerPascal
 
   nimfunc[](slotval1)
 proc QsciLexerPascaldisconnectNotify*(self: gen_qscilexerpascal_types.QsciLexerPascal, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerPascal_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerPascaldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

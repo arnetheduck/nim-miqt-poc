@@ -190,44 +190,39 @@ proc fcQAction_delete(self: pointer) {.importc: "QAction_delete".}
 func init*(T: type gen_qaction_types.QAction, h: ptr cQAction): gen_qaction_types.QAction =
   T(h: h)
 proc create*(T: type gen_qaction_types.QAction, ): gen_qaction_types.QAction =
-
   gen_qaction_types.QAction.init(fcQAction_new())
+
 proc create*(T: type gen_qaction_types.QAction, text: string): gen_qaction_types.QAction =
-
   gen_qaction_types.QAction.init(fcQAction_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qaction_types.QAction, icon: gen_qicon.QIcon, text: string): gen_qaction_types.QAction =
-
   gen_qaction_types.QAction.init(fcQAction_new3(icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qaction_types.QAction, parent: gen_qobject.QObject): gen_qaction_types.QAction =
-
   gen_qaction_types.QAction.init(fcQAction_new4(parent.h))
+
 proc create*(T: type gen_qaction_types.QAction, text: string, parent: gen_qobject.QObject): gen_qaction_types.QAction =
-
   gen_qaction_types.QAction.init(fcQAction_new5(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
+
 proc create*(T: type gen_qaction_types.QAction, icon: gen_qicon.QIcon, text: string, parent: gen_qobject.QObject): gen_qaction_types.QAction =
-
   gen_qaction_types.QAction.init(fcQAction_new6(icon.h, struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
-proc metaObject*(self: gen_qaction_types.QAction, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qaction_types.QAction, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAction_metaObject(self.h))
 
 proc metacast*(self: gen_qaction_types.QAction, param1: cstring): pointer =
-
   fcQAction_metacast(self.h, param1)
 
 proc metacall*(self: gen_qaction_types.QAction, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAction_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qaction_types.QAction, s: cstring): string =
-
   let v_ms = fcQAction_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc associatedObjects*(self: gen_qaction_types.QAction, ): seq[gen_qobject.QObject] =
-
   var v_ma = fcQAction_associatedObjects(self.h)
   var vx_ret = newSeq[gen_qobject.QObject](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -236,114 +231,91 @@ proc associatedObjects*(self: gen_qaction_types.QAction, ): seq[gen_qobject.QObj
   vx_ret
 
 proc setActionGroup*(self: gen_qaction_types.QAction, group: gen_qactiongroup.QActionGroup): void =
-
   fcQAction_setActionGroup(self.h, group.h)
 
 proc actionGroup*(self: gen_qaction_types.QAction, ): gen_qactiongroup.QActionGroup =
-
   gen_qactiongroup.QActionGroup(h: fcQAction_actionGroup(self.h))
 
 proc setIcon*(self: gen_qaction_types.QAction, icon: gen_qicon.QIcon): void =
-
   fcQAction_setIcon(self.h, icon.h)
 
 proc icon*(self: gen_qaction_types.QAction, ): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQAction_icon(self.h))
 
 proc setText*(self: gen_qaction_types.QAction, text: string): void =
-
   fcQAction_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc text*(self: gen_qaction_types.QAction, ): string =
-
   let v_ms = fcQAction_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setIconText*(self: gen_qaction_types.QAction, text: string): void =
-
   fcQAction_setIconText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc iconText*(self: gen_qaction_types.QAction, ): string =
-
   let v_ms = fcQAction_iconText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setToolTip*(self: gen_qaction_types.QAction, tip: string): void =
-
   fcQAction_setToolTip(self.h, struct_miqt_string(data: tip, len: csize_t(len(tip))))
 
 proc toolTip*(self: gen_qaction_types.QAction, ): string =
-
   let v_ms = fcQAction_toolTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setStatusTip*(self: gen_qaction_types.QAction, statusTip: string): void =
-
   fcQAction_setStatusTip(self.h, struct_miqt_string(data: statusTip, len: csize_t(len(statusTip))))
 
 proc statusTip*(self: gen_qaction_types.QAction, ): string =
-
   let v_ms = fcQAction_statusTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWhatsThis*(self: gen_qaction_types.QAction, what: string): void =
-
   fcQAction_setWhatsThis(self.h, struct_miqt_string(data: what, len: csize_t(len(what))))
 
 proc whatsThis*(self: gen_qaction_types.QAction, ): string =
-
   let v_ms = fcQAction_whatsThis(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPriority*(self: gen_qaction_types.QAction, priority: cint): void =
-
   fcQAction_setPriority(self.h, cint(priority))
 
 proc priority*(self: gen_qaction_types.QAction, ): cint =
-
   cint(fcQAction_priority(self.h))
 
 proc setSeparator*(self: gen_qaction_types.QAction, b: bool): void =
-
   fcQAction_setSeparator(self.h, b)
 
 proc isSeparator*(self: gen_qaction_types.QAction, ): bool =
-
   fcQAction_isSeparator(self.h)
 
 proc setShortcut*(self: gen_qaction_types.QAction, shortcut: gen_qkeysequence.QKeySequence): void =
-
   fcQAction_setShortcut(self.h, shortcut.h)
 
 proc shortcut*(self: gen_qaction_types.QAction, ): gen_qkeysequence.QKeySequence =
-
   gen_qkeysequence.QKeySequence(h: fcQAction_shortcut(self.h))
 
 proc setShortcuts*(self: gen_qaction_types.QAction, shortcuts: seq[gen_qkeysequence.QKeySequence]): void =
-
   var shortcuts_CArray = newSeq[pointer](len(shortcuts))
   for i in 0..<len(shortcuts):
     shortcuts_CArray[i] = shortcuts[i].h
 
   fcQAction_setShortcuts(self.h, struct_miqt_array(len: csize_t(len(shortcuts)), data: if len(shortcuts) == 0: nil else: addr(shortcuts_CArray[0])))
 
-proc setShortcutsWithShortcuts*(self: gen_qaction_types.QAction, shortcuts: cint): void =
-
+proc setShortcuts*(self: gen_qaction_types.QAction, shortcuts: cint): void =
   fcQAction_setShortcutsWithShortcuts(self.h, cint(shortcuts))
 
 proc shortcuts*(self: gen_qaction_types.QAction, ): seq[gen_qkeysequence.QKeySequence] =
-
   var v_ma = fcQAction_shortcuts(self.h)
   var vx_ret = newSeq[gen_qkeysequence.QKeySequence](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -352,277 +324,228 @@ proc shortcuts*(self: gen_qaction_types.QAction, ): seq[gen_qkeysequence.QKeySeq
   vx_ret
 
 proc setShortcutContext*(self: gen_qaction_types.QAction, context: cint): void =
-
   fcQAction_setShortcutContext(self.h, cint(context))
 
 proc shortcutContext*(self: gen_qaction_types.QAction, ): cint =
-
   cint(fcQAction_shortcutContext(self.h))
 
 proc setAutoRepeat*(self: gen_qaction_types.QAction, autoRepeat: bool): void =
-
   fcQAction_setAutoRepeat(self.h, autoRepeat)
 
 proc autoRepeat*(self: gen_qaction_types.QAction, ): bool =
-
   fcQAction_autoRepeat(self.h)
 
 proc setFont*(self: gen_qaction_types.QAction, font: gen_qfont.QFont): void =
-
   fcQAction_setFont(self.h, font.h)
 
 proc font*(self: gen_qaction_types.QAction, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQAction_font(self.h))
 
 proc setCheckable*(self: gen_qaction_types.QAction, checkable: bool): void =
-
   fcQAction_setCheckable(self.h, checkable)
 
 proc isCheckable*(self: gen_qaction_types.QAction, ): bool =
-
   fcQAction_isCheckable(self.h)
 
 proc data*(self: gen_qaction_types.QAction, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQAction_data(self.h))
 
 proc setData*(self: gen_qaction_types.QAction, varVal: gen_qvariant.QVariant): void =
-
   fcQAction_setData(self.h, varVal.h)
 
 proc isChecked*(self: gen_qaction_types.QAction, ): bool =
-
   fcQAction_isChecked(self.h)
 
 proc isEnabled*(self: gen_qaction_types.QAction, ): bool =
-
   fcQAction_isEnabled(self.h)
 
 proc isVisible*(self: gen_qaction_types.QAction, ): bool =
-
   fcQAction_isVisible(self.h)
 
 proc activate*(self: gen_qaction_types.QAction, event: cint): void =
-
   fcQAction_activate(self.h, cint(event))
 
 proc setMenuRole*(self: gen_qaction_types.QAction, menuRole: cint): void =
-
   fcQAction_setMenuRole(self.h, cint(menuRole))
 
 proc menuRole*(self: gen_qaction_types.QAction, ): cint =
-
   cint(fcQAction_menuRole(self.h))
 
 proc setIconVisibleInMenu*(self: gen_qaction_types.QAction, visible: bool): void =
-
   fcQAction_setIconVisibleInMenu(self.h, visible)
 
 proc isIconVisibleInMenu*(self: gen_qaction_types.QAction, ): bool =
-
   fcQAction_isIconVisibleInMenu(self.h)
 
 proc setShortcutVisibleInContextMenu*(self: gen_qaction_types.QAction, show: bool): void =
-
   fcQAction_setShortcutVisibleInContextMenu(self.h, show)
 
 proc isShortcutVisibleInContextMenu*(self: gen_qaction_types.QAction, ): bool =
-
   fcQAction_isShortcutVisibleInContextMenu(self.h)
 
 proc showStatusText*(self: gen_qaction_types.QAction, ): bool =
-
   fcQAction_showStatusText(self.h)
 
 proc trigger*(self: gen_qaction_types.QAction, ): void =
-
   fcQAction_trigger(self.h)
 
 proc hover*(self: gen_qaction_types.QAction, ): void =
-
   fcQAction_hover(self.h)
 
 proc setChecked*(self: gen_qaction_types.QAction, checked: bool): void =
-
   fcQAction_setChecked(self.h, checked)
 
 proc toggle*(self: gen_qaction_types.QAction, ): void =
-
   fcQAction_toggle(self.h)
 
 proc setEnabled*(self: gen_qaction_types.QAction, enabled: bool): void =
-
   fcQAction_setEnabled(self.h, enabled)
 
 proc resetEnabled*(self: gen_qaction_types.QAction, ): void =
-
   fcQAction_resetEnabled(self.h)
 
 proc setDisabled*(self: gen_qaction_types.QAction, b: bool): void =
-
   fcQAction_setDisabled(self.h, b)
 
 proc setVisible*(self: gen_qaction_types.QAction, visible: bool): void =
-
   fcQAction_setVisible(self.h, visible)
 
 proc changed*(self: gen_qaction_types.QAction, ): void =
-
   fcQAction_changed(self.h)
 
+type QActionchangedSlot* = proc()
 proc miqt_exec_callback_QAction_changed(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QActionchangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onchanged*(self: gen_qaction_types.QAction, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onchanged*(self: gen_qaction_types.QAction, slot: QActionchangedSlot) =
+  var tmp = new QActionchangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAction_connect_changed(self.h, cast[int](addr tmp[]))
-proc enabledChanged*(self: gen_qaction_types.QAction, enabled: bool): void =
 
+proc enabledChanged*(self: gen_qaction_types.QAction, enabled: bool): void =
   fcQAction_enabledChanged(self.h, enabled)
 
+type QActionenabledChangedSlot* = proc(enabled: bool)
 proc miqt_exec_callback_QAction_enabledChanged(slot: int, enabled: bool) {.exportc.} =
-  type Cb = proc(enabled: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QActionenabledChangedSlot](cast[pointer](slot))
   let slotval1 = enabled
-
 
   nimfunc[](slotval1)
 
-proc onenabledChanged*(self: gen_qaction_types.QAction, slot: proc(enabled: bool)) =
-  type Cb = proc(enabled: bool)
-  var tmp = new Cb
+proc onenabledChanged*(self: gen_qaction_types.QAction, slot: QActionenabledChangedSlot) =
+  var tmp = new QActionenabledChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAction_connect_enabledChanged(self.h, cast[int](addr tmp[]))
-proc checkableChanged*(self: gen_qaction_types.QAction, checkable: bool): void =
 
+proc checkableChanged*(self: gen_qaction_types.QAction, checkable: bool): void =
   fcQAction_checkableChanged(self.h, checkable)
 
+type QActioncheckableChangedSlot* = proc(checkable: bool)
 proc miqt_exec_callback_QAction_checkableChanged(slot: int, checkable: bool) {.exportc.} =
-  type Cb = proc(checkable: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QActioncheckableChangedSlot](cast[pointer](slot))
   let slotval1 = checkable
-
 
   nimfunc[](slotval1)
 
-proc oncheckableChanged*(self: gen_qaction_types.QAction, slot: proc(checkable: bool)) =
-  type Cb = proc(checkable: bool)
-  var tmp = new Cb
+proc oncheckableChanged*(self: gen_qaction_types.QAction, slot: QActioncheckableChangedSlot) =
+  var tmp = new QActioncheckableChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAction_connect_checkableChanged(self.h, cast[int](addr tmp[]))
-proc visibleChanged*(self: gen_qaction_types.QAction, ): void =
 
+proc visibleChanged*(self: gen_qaction_types.QAction, ): void =
   fcQAction_visibleChanged(self.h)
 
+type QActionvisibleChangedSlot* = proc()
 proc miqt_exec_callback_QAction_visibleChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QActionvisibleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onvisibleChanged*(self: gen_qaction_types.QAction, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onvisibleChanged*(self: gen_qaction_types.QAction, slot: QActionvisibleChangedSlot) =
+  var tmp = new QActionvisibleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAction_connect_visibleChanged(self.h, cast[int](addr tmp[]))
-proc triggered*(self: gen_qaction_types.QAction, ): void =
 
+proc triggered*(self: gen_qaction_types.QAction, ): void =
   fcQAction_triggered(self.h)
 
+type QActiontriggeredSlot* = proc()
 proc miqt_exec_callback_QAction_triggered(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QActiontriggeredSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc ontriggered*(self: gen_qaction_types.QAction, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc ontriggered*(self: gen_qaction_types.QAction, slot: QActiontriggeredSlot) =
+  var tmp = new QActiontriggeredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAction_connect_triggered(self.h, cast[int](addr tmp[]))
-proc hovered*(self: gen_qaction_types.QAction, ): void =
 
+proc hovered*(self: gen_qaction_types.QAction, ): void =
   fcQAction_hovered(self.h)
 
+type QActionhoveredSlot* = proc()
 proc miqt_exec_callback_QAction_hovered(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QActionhoveredSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onhovered*(self: gen_qaction_types.QAction, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onhovered*(self: gen_qaction_types.QAction, slot: QActionhoveredSlot) =
+  var tmp = new QActionhoveredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAction_connect_hovered(self.h, cast[int](addr tmp[]))
-proc toggled*(self: gen_qaction_types.QAction, param1: bool): void =
 
+proc toggled*(self: gen_qaction_types.QAction, param1: bool): void =
   fcQAction_toggled(self.h, param1)
 
+type QActiontoggledSlot* = proc(param1: bool)
 proc miqt_exec_callback_QAction_toggled(slot: int, param1: bool) {.exportc.} =
-  type Cb = proc(param1: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QActiontoggledSlot](cast[pointer](slot))
   let slotval1 = param1
-
 
   nimfunc[](slotval1)
 
-proc ontoggled*(self: gen_qaction_types.QAction, slot: proc(param1: bool)) =
-  type Cb = proc(param1: bool)
-  var tmp = new Cb
+proc ontoggled*(self: gen_qaction_types.QAction, slot: QActiontoggledSlot) =
+  var tmp = new QActiontoggledSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAction_connect_toggled(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qaction_types.QAction, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qaction_types.QAction, s: cstring, c: cstring): string =
   let v_ms = fcQAction_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qaction_types.QAction, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qaction_types.QAction, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAction_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc showStatusText1*(self: gen_qaction_types.QAction, objectVal: gen_qobject.QObject): bool =
-
+proc showStatusText*(self: gen_qaction_types.QAction, objectVal: gen_qobject.QObject): bool =
   fcQAction_showStatusText1(self.h, objectVal.h)
 
-proc triggered1*(self: gen_qaction_types.QAction, checked: bool): void =
-
+proc triggered*(self: gen_qaction_types.QAction, checked: bool): void =
   fcQAction_triggered1(self.h, checked)
 
+type QActiontriggered1Slot* = proc(checked: bool)
 proc miqt_exec_callback_QAction_triggered1(slot: int, checked: bool) {.exportc.} =
-  type Cb = proc(checked: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QActiontriggered1Slot](cast[pointer](slot))
   let slotval1 = checked
-
 
   nimfunc[](slotval1)
 
-proc ontriggered1*(self: gen_qaction_types.QAction, slot: proc(checked: bool)) =
-  type Cb = proc(checked: bool)
-  var tmp = new Cb
+proc ontriggered*(self: gen_qaction_types.QAction, slot: QActiontriggered1Slot) =
+  var tmp = new QActiontriggered1Slot
   tmp[] = slot
   GC_ref(tmp)
   fQAction_connect_triggered1(self.h, cast[int](addr tmp[]))
-proc QActionmetaObject*(self: gen_qaction_types.QAction, ): gen_qobjectdefs.QMetaObject =
 
+proc QActionmetaObject*(self: gen_qaction_types.QAction, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fQAction_virtualbase_metaObject(self.h))
 
 type QActionmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -640,7 +563,6 @@ proc miqt_exec_callback_QAction_metaObject(self: ptr cQAction, slot: int): point
 
   virtualReturn.h
 proc QActionmetacast*(self: gen_qaction_types.QAction, param1: cstring): pointer =
-
   fQAction_virtualbase_metacast(self.h, param1)
 
 type QActionmetacastProc* = proc(param1: cstring): pointer
@@ -660,7 +582,6 @@ proc miqt_exec_callback_QAction_metacast(self: ptr cQAction, slot: int, param1: 
 
   virtualReturn
 proc QActionmetacall*(self: gen_qaction_types.QAction, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAction_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QActionmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -684,7 +605,6 @@ proc miqt_exec_callback_QAction_metacall(self: ptr cQAction, slot: int, param1: 
 
   virtualReturn
 proc QActionevent*(self: gen_qaction_types.QAction, param1: gen_qcoreevent.QEvent): bool =
-
   fQAction_virtualbase_event(self.h, param1.h)
 
 type QActioneventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -704,7 +624,6 @@ proc miqt_exec_callback_QAction_event(self: ptr cQAction, slot: int, param1: poi
 
   virtualReturn
 proc QActioneventFilter*(self: gen_qaction_types.QAction, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAction_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QActioneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -726,7 +645,6 @@ proc miqt_exec_callback_QAction_eventFilter(self: ptr cQAction, slot: int, watch
 
   virtualReturn
 proc QActiontimerEvent*(self: gen_qaction_types.QAction, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAction_virtualbase_timerEvent(self.h, event.h)
 
 type QActiontimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -744,7 +662,6 @@ proc miqt_exec_callback_QAction_timerEvent(self: ptr cQAction, slot: int, event:
 
   nimfunc[](slotval1)
 proc QActionchildEvent*(self: gen_qaction_types.QAction, event: gen_qcoreevent.QChildEvent): void =
-
   fQAction_virtualbase_childEvent(self.h, event.h)
 
 type QActionchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -762,7 +679,6 @@ proc miqt_exec_callback_QAction_childEvent(self: ptr cQAction, slot: int, event:
 
   nimfunc[](slotval1)
 proc QActioncustomEvent*(self: gen_qaction_types.QAction, event: gen_qcoreevent.QEvent): void =
-
   fQAction_virtualbase_customEvent(self.h, event.h)
 
 type QActioncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -780,7 +696,6 @@ proc miqt_exec_callback_QAction_customEvent(self: ptr cQAction, slot: int, event
 
   nimfunc[](slotval1)
 proc QActionconnectNotify*(self: gen_qaction_types.QAction, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAction_virtualbase_connectNotify(self.h, signal.h)
 
 type QActionconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -798,7 +713,6 @@ proc miqt_exec_callback_QAction_connectNotify(self: ptr cQAction, slot: int, sig
 
   nimfunc[](slotval1)
 proc QActiondisconnectNotify*(self: gen_qaction_types.QAction, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAction_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QActiondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

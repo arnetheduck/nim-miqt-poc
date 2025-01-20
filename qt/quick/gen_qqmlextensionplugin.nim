@@ -135,79 +135,66 @@ proc fcQQmlEngineExtensionPlugin_delete(self: pointer) {.importc: "QQmlEngineExt
 func init*(T: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, h: ptr cQQmlExtensionPlugin): gen_qqmlextensionplugin_types.QQmlExtensionPlugin =
   T(h: h)
 proc create*(T: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, ): gen_qqmlextensionplugin_types.QQmlExtensionPlugin =
-
   gen_qqmlextensionplugin_types.QQmlExtensionPlugin.init(fcQQmlExtensionPlugin_new())
+
 proc create*(T: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, parent: gen_qobject.QObject): gen_qqmlextensionplugin_types.QQmlExtensionPlugin =
-
   gen_qqmlextensionplugin_types.QQmlExtensionPlugin.init(fcQQmlExtensionPlugin_new2(parent.h))
-proc metaObject*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQmlExtensionPlugin_metaObject(self.h))
 
 proc metacast*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, param1: cstring): pointer =
-
   fcQQmlExtensionPlugin_metacast(self.h, param1)
 
 proc metacall*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQmlExtensionPlugin_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring): string =
-
   let v_ms = fcQQmlExtensionPlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring): string =
-
   let v_ms = fcQQmlExtensionPlugin_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc baseUrl*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQQmlExtensionPlugin_baseUrl(self.h))
 
 proc registerTypes*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, uri: cstring): void =
-
   fcQQmlExtensionPlugin_registerTypes(self.h, uri)
 
 proc initializeEngine*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
-
   fcQQmlExtensionPlugin_initializeEngine(self.h, engine.h, uri)
 
-proc tr2*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQQmlExtensionPlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQmlExtensionPlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQQmlExtensionPlugin_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qqmlextensionplugin_types.QQmlExtensionPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQmlExtensionPlugin_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QQmlExtensionPluginmetaObject*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQmlExtensionPlugin_virtualbase_metaObject(self.h))
 
 type QQmlExtensionPluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -225,7 +212,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_metaObject(self: ptr cQQmlExtensionP
 
   virtualReturn.h
 proc QQmlExtensionPluginmetacast*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, param1: cstring): pointer =
-
   fQQmlExtensionPlugin_virtualbase_metacast(self.h, param1)
 
 type QQmlExtensionPluginmetacastProc* = proc(param1: cstring): pointer
@@ -245,7 +231,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_metacast(self: ptr cQQmlExtensionPlu
 
   virtualReturn
 proc QQmlExtensionPluginmetacall*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQmlExtensionPlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQmlExtensionPluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -283,7 +268,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_registerTypes(self: ptr cQQmlExtensi
 
   nimfunc[](slotval1)
 proc QQmlExtensionPlugininitializeEngine*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
-
   fQQmlExtensionPlugin_virtualbase_initializeEngine(self.h, engine.h, uri)
 
 type QQmlExtensionPlugininitializeEngineProc* = proc(engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
@@ -303,7 +287,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_initializeEngine(self: ptr cQQmlExte
 
   nimfunc[](slotval1, slotval2)
 proc QQmlExtensionPluginevent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, event: gen_qcoreevent.QEvent): bool =
-
   fQQmlExtensionPlugin_virtualbase_event(self.h, event.h)
 
 type QQmlExtensionPlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -323,7 +306,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_event(self: ptr cQQmlExtensionPlugin
 
   virtualReturn
 proc QQmlExtensionPlugineventFilter*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQmlExtensionPlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQmlExtensionPlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -345,7 +327,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_eventFilter(self: ptr cQQmlExtension
 
   virtualReturn
 proc QQmlExtensionPlugintimerEvent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQmlExtensionPlugin_virtualbase_timerEvent(self.h, event.h)
 
 type QQmlExtensionPlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -363,7 +344,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_timerEvent(self: ptr cQQmlExtensionP
 
   nimfunc[](slotval1)
 proc QQmlExtensionPluginchildEvent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, event: gen_qcoreevent.QChildEvent): void =
-
   fQQmlExtensionPlugin_virtualbase_childEvent(self.h, event.h)
 
 type QQmlExtensionPluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -381,7 +361,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_childEvent(self: ptr cQQmlExtensionP
 
   nimfunc[](slotval1)
 proc QQmlExtensionPlugincustomEvent*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, event: gen_qcoreevent.QEvent): void =
-
   fQQmlExtensionPlugin_virtualbase_customEvent(self.h, event.h)
 
 type QQmlExtensionPlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -399,7 +378,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_customEvent(self: ptr cQQmlExtension
 
   nimfunc[](slotval1)
 proc QQmlExtensionPluginconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQmlExtensionPlugin_virtualbase_connectNotify(self.h, signal.h)
 
 type QQmlExtensionPluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -417,7 +395,6 @@ proc miqt_exec_callback_QQmlExtensionPlugin_connectNotify(self: ptr cQQmlExtensi
 
   nimfunc[](slotval1)
 proc QQmlExtensionPlugindisconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQmlExtensionPlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQmlExtensionPlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -442,71 +419,60 @@ proc delete*(self: gen_qqmlextensionplugin_types.QQmlExtensionPlugin) =
 func init*(T: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, h: ptr cQQmlEngineExtensionPlugin): gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin =
   T(h: h)
 proc create*(T: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, ): gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin =
-
   gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin.init(fcQQmlEngineExtensionPlugin_new())
+
 proc create*(T: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, parent: gen_qobject.QObject): gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin =
-
   gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin.init(fcQQmlEngineExtensionPlugin_new2(parent.h))
-proc metaObject*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQmlEngineExtensionPlugin_metaObject(self.h))
 
 proc metacast*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, param1: cstring): pointer =
-
   fcQQmlEngineExtensionPlugin_metacast(self.h, param1)
 
 proc metacall*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQmlEngineExtensionPlugin_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring): string =
-
   let v_ms = fcQQmlEngineExtensionPlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring): string =
-
   let v_ms = fcQQmlEngineExtensionPlugin_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc initializeEngine*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
-
   fcQQmlEngineExtensionPlugin_initializeEngine(self.h, engine.h, uri)
 
-proc tr2*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQQmlEngineExtensionPlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQmlEngineExtensionPlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQQmlEngineExtensionPlugin_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQmlEngineExtensionPlugin_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QQmlEngineExtensionPluginmetaObject*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQmlEngineExtensionPlugin_virtualbase_metaObject(self.h))
 
 type QQmlEngineExtensionPluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -524,7 +490,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_metaObject(self: ptr cQQmlEngi
 
   virtualReturn.h
 proc QQmlEngineExtensionPluginmetacast*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, param1: cstring): pointer =
-
   fQQmlEngineExtensionPlugin_virtualbase_metacast(self.h, param1)
 
 type QQmlEngineExtensionPluginmetacastProc* = proc(param1: cstring): pointer
@@ -544,7 +509,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_metacast(self: ptr cQQmlEngine
 
   virtualReturn
 proc QQmlEngineExtensionPluginmetacall*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQmlEngineExtensionPlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQmlEngineExtensionPluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -568,7 +532,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_metacall(self: ptr cQQmlEngine
 
   virtualReturn
 proc QQmlEngineExtensionPlugininitializeEngine*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
-
   fQQmlEngineExtensionPlugin_virtualbase_initializeEngine(self.h, engine.h, uri)
 
 type QQmlEngineExtensionPlugininitializeEngineProc* = proc(engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
@@ -588,7 +551,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_initializeEngine(self: ptr cQQ
 
   nimfunc[](slotval1, slotval2)
 proc QQmlEngineExtensionPluginevent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, event: gen_qcoreevent.QEvent): bool =
-
   fQQmlEngineExtensionPlugin_virtualbase_event(self.h, event.h)
 
 type QQmlEngineExtensionPlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -608,7 +570,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_event(self: ptr cQQmlEngineExt
 
   virtualReturn
 proc QQmlEngineExtensionPlugineventFilter*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQmlEngineExtensionPlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQmlEngineExtensionPlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -630,7 +591,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_eventFilter(self: ptr cQQmlEng
 
   virtualReturn
 proc QQmlEngineExtensionPlugintimerEvent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQmlEngineExtensionPlugin_virtualbase_timerEvent(self.h, event.h)
 
 type QQmlEngineExtensionPlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -648,7 +608,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_timerEvent(self: ptr cQQmlEngi
 
   nimfunc[](slotval1)
 proc QQmlEngineExtensionPluginchildEvent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, event: gen_qcoreevent.QChildEvent): void =
-
   fQQmlEngineExtensionPlugin_virtualbase_childEvent(self.h, event.h)
 
 type QQmlEngineExtensionPluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -666,7 +625,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_childEvent(self: ptr cQQmlEngi
 
   nimfunc[](slotval1)
 proc QQmlEngineExtensionPlugincustomEvent*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, event: gen_qcoreevent.QEvent): void =
-
   fQQmlEngineExtensionPlugin_virtualbase_customEvent(self.h, event.h)
 
 type QQmlEngineExtensionPlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -684,7 +642,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_customEvent(self: ptr cQQmlEng
 
   nimfunc[](slotval1)
 proc QQmlEngineExtensionPluginconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQmlEngineExtensionPlugin_virtualbase_connectNotify(self.h, signal.h)
 
 type QQmlEngineExtensionPluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -702,7 +659,6 @@ proc miqt_exec_callback_QQmlEngineExtensionPlugin_connectNotify(self: ptr cQQmlE
 
   nimfunc[](slotval1)
 proc QQmlEngineExtensionPlugindisconnectNotify*(self: gen_qqmlextensionplugin_types.QQmlEngineExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQmlEngineExtensionPlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQmlEngineExtensionPlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

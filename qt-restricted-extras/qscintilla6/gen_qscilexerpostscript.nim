@@ -205,117 +205,93 @@ proc fcQsciLexerPostScript_delete(self: pointer) {.importc: "QsciLexerPostScript
 func init*(T: type gen_qscilexerpostscript_types.QsciLexerPostScript, h: ptr cQsciLexerPostScript): gen_qscilexerpostscript_types.QsciLexerPostScript =
   T(h: h)
 proc create*(T: type gen_qscilexerpostscript_types.QsciLexerPostScript, ): gen_qscilexerpostscript_types.QsciLexerPostScript =
-
   gen_qscilexerpostscript_types.QsciLexerPostScript.init(fcQsciLexerPostScript_new())
+
 proc create*(T: type gen_qscilexerpostscript_types.QsciLexerPostScript, parent: gen_qobject.QObject): gen_qscilexerpostscript_types.QsciLexerPostScript =
-
   gen_qscilexerpostscript_types.QsciLexerPostScript.init(fcQsciLexerPostScript_new2(parent.h))
-proc metaObject*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerPostScript_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, param1: cstring): pointer =
-
   fcQsciLexerPostScript_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerPostScript_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerpostscript_types.QsciLexerPostScript, s: cstring): string =
-
   let v_ms = fcQsciLexerPostScript_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cstring =
-
   (fcQsciLexerPostScript_language(self.h))
 
 proc lexer*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cstring =
-
   (fcQsciLexerPostScript_lexer(self.h))
 
 proc braceStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-
   fcQsciLexerPostScript_braceStyle(self.h)
 
 proc defaultColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerPostScript_defaultColor(self.h, style))
 
 proc defaultFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerPostScript_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerPostScript_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, set: cint): cstring =
-
   (fcQsciLexerPostScript_keywords(self.h, set))
 
 proc description*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): string =
-
   let v_ms = fcQsciLexerPostScript_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): void =
-
   fcQsciLexerPostScript_refreshProperties(self.h)
 
 proc tokenize*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): bool =
-
   fcQsciLexerPostScript_tokenize(self.h)
 
 proc level*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-
   fcQsciLexerPostScript_level(self.h)
 
 proc foldCompact*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): bool =
-
   fcQsciLexerPostScript_foldCompact(self.h)
 
 proc foldAtElse*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): bool =
-
   fcQsciLexerPostScript_foldAtElse(self.h)
 
 proc setTokenize*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, tokenize: bool): void =
-
   fcQsciLexerPostScript_setTokenize(self.h, tokenize)
 
 proc setLevel*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, level: cint): void =
-
   fcQsciLexerPostScript_setLevel(self.h, level)
 
 proc setFoldCompact*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, fold: bool): void =
-
   fcQsciLexerPostScript_setFoldCompact(self.h, fold)
 
 proc setFoldAtElse*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, fold: bool): void =
-
   fcQsciLexerPostScript_setFoldAtElse(self.h, fold)
 
-proc tr2*(_: type gen_qscilexerpostscript_types.QsciLexerPostScript, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerpostscript_types.QsciLexerPostScript, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerPostScript_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerpostscript_types.QsciLexerPostScript, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerpostscript_types.QsciLexerPostScript, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerPostScript_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerPostScriptmetaObject*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerPostScript_virtualbase_metaObject(self.h))
 
 type QsciLexerPostScriptmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -333,7 +309,6 @@ proc miqt_exec_callback_QsciLexerPostScript_metaObject(self: ptr cQsciLexerPostS
 
   virtualReturn.h
 proc QsciLexerPostScriptmetacast*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, param1: cstring): pointer =
-
   fQsciLexerPostScript_virtualbase_metacast(self.h, param1)
 
 type QsciLexerPostScriptmetacastProc* = proc(param1: cstring): pointer
@@ -353,7 +328,6 @@ proc miqt_exec_callback_QsciLexerPostScript_metacast(self: ptr cQsciLexerPostScr
 
   virtualReturn
 proc QsciLexerPostScriptmetacall*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerPostScript_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerPostScriptmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -377,7 +351,6 @@ proc miqt_exec_callback_QsciLexerPostScript_metacall(self: ptr cQsciLexerPostScr
 
   virtualReturn
 proc QsciLexerPostScriptsetTokenize*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, tokenize: bool): void =
-
   fQsciLexerPostScript_virtualbase_setTokenize(self.h, tokenize)
 
 type QsciLexerPostScriptsetTokenizeProc* = proc(tokenize: bool): void
@@ -395,7 +368,6 @@ proc miqt_exec_callback_QsciLexerPostScript_setTokenize(self: ptr cQsciLexerPost
 
   nimfunc[](slotval1)
 proc QsciLexerPostScriptsetLevel*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, level: cint): void =
-
   fQsciLexerPostScript_virtualbase_setLevel(self.h, level)
 
 type QsciLexerPostScriptsetLevelProc* = proc(level: cint): void
@@ -413,7 +385,6 @@ proc miqt_exec_callback_QsciLexerPostScript_setLevel(self: ptr cQsciLexerPostScr
 
   nimfunc[](slotval1)
 proc QsciLexerPostScriptsetFoldCompact*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, fold: bool): void =
-
   fQsciLexerPostScript_virtualbase_setFoldCompact(self.h, fold)
 
 type QsciLexerPostScriptsetFoldCompactProc* = proc(fold: bool): void
@@ -431,7 +402,6 @@ proc miqt_exec_callback_QsciLexerPostScript_setFoldCompact(self: ptr cQsciLexerP
 
   nimfunc[](slotval1)
 proc QsciLexerPostScriptsetFoldAtElse*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, fold: bool): void =
-
   fQsciLexerPostScript_virtualbase_setFoldAtElse(self.h, fold)
 
 type QsciLexerPostScriptsetFoldAtElseProc* = proc(fold: bool): void
@@ -463,7 +433,6 @@ proc miqt_exec_callback_QsciLexerPostScript_language(self: ptr cQsciLexerPostScr
 
   virtualReturn
 proc QsciLexerPostScriptlexer*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cstring =
-
   (fQsciLexerPostScript_virtualbase_lexer(self.h))
 
 type QsciLexerPostScriptlexerProc* = proc(): cstring
@@ -481,7 +450,6 @@ proc miqt_exec_callback_QsciLexerPostScript_lexer(self: ptr cQsciLexerPostScript
 
   virtualReturn
 proc QsciLexerPostScriptlexerId*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-
   fQsciLexerPostScript_virtualbase_lexerId(self.h)
 
 type QsciLexerPostScriptlexerIdProc* = proc(): cint
@@ -499,7 +467,6 @@ proc miqt_exec_callback_QsciLexerPostScript_lexerId(self: ptr cQsciLexerPostScri
 
   virtualReturn
 proc QsciLexerPostScriptautoCompletionFillups*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cstring =
-
   (fQsciLexerPostScript_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerPostScriptautoCompletionFillupsProc* = proc(): cstring
@@ -517,7 +484,6 @@ proc miqt_exec_callback_QsciLexerPostScript_autoCompletionFillups(self: ptr cQsc
 
   virtualReturn
 proc QsciLexerPostScriptautoCompletionWordSeparators*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): seq[string] =
-
   var v_ma = fQsciLexerPostScript_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -547,7 +513,6 @@ proc miqt_exec_callback_QsciLexerPostScript_autoCompletionWordSeparators(self: p
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerPostScriptblockEnd*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: ptr cint): cstring =
-
   (fQsciLexerPostScript_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerPostScriptblockEndProc* = proc(style: ptr cint): cstring
@@ -567,7 +532,6 @@ proc miqt_exec_callback_QsciLexerPostScript_blockEnd(self: ptr cQsciLexerPostScr
 
   virtualReturn
 proc QsciLexerPostScriptblockLookback*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-
   fQsciLexerPostScript_virtualbase_blockLookback(self.h)
 
 type QsciLexerPostScriptblockLookbackProc* = proc(): cint
@@ -585,7 +549,6 @@ proc miqt_exec_callback_QsciLexerPostScript_blockLookback(self: ptr cQsciLexerPo
 
   virtualReturn
 proc QsciLexerPostScriptblockStart*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: ptr cint): cstring =
-
   (fQsciLexerPostScript_virtualbase_blockStart(self.h, style))
 
 type QsciLexerPostScriptblockStartProc* = proc(style: ptr cint): cstring
@@ -605,7 +568,6 @@ proc miqt_exec_callback_QsciLexerPostScript_blockStart(self: ptr cQsciLexerPostS
 
   virtualReturn
 proc QsciLexerPostScriptblockStartKeyword*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: ptr cint): cstring =
-
   (fQsciLexerPostScript_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerPostScriptblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -625,7 +587,6 @@ proc miqt_exec_callback_QsciLexerPostScript_blockStartKeyword(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerPostScriptbraceStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-
   fQsciLexerPostScript_virtualbase_braceStyle(self.h)
 
 type QsciLexerPostScriptbraceStyleProc* = proc(): cint
@@ -643,7 +604,6 @@ proc miqt_exec_callback_QsciLexerPostScript_braceStyle(self: ptr cQsciLexerPostS
 
   virtualReturn
 proc QsciLexerPostScriptcaseSensitive*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): bool =
-
   fQsciLexerPostScript_virtualbase_caseSensitive(self.h)
 
 type QsciLexerPostScriptcaseSensitiveProc* = proc(): bool
@@ -661,7 +621,6 @@ proc miqt_exec_callback_QsciLexerPostScript_caseSensitive(self: ptr cQsciLexerPo
 
   virtualReturn
 proc QsciLexerPostScriptcolor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerPostScript_virtualbase_color(self.h, style))
 
 type QsciLexerPostScriptcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -681,7 +640,6 @@ proc miqt_exec_callback_QsciLexerPostScript_color(self: ptr cQsciLexerPostScript
 
   virtualReturn.h
 proc QsciLexerPostScripteolFill*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): bool =
-
   fQsciLexerPostScript_virtualbase_eolFill(self.h, style)
 
 type QsciLexerPostScripteolFillProc* = proc(style: cint): bool
@@ -701,7 +659,6 @@ proc miqt_exec_callback_QsciLexerPostScript_eolFill(self: ptr cQsciLexerPostScri
 
   virtualReturn
 proc QsciLexerPostScriptfont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerPostScript_virtualbase_font(self.h, style))
 
 type QsciLexerPostScriptfontProc* = proc(style: cint): gen_qfont.QFont
@@ -721,7 +678,6 @@ proc miqt_exec_callback_QsciLexerPostScript_font(self: ptr cQsciLexerPostScript,
 
   virtualReturn.h
 proc QsciLexerPostScriptindentationGuideView*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-
   fQsciLexerPostScript_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerPostScriptindentationGuideViewProc* = proc(): cint
@@ -739,7 +695,6 @@ proc miqt_exec_callback_QsciLexerPostScript_indentationGuideView(self: ptr cQsci
 
   virtualReturn
 proc QsciLexerPostScriptkeywords*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, set: cint): cstring =
-
   (fQsciLexerPostScript_virtualbase_keywords(self.h, set))
 
 type QsciLexerPostScriptkeywordsProc* = proc(set: cint): cstring
@@ -759,7 +714,6 @@ proc miqt_exec_callback_QsciLexerPostScript_keywords(self: ptr cQsciLexerPostScr
 
   virtualReturn
 proc QsciLexerPostScriptdefaultStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-
   fQsciLexerPostScript_virtualbase_defaultStyle(self.h)
 
 type QsciLexerPostScriptdefaultStyleProc* = proc(): cint
@@ -793,7 +747,6 @@ proc miqt_exec_callback_QsciLexerPostScript_description(self: ptr cQsciLexerPost
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerPostScriptpaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerPostScript_virtualbase_paper(self.h, style))
 
 type QsciLexerPostScriptpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -812,12 +765,11 @@ proc miqt_exec_callback_QsciLexerPostScript_paper(self: ptr cQsciLexerPostScript
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerPostScriptdefaultColorWithStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerPostScriptdefaultColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerPostScript_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerPostScriptdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerPostScriptdefaultColorWithStyleProc
   tmp[] = slot
@@ -833,7 +785,6 @@ proc miqt_exec_callback_QsciLexerPostScript_defaultColorWithStyle(self: ptr cQsc
 
   virtualReturn.h
 proc QsciLexerPostScriptdefaultEolFill*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): bool =
-
   fQsciLexerPostScript_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerPostScriptdefaultEolFillProc* = proc(style: cint): bool
@@ -852,12 +803,11 @@ proc miqt_exec_callback_QsciLexerPostScript_defaultEolFill(self: ptr cQsciLexerP
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerPostScriptdefaultFontWithStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont.QFont =
-
+proc QsciLexerPostScriptdefaultFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerPostScript_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerPostScriptdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerPostScriptdefaultFontWithStyleProc
   tmp[] = slot
@@ -872,12 +822,11 @@ proc miqt_exec_callback_QsciLexerPostScript_defaultFontWithStyle(self: ptr cQsci
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerPostScriptdefaultPaperWithStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerPostScriptdefaultPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerPostScript_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerPostScriptdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, slot: QsciLexerPostScriptdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerPostScriptdefaultPaperWithStyleProc
   tmp[] = slot
@@ -893,7 +842,6 @@ proc miqt_exec_callback_QsciLexerPostScript_defaultPaperWithStyle(self: ptr cQsc
 
   virtualReturn.h
 proc QsciLexerPostScriptsetEditor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerPostScript_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerPostScriptsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -911,7 +859,6 @@ proc miqt_exec_callback_QsciLexerPostScript_setEditor(self: ptr cQsciLexerPostSc
 
   nimfunc[](slotval1)
 proc QsciLexerPostScriptrefreshProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): void =
-
   fQsciLexerPostScript_virtualbase_refreshProperties(self.h)
 
 type QsciLexerPostScriptrefreshPropertiesProc* = proc(): void
@@ -927,7 +874,6 @@ proc miqt_exec_callback_QsciLexerPostScript_refreshProperties(self: ptr cQsciLex
 
   nimfunc[]()
 proc QsciLexerPostScriptstyleBitsNeeded*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cint =
-
   fQsciLexerPostScript_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerPostScriptstyleBitsNeededProc* = proc(): cint
@@ -945,7 +891,6 @@ proc miqt_exec_callback_QsciLexerPostScript_styleBitsNeeded(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerPostScriptwordCharacters*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, ): cstring =
-
   (fQsciLexerPostScript_virtualbase_wordCharacters(self.h))
 
 type QsciLexerPostScriptwordCharactersProc* = proc(): cstring
@@ -963,7 +908,6 @@ proc miqt_exec_callback_QsciLexerPostScript_wordCharacters(self: ptr cQsciLexerP
 
   virtualReturn
 proc QsciLexerPostScriptsetAutoIndentStyle*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, autoindentstyle: cint): void =
-
   fQsciLexerPostScript_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerPostScriptsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -981,7 +925,6 @@ proc miqt_exec_callback_QsciLexerPostScript_setAutoIndentStyle(self: ptr cQsciLe
 
   nimfunc[](slotval1)
 proc QsciLexerPostScriptsetColor*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerPostScript_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerPostScriptsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1001,7 +944,6 @@ proc miqt_exec_callback_QsciLexerPostScript_setColor(self: ptr cQsciLexerPostScr
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPostScriptsetEolFill*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, eoffill: bool, style: cint): void =
-
   fQsciLexerPostScript_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerPostScriptsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -1021,7 +963,6 @@ proc miqt_exec_callback_QsciLexerPostScript_setEolFill(self: ptr cQsciLexerPostS
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPostScriptsetFont*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerPostScript_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerPostScriptsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1041,7 +982,6 @@ proc miqt_exec_callback_QsciLexerPostScript_setFont(self: ptr cQsciLexerPostScri
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPostScriptsetPaper*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerPostScript_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerPostScriptsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1061,7 +1001,6 @@ proc miqt_exec_callback_QsciLexerPostScript_setPaper(self: ptr cQsciLexerPostScr
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPostScriptreadProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerPostScript_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerPostScriptreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1086,7 +1025,6 @@ proc miqt_exec_callback_QsciLexerPostScript_readProperties(self: ptr cQsciLexerP
 
   virtualReturn
 proc QsciLexerPostScriptwriteProperties*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerPostScript_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerPostScriptwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1111,7 +1049,6 @@ proc miqt_exec_callback_QsciLexerPostScript_writeProperties(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerPostScriptevent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerPostScript_virtualbase_event(self.h, event.h)
 
 type QsciLexerPostScripteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1131,7 +1068,6 @@ proc miqt_exec_callback_QsciLexerPostScript_event(self: ptr cQsciLexerPostScript
 
   virtualReturn
 proc QsciLexerPostScripteventFilter*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerPostScript_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerPostScripteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1153,7 +1089,6 @@ proc miqt_exec_callback_QsciLexerPostScript_eventFilter(self: ptr cQsciLexerPost
 
   virtualReturn
 proc QsciLexerPostScripttimerEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerPostScript_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerPostScripttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1171,7 +1106,6 @@ proc miqt_exec_callback_QsciLexerPostScript_timerEvent(self: ptr cQsciLexerPostS
 
   nimfunc[](slotval1)
 proc QsciLexerPostScriptchildEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerPostScript_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerPostScriptchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1189,7 +1123,6 @@ proc miqt_exec_callback_QsciLexerPostScript_childEvent(self: ptr cQsciLexerPostS
 
   nimfunc[](slotval1)
 proc QsciLexerPostScriptcustomEvent*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerPostScript_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerPostScriptcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1207,7 +1140,6 @@ proc miqt_exec_callback_QsciLexerPostScript_customEvent(self: ptr cQsciLexerPost
 
   nimfunc[](slotval1)
 proc QsciLexerPostScriptconnectNotify*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerPostScript_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerPostScriptconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1225,7 +1157,6 @@ proc miqt_exec_callback_QsciLexerPostScript_connectNotify(self: ptr cQsciLexerPo
 
   nimfunc[](slotval1)
 proc QsciLexerPostScriptdisconnectNotify*(self: gen_qscilexerpostscript_types.QsciLexerPostScript, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerPostScript_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerPostScriptdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

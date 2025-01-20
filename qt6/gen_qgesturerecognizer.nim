@@ -77,34 +77,27 @@ proc fcQGestureRecognizer_delete(self: pointer) {.importc: "QGestureRecognizer_d
 func init*(T: type gen_qgesturerecognizer_types.QGestureRecognizer, h: ptr cQGestureRecognizer): gen_qgesturerecognizer_types.QGestureRecognizer =
   T(h: h)
 proc create*(T: type gen_qgesturerecognizer_types.QGestureRecognizer, ): gen_qgesturerecognizer_types.QGestureRecognizer =
-
   gen_qgesturerecognizer_types.QGestureRecognizer.init(fcQGestureRecognizer_new())
-proc create*(self: gen_qgesturerecognizer_types.QGestureRecognizer, target: gen_qobject.QObject): gen_qgesture.QGesture =
 
+proc create*(self: gen_qgesturerecognizer_types.QGestureRecognizer, target: gen_qobject.QObject): gen_qgesture.QGesture =
   gen_qgesture.QGesture(h: fcQGestureRecognizer_create(self.h, target.h))
 
 proc recognize*(self: gen_qgesturerecognizer_types.QGestureRecognizer, state: gen_qgesture.QGesture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): cint =
-
   cint(fcQGestureRecognizer_recognize(self.h, state.h, watched.h, event.h))
 
 proc reset*(self: gen_qgesturerecognizer_types.QGestureRecognizer, state: gen_qgesture.QGesture): void =
-
   fcQGestureRecognizer_reset(self.h, state.h)
 
 proc registerRecognizer*(_: type gen_qgesturerecognizer_types.QGestureRecognizer, recognizer: gen_qgesturerecognizer_types.QGestureRecognizer): cint =
-
   cint(fcQGestureRecognizer_registerRecognizer(recognizer.h))
 
 proc unregisterRecognizer*(_: type gen_qgesturerecognizer_types.QGestureRecognizer, typeVal: cint): void =
-
   fcQGestureRecognizer_unregisterRecognizer(cint(typeVal))
 
 proc operatorAssign*(self: gen_qgesturerecognizer_types.QGestureRecognizer, param1: gen_qgesturerecognizer_types.QGestureRecognizer): void =
-
   fcQGestureRecognizer_operatorAssign(self.h, param1.h)
 
 proc QGestureRecognizercreate*(self: gen_qgesturerecognizer_types.QGestureRecognizer, target: gen_qobject.QObject): gen_qgesture.QGesture =
-
   gen_qgesture.QGesture(h: fQGestureRecognizer_virtualbase_create(self.h, target.h))
 
 type QGestureRecognizercreateProc* = proc(target: gen_qobject.QObject): gen_qgesture.QGesture
@@ -144,7 +137,6 @@ proc miqt_exec_callback_QGestureRecognizer_recognize(self: ptr cQGestureRecogniz
 
   cint(virtualReturn)
 proc QGestureRecognizerreset*(self: gen_qgesturerecognizer_types.QGestureRecognizer, state: gen_qgesture.QGesture): void =
-
   fQGestureRecognizer_virtualbase_reset(self.h, state.h)
 
 type QGestureRecognizerresetProc* = proc(state: gen_qgesture.QGesture): void

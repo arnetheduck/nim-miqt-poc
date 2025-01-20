@@ -224,192 +224,158 @@ proc fcQDialog_delete(self: pointer) {.importc: "QDialog_delete".}
 func init*(T: type gen_qdialog_types.QDialog, h: ptr cQDialog): gen_qdialog_types.QDialog =
   T(h: h)
 proc create*(T: type gen_qdialog_types.QDialog, parent: gen_qwidget.QWidget): gen_qdialog_types.QDialog =
-
   gen_qdialog_types.QDialog.init(fcQDialog_new(parent.h))
+
 proc create*(T: type gen_qdialog_types.QDialog, ): gen_qdialog_types.QDialog =
-
   gen_qdialog_types.QDialog.init(fcQDialog_new2())
+
 proc create*(T: type gen_qdialog_types.QDialog, parent: gen_qwidget.QWidget, f: cint): gen_qdialog_types.QDialog =
-
   gen_qdialog_types.QDialog.init(fcQDialog_new3(parent.h, cint(f)))
-proc metaObject*(self: gen_qdialog_types.QDialog, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qdialog_types.QDialog, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDialog_metaObject(self.h))
 
 proc metacast*(self: gen_qdialog_types.QDialog, param1: cstring): pointer =
-
   fcQDialog_metacast(self.h, param1)
 
 proc metacall*(self: gen_qdialog_types.QDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQDialog_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qdialog_types.QDialog, s: cstring): string =
-
   let v_ms = fcQDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qdialog_types.QDialog, s: cstring): string =
-
   let v_ms = fcQDialog_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc resultX*(self: gen_qdialog_types.QDialog, ): cint =
-
   fcQDialog_resultX(self.h)
 
 proc setVisible*(self: gen_qdialog_types.QDialog, visible: bool): void =
-
   fcQDialog_setVisible(self.h, visible)
 
 proc setOrientation*(self: gen_qdialog_types.QDialog, orientation: cint): void =
-
   fcQDialog_setOrientation(self.h, cint(orientation))
 
 proc orientation*(self: gen_qdialog_types.QDialog, ): cint =
-
   cint(fcQDialog_orientation(self.h))
 
 proc setExtension*(self: gen_qdialog_types.QDialog, extension: gen_qwidget.QWidget): void =
-
   fcQDialog_setExtension(self.h, extension.h)
 
 proc extension*(self: gen_qdialog_types.QDialog, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQDialog_extension(self.h))
 
 proc sizeHint*(self: gen_qdialog_types.QDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQDialog_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qdialog_types.QDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQDialog_minimumSizeHint(self.h))
 
 proc setSizeGripEnabled*(self: gen_qdialog_types.QDialog, sizeGripEnabled: bool): void =
-
   fcQDialog_setSizeGripEnabled(self.h, sizeGripEnabled)
 
 proc isSizeGripEnabled*(self: gen_qdialog_types.QDialog, ): bool =
-
   fcQDialog_isSizeGripEnabled(self.h)
 
 proc setModal*(self: gen_qdialog_types.QDialog, modal: bool): void =
-
   fcQDialog_setModal(self.h, modal)
 
 proc setResult*(self: gen_qdialog_types.QDialog, r: cint): void =
-
   fcQDialog_setResult(self.h, r)
 
 proc finished*(self: gen_qdialog_types.QDialog, resultVal: cint): void =
-
   fcQDialog_finished(self.h, resultVal)
 
+type QDialogfinishedSlot* = proc(resultVal: cint)
 proc miqt_exec_callback_QDialog_finished(slot: int, resultVal: cint) {.exportc.} =
-  type Cb = proc(resultVal: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDialogfinishedSlot](cast[pointer](slot))
   let slotval1 = resultVal
-
 
   nimfunc[](slotval1)
 
-proc onfinished*(self: gen_qdialog_types.QDialog, slot: proc(resultVal: cint)) =
-  type Cb = proc(resultVal: cint)
-  var tmp = new Cb
+proc onfinished*(self: gen_qdialog_types.QDialog, slot: QDialogfinishedSlot) =
+  var tmp = new QDialogfinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDialog_connect_finished(self.h, cast[int](addr tmp[]))
-proc accepted*(self: gen_qdialog_types.QDialog, ): void =
 
+proc accepted*(self: gen_qdialog_types.QDialog, ): void =
   fcQDialog_accepted(self.h)
 
+type QDialogacceptedSlot* = proc()
 proc miqt_exec_callback_QDialog_accepted(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QDialogacceptedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onaccepted*(self: gen_qdialog_types.QDialog, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onaccepted*(self: gen_qdialog_types.QDialog, slot: QDialogacceptedSlot) =
+  var tmp = new QDialogacceptedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDialog_connect_accepted(self.h, cast[int](addr tmp[]))
-proc rejected*(self: gen_qdialog_types.QDialog, ): void =
 
+proc rejected*(self: gen_qdialog_types.QDialog, ): void =
   fcQDialog_rejected(self.h)
 
+type QDialogrejectedSlot* = proc()
 proc miqt_exec_callback_QDialog_rejected(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QDialogrejectedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onrejected*(self: gen_qdialog_types.QDialog, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onrejected*(self: gen_qdialog_types.QDialog, slot: QDialogrejectedSlot) =
+  var tmp = new QDialogrejectedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDialog_connect_rejected(self.h, cast[int](addr tmp[]))
-proc open*(self: gen_qdialog_types.QDialog, ): void =
 
+proc open*(self: gen_qdialog_types.QDialog, ): void =
   fcQDialog_open(self.h)
 
 proc exec*(self: gen_qdialog_types.QDialog, ): cint =
-
   fcQDialog_exec(self.h)
 
 proc done*(self: gen_qdialog_types.QDialog, param1: cint): void =
-
   fcQDialog_done(self.h, param1)
 
 proc accept*(self: gen_qdialog_types.QDialog, ): void =
-
   fcQDialog_accept(self.h)
 
 proc reject*(self: gen_qdialog_types.QDialog, ): void =
-
   fcQDialog_reject(self.h)
 
 proc showExtension*(self: gen_qdialog_types.QDialog, param1: bool): void =
-
   fcQDialog_showExtension(self.h, param1)
 
-proc tr2*(_: type gen_qdialog_types.QDialog, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qdialog_types.QDialog, s: cstring, c: cstring): string =
   let v_ms = fcQDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qdialog_types.QDialog, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qdialog_types.QDialog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qdialog_types.QDialog, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qdialog_types.QDialog, s: cstring, c: cstring): string =
   let v_ms = fcQDialog_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qdialog_types.QDialog, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qdialog_types.QDialog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDialog_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QDialogmetaObject*(self: gen_qdialog_types.QDialog, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQDialog_virtualbase_metaObject(self.h))
 
 type QDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -427,7 +393,6 @@ proc miqt_exec_callback_QDialog_metaObject(self: ptr cQDialog, slot: int): point
 
   virtualReturn.h
 proc QDialogmetacast*(self: gen_qdialog_types.QDialog, param1: cstring): pointer =
-
   fQDialog_virtualbase_metacast(self.h, param1)
 
 type QDialogmetacastProc* = proc(param1: cstring): pointer
@@ -447,7 +412,6 @@ proc miqt_exec_callback_QDialog_metacast(self: ptr cQDialog, slot: int, param1: 
 
   virtualReturn
 proc QDialogmetacall*(self: gen_qdialog_types.QDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fQDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -471,7 +435,6 @@ proc miqt_exec_callback_QDialog_metacall(self: ptr cQDialog, slot: int, param1: 
 
   virtualReturn
 proc QDialogsetVisible*(self: gen_qdialog_types.QDialog, visible: bool): void =
-
   fQDialog_virtualbase_setVisible(self.h, visible)
 
 type QDialogsetVisibleProc* = proc(visible: bool): void
@@ -489,7 +452,6 @@ proc miqt_exec_callback_QDialog_setVisible(self: ptr cQDialog, slot: int, visibl
 
   nimfunc[](slotval1)
 proc QDialogsizeHint*(self: gen_qdialog_types.QDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDialog_virtualbase_sizeHint(self.h))
 
 type QDialogsizeHintProc* = proc(): gen_qsize.QSize
@@ -507,7 +469,6 @@ proc miqt_exec_callback_QDialog_sizeHint(self: ptr cQDialog, slot: int): pointer
 
   virtualReturn.h
 proc QDialogminimumSizeHint*(self: gen_qdialog_types.QDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDialog_virtualbase_minimumSizeHint(self.h))
 
 type QDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -525,7 +486,6 @@ proc miqt_exec_callback_QDialog_minimumSizeHint(self: ptr cQDialog, slot: int): 
 
   virtualReturn.h
 proc QDialogopen*(self: gen_qdialog_types.QDialog, ): void =
-
   fQDialog_virtualbase_open(self.h)
 
 type QDialogopenProc* = proc(): void
@@ -541,7 +501,6 @@ proc miqt_exec_callback_QDialog_open(self: ptr cQDialog, slot: int): void {.expo
 
   nimfunc[]()
 proc QDialogexec*(self: gen_qdialog_types.QDialog, ): cint =
-
   fQDialog_virtualbase_exec(self.h)
 
 type QDialogexecProc* = proc(): cint
@@ -559,7 +518,6 @@ proc miqt_exec_callback_QDialog_exec(self: ptr cQDialog, slot: int): cint {.expo
 
   virtualReturn
 proc QDialogdone*(self: gen_qdialog_types.QDialog, param1: cint): void =
-
   fQDialog_virtualbase_done(self.h, param1)
 
 type QDialogdoneProc* = proc(param1: cint): void
@@ -577,7 +535,6 @@ proc miqt_exec_callback_QDialog_done(self: ptr cQDialog, slot: int, param1: cint
 
   nimfunc[](slotval1)
 proc QDialogaccept*(self: gen_qdialog_types.QDialog, ): void =
-
   fQDialog_virtualbase_accept(self.h)
 
 type QDialogacceptProc* = proc(): void
@@ -593,7 +550,6 @@ proc miqt_exec_callback_QDialog_accept(self: ptr cQDialog, slot: int): void {.ex
 
   nimfunc[]()
 proc QDialogreject*(self: gen_qdialog_types.QDialog, ): void =
-
   fQDialog_virtualbase_reject(self.h)
 
 type QDialogrejectProc* = proc(): void
@@ -609,7 +565,6 @@ proc miqt_exec_callback_QDialog_reject(self: ptr cQDialog, slot: int): void {.ex
 
   nimfunc[]()
 proc QDialogkeyPressEvent*(self: gen_qdialog_types.QDialog, param1: gen_qevent.QKeyEvent): void =
-
   fQDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -627,7 +582,6 @@ proc miqt_exec_callback_QDialog_keyPressEvent(self: ptr cQDialog, slot: int, par
 
   nimfunc[](slotval1)
 proc QDialogcloseEvent*(self: gen_qdialog_types.QDialog, param1: gen_qevent.QCloseEvent): void =
-
   fQDialog_virtualbase_closeEvent(self.h, param1.h)
 
 type QDialogcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
@@ -645,7 +599,6 @@ proc miqt_exec_callback_QDialog_closeEvent(self: ptr cQDialog, slot: int, param1
 
   nimfunc[](slotval1)
 proc QDialogshowEvent*(self: gen_qdialog_types.QDialog, param1: gen_qevent.QShowEvent): void =
-
   fQDialog_virtualbase_showEvent(self.h, param1.h)
 
 type QDialogshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -663,7 +616,6 @@ proc miqt_exec_callback_QDialog_showEvent(self: ptr cQDialog, slot: int, param1:
 
   nimfunc[](slotval1)
 proc QDialogresizeEvent*(self: gen_qdialog_types.QDialog, param1: gen_qevent.QResizeEvent): void =
-
   fQDialog_virtualbase_resizeEvent(self.h, param1.h)
 
 type QDialogresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -681,7 +633,6 @@ proc miqt_exec_callback_QDialog_resizeEvent(self: ptr cQDialog, slot: int, param
 
   nimfunc[](slotval1)
 proc QDialogcontextMenuEvent*(self: gen_qdialog_types.QDialog, param1: gen_qevent.QContextMenuEvent): void =
-
   fQDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -699,7 +650,6 @@ proc miqt_exec_callback_QDialog_contextMenuEvent(self: ptr cQDialog, slot: int, 
 
   nimfunc[](slotval1)
 proc QDialogeventFilter*(self: gen_qdialog_types.QDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -721,7 +671,6 @@ proc miqt_exec_callback_QDialog_eventFilter(self: ptr cQDialog, slot: int, param
 
   virtualReturn
 proc QDialogdevType*(self: gen_qdialog_types.QDialog, ): cint =
-
   fQDialog_virtualbase_devType(self.h)
 
 type QDialogdevTypeProc* = proc(): cint
@@ -739,7 +688,6 @@ proc miqt_exec_callback_QDialog_devType(self: ptr cQDialog, slot: int): cint {.e
 
   virtualReturn
 proc QDialogheightForWidth*(self: gen_qdialog_types.QDialog, param1: cint): cint =
-
   fQDialog_virtualbase_heightForWidth(self.h, param1)
 
 type QDialogheightForWidthProc* = proc(param1: cint): cint
@@ -759,7 +707,6 @@ proc miqt_exec_callback_QDialog_heightForWidth(self: ptr cQDialog, slot: int, pa
 
   virtualReturn
 proc QDialoghasHeightForWidth*(self: gen_qdialog_types.QDialog, ): bool =
-
   fQDialog_virtualbase_hasHeightForWidth(self.h)
 
 type QDialoghasHeightForWidthProc* = proc(): bool
@@ -777,7 +724,6 @@ proc miqt_exec_callback_QDialog_hasHeightForWidth(self: ptr cQDialog, slot: int)
 
   virtualReturn
 proc QDialogpaintEngine*(self: gen_qdialog_types.QDialog, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQDialog_virtualbase_paintEngine(self.h))
 
 type QDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -795,7 +741,6 @@ proc miqt_exec_callback_QDialog_paintEngine(self: ptr cQDialog, slot: int): poin
 
   virtualReturn.h
 proc QDialogevent*(self: gen_qdialog_types.QDialog, event: gen_qcoreevent.QEvent): bool =
-
   fQDialog_virtualbase_event(self.h, event.h)
 
 type QDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -815,7 +760,6 @@ proc miqt_exec_callback_QDialog_event(self: ptr cQDialog, slot: int, event: poin
 
   virtualReturn
 proc QDialogmousePressEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QMouseEvent): void =
-
   fQDialog_virtualbase_mousePressEvent(self.h, event.h)
 
 type QDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -833,7 +777,6 @@ proc miqt_exec_callback_QDialog_mousePressEvent(self: ptr cQDialog, slot: int, e
 
   nimfunc[](slotval1)
 proc QDialogmouseReleaseEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QMouseEvent): void =
-
   fQDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -851,7 +794,6 @@ proc miqt_exec_callback_QDialog_mouseReleaseEvent(self: ptr cQDialog, slot: int,
 
   nimfunc[](slotval1)
 proc QDialogmouseDoubleClickEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QMouseEvent): void =
-
   fQDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -869,7 +811,6 @@ proc miqt_exec_callback_QDialog_mouseDoubleClickEvent(self: ptr cQDialog, slot: 
 
   nimfunc[](slotval1)
 proc QDialogmouseMoveEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QMouseEvent): void =
-
   fQDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -887,7 +828,6 @@ proc miqt_exec_callback_QDialog_mouseMoveEvent(self: ptr cQDialog, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDialogwheelEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QWheelEvent): void =
-
   fQDialog_virtualbase_wheelEvent(self.h, event.h)
 
 type QDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -905,7 +845,6 @@ proc miqt_exec_callback_QDialog_wheelEvent(self: ptr cQDialog, slot: int, event:
 
   nimfunc[](slotval1)
 proc QDialogkeyReleaseEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QKeyEvent): void =
-
   fQDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -923,7 +862,6 @@ proc miqt_exec_callback_QDialog_keyReleaseEvent(self: ptr cQDialog, slot: int, e
 
   nimfunc[](slotval1)
 proc QDialogfocusInEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QFocusEvent): void =
-
   fQDialog_virtualbase_focusInEvent(self.h, event.h)
 
 type QDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -941,7 +879,6 @@ proc miqt_exec_callback_QDialog_focusInEvent(self: ptr cQDialog, slot: int, even
 
   nimfunc[](slotval1)
 proc QDialogfocusOutEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QFocusEvent): void =
-
   fQDialog_virtualbase_focusOutEvent(self.h, event.h)
 
 type QDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -959,7 +896,6 @@ proc miqt_exec_callback_QDialog_focusOutEvent(self: ptr cQDialog, slot: int, eve
 
   nimfunc[](slotval1)
 proc QDialogenterEvent*(self: gen_qdialog_types.QDialog, event: gen_qcoreevent.QEvent): void =
-
   fQDialog_virtualbase_enterEvent(self.h, event.h)
 
 type QDialogenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -977,7 +913,6 @@ proc miqt_exec_callback_QDialog_enterEvent(self: ptr cQDialog, slot: int, event:
 
   nimfunc[](slotval1)
 proc QDialogleaveEvent*(self: gen_qdialog_types.QDialog, event: gen_qcoreevent.QEvent): void =
-
   fQDialog_virtualbase_leaveEvent(self.h, event.h)
 
 type QDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -995,7 +930,6 @@ proc miqt_exec_callback_QDialog_leaveEvent(self: ptr cQDialog, slot: int, event:
 
   nimfunc[](slotval1)
 proc QDialogpaintEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QPaintEvent): void =
-
   fQDialog_virtualbase_paintEvent(self.h, event.h)
 
 type QDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1013,7 +947,6 @@ proc miqt_exec_callback_QDialog_paintEvent(self: ptr cQDialog, slot: int, event:
 
   nimfunc[](slotval1)
 proc QDialogmoveEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QMoveEvent): void =
-
   fQDialog_virtualbase_moveEvent(self.h, event.h)
 
 type QDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1031,7 +964,6 @@ proc miqt_exec_callback_QDialog_moveEvent(self: ptr cQDialog, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QDialogtabletEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QTabletEvent): void =
-
   fQDialog_virtualbase_tabletEvent(self.h, event.h)
 
 type QDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1049,7 +981,6 @@ proc miqt_exec_callback_QDialog_tabletEvent(self: ptr cQDialog, slot: int, event
 
   nimfunc[](slotval1)
 proc QDialogactionEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QActionEvent): void =
-
   fQDialog_virtualbase_actionEvent(self.h, event.h)
 
 type QDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1067,7 +998,6 @@ proc miqt_exec_callback_QDialog_actionEvent(self: ptr cQDialog, slot: int, event
 
   nimfunc[](slotval1)
 proc QDialogdragEnterEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QDragEnterEvent): void =
-
   fQDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1085,7 +1015,6 @@ proc miqt_exec_callback_QDialog_dragEnterEvent(self: ptr cQDialog, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDialogdragMoveEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QDragMoveEvent): void =
-
   fQDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1103,7 +1032,6 @@ proc miqt_exec_callback_QDialog_dragMoveEvent(self: ptr cQDialog, slot: int, eve
 
   nimfunc[](slotval1)
 proc QDialogdragLeaveEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QDragLeaveEvent): void =
-
   fQDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1121,7 +1049,6 @@ proc miqt_exec_callback_QDialog_dragLeaveEvent(self: ptr cQDialog, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDialogdropEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QDropEvent): void =
-
   fQDialog_virtualbase_dropEvent(self.h, event.h)
 
 type QDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1139,7 +1066,6 @@ proc miqt_exec_callback_QDialog_dropEvent(self: ptr cQDialog, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QDialoghideEvent*(self: gen_qdialog_types.QDialog, event: gen_qevent.QHideEvent): void =
-
   fQDialog_virtualbase_hideEvent(self.h, event.h)
 
 type QDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1157,7 +1083,6 @@ proc miqt_exec_callback_QDialog_hideEvent(self: ptr cQDialog, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QDialognativeEvent*(self: gen_qdialog_types.QDialog, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1184,7 +1109,6 @@ proc miqt_exec_callback_QDialog_nativeEvent(self: ptr cQDialog, slot: int, event
 
   virtualReturn
 proc QDialogchangeEvent*(self: gen_qdialog_types.QDialog, param1: gen_qcoreevent.QEvent): void =
-
   fQDialog_virtualbase_changeEvent(self.h, param1.h)
 
 type QDialogchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1202,7 +1126,6 @@ proc miqt_exec_callback_QDialog_changeEvent(self: ptr cQDialog, slot: int, param
 
   nimfunc[](slotval1)
 proc QDialogmetric*(self: gen_qdialog_types.QDialog, param1: cint): cint =
-
   fQDialog_virtualbase_metric(self.h, cint(param1))
 
 type QDialogmetricProc* = proc(param1: cint): cint
@@ -1222,7 +1145,6 @@ proc miqt_exec_callback_QDialog_metric(self: ptr cQDialog, slot: int, param1: ci
 
   virtualReturn
 proc QDialoginitPainter*(self: gen_qdialog_types.QDialog, painter: gen_qpainter.QPainter): void =
-
   fQDialog_virtualbase_initPainter(self.h, painter.h)
 
 type QDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1240,7 +1162,6 @@ proc miqt_exec_callback_QDialog_initPainter(self: ptr cQDialog, slot: int, paint
 
   nimfunc[](slotval1)
 proc QDialogredirected*(self: gen_qdialog_types.QDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQDialog_virtualbase_redirected(self.h, offset.h))
 
 type QDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1260,7 +1181,6 @@ proc miqt_exec_callback_QDialog_redirected(self: ptr cQDialog, slot: int, offset
 
   virtualReturn.h
 proc QDialogsharedPainter*(self: gen_qdialog_types.QDialog, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQDialog_virtualbase_sharedPainter(self.h))
 
 type QDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1278,7 +1198,6 @@ proc miqt_exec_callback_QDialog_sharedPainter(self: ptr cQDialog, slot: int): po
 
   virtualReturn.h
 proc QDialoginputMethodEvent*(self: gen_qdialog_types.QDialog, param1: gen_qevent.QInputMethodEvent): void =
-
   fQDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1296,7 +1215,6 @@ proc miqt_exec_callback_QDialog_inputMethodEvent(self: ptr cQDialog, slot: int, 
 
   nimfunc[](slotval1)
 proc QDialoginputMethodQuery*(self: gen_qdialog_types.QDialog, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1316,7 +1234,6 @@ proc miqt_exec_callback_QDialog_inputMethodQuery(self: ptr cQDialog, slot: int, 
 
   virtualReturn.h
 proc QDialogfocusNextPrevChild*(self: gen_qdialog_types.QDialog, next: bool): bool =
-
   fQDialog_virtualbase_focusNextPrevChild(self.h, next)
 
 type QDialogfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1336,7 +1253,6 @@ proc miqt_exec_callback_QDialog_focusNextPrevChild(self: ptr cQDialog, slot: int
 
   virtualReturn
 proc QDialogtimerEvent*(self: gen_qdialog_types.QDialog, event: gen_qcoreevent.QTimerEvent): void =
-
   fQDialog_virtualbase_timerEvent(self.h, event.h)
 
 type QDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1354,7 +1270,6 @@ proc miqt_exec_callback_QDialog_timerEvent(self: ptr cQDialog, slot: int, event:
 
   nimfunc[](slotval1)
 proc QDialogchildEvent*(self: gen_qdialog_types.QDialog, event: gen_qcoreevent.QChildEvent): void =
-
   fQDialog_virtualbase_childEvent(self.h, event.h)
 
 type QDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1372,7 +1287,6 @@ proc miqt_exec_callback_QDialog_childEvent(self: ptr cQDialog, slot: int, event:
 
   nimfunc[](slotval1)
 proc QDialogcustomEvent*(self: gen_qdialog_types.QDialog, event: gen_qcoreevent.QEvent): void =
-
   fQDialog_virtualbase_customEvent(self.h, event.h)
 
 type QDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1390,7 +1304,6 @@ proc miqt_exec_callback_QDialog_customEvent(self: ptr cQDialog, slot: int, event
 
   nimfunc[](slotval1)
 proc QDialogconnectNotify*(self: gen_qdialog_types.QDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDialog_virtualbase_connectNotify(self.h, signal.h)
 
 type QDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1408,7 +1321,6 @@ proc miqt_exec_callback_QDialog_connectNotify(self: ptr cQDialog, slot: int, sig
 
   nimfunc[](slotval1)
 proc QDialogdisconnectNotify*(self: gen_qdialog_types.QDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

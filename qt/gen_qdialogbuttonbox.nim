@@ -263,85 +263,72 @@ proc fcQDialogButtonBox_delete(self: pointer) {.importc: "QDialogButtonBox_delet
 func init*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, h: ptr cQDialogButtonBox): gen_qdialogbuttonbox_types.QDialogButtonBox =
   T(h: h)
 proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, parent: gen_qwidget.QWidget): gen_qdialogbuttonbox_types.QDialogButtonBox =
-
   gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new(parent.h))
+
 proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qdialogbuttonbox_types.QDialogButtonBox =
-
   gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new2())
+
 proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, orientation: cint): gen_qdialogbuttonbox_types.QDialogButtonBox =
-
   gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new3(cint(orientation)))
+
 proc create2*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint): gen_qdialogbuttonbox_types.QDialogButtonBox =
-
   gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new4(cint(buttons)))
+
 proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint, orientation: cint): gen_qdialogbuttonbox_types.QDialogButtonBox =
-
   gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new5(cint(buttons), cint(orientation)))
+
 proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, orientation: cint, parent: gen_qwidget.QWidget): gen_qdialogbuttonbox_types.QDialogButtonBox =
-
   gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new6(cint(orientation), parent.h))
+
 proc create2*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint, parent: gen_qwidget.QWidget): gen_qdialogbuttonbox_types.QDialogButtonBox =
-
   gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new7(cint(buttons), parent.h))
+
 proc create*(T: type gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint, orientation: cint, parent: gen_qwidget.QWidget): gen_qdialogbuttonbox_types.QDialogButtonBox =
-
   gen_qdialogbuttonbox_types.QDialogButtonBox.init(fcQDialogButtonBox_new8(cint(buttons), cint(orientation), parent.h))
-proc metaObject*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDialogButtonBox_metaObject(self.h))
 
 proc metacast*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cstring): pointer =
-
   fcQDialogButtonBox_metacast(self.h, param1)
 
 proc metacall*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQDialogButtonBox_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring): string =
-
   let v_ms = fcQDialogButtonBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring): string =
-
   let v_ms = fcQDialogButtonBox_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setOrientation*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, orientation: cint): void =
-
   fcQDialogButtonBox_setOrientation(self.h, cint(orientation))
 
 proc orientation*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): cint =
-
   cint(fcQDialogButtonBox_orientation(self.h))
 
 proc addButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton, role: cint): void =
-
   fcQDialogButtonBox_addButton(self.h, button.h, cint(role))
 
-proc addButton2*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, text: string, role: cint): gen_qpushbutton.QPushButton =
-
+proc addButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, text: string, role: cint): gen_qpushbutton.QPushButton =
   gen_qpushbutton.QPushButton(h: fcQDialogButtonBox_addButton2(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(role)))
 
-proc addButtonWithButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: cint): gen_qpushbutton.QPushButton =
-
+proc addButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: cint): gen_qpushbutton.QPushButton =
   gen_qpushbutton.QPushButton(h: fcQDialogButtonBox_addButtonWithButton(self.h, cint(button)))
 
 proc removeButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): void =
-
   fcQDialogButtonBox_removeButton(self.h, button.h)
 
 proc clear*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
-
   fcQDialogButtonBox_clear(self.h)
 
 proc buttons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): seq[gen_qabstractbutton.QAbstractButton] =
-
   var v_ma = fcQDialogButtonBox_buttons(self.h)
   var vx_ret = newSeq[gen_qabstractbutton.QAbstractButton](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -350,129 +337,109 @@ proc buttons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): seq[gen_qabs
   vx_ret
 
 proc buttonRole*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): cint =
-
   cint(fcQDialogButtonBox_buttonRole(self.h, button.h))
 
 proc setStandardButtons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, buttons: cint): void =
-
   fcQDialogButtonBox_setStandardButtons(self.h, cint(buttons))
 
 proc standardButtons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): cint =
-
   cint(fcQDialogButtonBox_standardButtons(self.h))
 
 proc standardButton*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): cint =
-
   cint(fcQDialogButtonBox_standardButton(self.h, button.h))
 
 proc button*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, which: cint): gen_qpushbutton.QPushButton =
-
   gen_qpushbutton.QPushButton(h: fcQDialogButtonBox_button(self.h, cint(which)))
 
 proc setCenterButtons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, center: bool): void =
-
   fcQDialogButtonBox_setCenterButtons(self.h, center)
 
 proc centerButtons*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): bool =
-
   fcQDialogButtonBox_centerButtons(self.h)
 
 proc clicked*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, button: gen_qabstractbutton.QAbstractButton): void =
-
   fcQDialogButtonBox_clicked(self.h, button.h)
 
+type QDialogButtonBoxclickedSlot* = proc(button: gen_qabstractbutton.QAbstractButton)
 proc miqt_exec_callback_QDialogButtonBox_clicked(slot: int, button: pointer) {.exportc.} =
-  type Cb = proc(button: gen_qabstractbutton.QAbstractButton)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDialogButtonBoxclickedSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractbutton.QAbstractButton(h: button)
-
 
   nimfunc[](slotval1)
 
-proc onclicked*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: proc(button: gen_qabstractbutton.QAbstractButton)) =
-  type Cb = proc(button: gen_qabstractbutton.QAbstractButton)
-  var tmp = new Cb
+proc onclicked*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxclickedSlot) =
+  var tmp = new QDialogButtonBoxclickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDialogButtonBox_connect_clicked(self.h, cast[int](addr tmp[]))
-proc accepted*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
 
+proc accepted*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
   fcQDialogButtonBox_accepted(self.h)
 
+type QDialogButtonBoxacceptedSlot* = proc()
 proc miqt_exec_callback_QDialogButtonBox_accepted(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QDialogButtonBoxacceptedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onaccepted*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onaccepted*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxacceptedSlot) =
+  var tmp = new QDialogButtonBoxacceptedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDialogButtonBox_connect_accepted(self.h, cast[int](addr tmp[]))
-proc helpRequested*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
 
+proc helpRequested*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
   fcQDialogButtonBox_helpRequested(self.h)
 
+type QDialogButtonBoxhelpRequestedSlot* = proc()
 proc miqt_exec_callback_QDialogButtonBox_helpRequested(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QDialogButtonBoxhelpRequestedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onhelpRequested*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onhelpRequested*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxhelpRequestedSlot) =
+  var tmp = new QDialogButtonBoxhelpRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDialogButtonBox_connect_helpRequested(self.h, cast[int](addr tmp[]))
-proc rejected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
 
+proc rejected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): void =
   fcQDialogButtonBox_rejected(self.h)
 
+type QDialogButtonBoxrejectedSlot* = proc()
 proc miqt_exec_callback_QDialogButtonBox_rejected(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QDialogButtonBoxrejectedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onrejected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onrejected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, slot: QDialogButtonBoxrejectedSlot) =
+  var tmp = new QDialogButtonBoxrejectedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDialogButtonBox_connect_rejected(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring): string =
   let v_ms = fcQDialogButtonBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDialogButtonBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring): string =
   let v_ms = fcQDialogButtonBox_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qdialogbuttonbox_types.QDialogButtonBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDialogButtonBox_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QDialogButtonBoxmetaObject*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQDialogButtonBox_virtualbase_metaObject(self.h))
 
 type QDialogButtonBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -490,7 +457,6 @@ proc miqt_exec_callback_QDialogButtonBox_metaObject(self: ptr cQDialogButtonBox,
 
   virtualReturn.h
 proc QDialogButtonBoxmetacast*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cstring): pointer =
-
   fQDialogButtonBox_virtualbase_metacast(self.h, param1)
 
 type QDialogButtonBoxmetacastProc* = proc(param1: cstring): pointer
@@ -510,7 +476,6 @@ proc miqt_exec_callback_QDialogButtonBox_metacast(self: ptr cQDialogButtonBox, s
 
   virtualReturn
 proc QDialogButtonBoxmetacall*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fQDialogButtonBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QDialogButtonBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -534,7 +499,6 @@ proc miqt_exec_callback_QDialogButtonBox_metacall(self: ptr cQDialogButtonBox, s
 
   virtualReturn
 proc QDialogButtonBoxchangeEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
-
   fQDialogButtonBox_virtualbase_changeEvent(self.h, event.h)
 
 type QDialogButtonBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -552,7 +516,6 @@ proc miqt_exec_callback_QDialogButtonBox_changeEvent(self: ptr cQDialogButtonBox
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxevent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QEvent): bool =
-
   fQDialogButtonBox_virtualbase_event(self.h, event.h)
 
 type QDialogButtonBoxeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -572,7 +535,6 @@ proc miqt_exec_callback_QDialogButtonBox_event(self: ptr cQDialogButtonBox, slot
 
   virtualReturn
 proc QDialogButtonBoxdevType*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): cint =
-
   fQDialogButtonBox_virtualbase_devType(self.h)
 
 type QDialogButtonBoxdevTypeProc* = proc(): cint
@@ -590,7 +552,6 @@ proc miqt_exec_callback_QDialogButtonBox_devType(self: ptr cQDialogButtonBox, sl
 
   virtualReturn
 proc QDialogButtonBoxsetVisible*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, visible: bool): void =
-
   fQDialogButtonBox_virtualbase_setVisible(self.h, visible)
 
 type QDialogButtonBoxsetVisibleProc* = proc(visible: bool): void
@@ -608,7 +569,6 @@ proc miqt_exec_callback_QDialogButtonBox_setVisible(self: ptr cQDialogButtonBox,
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxsizeHint*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDialogButtonBox_virtualbase_sizeHint(self.h))
 
 type QDialogButtonBoxsizeHintProc* = proc(): gen_qsize.QSize
@@ -626,7 +586,6 @@ proc miqt_exec_callback_QDialogButtonBox_sizeHint(self: ptr cQDialogButtonBox, s
 
   virtualReturn.h
 proc QDialogButtonBoxminimumSizeHint*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDialogButtonBox_virtualbase_minimumSizeHint(self.h))
 
 type QDialogButtonBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -644,7 +603,6 @@ proc miqt_exec_callback_QDialogButtonBox_minimumSizeHint(self: ptr cQDialogButto
 
   virtualReturn.h
 proc QDialogButtonBoxheightForWidth*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint): cint =
-
   fQDialogButtonBox_virtualbase_heightForWidth(self.h, param1)
 
 type QDialogButtonBoxheightForWidthProc* = proc(param1: cint): cint
@@ -664,7 +622,6 @@ proc miqt_exec_callback_QDialogButtonBox_heightForWidth(self: ptr cQDialogButton
 
   virtualReturn
 proc QDialogButtonBoxhasHeightForWidth*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): bool =
-
   fQDialogButtonBox_virtualbase_hasHeightForWidth(self.h)
 
 type QDialogButtonBoxhasHeightForWidthProc* = proc(): bool
@@ -682,7 +639,6 @@ proc miqt_exec_callback_QDialogButtonBox_hasHeightForWidth(self: ptr cQDialogBut
 
   virtualReturn
 proc QDialogButtonBoxpaintEngine*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQDialogButtonBox_virtualbase_paintEngine(self.h))
 
 type QDialogButtonBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -700,7 +656,6 @@ proc miqt_exec_callback_QDialogButtonBox_paintEngine(self: ptr cQDialogButtonBox
 
   virtualReturn.h
 proc QDialogButtonBoxmousePressEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
-
   fQDialogButtonBox_virtualbase_mousePressEvent(self.h, event.h)
 
 type QDialogButtonBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -718,7 +673,6 @@ proc miqt_exec_callback_QDialogButtonBox_mousePressEvent(self: ptr cQDialogButto
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxmouseReleaseEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
-
   fQDialogButtonBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QDialogButtonBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -736,7 +690,6 @@ proc miqt_exec_callback_QDialogButtonBox_mouseReleaseEvent(self: ptr cQDialogBut
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxmouseDoubleClickEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
-
   fQDialogButtonBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QDialogButtonBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -754,7 +707,6 @@ proc miqt_exec_callback_QDialogButtonBox_mouseDoubleClickEvent(self: ptr cQDialo
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxmouseMoveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMouseEvent): void =
-
   fQDialogButtonBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QDialogButtonBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -772,7 +724,6 @@ proc miqt_exec_callback_QDialogButtonBox_mouseMoveEvent(self: ptr cQDialogButton
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxwheelEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QWheelEvent): void =
-
   fQDialogButtonBox_virtualbase_wheelEvent(self.h, event.h)
 
 type QDialogButtonBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -790,7 +741,6 @@ proc miqt_exec_callback_QDialogButtonBox_wheelEvent(self: ptr cQDialogButtonBox,
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxkeyPressEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QKeyEvent): void =
-
   fQDialogButtonBox_virtualbase_keyPressEvent(self.h, event.h)
 
 type QDialogButtonBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -808,7 +758,6 @@ proc miqt_exec_callback_QDialogButtonBox_keyPressEvent(self: ptr cQDialogButtonB
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxkeyReleaseEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QKeyEvent): void =
-
   fQDialogButtonBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QDialogButtonBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -826,7 +775,6 @@ proc miqt_exec_callback_QDialogButtonBox_keyReleaseEvent(self: ptr cQDialogButto
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxfocusInEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QFocusEvent): void =
-
   fQDialogButtonBox_virtualbase_focusInEvent(self.h, event.h)
 
 type QDialogButtonBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -844,7 +792,6 @@ proc miqt_exec_callback_QDialogButtonBox_focusInEvent(self: ptr cQDialogButtonBo
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxfocusOutEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QFocusEvent): void =
-
   fQDialogButtonBox_virtualbase_focusOutEvent(self.h, event.h)
 
 type QDialogButtonBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -862,7 +809,6 @@ proc miqt_exec_callback_QDialogButtonBox_focusOutEvent(self: ptr cQDialogButtonB
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxenterEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
-
   fQDialogButtonBox_virtualbase_enterEvent(self.h, event.h)
 
 type QDialogButtonBoxenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -880,7 +826,6 @@ proc miqt_exec_callback_QDialogButtonBox_enterEvent(self: ptr cQDialogButtonBox,
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxleaveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
-
   fQDialogButtonBox_virtualbase_leaveEvent(self.h, event.h)
 
 type QDialogButtonBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -898,7 +843,6 @@ proc miqt_exec_callback_QDialogButtonBox_leaveEvent(self: ptr cQDialogButtonBox,
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxpaintEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QPaintEvent): void =
-
   fQDialogButtonBox_virtualbase_paintEvent(self.h, event.h)
 
 type QDialogButtonBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -916,7 +860,6 @@ proc miqt_exec_callback_QDialogButtonBox_paintEvent(self: ptr cQDialogButtonBox,
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxmoveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QMoveEvent): void =
-
   fQDialogButtonBox_virtualbase_moveEvent(self.h, event.h)
 
 type QDialogButtonBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -934,7 +877,6 @@ proc miqt_exec_callback_QDialogButtonBox_moveEvent(self: ptr cQDialogButtonBox, 
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxresizeEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QResizeEvent): void =
-
   fQDialogButtonBox_virtualbase_resizeEvent(self.h, event.h)
 
 type QDialogButtonBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -952,7 +894,6 @@ proc miqt_exec_callback_QDialogButtonBox_resizeEvent(self: ptr cQDialogButtonBox
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxcloseEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QCloseEvent): void =
-
   fQDialogButtonBox_virtualbase_closeEvent(self.h, event.h)
 
 type QDialogButtonBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -970,7 +911,6 @@ proc miqt_exec_callback_QDialogButtonBox_closeEvent(self: ptr cQDialogButtonBox,
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxcontextMenuEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QContextMenuEvent): void =
-
   fQDialogButtonBox_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QDialogButtonBoxcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -988,7 +928,6 @@ proc miqt_exec_callback_QDialogButtonBox_contextMenuEvent(self: ptr cQDialogButt
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxtabletEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QTabletEvent): void =
-
   fQDialogButtonBox_virtualbase_tabletEvent(self.h, event.h)
 
 type QDialogButtonBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1006,7 +945,6 @@ proc miqt_exec_callback_QDialogButtonBox_tabletEvent(self: ptr cQDialogButtonBox
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxactionEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QActionEvent): void =
-
   fQDialogButtonBox_virtualbase_actionEvent(self.h, event.h)
 
 type QDialogButtonBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1024,7 +962,6 @@ proc miqt_exec_callback_QDialogButtonBox_actionEvent(self: ptr cQDialogButtonBox
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxdragEnterEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QDragEnterEvent): void =
-
   fQDialogButtonBox_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QDialogButtonBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1042,7 +979,6 @@ proc miqt_exec_callback_QDialogButtonBox_dragEnterEvent(self: ptr cQDialogButton
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxdragMoveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QDragMoveEvent): void =
-
   fQDialogButtonBox_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QDialogButtonBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1060,7 +996,6 @@ proc miqt_exec_callback_QDialogButtonBox_dragMoveEvent(self: ptr cQDialogButtonB
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxdragLeaveEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QDragLeaveEvent): void =
-
   fQDialogButtonBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QDialogButtonBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1078,7 +1013,6 @@ proc miqt_exec_callback_QDialogButtonBox_dragLeaveEvent(self: ptr cQDialogButton
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxdropEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QDropEvent): void =
-
   fQDialogButtonBox_virtualbase_dropEvent(self.h, event.h)
 
 type QDialogButtonBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1096,7 +1030,6 @@ proc miqt_exec_callback_QDialogButtonBox_dropEvent(self: ptr cQDialogButtonBox, 
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxshowEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QShowEvent): void =
-
   fQDialogButtonBox_virtualbase_showEvent(self.h, event.h)
 
 type QDialogButtonBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1114,7 +1047,6 @@ proc miqt_exec_callback_QDialogButtonBox_showEvent(self: ptr cQDialogButtonBox, 
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxhideEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qevent.QHideEvent): void =
-
   fQDialogButtonBox_virtualbase_hideEvent(self.h, event.h)
 
 type QDialogButtonBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1132,7 +1064,6 @@ proc miqt_exec_callback_QDialogButtonBox_hideEvent(self: ptr cQDialogButtonBox, 
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxnativeEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQDialogButtonBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QDialogButtonBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1159,7 +1090,6 @@ proc miqt_exec_callback_QDialogButtonBox_nativeEvent(self: ptr cQDialogButtonBox
 
   virtualReturn
 proc QDialogButtonBoxmetric*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint): cint =
-
   fQDialogButtonBox_virtualbase_metric(self.h, cint(param1))
 
 type QDialogButtonBoxmetricProc* = proc(param1: cint): cint
@@ -1179,7 +1109,6 @@ proc miqt_exec_callback_QDialogButtonBox_metric(self: ptr cQDialogButtonBox, slo
 
   virtualReturn
 proc QDialogButtonBoxinitPainter*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, painter: gen_qpainter.QPainter): void =
-
   fQDialogButtonBox_virtualbase_initPainter(self.h, painter.h)
 
 type QDialogButtonBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1197,7 +1126,6 @@ proc miqt_exec_callback_QDialogButtonBox_initPainter(self: ptr cQDialogButtonBox
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxredirected*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQDialogButtonBox_virtualbase_redirected(self.h, offset.h))
 
 type QDialogButtonBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1217,7 +1145,6 @@ proc miqt_exec_callback_QDialogButtonBox_redirected(self: ptr cQDialogButtonBox,
 
   virtualReturn.h
 proc QDialogButtonBoxsharedPainter*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQDialogButtonBox_virtualbase_sharedPainter(self.h))
 
 type QDialogButtonBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1235,7 +1162,6 @@ proc miqt_exec_callback_QDialogButtonBox_sharedPainter(self: ptr cQDialogButtonB
 
   virtualReturn.h
 proc QDialogButtonBoxinputMethodEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: gen_qevent.QInputMethodEvent): void =
-
   fQDialogButtonBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QDialogButtonBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1253,7 +1179,6 @@ proc miqt_exec_callback_QDialogButtonBox_inputMethodEvent(self: ptr cQDialogButt
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxinputMethodQuery*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQDialogButtonBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QDialogButtonBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1273,7 +1198,6 @@ proc miqt_exec_callback_QDialogButtonBox_inputMethodQuery(self: ptr cQDialogButt
 
   virtualReturn.h
 proc QDialogButtonBoxfocusNextPrevChild*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, next: bool): bool =
-
   fQDialogButtonBox_virtualbase_focusNextPrevChild(self.h, next)
 
 type QDialogButtonBoxfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1293,7 +1217,6 @@ proc miqt_exec_callback_QDialogButtonBox_focusNextPrevChild(self: ptr cQDialogBu
 
   virtualReturn
 proc QDialogButtonBoxeventFilter*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQDialogButtonBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QDialogButtonBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1315,7 +1238,6 @@ proc miqt_exec_callback_QDialogButtonBox_eventFilter(self: ptr cQDialogButtonBox
 
   virtualReturn
 proc QDialogButtonBoxtimerEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QTimerEvent): void =
-
   fQDialogButtonBox_virtualbase_timerEvent(self.h, event.h)
 
 type QDialogButtonBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1333,7 +1255,6 @@ proc miqt_exec_callback_QDialogButtonBox_timerEvent(self: ptr cQDialogButtonBox,
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxchildEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QChildEvent): void =
-
   fQDialogButtonBox_virtualbase_childEvent(self.h, event.h)
 
 type QDialogButtonBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1351,7 +1272,6 @@ proc miqt_exec_callback_QDialogButtonBox_childEvent(self: ptr cQDialogButtonBox,
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxcustomEvent*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, event: gen_qcoreevent.QEvent): void =
-
   fQDialogButtonBox_virtualbase_customEvent(self.h, event.h)
 
 type QDialogButtonBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1369,7 +1289,6 @@ proc miqt_exec_callback_QDialogButtonBox_customEvent(self: ptr cQDialogButtonBox
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxconnectNotify*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDialogButtonBox_virtualbase_connectNotify(self.h, signal.h)
 
 type QDialogButtonBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1387,7 +1306,6 @@ proc miqt_exec_callback_QDialogButtonBox_connectNotify(self: ptr cQDialogButtonB
 
   nimfunc[](slotval1)
 proc QDialogButtonBoxdisconnectNotify*(self: gen_qdialogbuttonbox_types.QDialogButtonBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDialogButtonBox_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QDialogButtonBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

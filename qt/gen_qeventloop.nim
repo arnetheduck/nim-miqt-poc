@@ -116,111 +116,90 @@ proc fcQEventLoopLocker_delete(self: pointer) {.importc: "QEventLoopLocker_delet
 func init*(T: type gen_qeventloop_types.QEventLoop, h: ptr cQEventLoop): gen_qeventloop_types.QEventLoop =
   T(h: h)
 proc create*(T: type gen_qeventloop_types.QEventLoop, ): gen_qeventloop_types.QEventLoop =
-
   gen_qeventloop_types.QEventLoop.init(fcQEventLoop_new())
+
 proc create*(T: type gen_qeventloop_types.QEventLoop, parent: gen_qobject.QObject): gen_qeventloop_types.QEventLoop =
-
   gen_qeventloop_types.QEventLoop.init(fcQEventLoop_new2(parent.h))
-proc metaObject*(self: gen_qeventloop_types.QEventLoop, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qeventloop_types.QEventLoop, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQEventLoop_metaObject(self.h))
 
 proc metacast*(self: gen_qeventloop_types.QEventLoop, param1: cstring): pointer =
-
   fcQEventLoop_metacast(self.h, param1)
 
 proc metacall*(self: gen_qeventloop_types.QEventLoop, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQEventLoop_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qeventloop_types.QEventLoop, s: cstring): string =
-
   let v_ms = fcQEventLoop_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qeventloop_types.QEventLoop, s: cstring): string =
-
   let v_ms = fcQEventLoop_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc processEvents*(self: gen_qeventloop_types.QEventLoop, ): bool =
-
   fcQEventLoop_processEvents(self.h)
 
-proc processEvents2*(self: gen_qeventloop_types.QEventLoop, flags: cint, maximumTime: cint): void =
-
+proc processEvents*(self: gen_qeventloop_types.QEventLoop, flags: cint, maximumTime: cint): void =
   fcQEventLoop_processEvents2(self.h, cint(flags), maximumTime)
 
 proc exec*(self: gen_qeventloop_types.QEventLoop, ): cint =
-
   fcQEventLoop_exec(self.h)
 
 proc exit*(self: gen_qeventloop_types.QEventLoop, ): void =
-
   fcQEventLoop_exit(self.h)
 
 proc isRunning*(self: gen_qeventloop_types.QEventLoop, ): bool =
-
   fcQEventLoop_isRunning(self.h)
 
 proc wakeUp*(self: gen_qeventloop_types.QEventLoop, ): void =
-
   fcQEventLoop_wakeUp(self.h)
 
 proc event*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QEvent): bool =
-
   fcQEventLoop_event(self.h, event.h)
 
 proc quit*(self: gen_qeventloop_types.QEventLoop, ): void =
-
   fcQEventLoop_quit(self.h)
 
-proc tr2*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring): string =
   let v_ms = fcQEventLoop_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQEventLoop_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring): string =
   let v_ms = fcQEventLoop_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qeventloop_types.QEventLoop, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQEventLoop_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc processEvents1*(self: gen_qeventloop_types.QEventLoop, flags: cint): bool =
-
+proc processEvents*(self: gen_qeventloop_types.QEventLoop, flags: cint): bool =
   fcQEventLoop_processEvents1(self.h, cint(flags))
 
-proc exec1*(self: gen_qeventloop_types.QEventLoop, flags: cint): cint =
-
+proc exec*(self: gen_qeventloop_types.QEventLoop, flags: cint): cint =
   fcQEventLoop_exec1(self.h, cint(flags))
 
-proc exit1*(self: gen_qeventloop_types.QEventLoop, returnCode: cint): void =
-
+proc exit*(self: gen_qeventloop_types.QEventLoop, returnCode: cint): void =
   fcQEventLoop_exit1(self.h, returnCode)
 
 proc QEventLoopmetaObject*(self: gen_qeventloop_types.QEventLoop, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQEventLoop_virtualbase_metaObject(self.h))
 
 type QEventLoopmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -238,7 +217,6 @@ proc miqt_exec_callback_QEventLoop_metaObject(self: ptr cQEventLoop, slot: int):
 
   virtualReturn.h
 proc QEventLoopmetacast*(self: gen_qeventloop_types.QEventLoop, param1: cstring): pointer =
-
   fQEventLoop_virtualbase_metacast(self.h, param1)
 
 type QEventLoopmetacastProc* = proc(param1: cstring): pointer
@@ -258,7 +236,6 @@ proc miqt_exec_callback_QEventLoop_metacast(self: ptr cQEventLoop, slot: int, pa
 
   virtualReturn
 proc QEventLoopmetacall*(self: gen_qeventloop_types.QEventLoop, param1: cint, param2: cint, param3: pointer): cint =
-
   fQEventLoop_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QEventLoopmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -282,7 +259,6 @@ proc miqt_exec_callback_QEventLoop_metacall(self: ptr cQEventLoop, slot: int, pa
 
   virtualReturn
 proc QEventLoopevent*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QEvent): bool =
-
   fQEventLoop_virtualbase_event(self.h, event.h)
 
 type QEventLoopeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -302,7 +278,6 @@ proc miqt_exec_callback_QEventLoop_event(self: ptr cQEventLoop, slot: int, event
 
   virtualReturn
 proc QEventLoopeventFilter*(self: gen_qeventloop_types.QEventLoop, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQEventLoop_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QEventLoopeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -324,7 +299,6 @@ proc miqt_exec_callback_QEventLoop_eventFilter(self: ptr cQEventLoop, slot: int,
 
   virtualReturn
 proc QEventLooptimerEvent*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QTimerEvent): void =
-
   fQEventLoop_virtualbase_timerEvent(self.h, event.h)
 
 type QEventLooptimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -342,7 +316,6 @@ proc miqt_exec_callback_QEventLoop_timerEvent(self: ptr cQEventLoop, slot: int, 
 
   nimfunc[](slotval1)
 proc QEventLoopchildEvent*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QChildEvent): void =
-
   fQEventLoop_virtualbase_childEvent(self.h, event.h)
 
 type QEventLoopchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -360,7 +333,6 @@ proc miqt_exec_callback_QEventLoop_childEvent(self: ptr cQEventLoop, slot: int, 
 
   nimfunc[](slotval1)
 proc QEventLoopcustomEvent*(self: gen_qeventloop_types.QEventLoop, event: gen_qcoreevent.QEvent): void =
-
   fQEventLoop_virtualbase_customEvent(self.h, event.h)
 
 type QEventLoopcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -378,7 +350,6 @@ proc miqt_exec_callback_QEventLoop_customEvent(self: ptr cQEventLoop, slot: int,
 
   nimfunc[](slotval1)
 proc QEventLoopconnectNotify*(self: gen_qeventloop_types.QEventLoop, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQEventLoop_virtualbase_connectNotify(self.h, signal.h)
 
 type QEventLoopconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -396,7 +367,6 @@ proc miqt_exec_callback_QEventLoop_connectNotify(self: ptr cQEventLoop, slot: in
 
   nimfunc[](slotval1)
 proc QEventLoopdisconnectNotify*(self: gen_qeventloop_types.QEventLoop, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQEventLoop_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QEventLoopdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -421,13 +391,13 @@ proc delete*(self: gen_qeventloop_types.QEventLoop) =
 func init*(T: type gen_qeventloop_types.QEventLoopLocker, h: ptr cQEventLoopLocker): gen_qeventloop_types.QEventLoopLocker =
   T(h: h)
 proc create*(T: type gen_qeventloop_types.QEventLoopLocker, ): gen_qeventloop_types.QEventLoopLocker =
-
   gen_qeventloop_types.QEventLoopLocker.init(fcQEventLoopLocker_new())
+
 proc create*(T: type gen_qeventloop_types.QEventLoopLocker, loop: gen_qeventloop_types.QEventLoop): gen_qeventloop_types.QEventLoopLocker =
-
   gen_qeventloop_types.QEventLoopLocker.init(fcQEventLoopLocker_new2(loop.h))
-proc create2*(T: type gen_qeventloop_types.QEventLoopLocker, thread: gen_qthread.QThread): gen_qeventloop_types.QEventLoopLocker =
 
+proc create*(T: type gen_qeventloop_types.QEventLoopLocker, thread: gen_qthread.QThread): gen_qeventloop_types.QEventLoopLocker =
   gen_qeventloop_types.QEventLoopLocker.init(fcQEventLoopLocker_new3(thread.h))
+
 proc delete*(self: gen_qeventloop_types.QEventLoopLocker) =
   fcQEventLoopLocker_delete(self.h)

@@ -62,54 +62,45 @@ proc fcQMediaControl_delete(self: pointer) {.importc: "QMediaControl_delete".}
 func init*(T: type gen_qmediacontrol_types.QMediaControl, h: ptr cQMediaControl): gen_qmediacontrol_types.QMediaControl =
   T(h: h)
 proc metaObject*(self: gen_qmediacontrol_types.QMediaControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQMediaControl_metaObject(self.h))
 
 proc metacast*(self: gen_qmediacontrol_types.QMediaControl, param1: cstring): pointer =
-
   fcQMediaControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qmediacontrol_types.QMediaControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMediaControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring): string =
-
   let v_ms = fcQMediaControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring): string =
-
   let v_ms = fcQMediaControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring, c: cstring): string =
   let v_ms = fcQMediaControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMediaControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring, c: cstring): string =
   let v_ms = fcQMediaControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qmediacontrol_types.QMediaControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMediaControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

@@ -71,51 +71,39 @@ proc fcQPixmapCacheKey_delete(self: pointer) {.importc: "QPixmapCache__Key_delet
 func init*(T: type gen_qpixmapcache_types.QPixmapCache, h: ptr cQPixmapCache): gen_qpixmapcache_types.QPixmapCache =
   T(h: h)
 proc cacheLimit*(_: type gen_qpixmapcache_types.QPixmapCache, ): cint =
-
   fcQPixmapCache_cacheLimit()
 
 proc setCacheLimit*(_: type gen_qpixmapcache_types.QPixmapCache, cacheLimit: cint): void =
-
   fcQPixmapCache_setCacheLimit(cacheLimit)
 
 proc find*(_: type gen_qpixmapcache_types.QPixmapCache, key: string): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQPixmapCache_find(struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc find2*(_: type gen_qpixmapcache_types.QPixmapCache, key: string, pixmap: gen_qpixmap.QPixmap): bool =
-
+proc find*(_: type gen_qpixmapcache_types.QPixmapCache, key: string, pixmap: gen_qpixmap.QPixmap): bool =
   fcQPixmapCache_find2(struct_miqt_string(data: key, len: csize_t(len(key))), pixmap.h)
 
-proc find3*(_: type gen_qpixmapcache_types.QPixmapCache, key: string, pixmap: gen_qpixmap.QPixmap): bool =
-
+proc find2*(_: type gen_qpixmapcache_types.QPixmapCache, key: string, pixmap: gen_qpixmap.QPixmap): bool =
   fcQPixmapCache_find3(struct_miqt_string(data: key, len: csize_t(len(key))), pixmap.h)
 
-proc find4*(_: type gen_qpixmapcache_types.QPixmapCache, key: gen_qpixmapcache_types.QPixmapCacheKey, pixmap: gen_qpixmap.QPixmap): bool =
-
+proc find*(_: type gen_qpixmapcache_types.QPixmapCache, key: gen_qpixmapcache_types.QPixmapCacheKey, pixmap: gen_qpixmap.QPixmap): bool =
   fcQPixmapCache_find4(key.h, pixmap.h)
 
 proc insert*(_: type gen_qpixmapcache_types.QPixmapCache, key: string, pixmap: gen_qpixmap.QPixmap): bool =
-
   fcQPixmapCache_insert(struct_miqt_string(data: key, len: csize_t(len(key))), pixmap.h)
 
-proc insertWithPixmap*(_: type gen_qpixmapcache_types.QPixmapCache, pixmap: gen_qpixmap.QPixmap): gen_qpixmapcache_types.QPixmapCacheKey =
-
+proc insert*(_: type gen_qpixmapcache_types.QPixmapCache, pixmap: gen_qpixmap.QPixmap): gen_qpixmapcache_types.QPixmapCacheKey =
   gen_qpixmapcache_types.QPixmapCacheKey(h: fcQPixmapCache_insertWithPixmap(pixmap.h))
 
 proc replace*(_: type gen_qpixmapcache_types.QPixmapCache, key: gen_qpixmapcache_types.QPixmapCacheKey, pixmap: gen_qpixmap.QPixmap): bool =
-
   fcQPixmapCache_replace(key.h, pixmap.h)
 
 proc remove*(_: type gen_qpixmapcache_types.QPixmapCache, key: string): void =
-
   fcQPixmapCache_remove(struct_miqt_string(data: key, len: csize_t(len(key))))
 
-proc removeWithKey*(_: type gen_qpixmapcache_types.QPixmapCache, key: gen_qpixmapcache_types.QPixmapCacheKey): void =
-
+proc remove*(_: type gen_qpixmapcache_types.QPixmapCache, key: gen_qpixmapcache_types.QPixmapCacheKey): void =
   fcQPixmapCache_removeWithKey(key.h)
 
 proc clear*(_: type gen_qpixmapcache_types.QPixmapCache, ): void =
-
   fcQPixmapCache_clear()
 
 proc delete*(self: gen_qpixmapcache_types.QPixmapCache) =
@@ -124,29 +112,24 @@ proc delete*(self: gen_qpixmapcache_types.QPixmapCache) =
 func init*(T: type gen_qpixmapcache_types.QPixmapCacheKey, h: ptr cQPixmapCacheKey): gen_qpixmapcache_types.QPixmapCacheKey =
   T(h: h)
 proc create*(T: type gen_qpixmapcache_types.QPixmapCacheKey, ): gen_qpixmapcache_types.QPixmapCacheKey =
-
   gen_qpixmapcache_types.QPixmapCacheKey.init(fcQPixmapCacheKey_new())
+
 proc create*(T: type gen_qpixmapcache_types.QPixmapCacheKey, other: gen_qpixmapcache_types.QPixmapCacheKey): gen_qpixmapcache_types.QPixmapCacheKey =
-
   gen_qpixmapcache_types.QPixmapCacheKey.init(fcQPixmapCacheKey_new2(other.h))
-proc operatorEqual*(self: gen_qpixmapcache_types.QPixmapCacheKey, key: gen_qpixmapcache_types.QPixmapCacheKey): bool =
 
+proc operatorEqual*(self: gen_qpixmapcache_types.QPixmapCacheKey, key: gen_qpixmapcache_types.QPixmapCacheKey): bool =
   fcQPixmapCacheKey_operatorEqual(self.h, key.h)
 
 proc operatorNotEqual*(self: gen_qpixmapcache_types.QPixmapCacheKey, key: gen_qpixmapcache_types.QPixmapCacheKey): bool =
-
   fcQPixmapCacheKey_operatorNotEqual(self.h, key.h)
 
 proc operatorAssign*(self: gen_qpixmapcache_types.QPixmapCacheKey, other: gen_qpixmapcache_types.QPixmapCacheKey): void =
-
   fcQPixmapCacheKey_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qpixmapcache_types.QPixmapCacheKey, other: gen_qpixmapcache_types.QPixmapCacheKey): void =
-
   fcQPixmapCacheKey_swap(self.h, other.h)
 
 proc isValid*(self: gen_qpixmapcache_types.QPixmapCacheKey, ): bool =
-
   fcQPixmapCacheKey_isValid(self.h)
 
 proc delete*(self: gen_qpixmapcache_types.QPixmapCacheKey) =

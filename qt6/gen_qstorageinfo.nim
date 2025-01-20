@@ -74,109 +74,90 @@ proc fcQStorageInfo_delete(self: pointer) {.importc: "QStorageInfo_delete".}
 func init*(T: type gen_qstorageinfo_types.QStorageInfo, h: ptr cQStorageInfo): gen_qstorageinfo_types.QStorageInfo =
   T(h: h)
 proc create*(T: type gen_qstorageinfo_types.QStorageInfo, ): gen_qstorageinfo_types.QStorageInfo =
-
   gen_qstorageinfo_types.QStorageInfo.init(fcQStorageInfo_new())
+
 proc create*(T: type gen_qstorageinfo_types.QStorageInfo, path: string): gen_qstorageinfo_types.QStorageInfo =
-
   gen_qstorageinfo_types.QStorageInfo.init(fcQStorageInfo_new2(struct_miqt_string(data: path, len: csize_t(len(path)))))
+
 proc create*(T: type gen_qstorageinfo_types.QStorageInfo, dir: gen_qdir.QDir): gen_qstorageinfo_types.QStorageInfo =
-
   gen_qstorageinfo_types.QStorageInfo.init(fcQStorageInfo_new3(dir.h))
-proc create2*(T: type gen_qstorageinfo_types.QStorageInfo, other: gen_qstorageinfo_types.QStorageInfo): gen_qstorageinfo_types.QStorageInfo =
 
+proc create*(T: type gen_qstorageinfo_types.QStorageInfo, other: gen_qstorageinfo_types.QStorageInfo): gen_qstorageinfo_types.QStorageInfo =
   gen_qstorageinfo_types.QStorageInfo.init(fcQStorageInfo_new4(other.h))
-proc operatorAssign*(self: gen_qstorageinfo_types.QStorageInfo, other: gen_qstorageinfo_types.QStorageInfo): void =
 
+proc operatorAssign*(self: gen_qstorageinfo_types.QStorageInfo, other: gen_qstorageinfo_types.QStorageInfo): void =
   fcQStorageInfo_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qstorageinfo_types.QStorageInfo, other: gen_qstorageinfo_types.QStorageInfo): void =
-
   fcQStorageInfo_swap(self.h, other.h)
 
 proc setPath*(self: gen_qstorageinfo_types.QStorageInfo, path: string): void =
-
   fcQStorageInfo_setPath(self.h, struct_miqt_string(data: path, len: csize_t(len(path))))
 
 proc rootPath*(self: gen_qstorageinfo_types.QStorageInfo, ): string =
-
   let v_ms = fcQStorageInfo_rootPath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc device*(self: gen_qstorageinfo_types.QStorageInfo, ): seq[byte] =
-
   var v_bytearray = fcQStorageInfo_device(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc subvolume*(self: gen_qstorageinfo_types.QStorageInfo, ): seq[byte] =
-
   var v_bytearray = fcQStorageInfo_subvolume(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc fileSystemType*(self: gen_qstorageinfo_types.QStorageInfo, ): seq[byte] =
-
   var v_bytearray = fcQStorageInfo_fileSystemType(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc name*(self: gen_qstorageinfo_types.QStorageInfo, ): string =
-
   let v_ms = fcQStorageInfo_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc displayName*(self: gen_qstorageinfo_types.QStorageInfo, ): string =
-
   let v_ms = fcQStorageInfo_displayName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc bytesTotal*(self: gen_qstorageinfo_types.QStorageInfo, ): clonglong =
-
   fcQStorageInfo_bytesTotal(self.h)
 
 proc bytesFree*(self: gen_qstorageinfo_types.QStorageInfo, ): clonglong =
-
   fcQStorageInfo_bytesFree(self.h)
 
 proc bytesAvailable*(self: gen_qstorageinfo_types.QStorageInfo, ): clonglong =
-
   fcQStorageInfo_bytesAvailable(self.h)
 
 proc blockSize*(self: gen_qstorageinfo_types.QStorageInfo, ): cint =
-
   fcQStorageInfo_blockSize(self.h)
 
 proc isRoot*(self: gen_qstorageinfo_types.QStorageInfo, ): bool =
-
   fcQStorageInfo_isRoot(self.h)
 
 proc isReadOnly*(self: gen_qstorageinfo_types.QStorageInfo, ): bool =
-
   fcQStorageInfo_isReadOnly(self.h)
 
 proc isReady*(self: gen_qstorageinfo_types.QStorageInfo, ): bool =
-
   fcQStorageInfo_isReady(self.h)
 
 proc isValid*(self: gen_qstorageinfo_types.QStorageInfo, ): bool =
-
   fcQStorageInfo_isValid(self.h)
 
 proc refresh*(self: gen_qstorageinfo_types.QStorageInfo, ): void =
-
   fcQStorageInfo_refresh(self.h)
 
 proc mountedVolumes*(_: type gen_qstorageinfo_types.QStorageInfo, ): seq[gen_qstorageinfo_types.QStorageInfo] =
-
   var v_ma = fcQStorageInfo_mountedVolumes()
   var vx_ret = newSeq[gen_qstorageinfo_types.QStorageInfo](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -185,7 +166,6 @@ proc mountedVolumes*(_: type gen_qstorageinfo_types.QStorageInfo, ): seq[gen_qst
   vx_ret
 
 proc root*(_: type gen_qstorageinfo_types.QStorageInfo, ): gen_qstorageinfo_types.QStorageInfo =
-
   gen_qstorageinfo_types.QStorageInfo(h: fcQStorageInfo_root())
 
 proc delete*(self: gen_qstorageinfo_types.QStorageInfo) =

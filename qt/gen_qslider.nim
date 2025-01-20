@@ -206,101 +206,84 @@ proc fcQSlider_delete(self: pointer) {.importc: "QSlider_delete".}
 func init*(T: type gen_qslider_types.QSlider, h: ptr cQSlider): gen_qslider_types.QSlider =
   T(h: h)
 proc create*(T: type gen_qslider_types.QSlider, parent: gen_qwidget.QWidget): gen_qslider_types.QSlider =
-
   gen_qslider_types.QSlider.init(fcQSlider_new(parent.h))
+
 proc create*(T: type gen_qslider_types.QSlider, ): gen_qslider_types.QSlider =
-
   gen_qslider_types.QSlider.init(fcQSlider_new2())
+
 proc create*(T: type gen_qslider_types.QSlider, orientation: cint): gen_qslider_types.QSlider =
-
   gen_qslider_types.QSlider.init(fcQSlider_new3(cint(orientation)))
+
 proc create*(T: type gen_qslider_types.QSlider, orientation: cint, parent: gen_qwidget.QWidget): gen_qslider_types.QSlider =
-
   gen_qslider_types.QSlider.init(fcQSlider_new4(cint(orientation), parent.h))
-proc metaObject*(self: gen_qslider_types.QSlider, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qslider_types.QSlider, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSlider_metaObject(self.h))
 
 proc metacast*(self: gen_qslider_types.QSlider, param1: cstring): pointer =
-
   fcQSlider_metacast(self.h, param1)
 
 proc metacall*(self: gen_qslider_types.QSlider, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSlider_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qslider_types.QSlider, s: cstring): string =
-
   let v_ms = fcQSlider_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qslider_types.QSlider, s: cstring): string =
-
   let v_ms = fcQSlider_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sizeHint*(self: gen_qslider_types.QSlider, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSlider_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qslider_types.QSlider, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSlider_minimumSizeHint(self.h))
 
 proc setTickPosition*(self: gen_qslider_types.QSlider, position: cint): void =
-
   fcQSlider_setTickPosition(self.h, cint(position))
 
 proc tickPosition*(self: gen_qslider_types.QSlider, ): cint =
-
   cint(fcQSlider_tickPosition(self.h))
 
 proc setTickInterval*(self: gen_qslider_types.QSlider, ti: cint): void =
-
   fcQSlider_setTickInterval(self.h, ti)
 
 proc tickInterval*(self: gen_qslider_types.QSlider, ): cint =
-
   fcQSlider_tickInterval(self.h)
 
 proc event*(self: gen_qslider_types.QSlider, event: gen_qcoreevent.QEvent): bool =
-
   fcQSlider_event(self.h, event.h)
 
-proc tr2*(_: type gen_qslider_types.QSlider, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qslider_types.QSlider, s: cstring, c: cstring): string =
   let v_ms = fcQSlider_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qslider_types.QSlider, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qslider_types.QSlider, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSlider_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qslider_types.QSlider, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qslider_types.QSlider, s: cstring, c: cstring): string =
   let v_ms = fcQSlider_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qslider_types.QSlider, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qslider_types.QSlider, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSlider_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QSlidermetaObject*(self: gen_qslider_types.QSlider, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSlider_virtualbase_metaObject(self.h))
 
 type QSlidermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -318,7 +301,6 @@ proc miqt_exec_callback_QSlider_metaObject(self: ptr cQSlider, slot: int): point
 
   virtualReturn.h
 proc QSlidermetacast*(self: gen_qslider_types.QSlider, param1: cstring): pointer =
-
   fQSlider_virtualbase_metacast(self.h, param1)
 
 type QSlidermetacastProc* = proc(param1: cstring): pointer
@@ -338,7 +320,6 @@ proc miqt_exec_callback_QSlider_metacast(self: ptr cQSlider, slot: int, param1: 
 
   virtualReturn
 proc QSlidermetacall*(self: gen_qslider_types.QSlider, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSlider_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSlidermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -362,7 +343,6 @@ proc miqt_exec_callback_QSlider_metacall(self: ptr cQSlider, slot: int, param1: 
 
   virtualReturn
 proc QSlidersizeHint*(self: gen_qslider_types.QSlider, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSlider_virtualbase_sizeHint(self.h))
 
 type QSlidersizeHintProc* = proc(): gen_qsize.QSize
@@ -380,7 +360,6 @@ proc miqt_exec_callback_QSlider_sizeHint(self: ptr cQSlider, slot: int): pointer
 
   virtualReturn.h
 proc QSliderminimumSizeHint*(self: gen_qslider_types.QSlider, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSlider_virtualbase_minimumSizeHint(self.h))
 
 type QSliderminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -398,7 +377,6 @@ proc miqt_exec_callback_QSlider_minimumSizeHint(self: ptr cQSlider, slot: int): 
 
   virtualReturn.h
 proc QSliderevent*(self: gen_qslider_types.QSlider, event: gen_qcoreevent.QEvent): bool =
-
   fQSlider_virtualbase_event(self.h, event.h)
 
 type QSlidereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -418,7 +396,6 @@ proc miqt_exec_callback_QSlider_event(self: ptr cQSlider, slot: int, event: poin
 
   virtualReturn
 proc QSliderpaintEvent*(self: gen_qslider_types.QSlider, ev: gen_qevent.QPaintEvent): void =
-
   fQSlider_virtualbase_paintEvent(self.h, ev.h)
 
 type QSliderpaintEventProc* = proc(ev: gen_qevent.QPaintEvent): void
@@ -436,7 +413,6 @@ proc miqt_exec_callback_QSlider_paintEvent(self: ptr cQSlider, slot: int, ev: po
 
   nimfunc[](slotval1)
 proc QSlidermousePressEvent*(self: gen_qslider_types.QSlider, ev: gen_qevent.QMouseEvent): void =
-
   fQSlider_virtualbase_mousePressEvent(self.h, ev.h)
 
 type QSlidermousePressEventProc* = proc(ev: gen_qevent.QMouseEvent): void
@@ -454,7 +430,6 @@ proc miqt_exec_callback_QSlider_mousePressEvent(self: ptr cQSlider, slot: int, e
 
   nimfunc[](slotval1)
 proc QSlidermouseReleaseEvent*(self: gen_qslider_types.QSlider, ev: gen_qevent.QMouseEvent): void =
-
   fQSlider_virtualbase_mouseReleaseEvent(self.h, ev.h)
 
 type QSlidermouseReleaseEventProc* = proc(ev: gen_qevent.QMouseEvent): void
@@ -472,7 +447,6 @@ proc miqt_exec_callback_QSlider_mouseReleaseEvent(self: ptr cQSlider, slot: int,
 
   nimfunc[](slotval1)
 proc QSlidermouseMoveEvent*(self: gen_qslider_types.QSlider, ev: gen_qevent.QMouseEvent): void =
-
   fQSlider_virtualbase_mouseMoveEvent(self.h, ev.h)
 
 type QSlidermouseMoveEventProc* = proc(ev: gen_qevent.QMouseEvent): void
@@ -490,7 +464,6 @@ proc miqt_exec_callback_QSlider_mouseMoveEvent(self: ptr cQSlider, slot: int, ev
 
   nimfunc[](slotval1)
 proc QSlidersliderChange*(self: gen_qslider_types.QSlider, change: cint): void =
-
   fQSlider_virtualbase_sliderChange(self.h, cint(change))
 
 type QSlidersliderChangeProc* = proc(change: cint): void
@@ -508,7 +481,6 @@ proc miqt_exec_callback_QSlider_sliderChange(self: ptr cQSlider, slot: int, chan
 
   nimfunc[](slotval1)
 proc QSliderkeyPressEvent*(self: gen_qslider_types.QSlider, ev: gen_qevent.QKeyEvent): void =
-
   fQSlider_virtualbase_keyPressEvent(self.h, ev.h)
 
 type QSliderkeyPressEventProc* = proc(ev: gen_qevent.QKeyEvent): void
@@ -526,7 +498,6 @@ proc miqt_exec_callback_QSlider_keyPressEvent(self: ptr cQSlider, slot: int, ev:
 
   nimfunc[](slotval1)
 proc QSlidertimerEvent*(self: gen_qslider_types.QSlider, param1: gen_qcoreevent.QTimerEvent): void =
-
   fQSlider_virtualbase_timerEvent(self.h, param1.h)
 
 type QSlidertimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
@@ -544,7 +515,6 @@ proc miqt_exec_callback_QSlider_timerEvent(self: ptr cQSlider, slot: int, param1
 
   nimfunc[](slotval1)
 proc QSliderwheelEvent*(self: gen_qslider_types.QSlider, e: gen_qevent.QWheelEvent): void =
-
   fQSlider_virtualbase_wheelEvent(self.h, e.h)
 
 type QSliderwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
@@ -562,7 +532,6 @@ proc miqt_exec_callback_QSlider_wheelEvent(self: ptr cQSlider, slot: int, e: poi
 
   nimfunc[](slotval1)
 proc QSliderchangeEvent*(self: gen_qslider_types.QSlider, e: gen_qcoreevent.QEvent): void =
-
   fQSlider_virtualbase_changeEvent(self.h, e.h)
 
 type QSliderchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -580,7 +549,6 @@ proc miqt_exec_callback_QSlider_changeEvent(self: ptr cQSlider, slot: int, e: po
 
   nimfunc[](slotval1)
 proc QSliderdevType*(self: gen_qslider_types.QSlider, ): cint =
-
   fQSlider_virtualbase_devType(self.h)
 
 type QSliderdevTypeProc* = proc(): cint
@@ -598,7 +566,6 @@ proc miqt_exec_callback_QSlider_devType(self: ptr cQSlider, slot: int): cint {.e
 
   virtualReturn
 proc QSlidersetVisible*(self: gen_qslider_types.QSlider, visible: bool): void =
-
   fQSlider_virtualbase_setVisible(self.h, visible)
 
 type QSlidersetVisibleProc* = proc(visible: bool): void
@@ -616,7 +583,6 @@ proc miqt_exec_callback_QSlider_setVisible(self: ptr cQSlider, slot: int, visibl
 
   nimfunc[](slotval1)
 proc QSliderheightForWidth*(self: gen_qslider_types.QSlider, param1: cint): cint =
-
   fQSlider_virtualbase_heightForWidth(self.h, param1)
 
 type QSliderheightForWidthProc* = proc(param1: cint): cint
@@ -636,7 +602,6 @@ proc miqt_exec_callback_QSlider_heightForWidth(self: ptr cQSlider, slot: int, pa
 
   virtualReturn
 proc QSliderhasHeightForWidth*(self: gen_qslider_types.QSlider, ): bool =
-
   fQSlider_virtualbase_hasHeightForWidth(self.h)
 
 type QSliderhasHeightForWidthProc* = proc(): bool
@@ -654,7 +619,6 @@ proc miqt_exec_callback_QSlider_hasHeightForWidth(self: ptr cQSlider, slot: int)
 
   virtualReturn
 proc QSliderpaintEngine*(self: gen_qslider_types.QSlider, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQSlider_virtualbase_paintEngine(self.h))
 
 type QSliderpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -672,7 +636,6 @@ proc miqt_exec_callback_QSlider_paintEngine(self: ptr cQSlider, slot: int): poin
 
   virtualReturn.h
 proc QSlidermouseDoubleClickEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QMouseEvent): void =
-
   fQSlider_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QSlidermouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -690,7 +653,6 @@ proc miqt_exec_callback_QSlider_mouseDoubleClickEvent(self: ptr cQSlider, slot: 
 
   nimfunc[](slotval1)
 proc QSliderkeyReleaseEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QKeyEvent): void =
-
   fQSlider_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QSliderkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -708,7 +670,6 @@ proc miqt_exec_callback_QSlider_keyReleaseEvent(self: ptr cQSlider, slot: int, e
 
   nimfunc[](slotval1)
 proc QSliderfocusInEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QFocusEvent): void =
-
   fQSlider_virtualbase_focusInEvent(self.h, event.h)
 
 type QSliderfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -726,7 +687,6 @@ proc miqt_exec_callback_QSlider_focusInEvent(self: ptr cQSlider, slot: int, even
 
   nimfunc[](slotval1)
 proc QSliderfocusOutEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QFocusEvent): void =
-
   fQSlider_virtualbase_focusOutEvent(self.h, event.h)
 
 type QSliderfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -744,7 +704,6 @@ proc miqt_exec_callback_QSlider_focusOutEvent(self: ptr cQSlider, slot: int, eve
 
   nimfunc[](slotval1)
 proc QSliderenterEvent*(self: gen_qslider_types.QSlider, event: gen_qcoreevent.QEvent): void =
-
   fQSlider_virtualbase_enterEvent(self.h, event.h)
 
 type QSliderenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -762,7 +721,6 @@ proc miqt_exec_callback_QSlider_enterEvent(self: ptr cQSlider, slot: int, event:
 
   nimfunc[](slotval1)
 proc QSliderleaveEvent*(self: gen_qslider_types.QSlider, event: gen_qcoreevent.QEvent): void =
-
   fQSlider_virtualbase_leaveEvent(self.h, event.h)
 
 type QSliderleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -780,7 +738,6 @@ proc miqt_exec_callback_QSlider_leaveEvent(self: ptr cQSlider, slot: int, event:
 
   nimfunc[](slotval1)
 proc QSlidermoveEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QMoveEvent): void =
-
   fQSlider_virtualbase_moveEvent(self.h, event.h)
 
 type QSlidermoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -798,7 +755,6 @@ proc miqt_exec_callback_QSlider_moveEvent(self: ptr cQSlider, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QSliderresizeEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QResizeEvent): void =
-
   fQSlider_virtualbase_resizeEvent(self.h, event.h)
 
 type QSliderresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -816,7 +772,6 @@ proc miqt_exec_callback_QSlider_resizeEvent(self: ptr cQSlider, slot: int, event
 
   nimfunc[](slotval1)
 proc QSlidercloseEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QCloseEvent): void =
-
   fQSlider_virtualbase_closeEvent(self.h, event.h)
 
 type QSlidercloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -834,7 +789,6 @@ proc miqt_exec_callback_QSlider_closeEvent(self: ptr cQSlider, slot: int, event:
 
   nimfunc[](slotval1)
 proc QSlidercontextMenuEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QContextMenuEvent): void =
-
   fQSlider_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QSlidercontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -852,7 +806,6 @@ proc miqt_exec_callback_QSlider_contextMenuEvent(self: ptr cQSlider, slot: int, 
 
   nimfunc[](slotval1)
 proc QSlidertabletEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QTabletEvent): void =
-
   fQSlider_virtualbase_tabletEvent(self.h, event.h)
 
 type QSlidertabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -870,7 +823,6 @@ proc miqt_exec_callback_QSlider_tabletEvent(self: ptr cQSlider, slot: int, event
 
   nimfunc[](slotval1)
 proc QSlideractionEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QActionEvent): void =
-
   fQSlider_virtualbase_actionEvent(self.h, event.h)
 
 type QSlideractionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -888,7 +840,6 @@ proc miqt_exec_callback_QSlider_actionEvent(self: ptr cQSlider, slot: int, event
 
   nimfunc[](slotval1)
 proc QSliderdragEnterEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QDragEnterEvent): void =
-
   fQSlider_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QSliderdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -906,7 +857,6 @@ proc miqt_exec_callback_QSlider_dragEnterEvent(self: ptr cQSlider, slot: int, ev
 
   nimfunc[](slotval1)
 proc QSliderdragMoveEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QDragMoveEvent): void =
-
   fQSlider_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QSliderdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -924,7 +874,6 @@ proc miqt_exec_callback_QSlider_dragMoveEvent(self: ptr cQSlider, slot: int, eve
 
   nimfunc[](slotval1)
 proc QSliderdragLeaveEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QDragLeaveEvent): void =
-
   fQSlider_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QSliderdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -942,7 +891,6 @@ proc miqt_exec_callback_QSlider_dragLeaveEvent(self: ptr cQSlider, slot: int, ev
 
   nimfunc[](slotval1)
 proc QSliderdropEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QDropEvent): void =
-
   fQSlider_virtualbase_dropEvent(self.h, event.h)
 
 type QSliderdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -960,7 +908,6 @@ proc miqt_exec_callback_QSlider_dropEvent(self: ptr cQSlider, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QSlidershowEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QShowEvent): void =
-
   fQSlider_virtualbase_showEvent(self.h, event.h)
 
 type QSlidershowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -978,7 +925,6 @@ proc miqt_exec_callback_QSlider_showEvent(self: ptr cQSlider, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QSliderhideEvent*(self: gen_qslider_types.QSlider, event: gen_qevent.QHideEvent): void =
-
   fQSlider_virtualbase_hideEvent(self.h, event.h)
 
 type QSliderhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -996,7 +942,6 @@ proc miqt_exec_callback_QSlider_hideEvent(self: ptr cQSlider, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QSlidernativeEvent*(self: gen_qslider_types.QSlider, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQSlider_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QSlidernativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1023,7 +968,6 @@ proc miqt_exec_callback_QSlider_nativeEvent(self: ptr cQSlider, slot: int, event
 
   virtualReturn
 proc QSlidermetric*(self: gen_qslider_types.QSlider, param1: cint): cint =
-
   fQSlider_virtualbase_metric(self.h, cint(param1))
 
 type QSlidermetricProc* = proc(param1: cint): cint
@@ -1043,7 +987,6 @@ proc miqt_exec_callback_QSlider_metric(self: ptr cQSlider, slot: int, param1: ci
 
   virtualReturn
 proc QSliderinitPainter*(self: gen_qslider_types.QSlider, painter: gen_qpainter.QPainter): void =
-
   fQSlider_virtualbase_initPainter(self.h, painter.h)
 
 type QSliderinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1061,7 +1004,6 @@ proc miqt_exec_callback_QSlider_initPainter(self: ptr cQSlider, slot: int, paint
 
   nimfunc[](slotval1)
 proc QSliderredirected*(self: gen_qslider_types.QSlider, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQSlider_virtualbase_redirected(self.h, offset.h))
 
 type QSliderredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1081,7 +1023,6 @@ proc miqt_exec_callback_QSlider_redirected(self: ptr cQSlider, slot: int, offset
 
   virtualReturn.h
 proc QSlidersharedPainter*(self: gen_qslider_types.QSlider, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQSlider_virtualbase_sharedPainter(self.h))
 
 type QSlidersharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1099,7 +1040,6 @@ proc miqt_exec_callback_QSlider_sharedPainter(self: ptr cQSlider, slot: int): po
 
   virtualReturn.h
 proc QSliderinputMethodEvent*(self: gen_qslider_types.QSlider, param1: gen_qevent.QInputMethodEvent): void =
-
   fQSlider_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QSliderinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1117,7 +1057,6 @@ proc miqt_exec_callback_QSlider_inputMethodEvent(self: ptr cQSlider, slot: int, 
 
   nimfunc[](slotval1)
 proc QSliderinputMethodQuery*(self: gen_qslider_types.QSlider, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQSlider_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QSliderinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1137,7 +1076,6 @@ proc miqt_exec_callback_QSlider_inputMethodQuery(self: ptr cQSlider, slot: int, 
 
   virtualReturn.h
 proc QSliderfocusNextPrevChild*(self: gen_qslider_types.QSlider, next: bool): bool =
-
   fQSlider_virtualbase_focusNextPrevChild(self.h, next)
 
 type QSliderfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1157,7 +1095,6 @@ proc miqt_exec_callback_QSlider_focusNextPrevChild(self: ptr cQSlider, slot: int
 
   virtualReturn
 proc QSlidereventFilter*(self: gen_qslider_types.QSlider, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSlider_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSlidereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1179,7 +1116,6 @@ proc miqt_exec_callback_QSlider_eventFilter(self: ptr cQSlider, slot: int, watch
 
   virtualReturn
 proc QSliderchildEvent*(self: gen_qslider_types.QSlider, event: gen_qcoreevent.QChildEvent): void =
-
   fQSlider_virtualbase_childEvent(self.h, event.h)
 
 type QSliderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1197,7 +1133,6 @@ proc miqt_exec_callback_QSlider_childEvent(self: ptr cQSlider, slot: int, event:
 
   nimfunc[](slotval1)
 proc QSlidercustomEvent*(self: gen_qslider_types.QSlider, event: gen_qcoreevent.QEvent): void =
-
   fQSlider_virtualbase_customEvent(self.h, event.h)
 
 type QSlidercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1215,7 +1150,6 @@ proc miqt_exec_callback_QSlider_customEvent(self: ptr cQSlider, slot: int, event
 
   nimfunc[](slotval1)
 proc QSliderconnectNotify*(self: gen_qslider_types.QSlider, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSlider_virtualbase_connectNotify(self.h, signal.h)
 
 type QSliderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1233,7 +1167,6 @@ proc miqt_exec_callback_QSlider_connectNotify(self: ptr cQSlider, slot: int, sig
 
   nimfunc[](slotval1)
 proc QSliderdisconnectNotify*(self: gen_qslider_types.QSlider, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSlider_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSliderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -140,94 +140,78 @@ proc fcQTemporaryFile_delete(self: pointer) {.importc: "QTemporaryFile_delete".}
 func init*(T: type gen_qtemporaryfile_types.QTemporaryFile, h: ptr cQTemporaryFile): gen_qtemporaryfile_types.QTemporaryFile =
   T(h: h)
 proc create*(T: type gen_qtemporaryfile_types.QTemporaryFile, ): gen_qtemporaryfile_types.QTemporaryFile =
-
   gen_qtemporaryfile_types.QTemporaryFile.init(fcQTemporaryFile_new())
+
 proc create*(T: type gen_qtemporaryfile_types.QTemporaryFile, templateName: string): gen_qtemporaryfile_types.QTemporaryFile =
-
   gen_qtemporaryfile_types.QTemporaryFile.init(fcQTemporaryFile_new2(struct_miqt_string(data: templateName, len: csize_t(len(templateName)))))
+
 proc create*(T: type gen_qtemporaryfile_types.QTemporaryFile, parent: gen_qobject.QObject): gen_qtemporaryfile_types.QTemporaryFile =
-
   gen_qtemporaryfile_types.QTemporaryFile.init(fcQTemporaryFile_new3(parent.h))
+
 proc create*(T: type gen_qtemporaryfile_types.QTemporaryFile, templateName: string, parent: gen_qobject.QObject): gen_qtemporaryfile_types.QTemporaryFile =
-
   gen_qtemporaryfile_types.QTemporaryFile.init(fcQTemporaryFile_new4(struct_miqt_string(data: templateName, len: csize_t(len(templateName))), parent.h))
-proc metaObject*(self: gen_qtemporaryfile_types.QTemporaryFile, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtemporaryfile_types.QTemporaryFile, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTemporaryFile_metaObject(self.h))
 
 proc metacast*(self: gen_qtemporaryfile_types.QTemporaryFile, param1: cstring): pointer =
-
   fcQTemporaryFile_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtemporaryfile_types.QTemporaryFile, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTemporaryFile_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtemporaryfile_types.QTemporaryFile, s: cstring): string =
-
   let v_ms = fcQTemporaryFile_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc autoRemove*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
-
   fcQTemporaryFile_autoRemove(self.h)
 
 proc setAutoRemove*(self: gen_qtemporaryfile_types.QTemporaryFile, b: bool): void =
-
   fcQTemporaryFile_setAutoRemove(self.h, b)
 
 proc open*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
-
   fcQTemporaryFile_open(self.h)
 
 proc fileName*(self: gen_qtemporaryfile_types.QTemporaryFile, ): string =
-
   let v_ms = fcQTemporaryFile_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc fileTemplate*(self: gen_qtemporaryfile_types.QTemporaryFile, ): string =
-
   let v_ms = fcQTemporaryFile_fileTemplate(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFileTemplate*(self: gen_qtemporaryfile_types.QTemporaryFile, name: string): void =
-
   fcQTemporaryFile_setFileTemplate(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc rename*(self: gen_qtemporaryfile_types.QTemporaryFile, newName: string): bool =
-
   fcQTemporaryFile_rename(self.h, struct_miqt_string(data: newName, len: csize_t(len(newName))))
 
 proc createNativeFile*(_: type gen_qtemporaryfile_types.QTemporaryFile, fileName: string): gen_qtemporaryfile_types.QTemporaryFile =
-
   gen_qtemporaryfile_types.QTemporaryFile(h: fcQTemporaryFile_createNativeFile(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
 
-proc createNativeFileWithFile*(_: type gen_qtemporaryfile_types.QTemporaryFile, file: gen_qfile.QFile): gen_qtemporaryfile_types.QTemporaryFile =
-
+proc createNativeFile*(_: type gen_qtemporaryfile_types.QTemporaryFile, file: gen_qfile.QFile): gen_qtemporaryfile_types.QTemporaryFile =
   gen_qtemporaryfile_types.QTemporaryFile(h: fcQTemporaryFile_createNativeFileWithFile(file.h))
 
-proc tr2*(_: type gen_qtemporaryfile_types.QTemporaryFile, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qtemporaryfile_types.QTemporaryFile, s: cstring, c: cstring): string =
   let v_ms = fcQTemporaryFile_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtemporaryfile_types.QTemporaryFile, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtemporaryfile_types.QTemporaryFile, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTemporaryFile_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QTemporaryFilemetaObject*(self: gen_qtemporaryfile_types.QTemporaryFile, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTemporaryFile_virtualbase_metaObject(self.h))
 
 type QTemporaryFilemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -245,7 +229,6 @@ proc miqt_exec_callback_QTemporaryFile_metaObject(self: ptr cQTemporaryFile, slo
 
   virtualReturn.h
 proc QTemporaryFilemetacast*(self: gen_qtemporaryfile_types.QTemporaryFile, param1: cstring): pointer =
-
   fQTemporaryFile_virtualbase_metacast(self.h, param1)
 
 type QTemporaryFilemetacastProc* = proc(param1: cstring): pointer
@@ -265,7 +248,6 @@ proc miqt_exec_callback_QTemporaryFile_metacast(self: ptr cQTemporaryFile, slot:
 
   virtualReturn
 proc QTemporaryFilemetacall*(self: gen_qtemporaryfile_types.QTemporaryFile, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTemporaryFile_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTemporaryFilemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -289,7 +271,6 @@ proc miqt_exec_callback_QTemporaryFile_metacall(self: ptr cQTemporaryFile, slot:
 
   virtualReturn
 proc QTemporaryFilefileName*(self: gen_qtemporaryfile_types.QTemporaryFile, ): string =
-
   let v_ms = fQTemporaryFile_virtualbase_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -309,12 +290,11 @@ proc miqt_exec_callback_QTemporaryFile_fileName(self: ptr cQTemporaryFile, slot:
   let virtualReturn = nimfunc[]( )
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
-proc QTemporaryFileopenWithFlags*(self: gen_qtemporaryfile_types.QTemporaryFile, flags: cint): bool =
-
+proc QTemporaryFileopen*(self: gen_qtemporaryfile_types.QTemporaryFile, flags: cint): bool =
   fQTemporaryFile_virtualbase_openWithFlags(self.h, cint(flags))
 
 type QTemporaryFileopenWithFlagsProc* = proc(flags: cint): bool
-proc onopenWithFlags*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileopenWithFlagsProc) =
+proc onopen*(self: gen_qtemporaryfile_types.QTemporaryFile, slot: QTemporaryFileopenWithFlagsProc) =
   # TODO check subclass
   var tmp = new QTemporaryFileopenWithFlagsProc
   tmp[] = slot
@@ -330,7 +310,6 @@ proc miqt_exec_callback_QTemporaryFile_openWithFlags(self: ptr cQTemporaryFile, 
 
   virtualReturn
 proc QTemporaryFilesize*(self: gen_qtemporaryfile_types.QTemporaryFile, ): clonglong =
-
   fQTemporaryFile_virtualbase_size(self.h)
 
 type QTemporaryFilesizeProc* = proc(): clonglong
@@ -348,7 +327,6 @@ proc miqt_exec_callback_QTemporaryFile_size(self: ptr cQTemporaryFile, slot: int
 
   virtualReturn
 proc QTemporaryFileresize*(self: gen_qtemporaryfile_types.QTemporaryFile, sz: clonglong): bool =
-
   fQTemporaryFile_virtualbase_resize(self.h, sz)
 
 type QTemporaryFileresizeProc* = proc(sz: clonglong): bool
@@ -368,7 +346,6 @@ proc miqt_exec_callback_QTemporaryFile_resize(self: ptr cQTemporaryFile, slot: i
 
   virtualReturn
 proc QTemporaryFilepermissions*(self: gen_qtemporaryfile_types.QTemporaryFile, ): cint =
-
   cint(fQTemporaryFile_virtualbase_permissions(self.h))
 
 type QTemporaryFilepermissionsProc* = proc(): cint
@@ -386,7 +363,6 @@ proc miqt_exec_callback_QTemporaryFile_permissions(self: ptr cQTemporaryFile, sl
 
   cint(virtualReturn)
 proc QTemporaryFilesetPermissions*(self: gen_qtemporaryfile_types.QTemporaryFile, permissionSpec: cint): bool =
-
   fQTemporaryFile_virtualbase_setPermissions(self.h, cint(permissionSpec))
 
 type QTemporaryFilesetPermissionsProc* = proc(permissionSpec: cint): bool
@@ -406,7 +382,6 @@ proc miqt_exec_callback_QTemporaryFile_setPermissions(self: ptr cQTemporaryFile,
 
   virtualReturn
 proc QTemporaryFileclose*(self: gen_qtemporaryfile_types.QTemporaryFile, ): void =
-
   fQTemporaryFile_virtualbase_close(self.h)
 
 type QTemporaryFilecloseProc* = proc(): void
@@ -422,7 +397,6 @@ proc miqt_exec_callback_QTemporaryFile_close(self: ptr cQTemporaryFile, slot: in
 
   nimfunc[]()
 proc QTemporaryFileisSequential*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
-
   fQTemporaryFile_virtualbase_isSequential(self.h)
 
 type QTemporaryFileisSequentialProc* = proc(): bool
@@ -440,7 +414,6 @@ proc miqt_exec_callback_QTemporaryFile_isSequential(self: ptr cQTemporaryFile, s
 
   virtualReturn
 proc QTemporaryFilepos*(self: gen_qtemporaryfile_types.QTemporaryFile, ): clonglong =
-
   fQTemporaryFile_virtualbase_pos(self.h)
 
 type QTemporaryFileposProc* = proc(): clonglong
@@ -458,7 +431,6 @@ proc miqt_exec_callback_QTemporaryFile_pos(self: ptr cQTemporaryFile, slot: int)
 
   virtualReturn
 proc QTemporaryFileseek*(self: gen_qtemporaryfile_types.QTemporaryFile, offset: clonglong): bool =
-
   fQTemporaryFile_virtualbase_seek(self.h, offset)
 
 type QTemporaryFileseekProc* = proc(offset: clonglong): bool
@@ -478,7 +450,6 @@ proc miqt_exec_callback_QTemporaryFile_seek(self: ptr cQTemporaryFile, slot: int
 
   virtualReturn
 proc QTemporaryFileatEnd*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
-
   fQTemporaryFile_virtualbase_atEnd(self.h)
 
 type QTemporaryFileatEndProc* = proc(): bool
@@ -496,7 +467,6 @@ proc miqt_exec_callback_QTemporaryFile_atEnd(self: ptr cQTemporaryFile, slot: in
 
   virtualReturn
 proc QTemporaryFilereadData*(self: gen_qtemporaryfile_types.QTemporaryFile, data: cstring, maxlen: clonglong): clonglong =
-
   fQTemporaryFile_virtualbase_readData(self.h, data, maxlen)
 
 type QTemporaryFilereadDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
@@ -518,7 +488,6 @@ proc miqt_exec_callback_QTemporaryFile_readData(self: ptr cQTemporaryFile, slot:
 
   virtualReturn
 proc QTemporaryFilewriteData*(self: gen_qtemporaryfile_types.QTemporaryFile, data: cstring, len: clonglong): clonglong =
-
   fQTemporaryFile_virtualbase_writeData(self.h, data, len)
 
 type QTemporaryFilewriteDataProc* = proc(data: cstring, len: clonglong): clonglong
@@ -540,7 +509,6 @@ proc miqt_exec_callback_QTemporaryFile_writeData(self: ptr cQTemporaryFile, slot
 
   virtualReturn
 proc QTemporaryFilereadLineData*(self: gen_qtemporaryfile_types.QTemporaryFile, data: cstring, maxlen: clonglong): clonglong =
-
   fQTemporaryFile_virtualbase_readLineData(self.h, data, maxlen)
 
 type QTemporaryFilereadLineDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
@@ -562,7 +530,6 @@ proc miqt_exec_callback_QTemporaryFile_readLineData(self: ptr cQTemporaryFile, s
 
   virtualReturn
 proc QTemporaryFilereset*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
-
   fQTemporaryFile_virtualbase_reset(self.h)
 
 type QTemporaryFileresetProc* = proc(): bool
@@ -580,7 +547,6 @@ proc miqt_exec_callback_QTemporaryFile_reset(self: ptr cQTemporaryFile, slot: in
 
   virtualReturn
 proc QTemporaryFilebytesAvailable*(self: gen_qtemporaryfile_types.QTemporaryFile, ): clonglong =
-
   fQTemporaryFile_virtualbase_bytesAvailable(self.h)
 
 type QTemporaryFilebytesAvailableProc* = proc(): clonglong
@@ -598,7 +564,6 @@ proc miqt_exec_callback_QTemporaryFile_bytesAvailable(self: ptr cQTemporaryFile,
 
   virtualReturn
 proc QTemporaryFilebytesToWrite*(self: gen_qtemporaryfile_types.QTemporaryFile, ): clonglong =
-
   fQTemporaryFile_virtualbase_bytesToWrite(self.h)
 
 type QTemporaryFilebytesToWriteProc* = proc(): clonglong
@@ -616,7 +581,6 @@ proc miqt_exec_callback_QTemporaryFile_bytesToWrite(self: ptr cQTemporaryFile, s
 
   virtualReturn
 proc QTemporaryFilecanReadLine*(self: gen_qtemporaryfile_types.QTemporaryFile, ): bool =
-
   fQTemporaryFile_virtualbase_canReadLine(self.h)
 
 type QTemporaryFilecanReadLineProc* = proc(): bool
@@ -634,7 +598,6 @@ proc miqt_exec_callback_QTemporaryFile_canReadLine(self: ptr cQTemporaryFile, sl
 
   virtualReturn
 proc QTemporaryFilewaitForReadyRead*(self: gen_qtemporaryfile_types.QTemporaryFile, msecs: cint): bool =
-
   fQTemporaryFile_virtualbase_waitForReadyRead(self.h, msecs)
 
 type QTemporaryFilewaitForReadyReadProc* = proc(msecs: cint): bool
@@ -654,7 +617,6 @@ proc miqt_exec_callback_QTemporaryFile_waitForReadyRead(self: ptr cQTemporaryFil
 
   virtualReturn
 proc QTemporaryFilewaitForBytesWritten*(self: gen_qtemporaryfile_types.QTemporaryFile, msecs: cint): bool =
-
   fQTemporaryFile_virtualbase_waitForBytesWritten(self.h, msecs)
 
 type QTemporaryFilewaitForBytesWrittenProc* = proc(msecs: cint): bool
@@ -674,7 +636,6 @@ proc miqt_exec_callback_QTemporaryFile_waitForBytesWritten(self: ptr cQTemporary
 
   virtualReturn
 proc QTemporaryFileskipData*(self: gen_qtemporaryfile_types.QTemporaryFile, maxSize: clonglong): clonglong =
-
   fQTemporaryFile_virtualbase_skipData(self.h, maxSize)
 
 type QTemporaryFileskipDataProc* = proc(maxSize: clonglong): clonglong
@@ -694,7 +655,6 @@ proc miqt_exec_callback_QTemporaryFile_skipData(self: ptr cQTemporaryFile, slot:
 
   virtualReturn
 proc QTemporaryFileevent*(self: gen_qtemporaryfile_types.QTemporaryFile, event: gen_qcoreevent.QEvent): bool =
-
   fQTemporaryFile_virtualbase_event(self.h, event.h)
 
 type QTemporaryFileeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -714,7 +674,6 @@ proc miqt_exec_callback_QTemporaryFile_event(self: ptr cQTemporaryFile, slot: in
 
   virtualReturn
 proc QTemporaryFileeventFilter*(self: gen_qtemporaryfile_types.QTemporaryFile, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTemporaryFile_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTemporaryFileeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -736,7 +695,6 @@ proc miqt_exec_callback_QTemporaryFile_eventFilter(self: ptr cQTemporaryFile, sl
 
   virtualReturn
 proc QTemporaryFiletimerEvent*(self: gen_qtemporaryfile_types.QTemporaryFile, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTemporaryFile_virtualbase_timerEvent(self.h, event.h)
 
 type QTemporaryFiletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -754,7 +712,6 @@ proc miqt_exec_callback_QTemporaryFile_timerEvent(self: ptr cQTemporaryFile, slo
 
   nimfunc[](slotval1)
 proc QTemporaryFilechildEvent*(self: gen_qtemporaryfile_types.QTemporaryFile, event: gen_qcoreevent.QChildEvent): void =
-
   fQTemporaryFile_virtualbase_childEvent(self.h, event.h)
 
 type QTemporaryFilechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -772,7 +729,6 @@ proc miqt_exec_callback_QTemporaryFile_childEvent(self: ptr cQTemporaryFile, slo
 
   nimfunc[](slotval1)
 proc QTemporaryFilecustomEvent*(self: gen_qtemporaryfile_types.QTemporaryFile, event: gen_qcoreevent.QEvent): void =
-
   fQTemporaryFile_virtualbase_customEvent(self.h, event.h)
 
 type QTemporaryFilecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -790,7 +746,6 @@ proc miqt_exec_callback_QTemporaryFile_customEvent(self: ptr cQTemporaryFile, sl
 
   nimfunc[](slotval1)
 proc QTemporaryFileconnectNotify*(self: gen_qtemporaryfile_types.QTemporaryFile, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTemporaryFile_virtualbase_connectNotify(self.h, signal.h)
 
 type QTemporaryFileconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -808,7 +763,6 @@ proc miqt_exec_callback_QTemporaryFile_connectNotify(self: ptr cQTemporaryFile, 
 
   nimfunc[](slotval1)
 proc QTemporaryFiledisconnectNotify*(self: gen_qtemporaryfile_types.QTemporaryFile, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTemporaryFile_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTemporaryFiledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -200,143 +200,119 @@ proc fcQStackedWidget_delete(self: pointer) {.importc: "QStackedWidget_delete".}
 func init*(T: type gen_qstackedwidget_types.QStackedWidget, h: ptr cQStackedWidget): gen_qstackedwidget_types.QStackedWidget =
   T(h: h)
 proc create*(T: type gen_qstackedwidget_types.QStackedWidget, parent: gen_qwidget.QWidget): gen_qstackedwidget_types.QStackedWidget =
-
   gen_qstackedwidget_types.QStackedWidget.init(fcQStackedWidget_new(parent.h))
+
 proc create*(T: type gen_qstackedwidget_types.QStackedWidget, ): gen_qstackedwidget_types.QStackedWidget =
-
   gen_qstackedwidget_types.QStackedWidget.init(fcQStackedWidget_new2())
-proc metaObject*(self: gen_qstackedwidget_types.QStackedWidget, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qstackedwidget_types.QStackedWidget, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQStackedWidget_metaObject(self.h))
 
 proc metacast*(self: gen_qstackedwidget_types.QStackedWidget, param1: cstring): pointer =
-
   fcQStackedWidget_metacast(self.h, param1)
 
 proc metacall*(self: gen_qstackedwidget_types.QStackedWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQStackedWidget_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring): string =
-
   let v_ms = fcQStackedWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring): string =
-
   let v_ms = fcQStackedWidget_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc addWidget*(self: gen_qstackedwidget_types.QStackedWidget, w: gen_qwidget.QWidget): cint =
-
   fcQStackedWidget_addWidget(self.h, w.h)
 
 proc insertWidget*(self: gen_qstackedwidget_types.QStackedWidget, index: cint, w: gen_qwidget.QWidget): cint =
-
   fcQStackedWidget_insertWidget(self.h, index, w.h)
 
 proc removeWidget*(self: gen_qstackedwidget_types.QStackedWidget, w: gen_qwidget.QWidget): void =
-
   fcQStackedWidget_removeWidget(self.h, w.h)
 
 proc currentWidget*(self: gen_qstackedwidget_types.QStackedWidget, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQStackedWidget_currentWidget(self.h))
 
 proc currentIndex*(self: gen_qstackedwidget_types.QStackedWidget, ): cint =
-
   fcQStackedWidget_currentIndex(self.h)
 
 proc indexOf*(self: gen_qstackedwidget_types.QStackedWidget, param1: gen_qwidget.QWidget): cint =
-
   fcQStackedWidget_indexOf(self.h, param1.h)
 
 proc widget*(self: gen_qstackedwidget_types.QStackedWidget, param1: cint): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQStackedWidget_widget(self.h, param1))
 
 proc count*(self: gen_qstackedwidget_types.QStackedWidget, ): cint =
-
   fcQStackedWidget_count(self.h)
 
 proc setCurrentIndex*(self: gen_qstackedwidget_types.QStackedWidget, index: cint): void =
-
   fcQStackedWidget_setCurrentIndex(self.h, index)
 
 proc setCurrentWidget*(self: gen_qstackedwidget_types.QStackedWidget, w: gen_qwidget.QWidget): void =
-
   fcQStackedWidget_setCurrentWidget(self.h, w.h)
 
 proc currentChanged*(self: gen_qstackedwidget_types.QStackedWidget, param1: cint): void =
-
   fcQStackedWidget_currentChanged(self.h, param1)
 
+type QStackedWidgetcurrentChangedSlot* = proc(param1: cint)
 proc miqt_exec_callback_QStackedWidget_currentChanged(slot: int, param1: cint) {.exportc.} =
-  type Cb = proc(param1: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QStackedWidgetcurrentChangedSlot](cast[pointer](slot))
   let slotval1 = param1
-
 
   nimfunc[](slotval1)
 
-proc oncurrentChanged*(self: gen_qstackedwidget_types.QStackedWidget, slot: proc(param1: cint)) =
-  type Cb = proc(param1: cint)
-  var tmp = new Cb
+proc oncurrentChanged*(self: gen_qstackedwidget_types.QStackedWidget, slot: QStackedWidgetcurrentChangedSlot) =
+  var tmp = new QStackedWidgetcurrentChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQStackedWidget_connect_currentChanged(self.h, cast[int](addr tmp[]))
-proc widgetRemoved*(self: gen_qstackedwidget_types.QStackedWidget, index: cint): void =
 
+proc widgetRemoved*(self: gen_qstackedwidget_types.QStackedWidget, index: cint): void =
   fcQStackedWidget_widgetRemoved(self.h, index)
 
+type QStackedWidgetwidgetRemovedSlot* = proc(index: cint)
 proc miqt_exec_callback_QStackedWidget_widgetRemoved(slot: int, index: cint) {.exportc.} =
-  type Cb = proc(index: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QStackedWidgetwidgetRemovedSlot](cast[pointer](slot))
   let slotval1 = index
-
 
   nimfunc[](slotval1)
 
-proc onwidgetRemoved*(self: gen_qstackedwidget_types.QStackedWidget, slot: proc(index: cint)) =
-  type Cb = proc(index: cint)
-  var tmp = new Cb
+proc onwidgetRemoved*(self: gen_qstackedwidget_types.QStackedWidget, slot: QStackedWidgetwidgetRemovedSlot) =
+  var tmp = new QStackedWidgetwidgetRemovedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQStackedWidget_connect_widgetRemoved(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring, c: cstring): string =
   let v_ms = fcQStackedWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQStackedWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring, c: cstring): string =
   let v_ms = fcQStackedWidget_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qstackedwidget_types.QStackedWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQStackedWidget_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QStackedWidgetmetaObject*(self: gen_qstackedwidget_types.QStackedWidget, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQStackedWidget_virtualbase_metaObject(self.h))
 
 type QStackedWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -354,7 +330,6 @@ proc miqt_exec_callback_QStackedWidget_metaObject(self: ptr cQStackedWidget, slo
 
   virtualReturn.h
 proc QStackedWidgetmetacast*(self: gen_qstackedwidget_types.QStackedWidget, param1: cstring): pointer =
-
   fQStackedWidget_virtualbase_metacast(self.h, param1)
 
 type QStackedWidgetmetacastProc* = proc(param1: cstring): pointer
@@ -374,7 +349,6 @@ proc miqt_exec_callback_QStackedWidget_metacast(self: ptr cQStackedWidget, slot:
 
   virtualReturn
 proc QStackedWidgetmetacall*(self: gen_qstackedwidget_types.QStackedWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fQStackedWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QStackedWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -398,7 +372,6 @@ proc miqt_exec_callback_QStackedWidget_metacall(self: ptr cQStackedWidget, slot:
 
   virtualReturn
 proc QStackedWidgetevent*(self: gen_qstackedwidget_types.QStackedWidget, e: gen_qcoreevent.QEvent): bool =
-
   fQStackedWidget_virtualbase_event(self.h, e.h)
 
 type QStackedWidgeteventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -418,7 +391,6 @@ proc miqt_exec_callback_QStackedWidget_event(self: ptr cQStackedWidget, slot: in
 
   virtualReturn
 proc QStackedWidgetsizeHint*(self: gen_qstackedwidget_types.QStackedWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQStackedWidget_virtualbase_sizeHint(self.h))
 
 type QStackedWidgetsizeHintProc* = proc(): gen_qsize.QSize
@@ -436,7 +408,6 @@ proc miqt_exec_callback_QStackedWidget_sizeHint(self: ptr cQStackedWidget, slot:
 
   virtualReturn.h
 proc QStackedWidgetpaintEvent*(self: gen_qstackedwidget_types.QStackedWidget, param1: gen_qevent.QPaintEvent): void =
-
   fQStackedWidget_virtualbase_paintEvent(self.h, param1.h)
 
 type QStackedWidgetpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -454,7 +425,6 @@ proc miqt_exec_callback_QStackedWidget_paintEvent(self: ptr cQStackedWidget, slo
 
   nimfunc[](slotval1)
 proc QStackedWidgetchangeEvent*(self: gen_qstackedwidget_types.QStackedWidget, param1: gen_qcoreevent.QEvent): void =
-
   fQStackedWidget_virtualbase_changeEvent(self.h, param1.h)
 
 type QStackedWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -472,7 +442,6 @@ proc miqt_exec_callback_QStackedWidget_changeEvent(self: ptr cQStackedWidget, sl
 
   nimfunc[](slotval1)
 proc QStackedWidgetdevType*(self: gen_qstackedwidget_types.QStackedWidget, ): cint =
-
   fQStackedWidget_virtualbase_devType(self.h)
 
 type QStackedWidgetdevTypeProc* = proc(): cint
@@ -490,7 +459,6 @@ proc miqt_exec_callback_QStackedWidget_devType(self: ptr cQStackedWidget, slot: 
 
   virtualReturn
 proc QStackedWidgetsetVisible*(self: gen_qstackedwidget_types.QStackedWidget, visible: bool): void =
-
   fQStackedWidget_virtualbase_setVisible(self.h, visible)
 
 type QStackedWidgetsetVisibleProc* = proc(visible: bool): void
@@ -508,7 +476,6 @@ proc miqt_exec_callback_QStackedWidget_setVisible(self: ptr cQStackedWidget, slo
 
   nimfunc[](slotval1)
 proc QStackedWidgetminimumSizeHint*(self: gen_qstackedwidget_types.QStackedWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQStackedWidget_virtualbase_minimumSizeHint(self.h))
 
 type QStackedWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -526,7 +493,6 @@ proc miqt_exec_callback_QStackedWidget_minimumSizeHint(self: ptr cQStackedWidget
 
   virtualReturn.h
 proc QStackedWidgetheightForWidth*(self: gen_qstackedwidget_types.QStackedWidget, param1: cint): cint =
-
   fQStackedWidget_virtualbase_heightForWidth(self.h, param1)
 
 type QStackedWidgetheightForWidthProc* = proc(param1: cint): cint
@@ -546,7 +512,6 @@ proc miqt_exec_callback_QStackedWidget_heightForWidth(self: ptr cQStackedWidget,
 
   virtualReturn
 proc QStackedWidgethasHeightForWidth*(self: gen_qstackedwidget_types.QStackedWidget, ): bool =
-
   fQStackedWidget_virtualbase_hasHeightForWidth(self.h)
 
 type QStackedWidgethasHeightForWidthProc* = proc(): bool
@@ -564,7 +529,6 @@ proc miqt_exec_callback_QStackedWidget_hasHeightForWidth(self: ptr cQStackedWidg
 
   virtualReturn
 proc QStackedWidgetpaintEngine*(self: gen_qstackedwidget_types.QStackedWidget, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQStackedWidget_virtualbase_paintEngine(self.h))
 
 type QStackedWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -582,7 +546,6 @@ proc miqt_exec_callback_QStackedWidget_paintEngine(self: ptr cQStackedWidget, sl
 
   virtualReturn.h
 proc QStackedWidgetmousePressEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QMouseEvent): void =
-
   fQStackedWidget_virtualbase_mousePressEvent(self.h, event.h)
 
 type QStackedWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -600,7 +563,6 @@ proc miqt_exec_callback_QStackedWidget_mousePressEvent(self: ptr cQStackedWidget
 
   nimfunc[](slotval1)
 proc QStackedWidgetmouseReleaseEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QMouseEvent): void =
-
   fQStackedWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QStackedWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -618,7 +580,6 @@ proc miqt_exec_callback_QStackedWidget_mouseReleaseEvent(self: ptr cQStackedWidg
 
   nimfunc[](slotval1)
 proc QStackedWidgetmouseDoubleClickEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QMouseEvent): void =
-
   fQStackedWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QStackedWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -636,7 +597,6 @@ proc miqt_exec_callback_QStackedWidget_mouseDoubleClickEvent(self: ptr cQStacked
 
   nimfunc[](slotval1)
 proc QStackedWidgetmouseMoveEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QMouseEvent): void =
-
   fQStackedWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QStackedWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -654,7 +614,6 @@ proc miqt_exec_callback_QStackedWidget_mouseMoveEvent(self: ptr cQStackedWidget,
 
   nimfunc[](slotval1)
 proc QStackedWidgetwheelEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QWheelEvent): void =
-
   fQStackedWidget_virtualbase_wheelEvent(self.h, event.h)
 
 type QStackedWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -672,7 +631,6 @@ proc miqt_exec_callback_QStackedWidget_wheelEvent(self: ptr cQStackedWidget, slo
 
   nimfunc[](slotval1)
 proc QStackedWidgetkeyPressEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QKeyEvent): void =
-
   fQStackedWidget_virtualbase_keyPressEvent(self.h, event.h)
 
 type QStackedWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -690,7 +648,6 @@ proc miqt_exec_callback_QStackedWidget_keyPressEvent(self: ptr cQStackedWidget, 
 
   nimfunc[](slotval1)
 proc QStackedWidgetkeyReleaseEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QKeyEvent): void =
-
   fQStackedWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QStackedWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -708,7 +665,6 @@ proc miqt_exec_callback_QStackedWidget_keyReleaseEvent(self: ptr cQStackedWidget
 
   nimfunc[](slotval1)
 proc QStackedWidgetfocusInEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QFocusEvent): void =
-
   fQStackedWidget_virtualbase_focusInEvent(self.h, event.h)
 
 type QStackedWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -726,7 +682,6 @@ proc miqt_exec_callback_QStackedWidget_focusInEvent(self: ptr cQStackedWidget, s
 
   nimfunc[](slotval1)
 proc QStackedWidgetfocusOutEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QFocusEvent): void =
-
   fQStackedWidget_virtualbase_focusOutEvent(self.h, event.h)
 
 type QStackedWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -744,7 +699,6 @@ proc miqt_exec_callback_QStackedWidget_focusOutEvent(self: ptr cQStackedWidget, 
 
   nimfunc[](slotval1)
 proc QStackedWidgetenterEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qcoreevent.QEvent): void =
-
   fQStackedWidget_virtualbase_enterEvent(self.h, event.h)
 
 type QStackedWidgetenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -762,7 +716,6 @@ proc miqt_exec_callback_QStackedWidget_enterEvent(self: ptr cQStackedWidget, slo
 
   nimfunc[](slotval1)
 proc QStackedWidgetleaveEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qcoreevent.QEvent): void =
-
   fQStackedWidget_virtualbase_leaveEvent(self.h, event.h)
 
 type QStackedWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -780,7 +733,6 @@ proc miqt_exec_callback_QStackedWidget_leaveEvent(self: ptr cQStackedWidget, slo
 
   nimfunc[](slotval1)
 proc QStackedWidgetmoveEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QMoveEvent): void =
-
   fQStackedWidget_virtualbase_moveEvent(self.h, event.h)
 
 type QStackedWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -798,7 +750,6 @@ proc miqt_exec_callback_QStackedWidget_moveEvent(self: ptr cQStackedWidget, slot
 
   nimfunc[](slotval1)
 proc QStackedWidgetresizeEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QResizeEvent): void =
-
   fQStackedWidget_virtualbase_resizeEvent(self.h, event.h)
 
 type QStackedWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -816,7 +767,6 @@ proc miqt_exec_callback_QStackedWidget_resizeEvent(self: ptr cQStackedWidget, sl
 
   nimfunc[](slotval1)
 proc QStackedWidgetcloseEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QCloseEvent): void =
-
   fQStackedWidget_virtualbase_closeEvent(self.h, event.h)
 
 type QStackedWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -834,7 +784,6 @@ proc miqt_exec_callback_QStackedWidget_closeEvent(self: ptr cQStackedWidget, slo
 
   nimfunc[](slotval1)
 proc QStackedWidgetcontextMenuEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QContextMenuEvent): void =
-
   fQStackedWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QStackedWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -852,7 +801,6 @@ proc miqt_exec_callback_QStackedWidget_contextMenuEvent(self: ptr cQStackedWidge
 
   nimfunc[](slotval1)
 proc QStackedWidgettabletEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QTabletEvent): void =
-
   fQStackedWidget_virtualbase_tabletEvent(self.h, event.h)
 
 type QStackedWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -870,7 +818,6 @@ proc miqt_exec_callback_QStackedWidget_tabletEvent(self: ptr cQStackedWidget, sl
 
   nimfunc[](slotval1)
 proc QStackedWidgetactionEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QActionEvent): void =
-
   fQStackedWidget_virtualbase_actionEvent(self.h, event.h)
 
 type QStackedWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -888,7 +835,6 @@ proc miqt_exec_callback_QStackedWidget_actionEvent(self: ptr cQStackedWidget, sl
 
   nimfunc[](slotval1)
 proc QStackedWidgetdragEnterEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QDragEnterEvent): void =
-
   fQStackedWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QStackedWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -906,7 +852,6 @@ proc miqt_exec_callback_QStackedWidget_dragEnterEvent(self: ptr cQStackedWidget,
 
   nimfunc[](slotval1)
 proc QStackedWidgetdragMoveEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QDragMoveEvent): void =
-
   fQStackedWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QStackedWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -924,7 +869,6 @@ proc miqt_exec_callback_QStackedWidget_dragMoveEvent(self: ptr cQStackedWidget, 
 
   nimfunc[](slotval1)
 proc QStackedWidgetdragLeaveEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QDragLeaveEvent): void =
-
   fQStackedWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QStackedWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -942,7 +886,6 @@ proc miqt_exec_callback_QStackedWidget_dragLeaveEvent(self: ptr cQStackedWidget,
 
   nimfunc[](slotval1)
 proc QStackedWidgetdropEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QDropEvent): void =
-
   fQStackedWidget_virtualbase_dropEvent(self.h, event.h)
 
 type QStackedWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -960,7 +903,6 @@ proc miqt_exec_callback_QStackedWidget_dropEvent(self: ptr cQStackedWidget, slot
 
   nimfunc[](slotval1)
 proc QStackedWidgetshowEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QShowEvent): void =
-
   fQStackedWidget_virtualbase_showEvent(self.h, event.h)
 
 type QStackedWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -978,7 +920,6 @@ proc miqt_exec_callback_QStackedWidget_showEvent(self: ptr cQStackedWidget, slot
 
   nimfunc[](slotval1)
 proc QStackedWidgethideEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qevent.QHideEvent): void =
-
   fQStackedWidget_virtualbase_hideEvent(self.h, event.h)
 
 type QStackedWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -996,7 +937,6 @@ proc miqt_exec_callback_QStackedWidget_hideEvent(self: ptr cQStackedWidget, slot
 
   nimfunc[](slotval1)
 proc QStackedWidgetnativeEvent*(self: gen_qstackedwidget_types.QStackedWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQStackedWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QStackedWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1023,7 +963,6 @@ proc miqt_exec_callback_QStackedWidget_nativeEvent(self: ptr cQStackedWidget, sl
 
   virtualReturn
 proc QStackedWidgetmetric*(self: gen_qstackedwidget_types.QStackedWidget, param1: cint): cint =
-
   fQStackedWidget_virtualbase_metric(self.h, cint(param1))
 
 type QStackedWidgetmetricProc* = proc(param1: cint): cint
@@ -1043,7 +982,6 @@ proc miqt_exec_callback_QStackedWidget_metric(self: ptr cQStackedWidget, slot: i
 
   virtualReturn
 proc QStackedWidgetinitPainter*(self: gen_qstackedwidget_types.QStackedWidget, painter: gen_qpainter.QPainter): void =
-
   fQStackedWidget_virtualbase_initPainter(self.h, painter.h)
 
 type QStackedWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1061,7 +999,6 @@ proc miqt_exec_callback_QStackedWidget_initPainter(self: ptr cQStackedWidget, sl
 
   nimfunc[](slotval1)
 proc QStackedWidgetredirected*(self: gen_qstackedwidget_types.QStackedWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQStackedWidget_virtualbase_redirected(self.h, offset.h))
 
 type QStackedWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1081,7 +1018,6 @@ proc miqt_exec_callback_QStackedWidget_redirected(self: ptr cQStackedWidget, slo
 
   virtualReturn.h
 proc QStackedWidgetsharedPainter*(self: gen_qstackedwidget_types.QStackedWidget, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQStackedWidget_virtualbase_sharedPainter(self.h))
 
 type QStackedWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1099,7 +1035,6 @@ proc miqt_exec_callback_QStackedWidget_sharedPainter(self: ptr cQStackedWidget, 
 
   virtualReturn.h
 proc QStackedWidgetinputMethodEvent*(self: gen_qstackedwidget_types.QStackedWidget, param1: gen_qevent.QInputMethodEvent): void =
-
   fQStackedWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QStackedWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1117,7 +1052,6 @@ proc miqt_exec_callback_QStackedWidget_inputMethodEvent(self: ptr cQStackedWidge
 
   nimfunc[](slotval1)
 proc QStackedWidgetinputMethodQuery*(self: gen_qstackedwidget_types.QStackedWidget, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQStackedWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QStackedWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1137,7 +1071,6 @@ proc miqt_exec_callback_QStackedWidget_inputMethodQuery(self: ptr cQStackedWidge
 
   virtualReturn.h
 proc QStackedWidgetfocusNextPrevChild*(self: gen_qstackedwidget_types.QStackedWidget, next: bool): bool =
-
   fQStackedWidget_virtualbase_focusNextPrevChild(self.h, next)
 
 type QStackedWidgetfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1157,7 +1090,6 @@ proc miqt_exec_callback_QStackedWidget_focusNextPrevChild(self: ptr cQStackedWid
 
   virtualReturn
 proc QStackedWidgeteventFilter*(self: gen_qstackedwidget_types.QStackedWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQStackedWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QStackedWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1179,7 +1111,6 @@ proc miqt_exec_callback_QStackedWidget_eventFilter(self: ptr cQStackedWidget, sl
 
   virtualReturn
 proc QStackedWidgettimerEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qcoreevent.QTimerEvent): void =
-
   fQStackedWidget_virtualbase_timerEvent(self.h, event.h)
 
 type QStackedWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1197,7 +1128,6 @@ proc miqt_exec_callback_QStackedWidget_timerEvent(self: ptr cQStackedWidget, slo
 
   nimfunc[](slotval1)
 proc QStackedWidgetchildEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qcoreevent.QChildEvent): void =
-
   fQStackedWidget_virtualbase_childEvent(self.h, event.h)
 
 type QStackedWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1215,7 +1145,6 @@ proc miqt_exec_callback_QStackedWidget_childEvent(self: ptr cQStackedWidget, slo
 
   nimfunc[](slotval1)
 proc QStackedWidgetcustomEvent*(self: gen_qstackedwidget_types.QStackedWidget, event: gen_qcoreevent.QEvent): void =
-
   fQStackedWidget_virtualbase_customEvent(self.h, event.h)
 
 type QStackedWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1233,7 +1162,6 @@ proc miqt_exec_callback_QStackedWidget_customEvent(self: ptr cQStackedWidget, sl
 
   nimfunc[](slotval1)
 proc QStackedWidgetconnectNotify*(self: gen_qstackedwidget_types.QStackedWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStackedWidget_virtualbase_connectNotify(self.h, signal.h)
 
 type QStackedWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1251,7 +1179,6 @@ proc miqt_exec_callback_QStackedWidget_connectNotify(self: ptr cQStackedWidget, 
 
   nimfunc[](slotval1)
 proc QStackedWidgetdisconnectNotify*(self: gen_qstackedwidget_types.QStackedWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStackedWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QStackedWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

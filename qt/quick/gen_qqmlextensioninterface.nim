@@ -65,14 +65,12 @@ proc fcQQmlEngineExtensionInterface_delete(self: pointer) {.importc: "QQmlEngine
 func init*(T: type gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface, h: ptr cQQmlTypesExtensionInterface): gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface =
   T(h: h)
 proc create*(T: type gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface, param1: gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface): gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface =
-
   gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface.init(fcQQmlTypesExtensionInterface_new(param1.h))
-proc registerTypes*(self: gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface, uri: cstring): void =
 
+proc registerTypes*(self: gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface, uri: cstring): void =
   fcQQmlTypesExtensionInterface_registerTypes(self.h, uri)
 
 proc operatorAssign*(self: gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface, param1: gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface): void =
-
   fcQQmlTypesExtensionInterface_operatorAssign(self.h, param1.h)
 
 type QQmlTypesExtensionInterfaceregisterTypesProc* = proc(uri: cstring): void
@@ -95,14 +93,12 @@ proc delete*(self: gen_qqmlextensioninterface_types.QQmlTypesExtensionInterface)
 func init*(T: type gen_qqmlextensioninterface_types.QQmlExtensionInterface, h: ptr cQQmlExtensionInterface): gen_qqmlextensioninterface_types.QQmlExtensionInterface =
   T(h: h)
 proc create*(T: type gen_qqmlextensioninterface_types.QQmlExtensionInterface, param1: gen_qqmlextensioninterface_types.QQmlExtensionInterface): gen_qqmlextensioninterface_types.QQmlExtensionInterface =
-
   gen_qqmlextensioninterface_types.QQmlExtensionInterface.init(fcQQmlExtensionInterface_new(param1.h))
-proc initializeEngine*(self: gen_qqmlextensioninterface_types.QQmlExtensionInterface, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
 
+proc initializeEngine*(self: gen_qqmlextensioninterface_types.QQmlExtensionInterface, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
   fcQQmlExtensionInterface_initializeEngine(self.h, engine.h, uri)
 
 proc operatorAssign*(self: gen_qqmlextensioninterface_types.QQmlExtensionInterface, param1: gen_qqmlextensioninterface_types.QQmlExtensionInterface): void =
-
   fcQQmlExtensionInterface_operatorAssign(self.h, param1.h)
 
 type QQmlExtensionInterfaceinitializeEngineProc* = proc(engine: gen_qqmlengine.QQmlEngine, uri: cstring): void
@@ -141,11 +137,9 @@ proc delete*(self: gen_qqmlextensioninterface_types.QQmlExtensionInterface) =
 func init*(T: type gen_qqmlextensioninterface_types.QQmlEngineExtensionInterface, h: ptr cQQmlEngineExtensionInterface): gen_qqmlextensioninterface_types.QQmlEngineExtensionInterface =
   T(h: h)
 proc initializeEngine*(self: gen_qqmlextensioninterface_types.QQmlEngineExtensionInterface, engine: gen_qqmlengine.QQmlEngine, uri: cstring): void =
-
   fcQQmlEngineExtensionInterface_initializeEngine(self.h, engine.h, uri)
 
 proc operatorAssign*(self: gen_qqmlextensioninterface_types.QQmlEngineExtensionInterface, param1: gen_qqmlextensioninterface_types.QQmlEngineExtensionInterface): void =
-
   fcQQmlEngineExtensionInterface_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qqmlextensioninterface_types.QQmlEngineExtensionInterface) =

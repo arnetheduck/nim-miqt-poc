@@ -161,204 +161,156 @@ proc fcQDataStream_delete(self: pointer) {.importc: "QDataStream_delete".}
 func init*(T: type gen_qdatastream_types.QDataStream, h: ptr cQDataStream): gen_qdatastream_types.QDataStream =
   T(h: h)
 proc create*(T: type gen_qdatastream_types.QDataStream, ): gen_qdatastream_types.QDataStream =
-
   gen_qdatastream_types.QDataStream.init(fcQDataStream_new())
+
 proc create*(T: type gen_qdatastream_types.QDataStream, param1: gen_qiodevice.QIODevice): gen_qdatastream_types.QDataStream =
-
   gen_qdatastream_types.QDataStream.init(fcQDataStream_new2(param1.h))
+
 proc create*(T: type gen_qdatastream_types.QDataStream, param1: seq[byte]): gen_qdatastream_types.QDataStream =
-
   gen_qdatastream_types.QDataStream.init(fcQDataStream_new3(struct_miqt_string(data: cast[cstring](if len(param1) == 0: nil else: unsafeAddr param1[0]), len: csize_t(len(param1)))))
-proc device*(self: gen_qdatastream_types.QDataStream, ): gen_qiodevice.QIODevice =
 
+proc device*(self: gen_qdatastream_types.QDataStream, ): gen_qiodevice.QIODevice =
   gen_qiodevice.QIODevice(h: fcQDataStream_device(self.h))
 
 proc setDevice*(self: gen_qdatastream_types.QDataStream, device: gen_qiodevice.QIODevice): void =
-
   fcQDataStream_setDevice(self.h, device.h)
 
 proc atEnd*(self: gen_qdatastream_types.QDataStream, ): bool =
-
   fcQDataStream_atEnd(self.h)
 
 proc status*(self: gen_qdatastream_types.QDataStream, ): cint =
-
   cint(fcQDataStream_status(self.h))
 
 proc setStatus*(self: gen_qdatastream_types.QDataStream, status: cint): void =
-
   fcQDataStream_setStatus(self.h, cint(status))
 
 proc resetStatus*(self: gen_qdatastream_types.QDataStream, ): void =
-
   fcQDataStream_resetStatus(self.h)
 
 proc floatingPointPrecision*(self: gen_qdatastream_types.QDataStream, ): cint =
-
   cint(fcQDataStream_floatingPointPrecision(self.h))
 
 proc setFloatingPointPrecision*(self: gen_qdatastream_types.QDataStream, precision: cint): void =
-
   fcQDataStream_setFloatingPointPrecision(self.h, cint(precision))
 
 proc byteOrder*(self: gen_qdatastream_types.QDataStream, ): cint =
-
   cint(fcQDataStream_byteOrder(self.h))
 
 proc setByteOrder*(self: gen_qdatastream_types.QDataStream, byteOrder: cint): void =
-
   fcQDataStream_setByteOrder(self.h, cint(byteOrder))
 
 proc version*(self: gen_qdatastream_types.QDataStream, ): cint =
-
   fcQDataStream_version(self.h)
 
 proc setVersion*(self: gen_qdatastream_types.QDataStream, version: cint): void =
-
   fcQDataStream_setVersion(self.h, version)
 
 proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr cchar): void =
-
   fcQDataStream_operatorShiftRight(self.h, i)
 
-proc operatorShiftRightWithQint8*(self: gen_qdatastream_types.QDataStream, i: ptr cschar): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr cschar): void =
   fcQDataStream_operatorShiftRightWithQint8(self.h, i)
 
-proc operatorShiftRightWithQuint8*(self: gen_qdatastream_types.QDataStream, i: ptr uint8): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr uint8): void =
   fcQDataStream_operatorShiftRightWithQuint8(self.h, i)
 
-proc operatorShiftRightWithQint16*(self: gen_qdatastream_types.QDataStream, i: ptr cshort): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr cshort): void =
   fcQDataStream_operatorShiftRightWithQint16(self.h, i)
 
-proc operatorShiftRightWithQuint16*(self: gen_qdatastream_types.QDataStream, i: ptr cushort): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr cushort): void =
   fcQDataStream_operatorShiftRightWithQuint16(self.h, i)
 
-proc operatorShiftRightWithQint32*(self: gen_qdatastream_types.QDataStream, i: ptr cint): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr cint): void =
   fcQDataStream_operatorShiftRightWithQint32(self.h, i)
 
-proc operatorShiftRightWithQuint32*(self: gen_qdatastream_types.QDataStream, i: ptr cuint): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr cuint): void =
   fcQDataStream_operatorShiftRightWithQuint32(self.h, i)
 
-proc operatorShiftRightWithQint64*(self: gen_qdatastream_types.QDataStream, i: ptr clonglong): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr clonglong): void =
   fcQDataStream_operatorShiftRightWithQint64(self.h, i)
 
-proc operatorShiftRightWithQuint64*(self: gen_qdatastream_types.QDataStream, i: ptr culonglong): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr culonglong): void =
   fcQDataStream_operatorShiftRightWithQuint64(self.h, i)
 
-proc operatorShiftRightWithBool*(self: gen_qdatastream_types.QDataStream, i: ptr bool): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, i: ptr bool): void =
   fcQDataStream_operatorShiftRightWithBool(self.h, i)
 
-proc operatorShiftRightWithFloat*(self: gen_qdatastream_types.QDataStream, f: ptr float32): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, f: ptr float32): void =
   fcQDataStream_operatorShiftRightWithFloat(self.h, f)
 
-proc operatorShiftRightWithDouble*(self: gen_qdatastream_types.QDataStream, f: ptr float64): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, f: ptr float64): void =
   fcQDataStream_operatorShiftRightWithDouble(self.h, f)
 
-proc operatorShiftRightWithStr*(self: gen_qdatastream_types.QDataStream, str: cstring): void =
-
+proc operatorShiftRight*(self: gen_qdatastream_types.QDataStream, str: cstring): void =
   fcQDataStream_operatorShiftRightWithStr(self.h, str)
 
 proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: cchar): void =
-
   fcQDataStream_operatorShiftLeft(self.h, i)
 
-proc operatorShiftLeftWithQint8*(self: gen_qdatastream_types.QDataStream, i: cschar): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: cschar): void =
   fcQDataStream_operatorShiftLeftWithQint8(self.h, i)
 
-proc operatorShiftLeftWithQuint8*(self: gen_qdatastream_types.QDataStream, i: uint8): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: uint8): void =
   fcQDataStream_operatorShiftLeftWithQuint8(self.h, i)
 
-proc operatorShiftLeftWithQint16*(self: gen_qdatastream_types.QDataStream, i: cshort): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: cshort): void =
   fcQDataStream_operatorShiftLeftWithQint16(self.h, i)
 
-proc operatorShiftLeftWithQuint16*(self: gen_qdatastream_types.QDataStream, i: cushort): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: cushort): void =
   fcQDataStream_operatorShiftLeftWithQuint16(self.h, i)
 
-proc operatorShiftLeftWithQint32*(self: gen_qdatastream_types.QDataStream, i: cint): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: cint): void =
   fcQDataStream_operatorShiftLeftWithQint32(self.h, i)
 
-proc operatorShiftLeftWithQuint32*(self: gen_qdatastream_types.QDataStream, i: cuint): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: cuint): void =
   fcQDataStream_operatorShiftLeftWithQuint32(self.h, i)
 
-proc operatorShiftLeftWithQint64*(self: gen_qdatastream_types.QDataStream, i: clonglong): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: clonglong): void =
   fcQDataStream_operatorShiftLeftWithQint64(self.h, i)
 
-proc operatorShiftLeftWithQuint64*(self: gen_qdatastream_types.QDataStream, i: culonglong): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: culonglong): void =
   fcQDataStream_operatorShiftLeftWithQuint64(self.h, i)
 
-proc operatorShiftLeftWithBool*(self: gen_qdatastream_types.QDataStream, i: bool): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, i: bool): void =
   fcQDataStream_operatorShiftLeftWithBool(self.h, i)
 
-proc operatorShiftLeftWithFloat*(self: gen_qdatastream_types.QDataStream, f: float32): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, f: float32): void =
   fcQDataStream_operatorShiftLeftWithFloat(self.h, f)
 
-proc operatorShiftLeftWithDouble*(self: gen_qdatastream_types.QDataStream, f: float64): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, f: float64): void =
   fcQDataStream_operatorShiftLeftWithDouble(self.h, f)
 
-proc operatorShiftLeftWithStr*(self: gen_qdatastream_types.QDataStream, str: cstring): void =
-
+proc operatorShiftLeft*(self: gen_qdatastream_types.QDataStream, str: cstring): void =
   fcQDataStream_operatorShiftLeftWithStr(self.h, str)
 
 proc readBytes*(self: gen_qdatastream_types.QDataStream, param1: cstring, len: ptr cuint): gen_qdatastream_types.QDataStream =
-
   gen_qdatastream_types.QDataStream(h: fcQDataStream_readBytes(self.h, param1, len))
 
 proc readRawData*(self: gen_qdatastream_types.QDataStream, param1: cstring, len: cint): cint =
-
   fcQDataStream_readRawData(self.h, param1, len)
 
 proc writeBytes*(self: gen_qdatastream_types.QDataStream, param1: cstring, len: cuint): void =
-
   fcQDataStream_writeBytes(self.h, param1, len)
 
 proc writeRawData*(self: gen_qdatastream_types.QDataStream, param1: cstring, len: cint): cint =
-
   fcQDataStream_writeRawData(self.h, param1, len)
 
 proc skipRawData*(self: gen_qdatastream_types.QDataStream, len: cint): cint =
-
   fcQDataStream_skipRawData(self.h, len)
 
 proc startTransaction*(self: gen_qdatastream_types.QDataStream, ): void =
-
   fcQDataStream_startTransaction(self.h)
 
 proc commitTransaction*(self: gen_qdatastream_types.QDataStream, ): bool =
-
   fcQDataStream_commitTransaction(self.h)
 
 proc rollbackTransaction*(self: gen_qdatastream_types.QDataStream, ): void =
-
   fcQDataStream_rollbackTransaction(self.h)
 
 proc abortTransaction*(self: gen_qdatastream_types.QDataStream, ): void =
-
   fcQDataStream_abortTransaction(self.h)
 
 proc isDeviceTransactionStarted*(self: gen_qdatastream_types.QDataStream, ): bool =
-
   fcQDataStream_isDeviceTransactionStarted(self.h)
 
 proc delete*(self: gen_qdatastream_types.QDataStream) =

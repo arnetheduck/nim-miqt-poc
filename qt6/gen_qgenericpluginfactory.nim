@@ -52,7 +52,6 @@ proc fcQGenericPluginFactory_delete(self: pointer) {.importc: "QGenericPluginFac
 func init*(T: type gen_qgenericpluginfactory_types.QGenericPluginFactory, h: ptr cQGenericPluginFactory): gen_qgenericpluginfactory_types.QGenericPluginFactory =
   T(h: h)
 proc keys*(_: type gen_qgenericpluginfactory_types.QGenericPluginFactory, ): seq[string] =
-
   var v_ma = fcQGenericPluginFactory_keys()
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -64,7 +63,6 @@ proc keys*(_: type gen_qgenericpluginfactory_types.QGenericPluginFactory, ): seq
   vx_ret
 
 proc create*(_: type gen_qgenericpluginfactory_types.QGenericPluginFactory, param1: string, param2: string): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQGenericPluginFactory_create(struct_miqt_string(data: param1, len: csize_t(len(param1))), struct_miqt_string(data: param2, len: csize_t(len(param2)))))
 
 proc delete*(self: gen_qgenericpluginfactory_types.QGenericPluginFactory) =

@@ -82,30 +82,24 @@ proc fcQAudioListener_delete(self: pointer) {.importc: "QAudioListener_delete".}
 func init*(T: type gen_qaudiolistener_types.QAudioListener, h: ptr cQAudioListener): gen_qaudiolistener_types.QAudioListener =
   T(h: h)
 proc create*(T: type gen_qaudiolistener_types.QAudioListener, engine: gen_qaudioengine.QAudioEngine): gen_qaudiolistener_types.QAudioListener =
-
   gen_qaudiolistener_types.QAudioListener.init(fcQAudioListener_new(engine.h))
-proc setPosition*(self: gen_qaudiolistener_types.QAudioListener, pos: gen_qvectornd.QVector3D): void =
 
+proc setPosition*(self: gen_qaudiolistener_types.QAudioListener, pos: gen_qvectornd.QVector3D): void =
   fcQAudioListener_setPosition(self.h, pos.h)
 
 proc position*(self: gen_qaudiolistener_types.QAudioListener, ): gen_qvectornd.QVector3D =
-
   gen_qvectornd.QVector3D(h: fcQAudioListener_position(self.h))
 
 proc setRotation*(self: gen_qaudiolistener_types.QAudioListener, q: gen_qquaternion.QQuaternion): void =
-
   fcQAudioListener_setRotation(self.h, q.h)
 
 proc rotation*(self: gen_qaudiolistener_types.QAudioListener, ): gen_qquaternion.QQuaternion =
-
   gen_qquaternion.QQuaternion(h: fcQAudioListener_rotation(self.h))
 
 proc engine*(self: gen_qaudiolistener_types.QAudioListener, ): gen_qaudioengine.QAudioEngine =
-
   gen_qaudioengine.QAudioEngine(h: fcQAudioListener_engine(self.h))
 
 proc QAudioListenermetacall*(self: gen_qaudiolistener_types.QAudioListener, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAudioListener_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAudioListenermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -129,7 +123,6 @@ proc miqt_exec_callback_QAudioListener_metacall(self: ptr cQAudioListener, slot:
 
   virtualReturn
 proc QAudioListenerevent*(self: gen_qaudiolistener_types.QAudioListener, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioListener_virtualbase_event(self.h, event.h)
 
 type QAudioListenereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -149,7 +142,6 @@ proc miqt_exec_callback_QAudioListener_event(self: ptr cQAudioListener, slot: in
 
   virtualReturn
 proc QAudioListenereventFilter*(self: gen_qaudiolistener_types.QAudioListener, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioListener_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAudioListenereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -171,7 +163,6 @@ proc miqt_exec_callback_QAudioListener_eventFilter(self: ptr cQAudioListener, sl
 
   virtualReturn
 proc QAudioListenertimerEvent*(self: gen_qaudiolistener_types.QAudioListener, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAudioListener_virtualbase_timerEvent(self.h, event.h)
 
 type QAudioListenertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -189,7 +180,6 @@ proc miqt_exec_callback_QAudioListener_timerEvent(self: ptr cQAudioListener, slo
 
   nimfunc[](slotval1)
 proc QAudioListenerchildEvent*(self: gen_qaudiolistener_types.QAudioListener, event: gen_qcoreevent.QChildEvent): void =
-
   fQAudioListener_virtualbase_childEvent(self.h, event.h)
 
 type QAudioListenerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -207,7 +197,6 @@ proc miqt_exec_callback_QAudioListener_childEvent(self: ptr cQAudioListener, slo
 
   nimfunc[](slotval1)
 proc QAudioListenercustomEvent*(self: gen_qaudiolistener_types.QAudioListener, event: gen_qcoreevent.QEvent): void =
-
   fQAudioListener_virtualbase_customEvent(self.h, event.h)
 
 type QAudioListenercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -225,7 +214,6 @@ proc miqt_exec_callback_QAudioListener_customEvent(self: ptr cQAudioListener, sl
 
   nimfunc[](slotval1)
 proc QAudioListenerconnectNotify*(self: gen_qaudiolistener_types.QAudioListener, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioListener_virtualbase_connectNotify(self.h, signal.h)
 
 type QAudioListenerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -243,7 +231,6 @@ proc miqt_exec_callback_QAudioListener_connectNotify(self: ptr cQAudioListener, 
 
   nimfunc[](slotval1)
 proc QAudioListenerdisconnectNotify*(self: gen_qaudiolistener_types.QAudioListener, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioListener_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAudioListenerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

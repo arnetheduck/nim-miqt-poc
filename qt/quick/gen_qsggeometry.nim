@@ -148,168 +148,129 @@ proc fcQSGGeometryColoredPoint2D_delete(self: pointer) {.importc: "QSGGeometry__
 func init*(T: type gen_qsggeometry_types.QSGGeometry, h: ptr cQSGGeometry): gen_qsggeometry_types.QSGGeometry =
   T(h: h)
 proc create*(T: type gen_qsggeometry_types.QSGGeometry, attribs: gen_qsggeometry_types.QSGGeometryAttributeSet, vertexCount: cint): gen_qsggeometry_types.QSGGeometry =
-
   gen_qsggeometry_types.QSGGeometry.init(fcQSGGeometry_new(attribs.h, vertexCount))
+
 proc create*(T: type gen_qsggeometry_types.QSGGeometry, attribs: gen_qsggeometry_types.QSGGeometryAttributeSet, vertexCount: cint, indexCount: cint): gen_qsggeometry_types.QSGGeometry =
-
   gen_qsggeometry_types.QSGGeometry.init(fcQSGGeometry_new2(attribs.h, vertexCount, indexCount))
+
 proc create*(T: type gen_qsggeometry_types.QSGGeometry, attribs: gen_qsggeometry_types.QSGGeometryAttributeSet, vertexCount: cint, indexCount: cint, indexType: cint): gen_qsggeometry_types.QSGGeometry =
-
   gen_qsggeometry_types.QSGGeometry.init(fcQSGGeometry_new3(attribs.h, vertexCount, indexCount, indexType))
-proc defaultAttributes_Point2D*(_: type gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryAttributeSet =
 
+proc defaultAttributes_Point2D*(_: type gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryAttributeSet =
   gen_qsggeometry_types.QSGGeometryAttributeSet(h: fcQSGGeometry_defaultAttributes_Point2D())
 
 proc defaultAttributes_TexturedPoint2D*(_: type gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryAttributeSet =
-
   gen_qsggeometry_types.QSGGeometryAttributeSet(h: fcQSGGeometry_defaultAttributes_TexturedPoint2D())
 
 proc defaultAttributes_ColoredPoint2D*(_: type gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryAttributeSet =
-
   gen_qsggeometry_types.QSGGeometryAttributeSet(h: fcQSGGeometry_defaultAttributes_ColoredPoint2D())
 
 proc setDrawingMode*(self: gen_qsggeometry_types.QSGGeometry, mode: cuint): void =
-
   fcQSGGeometry_setDrawingMode(self.h, mode)
 
 proc drawingMode*(self: gen_qsggeometry_types.QSGGeometry, ): cuint =
-
   fcQSGGeometry_drawingMode(self.h)
 
 proc allocate*(self: gen_qsggeometry_types.QSGGeometry, vertexCount: cint): void =
-
   fcQSGGeometry_allocate(self.h, vertexCount)
 
 proc vertexCount*(self: gen_qsggeometry_types.QSGGeometry, ): cint =
-
   fcQSGGeometry_vertexCount(self.h)
 
 proc vertexData*(self: gen_qsggeometry_types.QSGGeometry, ): pointer =
-
   fcQSGGeometry_vertexData(self.h)
 
 proc vertexDataAsPoint2D*(self: gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryPoint2D =
-
   gen_qsggeometry_types.QSGGeometryPoint2D(h: fcQSGGeometry_vertexDataAsPoint2D(self.h))
 
 proc vertexDataAsTexturedPoint2D*(self: gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryTexturedPoint2D =
-
   gen_qsggeometry_types.QSGGeometryTexturedPoint2D(h: fcQSGGeometry_vertexDataAsTexturedPoint2D(self.h))
 
 proc vertexDataAsColoredPoint2D*(self: gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryColoredPoint2D =
-
   gen_qsggeometry_types.QSGGeometryColoredPoint2D(h: fcQSGGeometry_vertexDataAsColoredPoint2D(self.h))
 
 proc vertexData2*(self: gen_qsggeometry_types.QSGGeometry, ): pointer =
-
   fcQSGGeometry_vertexData2(self.h)
 
 proc vertexDataAsPoint2D2*(self: gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryPoint2D =
-
   gen_qsggeometry_types.QSGGeometryPoint2D(h: fcQSGGeometry_vertexDataAsPoint2D2(self.h))
 
 proc vertexDataAsTexturedPoint2D2*(self: gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryTexturedPoint2D =
-
   gen_qsggeometry_types.QSGGeometryTexturedPoint2D(h: fcQSGGeometry_vertexDataAsTexturedPoint2D2(self.h))
 
 proc vertexDataAsColoredPoint2D2*(self: gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryColoredPoint2D =
-
   gen_qsggeometry_types.QSGGeometryColoredPoint2D(h: fcQSGGeometry_vertexDataAsColoredPoint2D2(self.h))
 
 proc indexType*(self: gen_qsggeometry_types.QSGGeometry, ): cint =
-
   fcQSGGeometry_indexType(self.h)
 
 proc indexCount*(self: gen_qsggeometry_types.QSGGeometry, ): cint =
-
   fcQSGGeometry_indexCount(self.h)
 
 proc indexData*(self: gen_qsggeometry_types.QSGGeometry, ): pointer =
-
   fcQSGGeometry_indexData(self.h)
 
 proc indexDataAsUInt*(self: gen_qsggeometry_types.QSGGeometry, ): ptr cuint =
-
   fcQSGGeometry_indexDataAsUInt(self.h)
 
 proc indexDataAsUShort*(self: gen_qsggeometry_types.QSGGeometry, ): ptr cushort =
-
   fcQSGGeometry_indexDataAsUShort(self.h)
 
 proc sizeOfIndex*(self: gen_qsggeometry_types.QSGGeometry, ): cint =
-
   fcQSGGeometry_sizeOfIndex(self.h)
 
 proc indexData2*(self: gen_qsggeometry_types.QSGGeometry, ): pointer =
-
   fcQSGGeometry_indexData2(self.h)
 
 proc indexDataAsUInt2*(self: gen_qsggeometry_types.QSGGeometry, ): ptr cuint =
-
   fcQSGGeometry_indexDataAsUInt2(self.h)
 
 proc indexDataAsUShort2*(self: gen_qsggeometry_types.QSGGeometry, ): ptr cushort =
-
   fcQSGGeometry_indexDataAsUShort2(self.h)
 
 proc attributeCount*(self: gen_qsggeometry_types.QSGGeometry, ): cint =
-
   fcQSGGeometry_attributeCount(self.h)
 
 proc attributes*(self: gen_qsggeometry_types.QSGGeometry, ): gen_qsggeometry_types.QSGGeometryAttribute =
-
   gen_qsggeometry_types.QSGGeometryAttribute(h: fcQSGGeometry_attributes(self.h))
 
 proc sizeOfVertex*(self: gen_qsggeometry_types.QSGGeometry, ): cint =
-
   fcQSGGeometry_sizeOfVertex(self.h)
 
 proc updateRectGeometry*(_: type gen_qsggeometry_types.QSGGeometry, g: gen_qsggeometry_types.QSGGeometry, rect: gen_qrect.QRectF): void =
-
   fcQSGGeometry_updateRectGeometry(g.h, rect.h)
 
 proc updateTexturedRectGeometry*(_: type gen_qsggeometry_types.QSGGeometry, g: gen_qsggeometry_types.QSGGeometry, rect: gen_qrect.QRectF, sourceRect: gen_qrect.QRectF): void =
-
   fcQSGGeometry_updateTexturedRectGeometry(g.h, rect.h, sourceRect.h)
 
 proc updateColoredRectGeometry*(_: type gen_qsggeometry_types.QSGGeometry, g: gen_qsggeometry_types.QSGGeometry, rect: gen_qrect.QRectF): void =
-
   fcQSGGeometry_updateColoredRectGeometry(g.h, rect.h)
 
 proc setIndexDataPattern*(self: gen_qsggeometry_types.QSGGeometry, p: cint): void =
-
   fcQSGGeometry_setIndexDataPattern(self.h, cint(p))
 
 proc indexDataPattern*(self: gen_qsggeometry_types.QSGGeometry, ): cint =
-
   cint(fcQSGGeometry_indexDataPattern(self.h))
 
 proc setVertexDataPattern*(self: gen_qsggeometry_types.QSGGeometry, p: cint): void =
-
   fcQSGGeometry_setVertexDataPattern(self.h, cint(p))
 
 proc vertexDataPattern*(self: gen_qsggeometry_types.QSGGeometry, ): cint =
-
   cint(fcQSGGeometry_vertexDataPattern(self.h))
 
 proc markIndexDataDirty*(self: gen_qsggeometry_types.QSGGeometry, ): void =
-
   fcQSGGeometry_markIndexDataDirty(self.h)
 
 proc markVertexDataDirty*(self: gen_qsggeometry_types.QSGGeometry, ): void =
-
   fcQSGGeometry_markVertexDataDirty(self.h)
 
 proc lineWidth*(self: gen_qsggeometry_types.QSGGeometry, ): float32 =
-
   fcQSGGeometry_lineWidth(self.h)
 
 proc setLineWidth*(self: gen_qsggeometry_types.QSGGeometry, w: float32): void =
-
   fcQSGGeometry_setLineWidth(self.h, w)
 
-proc allocate2*(self: gen_qsggeometry_types.QSGGeometry, vertexCount: cint, indexCount: cint): void =
-
+proc allocate*(self: gen_qsggeometry_types.QSGGeometry, vertexCount: cint, indexCount: cint): void =
   fcQSGGeometry_allocate2(self.h, vertexCount, indexCount)
 
 proc delete*(self: gen_qsggeometry_types.QSGGeometry) =
@@ -318,15 +279,12 @@ proc delete*(self: gen_qsggeometry_types.QSGGeometry) =
 func init*(T: type gen_qsggeometry_types.QSGGeometryAttribute, h: ptr cQSGGeometryAttribute): gen_qsggeometry_types.QSGGeometryAttribute =
   T(h: h)
 proc create*(_: type gen_qsggeometry_types.QSGGeometryAttribute, pos: cint, tupleSize: cint, primitiveType: cint): gen_qsggeometry_types.QSGGeometryAttribute =
-
   gen_qsggeometry_types.QSGGeometryAttribute(h: fcQSGGeometryAttribute_create(pos, tupleSize, primitiveType))
 
 proc createWithAttributeType*(_: type gen_qsggeometry_types.QSGGeometryAttribute, pos: cint, tupleSize: cint, primitiveType: cint, attributeType: cint): gen_qsggeometry_types.QSGGeometryAttribute =
-
   gen_qsggeometry_types.QSGGeometryAttribute(h: fcQSGGeometryAttribute_createWithAttributeType(pos, tupleSize, primitiveType, cint(attributeType)))
 
-proc create4*(_: type gen_qsggeometry_types.QSGGeometryAttribute, pos: cint, tupleSize: cint, primitiveType: cint, isPosition: bool): gen_qsggeometry_types.QSGGeometryAttribute =
-
+proc create*(_: type gen_qsggeometry_types.QSGGeometryAttribute, pos: cint, tupleSize: cint, primitiveType: cint, isPosition: bool): gen_qsggeometry_types.QSGGeometryAttribute =
   gen_qsggeometry_types.QSGGeometryAttribute(h: fcQSGGeometryAttribute_create4(pos, tupleSize, primitiveType, isPosition))
 
 proc delete*(self: gen_qsggeometry_types.QSGGeometryAttribute) =
@@ -340,7 +298,6 @@ proc delete*(self: gen_qsggeometry_types.QSGGeometryAttributeSet) =
 func init*(T: type gen_qsggeometry_types.QSGGeometryPoint2D, h: ptr cQSGGeometryPoint2D): gen_qsggeometry_types.QSGGeometryPoint2D =
   T(h: h)
 proc set*(self: gen_qsggeometry_types.QSGGeometryPoint2D, nx: float32, ny: float32): void =
-
   fcQSGGeometryPoint2D_set(self.h, nx, ny)
 
 proc delete*(self: gen_qsggeometry_types.QSGGeometryPoint2D) =
@@ -349,7 +306,6 @@ proc delete*(self: gen_qsggeometry_types.QSGGeometryPoint2D) =
 func init*(T: type gen_qsggeometry_types.QSGGeometryTexturedPoint2D, h: ptr cQSGGeometryTexturedPoint2D): gen_qsggeometry_types.QSGGeometryTexturedPoint2D =
   T(h: h)
 proc set*(self: gen_qsggeometry_types.QSGGeometryTexturedPoint2D, nx: float32, ny: float32, ntx: float32, nty: float32): void =
-
   fcQSGGeometryTexturedPoint2D_set(self.h, nx, ny, ntx, nty)
 
 proc delete*(self: gen_qsggeometry_types.QSGGeometryTexturedPoint2D) =
@@ -358,7 +314,6 @@ proc delete*(self: gen_qsggeometry_types.QSGGeometryTexturedPoint2D) =
 func init*(T: type gen_qsggeometry_types.QSGGeometryColoredPoint2D, h: ptr cQSGGeometryColoredPoint2D): gen_qsggeometry_types.QSGGeometryColoredPoint2D =
   T(h: h)
 proc set*(self: gen_qsggeometry_types.QSGGeometryColoredPoint2D, nx: float32, ny: float32, nr: uint8, ng: uint8, nb: uint8, na: uint8): void =
-
   fcQSGGeometryColoredPoint2D_set(self.h, nx, ny, nr, ng, nb, na)
 
 proc delete*(self: gen_qsggeometry_types.QSGGeometryColoredPoint2D) =

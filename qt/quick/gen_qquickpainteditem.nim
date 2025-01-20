@@ -226,255 +226,208 @@ proc fcQQuickPaintedItem_delete(self: pointer) {.importc: "QQuickPaintedItem_del
 func init*(T: type gen_qquickpainteditem_types.QQuickPaintedItem, h: ptr cQQuickPaintedItem): gen_qquickpainteditem_types.QQuickPaintedItem =
   T(h: h)
 proc create*(T: type gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qquickpainteditem_types.QQuickPaintedItem =
-
   gen_qquickpainteditem_types.QQuickPaintedItem.init(fcQQuickPaintedItem_new())
+
 proc create*(T: type gen_qquickpainteditem_types.QQuickPaintedItem, parent: gen_qquickitem.QQuickItem): gen_qquickpainteditem_types.QQuickPaintedItem =
-
   gen_qquickpainteditem_types.QQuickPaintedItem.init(fcQQuickPaintedItem_new2(parent.h))
-proc metaObject*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickPaintedItem_metaObject(self.h))
 
 proc metacast*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: cstring): pointer =
-
   fcQQuickPaintedItem_metacast(self.h, param1)
 
 proc metacall*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQuickPaintedItem_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring): string =
-
   let v_ms = fcQQuickPaintedItem_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring): string =
-
   let v_ms = fcQQuickPaintedItem_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc update*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fcQQuickPaintedItem_update(self.h)
 
 proc opaquePainting*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): bool =
-
   fcQQuickPaintedItem_opaquePainting(self.h)
 
 proc setOpaquePainting*(self: gen_qquickpainteditem_types.QQuickPaintedItem, opaque: bool): void =
-
   fcQQuickPaintedItem_setOpaquePainting(self.h, opaque)
 
 proc antialiasing*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): bool =
-
   fcQQuickPaintedItem_antialiasing(self.h)
 
 proc setAntialiasing*(self: gen_qquickpainteditem_types.QQuickPaintedItem, enable: bool): void =
-
   fcQQuickPaintedItem_setAntialiasing(self.h, enable)
 
 proc mipmap*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): bool =
-
   fcQQuickPaintedItem_mipmap(self.h)
 
 proc setMipmap*(self: gen_qquickpainteditem_types.QQuickPaintedItem, enable: bool): void =
-
   fcQQuickPaintedItem_setMipmap(self.h, enable)
 
 proc performanceHints*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): cint =
-
   cint(fcQQuickPaintedItem_performanceHints(self.h))
 
 proc setPerformanceHint*(self: gen_qquickpainteditem_types.QQuickPaintedItem, hint: cint): void =
-
   fcQQuickPaintedItem_setPerformanceHint(self.h, cint(hint))
 
 proc setPerformanceHints*(self: gen_qquickpainteditem_types.QQuickPaintedItem, hints: cint): void =
-
   fcQQuickPaintedItem_setPerformanceHints(self.h, cint(hints))
 
 proc contentsBoundingRect*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQQuickPaintedItem_contentsBoundingRect(self.h))
 
 proc contentsSize*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQQuickPaintedItem_contentsSize(self.h))
 
 proc setContentsSize*(self: gen_qquickpainteditem_types.QQuickPaintedItem, contentsSize: gen_qsize.QSize): void =
-
   fcQQuickPaintedItem_setContentsSize(self.h, contentsSize.h)
 
 proc resetContentsSize*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fcQQuickPaintedItem_resetContentsSize(self.h)
 
 proc contentsScale*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): float64 =
-
   fcQQuickPaintedItem_contentsScale(self.h)
 
 proc setContentsScale*(self: gen_qquickpainteditem_types.QQuickPaintedItem, contentsScale: float64): void =
-
   fcQQuickPaintedItem_setContentsScale(self.h, contentsScale)
 
 proc textureSize*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQQuickPaintedItem_textureSize(self.h))
 
 proc setTextureSize*(self: gen_qquickpainteditem_types.QQuickPaintedItem, size: gen_qsize.QSize): void =
-
   fcQQuickPaintedItem_setTextureSize(self.h, size.h)
 
 proc fillColor*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQQuickPaintedItem_fillColor(self.h))
 
 proc setFillColor*(self: gen_qquickpainteditem_types.QQuickPaintedItem, fillColor: gen_qcolor.QColor): void =
-
   fcQQuickPaintedItem_setFillColor(self.h, fillColor.h)
 
 proc renderTarget*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): cint =
-
   cint(fcQQuickPaintedItem_renderTarget(self.h))
 
 proc setRenderTarget*(self: gen_qquickpainteditem_types.QQuickPaintedItem, target: cint): void =
-
   fcQQuickPaintedItem_setRenderTarget(self.h, cint(target))
 
 proc paint*(self: gen_qquickpainteditem_types.QQuickPaintedItem, painter: gen_qpainter.QPainter): void =
-
   fcQQuickPaintedItem_paint(self.h, painter.h)
 
 proc isTextureProvider*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): bool =
-
   fcQQuickPaintedItem_isTextureProvider(self.h)
 
 proc textureProvider*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qsgtextureprovider.QSGTextureProvider =
-
   gen_qsgtextureprovider.QSGTextureProvider(h: fcQQuickPaintedItem_textureProvider(self.h))
 
 proc fillColorChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fcQQuickPaintedItem_fillColorChanged(self.h)
 
+type QQuickPaintedItemfillColorChangedSlot* = proc()
 proc miqt_exec_callback_QQuickPaintedItem_fillColorChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickPaintedItemfillColorChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onfillColorChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onfillColorChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: QQuickPaintedItemfillColorChangedSlot) =
+  var tmp = new QQuickPaintedItemfillColorChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickPaintedItem_connect_fillColorChanged(self.h, cast[int](addr tmp[]))
-proc contentsSizeChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
 
+proc contentsSizeChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
   fcQQuickPaintedItem_contentsSizeChanged(self.h)
 
+type QQuickPaintedItemcontentsSizeChangedSlot* = proc()
 proc miqt_exec_callback_QQuickPaintedItem_contentsSizeChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickPaintedItemcontentsSizeChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc oncontentsSizeChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc oncontentsSizeChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: QQuickPaintedItemcontentsSizeChangedSlot) =
+  var tmp = new QQuickPaintedItemcontentsSizeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickPaintedItem_connect_contentsSizeChanged(self.h, cast[int](addr tmp[]))
-proc contentsScaleChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
 
+proc contentsScaleChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
   fcQQuickPaintedItem_contentsScaleChanged(self.h)
 
+type QQuickPaintedItemcontentsScaleChangedSlot* = proc()
 proc miqt_exec_callback_QQuickPaintedItem_contentsScaleChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickPaintedItemcontentsScaleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc oncontentsScaleChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc oncontentsScaleChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: QQuickPaintedItemcontentsScaleChangedSlot) =
+  var tmp = new QQuickPaintedItemcontentsScaleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickPaintedItem_connect_contentsScaleChanged(self.h, cast[int](addr tmp[]))
-proc renderTargetChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
 
+proc renderTargetChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
   fcQQuickPaintedItem_renderTargetChanged(self.h)
 
+type QQuickPaintedItemrenderTargetChangedSlot* = proc()
 proc miqt_exec_callback_QQuickPaintedItem_renderTargetChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickPaintedItemrenderTargetChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onrenderTargetChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onrenderTargetChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: QQuickPaintedItemrenderTargetChangedSlot) =
+  var tmp = new QQuickPaintedItemrenderTargetChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickPaintedItem_connect_renderTargetChanged(self.h, cast[int](addr tmp[]))
-proc textureSizeChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
 
+proc textureSizeChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
   fcQQuickPaintedItem_textureSizeChanged(self.h)
 
+type QQuickPaintedItemtextureSizeChangedSlot* = proc()
 proc miqt_exec_callback_QQuickPaintedItem_textureSizeChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickPaintedItemtextureSizeChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc ontextureSizeChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc ontextureSizeChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, slot: QQuickPaintedItemtextureSizeChangedSlot) =
+  var tmp = new QQuickPaintedItemtextureSizeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickPaintedItem_connect_textureSizeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring, c: cstring): string =
   let v_ms = fcQQuickPaintedItem_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickPaintedItem_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring, c: cstring): string =
   let v_ms = fcQQuickPaintedItem_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qquickpainteditem_types.QQuickPaintedItem, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickPaintedItem_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc update1*(self: gen_qquickpainteditem_types.QQuickPaintedItem, rect: gen_qrect.QRect): void =
-
+proc update*(self: gen_qquickpainteditem_types.QQuickPaintedItem, rect: gen_qrect.QRect): void =
   fcQQuickPaintedItem_update1(self.h, rect.h)
 
-proc setPerformanceHint2*(self: gen_qquickpainteditem_types.QQuickPaintedItem, hint: cint, enabled: bool): void =
-
+proc setPerformanceHint*(self: gen_qquickpainteditem_types.QQuickPaintedItem, hint: cint, enabled: bool): void =
   fcQQuickPaintedItem_setPerformanceHint2(self.h, cint(hint), enabled)
 
 proc QQuickPaintedItemmetaObject*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQuickPaintedItem_virtualbase_metaObject(self.h))
 
 type QQuickPaintedItemmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -492,7 +445,6 @@ proc miqt_exec_callback_QQuickPaintedItem_metaObject(self: ptr cQQuickPaintedIte
 
   virtualReturn.h
 proc QQuickPaintedItemmetacast*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: cstring): pointer =
-
   fQQuickPaintedItem_virtualbase_metacast(self.h, param1)
 
 type QQuickPaintedItemmetacastProc* = proc(param1: cstring): pointer
@@ -512,7 +464,6 @@ proc miqt_exec_callback_QQuickPaintedItem_metacast(self: ptr cQQuickPaintedItem,
 
   virtualReturn
 proc QQuickPaintedItemmetacall*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQuickPaintedItem_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQuickPaintedItemmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -550,7 +501,6 @@ proc miqt_exec_callback_QQuickPaintedItem_paint(self: ptr cQQuickPaintedItem, sl
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemisTextureProvider*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): bool =
-
   fQQuickPaintedItem_virtualbase_isTextureProvider(self.h)
 
 type QQuickPaintedItemisTextureProviderProc* = proc(): bool
@@ -568,7 +518,6 @@ proc miqt_exec_callback_QQuickPaintedItem_isTextureProvider(self: ptr cQQuickPai
 
   virtualReturn
 proc QQuickPaintedItemtextureProvider*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qsgtextureprovider.QSGTextureProvider =
-
   gen_qsgtextureprovider.QSGTextureProvider(h: fQQuickPaintedItem_virtualbase_textureProvider(self.h))
 
 type QQuickPaintedItemtextureProviderProc* = proc(): gen_qsgtextureprovider.QSGTextureProvider
@@ -586,7 +535,6 @@ proc miqt_exec_callback_QQuickPaintedItem_textureProvider(self: ptr cQQuickPaint
 
   virtualReturn.h
 proc QQuickPaintedItemupdatePaintNode*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qsgnode.QSGNode, param2: gen_qquickitem.QQuickItemUpdatePaintNodeData): gen_qsgnode.QSGNode =
-
   gen_qsgnode.QSGNode(h: fQQuickPaintedItem_virtualbase_updatePaintNode(self.h, param1.h, param2.h))
 
 type QQuickPaintedItemupdatePaintNodeProc* = proc(param1: gen_qsgnode.QSGNode, param2: gen_qquickitem.QQuickItemUpdatePaintNodeData): gen_qsgnode.QSGNode
@@ -608,7 +556,6 @@ proc miqt_exec_callback_QQuickPaintedItem_updatePaintNode(self: ptr cQQuickPaint
 
   virtualReturn.h
 proc QQuickPaintedItemreleaseResources*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fQQuickPaintedItem_virtualbase_releaseResources(self.h)
 
 type QQuickPaintedItemreleaseResourcesProc* = proc(): void
@@ -624,7 +571,6 @@ proc miqt_exec_callback_QQuickPaintedItem_releaseResources(self: ptr cQQuickPain
 
   nimfunc[]()
 proc QQuickPaintedItemitemChange*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: cint, param2: gen_qquickitem.QQuickItemItemChangeData): void =
-
   fQQuickPaintedItem_virtualbase_itemChange(self.h, cint(param1), param2.h)
 
 type QQuickPaintedItemitemChangeProc* = proc(param1: cint, param2: gen_qquickitem.QQuickItemItemChangeData): void
@@ -644,7 +590,6 @@ proc miqt_exec_callback_QQuickPaintedItem_itemChange(self: ptr cQQuickPaintedIte
 
   nimfunc[](slotval1, slotval2)
 proc QQuickPaintedItemboundingRect*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQQuickPaintedItem_virtualbase_boundingRect(self.h))
 
 type QQuickPaintedItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -662,7 +607,6 @@ proc miqt_exec_callback_QQuickPaintedItem_boundingRect(self: ptr cQQuickPaintedI
 
   virtualReturn.h
 proc QQuickPaintedItemclipRect*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQQuickPaintedItem_virtualbase_clipRect(self.h))
 
 type QQuickPaintedItemclipRectProc* = proc(): gen_qrect.QRectF
@@ -680,7 +624,6 @@ proc miqt_exec_callback_QQuickPaintedItem_clipRect(self: ptr cQQuickPaintedItem,
 
   virtualReturn.h
 proc QQuickPaintedItemcontains*(self: gen_qquickpainteditem_types.QQuickPaintedItem, point: gen_qpoint.QPointF): bool =
-
   fQQuickPaintedItem_virtualbase_contains(self.h, point.h)
 
 type QQuickPaintedItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -700,7 +643,6 @@ proc miqt_exec_callback_QQuickPaintedItem_contains(self: ptr cQQuickPaintedItem,
 
   virtualReturn
 proc QQuickPaintedIteminputMethodQuery*(self: gen_qquickpainteditem_types.QQuickPaintedItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQQuickPaintedItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QQuickPaintedIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -720,7 +662,6 @@ proc miqt_exec_callback_QQuickPaintedItem_inputMethodQuery(self: ptr cQQuickPain
 
   virtualReturn.h
 proc QQuickPaintedItemevent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qcoreevent.QEvent): bool =
-
   fQQuickPaintedItem_virtualbase_event(self.h, param1.h)
 
 type QQuickPaintedItemeventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -740,7 +681,6 @@ proc miqt_exec_callback_QQuickPaintedItem_event(self: ptr cQQuickPaintedItem, sl
 
   virtualReturn
 proc QQuickPaintedItemclassBegin*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fQQuickPaintedItem_virtualbase_classBegin(self.h)
 
 type QQuickPaintedItemclassBeginProc* = proc(): void
@@ -756,7 +696,6 @@ proc miqt_exec_callback_QQuickPaintedItem_classBegin(self: ptr cQQuickPaintedIte
 
   nimfunc[]()
 proc QQuickPaintedItemcomponentComplete*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fQQuickPaintedItem_virtualbase_componentComplete(self.h)
 
 type QQuickPaintedItemcomponentCompleteProc* = proc(): void
@@ -772,7 +711,6 @@ proc miqt_exec_callback_QQuickPaintedItem_componentComplete(self: ptr cQQuickPai
 
   nimfunc[]()
 proc QQuickPaintedItemkeyPressEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QKeyEvent): void =
-
   fQQuickPaintedItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QQuickPaintedItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -790,7 +728,6 @@ proc miqt_exec_callback_QQuickPaintedItem_keyPressEvent(self: ptr cQQuickPainted
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemkeyReleaseEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QKeyEvent): void =
-
   fQQuickPaintedItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QQuickPaintedItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -808,7 +745,6 @@ proc miqt_exec_callback_QQuickPaintedItem_keyReleaseEvent(self: ptr cQQuickPaint
 
   nimfunc[](slotval1)
 proc QQuickPaintedIteminputMethodEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qevent.QInputMethodEvent): void =
-
   fQQuickPaintedItem_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QQuickPaintedIteminputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -826,7 +762,6 @@ proc miqt_exec_callback_QQuickPaintedItem_inputMethodEvent(self: ptr cQQuickPain
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemfocusInEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qevent.QFocusEvent): void =
-
   fQQuickPaintedItem_virtualbase_focusInEvent(self.h, param1.h)
 
 type QQuickPaintedItemfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -844,7 +779,6 @@ proc miqt_exec_callback_QQuickPaintedItem_focusInEvent(self: ptr cQQuickPaintedI
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemfocusOutEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qevent.QFocusEvent): void =
-
   fQQuickPaintedItem_virtualbase_focusOutEvent(self.h, param1.h)
 
 type QQuickPaintedItemfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -862,7 +796,6 @@ proc miqt_exec_callback_QQuickPaintedItem_focusOutEvent(self: ptr cQQuickPainted
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemmousePressEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QMouseEvent): void =
-
   fQQuickPaintedItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QQuickPaintedItemmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -880,7 +813,6 @@ proc miqt_exec_callback_QQuickPaintedItem_mousePressEvent(self: ptr cQQuickPaint
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemmouseMoveEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QMouseEvent): void =
-
   fQQuickPaintedItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QQuickPaintedItemmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -898,7 +830,6 @@ proc miqt_exec_callback_QQuickPaintedItem_mouseMoveEvent(self: ptr cQQuickPainte
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemmouseReleaseEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QMouseEvent): void =
-
   fQQuickPaintedItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QQuickPaintedItemmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -916,7 +847,6 @@ proc miqt_exec_callback_QQuickPaintedItem_mouseReleaseEvent(self: ptr cQQuickPai
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemmouseDoubleClickEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QMouseEvent): void =
-
   fQQuickPaintedItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QQuickPaintedItemmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -934,7 +864,6 @@ proc miqt_exec_callback_QQuickPaintedItem_mouseDoubleClickEvent(self: ptr cQQuic
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemmouseUngrabEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fQQuickPaintedItem_virtualbase_mouseUngrabEvent(self.h)
 
 type QQuickPaintedItemmouseUngrabEventProc* = proc(): void
@@ -950,7 +879,6 @@ proc miqt_exec_callback_QQuickPaintedItem_mouseUngrabEvent(self: ptr cQQuickPain
 
   nimfunc[]()
 proc QQuickPaintedItemtouchUngrabEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fQQuickPaintedItem_virtualbase_touchUngrabEvent(self.h)
 
 type QQuickPaintedItemtouchUngrabEventProc* = proc(): void
@@ -966,7 +894,6 @@ proc miqt_exec_callback_QQuickPaintedItem_touchUngrabEvent(self: ptr cQQuickPain
 
   nimfunc[]()
 proc QQuickPaintedItemwheelEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QWheelEvent): void =
-
   fQQuickPaintedItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QQuickPaintedItemwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -984,7 +911,6 @@ proc miqt_exec_callback_QQuickPaintedItem_wheelEvent(self: ptr cQQuickPaintedIte
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemtouchEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QTouchEvent): void =
-
   fQQuickPaintedItem_virtualbase_touchEvent(self.h, event.h)
 
 type QQuickPaintedItemtouchEventProc* = proc(event: gen_qevent.QTouchEvent): void
@@ -1002,7 +928,6 @@ proc miqt_exec_callback_QQuickPaintedItem_touchEvent(self: ptr cQQuickPaintedIte
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemhoverEnterEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QHoverEvent): void =
-
   fQQuickPaintedItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QQuickPaintedItemhoverEnterEventProc* = proc(event: gen_qevent.QHoverEvent): void
@@ -1020,7 +945,6 @@ proc miqt_exec_callback_QQuickPaintedItem_hoverEnterEvent(self: ptr cQQuickPaint
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemhoverMoveEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QHoverEvent): void =
-
   fQQuickPaintedItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QQuickPaintedItemhoverMoveEventProc* = proc(event: gen_qevent.QHoverEvent): void
@@ -1038,7 +962,6 @@ proc miqt_exec_callback_QQuickPaintedItem_hoverMoveEvent(self: ptr cQQuickPainte
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemhoverLeaveEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qevent.QHoverEvent): void =
-
   fQQuickPaintedItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QQuickPaintedItemhoverLeaveEventProc* = proc(event: gen_qevent.QHoverEvent): void
@@ -1056,7 +979,6 @@ proc miqt_exec_callback_QQuickPaintedItem_hoverLeaveEvent(self: ptr cQQuickPaint
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemdragEnterEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qevent.QDragEnterEvent): void =
-
   fQQuickPaintedItem_virtualbase_dragEnterEvent(self.h, param1.h)
 
 type QQuickPaintedItemdragEnterEventProc* = proc(param1: gen_qevent.QDragEnterEvent): void
@@ -1074,7 +996,6 @@ proc miqt_exec_callback_QQuickPaintedItem_dragEnterEvent(self: ptr cQQuickPainte
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemdragMoveEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qevent.QDragMoveEvent): void =
-
   fQQuickPaintedItem_virtualbase_dragMoveEvent(self.h, param1.h)
 
 type QQuickPaintedItemdragMoveEventProc* = proc(param1: gen_qevent.QDragMoveEvent): void
@@ -1092,7 +1013,6 @@ proc miqt_exec_callback_QQuickPaintedItem_dragMoveEvent(self: ptr cQQuickPainted
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemdragLeaveEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qevent.QDragLeaveEvent): void =
-
   fQQuickPaintedItem_virtualbase_dragLeaveEvent(self.h, param1.h)
 
 type QQuickPaintedItemdragLeaveEventProc* = proc(param1: gen_qevent.QDragLeaveEvent): void
@@ -1110,7 +1030,6 @@ proc miqt_exec_callback_QQuickPaintedItem_dragLeaveEvent(self: ptr cQQuickPainte
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemdropEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qevent.QDropEvent): void =
-
   fQQuickPaintedItem_virtualbase_dropEvent(self.h, param1.h)
 
 type QQuickPaintedItemdropEventProc* = proc(param1: gen_qevent.QDropEvent): void
@@ -1128,7 +1047,6 @@ proc miqt_exec_callback_QQuickPaintedItem_dropEvent(self: ptr cQQuickPaintedItem
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemchildMouseEventFilter*(self: gen_qquickpainteditem_types.QQuickPaintedItem, param1: gen_qquickitem.QQuickItem, param2: gen_qcoreevent.QEvent): bool =
-
   fQQuickPaintedItem_virtualbase_childMouseEventFilter(self.h, param1.h, param2.h)
 
 type QQuickPaintedItemchildMouseEventFilterProc* = proc(param1: gen_qquickitem.QQuickItem, param2: gen_qcoreevent.QEvent): bool
@@ -1150,7 +1068,6 @@ proc miqt_exec_callback_QQuickPaintedItem_childMouseEventFilter(self: ptr cQQuic
 
   virtualReturn
 proc QQuickPaintedItemwindowDeactivateEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fQQuickPaintedItem_virtualbase_windowDeactivateEvent(self.h)
 
 type QQuickPaintedItemwindowDeactivateEventProc* = proc(): void
@@ -1166,7 +1083,6 @@ proc miqt_exec_callback_QQuickPaintedItem_windowDeactivateEvent(self: ptr cQQuic
 
   nimfunc[]()
 proc QQuickPaintedItemgeometryChanged*(self: gen_qquickpainteditem_types.QQuickPaintedItem, newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): void =
-
   fQQuickPaintedItem_virtualbase_geometryChanged(self.h, newGeometry.h, oldGeometry.h)
 
 type QQuickPaintedItemgeometryChangedProc* = proc(newGeometry: gen_qrect.QRectF, oldGeometry: gen_qrect.QRectF): void
@@ -1186,7 +1102,6 @@ proc miqt_exec_callback_QQuickPaintedItem_geometryChanged(self: ptr cQQuickPaint
 
   nimfunc[](slotval1, slotval2)
 proc QQuickPaintedItemupdatePolish*(self: gen_qquickpainteditem_types.QQuickPaintedItem, ): void =
-
   fQQuickPaintedItem_virtualbase_updatePolish(self.h)
 
 type QQuickPaintedItemupdatePolishProc* = proc(): void
@@ -1202,7 +1117,6 @@ proc miqt_exec_callback_QQuickPaintedItem_updatePolish(self: ptr cQQuickPaintedI
 
   nimfunc[]()
 proc QQuickPaintedItemeventFilter*(self: gen_qquickpainteditem_types.QQuickPaintedItem, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickPaintedItem_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQuickPaintedItemeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1224,7 +1138,6 @@ proc miqt_exec_callback_QQuickPaintedItem_eventFilter(self: ptr cQQuickPaintedIt
 
   virtualReturn
 proc QQuickPaintedItemtimerEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQuickPaintedItem_virtualbase_timerEvent(self.h, event.h)
 
 type QQuickPaintedItemtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1242,7 +1155,6 @@ proc miqt_exec_callback_QQuickPaintedItem_timerEvent(self: ptr cQQuickPaintedIte
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemchildEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qcoreevent.QChildEvent): void =
-
   fQQuickPaintedItem_virtualbase_childEvent(self.h, event.h)
 
 type QQuickPaintedItemchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1260,7 +1172,6 @@ proc miqt_exec_callback_QQuickPaintedItem_childEvent(self: ptr cQQuickPaintedIte
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemcustomEvent*(self: gen_qquickpainteditem_types.QQuickPaintedItem, event: gen_qcoreevent.QEvent): void =
-
   fQQuickPaintedItem_virtualbase_customEvent(self.h, event.h)
 
 type QQuickPaintedItemcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1278,7 +1189,6 @@ proc miqt_exec_callback_QQuickPaintedItem_customEvent(self: ptr cQQuickPaintedIt
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemconnectNotify*(self: gen_qquickpainteditem_types.QQuickPaintedItem, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickPaintedItem_virtualbase_connectNotify(self.h, signal.h)
 
 type QQuickPaintedItemconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1296,7 +1206,6 @@ proc miqt_exec_callback_QQuickPaintedItem_connectNotify(self: ptr cQQuickPainted
 
   nimfunc[](slotval1)
 proc QQuickPaintedItemdisconnectNotify*(self: gen_qquickpainteditem_types.QQuickPaintedItem, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickPaintedItem_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQuickPaintedItemdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

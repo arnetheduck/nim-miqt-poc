@@ -192,79 +192,66 @@ proc fcQQuickView_delete(self: pointer) {.importc: "QQuickView_delete".}
 func init*(T: type gen_qquickview_types.QQuickView, h: ptr cQQuickView): gen_qquickview_types.QQuickView =
   T(h: h)
 proc create*(T: type gen_qquickview_types.QQuickView, ): gen_qquickview_types.QQuickView =
-
   gen_qquickview_types.QQuickView.init(fcQQuickView_new())
+
 proc create*(T: type gen_qquickview_types.QQuickView, engine: gen_qqmlengine.QQmlEngine, parent: gen_qwindow.QWindow): gen_qquickview_types.QQuickView =
-
   gen_qquickview_types.QQuickView.init(fcQQuickView_new2(engine.h, parent.h))
+
 proc create*(T: type gen_qquickview_types.QQuickView, source: gen_qurl.QUrl): gen_qquickview_types.QQuickView =
-
   gen_qquickview_types.QQuickView.init(fcQQuickView_new3(source.h))
-proc create2*(T: type gen_qquickview_types.QQuickView, source: gen_qurl.QUrl, renderControl: gen_qquickrendercontrol.QQuickRenderControl): gen_qquickview_types.QQuickView =
 
+proc create*(T: type gen_qquickview_types.QQuickView, source: gen_qurl.QUrl, renderControl: gen_qquickrendercontrol.QQuickRenderControl): gen_qquickview_types.QQuickView =
   gen_qquickview_types.QQuickView.init(fcQQuickView_new4(source.h, renderControl.h))
-proc create2*(T: type gen_qquickview_types.QQuickView, parent: gen_qwindow.QWindow): gen_qquickview_types.QQuickView =
 
+proc create*(T: type gen_qquickview_types.QQuickView, parent: gen_qwindow.QWindow): gen_qquickview_types.QQuickView =
   gen_qquickview_types.QQuickView.init(fcQQuickView_new5(parent.h))
-proc create2*(T: type gen_qquickview_types.QQuickView, source: gen_qurl.QUrl, parent: gen_qwindow.QWindow): gen_qquickview_types.QQuickView =
 
+proc create*(T: type gen_qquickview_types.QQuickView, source: gen_qurl.QUrl, parent: gen_qwindow.QWindow): gen_qquickview_types.QQuickView =
   gen_qquickview_types.QQuickView.init(fcQQuickView_new6(source.h, parent.h))
-proc metaObject*(self: gen_qquickview_types.QQuickView, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qquickview_types.QQuickView, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickView_metaObject(self.h))
 
 proc metacast*(self: gen_qquickview_types.QQuickView, param1: cstring): pointer =
-
   fcQQuickView_metacast(self.h, param1)
 
 proc metacall*(self: gen_qquickview_types.QQuickView, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQuickView_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qquickview_types.QQuickView, s: cstring): string =
-
   let v_ms = fcQQuickView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qquickview_types.QQuickView, s: cstring): string =
-
   let v_ms = fcQQuickView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc source*(self: gen_qquickview_types.QQuickView, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQQuickView_source(self.h))
 
 proc engine*(self: gen_qquickview_types.QQuickView, ): gen_qqmlengine.QQmlEngine =
-
   gen_qqmlengine.QQmlEngine(h: fcQQuickView_engine(self.h))
 
 proc rootContext*(self: gen_qquickview_types.QQuickView, ): gen_qqmlcontext.QQmlContext =
-
   gen_qqmlcontext.QQmlContext(h: fcQQuickView_rootContext(self.h))
 
 proc rootObject*(self: gen_qquickview_types.QQuickView, ): gen_qquickitem.QQuickItem =
-
   gen_qquickitem.QQuickItem(h: fcQQuickView_rootObject(self.h))
 
 proc resizeMode*(self: gen_qquickview_types.QQuickView, ): cint =
-
   cint(fcQQuickView_resizeMode(self.h))
 
 proc setResizeMode*(self: gen_qquickview_types.QQuickView, resizeMode: cint): void =
-
   fcQQuickView_setResizeMode(self.h, cint(resizeMode))
 
 proc status*(self: gen_qquickview_types.QQuickView, ): cint =
-
   cint(fcQQuickView_status(self.h))
 
 proc errors*(self: gen_qquickview_types.QQuickView, ): seq[gen_qqmlerror.QQmlError] =
-
   var v_ma = fcQQuickView_errors(self.h)
   var vx_ret = newSeq[gen_qqmlerror.QQmlError](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -273,19 +260,15 @@ proc errors*(self: gen_qquickview_types.QQuickView, ): seq[gen_qqmlerror.QQmlErr
   vx_ret
 
 proc sizeHint*(self: gen_qquickview_types.QQuickView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQQuickView_sizeHint(self.h))
 
 proc initialSize*(self: gen_qquickview_types.QQuickView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQQuickView_initialSize(self.h))
 
 proc setSource*(self: gen_qquickview_types.QQuickView, source: gen_qurl.QUrl): void =
-
   fcQQuickView_setSource(self.h, source.h)
 
 proc setInitialProperties*(self: gen_qquickview_types.QQuickView, initialProperties: Table[string,gen_qvariant.QVariant]): void =
-
   var initialProperties_Keys_CArray = newSeq[struct_miqt_string](len(initialProperties))
   var initialProperties_Values_CArray = newSeq[pointer](len(initialProperties))
   var initialProperties_ctr = 0
@@ -297,57 +280,49 @@ proc setInitialProperties*(self: gen_qquickview_types.QQuickView, initialPropert
   fcQQuickView_setInitialProperties(self.h, struct_miqt_map(len: csize_t(len(initialProperties)),keys: if len(initialProperties) == 0: nil else: addr(initialProperties_Keys_CArray[0]), values: if len(initialProperties) == 0: nil else: addr(initialProperties_Values_CArray[0]),))
 
 proc setContent*(self: gen_qquickview_types.QQuickView, url: gen_qurl.QUrl, component: gen_qqmlcomponent.QQmlComponent, item: gen_qobject.QObject): void =
-
   fcQQuickView_setContent(self.h, url.h, component.h, item.h)
 
 proc statusChanged*(self: gen_qquickview_types.QQuickView, param1: cint): void =
-
   fcQQuickView_statusChanged(self.h, cint(param1))
 
+type QQuickViewstatusChangedSlot* = proc(param1: cint)
 proc miqt_exec_callback_QQuickView_statusChanged(slot: int, param1: cint) {.exportc.} =
-  type Cb = proc(param1: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QQuickViewstatusChangedSlot](cast[pointer](slot))
   let slotval1 = cint(param1)
-
 
   nimfunc[](slotval1)
 
-proc onstatusChanged*(self: gen_qquickview_types.QQuickView, slot: proc(param1: cint)) =
-  type Cb = proc(param1: cint)
-  var tmp = new Cb
+proc onstatusChanged*(self: gen_qquickview_types.QQuickView, slot: QQuickViewstatusChangedSlot) =
+  var tmp = new QQuickViewstatusChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickView_connect_statusChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qquickview_types.QQuickView, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qquickview_types.QQuickView, s: cstring, c: cstring): string =
   let v_ms = fcQQuickView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qquickview_types.QQuickView, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qquickview_types.QQuickView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qquickview_types.QQuickView, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qquickview_types.QQuickView, s: cstring, c: cstring): string =
   let v_ms = fcQQuickView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qquickview_types.QQuickView, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qquickview_types.QQuickView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QQuickViewmetaObject*(self: gen_qquickview_types.QQuickView, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQuickView_virtualbase_metaObject(self.h))
 
 type QQuickViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -365,7 +340,6 @@ proc miqt_exec_callback_QQuickView_metaObject(self: ptr cQQuickView, slot: int):
 
   virtualReturn.h
 proc QQuickViewmetacast*(self: gen_qquickview_types.QQuickView, param1: cstring): pointer =
-
   fQQuickView_virtualbase_metacast(self.h, param1)
 
 type QQuickViewmetacastProc* = proc(param1: cstring): pointer
@@ -385,7 +359,6 @@ proc miqt_exec_callback_QQuickView_metacast(self: ptr cQQuickView, slot: int, pa
 
   virtualReturn
 proc QQuickViewmetacall*(self: gen_qquickview_types.QQuickView, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQuickView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQuickViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -409,7 +382,6 @@ proc miqt_exec_callback_QQuickView_metacall(self: ptr cQQuickView, slot: int, pa
 
   virtualReturn
 proc QQuickViewresizeEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QResizeEvent): void =
-
   fQQuickView_virtualbase_resizeEvent(self.h, param1.h)
 
 type QQuickViewresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -427,7 +399,6 @@ proc miqt_exec_callback_QQuickView_resizeEvent(self: ptr cQQuickView, slot: int,
 
   nimfunc[](slotval1)
 proc QQuickViewtimerEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qcoreevent.QTimerEvent): void =
-
   fQQuickView_virtualbase_timerEvent(self.h, param1.h)
 
 type QQuickViewtimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
@@ -445,7 +416,6 @@ proc miqt_exec_callback_QQuickView_timerEvent(self: ptr cQQuickView, slot: int, 
 
   nimfunc[](slotval1)
 proc QQuickViewkeyPressEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QKeyEvent): void =
-
   fQQuickView_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QQuickViewkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -463,7 +433,6 @@ proc miqt_exec_callback_QQuickView_keyPressEvent(self: ptr cQQuickView, slot: in
 
   nimfunc[](slotval1)
 proc QQuickViewkeyReleaseEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QKeyEvent): void =
-
   fQQuickView_virtualbase_keyReleaseEvent(self.h, param1.h)
 
 type QQuickViewkeyReleaseEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -481,7 +450,6 @@ proc miqt_exec_callback_QQuickView_keyReleaseEvent(self: ptr cQQuickView, slot: 
 
   nimfunc[](slotval1)
 proc QQuickViewmousePressEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QMouseEvent): void =
-
   fQQuickView_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QQuickViewmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -499,7 +467,6 @@ proc miqt_exec_callback_QQuickView_mousePressEvent(self: ptr cQQuickView, slot: 
 
   nimfunc[](slotval1)
 proc QQuickViewmouseReleaseEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QMouseEvent): void =
-
   fQQuickView_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QQuickViewmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -517,7 +484,6 @@ proc miqt_exec_callback_QQuickView_mouseReleaseEvent(self: ptr cQQuickView, slot
 
   nimfunc[](slotval1)
 proc QQuickViewmouseMoveEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QMouseEvent): void =
-
   fQQuickView_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QQuickViewmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -535,7 +501,6 @@ proc miqt_exec_callback_QQuickView_mouseMoveEvent(self: ptr cQQuickView, slot: i
 
   nimfunc[](slotval1)
 proc QQuickViewfocusObject*(self: gen_qquickview_types.QQuickView, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fQQuickView_virtualbase_focusObject(self.h))
 
 type QQuickViewfocusObjectProc* = proc(): gen_qobject.QObject
@@ -553,7 +518,6 @@ proc miqt_exec_callback_QQuickView_focusObject(self: ptr cQQuickView, slot: int)
 
   virtualReturn.h
 proc QQuickViewaccessibleRoot*(self: gen_qquickview_types.QQuickView, ): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fQQuickView_virtualbase_accessibleRoot(self.h))
 
 type QQuickViewaccessibleRootProc* = proc(): gen_qaccessible.QAccessibleInterface
@@ -571,7 +535,6 @@ proc miqt_exec_callback_QQuickView_accessibleRoot(self: ptr cQQuickView, slot: i
 
   virtualReturn.h
 proc QQuickViewexposeEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QExposeEvent): void =
-
   fQQuickView_virtualbase_exposeEvent(self.h, param1.h)
 
 type QQuickViewexposeEventProc* = proc(param1: gen_qevent.QExposeEvent): void
@@ -589,7 +552,6 @@ proc miqt_exec_callback_QQuickView_exposeEvent(self: ptr cQQuickView, slot: int,
 
   nimfunc[](slotval1)
 proc QQuickViewshowEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QShowEvent): void =
-
   fQQuickView_virtualbase_showEvent(self.h, param1.h)
 
 type QQuickViewshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -607,7 +569,6 @@ proc miqt_exec_callback_QQuickView_showEvent(self: ptr cQQuickView, slot: int, p
 
   nimfunc[](slotval1)
 proc QQuickViewhideEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QHideEvent): void =
-
   fQQuickView_virtualbase_hideEvent(self.h, param1.h)
 
 type QQuickViewhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
@@ -625,7 +586,6 @@ proc miqt_exec_callback_QQuickView_hideEvent(self: ptr cQQuickView, slot: int, p
 
   nimfunc[](slotval1)
 proc QQuickViewfocusInEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QFocusEvent): void =
-
   fQQuickView_virtualbase_focusInEvent(self.h, param1.h)
 
 type QQuickViewfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -643,7 +603,6 @@ proc miqt_exec_callback_QQuickView_focusInEvent(self: ptr cQQuickView, slot: int
 
   nimfunc[](slotval1)
 proc QQuickViewfocusOutEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QFocusEvent): void =
-
   fQQuickView_virtualbase_focusOutEvent(self.h, param1.h)
 
 type QQuickViewfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -661,7 +620,6 @@ proc miqt_exec_callback_QQuickView_focusOutEvent(self: ptr cQQuickView, slot: in
 
   nimfunc[](slotval1)
 proc QQuickViewevent*(self: gen_qquickview_types.QQuickView, param1: gen_qcoreevent.QEvent): bool =
-
   fQQuickView_virtualbase_event(self.h, param1.h)
 
 type QQuickVieweventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -681,7 +639,6 @@ proc miqt_exec_callback_QQuickView_event(self: ptr cQQuickView, slot: int, param
 
   virtualReturn
 proc QQuickViewmouseDoubleClickEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QMouseEvent): void =
-
   fQQuickView_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
 type QQuickViewmouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -699,7 +656,6 @@ proc miqt_exec_callback_QQuickView_mouseDoubleClickEvent(self: ptr cQQuickView, 
 
   nimfunc[](slotval1)
 proc QQuickViewwheelEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QWheelEvent): void =
-
   fQQuickView_virtualbase_wheelEvent(self.h, param1.h)
 
 type QQuickViewwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -717,7 +673,6 @@ proc miqt_exec_callback_QQuickView_wheelEvent(self: ptr cQQuickView, slot: int, 
 
   nimfunc[](slotval1)
 proc QQuickViewtabletEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QTabletEvent): void =
-
   fQQuickView_virtualbase_tabletEvent(self.h, param1.h)
 
 type QQuickViewtabletEventProc* = proc(param1: gen_qevent.QTabletEvent): void
@@ -735,7 +690,6 @@ proc miqt_exec_callback_QQuickView_tabletEvent(self: ptr cQQuickView, slot: int,
 
   nimfunc[](slotval1)
 proc QQuickViewsurfaceType*(self: gen_qquickview_types.QQuickView, ): cint =
-
   cint(fQQuickView_virtualbase_surfaceType(self.h))
 
 type QQuickViewsurfaceTypeProc* = proc(): cint
@@ -753,7 +707,6 @@ proc miqt_exec_callback_QQuickView_surfaceType(self: ptr cQQuickView, slot: int)
 
   cint(virtualReturn)
 proc QQuickViewformat*(self: gen_qquickview_types.QQuickView, ): gen_qsurfaceformat.QSurfaceFormat =
-
   gen_qsurfaceformat.QSurfaceFormat(h: fQQuickView_virtualbase_format(self.h))
 
 type QQuickViewformatProc* = proc(): gen_qsurfaceformat.QSurfaceFormat
@@ -771,7 +724,6 @@ proc miqt_exec_callback_QQuickView_format(self: ptr cQQuickView, slot: int): poi
 
   virtualReturn.h
 proc QQuickViewsize*(self: gen_qquickview_types.QQuickView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQQuickView_virtualbase_size(self.h))
 
 type QQuickViewsizeProc* = proc(): gen_qsize.QSize
@@ -789,7 +741,6 @@ proc miqt_exec_callback_QQuickView_size(self: ptr cQQuickView, slot: int): point
 
   virtualReturn.h
 proc QQuickViewmoveEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QMoveEvent): void =
-
   fQQuickView_virtualbase_moveEvent(self.h, param1.h)
 
 type QQuickViewmoveEventProc* = proc(param1: gen_qevent.QMoveEvent): void
@@ -807,7 +758,6 @@ proc miqt_exec_callback_QQuickView_moveEvent(self: ptr cQQuickView, slot: int, p
 
   nimfunc[](slotval1)
 proc QQuickViewtouchEvent*(self: gen_qquickview_types.QQuickView, param1: gen_qevent.QTouchEvent): void =
-
   fQQuickView_virtualbase_touchEvent(self.h, param1.h)
 
 type QQuickViewtouchEventProc* = proc(param1: gen_qevent.QTouchEvent): void
@@ -825,7 +775,6 @@ proc miqt_exec_callback_QQuickView_touchEvent(self: ptr cQQuickView, slot: int, 
 
   nimfunc[](slotval1)
 proc QQuickViewnativeEvent*(self: gen_qquickview_types.QQuickView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQQuickView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QQuickViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -852,7 +801,6 @@ proc miqt_exec_callback_QQuickView_nativeEvent(self: ptr cQQuickView, slot: int,
 
   virtualReturn
 proc QQuickVieweventFilter*(self: gen_qquickview_types.QQuickView, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickView_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQuickVieweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -874,7 +822,6 @@ proc miqt_exec_callback_QQuickView_eventFilter(self: ptr cQQuickView, slot: int,
 
   virtualReturn
 proc QQuickViewchildEvent*(self: gen_qquickview_types.QQuickView, event: gen_qcoreevent.QChildEvent): void =
-
   fQQuickView_virtualbase_childEvent(self.h, event.h)
 
 type QQuickViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -892,7 +839,6 @@ proc miqt_exec_callback_QQuickView_childEvent(self: ptr cQQuickView, slot: int, 
 
   nimfunc[](slotval1)
 proc QQuickViewcustomEvent*(self: gen_qquickview_types.QQuickView, event: gen_qcoreevent.QEvent): void =
-
   fQQuickView_virtualbase_customEvent(self.h, event.h)
 
 type QQuickViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -910,7 +856,6 @@ proc miqt_exec_callback_QQuickView_customEvent(self: ptr cQQuickView, slot: int,
 
   nimfunc[](slotval1)
 proc QQuickViewconnectNotify*(self: gen_qquickview_types.QQuickView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickView_virtualbase_connectNotify(self.h, signal.h)
 
 type QQuickViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -928,7 +873,6 @@ proc miqt_exec_callback_QQuickView_connectNotify(self: ptr cQQuickView, slot: in
 
   nimfunc[](slotval1)
 proc QQuickViewdisconnectNotify*(self: gen_qquickview_types.QQuickView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickView_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQuickViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

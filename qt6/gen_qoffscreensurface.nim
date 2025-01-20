@@ -110,107 +110,88 @@ proc fcQOffscreenSurface_delete(self: pointer) {.importc: "QOffscreenSurface_del
 func init*(T: type gen_qoffscreensurface_types.QOffscreenSurface, h: ptr cQOffscreenSurface): gen_qoffscreensurface_types.QOffscreenSurface =
   T(h: h)
 proc create*(T: type gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qoffscreensurface_types.QOffscreenSurface =
-
   gen_qoffscreensurface_types.QOffscreenSurface.init(fcQOffscreenSurface_new())
+
 proc create*(T: type gen_qoffscreensurface_types.QOffscreenSurface, screen: gen_qscreen.QScreen): gen_qoffscreensurface_types.QOffscreenSurface =
-
   gen_qoffscreensurface_types.QOffscreenSurface.init(fcQOffscreenSurface_new2(screen.h))
+
 proc create*(T: type gen_qoffscreensurface_types.QOffscreenSurface, screen: gen_qscreen.QScreen, parent: gen_qobject.QObject): gen_qoffscreensurface_types.QOffscreenSurface =
-
   gen_qoffscreensurface_types.QOffscreenSurface.init(fcQOffscreenSurface_new3(screen.h, parent.h))
-proc metaObject*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQOffscreenSurface_metaObject(self.h))
 
 proc metacast*(self: gen_qoffscreensurface_types.QOffscreenSurface, param1: cstring): pointer =
-
   fcQOffscreenSurface_metacast(self.h, param1)
 
 proc metacall*(self: gen_qoffscreensurface_types.QOffscreenSurface, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQOffscreenSurface_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring): string =
-
   let v_ms = fcQOffscreenSurface_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc surfaceType*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): cint =
-
   cint(fcQOffscreenSurface_surfaceType(self.h))
 
 proc create*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): void =
-
   fcQOffscreenSurface_create(self.h)
 
 proc destroy*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): void =
-
   fcQOffscreenSurface_destroy(self.h)
 
 proc isValid*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): bool =
-
   fcQOffscreenSurface_isValid(self.h)
 
 proc setFormat*(self: gen_qoffscreensurface_types.QOffscreenSurface, format: gen_qsurfaceformat.QSurfaceFormat): void =
-
   fcQOffscreenSurface_setFormat(self.h, format.h)
 
 proc format*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsurfaceformat.QSurfaceFormat =
-
   gen_qsurfaceformat.QSurfaceFormat(h: fcQOffscreenSurface_format(self.h))
 
 proc requestedFormat*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsurfaceformat.QSurfaceFormat =
-
   gen_qsurfaceformat.QSurfaceFormat(h: fcQOffscreenSurface_requestedFormat(self.h))
 
 proc size*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQOffscreenSurface_size(self.h))
 
 proc screen*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qscreen.QScreen =
-
   gen_qscreen.QScreen(h: fcQOffscreenSurface_screen(self.h))
 
 proc setScreen*(self: gen_qoffscreensurface_types.QOffscreenSurface, screen: gen_qscreen.QScreen): void =
-
   fcQOffscreenSurface_setScreen(self.h, screen.h)
 
 proc screenChanged*(self: gen_qoffscreensurface_types.QOffscreenSurface, screen: gen_qscreen.QScreen): void =
-
   fcQOffscreenSurface_screenChanged(self.h, screen.h)
 
+type QOffscreenSurfacescreenChangedSlot* = proc(screen: gen_qscreen.QScreen)
 proc miqt_exec_callback_QOffscreenSurface_screenChanged(slot: int, screen: pointer) {.exportc.} =
-  type Cb = proc(screen: gen_qscreen.QScreen)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QOffscreenSurfacescreenChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qscreen.QScreen(h: screen)
-
 
   nimfunc[](slotval1)
 
-proc onscreenChanged*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: proc(screen: gen_qscreen.QScreen)) =
-  type Cb = proc(screen: gen_qscreen.QScreen)
-  var tmp = new Cb
+proc onscreenChanged*(self: gen_qoffscreensurface_types.QOffscreenSurface, slot: QOffscreenSurfacescreenChangedSlot) =
+  var tmp = new QOffscreenSurfacescreenChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQOffscreenSurface_connect_screenChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring, c: cstring): string =
   let v_ms = fcQOffscreenSurface_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qoffscreensurface_types.QOffscreenSurface, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQOffscreenSurface_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QOffscreenSurfacemetaObject*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQOffscreenSurface_virtualbase_metaObject(self.h))
 
 type QOffscreenSurfacemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -228,7 +209,6 @@ proc miqt_exec_callback_QOffscreenSurface_metaObject(self: ptr cQOffscreenSurfac
 
   virtualReturn.h
 proc QOffscreenSurfacemetacast*(self: gen_qoffscreensurface_types.QOffscreenSurface, param1: cstring): pointer =
-
   fQOffscreenSurface_virtualbase_metacast(self.h, param1)
 
 type QOffscreenSurfacemetacastProc* = proc(param1: cstring): pointer
@@ -248,7 +228,6 @@ proc miqt_exec_callback_QOffscreenSurface_metacast(self: ptr cQOffscreenSurface,
 
   virtualReturn
 proc QOffscreenSurfacemetacall*(self: gen_qoffscreensurface_types.QOffscreenSurface, param1: cint, param2: cint, param3: pointer): cint =
-
   fQOffscreenSurface_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QOffscreenSurfacemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -272,7 +251,6 @@ proc miqt_exec_callback_QOffscreenSurface_metacall(self: ptr cQOffscreenSurface,
 
   virtualReturn
 proc QOffscreenSurfacesurfaceType*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): cint =
-
   cint(fQOffscreenSurface_virtualbase_surfaceType(self.h))
 
 type QOffscreenSurfacesurfaceTypeProc* = proc(): cint
@@ -290,7 +268,6 @@ proc miqt_exec_callback_QOffscreenSurface_surfaceType(self: ptr cQOffscreenSurfa
 
   cint(virtualReturn)
 proc QOffscreenSurfaceformat*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsurfaceformat.QSurfaceFormat =
-
   gen_qsurfaceformat.QSurfaceFormat(h: fQOffscreenSurface_virtualbase_format(self.h))
 
 type QOffscreenSurfaceformatProc* = proc(): gen_qsurfaceformat.QSurfaceFormat
@@ -308,7 +285,6 @@ proc miqt_exec_callback_QOffscreenSurface_format(self: ptr cQOffscreenSurface, s
 
   virtualReturn.h
 proc QOffscreenSurfacesize*(self: gen_qoffscreensurface_types.QOffscreenSurface, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQOffscreenSurface_virtualbase_size(self.h))
 
 type QOffscreenSurfacesizeProc* = proc(): gen_qsize.QSize
@@ -326,7 +302,6 @@ proc miqt_exec_callback_QOffscreenSurface_size(self: ptr cQOffscreenSurface, slo
 
   virtualReturn.h
 proc QOffscreenSurfaceevent*(self: gen_qoffscreensurface_types.QOffscreenSurface, event: gen_qcoreevent.QEvent): bool =
-
   fQOffscreenSurface_virtualbase_event(self.h, event.h)
 
 type QOffscreenSurfaceeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -346,7 +321,6 @@ proc miqt_exec_callback_QOffscreenSurface_event(self: ptr cQOffscreenSurface, sl
 
   virtualReturn
 proc QOffscreenSurfaceeventFilter*(self: gen_qoffscreensurface_types.QOffscreenSurface, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQOffscreenSurface_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QOffscreenSurfaceeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -368,7 +342,6 @@ proc miqt_exec_callback_QOffscreenSurface_eventFilter(self: ptr cQOffscreenSurfa
 
   virtualReturn
 proc QOffscreenSurfacetimerEvent*(self: gen_qoffscreensurface_types.QOffscreenSurface, event: gen_qcoreevent.QTimerEvent): void =
-
   fQOffscreenSurface_virtualbase_timerEvent(self.h, event.h)
 
 type QOffscreenSurfacetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -386,7 +359,6 @@ proc miqt_exec_callback_QOffscreenSurface_timerEvent(self: ptr cQOffscreenSurfac
 
   nimfunc[](slotval1)
 proc QOffscreenSurfacechildEvent*(self: gen_qoffscreensurface_types.QOffscreenSurface, event: gen_qcoreevent.QChildEvent): void =
-
   fQOffscreenSurface_virtualbase_childEvent(self.h, event.h)
 
 type QOffscreenSurfacechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -404,7 +376,6 @@ proc miqt_exec_callback_QOffscreenSurface_childEvent(self: ptr cQOffscreenSurfac
 
   nimfunc[](slotval1)
 proc QOffscreenSurfacecustomEvent*(self: gen_qoffscreensurface_types.QOffscreenSurface, event: gen_qcoreevent.QEvent): void =
-
   fQOffscreenSurface_virtualbase_customEvent(self.h, event.h)
 
 type QOffscreenSurfacecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -422,7 +393,6 @@ proc miqt_exec_callback_QOffscreenSurface_customEvent(self: ptr cQOffscreenSurfa
 
   nimfunc[](slotval1)
 proc QOffscreenSurfaceconnectNotify*(self: gen_qoffscreensurface_types.QOffscreenSurface, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQOffscreenSurface_virtualbase_connectNotify(self.h, signal.h)
 
 type QOffscreenSurfaceconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -440,7 +410,6 @@ proc miqt_exec_callback_QOffscreenSurface_connectNotify(self: ptr cQOffscreenSur
 
   nimfunc[](slotval1)
 proc QOffscreenSurfacedisconnectNotify*(self: gen_qoffscreensurface_types.QOffscreenSurface, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQOffscreenSurface_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QOffscreenSurfacedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -201,151 +201,124 @@ proc fcQStatusBar_delete(self: pointer) {.importc: "QStatusBar_delete".}
 func init*(T: type gen_qstatusbar_types.QStatusBar, h: ptr cQStatusBar): gen_qstatusbar_types.QStatusBar =
   T(h: h)
 proc create*(T: type gen_qstatusbar_types.QStatusBar, parent: gen_qwidget.QWidget): gen_qstatusbar_types.QStatusBar =
-
   gen_qstatusbar_types.QStatusBar.init(fcQStatusBar_new(parent.h))
+
 proc create*(T: type gen_qstatusbar_types.QStatusBar, ): gen_qstatusbar_types.QStatusBar =
-
   gen_qstatusbar_types.QStatusBar.init(fcQStatusBar_new2())
-proc metaObject*(self: gen_qstatusbar_types.QStatusBar, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qstatusbar_types.QStatusBar, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQStatusBar_metaObject(self.h))
 
 proc metacast*(self: gen_qstatusbar_types.QStatusBar, param1: cstring): pointer =
-
   fcQStatusBar_metacast(self.h, param1)
 
 proc metacall*(self: gen_qstatusbar_types.QStatusBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQStatusBar_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qstatusbar_types.QStatusBar, s: cstring): string =
-
   let v_ms = fcQStatusBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qstatusbar_types.QStatusBar, s: cstring): string =
-
   let v_ms = fcQStatusBar_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc addWidget*(self: gen_qstatusbar_types.QStatusBar, widget: gen_qwidget.QWidget): void =
-
   fcQStatusBar_addWidget(self.h, widget.h)
 
 proc insertWidget*(self: gen_qstatusbar_types.QStatusBar, index: cint, widget: gen_qwidget.QWidget): cint =
-
   fcQStatusBar_insertWidget(self.h, index, widget.h)
 
 proc addPermanentWidget*(self: gen_qstatusbar_types.QStatusBar, widget: gen_qwidget.QWidget): void =
-
   fcQStatusBar_addPermanentWidget(self.h, widget.h)
 
 proc insertPermanentWidget*(self: gen_qstatusbar_types.QStatusBar, index: cint, widget: gen_qwidget.QWidget): cint =
-
   fcQStatusBar_insertPermanentWidget(self.h, index, widget.h)
 
 proc removeWidget*(self: gen_qstatusbar_types.QStatusBar, widget: gen_qwidget.QWidget): void =
-
   fcQStatusBar_removeWidget(self.h, widget.h)
 
 proc setSizeGripEnabled*(self: gen_qstatusbar_types.QStatusBar, sizeGripEnabled: bool): void =
-
   fcQStatusBar_setSizeGripEnabled(self.h, sizeGripEnabled)
 
 proc isSizeGripEnabled*(self: gen_qstatusbar_types.QStatusBar, ): bool =
-
   fcQStatusBar_isSizeGripEnabled(self.h)
 
 proc currentMessage*(self: gen_qstatusbar_types.QStatusBar, ): string =
-
   let v_ms = fcQStatusBar_currentMessage(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc showMessage*(self: gen_qstatusbar_types.QStatusBar, text: string): void =
-
   fcQStatusBar_showMessage(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc clearMessage*(self: gen_qstatusbar_types.QStatusBar, ): void =
-
   fcQStatusBar_clearMessage(self.h)
 
 proc messageChanged*(self: gen_qstatusbar_types.QStatusBar, text: string): void =
-
   fcQStatusBar_messageChanged(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
+type QStatusBarmessageChangedSlot* = proc(text: string)
 proc miqt_exec_callback_QStatusBar_messageChanged(slot: int, text: struct_miqt_string) {.exportc.} =
-  type Cb = proc(text: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QStatusBarmessageChangedSlot](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
 
-
   nimfunc[](slotval1)
 
-proc onmessageChanged*(self: gen_qstatusbar_types.QStatusBar, slot: proc(text: string)) =
-  type Cb = proc(text: string)
-  var tmp = new Cb
+proc onmessageChanged*(self: gen_qstatusbar_types.QStatusBar, slot: QStatusBarmessageChangedSlot) =
+  var tmp = new QStatusBarmessageChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQStatusBar_connect_messageChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qstatusbar_types.QStatusBar, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qstatusbar_types.QStatusBar, s: cstring, c: cstring): string =
   let v_ms = fcQStatusBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qstatusbar_types.QStatusBar, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qstatusbar_types.QStatusBar, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQStatusBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qstatusbar_types.QStatusBar, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qstatusbar_types.QStatusBar, s: cstring, c: cstring): string =
   let v_ms = fcQStatusBar_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qstatusbar_types.QStatusBar, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qstatusbar_types.QStatusBar, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQStatusBar_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addWidget2*(self: gen_qstatusbar_types.QStatusBar, widget: gen_qwidget.QWidget, stretch: cint): void =
-
+proc addWidget*(self: gen_qstatusbar_types.QStatusBar, widget: gen_qwidget.QWidget, stretch: cint): void =
   fcQStatusBar_addWidget2(self.h, widget.h, stretch)
 
-proc insertWidget3*(self: gen_qstatusbar_types.QStatusBar, index: cint, widget: gen_qwidget.QWidget, stretch: cint): cint =
-
+proc insertWidget*(self: gen_qstatusbar_types.QStatusBar, index: cint, widget: gen_qwidget.QWidget, stretch: cint): cint =
   fcQStatusBar_insertWidget3(self.h, index, widget.h, stretch)
 
-proc addPermanentWidget2*(self: gen_qstatusbar_types.QStatusBar, widget: gen_qwidget.QWidget, stretch: cint): void =
-
+proc addPermanentWidget*(self: gen_qstatusbar_types.QStatusBar, widget: gen_qwidget.QWidget, stretch: cint): void =
   fcQStatusBar_addPermanentWidget2(self.h, widget.h, stretch)
 
-proc insertPermanentWidget3*(self: gen_qstatusbar_types.QStatusBar, index: cint, widget: gen_qwidget.QWidget, stretch: cint): cint =
-
+proc insertPermanentWidget*(self: gen_qstatusbar_types.QStatusBar, index: cint, widget: gen_qwidget.QWidget, stretch: cint): cint =
   fcQStatusBar_insertPermanentWidget3(self.h, index, widget.h, stretch)
 
-proc showMessage2*(self: gen_qstatusbar_types.QStatusBar, text: string, timeout: cint): void =
-
+proc showMessage*(self: gen_qstatusbar_types.QStatusBar, text: string, timeout: cint): void =
   fcQStatusBar_showMessage2(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), timeout)
 
 proc QStatusBarmetaObject*(self: gen_qstatusbar_types.QStatusBar, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQStatusBar_virtualbase_metaObject(self.h))
 
 type QStatusBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -363,7 +336,6 @@ proc miqt_exec_callback_QStatusBar_metaObject(self: ptr cQStatusBar, slot: int):
 
   virtualReturn.h
 proc QStatusBarmetacast*(self: gen_qstatusbar_types.QStatusBar, param1: cstring): pointer =
-
   fQStatusBar_virtualbase_metacast(self.h, param1)
 
 type QStatusBarmetacastProc* = proc(param1: cstring): pointer
@@ -383,7 +355,6 @@ proc miqt_exec_callback_QStatusBar_metacast(self: ptr cQStatusBar, slot: int, pa
 
   virtualReturn
 proc QStatusBarmetacall*(self: gen_qstatusbar_types.QStatusBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fQStatusBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QStatusBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -407,7 +378,6 @@ proc miqt_exec_callback_QStatusBar_metacall(self: ptr cQStatusBar, slot: int, pa
 
   virtualReturn
 proc QStatusBarshowEvent*(self: gen_qstatusbar_types.QStatusBar, param1: gen_qevent.QShowEvent): void =
-
   fQStatusBar_virtualbase_showEvent(self.h, param1.h)
 
 type QStatusBarshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -425,7 +395,6 @@ proc miqt_exec_callback_QStatusBar_showEvent(self: ptr cQStatusBar, slot: int, p
 
   nimfunc[](slotval1)
 proc QStatusBarpaintEvent*(self: gen_qstatusbar_types.QStatusBar, param1: gen_qevent.QPaintEvent): void =
-
   fQStatusBar_virtualbase_paintEvent(self.h, param1.h)
 
 type QStatusBarpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -443,7 +412,6 @@ proc miqt_exec_callback_QStatusBar_paintEvent(self: ptr cQStatusBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QStatusBarresizeEvent*(self: gen_qstatusbar_types.QStatusBar, param1: gen_qevent.QResizeEvent): void =
-
   fQStatusBar_virtualbase_resizeEvent(self.h, param1.h)
 
 type QStatusBarresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -461,7 +429,6 @@ proc miqt_exec_callback_QStatusBar_resizeEvent(self: ptr cQStatusBar, slot: int,
 
   nimfunc[](slotval1)
 proc QStatusBarevent*(self: gen_qstatusbar_types.QStatusBar, param1: gen_qcoreevent.QEvent): bool =
-
   fQStatusBar_virtualbase_event(self.h, param1.h)
 
 type QStatusBareventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -481,7 +448,6 @@ proc miqt_exec_callback_QStatusBar_event(self: ptr cQStatusBar, slot: int, param
 
   virtualReturn
 proc QStatusBardevType*(self: gen_qstatusbar_types.QStatusBar, ): cint =
-
   fQStatusBar_virtualbase_devType(self.h)
 
 type QStatusBardevTypeProc* = proc(): cint
@@ -499,7 +465,6 @@ proc miqt_exec_callback_QStatusBar_devType(self: ptr cQStatusBar, slot: int): ci
 
   virtualReturn
 proc QStatusBarsetVisible*(self: gen_qstatusbar_types.QStatusBar, visible: bool): void =
-
   fQStatusBar_virtualbase_setVisible(self.h, visible)
 
 type QStatusBarsetVisibleProc* = proc(visible: bool): void
@@ -517,7 +482,6 @@ proc miqt_exec_callback_QStatusBar_setVisible(self: ptr cQStatusBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QStatusBarsizeHint*(self: gen_qstatusbar_types.QStatusBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQStatusBar_virtualbase_sizeHint(self.h))
 
 type QStatusBarsizeHintProc* = proc(): gen_qsize.QSize
@@ -535,7 +499,6 @@ proc miqt_exec_callback_QStatusBar_sizeHint(self: ptr cQStatusBar, slot: int): p
 
   virtualReturn.h
 proc QStatusBarminimumSizeHint*(self: gen_qstatusbar_types.QStatusBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQStatusBar_virtualbase_minimumSizeHint(self.h))
 
 type QStatusBarminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -553,7 +516,6 @@ proc miqt_exec_callback_QStatusBar_minimumSizeHint(self: ptr cQStatusBar, slot: 
 
   virtualReturn.h
 proc QStatusBarheightForWidth*(self: gen_qstatusbar_types.QStatusBar, param1: cint): cint =
-
   fQStatusBar_virtualbase_heightForWidth(self.h, param1)
 
 type QStatusBarheightForWidthProc* = proc(param1: cint): cint
@@ -573,7 +535,6 @@ proc miqt_exec_callback_QStatusBar_heightForWidth(self: ptr cQStatusBar, slot: i
 
   virtualReturn
 proc QStatusBarhasHeightForWidth*(self: gen_qstatusbar_types.QStatusBar, ): bool =
-
   fQStatusBar_virtualbase_hasHeightForWidth(self.h)
 
 type QStatusBarhasHeightForWidthProc* = proc(): bool
@@ -591,7 +552,6 @@ proc miqt_exec_callback_QStatusBar_hasHeightForWidth(self: ptr cQStatusBar, slot
 
   virtualReturn
 proc QStatusBarpaintEngine*(self: gen_qstatusbar_types.QStatusBar, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQStatusBar_virtualbase_paintEngine(self.h))
 
 type QStatusBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -609,7 +569,6 @@ proc miqt_exec_callback_QStatusBar_paintEngine(self: ptr cQStatusBar, slot: int)
 
   virtualReturn.h
 proc QStatusBarmousePressEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QMouseEvent): void =
-
   fQStatusBar_virtualbase_mousePressEvent(self.h, event.h)
 
 type QStatusBarmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -627,7 +586,6 @@ proc miqt_exec_callback_QStatusBar_mousePressEvent(self: ptr cQStatusBar, slot: 
 
   nimfunc[](slotval1)
 proc QStatusBarmouseReleaseEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QMouseEvent): void =
-
   fQStatusBar_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QStatusBarmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -645,7 +603,6 @@ proc miqt_exec_callback_QStatusBar_mouseReleaseEvent(self: ptr cQStatusBar, slot
 
   nimfunc[](slotval1)
 proc QStatusBarmouseDoubleClickEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QMouseEvent): void =
-
   fQStatusBar_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QStatusBarmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -663,7 +620,6 @@ proc miqt_exec_callback_QStatusBar_mouseDoubleClickEvent(self: ptr cQStatusBar, 
 
   nimfunc[](slotval1)
 proc QStatusBarmouseMoveEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QMouseEvent): void =
-
   fQStatusBar_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QStatusBarmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -681,7 +637,6 @@ proc miqt_exec_callback_QStatusBar_mouseMoveEvent(self: ptr cQStatusBar, slot: i
 
   nimfunc[](slotval1)
 proc QStatusBarwheelEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QWheelEvent): void =
-
   fQStatusBar_virtualbase_wheelEvent(self.h, event.h)
 
 type QStatusBarwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -699,7 +654,6 @@ proc miqt_exec_callback_QStatusBar_wheelEvent(self: ptr cQStatusBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QStatusBarkeyPressEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QKeyEvent): void =
-
   fQStatusBar_virtualbase_keyPressEvent(self.h, event.h)
 
 type QStatusBarkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -717,7 +671,6 @@ proc miqt_exec_callback_QStatusBar_keyPressEvent(self: ptr cQStatusBar, slot: in
 
   nimfunc[](slotval1)
 proc QStatusBarkeyReleaseEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QKeyEvent): void =
-
   fQStatusBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QStatusBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -735,7 +688,6 @@ proc miqt_exec_callback_QStatusBar_keyReleaseEvent(self: ptr cQStatusBar, slot: 
 
   nimfunc[](slotval1)
 proc QStatusBarfocusInEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QFocusEvent): void =
-
   fQStatusBar_virtualbase_focusInEvent(self.h, event.h)
 
 type QStatusBarfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -753,7 +705,6 @@ proc miqt_exec_callback_QStatusBar_focusInEvent(self: ptr cQStatusBar, slot: int
 
   nimfunc[](slotval1)
 proc QStatusBarfocusOutEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QFocusEvent): void =
-
   fQStatusBar_virtualbase_focusOutEvent(self.h, event.h)
 
 type QStatusBarfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -771,7 +722,6 @@ proc miqt_exec_callback_QStatusBar_focusOutEvent(self: ptr cQStatusBar, slot: in
 
   nimfunc[](slotval1)
 proc QStatusBarenterEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qcoreevent.QEvent): void =
-
   fQStatusBar_virtualbase_enterEvent(self.h, event.h)
 
 type QStatusBarenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -789,7 +739,6 @@ proc miqt_exec_callback_QStatusBar_enterEvent(self: ptr cQStatusBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QStatusBarleaveEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qcoreevent.QEvent): void =
-
   fQStatusBar_virtualbase_leaveEvent(self.h, event.h)
 
 type QStatusBarleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -807,7 +756,6 @@ proc miqt_exec_callback_QStatusBar_leaveEvent(self: ptr cQStatusBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QStatusBarmoveEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QMoveEvent): void =
-
   fQStatusBar_virtualbase_moveEvent(self.h, event.h)
 
 type QStatusBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -825,7 +773,6 @@ proc miqt_exec_callback_QStatusBar_moveEvent(self: ptr cQStatusBar, slot: int, e
 
   nimfunc[](slotval1)
 proc QStatusBarcloseEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QCloseEvent): void =
-
   fQStatusBar_virtualbase_closeEvent(self.h, event.h)
 
 type QStatusBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -843,7 +790,6 @@ proc miqt_exec_callback_QStatusBar_closeEvent(self: ptr cQStatusBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QStatusBarcontextMenuEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QContextMenuEvent): void =
-
   fQStatusBar_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QStatusBarcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -861,7 +807,6 @@ proc miqt_exec_callback_QStatusBar_contextMenuEvent(self: ptr cQStatusBar, slot:
 
   nimfunc[](slotval1)
 proc QStatusBartabletEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QTabletEvent): void =
-
   fQStatusBar_virtualbase_tabletEvent(self.h, event.h)
 
 type QStatusBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -879,7 +824,6 @@ proc miqt_exec_callback_QStatusBar_tabletEvent(self: ptr cQStatusBar, slot: int,
 
   nimfunc[](slotval1)
 proc QStatusBaractionEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QActionEvent): void =
-
   fQStatusBar_virtualbase_actionEvent(self.h, event.h)
 
 type QStatusBaractionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -897,7 +841,6 @@ proc miqt_exec_callback_QStatusBar_actionEvent(self: ptr cQStatusBar, slot: int,
 
   nimfunc[](slotval1)
 proc QStatusBardragEnterEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QDragEnterEvent): void =
-
   fQStatusBar_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QStatusBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -915,7 +858,6 @@ proc miqt_exec_callback_QStatusBar_dragEnterEvent(self: ptr cQStatusBar, slot: i
 
   nimfunc[](slotval1)
 proc QStatusBardragMoveEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QDragMoveEvent): void =
-
   fQStatusBar_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QStatusBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -933,7 +875,6 @@ proc miqt_exec_callback_QStatusBar_dragMoveEvent(self: ptr cQStatusBar, slot: in
 
   nimfunc[](slotval1)
 proc QStatusBardragLeaveEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QDragLeaveEvent): void =
-
   fQStatusBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QStatusBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -951,7 +892,6 @@ proc miqt_exec_callback_QStatusBar_dragLeaveEvent(self: ptr cQStatusBar, slot: i
 
   nimfunc[](slotval1)
 proc QStatusBardropEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QDropEvent): void =
-
   fQStatusBar_virtualbase_dropEvent(self.h, event.h)
 
 type QStatusBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -969,7 +909,6 @@ proc miqt_exec_callback_QStatusBar_dropEvent(self: ptr cQStatusBar, slot: int, e
 
   nimfunc[](slotval1)
 proc QStatusBarhideEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qevent.QHideEvent): void =
-
   fQStatusBar_virtualbase_hideEvent(self.h, event.h)
 
 type QStatusBarhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -987,7 +926,6 @@ proc miqt_exec_callback_QStatusBar_hideEvent(self: ptr cQStatusBar, slot: int, e
 
   nimfunc[](slotval1)
 proc QStatusBarnativeEvent*(self: gen_qstatusbar_types.QStatusBar, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQStatusBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QStatusBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1014,7 +952,6 @@ proc miqt_exec_callback_QStatusBar_nativeEvent(self: ptr cQStatusBar, slot: int,
 
   virtualReturn
 proc QStatusBarchangeEvent*(self: gen_qstatusbar_types.QStatusBar, param1: gen_qcoreevent.QEvent): void =
-
   fQStatusBar_virtualbase_changeEvent(self.h, param1.h)
 
 type QStatusBarchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1032,7 +969,6 @@ proc miqt_exec_callback_QStatusBar_changeEvent(self: ptr cQStatusBar, slot: int,
 
   nimfunc[](slotval1)
 proc QStatusBarmetric*(self: gen_qstatusbar_types.QStatusBar, param1: cint): cint =
-
   fQStatusBar_virtualbase_metric(self.h, cint(param1))
 
 type QStatusBarmetricProc* = proc(param1: cint): cint
@@ -1052,7 +988,6 @@ proc miqt_exec_callback_QStatusBar_metric(self: ptr cQStatusBar, slot: int, para
 
   virtualReturn
 proc QStatusBarinitPainter*(self: gen_qstatusbar_types.QStatusBar, painter: gen_qpainter.QPainter): void =
-
   fQStatusBar_virtualbase_initPainter(self.h, painter.h)
 
 type QStatusBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1070,7 +1005,6 @@ proc miqt_exec_callback_QStatusBar_initPainter(self: ptr cQStatusBar, slot: int,
 
   nimfunc[](slotval1)
 proc QStatusBarredirected*(self: gen_qstatusbar_types.QStatusBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQStatusBar_virtualbase_redirected(self.h, offset.h))
 
 type QStatusBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1090,7 +1024,6 @@ proc miqt_exec_callback_QStatusBar_redirected(self: ptr cQStatusBar, slot: int, 
 
   virtualReturn.h
 proc QStatusBarsharedPainter*(self: gen_qstatusbar_types.QStatusBar, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQStatusBar_virtualbase_sharedPainter(self.h))
 
 type QStatusBarsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1108,7 +1041,6 @@ proc miqt_exec_callback_QStatusBar_sharedPainter(self: ptr cQStatusBar, slot: in
 
   virtualReturn.h
 proc QStatusBarinputMethodEvent*(self: gen_qstatusbar_types.QStatusBar, param1: gen_qevent.QInputMethodEvent): void =
-
   fQStatusBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QStatusBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1126,7 +1058,6 @@ proc miqt_exec_callback_QStatusBar_inputMethodEvent(self: ptr cQStatusBar, slot:
 
   nimfunc[](slotval1)
 proc QStatusBarinputMethodQuery*(self: gen_qstatusbar_types.QStatusBar, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQStatusBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QStatusBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1146,7 +1077,6 @@ proc miqt_exec_callback_QStatusBar_inputMethodQuery(self: ptr cQStatusBar, slot:
 
   virtualReturn.h
 proc QStatusBarfocusNextPrevChild*(self: gen_qstatusbar_types.QStatusBar, next: bool): bool =
-
   fQStatusBar_virtualbase_focusNextPrevChild(self.h, next)
 
 type QStatusBarfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1166,7 +1096,6 @@ proc miqt_exec_callback_QStatusBar_focusNextPrevChild(self: ptr cQStatusBar, slo
 
   virtualReturn
 proc QStatusBareventFilter*(self: gen_qstatusbar_types.QStatusBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQStatusBar_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QStatusBareventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1188,7 +1117,6 @@ proc miqt_exec_callback_QStatusBar_eventFilter(self: ptr cQStatusBar, slot: int,
 
   virtualReturn
 proc QStatusBartimerEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qcoreevent.QTimerEvent): void =
-
   fQStatusBar_virtualbase_timerEvent(self.h, event.h)
 
 type QStatusBartimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1206,7 +1134,6 @@ proc miqt_exec_callback_QStatusBar_timerEvent(self: ptr cQStatusBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QStatusBarchildEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qcoreevent.QChildEvent): void =
-
   fQStatusBar_virtualbase_childEvent(self.h, event.h)
 
 type QStatusBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1224,7 +1151,6 @@ proc miqt_exec_callback_QStatusBar_childEvent(self: ptr cQStatusBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QStatusBarcustomEvent*(self: gen_qstatusbar_types.QStatusBar, event: gen_qcoreevent.QEvent): void =
-
   fQStatusBar_virtualbase_customEvent(self.h, event.h)
 
 type QStatusBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1242,7 +1168,6 @@ proc miqt_exec_callback_QStatusBar_customEvent(self: ptr cQStatusBar, slot: int,
 
   nimfunc[](slotval1)
 proc QStatusBarconnectNotify*(self: gen_qstatusbar_types.QStatusBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStatusBar_virtualbase_connectNotify(self.h, signal.h)
 
 type QStatusBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1260,7 +1185,6 @@ proc miqt_exec_callback_QStatusBar_connectNotify(self: ptr cQStatusBar, slot: in
 
   nimfunc[](slotval1)
 proc QStatusBardisconnectNotify*(self: gen_qstatusbar_types.QStatusBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStatusBar_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QStatusBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

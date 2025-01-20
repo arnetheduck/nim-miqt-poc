@@ -134,124 +134,102 @@ proc fcQBuffer_delete(self: pointer) {.importc: "QBuffer_delete".}
 func init*(T: type gen_qbuffer_types.QBuffer, h: ptr cQBuffer): gen_qbuffer_types.QBuffer =
   T(h: h)
 proc create*(T: type gen_qbuffer_types.QBuffer, ): gen_qbuffer_types.QBuffer =
-
   gen_qbuffer_types.QBuffer.init(fcQBuffer_new())
+
 proc create*(T: type gen_qbuffer_types.QBuffer, parent: gen_qobject.QObject): gen_qbuffer_types.QBuffer =
-
   gen_qbuffer_types.QBuffer.init(fcQBuffer_new2(parent.h))
-proc metaObject*(self: gen_qbuffer_types.QBuffer, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qbuffer_types.QBuffer, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQBuffer_metaObject(self.h))
 
 proc metacast*(self: gen_qbuffer_types.QBuffer, param1: cstring): pointer =
-
   fcQBuffer_metacast(self.h, param1)
 
 proc metacall*(self: gen_qbuffer_types.QBuffer, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQBuffer_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qbuffer_types.QBuffer, s: cstring): string =
-
   let v_ms = fcQBuffer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qbuffer_types.QBuffer, s: cstring): string =
-
   let v_ms = fcQBuffer_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc buffer*(self: gen_qbuffer_types.QBuffer, ): seq[byte] =
-
   var v_bytearray = fcQBuffer_buffer(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc buffer2*(self: gen_qbuffer_types.QBuffer, ): seq[byte] =
-
   var v_bytearray = fcQBuffer_buffer2(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc setData*(self: gen_qbuffer_types.QBuffer, data: seq[byte]): void =
-
   fcQBuffer_setData(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
-proc setData2*(self: gen_qbuffer_types.QBuffer, data: cstring, len: cint): void =
-
+proc setData*(self: gen_qbuffer_types.QBuffer, data: cstring, len: cint): void =
   fcQBuffer_setData2(self.h, data, len)
 
 proc data*(self: gen_qbuffer_types.QBuffer, ): seq[byte] =
-
   var v_bytearray = fcQBuffer_data(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc open*(self: gen_qbuffer_types.QBuffer, openMode: cint): bool =
-
   fcQBuffer_open(self.h, cint(openMode))
 
 proc close*(self: gen_qbuffer_types.QBuffer, ): void =
-
   fcQBuffer_close(self.h)
 
 proc size*(self: gen_qbuffer_types.QBuffer, ): clonglong =
-
   fcQBuffer_size(self.h)
 
 proc pos*(self: gen_qbuffer_types.QBuffer, ): clonglong =
-
   fcQBuffer_pos(self.h)
 
 proc seek*(self: gen_qbuffer_types.QBuffer, off: clonglong): bool =
-
   fcQBuffer_seek(self.h, off)
 
 proc atEnd*(self: gen_qbuffer_types.QBuffer, ): bool =
-
   fcQBuffer_atEnd(self.h)
 
 proc canReadLine*(self: gen_qbuffer_types.QBuffer, ): bool =
-
   fcQBuffer_canReadLine(self.h)
 
-proc tr2*(_: type gen_qbuffer_types.QBuffer, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qbuffer_types.QBuffer, s: cstring, c: cstring): string =
   let v_ms = fcQBuffer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qbuffer_types.QBuffer, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qbuffer_types.QBuffer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQBuffer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qbuffer_types.QBuffer, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qbuffer_types.QBuffer, s: cstring, c: cstring): string =
   let v_ms = fcQBuffer_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qbuffer_types.QBuffer, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qbuffer_types.QBuffer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQBuffer_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QBuffermetaObject*(self: gen_qbuffer_types.QBuffer, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQBuffer_virtualbase_metaObject(self.h))
 
 type QBuffermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -269,7 +247,6 @@ proc miqt_exec_callback_QBuffer_metaObject(self: ptr cQBuffer, slot: int): point
 
   virtualReturn.h
 proc QBuffermetacast*(self: gen_qbuffer_types.QBuffer, param1: cstring): pointer =
-
   fQBuffer_virtualbase_metacast(self.h, param1)
 
 type QBuffermetacastProc* = proc(param1: cstring): pointer
@@ -289,7 +266,6 @@ proc miqt_exec_callback_QBuffer_metacast(self: ptr cQBuffer, slot: int, param1: 
 
   virtualReturn
 proc QBuffermetacall*(self: gen_qbuffer_types.QBuffer, param1: cint, param2: cint, param3: pointer): cint =
-
   fQBuffer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QBuffermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -313,7 +289,6 @@ proc miqt_exec_callback_QBuffer_metacall(self: ptr cQBuffer, slot: int, param1: 
 
   virtualReturn
 proc QBufferopen*(self: gen_qbuffer_types.QBuffer, openMode: cint): bool =
-
   fQBuffer_virtualbase_open(self.h, cint(openMode))
 
 type QBufferopenProc* = proc(openMode: cint): bool
@@ -333,7 +308,6 @@ proc miqt_exec_callback_QBuffer_open(self: ptr cQBuffer, slot: int, openMode: ci
 
   virtualReturn
 proc QBufferclose*(self: gen_qbuffer_types.QBuffer, ): void =
-
   fQBuffer_virtualbase_close(self.h)
 
 type QBuffercloseProc* = proc(): void
@@ -349,7 +323,6 @@ proc miqt_exec_callback_QBuffer_close(self: ptr cQBuffer, slot: int): void {.exp
 
   nimfunc[]()
 proc QBuffersize*(self: gen_qbuffer_types.QBuffer, ): clonglong =
-
   fQBuffer_virtualbase_size(self.h)
 
 type QBuffersizeProc* = proc(): clonglong
@@ -367,7 +340,6 @@ proc miqt_exec_callback_QBuffer_size(self: ptr cQBuffer, slot: int): clonglong {
 
   virtualReturn
 proc QBufferpos*(self: gen_qbuffer_types.QBuffer, ): clonglong =
-
   fQBuffer_virtualbase_pos(self.h)
 
 type QBufferposProc* = proc(): clonglong
@@ -385,7 +357,6 @@ proc miqt_exec_callback_QBuffer_pos(self: ptr cQBuffer, slot: int): clonglong {.
 
   virtualReturn
 proc QBufferseek*(self: gen_qbuffer_types.QBuffer, off: clonglong): bool =
-
   fQBuffer_virtualbase_seek(self.h, off)
 
 type QBufferseekProc* = proc(off: clonglong): bool
@@ -405,7 +376,6 @@ proc miqt_exec_callback_QBuffer_seek(self: ptr cQBuffer, slot: int, off: clonglo
 
   virtualReturn
 proc QBufferatEnd*(self: gen_qbuffer_types.QBuffer, ): bool =
-
   fQBuffer_virtualbase_atEnd(self.h)
 
 type QBufferatEndProc* = proc(): bool
@@ -423,7 +393,6 @@ proc miqt_exec_callback_QBuffer_atEnd(self: ptr cQBuffer, slot: int): bool {.exp
 
   virtualReturn
 proc QBuffercanReadLine*(self: gen_qbuffer_types.QBuffer, ): bool =
-
   fQBuffer_virtualbase_canReadLine(self.h)
 
 type QBuffercanReadLineProc* = proc(): bool
@@ -441,7 +410,6 @@ proc miqt_exec_callback_QBuffer_canReadLine(self: ptr cQBuffer, slot: int): bool
 
   virtualReturn
 proc QBufferconnectNotify*(self: gen_qbuffer_types.QBuffer, param1: gen_qmetaobject.QMetaMethod): void =
-
   fQBuffer_virtualbase_connectNotify(self.h, param1.h)
 
 type QBufferconnectNotifyProc* = proc(param1: gen_qmetaobject.QMetaMethod): void
@@ -459,7 +427,6 @@ proc miqt_exec_callback_QBuffer_connectNotify(self: ptr cQBuffer, slot: int, par
 
   nimfunc[](slotval1)
 proc QBufferdisconnectNotify*(self: gen_qbuffer_types.QBuffer, param1: gen_qmetaobject.QMetaMethod): void =
-
   fQBuffer_virtualbase_disconnectNotify(self.h, param1.h)
 
 type QBufferdisconnectNotifyProc* = proc(param1: gen_qmetaobject.QMetaMethod): void
@@ -477,7 +444,6 @@ proc miqt_exec_callback_QBuffer_disconnectNotify(self: ptr cQBuffer, slot: int, 
 
   nimfunc[](slotval1)
 proc QBufferreadData*(self: gen_qbuffer_types.QBuffer, data: cstring, maxlen: clonglong): clonglong =
-
   fQBuffer_virtualbase_readData(self.h, data, maxlen)
 
 type QBufferreadDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
@@ -499,7 +465,6 @@ proc miqt_exec_callback_QBuffer_readData(self: ptr cQBuffer, slot: int, data: cs
 
   virtualReturn
 proc QBufferwriteData*(self: gen_qbuffer_types.QBuffer, data: cstring, len: clonglong): clonglong =
-
   fQBuffer_virtualbase_writeData(self.h, data, len)
 
 type QBufferwriteDataProc* = proc(data: cstring, len: clonglong): clonglong
@@ -521,7 +486,6 @@ proc miqt_exec_callback_QBuffer_writeData(self: ptr cQBuffer, slot: int, data: c
 
   virtualReturn
 proc QBufferisSequential*(self: gen_qbuffer_types.QBuffer, ): bool =
-
   fQBuffer_virtualbase_isSequential(self.h)
 
 type QBufferisSequentialProc* = proc(): bool
@@ -539,7 +503,6 @@ proc miqt_exec_callback_QBuffer_isSequential(self: ptr cQBuffer, slot: int): boo
 
   virtualReturn
 proc QBufferreset*(self: gen_qbuffer_types.QBuffer, ): bool =
-
   fQBuffer_virtualbase_reset(self.h)
 
 type QBufferresetProc* = proc(): bool
@@ -557,7 +520,6 @@ proc miqt_exec_callback_QBuffer_reset(self: ptr cQBuffer, slot: int): bool {.exp
 
   virtualReturn
 proc QBufferbytesAvailable*(self: gen_qbuffer_types.QBuffer, ): clonglong =
-
   fQBuffer_virtualbase_bytesAvailable(self.h)
 
 type QBufferbytesAvailableProc* = proc(): clonglong
@@ -575,7 +537,6 @@ proc miqt_exec_callback_QBuffer_bytesAvailable(self: ptr cQBuffer, slot: int): c
 
   virtualReturn
 proc QBufferbytesToWrite*(self: gen_qbuffer_types.QBuffer, ): clonglong =
-
   fQBuffer_virtualbase_bytesToWrite(self.h)
 
 type QBufferbytesToWriteProc* = proc(): clonglong
@@ -593,7 +554,6 @@ proc miqt_exec_callback_QBuffer_bytesToWrite(self: ptr cQBuffer, slot: int): clo
 
   virtualReturn
 proc QBufferwaitForReadyRead*(self: gen_qbuffer_types.QBuffer, msecs: cint): bool =
-
   fQBuffer_virtualbase_waitForReadyRead(self.h, msecs)
 
 type QBufferwaitForReadyReadProc* = proc(msecs: cint): bool
@@ -613,7 +573,6 @@ proc miqt_exec_callback_QBuffer_waitForReadyRead(self: ptr cQBuffer, slot: int, 
 
   virtualReturn
 proc QBufferwaitForBytesWritten*(self: gen_qbuffer_types.QBuffer, msecs: cint): bool =
-
   fQBuffer_virtualbase_waitForBytesWritten(self.h, msecs)
 
 type QBufferwaitForBytesWrittenProc* = proc(msecs: cint): bool
@@ -633,7 +592,6 @@ proc miqt_exec_callback_QBuffer_waitForBytesWritten(self: ptr cQBuffer, slot: in
 
   virtualReturn
 proc QBufferreadLineData*(self: gen_qbuffer_types.QBuffer, data: cstring, maxlen: clonglong): clonglong =
-
   fQBuffer_virtualbase_readLineData(self.h, data, maxlen)
 
 type QBufferreadLineDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
@@ -655,7 +613,6 @@ proc miqt_exec_callback_QBuffer_readLineData(self: ptr cQBuffer, slot: int, data
 
   virtualReturn
 proc QBufferevent*(self: gen_qbuffer_types.QBuffer, event: gen_qcoreevent.QEvent): bool =
-
   fQBuffer_virtualbase_event(self.h, event.h)
 
 type QBuffereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -675,7 +632,6 @@ proc miqt_exec_callback_QBuffer_event(self: ptr cQBuffer, slot: int, event: poin
 
   virtualReturn
 proc QBuffereventFilter*(self: gen_qbuffer_types.QBuffer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQBuffer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QBuffereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -697,7 +653,6 @@ proc miqt_exec_callback_QBuffer_eventFilter(self: ptr cQBuffer, slot: int, watch
 
   virtualReturn
 proc QBuffertimerEvent*(self: gen_qbuffer_types.QBuffer, event: gen_qcoreevent.QTimerEvent): void =
-
   fQBuffer_virtualbase_timerEvent(self.h, event.h)
 
 type QBuffertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -715,7 +670,6 @@ proc miqt_exec_callback_QBuffer_timerEvent(self: ptr cQBuffer, slot: int, event:
 
   nimfunc[](slotval1)
 proc QBufferchildEvent*(self: gen_qbuffer_types.QBuffer, event: gen_qcoreevent.QChildEvent): void =
-
   fQBuffer_virtualbase_childEvent(self.h, event.h)
 
 type QBufferchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -733,7 +687,6 @@ proc miqt_exec_callback_QBuffer_childEvent(self: ptr cQBuffer, slot: int, event:
 
   nimfunc[](slotval1)
 proc QBuffercustomEvent*(self: gen_qbuffer_types.QBuffer, event: gen_qcoreevent.QEvent): void =
-
   fQBuffer_virtualbase_customEvent(self.h, event.h)
 
 type QBuffercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void

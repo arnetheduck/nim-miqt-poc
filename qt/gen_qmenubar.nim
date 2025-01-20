@@ -220,199 +220,161 @@ proc fcQMenuBar_delete(self: pointer) {.importc: "QMenuBar_delete".}
 func init*(T: type gen_qmenubar_types.QMenuBar, h: ptr cQMenuBar): gen_qmenubar_types.QMenuBar =
   T(h: h)
 proc create*(T: type gen_qmenubar_types.QMenuBar, parent: gen_qwidget.QWidget): gen_qmenubar_types.QMenuBar =
-
   gen_qmenubar_types.QMenuBar.init(fcQMenuBar_new(parent.h))
+
 proc create*(T: type gen_qmenubar_types.QMenuBar, ): gen_qmenubar_types.QMenuBar =
-
   gen_qmenubar_types.QMenuBar.init(fcQMenuBar_new2())
-proc metaObject*(self: gen_qmenubar_types.QMenuBar, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qmenubar_types.QMenuBar, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMenuBar_metaObject(self.h))
 
 proc metacast*(self: gen_qmenubar_types.QMenuBar, param1: cstring): pointer =
-
   fcQMenuBar_metacast(self.h, param1)
 
 proc metacall*(self: gen_qmenubar_types.QMenuBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMenuBar_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qmenubar_types.QMenuBar, s: cstring): string =
-
   let v_ms = fcQMenuBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qmenubar_types.QMenuBar, s: cstring): string =
-
   let v_ms = fcQMenuBar_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc addAction*(self: gen_qmenubar_types.QMenuBar, text: string): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQMenuBar_addAction(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
 proc addMenu*(self: gen_qmenubar_types.QMenuBar, menu: gen_qmenu.QMenu): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQMenuBar_addMenu(self.h, menu.h))
 
-proc addMenuWithTitle*(self: gen_qmenubar_types.QMenuBar, title: string): gen_qmenu.QMenu =
-
+proc addMenu*(self: gen_qmenubar_types.QMenuBar, title: string): gen_qmenu.QMenu =
   gen_qmenu.QMenu(h: fcQMenuBar_addMenuWithTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title)))))
 
-proc addMenu2*(self: gen_qmenubar_types.QMenuBar, icon: gen_qicon.QIcon, title: string): gen_qmenu.QMenu =
-
+proc addMenu*(self: gen_qmenubar_types.QMenuBar, icon: gen_qicon.QIcon, title: string): gen_qmenu.QMenu =
   gen_qmenu.QMenu(h: fcQMenuBar_addMenu2(self.h, icon.h, struct_miqt_string(data: title, len: csize_t(len(title)))))
 
 proc addSeparator*(self: gen_qmenubar_types.QMenuBar, ): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQMenuBar_addSeparator(self.h))
 
 proc insertSeparator*(self: gen_qmenubar_types.QMenuBar, before: gen_qaction.QAction): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQMenuBar_insertSeparator(self.h, before.h))
 
 proc insertMenu*(self: gen_qmenubar_types.QMenuBar, before: gen_qaction.QAction, menu: gen_qmenu.QMenu): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQMenuBar_insertMenu(self.h, before.h, menu.h))
 
 proc clear*(self: gen_qmenubar_types.QMenuBar, ): void =
-
   fcQMenuBar_clear(self.h)
 
 proc activeAction*(self: gen_qmenubar_types.QMenuBar, ): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQMenuBar_activeAction(self.h))
 
 proc setActiveAction*(self: gen_qmenubar_types.QMenuBar, action: gen_qaction.QAction): void =
-
   fcQMenuBar_setActiveAction(self.h, action.h)
 
 proc setDefaultUp*(self: gen_qmenubar_types.QMenuBar, defaultUp: bool): void =
-
   fcQMenuBar_setDefaultUp(self.h, defaultUp)
 
 proc isDefaultUp*(self: gen_qmenubar_types.QMenuBar, ): bool =
-
   fcQMenuBar_isDefaultUp(self.h)
 
 proc sizeHint*(self: gen_qmenubar_types.QMenuBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQMenuBar_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qmenubar_types.QMenuBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQMenuBar_minimumSizeHint(self.h))
 
 proc heightForWidth*(self: gen_qmenubar_types.QMenuBar, param1: cint): cint =
-
   fcQMenuBar_heightForWidth(self.h, param1)
 
 proc actionGeometry*(self: gen_qmenubar_types.QMenuBar, param1: gen_qaction.QAction): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQMenuBar_actionGeometry(self.h, param1.h))
 
 proc actionAt*(self: gen_qmenubar_types.QMenuBar, param1: gen_qpoint.QPoint): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQMenuBar_actionAt(self.h, param1.h))
 
 proc setCornerWidget*(self: gen_qmenubar_types.QMenuBar, w: gen_qwidget.QWidget): void =
-
   fcQMenuBar_setCornerWidget(self.h, w.h)
 
 proc cornerWidget*(self: gen_qmenubar_types.QMenuBar, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQMenuBar_cornerWidget(self.h))
 
 proc isNativeMenuBar*(self: gen_qmenubar_types.QMenuBar, ): bool =
-
   fcQMenuBar_isNativeMenuBar(self.h)
 
 proc setNativeMenuBar*(self: gen_qmenubar_types.QMenuBar, nativeMenuBar: bool): void =
-
   fcQMenuBar_setNativeMenuBar(self.h, nativeMenuBar)
 
 proc setVisible*(self: gen_qmenubar_types.QMenuBar, visible: bool): void =
-
   fcQMenuBar_setVisible(self.h, visible)
 
 proc triggered*(self: gen_qmenubar_types.QMenuBar, action: gen_qaction.QAction): void =
-
   fcQMenuBar_triggered(self.h, action.h)
 
+type QMenuBartriggeredSlot* = proc(action: gen_qaction.QAction)
 proc miqt_exec_callback_QMenuBar_triggered(slot: int, action: pointer) {.exportc.} =
-  type Cb = proc(action: gen_qaction.QAction)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMenuBartriggeredSlot](cast[pointer](slot))
   let slotval1 = gen_qaction.QAction(h: action)
-
 
   nimfunc[](slotval1)
 
-proc ontriggered*(self: gen_qmenubar_types.QMenuBar, slot: proc(action: gen_qaction.QAction)) =
-  type Cb = proc(action: gen_qaction.QAction)
-  var tmp = new Cb
+proc ontriggered*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBartriggeredSlot) =
+  var tmp = new QMenuBartriggeredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMenuBar_connect_triggered(self.h, cast[int](addr tmp[]))
-proc hovered*(self: gen_qmenubar_types.QMenuBar, action: gen_qaction.QAction): void =
 
+proc hovered*(self: gen_qmenubar_types.QMenuBar, action: gen_qaction.QAction): void =
   fcQMenuBar_hovered(self.h, action.h)
 
+type QMenuBarhoveredSlot* = proc(action: gen_qaction.QAction)
 proc miqt_exec_callback_QMenuBar_hovered(slot: int, action: pointer) {.exportc.} =
-  type Cb = proc(action: gen_qaction.QAction)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMenuBarhoveredSlot](cast[pointer](slot))
   let slotval1 = gen_qaction.QAction(h: action)
-
 
   nimfunc[](slotval1)
 
-proc onhovered*(self: gen_qmenubar_types.QMenuBar, slot: proc(action: gen_qaction.QAction)) =
-  type Cb = proc(action: gen_qaction.QAction)
-  var tmp = new Cb
+proc onhovered*(self: gen_qmenubar_types.QMenuBar, slot: QMenuBarhoveredSlot) =
+  var tmp = new QMenuBarhoveredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMenuBar_connect_hovered(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring): string =
   let v_ms = fcQMenuBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMenuBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring): string =
   let v_ms = fcQMenuBar_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qmenubar_types.QMenuBar, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMenuBar_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setCornerWidget2*(self: gen_qmenubar_types.QMenuBar, w: gen_qwidget.QWidget, corner: cint): void =
-
+proc setCornerWidget*(self: gen_qmenubar_types.QMenuBar, w: gen_qwidget.QWidget, corner: cint): void =
   fcQMenuBar_setCornerWidget2(self.h, w.h, cint(corner))
 
-proc cornerWidget1*(self: gen_qmenubar_types.QMenuBar, corner: cint): gen_qwidget.QWidget =
-
+proc cornerWidget*(self: gen_qmenubar_types.QMenuBar, corner: cint): gen_qwidget.QWidget =
   gen_qwidget.QWidget(h: fcQMenuBar_cornerWidget1(self.h, cint(corner)))
 
 proc QMenuBarmetaObject*(self: gen_qmenubar_types.QMenuBar, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQMenuBar_virtualbase_metaObject(self.h))
 
 type QMenuBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -430,7 +392,6 @@ proc miqt_exec_callback_QMenuBar_metaObject(self: ptr cQMenuBar, slot: int): poi
 
   virtualReturn.h
 proc QMenuBarmetacast*(self: gen_qmenubar_types.QMenuBar, param1: cstring): pointer =
-
   fQMenuBar_virtualbase_metacast(self.h, param1)
 
 type QMenuBarmetacastProc* = proc(param1: cstring): pointer
@@ -450,7 +411,6 @@ proc miqt_exec_callback_QMenuBar_metacast(self: ptr cQMenuBar, slot: int, param1
 
   virtualReturn
 proc QMenuBarmetacall*(self: gen_qmenubar_types.QMenuBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fQMenuBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QMenuBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -474,7 +434,6 @@ proc miqt_exec_callback_QMenuBar_metacall(self: ptr cQMenuBar, slot: int, param1
 
   virtualReturn
 proc QMenuBarsizeHint*(self: gen_qmenubar_types.QMenuBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQMenuBar_virtualbase_sizeHint(self.h))
 
 type QMenuBarsizeHintProc* = proc(): gen_qsize.QSize
@@ -492,7 +451,6 @@ proc miqt_exec_callback_QMenuBar_sizeHint(self: ptr cQMenuBar, slot: int): point
 
   virtualReturn.h
 proc QMenuBarminimumSizeHint*(self: gen_qmenubar_types.QMenuBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQMenuBar_virtualbase_minimumSizeHint(self.h))
 
 type QMenuBarminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -510,7 +468,6 @@ proc miqt_exec_callback_QMenuBar_minimumSizeHint(self: ptr cQMenuBar, slot: int)
 
   virtualReturn.h
 proc QMenuBarheightForWidth*(self: gen_qmenubar_types.QMenuBar, param1: cint): cint =
-
   fQMenuBar_virtualbase_heightForWidth(self.h, param1)
 
 type QMenuBarheightForWidthProc* = proc(param1: cint): cint
@@ -530,7 +487,6 @@ proc miqt_exec_callback_QMenuBar_heightForWidth(self: ptr cQMenuBar, slot: int, 
 
   virtualReturn
 proc QMenuBarsetVisible*(self: gen_qmenubar_types.QMenuBar, visible: bool): void =
-
   fQMenuBar_virtualbase_setVisible(self.h, visible)
 
 type QMenuBarsetVisibleProc* = proc(visible: bool): void
@@ -548,7 +504,6 @@ proc miqt_exec_callback_QMenuBar_setVisible(self: ptr cQMenuBar, slot: int, visi
 
   nimfunc[](slotval1)
 proc QMenuBarchangeEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qcoreevent.QEvent): void =
-
   fQMenuBar_virtualbase_changeEvent(self.h, param1.h)
 
 type QMenuBarchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -566,7 +521,6 @@ proc miqt_exec_callback_QMenuBar_changeEvent(self: ptr cQMenuBar, slot: int, par
 
   nimfunc[](slotval1)
 proc QMenuBarkeyPressEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QKeyEvent): void =
-
   fQMenuBar_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QMenuBarkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -584,7 +538,6 @@ proc miqt_exec_callback_QMenuBar_keyPressEvent(self: ptr cQMenuBar, slot: int, p
 
   nimfunc[](slotval1)
 proc QMenuBarmouseReleaseEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QMouseEvent): void =
-
   fQMenuBar_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QMenuBarmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -602,7 +555,6 @@ proc miqt_exec_callback_QMenuBar_mouseReleaseEvent(self: ptr cQMenuBar, slot: in
 
   nimfunc[](slotval1)
 proc QMenuBarmousePressEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QMouseEvent): void =
-
   fQMenuBar_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QMenuBarmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -620,7 +572,6 @@ proc miqt_exec_callback_QMenuBar_mousePressEvent(self: ptr cQMenuBar, slot: int,
 
   nimfunc[](slotval1)
 proc QMenuBarmouseMoveEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QMouseEvent): void =
-
   fQMenuBar_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QMenuBarmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -638,7 +589,6 @@ proc miqt_exec_callback_QMenuBar_mouseMoveEvent(self: ptr cQMenuBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QMenuBarleaveEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qcoreevent.QEvent): void =
-
   fQMenuBar_virtualbase_leaveEvent(self.h, param1.h)
 
 type QMenuBarleaveEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -656,7 +606,6 @@ proc miqt_exec_callback_QMenuBar_leaveEvent(self: ptr cQMenuBar, slot: int, para
 
   nimfunc[](slotval1)
 proc QMenuBarpaintEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QPaintEvent): void =
-
   fQMenuBar_virtualbase_paintEvent(self.h, param1.h)
 
 type QMenuBarpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -674,7 +623,6 @@ proc miqt_exec_callback_QMenuBar_paintEvent(self: ptr cQMenuBar, slot: int, para
 
   nimfunc[](slotval1)
 proc QMenuBarresizeEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QResizeEvent): void =
-
   fQMenuBar_virtualbase_resizeEvent(self.h, param1.h)
 
 type QMenuBarresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -692,7 +640,6 @@ proc miqt_exec_callback_QMenuBar_resizeEvent(self: ptr cQMenuBar, slot: int, par
 
   nimfunc[](slotval1)
 proc QMenuBaractionEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QActionEvent): void =
-
   fQMenuBar_virtualbase_actionEvent(self.h, param1.h)
 
 type QMenuBaractionEventProc* = proc(param1: gen_qevent.QActionEvent): void
@@ -710,7 +657,6 @@ proc miqt_exec_callback_QMenuBar_actionEvent(self: ptr cQMenuBar, slot: int, par
 
   nimfunc[](slotval1)
 proc QMenuBarfocusOutEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QFocusEvent): void =
-
   fQMenuBar_virtualbase_focusOutEvent(self.h, param1.h)
 
 type QMenuBarfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -728,7 +674,6 @@ proc miqt_exec_callback_QMenuBar_focusOutEvent(self: ptr cQMenuBar, slot: int, p
 
   nimfunc[](slotval1)
 proc QMenuBarfocusInEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QFocusEvent): void =
-
   fQMenuBar_virtualbase_focusInEvent(self.h, param1.h)
 
 type QMenuBarfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -746,7 +691,6 @@ proc miqt_exec_callback_QMenuBar_focusInEvent(self: ptr cQMenuBar, slot: int, pa
 
   nimfunc[](slotval1)
 proc QMenuBartimerEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qcoreevent.QTimerEvent): void =
-
   fQMenuBar_virtualbase_timerEvent(self.h, param1.h)
 
 type QMenuBartimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
@@ -764,7 +708,6 @@ proc miqt_exec_callback_QMenuBar_timerEvent(self: ptr cQMenuBar, slot: int, para
 
   nimfunc[](slotval1)
 proc QMenuBareventFilter*(self: gen_qmenubar_types.QMenuBar, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQMenuBar_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QMenuBareventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -786,7 +729,6 @@ proc miqt_exec_callback_QMenuBar_eventFilter(self: ptr cQMenuBar, slot: int, par
 
   virtualReturn
 proc QMenuBarevent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qcoreevent.QEvent): bool =
-
   fQMenuBar_virtualbase_event(self.h, param1.h)
 
 type QMenuBareventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -806,7 +748,6 @@ proc miqt_exec_callback_QMenuBar_event(self: ptr cQMenuBar, slot: int, param1: p
 
   virtualReturn
 proc QMenuBardevType*(self: gen_qmenubar_types.QMenuBar, ): cint =
-
   fQMenuBar_virtualbase_devType(self.h)
 
 type QMenuBardevTypeProc* = proc(): cint
@@ -824,7 +765,6 @@ proc miqt_exec_callback_QMenuBar_devType(self: ptr cQMenuBar, slot: int): cint {
 
   virtualReturn
 proc QMenuBarhasHeightForWidth*(self: gen_qmenubar_types.QMenuBar, ): bool =
-
   fQMenuBar_virtualbase_hasHeightForWidth(self.h)
 
 type QMenuBarhasHeightForWidthProc* = proc(): bool
@@ -842,7 +782,6 @@ proc miqt_exec_callback_QMenuBar_hasHeightForWidth(self: ptr cQMenuBar, slot: in
 
   virtualReturn
 proc QMenuBarpaintEngine*(self: gen_qmenubar_types.QMenuBar, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQMenuBar_virtualbase_paintEngine(self.h))
 
 type QMenuBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -860,7 +799,6 @@ proc miqt_exec_callback_QMenuBar_paintEngine(self: ptr cQMenuBar, slot: int): po
 
   virtualReturn.h
 proc QMenuBarmouseDoubleClickEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QMouseEvent): void =
-
   fQMenuBar_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QMenuBarmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -878,7 +816,6 @@ proc miqt_exec_callback_QMenuBar_mouseDoubleClickEvent(self: ptr cQMenuBar, slot
 
   nimfunc[](slotval1)
 proc QMenuBarwheelEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QWheelEvent): void =
-
   fQMenuBar_virtualbase_wheelEvent(self.h, event.h)
 
 type QMenuBarwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -896,7 +833,6 @@ proc miqt_exec_callback_QMenuBar_wheelEvent(self: ptr cQMenuBar, slot: int, even
 
   nimfunc[](slotval1)
 proc QMenuBarkeyReleaseEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QKeyEvent): void =
-
   fQMenuBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QMenuBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -914,7 +850,6 @@ proc miqt_exec_callback_QMenuBar_keyReleaseEvent(self: ptr cQMenuBar, slot: int,
 
   nimfunc[](slotval1)
 proc QMenuBarenterEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qcoreevent.QEvent): void =
-
   fQMenuBar_virtualbase_enterEvent(self.h, event.h)
 
 type QMenuBarenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -932,7 +867,6 @@ proc miqt_exec_callback_QMenuBar_enterEvent(self: ptr cQMenuBar, slot: int, even
 
   nimfunc[](slotval1)
 proc QMenuBarmoveEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QMoveEvent): void =
-
   fQMenuBar_virtualbase_moveEvent(self.h, event.h)
 
 type QMenuBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -950,7 +884,6 @@ proc miqt_exec_callback_QMenuBar_moveEvent(self: ptr cQMenuBar, slot: int, event
 
   nimfunc[](slotval1)
 proc QMenuBarcloseEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QCloseEvent): void =
-
   fQMenuBar_virtualbase_closeEvent(self.h, event.h)
 
 type QMenuBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -968,7 +901,6 @@ proc miqt_exec_callback_QMenuBar_closeEvent(self: ptr cQMenuBar, slot: int, even
 
   nimfunc[](slotval1)
 proc QMenuBarcontextMenuEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QContextMenuEvent): void =
-
   fQMenuBar_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QMenuBarcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -986,7 +918,6 @@ proc miqt_exec_callback_QMenuBar_contextMenuEvent(self: ptr cQMenuBar, slot: int
 
   nimfunc[](slotval1)
 proc QMenuBartabletEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QTabletEvent): void =
-
   fQMenuBar_virtualbase_tabletEvent(self.h, event.h)
 
 type QMenuBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1004,7 +935,6 @@ proc miqt_exec_callback_QMenuBar_tabletEvent(self: ptr cQMenuBar, slot: int, eve
 
   nimfunc[](slotval1)
 proc QMenuBardragEnterEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QDragEnterEvent): void =
-
   fQMenuBar_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QMenuBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1022,7 +952,6 @@ proc miqt_exec_callback_QMenuBar_dragEnterEvent(self: ptr cQMenuBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QMenuBardragMoveEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QDragMoveEvent): void =
-
   fQMenuBar_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QMenuBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1040,7 +969,6 @@ proc miqt_exec_callback_QMenuBar_dragMoveEvent(self: ptr cQMenuBar, slot: int, e
 
   nimfunc[](slotval1)
 proc QMenuBardragLeaveEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QDragLeaveEvent): void =
-
   fQMenuBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QMenuBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1058,7 +986,6 @@ proc miqt_exec_callback_QMenuBar_dragLeaveEvent(self: ptr cQMenuBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QMenuBardropEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QDropEvent): void =
-
   fQMenuBar_virtualbase_dropEvent(self.h, event.h)
 
 type QMenuBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1076,7 +1003,6 @@ proc miqt_exec_callback_QMenuBar_dropEvent(self: ptr cQMenuBar, slot: int, event
 
   nimfunc[](slotval1)
 proc QMenuBarshowEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QShowEvent): void =
-
   fQMenuBar_virtualbase_showEvent(self.h, event.h)
 
 type QMenuBarshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1094,7 +1020,6 @@ proc miqt_exec_callback_QMenuBar_showEvent(self: ptr cQMenuBar, slot: int, event
 
   nimfunc[](slotval1)
 proc QMenuBarhideEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qevent.QHideEvent): void =
-
   fQMenuBar_virtualbase_hideEvent(self.h, event.h)
 
 type QMenuBarhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1112,7 +1037,6 @@ proc miqt_exec_callback_QMenuBar_hideEvent(self: ptr cQMenuBar, slot: int, event
 
   nimfunc[](slotval1)
 proc QMenuBarnativeEvent*(self: gen_qmenubar_types.QMenuBar, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQMenuBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QMenuBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1139,7 +1063,6 @@ proc miqt_exec_callback_QMenuBar_nativeEvent(self: ptr cQMenuBar, slot: int, eve
 
   virtualReturn
 proc QMenuBarmetric*(self: gen_qmenubar_types.QMenuBar, param1: cint): cint =
-
   fQMenuBar_virtualbase_metric(self.h, cint(param1))
 
 type QMenuBarmetricProc* = proc(param1: cint): cint
@@ -1159,7 +1082,6 @@ proc miqt_exec_callback_QMenuBar_metric(self: ptr cQMenuBar, slot: int, param1: 
 
   virtualReturn
 proc QMenuBarinitPainter*(self: gen_qmenubar_types.QMenuBar, painter: gen_qpainter.QPainter): void =
-
   fQMenuBar_virtualbase_initPainter(self.h, painter.h)
 
 type QMenuBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1177,7 +1099,6 @@ proc miqt_exec_callback_QMenuBar_initPainter(self: ptr cQMenuBar, slot: int, pai
 
   nimfunc[](slotval1)
 proc QMenuBarredirected*(self: gen_qmenubar_types.QMenuBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQMenuBar_virtualbase_redirected(self.h, offset.h))
 
 type QMenuBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1197,7 +1118,6 @@ proc miqt_exec_callback_QMenuBar_redirected(self: ptr cQMenuBar, slot: int, offs
 
   virtualReturn.h
 proc QMenuBarsharedPainter*(self: gen_qmenubar_types.QMenuBar, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQMenuBar_virtualbase_sharedPainter(self.h))
 
 type QMenuBarsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1215,7 +1135,6 @@ proc miqt_exec_callback_QMenuBar_sharedPainter(self: ptr cQMenuBar, slot: int): 
 
   virtualReturn.h
 proc QMenuBarinputMethodEvent*(self: gen_qmenubar_types.QMenuBar, param1: gen_qevent.QInputMethodEvent): void =
-
   fQMenuBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QMenuBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1233,7 +1152,6 @@ proc miqt_exec_callback_QMenuBar_inputMethodEvent(self: ptr cQMenuBar, slot: int
 
   nimfunc[](slotval1)
 proc QMenuBarinputMethodQuery*(self: gen_qmenubar_types.QMenuBar, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQMenuBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QMenuBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1253,7 +1171,6 @@ proc miqt_exec_callback_QMenuBar_inputMethodQuery(self: ptr cQMenuBar, slot: int
 
   virtualReturn.h
 proc QMenuBarfocusNextPrevChild*(self: gen_qmenubar_types.QMenuBar, next: bool): bool =
-
   fQMenuBar_virtualbase_focusNextPrevChild(self.h, next)
 
 type QMenuBarfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1273,7 +1190,6 @@ proc miqt_exec_callback_QMenuBar_focusNextPrevChild(self: ptr cQMenuBar, slot: i
 
   virtualReturn
 proc QMenuBarchildEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qcoreevent.QChildEvent): void =
-
   fQMenuBar_virtualbase_childEvent(self.h, event.h)
 
 type QMenuBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1291,7 +1207,6 @@ proc miqt_exec_callback_QMenuBar_childEvent(self: ptr cQMenuBar, slot: int, even
 
   nimfunc[](slotval1)
 proc QMenuBarcustomEvent*(self: gen_qmenubar_types.QMenuBar, event: gen_qcoreevent.QEvent): void =
-
   fQMenuBar_virtualbase_customEvent(self.h, event.h)
 
 type QMenuBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1309,7 +1224,6 @@ proc miqt_exec_callback_QMenuBar_customEvent(self: ptr cQMenuBar, slot: int, eve
 
   nimfunc[](slotval1)
 proc QMenuBarconnectNotify*(self: gen_qmenubar_types.QMenuBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMenuBar_virtualbase_connectNotify(self.h, signal.h)
 
 type QMenuBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1327,7 +1241,6 @@ proc miqt_exec_callback_QMenuBar_connectNotify(self: ptr cQMenuBar, slot: int, s
 
   nimfunc[](slotval1)
 proc QMenuBardisconnectNotify*(self: gen_qmenubar_types.QMenuBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMenuBar_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QMenuBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

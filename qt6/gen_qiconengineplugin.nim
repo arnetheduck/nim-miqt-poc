@@ -89,50 +89,42 @@ proc fcQIconEnginePlugin_delete(self: pointer) {.importc: "QIconEnginePlugin_del
 func init*(T: type gen_qiconengineplugin_types.QIconEnginePlugin, h: ptr cQIconEnginePlugin): gen_qiconengineplugin_types.QIconEnginePlugin =
   T(h: h)
 proc create*(T: type gen_qiconengineplugin_types.QIconEnginePlugin, ): gen_qiconengineplugin_types.QIconEnginePlugin =
-
   gen_qiconengineplugin_types.QIconEnginePlugin.init(fcQIconEnginePlugin_new())
+
 proc create*(T: type gen_qiconengineplugin_types.QIconEnginePlugin, parent: gen_qobject.QObject): gen_qiconengineplugin_types.QIconEnginePlugin =
-
   gen_qiconengineplugin_types.QIconEnginePlugin.init(fcQIconEnginePlugin_new2(parent.h))
-proc metaObject*(self: gen_qiconengineplugin_types.QIconEnginePlugin, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qiconengineplugin_types.QIconEnginePlugin, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQIconEnginePlugin_metaObject(self.h))
 
 proc metacast*(self: gen_qiconengineplugin_types.QIconEnginePlugin, param1: cstring): pointer =
-
   fcQIconEnginePlugin_metacast(self.h, param1)
 
 proc metacall*(self: gen_qiconengineplugin_types.QIconEnginePlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQIconEnginePlugin_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qiconengineplugin_types.QIconEnginePlugin, s: cstring): string =
-
   let v_ms = fcQIconEnginePlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc create*(self: gen_qiconengineplugin_types.QIconEnginePlugin, filename: string): gen_qiconengine.QIconEngine =
-
   gen_qiconengine.QIconEngine(h: fcQIconEnginePlugin_create(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename)))))
 
-proc tr2*(_: type gen_qiconengineplugin_types.QIconEnginePlugin, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qiconengineplugin_types.QIconEnginePlugin, s: cstring, c: cstring): string =
   let v_ms = fcQIconEnginePlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qiconengineplugin_types.QIconEnginePlugin, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qiconengineplugin_types.QIconEnginePlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQIconEnginePlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QIconEnginePluginmetaObject*(self: gen_qiconengineplugin_types.QIconEnginePlugin, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQIconEnginePlugin_virtualbase_metaObject(self.h))
 
 type QIconEnginePluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -150,7 +142,6 @@ proc miqt_exec_callback_QIconEnginePlugin_metaObject(self: ptr cQIconEnginePlugi
 
   virtualReturn.h
 proc QIconEnginePluginmetacast*(self: gen_qiconengineplugin_types.QIconEnginePlugin, param1: cstring): pointer =
-
   fQIconEnginePlugin_virtualbase_metacast(self.h, param1)
 
 type QIconEnginePluginmetacastProc* = proc(param1: cstring): pointer
@@ -170,7 +161,6 @@ proc miqt_exec_callback_QIconEnginePlugin_metacast(self: ptr cQIconEnginePlugin,
 
   virtualReturn
 proc QIconEnginePluginmetacall*(self: gen_qiconengineplugin_types.QIconEnginePlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fQIconEnginePlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QIconEnginePluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -213,7 +203,6 @@ proc miqt_exec_callback_QIconEnginePlugin_create(self: ptr cQIconEnginePlugin, s
 
   virtualReturn.h
 proc QIconEnginePluginevent*(self: gen_qiconengineplugin_types.QIconEnginePlugin, event: gen_qcoreevent.QEvent): bool =
-
   fQIconEnginePlugin_virtualbase_event(self.h, event.h)
 
 type QIconEnginePlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -233,7 +222,6 @@ proc miqt_exec_callback_QIconEnginePlugin_event(self: ptr cQIconEnginePlugin, sl
 
   virtualReturn
 proc QIconEnginePlugineventFilter*(self: gen_qiconengineplugin_types.QIconEnginePlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQIconEnginePlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QIconEnginePlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -255,7 +243,6 @@ proc miqt_exec_callback_QIconEnginePlugin_eventFilter(self: ptr cQIconEnginePlug
 
   virtualReturn
 proc QIconEnginePlugintimerEvent*(self: gen_qiconengineplugin_types.QIconEnginePlugin, event: gen_qcoreevent.QTimerEvent): void =
-
   fQIconEnginePlugin_virtualbase_timerEvent(self.h, event.h)
 
 type QIconEnginePlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -273,7 +260,6 @@ proc miqt_exec_callback_QIconEnginePlugin_timerEvent(self: ptr cQIconEnginePlugi
 
   nimfunc[](slotval1)
 proc QIconEnginePluginchildEvent*(self: gen_qiconengineplugin_types.QIconEnginePlugin, event: gen_qcoreevent.QChildEvent): void =
-
   fQIconEnginePlugin_virtualbase_childEvent(self.h, event.h)
 
 type QIconEnginePluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -291,7 +277,6 @@ proc miqt_exec_callback_QIconEnginePlugin_childEvent(self: ptr cQIconEnginePlugi
 
   nimfunc[](slotval1)
 proc QIconEnginePlugincustomEvent*(self: gen_qiconengineplugin_types.QIconEnginePlugin, event: gen_qcoreevent.QEvent): void =
-
   fQIconEnginePlugin_virtualbase_customEvent(self.h, event.h)
 
 type QIconEnginePlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -309,7 +294,6 @@ proc miqt_exec_callback_QIconEnginePlugin_customEvent(self: ptr cQIconEnginePlug
 
   nimfunc[](slotval1)
 proc QIconEnginePluginconnectNotify*(self: gen_qiconengineplugin_types.QIconEnginePlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQIconEnginePlugin_virtualbase_connectNotify(self.h, signal.h)
 
 type QIconEnginePluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -327,7 +311,6 @@ proc miqt_exec_callback_QIconEnginePlugin_connectNotify(self: ptr cQIconEnginePl
 
   nimfunc[](slotval1)
 proc QIconEnginePlugindisconnectNotify*(self: gen_qiconengineplugin_types.QIconEnginePlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQIconEnginePlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QIconEnginePlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

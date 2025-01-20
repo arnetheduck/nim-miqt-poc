@@ -298,105 +298,85 @@ proc fcQColumnView_delete(self: pointer) {.importc: "QColumnView_delete".}
 func init*(T: type gen_qcolumnview_types.QColumnView, h: ptr cQColumnView): gen_qcolumnview_types.QColumnView =
   T(h: h)
 proc create*(T: type gen_qcolumnview_types.QColumnView, parent: gen_qwidget.QWidget): gen_qcolumnview_types.QColumnView =
-
   gen_qcolumnview_types.QColumnView.init(fcQColumnView_new(parent.h))
+
 proc create*(T: type gen_qcolumnview_types.QColumnView, ): gen_qcolumnview_types.QColumnView =
-
   gen_qcolumnview_types.QColumnView.init(fcQColumnView_new2())
-proc metaObject*(self: gen_qcolumnview_types.QColumnView, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qcolumnview_types.QColumnView, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQColumnView_metaObject(self.h))
 
 proc metacast*(self: gen_qcolumnview_types.QColumnView, param1: cstring): pointer =
-
   fcQColumnView_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcolumnview_types.QColumnView, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQColumnView_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcolumnview_types.QColumnView, s: cstring): string =
-
   let v_ms = fcQColumnView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcolumnview_types.QColumnView, s: cstring): string =
-
   let v_ms = fcQColumnView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc updatePreviewWidget*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQColumnView_updatePreviewWidget(self.h, index.h)
 
+type QColumnViewupdatePreviewWidgetSlot* = proc(index: gen_qabstractitemmodel.QModelIndex)
 proc miqt_exec_callback_QColumnView_updatePreviewWidget(slot: int, index: pointer) {.exportc.} =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QColumnViewupdatePreviewWidgetSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
-
 
   nimfunc[](slotval1)
 
-proc onupdatePreviewWidget*(self: gen_qcolumnview_types.QColumnView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  var tmp = new Cb
+proc onupdatePreviewWidget*(self: gen_qcolumnview_types.QColumnView, slot: QColumnViewupdatePreviewWidgetSlot) =
+  var tmp = new QColumnViewupdatePreviewWidgetSlot
   tmp[] = slot
   GC_ref(tmp)
   fQColumnView_connect_updatePreviewWidget(self.h, cast[int](addr tmp[]))
-proc indexAt*(self: gen_qcolumnview_types.QColumnView, point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
 
+proc indexAt*(self: gen_qcolumnview_types.QColumnView, point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
   gen_qabstractitemmodel.QModelIndex(h: fcQColumnView_indexAt(self.h, point.h))
 
 proc scrollTo*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fcQColumnView_scrollTo(self.h, index.h, cint(hint))
 
 proc sizeHint*(self: gen_qcolumnview_types.QColumnView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQColumnView_sizeHint(self.h))
 
 proc visualRect*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQColumnView_visualRect(self.h, index.h))
 
 proc setModel*(self: gen_qcolumnview_types.QColumnView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fcQColumnView_setModel(self.h, model.h)
 
 proc setSelectionModel*(self: gen_qcolumnview_types.QColumnView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
   fcQColumnView_setSelectionModel(self.h, selectionModel.h)
 
 proc setRootIndex*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQColumnView_setRootIndex(self.h, index.h)
 
 proc selectAll*(self: gen_qcolumnview_types.QColumnView, ): void =
-
   fcQColumnView_selectAll(self.h)
 
 proc setResizeGripsVisible*(self: gen_qcolumnview_types.QColumnView, visible: bool): void =
-
   fcQColumnView_setResizeGripsVisible(self.h, visible)
 
 proc resizeGripsVisible*(self: gen_qcolumnview_types.QColumnView, ): bool =
-
   fcQColumnView_resizeGripsVisible(self.h)
 
 proc previewWidget*(self: gen_qcolumnview_types.QColumnView, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQColumnView_previewWidget(self.h))
 
 proc setPreviewWidget*(self: gen_qcolumnview_types.QColumnView, widget: gen_qwidget.QWidget): void =
-
   fcQColumnView_setPreviewWidget(self.h, widget.h)
 
 proc setColumnWidths*(self: gen_qcolumnview_types.QColumnView, list: seq[cint]): void =
-
   var list_CArray = newSeq[cint](len(list))
   for i in 0..<len(list):
     list_CArray[i] = list[i]
@@ -404,7 +384,6 @@ proc setColumnWidths*(self: gen_qcolumnview_types.QColumnView, list: seq[cint]):
   fcQColumnView_setColumnWidths(self.h, struct_miqt_array(len: csize_t(len(list)), data: if len(list) == 0: nil else: addr(list_CArray[0])))
 
 proc columnWidths*(self: gen_qcolumnview_types.QColumnView, ): seq[cint] =
-
   var v_ma = fcQColumnView_columnWidths(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -412,36 +391,31 @@ proc columnWidths*(self: gen_qcolumnview_types.QColumnView, ): seq[cint] =
     vx_ret[i] = v_outCast[i]
   vx_ret
 
-proc tr2*(_: type gen_qcolumnview_types.QColumnView, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qcolumnview_types.QColumnView, s: cstring, c: cstring): string =
   let v_ms = fcQColumnView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcolumnview_types.QColumnView, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcolumnview_types.QColumnView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQColumnView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcolumnview_types.QColumnView, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcolumnview_types.QColumnView, s: cstring, c: cstring): string =
   let v_ms = fcQColumnView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcolumnview_types.QColumnView, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcolumnview_types.QColumnView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQColumnView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QColumnViewmetaObject*(self: gen_qcolumnview_types.QColumnView, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQColumnView_virtualbase_metaObject(self.h))
 
 type QColumnViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -459,7 +433,6 @@ proc miqt_exec_callback_QColumnView_metaObject(self: ptr cQColumnView, slot: int
 
   virtualReturn.h
 proc QColumnViewmetacast*(self: gen_qcolumnview_types.QColumnView, param1: cstring): pointer =
-
   fQColumnView_virtualbase_metacast(self.h, param1)
 
 type QColumnViewmetacastProc* = proc(param1: cstring): pointer
@@ -479,7 +452,6 @@ proc miqt_exec_callback_QColumnView_metacast(self: ptr cQColumnView, slot: int, 
 
   virtualReturn
 proc QColumnViewmetacall*(self: gen_qcolumnview_types.QColumnView, param1: cint, param2: cint, param3: pointer): cint =
-
   fQColumnView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QColumnViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -503,7 +475,6 @@ proc miqt_exec_callback_QColumnView_metacall(self: ptr cQColumnView, slot: int, 
 
   virtualReturn
 proc QColumnViewindexAt*(self: gen_qcolumnview_types.QColumnView, point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQColumnView_virtualbase_indexAt(self.h, point.h))
 
 type QColumnViewindexAtProc* = proc(point: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
@@ -523,7 +494,6 @@ proc miqt_exec_callback_QColumnView_indexAt(self: ptr cQColumnView, slot: int, p
 
   virtualReturn.h
 proc QColumnViewscrollTo*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fQColumnView_virtualbase_scrollTo(self.h, index.h, cint(hint))
 
 type QColumnViewscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
@@ -543,7 +513,6 @@ proc miqt_exec_callback_QColumnView_scrollTo(self: ptr cQColumnView, slot: int, 
 
   nimfunc[](slotval1, slotval2)
 proc QColumnViewsizeHint*(self: gen_qcolumnview_types.QColumnView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQColumnView_virtualbase_sizeHint(self.h))
 
 type QColumnViewsizeHintProc* = proc(): gen_qsize.QSize
@@ -561,7 +530,6 @@ proc miqt_exec_callback_QColumnView_sizeHint(self: ptr cQColumnView, slot: int):
 
   virtualReturn.h
 proc QColumnViewvisualRect*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQColumnView_virtualbase_visualRect(self.h, index.h))
 
 type QColumnViewvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
@@ -581,7 +549,6 @@ proc miqt_exec_callback_QColumnView_visualRect(self: ptr cQColumnView, slot: int
 
   virtualReturn.h
 proc QColumnViewsetModel*(self: gen_qcolumnview_types.QColumnView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fQColumnView_virtualbase_setModel(self.h, model.h)
 
 type QColumnViewsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
@@ -599,7 +566,6 @@ proc miqt_exec_callback_QColumnView_setModel(self: ptr cQColumnView, slot: int, 
 
   nimfunc[](slotval1)
 proc QColumnViewsetSelectionModel*(self: gen_qcolumnview_types.QColumnView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
   fQColumnView_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
 type QColumnViewsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
@@ -617,7 +583,6 @@ proc miqt_exec_callback_QColumnView_setSelectionModel(self: ptr cQColumnView, sl
 
   nimfunc[](slotval1)
 proc QColumnViewsetRootIndex*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQColumnView_virtualbase_setRootIndex(self.h, index.h)
 
 type QColumnViewsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
@@ -635,7 +600,6 @@ proc miqt_exec_callback_QColumnView_setRootIndex(self: ptr cQColumnView, slot: i
 
   nimfunc[](slotval1)
 proc QColumnViewselectAll*(self: gen_qcolumnview_types.QColumnView, ): void =
-
   fQColumnView_virtualbase_selectAll(self.h)
 
 type QColumnViewselectAllProc* = proc(): void
@@ -651,7 +615,6 @@ proc miqt_exec_callback_QColumnView_selectAll(self: ptr cQColumnView, slot: int)
 
   nimfunc[]()
 proc QColumnViewisIndexHidden*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQColumnView_virtualbase_isIndexHidden(self.h, index.h)
 
 type QColumnViewisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
@@ -671,7 +634,6 @@ proc miqt_exec_callback_QColumnView_isIndexHidden(self: ptr cQColumnView, slot: 
 
   virtualReturn
 proc QColumnViewmoveCursor*(self: gen_qcolumnview_types.QColumnView, cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQColumnView_virtualbase_moveCursor(self.h, cint(cursorAction), cint(modifiers)))
 
 type QColumnViewmoveCursorProc* = proc(cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex
@@ -693,7 +655,6 @@ proc miqt_exec_callback_QColumnView_moveCursor(self: ptr cQColumnView, slot: int
 
   virtualReturn.h
 proc QColumnViewresizeEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QResizeEvent): void =
-
   fQColumnView_virtualbase_resizeEvent(self.h, event.h)
 
 type QColumnViewresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -711,7 +672,6 @@ proc miqt_exec_callback_QColumnView_resizeEvent(self: ptr cQColumnView, slot: in
 
   nimfunc[](slotval1)
 proc QColumnViewsetSelection*(self: gen_qcolumnview_types.QColumnView, rect: gen_qrect.QRect, command: cint): void =
-
   fQColumnView_virtualbase_setSelection(self.h, rect.h, cint(command))
 
 type QColumnViewsetSelectionProc* = proc(rect: gen_qrect.QRect, command: cint): void
@@ -731,7 +691,6 @@ proc miqt_exec_callback_QColumnView_setSelection(self: ptr cQColumnView, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QColumnViewvisualRegionForSelection*(self: gen_qcolumnview_types.QColumnView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fQColumnView_virtualbase_visualRegionForSelection(self.h, selection.h))
 
 type QColumnViewvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
@@ -751,7 +710,6 @@ proc miqt_exec_callback_QColumnView_visualRegionForSelection(self: ptr cQColumnV
 
   virtualReturn.h
 proc QColumnViewhorizontalOffset*(self: gen_qcolumnview_types.QColumnView, ): cint =
-
   fQColumnView_virtualbase_horizontalOffset(self.h)
 
 type QColumnViewhorizontalOffsetProc* = proc(): cint
@@ -769,7 +727,6 @@ proc miqt_exec_callback_QColumnView_horizontalOffset(self: ptr cQColumnView, slo
 
   virtualReturn
 proc QColumnViewverticalOffset*(self: gen_qcolumnview_types.QColumnView, ): cint =
-
   fQColumnView_virtualbase_verticalOffset(self.h)
 
 type QColumnViewverticalOffsetProc* = proc(): cint
@@ -787,7 +744,6 @@ proc miqt_exec_callback_QColumnView_verticalOffset(self: ptr cQColumnView, slot:
 
   virtualReturn
 proc QColumnViewrowsInserted*(self: gen_qcolumnview_types.QColumnView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQColumnView_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
 type QColumnViewrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -809,7 +765,6 @@ proc miqt_exec_callback_QColumnView_rowsInserted(self: ptr cQColumnView, slot: i
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QColumnViewcurrentChanged*(self: gen_qcolumnview_types.QColumnView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
-
   fQColumnView_virtualbase_currentChanged(self.h, current.h, previous.h)
 
 type QColumnViewcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
@@ -829,7 +784,6 @@ proc miqt_exec_callback_QColumnView_currentChanged(self: ptr cQColumnView, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QColumnViewscrollContentsBy*(self: gen_qcolumnview_types.QColumnView, dx: cint, dy: cint): void =
-
   fQColumnView_virtualbase_scrollContentsBy(self.h, dx, dy)
 
 type QColumnViewscrollContentsByProc* = proc(dx: cint, dy: cint): void
@@ -849,7 +803,6 @@ proc miqt_exec_callback_QColumnView_scrollContentsBy(self: ptr cQColumnView, slo
 
   nimfunc[](slotval1, slotval2)
 proc QColumnViewcreateColumn*(self: gen_qcolumnview_types.QColumnView, rootIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemview.QAbstractItemView =
-
   gen_qabstractitemview.QAbstractItemView(h: fQColumnView_virtualbase_createColumn(self.h, rootIndex.h))
 
 type QColumnViewcreateColumnProc* = proc(rootIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemview.QAbstractItemView
@@ -869,7 +822,6 @@ proc miqt_exec_callback_QColumnView_createColumn(self: ptr cQColumnView, slot: i
 
   virtualReturn.h
 proc QColumnViewkeyboardSearch*(self: gen_qcolumnview_types.QColumnView, search: string): void =
-
   fQColumnView_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
 type QColumnViewkeyboardSearchProc* = proc(search: string): void
@@ -890,7 +842,6 @@ proc miqt_exec_callback_QColumnView_keyboardSearch(self: ptr cQColumnView, slot:
 
   nimfunc[](slotval1)
 proc QColumnViewsizeHintForRow*(self: gen_qcolumnview_types.QColumnView, row: cint): cint =
-
   fQColumnView_virtualbase_sizeHintForRow(self.h, row)
 
 type QColumnViewsizeHintForRowProc* = proc(row: cint): cint
@@ -910,7 +861,6 @@ proc miqt_exec_callback_QColumnView_sizeHintForRow(self: ptr cQColumnView, slot:
 
   virtualReturn
 proc QColumnViewsizeHintForColumn*(self: gen_qcolumnview_types.QColumnView, column: cint): cint =
-
   fQColumnView_virtualbase_sizeHintForColumn(self.h, column)
 
 type QColumnViewsizeHintForColumnProc* = proc(column: cint): cint
@@ -930,7 +880,6 @@ proc miqt_exec_callback_QColumnView_sizeHintForColumn(self: ptr cQColumnView, sl
 
   virtualReturn
 proc QColumnViewinputMethodQuery*(self: gen_qcolumnview_types.QColumnView, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQColumnView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QColumnViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -950,7 +899,6 @@ proc miqt_exec_callback_QColumnView_inputMethodQuery(self: ptr cQColumnView, slo
 
   virtualReturn.h
 proc QColumnViewreset*(self: gen_qcolumnview_types.QColumnView, ): void =
-
   fQColumnView_virtualbase_reset(self.h)
 
 type QColumnViewresetProc* = proc(): void
@@ -966,7 +914,6 @@ proc miqt_exec_callback_QColumnView_reset(self: ptr cQColumnView, slot: int): vo
 
   nimfunc[]()
 proc QColumnViewdoItemsLayout*(self: gen_qcolumnview_types.QColumnView, ): void =
-
   fQColumnView_virtualbase_doItemsLayout(self.h)
 
 type QColumnViewdoItemsLayoutProc* = proc(): void
@@ -982,7 +929,6 @@ proc miqt_exec_callback_QColumnView_doItemsLayout(self: ptr cQColumnView, slot: 
 
   nimfunc[]()
 proc QColumnViewdataChanged*(self: gen_qcolumnview_types.QColumnView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
-
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
@@ -1013,7 +959,6 @@ proc miqt_exec_callback_QColumnView_dataChanged(self: ptr cQColumnView, slot: in
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QColumnViewrowsAboutToBeRemoved*(self: gen_qcolumnview_types.QColumnView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQColumnView_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
 type QColumnViewrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -1035,7 +980,6 @@ proc miqt_exec_callback_QColumnView_rowsAboutToBeRemoved(self: ptr cQColumnView,
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QColumnViewselectionChanged*(self: gen_qcolumnview_types.QColumnView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
   fQColumnView_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
 type QColumnViewselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
@@ -1055,7 +999,6 @@ proc miqt_exec_callback_QColumnView_selectionChanged(self: ptr cQColumnView, slo
 
   nimfunc[](slotval1, slotval2)
 proc QColumnViewupdateEditorData*(self: gen_qcolumnview_types.QColumnView, ): void =
-
   fQColumnView_virtualbase_updateEditorData(self.h)
 
 type QColumnViewupdateEditorDataProc* = proc(): void
@@ -1071,7 +1014,6 @@ proc miqt_exec_callback_QColumnView_updateEditorData(self: ptr cQColumnView, slo
 
   nimfunc[]()
 proc QColumnViewupdateEditorGeometries*(self: gen_qcolumnview_types.QColumnView, ): void =
-
   fQColumnView_virtualbase_updateEditorGeometries(self.h)
 
 type QColumnViewupdateEditorGeometriesProc* = proc(): void
@@ -1087,7 +1029,6 @@ proc miqt_exec_callback_QColumnView_updateEditorGeometries(self: ptr cQColumnVie
 
   nimfunc[]()
 proc QColumnViewupdateGeometries*(self: gen_qcolumnview_types.QColumnView, ): void =
-
   fQColumnView_virtualbase_updateGeometries(self.h)
 
 type QColumnViewupdateGeometriesProc* = proc(): void
@@ -1103,7 +1044,6 @@ proc miqt_exec_callback_QColumnView_updateGeometries(self: ptr cQColumnView, slo
 
   nimfunc[]()
 proc QColumnViewverticalScrollbarAction*(self: gen_qcolumnview_types.QColumnView, action: cint): void =
-
   fQColumnView_virtualbase_verticalScrollbarAction(self.h, action)
 
 type QColumnViewverticalScrollbarActionProc* = proc(action: cint): void
@@ -1121,7 +1061,6 @@ proc miqt_exec_callback_QColumnView_verticalScrollbarAction(self: ptr cQColumnVi
 
   nimfunc[](slotval1)
 proc QColumnViewhorizontalScrollbarAction*(self: gen_qcolumnview_types.QColumnView, action: cint): void =
-
   fQColumnView_virtualbase_horizontalScrollbarAction(self.h, action)
 
 type QColumnViewhorizontalScrollbarActionProc* = proc(action: cint): void
@@ -1139,7 +1078,6 @@ proc miqt_exec_callback_QColumnView_horizontalScrollbarAction(self: ptr cQColumn
 
   nimfunc[](slotval1)
 proc QColumnViewverticalScrollbarValueChanged*(self: gen_qcolumnview_types.QColumnView, value: cint): void =
-
   fQColumnView_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
 type QColumnViewverticalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1157,7 +1095,6 @@ proc miqt_exec_callback_QColumnView_verticalScrollbarValueChanged(self: ptr cQCo
 
   nimfunc[](slotval1)
 proc QColumnViewhorizontalScrollbarValueChanged*(self: gen_qcolumnview_types.QColumnView, value: cint): void =
-
   fQColumnView_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
 type QColumnViewhorizontalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1175,7 +1112,6 @@ proc miqt_exec_callback_QColumnView_horizontalScrollbarValueChanged(self: ptr cQ
 
   nimfunc[](slotval1)
 proc QColumnViewcloseEditor*(self: gen_qcolumnview_types.QColumnView, editor: gen_qwidget.QWidget, hint: cint): void =
-
   fQColumnView_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
 type QColumnViewcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
@@ -1195,7 +1131,6 @@ proc miqt_exec_callback_QColumnView_closeEditor(self: ptr cQColumnView, slot: in
 
   nimfunc[](slotval1, slotval2)
 proc QColumnViewcommitData*(self: gen_qcolumnview_types.QColumnView, editor: gen_qwidget.QWidget): void =
-
   fQColumnView_virtualbase_commitData(self.h, editor.h)
 
 type QColumnViewcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
@@ -1213,7 +1148,6 @@ proc miqt_exec_callback_QColumnView_commitData(self: ptr cQColumnView, slot: int
 
   nimfunc[](slotval1)
 proc QColumnVieweditorDestroyed*(self: gen_qcolumnview_types.QColumnView, editor: gen_qobject.QObject): void =
-
   fQColumnView_virtualbase_editorDestroyed(self.h, editor.h)
 
 type QColumnVieweditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
@@ -1231,7 +1165,6 @@ proc miqt_exec_callback_QColumnView_editorDestroyed(self: ptr cQColumnView, slot
 
   nimfunc[](slotval1)
 proc QColumnViewselectedIndexes*(self: gen_qcolumnview_types.QColumnView, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fQColumnView_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1257,12 +1190,11 @@ proc miqt_exec_callback_QColumnView_selectedIndexes(self: ptr cQColumnView, slot
 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
-proc QColumnViewedit2*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
-
+proc QColumnViewedit*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
   fQColumnView_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
 type QColumnViewedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: gen_qcolumnview_types.QColumnView, slot: QColumnViewedit2Proc) =
+proc onedit*(self: gen_qcolumnview_types.QColumnView, slot: QColumnViewedit2Proc) =
   # TODO check subclass
   var tmp = new QColumnViewedit2Proc
   tmp[] = slot
@@ -1282,7 +1214,6 @@ proc miqt_exec_callback_QColumnView_edit2(self: ptr cQColumnView, slot: int, ind
 
   virtualReturn
 proc QColumnViewselectionCommand*(self: gen_qcolumnview_types.QColumnView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
-
   cint(fQColumnView_virtualbase_selectionCommand(self.h, index.h, event.h))
 
 type QColumnViewselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
@@ -1304,7 +1235,6 @@ proc miqt_exec_callback_QColumnView_selectionCommand(self: ptr cQColumnView, slo
 
   cint(virtualReturn)
 proc QColumnViewstartDrag*(self: gen_qcolumnview_types.QColumnView, supportedActions: cint): void =
-
   fQColumnView_virtualbase_startDrag(self.h, cint(supportedActions))
 
 type QColumnViewstartDragProc* = proc(supportedActions: cint): void
@@ -1322,7 +1252,6 @@ proc miqt_exec_callback_QColumnView_startDrag(self: ptr cQColumnView, slot: int,
 
   nimfunc[](slotval1)
 proc QColumnViewviewOptions*(self: gen_qcolumnview_types.QColumnView, ): gen_qstyleoption.QStyleOptionViewItem =
-
   gen_qstyleoption.QStyleOptionViewItem(h: fQColumnView_virtualbase_viewOptions(self.h))
 
 type QColumnViewviewOptionsProc* = proc(): gen_qstyleoption.QStyleOptionViewItem
@@ -1340,7 +1269,6 @@ proc miqt_exec_callback_QColumnView_viewOptions(self: ptr cQColumnView, slot: in
 
   virtualReturn.h
 proc QColumnViewfocusNextPrevChild*(self: gen_qcolumnview_types.QColumnView, next: bool): bool =
-
   fQColumnView_virtualbase_focusNextPrevChild(self.h, next)
 
 type QColumnViewfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1360,7 +1288,6 @@ proc miqt_exec_callback_QColumnView_focusNextPrevChild(self: ptr cQColumnView, s
 
   virtualReturn
 proc QColumnViewevent*(self: gen_qcolumnview_types.QColumnView, event: gen_qcoreevent.QEvent): bool =
-
   fQColumnView_virtualbase_event(self.h, event.h)
 
 type QColumnVieweventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1380,7 +1307,6 @@ proc miqt_exec_callback_QColumnView_event(self: ptr cQColumnView, slot: int, eve
 
   virtualReturn
 proc QColumnViewviewportEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qcoreevent.QEvent): bool =
-
   fQColumnView_virtualbase_viewportEvent(self.h, event.h)
 
 type QColumnViewviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1400,7 +1326,6 @@ proc miqt_exec_callback_QColumnView_viewportEvent(self: ptr cQColumnView, slot: 
 
   virtualReturn
 proc QColumnViewmousePressEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QMouseEvent): void =
-
   fQColumnView_virtualbase_mousePressEvent(self.h, event.h)
 
 type QColumnViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1418,7 +1343,6 @@ proc miqt_exec_callback_QColumnView_mousePressEvent(self: ptr cQColumnView, slot
 
   nimfunc[](slotval1)
 proc QColumnViewmouseMoveEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QMouseEvent): void =
-
   fQColumnView_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QColumnViewmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1436,7 +1360,6 @@ proc miqt_exec_callback_QColumnView_mouseMoveEvent(self: ptr cQColumnView, slot:
 
   nimfunc[](slotval1)
 proc QColumnViewmouseReleaseEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QMouseEvent): void =
-
   fQColumnView_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QColumnViewmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1454,7 +1377,6 @@ proc miqt_exec_callback_QColumnView_mouseReleaseEvent(self: ptr cQColumnView, sl
 
   nimfunc[](slotval1)
 proc QColumnViewmouseDoubleClickEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QMouseEvent): void =
-
   fQColumnView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QColumnViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1472,7 +1394,6 @@ proc miqt_exec_callback_QColumnView_mouseDoubleClickEvent(self: ptr cQColumnView
 
   nimfunc[](slotval1)
 proc QColumnViewdragEnterEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QDragEnterEvent): void =
-
   fQColumnView_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QColumnViewdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1490,7 +1411,6 @@ proc miqt_exec_callback_QColumnView_dragEnterEvent(self: ptr cQColumnView, slot:
 
   nimfunc[](slotval1)
 proc QColumnViewdragMoveEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QDragMoveEvent): void =
-
   fQColumnView_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QColumnViewdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1508,7 +1428,6 @@ proc miqt_exec_callback_QColumnView_dragMoveEvent(self: ptr cQColumnView, slot: 
 
   nimfunc[](slotval1)
 proc QColumnViewdragLeaveEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QDragLeaveEvent): void =
-
   fQColumnView_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QColumnViewdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1526,7 +1445,6 @@ proc miqt_exec_callback_QColumnView_dragLeaveEvent(self: ptr cQColumnView, slot:
 
   nimfunc[](slotval1)
 proc QColumnViewdropEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QDropEvent): void =
-
   fQColumnView_virtualbase_dropEvent(self.h, event.h)
 
 type QColumnViewdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1544,7 +1462,6 @@ proc miqt_exec_callback_QColumnView_dropEvent(self: ptr cQColumnView, slot: int,
 
   nimfunc[](slotval1)
 proc QColumnViewfocusInEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QFocusEvent): void =
-
   fQColumnView_virtualbase_focusInEvent(self.h, event.h)
 
 type QColumnViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1562,7 +1479,6 @@ proc miqt_exec_callback_QColumnView_focusInEvent(self: ptr cQColumnView, slot: i
 
   nimfunc[](slotval1)
 proc QColumnViewfocusOutEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QFocusEvent): void =
-
   fQColumnView_virtualbase_focusOutEvent(self.h, event.h)
 
 type QColumnViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1580,7 +1496,6 @@ proc miqt_exec_callback_QColumnView_focusOutEvent(self: ptr cQColumnView, slot: 
 
   nimfunc[](slotval1)
 proc QColumnViewkeyPressEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QKeyEvent): void =
-
   fQColumnView_virtualbase_keyPressEvent(self.h, event.h)
 
 type QColumnViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1598,7 +1513,6 @@ proc miqt_exec_callback_QColumnView_keyPressEvent(self: ptr cQColumnView, slot: 
 
   nimfunc[](slotval1)
 proc QColumnViewtimerEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qcoreevent.QTimerEvent): void =
-
   fQColumnView_virtualbase_timerEvent(self.h, event.h)
 
 type QColumnViewtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1616,7 +1530,6 @@ proc miqt_exec_callback_QColumnView_timerEvent(self: ptr cQColumnView, slot: int
 
   nimfunc[](slotval1)
 proc QColumnViewinputMethodEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QInputMethodEvent): void =
-
   fQColumnView_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QColumnViewinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -1634,7 +1547,6 @@ proc miqt_exec_callback_QColumnView_inputMethodEvent(self: ptr cQColumnView, slo
 
   nimfunc[](slotval1)
 proc QColumnVieweventFilter*(self: gen_qcolumnview_types.QColumnView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQColumnView_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
 type QColumnVieweventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1656,7 +1568,6 @@ proc miqt_exec_callback_QColumnView_eventFilter(self: ptr cQColumnView, slot: in
 
   virtualReturn
 proc QColumnViewviewportSizeHint*(self: gen_qcolumnview_types.QColumnView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQColumnView_virtualbase_viewportSizeHint(self.h))
 
 type QColumnViewviewportSizeHintProc* = proc(): gen_qsize.QSize
@@ -1674,7 +1585,6 @@ proc miqt_exec_callback_QColumnView_viewportSizeHint(self: ptr cQColumnView, slo
 
   virtualReturn.h
 proc QColumnViewminimumSizeHint*(self: gen_qcolumnview_types.QColumnView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQColumnView_virtualbase_minimumSizeHint(self.h))
 
 type QColumnViewminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1692,7 +1602,6 @@ proc miqt_exec_callback_QColumnView_minimumSizeHint(self: ptr cQColumnView, slot
 
   virtualReturn.h
 proc QColumnViewsetupViewport*(self: gen_qcolumnview_types.QColumnView, viewport: gen_qwidget.QWidget): void =
-
   fQColumnView_virtualbase_setupViewport(self.h, viewport.h)
 
 type QColumnViewsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
@@ -1710,7 +1619,6 @@ proc miqt_exec_callback_QColumnView_setupViewport(self: ptr cQColumnView, slot: 
 
   nimfunc[](slotval1)
 proc QColumnViewpaintEvent*(self: gen_qcolumnview_types.QColumnView, param1: gen_qevent.QPaintEvent): void =
-
   fQColumnView_virtualbase_paintEvent(self.h, param1.h)
 
 type QColumnViewpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -1728,7 +1636,6 @@ proc miqt_exec_callback_QColumnView_paintEvent(self: ptr cQColumnView, slot: int
 
   nimfunc[](slotval1)
 proc QColumnViewwheelEvent*(self: gen_qcolumnview_types.QColumnView, param1: gen_qevent.QWheelEvent): void =
-
   fQColumnView_virtualbase_wheelEvent(self.h, param1.h)
 
 type QColumnViewwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -1746,7 +1653,6 @@ proc miqt_exec_callback_QColumnView_wheelEvent(self: ptr cQColumnView, slot: int
 
   nimfunc[](slotval1)
 proc QColumnViewcontextMenuEvent*(self: gen_qcolumnview_types.QColumnView, param1: gen_qevent.QContextMenuEvent): void =
-
   fQColumnView_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QColumnViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -1764,7 +1670,6 @@ proc miqt_exec_callback_QColumnView_contextMenuEvent(self: ptr cQColumnView, slo
 
   nimfunc[](slotval1)
 proc QColumnViewchangeEvent*(self: gen_qcolumnview_types.QColumnView, param1: gen_qcoreevent.QEvent): void =
-
   fQColumnView_virtualbase_changeEvent(self.h, param1.h)
 
 type QColumnViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1782,7 +1687,6 @@ proc miqt_exec_callback_QColumnView_changeEvent(self: ptr cQColumnView, slot: in
 
   nimfunc[](slotval1)
 proc QColumnViewdevType*(self: gen_qcolumnview_types.QColumnView, ): cint =
-
   fQColumnView_virtualbase_devType(self.h)
 
 type QColumnViewdevTypeProc* = proc(): cint
@@ -1800,7 +1704,6 @@ proc miqt_exec_callback_QColumnView_devType(self: ptr cQColumnView, slot: int): 
 
   virtualReturn
 proc QColumnViewsetVisible*(self: gen_qcolumnview_types.QColumnView, visible: bool): void =
-
   fQColumnView_virtualbase_setVisible(self.h, visible)
 
 type QColumnViewsetVisibleProc* = proc(visible: bool): void
@@ -1818,7 +1721,6 @@ proc miqt_exec_callback_QColumnView_setVisible(self: ptr cQColumnView, slot: int
 
   nimfunc[](slotval1)
 proc QColumnViewheightForWidth*(self: gen_qcolumnview_types.QColumnView, param1: cint): cint =
-
   fQColumnView_virtualbase_heightForWidth(self.h, param1)
 
 type QColumnViewheightForWidthProc* = proc(param1: cint): cint
@@ -1838,7 +1740,6 @@ proc miqt_exec_callback_QColumnView_heightForWidth(self: ptr cQColumnView, slot:
 
   virtualReturn
 proc QColumnViewhasHeightForWidth*(self: gen_qcolumnview_types.QColumnView, ): bool =
-
   fQColumnView_virtualbase_hasHeightForWidth(self.h)
 
 type QColumnViewhasHeightForWidthProc* = proc(): bool
@@ -1856,7 +1757,6 @@ proc miqt_exec_callback_QColumnView_hasHeightForWidth(self: ptr cQColumnView, sl
 
   virtualReturn
 proc QColumnViewpaintEngine*(self: gen_qcolumnview_types.QColumnView, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQColumnView_virtualbase_paintEngine(self.h))
 
 type QColumnViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1874,7 +1774,6 @@ proc miqt_exec_callback_QColumnView_paintEngine(self: ptr cQColumnView, slot: in
 
   virtualReturn.h
 proc QColumnViewkeyReleaseEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QKeyEvent): void =
-
   fQColumnView_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QColumnViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1892,7 +1791,6 @@ proc miqt_exec_callback_QColumnView_keyReleaseEvent(self: ptr cQColumnView, slot
 
   nimfunc[](slotval1)
 proc QColumnViewenterEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qcoreevent.QEvent): void =
-
   fQColumnView_virtualbase_enterEvent(self.h, event.h)
 
 type QColumnViewenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1910,7 +1808,6 @@ proc miqt_exec_callback_QColumnView_enterEvent(self: ptr cQColumnView, slot: int
 
   nimfunc[](slotval1)
 proc QColumnViewleaveEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qcoreevent.QEvent): void =
-
   fQColumnView_virtualbase_leaveEvent(self.h, event.h)
 
 type QColumnViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1928,7 +1825,6 @@ proc miqt_exec_callback_QColumnView_leaveEvent(self: ptr cQColumnView, slot: int
 
   nimfunc[](slotval1)
 proc QColumnViewmoveEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QMoveEvent): void =
-
   fQColumnView_virtualbase_moveEvent(self.h, event.h)
 
 type QColumnViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1946,7 +1842,6 @@ proc miqt_exec_callback_QColumnView_moveEvent(self: ptr cQColumnView, slot: int,
 
   nimfunc[](slotval1)
 proc QColumnViewcloseEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QCloseEvent): void =
-
   fQColumnView_virtualbase_closeEvent(self.h, event.h)
 
 type QColumnViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1964,7 +1859,6 @@ proc miqt_exec_callback_QColumnView_closeEvent(self: ptr cQColumnView, slot: int
 
   nimfunc[](slotval1)
 proc QColumnViewtabletEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QTabletEvent): void =
-
   fQColumnView_virtualbase_tabletEvent(self.h, event.h)
 
 type QColumnViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1982,7 +1876,6 @@ proc miqt_exec_callback_QColumnView_tabletEvent(self: ptr cQColumnView, slot: in
 
   nimfunc[](slotval1)
 proc QColumnViewactionEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QActionEvent): void =
-
   fQColumnView_virtualbase_actionEvent(self.h, event.h)
 
 type QColumnViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -2000,7 +1893,6 @@ proc miqt_exec_callback_QColumnView_actionEvent(self: ptr cQColumnView, slot: in
 
   nimfunc[](slotval1)
 proc QColumnViewshowEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QShowEvent): void =
-
   fQColumnView_virtualbase_showEvent(self.h, event.h)
 
 type QColumnViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -2018,7 +1910,6 @@ proc miqt_exec_callback_QColumnView_showEvent(self: ptr cQColumnView, slot: int,
 
   nimfunc[](slotval1)
 proc QColumnViewhideEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qevent.QHideEvent): void =
-
   fQColumnView_virtualbase_hideEvent(self.h, event.h)
 
 type QColumnViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -2036,7 +1927,6 @@ proc miqt_exec_callback_QColumnView_hideEvent(self: ptr cQColumnView, slot: int,
 
   nimfunc[](slotval1)
 proc QColumnViewnativeEvent*(self: gen_qcolumnview_types.QColumnView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQColumnView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QColumnViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -2063,7 +1953,6 @@ proc miqt_exec_callback_QColumnView_nativeEvent(self: ptr cQColumnView, slot: in
 
   virtualReturn
 proc QColumnViewmetric*(self: gen_qcolumnview_types.QColumnView, param1: cint): cint =
-
   fQColumnView_virtualbase_metric(self.h, cint(param1))
 
 type QColumnViewmetricProc* = proc(param1: cint): cint
@@ -2083,7 +1972,6 @@ proc miqt_exec_callback_QColumnView_metric(self: ptr cQColumnView, slot: int, pa
 
   virtualReturn
 proc QColumnViewinitPainter*(self: gen_qcolumnview_types.QColumnView, painter: gen_qpainter.QPainter): void =
-
   fQColumnView_virtualbase_initPainter(self.h, painter.h)
 
 type QColumnViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -2101,7 +1989,6 @@ proc miqt_exec_callback_QColumnView_initPainter(self: ptr cQColumnView, slot: in
 
   nimfunc[](slotval1)
 proc QColumnViewredirected*(self: gen_qcolumnview_types.QColumnView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQColumnView_virtualbase_redirected(self.h, offset.h))
 
 type QColumnViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -2121,7 +2008,6 @@ proc miqt_exec_callback_QColumnView_redirected(self: ptr cQColumnView, slot: int
 
   virtualReturn.h
 proc QColumnViewsharedPainter*(self: gen_qcolumnview_types.QColumnView, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQColumnView_virtualbase_sharedPainter(self.h))
 
 type QColumnViewsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -2139,7 +2025,6 @@ proc miqt_exec_callback_QColumnView_sharedPainter(self: ptr cQColumnView, slot: 
 
   virtualReturn.h
 proc QColumnViewchildEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qcoreevent.QChildEvent): void =
-
   fQColumnView_virtualbase_childEvent(self.h, event.h)
 
 type QColumnViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -2157,7 +2042,6 @@ proc miqt_exec_callback_QColumnView_childEvent(self: ptr cQColumnView, slot: int
 
   nimfunc[](slotval1)
 proc QColumnViewcustomEvent*(self: gen_qcolumnview_types.QColumnView, event: gen_qcoreevent.QEvent): void =
-
   fQColumnView_virtualbase_customEvent(self.h, event.h)
 
 type QColumnViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2175,7 +2059,6 @@ proc miqt_exec_callback_QColumnView_customEvent(self: ptr cQColumnView, slot: in
 
   nimfunc[](slotval1)
 proc QColumnViewconnectNotify*(self: gen_qcolumnview_types.QColumnView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQColumnView_virtualbase_connectNotify(self.h, signal.h)
 
 type QColumnViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2193,7 +2076,6 @@ proc miqt_exec_callback_QColumnView_connectNotify(self: ptr cQColumnView, slot: 
 
   nimfunc[](slotval1)
 proc QColumnViewdisconnectNotify*(self: gen_qcolumnview_types.QColumnView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQColumnView_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QColumnViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

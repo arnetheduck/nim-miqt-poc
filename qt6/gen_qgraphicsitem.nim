@@ -1510,49 +1510,39 @@ proc fcQGraphicsItemGroup_delete(self: pointer) {.importc: "QGraphicsItemGroup_d
 func init*(T: type gen_qgraphicsitem_types.QGraphicsItem, h: ptr cQGraphicsItem): gen_qgraphicsitem_types.QGraphicsItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsItem =
-
   gen_qgraphicsitem_types.QGraphicsItem.init(fcQGraphicsItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsItem =
-
   gen_qgraphicsitem_types.QGraphicsItem.init(fcQGraphicsItem_new2(parent.h))
-proc scene*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsscene.QGraphicsScene =
 
+proc scene*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsscene.QGraphicsScene =
   gen_qgraphicsscene.QGraphicsScene(h: fcQGraphicsItem_scene(self.h))
 
 proc parentItem*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsItem =
-
   gen_qgraphicsitem_types.QGraphicsItem(h: fcQGraphicsItem_parentItem(self.h))
 
 proc topLevelItem*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsItem =
-
   gen_qgraphicsitem_types.QGraphicsItem(h: fcQGraphicsItem_topLevelItem(self.h))
 
 proc parentObject*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsObject =
-
   gen_qgraphicsitem_types.QGraphicsObject(h: fcQGraphicsItem_parentObject(self.h))
 
 proc parentWidget*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicswidget.QGraphicsWidget =
-
   gen_qgraphicswidget.QGraphicsWidget(h: fcQGraphicsItem_parentWidget(self.h))
 
 proc topLevelWidget*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicswidget.QGraphicsWidget =
-
   gen_qgraphicswidget.QGraphicsWidget(h: fcQGraphicsItem_topLevelWidget(self.h))
 
 proc window*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicswidget.QGraphicsWidget =
-
   gen_qgraphicswidget.QGraphicsWidget(h: fcQGraphicsItem_window(self.h))
 
 proc panel*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsItem =
-
   gen_qgraphicsitem_types.QGraphicsItem(h: fcQGraphicsItem_panel(self.h))
 
 proc setParentItem*(self: gen_qgraphicsitem_types.QGraphicsItem, parent: gen_qgraphicsitem_types.QGraphicsItem): void =
-
   fcQGraphicsItem_setParentItem(self.h, parent.h)
 
 proc childItems*(self: gen_qgraphicsitem_types.QGraphicsItem, ): seq[gen_qgraphicsitem_types.QGraphicsItem] =
-
   var v_ma = fcQGraphicsItem_childItems(self.h)
   var vx_ret = newSeq[gen_qgraphicsitem_types.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1561,334 +1551,252 @@ proc childItems*(self: gen_qgraphicsitem_types.QGraphicsItem, ): seq[gen_qgraphi
   vx_ret
 
 proc isWidget*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isWidget(self.h)
 
 proc isWindow*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isWindow(self.h)
 
 proc isPanel*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isPanel(self.h)
 
 proc toGraphicsObject*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsObject =
-
   gen_qgraphicsitem_types.QGraphicsObject(h: fcQGraphicsItem_toGraphicsObject(self.h))
 
 proc toGraphicsObject2*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsObject =
-
   gen_qgraphicsitem_types.QGraphicsObject(h: fcQGraphicsItem_toGraphicsObject2(self.h))
 
 proc group*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsItemGroup =
-
   gen_qgraphicsitem_types.QGraphicsItemGroup(h: fcQGraphicsItem_group(self.h))
 
 proc setGroup*(self: gen_qgraphicsitem_types.QGraphicsItem, group: gen_qgraphicsitem_types.QGraphicsItemGroup): void =
-
   fcQGraphicsItem_setGroup(self.h, group.h)
 
 proc flags*(self: gen_qgraphicsitem_types.QGraphicsItem, ): cint =
-
   cint(fcQGraphicsItem_flags(self.h))
 
 proc setFlag*(self: gen_qgraphicsitem_types.QGraphicsItem, flag: cint): void =
-
   fcQGraphicsItem_setFlag(self.h, cint(flag))
 
 proc setFlags*(self: gen_qgraphicsitem_types.QGraphicsItem, flags: cint): void =
-
   fcQGraphicsItem_setFlags(self.h, cint(flags))
 
 proc cacheMode*(self: gen_qgraphicsitem_types.QGraphicsItem, ): cint =
-
   cint(fcQGraphicsItem_cacheMode(self.h))
 
 proc setCacheMode*(self: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): void =
-
   fcQGraphicsItem_setCacheMode(self.h, cint(mode))
 
 proc panelModality*(self: gen_qgraphicsitem_types.QGraphicsItem, ): cint =
-
   cint(fcQGraphicsItem_panelModality(self.h))
 
 proc setPanelModality*(self: gen_qgraphicsitem_types.QGraphicsItem, panelModality: cint): void =
-
   fcQGraphicsItem_setPanelModality(self.h, cint(panelModality))
 
 proc isBlockedByModalPanel*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isBlockedByModalPanel(self.h)
 
 proc toolTip*(self: gen_qgraphicsitem_types.QGraphicsItem, ): string =
-
   let v_ms = fcQGraphicsItem_toolTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setToolTip*(self: gen_qgraphicsitem_types.QGraphicsItem, toolTip: string): void =
-
   fcQGraphicsItem_setToolTip(self.h, struct_miqt_string(data: toolTip, len: csize_t(len(toolTip))))
 
 proc cursor*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qcursor.QCursor =
-
   gen_qcursor.QCursor(h: fcQGraphicsItem_cursor(self.h))
 
 proc setCursor*(self: gen_qgraphicsitem_types.QGraphicsItem, cursor: gen_qcursor.QCursor): void =
-
   fcQGraphicsItem_setCursor(self.h, cursor.h)
 
 proc hasCursor*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_hasCursor(self.h)
 
 proc unsetCursor*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_unsetCursor(self.h)
 
 proc isVisible*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isVisible(self.h)
 
 proc isVisibleTo*(self: gen_qgraphicsitem_types.QGraphicsItem, parent: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsItem_isVisibleTo(self.h, parent.h)
 
 proc setVisible*(self: gen_qgraphicsitem_types.QGraphicsItem, visible: bool): void =
-
   fcQGraphicsItem_setVisible(self.h, visible)
 
 proc hide*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_hide(self.h)
 
 proc show*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_show(self.h)
 
 proc isEnabled*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isEnabled(self.h)
 
 proc setEnabled*(self: gen_qgraphicsitem_types.QGraphicsItem, enabled: bool): void =
-
   fcQGraphicsItem_setEnabled(self.h, enabled)
 
 proc isSelected*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isSelected(self.h)
 
 proc setSelected*(self: gen_qgraphicsitem_types.QGraphicsItem, selected: bool): void =
-
   fcQGraphicsItem_setSelected(self.h, selected)
 
 proc acceptDrops*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_acceptDrops(self.h)
 
 proc setAcceptDrops*(self: gen_qgraphicsitem_types.QGraphicsItem, on: bool): void =
-
   fcQGraphicsItem_setAcceptDrops(self.h, on)
 
 proc opacity*(self: gen_qgraphicsitem_types.QGraphicsItem, ): float64 =
-
   fcQGraphicsItem_opacity(self.h)
 
 proc effectiveOpacity*(self: gen_qgraphicsitem_types.QGraphicsItem, ): float64 =
-
   fcQGraphicsItem_effectiveOpacity(self.h)
 
 proc setOpacity*(self: gen_qgraphicsitem_types.QGraphicsItem, opacity: float64): void =
-
   fcQGraphicsItem_setOpacity(self.h, opacity)
 
 proc graphicsEffect*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicseffect.QGraphicsEffect =
-
   gen_qgraphicseffect.QGraphicsEffect(h: fcQGraphicsItem_graphicsEffect(self.h))
 
 proc setGraphicsEffect*(self: gen_qgraphicsitem_types.QGraphicsItem, effect: gen_qgraphicseffect.QGraphicsEffect): void =
-
   fcQGraphicsItem_setGraphicsEffect(self.h, effect.h)
 
 proc acceptedMouseButtons*(self: gen_qgraphicsitem_types.QGraphicsItem, ): cint =
-
   cint(fcQGraphicsItem_acceptedMouseButtons(self.h))
 
 proc setAcceptedMouseButtons*(self: gen_qgraphicsitem_types.QGraphicsItem, buttons: cint): void =
-
   fcQGraphicsItem_setAcceptedMouseButtons(self.h, cint(buttons))
 
 proc acceptHoverEvents*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_acceptHoverEvents(self.h)
 
 proc setAcceptHoverEvents*(self: gen_qgraphicsitem_types.QGraphicsItem, enabled: bool): void =
-
   fcQGraphicsItem_setAcceptHoverEvents(self.h, enabled)
 
 proc acceptTouchEvents*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_acceptTouchEvents(self.h)
 
 proc setAcceptTouchEvents*(self: gen_qgraphicsitem_types.QGraphicsItem, enabled: bool): void =
-
   fcQGraphicsItem_setAcceptTouchEvents(self.h, enabled)
 
 proc filtersChildEvents*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_filtersChildEvents(self.h)
 
 proc setFiltersChildEvents*(self: gen_qgraphicsitem_types.QGraphicsItem, enabled: bool): void =
-
   fcQGraphicsItem_setFiltersChildEvents(self.h, enabled)
 
 proc handlesChildEvents*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_handlesChildEvents(self.h)
 
 proc setHandlesChildEvents*(self: gen_qgraphicsitem_types.QGraphicsItem, enabled: bool): void =
-
   fcQGraphicsItem_setHandlesChildEvents(self.h, enabled)
 
 proc isActive*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isActive(self.h)
 
 proc setActive*(self: gen_qgraphicsitem_types.QGraphicsItem, active: bool): void =
-
   fcQGraphicsItem_setActive(self.h, active)
 
 proc hasFocus*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_hasFocus(self.h)
 
 proc setFocus*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_setFocus(self.h)
 
 proc clearFocus*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_clearFocus(self.h)
 
 proc focusProxy*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsItem =
-
   gen_qgraphicsitem_types.QGraphicsItem(h: fcQGraphicsItem_focusProxy(self.h))
 
 proc setFocusProxy*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem): void =
-
   fcQGraphicsItem_setFocusProxy(self.h, item.h)
 
 proc focusItem*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsItem =
-
   gen_qgraphicsitem_types.QGraphicsItem(h: fcQGraphicsItem_focusItem(self.h))
 
 proc focusScopeItem*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qgraphicsitem_types.QGraphicsItem =
-
   gen_qgraphicsitem_types.QGraphicsItem(h: fcQGraphicsItem_focusScopeItem(self.h))
 
 proc grabMouse*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_grabMouse(self.h)
 
 proc ungrabMouse*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_ungrabMouse(self.h)
 
 proc grabKeyboard*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_grabKeyboard(self.h)
 
 proc ungrabKeyboard*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_ungrabKeyboard(self.h)
 
 proc pos*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItem_pos(self.h))
 
 proc x*(self: gen_qgraphicsitem_types.QGraphicsItem, ): float64 =
-
   fcQGraphicsItem_x(self.h)
 
 proc setX*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64): void =
-
   fcQGraphicsItem_setX(self.h, x)
 
 proc y*(self: gen_qgraphicsitem_types.QGraphicsItem, ): float64 =
-
   fcQGraphicsItem_y(self.h)
 
 proc setY*(self: gen_qgraphicsitem_types.QGraphicsItem, y: float64): void =
-
   fcQGraphicsItem_setY(self.h, y)
 
 proc scenePos*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItem_scenePos(self.h))
 
 proc setPos*(self: gen_qgraphicsitem_types.QGraphicsItem, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsItem_setPos(self.h, pos.h)
 
-proc setPos2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): void =
-
+proc setPos*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): void =
   fcQGraphicsItem_setPos2(self.h, x, y)
 
 proc moveBy*(self: gen_qgraphicsitem_types.QGraphicsItem, dx: float64, dy: float64): void =
-
   fcQGraphicsItem_moveBy(self.h, dx, dy)
 
 proc ensureVisible*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_ensureVisible(self.h)
 
-proc ensureVisible2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): void =
-
+proc ensureVisible*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): void =
   fcQGraphicsItem_ensureVisible2(self.h, x, y, w, h)
 
 proc transform*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qtransform.QTransform =
-
   gen_qtransform.QTransform(h: fcQGraphicsItem_transform(self.h))
 
 proc sceneTransform*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qtransform.QTransform =
-
   gen_qtransform.QTransform(h: fcQGraphicsItem_sceneTransform(self.h))
 
 proc deviceTransform*(self: gen_qgraphicsitem_types.QGraphicsItem, viewportTransform: gen_qtransform.QTransform): gen_qtransform.QTransform =
-
   gen_qtransform.QTransform(h: fcQGraphicsItem_deviceTransform(self.h, viewportTransform.h))
 
 proc itemTransform*(self: gen_qgraphicsitem_types.QGraphicsItem, other: gen_qgraphicsitem_types.QGraphicsItem): gen_qtransform.QTransform =
-
   gen_qtransform.QTransform(h: fcQGraphicsItem_itemTransform(self.h, other.h))
 
 proc setTransform*(self: gen_qgraphicsitem_types.QGraphicsItem, matrix: gen_qtransform.QTransform): void =
-
   fcQGraphicsItem_setTransform(self.h, matrix.h)
 
 proc resetTransform*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_resetTransform(self.h)
 
 proc setRotation*(self: gen_qgraphicsitem_types.QGraphicsItem, angle: float64): void =
-
   fcQGraphicsItem_setRotation(self.h, angle)
 
 proc rotation*(self: gen_qgraphicsitem_types.QGraphicsItem, ): float64 =
-
   fcQGraphicsItem_rotation(self.h)
 
 proc setScale*(self: gen_qgraphicsitem_types.QGraphicsItem, scale: float64): void =
-
   fcQGraphicsItem_setScale(self.h, scale)
 
 proc scale*(self: gen_qgraphicsitem_types.QGraphicsItem, ): float64 =
-
   fcQGraphicsItem_scale(self.h)
 
 proc transformations*(self: gen_qgraphicsitem_types.QGraphicsItem, ): seq[gen_qgraphicstransform.QGraphicsTransform] =
-
   var v_ma = fcQGraphicsItem_transformations(self.h)
   var vx_ret = newSeq[gen_qgraphicstransform.QGraphicsTransform](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1897,7 +1805,6 @@ proc transformations*(self: gen_qgraphicsitem_types.QGraphicsItem, ): seq[gen_qg
   vx_ret
 
 proc setTransformations*(self: gen_qgraphicsitem_types.QGraphicsItem, transformations: seq[gen_qgraphicstransform.QGraphicsTransform]): void =
-
   var transformations_CArray = newSeq[pointer](len(transformations))
   for i in 0..<len(transformations):
     transformations_CArray[i] = transformations[i].h
@@ -1905,71 +1812,54 @@ proc setTransformations*(self: gen_qgraphicsitem_types.QGraphicsItem, transforma
   fcQGraphicsItem_setTransformations(self.h, struct_miqt_array(len: csize_t(len(transformations)), data: if len(transformations) == 0: nil else: addr(transformations_CArray[0])))
 
 proc transformOriginPoint*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItem_transformOriginPoint(self.h))
 
 proc setTransformOriginPoint*(self: gen_qgraphicsitem_types.QGraphicsItem, origin: gen_qpoint.QPointF): void =
-
   fcQGraphicsItem_setTransformOriginPoint(self.h, origin.h)
 
-proc setTransformOriginPoint2*(self: gen_qgraphicsitem_types.QGraphicsItem, ax: float64, ay: float64): void =
-
+proc setTransformOriginPoint*(self: gen_qgraphicsitem_types.QGraphicsItem, ax: float64, ay: float64): void =
   fcQGraphicsItem_setTransformOriginPoint2(self.h, ax, ay)
 
 proc advance*(self: gen_qgraphicsitem_types.QGraphicsItem, phase: cint): void =
-
   fcQGraphicsItem_advance(self.h, phase)
 
 proc zValue*(self: gen_qgraphicsitem_types.QGraphicsItem, ): float64 =
-
   fcQGraphicsItem_zValue(self.h)
 
 proc setZValue*(self: gen_qgraphicsitem_types.QGraphicsItem, z: float64): void =
-
   fcQGraphicsItem_setZValue(self.h, z)
 
 proc stackBefore*(self: gen_qgraphicsitem_types.QGraphicsItem, sibling: gen_qgraphicsitem_types.QGraphicsItem): void =
-
   fcQGraphicsItem_stackBefore(self.h, sibling.h)
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItem_boundingRect(self.h))
 
 proc childrenBoundingRect*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItem_childrenBoundingRect(self.h))
 
 proc sceneBoundingRect*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItem_sceneBoundingRect(self.h))
 
 proc shape*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItem_shape(self.h))
 
 proc isClipped*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isClipped(self.h)
 
 proc clipPath*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItem_clipPath(self.h))
 
 proc contains*(self: gen_qgraphicsitem_types.QGraphicsItem, point: gen_qpoint.QPointF): bool =
-
   fcQGraphicsItem_contains(self.h, point.h)
 
 proc collidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fcQGraphicsItem_collidesWithItem(self.h, other.h, cint(mode))
 
 proc collidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fcQGraphicsItem_collidesWithPath(self.h, path.h, cint(mode))
 
 proc collidingItems*(self: gen_qgraphicsitem_types.QGraphicsItem, ): seq[gen_qgraphicsitem_types.QGraphicsItem] =
-
   var v_ma = fcQGraphicsItem_collidingItems(self.h)
   var vx_ret = newSeq[gen_qgraphicsitem_types.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1978,251 +1868,189 @@ proc collidingItems*(self: gen_qgraphicsitem_types.QGraphicsItem, ): seq[gen_qgr
   vx_ret
 
 proc isObscured*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isObscured(self.h)
 
-proc isObscured2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): bool =
-
+proc isObscured*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): bool =
   fcQGraphicsItem_isObscured2(self.h, x, y, w, h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItem_opaqueArea(self.h))
 
 proc boundingRegion*(self: gen_qgraphicsitem_types.QGraphicsItem, itemToDeviceTransform: gen_qtransform.QTransform): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fcQGraphicsItem_boundingRegion(self.h, itemToDeviceTransform.h))
 
 proc boundingRegionGranularity*(self: gen_qgraphicsitem_types.QGraphicsItem, ): float64 =
-
   fcQGraphicsItem_boundingRegionGranularity(self.h)
 
 proc setBoundingRegionGranularity*(self: gen_qgraphicsitem_types.QGraphicsItem, granularity: float64): void =
-
   fcQGraphicsItem_setBoundingRegionGranularity(self.h, granularity)
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc update*(self: gen_qgraphicsitem_types.QGraphicsItem, ): void =
-
   fcQGraphicsItem_update(self.h)
 
-proc update2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, width: float64, height: float64): void =
-
+proc update*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, width: float64, height: float64): void =
   fcQGraphicsItem_update2(self.h, x, y, width, height)
 
 proc scroll*(self: gen_qgraphicsitem_types.QGraphicsItem, dx: float64, dy: float64): void =
-
   fcQGraphicsItem_scroll(self.h, dx, dy)
 
 proc mapToItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapToItem(self.h, item.h, point.h))
 
 proc mapToParent*(self: gen_qgraphicsitem_types.QGraphicsItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapToParent(self.h, point.h))
 
 proc mapToScene*(self: gen_qgraphicsitem_types.QGraphicsItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapToScene(self.h, point.h))
 
 proc mapRectToItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectToItem(self.h, item.h, rect.h))
 
 proc mapRectToParent*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectToParent(self.h, rect.h))
 
 proc mapRectToScene*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectToScene(self.h, rect.h))
 
-proc mapToItem4*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
-
+proc mapToItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItem_mapToItem4(self.h, item.h, path.h))
 
-proc mapToParentWithPath*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
-
+proc mapToParent*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItem_mapToParentWithPath(self.h, path.h))
 
-proc mapToSceneWithPath*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
-
+proc mapToScene*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItem_mapToSceneWithPath(self.h, path.h))
 
 proc mapFromItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapFromItem(self.h, item.h, point.h))
 
 proc mapFromParent*(self: gen_qgraphicsitem_types.QGraphicsItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapFromParent(self.h, point.h))
 
 proc mapFromScene*(self: gen_qgraphicsitem_types.QGraphicsItem, point: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapFromScene(self.h, point.h))
 
 proc mapRectFromItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectFromItem(self.h, item.h, rect.h))
 
 proc mapRectFromParent*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectFromParent(self.h, rect.h))
 
 proc mapRectFromScene*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectFromScene(self.h, rect.h))
 
-proc mapFromItem4*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
-
+proc mapFromItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItem_mapFromItem4(self.h, item.h, path.h))
 
-proc mapFromParentWithPath*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
-
+proc mapFromParent*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItem_mapFromParentWithPath(self.h, path.h))
 
-proc mapFromSceneWithPath*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
-
+proc mapFromScene*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath): gen_qpainterpath.QPainterPath =
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItem_mapFromSceneWithPath(self.h, path.h))
 
-proc mapToItem5*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
-
+proc mapToItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapToItem5(self.h, item.h, x, y))
 
-proc mapToParent2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
-
+proc mapToParent*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapToParent2(self.h, x, y))
 
-proc mapToScene2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
-
+proc mapToScene*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapToScene2(self.h, x, y))
 
-proc mapRectToItem2*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
-
+proc mapRectToItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectToItem2(self.h, item.h, x, y, w, h))
 
-proc mapRectToParent2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
-
+proc mapRectToParent*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectToParent2(self.h, x, y, w, h))
 
-proc mapRectToScene2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
-
+proc mapRectToScene*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectToScene2(self.h, x, y, w, h))
 
-proc mapFromItem5*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
-
+proc mapFromItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapFromItem5(self.h, item.h, x, y))
 
-proc mapFromParent2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
-
+proc mapFromParent*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapFromParent2(self.h, x, y))
 
-proc mapFromScene2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
-
+proc mapFromScene*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsItem_mapFromScene2(self.h, x, y))
 
-proc mapRectFromItem2*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
-
+proc mapRectFromItem*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectFromItem2(self.h, item.h, x, y, w, h))
 
-proc mapRectFromParent2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
-
+proc mapRectFromParent*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectFromParent2(self.h, x, y, w, h))
 
-proc mapRectFromScene2*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
-
+proc mapRectFromScene*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64): gen_qrect.QRectF =
   gen_qrect.QRectF(h: fcQGraphicsItem_mapRectFromScene2(self.h, x, y, w, h))
 
 proc isAncestorOf*(self: gen_qgraphicsitem_types.QGraphicsItem, child: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsItem_isAncestorOf(self.h, child.h)
 
 proc commonAncestorItem*(self: gen_qgraphicsitem_types.QGraphicsItem, other: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsItem =
-
   gen_qgraphicsitem_types.QGraphicsItem(h: fcQGraphicsItem_commonAncestorItem(self.h, other.h))
 
 proc isUnderMouse*(self: gen_qgraphicsitem_types.QGraphicsItem, ): bool =
-
   fcQGraphicsItem_isUnderMouse(self.h)
 
 proc data*(self: gen_qgraphicsitem_types.QGraphicsItem, key: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQGraphicsItem_data(self.h, key))
 
 proc setData*(self: gen_qgraphicsitem_types.QGraphicsItem, key: cint, value: gen_qvariant.QVariant): void =
-
   fcQGraphicsItem_setData(self.h, key, value.h)
 
 proc inputMethodHints*(self: gen_qgraphicsitem_types.QGraphicsItem, ): cint =
-
   cint(fcQGraphicsItem_inputMethodHints(self.h))
 
 proc setInputMethodHints*(self: gen_qgraphicsitem_types.QGraphicsItem, hints: cint): void =
-
   fcQGraphicsItem_setInputMethodHints(self.h, cint(hints))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsItem, ): cint =
-
   fcQGraphicsItem_typeX(self.h)
 
 proc installSceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsItem, filterItem: gen_qgraphicsitem_types.QGraphicsItem): void =
-
   fcQGraphicsItem_installSceneEventFilter(self.h, filterItem.h)
 
 proc removeSceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsItem, filterItem: gen_qgraphicsitem_types.QGraphicsItem): void =
-
   fcQGraphicsItem_removeSceneEventFilter(self.h, filterItem.h)
 
-proc setFlag2*(self: gen_qgraphicsitem_types.QGraphicsItem, flag: cint, enabled: bool): void =
-
+proc setFlag*(self: gen_qgraphicsitem_types.QGraphicsItem, flag: cint, enabled: bool): void =
   fcQGraphicsItem_setFlag2(self.h, cint(flag), enabled)
 
-proc setCacheMode2*(self: gen_qgraphicsitem_types.QGraphicsItem, mode: cint, cacheSize: gen_qsize.QSize): void =
-
+proc setCacheMode*(self: gen_qgraphicsitem_types.QGraphicsItem, mode: cint, cacheSize: gen_qsize.QSize): void =
   fcQGraphicsItem_setCacheMode2(self.h, cint(mode), cacheSize.h)
 
-proc setFocus1*(self: gen_qgraphicsitem_types.QGraphicsItem, focusReason: cint): void =
-
+proc setFocus*(self: gen_qgraphicsitem_types.QGraphicsItem, focusReason: cint): void =
   fcQGraphicsItem_setFocus1(self.h, cint(focusReason))
 
-proc ensureVisible1*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): void =
-
+proc ensureVisible*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): void =
   fcQGraphicsItem_ensureVisible1(self.h, rect.h)
 
-proc ensureVisible22*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF, xmargin: cint): void =
-
+proc ensureVisible*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF, xmargin: cint): void =
   fcQGraphicsItem_ensureVisible22(self.h, rect.h, xmargin)
 
-proc ensureVisible3*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF, xmargin: cint, ymargin: cint): void =
-
+proc ensureVisible*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF, xmargin: cint, ymargin: cint): void =
   fcQGraphicsItem_ensureVisible3(self.h, rect.h, xmargin, ymargin)
 
-proc ensureVisible5*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64, xmargin: cint): void =
-
+proc ensureVisible*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64, xmargin: cint): void =
   fcQGraphicsItem_ensureVisible5(self.h, x, y, w, h, xmargin)
 
-proc ensureVisible6*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64, xmargin: cint, ymargin: cint): void =
-
+proc ensureVisible*(self: gen_qgraphicsitem_types.QGraphicsItem, x: float64, y: float64, w: float64, h: float64, xmargin: cint, ymargin: cint): void =
   fcQGraphicsItem_ensureVisible6(self.h, x, y, w, h, xmargin, ymargin)
 
-proc itemTransform2*(self: gen_qgraphicsitem_types.QGraphicsItem, other: gen_qgraphicsitem_types.QGraphicsItem, ok: ptr bool): gen_qtransform.QTransform =
-
+proc itemTransform*(self: gen_qgraphicsitem_types.QGraphicsItem, other: gen_qgraphicsitem_types.QGraphicsItem, ok: ptr bool): gen_qtransform.QTransform =
   gen_qtransform.QTransform(h: fcQGraphicsItem_itemTransform2(self.h, other.h, ok))
 
-proc setTransform2*(self: gen_qgraphicsitem_types.QGraphicsItem, matrix: gen_qtransform.QTransform, combine: bool): void =
-
+proc setTransform*(self: gen_qgraphicsitem_types.QGraphicsItem, matrix: gen_qtransform.QTransform, combine: bool): void =
   fcQGraphicsItem_setTransform2(self.h, matrix.h, combine)
 
-proc collidingItems1*(self: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): seq[gen_qgraphicsitem_types.QGraphicsItem] =
-
+proc collidingItems*(self: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): seq[gen_qgraphicsitem_types.QGraphicsItem] =
   var v_ma = fcQGraphicsItem_collidingItems1(self.h, cint(mode))
   var vx_ret = newSeq[gen_qgraphicsitem_types.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -2230,20 +2058,16 @@ proc collidingItems1*(self: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): 
     vx_ret[i] = gen_qgraphicsitem_types.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc isObscured1*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): bool =
-
+proc isObscured*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): bool =
   fcQGraphicsItem_isObscured1(self.h, rect.h)
 
-proc update1*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): void =
-
+proc update*(self: gen_qgraphicsitem_types.QGraphicsItem, rect: gen_qrect.QRectF): void =
   fcQGraphicsItem_update1(self.h, rect.h)
 
-proc scroll3*(self: gen_qgraphicsitem_types.QGraphicsItem, dx: float64, dy: float64, rect: gen_qrect.QRectF): void =
-
+proc scroll*(self: gen_qgraphicsitem_types.QGraphicsItem, dx: float64, dy: float64, rect: gen_qrect.QRectF): void =
   fcQGraphicsItem_scroll3(self.h, dx, dy, rect.h)
 
 proc QGraphicsItemadvance*(self: gen_qgraphicsitem_types.QGraphicsItem, phase: cint): void =
-
   fQGraphicsItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsItemadvanceProc* = proc(phase: cint): void
@@ -2275,7 +2099,6 @@ proc miqt_exec_callback_QGraphicsItem_boundingRect(self: ptr cQGraphicsItem, slo
 
   virtualReturn.h
 proc QGraphicsItemshape*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsItem_virtualbase_shape(self.h))
 
 type QGraphicsItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -2293,7 +2116,6 @@ proc miqt_exec_callback_QGraphicsItem_shape(self: ptr cQGraphicsItem, slot: int)
 
   virtualReturn.h
 proc QGraphicsItemcontains*(self: gen_qgraphicsitem_types.QGraphicsItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -2313,7 +2135,6 @@ proc miqt_exec_callback_QGraphicsItem_contains(self: ptr cQGraphicsItem, slot: i
 
   virtualReturn
 proc QGraphicsItemcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -2335,7 +2156,6 @@ proc miqt_exec_callback_QGraphicsItem_collidesWithItem(self: ptr cQGraphicsItem,
 
   virtualReturn
 proc QGraphicsItemcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -2357,7 +2177,6 @@ proc miqt_exec_callback_QGraphicsItem_collidesWithPath(self: ptr cQGraphicsItem,
 
   virtualReturn
 proc QGraphicsItemisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -2377,7 +2196,6 @@ proc miqt_exec_callback_QGraphicsItem_isObscuredBy(self: ptr cQGraphicsItem, slo
 
   virtualReturn
 proc QGraphicsItemopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -2413,7 +2231,6 @@ proc miqt_exec_callback_QGraphicsItem_paint(self: ptr cQGraphicsItem, slot: int,
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsItemtypeX*(self: gen_qgraphicsitem_types.QGraphicsItem, ): cint =
-
   fQGraphicsItem_virtualbase_type(self.h)
 
 type QGraphicsItemtypeXProc* = proc(): cint
@@ -2431,7 +2248,6 @@ proc miqt_exec_callback_QGraphicsItem_type(self: ptr cQGraphicsItem, slot: int):
 
   virtualReturn
 proc QGraphicsItemsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -2453,7 +2269,6 @@ proc miqt_exec_callback_QGraphicsItem_sceneEventFilter(self: ptr cQGraphicsItem,
 
   virtualReturn
 proc QGraphicsItemsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -2473,7 +2288,6 @@ proc miqt_exec_callback_QGraphicsItem_sceneEvent(self: ptr cQGraphicsItem, slot:
 
   virtualReturn
 proc QGraphicsItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -2491,7 +2305,6 @@ proc miqt_exec_callback_QGraphicsItem_contextMenuEvent(self: ptr cQGraphicsItem,
 
   nimfunc[](slotval1)
 proc QGraphicsItemdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -2509,7 +2322,6 @@ proc miqt_exec_callback_QGraphicsItem_dragEnterEvent(self: ptr cQGraphicsItem, s
 
   nimfunc[](slotval1)
 proc QGraphicsItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -2527,7 +2339,6 @@ proc miqt_exec_callback_QGraphicsItem_dragLeaveEvent(self: ptr cQGraphicsItem, s
 
   nimfunc[](slotval1)
 proc QGraphicsItemdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -2545,7 +2356,6 @@ proc miqt_exec_callback_QGraphicsItem_dragMoveEvent(self: ptr cQGraphicsItem, sl
 
   nimfunc[](slotval1)
 proc QGraphicsItemdropEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -2563,7 +2373,6 @@ proc miqt_exec_callback_QGraphicsItem_dropEvent(self: ptr cQGraphicsItem, slot: 
 
   nimfunc[](slotval1)
 proc QGraphicsItemfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2581,7 +2390,6 @@ proc miqt_exec_callback_QGraphicsItem_focusInEvent(self: ptr cQGraphicsItem, slo
 
   nimfunc[](slotval1)
 proc QGraphicsItemfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2599,7 +2407,6 @@ proc miqt_exec_callback_QGraphicsItem_focusOutEvent(self: ptr cQGraphicsItem, sl
 
   nimfunc[](slotval1)
 proc QGraphicsItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -2617,7 +2424,6 @@ proc miqt_exec_callback_QGraphicsItem_hoverEnterEvent(self: ptr cQGraphicsItem, 
 
   nimfunc[](slotval1)
 proc QGraphicsItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -2635,7 +2441,6 @@ proc miqt_exec_callback_QGraphicsItem_hoverMoveEvent(self: ptr cQGraphicsItem, s
 
   nimfunc[](slotval1)
 proc QGraphicsItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -2653,7 +2458,6 @@ proc miqt_exec_callback_QGraphicsItem_hoverLeaveEvent(self: ptr cQGraphicsItem, 
 
   nimfunc[](slotval1)
 proc QGraphicsItemkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2671,7 +2475,6 @@ proc miqt_exec_callback_QGraphicsItem_keyPressEvent(self: ptr cQGraphicsItem, sl
 
   nimfunc[](slotval1)
 proc QGraphicsItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2689,7 +2492,6 @@ proc miqt_exec_callback_QGraphicsItem_keyReleaseEvent(self: ptr cQGraphicsItem, 
 
   nimfunc[](slotval1)
 proc QGraphicsItemmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -2707,7 +2509,6 @@ proc miqt_exec_callback_QGraphicsItem_mousePressEvent(self: ptr cQGraphicsItem, 
 
   nimfunc[](slotval1)
 proc QGraphicsItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -2725,7 +2526,6 @@ proc miqt_exec_callback_QGraphicsItem_mouseMoveEvent(self: ptr cQGraphicsItem, s
 
   nimfunc[](slotval1)
 proc QGraphicsItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -2743,7 +2543,6 @@ proc miqt_exec_callback_QGraphicsItem_mouseReleaseEvent(self: ptr cQGraphicsItem
 
   nimfunc[](slotval1)
 proc QGraphicsItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -2761,7 +2560,6 @@ proc miqt_exec_callback_QGraphicsItem_mouseDoubleClickEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsItemwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -2779,7 +2577,6 @@ proc miqt_exec_callback_QGraphicsItem_wheelEvent(self: ptr cQGraphicsItem, slot:
 
   nimfunc[](slotval1)
 proc QGraphicsIteminputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -2797,7 +2594,6 @@ proc miqt_exec_callback_QGraphicsItem_inputMethodEvent(self: ptr cQGraphicsItem,
 
   nimfunc[](slotval1)
 proc QGraphicsIteminputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -2817,7 +2613,6 @@ proc miqt_exec_callback_QGraphicsItem_inputMethodQuery(self: ptr cQGraphicsItem,
 
   virtualReturn.h
 proc QGraphicsItemitemChange*(self: gen_qgraphicsitem_types.QGraphicsItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -2839,7 +2634,6 @@ proc miqt_exec_callback_QGraphicsItem_itemChange(self: ptr cQGraphicsItem, slot:
 
   virtualReturn.h
 proc QGraphicsItemsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsItem, extension: cint): bool =
-
   fQGraphicsItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -2859,7 +2653,6 @@ proc miqt_exec_callback_QGraphicsItem_supportsExtension(self: ptr cQGraphicsItem
 
   virtualReturn
 proc QGraphicsItemsetExtension*(self: gen_qgraphicsitem_types.QGraphicsItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -2879,7 +2672,6 @@ proc miqt_exec_callback_QGraphicsItem_setExtension(self: ptr cQGraphicsItem, slo
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsItemextension*(self: gen_qgraphicsitem_types.QGraphicsItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -2904,250 +2696,216 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsObject, h: ptr cQGraphicsObject): gen_qgraphicsitem_types.QGraphicsObject =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsObject, ): gen_qgraphicsitem_types.QGraphicsObject =
-
   gen_qgraphicsitem_types.QGraphicsObject.init(fcQGraphicsObject_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsObject, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsObject =
-
   gen_qgraphicsitem_types.QGraphicsObject.init(fcQGraphicsObject_new2(parent.h))
-proc metaObject*(self: gen_qgraphicsitem_types.QGraphicsObject, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgraphicsitem_types.QGraphicsObject, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsObject_metaObject(self.h))
 
 proc metacast*(self: gen_qgraphicsitem_types.QGraphicsObject, param1: cstring): pointer =
-
   fcQGraphicsObject_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgraphicsitem_types.QGraphicsObject, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGraphicsObject_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgraphicsitem_types.QGraphicsObject, s: cstring): string =
-
   let v_ms = fcQGraphicsObject_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc grabGesture*(self: gen_qgraphicsitem_types.QGraphicsObject, typeVal: cint): void =
-
   fcQGraphicsObject_grabGesture(self.h, cint(typeVal))
 
 proc ungrabGesture*(self: gen_qgraphicsitem_types.QGraphicsObject, typeVal: cint): void =
-
   fcQGraphicsObject_ungrabGesture(self.h, cint(typeVal))
 
 proc parentChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
-
   fcQGraphicsObject_parentChanged(self.h)
 
+type QGraphicsObjectparentChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_parentChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectparentChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onparentChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onparentChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectparentChangedSlot) =
+  var tmp = new QGraphicsObjectparentChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_parentChanged(self.h, cast[int](addr tmp[]))
-proc opacityChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc opacityChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_opacityChanged(self.h)
 
+type QGraphicsObjectopacityChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_opacityChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectopacityChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onopacityChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onopacityChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectopacityChangedSlot) =
+  var tmp = new QGraphicsObjectopacityChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_opacityChanged(self.h, cast[int](addr tmp[]))
-proc visibleChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc visibleChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_visibleChanged(self.h)
 
+type QGraphicsObjectvisibleChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_visibleChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectvisibleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onvisibleChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onvisibleChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectvisibleChangedSlot) =
+  var tmp = new QGraphicsObjectvisibleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_visibleChanged(self.h, cast[int](addr tmp[]))
-proc enabledChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc enabledChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_enabledChanged(self.h)
 
+type QGraphicsObjectenabledChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_enabledChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectenabledChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onenabledChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onenabledChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectenabledChangedSlot) =
+  var tmp = new QGraphicsObjectenabledChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_enabledChanged(self.h, cast[int](addr tmp[]))
-proc xChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc xChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_xChanged(self.h)
 
+type QGraphicsObjectxChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_xChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectxChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onxChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onxChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectxChangedSlot) =
+  var tmp = new QGraphicsObjectxChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_xChanged(self.h, cast[int](addr tmp[]))
-proc yChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc yChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_yChanged(self.h)
 
+type QGraphicsObjectyChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_yChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectyChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onyChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onyChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectyChangedSlot) =
+  var tmp = new QGraphicsObjectyChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_yChanged(self.h, cast[int](addr tmp[]))
-proc zChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc zChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_zChanged(self.h)
 
+type QGraphicsObjectzChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_zChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectzChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onzChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onzChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectzChangedSlot) =
+  var tmp = new QGraphicsObjectzChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_zChanged(self.h, cast[int](addr tmp[]))
-proc rotationChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc rotationChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_rotationChanged(self.h)
 
+type QGraphicsObjectrotationChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_rotationChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectrotationChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onrotationChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onrotationChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectrotationChangedSlot) =
+  var tmp = new QGraphicsObjectrotationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_rotationChanged(self.h, cast[int](addr tmp[]))
-proc scaleChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc scaleChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_scaleChanged(self.h)
 
+type QGraphicsObjectscaleChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_scaleChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectscaleChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onscaleChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onscaleChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectscaleChangedSlot) =
+  var tmp = new QGraphicsObjectscaleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_scaleChanged(self.h, cast[int](addr tmp[]))
-proc childrenChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc childrenChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_childrenChanged(self.h)
 
+type QGraphicsObjectchildrenChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_childrenChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectchildrenChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onchildrenChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onchildrenChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectchildrenChangedSlot) =
+  var tmp = new QGraphicsObjectchildrenChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_childrenChanged(self.h, cast[int](addr tmp[]))
-proc widthChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc widthChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_widthChanged(self.h)
 
+type QGraphicsObjectwidthChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_widthChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectwidthChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onwidthChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onwidthChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectwidthChangedSlot) =
+  var tmp = new QGraphicsObjectwidthChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_widthChanged(self.h, cast[int](addr tmp[]))
-proc heightChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
 
+proc heightChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, ): void =
   fcQGraphicsObject_heightChanged(self.h)
 
+type QGraphicsObjectheightChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsObject_heightChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsObjectheightChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onheightChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onheightChanged*(self: gen_qgraphicsitem_types.QGraphicsObject, slot: QGraphicsObjectheightChangedSlot) =
+  var tmp = new QGraphicsObjectheightChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsObject_connect_heightChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qgraphicsitem_types.QGraphicsObject, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qgraphicsitem_types.QGraphicsObject, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsObject_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgraphicsitem_types.QGraphicsObject, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgraphicsitem_types.QGraphicsObject, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsObject_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc grabGesture2*(self: gen_qgraphicsitem_types.QGraphicsObject, typeVal: cint, flags: cint): void =
-
+proc grabGesture*(self: gen_qgraphicsitem_types.QGraphicsObject, typeVal: cint, flags: cint): void =
   fcQGraphicsObject_grabGesture2(self.h, cint(typeVal), cint(flags))
 
 proc QGraphicsObjectmetaObject*(self: gen_qgraphicsitem_types.QGraphicsObject, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQGraphicsObject_virtualbase_metaObject(self.h))
 
 type QGraphicsObjectmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -3165,7 +2923,6 @@ proc miqt_exec_callback_QGraphicsObject_metaObject(self: ptr cQGraphicsObject, s
 
   virtualReturn.h
 proc QGraphicsObjectmetacast*(self: gen_qgraphicsitem_types.QGraphicsObject, param1: cstring): pointer =
-
   fQGraphicsObject_virtualbase_metacast(self.h, param1)
 
 type QGraphicsObjectmetacastProc* = proc(param1: cstring): pointer
@@ -3185,7 +2942,6 @@ proc miqt_exec_callback_QGraphicsObject_metacast(self: ptr cQGraphicsObject, slo
 
   virtualReturn
 proc QGraphicsObjectmetacall*(self: gen_qgraphicsitem_types.QGraphicsObject, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGraphicsObject_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGraphicsObjectmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -3209,7 +2965,6 @@ proc miqt_exec_callback_QGraphicsObject_metacall(self: ptr cQGraphicsObject, slo
 
   virtualReturn
 proc QGraphicsObjectevent*(self: gen_qgraphicsitem_types.QGraphicsObject, ev: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsObject_virtualbase_event(self.h, ev.h)
 
 type QGraphicsObjecteventProc* = proc(ev: gen_qcoreevent.QEvent): bool
@@ -3229,7 +2984,6 @@ proc miqt_exec_callback_QGraphicsObject_event(self: ptr cQGraphicsObject, slot: 
 
   virtualReturn
 proc QGraphicsObjecteventFilter*(self: gen_qgraphicsitem_types.QGraphicsObject, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsObject_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGraphicsObjecteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -3251,7 +3005,6 @@ proc miqt_exec_callback_QGraphicsObject_eventFilter(self: ptr cQGraphicsObject, 
 
   virtualReturn
 proc QGraphicsObjecttimerEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGraphicsObject_virtualbase_timerEvent(self.h, event.h)
 
 type QGraphicsObjecttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -3269,7 +3022,6 @@ proc miqt_exec_callback_QGraphicsObject_timerEvent(self: ptr cQGraphicsObject, s
 
   nimfunc[](slotval1)
 proc QGraphicsObjectchildEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qcoreevent.QChildEvent): void =
-
   fQGraphicsObject_virtualbase_childEvent(self.h, event.h)
 
 type QGraphicsObjectchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -3287,7 +3039,6 @@ proc miqt_exec_callback_QGraphicsObject_childEvent(self: ptr cQGraphicsObject, s
 
   nimfunc[](slotval1)
 proc QGraphicsObjectcustomEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsObject_virtualbase_customEvent(self.h, event.h)
 
 type QGraphicsObjectcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -3305,7 +3056,6 @@ proc miqt_exec_callback_QGraphicsObject_customEvent(self: ptr cQGraphicsObject, 
 
   nimfunc[](slotval1)
 proc QGraphicsObjectconnectNotify*(self: gen_qgraphicsitem_types.QGraphicsObject, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsObject_virtualbase_connectNotify(self.h, signal.h)
 
 type QGraphicsObjectconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -3323,7 +3073,6 @@ proc miqt_exec_callback_QGraphicsObject_connectNotify(self: ptr cQGraphicsObject
 
   nimfunc[](slotval1)
 proc QGraphicsObjectdisconnectNotify*(self: gen_qgraphicsitem_types.QGraphicsObject, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsObject_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGraphicsObjectdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -3341,7 +3090,6 @@ proc miqt_exec_callback_QGraphicsObject_disconnectNotify(self: ptr cQGraphicsObj
 
   nimfunc[](slotval1)
 proc QGraphicsObjectadvance*(self: gen_qgraphicsitem_types.QGraphicsObject, phase: cint): void =
-
   fQGraphicsObject_virtualbase_advance(self.h, phase)
 
 type QGraphicsObjectadvanceProc* = proc(phase: cint): void
@@ -3373,7 +3121,6 @@ proc miqt_exec_callback_QGraphicsObject_boundingRect(self: ptr cQGraphicsObject,
 
   virtualReturn.h
 proc QGraphicsObjectshape*(self: gen_qgraphicsitem_types.QGraphicsObject, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsObject_virtualbase_shape(self.h))
 
 type QGraphicsObjectshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -3391,7 +3138,6 @@ proc miqt_exec_callback_QGraphicsObject_shape(self: ptr cQGraphicsObject, slot: 
 
   virtualReturn.h
 proc QGraphicsObjectcontains*(self: gen_qgraphicsitem_types.QGraphicsObject, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsObject_virtualbase_contains(self.h, point.h)
 
 type QGraphicsObjectcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -3411,7 +3157,6 @@ proc miqt_exec_callback_QGraphicsObject_contains(self: ptr cQGraphicsObject, slo
 
   virtualReturn
 proc QGraphicsObjectcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsObject, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsObject_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsObjectcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -3433,7 +3178,6 @@ proc miqt_exec_callback_QGraphicsObject_collidesWithItem(self: ptr cQGraphicsObj
 
   virtualReturn
 proc QGraphicsObjectcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsObject, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsObject_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsObjectcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -3455,7 +3199,6 @@ proc miqt_exec_callback_QGraphicsObject_collidesWithPath(self: ptr cQGraphicsObj
 
   virtualReturn
 proc QGraphicsObjectisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsObject, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsObject_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsObjectisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -3475,7 +3218,6 @@ proc miqt_exec_callback_QGraphicsObject_isObscuredBy(self: ptr cQGraphicsObject,
 
   virtualReturn
 proc QGraphicsObjectopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsObject, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsObject_virtualbase_opaqueArea(self.h))
 
 type QGraphicsObjectopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -3511,7 +3253,6 @@ proc miqt_exec_callback_QGraphicsObject_paint(self: ptr cQGraphicsObject, slot: 
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsObjecttypeX*(self: gen_qgraphicsitem_types.QGraphicsObject, ): cint =
-
   fQGraphicsObject_virtualbase_type(self.h)
 
 type QGraphicsObjecttypeXProc* = proc(): cint
@@ -3529,7 +3270,6 @@ proc miqt_exec_callback_QGraphicsObject_type(self: ptr cQGraphicsObject, slot: i
 
   virtualReturn
 proc QGraphicsObjectsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsObject, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsObject_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsObjectsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -3551,7 +3291,6 @@ proc miqt_exec_callback_QGraphicsObject_sceneEventFilter(self: ptr cQGraphicsObj
 
   virtualReturn
 proc QGraphicsObjectsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsObject_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsObjectsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -3571,7 +3310,6 @@ proc miqt_exec_callback_QGraphicsObject_sceneEvent(self: ptr cQGraphicsObject, s
 
   virtualReturn
 proc QGraphicsObjectcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsObject_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsObjectcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -3589,7 +3327,6 @@ proc miqt_exec_callback_QGraphicsObject_contextMenuEvent(self: ptr cQGraphicsObj
 
   nimfunc[](slotval1)
 proc QGraphicsObjectdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsObject_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsObjectdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -3607,7 +3344,6 @@ proc miqt_exec_callback_QGraphicsObject_dragEnterEvent(self: ptr cQGraphicsObjec
 
   nimfunc[](slotval1)
 proc QGraphicsObjectdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsObject_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsObjectdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -3625,7 +3361,6 @@ proc miqt_exec_callback_QGraphicsObject_dragLeaveEvent(self: ptr cQGraphicsObjec
 
   nimfunc[](slotval1)
 proc QGraphicsObjectdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsObject_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsObjectdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -3643,7 +3378,6 @@ proc miqt_exec_callback_QGraphicsObject_dragMoveEvent(self: ptr cQGraphicsObject
 
   nimfunc[](slotval1)
 proc QGraphicsObjectdropEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsObject_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsObjectdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -3661,7 +3395,6 @@ proc miqt_exec_callback_QGraphicsObject_dropEvent(self: ptr cQGraphicsObject, sl
 
   nimfunc[](slotval1)
 proc QGraphicsObjectfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsObject_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsObjectfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -3679,7 +3412,6 @@ proc miqt_exec_callback_QGraphicsObject_focusInEvent(self: ptr cQGraphicsObject,
 
   nimfunc[](slotval1)
 proc QGraphicsObjectfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsObject_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsObjectfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -3697,7 +3429,6 @@ proc miqt_exec_callback_QGraphicsObject_focusOutEvent(self: ptr cQGraphicsObject
 
   nimfunc[](slotval1)
 proc QGraphicsObjecthoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsObject_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsObjecthoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -3715,7 +3446,6 @@ proc miqt_exec_callback_QGraphicsObject_hoverEnterEvent(self: ptr cQGraphicsObje
 
   nimfunc[](slotval1)
 proc QGraphicsObjecthoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsObject_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsObjecthoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -3733,7 +3463,6 @@ proc miqt_exec_callback_QGraphicsObject_hoverMoveEvent(self: ptr cQGraphicsObjec
 
   nimfunc[](slotval1)
 proc QGraphicsObjecthoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsObject_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsObjecthoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -3751,7 +3480,6 @@ proc miqt_exec_callback_QGraphicsObject_hoverLeaveEvent(self: ptr cQGraphicsObje
 
   nimfunc[](slotval1)
 proc QGraphicsObjectkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsObject_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsObjectkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -3769,7 +3497,6 @@ proc miqt_exec_callback_QGraphicsObject_keyPressEvent(self: ptr cQGraphicsObject
 
   nimfunc[](slotval1)
 proc QGraphicsObjectkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsObject_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsObjectkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -3787,7 +3514,6 @@ proc miqt_exec_callback_QGraphicsObject_keyReleaseEvent(self: ptr cQGraphicsObje
 
   nimfunc[](slotval1)
 proc QGraphicsObjectmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsObject_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsObjectmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -3805,7 +3531,6 @@ proc miqt_exec_callback_QGraphicsObject_mousePressEvent(self: ptr cQGraphicsObje
 
   nimfunc[](slotval1)
 proc QGraphicsObjectmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsObject_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsObjectmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -3823,7 +3548,6 @@ proc miqt_exec_callback_QGraphicsObject_mouseMoveEvent(self: ptr cQGraphicsObjec
 
   nimfunc[](slotval1)
 proc QGraphicsObjectmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsObject_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsObjectmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -3841,7 +3565,6 @@ proc miqt_exec_callback_QGraphicsObject_mouseReleaseEvent(self: ptr cQGraphicsOb
 
   nimfunc[](slotval1)
 proc QGraphicsObjectmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsObject_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsObjectmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -3859,7 +3582,6 @@ proc miqt_exec_callback_QGraphicsObject_mouseDoubleClickEvent(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsObjectwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsObject_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsObjectwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -3877,7 +3599,6 @@ proc miqt_exec_callback_QGraphicsObject_wheelEvent(self: ptr cQGraphicsObject, s
 
   nimfunc[](slotval1)
 proc QGraphicsObjectinputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsObject, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsObject_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsObjectinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -3895,7 +3616,6 @@ proc miqt_exec_callback_QGraphicsObject_inputMethodEvent(self: ptr cQGraphicsObj
 
   nimfunc[](slotval1)
 proc QGraphicsObjectinputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsObject, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsObject_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsObjectinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -3915,7 +3635,6 @@ proc miqt_exec_callback_QGraphicsObject_inputMethodQuery(self: ptr cQGraphicsObj
 
   virtualReturn.h
 proc QGraphicsObjectitemChange*(self: gen_qgraphicsitem_types.QGraphicsObject, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsObject_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsObjectitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -3937,7 +3656,6 @@ proc miqt_exec_callback_QGraphicsObject_itemChange(self: ptr cQGraphicsObject, s
 
   virtualReturn.h
 proc QGraphicsObjectsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsObject, extension: cint): bool =
-
   fQGraphicsObject_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsObjectsupportsExtensionProc* = proc(extension: cint): bool
@@ -3957,7 +3675,6 @@ proc miqt_exec_callback_QGraphicsObject_supportsExtension(self: ptr cQGraphicsOb
 
   virtualReturn
 proc QGraphicsObjectsetExtension*(self: gen_qgraphicsitem_types.QGraphicsObject, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsObject_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsObjectsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -3977,7 +3694,6 @@ proc miqt_exec_callback_QGraphicsObject_setExtension(self: ptr cQGraphicsObject,
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsObjectextension*(self: gen_qgraphicsitem_types.QGraphicsObject, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsObject_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsObjectextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -4004,37 +3720,30 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsObject) =
 func init*(T: type gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, h: ptr cQAbstractGraphicsShapeItem): gen_qgraphicsitem_types.QAbstractGraphicsShapeItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, ): gen_qgraphicsitem_types.QAbstractGraphicsShapeItem =
-
   gen_qgraphicsitem_types.QAbstractGraphicsShapeItem.init(fcQAbstractGraphicsShapeItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QAbstractGraphicsShapeItem =
-
   gen_qgraphicsitem_types.QAbstractGraphicsShapeItem.init(fcQAbstractGraphicsShapeItem_new2(parent.h))
-proc pen*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, ): gen_qpen.QPen =
 
+proc pen*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, ): gen_qpen.QPen =
   gen_qpen.QPen(h: fcQAbstractGraphicsShapeItem_pen(self.h))
 
 proc setPen*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, pen: gen_qpen.QPen): void =
-
   fcQAbstractGraphicsShapeItem_setPen(self.h, pen.h)
 
 proc brush*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQAbstractGraphicsShapeItem_brush(self.h))
 
 proc setBrush*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, brush: gen_qbrush.QBrush): void =
-
   fcQAbstractGraphicsShapeItem_setBrush(self.h, brush.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQAbstractGraphicsShapeItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQAbstractGraphicsShapeItem_opaqueArea(self.h))
 
 proc QAbstractGraphicsShapeItemisObscuredBy*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQAbstractGraphicsShapeItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QAbstractGraphicsShapeItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -4054,7 +3763,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_isObscuredBy(self: ptr cQAbst
 
   virtualReturn
 proc QAbstractGraphicsShapeItemopaqueArea*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQAbstractGraphicsShapeItem_virtualbase_opaqueArea(self.h))
 
 type QAbstractGraphicsShapeItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -4072,7 +3780,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_opaqueArea(self: ptr cQAbstra
 
   virtualReturn.h
 proc QAbstractGraphicsShapeItemadvance*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, phase: cint): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_advance(self.h, phase)
 
 type QAbstractGraphicsShapeItemadvanceProc* = proc(phase: cint): void
@@ -4104,7 +3811,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect(self: ptr cQAbst
 
   virtualReturn.h
 proc QAbstractGraphicsShapeItemshape*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQAbstractGraphicsShapeItem_virtualbase_shape(self.h))
 
 type QAbstractGraphicsShapeItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -4122,7 +3828,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_shape(self: ptr cQAbstractGra
 
   virtualReturn.h
 proc QAbstractGraphicsShapeItemcontains*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, point: gen_qpoint.QPointF): bool =
-
   fQAbstractGraphicsShapeItem_virtualbase_contains(self.h, point.h)
 
 type QAbstractGraphicsShapeItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -4142,7 +3847,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_contains(self: ptr cQAbstract
 
   virtualReturn
 proc QAbstractGraphicsShapeItemcollidesWithItem*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQAbstractGraphicsShapeItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QAbstractGraphicsShapeItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -4164,7 +3868,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_collidesWithItem(self: ptr cQ
 
   virtualReturn
 proc QAbstractGraphicsShapeItemcollidesWithPath*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQAbstractGraphicsShapeItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QAbstractGraphicsShapeItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -4204,7 +3907,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_paint(self: ptr cQAbstractGra
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QAbstractGraphicsShapeItemtypeX*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, ): cint =
-
   fQAbstractGraphicsShapeItem_virtualbase_type(self.h)
 
 type QAbstractGraphicsShapeItemtypeXProc* = proc(): cint
@@ -4222,7 +3924,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_type(self: ptr cQAbstractGrap
 
   virtualReturn
 proc QAbstractGraphicsShapeItemsceneEventFilter*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQAbstractGraphicsShapeItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QAbstractGraphicsShapeItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -4244,7 +3945,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_sceneEventFilter(self: ptr cQ
 
   virtualReturn
 proc QAbstractGraphicsShapeItemsceneEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qcoreevent.QEvent): bool =
-
   fQAbstractGraphicsShapeItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -4264,7 +3964,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_sceneEvent(self: ptr cQAbstra
 
   virtualReturn
 proc QAbstractGraphicsShapeItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -4282,7 +3981,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_contextMenuEvent(self: ptr cQ
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemdragEnterEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -4300,7 +3998,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_dragEnterEvent(self: ptr cQAb
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -4318,7 +4015,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_dragLeaveEvent(self: ptr cQAb
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemdragMoveEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -4336,7 +4032,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_dragMoveEvent(self: ptr cQAbs
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemdropEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_dropEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -4354,7 +4049,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_dropEvent(self: ptr cQAbstrac
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemfocusInEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qevent.QFocusEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -4372,7 +4066,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_focusInEvent(self: ptr cQAbst
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemfocusOutEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qevent.QFocusEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -4390,7 +4083,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_focusOutEvent(self: ptr cQAbs
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -4408,7 +4100,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_hoverEnterEvent(self: ptr cQA
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -4426,7 +4117,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_hoverMoveEvent(self: ptr cQAb
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -4444,7 +4134,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_hoverLeaveEvent(self: ptr cQA
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemkeyPressEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qevent.QKeyEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -4462,7 +4151,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_keyPressEvent(self: ptr cQAbs
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qevent.QKeyEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -4480,7 +4168,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_keyReleaseEvent(self: ptr cQA
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemmousePressEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -4498,7 +4185,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_mousePressEvent(self: ptr cQA
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -4516,7 +4202,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_mouseMoveEvent(self: ptr cQAb
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -4534,7 +4219,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_mouseReleaseEvent(self: ptr c
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -4552,7 +4236,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_mouseDoubleClickEvent(self: p
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeItemwheelEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -4570,7 +4253,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_wheelEvent(self: ptr cQAbstra
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeIteminputMethodEvent*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QAbstractGraphicsShapeIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -4588,7 +4270,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_inputMethodEvent(self: ptr cQ
 
   nimfunc[](slotval1)
 proc QAbstractGraphicsShapeIteminputMethodQuery*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQAbstractGraphicsShapeItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QAbstractGraphicsShapeIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -4608,7 +4289,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_inputMethodQuery(self: ptr cQ
 
   virtualReturn.h
 proc QAbstractGraphicsShapeItemitemChange*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQAbstractGraphicsShapeItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QAbstractGraphicsShapeItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -4630,7 +4310,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_itemChange(self: ptr cQAbstra
 
   virtualReturn.h
 proc QAbstractGraphicsShapeItemsupportsExtension*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, extension: cint): bool =
-
   fQAbstractGraphicsShapeItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QAbstractGraphicsShapeItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -4650,7 +4329,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_supportsExtension(self: ptr c
 
   virtualReturn
 proc QAbstractGraphicsShapeItemsetExtension*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQAbstractGraphicsShapeItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QAbstractGraphicsShapeItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -4670,7 +4348,6 @@ proc miqt_exec_callback_QAbstractGraphicsShapeItem_setExtension(self: ptr cQAbst
 
   nimfunc[](slotval1, slotval2)
 proc QAbstractGraphicsShapeItemextension*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQAbstractGraphicsShapeItem_virtualbase_extension(self.h, variant.h))
 
 type QAbstractGraphicsShapeItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -4695,55 +4372,45 @@ proc delete*(self: gen_qgraphicsitem_types.QAbstractGraphicsShapeItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsPathItem, h: ptr cQGraphicsPathItem): gen_qgraphicsitem_types.QGraphicsPathItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsPathItem, ): gen_qgraphicsitem_types.QGraphicsPathItem =
-
   gen_qgraphicsitem_types.QGraphicsPathItem.init(fcQGraphicsPathItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsPathItem, path: gen_qpainterpath.QPainterPath): gen_qgraphicsitem_types.QGraphicsPathItem =
-
   gen_qgraphicsitem_types.QGraphicsPathItem.init(fcQGraphicsPathItem_new2(path.h))
-proc create2*(T: type gen_qgraphicsitem_types.QGraphicsPathItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsPathItem =
 
+proc create*(T: type gen_qgraphicsitem_types.QGraphicsPathItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsPathItem =
   gen_qgraphicsitem_types.QGraphicsPathItem.init(fcQGraphicsPathItem_new3(parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsPathItem, path: gen_qpainterpath.QPainterPath, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsPathItem =
-
   gen_qgraphicsitem_types.QGraphicsPathItem.init(fcQGraphicsPathItem_new4(path.h, parent.h))
-proc path*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): gen_qpainterpath.QPainterPath =
 
+proc path*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): gen_qpainterpath.QPainterPath =
   gen_qpainterpath.QPainterPath(h: fcQGraphicsPathItem_path(self.h))
 
 proc setPath*(self: gen_qgraphicsitem_types.QGraphicsPathItem, path: gen_qpainterpath.QPainterPath): void =
-
   fcQGraphicsPathItem_setPath(self.h, path.h)
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsPathItem_boundingRect(self.h))
 
 proc shape*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsPathItem_shape(self.h))
 
 proc contains*(self: gen_qgraphicsitem_types.QGraphicsPathItem, point: gen_qpoint.QPointF): bool =
-
   fcQGraphicsPathItem_contains(self.h, point.h)
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsPathItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsPathItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsPathItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsPathItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsPathItem_opaqueArea(self.h))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): cint =
-
   fcQGraphicsPathItem_typeX(self.h)
 
 proc QGraphicsPathItemboundingRect*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsPathItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsPathItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -4761,7 +4428,6 @@ proc miqt_exec_callback_QGraphicsPathItem_boundingRect(self: ptr cQGraphicsPathI
 
   virtualReturn.h
 proc QGraphicsPathItemshape*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsPathItem_virtualbase_shape(self.h))
 
 type QGraphicsPathItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -4779,7 +4445,6 @@ proc miqt_exec_callback_QGraphicsPathItem_shape(self: ptr cQGraphicsPathItem, sl
 
   virtualReturn.h
 proc QGraphicsPathItemcontains*(self: gen_qgraphicsitem_types.QGraphicsPathItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsPathItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsPathItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -4799,7 +4464,6 @@ proc miqt_exec_callback_QGraphicsPathItem_contains(self: ptr cQGraphicsPathItem,
 
   virtualReturn
 proc QGraphicsPathItempaint*(self: gen_qgraphicsitem_types.QGraphicsPathItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsPathItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsPathItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -4821,7 +4485,6 @@ proc miqt_exec_callback_QGraphicsPathItem_paint(self: ptr cQGraphicsPathItem, sl
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsPathItemisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsPathItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsPathItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsPathItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -4841,7 +4504,6 @@ proc miqt_exec_callback_QGraphicsPathItem_isObscuredBy(self: ptr cQGraphicsPathI
 
   virtualReturn
 proc QGraphicsPathItemopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsPathItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsPathItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -4859,7 +4521,6 @@ proc miqt_exec_callback_QGraphicsPathItem_opaqueArea(self: ptr cQGraphicsPathIte
 
   virtualReturn.h
 proc QGraphicsPathItemtypeX*(self: gen_qgraphicsitem_types.QGraphicsPathItem, ): cint =
-
   fQGraphicsPathItem_virtualbase_type(self.h)
 
 type QGraphicsPathItemtypeXProc* = proc(): cint
@@ -4877,7 +4538,6 @@ proc miqt_exec_callback_QGraphicsPathItem_type(self: ptr cQGraphicsPathItem, slo
 
   virtualReturn
 proc QGraphicsPathItemsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsPathItem, extension: cint): bool =
-
   fQGraphicsPathItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsPathItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -4897,7 +4557,6 @@ proc miqt_exec_callback_QGraphicsPathItem_supportsExtension(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsPathItemsetExtension*(self: gen_qgraphicsitem_types.QGraphicsPathItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsPathItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsPathItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -4917,7 +4576,6 @@ proc miqt_exec_callback_QGraphicsPathItem_setExtension(self: ptr cQGraphicsPathI
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsPathItemextension*(self: gen_qgraphicsitem_types.QGraphicsPathItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsPathItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsPathItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -4937,7 +4595,6 @@ proc miqt_exec_callback_QGraphicsPathItem_extension(self: ptr cQGraphicsPathItem
 
   virtualReturn.h
 proc QGraphicsPathItemadvance*(self: gen_qgraphicsitem_types.QGraphicsPathItem, phase: cint): void =
-
   fQGraphicsPathItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsPathItemadvanceProc* = proc(phase: cint): void
@@ -4955,7 +4612,6 @@ proc miqt_exec_callback_QGraphicsPathItem_advance(self: ptr cQGraphicsPathItem, 
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsPathItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsPathItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsPathItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -4977,7 +4633,6 @@ proc miqt_exec_callback_QGraphicsPathItem_collidesWithItem(self: ptr cQGraphicsP
 
   virtualReturn
 proc QGraphicsPathItemcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsPathItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsPathItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsPathItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -4999,7 +4654,6 @@ proc miqt_exec_callback_QGraphicsPathItem_collidesWithPath(self: ptr cQGraphicsP
 
   virtualReturn
 proc QGraphicsPathItemsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsPathItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsPathItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsPathItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -5021,7 +4675,6 @@ proc miqt_exec_callback_QGraphicsPathItem_sceneEventFilter(self: ptr cQGraphicsP
 
   virtualReturn
 proc QGraphicsPathItemsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsPathItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsPathItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -5041,7 +4694,6 @@ proc miqt_exec_callback_QGraphicsPathItem_sceneEvent(self: ptr cQGraphicsPathIte
 
   virtualReturn
 proc QGraphicsPathItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsPathItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsPathItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -5059,7 +4711,6 @@ proc miqt_exec_callback_QGraphicsPathItem_contextMenuEvent(self: ptr cQGraphicsP
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPathItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsPathItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -5077,7 +4728,6 @@ proc miqt_exec_callback_QGraphicsPathItem_dragEnterEvent(self: ptr cQGraphicsPat
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPathItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsPathItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -5095,7 +4745,6 @@ proc miqt_exec_callback_QGraphicsPathItem_dragLeaveEvent(self: ptr cQGraphicsPat
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPathItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsPathItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -5113,7 +4762,6 @@ proc miqt_exec_callback_QGraphicsPathItem_dragMoveEvent(self: ptr cQGraphicsPath
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemdropEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPathItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsPathItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -5131,7 +4779,6 @@ proc miqt_exec_callback_QGraphicsPathItem_dropEvent(self: ptr cQGraphicsPathItem
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsPathItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsPathItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -5149,7 +4796,6 @@ proc miqt_exec_callback_QGraphicsPathItem_focusInEvent(self: ptr cQGraphicsPathI
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsPathItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsPathItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -5167,7 +4813,6 @@ proc miqt_exec_callback_QGraphicsPathItem_focusOutEvent(self: ptr cQGraphicsPath
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsPathItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsPathItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -5185,7 +4830,6 @@ proc miqt_exec_callback_QGraphicsPathItem_hoverEnterEvent(self: ptr cQGraphicsPa
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsPathItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsPathItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -5203,7 +4847,6 @@ proc miqt_exec_callback_QGraphicsPathItem_hoverMoveEvent(self: ptr cQGraphicsPat
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsPathItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsPathItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -5221,7 +4864,6 @@ proc miqt_exec_callback_QGraphicsPathItem_hoverLeaveEvent(self: ptr cQGraphicsPa
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsPathItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsPathItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -5239,7 +4881,6 @@ proc miqt_exec_callback_QGraphicsPathItem_keyPressEvent(self: ptr cQGraphicsPath
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsPathItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsPathItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -5257,7 +4898,6 @@ proc miqt_exec_callback_QGraphicsPathItem_keyReleaseEvent(self: ptr cQGraphicsPa
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPathItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsPathItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -5275,7 +4915,6 @@ proc miqt_exec_callback_QGraphicsPathItem_mousePressEvent(self: ptr cQGraphicsPa
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPathItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsPathItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -5293,7 +4932,6 @@ proc miqt_exec_callback_QGraphicsPathItem_mouseMoveEvent(self: ptr cQGraphicsPat
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPathItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsPathItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -5311,7 +4949,6 @@ proc miqt_exec_callback_QGraphicsPathItem_mouseReleaseEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPathItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsPathItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -5329,7 +4966,6 @@ proc miqt_exec_callback_QGraphicsPathItem_mouseDoubleClickEvent(self: ptr cQGrap
 
   nimfunc[](slotval1)
 proc QGraphicsPathItemwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsPathItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsPathItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -5347,7 +4983,6 @@ proc miqt_exec_callback_QGraphicsPathItem_wheelEvent(self: ptr cQGraphicsPathIte
 
   nimfunc[](slotval1)
 proc QGraphicsPathIteminputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsPathItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsPathItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsPathIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -5365,7 +5000,6 @@ proc miqt_exec_callback_QGraphicsPathItem_inputMethodEvent(self: ptr cQGraphicsP
 
   nimfunc[](slotval1)
 proc QGraphicsPathIteminputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsPathItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsPathItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsPathIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -5385,7 +5019,6 @@ proc miqt_exec_callback_QGraphicsPathItem_inputMethodQuery(self: ptr cQGraphicsP
 
   virtualReturn.h
 proc QGraphicsPathItemitemChange*(self: gen_qgraphicsitem_types.QGraphicsPathItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsPathItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsPathItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -5412,65 +5045,54 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsPathItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsRectItem, h: ptr cQGraphicsRectItem): gen_qgraphicsitem_types.QGraphicsRectItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsRectItem, ): gen_qgraphicsitem_types.QGraphicsRectItem =
-
   gen_qgraphicsitem_types.QGraphicsRectItem.init(fcQGraphicsRectItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsRectItem, rect: gen_qrect.QRectF): gen_qgraphicsitem_types.QGraphicsRectItem =
-
   gen_qgraphicsitem_types.QGraphicsRectItem.init(fcQGraphicsRectItem_new2(rect.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsRectItem, x: float64, y: float64, w: float64, h: float64): gen_qgraphicsitem_types.QGraphicsRectItem =
-
   gen_qgraphicsitem_types.QGraphicsRectItem.init(fcQGraphicsRectItem_new3(x, y, w, h))
-proc create2*(T: type gen_qgraphicsitem_types.QGraphicsRectItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsRectItem =
 
+proc create*(T: type gen_qgraphicsitem_types.QGraphicsRectItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsRectItem =
   gen_qgraphicsitem_types.QGraphicsRectItem.init(fcQGraphicsRectItem_new4(parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsRectItem, rect: gen_qrect.QRectF, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsRectItem =
-
   gen_qgraphicsitem_types.QGraphicsRectItem.init(fcQGraphicsRectItem_new5(rect.h, parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsRectItem, x: float64, y: float64, w: float64, h: float64, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsRectItem =
-
   gen_qgraphicsitem_types.QGraphicsRectItem.init(fcQGraphicsRectItem_new6(x, y, w, h, parent.h))
-proc rect*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): gen_qrect.QRectF =
 
+proc rect*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): gen_qrect.QRectF =
   gen_qrect.QRectF(h: fcQGraphicsRectItem_rect(self.h))
 
 proc setRect*(self: gen_qgraphicsitem_types.QGraphicsRectItem, rect: gen_qrect.QRectF): void =
-
   fcQGraphicsRectItem_setRect(self.h, rect.h)
 
-proc setRect2*(self: gen_qgraphicsitem_types.QGraphicsRectItem, x: float64, y: float64, w: float64, h: float64): void =
-
+proc setRect*(self: gen_qgraphicsitem_types.QGraphicsRectItem, x: float64, y: float64, w: float64, h: float64): void =
   fcQGraphicsRectItem_setRect2(self.h, x, y, w, h)
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsRectItem_boundingRect(self.h))
 
 proc shape*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsRectItem_shape(self.h))
 
 proc contains*(self: gen_qgraphicsitem_types.QGraphicsRectItem, point: gen_qpoint.QPointF): bool =
-
   fcQGraphicsRectItem_contains(self.h, point.h)
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsRectItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsRectItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsRectItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsRectItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsRectItem_opaqueArea(self.h))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): cint =
-
   fcQGraphicsRectItem_typeX(self.h)
 
 proc QGraphicsRectItemboundingRect*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsRectItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsRectItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -5488,7 +5110,6 @@ proc miqt_exec_callback_QGraphicsRectItem_boundingRect(self: ptr cQGraphicsRectI
 
   virtualReturn.h
 proc QGraphicsRectItemshape*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsRectItem_virtualbase_shape(self.h))
 
 type QGraphicsRectItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -5506,7 +5127,6 @@ proc miqt_exec_callback_QGraphicsRectItem_shape(self: ptr cQGraphicsRectItem, sl
 
   virtualReturn.h
 proc QGraphicsRectItemcontains*(self: gen_qgraphicsitem_types.QGraphicsRectItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsRectItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsRectItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -5526,7 +5146,6 @@ proc miqt_exec_callback_QGraphicsRectItem_contains(self: ptr cQGraphicsRectItem,
 
   virtualReturn
 proc QGraphicsRectItempaint*(self: gen_qgraphicsitem_types.QGraphicsRectItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsRectItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsRectItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -5548,7 +5167,6 @@ proc miqt_exec_callback_QGraphicsRectItem_paint(self: ptr cQGraphicsRectItem, sl
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsRectItemisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsRectItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsRectItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsRectItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -5568,7 +5186,6 @@ proc miqt_exec_callback_QGraphicsRectItem_isObscuredBy(self: ptr cQGraphicsRectI
 
   virtualReturn
 proc QGraphicsRectItemopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsRectItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsRectItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -5586,7 +5203,6 @@ proc miqt_exec_callback_QGraphicsRectItem_opaqueArea(self: ptr cQGraphicsRectIte
 
   virtualReturn.h
 proc QGraphicsRectItemtypeX*(self: gen_qgraphicsitem_types.QGraphicsRectItem, ): cint =
-
   fQGraphicsRectItem_virtualbase_type(self.h)
 
 type QGraphicsRectItemtypeXProc* = proc(): cint
@@ -5604,7 +5220,6 @@ proc miqt_exec_callback_QGraphicsRectItem_type(self: ptr cQGraphicsRectItem, slo
 
   virtualReturn
 proc QGraphicsRectItemsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsRectItem, extension: cint): bool =
-
   fQGraphicsRectItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsRectItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -5624,7 +5239,6 @@ proc miqt_exec_callback_QGraphicsRectItem_supportsExtension(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsRectItemsetExtension*(self: gen_qgraphicsitem_types.QGraphicsRectItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsRectItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsRectItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -5644,7 +5258,6 @@ proc miqt_exec_callback_QGraphicsRectItem_setExtension(self: ptr cQGraphicsRectI
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsRectItemextension*(self: gen_qgraphicsitem_types.QGraphicsRectItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsRectItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsRectItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -5664,7 +5277,6 @@ proc miqt_exec_callback_QGraphicsRectItem_extension(self: ptr cQGraphicsRectItem
 
   virtualReturn.h
 proc QGraphicsRectItemadvance*(self: gen_qgraphicsitem_types.QGraphicsRectItem, phase: cint): void =
-
   fQGraphicsRectItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsRectItemadvanceProc* = proc(phase: cint): void
@@ -5682,7 +5294,6 @@ proc miqt_exec_callback_QGraphicsRectItem_advance(self: ptr cQGraphicsRectItem, 
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsRectItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsRectItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsRectItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -5704,7 +5315,6 @@ proc miqt_exec_callback_QGraphicsRectItem_collidesWithItem(self: ptr cQGraphicsR
 
   virtualReturn
 proc QGraphicsRectItemcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsRectItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsRectItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsRectItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -5726,7 +5336,6 @@ proc miqt_exec_callback_QGraphicsRectItem_collidesWithPath(self: ptr cQGraphicsR
 
   virtualReturn
 proc QGraphicsRectItemsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsRectItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsRectItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsRectItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -5748,7 +5357,6 @@ proc miqt_exec_callback_QGraphicsRectItem_sceneEventFilter(self: ptr cQGraphicsR
 
   virtualReturn
 proc QGraphicsRectItemsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsRectItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsRectItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -5768,7 +5376,6 @@ proc miqt_exec_callback_QGraphicsRectItem_sceneEvent(self: ptr cQGraphicsRectIte
 
   virtualReturn
 proc QGraphicsRectItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsRectItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsRectItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -5786,7 +5393,6 @@ proc miqt_exec_callback_QGraphicsRectItem_contextMenuEvent(self: ptr cQGraphicsR
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsRectItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsRectItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -5804,7 +5410,6 @@ proc miqt_exec_callback_QGraphicsRectItem_dragEnterEvent(self: ptr cQGraphicsRec
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsRectItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsRectItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -5822,7 +5427,6 @@ proc miqt_exec_callback_QGraphicsRectItem_dragLeaveEvent(self: ptr cQGraphicsRec
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsRectItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsRectItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -5840,7 +5444,6 @@ proc miqt_exec_callback_QGraphicsRectItem_dragMoveEvent(self: ptr cQGraphicsRect
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemdropEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsRectItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsRectItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -5858,7 +5461,6 @@ proc miqt_exec_callback_QGraphicsRectItem_dropEvent(self: ptr cQGraphicsRectItem
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsRectItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsRectItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -5876,7 +5478,6 @@ proc miqt_exec_callback_QGraphicsRectItem_focusInEvent(self: ptr cQGraphicsRectI
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsRectItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsRectItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -5894,7 +5495,6 @@ proc miqt_exec_callback_QGraphicsRectItem_focusOutEvent(self: ptr cQGraphicsRect
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsRectItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsRectItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -5912,7 +5512,6 @@ proc miqt_exec_callback_QGraphicsRectItem_hoverEnterEvent(self: ptr cQGraphicsRe
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsRectItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsRectItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -5930,7 +5529,6 @@ proc miqt_exec_callback_QGraphicsRectItem_hoverMoveEvent(self: ptr cQGraphicsRec
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsRectItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsRectItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -5948,7 +5546,6 @@ proc miqt_exec_callback_QGraphicsRectItem_hoverLeaveEvent(self: ptr cQGraphicsRe
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsRectItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsRectItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -5966,7 +5563,6 @@ proc miqt_exec_callback_QGraphicsRectItem_keyPressEvent(self: ptr cQGraphicsRect
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsRectItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsRectItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -5984,7 +5580,6 @@ proc miqt_exec_callback_QGraphicsRectItem_keyReleaseEvent(self: ptr cQGraphicsRe
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsRectItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsRectItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -6002,7 +5597,6 @@ proc miqt_exec_callback_QGraphicsRectItem_mousePressEvent(self: ptr cQGraphicsRe
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsRectItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsRectItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -6020,7 +5614,6 @@ proc miqt_exec_callback_QGraphicsRectItem_mouseMoveEvent(self: ptr cQGraphicsRec
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsRectItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsRectItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -6038,7 +5631,6 @@ proc miqt_exec_callback_QGraphicsRectItem_mouseReleaseEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsRectItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsRectItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -6056,7 +5648,6 @@ proc miqt_exec_callback_QGraphicsRectItem_mouseDoubleClickEvent(self: ptr cQGrap
 
   nimfunc[](slotval1)
 proc QGraphicsRectItemwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsRectItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsRectItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -6074,7 +5665,6 @@ proc miqt_exec_callback_QGraphicsRectItem_wheelEvent(self: ptr cQGraphicsRectIte
 
   nimfunc[](slotval1)
 proc QGraphicsRectIteminputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsRectItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsRectItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsRectIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -6092,7 +5682,6 @@ proc miqt_exec_callback_QGraphicsRectItem_inputMethodEvent(self: ptr cQGraphicsR
 
   nimfunc[](slotval1)
 proc QGraphicsRectIteminputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsRectItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsRectItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsRectIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -6112,7 +5701,6 @@ proc miqt_exec_callback_QGraphicsRectItem_inputMethodQuery(self: ptr cQGraphicsR
 
   virtualReturn.h
 proc QGraphicsRectItemitemChange*(self: gen_qgraphicsitem_types.QGraphicsRectItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsRectItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsRectItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -6139,81 +5727,66 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsRectItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsEllipseItem, h: ptr cQGraphicsEllipseItem): gen_qgraphicsitem_types.QGraphicsEllipseItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsEllipseItem, ): gen_qgraphicsitem_types.QGraphicsEllipseItem =
-
   gen_qgraphicsitem_types.QGraphicsEllipseItem.init(fcQGraphicsEllipseItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsEllipseItem, rect: gen_qrect.QRectF): gen_qgraphicsitem_types.QGraphicsEllipseItem =
-
   gen_qgraphicsitem_types.QGraphicsEllipseItem.init(fcQGraphicsEllipseItem_new2(rect.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsEllipseItem, x: float64, y: float64, w: float64, h: float64): gen_qgraphicsitem_types.QGraphicsEllipseItem =
-
   gen_qgraphicsitem_types.QGraphicsEllipseItem.init(fcQGraphicsEllipseItem_new3(x, y, w, h))
-proc create2*(T: type gen_qgraphicsitem_types.QGraphicsEllipseItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsEllipseItem =
 
+proc create*(T: type gen_qgraphicsitem_types.QGraphicsEllipseItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsEllipseItem =
   gen_qgraphicsitem_types.QGraphicsEllipseItem.init(fcQGraphicsEllipseItem_new4(parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsEllipseItem, rect: gen_qrect.QRectF, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsEllipseItem =
-
   gen_qgraphicsitem_types.QGraphicsEllipseItem.init(fcQGraphicsEllipseItem_new5(rect.h, parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsEllipseItem, x: float64, y: float64, w: float64, h: float64, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsEllipseItem =
-
   gen_qgraphicsitem_types.QGraphicsEllipseItem.init(fcQGraphicsEllipseItem_new6(x, y, w, h, parent.h))
-proc rect*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): gen_qrect.QRectF =
 
+proc rect*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): gen_qrect.QRectF =
   gen_qrect.QRectF(h: fcQGraphicsEllipseItem_rect(self.h))
 
 proc setRect*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, rect: gen_qrect.QRectF): void =
-
   fcQGraphicsEllipseItem_setRect(self.h, rect.h)
 
-proc setRect2*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, x: float64, y: float64, w: float64, h: float64): void =
-
+proc setRect*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, x: float64, y: float64, w: float64, h: float64): void =
   fcQGraphicsEllipseItem_setRect2(self.h, x, y, w, h)
 
 proc startAngle*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): cint =
-
   fcQGraphicsEllipseItem_startAngle(self.h)
 
 proc setStartAngle*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, angle: cint): void =
-
   fcQGraphicsEllipseItem_setStartAngle(self.h, angle)
 
 proc spanAngle*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): cint =
-
   fcQGraphicsEllipseItem_spanAngle(self.h)
 
 proc setSpanAngle*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, angle: cint): void =
-
   fcQGraphicsEllipseItem_setSpanAngle(self.h, angle)
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsEllipseItem_boundingRect(self.h))
 
 proc shape*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsEllipseItem_shape(self.h))
 
 proc contains*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, point: gen_qpoint.QPointF): bool =
-
   fcQGraphicsEllipseItem_contains(self.h, point.h)
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsEllipseItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsEllipseItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsEllipseItem_opaqueArea(self.h))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): cint =
-
   fcQGraphicsEllipseItem_typeX(self.h)
 
 proc QGraphicsEllipseItemboundingRect*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsEllipseItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsEllipseItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -6231,7 +5804,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_boundingRect(self: ptr cQGraphicsEl
 
   virtualReturn.h
 proc QGraphicsEllipseItemshape*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsEllipseItem_virtualbase_shape(self.h))
 
 type QGraphicsEllipseItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -6249,7 +5821,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_shape(self: ptr cQGraphicsEllipseIt
 
   virtualReturn.h
 proc QGraphicsEllipseItemcontains*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsEllipseItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsEllipseItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -6269,7 +5840,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_contains(self: ptr cQGraphicsEllips
 
   virtualReturn
 proc QGraphicsEllipseItempaint*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsEllipseItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsEllipseItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -6291,7 +5861,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_paint(self: ptr cQGraphicsEllipseIt
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsEllipseItemisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsEllipseItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsEllipseItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -6311,7 +5880,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_isObscuredBy(self: ptr cQGraphicsEl
 
   virtualReturn
 proc QGraphicsEllipseItemopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsEllipseItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsEllipseItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -6329,7 +5897,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_opaqueArea(self: ptr cQGraphicsElli
 
   virtualReturn.h
 proc QGraphicsEllipseItemtypeX*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, ): cint =
-
   fQGraphicsEllipseItem_virtualbase_type(self.h)
 
 type QGraphicsEllipseItemtypeXProc* = proc(): cint
@@ -6347,7 +5914,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_type(self: ptr cQGraphicsEllipseIte
 
   virtualReturn
 proc QGraphicsEllipseItemsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, extension: cint): bool =
-
   fQGraphicsEllipseItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsEllipseItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -6367,7 +5933,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_supportsExtension(self: ptr cQGraph
 
   virtualReturn
 proc QGraphicsEllipseItemsetExtension*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsEllipseItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsEllipseItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -6387,7 +5952,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_setExtension(self: ptr cQGraphicsEl
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsEllipseItemextension*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsEllipseItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsEllipseItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -6407,7 +5971,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_extension(self: ptr cQGraphicsEllip
 
   virtualReturn.h
 proc QGraphicsEllipseItemadvance*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, phase: cint): void =
-
   fQGraphicsEllipseItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsEllipseItemadvanceProc* = proc(phase: cint): void
@@ -6425,7 +5988,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_advance(self: ptr cQGraphicsEllipse
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsEllipseItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsEllipseItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -6447,7 +6009,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_collidesWithItem(self: ptr cQGraphi
 
   virtualReturn
 proc QGraphicsEllipseItemcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsEllipseItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsEllipseItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -6469,7 +6030,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_collidesWithPath(self: ptr cQGraphi
 
   virtualReturn
 proc QGraphicsEllipseItemsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsEllipseItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsEllipseItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -6491,7 +6051,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_sceneEventFilter(self: ptr cQGraphi
 
   virtualReturn
 proc QGraphicsEllipseItemsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsEllipseItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsEllipseItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -6511,7 +6070,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_sceneEvent(self: ptr cQGraphicsElli
 
   virtualReturn
 proc QGraphicsEllipseItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsEllipseItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -6529,7 +6087,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_contextMenuEvent(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsEllipseItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -6547,7 +6104,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_dragEnterEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsEllipseItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -6565,7 +6121,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_dragLeaveEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsEllipseItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -6583,7 +6138,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_dragMoveEvent(self: ptr cQGraphicsE
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemdropEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsEllipseItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -6601,7 +6155,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_dropEvent(self: ptr cQGraphicsEllip
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsEllipseItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -6619,7 +6172,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_focusInEvent(self: ptr cQGraphicsEl
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsEllipseItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -6637,7 +6189,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_focusOutEvent(self: ptr cQGraphicsE
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsEllipseItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -6655,7 +6206,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_hoverEnterEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsEllipseItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -6673,7 +6223,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_hoverMoveEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsEllipseItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -6691,7 +6240,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_hoverLeaveEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsEllipseItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -6709,7 +6257,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_keyPressEvent(self: ptr cQGraphicsE
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsEllipseItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -6727,7 +6274,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_keyReleaseEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsEllipseItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -6745,7 +6291,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_mousePressEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsEllipseItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -6763,7 +6308,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_mouseMoveEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsEllipseItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -6781,7 +6325,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_mouseReleaseEvent(self: ptr cQGraph
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsEllipseItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -6799,7 +6342,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_mouseDoubleClickEvent(self: ptr cQG
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseItemwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsEllipseItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -6817,7 +6359,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_wheelEvent(self: ptr cQGraphicsElli
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseIteminputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsEllipseItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsEllipseIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -6835,7 +6376,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_inputMethodEvent(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsEllipseIteminputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsEllipseItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsEllipseIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -6855,7 +6395,6 @@ proc miqt_exec_callback_QGraphicsEllipseItem_inputMethodQuery(self: ptr cQGraphi
 
   virtualReturn.h
 proc QGraphicsEllipseItemitemChange*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsEllipseItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsEllipseItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -6882,49 +6421,39 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsEllipseItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsPolygonItem, h: ptr cQGraphicsPolygonItem): gen_qgraphicsitem_types.QGraphicsPolygonItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsPolygonItem, ): gen_qgraphicsitem_types.QGraphicsPolygonItem =
-
   gen_qgraphicsitem_types.QGraphicsPolygonItem.init(fcQGraphicsPolygonItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsPolygonItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsPolygonItem =
-
   gen_qgraphicsitem_types.QGraphicsPolygonItem.init(fcQGraphicsPolygonItem_new2(parent.h))
-proc fillRule*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): cint =
 
+proc fillRule*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): cint =
   cint(fcQGraphicsPolygonItem_fillRule(self.h))
 
 proc setFillRule*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, rule: cint): void =
-
   fcQGraphicsPolygonItem_setFillRule(self.h, cint(rule))
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsPolygonItem_boundingRect(self.h))
 
 proc shape*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsPolygonItem_shape(self.h))
 
 proc contains*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, point: gen_qpoint.QPointF): bool =
-
   fcQGraphicsPolygonItem_contains(self.h, point.h)
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsPolygonItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsPolygonItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsPolygonItem_opaqueArea(self.h))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): cint =
-
   fcQGraphicsPolygonItem_typeX(self.h)
 
 proc QGraphicsPolygonItemboundingRect*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsPolygonItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsPolygonItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -6942,7 +6471,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_boundingRect(self: ptr cQGraphicsPo
 
   virtualReturn.h
 proc QGraphicsPolygonItemshape*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsPolygonItem_virtualbase_shape(self.h))
 
 type QGraphicsPolygonItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -6960,7 +6488,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_shape(self: ptr cQGraphicsPolygonIt
 
   virtualReturn.h
 proc QGraphicsPolygonItemcontains*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsPolygonItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsPolygonItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -6980,7 +6507,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_contains(self: ptr cQGraphicsPolygo
 
   virtualReturn
 proc QGraphicsPolygonItempaint*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsPolygonItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsPolygonItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -7002,7 +6528,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_paint(self: ptr cQGraphicsPolygonIt
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsPolygonItemisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsPolygonItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsPolygonItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -7022,7 +6547,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_isObscuredBy(self: ptr cQGraphicsPo
 
   virtualReturn
 proc QGraphicsPolygonItemopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsPolygonItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsPolygonItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -7040,7 +6564,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_opaqueArea(self: ptr cQGraphicsPoly
 
   virtualReturn.h
 proc QGraphicsPolygonItemtypeX*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, ): cint =
-
   fQGraphicsPolygonItem_virtualbase_type(self.h)
 
 type QGraphicsPolygonItemtypeXProc* = proc(): cint
@@ -7058,7 +6581,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_type(self: ptr cQGraphicsPolygonIte
 
   virtualReturn
 proc QGraphicsPolygonItemsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, extension: cint): bool =
-
   fQGraphicsPolygonItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsPolygonItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -7078,7 +6600,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_supportsExtension(self: ptr cQGraph
 
   virtualReturn
 proc QGraphicsPolygonItemsetExtension*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsPolygonItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsPolygonItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -7098,7 +6619,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_setExtension(self: ptr cQGraphicsPo
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsPolygonItemextension*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsPolygonItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsPolygonItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -7118,7 +6638,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_extension(self: ptr cQGraphicsPolyg
 
   virtualReturn.h
 proc QGraphicsPolygonItemadvance*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, phase: cint): void =
-
   fQGraphicsPolygonItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsPolygonItemadvanceProc* = proc(phase: cint): void
@@ -7136,7 +6655,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_advance(self: ptr cQGraphicsPolygon
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsPolygonItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsPolygonItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -7158,7 +6676,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_collidesWithItem(self: ptr cQGraphi
 
   virtualReturn
 proc QGraphicsPolygonItemcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsPolygonItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsPolygonItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -7180,7 +6697,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_collidesWithPath(self: ptr cQGraphi
 
   virtualReturn
 proc QGraphicsPolygonItemsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsPolygonItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsPolygonItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -7202,7 +6718,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_sceneEventFilter(self: ptr cQGraphi
 
   virtualReturn
 proc QGraphicsPolygonItemsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsPolygonItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsPolygonItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -7222,7 +6737,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_sceneEvent(self: ptr cQGraphicsPoly
 
   virtualReturn
 proc QGraphicsPolygonItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsPolygonItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -7240,7 +6754,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_contextMenuEvent(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsPolygonItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -7258,7 +6771,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_dragEnterEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsPolygonItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -7276,7 +6788,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_dragLeaveEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsPolygonItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -7294,7 +6805,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_dragMoveEvent(self: ptr cQGraphicsP
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemdropEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsPolygonItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -7312,7 +6822,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_dropEvent(self: ptr cQGraphicsPolyg
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsPolygonItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -7330,7 +6839,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_focusInEvent(self: ptr cQGraphicsPo
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsPolygonItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -7348,7 +6856,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_focusOutEvent(self: ptr cQGraphicsP
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsPolygonItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -7366,7 +6873,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_hoverEnterEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsPolygonItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -7384,7 +6890,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_hoverMoveEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsPolygonItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -7402,7 +6907,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_hoverLeaveEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsPolygonItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -7420,7 +6924,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_keyPressEvent(self: ptr cQGraphicsP
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsPolygonItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -7438,7 +6941,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_keyReleaseEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsPolygonItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -7456,7 +6958,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_mousePressEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsPolygonItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -7474,7 +6975,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_mouseMoveEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsPolygonItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -7492,7 +6992,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_mouseReleaseEvent(self: ptr cQGraph
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsPolygonItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -7510,7 +7009,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_mouseDoubleClickEvent(self: ptr cQG
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonItemwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsPolygonItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -7528,7 +7026,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_wheelEvent(self: ptr cQGraphicsPoly
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonIteminputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsPolygonItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsPolygonIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -7546,7 +7043,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_inputMethodEvent(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsPolygonIteminputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsPolygonItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsPolygonIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -7566,7 +7062,6 @@ proc miqt_exec_callback_QGraphicsPolygonItem_inputMethodQuery(self: ptr cQGraphi
 
   virtualReturn.h
 proc QGraphicsPolygonItemitemChange*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsPolygonItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsPolygonItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -7593,73 +7088,60 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsPolygonItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsLineItem, h: ptr cQGraphicsLineItem): gen_qgraphicsitem_types.QGraphicsLineItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qgraphicsitem_types.QGraphicsLineItem =
-
   gen_qgraphicsitem_types.QGraphicsLineItem.init(fcQGraphicsLineItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsLineItem, line: gen_qline.QLineF): gen_qgraphicsitem_types.QGraphicsLineItem =
-
   gen_qgraphicsitem_types.QGraphicsLineItem.init(fcQGraphicsLineItem_new2(line.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsLineItem, x1: float64, y1: float64, x2: float64, y2: float64): gen_qgraphicsitem_types.QGraphicsLineItem =
-
   gen_qgraphicsitem_types.QGraphicsLineItem.init(fcQGraphicsLineItem_new3(x1, y1, x2, y2))
-proc create2*(T: type gen_qgraphicsitem_types.QGraphicsLineItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsLineItem =
 
+proc create*(T: type gen_qgraphicsitem_types.QGraphicsLineItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsLineItem =
   gen_qgraphicsitem_types.QGraphicsLineItem.init(fcQGraphicsLineItem_new4(parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsLineItem, line: gen_qline.QLineF, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsLineItem =
-
   gen_qgraphicsitem_types.QGraphicsLineItem.init(fcQGraphicsLineItem_new5(line.h, parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsLineItem, x1: float64, y1: float64, x2: float64, y2: float64, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsLineItem =
-
   gen_qgraphicsitem_types.QGraphicsLineItem.init(fcQGraphicsLineItem_new6(x1, y1, x2, y2, parent.h))
-proc pen*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qpen.QPen =
 
+proc pen*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qpen.QPen =
   gen_qpen.QPen(h: fcQGraphicsLineItem_pen(self.h))
 
 proc setPen*(self: gen_qgraphicsitem_types.QGraphicsLineItem, pen: gen_qpen.QPen): void =
-
   fcQGraphicsLineItem_setPen(self.h, pen.h)
 
 proc line*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qline.QLineF =
-
   gen_qline.QLineF(h: fcQGraphicsLineItem_line(self.h))
 
 proc setLine*(self: gen_qgraphicsitem_types.QGraphicsLineItem, line: gen_qline.QLineF): void =
-
   fcQGraphicsLineItem_setLine(self.h, line.h)
 
-proc setLine2*(self: gen_qgraphicsitem_types.QGraphicsLineItem, x1: float64, y1: float64, x2: float64, y2: float64): void =
-
+proc setLine*(self: gen_qgraphicsitem_types.QGraphicsLineItem, x1: float64, y1: float64, x2: float64, y2: float64): void =
   fcQGraphicsLineItem_setLine2(self.h, x1, y1, x2, y2)
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsLineItem_boundingRect(self.h))
 
 proc shape*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsLineItem_shape(self.h))
 
 proc contains*(self: gen_qgraphicsitem_types.QGraphicsLineItem, point: gen_qpoint.QPointF): bool =
-
   fcQGraphicsLineItem_contains(self.h, point.h)
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsLineItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsLineItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsLineItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsLineItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsLineItem_opaqueArea(self.h))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): cint =
-
   fcQGraphicsLineItem_typeX(self.h)
 
 proc QGraphicsLineItemboundingRect*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsLineItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsLineItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -7677,7 +7159,6 @@ proc miqt_exec_callback_QGraphicsLineItem_boundingRect(self: ptr cQGraphicsLineI
 
   virtualReturn.h
 proc QGraphicsLineItemshape*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsLineItem_virtualbase_shape(self.h))
 
 type QGraphicsLineItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -7695,7 +7176,6 @@ proc miqt_exec_callback_QGraphicsLineItem_shape(self: ptr cQGraphicsLineItem, sl
 
   virtualReturn.h
 proc QGraphicsLineItemcontains*(self: gen_qgraphicsitem_types.QGraphicsLineItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsLineItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsLineItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -7715,7 +7195,6 @@ proc miqt_exec_callback_QGraphicsLineItem_contains(self: ptr cQGraphicsLineItem,
 
   virtualReturn
 proc QGraphicsLineItempaint*(self: gen_qgraphicsitem_types.QGraphicsLineItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsLineItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsLineItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -7737,7 +7216,6 @@ proc miqt_exec_callback_QGraphicsLineItem_paint(self: ptr cQGraphicsLineItem, sl
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsLineItemisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsLineItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsLineItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsLineItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -7757,7 +7235,6 @@ proc miqt_exec_callback_QGraphicsLineItem_isObscuredBy(self: ptr cQGraphicsLineI
 
   virtualReturn
 proc QGraphicsLineItemopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsLineItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsLineItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -7775,7 +7252,6 @@ proc miqt_exec_callback_QGraphicsLineItem_opaqueArea(self: ptr cQGraphicsLineIte
 
   virtualReturn.h
 proc QGraphicsLineItemtypeX*(self: gen_qgraphicsitem_types.QGraphicsLineItem, ): cint =
-
   fQGraphicsLineItem_virtualbase_type(self.h)
 
 type QGraphicsLineItemtypeXProc* = proc(): cint
@@ -7793,7 +7269,6 @@ proc miqt_exec_callback_QGraphicsLineItem_type(self: ptr cQGraphicsLineItem, slo
 
   virtualReturn
 proc QGraphicsLineItemsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsLineItem, extension: cint): bool =
-
   fQGraphicsLineItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsLineItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -7813,7 +7288,6 @@ proc miqt_exec_callback_QGraphicsLineItem_supportsExtension(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsLineItemsetExtension*(self: gen_qgraphicsitem_types.QGraphicsLineItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsLineItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsLineItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -7833,7 +7307,6 @@ proc miqt_exec_callback_QGraphicsLineItem_setExtension(self: ptr cQGraphicsLineI
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsLineItemextension*(self: gen_qgraphicsitem_types.QGraphicsLineItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsLineItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsLineItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -7853,7 +7326,6 @@ proc miqt_exec_callback_QGraphicsLineItem_extension(self: ptr cQGraphicsLineItem
 
   virtualReturn.h
 proc QGraphicsLineItemadvance*(self: gen_qgraphicsitem_types.QGraphicsLineItem, phase: cint): void =
-
   fQGraphicsLineItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsLineItemadvanceProc* = proc(phase: cint): void
@@ -7871,7 +7343,6 @@ proc miqt_exec_callback_QGraphicsLineItem_advance(self: ptr cQGraphicsLineItem, 
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsLineItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsLineItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsLineItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -7893,7 +7364,6 @@ proc miqt_exec_callback_QGraphicsLineItem_collidesWithItem(self: ptr cQGraphicsL
 
   virtualReturn
 proc QGraphicsLineItemcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsLineItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsLineItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsLineItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -7915,7 +7385,6 @@ proc miqt_exec_callback_QGraphicsLineItem_collidesWithPath(self: ptr cQGraphicsL
 
   virtualReturn
 proc QGraphicsLineItemsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsLineItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsLineItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsLineItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -7937,7 +7406,6 @@ proc miqt_exec_callback_QGraphicsLineItem_sceneEventFilter(self: ptr cQGraphicsL
 
   virtualReturn
 proc QGraphicsLineItemsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsLineItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsLineItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -7957,7 +7425,6 @@ proc miqt_exec_callback_QGraphicsLineItem_sceneEvent(self: ptr cQGraphicsLineIte
 
   virtualReturn
 proc QGraphicsLineItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsLineItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsLineItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -7975,7 +7442,6 @@ proc miqt_exec_callback_QGraphicsLineItem_contextMenuEvent(self: ptr cQGraphicsL
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsLineItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsLineItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -7993,7 +7459,6 @@ proc miqt_exec_callback_QGraphicsLineItem_dragEnterEvent(self: ptr cQGraphicsLin
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsLineItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsLineItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -8011,7 +7476,6 @@ proc miqt_exec_callback_QGraphicsLineItem_dragLeaveEvent(self: ptr cQGraphicsLin
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsLineItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsLineItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -8029,7 +7493,6 @@ proc miqt_exec_callback_QGraphicsLineItem_dragMoveEvent(self: ptr cQGraphicsLine
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemdropEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsLineItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsLineItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -8047,7 +7510,6 @@ proc miqt_exec_callback_QGraphicsLineItem_dropEvent(self: ptr cQGraphicsLineItem
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsLineItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsLineItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -8065,7 +7527,6 @@ proc miqt_exec_callback_QGraphicsLineItem_focusInEvent(self: ptr cQGraphicsLineI
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsLineItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsLineItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -8083,7 +7544,6 @@ proc miqt_exec_callback_QGraphicsLineItem_focusOutEvent(self: ptr cQGraphicsLine
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsLineItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsLineItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -8101,7 +7561,6 @@ proc miqt_exec_callback_QGraphicsLineItem_hoverEnterEvent(self: ptr cQGraphicsLi
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsLineItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsLineItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -8119,7 +7578,6 @@ proc miqt_exec_callback_QGraphicsLineItem_hoverMoveEvent(self: ptr cQGraphicsLin
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsLineItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsLineItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -8137,7 +7595,6 @@ proc miqt_exec_callback_QGraphicsLineItem_hoverLeaveEvent(self: ptr cQGraphicsLi
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsLineItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsLineItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -8155,7 +7612,6 @@ proc miqt_exec_callback_QGraphicsLineItem_keyPressEvent(self: ptr cQGraphicsLine
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsLineItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsLineItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -8173,7 +7629,6 @@ proc miqt_exec_callback_QGraphicsLineItem_keyReleaseEvent(self: ptr cQGraphicsLi
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsLineItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsLineItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -8191,7 +7646,6 @@ proc miqt_exec_callback_QGraphicsLineItem_mousePressEvent(self: ptr cQGraphicsLi
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsLineItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsLineItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -8209,7 +7663,6 @@ proc miqt_exec_callback_QGraphicsLineItem_mouseMoveEvent(self: ptr cQGraphicsLin
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsLineItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsLineItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -8227,7 +7680,6 @@ proc miqt_exec_callback_QGraphicsLineItem_mouseReleaseEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsLineItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsLineItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -8245,7 +7697,6 @@ proc miqt_exec_callback_QGraphicsLineItem_mouseDoubleClickEvent(self: ptr cQGrap
 
   nimfunc[](slotval1)
 proc QGraphicsLineItemwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsLineItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsLineItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -8263,7 +7714,6 @@ proc miqt_exec_callback_QGraphicsLineItem_wheelEvent(self: ptr cQGraphicsLineIte
 
   nimfunc[](slotval1)
 proc QGraphicsLineIteminputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsLineItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsLineItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsLineIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -8281,7 +7731,6 @@ proc miqt_exec_callback_QGraphicsLineItem_inputMethodEvent(self: ptr cQGraphicsL
 
   nimfunc[](slotval1)
 proc QGraphicsLineIteminputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsLineItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsLineItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsLineIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -8301,7 +7750,6 @@ proc miqt_exec_callback_QGraphicsLineItem_inputMethodQuery(self: ptr cQGraphicsL
 
   virtualReturn.h
 proc QGraphicsLineItemitemChange*(self: gen_qgraphicsitem_types.QGraphicsLineItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsLineItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsLineItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -8328,83 +7776,66 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsLineItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsPixmapItem, h: ptr cQGraphicsPixmapItem): gen_qgraphicsitem_types.QGraphicsPixmapItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qgraphicsitem_types.QGraphicsPixmapItem =
-
   gen_qgraphicsitem_types.QGraphicsPixmapItem.init(fcQGraphicsPixmapItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsPixmapItem, pixmap: gen_qpixmap.QPixmap): gen_qgraphicsitem_types.QGraphicsPixmapItem =
-
   gen_qgraphicsitem_types.QGraphicsPixmapItem.init(fcQGraphicsPixmapItem_new2(pixmap.h))
-proc create2*(T: type gen_qgraphicsitem_types.QGraphicsPixmapItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsPixmapItem =
 
+proc create*(T: type gen_qgraphicsitem_types.QGraphicsPixmapItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsPixmapItem =
   gen_qgraphicsitem_types.QGraphicsPixmapItem.init(fcQGraphicsPixmapItem_new3(parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsPixmapItem, pixmap: gen_qpixmap.QPixmap, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsPixmapItem =
-
   gen_qgraphicsitem_types.QGraphicsPixmapItem.init(fcQGraphicsPixmapItem_new4(pixmap.h, parent.h))
-proc pixmap*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qpixmap.QPixmap =
 
+proc pixmap*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qpixmap.QPixmap =
   gen_qpixmap.QPixmap(h: fcQGraphicsPixmapItem_pixmap(self.h))
 
 proc setPixmap*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, pixmap: gen_qpixmap.QPixmap): void =
-
   fcQGraphicsPixmapItem_setPixmap(self.h, pixmap.h)
 
 proc transformationMode*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): cint =
-
   cint(fcQGraphicsPixmapItem_transformationMode(self.h))
 
 proc setTransformationMode*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, mode: cint): void =
-
   fcQGraphicsPixmapItem_setTransformationMode(self.h, cint(mode))
 
 proc offset*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsPixmapItem_offset(self.h))
 
 proc setOffset*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, offset: gen_qpoint.QPointF): void =
-
   fcQGraphicsPixmapItem_setOffset(self.h, offset.h)
 
-proc setOffset2*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, x: float64, y: float64): void =
-
+proc setOffset*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, x: float64, y: float64): void =
   fcQGraphicsPixmapItem_setOffset2(self.h, x, y)
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsPixmapItem_boundingRect(self.h))
 
 proc shape*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsPixmapItem_shape(self.h))
 
 proc contains*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, point: gen_qpoint.QPointF): bool =
-
   fcQGraphicsPixmapItem_contains(self.h, point.h)
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsPixmapItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsPixmapItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsPixmapItem_opaqueArea(self.h))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): cint =
-
   fcQGraphicsPixmapItem_typeX(self.h)
 
 proc shapeMode*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): cint =
-
   cint(fcQGraphicsPixmapItem_shapeMode(self.h))
 
 proc setShapeMode*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, mode: cint): void =
-
   fcQGraphicsPixmapItem_setShapeMode(self.h, cint(mode))
 
 proc QGraphicsPixmapItemboundingRect*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsPixmapItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsPixmapItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -8422,7 +7853,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_boundingRect(self: ptr cQGraphicsPix
 
   virtualReturn.h
 proc QGraphicsPixmapItemshape*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsPixmapItem_virtualbase_shape(self.h))
 
 type QGraphicsPixmapItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -8440,7 +7870,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_shape(self: ptr cQGraphicsPixmapItem
 
   virtualReturn.h
 proc QGraphicsPixmapItemcontains*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsPixmapItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsPixmapItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -8460,7 +7889,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_contains(self: ptr cQGraphicsPixmapI
 
   virtualReturn
 proc QGraphicsPixmapItempaint*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsPixmapItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsPixmapItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -8482,7 +7910,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_paint(self: ptr cQGraphicsPixmapItem
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsPixmapItemisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsPixmapItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsPixmapItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -8502,7 +7929,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_isObscuredBy(self: ptr cQGraphicsPix
 
   virtualReturn
 proc QGraphicsPixmapItemopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsPixmapItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsPixmapItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -8520,7 +7946,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_opaqueArea(self: ptr cQGraphicsPixma
 
   virtualReturn.h
 proc QGraphicsPixmapItemtypeX*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, ): cint =
-
   fQGraphicsPixmapItem_virtualbase_type(self.h)
 
 type QGraphicsPixmapItemtypeXProc* = proc(): cint
@@ -8538,7 +7963,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_type(self: ptr cQGraphicsPixmapItem,
 
   virtualReturn
 proc QGraphicsPixmapItemsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, extension: cint): bool =
-
   fQGraphicsPixmapItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsPixmapItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -8558,7 +7982,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_supportsExtension(self: ptr cQGraphi
 
   virtualReturn
 proc QGraphicsPixmapItemsetExtension*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsPixmapItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsPixmapItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -8578,7 +8001,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_setExtension(self: ptr cQGraphicsPix
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsPixmapItemextension*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsPixmapItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsPixmapItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -8598,7 +8020,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_extension(self: ptr cQGraphicsPixmap
 
   virtualReturn.h
 proc QGraphicsPixmapItemadvance*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, phase: cint): void =
-
   fQGraphicsPixmapItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsPixmapItemadvanceProc* = proc(phase: cint): void
@@ -8616,7 +8037,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_advance(self: ptr cQGraphicsPixmapIt
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsPixmapItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsPixmapItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -8638,7 +8058,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_collidesWithItem(self: ptr cQGraphic
 
   virtualReturn
 proc QGraphicsPixmapItemcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsPixmapItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsPixmapItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -8660,7 +8079,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_collidesWithPath(self: ptr cQGraphic
 
   virtualReturn
 proc QGraphicsPixmapItemsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsPixmapItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsPixmapItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -8682,7 +8100,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_sceneEventFilter(self: ptr cQGraphic
 
   virtualReturn
 proc QGraphicsPixmapItemsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsPixmapItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsPixmapItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -8702,7 +8119,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_sceneEvent(self: ptr cQGraphicsPixma
 
   virtualReturn
 proc QGraphicsPixmapItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsPixmapItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -8720,7 +8136,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_contextMenuEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsPixmapItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -8738,7 +8153,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_dragEnterEvent(self: ptr cQGraphicsP
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsPixmapItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -8756,7 +8170,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_dragLeaveEvent(self: ptr cQGraphicsP
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsPixmapItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -8774,7 +8187,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_dragMoveEvent(self: ptr cQGraphicsPi
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemdropEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsPixmapItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -8792,7 +8204,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_dropEvent(self: ptr cQGraphicsPixmap
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsPixmapItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -8810,7 +8221,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_focusInEvent(self: ptr cQGraphicsPix
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsPixmapItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -8828,7 +8238,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_focusOutEvent(self: ptr cQGraphicsPi
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsPixmapItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -8846,7 +8255,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_hoverEnterEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsPixmapItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -8864,7 +8272,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_hoverMoveEvent(self: ptr cQGraphicsP
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsPixmapItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -8882,7 +8289,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_hoverLeaveEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsPixmapItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -8900,7 +8306,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_keyPressEvent(self: ptr cQGraphicsPi
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsPixmapItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -8918,7 +8323,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_keyReleaseEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsPixmapItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -8936,7 +8340,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_mousePressEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsPixmapItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -8954,7 +8357,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_mouseMoveEvent(self: ptr cQGraphicsP
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsPixmapItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -8972,7 +8374,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_mouseReleaseEvent(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsPixmapItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -8990,7 +8391,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_mouseDoubleClickEvent(self: ptr cQGr
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapItemwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsPixmapItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -9008,7 +8408,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_wheelEvent(self: ptr cQGraphicsPixma
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapIteminputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsPixmapItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsPixmapIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -9026,7 +8425,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_inputMethodEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsPixmapIteminputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsPixmapItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsPixmapIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -9046,7 +8444,6 @@ proc miqt_exec_callback_QGraphicsPixmapItem_inputMethodQuery(self: ptr cQGraphic
 
   virtualReturn.h
 proc QGraphicsPixmapItemitemChange*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsPixmapItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsPixmapItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -9073,212 +8470,173 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsPixmapItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsTextItem, h: ptr cQGraphicsTextItem): gen_qgraphicsitem_types.QGraphicsTextItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qgraphicsitem_types.QGraphicsTextItem =
-
   gen_qgraphicsitem_types.QGraphicsTextItem.init(fcQGraphicsTextItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsTextItem, text: string): gen_qgraphicsitem_types.QGraphicsTextItem =
-
   gen_qgraphicsitem_types.QGraphicsTextItem.init(fcQGraphicsTextItem_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsTextItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsTextItem =
-
   gen_qgraphicsitem_types.QGraphicsTextItem.init(fcQGraphicsTextItem_new3(parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsTextItem, text: string, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsTextItem =
-
   gen_qgraphicsitem_types.QGraphicsTextItem.init(fcQGraphicsTextItem_new4(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
-proc metaObject*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsTextItem_metaObject(self.h))
 
 proc metacast*(self: gen_qgraphicsitem_types.QGraphicsTextItem, param1: cstring): pointer =
-
   fcQGraphicsTextItem_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgraphicsitem_types.QGraphicsTextItem, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGraphicsTextItem_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgraphicsitem_types.QGraphicsTextItem, s: cstring): string =
-
   let v_ms = fcQGraphicsTextItem_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc toHtml*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): string =
-
   let v_ms = fcQGraphicsTextItem_toHtml(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setHtml*(self: gen_qgraphicsitem_types.QGraphicsTextItem, html: string): void =
-
   fcQGraphicsTextItem_setHtml(self.h, struct_miqt_string(data: html, len: csize_t(len(html))))
 
 proc toPlainText*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): string =
-
   let v_ms = fcQGraphicsTextItem_toPlainText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPlainText*(self: gen_qgraphicsitem_types.QGraphicsTextItem, text: string): void =
-
   fcQGraphicsTextItem_setPlainText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc font*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQGraphicsTextItem_font(self.h))
 
 proc setFont*(self: gen_qgraphicsitem_types.QGraphicsTextItem, font: gen_qfont.QFont): void =
-
   fcQGraphicsTextItem_setFont(self.h, font.h)
 
 proc setDefaultTextColor*(self: gen_qgraphicsitem_types.QGraphicsTextItem, c: gen_qcolor.QColor): void =
-
   fcQGraphicsTextItem_setDefaultTextColor(self.h, c.h)
 
 proc defaultTextColor*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQGraphicsTextItem_defaultTextColor(self.h))
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsTextItem_boundingRect(self.h))
 
 proc shape*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsTextItem_shape(self.h))
 
 proc contains*(self: gen_qgraphicsitem_types.QGraphicsTextItem, point: gen_qpoint.QPointF): bool =
-
   fcQGraphicsTextItem_contains(self.h, point.h)
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsTextItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsTextItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsTextItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsTextItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsTextItem_opaqueArea(self.h))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): cint =
-
   fcQGraphicsTextItem_typeX(self.h)
 
 proc setTextWidth*(self: gen_qgraphicsitem_types.QGraphicsTextItem, width: float64): void =
-
   fcQGraphicsTextItem_setTextWidth(self.h, width)
 
 proc textWidth*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): float64 =
-
   fcQGraphicsTextItem_textWidth(self.h)
 
 proc adjustSize*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): void =
-
   fcQGraphicsTextItem_adjustSize(self.h)
 
 proc setDocument*(self: gen_qgraphicsitem_types.QGraphicsTextItem, document: gen_qtextdocument.QTextDocument): void =
-
   fcQGraphicsTextItem_setDocument(self.h, document.h)
 
 proc document*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qtextdocument.QTextDocument =
-
   gen_qtextdocument.QTextDocument(h: fcQGraphicsTextItem_document(self.h))
 
 proc setTextInteractionFlags*(self: gen_qgraphicsitem_types.QGraphicsTextItem, flags: cint): void =
-
   fcQGraphicsTextItem_setTextInteractionFlags(self.h, cint(flags))
 
 proc textInteractionFlags*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): cint =
-
   cint(fcQGraphicsTextItem_textInteractionFlags(self.h))
 
 proc setTabChangesFocus*(self: gen_qgraphicsitem_types.QGraphicsTextItem, b: bool): void =
-
   fcQGraphicsTextItem_setTabChangesFocus(self.h, b)
 
 proc tabChangesFocus*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): bool =
-
   fcQGraphicsTextItem_tabChangesFocus(self.h)
 
 proc setOpenExternalLinks*(self: gen_qgraphicsitem_types.QGraphicsTextItem, open: bool): void =
-
   fcQGraphicsTextItem_setOpenExternalLinks(self.h, open)
 
 proc openExternalLinks*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): bool =
-
   fcQGraphicsTextItem_openExternalLinks(self.h)
 
 proc setTextCursor*(self: gen_qgraphicsitem_types.QGraphicsTextItem, cursor: gen_qtextcursor.QTextCursor): void =
-
   fcQGraphicsTextItem_setTextCursor(self.h, cursor.h)
 
 proc textCursor*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qtextcursor.QTextCursor =
-
   gen_qtextcursor.QTextCursor(h: fcQGraphicsTextItem_textCursor(self.h))
 
 proc linkActivated*(self: gen_qgraphicsitem_types.QGraphicsTextItem, param1: string): void =
-
   fcQGraphicsTextItem_linkActivated(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
+type QGraphicsTextItemlinkActivatedSlot* = proc(param1: string)
 proc miqt_exec_callback_QGraphicsTextItem_linkActivated(slot: int, param1: struct_miqt_string) {.exportc.} =
-  type Cb = proc(param1: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsTextItemlinkActivatedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
   c_free(vparam1_ms.data)
   let slotval1 = vparam1x_ret
 
-
   nimfunc[](slotval1)
 
-proc onlinkActivated*(self: gen_qgraphicsitem_types.QGraphicsTextItem, slot: proc(param1: string)) =
-  type Cb = proc(param1: string)
-  var tmp = new Cb
+proc onlinkActivated*(self: gen_qgraphicsitem_types.QGraphicsTextItem, slot: QGraphicsTextItemlinkActivatedSlot) =
+  var tmp = new QGraphicsTextItemlinkActivatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsTextItem_connect_linkActivated(self.h, cast[int](addr tmp[]))
-proc linkHovered*(self: gen_qgraphicsitem_types.QGraphicsTextItem, param1: string): void =
 
+proc linkHovered*(self: gen_qgraphicsitem_types.QGraphicsTextItem, param1: string): void =
   fcQGraphicsTextItem_linkHovered(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
+type QGraphicsTextItemlinkHoveredSlot* = proc(param1: string)
 proc miqt_exec_callback_QGraphicsTextItem_linkHovered(slot: int, param1: struct_miqt_string) {.exportc.} =
-  type Cb = proc(param1: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsTextItemlinkHoveredSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
   c_free(vparam1_ms.data)
   let slotval1 = vparam1x_ret
 
-
   nimfunc[](slotval1)
 
-proc onlinkHovered*(self: gen_qgraphicsitem_types.QGraphicsTextItem, slot: proc(param1: string)) =
-  type Cb = proc(param1: string)
-  var tmp = new Cb
+proc onlinkHovered*(self: gen_qgraphicsitem_types.QGraphicsTextItem, slot: QGraphicsTextItemlinkHoveredSlot) =
+  var tmp = new QGraphicsTextItemlinkHoveredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsTextItem_connect_linkHovered(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qgraphicsitem_types.QGraphicsTextItem, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qgraphicsitem_types.QGraphicsTextItem, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsTextItem_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgraphicsitem_types.QGraphicsTextItem, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgraphicsitem_types.QGraphicsTextItem, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsTextItem_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QGraphicsTextItemmetaObject*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQGraphicsTextItem_virtualbase_metaObject(self.h))
 
 type QGraphicsTextItemmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -9296,7 +8654,6 @@ proc miqt_exec_callback_QGraphicsTextItem_metaObject(self: ptr cQGraphicsTextIte
 
   virtualReturn.h
 proc QGraphicsTextItemmetacast*(self: gen_qgraphicsitem_types.QGraphicsTextItem, param1: cstring): pointer =
-
   fQGraphicsTextItem_virtualbase_metacast(self.h, param1)
 
 type QGraphicsTextItemmetacastProc* = proc(param1: cstring): pointer
@@ -9316,7 +8673,6 @@ proc miqt_exec_callback_QGraphicsTextItem_metacast(self: ptr cQGraphicsTextItem,
 
   virtualReturn
 proc QGraphicsTextItemmetacall*(self: gen_qgraphicsitem_types.QGraphicsTextItem, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGraphicsTextItem_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGraphicsTextItemmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -9340,7 +8696,6 @@ proc miqt_exec_callback_QGraphicsTextItem_metacall(self: ptr cQGraphicsTextItem,
 
   virtualReturn
 proc QGraphicsTextItemboundingRect*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsTextItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsTextItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -9358,7 +8713,6 @@ proc miqt_exec_callback_QGraphicsTextItem_boundingRect(self: ptr cQGraphicsTextI
 
   virtualReturn.h
 proc QGraphicsTextItemshape*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsTextItem_virtualbase_shape(self.h))
 
 type QGraphicsTextItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -9376,7 +8730,6 @@ proc miqt_exec_callback_QGraphicsTextItem_shape(self: ptr cQGraphicsTextItem, sl
 
   virtualReturn.h
 proc QGraphicsTextItemcontains*(self: gen_qgraphicsitem_types.QGraphicsTextItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsTextItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsTextItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -9396,7 +8749,6 @@ proc miqt_exec_callback_QGraphicsTextItem_contains(self: ptr cQGraphicsTextItem,
 
   virtualReturn
 proc QGraphicsTextItempaint*(self: gen_qgraphicsitem_types.QGraphicsTextItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsTextItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsTextItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -9418,7 +8770,6 @@ proc miqt_exec_callback_QGraphicsTextItem_paint(self: ptr cQGraphicsTextItem, sl
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsTextItemisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsTextItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsTextItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsTextItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -9438,7 +8789,6 @@ proc miqt_exec_callback_QGraphicsTextItem_isObscuredBy(self: ptr cQGraphicsTextI
 
   virtualReturn
 proc QGraphicsTextItemopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsTextItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsTextItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -9456,7 +8806,6 @@ proc miqt_exec_callback_QGraphicsTextItem_opaqueArea(self: ptr cQGraphicsTextIte
 
   virtualReturn.h
 proc QGraphicsTextItemtypeX*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ): cint =
-
   fQGraphicsTextItem_virtualbase_type(self.h)
 
 type QGraphicsTextItemtypeXProc* = proc(): cint
@@ -9474,7 +8823,6 @@ proc miqt_exec_callback_QGraphicsTextItem_type(self: ptr cQGraphicsTextItem, slo
 
   virtualReturn
 proc QGraphicsTextItemsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsTextItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsTextItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -9494,7 +8842,6 @@ proc miqt_exec_callback_QGraphicsTextItem_sceneEvent(self: ptr cQGraphicsTextIte
 
   virtualReturn
 proc QGraphicsTextItemmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsTextItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsTextItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -9512,7 +8859,6 @@ proc miqt_exec_callback_QGraphicsTextItem_mousePressEvent(self: ptr cQGraphicsTe
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsTextItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsTextItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -9530,7 +8876,6 @@ proc miqt_exec_callback_QGraphicsTextItem_mouseMoveEvent(self: ptr cQGraphicsTex
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsTextItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsTextItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -9548,7 +8893,6 @@ proc miqt_exec_callback_QGraphicsTextItem_mouseReleaseEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsTextItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsTextItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -9566,7 +8910,6 @@ proc miqt_exec_callback_QGraphicsTextItem_mouseDoubleClickEvent(self: ptr cQGrap
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsTextItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsTextItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -9584,7 +8927,6 @@ proc miqt_exec_callback_QGraphicsTextItem_contextMenuEvent(self: ptr cQGraphicsT
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsTextItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsTextItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -9602,7 +8944,6 @@ proc miqt_exec_callback_QGraphicsTextItem_keyPressEvent(self: ptr cQGraphicsText
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsTextItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsTextItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -9620,7 +8961,6 @@ proc miqt_exec_callback_QGraphicsTextItem_keyReleaseEvent(self: ptr cQGraphicsTe
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsTextItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsTextItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -9638,7 +8978,6 @@ proc miqt_exec_callback_QGraphicsTextItem_focusInEvent(self: ptr cQGraphicsTextI
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsTextItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsTextItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -9656,7 +8995,6 @@ proc miqt_exec_callback_QGraphicsTextItem_focusOutEvent(self: ptr cQGraphicsText
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsTextItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsTextItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -9674,7 +9012,6 @@ proc miqt_exec_callback_QGraphicsTextItem_dragEnterEvent(self: ptr cQGraphicsTex
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsTextItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsTextItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -9692,7 +9029,6 @@ proc miqt_exec_callback_QGraphicsTextItem_dragLeaveEvent(self: ptr cQGraphicsTex
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsTextItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsTextItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -9710,7 +9046,6 @@ proc miqt_exec_callback_QGraphicsTextItem_dragMoveEvent(self: ptr cQGraphicsText
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemdropEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsTextItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsTextItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -9728,7 +9063,6 @@ proc miqt_exec_callback_QGraphicsTextItem_dropEvent(self: ptr cQGraphicsTextItem
 
   nimfunc[](slotval1)
 proc QGraphicsTextIteminputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsTextItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsTextIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -9746,7 +9080,6 @@ proc miqt_exec_callback_QGraphicsTextItem_inputMethodEvent(self: ptr cQGraphicsT
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsTextItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsTextItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -9764,7 +9097,6 @@ proc miqt_exec_callback_QGraphicsTextItem_hoverEnterEvent(self: ptr cQGraphicsTe
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsTextItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsTextItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -9782,7 +9114,6 @@ proc miqt_exec_callback_QGraphicsTextItem_hoverMoveEvent(self: ptr cQGraphicsTex
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsTextItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsTextItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -9800,7 +9131,6 @@ proc miqt_exec_callback_QGraphicsTextItem_hoverLeaveEvent(self: ptr cQGraphicsTe
 
   nimfunc[](slotval1)
 proc QGraphicsTextIteminputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsTextItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsTextItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsTextIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -9820,7 +9150,6 @@ proc miqt_exec_callback_QGraphicsTextItem_inputMethodQuery(self: ptr cQGraphicsT
 
   virtualReturn.h
 proc QGraphicsTextItemsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsTextItem, extension: cint): bool =
-
   fQGraphicsTextItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsTextItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -9840,7 +9169,6 @@ proc miqt_exec_callback_QGraphicsTextItem_supportsExtension(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsTextItemsetExtension*(self: gen_qgraphicsitem_types.QGraphicsTextItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsTextItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsTextItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -9860,7 +9188,6 @@ proc miqt_exec_callback_QGraphicsTextItem_setExtension(self: ptr cQGraphicsTextI
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsTextItemextension*(self: gen_qgraphicsitem_types.QGraphicsTextItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsTextItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsTextItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -9880,7 +9207,6 @@ proc miqt_exec_callback_QGraphicsTextItem_extension(self: ptr cQGraphicsTextItem
 
   virtualReturn.h
 proc QGraphicsTextItemevent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, ev: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsTextItem_virtualbase_event(self.h, ev.h)
 
 type QGraphicsTextItemeventProc* = proc(ev: gen_qcoreevent.QEvent): bool
@@ -9900,7 +9226,6 @@ proc miqt_exec_callback_QGraphicsTextItem_event(self: ptr cQGraphicsTextItem, sl
 
   virtualReturn
 proc QGraphicsTextItemeventFilter*(self: gen_qgraphicsitem_types.QGraphicsTextItem, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsTextItem_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGraphicsTextItemeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -9922,7 +9247,6 @@ proc miqt_exec_callback_QGraphicsTextItem_eventFilter(self: ptr cQGraphicsTextIt
 
   virtualReturn
 proc QGraphicsTextItemtimerEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGraphicsTextItem_virtualbase_timerEvent(self.h, event.h)
 
 type QGraphicsTextItemtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -9940,7 +9264,6 @@ proc miqt_exec_callback_QGraphicsTextItem_timerEvent(self: ptr cQGraphicsTextIte
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemchildEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qcoreevent.QChildEvent): void =
-
   fQGraphicsTextItem_virtualbase_childEvent(self.h, event.h)
 
 type QGraphicsTextItemchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -9958,7 +9281,6 @@ proc miqt_exec_callback_QGraphicsTextItem_childEvent(self: ptr cQGraphicsTextIte
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemcustomEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsTextItem_virtualbase_customEvent(self.h, event.h)
 
 type QGraphicsTextItemcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -9976,7 +9298,6 @@ proc miqt_exec_callback_QGraphicsTextItem_customEvent(self: ptr cQGraphicsTextIt
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemconnectNotify*(self: gen_qgraphicsitem_types.QGraphicsTextItem, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsTextItem_virtualbase_connectNotify(self.h, signal.h)
 
 type QGraphicsTextItemconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -9994,7 +9315,6 @@ proc miqt_exec_callback_QGraphicsTextItem_connectNotify(self: ptr cQGraphicsText
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemdisconnectNotify*(self: gen_qgraphicsitem_types.QGraphicsTextItem, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsTextItem_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGraphicsTextItemdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -10012,7 +9332,6 @@ proc miqt_exec_callback_QGraphicsTextItem_disconnectNotify(self: ptr cQGraphicsT
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemadvance*(self: gen_qgraphicsitem_types.QGraphicsTextItem, phase: cint): void =
-
   fQGraphicsTextItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsTextItemadvanceProc* = proc(phase: cint): void
@@ -10030,7 +9349,6 @@ proc miqt_exec_callback_QGraphicsTextItem_advance(self: ptr cQGraphicsTextItem, 
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsTextItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsTextItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsTextItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -10052,7 +9370,6 @@ proc miqt_exec_callback_QGraphicsTextItem_collidesWithItem(self: ptr cQGraphicsT
 
   virtualReturn
 proc QGraphicsTextItemcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsTextItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsTextItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsTextItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -10074,7 +9391,6 @@ proc miqt_exec_callback_QGraphicsTextItem_collidesWithPath(self: ptr cQGraphicsT
 
   virtualReturn
 proc QGraphicsTextItemsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsTextItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsTextItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsTextItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -10096,7 +9412,6 @@ proc miqt_exec_callback_QGraphicsTextItem_sceneEventFilter(self: ptr cQGraphicsT
 
   virtualReturn
 proc QGraphicsTextItemwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsTextItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsTextItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -10114,7 +9429,6 @@ proc miqt_exec_callback_QGraphicsTextItem_wheelEvent(self: ptr cQGraphicsTextIte
 
   nimfunc[](slotval1)
 proc QGraphicsTextItemitemChange*(self: gen_qgraphicsitem_types.QGraphicsTextItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsTextItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsTextItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -10143,66 +9457,54 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsTextItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsSimpleTextItem, h: ptr cQGraphicsSimpleTextItem): gen_qgraphicsitem_types.QGraphicsSimpleTextItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): gen_qgraphicsitem_types.QGraphicsSimpleTextItem =
-
   gen_qgraphicsitem_types.QGraphicsSimpleTextItem.init(fcQGraphicsSimpleTextItem_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsSimpleTextItem, text: string): gen_qgraphicsitem_types.QGraphicsSimpleTextItem =
-
   gen_qgraphicsitem_types.QGraphicsSimpleTextItem.init(fcQGraphicsSimpleTextItem_new2(struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsSimpleTextItem, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsSimpleTextItem =
-
   gen_qgraphicsitem_types.QGraphicsSimpleTextItem.init(fcQGraphicsSimpleTextItem_new3(parent.h))
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsSimpleTextItem, text: string, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsSimpleTextItem =
-
   gen_qgraphicsitem_types.QGraphicsSimpleTextItem.init(fcQGraphicsSimpleTextItem_new4(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
-proc setText*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, text: string): void =
 
+proc setText*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, text: string): void =
   fcQGraphicsSimpleTextItem_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc text*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): string =
-
   let v_ms = fcQGraphicsSimpleTextItem_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFont*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, font: gen_qfont.QFont): void =
-
   fcQGraphicsSimpleTextItem_setFont(self.h, font.h)
 
 proc font*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQGraphicsSimpleTextItem_font(self.h))
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsSimpleTextItem_boundingRect(self.h))
 
 proc shape*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsSimpleTextItem_shape(self.h))
 
 proc contains*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, point: gen_qpoint.QPointF): bool =
-
   fcQGraphicsSimpleTextItem_contains(self.h, point.h)
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsSimpleTextItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsSimpleTextItem_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsSimpleTextItem_opaqueArea(self.h))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): cint =
-
   fcQGraphicsSimpleTextItem_typeX(self.h)
 
 proc QGraphicsSimpleTextItemboundingRect*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsSimpleTextItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsSimpleTextItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -10220,7 +9522,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_boundingRect(self: ptr cQGraphic
 
   virtualReturn.h
 proc QGraphicsSimpleTextItemshape*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsSimpleTextItem_virtualbase_shape(self.h))
 
 type QGraphicsSimpleTextItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -10238,7 +9539,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_shape(self: ptr cQGraphicsSimple
 
   virtualReturn.h
 proc QGraphicsSimpleTextItemcontains*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsSimpleTextItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsSimpleTextItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -10258,7 +9558,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_contains(self: ptr cQGraphicsSim
 
   virtualReturn
 proc QGraphicsSimpleTextItempaint*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsSimpleTextItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsSimpleTextItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -10280,7 +9579,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_paint(self: ptr cQGraphicsSimple
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsSimpleTextItemisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsSimpleTextItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsSimpleTextItemisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -10300,7 +9598,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_isObscuredBy(self: ptr cQGraphic
 
   virtualReturn
 proc QGraphicsSimpleTextItemopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsSimpleTextItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsSimpleTextItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -10318,7 +9615,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_opaqueArea(self: ptr cQGraphicsS
 
   virtualReturn.h
 proc QGraphicsSimpleTextItemtypeX*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, ): cint =
-
   fQGraphicsSimpleTextItem_virtualbase_type(self.h)
 
 type QGraphicsSimpleTextItemtypeXProc* = proc(): cint
@@ -10336,7 +9632,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_type(self: ptr cQGraphicsSimpleT
 
   virtualReturn
 proc QGraphicsSimpleTextItemsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, extension: cint): bool =
-
   fQGraphicsSimpleTextItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsSimpleTextItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -10356,7 +9651,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_supportsExtension(self: ptr cQGr
 
   virtualReturn
 proc QGraphicsSimpleTextItemsetExtension*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsSimpleTextItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsSimpleTextItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -10376,7 +9670,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_setExtension(self: ptr cQGraphic
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsSimpleTextItemextension*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsSimpleTextItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsSimpleTextItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -10396,7 +9689,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_extension(self: ptr cQGraphicsSi
 
   virtualReturn.h
 proc QGraphicsSimpleTextItemadvance*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, phase: cint): void =
-
   fQGraphicsSimpleTextItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsSimpleTextItemadvanceProc* = proc(phase: cint): void
@@ -10414,7 +9706,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_advance(self: ptr cQGraphicsSimp
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsSimpleTextItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsSimpleTextItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -10436,7 +9727,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_collidesWithItem(self: ptr cQGra
 
   virtualReturn
 proc QGraphicsSimpleTextItemcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsSimpleTextItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsSimpleTextItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -10458,7 +9748,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_collidesWithPath(self: ptr cQGra
 
   virtualReturn
 proc QGraphicsSimpleTextItemsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsSimpleTextItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsSimpleTextItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -10480,7 +9769,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_sceneEventFilter(self: ptr cQGra
 
   virtualReturn
 proc QGraphicsSimpleTextItemsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsSimpleTextItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -10500,7 +9788,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_sceneEvent(self: ptr cQGraphicsS
 
   virtualReturn
 proc QGraphicsSimpleTextItemcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -10518,7 +9805,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_contextMenuEvent(self: ptr cQGra
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -10536,7 +9822,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_dragEnterEvent(self: ptr cQGraph
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -10554,7 +9839,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_dragLeaveEvent(self: ptr cQGraph
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -10572,7 +9856,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_dragMoveEvent(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemdropEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -10590,7 +9873,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_dropEvent(self: ptr cQGraphicsSi
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -10608,7 +9890,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_focusInEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -10626,7 +9907,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_focusOutEvent(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemhoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -10644,7 +9924,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_hoverEnterEvent(self: ptr cQGrap
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemhoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -10662,7 +9941,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_hoverMoveEvent(self: ptr cQGraph
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemhoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -10680,7 +9958,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_hoverLeaveEvent(self: ptr cQGrap
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -10698,7 +9975,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_keyPressEvent(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -10716,7 +9992,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_keyReleaseEvent(self: ptr cQGrap
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -10734,7 +10009,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_mousePressEvent(self: ptr cQGrap
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -10752,7 +10026,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_mouseMoveEvent(self: ptr cQGraph
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -10770,7 +10043,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_mouseReleaseEvent(self: ptr cQGr
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -10788,7 +10060,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_mouseDoubleClickEvent(self: ptr 
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextItemwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsSimpleTextItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -10806,7 +10077,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_wheelEvent(self: ptr cQGraphicsS
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextIteminputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsSimpleTextItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsSimpleTextIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -10824,7 +10094,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_inputMethodEvent(self: ptr cQGra
 
   nimfunc[](slotval1)
 proc QGraphicsSimpleTextIteminputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsSimpleTextItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsSimpleTextIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -10844,7 +10113,6 @@ proc miqt_exec_callback_QGraphicsSimpleTextItem_inputMethodQuery(self: ptr cQGra
 
   virtualReturn.h
 proc QGraphicsSimpleTextItemitemChange*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsSimpleTextItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsSimpleTextItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -10871,41 +10139,33 @@ proc delete*(self: gen_qgraphicsitem_types.QGraphicsSimpleTextItem) =
 func init*(T: type gen_qgraphicsitem_types.QGraphicsItemGroup, h: ptr cQGraphicsItemGroup): gen_qgraphicsitem_types.QGraphicsItemGroup =
   T(h: h)
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsItemGroup, ): gen_qgraphicsitem_types.QGraphicsItemGroup =
-
   gen_qgraphicsitem_types.QGraphicsItemGroup.init(fcQGraphicsItemGroup_new())
+
 proc create*(T: type gen_qgraphicsitem_types.QGraphicsItemGroup, parent: gen_qgraphicsitem_types.QGraphicsItem): gen_qgraphicsitem_types.QGraphicsItemGroup =
-
   gen_qgraphicsitem_types.QGraphicsItemGroup.init(fcQGraphicsItemGroup_new2(parent.h))
-proc addToGroup*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, item: gen_qgraphicsitem_types.QGraphicsItem): void =
 
+proc addToGroup*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, item: gen_qgraphicsitem_types.QGraphicsItem): void =
   fcQGraphicsItemGroup_addToGroup(self.h, item.h)
 
 proc removeFromGroup*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, item: gen_qgraphicsitem_types.QGraphicsItem): void =
-
   fcQGraphicsItemGroup_removeFromGroup(self.h, item.h)
 
 proc boundingRect*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsItemGroup_boundingRect(self.h))
 
 proc paint*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsItemGroup_paint(self.h, painter.h, option.h, widget.h)
 
 proc isObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fcQGraphicsItemGroup_isObscuredBy(self.h, item.h)
 
 proc opaqueArea*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsItemGroup_opaqueArea(self.h))
 
 proc typeX*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, ): cint =
-
   fcQGraphicsItemGroup_typeX(self.h)
 
 proc QGraphicsItemGroupboundingRect*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsItemGroup_virtualbase_boundingRect(self.h))
 
 type QGraphicsItemGroupboundingRectProc* = proc(): gen_qrect.QRectF
@@ -10923,7 +10183,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_boundingRect(self: ptr cQGraphicsItem
 
   virtualReturn.h
 proc QGraphicsItemGrouppaint*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsItemGroup_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsItemGrouppaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -10945,7 +10204,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_paint(self: ptr cQGraphicsItemGroup, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsItemGroupisObscuredBy*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, item: gen_qgraphicsitem_types.QGraphicsItem): bool =
-
   fQGraphicsItemGroup_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsItemGroupisObscuredByProc* = proc(item: gen_qgraphicsitem_types.QGraphicsItem): bool
@@ -10965,7 +10223,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_isObscuredBy(self: ptr cQGraphicsItem
 
   virtualReturn
 proc QGraphicsItemGroupopaqueArea*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsItemGroup_virtualbase_opaqueArea(self.h))
 
 type QGraphicsItemGroupopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -10983,7 +10240,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_opaqueArea(self: ptr cQGraphicsItemGr
 
   virtualReturn.h
 proc QGraphicsItemGrouptypeX*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, ): cint =
-
   fQGraphicsItemGroup_virtualbase_type(self.h)
 
 type QGraphicsItemGrouptypeXProc* = proc(): cint
@@ -11001,7 +10257,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_type(self: ptr cQGraphicsItemGroup, s
 
   virtualReturn
 proc QGraphicsItemGroupadvance*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, phase: cint): void =
-
   fQGraphicsItemGroup_virtualbase_advance(self.h, phase)
 
 type QGraphicsItemGroupadvanceProc* = proc(phase: cint): void
@@ -11019,7 +10274,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_advance(self: ptr cQGraphicsItemGroup
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupshape*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsItemGroup_virtualbase_shape(self.h))
 
 type QGraphicsItemGroupshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -11037,7 +10291,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_shape(self: ptr cQGraphicsItemGroup, 
 
   virtualReturn.h
 proc QGraphicsItemGroupcontains*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsItemGroup_virtualbase_contains(self.h, point.h)
 
 type QGraphicsItemGroupcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -11057,7 +10310,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_contains(self: ptr cQGraphicsItemGrou
 
   virtualReturn
 proc QGraphicsItemGroupcollidesWithItem*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsItemGroup_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsItemGroupcollidesWithItemProc* = proc(other: gen_qgraphicsitem_types.QGraphicsItem, mode: cint): bool
@@ -11079,7 +10331,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_collidesWithItem(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsItemGroupcollidesWithPath*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsItemGroup_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsItemGroupcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -11101,7 +10352,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_collidesWithPath(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsItemGroupsceneEventFilter*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsItemGroup_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsItemGroupsceneEventFilterProc* = proc(watched: gen_qgraphicsitem_types.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -11123,7 +10373,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_sceneEventFilter(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsItemGroupsceneEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsItemGroup_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsItemGroupsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -11143,7 +10392,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_sceneEvent(self: ptr cQGraphicsItemGr
 
   virtualReturn
 proc QGraphicsItemGroupcontextMenuEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsItemGroup_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsItemGroupcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -11161,7 +10409,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_contextMenuEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupdragEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsItemGroup_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsItemGroupdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -11179,7 +10426,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_dragEnterEvent(self: ptr cQGraphicsIt
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupdragLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsItemGroup_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsItemGroupdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -11197,7 +10443,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_dragLeaveEvent(self: ptr cQGraphicsIt
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupdragMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsItemGroup_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsItemGroupdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -11215,7 +10460,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_dragMoveEvent(self: ptr cQGraphicsIte
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupdropEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsItemGroup_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsItemGroupdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -11233,7 +10477,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_dropEvent(self: ptr cQGraphicsItemGro
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupfocusInEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsItemGroup_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsItemGroupfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -11251,7 +10494,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_focusInEvent(self: ptr cQGraphicsItem
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupfocusOutEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsItemGroup_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsItemGroupfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -11269,7 +10511,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_focusOutEvent(self: ptr cQGraphicsIte
 
   nimfunc[](slotval1)
 proc QGraphicsItemGrouphoverEnterEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsItemGroup_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsItemGrouphoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -11287,7 +10528,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_hoverEnterEvent(self: ptr cQGraphicsI
 
   nimfunc[](slotval1)
 proc QGraphicsItemGrouphoverMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsItemGroup_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsItemGrouphoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -11305,7 +10545,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_hoverMoveEvent(self: ptr cQGraphicsIt
 
   nimfunc[](slotval1)
 proc QGraphicsItemGrouphoverLeaveEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsItemGroup_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsItemGrouphoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -11323,7 +10562,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_hoverLeaveEvent(self: ptr cQGraphicsI
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupkeyPressEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsItemGroup_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsItemGroupkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -11341,7 +10579,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_keyPressEvent(self: ptr cQGraphicsIte
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupkeyReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsItemGroup_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsItemGroupkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -11359,7 +10596,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_keyReleaseEvent(self: ptr cQGraphicsI
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupmousePressEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsItemGroup_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsItemGroupmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -11377,7 +10613,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_mousePressEvent(self: ptr cQGraphicsI
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupmouseMoveEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsItemGroup_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsItemGroupmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -11395,7 +10630,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_mouseMoveEvent(self: ptr cQGraphicsIt
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupmouseReleaseEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsItemGroup_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsItemGroupmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -11413,7 +10647,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_mouseReleaseEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupmouseDoubleClickEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsItemGroup_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsItemGroupmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -11431,7 +10664,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_mouseDoubleClickEvent(self: ptr cQGra
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupwheelEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsItemGroup_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsItemGroupwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -11449,7 +10681,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_wheelEvent(self: ptr cQGraphicsItemGr
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupinputMethodEvent*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsItemGroup_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsItemGroupinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -11467,7 +10698,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_inputMethodEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsItemGroupinputMethodQuery*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsItemGroup_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsItemGroupinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -11487,7 +10717,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_inputMethodQuery(self: ptr cQGraphics
 
   virtualReturn.h
 proc QGraphicsItemGroupitemChange*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsItemGroup_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsItemGroupitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -11509,7 +10738,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_itemChange(self: ptr cQGraphicsItemGr
 
   virtualReturn.h
 proc QGraphicsItemGroupsupportsExtension*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, extension: cint): bool =
-
   fQGraphicsItemGroup_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsItemGroupsupportsExtensionProc* = proc(extension: cint): bool
@@ -11529,7 +10757,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_supportsExtension(self: ptr cQGraphic
 
   virtualReturn
 proc QGraphicsItemGroupsetExtension*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsItemGroup_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsItemGroupsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -11549,7 +10776,6 @@ proc miqt_exec_callback_QGraphicsItemGroup_setExtension(self: ptr cQGraphicsItem
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsItemGroupextension*(self: gen_qgraphicsitem_types.QGraphicsItemGroup, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsItemGroup_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsItemGroupextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant

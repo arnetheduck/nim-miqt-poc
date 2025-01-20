@@ -156,35 +156,27 @@ proc fcQsciCommand_delete(self: pointer) {.importc: "QsciCommand_delete".}
 func init*(T: type gen_qscicommand_types.QsciCommand, h: ptr cQsciCommand): gen_qscicommand_types.QsciCommand =
   T(h: h)
 proc command*(self: gen_qscicommand_types.QsciCommand, ): cint =
-
   cint(fcQsciCommand_command(self.h))
 
 proc execute*(self: gen_qscicommand_types.QsciCommand, ): void =
-
   fcQsciCommand_execute(self.h)
 
 proc setKey*(self: gen_qscicommand_types.QsciCommand, key: cint): void =
-
   fcQsciCommand_setKey(self.h, key)
 
 proc setAlternateKey*(self: gen_qscicommand_types.QsciCommand, altkey: cint): void =
-
   fcQsciCommand_setAlternateKey(self.h, altkey)
 
 proc key*(self: gen_qscicommand_types.QsciCommand, ): cint =
-
   fcQsciCommand_key(self.h)
 
 proc alternateKey*(self: gen_qscicommand_types.QsciCommand, ): cint =
-
   fcQsciCommand_alternateKey(self.h)
 
 proc validKey*(_: type gen_qscicommand_types.QsciCommand, key: cint): bool =
-
   fcQsciCommand_validKey(key)
 
 proc description*(self: gen_qscicommand_types.QsciCommand, ): string =
-
   let v_ms = fcQsciCommand_description(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

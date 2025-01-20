@@ -58,7 +58,7 @@ proc fcQPartialOrdering_delete(self: pointer) {.importc: "QPartialOrdering_delet
 func init*(T: type gen_qcompare_types.QPartialOrdering, h: ptr cQPartialOrdering): gen_qcompare_types.QPartialOrdering =
   T(h: h)
 proc create*(T: type gen_qcompare_types.QPartialOrdering, param1: gen_qcompare_types.QPartialOrdering): gen_qcompare_types.QPartialOrdering =
-
   gen_qcompare_types.QPartialOrdering.init(fcQPartialOrdering_new(param1.h))
+
 proc delete*(self: gen_qcompare_types.QPartialOrdering) =
   fcQPartialOrdering_delete(self.h)

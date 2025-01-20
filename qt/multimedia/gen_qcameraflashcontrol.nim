@@ -68,88 +68,73 @@ proc fcQCameraFlashControl_delete(self: pointer) {.importc: "QCameraFlashControl
 func init*(T: type gen_qcameraflashcontrol_types.QCameraFlashControl, h: ptr cQCameraFlashControl): gen_qcameraflashcontrol_types.QCameraFlashControl =
   T(h: h)
 proc metaObject*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQCameraFlashControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, param1: cstring): pointer =
-
   fcQCameraFlashControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCameraFlashControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring): string =
-
   let v_ms = fcQCameraFlashControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring): string =
-
   let v_ms = fcQCameraFlashControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc flashMode*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, ): cint =
-
   cint(fcQCameraFlashControl_flashMode(self.h))
 
 proc setFlashMode*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, mode: cint): void =
-
   fcQCameraFlashControl_setFlashMode(self.h, cint(mode))
 
 proc isFlashModeSupported*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, mode: cint): bool =
-
   fcQCameraFlashControl_isFlashModeSupported(self.h, cint(mode))
 
 proc isFlashReady*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, ): bool =
-
   fcQCameraFlashControl_isFlashReady(self.h)
 
 proc flashReady*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, param1: bool): void =
-
   fcQCameraFlashControl_flashReady(self.h, param1)
 
+type QCameraFlashControlflashReadySlot* = proc(param1: bool)
 proc miqt_exec_callback_QCameraFlashControl_flashReady(slot: int, param1: bool) {.exportc.} =
-  type Cb = proc(param1: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraFlashControlflashReadySlot](cast[pointer](slot))
   let slotval1 = param1
-
 
   nimfunc[](slotval1)
 
-proc onflashReady*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, slot: proc(param1: bool)) =
-  type Cb = proc(param1: bool)
-  var tmp = new Cb
+proc onflashReady*(self: gen_qcameraflashcontrol_types.QCameraFlashControl, slot: QCameraFlashControlflashReadySlot) =
+  var tmp = new QCameraFlashControlflashReadySlot
   tmp[] = slot
   GC_ref(tmp)
   fQCameraFlashControl_connect_flashReady(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraFlashControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraFlashControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraFlashControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcameraflashcontrol_types.QCameraFlashControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraFlashControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

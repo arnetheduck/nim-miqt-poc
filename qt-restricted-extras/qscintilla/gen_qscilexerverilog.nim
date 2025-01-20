@@ -226,154 +226,123 @@ proc fcQsciLexerVerilog_delete(self: pointer) {.importc: "QsciLexerVerilog_delet
 func init*(T: type gen_qscilexerverilog_types.QsciLexerVerilog, h: ptr cQsciLexerVerilog): gen_qscilexerverilog_types.QsciLexerVerilog =
   T(h: h)
 proc create*(T: type gen_qscilexerverilog_types.QsciLexerVerilog, ): gen_qscilexerverilog_types.QsciLexerVerilog =
-
   gen_qscilexerverilog_types.QsciLexerVerilog.init(fcQsciLexerVerilog_new())
+
 proc create*(T: type gen_qscilexerverilog_types.QsciLexerVerilog, parent: gen_qobject.QObject): gen_qscilexerverilog_types.QsciLexerVerilog =
-
   gen_qscilexerverilog_types.QsciLexerVerilog.init(fcQsciLexerVerilog_new2(parent.h))
-proc metaObject*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerVerilog_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerverilog_types.QsciLexerVerilog, param1: cstring): pointer =
-
   fcQsciLexerVerilog_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerverilog_types.QsciLexerVerilog, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerVerilog_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring): string =
-
   let v_ms = fcQsciLexerVerilog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring): string =
-
   let v_ms = fcQsciLexerVerilog_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cstring =
-
   (fcQsciLexerVerilog_language(self.h))
 
 proc lexer*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cstring =
-
   (fcQsciLexerVerilog_lexer(self.h))
 
 proc braceStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cint =
-
   fcQsciLexerVerilog_braceStyle(self.h)
 
 proc wordCharacters*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cstring =
-
   (fcQsciLexerVerilog_wordCharacters(self.h))
 
 proc defaultColor*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerVerilog_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): bool =
-
   fcQsciLexerVerilog_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerVerilog_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerVerilog_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerverilog_types.QsciLexerVerilog, set: cint): cstring =
-
   (fcQsciLexerVerilog_keywords(self.h, set))
 
 proc description*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): string =
-
   let v_ms = fcQsciLexerVerilog_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): void =
-
   fcQsciLexerVerilog_refreshProperties(self.h)
 
 proc setFoldAtElse*(self: gen_qscilexerverilog_types.QsciLexerVerilog, fold: bool): void =
-
   fcQsciLexerVerilog_setFoldAtElse(self.h, fold)
 
 proc foldAtElse*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): bool =
-
   fcQsciLexerVerilog_foldAtElse(self.h)
 
 proc setFoldComments*(self: gen_qscilexerverilog_types.QsciLexerVerilog, fold: bool): void =
-
   fcQsciLexerVerilog_setFoldComments(self.h, fold)
 
 proc foldComments*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): bool =
-
   fcQsciLexerVerilog_foldComments(self.h)
 
 proc setFoldCompact*(self: gen_qscilexerverilog_types.QsciLexerVerilog, fold: bool): void =
-
   fcQsciLexerVerilog_setFoldCompact(self.h, fold)
 
 proc foldCompact*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): bool =
-
   fcQsciLexerVerilog_foldCompact(self.h)
 
 proc setFoldPreprocessor*(self: gen_qscilexerverilog_types.QsciLexerVerilog, fold: bool): void =
-
   fcQsciLexerVerilog_setFoldPreprocessor(self.h, fold)
 
 proc foldPreprocessor*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): bool =
-
   fcQsciLexerVerilog_foldPreprocessor(self.h)
 
 proc setFoldAtModule*(self: gen_qscilexerverilog_types.QsciLexerVerilog, fold: bool): void =
-
   fcQsciLexerVerilog_setFoldAtModule(self.h, fold)
 
 proc foldAtModule*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): bool =
-
   fcQsciLexerVerilog_foldAtModule(self.h)
 
-proc tr2*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerVerilog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerVerilog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerVerilog_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexerverilog_types.QsciLexerVerilog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerVerilog_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerVerilogmetaObject*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerVerilog_virtualbase_metaObject(self.h))
 
 type QsciLexerVerilogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -391,7 +360,6 @@ proc miqt_exec_callback_QsciLexerVerilog_metaObject(self: ptr cQsciLexerVerilog,
 
   virtualReturn.h
 proc QsciLexerVerilogmetacast*(self: gen_qscilexerverilog_types.QsciLexerVerilog, param1: cstring): pointer =
-
   fQsciLexerVerilog_virtualbase_metacast(self.h, param1)
 
 type QsciLexerVerilogmetacastProc* = proc(param1: cstring): pointer
@@ -411,7 +379,6 @@ proc miqt_exec_callback_QsciLexerVerilog_metacast(self: ptr cQsciLexerVerilog, s
 
   virtualReturn
 proc QsciLexerVerilogmetacall*(self: gen_qscilexerverilog_types.QsciLexerVerilog, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerVerilog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerVerilogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -449,7 +416,6 @@ proc miqt_exec_callback_QsciLexerVerilog_language(self: ptr cQsciLexerVerilog, s
 
   virtualReturn
 proc QsciLexerVeriloglexer*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cstring =
-
   (fQsciLexerVerilog_virtualbase_lexer(self.h))
 
 type QsciLexerVeriloglexerProc* = proc(): cstring
@@ -467,7 +433,6 @@ proc miqt_exec_callback_QsciLexerVerilog_lexer(self: ptr cQsciLexerVerilog, slot
 
   virtualReturn
 proc QsciLexerVeriloglexerId*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cint =
-
   fQsciLexerVerilog_virtualbase_lexerId(self.h)
 
 type QsciLexerVeriloglexerIdProc* = proc(): cint
@@ -485,7 +450,6 @@ proc miqt_exec_callback_QsciLexerVerilog_lexerId(self: ptr cQsciLexerVerilog, sl
 
   virtualReturn
 proc QsciLexerVerilogautoCompletionFillups*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cstring =
-
   (fQsciLexerVerilog_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerVerilogautoCompletionFillupsProc* = proc(): cstring
@@ -503,7 +467,6 @@ proc miqt_exec_callback_QsciLexerVerilog_autoCompletionFillups(self: ptr cQsciLe
 
   virtualReturn
 proc QsciLexerVerilogautoCompletionWordSeparators*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): seq[string] =
-
   var v_ma = fQsciLexerVerilog_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -533,7 +496,6 @@ proc miqt_exec_callback_QsciLexerVerilog_autoCompletionWordSeparators(self: ptr 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerVerilogblockEnd*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: ptr cint): cstring =
-
   (fQsciLexerVerilog_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerVerilogblockEndProc* = proc(style: ptr cint): cstring
@@ -553,7 +515,6 @@ proc miqt_exec_callback_QsciLexerVerilog_blockEnd(self: ptr cQsciLexerVerilog, s
 
   virtualReturn
 proc QsciLexerVerilogblockLookback*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cint =
-
   fQsciLexerVerilog_virtualbase_blockLookback(self.h)
 
 type QsciLexerVerilogblockLookbackProc* = proc(): cint
@@ -571,7 +532,6 @@ proc miqt_exec_callback_QsciLexerVerilog_blockLookback(self: ptr cQsciLexerVeril
 
   virtualReturn
 proc QsciLexerVerilogblockStart*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: ptr cint): cstring =
-
   (fQsciLexerVerilog_virtualbase_blockStart(self.h, style))
 
 type QsciLexerVerilogblockStartProc* = proc(style: ptr cint): cstring
@@ -591,7 +551,6 @@ proc miqt_exec_callback_QsciLexerVerilog_blockStart(self: ptr cQsciLexerVerilog,
 
   virtualReturn
 proc QsciLexerVerilogblockStartKeyword*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: ptr cint): cstring =
-
   (fQsciLexerVerilog_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerVerilogblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -611,7 +570,6 @@ proc miqt_exec_callback_QsciLexerVerilog_blockStartKeyword(self: ptr cQsciLexerV
 
   virtualReturn
 proc QsciLexerVerilogbraceStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cint =
-
   fQsciLexerVerilog_virtualbase_braceStyle(self.h)
 
 type QsciLexerVerilogbraceStyleProc* = proc(): cint
@@ -629,7 +587,6 @@ proc miqt_exec_callback_QsciLexerVerilog_braceStyle(self: ptr cQsciLexerVerilog,
 
   virtualReturn
 proc QsciLexerVerilogcaseSensitive*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): bool =
-
   fQsciLexerVerilog_virtualbase_caseSensitive(self.h)
 
 type QsciLexerVerilogcaseSensitiveProc* = proc(): bool
@@ -647,7 +604,6 @@ proc miqt_exec_callback_QsciLexerVerilog_caseSensitive(self: ptr cQsciLexerVeril
 
   virtualReturn
 proc QsciLexerVerilogcolor*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerVerilog_virtualbase_color(self.h, style))
 
 type QsciLexerVerilogcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -667,7 +623,6 @@ proc miqt_exec_callback_QsciLexerVerilog_color(self: ptr cQsciLexerVerilog, slot
 
   virtualReturn.h
 proc QsciLexerVerilogeolFill*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): bool =
-
   fQsciLexerVerilog_virtualbase_eolFill(self.h, style)
 
 type QsciLexerVerilogeolFillProc* = proc(style: cint): bool
@@ -687,7 +642,6 @@ proc miqt_exec_callback_QsciLexerVerilog_eolFill(self: ptr cQsciLexerVerilog, sl
 
   virtualReturn
 proc QsciLexerVerilogfont*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerVerilog_virtualbase_font(self.h, style))
 
 type QsciLexerVerilogfontProc* = proc(style: cint): gen_qfont.QFont
@@ -707,7 +661,6 @@ proc miqt_exec_callback_QsciLexerVerilog_font(self: ptr cQsciLexerVerilog, slot:
 
   virtualReturn.h
 proc QsciLexerVerilogindentationGuideView*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cint =
-
   fQsciLexerVerilog_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerVerilogindentationGuideViewProc* = proc(): cint
@@ -725,7 +678,6 @@ proc miqt_exec_callback_QsciLexerVerilog_indentationGuideView(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerVerilogkeywords*(self: gen_qscilexerverilog_types.QsciLexerVerilog, set: cint): cstring =
-
   (fQsciLexerVerilog_virtualbase_keywords(self.h, set))
 
 type QsciLexerVerilogkeywordsProc* = proc(set: cint): cstring
@@ -745,7 +697,6 @@ proc miqt_exec_callback_QsciLexerVerilog_keywords(self: ptr cQsciLexerVerilog, s
 
   virtualReturn
 proc QsciLexerVerilogdefaultStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cint =
-
   fQsciLexerVerilog_virtualbase_defaultStyle(self.h)
 
 type QsciLexerVerilogdefaultStyleProc* = proc(): cint
@@ -779,7 +730,6 @@ proc miqt_exec_callback_QsciLexerVerilog_description(self: ptr cQsciLexerVerilog
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerVerilogpaper*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerVerilog_virtualbase_paper(self.h, style))
 
 type QsciLexerVerilogpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -798,12 +748,11 @@ proc miqt_exec_callback_QsciLexerVerilog_paper(self: ptr cQsciLexerVerilog, slot
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerVerilogdefaultColorWithStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerVerilogdefaultColor*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerVerilog_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerVerilogdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, slot: QsciLexerVerilogdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerverilog_types.QsciLexerVerilog, slot: QsciLexerVerilogdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerVerilogdefaultColorWithStyleProc
   tmp[] = slot
@@ -819,7 +768,6 @@ proc miqt_exec_callback_QsciLexerVerilog_defaultColorWithStyle(self: ptr cQsciLe
 
   virtualReturn.h
 proc QsciLexerVerilogdefaultEolFill*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): bool =
-
   fQsciLexerVerilog_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerVerilogdefaultEolFillProc* = proc(style: cint): bool
@@ -838,12 +786,11 @@ proc miqt_exec_callback_QsciLexerVerilog_defaultEolFill(self: ptr cQsciLexerVeri
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerVerilogdefaultFontWithStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qfont.QFont =
-
+proc QsciLexerVerilogdefaultFont*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerVerilog_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerVerilogdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, slot: QsciLexerVerilogdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerverilog_types.QsciLexerVerilog, slot: QsciLexerVerilogdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerVerilogdefaultFontWithStyleProc
   tmp[] = slot
@@ -858,12 +805,11 @@ proc miqt_exec_callback_QsciLexerVerilog_defaultFontWithStyle(self: ptr cQsciLex
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerVerilogdefaultPaperWithStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerVerilogdefaultPaper*(self: gen_qscilexerverilog_types.QsciLexerVerilog, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerVerilog_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerVerilogdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, slot: QsciLexerVerilogdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerverilog_types.QsciLexerVerilog, slot: QsciLexerVerilogdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerVerilogdefaultPaperWithStyleProc
   tmp[] = slot
@@ -879,7 +825,6 @@ proc miqt_exec_callback_QsciLexerVerilog_defaultPaperWithStyle(self: ptr cQsciLe
 
   virtualReturn.h
 proc QsciLexerVerilogsetEditor*(self: gen_qscilexerverilog_types.QsciLexerVerilog, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerVerilog_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerVerilogsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -897,7 +842,6 @@ proc miqt_exec_callback_QsciLexerVerilog_setEditor(self: ptr cQsciLexerVerilog, 
 
   nimfunc[](slotval1)
 proc QsciLexerVerilogrefreshProperties*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): void =
-
   fQsciLexerVerilog_virtualbase_refreshProperties(self.h)
 
 type QsciLexerVerilogrefreshPropertiesProc* = proc(): void
@@ -913,7 +857,6 @@ proc miqt_exec_callback_QsciLexerVerilog_refreshProperties(self: ptr cQsciLexerV
 
   nimfunc[]()
 proc QsciLexerVerilogstyleBitsNeeded*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cint =
-
   fQsciLexerVerilog_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerVerilogstyleBitsNeededProc* = proc(): cint
@@ -931,7 +874,6 @@ proc miqt_exec_callback_QsciLexerVerilog_styleBitsNeeded(self: ptr cQsciLexerVer
 
   virtualReturn
 proc QsciLexerVerilogwordCharacters*(self: gen_qscilexerverilog_types.QsciLexerVerilog, ): cstring =
-
   (fQsciLexerVerilog_virtualbase_wordCharacters(self.h))
 
 type QsciLexerVerilogwordCharactersProc* = proc(): cstring
@@ -949,7 +891,6 @@ proc miqt_exec_callback_QsciLexerVerilog_wordCharacters(self: ptr cQsciLexerVeri
 
   virtualReturn
 proc QsciLexerVerilogsetAutoIndentStyle*(self: gen_qscilexerverilog_types.QsciLexerVerilog, autoindentstyle: cint): void =
-
   fQsciLexerVerilog_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerVerilogsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -967,7 +908,6 @@ proc miqt_exec_callback_QsciLexerVerilog_setAutoIndentStyle(self: ptr cQsciLexer
 
   nimfunc[](slotval1)
 proc QsciLexerVerilogsetColor*(self: gen_qscilexerverilog_types.QsciLexerVerilog, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerVerilog_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerVerilogsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -987,7 +927,6 @@ proc miqt_exec_callback_QsciLexerVerilog_setColor(self: ptr cQsciLexerVerilog, s
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerVerilogsetEolFill*(self: gen_qscilexerverilog_types.QsciLexerVerilog, eoffill: bool, style: cint): void =
-
   fQsciLexerVerilog_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerVerilogsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -1007,7 +946,6 @@ proc miqt_exec_callback_QsciLexerVerilog_setEolFill(self: ptr cQsciLexerVerilog,
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerVerilogsetFont*(self: gen_qscilexerverilog_types.QsciLexerVerilog, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerVerilog_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerVerilogsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1027,7 +965,6 @@ proc miqt_exec_callback_QsciLexerVerilog_setFont(self: ptr cQsciLexerVerilog, sl
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerVerilogsetPaper*(self: gen_qscilexerverilog_types.QsciLexerVerilog, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerVerilog_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerVerilogsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1047,7 +984,6 @@ proc miqt_exec_callback_QsciLexerVerilog_setPaper(self: ptr cQsciLexerVerilog, s
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerVerilogreadProperties*(self: gen_qscilexerverilog_types.QsciLexerVerilog, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerVerilog_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerVerilogreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1072,7 +1008,6 @@ proc miqt_exec_callback_QsciLexerVerilog_readProperties(self: ptr cQsciLexerVeri
 
   virtualReturn
 proc QsciLexerVerilogwriteProperties*(self: gen_qscilexerverilog_types.QsciLexerVerilog, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerVerilog_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerVerilogwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1097,7 +1032,6 @@ proc miqt_exec_callback_QsciLexerVerilog_writeProperties(self: ptr cQsciLexerVer
 
   virtualReturn
 proc QsciLexerVerilogevent*(self: gen_qscilexerverilog_types.QsciLexerVerilog, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerVerilog_virtualbase_event(self.h, event.h)
 
 type QsciLexerVerilogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1117,7 +1051,6 @@ proc miqt_exec_callback_QsciLexerVerilog_event(self: ptr cQsciLexerVerilog, slot
 
   virtualReturn
 proc QsciLexerVerilogeventFilter*(self: gen_qscilexerverilog_types.QsciLexerVerilog, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerVerilog_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerVerilogeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1139,7 +1072,6 @@ proc miqt_exec_callback_QsciLexerVerilog_eventFilter(self: ptr cQsciLexerVerilog
 
   virtualReturn
 proc QsciLexerVerilogtimerEvent*(self: gen_qscilexerverilog_types.QsciLexerVerilog, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerVerilog_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerVerilogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1157,7 +1089,6 @@ proc miqt_exec_callback_QsciLexerVerilog_timerEvent(self: ptr cQsciLexerVerilog,
 
   nimfunc[](slotval1)
 proc QsciLexerVerilogchildEvent*(self: gen_qscilexerverilog_types.QsciLexerVerilog, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerVerilog_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerVerilogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1175,7 +1106,6 @@ proc miqt_exec_callback_QsciLexerVerilog_childEvent(self: ptr cQsciLexerVerilog,
 
   nimfunc[](slotval1)
 proc QsciLexerVerilogcustomEvent*(self: gen_qscilexerverilog_types.QsciLexerVerilog, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerVerilog_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerVerilogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1193,7 +1123,6 @@ proc miqt_exec_callback_QsciLexerVerilog_customEvent(self: ptr cQsciLexerVerilog
 
   nimfunc[](slotval1)
 proc QsciLexerVerilogconnectNotify*(self: gen_qscilexerverilog_types.QsciLexerVerilog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerVerilog_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerVerilogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1211,7 +1140,6 @@ proc miqt_exec_callback_QsciLexerVerilog_connectNotify(self: ptr cQsciLexerVeril
 
   nimfunc[](slotval1)
 proc QsciLexerVerilogdisconnectNotify*(self: gen_qscilexerverilog_types.QsciLexerVerilog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerVerilog_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerVerilogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

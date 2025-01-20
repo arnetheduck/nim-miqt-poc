@@ -175,85 +175,71 @@ proc fcQStringListModel_delete(self: pointer) {.importc: "QStringListModel_delet
 func init*(T: type gen_qstringlistmodel_types.QStringListModel, h: ptr cQStringListModel): gen_qstringlistmodel_types.QStringListModel =
   T(h: h)
 proc create*(T: type gen_qstringlistmodel_types.QStringListModel, ): gen_qstringlistmodel_types.QStringListModel =
-
   gen_qstringlistmodel_types.QStringListModel.init(fcQStringListModel_new())
-proc create*(T: type gen_qstringlistmodel_types.QStringListModel, strings: seq[string]): gen_qstringlistmodel_types.QStringListModel =
 
+proc create*(T: type gen_qstringlistmodel_types.QStringListModel, strings: seq[string]): gen_qstringlistmodel_types.QStringListModel =
   var strings_CArray = newSeq[struct_miqt_string](len(strings))
   for i in 0..<len(strings):
     strings_CArray[i] = struct_miqt_string(data: strings[i], len: csize_t(len(strings[i])))
 
   gen_qstringlistmodel_types.QStringListModel.init(fcQStringListModel_new2(struct_miqt_array(len: csize_t(len(strings)), data: if len(strings) == 0: nil else: addr(strings_CArray[0]))))
+
 proc create*(T: type gen_qstringlistmodel_types.QStringListModel, parent: gen_qobject.QObject): gen_qstringlistmodel_types.QStringListModel =
-
   gen_qstringlistmodel_types.QStringListModel.init(fcQStringListModel_new3(parent.h))
-proc create*(T: type gen_qstringlistmodel_types.QStringListModel, strings: seq[string], parent: gen_qobject.QObject): gen_qstringlistmodel_types.QStringListModel =
 
+proc create*(T: type gen_qstringlistmodel_types.QStringListModel, strings: seq[string], parent: gen_qobject.QObject): gen_qstringlistmodel_types.QStringListModel =
   var strings_CArray = newSeq[struct_miqt_string](len(strings))
   for i in 0..<len(strings):
     strings_CArray[i] = struct_miqt_string(data: strings[i], len: csize_t(len(strings[i])))
 
   gen_qstringlistmodel_types.QStringListModel.init(fcQStringListModel_new4(struct_miqt_array(len: csize_t(len(strings)), data: if len(strings) == 0: nil else: addr(strings_CArray[0])), parent.h))
-proc metaObject*(self: gen_qstringlistmodel_types.QStringListModel, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qstringlistmodel_types.QStringListModel, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQStringListModel_metaObject(self.h))
 
 proc metacast*(self: gen_qstringlistmodel_types.QStringListModel, param1: cstring): pointer =
-
   fcQStringListModel_metacast(self.h, param1)
 
 proc metacall*(self: gen_qstringlistmodel_types.QStringListModel, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQStringListModel_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring): string =
-
   let v_ms = fcQStringListModel_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring): string =
-
   let v_ms = fcQStringListModel_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc rowCount*(self: gen_qstringlistmodel_types.QStringListModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fcQStringListModel_rowCount(self.h, parent.h)
 
 proc sibling*(self: gen_qstringlistmodel_types.QStringListModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQStringListModel_sibling(self.h, row, column, idx.h))
 
 proc data*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQStringListModel_data(self.h, index.h, role))
 
 proc setData*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
-
   fcQStringListModel_setData(self.h, index.h, value.h, role)
 
 proc flags*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex): cint =
-
   cint(fcQStringListModel_flags(self.h, index.h))
 
 proc insertRows*(self: gen_qstringlistmodel_types.QStringListModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQStringListModel_insertRows(self.h, row, count, parent.h)
 
 proc removeRows*(self: gen_qstringlistmodel_types.QStringListModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQStringListModel_removeRows(self.h, row, count, parent.h)
 
 proc moveRows*(self: gen_qstringlistmodel_types.QStringListModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
   fcQStringListModel_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
 proc itemData*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
-
   var v_mm = fcQStringListModel_itemData(self.h, index.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -267,7 +253,6 @@ proc itemData*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qab
   vx_ret
 
 proc setItemData*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
-
   var roles_Keys_CArray = newSeq[cint](len(roles))
   var roles_Values_CArray = newSeq[pointer](len(roles))
   var roles_ctr = 0
@@ -279,11 +264,9 @@ proc setItemData*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_
   fcQStringListModel_setItemData(self.h, index.h, struct_miqt_map(len: csize_t(len(roles)),keys: if len(roles) == 0: nil else: addr(roles_Keys_CArray[0]), values: if len(roles) == 0: nil else: addr(roles_Values_CArray[0]),))
 
 proc sort*(self: gen_qstringlistmodel_types.QStringListModel, column: cint, order: cint): void =
-
   fcQStringListModel_sort(self.h, column, cint(order))
 
 proc stringList*(self: gen_qstringlistmodel_types.QStringListModel, ): seq[string] =
-
   var v_ma = fcQStringListModel_stringList(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -295,7 +278,6 @@ proc stringList*(self: gen_qstringlistmodel_types.QStringListModel, ): seq[strin
   vx_ret
 
 proc setStringList*(self: gen_qstringlistmodel_types.QStringListModel, strings: seq[string]): void =
-
   var strings_CArray = newSeq[struct_miqt_string](len(strings))
   for i in 0..<len(strings):
     strings_CArray[i] = struct_miqt_string(data: strings[i], len: csize_t(len(strings[i])))
@@ -303,39 +285,33 @@ proc setStringList*(self: gen_qstringlistmodel_types.QStringListModel, strings: 
   fcQStringListModel_setStringList(self.h, struct_miqt_array(len: csize_t(len(strings)), data: if len(strings) == 0: nil else: addr(strings_CArray[0])))
 
 proc supportedDropActions*(self: gen_qstringlistmodel_types.QStringListModel, ): cint =
-
   cint(fcQStringListModel_supportedDropActions(self.h))
 
-proc tr2*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring, c: cstring): string =
   let v_ms = fcQStringListModel_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQStringListModel_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring, c: cstring): string =
   let v_ms = fcQStringListModel_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qstringlistmodel_types.QStringListModel, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQStringListModel_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QStringListModelmetaObject*(self: gen_qstringlistmodel_types.QStringListModel, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQStringListModel_virtualbase_metaObject(self.h))
 
 type QStringListModelmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -353,7 +329,6 @@ proc miqt_exec_callback_QStringListModel_metaObject(self: ptr cQStringListModel,
 
   virtualReturn.h
 proc QStringListModelmetacast*(self: gen_qstringlistmodel_types.QStringListModel, param1: cstring): pointer =
-
   fQStringListModel_virtualbase_metacast(self.h, param1)
 
 type QStringListModelmetacastProc* = proc(param1: cstring): pointer
@@ -373,7 +348,6 @@ proc miqt_exec_callback_QStringListModel_metacast(self: ptr cQStringListModel, s
 
   virtualReturn
 proc QStringListModelmetacall*(self: gen_qstringlistmodel_types.QStringListModel, param1: cint, param2: cint, param3: pointer): cint =
-
   fQStringListModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QStringListModelmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -397,7 +371,6 @@ proc miqt_exec_callback_QStringListModel_metacall(self: ptr cQStringListModel, s
 
   virtualReturn
 proc QStringListModelrowCount*(self: gen_qstringlistmodel_types.QStringListModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fQStringListModel_virtualbase_rowCount(self.h, parent.h)
 
 type QStringListModelrowCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
@@ -417,7 +390,6 @@ proc miqt_exec_callback_QStringListModel_rowCount(self: ptr cQStringListModel, s
 
   virtualReturn
 proc QStringListModelsibling*(self: gen_qstringlistmodel_types.QStringListModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQStringListModel_virtualbase_sibling(self.h, row, column, idx.h))
 
 type QStringListModelsiblingProc* = proc(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -441,7 +413,6 @@ proc miqt_exec_callback_QStringListModel_sibling(self: ptr cQStringListModel, sl
 
   virtualReturn.h
 proc QStringListModeldata*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQStringListModel_virtualbase_data(self.h, index.h, role))
 
 type QStringListModeldataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
@@ -463,7 +434,6 @@ proc miqt_exec_callback_QStringListModel_data(self: ptr cQStringListModel, slot:
 
   virtualReturn.h
 proc QStringListModelsetData*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
-
   fQStringListModel_virtualbase_setData(self.h, index.h, value.h, role)
 
 type QStringListModelsetDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
@@ -487,7 +457,6 @@ proc miqt_exec_callback_QStringListModel_setData(self: ptr cQStringListModel, sl
 
   virtualReturn
 proc QStringListModelflags*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex): cint =
-
   cint(fQStringListModel_virtualbase_flags(self.h, index.h))
 
 type QStringListModelflagsProc* = proc(index: gen_qabstractitemmodel.QModelIndex): cint
@@ -507,7 +476,6 @@ proc miqt_exec_callback_QStringListModel_flags(self: ptr cQStringListModel, slot
 
   cint(virtualReturn)
 proc QStringListModelinsertRows*(self: gen_qstringlistmodel_types.QStringListModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQStringListModel_virtualbase_insertRows(self.h, row, count, parent.h)
 
 type QStringListModelinsertRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -531,7 +499,6 @@ proc miqt_exec_callback_QStringListModel_insertRows(self: ptr cQStringListModel,
 
   virtualReturn
 proc QStringListModelremoveRows*(self: gen_qstringlistmodel_types.QStringListModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQStringListModel_virtualbase_removeRows(self.h, row, count, parent.h)
 
 type QStringListModelremoveRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -555,7 +522,6 @@ proc miqt_exec_callback_QStringListModel_removeRows(self: ptr cQStringListModel,
 
   virtualReturn
 proc QStringListModelmoveRows*(self: gen_qstringlistmodel_types.QStringListModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
   fQStringListModel_virtualbase_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
 type QStringListModelmoveRowsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
@@ -583,7 +549,6 @@ proc miqt_exec_callback_QStringListModel_moveRows(self: ptr cQStringListModel, s
 
   virtualReturn
 proc QStringListModelitemData*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
-
   var v_mm = fQStringListModel_virtualbase_itemData(self.h, index.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -621,7 +586,6 @@ proc miqt_exec_callback_QStringListModel_itemData(self: ptr cQStringListModel, s
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
 proc QStringListModelsetItemData*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
-
   var roles_Keys_CArray = newSeq[cint](len(roles))
   var roles_Values_CArray = newSeq[pointer](len(roles))
   var roles_ctr = 0
@@ -661,7 +625,6 @@ proc miqt_exec_callback_QStringListModel_setItemData(self: ptr cQStringListModel
 
   virtualReturn
 proc QStringListModelsort*(self: gen_qstringlistmodel_types.QStringListModel, column: cint, order: cint): void =
-
   fQStringListModel_virtualbase_sort(self.h, column, cint(order))
 
 type QStringListModelsortProc* = proc(column: cint, order: cint): void
@@ -681,7 +644,6 @@ proc miqt_exec_callback_QStringListModel_sort(self: ptr cQStringListModel, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QStringListModelsupportedDropActions*(self: gen_qstringlistmodel_types.QStringListModel, ): cint =
-
   cint(fQStringListModel_virtualbase_supportedDropActions(self.h))
 
 type QStringListModelsupportedDropActionsProc* = proc(): cint
@@ -699,7 +661,6 @@ proc miqt_exec_callback_QStringListModel_supportedDropActions(self: ptr cQString
 
   cint(virtualReturn)
 proc QStringListModelindex*(self: gen_qstringlistmodel_types.QStringListModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQStringListModel_virtualbase_index(self.h, row, column, parent.h))
 
 type QStringListModelindexProc* = proc(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -723,7 +684,6 @@ proc miqt_exec_callback_QStringListModel_index(self: ptr cQStringListModel, slot
 
   virtualReturn.h
 proc QStringListModeldropMimeData*(self: gen_qstringlistmodel_types.QStringListModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQStringListModel_virtualbase_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
 type QStringListModeldropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -751,7 +711,6 @@ proc miqt_exec_callback_QStringListModel_dropMimeData(self: ptr cQStringListMode
 
   virtualReturn
 proc QStringListModelheaderData*(self: gen_qstringlistmodel_types.QStringListModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQStringListModel_virtualbase_headerData(self.h, section, cint(orientation), role))
 
 type QStringListModelheaderDataProc* = proc(section: cint, orientation: cint, role: cint): gen_qvariant.QVariant
@@ -775,7 +734,6 @@ proc miqt_exec_callback_QStringListModel_headerData(self: ptr cQStringListModel,
 
   virtualReturn.h
 proc QStringListModelsetHeaderData*(self: gen_qstringlistmodel_types.QStringListModel, section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool =
-
   fQStringListModel_virtualbase_setHeaderData(self.h, section, cint(orientation), value.h, role)
 
 type QStringListModelsetHeaderDataProc* = proc(section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool
@@ -801,7 +759,6 @@ proc miqt_exec_callback_QStringListModel_setHeaderData(self: ptr cQStringListMod
 
   virtualReturn
 proc QStringListModelmimeTypes*(self: gen_qstringlistmodel_types.QStringListModel, ): seq[string] =
-
   var v_ma = fQStringListModel_virtualbase_mimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -831,7 +788,6 @@ proc miqt_exec_callback_QStringListModel_mimeTypes(self: ptr cQStringListModel, 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QStringListModelmimeData*(self: gen_qstringlistmodel_types.QStringListModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
-
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
     indexes_CArray[i] = indexes[i].h
@@ -860,7 +816,6 @@ proc miqt_exec_callback_QStringListModel_mimeData(self: ptr cQStringListModel, s
 
   virtualReturn.h
 proc QStringListModelcanDropMimeData*(self: gen_qstringlistmodel_types.QStringListModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQStringListModel_virtualbase_canDropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
 type QStringListModelcanDropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -888,7 +843,6 @@ proc miqt_exec_callback_QStringListModel_canDropMimeData(self: ptr cQStringListM
 
   virtualReturn
 proc QStringListModelsupportedDragActions*(self: gen_qstringlistmodel_types.QStringListModel, ): cint =
-
   cint(fQStringListModel_virtualbase_supportedDragActions(self.h))
 
 type QStringListModelsupportedDragActionsProc* = proc(): cint
@@ -906,7 +860,6 @@ proc miqt_exec_callback_QStringListModel_supportedDragActions(self: ptr cQString
 
   cint(virtualReturn)
 proc QStringListModelinsertColumns*(self: gen_qstringlistmodel_types.QStringListModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQStringListModel_virtualbase_insertColumns(self.h, column, count, parent.h)
 
 type QStringListModelinsertColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -930,7 +883,6 @@ proc miqt_exec_callback_QStringListModel_insertColumns(self: ptr cQStringListMod
 
   virtualReturn
 proc QStringListModelremoveColumns*(self: gen_qstringlistmodel_types.QStringListModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQStringListModel_virtualbase_removeColumns(self.h, column, count, parent.h)
 
 type QStringListModelremoveColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -954,7 +906,6 @@ proc miqt_exec_callback_QStringListModel_removeColumns(self: ptr cQStringListMod
 
   virtualReturn
 proc QStringListModelmoveColumns*(self: gen_qstringlistmodel_types.QStringListModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
   fQStringListModel_virtualbase_moveColumns(self.h, sourceParent.h, sourceColumn, count, destinationParent.h, destinationChild)
 
 type QStringListModelmoveColumnsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
@@ -982,7 +933,6 @@ proc miqt_exec_callback_QStringListModel_moveColumns(self: ptr cQStringListModel
 
   virtualReturn
 proc QStringListModelfetchMore*(self: gen_qstringlistmodel_types.QStringListModel, parent: gen_qabstractitemmodel.QModelIndex): void =
-
   fQStringListModel_virtualbase_fetchMore(self.h, parent.h)
 
 type QStringListModelfetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): void
@@ -1000,7 +950,6 @@ proc miqt_exec_callback_QStringListModel_fetchMore(self: ptr cQStringListModel, 
 
   nimfunc[](slotval1)
 proc QStringListModelcanFetchMore*(self: gen_qstringlistmodel_types.QStringListModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQStringListModel_virtualbase_canFetchMore(self.h, parent.h)
 
 type QStringListModelcanFetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1020,7 +969,6 @@ proc miqt_exec_callback_QStringListModel_canFetchMore(self: ptr cQStringListMode
 
   virtualReturn
 proc QStringListModelbuddy*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQStringListModel_virtualbase_buddy(self.h, index.h))
 
 type QStringListModelbuddyProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -1040,7 +988,6 @@ proc miqt_exec_callback_QStringListModel_buddy(self: ptr cQStringListModel, slot
 
   virtualReturn.h
 proc QStringListModelmatch*(self: gen_qstringlistmodel_types.QStringListModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fQStringListModel_virtualbase_match(self.h, start.h, role, value.h, hits, cint(flags))
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1077,7 +1024,6 @@ proc miqt_exec_callback_QStringListModel_match(self: ptr cQStringListModel, slot
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QStringListModelspan*(self: gen_qstringlistmodel_types.QStringListModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQStringListModel_virtualbase_span(self.h, index.h))
 
 type QStringListModelspanProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
@@ -1097,7 +1043,6 @@ proc miqt_exec_callback_QStringListModel_span(self: ptr cQStringListModel, slot:
 
   virtualReturn.h
 proc QStringListModelroleNames*(self: gen_qstringlistmodel_types.QStringListModel, ): Table[cint,seq[byte]] =
-
   var v_mm = fQStringListModel_virtualbase_roleNames(self.h)
   var vx_ret: Table[cint, seq[byte]]
   var v_Keys = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -1136,7 +1081,6 @@ proc miqt_exec_callback_QStringListModel_roleNames(self: ptr cQStringListModel, 
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
 proc QStringListModelsubmit*(self: gen_qstringlistmodel_types.QStringListModel, ): bool =
-
   fQStringListModel_virtualbase_submit(self.h)
 
 type QStringListModelsubmitProc* = proc(): bool
@@ -1154,7 +1098,6 @@ proc miqt_exec_callback_QStringListModel_submit(self: ptr cQStringListModel, slo
 
   virtualReturn
 proc QStringListModelrevert*(self: gen_qstringlistmodel_types.QStringListModel, ): void =
-
   fQStringListModel_virtualbase_revert(self.h)
 
 type QStringListModelrevertProc* = proc(): void
@@ -1170,7 +1113,6 @@ proc miqt_exec_callback_QStringListModel_revert(self: ptr cQStringListModel, slo
 
   nimfunc[]()
 proc QStringListModelevent*(self: gen_qstringlistmodel_types.QStringListModel, event: gen_qcoreevent.QEvent): bool =
-
   fQStringListModel_virtualbase_event(self.h, event.h)
 
 type QStringListModeleventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1190,7 +1132,6 @@ proc miqt_exec_callback_QStringListModel_event(self: ptr cQStringListModel, slot
 
   virtualReturn
 proc QStringListModeleventFilter*(self: gen_qstringlistmodel_types.QStringListModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQStringListModel_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QStringListModeleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1212,7 +1153,6 @@ proc miqt_exec_callback_QStringListModel_eventFilter(self: ptr cQStringListModel
 
   virtualReturn
 proc QStringListModeltimerEvent*(self: gen_qstringlistmodel_types.QStringListModel, event: gen_qcoreevent.QTimerEvent): void =
-
   fQStringListModel_virtualbase_timerEvent(self.h, event.h)
 
 type QStringListModeltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1230,7 +1170,6 @@ proc miqt_exec_callback_QStringListModel_timerEvent(self: ptr cQStringListModel,
 
   nimfunc[](slotval1)
 proc QStringListModelchildEvent*(self: gen_qstringlistmodel_types.QStringListModel, event: gen_qcoreevent.QChildEvent): void =
-
   fQStringListModel_virtualbase_childEvent(self.h, event.h)
 
 type QStringListModelchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1248,7 +1187,6 @@ proc miqt_exec_callback_QStringListModel_childEvent(self: ptr cQStringListModel,
 
   nimfunc[](slotval1)
 proc QStringListModelcustomEvent*(self: gen_qstringlistmodel_types.QStringListModel, event: gen_qcoreevent.QEvent): void =
-
   fQStringListModel_virtualbase_customEvent(self.h, event.h)
 
 type QStringListModelcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1266,7 +1204,6 @@ proc miqt_exec_callback_QStringListModel_customEvent(self: ptr cQStringListModel
 
   nimfunc[](slotval1)
 proc QStringListModelconnectNotify*(self: gen_qstringlistmodel_types.QStringListModel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStringListModel_virtualbase_connectNotify(self.h, signal.h)
 
 type QStringListModelconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1284,7 +1221,6 @@ proc miqt_exec_callback_QStringListModel_connectNotify(self: ptr cQStringListMod
 
   nimfunc[](slotval1)
 proc QStringListModeldisconnectNotify*(self: gen_qstringlistmodel_types.QStringListModel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStringListModel_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QStringListModeldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

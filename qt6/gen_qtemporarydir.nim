@@ -56,47 +56,39 @@ proc fcQTemporaryDir_delete(self: pointer) {.importc: "QTemporaryDir_delete".}
 func init*(T: type gen_qtemporarydir_types.QTemporaryDir, h: ptr cQTemporaryDir): gen_qtemporarydir_types.QTemporaryDir =
   T(h: h)
 proc create*(T: type gen_qtemporarydir_types.QTemporaryDir, ): gen_qtemporarydir_types.QTemporaryDir =
-
   gen_qtemporarydir_types.QTemporaryDir.init(fcQTemporaryDir_new())
+
 proc create*(T: type gen_qtemporarydir_types.QTemporaryDir, templateName: string): gen_qtemporarydir_types.QTemporaryDir =
-
   gen_qtemporarydir_types.QTemporaryDir.init(fcQTemporaryDir_new2(struct_miqt_string(data: templateName, len: csize_t(len(templateName)))))
-proc swap*(self: gen_qtemporarydir_types.QTemporaryDir, other: gen_qtemporarydir_types.QTemporaryDir): void =
 
+proc swap*(self: gen_qtemporarydir_types.QTemporaryDir, other: gen_qtemporarydir_types.QTemporaryDir): void =
   fcQTemporaryDir_swap(self.h, other.h)
 
 proc isValid*(self: gen_qtemporarydir_types.QTemporaryDir, ): bool =
-
   fcQTemporaryDir_isValid(self.h)
 
 proc errorString*(self: gen_qtemporarydir_types.QTemporaryDir, ): string =
-
   let v_ms = fcQTemporaryDir_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc autoRemove*(self: gen_qtemporarydir_types.QTemporaryDir, ): bool =
-
   fcQTemporaryDir_autoRemove(self.h)
 
 proc setAutoRemove*(self: gen_qtemporarydir_types.QTemporaryDir, b: bool): void =
-
   fcQTemporaryDir_setAutoRemove(self.h, b)
 
 proc remove*(self: gen_qtemporarydir_types.QTemporaryDir, ): bool =
-
   fcQTemporaryDir_remove(self.h)
 
 proc path*(self: gen_qtemporarydir_types.QTemporaryDir, ): string =
-
   let v_ms = fcQTemporaryDir_path(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc filePath*(self: gen_qtemporarydir_types.QTemporaryDir, fileName: string): string =
-
   let v_ms = fcQTemporaryDir_filePath(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

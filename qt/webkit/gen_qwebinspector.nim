@@ -190,83 +190,69 @@ proc fcQWebInspector_delete(self: pointer) {.importc: "QWebInspector_delete".}
 func init*(T: type gen_qwebinspector_types.QWebInspector, h: ptr cQWebInspector): gen_qwebinspector_types.QWebInspector =
   T(h: h)
 proc create*(T: type gen_qwebinspector_types.QWebInspector, parent: gen_qwidget.QWidget): gen_qwebinspector_types.QWebInspector =
-
   gen_qwebinspector_types.QWebInspector.init(fcQWebInspector_new(parent.h))
+
 proc create*(T: type gen_qwebinspector_types.QWebInspector, ): gen_qwebinspector_types.QWebInspector =
-
   gen_qwebinspector_types.QWebInspector.init(fcQWebInspector_new2())
-proc metaObject*(self: gen_qwebinspector_types.QWebInspector, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qwebinspector_types.QWebInspector, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebInspector_metaObject(self.h))
 
 proc metacast*(self: gen_qwebinspector_types.QWebInspector, param1: cstring): pointer =
-
   fcQWebInspector_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebinspector_types.QWebInspector, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebInspector_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebinspector_types.QWebInspector, s: cstring): string =
-
   let v_ms = fcQWebInspector_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qwebinspector_types.QWebInspector, s: cstring): string =
-
   let v_ms = fcQWebInspector_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPage*(self: gen_qwebinspector_types.QWebInspector, page: gen_qwebpage.QWebPage): void =
-
   fcQWebInspector_setPage(self.h, page.h)
 
 proc page*(self: gen_qwebinspector_types.QWebInspector, ): gen_qwebpage.QWebPage =
-
   gen_qwebpage.QWebPage(h: fcQWebInspector_page(self.h))
 
 proc sizeHint*(self: gen_qwebinspector_types.QWebInspector, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWebInspector_sizeHint(self.h))
 
 proc event*(self: gen_qwebinspector_types.QWebInspector, param1: gen_qcoreevent.QEvent): bool =
-
   fcQWebInspector_event(self.h, param1.h)
 
-proc tr2*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring): string =
   let v_ms = fcQWebInspector_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebInspector_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring): string =
   let v_ms = fcQWebInspector_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qwebinspector_types.QWebInspector, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebInspector_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QWebInspectormetaObject*(self: gen_qwebinspector_types.QWebInspector, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQWebInspector_virtualbase_metaObject(self.h))
 
 type QWebInspectormetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -284,7 +270,6 @@ proc miqt_exec_callback_QWebInspector_metaObject(self: ptr cQWebInspector, slot:
 
   virtualReturn.h
 proc QWebInspectormetacast*(self: gen_qwebinspector_types.QWebInspector, param1: cstring): pointer =
-
   fQWebInspector_virtualbase_metacast(self.h, param1)
 
 type QWebInspectormetacastProc* = proc(param1: cstring): pointer
@@ -304,7 +289,6 @@ proc miqt_exec_callback_QWebInspector_metacast(self: ptr cQWebInspector, slot: i
 
   virtualReturn
 proc QWebInspectormetacall*(self: gen_qwebinspector_types.QWebInspector, param1: cint, param2: cint, param3: pointer): cint =
-
   fQWebInspector_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QWebInspectormetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -328,7 +312,6 @@ proc miqt_exec_callback_QWebInspector_metacall(self: ptr cQWebInspector, slot: i
 
   virtualReturn
 proc QWebInspectorsizeHint*(self: gen_qwebinspector_types.QWebInspector, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWebInspector_virtualbase_sizeHint(self.h))
 
 type QWebInspectorsizeHintProc* = proc(): gen_qsize.QSize
@@ -346,7 +329,6 @@ proc miqt_exec_callback_QWebInspector_sizeHint(self: ptr cQWebInspector, slot: i
 
   virtualReturn.h
 proc QWebInspectorevent*(self: gen_qwebinspector_types.QWebInspector, param1: gen_qcoreevent.QEvent): bool =
-
   fQWebInspector_virtualbase_event(self.h, param1.h)
 
 type QWebInspectoreventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -366,7 +348,6 @@ proc miqt_exec_callback_QWebInspector_event(self: ptr cQWebInspector, slot: int,
 
   virtualReturn
 proc QWebInspectorresizeEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QResizeEvent): void =
-
   fQWebInspector_virtualbase_resizeEvent(self.h, event.h)
 
 type QWebInspectorresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -384,7 +365,6 @@ proc miqt_exec_callback_QWebInspector_resizeEvent(self: ptr cQWebInspector, slot
 
   nimfunc[](slotval1)
 proc QWebInspectorshowEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QShowEvent): void =
-
   fQWebInspector_virtualbase_showEvent(self.h, event.h)
 
 type QWebInspectorshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -402,7 +382,6 @@ proc miqt_exec_callback_QWebInspector_showEvent(self: ptr cQWebInspector, slot: 
 
   nimfunc[](slotval1)
 proc QWebInspectorhideEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QHideEvent): void =
-
   fQWebInspector_virtualbase_hideEvent(self.h, event.h)
 
 type QWebInspectorhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -420,7 +399,6 @@ proc miqt_exec_callback_QWebInspector_hideEvent(self: ptr cQWebInspector, slot: 
 
   nimfunc[](slotval1)
 proc QWebInspectorcloseEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QCloseEvent): void =
-
   fQWebInspector_virtualbase_closeEvent(self.h, event.h)
 
 type QWebInspectorcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -438,7 +416,6 @@ proc miqt_exec_callback_QWebInspector_closeEvent(self: ptr cQWebInspector, slot:
 
   nimfunc[](slotval1)
 proc QWebInspectordevType*(self: gen_qwebinspector_types.QWebInspector, ): cint =
-
   fQWebInspector_virtualbase_devType(self.h)
 
 type QWebInspectordevTypeProc* = proc(): cint
@@ -456,7 +433,6 @@ proc miqt_exec_callback_QWebInspector_devType(self: ptr cQWebInspector, slot: in
 
   virtualReturn
 proc QWebInspectorsetVisible*(self: gen_qwebinspector_types.QWebInspector, visible: bool): void =
-
   fQWebInspector_virtualbase_setVisible(self.h, visible)
 
 type QWebInspectorsetVisibleProc* = proc(visible: bool): void
@@ -474,7 +450,6 @@ proc miqt_exec_callback_QWebInspector_setVisible(self: ptr cQWebInspector, slot:
 
   nimfunc[](slotval1)
 proc QWebInspectorminimumSizeHint*(self: gen_qwebinspector_types.QWebInspector, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWebInspector_virtualbase_minimumSizeHint(self.h))
 
 type QWebInspectorminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -492,7 +467,6 @@ proc miqt_exec_callback_QWebInspector_minimumSizeHint(self: ptr cQWebInspector, 
 
   virtualReturn.h
 proc QWebInspectorheightForWidth*(self: gen_qwebinspector_types.QWebInspector, param1: cint): cint =
-
   fQWebInspector_virtualbase_heightForWidth(self.h, param1)
 
 type QWebInspectorheightForWidthProc* = proc(param1: cint): cint
@@ -512,7 +486,6 @@ proc miqt_exec_callback_QWebInspector_heightForWidth(self: ptr cQWebInspector, s
 
   virtualReturn
 proc QWebInspectorhasHeightForWidth*(self: gen_qwebinspector_types.QWebInspector, ): bool =
-
   fQWebInspector_virtualbase_hasHeightForWidth(self.h)
 
 type QWebInspectorhasHeightForWidthProc* = proc(): bool
@@ -530,7 +503,6 @@ proc miqt_exec_callback_QWebInspector_hasHeightForWidth(self: ptr cQWebInspector
 
   virtualReturn
 proc QWebInspectorpaintEngine*(self: gen_qwebinspector_types.QWebInspector, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQWebInspector_virtualbase_paintEngine(self.h))
 
 type QWebInspectorpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -548,7 +520,6 @@ proc miqt_exec_callback_QWebInspector_paintEngine(self: ptr cQWebInspector, slot
 
   virtualReturn.h
 proc QWebInspectormousePressEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMouseEvent): void =
-
   fQWebInspector_virtualbase_mousePressEvent(self.h, event.h)
 
 type QWebInspectormousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -566,7 +537,6 @@ proc miqt_exec_callback_QWebInspector_mousePressEvent(self: ptr cQWebInspector, 
 
   nimfunc[](slotval1)
 proc QWebInspectormouseReleaseEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMouseEvent): void =
-
   fQWebInspector_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QWebInspectormouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -584,7 +554,6 @@ proc miqt_exec_callback_QWebInspector_mouseReleaseEvent(self: ptr cQWebInspector
 
   nimfunc[](slotval1)
 proc QWebInspectormouseDoubleClickEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMouseEvent): void =
-
   fQWebInspector_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QWebInspectormouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -602,7 +571,6 @@ proc miqt_exec_callback_QWebInspector_mouseDoubleClickEvent(self: ptr cQWebInspe
 
   nimfunc[](slotval1)
 proc QWebInspectormouseMoveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMouseEvent): void =
-
   fQWebInspector_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QWebInspectormouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -620,7 +588,6 @@ proc miqt_exec_callback_QWebInspector_mouseMoveEvent(self: ptr cQWebInspector, s
 
   nimfunc[](slotval1)
 proc QWebInspectorwheelEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QWheelEvent): void =
-
   fQWebInspector_virtualbase_wheelEvent(self.h, event.h)
 
 type QWebInspectorwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -638,7 +605,6 @@ proc miqt_exec_callback_QWebInspector_wheelEvent(self: ptr cQWebInspector, slot:
 
   nimfunc[](slotval1)
 proc QWebInspectorkeyPressEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QKeyEvent): void =
-
   fQWebInspector_virtualbase_keyPressEvent(self.h, event.h)
 
 type QWebInspectorkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -656,7 +622,6 @@ proc miqt_exec_callback_QWebInspector_keyPressEvent(self: ptr cQWebInspector, sl
 
   nimfunc[](slotval1)
 proc QWebInspectorkeyReleaseEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QKeyEvent): void =
-
   fQWebInspector_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QWebInspectorkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -674,7 +639,6 @@ proc miqt_exec_callback_QWebInspector_keyReleaseEvent(self: ptr cQWebInspector, 
 
   nimfunc[](slotval1)
 proc QWebInspectorfocusInEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QFocusEvent): void =
-
   fQWebInspector_virtualbase_focusInEvent(self.h, event.h)
 
 type QWebInspectorfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -692,7 +656,6 @@ proc miqt_exec_callback_QWebInspector_focusInEvent(self: ptr cQWebInspector, slo
 
   nimfunc[](slotval1)
 proc QWebInspectorfocusOutEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QFocusEvent): void =
-
   fQWebInspector_virtualbase_focusOutEvent(self.h, event.h)
 
 type QWebInspectorfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -710,7 +673,6 @@ proc miqt_exec_callback_QWebInspector_focusOutEvent(self: ptr cQWebInspector, sl
 
   nimfunc[](slotval1)
 proc QWebInspectorenterEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QEvent): void =
-
   fQWebInspector_virtualbase_enterEvent(self.h, event.h)
 
 type QWebInspectorenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -728,7 +690,6 @@ proc miqt_exec_callback_QWebInspector_enterEvent(self: ptr cQWebInspector, slot:
 
   nimfunc[](slotval1)
 proc QWebInspectorleaveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QEvent): void =
-
   fQWebInspector_virtualbase_leaveEvent(self.h, event.h)
 
 type QWebInspectorleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -746,7 +707,6 @@ proc miqt_exec_callback_QWebInspector_leaveEvent(self: ptr cQWebInspector, slot:
 
   nimfunc[](slotval1)
 proc QWebInspectorpaintEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QPaintEvent): void =
-
   fQWebInspector_virtualbase_paintEvent(self.h, event.h)
 
 type QWebInspectorpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -764,7 +724,6 @@ proc miqt_exec_callback_QWebInspector_paintEvent(self: ptr cQWebInspector, slot:
 
   nimfunc[](slotval1)
 proc QWebInspectormoveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QMoveEvent): void =
-
   fQWebInspector_virtualbase_moveEvent(self.h, event.h)
 
 type QWebInspectormoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -782,7 +741,6 @@ proc miqt_exec_callback_QWebInspector_moveEvent(self: ptr cQWebInspector, slot: 
 
   nimfunc[](slotval1)
 proc QWebInspectorcontextMenuEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QContextMenuEvent): void =
-
   fQWebInspector_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QWebInspectorcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -800,7 +758,6 @@ proc miqt_exec_callback_QWebInspector_contextMenuEvent(self: ptr cQWebInspector,
 
   nimfunc[](slotval1)
 proc QWebInspectortabletEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QTabletEvent): void =
-
   fQWebInspector_virtualbase_tabletEvent(self.h, event.h)
 
 type QWebInspectortabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -818,7 +775,6 @@ proc miqt_exec_callback_QWebInspector_tabletEvent(self: ptr cQWebInspector, slot
 
   nimfunc[](slotval1)
 proc QWebInspectoractionEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QActionEvent): void =
-
   fQWebInspector_virtualbase_actionEvent(self.h, event.h)
 
 type QWebInspectoractionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -836,7 +792,6 @@ proc miqt_exec_callback_QWebInspector_actionEvent(self: ptr cQWebInspector, slot
 
   nimfunc[](slotval1)
 proc QWebInspectordragEnterEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QDragEnterEvent): void =
-
   fQWebInspector_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QWebInspectordragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -854,7 +809,6 @@ proc miqt_exec_callback_QWebInspector_dragEnterEvent(self: ptr cQWebInspector, s
 
   nimfunc[](slotval1)
 proc QWebInspectordragMoveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QDragMoveEvent): void =
-
   fQWebInspector_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QWebInspectordragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -872,7 +826,6 @@ proc miqt_exec_callback_QWebInspector_dragMoveEvent(self: ptr cQWebInspector, sl
 
   nimfunc[](slotval1)
 proc QWebInspectordragLeaveEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QDragLeaveEvent): void =
-
   fQWebInspector_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QWebInspectordragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -890,7 +843,6 @@ proc miqt_exec_callback_QWebInspector_dragLeaveEvent(self: ptr cQWebInspector, s
 
   nimfunc[](slotval1)
 proc QWebInspectordropEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qevent.QDropEvent): void =
-
   fQWebInspector_virtualbase_dropEvent(self.h, event.h)
 
 type QWebInspectordropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -908,7 +860,6 @@ proc miqt_exec_callback_QWebInspector_dropEvent(self: ptr cQWebInspector, slot: 
 
   nimfunc[](slotval1)
 proc QWebInspectornativeEvent*(self: gen_qwebinspector_types.QWebInspector, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQWebInspector_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QWebInspectornativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -935,7 +886,6 @@ proc miqt_exec_callback_QWebInspector_nativeEvent(self: ptr cQWebInspector, slot
 
   virtualReturn
 proc QWebInspectorchangeEvent*(self: gen_qwebinspector_types.QWebInspector, param1: gen_qcoreevent.QEvent): void =
-
   fQWebInspector_virtualbase_changeEvent(self.h, param1.h)
 
 type QWebInspectorchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -953,7 +903,6 @@ proc miqt_exec_callback_QWebInspector_changeEvent(self: ptr cQWebInspector, slot
 
   nimfunc[](slotval1)
 proc QWebInspectormetric*(self: gen_qwebinspector_types.QWebInspector, param1: cint): cint =
-
   fQWebInspector_virtualbase_metric(self.h, cint(param1))
 
 type QWebInspectormetricProc* = proc(param1: cint): cint
@@ -973,7 +922,6 @@ proc miqt_exec_callback_QWebInspector_metric(self: ptr cQWebInspector, slot: int
 
   virtualReturn
 proc QWebInspectorinitPainter*(self: gen_qwebinspector_types.QWebInspector, painter: gen_qpainter.QPainter): void =
-
   fQWebInspector_virtualbase_initPainter(self.h, painter.h)
 
 type QWebInspectorinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -991,7 +939,6 @@ proc miqt_exec_callback_QWebInspector_initPainter(self: ptr cQWebInspector, slot
 
   nimfunc[](slotval1)
 proc QWebInspectorredirected*(self: gen_qwebinspector_types.QWebInspector, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQWebInspector_virtualbase_redirected(self.h, offset.h))
 
 type QWebInspectorredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1011,7 +958,6 @@ proc miqt_exec_callback_QWebInspector_redirected(self: ptr cQWebInspector, slot:
 
   virtualReturn.h
 proc QWebInspectorsharedPainter*(self: gen_qwebinspector_types.QWebInspector, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQWebInspector_virtualbase_sharedPainter(self.h))
 
 type QWebInspectorsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1029,7 +975,6 @@ proc miqt_exec_callback_QWebInspector_sharedPainter(self: ptr cQWebInspector, sl
 
   virtualReturn.h
 proc QWebInspectorinputMethodEvent*(self: gen_qwebinspector_types.QWebInspector, param1: gen_qevent.QInputMethodEvent): void =
-
   fQWebInspector_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QWebInspectorinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1047,7 +992,6 @@ proc miqt_exec_callback_QWebInspector_inputMethodEvent(self: ptr cQWebInspector,
 
   nimfunc[](slotval1)
 proc QWebInspectorinputMethodQuery*(self: gen_qwebinspector_types.QWebInspector, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQWebInspector_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QWebInspectorinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1067,7 +1011,6 @@ proc miqt_exec_callback_QWebInspector_inputMethodQuery(self: ptr cQWebInspector,
 
   virtualReturn.h
 proc QWebInspectorfocusNextPrevChild*(self: gen_qwebinspector_types.QWebInspector, next: bool): bool =
-
   fQWebInspector_virtualbase_focusNextPrevChild(self.h, next)
 
 type QWebInspectorfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1087,7 +1030,6 @@ proc miqt_exec_callback_QWebInspector_focusNextPrevChild(self: ptr cQWebInspecto
 
   virtualReturn
 proc QWebInspectoreventFilter*(self: gen_qwebinspector_types.QWebInspector, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQWebInspector_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QWebInspectoreventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1109,7 +1051,6 @@ proc miqt_exec_callback_QWebInspector_eventFilter(self: ptr cQWebInspector, slot
 
   virtualReturn
 proc QWebInspectortimerEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QTimerEvent): void =
-
   fQWebInspector_virtualbase_timerEvent(self.h, event.h)
 
 type QWebInspectortimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1127,7 +1068,6 @@ proc miqt_exec_callback_QWebInspector_timerEvent(self: ptr cQWebInspector, slot:
 
   nimfunc[](slotval1)
 proc QWebInspectorchildEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QChildEvent): void =
-
   fQWebInspector_virtualbase_childEvent(self.h, event.h)
 
 type QWebInspectorchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1145,7 +1085,6 @@ proc miqt_exec_callback_QWebInspector_childEvent(self: ptr cQWebInspector, slot:
 
   nimfunc[](slotval1)
 proc QWebInspectorcustomEvent*(self: gen_qwebinspector_types.QWebInspector, event: gen_qcoreevent.QEvent): void =
-
   fQWebInspector_virtualbase_customEvent(self.h, event.h)
 
 type QWebInspectorcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1163,7 +1102,6 @@ proc miqt_exec_callback_QWebInspector_customEvent(self: ptr cQWebInspector, slot
 
   nimfunc[](slotval1)
 proc QWebInspectorconnectNotify*(self: gen_qwebinspector_types.QWebInspector, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebInspector_virtualbase_connectNotify(self.h, signal.h)
 
 type QWebInspectorconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1181,7 +1119,6 @@ proc miqt_exec_callback_QWebInspector_connectNotify(self: ptr cQWebInspector, sl
 
   nimfunc[](slotval1)
 proc QWebInspectordisconnectNotify*(self: gen_qwebinspector_types.QWebInspector, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebInspector_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QWebInspectordisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

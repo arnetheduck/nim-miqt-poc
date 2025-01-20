@@ -199,74 +199,60 @@ proc fcQRubberBand_delete(self: pointer) {.importc: "QRubberBand_delete".}
 func init*(T: type gen_qrubberband_types.QRubberBand, h: ptr cQRubberBand): gen_qrubberband_types.QRubberBand =
   T(h: h)
 proc create*(T: type gen_qrubberband_types.QRubberBand, param1: cint): gen_qrubberband_types.QRubberBand =
-
   gen_qrubberband_types.QRubberBand.init(fcQRubberBand_new(cint(param1)))
+
 proc create*(T: type gen_qrubberband_types.QRubberBand, param1: cint, param2: gen_qwidget.QWidget): gen_qrubberband_types.QRubberBand =
-
   gen_qrubberband_types.QRubberBand.init(fcQRubberBand_new2(cint(param1), param2.h))
-proc metaObject*(self: gen_qrubberband_types.QRubberBand, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qrubberband_types.QRubberBand, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQRubberBand_metaObject(self.h))
 
 proc metacast*(self: gen_qrubberband_types.QRubberBand, param1: cstring): pointer =
-
   fcQRubberBand_metacast(self.h, param1)
 
 proc metacall*(self: gen_qrubberband_types.QRubberBand, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQRubberBand_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qrubberband_types.QRubberBand, s: cstring): string =
-
   let v_ms = fcQRubberBand_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc shape*(self: gen_qrubberband_types.QRubberBand, ): cint =
-
   cint(fcQRubberBand_shape(self.h))
 
 proc setGeometry*(self: gen_qrubberband_types.QRubberBand, r: gen_qrect.QRect): void =
-
   fcQRubberBand_setGeometry(self.h, r.h)
 
-proc setGeometry2*(self: gen_qrubberband_types.QRubberBand, x: cint, y: cint, w: cint, h: cint): void =
-
+proc setGeometry*(self: gen_qrubberband_types.QRubberBand, x: cint, y: cint, w: cint, h: cint): void =
   fcQRubberBand_setGeometry2(self.h, x, y, w, h)
 
 proc move*(self: gen_qrubberband_types.QRubberBand, x: cint, y: cint): void =
-
   fcQRubberBand_move(self.h, x, y)
 
-proc moveWithQPoint*(self: gen_qrubberband_types.QRubberBand, p: gen_qpoint.QPoint): void =
-
+proc move*(self: gen_qrubberband_types.QRubberBand, p: gen_qpoint.QPoint): void =
   fcQRubberBand_moveWithQPoint(self.h, p.h)
 
 proc resize*(self: gen_qrubberband_types.QRubberBand, w: cint, h: cint): void =
-
   fcQRubberBand_resize(self.h, w, h)
 
-proc resizeWithQSize*(self: gen_qrubberband_types.QRubberBand, s: gen_qsize.QSize): void =
-
+proc resize*(self: gen_qrubberband_types.QRubberBand, s: gen_qsize.QSize): void =
   fcQRubberBand_resizeWithQSize(self.h, s.h)
 
-proc tr2*(_: type gen_qrubberband_types.QRubberBand, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qrubberband_types.QRubberBand, s: cstring, c: cstring): string =
   let v_ms = fcQRubberBand_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qrubberband_types.QRubberBand, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qrubberband_types.QRubberBand, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQRubberBand_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QRubberBandmetaObject*(self: gen_qrubberband_types.QRubberBand, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQRubberBand_virtualbase_metaObject(self.h))
 
 type QRubberBandmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -284,7 +270,6 @@ proc miqt_exec_callback_QRubberBand_metaObject(self: ptr cQRubberBand, slot: int
 
   virtualReturn.h
 proc QRubberBandmetacast*(self: gen_qrubberband_types.QRubberBand, param1: cstring): pointer =
-
   fQRubberBand_virtualbase_metacast(self.h, param1)
 
 type QRubberBandmetacastProc* = proc(param1: cstring): pointer
@@ -304,7 +289,6 @@ proc miqt_exec_callback_QRubberBand_metacast(self: ptr cQRubberBand, slot: int, 
 
   virtualReturn
 proc QRubberBandmetacall*(self: gen_qrubberband_types.QRubberBand, param1: cint, param2: cint, param3: pointer): cint =
-
   fQRubberBand_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QRubberBandmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -328,7 +312,6 @@ proc miqt_exec_callback_QRubberBand_metacall(self: ptr cQRubberBand, slot: int, 
 
   virtualReturn
 proc QRubberBandevent*(self: gen_qrubberband_types.QRubberBand, e: gen_qcoreevent.QEvent): bool =
-
   fQRubberBand_virtualbase_event(self.h, e.h)
 
 type QRubberBandeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -348,7 +331,6 @@ proc miqt_exec_callback_QRubberBand_event(self: ptr cQRubberBand, slot: int, e: 
 
   virtualReturn
 proc QRubberBandpaintEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QPaintEvent): void =
-
   fQRubberBand_virtualbase_paintEvent(self.h, param1.h)
 
 type QRubberBandpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -366,7 +348,6 @@ proc miqt_exec_callback_QRubberBand_paintEvent(self: ptr cQRubberBand, slot: int
 
   nimfunc[](slotval1)
 proc QRubberBandchangeEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qcoreevent.QEvent): void =
-
   fQRubberBand_virtualbase_changeEvent(self.h, param1.h)
 
 type QRubberBandchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -384,7 +365,6 @@ proc miqt_exec_callback_QRubberBand_changeEvent(self: ptr cQRubberBand, slot: in
 
   nimfunc[](slotval1)
 proc QRubberBandshowEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QShowEvent): void =
-
   fQRubberBand_virtualbase_showEvent(self.h, param1.h)
 
 type QRubberBandshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -402,7 +382,6 @@ proc miqt_exec_callback_QRubberBand_showEvent(self: ptr cQRubberBand, slot: int,
 
   nimfunc[](slotval1)
 proc QRubberBandresizeEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QResizeEvent): void =
-
   fQRubberBand_virtualbase_resizeEvent(self.h, param1.h)
 
 type QRubberBandresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -420,7 +399,6 @@ proc miqt_exec_callback_QRubberBand_resizeEvent(self: ptr cQRubberBand, slot: in
 
   nimfunc[](slotval1)
 proc QRubberBandmoveEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QMoveEvent): void =
-
   fQRubberBand_virtualbase_moveEvent(self.h, param1.h)
 
 type QRubberBandmoveEventProc* = proc(param1: gen_qevent.QMoveEvent): void
@@ -438,7 +416,6 @@ proc miqt_exec_callback_QRubberBand_moveEvent(self: ptr cQRubberBand, slot: int,
 
   nimfunc[](slotval1)
 proc QRubberBandinitStyleOption*(self: gen_qrubberband_types.QRubberBand, option: gen_qstyleoption.QStyleOptionRubberBand): void =
-
   fQRubberBand_virtualbase_initStyleOption(self.h, option.h)
 
 type QRubberBandinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionRubberBand): void
@@ -456,7 +433,6 @@ proc miqt_exec_callback_QRubberBand_initStyleOption(self: ptr cQRubberBand, slot
 
   nimfunc[](slotval1)
 proc QRubberBanddevType*(self: gen_qrubberband_types.QRubberBand, ): cint =
-
   fQRubberBand_virtualbase_devType(self.h)
 
 type QRubberBanddevTypeProc* = proc(): cint
@@ -474,7 +450,6 @@ proc miqt_exec_callback_QRubberBand_devType(self: ptr cQRubberBand, slot: int): 
 
   virtualReturn
 proc QRubberBandsetVisible*(self: gen_qrubberband_types.QRubberBand, visible: bool): void =
-
   fQRubberBand_virtualbase_setVisible(self.h, visible)
 
 type QRubberBandsetVisibleProc* = proc(visible: bool): void
@@ -492,7 +467,6 @@ proc miqt_exec_callback_QRubberBand_setVisible(self: ptr cQRubberBand, slot: int
 
   nimfunc[](slotval1)
 proc QRubberBandsizeHint*(self: gen_qrubberband_types.QRubberBand, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQRubberBand_virtualbase_sizeHint(self.h))
 
 type QRubberBandsizeHintProc* = proc(): gen_qsize.QSize
@@ -510,7 +484,6 @@ proc miqt_exec_callback_QRubberBand_sizeHint(self: ptr cQRubberBand, slot: int):
 
   virtualReturn.h
 proc QRubberBandminimumSizeHint*(self: gen_qrubberband_types.QRubberBand, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQRubberBand_virtualbase_minimumSizeHint(self.h))
 
 type QRubberBandminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -528,7 +501,6 @@ proc miqt_exec_callback_QRubberBand_minimumSizeHint(self: ptr cQRubberBand, slot
 
   virtualReturn.h
 proc QRubberBandheightForWidth*(self: gen_qrubberband_types.QRubberBand, param1: cint): cint =
-
   fQRubberBand_virtualbase_heightForWidth(self.h, param1)
 
 type QRubberBandheightForWidthProc* = proc(param1: cint): cint
@@ -548,7 +520,6 @@ proc miqt_exec_callback_QRubberBand_heightForWidth(self: ptr cQRubberBand, slot:
 
   virtualReturn
 proc QRubberBandhasHeightForWidth*(self: gen_qrubberband_types.QRubberBand, ): bool =
-
   fQRubberBand_virtualbase_hasHeightForWidth(self.h)
 
 type QRubberBandhasHeightForWidthProc* = proc(): bool
@@ -566,7 +537,6 @@ proc miqt_exec_callback_QRubberBand_hasHeightForWidth(self: ptr cQRubberBand, sl
 
   virtualReturn
 proc QRubberBandpaintEngine*(self: gen_qrubberband_types.QRubberBand, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQRubberBand_virtualbase_paintEngine(self.h))
 
 type QRubberBandpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -584,7 +554,6 @@ proc miqt_exec_callback_QRubberBand_paintEngine(self: ptr cQRubberBand, slot: in
 
   virtualReturn.h
 proc QRubberBandmousePressEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QMouseEvent): void =
-
   fQRubberBand_virtualbase_mousePressEvent(self.h, event.h)
 
 type QRubberBandmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -602,7 +571,6 @@ proc miqt_exec_callback_QRubberBand_mousePressEvent(self: ptr cQRubberBand, slot
 
   nimfunc[](slotval1)
 proc QRubberBandmouseReleaseEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QMouseEvent): void =
-
   fQRubberBand_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QRubberBandmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -620,7 +588,6 @@ proc miqt_exec_callback_QRubberBand_mouseReleaseEvent(self: ptr cQRubberBand, sl
 
   nimfunc[](slotval1)
 proc QRubberBandmouseDoubleClickEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QMouseEvent): void =
-
   fQRubberBand_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QRubberBandmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -638,7 +605,6 @@ proc miqt_exec_callback_QRubberBand_mouseDoubleClickEvent(self: ptr cQRubberBand
 
   nimfunc[](slotval1)
 proc QRubberBandmouseMoveEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QMouseEvent): void =
-
   fQRubberBand_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QRubberBandmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -656,7 +622,6 @@ proc miqt_exec_callback_QRubberBand_mouseMoveEvent(self: ptr cQRubberBand, slot:
 
   nimfunc[](slotval1)
 proc QRubberBandwheelEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QWheelEvent): void =
-
   fQRubberBand_virtualbase_wheelEvent(self.h, event.h)
 
 type QRubberBandwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -674,7 +639,6 @@ proc miqt_exec_callback_QRubberBand_wheelEvent(self: ptr cQRubberBand, slot: int
 
   nimfunc[](slotval1)
 proc QRubberBandkeyPressEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QKeyEvent): void =
-
   fQRubberBand_virtualbase_keyPressEvent(self.h, event.h)
 
 type QRubberBandkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -692,7 +656,6 @@ proc miqt_exec_callback_QRubberBand_keyPressEvent(self: ptr cQRubberBand, slot: 
 
   nimfunc[](slotval1)
 proc QRubberBandkeyReleaseEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QKeyEvent): void =
-
   fQRubberBand_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QRubberBandkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -710,7 +673,6 @@ proc miqt_exec_callback_QRubberBand_keyReleaseEvent(self: ptr cQRubberBand, slot
 
   nimfunc[](slotval1)
 proc QRubberBandfocusInEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QFocusEvent): void =
-
   fQRubberBand_virtualbase_focusInEvent(self.h, event.h)
 
 type QRubberBandfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -728,7 +690,6 @@ proc miqt_exec_callback_QRubberBand_focusInEvent(self: ptr cQRubberBand, slot: i
 
   nimfunc[](slotval1)
 proc QRubberBandfocusOutEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QFocusEvent): void =
-
   fQRubberBand_virtualbase_focusOutEvent(self.h, event.h)
 
 type QRubberBandfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -746,7 +707,6 @@ proc miqt_exec_callback_QRubberBand_focusOutEvent(self: ptr cQRubberBand, slot: 
 
   nimfunc[](slotval1)
 proc QRubberBandenterEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QEnterEvent): void =
-
   fQRubberBand_virtualbase_enterEvent(self.h, event.h)
 
 type QRubberBandenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -764,7 +724,6 @@ proc miqt_exec_callback_QRubberBand_enterEvent(self: ptr cQRubberBand, slot: int
 
   nimfunc[](slotval1)
 proc QRubberBandleaveEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qcoreevent.QEvent): void =
-
   fQRubberBand_virtualbase_leaveEvent(self.h, event.h)
 
 type QRubberBandleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -782,7 +741,6 @@ proc miqt_exec_callback_QRubberBand_leaveEvent(self: ptr cQRubberBand, slot: int
 
   nimfunc[](slotval1)
 proc QRubberBandcloseEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QCloseEvent): void =
-
   fQRubberBand_virtualbase_closeEvent(self.h, event.h)
 
 type QRubberBandcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -800,7 +758,6 @@ proc miqt_exec_callback_QRubberBand_closeEvent(self: ptr cQRubberBand, slot: int
 
   nimfunc[](slotval1)
 proc QRubberBandcontextMenuEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QContextMenuEvent): void =
-
   fQRubberBand_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QRubberBandcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -818,7 +775,6 @@ proc miqt_exec_callback_QRubberBand_contextMenuEvent(self: ptr cQRubberBand, slo
 
   nimfunc[](slotval1)
 proc QRubberBandtabletEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QTabletEvent): void =
-
   fQRubberBand_virtualbase_tabletEvent(self.h, event.h)
 
 type QRubberBandtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -836,7 +792,6 @@ proc miqt_exec_callback_QRubberBand_tabletEvent(self: ptr cQRubberBand, slot: in
 
   nimfunc[](slotval1)
 proc QRubberBandactionEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QActionEvent): void =
-
   fQRubberBand_virtualbase_actionEvent(self.h, event.h)
 
 type QRubberBandactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -854,7 +809,6 @@ proc miqt_exec_callback_QRubberBand_actionEvent(self: ptr cQRubberBand, slot: in
 
   nimfunc[](slotval1)
 proc QRubberBanddragEnterEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QDragEnterEvent): void =
-
   fQRubberBand_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QRubberBanddragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -872,7 +826,6 @@ proc miqt_exec_callback_QRubberBand_dragEnterEvent(self: ptr cQRubberBand, slot:
 
   nimfunc[](slotval1)
 proc QRubberBanddragMoveEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QDragMoveEvent): void =
-
   fQRubberBand_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QRubberBanddragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -890,7 +843,6 @@ proc miqt_exec_callback_QRubberBand_dragMoveEvent(self: ptr cQRubberBand, slot: 
 
   nimfunc[](slotval1)
 proc QRubberBanddragLeaveEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QDragLeaveEvent): void =
-
   fQRubberBand_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QRubberBanddragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -908,7 +860,6 @@ proc miqt_exec_callback_QRubberBand_dragLeaveEvent(self: ptr cQRubberBand, slot:
 
   nimfunc[](slotval1)
 proc QRubberBanddropEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QDropEvent): void =
-
   fQRubberBand_virtualbase_dropEvent(self.h, event.h)
 
 type QRubberBanddropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -926,7 +877,6 @@ proc miqt_exec_callback_QRubberBand_dropEvent(self: ptr cQRubberBand, slot: int,
 
   nimfunc[](slotval1)
 proc QRubberBandhideEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qevent.QHideEvent): void =
-
   fQRubberBand_virtualbase_hideEvent(self.h, event.h)
 
 type QRubberBandhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -944,7 +894,6 @@ proc miqt_exec_callback_QRubberBand_hideEvent(self: ptr cQRubberBand, slot: int,
 
   nimfunc[](slotval1)
 proc QRubberBandnativeEvent*(self: gen_qrubberband_types.QRubberBand, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQRubberBand_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QRubberBandnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -971,7 +920,6 @@ proc miqt_exec_callback_QRubberBand_nativeEvent(self: ptr cQRubberBand, slot: in
 
   virtualReturn
 proc QRubberBandmetric*(self: gen_qrubberband_types.QRubberBand, param1: cint): cint =
-
   fQRubberBand_virtualbase_metric(self.h, cint(param1))
 
 type QRubberBandmetricProc* = proc(param1: cint): cint
@@ -991,7 +939,6 @@ proc miqt_exec_callback_QRubberBand_metric(self: ptr cQRubberBand, slot: int, pa
 
   virtualReturn
 proc QRubberBandinitPainter*(self: gen_qrubberband_types.QRubberBand, painter: gen_qpainter.QPainter): void =
-
   fQRubberBand_virtualbase_initPainter(self.h, painter.h)
 
 type QRubberBandinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1009,7 +956,6 @@ proc miqt_exec_callback_QRubberBand_initPainter(self: ptr cQRubberBand, slot: in
 
   nimfunc[](slotval1)
 proc QRubberBandredirected*(self: gen_qrubberband_types.QRubberBand, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQRubberBand_virtualbase_redirected(self.h, offset.h))
 
 type QRubberBandredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1029,7 +975,6 @@ proc miqt_exec_callback_QRubberBand_redirected(self: ptr cQRubberBand, slot: int
 
   virtualReturn.h
 proc QRubberBandsharedPainter*(self: gen_qrubberband_types.QRubberBand, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQRubberBand_virtualbase_sharedPainter(self.h))
 
 type QRubberBandsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1047,7 +992,6 @@ proc miqt_exec_callback_QRubberBand_sharedPainter(self: ptr cQRubberBand, slot: 
 
   virtualReturn.h
 proc QRubberBandinputMethodEvent*(self: gen_qrubberband_types.QRubberBand, param1: gen_qevent.QInputMethodEvent): void =
-
   fQRubberBand_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QRubberBandinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1065,7 +1009,6 @@ proc miqt_exec_callback_QRubberBand_inputMethodEvent(self: ptr cQRubberBand, slo
 
   nimfunc[](slotval1)
 proc QRubberBandinputMethodQuery*(self: gen_qrubberband_types.QRubberBand, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQRubberBand_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QRubberBandinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1085,7 +1028,6 @@ proc miqt_exec_callback_QRubberBand_inputMethodQuery(self: ptr cQRubberBand, slo
 
   virtualReturn.h
 proc QRubberBandfocusNextPrevChild*(self: gen_qrubberband_types.QRubberBand, next: bool): bool =
-
   fQRubberBand_virtualbase_focusNextPrevChild(self.h, next)
 
 type QRubberBandfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1105,7 +1047,6 @@ proc miqt_exec_callback_QRubberBand_focusNextPrevChild(self: ptr cQRubberBand, s
 
   virtualReturn
 proc QRubberBandeventFilter*(self: gen_qrubberband_types.QRubberBand, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQRubberBand_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QRubberBandeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1127,7 +1068,6 @@ proc miqt_exec_callback_QRubberBand_eventFilter(self: ptr cQRubberBand, slot: in
 
   virtualReturn
 proc QRubberBandtimerEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qcoreevent.QTimerEvent): void =
-
   fQRubberBand_virtualbase_timerEvent(self.h, event.h)
 
 type QRubberBandtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1145,7 +1085,6 @@ proc miqt_exec_callback_QRubberBand_timerEvent(self: ptr cQRubberBand, slot: int
 
   nimfunc[](slotval1)
 proc QRubberBandchildEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qcoreevent.QChildEvent): void =
-
   fQRubberBand_virtualbase_childEvent(self.h, event.h)
 
 type QRubberBandchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1163,7 +1102,6 @@ proc miqt_exec_callback_QRubberBand_childEvent(self: ptr cQRubberBand, slot: int
 
   nimfunc[](slotval1)
 proc QRubberBandcustomEvent*(self: gen_qrubberband_types.QRubberBand, event: gen_qcoreevent.QEvent): void =
-
   fQRubberBand_virtualbase_customEvent(self.h, event.h)
 
 type QRubberBandcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1181,7 +1119,6 @@ proc miqt_exec_callback_QRubberBand_customEvent(self: ptr cQRubberBand, slot: in
 
   nimfunc[](slotval1)
 proc QRubberBandconnectNotify*(self: gen_qrubberband_types.QRubberBand, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQRubberBand_virtualbase_connectNotify(self.h, signal.h)
 
 type QRubberBandconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1199,7 +1136,6 @@ proc miqt_exec_callback_QRubberBand_connectNotify(self: ptr cQRubberBand, slot: 
 
   nimfunc[](slotval1)
 proc QRubberBanddisconnectNotify*(self: gen_qrubberband_types.QRubberBand, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQRubberBand_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QRubberBanddisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

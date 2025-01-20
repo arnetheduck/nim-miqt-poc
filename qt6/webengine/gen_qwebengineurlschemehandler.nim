@@ -89,50 +89,42 @@ proc fcQWebEngineUrlSchemeHandler_delete(self: pointer) {.importc: "QWebEngineUr
 func init*(T: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, h: ptr cQWebEngineUrlSchemeHandler): gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler =
   T(h: h)
 proc create*(T: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, ): gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler =
-
   gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler.init(fcQWebEngineUrlSchemeHandler_new())
+
 proc create*(T: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, parent: gen_qobject.QObject): gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler =
-
   gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler.init(fcQWebEngineUrlSchemeHandler_new2(parent.h))
-proc metaObject*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineUrlSchemeHandler_metaObject(self.h))
 
 proc metacast*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cstring): pointer =
-
   fcQWebEngineUrlSchemeHandler_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebEngineUrlSchemeHandler_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring): string =
-
   let v_ms = fcQWebEngineUrlSchemeHandler_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc requestStarted*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: gen_qwebengineurlrequestjob.QWebEngineUrlRequestJob): void =
-
   fcQWebEngineUrlSchemeHandler_requestStarted(self.h, param1.h)
 
-proc tr2*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineUrlSchemeHandler_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineUrlSchemeHandler_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QWebEngineUrlSchemeHandlermetaObject*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQWebEngineUrlSchemeHandler_virtualbase_metaObject(self.h))
 
 type QWebEngineUrlSchemeHandlermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -150,7 +142,6 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_metaObject(self: ptr cQWebEng
 
   virtualReturn.h
 proc QWebEngineUrlSchemeHandlermetacast*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cstring): pointer =
-
   fQWebEngineUrlSchemeHandler_virtualbase_metacast(self.h, param1)
 
 type QWebEngineUrlSchemeHandlermetacastProc* = proc(param1: cstring): pointer
@@ -170,7 +161,6 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_metacast(self: ptr cQWebEngin
 
   virtualReturn
 proc QWebEngineUrlSchemeHandlermetacall*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, param1: cint, param2: cint, param3: pointer): cint =
-
   fQWebEngineUrlSchemeHandler_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QWebEngineUrlSchemeHandlermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -208,7 +198,6 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_requestStarted(self: ptr cQWe
 
   nimfunc[](slotval1)
 proc QWebEngineUrlSchemeHandlerevent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QEvent): bool =
-
   fQWebEngineUrlSchemeHandler_virtualbase_event(self.h, event.h)
 
 type QWebEngineUrlSchemeHandlereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -228,7 +217,6 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_event(self: ptr cQWebEngineUr
 
   virtualReturn
 proc QWebEngineUrlSchemeHandlereventFilter*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQWebEngineUrlSchemeHandler_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QWebEngineUrlSchemeHandlereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -250,7 +238,6 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_eventFilter(self: ptr cQWebEn
 
   virtualReturn
 proc QWebEngineUrlSchemeHandlertimerEvent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QTimerEvent): void =
-
   fQWebEngineUrlSchemeHandler_virtualbase_timerEvent(self.h, event.h)
 
 type QWebEngineUrlSchemeHandlertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -268,7 +255,6 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_timerEvent(self: ptr cQWebEng
 
   nimfunc[](slotval1)
 proc QWebEngineUrlSchemeHandlerchildEvent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QChildEvent): void =
-
   fQWebEngineUrlSchemeHandler_virtualbase_childEvent(self.h, event.h)
 
 type QWebEngineUrlSchemeHandlerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -286,7 +272,6 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_childEvent(self: ptr cQWebEng
 
   nimfunc[](slotval1)
 proc QWebEngineUrlSchemeHandlercustomEvent*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, event: gen_qcoreevent.QEvent): void =
-
   fQWebEngineUrlSchemeHandler_virtualbase_customEvent(self.h, event.h)
 
 type QWebEngineUrlSchemeHandlercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -304,7 +289,6 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_customEvent(self: ptr cQWebEn
 
   nimfunc[](slotval1)
 proc QWebEngineUrlSchemeHandlerconnectNotify*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebEngineUrlSchemeHandler_virtualbase_connectNotify(self.h, signal.h)
 
 type QWebEngineUrlSchemeHandlerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -322,7 +306,6 @@ proc miqt_exec_callback_QWebEngineUrlSchemeHandler_connectNotify(self: ptr cQWeb
 
   nimfunc[](slotval1)
 proc QWebEngineUrlSchemeHandlerdisconnectNotify*(self: gen_qwebengineurlschemehandler_types.QWebEngineUrlSchemeHandler, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QWebEngineUrlSchemeHandlerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

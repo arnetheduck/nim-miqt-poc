@@ -123,200 +123,165 @@ proc fcQAudioOutput_delete(self: pointer) {.importc: "QAudioOutput_delete".}
 func init*(T: type gen_qaudiooutput_types.QAudioOutput, h: ptr cQAudioOutput): gen_qaudiooutput_types.QAudioOutput =
   T(h: h)
 proc create*(T: type gen_qaudiooutput_types.QAudioOutput, ): gen_qaudiooutput_types.QAudioOutput =
-
   gen_qaudiooutput_types.QAudioOutput.init(fcQAudioOutput_new())
+
 proc create*(T: type gen_qaudiooutput_types.QAudioOutput, audioDeviceInfo: gen_qaudiodeviceinfo.QAudioDeviceInfo): gen_qaudiooutput_types.QAudioOutput =
-
   gen_qaudiooutput_types.QAudioOutput.init(fcQAudioOutput_new2(audioDeviceInfo.h))
-proc create2*(T: type gen_qaudiooutput_types.QAudioOutput, format: gen_qaudioformat.QAudioFormat): gen_qaudiooutput_types.QAudioOutput =
 
+proc create*(T: type gen_qaudiooutput_types.QAudioOutput, format: gen_qaudioformat.QAudioFormat): gen_qaudiooutput_types.QAudioOutput =
   gen_qaudiooutput_types.QAudioOutput.init(fcQAudioOutput_new3(format.h))
+
 proc create*(T: type gen_qaudiooutput_types.QAudioOutput, format: gen_qaudioformat.QAudioFormat, parent: gen_qobject.QObject): gen_qaudiooutput_types.QAudioOutput =
-
   gen_qaudiooutput_types.QAudioOutput.init(fcQAudioOutput_new4(format.h, parent.h))
-proc create2*(T: type gen_qaudiooutput_types.QAudioOutput, audioDeviceInfo: gen_qaudiodeviceinfo.QAudioDeviceInfo, format: gen_qaudioformat.QAudioFormat): gen_qaudiooutput_types.QAudioOutput =
 
+proc create*(T: type gen_qaudiooutput_types.QAudioOutput, audioDeviceInfo: gen_qaudiodeviceinfo.QAudioDeviceInfo, format: gen_qaudioformat.QAudioFormat): gen_qaudiooutput_types.QAudioOutput =
   gen_qaudiooutput_types.QAudioOutput.init(fcQAudioOutput_new5(audioDeviceInfo.h, format.h))
+
 proc create*(T: type gen_qaudiooutput_types.QAudioOutput, audioDeviceInfo: gen_qaudiodeviceinfo.QAudioDeviceInfo, format: gen_qaudioformat.QAudioFormat, parent: gen_qobject.QObject): gen_qaudiooutput_types.QAudioOutput =
-
   gen_qaudiooutput_types.QAudioOutput.init(fcQAudioOutput_new6(audioDeviceInfo.h, format.h, parent.h))
-proc metaObject*(self: gen_qaudiooutput_types.QAudioOutput, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qaudiooutput_types.QAudioOutput, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioOutput_metaObject(self.h))
 
 proc metacast*(self: gen_qaudiooutput_types.QAudioOutput, param1: cstring): pointer =
-
   fcQAudioOutput_metacast(self.h, param1)
 
 proc metacall*(self: gen_qaudiooutput_types.QAudioOutput, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAudioOutput_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring): string =
-
   let v_ms = fcQAudioOutput_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring): string =
-
   let v_ms = fcQAudioOutput_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc format*(self: gen_qaudiooutput_types.QAudioOutput, ): gen_qaudioformat.QAudioFormat =
-
   gen_qaudioformat.QAudioFormat(h: fcQAudioOutput_format(self.h))
 
 proc start*(self: gen_qaudiooutput_types.QAudioOutput, device: gen_qiodevice.QIODevice): void =
-
   fcQAudioOutput_start(self.h, device.h)
 
-proc start2*(self: gen_qaudiooutput_types.QAudioOutput, ): gen_qiodevice.QIODevice =
-
+proc start*(self: gen_qaudiooutput_types.QAudioOutput, ): gen_qiodevice.QIODevice =
   gen_qiodevice.QIODevice(h: fcQAudioOutput_start2(self.h))
 
 proc stop*(self: gen_qaudiooutput_types.QAudioOutput, ): void =
-
   fcQAudioOutput_stop(self.h)
 
 proc reset*(self: gen_qaudiooutput_types.QAudioOutput, ): void =
-
   fcQAudioOutput_reset(self.h)
 
 proc suspend*(self: gen_qaudiooutput_types.QAudioOutput, ): void =
-
   fcQAudioOutput_suspend(self.h)
 
 proc resume*(self: gen_qaudiooutput_types.QAudioOutput, ): void =
-
   fcQAudioOutput_resume(self.h)
 
 proc setBufferSize*(self: gen_qaudiooutput_types.QAudioOutput, bytes: cint): void =
-
   fcQAudioOutput_setBufferSize(self.h, bytes)
 
 proc bufferSize*(self: gen_qaudiooutput_types.QAudioOutput, ): cint =
-
   fcQAudioOutput_bufferSize(self.h)
 
 proc bytesFree*(self: gen_qaudiooutput_types.QAudioOutput, ): cint =
-
   fcQAudioOutput_bytesFree(self.h)
 
 proc periodSize*(self: gen_qaudiooutput_types.QAudioOutput, ): cint =
-
   fcQAudioOutput_periodSize(self.h)
 
 proc setNotifyInterval*(self: gen_qaudiooutput_types.QAudioOutput, milliSeconds: cint): void =
-
   fcQAudioOutput_setNotifyInterval(self.h, milliSeconds)
 
 proc notifyInterval*(self: gen_qaudiooutput_types.QAudioOutput, ): cint =
-
   fcQAudioOutput_notifyInterval(self.h)
 
 proc processedUSecs*(self: gen_qaudiooutput_types.QAudioOutput, ): clonglong =
-
   fcQAudioOutput_processedUSecs(self.h)
 
 proc elapsedUSecs*(self: gen_qaudiooutput_types.QAudioOutput, ): clonglong =
-
   fcQAudioOutput_elapsedUSecs(self.h)
 
 proc error*(self: gen_qaudiooutput_types.QAudioOutput, ): cint =
-
   cint(fcQAudioOutput_error(self.h))
 
 proc state*(self: gen_qaudiooutput_types.QAudioOutput, ): cint =
-
   cint(fcQAudioOutput_state(self.h))
 
 proc setVolume*(self: gen_qaudiooutput_types.QAudioOutput, volume: float64): void =
-
   fcQAudioOutput_setVolume(self.h, volume)
 
 proc volume*(self: gen_qaudiooutput_types.QAudioOutput, ): float64 =
-
   fcQAudioOutput_volume(self.h)
 
 proc category*(self: gen_qaudiooutput_types.QAudioOutput, ): string =
-
   let v_ms = fcQAudioOutput_category(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setCategory*(self: gen_qaudiooutput_types.QAudioOutput, category: string): void =
-
   fcQAudioOutput_setCategory(self.h, struct_miqt_string(data: category, len: csize_t(len(category))))
 
 proc stateChanged*(self: gen_qaudiooutput_types.QAudioOutput, state: cint): void =
-
   fcQAudioOutput_stateChanged(self.h, cint(state))
 
+type QAudioOutputstateChangedSlot* = proc(state: cint)
 proc miqt_exec_callback_QAudioOutput_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAudioOutputstateChangedSlot](cast[pointer](slot))
   let slotval1 = cint(state)
-
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: gen_qaudiooutput_types.QAudioOutput, slot: proc(state: cint)) =
-  type Cb = proc(state: cint)
-  var tmp = new Cb
+proc onstateChanged*(self: gen_qaudiooutput_types.QAudioOutput, slot: QAudioOutputstateChangedSlot) =
+  var tmp = new QAudioOutputstateChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAudioOutput_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc notify*(self: gen_qaudiooutput_types.QAudioOutput, ): void =
 
+proc notify*(self: gen_qaudiooutput_types.QAudioOutput, ): void =
   fcQAudioOutput_notify(self.h)
 
+type QAudioOutputnotifySlot* = proc()
 proc miqt_exec_callback_QAudioOutput_notify(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QAudioOutputnotifySlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onnotify*(self: gen_qaudiooutput_types.QAudioOutput, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onnotify*(self: gen_qaudiooutput_types.QAudioOutput, slot: QAudioOutputnotifySlot) =
+  var tmp = new QAudioOutputnotifySlot
   tmp[] = slot
   GC_ref(tmp)
   fQAudioOutput_connect_notify(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring, c: cstring): string =
   let v_ms = fcQAudioOutput_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAudioOutput_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring, c: cstring): string =
   let v_ms = fcQAudioOutput_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qaudiooutput_types.QAudioOutput, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAudioOutput_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QAudioOutputmetaObject*(self: gen_qaudiooutput_types.QAudioOutput, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQAudioOutput_virtualbase_metaObject(self.h))
 
 type QAudioOutputmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -334,7 +299,6 @@ proc miqt_exec_callback_QAudioOutput_metaObject(self: ptr cQAudioOutput, slot: i
 
   virtualReturn.h
 proc QAudioOutputmetacast*(self: gen_qaudiooutput_types.QAudioOutput, param1: cstring): pointer =
-
   fQAudioOutput_virtualbase_metacast(self.h, param1)
 
 type QAudioOutputmetacastProc* = proc(param1: cstring): pointer
@@ -354,7 +318,6 @@ proc miqt_exec_callback_QAudioOutput_metacast(self: ptr cQAudioOutput, slot: int
 
   virtualReturn
 proc QAudioOutputmetacall*(self: gen_qaudiooutput_types.QAudioOutput, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAudioOutput_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAudioOutputmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -378,7 +341,6 @@ proc miqt_exec_callback_QAudioOutput_metacall(self: ptr cQAudioOutput, slot: int
 
   virtualReturn
 proc QAudioOutputevent*(self: gen_qaudiooutput_types.QAudioOutput, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioOutput_virtualbase_event(self.h, event.h)
 
 type QAudioOutputeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -398,7 +360,6 @@ proc miqt_exec_callback_QAudioOutput_event(self: ptr cQAudioOutput, slot: int, e
 
   virtualReturn
 proc QAudioOutputeventFilter*(self: gen_qaudiooutput_types.QAudioOutput, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioOutput_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAudioOutputeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -420,7 +381,6 @@ proc miqt_exec_callback_QAudioOutput_eventFilter(self: ptr cQAudioOutput, slot: 
 
   virtualReturn
 proc QAudioOutputtimerEvent*(self: gen_qaudiooutput_types.QAudioOutput, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAudioOutput_virtualbase_timerEvent(self.h, event.h)
 
 type QAudioOutputtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -438,7 +398,6 @@ proc miqt_exec_callback_QAudioOutput_timerEvent(self: ptr cQAudioOutput, slot: i
 
   nimfunc[](slotval1)
 proc QAudioOutputchildEvent*(self: gen_qaudiooutput_types.QAudioOutput, event: gen_qcoreevent.QChildEvent): void =
-
   fQAudioOutput_virtualbase_childEvent(self.h, event.h)
 
 type QAudioOutputchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -456,7 +415,6 @@ proc miqt_exec_callback_QAudioOutput_childEvent(self: ptr cQAudioOutput, slot: i
 
   nimfunc[](slotval1)
 proc QAudioOutputcustomEvent*(self: gen_qaudiooutput_types.QAudioOutput, event: gen_qcoreevent.QEvent): void =
-
   fQAudioOutput_virtualbase_customEvent(self.h, event.h)
 
 type QAudioOutputcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -474,7 +432,6 @@ proc miqt_exec_callback_QAudioOutput_customEvent(self: ptr cQAudioOutput, slot: 
 
   nimfunc[](slotval1)
 proc QAudioOutputconnectNotify*(self: gen_qaudiooutput_types.QAudioOutput, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioOutput_virtualbase_connectNotify(self.h, signal.h)
 
 type QAudioOutputconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -492,7 +449,6 @@ proc miqt_exec_callback_QAudioOutput_connectNotify(self: ptr cQAudioOutput, slot
 
   nimfunc[](slotval1)
 proc QAudioOutputdisconnectNotify*(self: gen_qaudiooutput_types.QAudioOutput, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioOutput_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAudioOutputdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

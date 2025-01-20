@@ -144,67 +144,57 @@ proc fcQTcpSocket_delete(self: pointer) {.importc: "QTcpSocket_delete".}
 func init*(T: type gen_qtcpsocket_types.QTcpSocket, h: ptr cQTcpSocket): gen_qtcpsocket_types.QTcpSocket =
   T(h: h)
 proc create*(T: type gen_qtcpsocket_types.QTcpSocket, ): gen_qtcpsocket_types.QTcpSocket =
-
   gen_qtcpsocket_types.QTcpSocket.init(fcQTcpSocket_new())
+
 proc create*(T: type gen_qtcpsocket_types.QTcpSocket, parent: gen_qobject.QObject): gen_qtcpsocket_types.QTcpSocket =
-
   gen_qtcpsocket_types.QTcpSocket.init(fcQTcpSocket_new2(parent.h))
-proc metaObject*(self: gen_qtcpsocket_types.QTcpSocket, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtcpsocket_types.QTcpSocket, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTcpSocket_metaObject(self.h))
 
 proc metacast*(self: gen_qtcpsocket_types.QTcpSocket, param1: cstring): pointer =
-
   fcQTcpSocket_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtcpsocket_types.QTcpSocket, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTcpSocket_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring): string =
-
   let v_ms = fcQTcpSocket_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring): string =
-
   let v_ms = fcQTcpSocket_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring, c: cstring): string =
   let v_ms = fcQTcpSocket_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTcpSocket_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring, c: cstring): string =
   let v_ms = fcQTcpSocket_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtcpsocket_types.QTcpSocket, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTcpSocket_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QTcpSocketmetaObject*(self: gen_qtcpsocket_types.QTcpSocket, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTcpSocket_virtualbase_metaObject(self.h))
 
 type QTcpSocketmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -222,7 +212,6 @@ proc miqt_exec_callback_QTcpSocket_metaObject(self: ptr cQTcpSocket, slot: int):
 
   virtualReturn.h
 proc QTcpSocketmetacast*(self: gen_qtcpsocket_types.QTcpSocket, param1: cstring): pointer =
-
   fQTcpSocket_virtualbase_metacast(self.h, param1)
 
 type QTcpSocketmetacastProc* = proc(param1: cstring): pointer
@@ -242,7 +231,6 @@ proc miqt_exec_callback_QTcpSocket_metacast(self: ptr cQTcpSocket, slot: int, pa
 
   virtualReturn
 proc QTcpSocketmetacall*(self: gen_qtcpsocket_types.QTcpSocket, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTcpSocket_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTcpSocketmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -266,7 +254,6 @@ proc miqt_exec_callback_QTcpSocket_metacall(self: ptr cQTcpSocket, slot: int, pa
 
   virtualReturn
 proc QTcpSocketresume*(self: gen_qtcpsocket_types.QTcpSocket, ): void =
-
   fQTcpSocket_virtualbase_resume(self.h)
 
 type QTcpSocketresumeProc* = proc(): void
@@ -282,7 +269,6 @@ proc miqt_exec_callback_QTcpSocket_resume(self: ptr cQTcpSocket, slot: int): voi
 
   nimfunc[]()
 proc QTcpSocketconnectToHost*(self: gen_qtcpsocket_types.QTcpSocket, hostName: string, port: cushort, mode: cint, protocol: cint): void =
-
   fQTcpSocket_virtualbase_connectToHost(self.h, struct_miqt_string(data: hostName, len: csize_t(len(hostName))), port, cint(mode), cint(protocol))
 
 type QTcpSocketconnectToHostProc* = proc(hostName: string, port: cushort, mode: cint, protocol: cint): void
@@ -309,7 +295,6 @@ proc miqt_exec_callback_QTcpSocket_connectToHost(self: ptr cQTcpSocket, slot: in
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QTcpSocketdisconnectFromHost*(self: gen_qtcpsocket_types.QTcpSocket, ): void =
-
   fQTcpSocket_virtualbase_disconnectFromHost(self.h)
 
 type QTcpSocketdisconnectFromHostProc* = proc(): void
@@ -325,7 +310,6 @@ proc miqt_exec_callback_QTcpSocket_disconnectFromHost(self: ptr cQTcpSocket, slo
 
   nimfunc[]()
 proc QTcpSocketbytesAvailable*(self: gen_qtcpsocket_types.QTcpSocket, ): clonglong =
-
   fQTcpSocket_virtualbase_bytesAvailable(self.h)
 
 type QTcpSocketbytesAvailableProc* = proc(): clonglong
@@ -343,7 +327,6 @@ proc miqt_exec_callback_QTcpSocket_bytesAvailable(self: ptr cQTcpSocket, slot: i
 
   virtualReturn
 proc QTcpSocketbytesToWrite*(self: gen_qtcpsocket_types.QTcpSocket, ): clonglong =
-
   fQTcpSocket_virtualbase_bytesToWrite(self.h)
 
 type QTcpSocketbytesToWriteProc* = proc(): clonglong
@@ -361,7 +344,6 @@ proc miqt_exec_callback_QTcpSocket_bytesToWrite(self: ptr cQTcpSocket, slot: int
 
   virtualReturn
 proc QTcpSocketcanReadLine*(self: gen_qtcpsocket_types.QTcpSocket, ): bool =
-
   fQTcpSocket_virtualbase_canReadLine(self.h)
 
 type QTcpSocketcanReadLineProc* = proc(): bool
@@ -379,7 +361,6 @@ proc miqt_exec_callback_QTcpSocket_canReadLine(self: ptr cQTcpSocket, slot: int)
 
   virtualReturn
 proc QTcpSocketsetReadBufferSize*(self: gen_qtcpsocket_types.QTcpSocket, size: clonglong): void =
-
   fQTcpSocket_virtualbase_setReadBufferSize(self.h, size)
 
 type QTcpSocketsetReadBufferSizeProc* = proc(size: clonglong): void
@@ -397,7 +378,6 @@ proc miqt_exec_callback_QTcpSocket_setReadBufferSize(self: ptr cQTcpSocket, slot
 
   nimfunc[](slotval1)
 proc QTcpSocketsocketDescriptor*(self: gen_qtcpsocket_types.QTcpSocket, ): uint =
-
   fQTcpSocket_virtualbase_socketDescriptor(self.h)
 
 type QTcpSocketsocketDescriptorProc* = proc(): uint
@@ -415,7 +395,6 @@ proc miqt_exec_callback_QTcpSocket_socketDescriptor(self: ptr cQTcpSocket, slot:
 
   virtualReturn
 proc QTcpSocketsetSocketDescriptor*(self: gen_qtcpsocket_types.QTcpSocket, socketDescriptor: uint, state: cint, openMode: cint): bool =
-
   fQTcpSocket_virtualbase_setSocketDescriptor(self.h, socketDescriptor, cint(state), cint(openMode))
 
 type QTcpSocketsetSocketDescriptorProc* = proc(socketDescriptor: uint, state: cint, openMode: cint): bool
@@ -439,7 +418,6 @@ proc miqt_exec_callback_QTcpSocket_setSocketDescriptor(self: ptr cQTcpSocket, sl
 
   virtualReturn
 proc QTcpSocketsetSocketOption*(self: gen_qtcpsocket_types.QTcpSocket, option: cint, value: gen_qvariant.QVariant): void =
-
   fQTcpSocket_virtualbase_setSocketOption(self.h, cint(option), value.h)
 
 type QTcpSocketsetSocketOptionProc* = proc(option: cint, value: gen_qvariant.QVariant): void
@@ -459,7 +437,6 @@ proc miqt_exec_callback_QTcpSocket_setSocketOption(self: ptr cQTcpSocket, slot: 
 
   nimfunc[](slotval1, slotval2)
 proc QTcpSocketsocketOption*(self: gen_qtcpsocket_types.QTcpSocket, option: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQTcpSocket_virtualbase_socketOption(self.h, cint(option)))
 
 type QTcpSocketsocketOptionProc* = proc(option: cint): gen_qvariant.QVariant
@@ -479,7 +456,6 @@ proc miqt_exec_callback_QTcpSocket_socketOption(self: ptr cQTcpSocket, slot: int
 
   virtualReturn.h
 proc QTcpSocketclose*(self: gen_qtcpsocket_types.QTcpSocket, ): void =
-
   fQTcpSocket_virtualbase_close(self.h)
 
 type QTcpSocketcloseProc* = proc(): void
@@ -495,7 +471,6 @@ proc miqt_exec_callback_QTcpSocket_close(self: ptr cQTcpSocket, slot: int): void
 
   nimfunc[]()
 proc QTcpSocketisSequential*(self: gen_qtcpsocket_types.QTcpSocket, ): bool =
-
   fQTcpSocket_virtualbase_isSequential(self.h)
 
 type QTcpSocketisSequentialProc* = proc(): bool
@@ -513,7 +488,6 @@ proc miqt_exec_callback_QTcpSocket_isSequential(self: ptr cQTcpSocket, slot: int
 
   virtualReturn
 proc QTcpSocketatEnd*(self: gen_qtcpsocket_types.QTcpSocket, ): bool =
-
   fQTcpSocket_virtualbase_atEnd(self.h)
 
 type QTcpSocketatEndProc* = proc(): bool
@@ -531,7 +505,6 @@ proc miqt_exec_callback_QTcpSocket_atEnd(self: ptr cQTcpSocket, slot: int): bool
 
   virtualReturn
 proc QTcpSocketwaitForConnected*(self: gen_qtcpsocket_types.QTcpSocket, msecs: cint): bool =
-
   fQTcpSocket_virtualbase_waitForConnected(self.h, msecs)
 
 type QTcpSocketwaitForConnectedProc* = proc(msecs: cint): bool
@@ -551,7 +524,6 @@ proc miqt_exec_callback_QTcpSocket_waitForConnected(self: ptr cQTcpSocket, slot:
 
   virtualReturn
 proc QTcpSocketwaitForReadyRead*(self: gen_qtcpsocket_types.QTcpSocket, msecs: cint): bool =
-
   fQTcpSocket_virtualbase_waitForReadyRead(self.h, msecs)
 
 type QTcpSocketwaitForReadyReadProc* = proc(msecs: cint): bool
@@ -571,7 +543,6 @@ proc miqt_exec_callback_QTcpSocket_waitForReadyRead(self: ptr cQTcpSocket, slot:
 
   virtualReturn
 proc QTcpSocketwaitForBytesWritten*(self: gen_qtcpsocket_types.QTcpSocket, msecs: cint): bool =
-
   fQTcpSocket_virtualbase_waitForBytesWritten(self.h, msecs)
 
 type QTcpSocketwaitForBytesWrittenProc* = proc(msecs: cint): bool
@@ -591,7 +562,6 @@ proc miqt_exec_callback_QTcpSocket_waitForBytesWritten(self: ptr cQTcpSocket, sl
 
   virtualReturn
 proc QTcpSocketwaitForDisconnected*(self: gen_qtcpsocket_types.QTcpSocket, msecs: cint): bool =
-
   fQTcpSocket_virtualbase_waitForDisconnected(self.h, msecs)
 
 type QTcpSocketwaitForDisconnectedProc* = proc(msecs: cint): bool
@@ -611,7 +581,6 @@ proc miqt_exec_callback_QTcpSocket_waitForDisconnected(self: ptr cQTcpSocket, sl
 
   virtualReturn
 proc QTcpSocketreadData*(self: gen_qtcpsocket_types.QTcpSocket, data: cstring, maxlen: clonglong): clonglong =
-
   fQTcpSocket_virtualbase_readData(self.h, data, maxlen)
 
 type QTcpSocketreadDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
@@ -633,7 +602,6 @@ proc miqt_exec_callback_QTcpSocket_readData(self: ptr cQTcpSocket, slot: int, da
 
   virtualReturn
 proc QTcpSocketreadLineData*(self: gen_qtcpsocket_types.QTcpSocket, data: cstring, maxlen: clonglong): clonglong =
-
   fQTcpSocket_virtualbase_readLineData(self.h, data, maxlen)
 
 type QTcpSocketreadLineDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
@@ -655,7 +623,6 @@ proc miqt_exec_callback_QTcpSocket_readLineData(self: ptr cQTcpSocket, slot: int
 
   virtualReturn
 proc QTcpSocketwriteData*(self: gen_qtcpsocket_types.QTcpSocket, data: cstring, len: clonglong): clonglong =
-
   fQTcpSocket_virtualbase_writeData(self.h, data, len)
 
 type QTcpSocketwriteDataProc* = proc(data: cstring, len: clonglong): clonglong
@@ -677,7 +644,6 @@ proc miqt_exec_callback_QTcpSocket_writeData(self: ptr cQTcpSocket, slot: int, d
 
   virtualReturn
 proc QTcpSocketopen*(self: gen_qtcpsocket_types.QTcpSocket, mode: cint): bool =
-
   fQTcpSocket_virtualbase_open(self.h, cint(mode))
 
 type QTcpSocketopenProc* = proc(mode: cint): bool
@@ -697,7 +663,6 @@ proc miqt_exec_callback_QTcpSocket_open(self: ptr cQTcpSocket, slot: int, mode: 
 
   virtualReturn
 proc QTcpSocketpos*(self: gen_qtcpsocket_types.QTcpSocket, ): clonglong =
-
   fQTcpSocket_virtualbase_pos(self.h)
 
 type QTcpSocketposProc* = proc(): clonglong
@@ -715,7 +680,6 @@ proc miqt_exec_callback_QTcpSocket_pos(self: ptr cQTcpSocket, slot: int): clongl
 
   virtualReturn
 proc QTcpSocketsize*(self: gen_qtcpsocket_types.QTcpSocket, ): clonglong =
-
   fQTcpSocket_virtualbase_size(self.h)
 
 type QTcpSocketsizeProc* = proc(): clonglong
@@ -733,7 +697,6 @@ proc miqt_exec_callback_QTcpSocket_size(self: ptr cQTcpSocket, slot: int): clong
 
   virtualReturn
 proc QTcpSocketseek*(self: gen_qtcpsocket_types.QTcpSocket, pos: clonglong): bool =
-
   fQTcpSocket_virtualbase_seek(self.h, pos)
 
 type QTcpSocketseekProc* = proc(pos: clonglong): bool
@@ -753,7 +716,6 @@ proc miqt_exec_callback_QTcpSocket_seek(self: ptr cQTcpSocket, slot: int, pos: c
 
   virtualReturn
 proc QTcpSocketreset*(self: gen_qtcpsocket_types.QTcpSocket, ): bool =
-
   fQTcpSocket_virtualbase_reset(self.h)
 
 type QTcpSocketresetProc* = proc(): bool
@@ -771,7 +733,6 @@ proc miqt_exec_callback_QTcpSocket_reset(self: ptr cQTcpSocket, slot: int): bool
 
   virtualReturn
 proc QTcpSocketevent*(self: gen_qtcpsocket_types.QTcpSocket, event: gen_qcoreevent.QEvent): bool =
-
   fQTcpSocket_virtualbase_event(self.h, event.h)
 
 type QTcpSocketeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -791,7 +752,6 @@ proc miqt_exec_callback_QTcpSocket_event(self: ptr cQTcpSocket, slot: int, event
 
   virtualReturn
 proc QTcpSocketeventFilter*(self: gen_qtcpsocket_types.QTcpSocket, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTcpSocket_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTcpSocketeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -813,7 +773,6 @@ proc miqt_exec_callback_QTcpSocket_eventFilter(self: ptr cQTcpSocket, slot: int,
 
   virtualReturn
 proc QTcpSockettimerEvent*(self: gen_qtcpsocket_types.QTcpSocket, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTcpSocket_virtualbase_timerEvent(self.h, event.h)
 
 type QTcpSockettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -831,7 +790,6 @@ proc miqt_exec_callback_QTcpSocket_timerEvent(self: ptr cQTcpSocket, slot: int, 
 
   nimfunc[](slotval1)
 proc QTcpSocketchildEvent*(self: gen_qtcpsocket_types.QTcpSocket, event: gen_qcoreevent.QChildEvent): void =
-
   fQTcpSocket_virtualbase_childEvent(self.h, event.h)
 
 type QTcpSocketchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -849,7 +807,6 @@ proc miqt_exec_callback_QTcpSocket_childEvent(self: ptr cQTcpSocket, slot: int, 
 
   nimfunc[](slotval1)
 proc QTcpSocketcustomEvent*(self: gen_qtcpsocket_types.QTcpSocket, event: gen_qcoreevent.QEvent): void =
-
   fQTcpSocket_virtualbase_customEvent(self.h, event.h)
 
 type QTcpSocketcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -867,7 +824,6 @@ proc miqt_exec_callback_QTcpSocket_customEvent(self: ptr cQTcpSocket, slot: int,
 
   nimfunc[](slotval1)
 proc QTcpSocketconnectNotify*(self: gen_qtcpsocket_types.QTcpSocket, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTcpSocket_virtualbase_connectNotify(self.h, signal.h)
 
 type QTcpSocketconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -885,7 +841,6 @@ proc miqt_exec_callback_QTcpSocket_connectNotify(self: ptr cQTcpSocket, slot: in
 
   nimfunc[](slotval1)
 proc QTcpSocketdisconnectNotify*(self: gen_qtcpsocket_types.QTcpSocket, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTcpSocket_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTcpSocketdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

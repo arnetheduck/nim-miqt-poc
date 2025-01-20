@@ -204,88 +204,76 @@ proc fcQPrintPreviewDialog_delete(self: pointer) {.importc: "QPrintPreviewDialog
 func init*(T: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, h: ptr cQPrintPreviewDialog): gen_qprintpreviewdialog_types.QPrintPreviewDialog =
   T(h: h)
 proc create*(T: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, parent: gen_qwidget.QWidget): gen_qprintpreviewdialog_types.QPrintPreviewDialog =
-
   gen_qprintpreviewdialog_types.QPrintPreviewDialog.init(fcQPrintPreviewDialog_new(parent.h))
+
 proc create*(T: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): gen_qprintpreviewdialog_types.QPrintPreviewDialog =
-
   gen_qprintpreviewdialog_types.QPrintPreviewDialog.init(fcQPrintPreviewDialog_new2())
-proc create2*(T: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, printer: gen_qprinter.QPrinter): gen_qprintpreviewdialog_types.QPrintPreviewDialog =
 
+proc create*(T: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, printer: gen_qprinter.QPrinter): gen_qprintpreviewdialog_types.QPrintPreviewDialog =
   gen_qprintpreviewdialog_types.QPrintPreviewDialog.init(fcQPrintPreviewDialog_new3(printer.h))
+
 proc create*(T: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, parent: gen_qwidget.QWidget, flags: cint): gen_qprintpreviewdialog_types.QPrintPreviewDialog =
-
   gen_qprintpreviewdialog_types.QPrintPreviewDialog.init(fcQPrintPreviewDialog_new4(parent.h, cint(flags)))
+
 proc create*(T: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, printer: gen_qprinter.QPrinter, parent: gen_qwidget.QWidget): gen_qprintpreviewdialog_types.QPrintPreviewDialog =
-
   gen_qprintpreviewdialog_types.QPrintPreviewDialog.init(fcQPrintPreviewDialog_new5(printer.h, parent.h))
+
 proc create*(T: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, printer: gen_qprinter.QPrinter, parent: gen_qwidget.QWidget, flags: cint): gen_qprintpreviewdialog_types.QPrintPreviewDialog =
-
   gen_qprintpreviewdialog_types.QPrintPreviewDialog.init(fcQPrintPreviewDialog_new6(printer.h, parent.h, cint(flags)))
-proc metaObject*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPrintPreviewDialog_metaObject(self.h))
 
 proc metacast*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: cstring): pointer =
-
   fcQPrintPreviewDialog_metacast(self.h, param1)
 
 proc metacall*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQPrintPreviewDialog_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, s: cstring): string =
-
   let v_ms = fcQPrintPreviewDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc printer*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): gen_qprinter.QPrinter =
-
   gen_qprinter.QPrinter(h: fcQPrintPreviewDialog_printer(self.h))
 
 proc setVisible*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, visible: bool): void =
-
   fcQPrintPreviewDialog_setVisible(self.h, visible)
 
 proc done*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, resultVal: cint): void =
-
   fcQPrintPreviewDialog_done(self.h, resultVal)
 
 proc paintRequested*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, printer: gen_qprinter.QPrinter): void =
-
   fcQPrintPreviewDialog_paintRequested(self.h, printer.h)
 
+type QPrintPreviewDialogpaintRequestedSlot* = proc(printer: gen_qprinter.QPrinter)
 proc miqt_exec_callback_QPrintPreviewDialog_paintRequested(slot: int, printer: pointer) {.exportc.} =
-  type Cb = proc(printer: gen_qprinter.QPrinter)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QPrintPreviewDialogpaintRequestedSlot](cast[pointer](slot))
   let slotval1 = gen_qprinter.QPrinter(h: printer)
-
 
   nimfunc[](slotval1)
 
-proc onpaintRequested*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, slot: proc(printer: gen_qprinter.QPrinter)) =
-  type Cb = proc(printer: gen_qprinter.QPrinter)
-  var tmp = new Cb
+proc onpaintRequested*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, slot: QPrintPreviewDialogpaintRequestedSlot) =
+  var tmp = new QPrintPreviewDialogpaintRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQPrintPreviewDialog_connect_paintRequested(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, s: cstring, c: cstring): string =
   let v_ms = fcQPrintPreviewDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qprintpreviewdialog_types.QPrintPreviewDialog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPrintPreviewDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QPrintPreviewDialogmetaObject*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQPrintPreviewDialog_virtualbase_metaObject(self.h))
 
 type QPrintPreviewDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -303,7 +291,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_metaObject(self: ptr cQPrintPreviewD
 
   virtualReturn.h
 proc QPrintPreviewDialogmetacast*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: cstring): pointer =
-
   fQPrintPreviewDialog_virtualbase_metacast(self.h, param1)
 
 type QPrintPreviewDialogmetacastProc* = proc(param1: cstring): pointer
@@ -323,7 +310,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_metacast(self: ptr cQPrintPreviewDia
 
   virtualReturn
 proc QPrintPreviewDialogmetacall*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fQPrintPreviewDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QPrintPreviewDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -347,7 +333,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_metacall(self: ptr cQPrintPreviewDia
 
   virtualReturn
 proc QPrintPreviewDialogsetVisible*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, visible: bool): void =
-
   fQPrintPreviewDialog_virtualbase_setVisible(self.h, visible)
 
 type QPrintPreviewDialogsetVisibleProc* = proc(visible: bool): void
@@ -365,7 +350,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_setVisible(self: ptr cQPrintPreviewD
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogdone*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, resultVal: cint): void =
-
   fQPrintPreviewDialog_virtualbase_done(self.h, resultVal)
 
 type QPrintPreviewDialogdoneProc* = proc(resultVal: cint): void
@@ -383,7 +367,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_done(self: ptr cQPrintPreviewDialog,
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogsizeHint*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQPrintPreviewDialog_virtualbase_sizeHint(self.h))
 
 type QPrintPreviewDialogsizeHintProc* = proc(): gen_qsize.QSize
@@ -401,7 +384,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_sizeHint(self: ptr cQPrintPreviewDia
 
   virtualReturn.h
 proc QPrintPreviewDialogminimumSizeHint*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQPrintPreviewDialog_virtualbase_minimumSizeHint(self.h))
 
 type QPrintPreviewDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -419,7 +401,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_minimumSizeHint(self: ptr cQPrintPre
 
   virtualReturn.h
 proc QPrintPreviewDialogopen*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): void =
-
   fQPrintPreviewDialog_virtualbase_open(self.h)
 
 type QPrintPreviewDialogopenProc* = proc(): void
@@ -435,7 +416,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_open(self: ptr cQPrintPreviewDialog,
 
   nimfunc[]()
 proc QPrintPreviewDialogexec*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): cint =
-
   fQPrintPreviewDialog_virtualbase_exec(self.h)
 
 type QPrintPreviewDialogexecProc* = proc(): cint
@@ -453,7 +433,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_exec(self: ptr cQPrintPreviewDialog,
 
   virtualReturn
 proc QPrintPreviewDialogaccept*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): void =
-
   fQPrintPreviewDialog_virtualbase_accept(self.h)
 
 type QPrintPreviewDialogacceptProc* = proc(): void
@@ -469,7 +448,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_accept(self: ptr cQPrintPreviewDialo
 
   nimfunc[]()
 proc QPrintPreviewDialogreject*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): void =
-
   fQPrintPreviewDialog_virtualbase_reject(self.h)
 
 type QPrintPreviewDialogrejectProc* = proc(): void
@@ -485,7 +463,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_reject(self: ptr cQPrintPreviewDialo
 
   nimfunc[]()
 proc QPrintPreviewDialogkeyPressEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: gen_qevent.QKeyEvent): void =
-
   fQPrintPreviewDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QPrintPreviewDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -503,7 +480,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_keyPressEvent(self: ptr cQPrintPrevi
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogcloseEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: gen_qevent.QCloseEvent): void =
-
   fQPrintPreviewDialog_virtualbase_closeEvent(self.h, param1.h)
 
 type QPrintPreviewDialogcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
@@ -521,7 +497,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_closeEvent(self: ptr cQPrintPreviewD
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogshowEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: gen_qevent.QShowEvent): void =
-
   fQPrintPreviewDialog_virtualbase_showEvent(self.h, param1.h)
 
 type QPrintPreviewDialogshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -539,7 +514,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_showEvent(self: ptr cQPrintPreviewDi
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogresizeEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: gen_qevent.QResizeEvent): void =
-
   fQPrintPreviewDialog_virtualbase_resizeEvent(self.h, param1.h)
 
 type QPrintPreviewDialogresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -557,7 +531,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_resizeEvent(self: ptr cQPrintPreview
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogcontextMenuEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: gen_qevent.QContextMenuEvent): void =
-
   fQPrintPreviewDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QPrintPreviewDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -575,7 +548,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_contextMenuEvent(self: ptr cQPrintPr
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogeventFilter*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQPrintPreviewDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QPrintPreviewDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -597,7 +569,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_eventFilter(self: ptr cQPrintPreview
 
   virtualReturn
 proc QPrintPreviewDialogdevType*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): cint =
-
   fQPrintPreviewDialog_virtualbase_devType(self.h)
 
 type QPrintPreviewDialogdevTypeProc* = proc(): cint
@@ -615,7 +586,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_devType(self: ptr cQPrintPreviewDial
 
   virtualReturn
 proc QPrintPreviewDialogheightForWidth*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: cint): cint =
-
   fQPrintPreviewDialog_virtualbase_heightForWidth(self.h, param1)
 
 type QPrintPreviewDialogheightForWidthProc* = proc(param1: cint): cint
@@ -635,7 +605,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_heightForWidth(self: ptr cQPrintPrev
 
   virtualReturn
 proc QPrintPreviewDialoghasHeightForWidth*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): bool =
-
   fQPrintPreviewDialog_virtualbase_hasHeightForWidth(self.h)
 
 type QPrintPreviewDialoghasHeightForWidthProc* = proc(): bool
@@ -653,7 +622,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_hasHeightForWidth(self: ptr cQPrintP
 
   virtualReturn
 proc QPrintPreviewDialogpaintEngine*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQPrintPreviewDialog_virtualbase_paintEngine(self.h))
 
 type QPrintPreviewDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -671,7 +639,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_paintEngine(self: ptr cQPrintPreview
 
   virtualReturn.h
 proc QPrintPreviewDialogevent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qcoreevent.QEvent): bool =
-
   fQPrintPreviewDialog_virtualbase_event(self.h, event.h)
 
 type QPrintPreviewDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -691,7 +658,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_event(self: ptr cQPrintPreviewDialog
 
   virtualReturn
 proc QPrintPreviewDialogmousePressEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QMouseEvent): void =
-
   fQPrintPreviewDialog_virtualbase_mousePressEvent(self.h, event.h)
 
 type QPrintPreviewDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -709,7 +675,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_mousePressEvent(self: ptr cQPrintPre
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogmouseReleaseEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QMouseEvent): void =
-
   fQPrintPreviewDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QPrintPreviewDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -727,7 +692,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_mouseReleaseEvent(self: ptr cQPrintP
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogmouseDoubleClickEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QMouseEvent): void =
-
   fQPrintPreviewDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QPrintPreviewDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -745,7 +709,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_mouseDoubleClickEvent(self: ptr cQPr
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogmouseMoveEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QMouseEvent): void =
-
   fQPrintPreviewDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QPrintPreviewDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -763,7 +726,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_mouseMoveEvent(self: ptr cQPrintPrev
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogwheelEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QWheelEvent): void =
-
   fQPrintPreviewDialog_virtualbase_wheelEvent(self.h, event.h)
 
 type QPrintPreviewDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -781,7 +743,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_wheelEvent(self: ptr cQPrintPreviewD
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogkeyReleaseEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QKeyEvent): void =
-
   fQPrintPreviewDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QPrintPreviewDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -799,7 +760,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_keyReleaseEvent(self: ptr cQPrintPre
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogfocusInEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QFocusEvent): void =
-
   fQPrintPreviewDialog_virtualbase_focusInEvent(self.h, event.h)
 
 type QPrintPreviewDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -817,7 +777,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_focusInEvent(self: ptr cQPrintPrevie
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogfocusOutEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QFocusEvent): void =
-
   fQPrintPreviewDialog_virtualbase_focusOutEvent(self.h, event.h)
 
 type QPrintPreviewDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -835,7 +794,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_focusOutEvent(self: ptr cQPrintPrevi
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogenterEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QEnterEvent): void =
-
   fQPrintPreviewDialog_virtualbase_enterEvent(self.h, event.h)
 
 type QPrintPreviewDialogenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -853,7 +811,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_enterEvent(self: ptr cQPrintPreviewD
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogleaveEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qcoreevent.QEvent): void =
-
   fQPrintPreviewDialog_virtualbase_leaveEvent(self.h, event.h)
 
 type QPrintPreviewDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -871,7 +828,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_leaveEvent(self: ptr cQPrintPreviewD
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogpaintEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QPaintEvent): void =
-
   fQPrintPreviewDialog_virtualbase_paintEvent(self.h, event.h)
 
 type QPrintPreviewDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -889,7 +845,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_paintEvent(self: ptr cQPrintPreviewD
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogmoveEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QMoveEvent): void =
-
   fQPrintPreviewDialog_virtualbase_moveEvent(self.h, event.h)
 
 type QPrintPreviewDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -907,7 +862,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_moveEvent(self: ptr cQPrintPreviewDi
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogtabletEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QTabletEvent): void =
-
   fQPrintPreviewDialog_virtualbase_tabletEvent(self.h, event.h)
 
 type QPrintPreviewDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -925,7 +879,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_tabletEvent(self: ptr cQPrintPreview
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogactionEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QActionEvent): void =
-
   fQPrintPreviewDialog_virtualbase_actionEvent(self.h, event.h)
 
 type QPrintPreviewDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -943,7 +896,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_actionEvent(self: ptr cQPrintPreview
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogdragEnterEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QDragEnterEvent): void =
-
   fQPrintPreviewDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QPrintPreviewDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -961,7 +913,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_dragEnterEvent(self: ptr cQPrintPrev
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogdragMoveEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QDragMoveEvent): void =
-
   fQPrintPreviewDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QPrintPreviewDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -979,7 +930,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_dragMoveEvent(self: ptr cQPrintPrevi
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogdragLeaveEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QDragLeaveEvent): void =
-
   fQPrintPreviewDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QPrintPreviewDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -997,7 +947,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_dragLeaveEvent(self: ptr cQPrintPrev
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogdropEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QDropEvent): void =
-
   fQPrintPreviewDialog_virtualbase_dropEvent(self.h, event.h)
 
 type QPrintPreviewDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1015,7 +964,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_dropEvent(self: ptr cQPrintPreviewDi
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialoghideEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qevent.QHideEvent): void =
-
   fQPrintPreviewDialog_virtualbase_hideEvent(self.h, event.h)
 
 type QPrintPreviewDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1033,7 +981,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_hideEvent(self: ptr cQPrintPreviewDi
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialognativeEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQPrintPreviewDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QPrintPreviewDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1060,7 +1007,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_nativeEvent(self: ptr cQPrintPreview
 
   virtualReturn
 proc QPrintPreviewDialogchangeEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: gen_qcoreevent.QEvent): void =
-
   fQPrintPreviewDialog_virtualbase_changeEvent(self.h, param1.h)
 
 type QPrintPreviewDialogchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1078,7 +1024,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_changeEvent(self: ptr cQPrintPreview
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogmetric*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: cint): cint =
-
   fQPrintPreviewDialog_virtualbase_metric(self.h, cint(param1))
 
 type QPrintPreviewDialogmetricProc* = proc(param1: cint): cint
@@ -1098,7 +1043,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_metric(self: ptr cQPrintPreviewDialo
 
   virtualReturn
 proc QPrintPreviewDialoginitPainter*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, painter: gen_qpainter.QPainter): void =
-
   fQPrintPreviewDialog_virtualbase_initPainter(self.h, painter.h)
 
 type QPrintPreviewDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1116,7 +1060,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_initPainter(self: ptr cQPrintPreview
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogredirected*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQPrintPreviewDialog_virtualbase_redirected(self.h, offset.h))
 
 type QPrintPreviewDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1136,7 +1079,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_redirected(self: ptr cQPrintPreviewD
 
   virtualReturn.h
 proc QPrintPreviewDialogsharedPainter*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQPrintPreviewDialog_virtualbase_sharedPainter(self.h))
 
 type QPrintPreviewDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1154,7 +1096,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_sharedPainter(self: ptr cQPrintPrevi
 
   virtualReturn.h
 proc QPrintPreviewDialoginputMethodEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: gen_qevent.QInputMethodEvent): void =
-
   fQPrintPreviewDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QPrintPreviewDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1172,7 +1113,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_inputMethodEvent(self: ptr cQPrintPr
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialoginputMethodQuery*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQPrintPreviewDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QPrintPreviewDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1192,7 +1132,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_inputMethodQuery(self: ptr cQPrintPr
 
   virtualReturn.h
 proc QPrintPreviewDialogfocusNextPrevChild*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, next: bool): bool =
-
   fQPrintPreviewDialog_virtualbase_focusNextPrevChild(self.h, next)
 
 type QPrintPreviewDialogfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1212,7 +1151,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_focusNextPrevChild(self: ptr cQPrint
 
   virtualReturn
 proc QPrintPreviewDialogtimerEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qcoreevent.QTimerEvent): void =
-
   fQPrintPreviewDialog_virtualbase_timerEvent(self.h, event.h)
 
 type QPrintPreviewDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1230,7 +1168,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_timerEvent(self: ptr cQPrintPreviewD
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogchildEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qcoreevent.QChildEvent): void =
-
   fQPrintPreviewDialog_virtualbase_childEvent(self.h, event.h)
 
 type QPrintPreviewDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1248,7 +1185,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_childEvent(self: ptr cQPrintPreviewD
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogcustomEvent*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, event: gen_qcoreevent.QEvent): void =
-
   fQPrintPreviewDialog_virtualbase_customEvent(self.h, event.h)
 
 type QPrintPreviewDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1266,7 +1202,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_customEvent(self: ptr cQPrintPreview
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogconnectNotify*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPrintPreviewDialog_virtualbase_connectNotify(self.h, signal.h)
 
 type QPrintPreviewDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1284,7 +1219,6 @@ proc miqt_exec_callback_QPrintPreviewDialog_connectNotify(self: ptr cQPrintPrevi
 
   nimfunc[](slotval1)
 proc QPrintPreviewDialogdisconnectNotify*(self: gen_qprintpreviewdialog_types.QPrintPreviewDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPrintPreviewDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QPrintPreviewDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

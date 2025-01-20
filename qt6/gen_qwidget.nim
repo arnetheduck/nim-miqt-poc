@@ -513,10 +513,9 @@ proc fcQWidget_delete(self: pointer) {.importc: "QWidget_delete".}
 func init*(T: type gen_qwidget_types.QWidgetData, h: ptr cQWidgetData): gen_qwidget_types.QWidgetData =
   T(h: h)
 proc create*(T: type gen_qwidget_types.QWidgetData, param1: gen_qwidget_types.QWidgetData): gen_qwidget_types.QWidgetData =
-
   gen_qwidget_types.QWidgetData.init(fcQWidgetData_new(param1.h))
-proc operatorAssign*(self: gen_qwidget_types.QWidgetData, param1: gen_qwidget_types.QWidgetData): void =
 
+proc operatorAssign*(self: gen_qwidget_types.QWidgetData, param1: gen_qwidget_types.QWidgetData): void =
   fcQWidgetData_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qwidget_types.QWidgetData) =
@@ -525,960 +524,732 @@ proc delete*(self: gen_qwidget_types.QWidgetData) =
 func init*(T: type gen_qwidget_types.QWidget, h: ptr cQWidget): gen_qwidget_types.QWidget =
   T(h: h)
 proc create*(T: type gen_qwidget_types.QWidget, parent: gen_qwidget_types.QWidget): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget.init(fcQWidget_new(parent.h))
+
 proc create*(T: type gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget.init(fcQWidget_new2())
+
 proc create*(T: type gen_qwidget_types.QWidget, parent: gen_qwidget_types.QWidget, f: cint): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget.init(fcQWidget_new3(parent.h, cint(f)))
-proc metaObject*(self: gen_qwidget_types.QWidget, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qwidget_types.QWidget, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWidget_metaObject(self.h))
 
 proc metacast*(self: gen_qwidget_types.QWidget, param1: cstring): pointer =
-
   fcQWidget_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwidget_types.QWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWidget_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwidget_types.QWidget, s: cstring): string =
-
   let v_ms = fcQWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc devType*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_devType(self.h)
 
 proc winId*(self: gen_qwidget_types.QWidget, ): uint =
-
   fcQWidget_winId(self.h)
 
 proc createWinId*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_createWinId(self.h)
 
 proc internalWinId*(self: gen_qwidget_types.QWidget, ): uint =
-
   fcQWidget_internalWinId(self.h)
 
 proc effectiveWinId*(self: gen_qwidget_types.QWidget, ): uint =
-
   fcQWidget_effectiveWinId(self.h)
 
 proc style*(self: gen_qwidget_types.QWidget, ): gen_qstyle.QStyle =
-
   gen_qstyle.QStyle(h: fcQWidget_style(self.h))
 
 proc setStyle*(self: gen_qwidget_types.QWidget, style: gen_qstyle.QStyle): void =
-
   fcQWidget_setStyle(self.h, style.h)
 
 proc isTopLevel*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isTopLevel(self.h)
 
 proc isWindow*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isWindow(self.h)
 
 proc isModal*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isModal(self.h)
 
 proc windowModality*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_windowModality(self.h))
 
 proc setWindowModality*(self: gen_qwidget_types.QWidget, windowModality: cint): void =
-
   fcQWidget_setWindowModality(self.h, cint(windowModality))
 
 proc isEnabled*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isEnabled(self.h)
 
 proc isEnabledTo*(self: gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget): bool =
-
   fcQWidget_isEnabledTo(self.h, param1.h)
 
 proc setEnabled*(self: gen_qwidget_types.QWidget, enabled: bool): void =
-
   fcQWidget_setEnabled(self.h, enabled)
 
 proc setDisabled*(self: gen_qwidget_types.QWidget, disabled: bool): void =
-
   fcQWidget_setDisabled(self.h, disabled)
 
 proc setWindowModified*(self: gen_qwidget_types.QWidget, windowModified: bool): void =
-
   fcQWidget_setWindowModified(self.h, windowModified)
 
 proc frameGeometry*(self: gen_qwidget_types.QWidget, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQWidget_frameGeometry(self.h))
 
 proc geometry*(self: gen_qwidget_types.QWidget, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQWidget_geometry(self.h))
 
 proc normalGeometry*(self: gen_qwidget_types.QWidget, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQWidget_normalGeometry(self.h))
 
 proc x*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_x(self.h)
 
 proc y*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_y(self.h)
 
 proc pos*(self: gen_qwidget_types.QWidget, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQWidget_pos(self.h))
 
 proc frameSize*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidget_frameSize(self.h))
 
 proc size*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidget_size(self.h))
 
 proc width*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_width(self.h)
 
 proc height*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_height(self.h)
 
 proc rect*(self: gen_qwidget_types.QWidget, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQWidget_rect(self.h))
 
 proc childrenRect*(self: gen_qwidget_types.QWidget, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQWidget_childrenRect(self.h))
 
 proc childrenRegion*(self: gen_qwidget_types.QWidget, ): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fcQWidget_childrenRegion(self.h))
 
 proc minimumSize*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidget_minimumSize(self.h))
 
 proc maximumSize*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidget_maximumSize(self.h))
 
 proc minimumWidth*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_minimumWidth(self.h)
 
 proc minimumHeight*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_minimumHeight(self.h)
 
 proc maximumWidth*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_maximumWidth(self.h)
 
 proc maximumHeight*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_maximumHeight(self.h)
 
 proc setMinimumSize*(self: gen_qwidget_types.QWidget, minimumSize: gen_qsize.QSize): void =
-
   fcQWidget_setMinimumSize(self.h, minimumSize.h)
 
-proc setMinimumSize2*(self: gen_qwidget_types.QWidget, minw: cint, minh: cint): void =
-
+proc setMinimumSize*(self: gen_qwidget_types.QWidget, minw: cint, minh: cint): void =
   fcQWidget_setMinimumSize2(self.h, minw, minh)
 
 proc setMaximumSize*(self: gen_qwidget_types.QWidget, maximumSize: gen_qsize.QSize): void =
-
   fcQWidget_setMaximumSize(self.h, maximumSize.h)
 
-proc setMaximumSize2*(self: gen_qwidget_types.QWidget, maxw: cint, maxh: cint): void =
-
+proc setMaximumSize*(self: gen_qwidget_types.QWidget, maxw: cint, maxh: cint): void =
   fcQWidget_setMaximumSize2(self.h, maxw, maxh)
 
 proc setMinimumWidth*(self: gen_qwidget_types.QWidget, minw: cint): void =
-
   fcQWidget_setMinimumWidth(self.h, minw)
 
 proc setMinimumHeight*(self: gen_qwidget_types.QWidget, minh: cint): void =
-
   fcQWidget_setMinimumHeight(self.h, minh)
 
 proc setMaximumWidth*(self: gen_qwidget_types.QWidget, maxw: cint): void =
-
   fcQWidget_setMaximumWidth(self.h, maxw)
 
 proc setMaximumHeight*(self: gen_qwidget_types.QWidget, maxh: cint): void =
-
   fcQWidget_setMaximumHeight(self.h, maxh)
 
 proc sizeIncrement*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidget_sizeIncrement(self.h))
 
 proc setSizeIncrement*(self: gen_qwidget_types.QWidget, sizeIncrement: gen_qsize.QSize): void =
-
   fcQWidget_setSizeIncrement(self.h, sizeIncrement.h)
 
-proc setSizeIncrement2*(self: gen_qwidget_types.QWidget, w: cint, h: cint): void =
-
+proc setSizeIncrement*(self: gen_qwidget_types.QWidget, w: cint, h: cint): void =
   fcQWidget_setSizeIncrement2(self.h, w, h)
 
 proc baseSize*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidget_baseSize(self.h))
 
 proc setBaseSize*(self: gen_qwidget_types.QWidget, baseSize: gen_qsize.QSize): void =
-
   fcQWidget_setBaseSize(self.h, baseSize.h)
 
-proc setBaseSize2*(self: gen_qwidget_types.QWidget, basew: cint, baseh: cint): void =
-
+proc setBaseSize*(self: gen_qwidget_types.QWidget, basew: cint, baseh: cint): void =
   fcQWidget_setBaseSize2(self.h, basew, baseh)
 
 proc setFixedSize*(self: gen_qwidget_types.QWidget, fixedSize: gen_qsize.QSize): void =
-
   fcQWidget_setFixedSize(self.h, fixedSize.h)
 
-proc setFixedSize2*(self: gen_qwidget_types.QWidget, w: cint, h: cint): void =
-
+proc setFixedSize*(self: gen_qwidget_types.QWidget, w: cint, h: cint): void =
   fcQWidget_setFixedSize2(self.h, w, h)
 
 proc setFixedWidth*(self: gen_qwidget_types.QWidget, w: cint): void =
-
   fcQWidget_setFixedWidth(self.h, w)
 
 proc setFixedHeight*(self: gen_qwidget_types.QWidget, h: cint): void =
-
   fcQWidget_setFixedHeight(self.h, h)
 
 proc mapToGlobal*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQWidget_mapToGlobal(self.h, param1.h))
 
-proc mapToGlobalWithQPoint*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): gen_qpoint.QPoint =
-
+proc mapToGlobal*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): gen_qpoint.QPoint =
   gen_qpoint.QPoint(h: fcQWidget_mapToGlobalWithQPoint(self.h, param1.h))
 
 proc mapFromGlobal*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQWidget_mapFromGlobal(self.h, param1.h))
 
-proc mapFromGlobalWithQPoint*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): gen_qpoint.QPoint =
-
+proc mapFromGlobal*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): gen_qpoint.QPoint =
   gen_qpoint.QPoint(h: fcQWidget_mapFromGlobalWithQPoint(self.h, param1.h))
 
 proc mapToParent*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQWidget_mapToParent(self.h, param1.h))
 
-proc mapToParentWithQPoint*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): gen_qpoint.QPoint =
-
+proc mapToParent*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): gen_qpoint.QPoint =
   gen_qpoint.QPoint(h: fcQWidget_mapToParentWithQPoint(self.h, param1.h))
 
 proc mapFromParent*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQWidget_mapFromParent(self.h, param1.h))
 
-proc mapFromParentWithQPoint*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): gen_qpoint.QPoint =
-
+proc mapFromParent*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): gen_qpoint.QPoint =
   gen_qpoint.QPoint(h: fcQWidget_mapFromParentWithQPoint(self.h, param1.h))
 
 proc mapTo*(self: gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget, param2: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQWidget_mapTo(self.h, param1.h, param2.h))
 
-proc mapTo2*(self: gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget, param2: gen_qpoint.QPoint): gen_qpoint.QPoint =
-
+proc mapTo*(self: gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget, param2: gen_qpoint.QPoint): gen_qpoint.QPoint =
   gen_qpoint.QPoint(h: fcQWidget_mapTo2(self.h, param1.h, param2.h))
 
 proc mapFrom*(self: gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget, param2: gen_qpoint.QPointF): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQWidget_mapFrom(self.h, param1.h, param2.h))
 
-proc mapFrom2*(self: gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget, param2: gen_qpoint.QPoint): gen_qpoint.QPoint =
-
+proc mapFrom*(self: gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget, param2: gen_qpoint.QPoint): gen_qpoint.QPoint =
   gen_qpoint.QPoint(h: fcQWidget_mapFrom2(self.h, param1.h, param2.h))
 
 proc window*(self: gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_window(self.h))
 
 proc nativeParentWidget*(self: gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_nativeParentWidget(self.h))
 
 proc topLevelWidget*(self: gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_topLevelWidget(self.h))
 
 proc palette*(self: gen_qwidget_types.QWidget, ): gen_qpalette.QPalette =
-
   gen_qpalette.QPalette(h: fcQWidget_palette(self.h))
 
 proc setPalette*(self: gen_qwidget_types.QWidget, palette: gen_qpalette.QPalette): void =
-
   fcQWidget_setPalette(self.h, palette.h)
 
 proc setBackgroundRole*(self: gen_qwidget_types.QWidget, backgroundRole: cint): void =
-
   fcQWidget_setBackgroundRole(self.h, cint(backgroundRole))
 
 proc backgroundRole*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_backgroundRole(self.h))
 
 proc setForegroundRole*(self: gen_qwidget_types.QWidget, foregroundRole: cint): void =
-
   fcQWidget_setForegroundRole(self.h, cint(foregroundRole))
 
 proc foregroundRole*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_foregroundRole(self.h))
 
 proc font*(self: gen_qwidget_types.QWidget, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQWidget_font(self.h))
 
 proc setFont*(self: gen_qwidget_types.QWidget, font: gen_qfont.QFont): void =
-
   fcQWidget_setFont(self.h, font.h)
 
 proc fontMetrics*(self: gen_qwidget_types.QWidget, ): gen_qfontmetrics.QFontMetrics =
-
   gen_qfontmetrics.QFontMetrics(h: fcQWidget_fontMetrics(self.h))
 
 proc fontInfo*(self: gen_qwidget_types.QWidget, ): gen_qfontinfo.QFontInfo =
-
   gen_qfontinfo.QFontInfo(h: fcQWidget_fontInfo(self.h))
 
 proc cursor*(self: gen_qwidget_types.QWidget, ): gen_qcursor.QCursor =
-
   gen_qcursor.QCursor(h: fcQWidget_cursor(self.h))
 
 proc setCursor*(self: gen_qwidget_types.QWidget, cursor: gen_qcursor.QCursor): void =
-
   fcQWidget_setCursor(self.h, cursor.h)
 
 proc unsetCursor*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_unsetCursor(self.h)
 
 proc setMouseTracking*(self: gen_qwidget_types.QWidget, enable: bool): void =
-
   fcQWidget_setMouseTracking(self.h, enable)
 
 proc hasMouseTracking*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_hasMouseTracking(self.h)
 
 proc underMouse*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_underMouse(self.h)
 
 proc setTabletTracking*(self: gen_qwidget_types.QWidget, enable: bool): void =
-
   fcQWidget_setTabletTracking(self.h, enable)
 
 proc hasTabletTracking*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_hasTabletTracking(self.h)
 
 proc setMask*(self: gen_qwidget_types.QWidget, mask: gen_qbitmap.QBitmap): void =
-
   fcQWidget_setMask(self.h, mask.h)
 
-proc setMaskWithMask*(self: gen_qwidget_types.QWidget, mask: gen_qregion.QRegion): void =
-
+proc setMask*(self: gen_qwidget_types.QWidget, mask: gen_qregion.QRegion): void =
   fcQWidget_setMaskWithMask(self.h, mask.h)
 
 proc mask*(self: gen_qwidget_types.QWidget, ): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fcQWidget_mask(self.h))
 
 proc clearMask*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_clearMask(self.h)
 
 proc render*(self: gen_qwidget_types.QWidget, target: gen_qpaintdevice.QPaintDevice): void =
-
   fcQWidget_render(self.h, target.h)
 
-proc renderWithPainter*(self: gen_qwidget_types.QWidget, painter: gen_qpainter.QPainter): void =
-
+proc render*(self: gen_qwidget_types.QWidget, painter: gen_qpainter.QPainter): void =
   fcQWidget_renderWithPainter(self.h, painter.h)
 
 proc grab*(self: gen_qwidget_types.QWidget, ): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQWidget_grab(self.h))
 
 proc graphicsEffect*(self: gen_qwidget_types.QWidget, ): gen_qgraphicseffect.QGraphicsEffect =
-
   gen_qgraphicseffect.QGraphicsEffect(h: fcQWidget_graphicsEffect(self.h))
 
 proc setGraphicsEffect*(self: gen_qwidget_types.QWidget, effect: gen_qgraphicseffect.QGraphicsEffect): void =
-
   fcQWidget_setGraphicsEffect(self.h, effect.h)
 
 proc grabGesture*(self: gen_qwidget_types.QWidget, typeVal: cint): void =
-
   fcQWidget_grabGesture(self.h, cint(typeVal))
 
 proc ungrabGesture*(self: gen_qwidget_types.QWidget, typeVal: cint): void =
-
   fcQWidget_ungrabGesture(self.h, cint(typeVal))
 
 proc setWindowTitle*(self: gen_qwidget_types.QWidget, windowTitle: string): void =
-
   fcQWidget_setWindowTitle(self.h, struct_miqt_string(data: windowTitle, len: csize_t(len(windowTitle))))
 
 proc setStyleSheet*(self: gen_qwidget_types.QWidget, styleSheet: string): void =
-
   fcQWidget_setStyleSheet(self.h, struct_miqt_string(data: styleSheet, len: csize_t(len(styleSheet))))
 
 proc styleSheet*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_styleSheet(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc windowTitle*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_windowTitle(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWindowIcon*(self: gen_qwidget_types.QWidget, icon: gen_qicon.QIcon): void =
-
   fcQWidget_setWindowIcon(self.h, icon.h)
 
 proc windowIcon*(self: gen_qwidget_types.QWidget, ): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQWidget_windowIcon(self.h))
 
 proc setWindowIconText*(self: gen_qwidget_types.QWidget, windowIconText: string): void =
-
   fcQWidget_setWindowIconText(self.h, struct_miqt_string(data: windowIconText, len: csize_t(len(windowIconText))))
 
 proc windowIconText*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_windowIconText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWindowRole*(self: gen_qwidget_types.QWidget, windowRole: string): void =
-
   fcQWidget_setWindowRole(self.h, struct_miqt_string(data: windowRole, len: csize_t(len(windowRole))))
 
 proc windowRole*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_windowRole(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWindowFilePath*(self: gen_qwidget_types.QWidget, filePath: string): void =
-
   fcQWidget_setWindowFilePath(self.h, struct_miqt_string(data: filePath, len: csize_t(len(filePath))))
 
 proc windowFilePath*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_windowFilePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWindowOpacity*(self: gen_qwidget_types.QWidget, level: float64): void =
-
   fcQWidget_setWindowOpacity(self.h, level)
 
 proc windowOpacity*(self: gen_qwidget_types.QWidget, ): float64 =
-
   fcQWidget_windowOpacity(self.h)
 
 proc isWindowModified*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isWindowModified(self.h)
 
 proc setToolTip*(self: gen_qwidget_types.QWidget, toolTip: string): void =
-
   fcQWidget_setToolTip(self.h, struct_miqt_string(data: toolTip, len: csize_t(len(toolTip))))
 
 proc toolTip*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_toolTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setToolTipDuration*(self: gen_qwidget_types.QWidget, msec: cint): void =
-
   fcQWidget_setToolTipDuration(self.h, msec)
 
 proc toolTipDuration*(self: gen_qwidget_types.QWidget, ): cint =
-
   fcQWidget_toolTipDuration(self.h)
 
 proc setStatusTip*(self: gen_qwidget_types.QWidget, statusTip: string): void =
-
   fcQWidget_setStatusTip(self.h, struct_miqt_string(data: statusTip, len: csize_t(len(statusTip))))
 
 proc statusTip*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_statusTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWhatsThis*(self: gen_qwidget_types.QWidget, whatsThis: string): void =
-
   fcQWidget_setWhatsThis(self.h, struct_miqt_string(data: whatsThis, len: csize_t(len(whatsThis))))
 
 proc whatsThis*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_whatsThis(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc accessibleName*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_accessibleName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setAccessibleName*(self: gen_qwidget_types.QWidget, name: string): void =
-
   fcQWidget_setAccessibleName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc accessibleDescription*(self: gen_qwidget_types.QWidget, ): string =
-
   let v_ms = fcQWidget_accessibleDescription(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setAccessibleDescription*(self: gen_qwidget_types.QWidget, description: string): void =
-
   fcQWidget_setAccessibleDescription(self.h, struct_miqt_string(data: description, len: csize_t(len(description))))
 
 proc setLayoutDirection*(self: gen_qwidget_types.QWidget, direction: cint): void =
-
   fcQWidget_setLayoutDirection(self.h, cint(direction))
 
 proc layoutDirection*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_layoutDirection(self.h))
 
 proc unsetLayoutDirection*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_unsetLayoutDirection(self.h)
 
 proc setLocale*(self: gen_qwidget_types.QWidget, locale: gen_qlocale.QLocale): void =
-
   fcQWidget_setLocale(self.h, locale.h)
 
 proc locale*(self: gen_qwidget_types.QWidget, ): gen_qlocale.QLocale =
-
   gen_qlocale.QLocale(h: fcQWidget_locale(self.h))
 
 proc unsetLocale*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_unsetLocale(self.h)
 
 proc isRightToLeft*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isRightToLeft(self.h)
 
 proc isLeftToRight*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isLeftToRight(self.h)
 
 proc setFocus*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_setFocus(self.h)
 
 proc isActiveWindow*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isActiveWindow(self.h)
 
 proc activateWindow*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_activateWindow(self.h)
 
 proc clearFocus*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_clearFocus(self.h)
 
-proc setFocusWithReason*(self: gen_qwidget_types.QWidget, reason: cint): void =
-
+proc setFocus*(self: gen_qwidget_types.QWidget, reason: cint): void =
   fcQWidget_setFocusWithReason(self.h, cint(reason))
 
 proc focusPolicy*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_focusPolicy(self.h))
 
 proc setFocusPolicy*(self: gen_qwidget_types.QWidget, policy: cint): void =
-
   fcQWidget_setFocusPolicy(self.h, cint(policy))
 
 proc hasFocus*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_hasFocus(self.h)
 
 proc setTabOrder*(_: type gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget, param2: gen_qwidget_types.QWidget): void =
-
   fcQWidget_setTabOrder(param1.h, param2.h)
 
 proc setFocusProxy*(self: gen_qwidget_types.QWidget, focusProxy: gen_qwidget_types.QWidget): void =
-
   fcQWidget_setFocusProxy(self.h, focusProxy.h)
 
 proc focusProxy*(self: gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_focusProxy(self.h))
 
 proc contextMenuPolicy*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_contextMenuPolicy(self.h))
 
 proc setContextMenuPolicy*(self: gen_qwidget_types.QWidget, policy: cint): void =
-
   fcQWidget_setContextMenuPolicy(self.h, cint(policy))
 
 proc grabMouse*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_grabMouse(self.h)
 
-proc grabMouseWithQCursor*(self: gen_qwidget_types.QWidget, param1: gen_qcursor.QCursor): void =
-
+proc grabMouse*(self: gen_qwidget_types.QWidget, param1: gen_qcursor.QCursor): void =
   fcQWidget_grabMouseWithQCursor(self.h, param1.h)
 
 proc releaseMouse*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_releaseMouse(self.h)
 
 proc grabKeyboard*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_grabKeyboard(self.h)
 
 proc releaseKeyboard*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_releaseKeyboard(self.h)
 
 proc grabShortcut*(self: gen_qwidget_types.QWidget, key: gen_qkeysequence.QKeySequence): cint =
-
   fcQWidget_grabShortcut(self.h, key.h)
 
 proc releaseShortcut*(self: gen_qwidget_types.QWidget, id: cint): void =
-
   fcQWidget_releaseShortcut(self.h, id)
 
 proc setShortcutEnabled*(self: gen_qwidget_types.QWidget, id: cint): void =
-
   fcQWidget_setShortcutEnabled(self.h, id)
 
 proc setShortcutAutoRepeat*(self: gen_qwidget_types.QWidget, id: cint): void =
-
   fcQWidget_setShortcutAutoRepeat(self.h, id)
 
 proc mouseGrabber*(_: type gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_mouseGrabber())
 
 proc keyboardGrabber*(_: type gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_keyboardGrabber())
 
 proc updatesEnabled*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_updatesEnabled(self.h)
 
 proc setUpdatesEnabled*(self: gen_qwidget_types.QWidget, enable: bool): void =
-
   fcQWidget_setUpdatesEnabled(self.h, enable)
 
 proc graphicsProxyWidget*(self: gen_qwidget_types.QWidget, ): gen_qgraphicsproxywidget.QGraphicsProxyWidget =
-
   gen_qgraphicsproxywidget.QGraphicsProxyWidget(h: fcQWidget_graphicsProxyWidget(self.h))
 
 proc update*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_update(self.h)
 
 proc repaint*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_repaint(self.h)
 
-proc update2*(self: gen_qwidget_types.QWidget, x: cint, y: cint, w: cint, h: cint): void =
-
+proc update*(self: gen_qwidget_types.QWidget, x: cint, y: cint, w: cint, h: cint): void =
   fcQWidget_update2(self.h, x, y, w, h)
 
-proc updateWithQRect*(self: gen_qwidget_types.QWidget, param1: gen_qrect.QRect): void =
-
+proc update*(self: gen_qwidget_types.QWidget, param1: gen_qrect.QRect): void =
   fcQWidget_updateWithQRect(self.h, param1.h)
 
-proc updateWithQRegion*(self: gen_qwidget_types.QWidget, param1: gen_qregion.QRegion): void =
-
+proc update*(self: gen_qwidget_types.QWidget, param1: gen_qregion.QRegion): void =
   fcQWidget_updateWithQRegion(self.h, param1.h)
 
-proc repaint2*(self: gen_qwidget_types.QWidget, x: cint, y: cint, w: cint, h: cint): void =
-
+proc repaint*(self: gen_qwidget_types.QWidget, x: cint, y: cint, w: cint, h: cint): void =
   fcQWidget_repaint2(self.h, x, y, w, h)
 
-proc repaintWithQRect*(self: gen_qwidget_types.QWidget, param1: gen_qrect.QRect): void =
-
+proc repaint*(self: gen_qwidget_types.QWidget, param1: gen_qrect.QRect): void =
   fcQWidget_repaintWithQRect(self.h, param1.h)
 
-proc repaintWithQRegion*(self: gen_qwidget_types.QWidget, param1: gen_qregion.QRegion): void =
-
+proc repaint*(self: gen_qwidget_types.QWidget, param1: gen_qregion.QRegion): void =
   fcQWidget_repaintWithQRegion(self.h, param1.h)
 
 proc setVisible*(self: gen_qwidget_types.QWidget, visible: bool): void =
-
   fcQWidget_setVisible(self.h, visible)
 
 proc setHidden*(self: gen_qwidget_types.QWidget, hidden: bool): void =
-
   fcQWidget_setHidden(self.h, hidden)
 
 proc show*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_show(self.h)
 
 proc hide*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_hide(self.h)
 
 proc showMinimized*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_showMinimized(self.h)
 
 proc showMaximized*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_showMaximized(self.h)
 
 proc showFullScreen*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_showFullScreen(self.h)
 
 proc showNormal*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_showNormal(self.h)
 
 proc close*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_close(self.h)
 
 proc raiseX*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_raiseX(self.h)
 
 proc lower*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_lower(self.h)
 
 proc stackUnder*(self: gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget): void =
-
   fcQWidget_stackUnder(self.h, param1.h)
 
 proc move*(self: gen_qwidget_types.QWidget, x: cint, y: cint): void =
-
   fcQWidget_move(self.h, x, y)
 
-proc moveWithQPoint*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): void =
-
+proc move*(self: gen_qwidget_types.QWidget, param1: gen_qpoint.QPoint): void =
   fcQWidget_moveWithQPoint(self.h, param1.h)
 
 proc resize*(self: gen_qwidget_types.QWidget, w: cint, h: cint): void =
-
   fcQWidget_resize(self.h, w, h)
 
-proc resizeWithQSize*(self: gen_qwidget_types.QWidget, param1: gen_qsize.QSize): void =
-
+proc resize*(self: gen_qwidget_types.QWidget, param1: gen_qsize.QSize): void =
   fcQWidget_resizeWithQSize(self.h, param1.h)
 
 proc setGeometry*(self: gen_qwidget_types.QWidget, x: cint, y: cint, w: cint, h: cint): void =
-
   fcQWidget_setGeometry(self.h, x, y, w, h)
 
-proc setGeometryWithGeometry*(self: gen_qwidget_types.QWidget, geometry: gen_qrect.QRect): void =
-
+proc setGeometry*(self: gen_qwidget_types.QWidget, geometry: gen_qrect.QRect): void =
   fcQWidget_setGeometryWithGeometry(self.h, geometry.h)
 
 proc saveGeometry*(self: gen_qwidget_types.QWidget, ): seq[byte] =
-
   var v_bytearray = fcQWidget_saveGeometry(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc restoreGeometry*(self: gen_qwidget_types.QWidget, geometry: seq[byte]): bool =
-
   fcQWidget_restoreGeometry(self.h, struct_miqt_string(data: cast[cstring](if len(geometry) == 0: nil else: unsafeAddr geometry[0]), len: csize_t(len(geometry))))
 
 proc adjustSize*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_adjustSize(self.h)
 
 proc isVisible*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isVisible(self.h)
 
 proc isVisibleTo*(self: gen_qwidget_types.QWidget, param1: gen_qwidget_types.QWidget): bool =
-
   fcQWidget_isVisibleTo(self.h, param1.h)
 
 proc isHidden*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isHidden(self.h)
 
 proc isMinimized*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isMinimized(self.h)
 
 proc isMaximized*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isMaximized(self.h)
 
 proc isFullScreen*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_isFullScreen(self.h)
 
 proc windowState*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_windowState(self.h))
 
 proc setWindowState*(self: gen_qwidget_types.QWidget, state: cint): void =
-
   fcQWidget_setWindowState(self.h, cint(state))
 
 proc overrideWindowState*(self: gen_qwidget_types.QWidget, state: cint): void =
-
   fcQWidget_overrideWindowState(self.h, cint(state))
 
 proc sizeHint*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidget_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidget_minimumSizeHint(self.h))
 
 proc sizePolicy*(self: gen_qwidget_types.QWidget, ): gen_qsizepolicy.QSizePolicy =
-
   gen_qsizepolicy.QSizePolicy(h: fcQWidget_sizePolicy(self.h))
 
 proc setSizePolicy*(self: gen_qwidget_types.QWidget, sizePolicy: gen_qsizepolicy.QSizePolicy): void =
-
   fcQWidget_setSizePolicy(self.h, sizePolicy.h)
 
-proc setSizePolicy2*(self: gen_qwidget_types.QWidget, horizontal: cint, vertical: cint): void =
-
+proc setSizePolicy*(self: gen_qwidget_types.QWidget, horizontal: cint, vertical: cint): void =
   fcQWidget_setSizePolicy2(self.h, cint(horizontal), cint(vertical))
 
 proc heightForWidth*(self: gen_qwidget_types.QWidget, param1: cint): cint =
-
   fcQWidget_heightForWidth(self.h, param1)
 
 proc hasHeightForWidth*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_hasHeightForWidth(self.h)
 
 proc visibleRegion*(self: gen_qwidget_types.QWidget, ): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fcQWidget_visibleRegion(self.h))
 
 proc setContentsMargins*(self: gen_qwidget_types.QWidget, left: cint, top: cint, right: cint, bottom: cint): void =
-
   fcQWidget_setContentsMargins(self.h, left, top, right, bottom)
 
-proc setContentsMarginsWithMargins*(self: gen_qwidget_types.QWidget, margins: gen_qmargins.QMargins): void =
-
+proc setContentsMargins*(self: gen_qwidget_types.QWidget, margins: gen_qmargins.QMargins): void =
   fcQWidget_setContentsMarginsWithMargins(self.h, margins.h)
 
 proc contentsMargins*(self: gen_qwidget_types.QWidget, ): gen_qmargins.QMargins =
-
   gen_qmargins.QMargins(h: fcQWidget_contentsMargins(self.h))
 
 proc contentsRect*(self: gen_qwidget_types.QWidget, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQWidget_contentsRect(self.h))
 
 proc layout*(self: gen_qwidget_types.QWidget, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fcQWidget_layout(self.h))
 
 proc setLayout*(self: gen_qwidget_types.QWidget, layout: gen_qlayout.QLayout): void =
-
   fcQWidget_setLayout(self.h, layout.h)
 
 proc updateGeometry*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_updateGeometry(self.h)
 
 proc setParent*(self: gen_qwidget_types.QWidget, parent: gen_qwidget_types.QWidget): void =
-
   fcQWidget_setParent(self.h, parent.h)
 
-proc setParent2*(self: gen_qwidget_types.QWidget, parent: gen_qwidget_types.QWidget, f: cint): void =
-
+proc setParent*(self: gen_qwidget_types.QWidget, parent: gen_qwidget_types.QWidget, f: cint): void =
   fcQWidget_setParent2(self.h, parent.h, cint(f))
 
 proc scroll*(self: gen_qwidget_types.QWidget, dx: cint, dy: cint): void =
-
   fcQWidget_scroll(self.h, dx, dy)
 
-proc scroll2*(self: gen_qwidget_types.QWidget, dx: cint, dy: cint, param3: gen_qrect.QRect): void =
-
+proc scroll*(self: gen_qwidget_types.QWidget, dx: cint, dy: cint, param3: gen_qrect.QRect): void =
   fcQWidget_scroll2(self.h, dx, dy, param3.h)
 
 proc focusWidget*(self: gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_focusWidget(self.h))
 
 proc nextInFocusChain*(self: gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_nextInFocusChain(self.h))
 
 proc previousInFocusChain*(self: gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_previousInFocusChain(self.h))
 
 proc acceptDrops*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_acceptDrops(self.h)
 
 proc setAcceptDrops*(self: gen_qwidget_types.QWidget, on: bool): void =
-
   fcQWidget_setAcceptDrops(self.h, on)
 
 proc addAction*(self: gen_qwidget_types.QWidget, action: gen_qaction.QAction): void =
-
   fcQWidget_addAction(self.h, action.h)
 
 proc addActions*(self: gen_qwidget_types.QWidget, actions: seq[gen_qaction.QAction]): void =
-
   var actions_CArray = newSeq[pointer](len(actions))
   for i in 0..<len(actions):
     actions_CArray[i] = actions[i].h
@@ -1486,7 +1257,6 @@ proc addActions*(self: gen_qwidget_types.QWidget, actions: seq[gen_qaction.QActi
   fcQWidget_addActions(self.h, struct_miqt_array(len: csize_t(len(actions)), data: if len(actions) == 0: nil else: addr(actions_CArray[0])))
 
 proc insertActions*(self: gen_qwidget_types.QWidget, before: gen_qaction.QAction, actions: seq[gen_qaction.QAction]): void =
-
   var actions_CArray = newSeq[pointer](len(actions))
   for i in 0..<len(actions):
     actions_CArray[i] = actions[i].h
@@ -1494,15 +1264,12 @@ proc insertActions*(self: gen_qwidget_types.QWidget, before: gen_qaction.QAction
   fcQWidget_insertActions(self.h, before.h, struct_miqt_array(len: csize_t(len(actions)), data: if len(actions) == 0: nil else: addr(actions_CArray[0])))
 
 proc insertAction*(self: gen_qwidget_types.QWidget, before: gen_qaction.QAction, action: gen_qaction.QAction): void =
-
   fcQWidget_insertAction(self.h, before.h, action.h)
 
 proc removeAction*(self: gen_qwidget_types.QWidget, action: gen_qaction.QAction): void =
-
   fcQWidget_removeAction(self.h, action.h)
 
 proc actions*(self: gen_qwidget_types.QWidget, ): seq[gen_qaction.QAction] =
-
   var v_ma = fcQWidget_actions(self.h)
   var vx_ret = newSeq[gen_qaction.QAction](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1510,272 +1277,218 @@ proc actions*(self: gen_qwidget_types.QWidget, ): seq[gen_qaction.QAction] =
     vx_ret[i] = gen_qaction.QAction(h: v_outCast[i])
   vx_ret
 
-proc addActionWithText*(self: gen_qwidget_types.QWidget, text: string): gen_qaction.QAction =
-
+proc addAction*(self: gen_qwidget_types.QWidget, text: string): gen_qaction.QAction =
   gen_qaction.QAction(h: fcQWidget_addActionWithText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc addAction2*(self: gen_qwidget_types.QWidget, icon: gen_qicon.QIcon, text: string): gen_qaction.QAction =
-
+proc addAction*(self: gen_qwidget_types.QWidget, icon: gen_qicon.QIcon, text: string): gen_qaction.QAction =
   gen_qaction.QAction(h: fcQWidget_addAction2(self.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc addAction3*(self: gen_qwidget_types.QWidget, text: string, shortcut: gen_qkeysequence.QKeySequence): gen_qaction.QAction =
-
+proc addAction*(self: gen_qwidget_types.QWidget, text: string, shortcut: gen_qkeysequence.QKeySequence): gen_qaction.QAction =
   gen_qaction.QAction(h: fcQWidget_addAction3(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), shortcut.h))
 
-proc addAction4*(self: gen_qwidget_types.QWidget, icon: gen_qicon.QIcon, text: string, shortcut: gen_qkeysequence.QKeySequence): gen_qaction.QAction =
-
+proc addAction*(self: gen_qwidget_types.QWidget, icon: gen_qicon.QIcon, text: string, shortcut: gen_qkeysequence.QKeySequence): gen_qaction.QAction =
   gen_qaction.QAction(h: fcQWidget_addAction4(self.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))), shortcut.h))
 
 proc parentWidget*(self: gen_qwidget_types.QWidget, ): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_parentWidget(self.h))
 
 proc setWindowFlags*(self: gen_qwidget_types.QWidget, typeVal: cint): void =
-
   fcQWidget_setWindowFlags(self.h, cint(typeVal))
 
 proc windowFlags*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_windowFlags(self.h))
 
 proc setWindowFlag*(self: gen_qwidget_types.QWidget, param1: cint): void =
-
   fcQWidget_setWindowFlag(self.h, cint(param1))
 
 proc overrideWindowFlags*(self: gen_qwidget_types.QWidget, typeVal: cint): void =
-
   fcQWidget_overrideWindowFlags(self.h, cint(typeVal))
 
 proc windowType*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_windowType(self.h))
 
 proc find*(_: type gen_qwidget_types.QWidget, param1: uint): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_find(param1))
 
 proc childAt*(self: gen_qwidget_types.QWidget, x: cint, y: cint): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_childAt(self.h, x, y))
 
-proc childAtWithQPoint*(self: gen_qwidget_types.QWidget, p: gen_qpoint.QPoint): gen_qwidget_types.QWidget =
-
+proc childAt*(self: gen_qwidget_types.QWidget, p: gen_qpoint.QPoint): gen_qwidget_types.QWidget =
   gen_qwidget_types.QWidget(h: fcQWidget_childAtWithQPoint(self.h, p.h))
 
 proc setAttribute*(self: gen_qwidget_types.QWidget, param1: cint): void =
-
   fcQWidget_setAttribute(self.h, cint(param1))
 
 proc testAttribute*(self: gen_qwidget_types.QWidget, param1: cint): bool =
-
   fcQWidget_testAttribute(self.h, cint(param1))
 
 proc paintEngine*(self: gen_qwidget_types.QWidget, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fcQWidget_paintEngine(self.h))
 
 proc ensurePolished*(self: gen_qwidget_types.QWidget, ): void =
-
   fcQWidget_ensurePolished(self.h)
 
 proc isAncestorOf*(self: gen_qwidget_types.QWidget, child: gen_qwidget_types.QWidget): bool =
-
   fcQWidget_isAncestorOf(self.h, child.h)
 
 proc autoFillBackground*(self: gen_qwidget_types.QWidget, ): bool =
-
   fcQWidget_autoFillBackground(self.h)
 
 proc setAutoFillBackground*(self: gen_qwidget_types.QWidget, enabled: bool): void =
-
   fcQWidget_setAutoFillBackground(self.h, enabled)
 
 proc backingStore*(self: gen_qwidget_types.QWidget, ): gen_qbackingstore.QBackingStore =
-
   gen_qbackingstore.QBackingStore(h: fcQWidget_backingStore(self.h))
 
 proc windowHandle*(self: gen_qwidget_types.QWidget, ): gen_qwindow.QWindow =
-
   gen_qwindow.QWindow(h: fcQWidget_windowHandle(self.h))
 
 proc screen*(self: gen_qwidget_types.QWidget, ): gen_qscreen.QScreen =
-
   gen_qscreen.QScreen(h: fcQWidget_screen(self.h))
 
 proc setScreen*(self: gen_qwidget_types.QWidget, screen: gen_qscreen.QScreen): void =
-
   fcQWidget_setScreen(self.h, screen.h)
 
 proc createWindowContainer*(_: type gen_qwidget_types.QWidget, window: gen_qwindow.QWindow): gen_qwidget_types.QWidget =
-
   gen_qwidget_types.QWidget(h: fcQWidget_createWindowContainer(window.h))
 
 proc windowTitleChanged*(self: gen_qwidget_types.QWidget, title: string): void =
-
   fcQWidget_windowTitleChanged(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
+type QWidgetwindowTitleChangedSlot* = proc(title: string)
 proc miqt_exec_callback_QWidget_windowTitleChanged(slot: int, title: struct_miqt_string) {.exportc.} =
-  type Cb = proc(title: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWidgetwindowTitleChangedSlot](cast[pointer](slot))
   let vtitle_ms = title
   let vtitlex_ret = string.fromBytes(toOpenArrayByte(vtitle_ms.data, 0, int(vtitle_ms.len)-1))
   c_free(vtitle_ms.data)
   let slotval1 = vtitlex_ret
 
-
   nimfunc[](slotval1)
 
-proc onwindowTitleChanged*(self: gen_qwidget_types.QWidget, slot: proc(title: string)) =
-  type Cb = proc(title: string)
-  var tmp = new Cb
+proc onwindowTitleChanged*(self: gen_qwidget_types.QWidget, slot: QWidgetwindowTitleChangedSlot) =
+  var tmp = new QWidgetwindowTitleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWidget_connect_windowTitleChanged(self.h, cast[int](addr tmp[]))
-proc windowIconChanged*(self: gen_qwidget_types.QWidget, icon: gen_qicon.QIcon): void =
 
+proc windowIconChanged*(self: gen_qwidget_types.QWidget, icon: gen_qicon.QIcon): void =
   fcQWidget_windowIconChanged(self.h, icon.h)
 
+type QWidgetwindowIconChangedSlot* = proc(icon: gen_qicon.QIcon)
 proc miqt_exec_callback_QWidget_windowIconChanged(slot: int, icon: pointer) {.exportc.} =
-  type Cb = proc(icon: gen_qicon.QIcon)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWidgetwindowIconChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qicon.QIcon(h: icon)
-
 
   nimfunc[](slotval1)
 
-proc onwindowIconChanged*(self: gen_qwidget_types.QWidget, slot: proc(icon: gen_qicon.QIcon)) =
-  type Cb = proc(icon: gen_qicon.QIcon)
-  var tmp = new Cb
+proc onwindowIconChanged*(self: gen_qwidget_types.QWidget, slot: QWidgetwindowIconChangedSlot) =
+  var tmp = new QWidgetwindowIconChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWidget_connect_windowIconChanged(self.h, cast[int](addr tmp[]))
-proc windowIconTextChanged*(self: gen_qwidget_types.QWidget, iconText: string): void =
 
+proc windowIconTextChanged*(self: gen_qwidget_types.QWidget, iconText: string): void =
   fcQWidget_windowIconTextChanged(self.h, struct_miqt_string(data: iconText, len: csize_t(len(iconText))))
 
+type QWidgetwindowIconTextChangedSlot* = proc(iconText: string)
 proc miqt_exec_callback_QWidget_windowIconTextChanged(slot: int, iconText: struct_miqt_string) {.exportc.} =
-  type Cb = proc(iconText: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWidgetwindowIconTextChangedSlot](cast[pointer](slot))
   let viconText_ms = iconText
   let viconTextx_ret = string.fromBytes(toOpenArrayByte(viconText_ms.data, 0, int(viconText_ms.len)-1))
   c_free(viconText_ms.data)
   let slotval1 = viconTextx_ret
 
-
   nimfunc[](slotval1)
 
-proc onwindowIconTextChanged*(self: gen_qwidget_types.QWidget, slot: proc(iconText: string)) =
-  type Cb = proc(iconText: string)
-  var tmp = new Cb
+proc onwindowIconTextChanged*(self: gen_qwidget_types.QWidget, slot: QWidgetwindowIconTextChangedSlot) =
+  var tmp = new QWidgetwindowIconTextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWidget_connect_windowIconTextChanged(self.h, cast[int](addr tmp[]))
-proc customContextMenuRequested*(self: gen_qwidget_types.QWidget, pos: gen_qpoint.QPoint): void =
 
+proc customContextMenuRequested*(self: gen_qwidget_types.QWidget, pos: gen_qpoint.QPoint): void =
   fcQWidget_customContextMenuRequested(self.h, pos.h)
 
+type QWidgetcustomContextMenuRequestedSlot* = proc(pos: gen_qpoint.QPoint)
 proc miqt_exec_callback_QWidget_customContextMenuRequested(slot: int, pos: pointer) {.exportc.} =
-  type Cb = proc(pos: gen_qpoint.QPoint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWidgetcustomContextMenuRequestedSlot](cast[pointer](slot))
   let slotval1 = gen_qpoint.QPoint(h: pos)
-
 
   nimfunc[](slotval1)
 
-proc oncustomContextMenuRequested*(self: gen_qwidget_types.QWidget, slot: proc(pos: gen_qpoint.QPoint)) =
-  type Cb = proc(pos: gen_qpoint.QPoint)
-  var tmp = new Cb
+proc oncustomContextMenuRequested*(self: gen_qwidget_types.QWidget, slot: QWidgetcustomContextMenuRequestedSlot) =
+  var tmp = new QWidgetcustomContextMenuRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWidget_connect_customContextMenuRequested(self.h, cast[int](addr tmp[]))
-proc inputMethodQuery*(self: gen_qwidget_types.QWidget, param1: cint): gen_qvariant.QVariant =
 
+proc inputMethodQuery*(self: gen_qwidget_types.QWidget, param1: cint): gen_qvariant.QVariant =
   gen_qvariant.QVariant(h: fcQWidget_inputMethodQuery(self.h, cint(param1)))
 
 proc inputMethodHints*(self: gen_qwidget_types.QWidget, ): cint =
-
   cint(fcQWidget_inputMethodHints(self.h))
 
 proc setInputMethodHints*(self: gen_qwidget_types.QWidget, hints: cint): void =
-
   fcQWidget_setInputMethodHints(self.h, cint(hints))
 
-proc tr2*(_: type gen_qwidget_types.QWidget, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qwidget_types.QWidget, s: cstring, c: cstring): string =
   let v_ms = fcQWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwidget_types.QWidget, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwidget_types.QWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc render2*(self: gen_qwidget_types.QWidget, target: gen_qpaintdevice.QPaintDevice, targetOffset: gen_qpoint.QPoint): void =
-
+proc render*(self: gen_qwidget_types.QWidget, target: gen_qpaintdevice.QPaintDevice, targetOffset: gen_qpoint.QPoint): void =
   fcQWidget_render2(self.h, target.h, targetOffset.h)
 
-proc render3*(self: gen_qwidget_types.QWidget, target: gen_qpaintdevice.QPaintDevice, targetOffset: gen_qpoint.QPoint, sourceRegion: gen_qregion.QRegion): void =
-
+proc render*(self: gen_qwidget_types.QWidget, target: gen_qpaintdevice.QPaintDevice, targetOffset: gen_qpoint.QPoint, sourceRegion: gen_qregion.QRegion): void =
   fcQWidget_render3(self.h, target.h, targetOffset.h, sourceRegion.h)
 
-proc render4*(self: gen_qwidget_types.QWidget, target: gen_qpaintdevice.QPaintDevice, targetOffset: gen_qpoint.QPoint, sourceRegion: gen_qregion.QRegion, renderFlags: cint): void =
-
+proc render*(self: gen_qwidget_types.QWidget, target: gen_qpaintdevice.QPaintDevice, targetOffset: gen_qpoint.QPoint, sourceRegion: gen_qregion.QRegion, renderFlags: cint): void =
   fcQWidget_render4(self.h, target.h, targetOffset.h, sourceRegion.h, cint(renderFlags))
 
-proc render22*(self: gen_qwidget_types.QWidget, painter: gen_qpainter.QPainter, targetOffset: gen_qpoint.QPoint): void =
-
+proc render*(self: gen_qwidget_types.QWidget, painter: gen_qpainter.QPainter, targetOffset: gen_qpoint.QPoint): void =
   fcQWidget_render22(self.h, painter.h, targetOffset.h)
 
-proc render32*(self: gen_qwidget_types.QWidget, painter: gen_qpainter.QPainter, targetOffset: gen_qpoint.QPoint, sourceRegion: gen_qregion.QRegion): void =
-
+proc render*(self: gen_qwidget_types.QWidget, painter: gen_qpainter.QPainter, targetOffset: gen_qpoint.QPoint, sourceRegion: gen_qregion.QRegion): void =
   fcQWidget_render32(self.h, painter.h, targetOffset.h, sourceRegion.h)
 
-proc render42*(self: gen_qwidget_types.QWidget, painter: gen_qpainter.QPainter, targetOffset: gen_qpoint.QPoint, sourceRegion: gen_qregion.QRegion, renderFlags: cint): void =
-
+proc render*(self: gen_qwidget_types.QWidget, painter: gen_qpainter.QPainter, targetOffset: gen_qpoint.QPoint, sourceRegion: gen_qregion.QRegion, renderFlags: cint): void =
   fcQWidget_render42(self.h, painter.h, targetOffset.h, sourceRegion.h, cint(renderFlags))
 
-proc grab1*(self: gen_qwidget_types.QWidget, rectangle: gen_qrect.QRect): gen_qpixmap.QPixmap =
-
+proc grab*(self: gen_qwidget_types.QWidget, rectangle: gen_qrect.QRect): gen_qpixmap.QPixmap =
   gen_qpixmap.QPixmap(h: fcQWidget_grab1(self.h, rectangle.h))
 
-proc grabGesture2*(self: gen_qwidget_types.QWidget, typeVal: cint, flags: cint): void =
-
+proc grabGesture*(self: gen_qwidget_types.QWidget, typeVal: cint, flags: cint): void =
   fcQWidget_grabGesture2(self.h, cint(typeVal), cint(flags))
 
-proc grabShortcut2*(self: gen_qwidget_types.QWidget, key: gen_qkeysequence.QKeySequence, context: cint): cint =
-
+proc grabShortcut*(self: gen_qwidget_types.QWidget, key: gen_qkeysequence.QKeySequence, context: cint): cint =
   fcQWidget_grabShortcut2(self.h, key.h, cint(context))
 
-proc setShortcutEnabled2*(self: gen_qwidget_types.QWidget, id: cint, enable: bool): void =
-
+proc setShortcutEnabled*(self: gen_qwidget_types.QWidget, id: cint, enable: bool): void =
   fcQWidget_setShortcutEnabled2(self.h, id, enable)
 
-proc setShortcutAutoRepeat2*(self: gen_qwidget_types.QWidget, id: cint, enable: bool): void =
-
+proc setShortcutAutoRepeat*(self: gen_qwidget_types.QWidget, id: cint, enable: bool): void =
   fcQWidget_setShortcutAutoRepeat2(self.h, id, enable)
 
-proc setWindowFlag2*(self: gen_qwidget_types.QWidget, param1: cint, on: bool): void =
-
+proc setWindowFlag*(self: gen_qwidget_types.QWidget, param1: cint, on: bool): void =
   fcQWidget_setWindowFlag2(self.h, cint(param1), on)
 
-proc setAttribute2*(self: gen_qwidget_types.QWidget, param1: cint, on: bool): void =
-
+proc setAttribute*(self: gen_qwidget_types.QWidget, param1: cint, on: bool): void =
   fcQWidget_setAttribute2(self.h, cint(param1), on)
 
-proc createWindowContainer2*(_: type gen_qwidget_types.QWidget, window: gen_qwindow.QWindow, parent: gen_qwidget_types.QWidget): gen_qwidget_types.QWidget =
-
+proc createWindowContainer*(_: type gen_qwidget_types.QWidget, window: gen_qwindow.QWindow, parent: gen_qwidget_types.QWidget): gen_qwidget_types.QWidget =
   gen_qwidget_types.QWidget(h: fcQWidget_createWindowContainer2(window.h, parent.h))
 
-proc createWindowContainer3*(_: type gen_qwidget_types.QWidget, window: gen_qwindow.QWindow, parent: gen_qwidget_types.QWidget, flags: cint): gen_qwidget_types.QWidget =
-
+proc createWindowContainer*(_: type gen_qwidget_types.QWidget, window: gen_qwindow.QWindow, parent: gen_qwidget_types.QWidget, flags: cint): gen_qwidget_types.QWidget =
   gen_qwidget_types.QWidget(h: fcQWidget_createWindowContainer3(window.h, parent.h, cint(flags)))
 
 proc QWidgetmetaObject*(self: gen_qwidget_types.QWidget, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQWidget_virtualbase_metaObject(self.h))
 
 type QWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -1793,7 +1506,6 @@ proc miqt_exec_callback_QWidget_metaObject(self: ptr cQWidget, slot: int): point
 
   virtualReturn.h
 proc QWidgetmetacast*(self: gen_qwidget_types.QWidget, param1: cstring): pointer =
-
   fQWidget_virtualbase_metacast(self.h, param1)
 
 type QWidgetmetacastProc* = proc(param1: cstring): pointer
@@ -1813,7 +1525,6 @@ proc miqt_exec_callback_QWidget_metacast(self: ptr cQWidget, slot: int, param1: 
 
   virtualReturn
 proc QWidgetmetacall*(self: gen_qwidget_types.QWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fQWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -1837,7 +1548,6 @@ proc miqt_exec_callback_QWidget_metacall(self: ptr cQWidget, slot: int, param1: 
 
   virtualReturn
 proc QWidgetdevType*(self: gen_qwidget_types.QWidget, ): cint =
-
   fQWidget_virtualbase_devType(self.h)
 
 type QWidgetdevTypeProc* = proc(): cint
@@ -1855,7 +1565,6 @@ proc miqt_exec_callback_QWidget_devType(self: ptr cQWidget, slot: int): cint {.e
 
   virtualReturn
 proc QWidgetsetVisible*(self: gen_qwidget_types.QWidget, visible: bool): void =
-
   fQWidget_virtualbase_setVisible(self.h, visible)
 
 type QWidgetsetVisibleProc* = proc(visible: bool): void
@@ -1873,7 +1582,6 @@ proc miqt_exec_callback_QWidget_setVisible(self: ptr cQWidget, slot: int, visibl
 
   nimfunc[](slotval1)
 proc QWidgetsizeHint*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWidget_virtualbase_sizeHint(self.h))
 
 type QWidgetsizeHintProc* = proc(): gen_qsize.QSize
@@ -1891,7 +1599,6 @@ proc miqt_exec_callback_QWidget_sizeHint(self: ptr cQWidget, slot: int): pointer
 
   virtualReturn.h
 proc QWidgetminimumSizeHint*(self: gen_qwidget_types.QWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWidget_virtualbase_minimumSizeHint(self.h))
 
 type QWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1909,7 +1616,6 @@ proc miqt_exec_callback_QWidget_minimumSizeHint(self: ptr cQWidget, slot: int): 
 
   virtualReturn.h
 proc QWidgetheightForWidth*(self: gen_qwidget_types.QWidget, param1: cint): cint =
-
   fQWidget_virtualbase_heightForWidth(self.h, param1)
 
 type QWidgetheightForWidthProc* = proc(param1: cint): cint
@@ -1929,7 +1635,6 @@ proc miqt_exec_callback_QWidget_heightForWidth(self: ptr cQWidget, slot: int, pa
 
   virtualReturn
 proc QWidgethasHeightForWidth*(self: gen_qwidget_types.QWidget, ): bool =
-
   fQWidget_virtualbase_hasHeightForWidth(self.h)
 
 type QWidgethasHeightForWidthProc* = proc(): bool
@@ -1947,7 +1652,6 @@ proc miqt_exec_callback_QWidget_hasHeightForWidth(self: ptr cQWidget, slot: int)
 
   virtualReturn
 proc QWidgetpaintEngine*(self: gen_qwidget_types.QWidget, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQWidget_virtualbase_paintEngine(self.h))
 
 type QWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1965,7 +1669,6 @@ proc miqt_exec_callback_QWidget_paintEngine(self: ptr cQWidget, slot: int): poin
 
   virtualReturn.h
 proc QWidgetevent*(self: gen_qwidget_types.QWidget, event: gen_qcoreevent.QEvent): bool =
-
   fQWidget_virtualbase_event(self.h, event.h)
 
 type QWidgeteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1985,7 +1688,6 @@ proc miqt_exec_callback_QWidget_event(self: ptr cQWidget, slot: int, event: poin
 
   virtualReturn
 proc QWidgetmousePressEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QMouseEvent): void =
-
   fQWidget_virtualbase_mousePressEvent(self.h, event.h)
 
 type QWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2003,7 +1705,6 @@ proc miqt_exec_callback_QWidget_mousePressEvent(self: ptr cQWidget, slot: int, e
 
   nimfunc[](slotval1)
 proc QWidgetmouseReleaseEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QMouseEvent): void =
-
   fQWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2021,7 +1722,6 @@ proc miqt_exec_callback_QWidget_mouseReleaseEvent(self: ptr cQWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QWidgetmouseDoubleClickEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QMouseEvent): void =
-
   fQWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2039,7 +1739,6 @@ proc miqt_exec_callback_QWidget_mouseDoubleClickEvent(self: ptr cQWidget, slot: 
 
   nimfunc[](slotval1)
 proc QWidgetmouseMoveEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QMouseEvent): void =
-
   fQWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2057,7 +1756,6 @@ proc miqt_exec_callback_QWidget_mouseMoveEvent(self: ptr cQWidget, slot: int, ev
 
   nimfunc[](slotval1)
 proc QWidgetwheelEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QWheelEvent): void =
-
   fQWidget_virtualbase_wheelEvent(self.h, event.h)
 
 type QWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -2075,7 +1773,6 @@ proc miqt_exec_callback_QWidget_wheelEvent(self: ptr cQWidget, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWidgetkeyPressEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QKeyEvent): void =
-
   fQWidget_virtualbase_keyPressEvent(self.h, event.h)
 
 type QWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2093,7 +1790,6 @@ proc miqt_exec_callback_QWidget_keyPressEvent(self: ptr cQWidget, slot: int, eve
 
   nimfunc[](slotval1)
 proc QWidgetkeyReleaseEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QKeyEvent): void =
-
   fQWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2111,7 +1807,6 @@ proc miqt_exec_callback_QWidget_keyReleaseEvent(self: ptr cQWidget, slot: int, e
 
   nimfunc[](slotval1)
 proc QWidgetfocusInEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QFocusEvent): void =
-
   fQWidget_virtualbase_focusInEvent(self.h, event.h)
 
 type QWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2129,7 +1824,6 @@ proc miqt_exec_callback_QWidget_focusInEvent(self: ptr cQWidget, slot: int, even
 
   nimfunc[](slotval1)
 proc QWidgetfocusOutEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QFocusEvent): void =
-
   fQWidget_virtualbase_focusOutEvent(self.h, event.h)
 
 type QWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2147,7 +1841,6 @@ proc miqt_exec_callback_QWidget_focusOutEvent(self: ptr cQWidget, slot: int, eve
 
   nimfunc[](slotval1)
 proc QWidgetenterEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QEnterEvent): void =
-
   fQWidget_virtualbase_enterEvent(self.h, event.h)
 
 type QWidgetenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -2165,7 +1858,6 @@ proc miqt_exec_callback_QWidget_enterEvent(self: ptr cQWidget, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWidgetleaveEvent*(self: gen_qwidget_types.QWidget, event: gen_qcoreevent.QEvent): void =
-
   fQWidget_virtualbase_leaveEvent(self.h, event.h)
 
 type QWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2183,7 +1875,6 @@ proc miqt_exec_callback_QWidget_leaveEvent(self: ptr cQWidget, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWidgetpaintEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QPaintEvent): void =
-
   fQWidget_virtualbase_paintEvent(self.h, event.h)
 
 type QWidgetpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -2201,7 +1892,6 @@ proc miqt_exec_callback_QWidget_paintEvent(self: ptr cQWidget, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWidgetmoveEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QMoveEvent): void =
-
   fQWidget_virtualbase_moveEvent(self.h, event.h)
 
 type QWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -2219,7 +1909,6 @@ proc miqt_exec_callback_QWidget_moveEvent(self: ptr cQWidget, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QWidgetresizeEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QResizeEvent): void =
-
   fQWidget_virtualbase_resizeEvent(self.h, event.h)
 
 type QWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -2237,7 +1926,6 @@ proc miqt_exec_callback_QWidget_resizeEvent(self: ptr cQWidget, slot: int, event
 
   nimfunc[](slotval1)
 proc QWidgetcloseEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QCloseEvent): void =
-
   fQWidget_virtualbase_closeEvent(self.h, event.h)
 
 type QWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -2255,7 +1943,6 @@ proc miqt_exec_callback_QWidget_closeEvent(self: ptr cQWidget, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWidgetcontextMenuEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QContextMenuEvent): void =
-
   fQWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -2273,7 +1960,6 @@ proc miqt_exec_callback_QWidget_contextMenuEvent(self: ptr cQWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QWidgettabletEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QTabletEvent): void =
-
   fQWidget_virtualbase_tabletEvent(self.h, event.h)
 
 type QWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -2291,7 +1977,6 @@ proc miqt_exec_callback_QWidget_tabletEvent(self: ptr cQWidget, slot: int, event
 
   nimfunc[](slotval1)
 proc QWidgetactionEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QActionEvent): void =
-
   fQWidget_virtualbase_actionEvent(self.h, event.h)
 
 type QWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -2309,7 +1994,6 @@ proc miqt_exec_callback_QWidget_actionEvent(self: ptr cQWidget, slot: int, event
 
   nimfunc[](slotval1)
 proc QWidgetdragEnterEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QDragEnterEvent): void =
-
   fQWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -2327,7 +2011,6 @@ proc miqt_exec_callback_QWidget_dragEnterEvent(self: ptr cQWidget, slot: int, ev
 
   nimfunc[](slotval1)
 proc QWidgetdragMoveEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QDragMoveEvent): void =
-
   fQWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -2345,7 +2028,6 @@ proc miqt_exec_callback_QWidget_dragMoveEvent(self: ptr cQWidget, slot: int, eve
 
   nimfunc[](slotval1)
 proc QWidgetdragLeaveEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QDragLeaveEvent): void =
-
   fQWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -2363,7 +2045,6 @@ proc miqt_exec_callback_QWidget_dragLeaveEvent(self: ptr cQWidget, slot: int, ev
 
   nimfunc[](slotval1)
 proc QWidgetdropEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QDropEvent): void =
-
   fQWidget_virtualbase_dropEvent(self.h, event.h)
 
 type QWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -2381,7 +2062,6 @@ proc miqt_exec_callback_QWidget_dropEvent(self: ptr cQWidget, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QWidgetshowEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QShowEvent): void =
-
   fQWidget_virtualbase_showEvent(self.h, event.h)
 
 type QWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -2399,7 +2079,6 @@ proc miqt_exec_callback_QWidget_showEvent(self: ptr cQWidget, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QWidgethideEvent*(self: gen_qwidget_types.QWidget, event: gen_qevent.QHideEvent): void =
-
   fQWidget_virtualbase_hideEvent(self.h, event.h)
 
 type QWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -2417,7 +2096,6 @@ proc miqt_exec_callback_QWidget_hideEvent(self: ptr cQWidget, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QWidgetnativeEvent*(self: gen_qwidget_types.QWidget, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -2444,7 +2122,6 @@ proc miqt_exec_callback_QWidget_nativeEvent(self: ptr cQWidget, slot: int, event
 
   virtualReturn
 proc QWidgetchangeEvent*(self: gen_qwidget_types.QWidget, param1: gen_qcoreevent.QEvent): void =
-
   fQWidget_virtualbase_changeEvent(self.h, param1.h)
 
 type QWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -2462,7 +2139,6 @@ proc miqt_exec_callback_QWidget_changeEvent(self: ptr cQWidget, slot: int, param
 
   nimfunc[](slotval1)
 proc QWidgetmetric*(self: gen_qwidget_types.QWidget, param1: cint): cint =
-
   fQWidget_virtualbase_metric(self.h, cint(param1))
 
 type QWidgetmetricProc* = proc(param1: cint): cint
@@ -2482,7 +2158,6 @@ proc miqt_exec_callback_QWidget_metric(self: ptr cQWidget, slot: int, param1: ci
 
   virtualReturn
 proc QWidgetinitPainter*(self: gen_qwidget_types.QWidget, painter: gen_qpainter.QPainter): void =
-
   fQWidget_virtualbase_initPainter(self.h, painter.h)
 
 type QWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -2500,7 +2175,6 @@ proc miqt_exec_callback_QWidget_initPainter(self: ptr cQWidget, slot: int, paint
 
   nimfunc[](slotval1)
 proc QWidgetredirected*(self: gen_qwidget_types.QWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQWidget_virtualbase_redirected(self.h, offset.h))
 
 type QWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -2520,7 +2194,6 @@ proc miqt_exec_callback_QWidget_redirected(self: ptr cQWidget, slot: int, offset
 
   virtualReturn.h
 proc QWidgetsharedPainter*(self: gen_qwidget_types.QWidget, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQWidget_virtualbase_sharedPainter(self.h))
 
 type QWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -2538,7 +2211,6 @@ proc miqt_exec_callback_QWidget_sharedPainter(self: ptr cQWidget, slot: int): po
 
   virtualReturn.h
 proc QWidgetinputMethodEvent*(self: gen_qwidget_types.QWidget, param1: gen_qevent.QInputMethodEvent): void =
-
   fQWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -2556,7 +2228,6 @@ proc miqt_exec_callback_QWidget_inputMethodEvent(self: ptr cQWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QWidgetinputMethodQuery*(self: gen_qwidget_types.QWidget, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -2576,7 +2247,6 @@ proc miqt_exec_callback_QWidget_inputMethodQuery(self: ptr cQWidget, slot: int, 
 
   virtualReturn.h
 proc QWidgetfocusNextPrevChild*(self: gen_qwidget_types.QWidget, next: bool): bool =
-
   fQWidget_virtualbase_focusNextPrevChild(self.h, next)
 
 type QWidgetfocusNextPrevChildProc* = proc(next: bool): bool
@@ -2596,7 +2266,6 @@ proc miqt_exec_callback_QWidget_focusNextPrevChild(self: ptr cQWidget, slot: int
 
   virtualReturn
 proc QWidgeteventFilter*(self: gen_qwidget_types.QWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -2618,7 +2287,6 @@ proc miqt_exec_callback_QWidget_eventFilter(self: ptr cQWidget, slot: int, watch
 
   virtualReturn
 proc QWidgettimerEvent*(self: gen_qwidget_types.QWidget, event: gen_qcoreevent.QTimerEvent): void =
-
   fQWidget_virtualbase_timerEvent(self.h, event.h)
 
 type QWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -2636,7 +2304,6 @@ proc miqt_exec_callback_QWidget_timerEvent(self: ptr cQWidget, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWidgetchildEvent*(self: gen_qwidget_types.QWidget, event: gen_qcoreevent.QChildEvent): void =
-
   fQWidget_virtualbase_childEvent(self.h, event.h)
 
 type QWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -2654,7 +2321,6 @@ proc miqt_exec_callback_QWidget_childEvent(self: ptr cQWidget, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWidgetcustomEvent*(self: gen_qwidget_types.QWidget, event: gen_qcoreevent.QEvent): void =
-
   fQWidget_virtualbase_customEvent(self.h, event.h)
 
 type QWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2672,7 +2338,6 @@ proc miqt_exec_callback_QWidget_customEvent(self: ptr cQWidget, slot: int, event
 
   nimfunc[](slotval1)
 proc QWidgetconnectNotify*(self: gen_qwidget_types.QWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWidget_virtualbase_connectNotify(self.h, signal.h)
 
 type QWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2690,7 +2355,6 @@ proc miqt_exec_callback_QWidget_connectNotify(self: ptr cQWidget, slot: int, sig
 
   nimfunc[](slotval1)
 proc QWidgetdisconnectNotify*(self: gen_qwidget_types.QWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

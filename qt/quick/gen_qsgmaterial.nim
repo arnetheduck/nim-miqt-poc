@@ -73,30 +73,24 @@ proc fcQSGMaterial_delete(self: pointer) {.importc: "QSGMaterial_delete".}
 func init*(T: type gen_qsgmaterial_types.QSGMaterial, h: ptr cQSGMaterial): gen_qsgmaterial_types.QSGMaterial =
   T(h: h)
 proc create*(T: type gen_qsgmaterial_types.QSGMaterial, ): gen_qsgmaterial_types.QSGMaterial =
-
   gen_qsgmaterial_types.QSGMaterial.init(fcQSGMaterial_new())
-proc typeX*(self: gen_qsgmaterial_types.QSGMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
 
+proc typeX*(self: gen_qsgmaterial_types.QSGMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
   gen_qsgmaterialtype.QSGMaterialType(h: fcQSGMaterial_typeX(self.h))
 
 proc createShader*(self: gen_qsgmaterial_types.QSGMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
-
   gen_qsgmaterialshader.QSGMaterialShader(h: fcQSGMaterial_createShader(self.h))
 
 proc compare*(self: gen_qsgmaterial_types.QSGMaterial, other: gen_qsgmaterial_types.QSGMaterial): cint =
-
   fcQSGMaterial_compare(self.h, other.h)
 
 proc flags*(self: gen_qsgmaterial_types.QSGMaterial, ): cint =
-
   cint(fcQSGMaterial_flags(self.h))
 
 proc setFlag*(self: gen_qsgmaterial_types.QSGMaterial, flags: cint): void =
-
   fcQSGMaterial_setFlag(self.h, cint(flags))
 
-proc setFlag2*(self: gen_qsgmaterial_types.QSGMaterial, flags: cint, on: bool): void =
-
+proc setFlag*(self: gen_qsgmaterial_types.QSGMaterial, flags: cint, on: bool): void =
   fcQSGMaterial_setFlag2(self.h, cint(flags), on)
 
 type QSGMaterialtypeXProc* = proc(): gen_qsgmaterialtype.QSGMaterialType
@@ -128,7 +122,6 @@ proc miqt_exec_callback_QSGMaterial_createShader(self: ptr cQSGMaterial, slot: i
 
   virtualReturn.h
 proc QSGMaterialcompare*(self: gen_qsgmaterial_types.QSGMaterial, other: gen_qsgmaterial_types.QSGMaterial): cint =
-
   fQSGMaterial_virtualbase_compare(self.h, other.h)
 
 type QSGMaterialcompareProc* = proc(other: gen_qsgmaterial_types.QSGMaterial): cint

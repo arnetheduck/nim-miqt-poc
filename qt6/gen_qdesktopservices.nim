@@ -55,15 +55,12 @@ proc fcQDesktopServices_delete(self: pointer) {.importc: "QDesktopServices_delet
 func init*(T: type gen_qdesktopservices_types.QDesktopServices, h: ptr cQDesktopServices): gen_qdesktopservices_types.QDesktopServices =
   T(h: h)
 proc openUrl*(_: type gen_qdesktopservices_types.QDesktopServices, url: gen_qurl.QUrl): bool =
-
   fcQDesktopServices_openUrl(url.h)
 
 proc setUrlHandler*(_: type gen_qdesktopservices_types.QDesktopServices, scheme: string, receiver: gen_qobject.QObject, methodVal: cstring): void =
-
   fcQDesktopServices_setUrlHandler(struct_miqt_string(data: scheme, len: csize_t(len(scheme))), receiver.h, methodVal)
 
 proc unsetUrlHandler*(_: type gen_qdesktopservices_types.QDesktopServices, scheme: string): void =
-
   fcQDesktopServices_unsetUrlHandler(struct_miqt_string(data: scheme, len: csize_t(len(scheme))))
 
 proc delete*(self: gen_qdesktopservices_types.QDesktopServices) =

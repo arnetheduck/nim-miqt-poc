@@ -546,345 +546,279 @@ proc fcQDateEdit_delete(self: pointer) {.importc: "QDateEdit_delete".}
 func init*(T: type gen_qdatetimeedit_types.QDateTimeEdit, h: ptr cQDateTimeEdit): gen_qdatetimeedit_types.QDateTimeEdit =
   T(h: h)
 proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
-
   gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new(parent.h))
+
 proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetimeedit_types.QDateTimeEdit =
-
   gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new2())
-proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime): gen_qdatetimeedit_types.QDateTimeEdit =
 
+proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime): gen_qdatetimeedit_types.QDateTimeEdit =
   gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new3(dt.h))
-proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, d: gen_qdatetime.QDate): gen_qdatetimeedit_types.QDateTimeEdit =
 
+proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, d: gen_qdatetime.QDate): gen_qdatetimeedit_types.QDateTimeEdit =
   gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new4(d.h))
-proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, t: gen_qdatetime.QTime): gen_qdatetimeedit_types.QDateTimeEdit =
 
+proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, t: gen_qdatetime.QTime): gen_qdatetimeedit_types.QDateTimeEdit =
   gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new5(t.h))
+
 proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
-
   gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new6(dt.h, parent.h))
-proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, d: gen_qdatetime.QDate, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
 
+proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, d: gen_qdatetime.QDate, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
   gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new7(d.h, parent.h))
-proc create2*(T: type gen_qdatetimeedit_types.QDateTimeEdit, t: gen_qdatetime.QTime, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
 
+proc create*(T: type gen_qdatetimeedit_types.QDateTimeEdit, t: gen_qdatetime.QTime, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateTimeEdit =
   gen_qdatetimeedit_types.QDateTimeEdit.init(fcQDateTimeEdit_new8(t.h, parent.h))
-proc metaObject*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDateTimeEdit_metaObject(self.h))
 
 proc metacast*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cstring): pointer =
-
   fcQDateTimeEdit_metacast(self.h, param1)
 
 proc metacall*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQDateTimeEdit_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring): string =
-
   let v_ms = fcQDateTimeEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring): string =
-
   let v_ms = fcQDateTimeEdit_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc dateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDateTime =
-
   gen_qdatetime.QDateTime(h: fcQDateTimeEdit_dateTime(self.h))
 
 proc date*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDate =
-
   gen_qdatetime.QDate(h: fcQDateTimeEdit_date(self.h))
 
 proc time*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QTime =
-
   gen_qdatetime.QTime(h: fcQDateTimeEdit_time(self.h))
 
 proc calendar*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qcalendar.QCalendar =
-
   gen_qcalendar.QCalendar(h: fcQDateTimeEdit_calendar(self.h))
 
 proc setCalendar*(self: gen_qdatetimeedit_types.QDateTimeEdit, calendar: gen_qcalendar.QCalendar): void =
-
   fcQDateTimeEdit_setCalendar(self.h, calendar.h)
 
 proc minimumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDateTime =
-
   gen_qdatetime.QDateTime(h: fcQDateTimeEdit_minimumDateTime(self.h))
 
 proc clearMinimumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
-
   fcQDateTimeEdit_clearMinimumDateTime(self.h)
 
 proc setMinimumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime): void =
-
   fcQDateTimeEdit_setMinimumDateTime(self.h, dt.h)
 
 proc maximumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDateTime =
-
   gen_qdatetime.QDateTime(h: fcQDateTimeEdit_maximumDateTime(self.h))
 
 proc clearMaximumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
-
   fcQDateTimeEdit_clearMaximumDateTime(self.h)
 
 proc setMaximumDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime): void =
-
   fcQDateTimeEdit_setMaximumDateTime(self.h, dt.h)
 
 proc setDateTimeRange*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QDateTime, max: gen_qdatetime.QDateTime): void =
-
   fcQDateTimeEdit_setDateTimeRange(self.h, min.h, max.h)
 
 proc minimumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDate =
-
   gen_qdatetime.QDate(h: fcQDateTimeEdit_minimumDate(self.h))
 
 proc setMinimumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QDate): void =
-
   fcQDateTimeEdit_setMinimumDate(self.h, min.h)
 
 proc clearMinimumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
-
   fcQDateTimeEdit_clearMinimumDate(self.h)
 
 proc maximumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QDate =
-
   gen_qdatetime.QDate(h: fcQDateTimeEdit_maximumDate(self.h))
 
 proc setMaximumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, max: gen_qdatetime.QDate): void =
-
   fcQDateTimeEdit_setMaximumDate(self.h, max.h)
 
 proc clearMaximumDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
-
   fcQDateTimeEdit_clearMaximumDate(self.h)
 
 proc setDateRange*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QDate, max: gen_qdatetime.QDate): void =
-
   fcQDateTimeEdit_setDateRange(self.h, min.h, max.h)
 
 proc minimumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QTime =
-
   gen_qdatetime.QTime(h: fcQDateTimeEdit_minimumTime(self.h))
 
 proc setMinimumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QTime): void =
-
   fcQDateTimeEdit_setMinimumTime(self.h, min.h)
 
 proc clearMinimumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
-
   fcQDateTimeEdit_clearMinimumTime(self.h)
 
 proc maximumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qdatetime.QTime =
-
   gen_qdatetime.QTime(h: fcQDateTimeEdit_maximumTime(self.h))
 
 proc setMaximumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, max: gen_qdatetime.QTime): void =
-
   fcQDateTimeEdit_setMaximumTime(self.h, max.h)
 
 proc clearMaximumTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
-
   fcQDateTimeEdit_clearMaximumTime(self.h)
 
 proc setTimeRange*(self: gen_qdatetimeedit_types.QDateTimeEdit, min: gen_qdatetime.QTime, max: gen_qdatetime.QTime): void =
-
   fcQDateTimeEdit_setTimeRange(self.h, min.h, max.h)
 
 proc displayedSections*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
-
   cint(fcQDateTimeEdit_displayedSections(self.h))
 
 proc currentSection*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
-
   cint(fcQDateTimeEdit_currentSection(self.h))
 
 proc sectionAt*(self: gen_qdatetimeedit_types.QDateTimeEdit, index: cint): cint =
-
   cint(fcQDateTimeEdit_sectionAt(self.h, index))
 
 proc setCurrentSection*(self: gen_qdatetimeedit_types.QDateTimeEdit, section: cint): void =
-
   fcQDateTimeEdit_setCurrentSection(self.h, cint(section))
 
 proc currentSectionIndex*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
-
   fcQDateTimeEdit_currentSectionIndex(self.h)
 
 proc setCurrentSectionIndex*(self: gen_qdatetimeedit_types.QDateTimeEdit, index: cint): void =
-
   fcQDateTimeEdit_setCurrentSectionIndex(self.h, index)
 
 proc calendarWidget*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qcalendarwidget.QCalendarWidget =
-
   gen_qcalendarwidget.QCalendarWidget(h: fcQDateTimeEdit_calendarWidget(self.h))
 
 proc setCalendarWidget*(self: gen_qdatetimeedit_types.QDateTimeEdit, calendarWidget: gen_qcalendarwidget.QCalendarWidget): void =
-
   fcQDateTimeEdit_setCalendarWidget(self.h, calendarWidget.h)
 
 proc sectionCount*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
-
   fcQDateTimeEdit_sectionCount(self.h)
 
 proc setSelectedSection*(self: gen_qdatetimeedit_types.QDateTimeEdit, section: cint): void =
-
   fcQDateTimeEdit_setSelectedSection(self.h, cint(section))
 
 proc sectionText*(self: gen_qdatetimeedit_types.QDateTimeEdit, section: cint): string =
-
   let v_ms = fcQDateTimeEdit_sectionText(self.h, cint(section))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc displayFormat*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): string =
-
   let v_ms = fcQDateTimeEdit_displayFormat(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDisplayFormat*(self: gen_qdatetimeedit_types.QDateTimeEdit, format: string): void =
-
   fcQDateTimeEdit_setDisplayFormat(self.h, struct_miqt_string(data: format, len: csize_t(len(format))))
 
 proc calendarPopup*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): bool =
-
   fcQDateTimeEdit_calendarPopup(self.h)
 
 proc setCalendarPopup*(self: gen_qdatetimeedit_types.QDateTimeEdit, enable: bool): void =
-
   fcQDateTimeEdit_setCalendarPopup(self.h, enable)
 
 proc timeSpec*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
-
   cint(fcQDateTimeEdit_timeSpec(self.h))
 
 proc setTimeSpec*(self: gen_qdatetimeedit_types.QDateTimeEdit, spec: cint): void =
-
   fcQDateTimeEdit_setTimeSpec(self.h, cint(spec))
 
 proc sizeHint*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQDateTimeEdit_sizeHint(self.h))
 
 proc clear*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
-
   fcQDateTimeEdit_clear(self.h)
 
 proc stepBy*(self: gen_qdatetimeedit_types.QDateTimeEdit, steps: cint): void =
-
   fcQDateTimeEdit_stepBy(self.h, steps)
 
 proc event*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): bool =
-
   fcQDateTimeEdit_event(self.h, event.h)
 
 proc dateTimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, dateTime: gen_qdatetime.QDateTime): void =
-
   fcQDateTimeEdit_dateTimeChanged(self.h, dateTime.h)
 
+type QDateTimeEditdateTimeChangedSlot* = proc(dateTime: gen_qdatetime.QDateTime)
 proc miqt_exec_callback_QDateTimeEdit_dateTimeChanged(slot: int, dateTime: pointer) {.exportc.} =
-  type Cb = proc(dateTime: gen_qdatetime.QDateTime)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDateTimeEditdateTimeChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QDateTime(h: dateTime)
-
 
   nimfunc[](slotval1)
 
-proc ondateTimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: proc(dateTime: gen_qdatetime.QDateTime)) =
-  type Cb = proc(dateTime: gen_qdatetime.QDateTime)
-  var tmp = new Cb
+proc ondateTimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdateTimeChangedSlot) =
+  var tmp = new QDateTimeEditdateTimeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDateTimeEdit_connect_dateTimeChanged(self.h, cast[int](addr tmp[]))
-proc timeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, time: gen_qdatetime.QTime): void =
 
+proc timeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, time: gen_qdatetime.QTime): void =
   fcQDateTimeEdit_timeChanged(self.h, time.h)
 
+type QDateTimeEdittimeChangedSlot* = proc(time: gen_qdatetime.QTime)
 proc miqt_exec_callback_QDateTimeEdit_timeChanged(slot: int, time: pointer) {.exportc.} =
-  type Cb = proc(time: gen_qdatetime.QTime)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDateTimeEdittimeChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QTime(h: time)
-
 
   nimfunc[](slotval1)
 
-proc ontimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: proc(time: gen_qdatetime.QTime)) =
-  type Cb = proc(time: gen_qdatetime.QTime)
-  var tmp = new Cb
+proc ontimeChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEdittimeChangedSlot) =
+  var tmp = new QDateTimeEdittimeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDateTimeEdit_connect_timeChanged(self.h, cast[int](addr tmp[]))
-proc dateChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, date: gen_qdatetime.QDate): void =
 
+proc dateChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, date: gen_qdatetime.QDate): void =
   fcQDateTimeEdit_dateChanged(self.h, date.h)
 
+type QDateTimeEditdateChangedSlot* = proc(date: gen_qdatetime.QDate)
 proc miqt_exec_callback_QDateTimeEdit_dateChanged(slot: int, date: pointer) {.exportc.} =
-  type Cb = proc(date: gen_qdatetime.QDate)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDateTimeEditdateChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QDate(h: date)
-
 
   nimfunc[](slotval1)
 
-proc ondateChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: proc(date: gen_qdatetime.QDate)) =
-  type Cb = proc(date: gen_qdatetime.QDate)
-  var tmp = new Cb
+proc ondateChanged*(self: gen_qdatetimeedit_types.QDateTimeEdit, slot: QDateTimeEditdateChangedSlot) =
+  var tmp = new QDateTimeEditdateChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDateTimeEdit_connect_dateChanged(self.h, cast[int](addr tmp[]))
-proc setDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, dateTime: gen_qdatetime.QDateTime): void =
 
+proc setDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, dateTime: gen_qdatetime.QDateTime): void =
   fcQDateTimeEdit_setDateTime(self.h, dateTime.h)
 
 proc setDate*(self: gen_qdatetimeedit_types.QDateTimeEdit, date: gen_qdatetime.QDate): void =
-
   fcQDateTimeEdit_setDate(self.h, date.h)
 
 proc setTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, time: gen_qdatetime.QTime): void =
-
   fcQDateTimeEdit_setTime(self.h, time.h)
 
-proc tr2*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring): string =
   let v_ms = fcQDateTimeEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDateTimeEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring): string =
   let v_ms = fcQDateTimeEdit_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qdatetimeedit_types.QDateTimeEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDateTimeEdit_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QDateTimeEditmetaObject*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQDateTimeEdit_virtualbase_metaObject(self.h))
 
 type QDateTimeEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -902,7 +836,6 @@ proc miqt_exec_callback_QDateTimeEdit_metaObject(self: ptr cQDateTimeEdit, slot:
 
   virtualReturn.h
 proc QDateTimeEditmetacast*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cstring): pointer =
-
   fQDateTimeEdit_virtualbase_metacast(self.h, param1)
 
 type QDateTimeEditmetacastProc* = proc(param1: cstring): pointer
@@ -922,7 +855,6 @@ proc miqt_exec_callback_QDateTimeEdit_metacast(self: ptr cQDateTimeEdit, slot: i
 
   virtualReturn
 proc QDateTimeEditmetacall*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fQDateTimeEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QDateTimeEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -946,7 +878,6 @@ proc miqt_exec_callback_QDateTimeEdit_metacall(self: ptr cQDateTimeEdit, slot: i
 
   virtualReturn
 proc QDateTimeEditsizeHint*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDateTimeEdit_virtualbase_sizeHint(self.h))
 
 type QDateTimeEditsizeHintProc* = proc(): gen_qsize.QSize
@@ -964,7 +895,6 @@ proc miqt_exec_callback_QDateTimeEdit_sizeHint(self: ptr cQDateTimeEdit, slot: i
 
   virtualReturn.h
 proc QDateTimeEditclear*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): void =
-
   fQDateTimeEdit_virtualbase_clear(self.h)
 
 type QDateTimeEditclearProc* = proc(): void
@@ -980,7 +910,6 @@ proc miqt_exec_callback_QDateTimeEdit_clear(self: ptr cQDateTimeEdit, slot: int)
 
   nimfunc[]()
 proc QDateTimeEditstepBy*(self: gen_qdatetimeedit_types.QDateTimeEdit, steps: cint): void =
-
   fQDateTimeEdit_virtualbase_stepBy(self.h, steps)
 
 type QDateTimeEditstepByProc* = proc(steps: cint): void
@@ -998,7 +927,6 @@ proc miqt_exec_callback_QDateTimeEdit_stepBy(self: ptr cQDateTimeEdit, slot: int
 
   nimfunc[](slotval1)
 proc QDateTimeEditevent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): bool =
-
   fQDateTimeEdit_virtualbase_event(self.h, event.h)
 
 type QDateTimeEditeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1018,7 +946,6 @@ proc miqt_exec_callback_QDateTimeEdit_event(self: ptr cQDateTimeEdit, slot: int,
 
   virtualReturn
 proc QDateTimeEditkeyPressEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QKeyEvent): void =
-
   fQDateTimeEdit_virtualbase_keyPressEvent(self.h, event.h)
 
 type QDateTimeEditkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1036,7 +963,6 @@ proc miqt_exec_callback_QDateTimeEdit_keyPressEvent(self: ptr cQDateTimeEdit, sl
 
   nimfunc[](slotval1)
 proc QDateTimeEditwheelEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QWheelEvent): void =
-
   fQDateTimeEdit_virtualbase_wheelEvent(self.h, event.h)
 
 type QDateTimeEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -1054,7 +980,6 @@ proc miqt_exec_callback_QDateTimeEdit_wheelEvent(self: ptr cQDateTimeEdit, slot:
 
   nimfunc[](slotval1)
 proc QDateTimeEditfocusInEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QFocusEvent): void =
-
   fQDateTimeEdit_virtualbase_focusInEvent(self.h, event.h)
 
 type QDateTimeEditfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1072,7 +997,6 @@ proc miqt_exec_callback_QDateTimeEdit_focusInEvent(self: ptr cQDateTimeEdit, slo
 
   nimfunc[](slotval1)
 proc QDateTimeEditfocusNextPrevChild*(self: gen_qdatetimeedit_types.QDateTimeEdit, next: bool): bool =
-
   fQDateTimeEdit_virtualbase_focusNextPrevChild(self.h, next)
 
 type QDateTimeEditfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1092,7 +1016,6 @@ proc miqt_exec_callback_QDateTimeEdit_focusNextPrevChild(self: ptr cQDateTimeEdi
 
   virtualReturn
 proc QDateTimeEditvalidate*(self: gen_qdatetimeedit_types.QDateTimeEdit, input: string, pos: ptr cint): cint =
-
   cint(fQDateTimeEdit_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
 type QDateTimeEditvalidateProc* = proc(input: string, pos: ptr cint): cint
@@ -1117,7 +1040,6 @@ proc miqt_exec_callback_QDateTimeEdit_validate(self: ptr cQDateTimeEdit, slot: i
 
   cint(virtualReturn)
 proc QDateTimeEditfixup*(self: gen_qdatetimeedit_types.QDateTimeEdit, input: string): void =
-
   fQDateTimeEdit_virtualbase_fixup(self.h, struct_miqt_string(data: input, len: csize_t(len(input))))
 
 type QDateTimeEditfixupProc* = proc(input: string): void
@@ -1138,7 +1060,6 @@ proc miqt_exec_callback_QDateTimeEdit_fixup(self: ptr cQDateTimeEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QDateTimeEditdateTimeFromText*(self: gen_qdatetimeedit_types.QDateTimeEdit, text: string): gen_qdatetime.QDateTime =
-
   gen_qdatetime.QDateTime(h: fQDateTimeEdit_virtualbase_dateTimeFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
 type QDateTimeEditdateTimeFromTextProc* = proc(text: string): gen_qdatetime.QDateTime
@@ -1161,7 +1082,6 @@ proc miqt_exec_callback_QDateTimeEdit_dateTimeFromText(self: ptr cQDateTimeEdit,
 
   virtualReturn.h
 proc QDateTimeEdittextFromDateTime*(self: gen_qdatetimeedit_types.QDateTimeEdit, dt: gen_qdatetime.QDateTime): string =
-
   let v_ms = fQDateTimeEdit_virtualbase_textFromDateTime(self.h, dt.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -1184,7 +1104,6 @@ proc miqt_exec_callback_QDateTimeEdit_textFromDateTime(self: ptr cQDateTimeEdit,
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QDateTimeEditstepEnabled*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
-
   cint(fQDateTimeEdit_virtualbase_stepEnabled(self.h))
 
 type QDateTimeEditstepEnabledProc* = proc(): cint
@@ -1202,7 +1121,6 @@ proc miqt_exec_callback_QDateTimeEdit_stepEnabled(self: ptr cQDateTimeEdit, slot
 
   cint(virtualReturn)
 proc QDateTimeEditmousePressEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
-
   fQDateTimeEdit_virtualbase_mousePressEvent(self.h, event.h)
 
 type QDateTimeEditmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1220,7 +1138,6 @@ proc miqt_exec_callback_QDateTimeEdit_mousePressEvent(self: ptr cQDateTimeEdit, 
 
   nimfunc[](slotval1)
 proc QDateTimeEditpaintEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QPaintEvent): void =
-
   fQDateTimeEdit_virtualbase_paintEvent(self.h, event.h)
 
 type QDateTimeEditpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1238,7 +1155,6 @@ proc miqt_exec_callback_QDateTimeEdit_paintEvent(self: ptr cQDateTimeEdit, slot:
 
   nimfunc[](slotval1)
 proc QDateTimeEditminimumSizeHint*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDateTimeEdit_virtualbase_minimumSizeHint(self.h))
 
 type QDateTimeEditminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1256,7 +1172,6 @@ proc miqt_exec_callback_QDateTimeEdit_minimumSizeHint(self: ptr cQDateTimeEdit, 
 
   virtualReturn.h
 proc QDateTimeEditinputMethodQuery*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQDateTimeEdit_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QDateTimeEditinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1276,7 +1191,6 @@ proc miqt_exec_callback_QDateTimeEdit_inputMethodQuery(self: ptr cQDateTimeEdit,
 
   virtualReturn.h
 proc QDateTimeEditresizeEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QResizeEvent): void =
-
   fQDateTimeEdit_virtualbase_resizeEvent(self.h, event.h)
 
 type QDateTimeEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -1294,7 +1208,6 @@ proc miqt_exec_callback_QDateTimeEdit_resizeEvent(self: ptr cQDateTimeEdit, slot
 
   nimfunc[](slotval1)
 proc QDateTimeEditkeyReleaseEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QKeyEvent): void =
-
   fQDateTimeEdit_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QDateTimeEditkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1312,7 +1225,6 @@ proc miqt_exec_callback_QDateTimeEdit_keyReleaseEvent(self: ptr cQDateTimeEdit, 
 
   nimfunc[](slotval1)
 proc QDateTimeEditfocusOutEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QFocusEvent): void =
-
   fQDateTimeEdit_virtualbase_focusOutEvent(self.h, event.h)
 
 type QDateTimeEditfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1330,7 +1242,6 @@ proc miqt_exec_callback_QDateTimeEdit_focusOutEvent(self: ptr cQDateTimeEdit, sl
 
   nimfunc[](slotval1)
 proc QDateTimeEditcontextMenuEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QContextMenuEvent): void =
-
   fQDateTimeEdit_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QDateTimeEditcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -1348,7 +1259,6 @@ proc miqt_exec_callback_QDateTimeEdit_contextMenuEvent(self: ptr cQDateTimeEdit,
 
   nimfunc[](slotval1)
 proc QDateTimeEditchangeEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
-
   fQDateTimeEdit_virtualbase_changeEvent(self.h, event.h)
 
 type QDateTimeEditchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1366,7 +1276,6 @@ proc miqt_exec_callback_QDateTimeEdit_changeEvent(self: ptr cQDateTimeEdit, slot
 
   nimfunc[](slotval1)
 proc QDateTimeEditcloseEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QCloseEvent): void =
-
   fQDateTimeEdit_virtualbase_closeEvent(self.h, event.h)
 
 type QDateTimeEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1384,7 +1293,6 @@ proc miqt_exec_callback_QDateTimeEdit_closeEvent(self: ptr cQDateTimeEdit, slot:
 
   nimfunc[](slotval1)
 proc QDateTimeEdithideEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QHideEvent): void =
-
   fQDateTimeEdit_virtualbase_hideEvent(self.h, event.h)
 
 type QDateTimeEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1402,7 +1310,6 @@ proc miqt_exec_callback_QDateTimeEdit_hideEvent(self: ptr cQDateTimeEdit, slot: 
 
   nimfunc[](slotval1)
 proc QDateTimeEditmouseReleaseEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
-
   fQDateTimeEdit_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QDateTimeEditmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1420,7 +1327,6 @@ proc miqt_exec_callback_QDateTimeEdit_mouseReleaseEvent(self: ptr cQDateTimeEdit
 
   nimfunc[](slotval1)
 proc QDateTimeEditmouseMoveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
-
   fQDateTimeEdit_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QDateTimeEditmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1438,7 +1344,6 @@ proc miqt_exec_callback_QDateTimeEdit_mouseMoveEvent(self: ptr cQDateTimeEdit, s
 
   nimfunc[](slotval1)
 proc QDateTimeEdittimerEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QTimerEvent): void =
-
   fQDateTimeEdit_virtualbase_timerEvent(self.h, event.h)
 
 type QDateTimeEdittimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1456,7 +1361,6 @@ proc miqt_exec_callback_QDateTimeEdit_timerEvent(self: ptr cQDateTimeEdit, slot:
 
   nimfunc[](slotval1)
 proc QDateTimeEditshowEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QShowEvent): void =
-
   fQDateTimeEdit_virtualbase_showEvent(self.h, event.h)
 
 type QDateTimeEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1474,7 +1378,6 @@ proc miqt_exec_callback_QDateTimeEdit_showEvent(self: ptr cQDateTimeEdit, slot: 
 
   nimfunc[](slotval1)
 proc QDateTimeEditdevType*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): cint =
-
   fQDateTimeEdit_virtualbase_devType(self.h)
 
 type QDateTimeEditdevTypeProc* = proc(): cint
@@ -1492,7 +1395,6 @@ proc miqt_exec_callback_QDateTimeEdit_devType(self: ptr cQDateTimeEdit, slot: in
 
   virtualReturn
 proc QDateTimeEditsetVisible*(self: gen_qdatetimeedit_types.QDateTimeEdit, visible: bool): void =
-
   fQDateTimeEdit_virtualbase_setVisible(self.h, visible)
 
 type QDateTimeEditsetVisibleProc* = proc(visible: bool): void
@@ -1510,7 +1412,6 @@ proc miqt_exec_callback_QDateTimeEdit_setVisible(self: ptr cQDateTimeEdit, slot:
 
   nimfunc[](slotval1)
 proc QDateTimeEditheightForWidth*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint): cint =
-
   fQDateTimeEdit_virtualbase_heightForWidth(self.h, param1)
 
 type QDateTimeEditheightForWidthProc* = proc(param1: cint): cint
@@ -1530,7 +1431,6 @@ proc miqt_exec_callback_QDateTimeEdit_heightForWidth(self: ptr cQDateTimeEdit, s
 
   virtualReturn
 proc QDateTimeEdithasHeightForWidth*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): bool =
-
   fQDateTimeEdit_virtualbase_hasHeightForWidth(self.h)
 
 type QDateTimeEdithasHeightForWidthProc* = proc(): bool
@@ -1548,7 +1448,6 @@ proc miqt_exec_callback_QDateTimeEdit_hasHeightForWidth(self: ptr cQDateTimeEdit
 
   virtualReturn
 proc QDateTimeEditpaintEngine*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQDateTimeEdit_virtualbase_paintEngine(self.h))
 
 type QDateTimeEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1566,7 +1465,6 @@ proc miqt_exec_callback_QDateTimeEdit_paintEngine(self: ptr cQDateTimeEdit, slot
 
   virtualReturn.h
 proc QDateTimeEditmouseDoubleClickEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMouseEvent): void =
-
   fQDateTimeEdit_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QDateTimeEditmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1584,7 +1482,6 @@ proc miqt_exec_callback_QDateTimeEdit_mouseDoubleClickEvent(self: ptr cQDateTime
 
   nimfunc[](slotval1)
 proc QDateTimeEditenterEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
-
   fQDateTimeEdit_virtualbase_enterEvent(self.h, event.h)
 
 type QDateTimeEditenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1602,7 +1499,6 @@ proc miqt_exec_callback_QDateTimeEdit_enterEvent(self: ptr cQDateTimeEdit, slot:
 
   nimfunc[](slotval1)
 proc QDateTimeEditleaveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
-
   fQDateTimeEdit_virtualbase_leaveEvent(self.h, event.h)
 
 type QDateTimeEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1620,7 +1516,6 @@ proc miqt_exec_callback_QDateTimeEdit_leaveEvent(self: ptr cQDateTimeEdit, slot:
 
   nimfunc[](slotval1)
 proc QDateTimeEditmoveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QMoveEvent): void =
-
   fQDateTimeEdit_virtualbase_moveEvent(self.h, event.h)
 
 type QDateTimeEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1638,7 +1533,6 @@ proc miqt_exec_callback_QDateTimeEdit_moveEvent(self: ptr cQDateTimeEdit, slot: 
 
   nimfunc[](slotval1)
 proc QDateTimeEdittabletEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QTabletEvent): void =
-
   fQDateTimeEdit_virtualbase_tabletEvent(self.h, event.h)
 
 type QDateTimeEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1656,7 +1550,6 @@ proc miqt_exec_callback_QDateTimeEdit_tabletEvent(self: ptr cQDateTimeEdit, slot
 
   nimfunc[](slotval1)
 proc QDateTimeEditactionEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QActionEvent): void =
-
   fQDateTimeEdit_virtualbase_actionEvent(self.h, event.h)
 
 type QDateTimeEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1674,7 +1567,6 @@ proc miqt_exec_callback_QDateTimeEdit_actionEvent(self: ptr cQDateTimeEdit, slot
 
   nimfunc[](slotval1)
 proc QDateTimeEditdragEnterEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QDragEnterEvent): void =
-
   fQDateTimeEdit_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QDateTimeEditdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1692,7 +1584,6 @@ proc miqt_exec_callback_QDateTimeEdit_dragEnterEvent(self: ptr cQDateTimeEdit, s
 
   nimfunc[](slotval1)
 proc QDateTimeEditdragMoveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QDragMoveEvent): void =
-
   fQDateTimeEdit_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QDateTimeEditdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1710,7 +1601,6 @@ proc miqt_exec_callback_QDateTimeEdit_dragMoveEvent(self: ptr cQDateTimeEdit, sl
 
   nimfunc[](slotval1)
 proc QDateTimeEditdragLeaveEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QDragLeaveEvent): void =
-
   fQDateTimeEdit_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QDateTimeEditdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1728,7 +1618,6 @@ proc miqt_exec_callback_QDateTimeEdit_dragLeaveEvent(self: ptr cQDateTimeEdit, s
 
   nimfunc[](slotval1)
 proc QDateTimeEditdropEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qevent.QDropEvent): void =
-
   fQDateTimeEdit_virtualbase_dropEvent(self.h, event.h)
 
 type QDateTimeEditdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1746,7 +1635,6 @@ proc miqt_exec_callback_QDateTimeEdit_dropEvent(self: ptr cQDateTimeEdit, slot: 
 
   nimfunc[](slotval1)
 proc QDateTimeEditnativeEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQDateTimeEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QDateTimeEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1773,7 +1661,6 @@ proc miqt_exec_callback_QDateTimeEdit_nativeEvent(self: ptr cQDateTimeEdit, slot
 
   virtualReturn
 proc QDateTimeEditmetric*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: cint): cint =
-
   fQDateTimeEdit_virtualbase_metric(self.h, cint(param1))
 
 type QDateTimeEditmetricProc* = proc(param1: cint): cint
@@ -1793,7 +1680,6 @@ proc miqt_exec_callback_QDateTimeEdit_metric(self: ptr cQDateTimeEdit, slot: int
 
   virtualReturn
 proc QDateTimeEditinitPainter*(self: gen_qdatetimeedit_types.QDateTimeEdit, painter: gen_qpainter.QPainter): void =
-
   fQDateTimeEdit_virtualbase_initPainter(self.h, painter.h)
 
 type QDateTimeEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1811,7 +1697,6 @@ proc miqt_exec_callback_QDateTimeEdit_initPainter(self: ptr cQDateTimeEdit, slot
 
   nimfunc[](slotval1)
 proc QDateTimeEditredirected*(self: gen_qdatetimeedit_types.QDateTimeEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQDateTimeEdit_virtualbase_redirected(self.h, offset.h))
 
 type QDateTimeEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1831,7 +1716,6 @@ proc miqt_exec_callback_QDateTimeEdit_redirected(self: ptr cQDateTimeEdit, slot:
 
   virtualReturn.h
 proc QDateTimeEditsharedPainter*(self: gen_qdatetimeedit_types.QDateTimeEdit, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQDateTimeEdit_virtualbase_sharedPainter(self.h))
 
 type QDateTimeEditsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1849,7 +1733,6 @@ proc miqt_exec_callback_QDateTimeEdit_sharedPainter(self: ptr cQDateTimeEdit, sl
 
   virtualReturn.h
 proc QDateTimeEditinputMethodEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, param1: gen_qevent.QInputMethodEvent): void =
-
   fQDateTimeEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QDateTimeEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1867,7 +1750,6 @@ proc miqt_exec_callback_QDateTimeEdit_inputMethodEvent(self: ptr cQDateTimeEdit,
 
   nimfunc[](slotval1)
 proc QDateTimeEditeventFilter*(self: gen_qdatetimeedit_types.QDateTimeEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQDateTimeEdit_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QDateTimeEditeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1889,7 +1771,6 @@ proc miqt_exec_callback_QDateTimeEdit_eventFilter(self: ptr cQDateTimeEdit, slot
 
   virtualReturn
 proc QDateTimeEditchildEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QChildEvent): void =
-
   fQDateTimeEdit_virtualbase_childEvent(self.h, event.h)
 
 type QDateTimeEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1907,7 +1788,6 @@ proc miqt_exec_callback_QDateTimeEdit_childEvent(self: ptr cQDateTimeEdit, slot:
 
   nimfunc[](slotval1)
 proc QDateTimeEditcustomEvent*(self: gen_qdatetimeedit_types.QDateTimeEdit, event: gen_qcoreevent.QEvent): void =
-
   fQDateTimeEdit_virtualbase_customEvent(self.h, event.h)
 
 type QDateTimeEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1925,7 +1805,6 @@ proc miqt_exec_callback_QDateTimeEdit_customEvent(self: ptr cQDateTimeEdit, slot
 
   nimfunc[](slotval1)
 proc QDateTimeEditconnectNotify*(self: gen_qdatetimeedit_types.QDateTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDateTimeEdit_virtualbase_connectNotify(self.h, signal.h)
 
 type QDateTimeEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1943,7 +1822,6 @@ proc miqt_exec_callback_QDateTimeEdit_connectNotify(self: ptr cQDateTimeEdit, sl
 
   nimfunc[](slotval1)
 proc QDateTimeEditdisconnectNotify*(self: gen_qdatetimeedit_types.QDateTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDateTimeEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QDateTimeEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1968,91 +1846,79 @@ proc delete*(self: gen_qdatetimeedit_types.QDateTimeEdit) =
 func init*(T: type gen_qdatetimeedit_types.QTimeEdit, h: ptr cQTimeEdit): gen_qdatetimeedit_types.QTimeEdit =
   T(h: h)
 proc create*(T: type gen_qdatetimeedit_types.QTimeEdit, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QTimeEdit =
-
   gen_qdatetimeedit_types.QTimeEdit.init(fcQTimeEdit_new(parent.h))
+
 proc create*(T: type gen_qdatetimeedit_types.QTimeEdit, ): gen_qdatetimeedit_types.QTimeEdit =
-
   gen_qdatetimeedit_types.QTimeEdit.init(fcQTimeEdit_new2())
-proc create2*(T: type gen_qdatetimeedit_types.QTimeEdit, time: gen_qdatetime.QTime): gen_qdatetimeedit_types.QTimeEdit =
 
+proc create*(T: type gen_qdatetimeedit_types.QTimeEdit, time: gen_qdatetime.QTime): gen_qdatetimeedit_types.QTimeEdit =
   gen_qdatetimeedit_types.QTimeEdit.init(fcQTimeEdit_new3(time.h))
+
 proc create*(T: type gen_qdatetimeedit_types.QTimeEdit, time: gen_qdatetime.QTime, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QTimeEdit =
-
   gen_qdatetimeedit_types.QTimeEdit.init(fcQTimeEdit_new4(time.h, parent.h))
-proc metaObject*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTimeEdit_metaObject(self.h))
 
 proc metacast*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cstring): pointer =
-
   fcQTimeEdit_metacast(self.h, param1)
 
 proc metacall*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTimeEdit_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring): string =
-
   let v_ms = fcQTimeEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring): string =
-
   let v_ms = fcQTimeEdit_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc userTimeChanged*(self: gen_qdatetimeedit_types.QTimeEdit, time: gen_qdatetime.QTime): void =
-
   fcQTimeEdit_userTimeChanged(self.h, time.h)
 
+type QTimeEdituserTimeChangedSlot* = proc(time: gen_qdatetime.QTime)
 proc miqt_exec_callback_QTimeEdit_userTimeChanged(slot: int, time: pointer) {.exportc.} =
-  type Cb = proc(time: gen_qdatetime.QTime)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTimeEdituserTimeChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QTime(h: time)
-
 
   nimfunc[](slotval1)
 
-proc onuserTimeChanged*(self: gen_qdatetimeedit_types.QTimeEdit, slot: proc(time: gen_qdatetime.QTime)) =
-  type Cb = proc(time: gen_qdatetime.QTime)
-  var tmp = new Cb
+proc onuserTimeChanged*(self: gen_qdatetimeedit_types.QTimeEdit, slot: QTimeEdituserTimeChangedSlot) =
+  var tmp = new QTimeEdituserTimeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTimeEdit_connect_userTimeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring): string =
   let v_ms = fcQTimeEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTimeEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring): string =
   let v_ms = fcQTimeEdit_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qdatetimeedit_types.QTimeEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTimeEdit_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QTimeEditmetaObject*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTimeEdit_virtualbase_metaObject(self.h))
 
 type QTimeEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -2070,7 +1936,6 @@ proc miqt_exec_callback_QTimeEdit_metaObject(self: ptr cQTimeEdit, slot: int): p
 
   virtualReturn.h
 proc QTimeEditmetacast*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cstring): pointer =
-
   fQTimeEdit_virtualbase_metacast(self.h, param1)
 
 type QTimeEditmetacastProc* = proc(param1: cstring): pointer
@@ -2090,7 +1955,6 @@ proc miqt_exec_callback_QTimeEdit_metacast(self: ptr cQTimeEdit, slot: int, para
 
   virtualReturn
 proc QTimeEditmetacall*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTimeEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTimeEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -2114,7 +1978,6 @@ proc miqt_exec_callback_QTimeEdit_metacall(self: ptr cQTimeEdit, slot: int, para
 
   virtualReturn
 proc QTimeEditsizeHint*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTimeEdit_virtualbase_sizeHint(self.h))
 
 type QTimeEditsizeHintProc* = proc(): gen_qsize.QSize
@@ -2132,7 +1995,6 @@ proc miqt_exec_callback_QTimeEdit_sizeHint(self: ptr cQTimeEdit, slot: int): poi
 
   virtualReturn.h
 proc QTimeEditclear*(self: gen_qdatetimeedit_types.QTimeEdit, ): void =
-
   fQTimeEdit_virtualbase_clear(self.h)
 
 type QTimeEditclearProc* = proc(): void
@@ -2148,7 +2010,6 @@ proc miqt_exec_callback_QTimeEdit_clear(self: ptr cQTimeEdit, slot: int): void {
 
   nimfunc[]()
 proc QTimeEditstepBy*(self: gen_qdatetimeedit_types.QTimeEdit, steps: cint): void =
-
   fQTimeEdit_virtualbase_stepBy(self.h, steps)
 
 type QTimeEditstepByProc* = proc(steps: cint): void
@@ -2166,7 +2027,6 @@ proc miqt_exec_callback_QTimeEdit_stepBy(self: ptr cQTimeEdit, slot: int, steps:
 
   nimfunc[](slotval1)
 proc QTimeEditevent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QEvent): bool =
-
   fQTimeEdit_virtualbase_event(self.h, event.h)
 
 type QTimeEditeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -2186,7 +2046,6 @@ proc miqt_exec_callback_QTimeEdit_event(self: ptr cQTimeEdit, slot: int, event: 
 
   virtualReturn
 proc QTimeEditkeyPressEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QKeyEvent): void =
-
   fQTimeEdit_virtualbase_keyPressEvent(self.h, event.h)
 
 type QTimeEditkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2204,7 +2063,6 @@ proc miqt_exec_callback_QTimeEdit_keyPressEvent(self: ptr cQTimeEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QTimeEditwheelEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QWheelEvent): void =
-
   fQTimeEdit_virtualbase_wheelEvent(self.h, event.h)
 
 type QTimeEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -2222,7 +2080,6 @@ proc miqt_exec_callback_QTimeEdit_wheelEvent(self: ptr cQTimeEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTimeEditfocusInEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QFocusEvent): void =
-
   fQTimeEdit_virtualbase_focusInEvent(self.h, event.h)
 
 type QTimeEditfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2240,7 +2097,6 @@ proc miqt_exec_callback_QTimeEdit_focusInEvent(self: ptr cQTimeEdit, slot: int, 
 
   nimfunc[](slotval1)
 proc QTimeEditfocusNextPrevChild*(self: gen_qdatetimeedit_types.QTimeEdit, next: bool): bool =
-
   fQTimeEdit_virtualbase_focusNextPrevChild(self.h, next)
 
 type QTimeEditfocusNextPrevChildProc* = proc(next: bool): bool
@@ -2260,7 +2116,6 @@ proc miqt_exec_callback_QTimeEdit_focusNextPrevChild(self: ptr cQTimeEdit, slot:
 
   virtualReturn
 proc QTimeEditvalidate*(self: gen_qdatetimeedit_types.QTimeEdit, input: string, pos: ptr cint): cint =
-
   cint(fQTimeEdit_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
 type QTimeEditvalidateProc* = proc(input: string, pos: ptr cint): cint
@@ -2285,7 +2140,6 @@ proc miqt_exec_callback_QTimeEdit_validate(self: ptr cQTimeEdit, slot: int, inpu
 
   cint(virtualReturn)
 proc QTimeEditfixup*(self: gen_qdatetimeedit_types.QTimeEdit, input: string): void =
-
   fQTimeEdit_virtualbase_fixup(self.h, struct_miqt_string(data: input, len: csize_t(len(input))))
 
 type QTimeEditfixupProc* = proc(input: string): void
@@ -2306,7 +2160,6 @@ proc miqt_exec_callback_QTimeEdit_fixup(self: ptr cQTimeEdit, slot: int, input: 
 
   nimfunc[](slotval1)
 proc QTimeEditdateTimeFromText*(self: gen_qdatetimeedit_types.QTimeEdit, text: string): gen_qdatetime.QDateTime =
-
   gen_qdatetime.QDateTime(h: fQTimeEdit_virtualbase_dateTimeFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
 type QTimeEditdateTimeFromTextProc* = proc(text: string): gen_qdatetime.QDateTime
@@ -2329,7 +2182,6 @@ proc miqt_exec_callback_QTimeEdit_dateTimeFromText(self: ptr cQTimeEdit, slot: i
 
   virtualReturn.h
 proc QTimeEdittextFromDateTime*(self: gen_qdatetimeedit_types.QTimeEdit, dt: gen_qdatetime.QDateTime): string =
-
   let v_ms = fQTimeEdit_virtualbase_textFromDateTime(self.h, dt.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -2352,7 +2204,6 @@ proc miqt_exec_callback_QTimeEdit_textFromDateTime(self: ptr cQTimeEdit, slot: i
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QTimeEditstepEnabled*(self: gen_qdatetimeedit_types.QTimeEdit, ): cint =
-
   cint(fQTimeEdit_virtualbase_stepEnabled(self.h))
 
 type QTimeEditstepEnabledProc* = proc(): cint
@@ -2370,7 +2221,6 @@ proc miqt_exec_callback_QTimeEdit_stepEnabled(self: ptr cQTimeEdit, slot: int): 
 
   cint(virtualReturn)
 proc QTimeEditmousePressEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMouseEvent): void =
-
   fQTimeEdit_virtualbase_mousePressEvent(self.h, event.h)
 
 type QTimeEditmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2388,7 +2238,6 @@ proc miqt_exec_callback_QTimeEdit_mousePressEvent(self: ptr cQTimeEdit, slot: in
 
   nimfunc[](slotval1)
 proc QTimeEditpaintEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QPaintEvent): void =
-
   fQTimeEdit_virtualbase_paintEvent(self.h, event.h)
 
 type QTimeEditpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -2406,7 +2255,6 @@ proc miqt_exec_callback_QTimeEdit_paintEvent(self: ptr cQTimeEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTimeEditminimumSizeHint*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTimeEdit_virtualbase_minimumSizeHint(self.h))
 
 type QTimeEditminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -2424,7 +2272,6 @@ proc miqt_exec_callback_QTimeEdit_minimumSizeHint(self: ptr cQTimeEdit, slot: in
 
   virtualReturn.h
 proc QTimeEditinputMethodQuery*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQTimeEdit_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QTimeEditinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -2444,7 +2291,6 @@ proc miqt_exec_callback_QTimeEdit_inputMethodQuery(self: ptr cQTimeEdit, slot: i
 
   virtualReturn.h
 proc QTimeEditresizeEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QResizeEvent): void =
-
   fQTimeEdit_virtualbase_resizeEvent(self.h, event.h)
 
 type QTimeEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -2462,7 +2308,6 @@ proc miqt_exec_callback_QTimeEdit_resizeEvent(self: ptr cQTimeEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTimeEditkeyReleaseEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QKeyEvent): void =
-
   fQTimeEdit_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QTimeEditkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2480,7 +2325,6 @@ proc miqt_exec_callback_QTimeEdit_keyReleaseEvent(self: ptr cQTimeEdit, slot: in
 
   nimfunc[](slotval1)
 proc QTimeEditfocusOutEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QFocusEvent): void =
-
   fQTimeEdit_virtualbase_focusOutEvent(self.h, event.h)
 
 type QTimeEditfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2498,7 +2342,6 @@ proc miqt_exec_callback_QTimeEdit_focusOutEvent(self: ptr cQTimeEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QTimeEditcontextMenuEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QContextMenuEvent): void =
-
   fQTimeEdit_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QTimeEditcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -2516,7 +2359,6 @@ proc miqt_exec_callback_QTimeEdit_contextMenuEvent(self: ptr cQTimeEdit, slot: i
 
   nimfunc[](slotval1)
 proc QTimeEditchangeEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QEvent): void =
-
   fQTimeEdit_virtualbase_changeEvent(self.h, event.h)
 
 type QTimeEditchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2534,7 +2376,6 @@ proc miqt_exec_callback_QTimeEdit_changeEvent(self: ptr cQTimeEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTimeEditcloseEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QCloseEvent): void =
-
   fQTimeEdit_virtualbase_closeEvent(self.h, event.h)
 
 type QTimeEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -2552,7 +2393,6 @@ proc miqt_exec_callback_QTimeEdit_closeEvent(self: ptr cQTimeEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTimeEdithideEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QHideEvent): void =
-
   fQTimeEdit_virtualbase_hideEvent(self.h, event.h)
 
 type QTimeEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -2570,7 +2410,6 @@ proc miqt_exec_callback_QTimeEdit_hideEvent(self: ptr cQTimeEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTimeEditmouseReleaseEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMouseEvent): void =
-
   fQTimeEdit_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QTimeEditmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2588,7 +2427,6 @@ proc miqt_exec_callback_QTimeEdit_mouseReleaseEvent(self: ptr cQTimeEdit, slot: 
 
   nimfunc[](slotval1)
 proc QTimeEditmouseMoveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMouseEvent): void =
-
   fQTimeEdit_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QTimeEditmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2606,7 +2444,6 @@ proc miqt_exec_callback_QTimeEdit_mouseMoveEvent(self: ptr cQTimeEdit, slot: int
 
   nimfunc[](slotval1)
 proc QTimeEdittimerEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTimeEdit_virtualbase_timerEvent(self.h, event.h)
 
 type QTimeEdittimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -2624,7 +2461,6 @@ proc miqt_exec_callback_QTimeEdit_timerEvent(self: ptr cQTimeEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTimeEditshowEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QShowEvent): void =
-
   fQTimeEdit_virtualbase_showEvent(self.h, event.h)
 
 type QTimeEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -2642,7 +2478,6 @@ proc miqt_exec_callback_QTimeEdit_showEvent(self: ptr cQTimeEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTimeEditdevType*(self: gen_qdatetimeedit_types.QTimeEdit, ): cint =
-
   fQTimeEdit_virtualbase_devType(self.h)
 
 type QTimeEditdevTypeProc* = proc(): cint
@@ -2660,7 +2495,6 @@ proc miqt_exec_callback_QTimeEdit_devType(self: ptr cQTimeEdit, slot: int): cint
 
   virtualReturn
 proc QTimeEditsetVisible*(self: gen_qdatetimeedit_types.QTimeEdit, visible: bool): void =
-
   fQTimeEdit_virtualbase_setVisible(self.h, visible)
 
 type QTimeEditsetVisibleProc* = proc(visible: bool): void
@@ -2678,7 +2512,6 @@ proc miqt_exec_callback_QTimeEdit_setVisible(self: ptr cQTimeEdit, slot: int, vi
 
   nimfunc[](slotval1)
 proc QTimeEditheightForWidth*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint): cint =
-
   fQTimeEdit_virtualbase_heightForWidth(self.h, param1)
 
 type QTimeEditheightForWidthProc* = proc(param1: cint): cint
@@ -2698,7 +2531,6 @@ proc miqt_exec_callback_QTimeEdit_heightForWidth(self: ptr cQTimeEdit, slot: int
 
   virtualReturn
 proc QTimeEdithasHeightForWidth*(self: gen_qdatetimeedit_types.QTimeEdit, ): bool =
-
   fQTimeEdit_virtualbase_hasHeightForWidth(self.h)
 
 type QTimeEdithasHeightForWidthProc* = proc(): bool
@@ -2716,7 +2548,6 @@ proc miqt_exec_callback_QTimeEdit_hasHeightForWidth(self: ptr cQTimeEdit, slot: 
 
   virtualReturn
 proc QTimeEditpaintEngine*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQTimeEdit_virtualbase_paintEngine(self.h))
 
 type QTimeEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -2734,7 +2565,6 @@ proc miqt_exec_callback_QTimeEdit_paintEngine(self: ptr cQTimeEdit, slot: int): 
 
   virtualReturn.h
 proc QTimeEditmouseDoubleClickEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMouseEvent): void =
-
   fQTimeEdit_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QTimeEditmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2752,7 +2582,6 @@ proc miqt_exec_callback_QTimeEdit_mouseDoubleClickEvent(self: ptr cQTimeEdit, sl
 
   nimfunc[](slotval1)
 proc QTimeEditenterEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QEvent): void =
-
   fQTimeEdit_virtualbase_enterEvent(self.h, event.h)
 
 type QTimeEditenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2770,7 +2599,6 @@ proc miqt_exec_callback_QTimeEdit_enterEvent(self: ptr cQTimeEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTimeEditleaveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QEvent): void =
-
   fQTimeEdit_virtualbase_leaveEvent(self.h, event.h)
 
 type QTimeEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2788,7 +2616,6 @@ proc miqt_exec_callback_QTimeEdit_leaveEvent(self: ptr cQTimeEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTimeEditmoveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QMoveEvent): void =
-
   fQTimeEdit_virtualbase_moveEvent(self.h, event.h)
 
 type QTimeEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -2806,7 +2633,6 @@ proc miqt_exec_callback_QTimeEdit_moveEvent(self: ptr cQTimeEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTimeEdittabletEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QTabletEvent): void =
-
   fQTimeEdit_virtualbase_tabletEvent(self.h, event.h)
 
 type QTimeEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -2824,7 +2650,6 @@ proc miqt_exec_callback_QTimeEdit_tabletEvent(self: ptr cQTimeEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTimeEditactionEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QActionEvent): void =
-
   fQTimeEdit_virtualbase_actionEvent(self.h, event.h)
 
 type QTimeEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -2842,7 +2667,6 @@ proc miqt_exec_callback_QTimeEdit_actionEvent(self: ptr cQTimeEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTimeEditdragEnterEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QDragEnterEvent): void =
-
   fQTimeEdit_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QTimeEditdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -2860,7 +2684,6 @@ proc miqt_exec_callback_QTimeEdit_dragEnterEvent(self: ptr cQTimeEdit, slot: int
 
   nimfunc[](slotval1)
 proc QTimeEditdragMoveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QDragMoveEvent): void =
-
   fQTimeEdit_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QTimeEditdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -2878,7 +2701,6 @@ proc miqt_exec_callback_QTimeEdit_dragMoveEvent(self: ptr cQTimeEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QTimeEditdragLeaveEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QDragLeaveEvent): void =
-
   fQTimeEdit_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QTimeEditdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -2896,7 +2718,6 @@ proc miqt_exec_callback_QTimeEdit_dragLeaveEvent(self: ptr cQTimeEdit, slot: int
 
   nimfunc[](slotval1)
 proc QTimeEditdropEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qevent.QDropEvent): void =
-
   fQTimeEdit_virtualbase_dropEvent(self.h, event.h)
 
 type QTimeEditdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -2914,7 +2735,6 @@ proc miqt_exec_callback_QTimeEdit_dropEvent(self: ptr cQTimeEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTimeEditnativeEvent*(self: gen_qdatetimeedit_types.QTimeEdit, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQTimeEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QTimeEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -2941,7 +2761,6 @@ proc miqt_exec_callback_QTimeEdit_nativeEvent(self: ptr cQTimeEdit, slot: int, e
 
   virtualReturn
 proc QTimeEditmetric*(self: gen_qdatetimeedit_types.QTimeEdit, param1: cint): cint =
-
   fQTimeEdit_virtualbase_metric(self.h, cint(param1))
 
 type QTimeEditmetricProc* = proc(param1: cint): cint
@@ -2961,7 +2780,6 @@ proc miqt_exec_callback_QTimeEdit_metric(self: ptr cQTimeEdit, slot: int, param1
 
   virtualReturn
 proc QTimeEditinitPainter*(self: gen_qdatetimeedit_types.QTimeEdit, painter: gen_qpainter.QPainter): void =
-
   fQTimeEdit_virtualbase_initPainter(self.h, painter.h)
 
 type QTimeEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -2979,7 +2797,6 @@ proc miqt_exec_callback_QTimeEdit_initPainter(self: ptr cQTimeEdit, slot: int, p
 
   nimfunc[](slotval1)
 proc QTimeEditredirected*(self: gen_qdatetimeedit_types.QTimeEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQTimeEdit_virtualbase_redirected(self.h, offset.h))
 
 type QTimeEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -2999,7 +2816,6 @@ proc miqt_exec_callback_QTimeEdit_redirected(self: ptr cQTimeEdit, slot: int, of
 
   virtualReturn.h
 proc QTimeEditsharedPainter*(self: gen_qdatetimeedit_types.QTimeEdit, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQTimeEdit_virtualbase_sharedPainter(self.h))
 
 type QTimeEditsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -3017,7 +2833,6 @@ proc miqt_exec_callback_QTimeEdit_sharedPainter(self: ptr cQTimeEdit, slot: int)
 
   virtualReturn.h
 proc QTimeEditinputMethodEvent*(self: gen_qdatetimeedit_types.QTimeEdit, param1: gen_qevent.QInputMethodEvent): void =
-
   fQTimeEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QTimeEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -3035,7 +2850,6 @@ proc miqt_exec_callback_QTimeEdit_inputMethodEvent(self: ptr cQTimeEdit, slot: i
 
   nimfunc[](slotval1)
 proc QTimeEditeventFilter*(self: gen_qdatetimeedit_types.QTimeEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTimeEdit_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTimeEditeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -3057,7 +2871,6 @@ proc miqt_exec_callback_QTimeEdit_eventFilter(self: ptr cQTimeEdit, slot: int, w
 
   virtualReturn
 proc QTimeEditchildEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QChildEvent): void =
-
   fQTimeEdit_virtualbase_childEvent(self.h, event.h)
 
 type QTimeEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -3075,7 +2888,6 @@ proc miqt_exec_callback_QTimeEdit_childEvent(self: ptr cQTimeEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTimeEditcustomEvent*(self: gen_qdatetimeedit_types.QTimeEdit, event: gen_qcoreevent.QEvent): void =
-
   fQTimeEdit_virtualbase_customEvent(self.h, event.h)
 
 type QTimeEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -3093,7 +2905,6 @@ proc miqt_exec_callback_QTimeEdit_customEvent(self: ptr cQTimeEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QTimeEditconnectNotify*(self: gen_qdatetimeedit_types.QTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTimeEdit_virtualbase_connectNotify(self.h, signal.h)
 
 type QTimeEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -3111,7 +2922,6 @@ proc miqt_exec_callback_QTimeEdit_connectNotify(self: ptr cQTimeEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QTimeEditdisconnectNotify*(self: gen_qdatetimeedit_types.QTimeEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTimeEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTimeEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -3136,91 +2946,79 @@ proc delete*(self: gen_qdatetimeedit_types.QTimeEdit) =
 func init*(T: type gen_qdatetimeedit_types.QDateEdit, h: ptr cQDateEdit): gen_qdatetimeedit_types.QDateEdit =
   T(h: h)
 proc create*(T: type gen_qdatetimeedit_types.QDateEdit, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateEdit =
-
   gen_qdatetimeedit_types.QDateEdit.init(fcQDateEdit_new(parent.h))
+
 proc create*(T: type gen_qdatetimeedit_types.QDateEdit, ): gen_qdatetimeedit_types.QDateEdit =
-
   gen_qdatetimeedit_types.QDateEdit.init(fcQDateEdit_new2())
-proc create2*(T: type gen_qdatetimeedit_types.QDateEdit, date: gen_qdatetime.QDate): gen_qdatetimeedit_types.QDateEdit =
 
+proc create*(T: type gen_qdatetimeedit_types.QDateEdit, date: gen_qdatetime.QDate): gen_qdatetimeedit_types.QDateEdit =
   gen_qdatetimeedit_types.QDateEdit.init(fcQDateEdit_new3(date.h))
+
 proc create*(T: type gen_qdatetimeedit_types.QDateEdit, date: gen_qdatetime.QDate, parent: gen_qwidget.QWidget): gen_qdatetimeedit_types.QDateEdit =
-
   gen_qdatetimeedit_types.QDateEdit.init(fcQDateEdit_new4(date.h, parent.h))
-proc metaObject*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDateEdit_metaObject(self.h))
 
 proc metacast*(self: gen_qdatetimeedit_types.QDateEdit, param1: cstring): pointer =
-
   fcQDateEdit_metacast(self.h, param1)
 
 proc metacall*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQDateEdit_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring): string =
-
   let v_ms = fcQDateEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring): string =
-
   let v_ms = fcQDateEdit_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc userDateChanged*(self: gen_qdatetimeedit_types.QDateEdit, date: gen_qdatetime.QDate): void =
-
   fcQDateEdit_userDateChanged(self.h, date.h)
 
+type QDateEdituserDateChangedSlot* = proc(date: gen_qdatetime.QDate)
 proc miqt_exec_callback_QDateEdit_userDateChanged(slot: int, date: pointer) {.exportc.} =
-  type Cb = proc(date: gen_qdatetime.QDate)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDateEdituserDateChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QDate(h: date)
-
 
   nimfunc[](slotval1)
 
-proc onuserDateChanged*(self: gen_qdatetimeedit_types.QDateEdit, slot: proc(date: gen_qdatetime.QDate)) =
-  type Cb = proc(date: gen_qdatetime.QDate)
-  var tmp = new Cb
+proc onuserDateChanged*(self: gen_qdatetimeedit_types.QDateEdit, slot: QDateEdituserDateChangedSlot) =
+  var tmp = new QDateEdituserDateChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDateEdit_connect_userDateChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring): string =
   let v_ms = fcQDateEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDateEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring): string =
   let v_ms = fcQDateEdit_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qdatetimeedit_types.QDateEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDateEdit_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QDateEditmetaObject*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQDateEdit_virtualbase_metaObject(self.h))
 
 type QDateEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -3238,7 +3036,6 @@ proc miqt_exec_callback_QDateEdit_metaObject(self: ptr cQDateEdit, slot: int): p
 
   virtualReturn.h
 proc QDateEditmetacast*(self: gen_qdatetimeedit_types.QDateEdit, param1: cstring): pointer =
-
   fQDateEdit_virtualbase_metacast(self.h, param1)
 
 type QDateEditmetacastProc* = proc(param1: cstring): pointer
@@ -3258,7 +3055,6 @@ proc miqt_exec_callback_QDateEdit_metacast(self: ptr cQDateEdit, slot: int, para
 
   virtualReturn
 proc QDateEditmetacall*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fQDateEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QDateEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -3282,7 +3078,6 @@ proc miqt_exec_callback_QDateEdit_metacall(self: ptr cQDateEdit, slot: int, para
 
   virtualReturn
 proc QDateEditsizeHint*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDateEdit_virtualbase_sizeHint(self.h))
 
 type QDateEditsizeHintProc* = proc(): gen_qsize.QSize
@@ -3300,7 +3095,6 @@ proc miqt_exec_callback_QDateEdit_sizeHint(self: ptr cQDateEdit, slot: int): poi
 
   virtualReturn.h
 proc QDateEditclear*(self: gen_qdatetimeedit_types.QDateEdit, ): void =
-
   fQDateEdit_virtualbase_clear(self.h)
 
 type QDateEditclearProc* = proc(): void
@@ -3316,7 +3110,6 @@ proc miqt_exec_callback_QDateEdit_clear(self: ptr cQDateEdit, slot: int): void {
 
   nimfunc[]()
 proc QDateEditstepBy*(self: gen_qdatetimeedit_types.QDateEdit, steps: cint): void =
-
   fQDateEdit_virtualbase_stepBy(self.h, steps)
 
 type QDateEditstepByProc* = proc(steps: cint): void
@@ -3334,7 +3127,6 @@ proc miqt_exec_callback_QDateEdit_stepBy(self: ptr cQDateEdit, slot: int, steps:
 
   nimfunc[](slotval1)
 proc QDateEditevent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QEvent): bool =
-
   fQDateEdit_virtualbase_event(self.h, event.h)
 
 type QDateEditeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -3354,7 +3146,6 @@ proc miqt_exec_callback_QDateEdit_event(self: ptr cQDateEdit, slot: int, event: 
 
   virtualReturn
 proc QDateEditkeyPressEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QKeyEvent): void =
-
   fQDateEdit_virtualbase_keyPressEvent(self.h, event.h)
 
 type QDateEditkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -3372,7 +3163,6 @@ proc miqt_exec_callback_QDateEdit_keyPressEvent(self: ptr cQDateEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QDateEditwheelEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QWheelEvent): void =
-
   fQDateEdit_virtualbase_wheelEvent(self.h, event.h)
 
 type QDateEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -3390,7 +3180,6 @@ proc miqt_exec_callback_QDateEdit_wheelEvent(self: ptr cQDateEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDateEditfocusInEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QFocusEvent): void =
-
   fQDateEdit_virtualbase_focusInEvent(self.h, event.h)
 
 type QDateEditfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -3408,7 +3197,6 @@ proc miqt_exec_callback_QDateEdit_focusInEvent(self: ptr cQDateEdit, slot: int, 
 
   nimfunc[](slotval1)
 proc QDateEditfocusNextPrevChild*(self: gen_qdatetimeedit_types.QDateEdit, next: bool): bool =
-
   fQDateEdit_virtualbase_focusNextPrevChild(self.h, next)
 
 type QDateEditfocusNextPrevChildProc* = proc(next: bool): bool
@@ -3428,7 +3216,6 @@ proc miqt_exec_callback_QDateEdit_focusNextPrevChild(self: ptr cQDateEdit, slot:
 
   virtualReturn
 proc QDateEditvalidate*(self: gen_qdatetimeedit_types.QDateEdit, input: string, pos: ptr cint): cint =
-
   cint(fQDateEdit_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
 type QDateEditvalidateProc* = proc(input: string, pos: ptr cint): cint
@@ -3453,7 +3240,6 @@ proc miqt_exec_callback_QDateEdit_validate(self: ptr cQDateEdit, slot: int, inpu
 
   cint(virtualReturn)
 proc QDateEditfixup*(self: gen_qdatetimeedit_types.QDateEdit, input: string): void =
-
   fQDateEdit_virtualbase_fixup(self.h, struct_miqt_string(data: input, len: csize_t(len(input))))
 
 type QDateEditfixupProc* = proc(input: string): void
@@ -3474,7 +3260,6 @@ proc miqt_exec_callback_QDateEdit_fixup(self: ptr cQDateEdit, slot: int, input: 
 
   nimfunc[](slotval1)
 proc QDateEditdateTimeFromText*(self: gen_qdatetimeedit_types.QDateEdit, text: string): gen_qdatetime.QDateTime =
-
   gen_qdatetime.QDateTime(h: fQDateEdit_virtualbase_dateTimeFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
 type QDateEditdateTimeFromTextProc* = proc(text: string): gen_qdatetime.QDateTime
@@ -3497,7 +3282,6 @@ proc miqt_exec_callback_QDateEdit_dateTimeFromText(self: ptr cQDateEdit, slot: i
 
   virtualReturn.h
 proc QDateEdittextFromDateTime*(self: gen_qdatetimeedit_types.QDateEdit, dt: gen_qdatetime.QDateTime): string =
-
   let v_ms = fQDateEdit_virtualbase_textFromDateTime(self.h, dt.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -3520,7 +3304,6 @@ proc miqt_exec_callback_QDateEdit_textFromDateTime(self: ptr cQDateEdit, slot: i
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QDateEditstepEnabled*(self: gen_qdatetimeedit_types.QDateEdit, ): cint =
-
   cint(fQDateEdit_virtualbase_stepEnabled(self.h))
 
 type QDateEditstepEnabledProc* = proc(): cint
@@ -3538,7 +3321,6 @@ proc miqt_exec_callback_QDateEdit_stepEnabled(self: ptr cQDateEdit, slot: int): 
 
   cint(virtualReturn)
 proc QDateEditmousePressEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMouseEvent): void =
-
   fQDateEdit_virtualbase_mousePressEvent(self.h, event.h)
 
 type QDateEditmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -3556,7 +3338,6 @@ proc miqt_exec_callback_QDateEdit_mousePressEvent(self: ptr cQDateEdit, slot: in
 
   nimfunc[](slotval1)
 proc QDateEditpaintEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QPaintEvent): void =
-
   fQDateEdit_virtualbase_paintEvent(self.h, event.h)
 
 type QDateEditpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -3574,7 +3355,6 @@ proc miqt_exec_callback_QDateEdit_paintEvent(self: ptr cQDateEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDateEditminimumSizeHint*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDateEdit_virtualbase_minimumSizeHint(self.h))
 
 type QDateEditminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -3592,7 +3372,6 @@ proc miqt_exec_callback_QDateEdit_minimumSizeHint(self: ptr cQDateEdit, slot: in
 
   virtualReturn.h
 proc QDateEditinputMethodQuery*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQDateEdit_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QDateEditinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -3612,7 +3391,6 @@ proc miqt_exec_callback_QDateEdit_inputMethodQuery(self: ptr cQDateEdit, slot: i
 
   virtualReturn.h
 proc QDateEditresizeEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QResizeEvent): void =
-
   fQDateEdit_virtualbase_resizeEvent(self.h, event.h)
 
 type QDateEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -3630,7 +3408,6 @@ proc miqt_exec_callback_QDateEdit_resizeEvent(self: ptr cQDateEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QDateEditkeyReleaseEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QKeyEvent): void =
-
   fQDateEdit_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QDateEditkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -3648,7 +3425,6 @@ proc miqt_exec_callback_QDateEdit_keyReleaseEvent(self: ptr cQDateEdit, slot: in
 
   nimfunc[](slotval1)
 proc QDateEditfocusOutEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QFocusEvent): void =
-
   fQDateEdit_virtualbase_focusOutEvent(self.h, event.h)
 
 type QDateEditfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -3666,7 +3442,6 @@ proc miqt_exec_callback_QDateEdit_focusOutEvent(self: ptr cQDateEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QDateEditcontextMenuEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QContextMenuEvent): void =
-
   fQDateEdit_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QDateEditcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -3684,7 +3459,6 @@ proc miqt_exec_callback_QDateEdit_contextMenuEvent(self: ptr cQDateEdit, slot: i
 
   nimfunc[](slotval1)
 proc QDateEditchangeEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QEvent): void =
-
   fQDateEdit_virtualbase_changeEvent(self.h, event.h)
 
 type QDateEditchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -3702,7 +3476,6 @@ proc miqt_exec_callback_QDateEdit_changeEvent(self: ptr cQDateEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QDateEditcloseEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QCloseEvent): void =
-
   fQDateEdit_virtualbase_closeEvent(self.h, event.h)
 
 type QDateEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -3720,7 +3493,6 @@ proc miqt_exec_callback_QDateEdit_closeEvent(self: ptr cQDateEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDateEdithideEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QHideEvent): void =
-
   fQDateEdit_virtualbase_hideEvent(self.h, event.h)
 
 type QDateEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -3738,7 +3510,6 @@ proc miqt_exec_callback_QDateEdit_hideEvent(self: ptr cQDateEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QDateEditmouseReleaseEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMouseEvent): void =
-
   fQDateEdit_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QDateEditmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -3756,7 +3527,6 @@ proc miqt_exec_callback_QDateEdit_mouseReleaseEvent(self: ptr cQDateEdit, slot: 
 
   nimfunc[](slotval1)
 proc QDateEditmouseMoveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMouseEvent): void =
-
   fQDateEdit_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QDateEditmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -3774,7 +3544,6 @@ proc miqt_exec_callback_QDateEdit_mouseMoveEvent(self: ptr cQDateEdit, slot: int
 
   nimfunc[](slotval1)
 proc QDateEdittimerEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QTimerEvent): void =
-
   fQDateEdit_virtualbase_timerEvent(self.h, event.h)
 
 type QDateEdittimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -3792,7 +3561,6 @@ proc miqt_exec_callback_QDateEdit_timerEvent(self: ptr cQDateEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDateEditshowEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QShowEvent): void =
-
   fQDateEdit_virtualbase_showEvent(self.h, event.h)
 
 type QDateEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -3810,7 +3578,6 @@ proc miqt_exec_callback_QDateEdit_showEvent(self: ptr cQDateEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QDateEditdevType*(self: gen_qdatetimeedit_types.QDateEdit, ): cint =
-
   fQDateEdit_virtualbase_devType(self.h)
 
 type QDateEditdevTypeProc* = proc(): cint
@@ -3828,7 +3595,6 @@ proc miqt_exec_callback_QDateEdit_devType(self: ptr cQDateEdit, slot: int): cint
 
   virtualReturn
 proc QDateEditsetVisible*(self: gen_qdatetimeedit_types.QDateEdit, visible: bool): void =
-
   fQDateEdit_virtualbase_setVisible(self.h, visible)
 
 type QDateEditsetVisibleProc* = proc(visible: bool): void
@@ -3846,7 +3612,6 @@ proc miqt_exec_callback_QDateEdit_setVisible(self: ptr cQDateEdit, slot: int, vi
 
   nimfunc[](slotval1)
 proc QDateEditheightForWidth*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint): cint =
-
   fQDateEdit_virtualbase_heightForWidth(self.h, param1)
 
 type QDateEditheightForWidthProc* = proc(param1: cint): cint
@@ -3866,7 +3631,6 @@ proc miqt_exec_callback_QDateEdit_heightForWidth(self: ptr cQDateEdit, slot: int
 
   virtualReturn
 proc QDateEdithasHeightForWidth*(self: gen_qdatetimeedit_types.QDateEdit, ): bool =
-
   fQDateEdit_virtualbase_hasHeightForWidth(self.h)
 
 type QDateEdithasHeightForWidthProc* = proc(): bool
@@ -3884,7 +3648,6 @@ proc miqt_exec_callback_QDateEdit_hasHeightForWidth(self: ptr cQDateEdit, slot: 
 
   virtualReturn
 proc QDateEditpaintEngine*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQDateEdit_virtualbase_paintEngine(self.h))
 
 type QDateEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -3902,7 +3665,6 @@ proc miqt_exec_callback_QDateEdit_paintEngine(self: ptr cQDateEdit, slot: int): 
 
   virtualReturn.h
 proc QDateEditmouseDoubleClickEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMouseEvent): void =
-
   fQDateEdit_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QDateEditmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -3920,7 +3682,6 @@ proc miqt_exec_callback_QDateEdit_mouseDoubleClickEvent(self: ptr cQDateEdit, sl
 
   nimfunc[](slotval1)
 proc QDateEditenterEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QEvent): void =
-
   fQDateEdit_virtualbase_enterEvent(self.h, event.h)
 
 type QDateEditenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -3938,7 +3699,6 @@ proc miqt_exec_callback_QDateEdit_enterEvent(self: ptr cQDateEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDateEditleaveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QEvent): void =
-
   fQDateEdit_virtualbase_leaveEvent(self.h, event.h)
 
 type QDateEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -3956,7 +3716,6 @@ proc miqt_exec_callback_QDateEdit_leaveEvent(self: ptr cQDateEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDateEditmoveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QMoveEvent): void =
-
   fQDateEdit_virtualbase_moveEvent(self.h, event.h)
 
 type QDateEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -3974,7 +3733,6 @@ proc miqt_exec_callback_QDateEdit_moveEvent(self: ptr cQDateEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QDateEdittabletEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QTabletEvent): void =
-
   fQDateEdit_virtualbase_tabletEvent(self.h, event.h)
 
 type QDateEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -3992,7 +3750,6 @@ proc miqt_exec_callback_QDateEdit_tabletEvent(self: ptr cQDateEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QDateEditactionEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QActionEvent): void =
-
   fQDateEdit_virtualbase_actionEvent(self.h, event.h)
 
 type QDateEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -4010,7 +3767,6 @@ proc miqt_exec_callback_QDateEdit_actionEvent(self: ptr cQDateEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QDateEditdragEnterEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QDragEnterEvent): void =
-
   fQDateEdit_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QDateEditdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -4028,7 +3784,6 @@ proc miqt_exec_callback_QDateEdit_dragEnterEvent(self: ptr cQDateEdit, slot: int
 
   nimfunc[](slotval1)
 proc QDateEditdragMoveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QDragMoveEvent): void =
-
   fQDateEdit_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QDateEditdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -4046,7 +3801,6 @@ proc miqt_exec_callback_QDateEdit_dragMoveEvent(self: ptr cQDateEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QDateEditdragLeaveEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QDragLeaveEvent): void =
-
   fQDateEdit_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QDateEditdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -4064,7 +3818,6 @@ proc miqt_exec_callback_QDateEdit_dragLeaveEvent(self: ptr cQDateEdit, slot: int
 
   nimfunc[](slotval1)
 proc QDateEditdropEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qevent.QDropEvent): void =
-
   fQDateEdit_virtualbase_dropEvent(self.h, event.h)
 
 type QDateEditdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -4082,7 +3835,6 @@ proc miqt_exec_callback_QDateEdit_dropEvent(self: ptr cQDateEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QDateEditnativeEvent*(self: gen_qdatetimeedit_types.QDateEdit, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQDateEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QDateEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -4109,7 +3861,6 @@ proc miqt_exec_callback_QDateEdit_nativeEvent(self: ptr cQDateEdit, slot: int, e
 
   virtualReturn
 proc QDateEditmetric*(self: gen_qdatetimeedit_types.QDateEdit, param1: cint): cint =
-
   fQDateEdit_virtualbase_metric(self.h, cint(param1))
 
 type QDateEditmetricProc* = proc(param1: cint): cint
@@ -4129,7 +3880,6 @@ proc miqt_exec_callback_QDateEdit_metric(self: ptr cQDateEdit, slot: int, param1
 
   virtualReturn
 proc QDateEditinitPainter*(self: gen_qdatetimeedit_types.QDateEdit, painter: gen_qpainter.QPainter): void =
-
   fQDateEdit_virtualbase_initPainter(self.h, painter.h)
 
 type QDateEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -4147,7 +3897,6 @@ proc miqt_exec_callback_QDateEdit_initPainter(self: ptr cQDateEdit, slot: int, p
 
   nimfunc[](slotval1)
 proc QDateEditredirected*(self: gen_qdatetimeedit_types.QDateEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQDateEdit_virtualbase_redirected(self.h, offset.h))
 
 type QDateEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -4167,7 +3916,6 @@ proc miqt_exec_callback_QDateEdit_redirected(self: ptr cQDateEdit, slot: int, of
 
   virtualReturn.h
 proc QDateEditsharedPainter*(self: gen_qdatetimeedit_types.QDateEdit, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQDateEdit_virtualbase_sharedPainter(self.h))
 
 type QDateEditsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -4185,7 +3933,6 @@ proc miqt_exec_callback_QDateEdit_sharedPainter(self: ptr cQDateEdit, slot: int)
 
   virtualReturn.h
 proc QDateEditinputMethodEvent*(self: gen_qdatetimeedit_types.QDateEdit, param1: gen_qevent.QInputMethodEvent): void =
-
   fQDateEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QDateEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -4203,7 +3950,6 @@ proc miqt_exec_callback_QDateEdit_inputMethodEvent(self: ptr cQDateEdit, slot: i
 
   nimfunc[](slotval1)
 proc QDateEditeventFilter*(self: gen_qdatetimeedit_types.QDateEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQDateEdit_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QDateEditeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -4225,7 +3971,6 @@ proc miqt_exec_callback_QDateEdit_eventFilter(self: ptr cQDateEdit, slot: int, w
 
   virtualReturn
 proc QDateEditchildEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QChildEvent): void =
-
   fQDateEdit_virtualbase_childEvent(self.h, event.h)
 
 type QDateEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -4243,7 +3988,6 @@ proc miqt_exec_callback_QDateEdit_childEvent(self: ptr cQDateEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QDateEditcustomEvent*(self: gen_qdatetimeedit_types.QDateEdit, event: gen_qcoreevent.QEvent): void =
-
   fQDateEdit_virtualbase_customEvent(self.h, event.h)
 
 type QDateEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -4261,7 +4005,6 @@ proc miqt_exec_callback_QDateEdit_customEvent(self: ptr cQDateEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QDateEditconnectNotify*(self: gen_qdatetimeedit_types.QDateEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDateEdit_virtualbase_connectNotify(self.h, signal.h)
 
 type QDateEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -4279,7 +4022,6 @@ proc miqt_exec_callback_QDateEdit_connectNotify(self: ptr cQDateEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QDateEditdisconnectNotify*(self: gen_qdatetimeedit_types.QDateEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDateEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QDateEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

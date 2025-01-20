@@ -77,110 +77,84 @@ proc fcQCborStreamWriter_delete(self: pointer) {.importc: "QCborStreamWriter_del
 func init*(T: type gen_qcborstreamwriter_types.QCborStreamWriter, h: ptr cQCborStreamWriter): gen_qcborstreamwriter_types.QCborStreamWriter =
   T(h: h)
 proc create*(T: type gen_qcborstreamwriter_types.QCborStreamWriter, device: gen_qiodevice.QIODevice): gen_qcborstreamwriter_types.QCborStreamWriter =
-
   gen_qcborstreamwriter_types.QCborStreamWriter.init(fcQCborStreamWriter_new(device.h))
-proc setDevice*(self: gen_qcborstreamwriter_types.QCborStreamWriter, device: gen_qiodevice.QIODevice): void =
 
+proc setDevice*(self: gen_qcborstreamwriter_types.QCborStreamWriter, device: gen_qiodevice.QIODevice): void =
   fcQCborStreamWriter_setDevice(self.h, device.h)
 
 proc device*(self: gen_qcborstreamwriter_types.QCborStreamWriter, ): gen_qiodevice.QIODevice =
-
   gen_qiodevice.QIODevice(h: fcQCborStreamWriter_device(self.h))
 
 proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, u: culonglong): void =
-
   fcQCborStreamWriter_append(self.h, u)
 
-proc appendWithQint64*(self: gen_qcborstreamwriter_types.QCborStreamWriter, i: clonglong): void =
-
+proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, i: clonglong): void =
   fcQCborStreamWriter_appendWithQint64(self.h, i)
 
-proc appendWithQCborNegativeInteger*(self: gen_qcborstreamwriter_types.QCborStreamWriter, n: cint): void =
-
+proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, n: cint): void =
   fcQCborStreamWriter_appendWithQCborNegativeInteger(self.h, cint(n))
 
-proc appendWithBa*(self: gen_qcborstreamwriter_types.QCborStreamWriter, ba: seq[byte]): void =
-
+proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, ba: seq[byte]): void =
   fcQCborStreamWriter_appendWithBa(self.h, struct_miqt_string(data: cast[cstring](if len(ba) == 0: nil else: unsafeAddr ba[0]), len: csize_t(len(ba))))
 
-proc appendWithTag*(self: gen_qcborstreamwriter_types.QCborStreamWriter, tag: cint): void =
-
+proc append2*(self: gen_qcborstreamwriter_types.QCborStreamWriter, tag: cint): void =
   fcQCborStreamWriter_appendWithTag(self.h, cint(tag))
 
 proc append3*(self: gen_qcborstreamwriter_types.QCborStreamWriter, tag: cint): void =
-
   fcQCborStreamWriter_append3(self.h, cint(tag))
 
-proc appendWithSt*(self: gen_qcborstreamwriter_types.QCborStreamWriter, st: cint): void =
-
+proc append4*(self: gen_qcborstreamwriter_types.QCborStreamWriter, st: cint): void =
   fcQCborStreamWriter_appendWithSt(self.h, cint(st))
 
-proc appendWithFloat*(self: gen_qcborstreamwriter_types.QCborStreamWriter, f: float32): void =
-
+proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, f: float32): void =
   fcQCborStreamWriter_appendWithFloat(self.h, f)
 
-proc appendWithDouble*(self: gen_qcborstreamwriter_types.QCborStreamWriter, d: float64): void =
-
+proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, d: float64): void =
   fcQCborStreamWriter_appendWithDouble(self.h, d)
 
 proc appendByteString*(self: gen_qcborstreamwriter_types.QCborStreamWriter, data: cstring, len: int64): void =
-
   fcQCborStreamWriter_appendByteString(self.h, data, len)
 
 proc appendTextString*(self: gen_qcborstreamwriter_types.QCborStreamWriter, utf8: cstring, len: int64): void =
-
   fcQCborStreamWriter_appendTextString(self.h, utf8, len)
 
-proc appendWithBool*(self: gen_qcborstreamwriter_types.QCborStreamWriter, b: bool): void =
-
+proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, b: bool): void =
   fcQCborStreamWriter_appendWithBool(self.h, b)
 
 proc appendNull*(self: gen_qcborstreamwriter_types.QCborStreamWriter, ): void =
-
   fcQCborStreamWriter_appendNull(self.h)
 
 proc appendUndefined*(self: gen_qcborstreamwriter_types.QCborStreamWriter, ): void =
-
   fcQCborStreamWriter_appendUndefined(self.h)
 
-proc appendWithInt*(self: gen_qcborstreamwriter_types.QCborStreamWriter, i: cint): void =
-
+proc append5*(self: gen_qcborstreamwriter_types.QCborStreamWriter, i: cint): void =
   fcQCborStreamWriter_appendWithInt(self.h, i)
 
-proc appendWithUint*(self: gen_qcborstreamwriter_types.QCborStreamWriter, u: cuint): void =
-
+proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, u: cuint): void =
   fcQCborStreamWriter_appendWithUint(self.h, u)
 
-proc append4*(self: gen_qcborstreamwriter_types.QCborStreamWriter, str: cstring): void =
-
+proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, str: cstring): void =
   fcQCborStreamWriter_append4(self.h, str)
 
 proc startArray*(self: gen_qcborstreamwriter_types.QCborStreamWriter, ): void =
-
   fcQCborStreamWriter_startArray(self.h)
 
-proc startArrayWithCount*(self: gen_qcborstreamwriter_types.QCborStreamWriter, count: culonglong): void =
-
+proc startArray*(self: gen_qcborstreamwriter_types.QCborStreamWriter, count: culonglong): void =
   fcQCborStreamWriter_startArrayWithCount(self.h, count)
 
 proc endArray*(self: gen_qcborstreamwriter_types.QCborStreamWriter, ): bool =
-
   fcQCborStreamWriter_endArray(self.h)
 
 proc startMap*(self: gen_qcborstreamwriter_types.QCborStreamWriter, ): void =
-
   fcQCborStreamWriter_startMap(self.h)
 
-proc startMapWithCount*(self: gen_qcborstreamwriter_types.QCborStreamWriter, count: culonglong): void =
-
+proc startMap*(self: gen_qcborstreamwriter_types.QCborStreamWriter, count: culonglong): void =
   fcQCborStreamWriter_startMapWithCount(self.h, count)
 
 proc endMap*(self: gen_qcborstreamwriter_types.QCborStreamWriter, ): bool =
-
   fcQCborStreamWriter_endMap(self.h)
 
-proc append22*(self: gen_qcborstreamwriter_types.QCborStreamWriter, str: cstring, size: int64): void =
-
+proc append*(self: gen_qcborstreamwriter_types.QCborStreamWriter, str: cstring, size: int64): void =
   fcQCborStreamWriter_append22(self.h, str, size)
 
 proc delete*(self: gen_qcborstreamwriter_types.QCborStreamWriter) =

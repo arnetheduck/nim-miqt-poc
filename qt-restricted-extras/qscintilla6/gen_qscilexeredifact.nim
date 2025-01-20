@@ -177,65 +177,54 @@ proc fcQsciLexerEDIFACT_delete(self: pointer) {.importc: "QsciLexerEDIFACT_delet
 func init*(T: type gen_qscilexeredifact_types.QsciLexerEDIFACT, h: ptr cQsciLexerEDIFACT): gen_qscilexeredifact_types.QsciLexerEDIFACT =
   T(h: h)
 proc create*(T: type gen_qscilexeredifact_types.QsciLexerEDIFACT, ): gen_qscilexeredifact_types.QsciLexerEDIFACT =
-
   gen_qscilexeredifact_types.QsciLexerEDIFACT.init(fcQsciLexerEDIFACT_new())
+
 proc create*(T: type gen_qscilexeredifact_types.QsciLexerEDIFACT, parent: gen_qobject.QObject): gen_qscilexeredifact_types.QsciLexerEDIFACT =
-
   gen_qscilexeredifact_types.QsciLexerEDIFACT.init(fcQsciLexerEDIFACT_new2(parent.h))
-proc metaObject*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerEDIFACT_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, param1: cstring): pointer =
-
   fcQsciLexerEDIFACT_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerEDIFACT_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexeredifact_types.QsciLexerEDIFACT, s: cstring): string =
-
   let v_ms = fcQsciLexerEDIFACT_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cstring =
-
   (fcQsciLexerEDIFACT_language(self.h))
 
 proc lexer*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cstring =
-
   (fcQsciLexerEDIFACT_lexer(self.h))
 
 proc defaultColor*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerEDIFACT_defaultColor(self.h, style))
 
 proc description*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): string =
-
   let v_ms = fcQsciLexerEDIFACT_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qscilexeredifact_types.QsciLexerEDIFACT, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexeredifact_types.QsciLexerEDIFACT, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerEDIFACT_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexeredifact_types.QsciLexerEDIFACT, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexeredifact_types.QsciLexerEDIFACT, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerEDIFACT_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerEDIFACTmetaObject*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerEDIFACT_virtualbase_metaObject(self.h))
 
 type QsciLexerEDIFACTmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -253,7 +242,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_metaObject(self: ptr cQsciLexerEDIFACT,
 
   virtualReturn.h
 proc QsciLexerEDIFACTmetacast*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, param1: cstring): pointer =
-
   fQsciLexerEDIFACT_virtualbase_metacast(self.h, param1)
 
 type QsciLexerEDIFACTmetacastProc* = proc(param1: cstring): pointer
@@ -273,7 +261,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_metacast(self: ptr cQsciLexerEDIFACT, s
 
   virtualReturn
 proc QsciLexerEDIFACTmetacall*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerEDIFACT_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerEDIFACTmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -311,7 +298,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_language(self: ptr cQsciLexerEDIFACT, s
 
   virtualReturn
 proc QsciLexerEDIFACTlexer*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cstring =
-
   (fQsciLexerEDIFACT_virtualbase_lexer(self.h))
 
 type QsciLexerEDIFACTlexerProc* = proc(): cstring
@@ -329,7 +315,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_lexer(self: ptr cQsciLexerEDIFACT, slot
 
   virtualReturn
 proc QsciLexerEDIFACTlexerId*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cint =
-
   fQsciLexerEDIFACT_virtualbase_lexerId(self.h)
 
 type QsciLexerEDIFACTlexerIdProc* = proc(): cint
@@ -347,7 +332,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_lexerId(self: ptr cQsciLexerEDIFACT, sl
 
   virtualReturn
 proc QsciLexerEDIFACTautoCompletionFillups*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cstring =
-
   (fQsciLexerEDIFACT_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerEDIFACTautoCompletionFillupsProc* = proc(): cstring
@@ -365,7 +349,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_autoCompletionFillups(self: ptr cQsciLe
 
   virtualReturn
 proc QsciLexerEDIFACTautoCompletionWordSeparators*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): seq[string] =
-
   var v_ma = fQsciLexerEDIFACT_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -395,7 +378,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_autoCompletionWordSeparators(self: ptr 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerEDIFACTblockEnd*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: ptr cint): cstring =
-
   (fQsciLexerEDIFACT_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerEDIFACTblockEndProc* = proc(style: ptr cint): cstring
@@ -415,7 +397,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_blockEnd(self: ptr cQsciLexerEDIFACT, s
 
   virtualReturn
 proc QsciLexerEDIFACTblockLookback*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cint =
-
   fQsciLexerEDIFACT_virtualbase_blockLookback(self.h)
 
 type QsciLexerEDIFACTblockLookbackProc* = proc(): cint
@@ -433,7 +414,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_blockLookback(self: ptr cQsciLexerEDIFA
 
   virtualReturn
 proc QsciLexerEDIFACTblockStart*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: ptr cint): cstring =
-
   (fQsciLexerEDIFACT_virtualbase_blockStart(self.h, style))
 
 type QsciLexerEDIFACTblockStartProc* = proc(style: ptr cint): cstring
@@ -453,7 +433,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_blockStart(self: ptr cQsciLexerEDIFACT,
 
   virtualReturn
 proc QsciLexerEDIFACTblockStartKeyword*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: ptr cint): cstring =
-
   (fQsciLexerEDIFACT_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerEDIFACTblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -473,7 +452,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_blockStartKeyword(self: ptr cQsciLexerE
 
   virtualReturn
 proc QsciLexerEDIFACTbraceStyle*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cint =
-
   fQsciLexerEDIFACT_virtualbase_braceStyle(self.h)
 
 type QsciLexerEDIFACTbraceStyleProc* = proc(): cint
@@ -491,7 +469,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_braceStyle(self: ptr cQsciLexerEDIFACT,
 
   virtualReturn
 proc QsciLexerEDIFACTcaseSensitive*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): bool =
-
   fQsciLexerEDIFACT_virtualbase_caseSensitive(self.h)
 
 type QsciLexerEDIFACTcaseSensitiveProc* = proc(): bool
@@ -509,7 +486,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_caseSensitive(self: ptr cQsciLexerEDIFA
 
   virtualReturn
 proc QsciLexerEDIFACTcolor*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerEDIFACT_virtualbase_color(self.h, style))
 
 type QsciLexerEDIFACTcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -529,7 +505,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_color(self: ptr cQsciLexerEDIFACT, slot
 
   virtualReturn.h
 proc QsciLexerEDIFACTeolFill*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): bool =
-
   fQsciLexerEDIFACT_virtualbase_eolFill(self.h, style)
 
 type QsciLexerEDIFACTeolFillProc* = proc(style: cint): bool
@@ -549,7 +524,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_eolFill(self: ptr cQsciLexerEDIFACT, sl
 
   virtualReturn
 proc QsciLexerEDIFACTfont*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerEDIFACT_virtualbase_font(self.h, style))
 
 type QsciLexerEDIFACTfontProc* = proc(style: cint): gen_qfont.QFont
@@ -569,7 +543,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_font(self: ptr cQsciLexerEDIFACT, slot:
 
   virtualReturn.h
 proc QsciLexerEDIFACTindentationGuideView*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cint =
-
   fQsciLexerEDIFACT_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerEDIFACTindentationGuideViewProc* = proc(): cint
@@ -587,7 +560,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_indentationGuideView(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerEDIFACTkeywords*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, set: cint): cstring =
-
   (fQsciLexerEDIFACT_virtualbase_keywords(self.h, set))
 
 type QsciLexerEDIFACTkeywordsProc* = proc(set: cint): cstring
@@ -607,7 +579,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_keywords(self: ptr cQsciLexerEDIFACT, s
 
   virtualReturn
 proc QsciLexerEDIFACTdefaultStyle*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cint =
-
   fQsciLexerEDIFACT_virtualbase_defaultStyle(self.h)
 
 type QsciLexerEDIFACTdefaultStyleProc* = proc(): cint
@@ -641,7 +612,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_description(self: ptr cQsciLexerEDIFACT
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerEDIFACTpaper*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerEDIFACT_virtualbase_paper(self.h, style))
 
 type QsciLexerEDIFACTpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -660,12 +630,11 @@ proc miqt_exec_callback_QsciLexerEDIFACT_paper(self: ptr cQsciLexerEDIFACT, slot
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerEDIFACTdefaultColorWithStyle*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerEDIFACTdefaultColor*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerEDIFACT_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerEDIFACTdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, slot: QsciLexerEDIFACTdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, slot: QsciLexerEDIFACTdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerEDIFACTdefaultColorWithStyleProc
   tmp[] = slot
@@ -681,7 +650,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_defaultColorWithStyle(self: ptr cQsciLe
 
   virtualReturn.h
 proc QsciLexerEDIFACTdefaultEolFill*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): bool =
-
   fQsciLexerEDIFACT_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerEDIFACTdefaultEolFillProc* = proc(style: cint): bool
@@ -700,12 +668,11 @@ proc miqt_exec_callback_QsciLexerEDIFACT_defaultEolFill(self: ptr cQsciLexerEDIF
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerEDIFACTdefaultFontWithStyle*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qfont.QFont =
-
+proc QsciLexerEDIFACTdefaultFont*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerEDIFACT_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerEDIFACTdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, slot: QsciLexerEDIFACTdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, slot: QsciLexerEDIFACTdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerEDIFACTdefaultFontWithStyleProc
   tmp[] = slot
@@ -720,12 +687,11 @@ proc miqt_exec_callback_QsciLexerEDIFACT_defaultFontWithStyle(self: ptr cQsciLex
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerEDIFACTdefaultPaperWithStyle*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerEDIFACTdefaultPaper*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerEDIFACT_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerEDIFACTdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, slot: QsciLexerEDIFACTdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, slot: QsciLexerEDIFACTdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerEDIFACTdefaultPaperWithStyleProc
   tmp[] = slot
@@ -741,7 +707,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_defaultPaperWithStyle(self: ptr cQsciLe
 
   virtualReturn.h
 proc QsciLexerEDIFACTsetEditor*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerEDIFACT_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerEDIFACTsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -759,7 +724,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_setEditor(self: ptr cQsciLexerEDIFACT, 
 
   nimfunc[](slotval1)
 proc QsciLexerEDIFACTrefreshProperties*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): void =
-
   fQsciLexerEDIFACT_virtualbase_refreshProperties(self.h)
 
 type QsciLexerEDIFACTrefreshPropertiesProc* = proc(): void
@@ -775,7 +739,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_refreshProperties(self: ptr cQsciLexerE
 
   nimfunc[]()
 proc QsciLexerEDIFACTstyleBitsNeeded*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cint =
-
   fQsciLexerEDIFACT_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerEDIFACTstyleBitsNeededProc* = proc(): cint
@@ -793,7 +756,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_styleBitsNeeded(self: ptr cQsciLexerEDI
 
   virtualReturn
 proc QsciLexerEDIFACTwordCharacters*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, ): cstring =
-
   (fQsciLexerEDIFACT_virtualbase_wordCharacters(self.h))
 
 type QsciLexerEDIFACTwordCharactersProc* = proc(): cstring
@@ -811,7 +773,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_wordCharacters(self: ptr cQsciLexerEDIF
 
   virtualReturn
 proc QsciLexerEDIFACTsetAutoIndentStyle*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, autoindentstyle: cint): void =
-
   fQsciLexerEDIFACT_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerEDIFACTsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -829,7 +790,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_setAutoIndentStyle(self: ptr cQsciLexer
 
   nimfunc[](slotval1)
 proc QsciLexerEDIFACTsetColor*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerEDIFACT_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerEDIFACTsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -849,7 +809,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_setColor(self: ptr cQsciLexerEDIFACT, s
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerEDIFACTsetEolFill*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, eoffill: bool, style: cint): void =
-
   fQsciLexerEDIFACT_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerEDIFACTsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -869,7 +828,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_setEolFill(self: ptr cQsciLexerEDIFACT,
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerEDIFACTsetFont*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerEDIFACT_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerEDIFACTsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -889,7 +847,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_setFont(self: ptr cQsciLexerEDIFACT, sl
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerEDIFACTsetPaper*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerEDIFACT_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerEDIFACTsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -909,7 +866,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_setPaper(self: ptr cQsciLexerEDIFACT, s
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerEDIFACTreadProperties*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerEDIFACT_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerEDIFACTreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -934,7 +890,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_readProperties(self: ptr cQsciLexerEDIF
 
   virtualReturn
 proc QsciLexerEDIFACTwriteProperties*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerEDIFACT_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerEDIFACTwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -959,7 +914,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_writeProperties(self: ptr cQsciLexerEDI
 
   virtualReturn
 proc QsciLexerEDIFACTevent*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerEDIFACT_virtualbase_event(self.h, event.h)
 
 type QsciLexerEDIFACTeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -979,7 +933,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_event(self: ptr cQsciLexerEDIFACT, slot
 
   virtualReturn
 proc QsciLexerEDIFACTeventFilter*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerEDIFACT_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerEDIFACTeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1001,7 +954,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_eventFilter(self: ptr cQsciLexerEDIFACT
 
   virtualReturn
 proc QsciLexerEDIFACTtimerEvent*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerEDIFACT_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerEDIFACTtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1019,7 +971,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_timerEvent(self: ptr cQsciLexerEDIFACT,
 
   nimfunc[](slotval1)
 proc QsciLexerEDIFACTchildEvent*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerEDIFACT_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerEDIFACTchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1037,7 +988,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_childEvent(self: ptr cQsciLexerEDIFACT,
 
   nimfunc[](slotval1)
 proc QsciLexerEDIFACTcustomEvent*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerEDIFACT_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerEDIFACTcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1055,7 +1005,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_customEvent(self: ptr cQsciLexerEDIFACT
 
   nimfunc[](slotval1)
 proc QsciLexerEDIFACTconnectNotify*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerEDIFACT_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerEDIFACTconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1073,7 +1022,6 @@ proc miqt_exec_callback_QsciLexerEDIFACT_connectNotify(self: ptr cQsciLexerEDIFA
 
   nimfunc[](slotval1)
 proc QsciLexerEDIFACTdisconnectNotify*(self: gen_qscilexeredifact_types.QsciLexerEDIFACT, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerEDIFACT_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerEDIFACTdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

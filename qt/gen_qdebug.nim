@@ -105,137 +105,105 @@ proc fcQNoDebug_delete(self: pointer) {.importc: "QNoDebug_delete".}
 func init*(T: type gen_qdebug_types.QDebug, h: ptr cQDebug): gen_qdebug_types.QDebug =
   T(h: h)
 proc create*(T: type gen_qdebug_types.QDebug, device: gen_qiodevice.QIODevice): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug.init(fcQDebug_new(device.h))
-proc create2*(T: type gen_qdebug_types.QDebug, o: gen_qdebug_types.QDebug): gen_qdebug_types.QDebug =
 
+proc create*(T: type gen_qdebug_types.QDebug, o: gen_qdebug_types.QDebug): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug.init(fcQDebug_new2(o.h))
-proc operatorAssign*(self: gen_qdebug_types.QDebug, other: gen_qdebug_types.QDebug): void =
 
+proc operatorAssign*(self: gen_qdebug_types.QDebug, other: gen_qdebug_types.QDebug): void =
   fcQDebug_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qdebug_types.QDebug, other: gen_qdebug_types.QDebug): void =
-
   fcQDebug_swap(self.h, other.h)
 
 proc resetFormat*(self: gen_qdebug_types.QDebug, ): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug(h: fcQDebug_resetFormat(self.h))
 
 proc space*(self: gen_qdebug_types.QDebug, ): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug(h: fcQDebug_space(self.h))
 
 proc nospace*(self: gen_qdebug_types.QDebug, ): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug(h: fcQDebug_nospace(self.h))
 
 proc maybeSpace*(self: gen_qdebug_types.QDebug, ): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug(h: fcQDebug_maybeSpace(self.h))
 
 proc verbosity*(self: gen_qdebug_types.QDebug, verbosityLevel: cint): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug(h: fcQDebug_verbosity(self.h, verbosityLevel))
 
-proc verbosity2*(self: gen_qdebug_types.QDebug, ): cint =
-
+proc verbosity*(self: gen_qdebug_types.QDebug, ): cint =
   fcQDebug_verbosity2(self.h)
 
 proc setVerbosity*(self: gen_qdebug_types.QDebug, verbosityLevel: cint): void =
-
   fcQDebug_setVerbosity(self.h, verbosityLevel)
 
 proc autoInsertSpaces*(self: gen_qdebug_types.QDebug, ): bool =
-
   fcQDebug_autoInsertSpaces(self.h)
 
 proc setAutoInsertSpaces*(self: gen_qdebug_types.QDebug, b: bool): void =
-
   fcQDebug_setAutoInsertSpaces(self.h, b)
 
 proc quote*(self: gen_qdebug_types.QDebug, ): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug(h: fcQDebug_quote(self.h))
 
 proc noquote*(self: gen_qdebug_types.QDebug, ): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug(h: fcQDebug_noquote(self.h))
 
 proc maybeQuote*(self: gen_qdebug_types.QDebug, ): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug(h: fcQDebug_maybeQuote(self.h))
 
 proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: gen_qchar.QChar): gen_qdebug_types.QDebug =
-
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeft(self.h, t.h))
 
-proc operatorShiftLeftWithBool*(self: gen_qdebug_types.QDebug, t: bool): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: bool): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithBool(self.h, t))
 
-proc operatorShiftLeftWithChar*(self: gen_qdebug_types.QDebug, t: cchar): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: cchar): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithChar(self.h, t))
 
-proc operatorShiftLeftWithShort*(self: gen_qdebug_types.QDebug, t: cshort): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: cshort): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithShort(self.h, t))
 
-proc operatorShiftLeftWithUnsignedshort*(self: gen_qdebug_types.QDebug, t: cushort): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: cushort): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithUnsignedshort(self.h, t))
 
-proc operatorShiftLeftWithInt*(self: gen_qdebug_types.QDebug, t: cint): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: cint): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithInt(self.h, t))
 
-proc operatorShiftLeftWithUnsignedint*(self: gen_qdebug_types.QDebug, t: cuint): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: cuint): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithUnsignedint(self.h, t))
 
-proc operatorShiftLeftWithLong*(self: gen_qdebug_types.QDebug, t: clong): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: clong): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithLong(self.h, t))
 
-proc operatorShiftLeftWithUnsignedlong*(self: gen_qdebug_types.QDebug, t: culong): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: culong): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithUnsignedlong(self.h, t))
 
-proc operatorShiftLeftWithQint64*(self: gen_qdebug_types.QDebug, t: clonglong): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: clonglong): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithQint64(self.h, t))
 
-proc operatorShiftLeftWithQuint64*(self: gen_qdebug_types.QDebug, t: culonglong): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: culonglong): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithQuint64(self.h, t))
 
-proc operatorShiftLeftWithFloat*(self: gen_qdebug_types.QDebug, t: float32): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: float32): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithFloat(self.h, t))
 
-proc operatorShiftLeftWithDouble*(self: gen_qdebug_types.QDebug, t: float64): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: float64): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithDouble(self.h, t))
 
-proc operatorShiftLeft2*(self: gen_qdebug_types.QDebug, t: cstring): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: cstring): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeft2(self.h, t))
 
-proc operatorShiftLeftWithQString*(self: gen_qdebug_types.QDebug, t: string): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: string): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithQString(self.h, struct_miqt_string(data: t, len: csize_t(len(t)))))
 
-proc operatorShiftLeftWithQByteArray*(self: gen_qdebug_types.QDebug, t: seq[byte]): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: seq[byte]): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithQByteArray(self.h, struct_miqt_string(data: cast[cstring](if len(t) == 0: nil else: unsafeAddr t[0]), len: csize_t(len(t)))))
 
-proc operatorShiftLeftWithVoid*(self: gen_qdebug_types.QDebug, t: pointer): gen_qdebug_types.QDebug =
-
+proc operatorShiftLeft*(self: gen_qdebug_types.QDebug, t: pointer): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_operatorShiftLeftWithVoid(self.h, t))
 
-proc maybeQuote1*(self: gen_qdebug_types.QDebug, c: cchar): gen_qdebug_types.QDebug =
-
+proc maybeQuote*(self: gen_qdebug_types.QDebug, c: cchar): gen_qdebug_types.QDebug =
   gen_qdebug_types.QDebug(h: fcQDebug_maybeQuote1(self.h, c))
 
 proc delete*(self: gen_qdebug_types.QDebug) =
@@ -244,43 +212,35 @@ proc delete*(self: gen_qdebug_types.QDebug) =
 func init*(T: type gen_qdebug_types.QDebugStateSaver, h: ptr cQDebugStateSaver): gen_qdebug_types.QDebugStateSaver =
   T(h: h)
 proc create*(T: type gen_qdebug_types.QDebugStateSaver, dbg: gen_qdebug_types.QDebug): gen_qdebug_types.QDebugStateSaver =
-
   gen_qdebug_types.QDebugStateSaver.init(fcQDebugStateSaver_new(dbg.h))
+
 proc delete*(self: gen_qdebug_types.QDebugStateSaver) =
   fcQDebugStateSaver_delete(self.h)
 
 func init*(T: type gen_qdebug_types.QNoDebug, h: ptr cQNoDebug): gen_qdebug_types.QNoDebug =
   T(h: h)
 proc space*(self: gen_qdebug_types.QNoDebug, ): gen_qdebug_types.QNoDebug =
-
   gen_qdebug_types.QNoDebug(h: fcQNoDebug_space(self.h))
 
 proc nospace*(self: gen_qdebug_types.QNoDebug, ): gen_qdebug_types.QNoDebug =
-
   gen_qdebug_types.QNoDebug(h: fcQNoDebug_nospace(self.h))
 
 proc maybeSpace*(self: gen_qdebug_types.QNoDebug, ): gen_qdebug_types.QNoDebug =
-
   gen_qdebug_types.QNoDebug(h: fcQNoDebug_maybeSpace(self.h))
 
 proc quote*(self: gen_qdebug_types.QNoDebug, ): gen_qdebug_types.QNoDebug =
-
   gen_qdebug_types.QNoDebug(h: fcQNoDebug_quote(self.h))
 
 proc noquote*(self: gen_qdebug_types.QNoDebug, ): gen_qdebug_types.QNoDebug =
-
   gen_qdebug_types.QNoDebug(h: fcQNoDebug_noquote(self.h))
 
 proc maybeQuote*(self: gen_qdebug_types.QNoDebug, ): gen_qdebug_types.QNoDebug =
-
   gen_qdebug_types.QNoDebug(h: fcQNoDebug_maybeQuote(self.h))
 
 proc verbosity*(self: gen_qdebug_types.QNoDebug, param1: cint): gen_qdebug_types.QNoDebug =
-
   gen_qdebug_types.QNoDebug(h: fcQNoDebug_verbosity(self.h, param1))
 
-proc maybeQuote1*(self: gen_qdebug_types.QNoDebug, param1: cchar): gen_qdebug_types.QNoDebug =
-
+proc maybeQuote*(self: gen_qdebug_types.QNoDebug, param1: cchar): gen_qdebug_types.QNoDebug =
   gen_qdebug_types.QNoDebug(h: fcQNoDebug_maybeQuote1(self.h, param1))
 
 proc delete*(self: gen_qdebug_types.QNoDebug) =

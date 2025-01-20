@@ -47,7 +47,6 @@ proc fcQFactoryInterface_delete(self: pointer) {.importc: "QFactoryInterface_del
 func init*(T: type gen_qfactoryinterface_types.QFactoryInterface, h: ptr cQFactoryInterface): gen_qfactoryinterface_types.QFactoryInterface =
   T(h: h)
 proc keys*(self: gen_qfactoryinterface_types.QFactoryInterface, ): seq[string] =
-
   var v_ma = fcQFactoryInterface_keys(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)

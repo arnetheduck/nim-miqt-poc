@@ -197,39 +197,33 @@ proc fcQNetworkAccessManager_delete(self: pointer) {.importc: "QNetworkAccessMan
 func init*(T: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, h: ptr cQNetworkAccessManager): gen_qnetworkaccessmanager_types.QNetworkAccessManager =
   T(h: h)
 proc create*(T: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qnetworkaccessmanager_types.QNetworkAccessManager =
-
   gen_qnetworkaccessmanager_types.QNetworkAccessManager.init(fcQNetworkAccessManager_new())
+
 proc create*(T: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, parent: gen_qobject.QObject): gen_qnetworkaccessmanager_types.QNetworkAccessManager =
-
   gen_qnetworkaccessmanager_types.QNetworkAccessManager.init(fcQNetworkAccessManager_new2(parent.h))
-proc metaObject*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQNetworkAccessManager_metaObject(self.h))
 
 proc metacast*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, param1: cstring): pointer =
-
   fcQNetworkAccessManager_metacast(self.h, param1)
 
 proc metacall*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQNetworkAccessManager_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring): string =
-
   let v_ms = fcQNetworkAccessManager_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring): string =
-
   let v_ms = fcQNetworkAccessManager_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportedSchemes*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): seq[string] =
-
   var v_ma = fcQNetworkAccessManager_supportedSchemes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -241,63 +235,48 @@ proc supportedSchemes*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManag
   vx_ret
 
 proc clearAccessCache*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): void =
-
   fcQNetworkAccessManager_clearAccessCache(self.h)
 
 proc clearConnectionCache*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): void =
-
   fcQNetworkAccessManager_clearConnectionCache(self.h)
 
 proc proxy*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qnetworkproxy.QNetworkProxy =
-
   gen_qnetworkproxy.QNetworkProxy(h: fcQNetworkAccessManager_proxy(self.h))
 
 proc setProxy*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, proxy: gen_qnetworkproxy.QNetworkProxy): void =
-
   fcQNetworkAccessManager_setProxy(self.h, proxy.h)
 
 proc proxyFactory*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qnetworkproxy.QNetworkProxyFactory =
-
   gen_qnetworkproxy.QNetworkProxyFactory(h: fcQNetworkAccessManager_proxyFactory(self.h))
 
 proc setProxyFactory*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, factory: gen_qnetworkproxy.QNetworkProxyFactory): void =
-
   fcQNetworkAccessManager_setProxyFactory(self.h, factory.h)
 
 proc cache*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qabstractnetworkcache.QAbstractNetworkCache =
-
   gen_qabstractnetworkcache.QAbstractNetworkCache(h: fcQNetworkAccessManager_cache(self.h))
 
 proc setCache*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, cache: gen_qabstractnetworkcache.QAbstractNetworkCache): void =
-
   fcQNetworkAccessManager_setCache(self.h, cache.h)
 
 proc cookieJar*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qnetworkcookiejar.QNetworkCookieJar =
-
   gen_qnetworkcookiejar.QNetworkCookieJar(h: fcQNetworkAccessManager_cookieJar(self.h))
 
 proc setCookieJar*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, cookieJar: gen_qnetworkcookiejar.QNetworkCookieJar): void =
-
   fcQNetworkAccessManager_setCookieJar(self.h, cookieJar.h)
 
 proc setStrictTransportSecurityEnabled*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, enabled: bool): void =
-
   fcQNetworkAccessManager_setStrictTransportSecurityEnabled(self.h, enabled)
 
 proc isStrictTransportSecurityEnabled*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): bool =
-
   fcQNetworkAccessManager_isStrictTransportSecurityEnabled(self.h)
 
 proc enableStrictTransportSecurityStore*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, enabled: bool): void =
-
   fcQNetworkAccessManager_enableStrictTransportSecurityStore(self.h, enabled)
 
 proc isStrictTransportSecurityStoreEnabled*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): bool =
-
   fcQNetworkAccessManager_isStrictTransportSecurityStoreEnabled(self.h)
 
 proc addStrictTransportSecurityHosts*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, knownHosts: seq[gen_qhstspolicy.QHstsPolicy]): void =
-
   var knownHosts_CArray = newSeq[pointer](len(knownHosts))
   for i in 0..<len(knownHosts):
     knownHosts_CArray[i] = knownHosts[i].h
@@ -305,7 +284,6 @@ proc addStrictTransportSecurityHosts*(self: gen_qnetworkaccessmanager_types.QNet
   fcQNetworkAccessManager_addStrictTransportSecurityHosts(self.h, struct_miqt_array(len: csize_t(len(knownHosts)), data: if len(knownHosts) == 0: nil else: addr(knownHosts_CArray[0])))
 
 proc strictTransportSecurityHosts*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): seq[gen_qhstspolicy.QHstsPolicy] =
-
   var v_ma = fcQNetworkAccessManager_strictTransportSecurityHosts(self.h)
   var vx_ret = newSeq[gen_qhstspolicy.QHstsPolicy](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -314,196 +292,161 @@ proc strictTransportSecurityHosts*(self: gen_qnetworkaccessmanager_types.QNetwor
   vx_ret
 
 proc head*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest): gen_qnetworkreply.QNetworkReply =
-
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_head(self.h, request.h))
 
 proc get*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest): gen_qnetworkreply.QNetworkReply =
-
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_get(self.h, request.h))
 
 proc post*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, data: gen_qiodevice.QIODevice): gen_qnetworkreply.QNetworkReply =
-
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_post(self.h, request.h, data.h))
 
-proc post2*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, data: seq[byte]): gen_qnetworkreply.QNetworkReply =
-
+proc post*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, data: seq[byte]): gen_qnetworkreply.QNetworkReply =
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_post2(self.h, request.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
 
 proc put*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, data: gen_qiodevice.QIODevice): gen_qnetworkreply.QNetworkReply =
-
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_put(self.h, request.h, data.h))
 
-proc put2*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, data: seq[byte]): gen_qnetworkreply.QNetworkReply =
-
+proc put*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, data: seq[byte]): gen_qnetworkreply.QNetworkReply =
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_put2(self.h, request.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
 
 proc deleteResource*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest): gen_qnetworkreply.QNetworkReply =
-
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_deleteResource(self.h, request.h))
 
 proc sendCustomRequest*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, verb: seq[byte]): gen_qnetworkreply.QNetworkReply =
-
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_sendCustomRequest(self.h, request.h, struct_miqt_string(data: cast[cstring](if len(verb) == 0: nil else: unsafeAddr verb[0]), len: csize_t(len(verb)))))
 
-proc sendCustomRequest2*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, verb: seq[byte], data: seq[byte]): gen_qnetworkreply.QNetworkReply =
-
+proc sendCustomRequest*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, verb: seq[byte], data: seq[byte]): gen_qnetworkreply.QNetworkReply =
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_sendCustomRequest2(self.h, request.h, struct_miqt_string(data: cast[cstring](if len(verb) == 0: nil else: unsafeAddr verb[0]), len: csize_t(len(verb))), struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
 
-proc post3*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, multiPart: gen_qhttpmultipart.QHttpMultiPart): gen_qnetworkreply.QNetworkReply =
-
+proc post*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, multiPart: gen_qhttpmultipart.QHttpMultiPart): gen_qnetworkreply.QNetworkReply =
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_post3(self.h, request.h, multiPart.h))
 
-proc put3*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, multiPart: gen_qhttpmultipart.QHttpMultiPart): gen_qnetworkreply.QNetworkReply =
-
+proc put*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, multiPart: gen_qhttpmultipart.QHttpMultiPart): gen_qnetworkreply.QNetworkReply =
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_put3(self.h, request.h, multiPart.h))
 
-proc sendCustomRequest3*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, verb: seq[byte], multiPart: gen_qhttpmultipart.QHttpMultiPart): gen_qnetworkreply.QNetworkReply =
-
+proc sendCustomRequest*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, verb: seq[byte], multiPart: gen_qhttpmultipart.QHttpMultiPart): gen_qnetworkreply.QNetworkReply =
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_sendCustomRequest3(self.h, request.h, struct_miqt_string(data: cast[cstring](if len(verb) == 0: nil else: unsafeAddr verb[0]), len: csize_t(len(verb))), multiPart.h))
 
 proc setConfiguration*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, config: gen_qnetworkconfiguration.QNetworkConfiguration): void =
-
   fcQNetworkAccessManager_setConfiguration(self.h, config.h)
 
 proc configuration*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qnetworkconfiguration.QNetworkConfiguration =
-
   gen_qnetworkconfiguration.QNetworkConfiguration(h: fcQNetworkAccessManager_configuration(self.h))
 
 proc activeConfiguration*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qnetworkconfiguration.QNetworkConfiguration =
-
   gen_qnetworkconfiguration.QNetworkConfiguration(h: fcQNetworkAccessManager_activeConfiguration(self.h))
 
 proc setNetworkAccessible*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, accessible: cint): void =
-
   fcQNetworkAccessManager_setNetworkAccessible(self.h, cint(accessible))
 
 proc networkAccessible*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): cint =
-
   cint(fcQNetworkAccessManager_networkAccessible(self.h))
 
 proc connectToHostEncrypted*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string): void =
-
   fcQNetworkAccessManager_connectToHostEncrypted(self.h, struct_miqt_string(data: hostName, len: csize_t(len(hostName))))
 
-proc connectToHostEncrypted2*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string, port: cushort, sslConfiguration: gen_qsslconfiguration.QSslConfiguration, peerName: string): void =
-
+proc connectToHostEncrypted*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string, port: cushort, sslConfiguration: gen_qsslconfiguration.QSslConfiguration, peerName: string): void =
   fcQNetworkAccessManager_connectToHostEncrypted2(self.h, struct_miqt_string(data: hostName, len: csize_t(len(hostName))), port, sslConfiguration.h, struct_miqt_string(data: peerName, len: csize_t(len(peerName))))
 
 proc connectToHost*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string): void =
-
   fcQNetworkAccessManager_connectToHost(self.h, struct_miqt_string(data: hostName, len: csize_t(len(hostName))))
 
 proc setRedirectPolicy*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, policy: cint): void =
-
   fcQNetworkAccessManager_setRedirectPolicy(self.h, cint(policy))
 
 proc redirectPolicy*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): cint =
-
   cint(fcQNetworkAccessManager_redirectPolicy(self.h))
 
 proc autoDeleteReplies*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): bool =
-
   fcQNetworkAccessManager_autoDeleteReplies(self.h)
 
 proc setAutoDeleteReplies*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, autoDelete: bool): void =
-
   fcQNetworkAccessManager_setAutoDeleteReplies(self.h, autoDelete)
 
 proc transferTimeout*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): cint =
-
   fcQNetworkAccessManager_transferTimeout(self.h)
 
 proc setTransferTimeout*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): void =
-
   fcQNetworkAccessManager_setTransferTimeout(self.h)
 
 proc proxyAuthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, proxy: gen_qnetworkproxy.QNetworkProxy, authenticator: gen_qauthenticator.QAuthenticator): void =
-
   fcQNetworkAccessManager_proxyAuthenticationRequired(self.h, proxy.h, authenticator.h)
 
+type QNetworkAccessManagerproxyAuthenticationRequiredSlot* = proc(proxy: gen_qnetworkproxy.QNetworkProxy, authenticator: gen_qauthenticator.QAuthenticator)
 proc miqt_exec_callback_QNetworkAccessManager_proxyAuthenticationRequired(slot: int, proxy: pointer, authenticator: pointer) {.exportc.} =
-  type Cb = proc(proxy: gen_qnetworkproxy.QNetworkProxy, authenticator: gen_qauthenticator.QAuthenticator)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkAccessManagerproxyAuthenticationRequiredSlot](cast[pointer](slot))
   let slotval1 = gen_qnetworkproxy.QNetworkProxy(h: proxy)
 
   let slotval2 = gen_qauthenticator.QAuthenticator(h: authenticator)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onproxyAuthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: proc(proxy: gen_qnetworkproxy.QNetworkProxy, authenticator: gen_qauthenticator.QAuthenticator)) =
-  type Cb = proc(proxy: gen_qnetworkproxy.QNetworkProxy, authenticator: gen_qauthenticator.QAuthenticator)
-  var tmp = new Cb
+proc onproxyAuthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerproxyAuthenticationRequiredSlot) =
+  var tmp = new QNetworkAccessManagerproxyAuthenticationRequiredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkAccessManager_connect_proxyAuthenticationRequired(self.h, cast[int](addr tmp[]))
-proc authenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qauthenticator.QAuthenticator): void =
 
+proc authenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qauthenticator.QAuthenticator): void =
   fcQNetworkAccessManager_authenticationRequired(self.h, reply.h, authenticator.h)
 
+type QNetworkAccessManagerauthenticationRequiredSlot* = proc(reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qauthenticator.QAuthenticator)
 proc miqt_exec_callback_QNetworkAccessManager_authenticationRequired(slot: int, reply: pointer, authenticator: pointer) {.exportc.} =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qauthenticator.QAuthenticator)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkAccessManagerauthenticationRequiredSlot](cast[pointer](slot))
   let slotval1 = gen_qnetworkreply.QNetworkReply(h: reply)
 
   let slotval2 = gen_qauthenticator.QAuthenticator(h: authenticator)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onauthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: proc(reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qauthenticator.QAuthenticator)) =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qauthenticator.QAuthenticator)
-  var tmp = new Cb
+proc onauthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerauthenticationRequiredSlot) =
+  var tmp = new QNetworkAccessManagerauthenticationRequiredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkAccessManager_connect_authenticationRequired(self.h, cast[int](addr tmp[]))
-proc finished*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply): void =
 
+proc finished*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply): void =
   fcQNetworkAccessManager_finished(self.h, reply.h)
 
+type QNetworkAccessManagerfinishedSlot* = proc(reply: gen_qnetworkreply.QNetworkReply)
 proc miqt_exec_callback_QNetworkAccessManager_finished(slot: int, reply: pointer) {.exportc.} =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkAccessManagerfinishedSlot](cast[pointer](slot))
   let slotval1 = gen_qnetworkreply.QNetworkReply(h: reply)
-
 
   nimfunc[](slotval1)
 
-proc onfinished*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: proc(reply: gen_qnetworkreply.QNetworkReply)) =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply)
-  var tmp = new Cb
+proc onfinished*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerfinishedSlot) =
+  var tmp = new QNetworkAccessManagerfinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkAccessManager_connect_finished(self.h, cast[int](addr tmp[]))
-proc encrypted*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply): void =
 
+proc encrypted*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply): void =
   fcQNetworkAccessManager_encrypted(self.h, reply.h)
 
+type QNetworkAccessManagerencryptedSlot* = proc(reply: gen_qnetworkreply.QNetworkReply)
 proc miqt_exec_callback_QNetworkAccessManager_encrypted(slot: int, reply: pointer) {.exportc.} =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkAccessManagerencryptedSlot](cast[pointer](slot))
   let slotval1 = gen_qnetworkreply.QNetworkReply(h: reply)
-
 
   nimfunc[](slotval1)
 
-proc onencrypted*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: proc(reply: gen_qnetworkreply.QNetworkReply)) =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply)
-  var tmp = new Cb
+proc onencrypted*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerencryptedSlot) =
+  var tmp = new QNetworkAccessManagerencryptedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkAccessManager_connect_encrypted(self.h, cast[int](addr tmp[]))
-proc sslErrors*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply, errors: seq[gen_qsslerror.QSslError]): void =
 
+proc sslErrors*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply, errors: seq[gen_qsslerror.QSslError]): void =
   var errors_CArray = newSeq[pointer](len(errors))
   for i in 0..<len(errors):
     errors_CArray[i] = errors[i].h
 
   fcQNetworkAccessManager_sslErrors(self.h, reply.h, struct_miqt_array(len: csize_t(len(errors)), data: if len(errors) == 0: nil else: addr(errors_CArray[0])))
 
+type QNetworkAccessManagersslErrorsSlot* = proc(reply: gen_qnetworkreply.QNetworkReply, errors: seq[gen_qsslerror.QSslError])
 proc miqt_exec_callback_QNetworkAccessManager_sslErrors(slot: int, reply: pointer, errors: struct_miqt_array) {.exportc.} =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply, errors: seq[gen_qsslerror.QSslError])
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkAccessManagersslErrorsSlot](cast[pointer](slot))
   let slotval1 = gen_qnetworkreply.QNetworkReply(h: reply)
 
   var verrors_ma = errors
@@ -513,123 +456,105 @@ proc miqt_exec_callback_QNetworkAccessManager_sslErrors(slot: int, reply: pointe
     verrorsx_ret[i] = gen_qsslerror.QSslError(h: verrors_outCast[i])
   let slotval2 = verrorsx_ret
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onsslErrors*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: proc(reply: gen_qnetworkreply.QNetworkReply, errors: seq[gen_qsslerror.QSslError])) =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply, errors: seq[gen_qsslerror.QSslError])
-  var tmp = new Cb
+proc onsslErrors*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagersslErrorsSlot) =
+  var tmp = new QNetworkAccessManagersslErrorsSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkAccessManager_connect_sslErrors(self.h, cast[int](addr tmp[]))
-proc preSharedKeyAuthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator): void =
 
+proc preSharedKeyAuthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator): void =
   fcQNetworkAccessManager_preSharedKeyAuthenticationRequired(self.h, reply.h, authenticator.h)
 
+type QNetworkAccessManagerpreSharedKeyAuthenticationRequiredSlot* = proc(reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator)
 proc miqt_exec_callback_QNetworkAccessManager_preSharedKeyAuthenticationRequired(slot: int, reply: pointer, authenticator: pointer) {.exportc.} =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkAccessManagerpreSharedKeyAuthenticationRequiredSlot](cast[pointer](slot))
   let slotval1 = gen_qnetworkreply.QNetworkReply(h: reply)
 
   let slotval2 = gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator(h: authenticator)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onpreSharedKeyAuthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: proc(reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator)) =
-  type Cb = proc(reply: gen_qnetworkreply.QNetworkReply, authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator)
-  var tmp = new Cb
+proc onpreSharedKeyAuthenticationRequired*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagerpreSharedKeyAuthenticationRequiredSlot) =
+  var tmp = new QNetworkAccessManagerpreSharedKeyAuthenticationRequiredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkAccessManager_connect_preSharedKeyAuthenticationRequired(self.h, cast[int](addr tmp[]))
-proc networkSessionConnected*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): void =
 
+proc networkSessionConnected*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): void =
   fcQNetworkAccessManager_networkSessionConnected(self.h)
 
+type QNetworkAccessManagernetworkSessionConnectedSlot* = proc()
 proc miqt_exec_callback_QNetworkAccessManager_networkSessionConnected(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QNetworkAccessManagernetworkSessionConnectedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onnetworkSessionConnected*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onnetworkSessionConnected*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagernetworkSessionConnectedSlot) =
+  var tmp = new QNetworkAccessManagernetworkSessionConnectedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkAccessManager_connect_networkSessionConnected(self.h, cast[int](addr tmp[]))
-proc networkAccessibleChanged*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, accessible: cint): void =
 
+proc networkAccessibleChanged*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, accessible: cint): void =
   fcQNetworkAccessManager_networkAccessibleChanged(self.h, cint(accessible))
 
+type QNetworkAccessManagernetworkAccessibleChangedSlot* = proc(accessible: cint)
 proc miqt_exec_callback_QNetworkAccessManager_networkAccessibleChanged(slot: int, accessible: cint) {.exportc.} =
-  type Cb = proc(accessible: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkAccessManagernetworkAccessibleChangedSlot](cast[pointer](slot))
   let slotval1 = cint(accessible)
-
 
   nimfunc[](slotval1)
 
-proc onnetworkAccessibleChanged*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: proc(accessible: cint)) =
-  type Cb = proc(accessible: cint)
-  var tmp = new Cb
+proc onnetworkAccessibleChanged*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, slot: QNetworkAccessManagernetworkAccessibleChangedSlot) =
+  var tmp = new QNetworkAccessManagernetworkAccessibleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkAccessManager_connect_networkAccessibleChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring, c: cstring): string =
   let v_ms = fcQNetworkAccessManager_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQNetworkAccessManager_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring, c: cstring): string =
   let v_ms = fcQNetworkAccessManager_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qnetworkaccessmanager_types.QNetworkAccessManager, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQNetworkAccessManager_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc enableStrictTransportSecurityStore2*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, enabled: bool, storeDir: string): void =
-
+proc enableStrictTransportSecurityStore*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, enabled: bool, storeDir: string): void =
   fcQNetworkAccessManager_enableStrictTransportSecurityStore2(self.h, enabled, struct_miqt_string(data: storeDir, len: csize_t(len(storeDir))))
 
-proc sendCustomRequest32*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, verb: seq[byte], data: gen_qiodevice.QIODevice): gen_qnetworkreply.QNetworkReply =
-
+proc sendCustomRequest*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, request: gen_qnetworkrequest.QNetworkRequest, verb: seq[byte], data: gen_qiodevice.QIODevice): gen_qnetworkreply.QNetworkReply =
   gen_qnetworkreply.QNetworkReply(h: fcQNetworkAccessManager_sendCustomRequest32(self.h, request.h, struct_miqt_string(data: cast[cstring](if len(verb) == 0: nil else: unsafeAddr verb[0]), len: csize_t(len(verb))), data.h))
 
-proc connectToHostEncrypted22*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string, port: cushort): void =
-
+proc connectToHostEncrypted*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string, port: cushort): void =
   fcQNetworkAccessManager_connectToHostEncrypted22(self.h, struct_miqt_string(data: hostName, len: csize_t(len(hostName))), port)
 
-proc connectToHostEncrypted3*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string, port: cushort, sslConfiguration: gen_qsslconfiguration.QSslConfiguration): void =
-
+proc connectToHostEncrypted*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string, port: cushort, sslConfiguration: gen_qsslconfiguration.QSslConfiguration): void =
   fcQNetworkAccessManager_connectToHostEncrypted3(self.h, struct_miqt_string(data: hostName, len: csize_t(len(hostName))), port, sslConfiguration.h)
 
-proc connectToHost2*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string, port: cushort): void =
-
+proc connectToHost*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, hostName: string, port: cushort): void =
   fcQNetworkAccessManager_connectToHost2(self.h, struct_miqt_string(data: hostName, len: csize_t(len(hostName))), port)
 
-proc setTransferTimeout1*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, timeout: cint): void =
-
+proc setTransferTimeout*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, timeout: cint): void =
   fcQNetworkAccessManager_setTransferTimeout1(self.h, timeout)
 
 proc QNetworkAccessManagermetaObject*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQNetworkAccessManager_virtualbase_metaObject(self.h))
 
 type QNetworkAccessManagermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -647,7 +572,6 @@ proc miqt_exec_callback_QNetworkAccessManager_metaObject(self: ptr cQNetworkAcce
 
   virtualReturn.h
 proc QNetworkAccessManagermetacast*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, param1: cstring): pointer =
-
   fQNetworkAccessManager_virtualbase_metacast(self.h, param1)
 
 type QNetworkAccessManagermetacastProc* = proc(param1: cstring): pointer
@@ -667,7 +591,6 @@ proc miqt_exec_callback_QNetworkAccessManager_metacast(self: ptr cQNetworkAccess
 
   virtualReturn
 proc QNetworkAccessManagermetacall*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, param1: cint, param2: cint, param3: pointer): cint =
-
   fQNetworkAccessManager_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QNetworkAccessManagermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -691,7 +614,6 @@ proc miqt_exec_callback_QNetworkAccessManager_metacall(self: ptr cQNetworkAccess
 
   virtualReturn
 proc QNetworkAccessManagercreateRequest*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, op: cint, request: gen_qnetworkrequest.QNetworkRequest, outgoingData: gen_qiodevice.QIODevice): gen_qnetworkreply.QNetworkReply =
-
   gen_qnetworkreply.QNetworkReply(h: fQNetworkAccessManager_virtualbase_createRequest(self.h, cint(op), request.h, outgoingData.h))
 
 type QNetworkAccessManagercreateRequestProc* = proc(op: cint, request: gen_qnetworkrequest.QNetworkRequest, outgoingData: gen_qiodevice.QIODevice): gen_qnetworkreply.QNetworkReply
@@ -715,7 +637,6 @@ proc miqt_exec_callback_QNetworkAccessManager_createRequest(self: ptr cQNetworkA
 
   virtualReturn.h
 proc QNetworkAccessManagerevent*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, event: gen_qcoreevent.QEvent): bool =
-
   fQNetworkAccessManager_virtualbase_event(self.h, event.h)
 
 type QNetworkAccessManagereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -735,7 +656,6 @@ proc miqt_exec_callback_QNetworkAccessManager_event(self: ptr cQNetworkAccessMan
 
   virtualReturn
 proc QNetworkAccessManagereventFilter*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQNetworkAccessManager_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QNetworkAccessManagereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -757,7 +677,6 @@ proc miqt_exec_callback_QNetworkAccessManager_eventFilter(self: ptr cQNetworkAcc
 
   virtualReturn
 proc QNetworkAccessManagertimerEvent*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, event: gen_qcoreevent.QTimerEvent): void =
-
   fQNetworkAccessManager_virtualbase_timerEvent(self.h, event.h)
 
 type QNetworkAccessManagertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -775,7 +694,6 @@ proc miqt_exec_callback_QNetworkAccessManager_timerEvent(self: ptr cQNetworkAcce
 
   nimfunc[](slotval1)
 proc QNetworkAccessManagerchildEvent*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, event: gen_qcoreevent.QChildEvent): void =
-
   fQNetworkAccessManager_virtualbase_childEvent(self.h, event.h)
 
 type QNetworkAccessManagerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -793,7 +711,6 @@ proc miqt_exec_callback_QNetworkAccessManager_childEvent(self: ptr cQNetworkAcce
 
   nimfunc[](slotval1)
 proc QNetworkAccessManagercustomEvent*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, event: gen_qcoreevent.QEvent): void =
-
   fQNetworkAccessManager_virtualbase_customEvent(self.h, event.h)
 
 type QNetworkAccessManagercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -811,7 +728,6 @@ proc miqt_exec_callback_QNetworkAccessManager_customEvent(self: ptr cQNetworkAcc
 
   nimfunc[](slotval1)
 proc QNetworkAccessManagerconnectNotify*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQNetworkAccessManager_virtualbase_connectNotify(self.h, signal.h)
 
 type QNetworkAccessManagerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -829,7 +745,6 @@ proc miqt_exec_callback_QNetworkAccessManager_connectNotify(self: ptr cQNetworkA
 
   nimfunc[](slotval1)
 proc QNetworkAccessManagerdisconnectNotify*(self: gen_qnetworkaccessmanager_types.QNetworkAccessManager, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQNetworkAccessManager_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QNetworkAccessManagerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

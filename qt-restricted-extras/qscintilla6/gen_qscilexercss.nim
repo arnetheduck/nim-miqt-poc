@@ -214,137 +214,108 @@ proc fcQsciLexerCSS_delete(self: pointer) {.importc: "QsciLexerCSS_delete".}
 func init*(T: type gen_qscilexercss_types.QsciLexerCSS, h: ptr cQsciLexerCSS): gen_qscilexercss_types.QsciLexerCSS =
   T(h: h)
 proc create*(T: type gen_qscilexercss_types.QsciLexerCSS, ): gen_qscilexercss_types.QsciLexerCSS =
-
   gen_qscilexercss_types.QsciLexerCSS.init(fcQsciLexerCSS_new())
+
 proc create*(T: type gen_qscilexercss_types.QsciLexerCSS, parent: gen_qobject.QObject): gen_qscilexercss_types.QsciLexerCSS =
-
   gen_qscilexercss_types.QsciLexerCSS.init(fcQsciLexerCSS_new2(parent.h))
-proc metaObject*(self: gen_qscilexercss_types.QsciLexerCSS, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexercss_types.QsciLexerCSS, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerCSS_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexercss_types.QsciLexerCSS, param1: cstring): pointer =
-
   fcQsciLexerCSS_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexercss_types.QsciLexerCSS, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerCSS_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexercss_types.QsciLexerCSS, s: cstring): string =
-
   let v_ms = fcQsciLexerCSS_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexercss_types.QsciLexerCSS, ): cstring =
-
   (fcQsciLexerCSS_language(self.h))
 
 proc lexer*(self: gen_qscilexercss_types.QsciLexerCSS, ): cstring =
-
   (fcQsciLexerCSS_lexer(self.h))
 
 proc blockEnd*(self: gen_qscilexercss_types.QsciLexerCSS, ): cstring =
-
   (fcQsciLexerCSS_blockEnd(self.h))
 
 proc blockStart*(self: gen_qscilexercss_types.QsciLexerCSS, ): cstring =
-
   (fcQsciLexerCSS_blockStart(self.h))
 
 proc wordCharacters*(self: gen_qscilexercss_types.QsciLexerCSS, ): cstring =
-
   (fcQsciLexerCSS_wordCharacters(self.h))
 
 proc defaultColor*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerCSS_defaultColor(self.h, style))
 
 proc defaultFont*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerCSS_defaultFont(self.h, style))
 
 proc keywords*(self: gen_qscilexercss_types.QsciLexerCSS, set: cint): cstring =
-
   (fcQsciLexerCSS_keywords(self.h, set))
 
 proc description*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): string =
-
   let v_ms = fcQsciLexerCSS_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexercss_types.QsciLexerCSS, ): void =
-
   fcQsciLexerCSS_refreshProperties(self.h)
 
 proc foldComments*(self: gen_qscilexercss_types.QsciLexerCSS, ): bool =
-
   fcQsciLexerCSS_foldComments(self.h)
 
 proc foldCompact*(self: gen_qscilexercss_types.QsciLexerCSS, ): bool =
-
   fcQsciLexerCSS_foldCompact(self.h)
 
 proc setHSSLanguage*(self: gen_qscilexercss_types.QsciLexerCSS, enabled: bool): void =
-
   fcQsciLexerCSS_setHSSLanguage(self.h, enabled)
 
 proc HSSLanguage*(self: gen_qscilexercss_types.QsciLexerCSS, ): bool =
-
   fcQsciLexerCSS_HSSLanguage(self.h)
 
 proc setLessLanguage*(self: gen_qscilexercss_types.QsciLexerCSS, enabled: bool): void =
-
   fcQsciLexerCSS_setLessLanguage(self.h, enabled)
 
 proc LessLanguage*(self: gen_qscilexercss_types.QsciLexerCSS, ): bool =
-
   fcQsciLexerCSS_LessLanguage(self.h)
 
 proc setSCSSLanguage*(self: gen_qscilexercss_types.QsciLexerCSS, enabled: bool): void =
-
   fcQsciLexerCSS_setSCSSLanguage(self.h, enabled)
 
 proc SCSSLanguage*(self: gen_qscilexercss_types.QsciLexerCSS, ): bool =
-
   fcQsciLexerCSS_SCSSLanguage(self.h)
 
 proc setFoldComments*(self: gen_qscilexercss_types.QsciLexerCSS, fold: bool): void =
-
   fcQsciLexerCSS_setFoldComments(self.h, fold)
 
 proc setFoldCompact*(self: gen_qscilexercss_types.QsciLexerCSS, fold: bool): void =
-
   fcQsciLexerCSS_setFoldCompact(self.h, fold)
 
-proc tr2*(_: type gen_qscilexercss_types.QsciLexerCSS, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexercss_types.QsciLexerCSS, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerCSS_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexercss_types.QsciLexerCSS, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexercss_types.QsciLexerCSS, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerCSS_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc blockEnd1*(self: gen_qscilexercss_types.QsciLexerCSS, style: ptr cint): cstring =
-
+proc blockEnd*(self: gen_qscilexercss_types.QsciLexerCSS, style: ptr cint): cstring =
   (fcQsciLexerCSS_blockEnd1(self.h, style))
 
-proc blockStart1*(self: gen_qscilexercss_types.QsciLexerCSS, style: ptr cint): cstring =
-
+proc blockStart*(self: gen_qscilexercss_types.QsciLexerCSS, style: ptr cint): cstring =
   (fcQsciLexerCSS_blockStart1(self.h, style))
 
 proc QsciLexerCSSmetaObject*(self: gen_qscilexercss_types.QsciLexerCSS, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerCSS_virtualbase_metaObject(self.h))
 
 type QsciLexerCSSmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -362,7 +333,6 @@ proc miqt_exec_callback_QsciLexerCSS_metaObject(self: ptr cQsciLexerCSS, slot: i
 
   virtualReturn.h
 proc QsciLexerCSSmetacast*(self: gen_qscilexercss_types.QsciLexerCSS, param1: cstring): pointer =
-
   fQsciLexerCSS_virtualbase_metacast(self.h, param1)
 
 type QsciLexerCSSmetacastProc* = proc(param1: cstring): pointer
@@ -382,7 +352,6 @@ proc miqt_exec_callback_QsciLexerCSS_metacast(self: ptr cQsciLexerCSS, slot: int
 
   virtualReturn
 proc QsciLexerCSSmetacall*(self: gen_qscilexercss_types.QsciLexerCSS, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerCSS_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerCSSmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -406,7 +375,6 @@ proc miqt_exec_callback_QsciLexerCSS_metacall(self: ptr cQsciLexerCSS, slot: int
 
   virtualReturn
 proc QsciLexerCSSsetFoldComments*(self: gen_qscilexercss_types.QsciLexerCSS, fold: bool): void =
-
   fQsciLexerCSS_virtualbase_setFoldComments(self.h, fold)
 
 type QsciLexerCSSsetFoldCommentsProc* = proc(fold: bool): void
@@ -424,7 +392,6 @@ proc miqt_exec_callback_QsciLexerCSS_setFoldComments(self: ptr cQsciLexerCSS, sl
 
   nimfunc[](slotval1)
 proc QsciLexerCSSsetFoldCompact*(self: gen_qscilexercss_types.QsciLexerCSS, fold: bool): void =
-
   fQsciLexerCSS_virtualbase_setFoldCompact(self.h, fold)
 
 type QsciLexerCSSsetFoldCompactProc* = proc(fold: bool): void
@@ -456,7 +423,6 @@ proc miqt_exec_callback_QsciLexerCSS_language(self: ptr cQsciLexerCSS, slot: int
 
   virtualReturn
 proc QsciLexerCSSlexer*(self: gen_qscilexercss_types.QsciLexerCSS, ): cstring =
-
   (fQsciLexerCSS_virtualbase_lexer(self.h))
 
 type QsciLexerCSSlexerProc* = proc(): cstring
@@ -474,7 +440,6 @@ proc miqt_exec_callback_QsciLexerCSS_lexer(self: ptr cQsciLexerCSS, slot: int): 
 
   virtualReturn
 proc QsciLexerCSSlexerId*(self: gen_qscilexercss_types.QsciLexerCSS, ): cint =
-
   fQsciLexerCSS_virtualbase_lexerId(self.h)
 
 type QsciLexerCSSlexerIdProc* = proc(): cint
@@ -492,7 +457,6 @@ proc miqt_exec_callback_QsciLexerCSS_lexerId(self: ptr cQsciLexerCSS, slot: int)
 
   virtualReturn
 proc QsciLexerCSSautoCompletionFillups*(self: gen_qscilexercss_types.QsciLexerCSS, ): cstring =
-
   (fQsciLexerCSS_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerCSSautoCompletionFillupsProc* = proc(): cstring
@@ -510,7 +474,6 @@ proc miqt_exec_callback_QsciLexerCSS_autoCompletionFillups(self: ptr cQsciLexerC
 
   virtualReturn
 proc QsciLexerCSSautoCompletionWordSeparators*(self: gen_qscilexercss_types.QsciLexerCSS, ): seq[string] =
-
   var v_ma = fQsciLexerCSS_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -540,7 +503,6 @@ proc miqt_exec_callback_QsciLexerCSS_autoCompletionWordSeparators(self: ptr cQsc
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerCSSblockEnd*(self: gen_qscilexercss_types.QsciLexerCSS, style: ptr cint): cstring =
-
   (fQsciLexerCSS_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerCSSblockEndProc* = proc(style: ptr cint): cstring
@@ -560,7 +522,6 @@ proc miqt_exec_callback_QsciLexerCSS_blockEnd(self: ptr cQsciLexerCSS, slot: int
 
   virtualReturn
 proc QsciLexerCSSblockLookback*(self: gen_qscilexercss_types.QsciLexerCSS, ): cint =
-
   fQsciLexerCSS_virtualbase_blockLookback(self.h)
 
 type QsciLexerCSSblockLookbackProc* = proc(): cint
@@ -578,7 +539,6 @@ proc miqt_exec_callback_QsciLexerCSS_blockLookback(self: ptr cQsciLexerCSS, slot
 
   virtualReturn
 proc QsciLexerCSSblockStart*(self: gen_qscilexercss_types.QsciLexerCSS, style: ptr cint): cstring =
-
   (fQsciLexerCSS_virtualbase_blockStart(self.h, style))
 
 type QsciLexerCSSblockStartProc* = proc(style: ptr cint): cstring
@@ -598,7 +558,6 @@ proc miqt_exec_callback_QsciLexerCSS_blockStart(self: ptr cQsciLexerCSS, slot: i
 
   virtualReturn
 proc QsciLexerCSSblockStartKeyword*(self: gen_qscilexercss_types.QsciLexerCSS, style: ptr cint): cstring =
-
   (fQsciLexerCSS_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerCSSblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -618,7 +577,6 @@ proc miqt_exec_callback_QsciLexerCSS_blockStartKeyword(self: ptr cQsciLexerCSS, 
 
   virtualReturn
 proc QsciLexerCSSbraceStyle*(self: gen_qscilexercss_types.QsciLexerCSS, ): cint =
-
   fQsciLexerCSS_virtualbase_braceStyle(self.h)
 
 type QsciLexerCSSbraceStyleProc* = proc(): cint
@@ -636,7 +594,6 @@ proc miqt_exec_callback_QsciLexerCSS_braceStyle(self: ptr cQsciLexerCSS, slot: i
 
   virtualReturn
 proc QsciLexerCSScaseSensitive*(self: gen_qscilexercss_types.QsciLexerCSS, ): bool =
-
   fQsciLexerCSS_virtualbase_caseSensitive(self.h)
 
 type QsciLexerCSScaseSensitiveProc* = proc(): bool
@@ -654,7 +611,6 @@ proc miqt_exec_callback_QsciLexerCSS_caseSensitive(self: ptr cQsciLexerCSS, slot
 
   virtualReturn
 proc QsciLexerCSScolor*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerCSS_virtualbase_color(self.h, style))
 
 type QsciLexerCSScolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -674,7 +630,6 @@ proc miqt_exec_callback_QsciLexerCSS_color(self: ptr cQsciLexerCSS, slot: int, s
 
   virtualReturn.h
 proc QsciLexerCSSeolFill*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): bool =
-
   fQsciLexerCSS_virtualbase_eolFill(self.h, style)
 
 type QsciLexerCSSeolFillProc* = proc(style: cint): bool
@@ -694,7 +649,6 @@ proc miqt_exec_callback_QsciLexerCSS_eolFill(self: ptr cQsciLexerCSS, slot: int,
 
   virtualReturn
 proc QsciLexerCSSfont*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerCSS_virtualbase_font(self.h, style))
 
 type QsciLexerCSSfontProc* = proc(style: cint): gen_qfont.QFont
@@ -714,7 +668,6 @@ proc miqt_exec_callback_QsciLexerCSS_font(self: ptr cQsciLexerCSS, slot: int, st
 
   virtualReturn.h
 proc QsciLexerCSSindentationGuideView*(self: gen_qscilexercss_types.QsciLexerCSS, ): cint =
-
   fQsciLexerCSS_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerCSSindentationGuideViewProc* = proc(): cint
@@ -732,7 +685,6 @@ proc miqt_exec_callback_QsciLexerCSS_indentationGuideView(self: ptr cQsciLexerCS
 
   virtualReturn
 proc QsciLexerCSSkeywords*(self: gen_qscilexercss_types.QsciLexerCSS, set: cint): cstring =
-
   (fQsciLexerCSS_virtualbase_keywords(self.h, set))
 
 type QsciLexerCSSkeywordsProc* = proc(set: cint): cstring
@@ -752,7 +704,6 @@ proc miqt_exec_callback_QsciLexerCSS_keywords(self: ptr cQsciLexerCSS, slot: int
 
   virtualReturn
 proc QsciLexerCSSdefaultStyle*(self: gen_qscilexercss_types.QsciLexerCSS, ): cint =
-
   fQsciLexerCSS_virtualbase_defaultStyle(self.h)
 
 type QsciLexerCSSdefaultStyleProc* = proc(): cint
@@ -786,7 +737,6 @@ proc miqt_exec_callback_QsciLexerCSS_description(self: ptr cQsciLexerCSS, slot: 
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerCSSpaper*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerCSS_virtualbase_paper(self.h, style))
 
 type QsciLexerCSSpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -805,12 +755,11 @@ proc miqt_exec_callback_QsciLexerCSS_paper(self: ptr cQsciLexerCSS, slot: int, s
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerCSSdefaultColorWithStyle*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerCSSdefaultColor*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerCSS_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerCSSdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexercss_types.QsciLexerCSS, slot: QsciLexerCSSdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexercss_types.QsciLexerCSS, slot: QsciLexerCSSdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerCSSdefaultColorWithStyleProc
   tmp[] = slot
@@ -826,7 +775,6 @@ proc miqt_exec_callback_QsciLexerCSS_defaultColorWithStyle(self: ptr cQsciLexerC
 
   virtualReturn.h
 proc QsciLexerCSSdefaultEolFill*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): bool =
-
   fQsciLexerCSS_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerCSSdefaultEolFillProc* = proc(style: cint): bool
@@ -845,12 +793,11 @@ proc miqt_exec_callback_QsciLexerCSS_defaultEolFill(self: ptr cQsciLexerCSS, slo
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerCSSdefaultFontWithStyle*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qfont.QFont =
-
+proc QsciLexerCSSdefaultFont*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerCSS_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerCSSdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexercss_types.QsciLexerCSS, slot: QsciLexerCSSdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexercss_types.QsciLexerCSS, slot: QsciLexerCSSdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerCSSdefaultFontWithStyleProc
   tmp[] = slot
@@ -865,12 +812,11 @@ proc miqt_exec_callback_QsciLexerCSS_defaultFontWithStyle(self: ptr cQsciLexerCS
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerCSSdefaultPaperWithStyle*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerCSSdefaultPaper*(self: gen_qscilexercss_types.QsciLexerCSS, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerCSS_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerCSSdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexercss_types.QsciLexerCSS, slot: QsciLexerCSSdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexercss_types.QsciLexerCSS, slot: QsciLexerCSSdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerCSSdefaultPaperWithStyleProc
   tmp[] = slot
@@ -886,7 +832,6 @@ proc miqt_exec_callback_QsciLexerCSS_defaultPaperWithStyle(self: ptr cQsciLexerC
 
   virtualReturn.h
 proc QsciLexerCSSsetEditor*(self: gen_qscilexercss_types.QsciLexerCSS, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerCSS_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerCSSsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -904,7 +849,6 @@ proc miqt_exec_callback_QsciLexerCSS_setEditor(self: ptr cQsciLexerCSS, slot: in
 
   nimfunc[](slotval1)
 proc QsciLexerCSSrefreshProperties*(self: gen_qscilexercss_types.QsciLexerCSS, ): void =
-
   fQsciLexerCSS_virtualbase_refreshProperties(self.h)
 
 type QsciLexerCSSrefreshPropertiesProc* = proc(): void
@@ -920,7 +864,6 @@ proc miqt_exec_callback_QsciLexerCSS_refreshProperties(self: ptr cQsciLexerCSS, 
 
   nimfunc[]()
 proc QsciLexerCSSstyleBitsNeeded*(self: gen_qscilexercss_types.QsciLexerCSS, ): cint =
-
   fQsciLexerCSS_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerCSSstyleBitsNeededProc* = proc(): cint
@@ -938,7 +881,6 @@ proc miqt_exec_callback_QsciLexerCSS_styleBitsNeeded(self: ptr cQsciLexerCSS, sl
 
   virtualReturn
 proc QsciLexerCSSwordCharacters*(self: gen_qscilexercss_types.QsciLexerCSS, ): cstring =
-
   (fQsciLexerCSS_virtualbase_wordCharacters(self.h))
 
 type QsciLexerCSSwordCharactersProc* = proc(): cstring
@@ -956,7 +898,6 @@ proc miqt_exec_callback_QsciLexerCSS_wordCharacters(self: ptr cQsciLexerCSS, slo
 
   virtualReturn
 proc QsciLexerCSSsetAutoIndentStyle*(self: gen_qscilexercss_types.QsciLexerCSS, autoindentstyle: cint): void =
-
   fQsciLexerCSS_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerCSSsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -974,7 +915,6 @@ proc miqt_exec_callback_QsciLexerCSS_setAutoIndentStyle(self: ptr cQsciLexerCSS,
 
   nimfunc[](slotval1)
 proc QsciLexerCSSsetColor*(self: gen_qscilexercss_types.QsciLexerCSS, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerCSS_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerCSSsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -994,7 +934,6 @@ proc miqt_exec_callback_QsciLexerCSS_setColor(self: ptr cQsciLexerCSS, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerCSSsetEolFill*(self: gen_qscilexercss_types.QsciLexerCSS, eoffill: bool, style: cint): void =
-
   fQsciLexerCSS_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerCSSsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -1014,7 +953,6 @@ proc miqt_exec_callback_QsciLexerCSS_setEolFill(self: ptr cQsciLexerCSS, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerCSSsetFont*(self: gen_qscilexercss_types.QsciLexerCSS, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerCSS_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerCSSsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1034,7 +972,6 @@ proc miqt_exec_callback_QsciLexerCSS_setFont(self: ptr cQsciLexerCSS, slot: int,
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerCSSsetPaper*(self: gen_qscilexercss_types.QsciLexerCSS, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerCSS_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerCSSsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1054,7 +991,6 @@ proc miqt_exec_callback_QsciLexerCSS_setPaper(self: ptr cQsciLexerCSS, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerCSSreadProperties*(self: gen_qscilexercss_types.QsciLexerCSS, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerCSS_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerCSSreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1079,7 +1015,6 @@ proc miqt_exec_callback_QsciLexerCSS_readProperties(self: ptr cQsciLexerCSS, slo
 
   virtualReturn
 proc QsciLexerCSSwriteProperties*(self: gen_qscilexercss_types.QsciLexerCSS, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerCSS_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerCSSwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1104,7 +1039,6 @@ proc miqt_exec_callback_QsciLexerCSS_writeProperties(self: ptr cQsciLexerCSS, sl
 
   virtualReturn
 proc QsciLexerCSSevent*(self: gen_qscilexercss_types.QsciLexerCSS, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerCSS_virtualbase_event(self.h, event.h)
 
 type QsciLexerCSSeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1124,7 +1058,6 @@ proc miqt_exec_callback_QsciLexerCSS_event(self: ptr cQsciLexerCSS, slot: int, e
 
   virtualReturn
 proc QsciLexerCSSeventFilter*(self: gen_qscilexercss_types.QsciLexerCSS, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerCSS_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerCSSeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1146,7 +1079,6 @@ proc miqt_exec_callback_QsciLexerCSS_eventFilter(self: ptr cQsciLexerCSS, slot: 
 
   virtualReturn
 proc QsciLexerCSStimerEvent*(self: gen_qscilexercss_types.QsciLexerCSS, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerCSS_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerCSStimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1164,7 +1096,6 @@ proc miqt_exec_callback_QsciLexerCSS_timerEvent(self: ptr cQsciLexerCSS, slot: i
 
   nimfunc[](slotval1)
 proc QsciLexerCSSchildEvent*(self: gen_qscilexercss_types.QsciLexerCSS, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerCSS_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerCSSchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1182,7 +1113,6 @@ proc miqt_exec_callback_QsciLexerCSS_childEvent(self: ptr cQsciLexerCSS, slot: i
 
   nimfunc[](slotval1)
 proc QsciLexerCSScustomEvent*(self: gen_qscilexercss_types.QsciLexerCSS, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerCSS_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerCSScustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1200,7 +1130,6 @@ proc miqt_exec_callback_QsciLexerCSS_customEvent(self: ptr cQsciLexerCSS, slot: 
 
   nimfunc[](slotval1)
 proc QsciLexerCSSconnectNotify*(self: gen_qscilexercss_types.QsciLexerCSS, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerCSS_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerCSSconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1218,7 +1147,6 @@ proc miqt_exec_callback_QsciLexerCSS_connectNotify(self: ptr cQsciLexerCSS, slot
 
   nimfunc[](slotval1)
 proc QsciLexerCSSdisconnectNotify*(self: gen_qscilexercss_types.QsciLexerCSS, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerCSS_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerCSSdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

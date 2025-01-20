@@ -354,239 +354,183 @@ proc fcQTreeView_delete(self: pointer) {.importc: "QTreeView_delete".}
 func init*(T: type gen_qtreeview_types.QTreeView, h: ptr cQTreeView): gen_qtreeview_types.QTreeView =
   T(h: h)
 proc create*(T: type gen_qtreeview_types.QTreeView, parent: gen_qwidget.QWidget): gen_qtreeview_types.QTreeView =
-
   gen_qtreeview_types.QTreeView.init(fcQTreeView_new(parent.h))
+
 proc create*(T: type gen_qtreeview_types.QTreeView, ): gen_qtreeview_types.QTreeView =
-
   gen_qtreeview_types.QTreeView.init(fcQTreeView_new2())
-proc metaObject*(self: gen_qtreeview_types.QTreeView, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtreeview_types.QTreeView, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTreeView_metaObject(self.h))
 
 proc metacast*(self: gen_qtreeview_types.QTreeView, param1: cstring): pointer =
-
   fcQTreeView_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtreeview_types.QTreeView, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTreeView_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtreeview_types.QTreeView, s: cstring): string =
-
   let v_ms = fcQTreeView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtreeview_types.QTreeView, s: cstring): string =
-
   let v_ms = fcQTreeView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setModel*(self: gen_qtreeview_types.QTreeView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fcQTreeView_setModel(self.h, model.h)
 
 proc setRootIndex*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQTreeView_setRootIndex(self.h, index.h)
 
 proc setSelectionModel*(self: gen_qtreeview_types.QTreeView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
   fcQTreeView_setSelectionModel(self.h, selectionModel.h)
 
 proc header*(self: gen_qtreeview_types.QTreeView, ): gen_qheaderview.QHeaderView =
-
   gen_qheaderview.QHeaderView(h: fcQTreeView_header(self.h))
 
 proc setHeader*(self: gen_qtreeview_types.QTreeView, header: gen_qheaderview.QHeaderView): void =
-
   fcQTreeView_setHeader(self.h, header.h)
 
 proc autoExpandDelay*(self: gen_qtreeview_types.QTreeView, ): cint =
-
   fcQTreeView_autoExpandDelay(self.h)
 
 proc setAutoExpandDelay*(self: gen_qtreeview_types.QTreeView, delay: cint): void =
-
   fcQTreeView_setAutoExpandDelay(self.h, delay)
 
 proc indentation*(self: gen_qtreeview_types.QTreeView, ): cint =
-
   fcQTreeView_indentation(self.h)
 
 proc setIndentation*(self: gen_qtreeview_types.QTreeView, i: cint): void =
-
   fcQTreeView_setIndentation(self.h, i)
 
 proc resetIndentation*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fcQTreeView_resetIndentation(self.h)
 
 proc rootIsDecorated*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fcQTreeView_rootIsDecorated(self.h)
 
 proc setRootIsDecorated*(self: gen_qtreeview_types.QTreeView, show: bool): void =
-
   fcQTreeView_setRootIsDecorated(self.h, show)
 
 proc uniformRowHeights*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fcQTreeView_uniformRowHeights(self.h)
 
 proc setUniformRowHeights*(self: gen_qtreeview_types.QTreeView, uniform: bool): void =
-
   fcQTreeView_setUniformRowHeights(self.h, uniform)
 
 proc itemsExpandable*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fcQTreeView_itemsExpandable(self.h)
 
 proc setItemsExpandable*(self: gen_qtreeview_types.QTreeView, enable: bool): void =
-
   fcQTreeView_setItemsExpandable(self.h, enable)
 
 proc expandsOnDoubleClick*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fcQTreeView_expandsOnDoubleClick(self.h)
 
 proc setExpandsOnDoubleClick*(self: gen_qtreeview_types.QTreeView, enable: bool): void =
-
   fcQTreeView_setExpandsOnDoubleClick(self.h, enable)
 
 proc columnViewportPosition*(self: gen_qtreeview_types.QTreeView, column: cint): cint =
-
   fcQTreeView_columnViewportPosition(self.h, column)
 
 proc columnWidth*(self: gen_qtreeview_types.QTreeView, column: cint): cint =
-
   fcQTreeView_columnWidth(self.h, column)
 
 proc setColumnWidth*(self: gen_qtreeview_types.QTreeView, column: cint, width: cint): void =
-
   fcQTreeView_setColumnWidth(self.h, column, width)
 
 proc columnAt*(self: gen_qtreeview_types.QTreeView, x: cint): cint =
-
   fcQTreeView_columnAt(self.h, x)
 
 proc isColumnHidden*(self: gen_qtreeview_types.QTreeView, column: cint): bool =
-
   fcQTreeView_isColumnHidden(self.h, column)
 
 proc setColumnHidden*(self: gen_qtreeview_types.QTreeView, column: cint, hide: bool): void =
-
   fcQTreeView_setColumnHidden(self.h, column, hide)
 
 proc isHeaderHidden*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fcQTreeView_isHeaderHidden(self.h)
 
 proc setHeaderHidden*(self: gen_qtreeview_types.QTreeView, hide: bool): void =
-
   fcQTreeView_setHeaderHidden(self.h, hide)
 
 proc isRowHidden*(self: gen_qtreeview_types.QTreeView, row: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQTreeView_isRowHidden(self.h, row, parent.h)
 
 proc setRowHidden*(self: gen_qtreeview_types.QTreeView, row: cint, parent: gen_qabstractitemmodel.QModelIndex, hide: bool): void =
-
   fcQTreeView_setRowHidden(self.h, row, parent.h, hide)
 
 proc isFirstColumnSpanned*(self: gen_qtreeview_types.QTreeView, row: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQTreeView_isFirstColumnSpanned(self.h, row, parent.h)
 
 proc setFirstColumnSpanned*(self: gen_qtreeview_types.QTreeView, row: cint, parent: gen_qabstractitemmodel.QModelIndex, span: bool): void =
-
   fcQTreeView_setFirstColumnSpanned(self.h, row, parent.h, span)
 
 proc isExpanded*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQTreeView_isExpanded(self.h, index.h)
 
 proc setExpanded*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex, expand: bool): void =
-
   fcQTreeView_setExpanded(self.h, index.h, expand)
 
 proc setSortingEnabled*(self: gen_qtreeview_types.QTreeView, enable: bool): void =
-
   fcQTreeView_setSortingEnabled(self.h, enable)
 
 proc isSortingEnabled*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fcQTreeView_isSortingEnabled(self.h)
 
 proc setAnimated*(self: gen_qtreeview_types.QTreeView, enable: bool): void =
-
   fcQTreeView_setAnimated(self.h, enable)
 
 proc isAnimated*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fcQTreeView_isAnimated(self.h)
 
 proc setAllColumnsShowFocus*(self: gen_qtreeview_types.QTreeView, enable: bool): void =
-
   fcQTreeView_setAllColumnsShowFocus(self.h, enable)
 
 proc allColumnsShowFocus*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fcQTreeView_allColumnsShowFocus(self.h)
 
 proc setWordWrap*(self: gen_qtreeview_types.QTreeView, on: bool): void =
-
   fcQTreeView_setWordWrap(self.h, on)
 
 proc wordWrap*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fcQTreeView_wordWrap(self.h)
 
 proc setTreePosition*(self: gen_qtreeview_types.QTreeView, logicalIndex: cint): void =
-
   fcQTreeView_setTreePosition(self.h, logicalIndex)
 
 proc treePosition*(self: gen_qtreeview_types.QTreeView, ): cint =
-
   fcQTreeView_treePosition(self.h)
 
 proc keyboardSearch*(self: gen_qtreeview_types.QTreeView, search: string): void =
-
   fcQTreeView_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
 proc visualRect*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQTreeView_visualRect(self.h, index.h))
 
 proc scrollTo*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fcQTreeView_scrollTo(self.h, index.h, cint(hint))
 
 proc indexAt*(self: gen_qtreeview_types.QTreeView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQTreeView_indexAt(self.h, p.h))
 
 proc indexAbove*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQTreeView_indexAbove(self.h, index.h))
 
 proc indexBelow*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQTreeView_indexBelow(self.h, index.h))
 
 proc doItemsLayout*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fcQTreeView_doItemsLayout(self.h)
 
 proc reset*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fcQTreeView_reset(self.h)
 
 proc dataChanged*(self: gen_qtreeview_types.QTreeView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
-
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
@@ -594,123 +538,101 @@ proc dataChanged*(self: gen_qtreeview_types.QTreeView, topLeft: gen_qabstractite
   fcQTreeView_dataChanged(self.h, topLeft.h, bottomRight.h, struct_miqt_array(len: csize_t(len(roles)), data: if len(roles) == 0: nil else: addr(roles_CArray[0])))
 
 proc selectAll*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fcQTreeView_selectAll(self.h)
 
 proc expanded*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQTreeView_expanded(self.h, index.h)
 
+type QTreeViewexpandedSlot* = proc(index: gen_qabstractitemmodel.QModelIndex)
 proc miqt_exec_callback_QTreeView_expanded(slot: int, index: pointer) {.exportc.} =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTreeViewexpandedSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
-
 
   nimfunc[](slotval1)
 
-proc onexpanded*(self: gen_qtreeview_types.QTreeView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  var tmp = new Cb
+proc onexpanded*(self: gen_qtreeview_types.QTreeView, slot: QTreeViewexpandedSlot) =
+  var tmp = new QTreeViewexpandedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTreeView_connect_expanded(self.h, cast[int](addr tmp[]))
-proc collapsed*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): void =
 
+proc collapsed*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): void =
   fcQTreeView_collapsed(self.h, index.h)
 
+type QTreeViewcollapsedSlot* = proc(index: gen_qabstractitemmodel.QModelIndex)
 proc miqt_exec_callback_QTreeView_collapsed(slot: int, index: pointer) {.exportc.} =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTreeViewcollapsedSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
-
 
   nimfunc[](slotval1)
 
-proc oncollapsed*(self: gen_qtreeview_types.QTreeView, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  var tmp = new Cb
+proc oncollapsed*(self: gen_qtreeview_types.QTreeView, slot: QTreeViewcollapsedSlot) =
+  var tmp = new QTreeViewcollapsedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTreeView_connect_collapsed(self.h, cast[int](addr tmp[]))
-proc hideColumn*(self: gen_qtreeview_types.QTreeView, column: cint): void =
 
+proc hideColumn*(self: gen_qtreeview_types.QTreeView, column: cint): void =
   fcQTreeView_hideColumn(self.h, column)
 
 proc showColumn*(self: gen_qtreeview_types.QTreeView, column: cint): void =
-
   fcQTreeView_showColumn(self.h, column)
 
 proc expand*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQTreeView_expand(self.h, index.h)
 
 proc collapse*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQTreeView_collapse(self.h, index.h)
 
 proc resizeColumnToContents*(self: gen_qtreeview_types.QTreeView, column: cint): void =
-
   fcQTreeView_resizeColumnToContents(self.h, column)
 
 proc sortByColumn*(self: gen_qtreeview_types.QTreeView, column: cint): void =
-
   fcQTreeView_sortByColumn(self.h, column)
 
-proc sortByColumn2*(self: gen_qtreeview_types.QTreeView, column: cint, order: cint): void =
-
+proc sortByColumn*(self: gen_qtreeview_types.QTreeView, column: cint, order: cint): void =
   fcQTreeView_sortByColumn2(self.h, column, cint(order))
 
 proc expandAll*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fcQTreeView_expandAll(self.h)
 
 proc expandRecursively*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQTreeView_expandRecursively(self.h, index.h)
 
 proc collapseAll*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fcQTreeView_collapseAll(self.h)
 
 proc expandToDepth*(self: gen_qtreeview_types.QTreeView, depth: cint): void =
-
   fcQTreeView_expandToDepth(self.h, depth)
 
-proc tr2*(_: type gen_qtreeview_types.QTreeView, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qtreeview_types.QTreeView, s: cstring, c: cstring): string =
   let v_ms = fcQTreeView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtreeview_types.QTreeView, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtreeview_types.QTreeView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTreeView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtreeview_types.QTreeView, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtreeview_types.QTreeView, s: cstring, c: cstring): string =
   let v_ms = fcQTreeView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtreeview_types.QTreeView, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtreeview_types.QTreeView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTreeView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc expandRecursively2*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex, depth: cint): void =
-
+proc expandRecursively*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex, depth: cint): void =
   fcQTreeView_expandRecursively2(self.h, index.h, depth)
 
 proc QTreeViewmetaObject*(self: gen_qtreeview_types.QTreeView, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTreeView_virtualbase_metaObject(self.h))
 
 type QTreeViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -728,7 +650,6 @@ proc miqt_exec_callback_QTreeView_metaObject(self: ptr cQTreeView, slot: int): p
 
   virtualReturn.h
 proc QTreeViewmetacast*(self: gen_qtreeview_types.QTreeView, param1: cstring): pointer =
-
   fQTreeView_virtualbase_metacast(self.h, param1)
 
 type QTreeViewmetacastProc* = proc(param1: cstring): pointer
@@ -748,7 +669,6 @@ proc miqt_exec_callback_QTreeView_metacast(self: ptr cQTreeView, slot: int, para
 
   virtualReturn
 proc QTreeViewmetacall*(self: gen_qtreeview_types.QTreeView, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTreeView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTreeViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -772,7 +692,6 @@ proc miqt_exec_callback_QTreeView_metacall(self: ptr cQTreeView, slot: int, para
 
   virtualReturn
 proc QTreeViewsetModel*(self: gen_qtreeview_types.QTreeView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fQTreeView_virtualbase_setModel(self.h, model.h)
 
 type QTreeViewsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
@@ -790,7 +709,6 @@ proc miqt_exec_callback_QTreeView_setModel(self: ptr cQTreeView, slot: int, mode
 
   nimfunc[](slotval1)
 proc QTreeViewsetRootIndex*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQTreeView_virtualbase_setRootIndex(self.h, index.h)
 
 type QTreeViewsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
@@ -808,7 +726,6 @@ proc miqt_exec_callback_QTreeView_setRootIndex(self: ptr cQTreeView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTreeViewsetSelectionModel*(self: gen_qtreeview_types.QTreeView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
   fQTreeView_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
 type QTreeViewsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
@@ -826,7 +743,6 @@ proc miqt_exec_callback_QTreeView_setSelectionModel(self: ptr cQTreeView, slot: 
 
   nimfunc[](slotval1)
 proc QTreeViewkeyboardSearch*(self: gen_qtreeview_types.QTreeView, search: string): void =
-
   fQTreeView_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
 type QTreeViewkeyboardSearchProc* = proc(search: string): void
@@ -847,7 +763,6 @@ proc miqt_exec_callback_QTreeView_keyboardSearch(self: ptr cQTreeView, slot: int
 
   nimfunc[](slotval1)
 proc QTreeViewvisualRect*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQTreeView_virtualbase_visualRect(self.h, index.h))
 
 type QTreeViewvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
@@ -867,7 +782,6 @@ proc miqt_exec_callback_QTreeView_visualRect(self: ptr cQTreeView, slot: int, in
 
   virtualReturn.h
 proc QTreeViewscrollTo*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fQTreeView_virtualbase_scrollTo(self.h, index.h, cint(hint))
 
 type QTreeViewscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
@@ -887,7 +801,6 @@ proc miqt_exec_callback_QTreeView_scrollTo(self: ptr cQTreeView, slot: int, inde
 
   nimfunc[](slotval1, slotval2)
 proc QTreeViewindexAt*(self: gen_qtreeview_types.QTreeView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQTreeView_virtualbase_indexAt(self.h, p.h))
 
 type QTreeViewindexAtProc* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
@@ -907,7 +820,6 @@ proc miqt_exec_callback_QTreeView_indexAt(self: ptr cQTreeView, slot: int, p: po
 
   virtualReturn.h
 proc QTreeViewdoItemsLayout*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fQTreeView_virtualbase_doItemsLayout(self.h)
 
 type QTreeViewdoItemsLayoutProc* = proc(): void
@@ -923,7 +835,6 @@ proc miqt_exec_callback_QTreeView_doItemsLayout(self: ptr cQTreeView, slot: int)
 
   nimfunc[]()
 proc QTreeViewreset*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fQTreeView_virtualbase_reset(self.h)
 
 type QTreeViewresetProc* = proc(): void
@@ -939,7 +850,6 @@ proc miqt_exec_callback_QTreeView_reset(self: ptr cQTreeView, slot: int): void {
 
   nimfunc[]()
 proc QTreeViewdataChanged*(self: gen_qtreeview_types.QTreeView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
-
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
@@ -970,7 +880,6 @@ proc miqt_exec_callback_QTreeView_dataChanged(self: ptr cQTreeView, slot: int, t
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTreeViewselectAll*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fQTreeView_virtualbase_selectAll(self.h)
 
 type QTreeViewselectAllProc* = proc(): void
@@ -986,7 +895,6 @@ proc miqt_exec_callback_QTreeView_selectAll(self: ptr cQTreeView, slot: int): vo
 
   nimfunc[]()
 proc QTreeViewverticalScrollbarValueChanged*(self: gen_qtreeview_types.QTreeView, value: cint): void =
-
   fQTreeView_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
 type QTreeViewverticalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1004,7 +912,6 @@ proc miqt_exec_callback_QTreeView_verticalScrollbarValueChanged(self: ptr cQTree
 
   nimfunc[](slotval1)
 proc QTreeViewscrollContentsBy*(self: gen_qtreeview_types.QTreeView, dx: cint, dy: cint): void =
-
   fQTreeView_virtualbase_scrollContentsBy(self.h, dx, dy)
 
 type QTreeViewscrollContentsByProc* = proc(dx: cint, dy: cint): void
@@ -1024,7 +931,6 @@ proc miqt_exec_callback_QTreeView_scrollContentsBy(self: ptr cQTreeView, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QTreeViewrowsInserted*(self: gen_qtreeview_types.QTreeView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQTreeView_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
 type QTreeViewrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -1046,7 +952,6 @@ proc miqt_exec_callback_QTreeView_rowsInserted(self: ptr cQTreeView, slot: int, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTreeViewrowsAboutToBeRemoved*(self: gen_qtreeview_types.QTreeView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQTreeView_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
 type QTreeViewrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -1068,7 +973,6 @@ proc miqt_exec_callback_QTreeView_rowsAboutToBeRemoved(self: ptr cQTreeView, slo
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTreeViewmoveCursor*(self: gen_qtreeview_types.QTreeView, cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQTreeView_virtualbase_moveCursor(self.h, cint(cursorAction), cint(modifiers)))
 
 type QTreeViewmoveCursorProc* = proc(cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex
@@ -1090,7 +994,6 @@ proc miqt_exec_callback_QTreeView_moveCursor(self: ptr cQTreeView, slot: int, cu
 
   virtualReturn.h
 proc QTreeViewhorizontalOffset*(self: gen_qtreeview_types.QTreeView, ): cint =
-
   fQTreeView_virtualbase_horizontalOffset(self.h)
 
 type QTreeViewhorizontalOffsetProc* = proc(): cint
@@ -1108,7 +1011,6 @@ proc miqt_exec_callback_QTreeView_horizontalOffset(self: ptr cQTreeView, slot: i
 
   virtualReturn
 proc QTreeViewverticalOffset*(self: gen_qtreeview_types.QTreeView, ): cint =
-
   fQTreeView_virtualbase_verticalOffset(self.h)
 
 type QTreeViewverticalOffsetProc* = proc(): cint
@@ -1126,7 +1028,6 @@ proc miqt_exec_callback_QTreeView_verticalOffset(self: ptr cQTreeView, slot: int
 
   virtualReturn
 proc QTreeViewsetSelection*(self: gen_qtreeview_types.QTreeView, rect: gen_qrect.QRect, command: cint): void =
-
   fQTreeView_virtualbase_setSelection(self.h, rect.h, cint(command))
 
 type QTreeViewsetSelectionProc* = proc(rect: gen_qrect.QRect, command: cint): void
@@ -1146,7 +1047,6 @@ proc miqt_exec_callback_QTreeView_setSelection(self: ptr cQTreeView, slot: int, 
 
   nimfunc[](slotval1, slotval2)
 proc QTreeViewvisualRegionForSelection*(self: gen_qtreeview_types.QTreeView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fQTreeView_virtualbase_visualRegionForSelection(self.h, selection.h))
 
 type QTreeViewvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
@@ -1166,7 +1066,6 @@ proc miqt_exec_callback_QTreeView_visualRegionForSelection(self: ptr cQTreeView,
 
   virtualReturn.h
 proc QTreeViewselectedIndexes*(self: gen_qtreeview_types.QTreeView, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fQTreeView_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1193,7 +1092,6 @@ proc miqt_exec_callback_QTreeView_selectedIndexes(self: ptr cQTreeView, slot: in
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QTreeViewtimerEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTreeView_virtualbase_timerEvent(self.h, event.h)
 
 type QTreeViewtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1211,7 +1109,6 @@ proc miqt_exec_callback_QTreeView_timerEvent(self: ptr cQTreeView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTreeViewpaintEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QPaintEvent): void =
-
   fQTreeView_virtualbase_paintEvent(self.h, event.h)
 
 type QTreeViewpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1229,7 +1126,6 @@ proc miqt_exec_callback_QTreeView_paintEvent(self: ptr cQTreeView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTreeViewdrawRow*(self: gen_qtreeview_types.QTreeView, painter: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQTreeView_virtualbase_drawRow(self.h, painter.h, options.h, index.h)
 
 type QTreeViewdrawRowProc* = proc(painter: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): void
@@ -1251,7 +1147,6 @@ proc miqt_exec_callback_QTreeView_drawRow(self: ptr cQTreeView, slot: int, paint
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTreeViewdrawBranches*(self: gen_qtreeview_types.QTreeView, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQTreeView_virtualbase_drawBranches(self.h, painter.h, rect.h, index.h)
 
 type QTreeViewdrawBranchesProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, index: gen_qabstractitemmodel.QModelIndex): void
@@ -1273,7 +1168,6 @@ proc miqt_exec_callback_QTreeView_drawBranches(self: ptr cQTreeView, slot: int, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTreeViewmousePressEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QMouseEvent): void =
-
   fQTreeView_virtualbase_mousePressEvent(self.h, event.h)
 
 type QTreeViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1291,7 +1185,6 @@ proc miqt_exec_callback_QTreeView_mousePressEvent(self: ptr cQTreeView, slot: in
 
   nimfunc[](slotval1)
 proc QTreeViewmouseReleaseEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QMouseEvent): void =
-
   fQTreeView_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QTreeViewmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1309,7 +1202,6 @@ proc miqt_exec_callback_QTreeView_mouseReleaseEvent(self: ptr cQTreeView, slot: 
 
   nimfunc[](slotval1)
 proc QTreeViewmouseDoubleClickEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QMouseEvent): void =
-
   fQTreeView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QTreeViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1327,7 +1219,6 @@ proc miqt_exec_callback_QTreeView_mouseDoubleClickEvent(self: ptr cQTreeView, sl
 
   nimfunc[](slotval1)
 proc QTreeViewmouseMoveEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QMouseEvent): void =
-
   fQTreeView_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QTreeViewmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1345,7 +1236,6 @@ proc miqt_exec_callback_QTreeView_mouseMoveEvent(self: ptr cQTreeView, slot: int
 
   nimfunc[](slotval1)
 proc QTreeViewkeyPressEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QKeyEvent): void =
-
   fQTreeView_virtualbase_keyPressEvent(self.h, event.h)
 
 type QTreeViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1363,7 +1253,6 @@ proc miqt_exec_callback_QTreeView_keyPressEvent(self: ptr cQTreeView, slot: int,
 
   nimfunc[](slotval1)
 proc QTreeViewdragMoveEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QDragMoveEvent): void =
-
   fQTreeView_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QTreeViewdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1381,7 +1270,6 @@ proc miqt_exec_callback_QTreeView_dragMoveEvent(self: ptr cQTreeView, slot: int,
 
   nimfunc[](slotval1)
 proc QTreeViewviewportEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qcoreevent.QEvent): bool =
-
   fQTreeView_virtualbase_viewportEvent(self.h, event.h)
 
 type QTreeViewviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1401,7 +1289,6 @@ proc miqt_exec_callback_QTreeView_viewportEvent(self: ptr cQTreeView, slot: int,
 
   virtualReturn
 proc QTreeViewupdateGeometries*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fQTreeView_virtualbase_updateGeometries(self.h)
 
 type QTreeViewupdateGeometriesProc* = proc(): void
@@ -1417,7 +1304,6 @@ proc miqt_exec_callback_QTreeView_updateGeometries(self: ptr cQTreeView, slot: i
 
   nimfunc[]()
 proc QTreeViewviewportSizeHint*(self: gen_qtreeview_types.QTreeView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTreeView_virtualbase_viewportSizeHint(self.h))
 
 type QTreeViewviewportSizeHintProc* = proc(): gen_qsize.QSize
@@ -1435,7 +1321,6 @@ proc miqt_exec_callback_QTreeView_viewportSizeHint(self: ptr cQTreeView, slot: i
 
   virtualReturn.h
 proc QTreeViewsizeHintForColumn*(self: gen_qtreeview_types.QTreeView, column: cint): cint =
-
   fQTreeView_virtualbase_sizeHintForColumn(self.h, column)
 
 type QTreeViewsizeHintForColumnProc* = proc(column: cint): cint
@@ -1455,7 +1340,6 @@ proc miqt_exec_callback_QTreeView_sizeHintForColumn(self: ptr cQTreeView, slot: 
 
   virtualReturn
 proc QTreeViewhorizontalScrollbarAction*(self: gen_qtreeview_types.QTreeView, action: cint): void =
-
   fQTreeView_virtualbase_horizontalScrollbarAction(self.h, action)
 
 type QTreeViewhorizontalScrollbarActionProc* = proc(action: cint): void
@@ -1473,7 +1357,6 @@ proc miqt_exec_callback_QTreeView_horizontalScrollbarAction(self: ptr cQTreeView
 
   nimfunc[](slotval1)
 proc QTreeViewisIndexHidden*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQTreeView_virtualbase_isIndexHidden(self.h, index.h)
 
 type QTreeViewisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
@@ -1493,7 +1376,6 @@ proc miqt_exec_callback_QTreeView_isIndexHidden(self: ptr cQTreeView, slot: int,
 
   virtualReturn
 proc QTreeViewselectionChanged*(self: gen_qtreeview_types.QTreeView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
   fQTreeView_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
 type QTreeViewselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
@@ -1513,7 +1395,6 @@ proc miqt_exec_callback_QTreeView_selectionChanged(self: ptr cQTreeView, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QTreeViewcurrentChanged*(self: gen_qtreeview_types.QTreeView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
-
   fQTreeView_virtualbase_currentChanged(self.h, current.h, previous.h)
 
 type QTreeViewcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
@@ -1533,7 +1414,6 @@ proc miqt_exec_callback_QTreeView_currentChanged(self: ptr cQTreeView, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QTreeViewsizeHintForRow*(self: gen_qtreeview_types.QTreeView, row: cint): cint =
-
   fQTreeView_virtualbase_sizeHintForRow(self.h, row)
 
 type QTreeViewsizeHintForRowProc* = proc(row: cint): cint
@@ -1553,7 +1433,6 @@ proc miqt_exec_callback_QTreeView_sizeHintForRow(self: ptr cQTreeView, slot: int
 
   virtualReturn
 proc QTreeViewinputMethodQuery*(self: gen_qtreeview_types.QTreeView, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQTreeView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QTreeViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -1573,7 +1452,6 @@ proc miqt_exec_callback_QTreeView_inputMethodQuery(self: ptr cQTreeView, slot: i
 
   virtualReturn.h
 proc QTreeViewupdateEditorData*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fQTreeView_virtualbase_updateEditorData(self.h)
 
 type QTreeViewupdateEditorDataProc* = proc(): void
@@ -1589,7 +1467,6 @@ proc miqt_exec_callback_QTreeView_updateEditorData(self: ptr cQTreeView, slot: i
 
   nimfunc[]()
 proc QTreeViewupdateEditorGeometries*(self: gen_qtreeview_types.QTreeView, ): void =
-
   fQTreeView_virtualbase_updateEditorGeometries(self.h)
 
 type QTreeViewupdateEditorGeometriesProc* = proc(): void
@@ -1605,7 +1482,6 @@ proc miqt_exec_callback_QTreeView_updateEditorGeometries(self: ptr cQTreeView, s
 
   nimfunc[]()
 proc QTreeViewverticalScrollbarAction*(self: gen_qtreeview_types.QTreeView, action: cint): void =
-
   fQTreeView_virtualbase_verticalScrollbarAction(self.h, action)
 
 type QTreeViewverticalScrollbarActionProc* = proc(action: cint): void
@@ -1623,7 +1499,6 @@ proc miqt_exec_callback_QTreeView_verticalScrollbarAction(self: ptr cQTreeView, 
 
   nimfunc[](slotval1)
 proc QTreeViewhorizontalScrollbarValueChanged*(self: gen_qtreeview_types.QTreeView, value: cint): void =
-
   fQTreeView_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
 type QTreeViewhorizontalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1641,7 +1516,6 @@ proc miqt_exec_callback_QTreeView_horizontalScrollbarValueChanged(self: ptr cQTr
 
   nimfunc[](slotval1)
 proc QTreeViewcloseEditor*(self: gen_qtreeview_types.QTreeView, editor: gen_qwidget.QWidget, hint: cint): void =
-
   fQTreeView_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
 type QTreeViewcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
@@ -1661,7 +1535,6 @@ proc miqt_exec_callback_QTreeView_closeEditor(self: ptr cQTreeView, slot: int, e
 
   nimfunc[](slotval1, slotval2)
 proc QTreeViewcommitData*(self: gen_qtreeview_types.QTreeView, editor: gen_qwidget.QWidget): void =
-
   fQTreeView_virtualbase_commitData(self.h, editor.h)
 
 type QTreeViewcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
@@ -1679,7 +1552,6 @@ proc miqt_exec_callback_QTreeView_commitData(self: ptr cQTreeView, slot: int, ed
 
   nimfunc[](slotval1)
 proc QTreeVieweditorDestroyed*(self: gen_qtreeview_types.QTreeView, editor: gen_qobject.QObject): void =
-
   fQTreeView_virtualbase_editorDestroyed(self.h, editor.h)
 
 type QTreeVieweditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
@@ -1696,12 +1568,11 @@ proc miqt_exec_callback_QTreeView_editorDestroyed(self: ptr cQTreeView, slot: in
 
 
   nimfunc[](slotval1)
-proc QTreeViewedit2*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
-
+proc QTreeViewedit*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
   fQTreeView_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
 type QTreeViewedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: gen_qtreeview_types.QTreeView, slot: QTreeViewedit2Proc) =
+proc onedit*(self: gen_qtreeview_types.QTreeView, slot: QTreeViewedit2Proc) =
   # TODO check subclass
   var tmp = new QTreeViewedit2Proc
   tmp[] = slot
@@ -1721,7 +1592,6 @@ proc miqt_exec_callback_QTreeView_edit2(self: ptr cQTreeView, slot: int, index: 
 
   virtualReturn
 proc QTreeViewselectionCommand*(self: gen_qtreeview_types.QTreeView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
-
   cint(fQTreeView_virtualbase_selectionCommand(self.h, index.h, event.h))
 
 type QTreeViewselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
@@ -1743,7 +1613,6 @@ proc miqt_exec_callback_QTreeView_selectionCommand(self: ptr cQTreeView, slot: i
 
   cint(virtualReturn)
 proc QTreeViewstartDrag*(self: gen_qtreeview_types.QTreeView, supportedActions: cint): void =
-
   fQTreeView_virtualbase_startDrag(self.h, cint(supportedActions))
 
 type QTreeViewstartDragProc* = proc(supportedActions: cint): void
@@ -1761,7 +1630,6 @@ proc miqt_exec_callback_QTreeView_startDrag(self: ptr cQTreeView, slot: int, sup
 
   nimfunc[](slotval1)
 proc QTreeViewviewOptions*(self: gen_qtreeview_types.QTreeView, ): gen_qstyleoption.QStyleOptionViewItem =
-
   gen_qstyleoption.QStyleOptionViewItem(h: fQTreeView_virtualbase_viewOptions(self.h))
 
 type QTreeViewviewOptionsProc* = proc(): gen_qstyleoption.QStyleOptionViewItem
@@ -1779,7 +1647,6 @@ proc miqt_exec_callback_QTreeView_viewOptions(self: ptr cQTreeView, slot: int): 
 
   virtualReturn.h
 proc QTreeViewfocusNextPrevChild*(self: gen_qtreeview_types.QTreeView, next: bool): bool =
-
   fQTreeView_virtualbase_focusNextPrevChild(self.h, next)
 
 type QTreeViewfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1799,7 +1666,6 @@ proc miqt_exec_callback_QTreeView_focusNextPrevChild(self: ptr cQTreeView, slot:
 
   virtualReturn
 proc QTreeViewevent*(self: gen_qtreeview_types.QTreeView, event: gen_qcoreevent.QEvent): bool =
-
   fQTreeView_virtualbase_event(self.h, event.h)
 
 type QTreeVieweventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1819,7 +1685,6 @@ proc miqt_exec_callback_QTreeView_event(self: ptr cQTreeView, slot: int, event: 
 
   virtualReturn
 proc QTreeViewdragEnterEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QDragEnterEvent): void =
-
   fQTreeView_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QTreeViewdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1837,7 +1702,6 @@ proc miqt_exec_callback_QTreeView_dragEnterEvent(self: ptr cQTreeView, slot: int
 
   nimfunc[](slotval1)
 proc QTreeViewdragLeaveEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QDragLeaveEvent): void =
-
   fQTreeView_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QTreeViewdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1855,7 +1719,6 @@ proc miqt_exec_callback_QTreeView_dragLeaveEvent(self: ptr cQTreeView, slot: int
 
   nimfunc[](slotval1)
 proc QTreeViewdropEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QDropEvent): void =
-
   fQTreeView_virtualbase_dropEvent(self.h, event.h)
 
 type QTreeViewdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1873,7 +1736,6 @@ proc miqt_exec_callback_QTreeView_dropEvent(self: ptr cQTreeView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTreeViewfocusInEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QFocusEvent): void =
-
   fQTreeView_virtualbase_focusInEvent(self.h, event.h)
 
 type QTreeViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1891,7 +1753,6 @@ proc miqt_exec_callback_QTreeView_focusInEvent(self: ptr cQTreeView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTreeViewfocusOutEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QFocusEvent): void =
-
   fQTreeView_virtualbase_focusOutEvent(self.h, event.h)
 
 type QTreeViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1909,7 +1770,6 @@ proc miqt_exec_callback_QTreeView_focusOutEvent(self: ptr cQTreeView, slot: int,
 
   nimfunc[](slotval1)
 proc QTreeViewresizeEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QResizeEvent): void =
-
   fQTreeView_virtualbase_resizeEvent(self.h, event.h)
 
 type QTreeViewresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -1927,7 +1787,6 @@ proc miqt_exec_callback_QTreeView_resizeEvent(self: ptr cQTreeView, slot: int, e
 
   nimfunc[](slotval1)
 proc QTreeViewinputMethodEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QInputMethodEvent): void =
-
   fQTreeView_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QTreeViewinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -1945,7 +1804,6 @@ proc miqt_exec_callback_QTreeView_inputMethodEvent(self: ptr cQTreeView, slot: i
 
   nimfunc[](slotval1)
 proc QTreeVieweventFilter*(self: gen_qtreeview_types.QTreeView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTreeView_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
 type QTreeVieweventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1967,7 +1825,6 @@ proc miqt_exec_callback_QTreeView_eventFilter(self: ptr cQTreeView, slot: int, o
 
   virtualReturn
 proc QTreeViewminimumSizeHint*(self: gen_qtreeview_types.QTreeView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTreeView_virtualbase_minimumSizeHint(self.h))
 
 type QTreeViewminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1985,7 +1842,6 @@ proc miqt_exec_callback_QTreeView_minimumSizeHint(self: ptr cQTreeView, slot: in
 
   virtualReturn.h
 proc QTreeViewsizeHint*(self: gen_qtreeview_types.QTreeView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTreeView_virtualbase_sizeHint(self.h))
 
 type QTreeViewsizeHintProc* = proc(): gen_qsize.QSize
@@ -2003,7 +1859,6 @@ proc miqt_exec_callback_QTreeView_sizeHint(self: ptr cQTreeView, slot: int): poi
 
   virtualReturn.h
 proc QTreeViewsetupViewport*(self: gen_qtreeview_types.QTreeView, viewport: gen_qwidget.QWidget): void =
-
   fQTreeView_virtualbase_setupViewport(self.h, viewport.h)
 
 type QTreeViewsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
@@ -2021,7 +1876,6 @@ proc miqt_exec_callback_QTreeView_setupViewport(self: ptr cQTreeView, slot: int,
 
   nimfunc[](slotval1)
 proc QTreeViewwheelEvent*(self: gen_qtreeview_types.QTreeView, param1: gen_qevent.QWheelEvent): void =
-
   fQTreeView_virtualbase_wheelEvent(self.h, param1.h)
 
 type QTreeViewwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -2039,7 +1893,6 @@ proc miqt_exec_callback_QTreeView_wheelEvent(self: ptr cQTreeView, slot: int, pa
 
   nimfunc[](slotval1)
 proc QTreeViewcontextMenuEvent*(self: gen_qtreeview_types.QTreeView, param1: gen_qevent.QContextMenuEvent): void =
-
   fQTreeView_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QTreeViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -2057,7 +1910,6 @@ proc miqt_exec_callback_QTreeView_contextMenuEvent(self: ptr cQTreeView, slot: i
 
   nimfunc[](slotval1)
 proc QTreeViewchangeEvent*(self: gen_qtreeview_types.QTreeView, param1: gen_qcoreevent.QEvent): void =
-
   fQTreeView_virtualbase_changeEvent(self.h, param1.h)
 
 type QTreeViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -2075,7 +1927,6 @@ proc miqt_exec_callback_QTreeView_changeEvent(self: ptr cQTreeView, slot: int, p
 
   nimfunc[](slotval1)
 proc QTreeViewdevType*(self: gen_qtreeview_types.QTreeView, ): cint =
-
   fQTreeView_virtualbase_devType(self.h)
 
 type QTreeViewdevTypeProc* = proc(): cint
@@ -2093,7 +1944,6 @@ proc miqt_exec_callback_QTreeView_devType(self: ptr cQTreeView, slot: int): cint
 
   virtualReturn
 proc QTreeViewsetVisible*(self: gen_qtreeview_types.QTreeView, visible: bool): void =
-
   fQTreeView_virtualbase_setVisible(self.h, visible)
 
 type QTreeViewsetVisibleProc* = proc(visible: bool): void
@@ -2111,7 +1961,6 @@ proc miqt_exec_callback_QTreeView_setVisible(self: ptr cQTreeView, slot: int, vi
 
   nimfunc[](slotval1)
 proc QTreeViewheightForWidth*(self: gen_qtreeview_types.QTreeView, param1: cint): cint =
-
   fQTreeView_virtualbase_heightForWidth(self.h, param1)
 
 type QTreeViewheightForWidthProc* = proc(param1: cint): cint
@@ -2131,7 +1980,6 @@ proc miqt_exec_callback_QTreeView_heightForWidth(self: ptr cQTreeView, slot: int
 
   virtualReturn
 proc QTreeViewhasHeightForWidth*(self: gen_qtreeview_types.QTreeView, ): bool =
-
   fQTreeView_virtualbase_hasHeightForWidth(self.h)
 
 type QTreeViewhasHeightForWidthProc* = proc(): bool
@@ -2149,7 +1997,6 @@ proc miqt_exec_callback_QTreeView_hasHeightForWidth(self: ptr cQTreeView, slot: 
 
   virtualReturn
 proc QTreeViewpaintEngine*(self: gen_qtreeview_types.QTreeView, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQTreeView_virtualbase_paintEngine(self.h))
 
 type QTreeViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -2167,7 +2014,6 @@ proc miqt_exec_callback_QTreeView_paintEngine(self: ptr cQTreeView, slot: int): 
 
   virtualReturn.h
 proc QTreeViewkeyReleaseEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QKeyEvent): void =
-
   fQTreeView_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QTreeViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2185,7 +2031,6 @@ proc miqt_exec_callback_QTreeView_keyReleaseEvent(self: ptr cQTreeView, slot: in
 
   nimfunc[](slotval1)
 proc QTreeViewenterEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qcoreevent.QEvent): void =
-
   fQTreeView_virtualbase_enterEvent(self.h, event.h)
 
 type QTreeViewenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2203,7 +2048,6 @@ proc miqt_exec_callback_QTreeView_enterEvent(self: ptr cQTreeView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTreeViewleaveEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qcoreevent.QEvent): void =
-
   fQTreeView_virtualbase_leaveEvent(self.h, event.h)
 
 type QTreeViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2221,7 +2065,6 @@ proc miqt_exec_callback_QTreeView_leaveEvent(self: ptr cQTreeView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTreeViewmoveEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QMoveEvent): void =
-
   fQTreeView_virtualbase_moveEvent(self.h, event.h)
 
 type QTreeViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -2239,7 +2082,6 @@ proc miqt_exec_callback_QTreeView_moveEvent(self: ptr cQTreeView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTreeViewcloseEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QCloseEvent): void =
-
   fQTreeView_virtualbase_closeEvent(self.h, event.h)
 
 type QTreeViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -2257,7 +2099,6 @@ proc miqt_exec_callback_QTreeView_closeEvent(self: ptr cQTreeView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTreeViewtabletEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QTabletEvent): void =
-
   fQTreeView_virtualbase_tabletEvent(self.h, event.h)
 
 type QTreeViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -2275,7 +2116,6 @@ proc miqt_exec_callback_QTreeView_tabletEvent(self: ptr cQTreeView, slot: int, e
 
   nimfunc[](slotval1)
 proc QTreeViewactionEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QActionEvent): void =
-
   fQTreeView_virtualbase_actionEvent(self.h, event.h)
 
 type QTreeViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -2293,7 +2133,6 @@ proc miqt_exec_callback_QTreeView_actionEvent(self: ptr cQTreeView, slot: int, e
 
   nimfunc[](slotval1)
 proc QTreeViewshowEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QShowEvent): void =
-
   fQTreeView_virtualbase_showEvent(self.h, event.h)
 
 type QTreeViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -2311,7 +2150,6 @@ proc miqt_exec_callback_QTreeView_showEvent(self: ptr cQTreeView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTreeViewhideEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qevent.QHideEvent): void =
-
   fQTreeView_virtualbase_hideEvent(self.h, event.h)
 
 type QTreeViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -2329,7 +2167,6 @@ proc miqt_exec_callback_QTreeView_hideEvent(self: ptr cQTreeView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTreeViewnativeEvent*(self: gen_qtreeview_types.QTreeView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQTreeView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QTreeViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -2356,7 +2193,6 @@ proc miqt_exec_callback_QTreeView_nativeEvent(self: ptr cQTreeView, slot: int, e
 
   virtualReturn
 proc QTreeViewmetric*(self: gen_qtreeview_types.QTreeView, param1: cint): cint =
-
   fQTreeView_virtualbase_metric(self.h, cint(param1))
 
 type QTreeViewmetricProc* = proc(param1: cint): cint
@@ -2376,7 +2212,6 @@ proc miqt_exec_callback_QTreeView_metric(self: ptr cQTreeView, slot: int, param1
 
   virtualReturn
 proc QTreeViewinitPainter*(self: gen_qtreeview_types.QTreeView, painter: gen_qpainter.QPainter): void =
-
   fQTreeView_virtualbase_initPainter(self.h, painter.h)
 
 type QTreeViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -2394,7 +2229,6 @@ proc miqt_exec_callback_QTreeView_initPainter(self: ptr cQTreeView, slot: int, p
 
   nimfunc[](slotval1)
 proc QTreeViewredirected*(self: gen_qtreeview_types.QTreeView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQTreeView_virtualbase_redirected(self.h, offset.h))
 
 type QTreeViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -2414,7 +2248,6 @@ proc miqt_exec_callback_QTreeView_redirected(self: ptr cQTreeView, slot: int, of
 
   virtualReturn.h
 proc QTreeViewsharedPainter*(self: gen_qtreeview_types.QTreeView, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQTreeView_virtualbase_sharedPainter(self.h))
 
 type QTreeViewsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -2432,7 +2265,6 @@ proc miqt_exec_callback_QTreeView_sharedPainter(self: ptr cQTreeView, slot: int)
 
   virtualReturn.h
 proc QTreeViewchildEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qcoreevent.QChildEvent): void =
-
   fQTreeView_virtualbase_childEvent(self.h, event.h)
 
 type QTreeViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -2450,7 +2282,6 @@ proc miqt_exec_callback_QTreeView_childEvent(self: ptr cQTreeView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTreeViewcustomEvent*(self: gen_qtreeview_types.QTreeView, event: gen_qcoreevent.QEvent): void =
-
   fQTreeView_virtualbase_customEvent(self.h, event.h)
 
 type QTreeViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2468,7 +2299,6 @@ proc miqt_exec_callback_QTreeView_customEvent(self: ptr cQTreeView, slot: int, e
 
   nimfunc[](slotval1)
 proc QTreeViewconnectNotify*(self: gen_qtreeview_types.QTreeView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTreeView_virtualbase_connectNotify(self.h, signal.h)
 
 type QTreeViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2486,7 +2316,6 @@ proc miqt_exec_callback_QTreeView_connectNotify(self: ptr cQTreeView, slot: int,
 
   nimfunc[](slotval1)
 proc QTreeViewdisconnectNotify*(self: gen_qtreeview_types.QTreeView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTreeView_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTreeViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

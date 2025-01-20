@@ -58,26 +58,21 @@ proc fcQWebEngineClientCertificateSelection_delete(self: pointer) {.importc: "QW
 func init*(T: type gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, h: ptr cQWebEngineClientCertificateSelection): gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection =
   T(h: h)
 proc create*(T: type gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, param1: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection): gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection =
-
   gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection.init(fcQWebEngineClientCertificateSelection_new(param1.h))
-proc operatorAssign*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, param1: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection): void =
 
+proc operatorAssign*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, param1: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection): void =
   fcQWebEngineClientCertificateSelection_operatorAssign(self.h, param1.h)
 
 proc host*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineClientCertificateSelection_host(self.h))
 
 proc select*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, certificate: gen_qsslcertificate.QSslCertificate): void =
-
   fcQWebEngineClientCertificateSelection_select(self.h, certificate.h)
 
 proc selectNone*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, ): void =
-
   fcQWebEngineClientCertificateSelection_selectNone(self.h)
 
 proc certificates*(self: gen_qwebengineclientcertificateselection_types.QWebEngineClientCertificateSelection, ): seq[gen_qsslcertificate.QSslCertificate] =
-
   var v_ma = fcQWebEngineClientCertificateSelection_certificates(self.h)
   var vx_ret = newSeq[gen_qsslcertificate.QSslCertificate](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)

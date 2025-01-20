@@ -264,199 +264,153 @@ proc fcQMainWindow_delete(self: pointer) {.importc: "QMainWindow_delete".}
 func init*(T: type gen_qmainwindow_types.QMainWindow, h: ptr cQMainWindow): gen_qmainwindow_types.QMainWindow =
   T(h: h)
 proc create*(T: type gen_qmainwindow_types.QMainWindow, parent: gen_qwidget.QWidget): gen_qmainwindow_types.QMainWindow =
-
   gen_qmainwindow_types.QMainWindow.init(fcQMainWindow_new(parent.h))
+
 proc create*(T: type gen_qmainwindow_types.QMainWindow, ): gen_qmainwindow_types.QMainWindow =
-
   gen_qmainwindow_types.QMainWindow.init(fcQMainWindow_new2())
+
 proc create*(T: type gen_qmainwindow_types.QMainWindow, parent: gen_qwidget.QWidget, flags: cint): gen_qmainwindow_types.QMainWindow =
-
   gen_qmainwindow_types.QMainWindow.init(fcQMainWindow_new3(parent.h, cint(flags)))
-proc metaObject*(self: gen_qmainwindow_types.QMainWindow, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qmainwindow_types.QMainWindow, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMainWindow_metaObject(self.h))
 
 proc metacast*(self: gen_qmainwindow_types.QMainWindow, param1: cstring): pointer =
-
   fcQMainWindow_metacast(self.h, param1)
 
 proc metacall*(self: gen_qmainwindow_types.QMainWindow, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMainWindow_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qmainwindow_types.QMainWindow, s: cstring): string =
-
   let v_ms = fcQMainWindow_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc iconSize*(self: gen_qmainwindow_types.QMainWindow, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQMainWindow_iconSize(self.h))
 
 proc setIconSize*(self: gen_qmainwindow_types.QMainWindow, iconSize: gen_qsize.QSize): void =
-
   fcQMainWindow_setIconSize(self.h, iconSize.h)
 
 proc toolButtonStyle*(self: gen_qmainwindow_types.QMainWindow, ): cint =
-
   cint(fcQMainWindow_toolButtonStyle(self.h))
 
 proc setToolButtonStyle*(self: gen_qmainwindow_types.QMainWindow, toolButtonStyle: cint): void =
-
   fcQMainWindow_setToolButtonStyle(self.h, cint(toolButtonStyle))
 
 proc isAnimated*(self: gen_qmainwindow_types.QMainWindow, ): bool =
-
   fcQMainWindow_isAnimated(self.h)
 
 proc isDockNestingEnabled*(self: gen_qmainwindow_types.QMainWindow, ): bool =
-
   fcQMainWindow_isDockNestingEnabled(self.h)
 
 proc documentMode*(self: gen_qmainwindow_types.QMainWindow, ): bool =
-
   fcQMainWindow_documentMode(self.h)
 
 proc setDocumentMode*(self: gen_qmainwindow_types.QMainWindow, enabled: bool): void =
-
   fcQMainWindow_setDocumentMode(self.h, enabled)
 
 proc tabShape*(self: gen_qmainwindow_types.QMainWindow, ): cint =
-
   cint(fcQMainWindow_tabShape(self.h))
 
 proc setTabShape*(self: gen_qmainwindow_types.QMainWindow, tabShape: cint): void =
-
   fcQMainWindow_setTabShape(self.h, cint(tabShape))
 
 proc tabPosition*(self: gen_qmainwindow_types.QMainWindow, area: cint): cint =
-
   cint(fcQMainWindow_tabPosition(self.h, cint(area)))
 
 proc setTabPosition*(self: gen_qmainwindow_types.QMainWindow, areas: cint, tabPosition: cint): void =
-
   fcQMainWindow_setTabPosition(self.h, cint(areas), cint(tabPosition))
 
 proc setDockOptions*(self: gen_qmainwindow_types.QMainWindow, options: cint): void =
-
   fcQMainWindow_setDockOptions(self.h, cint(options))
 
 proc dockOptions*(self: gen_qmainwindow_types.QMainWindow, ): cint =
-
   cint(fcQMainWindow_dockOptions(self.h))
 
 proc isSeparator*(self: gen_qmainwindow_types.QMainWindow, pos: gen_qpoint.QPoint): bool =
-
   fcQMainWindow_isSeparator(self.h, pos.h)
 
 proc menuBar*(self: gen_qmainwindow_types.QMainWindow, ): gen_qmenubar.QMenuBar =
-
   gen_qmenubar.QMenuBar(h: fcQMainWindow_menuBar(self.h))
 
 proc setMenuBar*(self: gen_qmainwindow_types.QMainWindow, menubar: gen_qmenubar.QMenuBar): void =
-
   fcQMainWindow_setMenuBar(self.h, menubar.h)
 
 proc menuWidget*(self: gen_qmainwindow_types.QMainWindow, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQMainWindow_menuWidget(self.h))
 
 proc setMenuWidget*(self: gen_qmainwindow_types.QMainWindow, menubar: gen_qwidget.QWidget): void =
-
   fcQMainWindow_setMenuWidget(self.h, menubar.h)
 
 proc statusBar*(self: gen_qmainwindow_types.QMainWindow, ): gen_qstatusbar.QStatusBar =
-
   gen_qstatusbar.QStatusBar(h: fcQMainWindow_statusBar(self.h))
 
 proc setStatusBar*(self: gen_qmainwindow_types.QMainWindow, statusbar: gen_qstatusbar.QStatusBar): void =
-
   fcQMainWindow_setStatusBar(self.h, statusbar.h)
 
 proc centralWidget*(self: gen_qmainwindow_types.QMainWindow, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQMainWindow_centralWidget(self.h))
 
 proc setCentralWidget*(self: gen_qmainwindow_types.QMainWindow, widget: gen_qwidget.QWidget): void =
-
   fcQMainWindow_setCentralWidget(self.h, widget.h)
 
 proc takeCentralWidget*(self: gen_qmainwindow_types.QMainWindow, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQMainWindow_takeCentralWidget(self.h))
 
 proc setCorner*(self: gen_qmainwindow_types.QMainWindow, corner: cint, area: cint): void =
-
   fcQMainWindow_setCorner(self.h, cint(corner), cint(area))
 
 proc corner*(self: gen_qmainwindow_types.QMainWindow, corner: cint): cint =
-
   cint(fcQMainWindow_corner(self.h, cint(corner)))
 
 proc addToolBarBreak*(self: gen_qmainwindow_types.QMainWindow, ): void =
-
   fcQMainWindow_addToolBarBreak(self.h)
 
 proc insertToolBarBreak*(self: gen_qmainwindow_types.QMainWindow, before: gen_qtoolbar.QToolBar): void =
-
   fcQMainWindow_insertToolBarBreak(self.h, before.h)
 
 proc addToolBar*(self: gen_qmainwindow_types.QMainWindow, area: cint, toolbar: gen_qtoolbar.QToolBar): void =
-
   fcQMainWindow_addToolBar(self.h, cint(area), toolbar.h)
 
-proc addToolBarWithToolbar*(self: gen_qmainwindow_types.QMainWindow, toolbar: gen_qtoolbar.QToolBar): void =
-
+proc addToolBar*(self: gen_qmainwindow_types.QMainWindow, toolbar: gen_qtoolbar.QToolBar): void =
   fcQMainWindow_addToolBarWithToolbar(self.h, toolbar.h)
 
-proc addToolBarWithTitle*(self: gen_qmainwindow_types.QMainWindow, title: string): gen_qtoolbar.QToolBar =
-
+proc addToolBar*(self: gen_qmainwindow_types.QMainWindow, title: string): gen_qtoolbar.QToolBar =
   gen_qtoolbar.QToolBar(h: fcQMainWindow_addToolBarWithTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title)))))
 
 proc insertToolBar*(self: gen_qmainwindow_types.QMainWindow, before: gen_qtoolbar.QToolBar, toolbar: gen_qtoolbar.QToolBar): void =
-
   fcQMainWindow_insertToolBar(self.h, before.h, toolbar.h)
 
 proc removeToolBar*(self: gen_qmainwindow_types.QMainWindow, toolbar: gen_qtoolbar.QToolBar): void =
-
   fcQMainWindow_removeToolBar(self.h, toolbar.h)
 
 proc removeToolBarBreak*(self: gen_qmainwindow_types.QMainWindow, before: gen_qtoolbar.QToolBar): void =
-
   fcQMainWindow_removeToolBarBreak(self.h, before.h)
 
 proc unifiedTitleAndToolBarOnMac*(self: gen_qmainwindow_types.QMainWindow, ): bool =
-
   fcQMainWindow_unifiedTitleAndToolBarOnMac(self.h)
 
 proc toolBarArea*(self: gen_qmainwindow_types.QMainWindow, toolbar: gen_qtoolbar.QToolBar): cint =
-
   cint(fcQMainWindow_toolBarArea(self.h, toolbar.h))
 
 proc toolBarBreak*(self: gen_qmainwindow_types.QMainWindow, toolbar: gen_qtoolbar.QToolBar): bool =
-
   fcQMainWindow_toolBarBreak(self.h, toolbar.h)
 
 proc addDockWidget*(self: gen_qmainwindow_types.QMainWindow, area: cint, dockwidget: gen_qdockwidget.QDockWidget): void =
-
   fcQMainWindow_addDockWidget(self.h, cint(area), dockwidget.h)
 
-proc addDockWidget2*(self: gen_qmainwindow_types.QMainWindow, area: cint, dockwidget: gen_qdockwidget.QDockWidget, orientation: cint): void =
-
+proc addDockWidget*(self: gen_qmainwindow_types.QMainWindow, area: cint, dockwidget: gen_qdockwidget.QDockWidget, orientation: cint): void =
   fcQMainWindow_addDockWidget2(self.h, cint(area), dockwidget.h, cint(orientation))
 
 proc splitDockWidget*(self: gen_qmainwindow_types.QMainWindow, after: gen_qdockwidget.QDockWidget, dockwidget: gen_qdockwidget.QDockWidget, orientation: cint): void =
-
   fcQMainWindow_splitDockWidget(self.h, after.h, dockwidget.h, cint(orientation))
 
 proc tabifyDockWidget*(self: gen_qmainwindow_types.QMainWindow, first: gen_qdockwidget.QDockWidget, second: gen_qdockwidget.QDockWidget): void =
-
   fcQMainWindow_tabifyDockWidget(self.h, first.h, second.h)
 
 proc tabifiedDockWidgets*(self: gen_qmainwindow_types.QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): seq[gen_qdockwidget.QDockWidget] =
-
   var v_ma = fcQMainWindow_tabifiedDockWidgets(self.h, dockwidget.h)
   var vx_ret = newSeq[gen_qdockwidget.QDockWidget](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -465,19 +419,15 @@ proc tabifiedDockWidgets*(self: gen_qmainwindow_types.QMainWindow, dockwidget: g
   vx_ret
 
 proc removeDockWidget*(self: gen_qmainwindow_types.QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): void =
-
   fcQMainWindow_removeDockWidget(self.h, dockwidget.h)
 
 proc restoreDockWidget*(self: gen_qmainwindow_types.QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): bool =
-
   fcQMainWindow_restoreDockWidget(self.h, dockwidget.h)
 
 proc dockWidgetArea*(self: gen_qmainwindow_types.QMainWindow, dockwidget: gen_qdockwidget.QDockWidget): cint =
-
   cint(fcQMainWindow_dockWidgetArea(self.h, dockwidget.h))
 
 proc resizeDocks*(self: gen_qmainwindow_types.QMainWindow, docks: seq[gen_qdockwidget.QDockWidget], sizes: seq[cint], orientation: cint): void =
-
   var docks_CArray = newSeq[pointer](len(docks))
   for i in 0..<len(docks):
     docks_CArray[i] = docks[i].h
@@ -489,117 +439,99 @@ proc resizeDocks*(self: gen_qmainwindow_types.QMainWindow, docks: seq[gen_qdockw
   fcQMainWindow_resizeDocks(self.h, struct_miqt_array(len: csize_t(len(docks)), data: if len(docks) == 0: nil else: addr(docks_CArray[0])), struct_miqt_array(len: csize_t(len(sizes)), data: if len(sizes) == 0: nil else: addr(sizes_CArray[0])), cint(orientation))
 
 proc saveState*(self: gen_qmainwindow_types.QMainWindow, ): seq[byte] =
-
   var v_bytearray = fcQMainWindow_saveState(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc restoreState*(self: gen_qmainwindow_types.QMainWindow, state: seq[byte]): bool =
-
   fcQMainWindow_restoreState(self.h, struct_miqt_string(data: cast[cstring](if len(state) == 0: nil else: unsafeAddr state[0]), len: csize_t(len(state))))
 
 proc createPopupMenu*(self: gen_qmainwindow_types.QMainWindow, ): gen_qmenu.QMenu =
-
   gen_qmenu.QMenu(h: fcQMainWindow_createPopupMenu(self.h))
 
 proc setAnimated*(self: gen_qmainwindow_types.QMainWindow, enabled: bool): void =
-
   fcQMainWindow_setAnimated(self.h, enabled)
 
 proc setDockNestingEnabled*(self: gen_qmainwindow_types.QMainWindow, enabled: bool): void =
-
   fcQMainWindow_setDockNestingEnabled(self.h, enabled)
 
 proc setUnifiedTitleAndToolBarOnMac*(self: gen_qmainwindow_types.QMainWindow, set: bool): void =
-
   fcQMainWindow_setUnifiedTitleAndToolBarOnMac(self.h, set)
 
 proc iconSizeChanged*(self: gen_qmainwindow_types.QMainWindow, iconSize: gen_qsize.QSize): void =
-
   fcQMainWindow_iconSizeChanged(self.h, iconSize.h)
 
+type QMainWindowiconSizeChangedSlot* = proc(iconSize: gen_qsize.QSize)
 proc miqt_exec_callback_QMainWindow_iconSizeChanged(slot: int, iconSize: pointer) {.exportc.} =
-  type Cb = proc(iconSize: gen_qsize.QSize)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMainWindowiconSizeChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qsize.QSize(h: iconSize)
-
 
   nimfunc[](slotval1)
 
-proc oniconSizeChanged*(self: gen_qmainwindow_types.QMainWindow, slot: proc(iconSize: gen_qsize.QSize)) =
-  type Cb = proc(iconSize: gen_qsize.QSize)
-  var tmp = new Cb
+proc oniconSizeChanged*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowiconSizeChangedSlot) =
+  var tmp = new QMainWindowiconSizeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMainWindow_connect_iconSizeChanged(self.h, cast[int](addr tmp[]))
-proc toolButtonStyleChanged*(self: gen_qmainwindow_types.QMainWindow, toolButtonStyle: cint): void =
 
+proc toolButtonStyleChanged*(self: gen_qmainwindow_types.QMainWindow, toolButtonStyle: cint): void =
   fcQMainWindow_toolButtonStyleChanged(self.h, cint(toolButtonStyle))
 
+type QMainWindowtoolButtonStyleChangedSlot* = proc(toolButtonStyle: cint)
 proc miqt_exec_callback_QMainWindow_toolButtonStyleChanged(slot: int, toolButtonStyle: cint) {.exportc.} =
-  type Cb = proc(toolButtonStyle: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMainWindowtoolButtonStyleChangedSlot](cast[pointer](slot))
   let slotval1 = cint(toolButtonStyle)
-
 
   nimfunc[](slotval1)
 
-proc ontoolButtonStyleChanged*(self: gen_qmainwindow_types.QMainWindow, slot: proc(toolButtonStyle: cint)) =
-  type Cb = proc(toolButtonStyle: cint)
-  var tmp = new Cb
+proc ontoolButtonStyleChanged*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowtoolButtonStyleChangedSlot) =
+  var tmp = new QMainWindowtoolButtonStyleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMainWindow_connect_toolButtonStyleChanged(self.h, cast[int](addr tmp[]))
-proc tabifiedDockWidgetActivated*(self: gen_qmainwindow_types.QMainWindow, dockWidget: gen_qdockwidget.QDockWidget): void =
 
+proc tabifiedDockWidgetActivated*(self: gen_qmainwindow_types.QMainWindow, dockWidget: gen_qdockwidget.QDockWidget): void =
   fcQMainWindow_tabifiedDockWidgetActivated(self.h, dockWidget.h)
 
+type QMainWindowtabifiedDockWidgetActivatedSlot* = proc(dockWidget: gen_qdockwidget.QDockWidget)
 proc miqt_exec_callback_QMainWindow_tabifiedDockWidgetActivated(slot: int, dockWidget: pointer) {.exportc.} =
-  type Cb = proc(dockWidget: gen_qdockwidget.QDockWidget)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMainWindowtabifiedDockWidgetActivatedSlot](cast[pointer](slot))
   let slotval1 = gen_qdockwidget.QDockWidget(h: dockWidget)
-
 
   nimfunc[](slotval1)
 
-proc ontabifiedDockWidgetActivated*(self: gen_qmainwindow_types.QMainWindow, slot: proc(dockWidget: gen_qdockwidget.QDockWidget)) =
-  type Cb = proc(dockWidget: gen_qdockwidget.QDockWidget)
-  var tmp = new Cb
+proc ontabifiedDockWidgetActivated*(self: gen_qmainwindow_types.QMainWindow, slot: QMainWindowtabifiedDockWidgetActivatedSlot) =
+  var tmp = new QMainWindowtabifiedDockWidgetActivatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMainWindow_connect_tabifiedDockWidgetActivated(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qmainwindow_types.QMainWindow, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qmainwindow_types.QMainWindow, s: cstring, c: cstring): string =
   let v_ms = fcQMainWindow_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qmainwindow_types.QMainWindow, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qmainwindow_types.QMainWindow, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMainWindow_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addToolBarBreak1*(self: gen_qmainwindow_types.QMainWindow, area: cint): void =
-
+proc addToolBarBreak*(self: gen_qmainwindow_types.QMainWindow, area: cint): void =
   fcQMainWindow_addToolBarBreak1(self.h, cint(area))
 
-proc saveState1*(self: gen_qmainwindow_types.QMainWindow, version: cint): seq[byte] =
-
+proc saveState*(self: gen_qmainwindow_types.QMainWindow, version: cint): seq[byte] =
   var v_bytearray = fcQMainWindow_saveState1(self.h, version)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc restoreState2*(self: gen_qmainwindow_types.QMainWindow, state: seq[byte], version: cint): bool =
-
+proc restoreState*(self: gen_qmainwindow_types.QMainWindow, state: seq[byte], version: cint): bool =
   fcQMainWindow_restoreState2(self.h, struct_miqt_string(data: cast[cstring](if len(state) == 0: nil else: unsafeAddr state[0]), len: csize_t(len(state))), version)
 
 proc QMainWindowmetaObject*(self: gen_qmainwindow_types.QMainWindow, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQMainWindow_virtualbase_metaObject(self.h))
 
 type QMainWindowmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -617,7 +549,6 @@ proc miqt_exec_callback_QMainWindow_metaObject(self: ptr cQMainWindow, slot: int
 
   virtualReturn.h
 proc QMainWindowmetacast*(self: gen_qmainwindow_types.QMainWindow, param1: cstring): pointer =
-
   fQMainWindow_virtualbase_metacast(self.h, param1)
 
 type QMainWindowmetacastProc* = proc(param1: cstring): pointer
@@ -637,7 +568,6 @@ proc miqt_exec_callback_QMainWindow_metacast(self: ptr cQMainWindow, slot: int, 
 
   virtualReturn
 proc QMainWindowmetacall*(self: gen_qmainwindow_types.QMainWindow, param1: cint, param2: cint, param3: pointer): cint =
-
   fQMainWindow_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QMainWindowmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -661,7 +591,6 @@ proc miqt_exec_callback_QMainWindow_metacall(self: ptr cQMainWindow, slot: int, 
 
   virtualReturn
 proc QMainWindowcreatePopupMenu*(self: gen_qmainwindow_types.QMainWindow, ): gen_qmenu.QMenu =
-
   gen_qmenu.QMenu(h: fQMainWindow_virtualbase_createPopupMenu(self.h))
 
 type QMainWindowcreatePopupMenuProc* = proc(): gen_qmenu.QMenu
@@ -679,7 +608,6 @@ proc miqt_exec_callback_QMainWindow_createPopupMenu(self: ptr cQMainWindow, slot
 
   virtualReturn.h
 proc QMainWindowcontextMenuEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QContextMenuEvent): void =
-
   fQMainWindow_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QMainWindowcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -697,7 +625,6 @@ proc miqt_exec_callback_QMainWindow_contextMenuEvent(self: ptr cQMainWindow, slo
 
   nimfunc[](slotval1)
 proc QMainWindowevent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QEvent): bool =
-
   fQMainWindow_virtualbase_event(self.h, event.h)
 
 type QMainWindoweventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -717,7 +644,6 @@ proc miqt_exec_callback_QMainWindow_event(self: ptr cQMainWindow, slot: int, eve
 
   virtualReturn
 proc QMainWindowdevType*(self: gen_qmainwindow_types.QMainWindow, ): cint =
-
   fQMainWindow_virtualbase_devType(self.h)
 
 type QMainWindowdevTypeProc* = proc(): cint
@@ -735,7 +661,6 @@ proc miqt_exec_callback_QMainWindow_devType(self: ptr cQMainWindow, slot: int): 
 
   virtualReturn
 proc QMainWindowsetVisible*(self: gen_qmainwindow_types.QMainWindow, visible: bool): void =
-
   fQMainWindow_virtualbase_setVisible(self.h, visible)
 
 type QMainWindowsetVisibleProc* = proc(visible: bool): void
@@ -753,7 +678,6 @@ proc miqt_exec_callback_QMainWindow_setVisible(self: ptr cQMainWindow, slot: int
 
   nimfunc[](slotval1)
 proc QMainWindowsizeHint*(self: gen_qmainwindow_types.QMainWindow, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQMainWindow_virtualbase_sizeHint(self.h))
 
 type QMainWindowsizeHintProc* = proc(): gen_qsize.QSize
@@ -771,7 +695,6 @@ proc miqt_exec_callback_QMainWindow_sizeHint(self: ptr cQMainWindow, slot: int):
 
   virtualReturn.h
 proc QMainWindowminimumSizeHint*(self: gen_qmainwindow_types.QMainWindow, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQMainWindow_virtualbase_minimumSizeHint(self.h))
 
 type QMainWindowminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -789,7 +712,6 @@ proc miqt_exec_callback_QMainWindow_minimumSizeHint(self: ptr cQMainWindow, slot
 
   virtualReturn.h
 proc QMainWindowheightForWidth*(self: gen_qmainwindow_types.QMainWindow, param1: cint): cint =
-
   fQMainWindow_virtualbase_heightForWidth(self.h, param1)
 
 type QMainWindowheightForWidthProc* = proc(param1: cint): cint
@@ -809,7 +731,6 @@ proc miqt_exec_callback_QMainWindow_heightForWidth(self: ptr cQMainWindow, slot:
 
   virtualReturn
 proc QMainWindowhasHeightForWidth*(self: gen_qmainwindow_types.QMainWindow, ): bool =
-
   fQMainWindow_virtualbase_hasHeightForWidth(self.h)
 
 type QMainWindowhasHeightForWidthProc* = proc(): bool
@@ -827,7 +748,6 @@ proc miqt_exec_callback_QMainWindow_hasHeightForWidth(self: ptr cQMainWindow, sl
 
   virtualReturn
 proc QMainWindowpaintEngine*(self: gen_qmainwindow_types.QMainWindow, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQMainWindow_virtualbase_paintEngine(self.h))
 
 type QMainWindowpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -845,7 +765,6 @@ proc miqt_exec_callback_QMainWindow_paintEngine(self: ptr cQMainWindow, slot: in
 
   virtualReturn.h
 proc QMainWindowmousePressEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMouseEvent): void =
-
   fQMainWindow_virtualbase_mousePressEvent(self.h, event.h)
 
 type QMainWindowmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -863,7 +782,6 @@ proc miqt_exec_callback_QMainWindow_mousePressEvent(self: ptr cQMainWindow, slot
 
   nimfunc[](slotval1)
 proc QMainWindowmouseReleaseEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMouseEvent): void =
-
   fQMainWindow_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QMainWindowmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -881,7 +799,6 @@ proc miqt_exec_callback_QMainWindow_mouseReleaseEvent(self: ptr cQMainWindow, sl
 
   nimfunc[](slotval1)
 proc QMainWindowmouseDoubleClickEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMouseEvent): void =
-
   fQMainWindow_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QMainWindowmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -899,7 +816,6 @@ proc miqt_exec_callback_QMainWindow_mouseDoubleClickEvent(self: ptr cQMainWindow
 
   nimfunc[](slotval1)
 proc QMainWindowmouseMoveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMouseEvent): void =
-
   fQMainWindow_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QMainWindowmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -917,7 +833,6 @@ proc miqt_exec_callback_QMainWindow_mouseMoveEvent(self: ptr cQMainWindow, slot:
 
   nimfunc[](slotval1)
 proc QMainWindowwheelEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QWheelEvent): void =
-
   fQMainWindow_virtualbase_wheelEvent(self.h, event.h)
 
 type QMainWindowwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -935,7 +850,6 @@ proc miqt_exec_callback_QMainWindow_wheelEvent(self: ptr cQMainWindow, slot: int
 
   nimfunc[](slotval1)
 proc QMainWindowkeyPressEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QKeyEvent): void =
-
   fQMainWindow_virtualbase_keyPressEvent(self.h, event.h)
 
 type QMainWindowkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -953,7 +867,6 @@ proc miqt_exec_callback_QMainWindow_keyPressEvent(self: ptr cQMainWindow, slot: 
 
   nimfunc[](slotval1)
 proc QMainWindowkeyReleaseEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QKeyEvent): void =
-
   fQMainWindow_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QMainWindowkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -971,7 +884,6 @@ proc miqt_exec_callback_QMainWindow_keyReleaseEvent(self: ptr cQMainWindow, slot
 
   nimfunc[](slotval1)
 proc QMainWindowfocusInEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QFocusEvent): void =
-
   fQMainWindow_virtualbase_focusInEvent(self.h, event.h)
 
 type QMainWindowfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -989,7 +901,6 @@ proc miqt_exec_callback_QMainWindow_focusInEvent(self: ptr cQMainWindow, slot: i
 
   nimfunc[](slotval1)
 proc QMainWindowfocusOutEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QFocusEvent): void =
-
   fQMainWindow_virtualbase_focusOutEvent(self.h, event.h)
 
 type QMainWindowfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1007,7 +918,6 @@ proc miqt_exec_callback_QMainWindow_focusOutEvent(self: ptr cQMainWindow, slot: 
 
   nimfunc[](slotval1)
 proc QMainWindowenterEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QEnterEvent): void =
-
   fQMainWindow_virtualbase_enterEvent(self.h, event.h)
 
 type QMainWindowenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -1025,7 +935,6 @@ proc miqt_exec_callback_QMainWindow_enterEvent(self: ptr cQMainWindow, slot: int
 
   nimfunc[](slotval1)
 proc QMainWindowleaveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QEvent): void =
-
   fQMainWindow_virtualbase_leaveEvent(self.h, event.h)
 
 type QMainWindowleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1043,7 +952,6 @@ proc miqt_exec_callback_QMainWindow_leaveEvent(self: ptr cQMainWindow, slot: int
 
   nimfunc[](slotval1)
 proc QMainWindowpaintEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QPaintEvent): void =
-
   fQMainWindow_virtualbase_paintEvent(self.h, event.h)
 
 type QMainWindowpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1061,7 +969,6 @@ proc miqt_exec_callback_QMainWindow_paintEvent(self: ptr cQMainWindow, slot: int
 
   nimfunc[](slotval1)
 proc QMainWindowmoveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QMoveEvent): void =
-
   fQMainWindow_virtualbase_moveEvent(self.h, event.h)
 
 type QMainWindowmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1079,7 +986,6 @@ proc miqt_exec_callback_QMainWindow_moveEvent(self: ptr cQMainWindow, slot: int,
 
   nimfunc[](slotval1)
 proc QMainWindowresizeEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QResizeEvent): void =
-
   fQMainWindow_virtualbase_resizeEvent(self.h, event.h)
 
 type QMainWindowresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -1097,7 +1003,6 @@ proc miqt_exec_callback_QMainWindow_resizeEvent(self: ptr cQMainWindow, slot: in
 
   nimfunc[](slotval1)
 proc QMainWindowcloseEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QCloseEvent): void =
-
   fQMainWindow_virtualbase_closeEvent(self.h, event.h)
 
 type QMainWindowcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1115,7 +1020,6 @@ proc miqt_exec_callback_QMainWindow_closeEvent(self: ptr cQMainWindow, slot: int
 
   nimfunc[](slotval1)
 proc QMainWindowtabletEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QTabletEvent): void =
-
   fQMainWindow_virtualbase_tabletEvent(self.h, event.h)
 
 type QMainWindowtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1133,7 +1037,6 @@ proc miqt_exec_callback_QMainWindow_tabletEvent(self: ptr cQMainWindow, slot: in
 
   nimfunc[](slotval1)
 proc QMainWindowactionEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QActionEvent): void =
-
   fQMainWindow_virtualbase_actionEvent(self.h, event.h)
 
 type QMainWindowactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1151,7 +1054,6 @@ proc miqt_exec_callback_QMainWindow_actionEvent(self: ptr cQMainWindow, slot: in
 
   nimfunc[](slotval1)
 proc QMainWindowdragEnterEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QDragEnterEvent): void =
-
   fQMainWindow_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QMainWindowdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1169,7 +1071,6 @@ proc miqt_exec_callback_QMainWindow_dragEnterEvent(self: ptr cQMainWindow, slot:
 
   nimfunc[](slotval1)
 proc QMainWindowdragMoveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QDragMoveEvent): void =
-
   fQMainWindow_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QMainWindowdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1187,7 +1088,6 @@ proc miqt_exec_callback_QMainWindow_dragMoveEvent(self: ptr cQMainWindow, slot: 
 
   nimfunc[](slotval1)
 proc QMainWindowdragLeaveEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QDragLeaveEvent): void =
-
   fQMainWindow_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QMainWindowdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1205,7 +1105,6 @@ proc miqt_exec_callback_QMainWindow_dragLeaveEvent(self: ptr cQMainWindow, slot:
 
   nimfunc[](slotval1)
 proc QMainWindowdropEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QDropEvent): void =
-
   fQMainWindow_virtualbase_dropEvent(self.h, event.h)
 
 type QMainWindowdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1223,7 +1122,6 @@ proc miqt_exec_callback_QMainWindow_dropEvent(self: ptr cQMainWindow, slot: int,
 
   nimfunc[](slotval1)
 proc QMainWindowshowEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QShowEvent): void =
-
   fQMainWindow_virtualbase_showEvent(self.h, event.h)
 
 type QMainWindowshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1241,7 +1139,6 @@ proc miqt_exec_callback_QMainWindow_showEvent(self: ptr cQMainWindow, slot: int,
 
   nimfunc[](slotval1)
 proc QMainWindowhideEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qevent.QHideEvent): void =
-
   fQMainWindow_virtualbase_hideEvent(self.h, event.h)
 
 type QMainWindowhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1259,7 +1156,6 @@ proc miqt_exec_callback_QMainWindow_hideEvent(self: ptr cQMainWindow, slot: int,
 
   nimfunc[](slotval1)
 proc QMainWindownativeEvent*(self: gen_qmainwindow_types.QMainWindow, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQMainWindow_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QMainWindownativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1286,7 +1182,6 @@ proc miqt_exec_callback_QMainWindow_nativeEvent(self: ptr cQMainWindow, slot: in
 
   virtualReturn
 proc QMainWindowchangeEvent*(self: gen_qmainwindow_types.QMainWindow, param1: gen_qcoreevent.QEvent): void =
-
   fQMainWindow_virtualbase_changeEvent(self.h, param1.h)
 
 type QMainWindowchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1304,7 +1199,6 @@ proc miqt_exec_callback_QMainWindow_changeEvent(self: ptr cQMainWindow, slot: in
 
   nimfunc[](slotval1)
 proc QMainWindowmetric*(self: gen_qmainwindow_types.QMainWindow, param1: cint): cint =
-
   fQMainWindow_virtualbase_metric(self.h, cint(param1))
 
 type QMainWindowmetricProc* = proc(param1: cint): cint
@@ -1324,7 +1218,6 @@ proc miqt_exec_callback_QMainWindow_metric(self: ptr cQMainWindow, slot: int, pa
 
   virtualReturn
 proc QMainWindowinitPainter*(self: gen_qmainwindow_types.QMainWindow, painter: gen_qpainter.QPainter): void =
-
   fQMainWindow_virtualbase_initPainter(self.h, painter.h)
 
 type QMainWindowinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1342,7 +1235,6 @@ proc miqt_exec_callback_QMainWindow_initPainter(self: ptr cQMainWindow, slot: in
 
   nimfunc[](slotval1)
 proc QMainWindowredirected*(self: gen_qmainwindow_types.QMainWindow, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQMainWindow_virtualbase_redirected(self.h, offset.h))
 
 type QMainWindowredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1362,7 +1254,6 @@ proc miqt_exec_callback_QMainWindow_redirected(self: ptr cQMainWindow, slot: int
 
   virtualReturn.h
 proc QMainWindowsharedPainter*(self: gen_qmainwindow_types.QMainWindow, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQMainWindow_virtualbase_sharedPainter(self.h))
 
 type QMainWindowsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1380,7 +1271,6 @@ proc miqt_exec_callback_QMainWindow_sharedPainter(self: ptr cQMainWindow, slot: 
 
   virtualReturn.h
 proc QMainWindowinputMethodEvent*(self: gen_qmainwindow_types.QMainWindow, param1: gen_qevent.QInputMethodEvent): void =
-
   fQMainWindow_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QMainWindowinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1398,7 +1288,6 @@ proc miqt_exec_callback_QMainWindow_inputMethodEvent(self: ptr cQMainWindow, slo
 
   nimfunc[](slotval1)
 proc QMainWindowinputMethodQuery*(self: gen_qmainwindow_types.QMainWindow, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQMainWindow_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QMainWindowinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1418,7 +1307,6 @@ proc miqt_exec_callback_QMainWindow_inputMethodQuery(self: ptr cQMainWindow, slo
 
   virtualReturn.h
 proc QMainWindowfocusNextPrevChild*(self: gen_qmainwindow_types.QMainWindow, next: bool): bool =
-
   fQMainWindow_virtualbase_focusNextPrevChild(self.h, next)
 
 type QMainWindowfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1438,7 +1326,6 @@ proc miqt_exec_callback_QMainWindow_focusNextPrevChild(self: ptr cQMainWindow, s
 
   virtualReturn
 proc QMainWindoweventFilter*(self: gen_qmainwindow_types.QMainWindow, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQMainWindow_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QMainWindoweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1460,7 +1347,6 @@ proc miqt_exec_callback_QMainWindow_eventFilter(self: ptr cQMainWindow, slot: in
 
   virtualReturn
 proc QMainWindowtimerEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QTimerEvent): void =
-
   fQMainWindow_virtualbase_timerEvent(self.h, event.h)
 
 type QMainWindowtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1478,7 +1364,6 @@ proc miqt_exec_callback_QMainWindow_timerEvent(self: ptr cQMainWindow, slot: int
 
   nimfunc[](slotval1)
 proc QMainWindowchildEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QChildEvent): void =
-
   fQMainWindow_virtualbase_childEvent(self.h, event.h)
 
 type QMainWindowchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1496,7 +1381,6 @@ proc miqt_exec_callback_QMainWindow_childEvent(self: ptr cQMainWindow, slot: int
 
   nimfunc[](slotval1)
 proc QMainWindowcustomEvent*(self: gen_qmainwindow_types.QMainWindow, event: gen_qcoreevent.QEvent): void =
-
   fQMainWindow_virtualbase_customEvent(self.h, event.h)
 
 type QMainWindowcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1514,7 +1398,6 @@ proc miqt_exec_callback_QMainWindow_customEvent(self: ptr cQMainWindow, slot: in
 
   nimfunc[](slotval1)
 proc QMainWindowconnectNotify*(self: gen_qmainwindow_types.QMainWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMainWindow_virtualbase_connectNotify(self.h, signal.h)
 
 type QMainWindowconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1532,7 +1415,6 @@ proc miqt_exec_callback_QMainWindow_connectNotify(self: ptr cQMainWindow, slot: 
 
   nimfunc[](slotval1)
 proc QMainWindowdisconnectNotify*(self: gen_qmainwindow_types.QMainWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMainWindow_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QMainWindowdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

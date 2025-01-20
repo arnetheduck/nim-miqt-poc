@@ -86,61 +86,48 @@ proc fcQGraphicsLayout_delete(self: pointer) {.importc: "QGraphicsLayout_delete"
 func init*(T: type gen_qgraphicslayout_types.QGraphicsLayout, h: ptr cQGraphicsLayout): gen_qgraphicslayout_types.QGraphicsLayout =
   T(h: h)
 proc create*(T: type gen_qgraphicslayout_types.QGraphicsLayout, ): gen_qgraphicslayout_types.QGraphicsLayout =
-
   gen_qgraphicslayout_types.QGraphicsLayout.init(fcQGraphicsLayout_new())
+
 proc create*(T: type gen_qgraphicslayout_types.QGraphicsLayout, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qgraphicslayout_types.QGraphicsLayout =
-
   gen_qgraphicslayout_types.QGraphicsLayout.init(fcQGraphicsLayout_new2(parent.h))
-proc setContentsMargins*(self: gen_qgraphicslayout_types.QGraphicsLayout, left: float64, top: float64, right: float64, bottom: float64): void =
 
+proc setContentsMargins*(self: gen_qgraphicslayout_types.QGraphicsLayout, left: float64, top: float64, right: float64, bottom: float64): void =
   fcQGraphicsLayout_setContentsMargins(self.h, left, top, right, bottom)
 
 proc getContentsMargins*(self: gen_qgraphicslayout_types.QGraphicsLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
   fcQGraphicsLayout_getContentsMargins(self.h, left, top, right, bottom)
 
 proc activate*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
-
   fcQGraphicsLayout_activate(self.h)
 
 proc isActivated*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): bool =
-
   fcQGraphicsLayout_isActivated(self.h)
 
 proc invalidate*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
-
   fcQGraphicsLayout_invalidate(self.h)
 
 proc updateGeometry*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
-
   fcQGraphicsLayout_updateGeometry(self.h)
 
 proc widgetEvent*(self: gen_qgraphicslayout_types.QGraphicsLayout, e: gen_qcoreevent.QEvent): void =
-
   fcQGraphicsLayout_widgetEvent(self.h, e.h)
 
 proc count*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): cint =
-
   fcQGraphicsLayout_count(self.h)
 
 proc itemAt*(self: gen_qgraphicslayout_types.QGraphicsLayout, i: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
-
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fcQGraphicsLayout_itemAt(self.h, i))
 
 proc removeAt*(self: gen_qgraphicslayout_types.QGraphicsLayout, index: cint): void =
-
   fcQGraphicsLayout_removeAt(self.h, index)
 
 proc setInstantInvalidatePropagation*(_: type gen_qgraphicslayout_types.QGraphicsLayout, enable: bool): void =
-
   fcQGraphicsLayout_setInstantInvalidatePropagation(enable)
 
 proc instantInvalidatePropagation*(_: type gen_qgraphicslayout_types.QGraphicsLayout, ): bool =
-
   fcQGraphicsLayout_instantInvalidatePropagation()
 
 proc QGraphicsLayoutgetContentsMargins*(self: gen_qgraphicslayout_types.QGraphicsLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
   fQGraphicsLayout_virtualbase_getContentsMargins(self.h, left, top, right, bottom)
 
 type QGraphicsLayoutgetContentsMarginsProc* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
@@ -164,7 +151,6 @@ proc miqt_exec_callback_QGraphicsLayout_getContentsMargins(self: ptr cQGraphicsL
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QGraphicsLayoutinvalidate*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
-
   fQGraphicsLayout_virtualbase_invalidate(self.h)
 
 type QGraphicsLayoutinvalidateProc* = proc(): void
@@ -180,7 +166,6 @@ proc miqt_exec_callback_QGraphicsLayout_invalidate(self: ptr cQGraphicsLayout, s
 
   nimfunc[]()
 proc QGraphicsLayoutupdateGeometry*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): void =
-
   fQGraphicsLayout_virtualbase_updateGeometry(self.h)
 
 type QGraphicsLayoutupdateGeometryProc* = proc(): void
@@ -196,7 +181,6 @@ proc miqt_exec_callback_QGraphicsLayout_updateGeometry(self: ptr cQGraphicsLayou
 
   nimfunc[]()
 proc QGraphicsLayoutwidgetEvent*(self: gen_qgraphicslayout_types.QGraphicsLayout, e: gen_qcoreevent.QEvent): void =
-
   fQGraphicsLayout_virtualbase_widgetEvent(self.h, e.h)
 
 type QGraphicsLayoutwidgetEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -258,7 +242,6 @@ proc miqt_exec_callback_QGraphicsLayout_removeAt(self: ptr cQGraphicsLayout, slo
 
   nimfunc[](slotval1)
 proc QGraphicsLayoutsetGeometry*(self: gen_qgraphicslayout_types.QGraphicsLayout, rect: gen_qrect.QRectF): void =
-
   fQGraphicsLayout_virtualbase_setGeometry(self.h, rect.h)
 
 type QGraphicsLayoutsetGeometryProc* = proc(rect: gen_qrect.QRectF): void
@@ -276,7 +259,6 @@ proc miqt_exec_callback_QGraphicsLayout_setGeometry(self: ptr cQGraphicsLayout, 
 
   nimfunc[](slotval1)
 proc QGraphicsLayoutisEmpty*(self: gen_qgraphicslayout_types.QGraphicsLayout, ): bool =
-
   fQGraphicsLayout_virtualbase_isEmpty(self.h)
 
 type QGraphicsLayoutisEmptyProc* = proc(): bool

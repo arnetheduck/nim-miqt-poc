@@ -79,66 +79,51 @@ proc fcQSGSimpleTextureNode_delete(self: pointer) {.importc: "QSGSimpleTextureNo
 func init*(T: type gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, h: ptr cQSGSimpleTextureNode): gen_qsgsimpletexturenode_types.QSGSimpleTextureNode =
   T(h: h)
 proc create*(T: type gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qsgsimpletexturenode_types.QSGSimpleTextureNode =
-
   gen_qsgsimpletexturenode_types.QSGSimpleTextureNode.init(fcQSGSimpleTextureNode_new())
-proc setRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, rect: gen_qrect.QRectF): void =
 
+proc setRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, rect: gen_qrect.QRectF): void =
   fcQSGSimpleTextureNode_setRect(self.h, rect.h)
 
-proc setRect2*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, x: float64, y: float64, w: float64, h: float64): void =
-
+proc setRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, x: float64, y: float64, w: float64, h: float64): void =
   fcQSGSimpleTextureNode_setRect2(self.h, x, y, w, h)
 
 proc rect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQSGSimpleTextureNode_rect(self.h))
 
 proc setSourceRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, r: gen_qrect.QRectF): void =
-
   fcQSGSimpleTextureNode_setSourceRect(self.h, r.h)
 
-proc setSourceRect2*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, x: float64, y: float64, w: float64, h: float64): void =
-
+proc setSourceRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, x: float64, y: float64, w: float64, h: float64): void =
   fcQSGSimpleTextureNode_setSourceRect2(self.h, x, y, w, h)
 
 proc sourceRect*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQSGSimpleTextureNode_sourceRect(self.h))
 
 proc setTexture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, texture: gen_qsgtexture.QSGTexture): void =
-
   fcQSGSimpleTextureNode_setTexture(self.h, texture.h)
 
 proc texture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): gen_qsgtexture.QSGTexture =
-
   gen_qsgtexture.QSGTexture(h: fcQSGSimpleTextureNode_texture(self.h))
 
 proc setFiltering*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, filtering: cint): void =
-
   fcQSGSimpleTextureNode_setFiltering(self.h, cint(filtering))
 
 proc filtering*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): cint =
-
   cint(fcQSGSimpleTextureNode_filtering(self.h))
 
 proc setTextureCoordinatesTransform*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, mode: cint): void =
-
   fcQSGSimpleTextureNode_setTextureCoordinatesTransform(self.h, cint(mode))
 
 proc textureCoordinatesTransform*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): cint =
-
   cint(fcQSGSimpleTextureNode_textureCoordinatesTransform(self.h))
 
 proc setOwnsTexture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, owns: bool): void =
-
   fcQSGSimpleTextureNode_setOwnsTexture(self.h, owns)
 
 proc ownsTexture*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): bool =
-
   fcQSGSimpleTextureNode_ownsTexture(self.h)
 
 proc QSGSimpleTextureNodeisSubtreeBlocked*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): bool =
-
   fQSGSimpleTextureNode_virtualbase_isSubtreeBlocked(self.h)
 
 type QSGSimpleTextureNodeisSubtreeBlockedProc* = proc(): bool
@@ -156,7 +141,6 @@ proc miqt_exec_callback_QSGSimpleTextureNode_isSubtreeBlocked(self: ptr cQSGSimp
 
   virtualReturn
 proc QSGSimpleTextureNodepreprocess*(self: gen_qsgsimpletexturenode_types.QSGSimpleTextureNode, ): void =
-
   fQSGSimpleTextureNode_virtualbase_preprocess(self.h)
 
 type QSGSimpleTextureNodepreprocessProc* = proc(): void

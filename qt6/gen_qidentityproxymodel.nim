@@ -201,76 +201,60 @@ proc fcQIdentityProxyModel_delete(self: pointer) {.importc: "QIdentityProxyModel
 func init*(T: type gen_qidentityproxymodel_types.QIdentityProxyModel, h: ptr cQIdentityProxyModel): gen_qidentityproxymodel_types.QIdentityProxyModel =
   T(h: h)
 proc create*(T: type gen_qidentityproxymodel_types.QIdentityProxyModel, ): gen_qidentityproxymodel_types.QIdentityProxyModel =
-
   gen_qidentityproxymodel_types.QIdentityProxyModel.init(fcQIdentityProxyModel_new())
+
 proc create*(T: type gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qobject.QObject): gen_qidentityproxymodel_types.QIdentityProxyModel =
-
   gen_qidentityproxymodel_types.QIdentityProxyModel.init(fcQIdentityProxyModel_new2(parent.h))
-proc metaObject*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQIdentityProxyModel_metaObject(self.h))
 
 proc metacast*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, param1: cstring): pointer =
-
   fcQIdentityProxyModel_metacast(self.h, param1)
 
 proc metacall*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQIdentityProxyModel_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel, s: cstring): string =
-
   let v_ms = fcQIdentityProxyModel_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc columnCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fcQIdentityProxyModel_columnCount(self.h, parent.h)
 
 proc index*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_index(self.h, row, column, parent.h))
 
 proc mapFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_mapFromSource(self.h, sourceIndex.h))
 
 proc mapToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_mapToSource(self.h, proxyIndex.h))
 
 proc parent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_parent(self.h, child.h))
 
 proc rowCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fcQIdentityProxyModel_rowCount(self.h, parent.h)
 
 proc headerData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQIdentityProxyModel_headerData(self.h, section, cint(orientation), role))
 
 proc dropMimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQIdentityProxyModel_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
 proc sibling*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQIdentityProxyModel_sibling(self.h, row, column, idx.h))
 
 proc mapSelectionFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
   gen_qitemselectionmodel.QItemSelection(h: fcQIdentityProxyModel_mapSelectionFromSource(self.h, selection.h))
 
 proc mapSelectionToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
   gen_qitemselectionmodel.QItemSelection(h: fcQIdentityProxyModel_mapSelectionToSource(self.h, selection.h))
 
 proc match*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fcQIdentityProxyModel_match(self.h, start.h, role, value.h, hits, cint(flags))
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -279,49 +263,39 @@ proc match*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, start: gen_
   vx_ret
 
 proc setSourceModel*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fcQIdentityProxyModel_setSourceModel(self.h, sourceModel.h)
 
 proc insertColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQIdentityProxyModel_insertColumns(self.h, column, count, parent.h)
 
 proc insertRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQIdentityProxyModel_insertRows(self.h, row, count, parent.h)
 
 proc removeColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQIdentityProxyModel_removeColumns(self.h, column, count, parent.h)
 
 proc removeRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQIdentityProxyModel_removeRows(self.h, row, count, parent.h)
 
 proc moveRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
   fcQIdentityProxyModel_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
 proc moveColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
   fcQIdentityProxyModel_moveColumns(self.h, sourceParent.h, sourceColumn, count, destinationParent.h, destinationChild)
 
-proc tr2*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel, s: cstring, c: cstring): string =
   let v_ms = fcQIdentityProxyModel_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qidentityproxymodel_types.QIdentityProxyModel, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQIdentityProxyModel_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QIdentityProxyModelmetaObject*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQIdentityProxyModel_virtualbase_metaObject(self.h))
 
 type QIdentityProxyModelmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -339,7 +313,6 @@ proc miqt_exec_callback_QIdentityProxyModel_metaObject(self: ptr cQIdentityProxy
 
   virtualReturn.h
 proc QIdentityProxyModelmetacast*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, param1: cstring): pointer =
-
   fQIdentityProxyModel_virtualbase_metacast(self.h, param1)
 
 type QIdentityProxyModelmetacastProc* = proc(param1: cstring): pointer
@@ -359,7 +332,6 @@ proc miqt_exec_callback_QIdentityProxyModel_metacast(self: ptr cQIdentityProxyMo
 
   virtualReturn
 proc QIdentityProxyModelmetacall*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, param1: cint, param2: cint, param3: pointer): cint =
-
   fQIdentityProxyModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QIdentityProxyModelmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -383,7 +355,6 @@ proc miqt_exec_callback_QIdentityProxyModel_metacall(self: ptr cQIdentityProxyMo
 
   virtualReturn
 proc QIdentityProxyModelcolumnCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fQIdentityProxyModel_virtualbase_columnCount(self.h, parent.h)
 
 type QIdentityProxyModelcolumnCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
@@ -403,7 +374,6 @@ proc miqt_exec_callback_QIdentityProxyModel_columnCount(self: ptr cQIdentityProx
 
   virtualReturn
 proc QIdentityProxyModelindex*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_index(self.h, row, column, parent.h))
 
 type QIdentityProxyModelindexProc* = proc(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -427,7 +397,6 @@ proc miqt_exec_callback_QIdentityProxyModel_index(self: ptr cQIdentityProxyModel
 
   virtualReturn.h
 proc QIdentityProxyModelmapFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_mapFromSource(self.h, sourceIndex.h))
 
 type QIdentityProxyModelmapFromSourceProc* = proc(sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -447,7 +416,6 @@ proc miqt_exec_callback_QIdentityProxyModel_mapFromSource(self: ptr cQIdentityPr
 
   virtualReturn.h
 proc QIdentityProxyModelmapToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_mapToSource(self.h, proxyIndex.h))
 
 type QIdentityProxyModelmapToSourceProc* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -467,7 +435,6 @@ proc miqt_exec_callback_QIdentityProxyModel_mapToSource(self: ptr cQIdentityProx
 
   virtualReturn.h
 proc QIdentityProxyModelparent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_parent(self.h, child.h))
 
 type QIdentityProxyModelparentProc* = proc(child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -487,7 +454,6 @@ proc miqt_exec_callback_QIdentityProxyModel_parent(self: ptr cQIdentityProxyMode
 
   virtualReturn.h
 proc QIdentityProxyModelrowCount*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fQIdentityProxyModel_virtualbase_rowCount(self.h, parent.h)
 
 type QIdentityProxyModelrowCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
@@ -507,7 +473,6 @@ proc miqt_exec_callback_QIdentityProxyModel_rowCount(self: ptr cQIdentityProxyMo
 
   virtualReturn
 proc QIdentityProxyModelheaderData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQIdentityProxyModel_virtualbase_headerData(self.h, section, cint(orientation), role))
 
 type QIdentityProxyModelheaderDataProc* = proc(section: cint, orientation: cint, role: cint): gen_qvariant.QVariant
@@ -531,7 +496,6 @@ proc miqt_exec_callback_QIdentityProxyModel_headerData(self: ptr cQIdentityProxy
 
   virtualReturn.h
 proc QIdentityProxyModeldropMimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQIdentityProxyModel_virtualbase_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
 type QIdentityProxyModeldropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -559,7 +523,6 @@ proc miqt_exec_callback_QIdentityProxyModel_dropMimeData(self: ptr cQIdentityPro
 
   virtualReturn
 proc QIdentityProxyModelsibling*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_sibling(self.h, row, column, idx.h))
 
 type QIdentityProxyModelsiblingProc* = proc(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -583,7 +546,6 @@ proc miqt_exec_callback_QIdentityProxyModel_sibling(self: ptr cQIdentityProxyMod
 
   virtualReturn.h
 proc QIdentityProxyModelmapSelectionFromSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
   gen_qitemselectionmodel.QItemSelection(h: fQIdentityProxyModel_virtualbase_mapSelectionFromSource(self.h, selection.h))
 
 type QIdentityProxyModelmapSelectionFromSourceProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
@@ -603,7 +565,6 @@ proc miqt_exec_callback_QIdentityProxyModel_mapSelectionFromSource(self: ptr cQI
 
   virtualReturn.h
 proc QIdentityProxyModelmapSelectionToSource*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
   gen_qitemselectionmodel.QItemSelection(h: fQIdentityProxyModel_virtualbase_mapSelectionToSource(self.h, selection.h))
 
 type QIdentityProxyModelmapSelectionToSourceProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
@@ -623,7 +584,6 @@ proc miqt_exec_callback_QIdentityProxyModel_mapSelectionToSource(self: ptr cQIde
 
   virtualReturn.h
 proc QIdentityProxyModelmatch*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fQIdentityProxyModel_virtualbase_match(self.h, start.h, role, value.h, hits, cint(flags))
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -660,7 +620,6 @@ proc miqt_exec_callback_QIdentityProxyModel_match(self: ptr cQIdentityProxyModel
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QIdentityProxyModelsetSourceModel*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fQIdentityProxyModel_virtualbase_setSourceModel(self.h, sourceModel.h)
 
 type QIdentityProxyModelsetSourceModelProc* = proc(sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
@@ -678,7 +637,6 @@ proc miqt_exec_callback_QIdentityProxyModel_setSourceModel(self: ptr cQIdentityP
 
   nimfunc[](slotval1)
 proc QIdentityProxyModelinsertColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQIdentityProxyModel_virtualbase_insertColumns(self.h, column, count, parent.h)
 
 type QIdentityProxyModelinsertColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -702,7 +660,6 @@ proc miqt_exec_callback_QIdentityProxyModel_insertColumns(self: ptr cQIdentityPr
 
   virtualReturn
 proc QIdentityProxyModelinsertRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQIdentityProxyModel_virtualbase_insertRows(self.h, row, count, parent.h)
 
 type QIdentityProxyModelinsertRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -726,7 +683,6 @@ proc miqt_exec_callback_QIdentityProxyModel_insertRows(self: ptr cQIdentityProxy
 
   virtualReturn
 proc QIdentityProxyModelremoveColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQIdentityProxyModel_virtualbase_removeColumns(self.h, column, count, parent.h)
 
 type QIdentityProxyModelremoveColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -750,7 +706,6 @@ proc miqt_exec_callback_QIdentityProxyModel_removeColumns(self: ptr cQIdentityPr
 
   virtualReturn
 proc QIdentityProxyModelremoveRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQIdentityProxyModel_virtualbase_removeRows(self.h, row, count, parent.h)
 
 type QIdentityProxyModelremoveRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -774,7 +729,6 @@ proc miqt_exec_callback_QIdentityProxyModel_removeRows(self: ptr cQIdentityProxy
 
   virtualReturn
 proc QIdentityProxyModelmoveRows*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
   fQIdentityProxyModel_virtualbase_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
 type QIdentityProxyModelmoveRowsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
@@ -802,7 +756,6 @@ proc miqt_exec_callback_QIdentityProxyModel_moveRows(self: ptr cQIdentityProxyMo
 
   virtualReturn
 proc QIdentityProxyModelmoveColumns*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
   fQIdentityProxyModel_virtualbase_moveColumns(self.h, sourceParent.h, sourceColumn, count, destinationParent.h, destinationChild)
 
 type QIdentityProxyModelmoveColumnsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
@@ -830,7 +783,6 @@ proc miqt_exec_callback_QIdentityProxyModel_moveColumns(self: ptr cQIdentityProx
 
   virtualReturn
 proc QIdentityProxyModelsubmit*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): bool =
-
   fQIdentityProxyModel_virtualbase_submit(self.h)
 
 type QIdentityProxyModelsubmitProc* = proc(): bool
@@ -848,7 +800,6 @@ proc miqt_exec_callback_QIdentityProxyModel_submit(self: ptr cQIdentityProxyMode
 
   virtualReturn
 proc QIdentityProxyModelrevert*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): void =
-
   fQIdentityProxyModel_virtualbase_revert(self.h)
 
 type QIdentityProxyModelrevertProc* = proc(): void
@@ -864,7 +815,6 @@ proc miqt_exec_callback_QIdentityProxyModel_revert(self: ptr cQIdentityProxyMode
 
   nimfunc[]()
 proc QIdentityProxyModeldata*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQIdentityProxyModel_virtualbase_data(self.h, proxyIndex.h, role))
 
 type QIdentityProxyModeldataProc* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
@@ -886,7 +836,6 @@ proc miqt_exec_callback_QIdentityProxyModel_data(self: ptr cQIdentityProxyModel,
 
   virtualReturn.h
 proc QIdentityProxyModelitemData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
-
   var v_mm = fQIdentityProxyModel_virtualbase_itemData(self.h, index.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -924,7 +873,6 @@ proc miqt_exec_callback_QIdentityProxyModel_itemData(self: ptr cQIdentityProxyMo
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
 proc QIdentityProxyModelflags*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): cint =
-
   cint(fQIdentityProxyModel_virtualbase_flags(self.h, index.h))
 
 type QIdentityProxyModelflagsProc* = proc(index: gen_qabstractitemmodel.QModelIndex): cint
@@ -944,7 +892,6 @@ proc miqt_exec_callback_QIdentityProxyModel_flags(self: ptr cQIdentityProxyModel
 
   cint(virtualReturn)
 proc QIdentityProxyModelsetData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
-
   fQIdentityProxyModel_virtualbase_setData(self.h, index.h, value.h, role)
 
 type QIdentityProxyModelsetDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
@@ -968,7 +915,6 @@ proc miqt_exec_callback_QIdentityProxyModel_setData(self: ptr cQIdentityProxyMod
 
   virtualReturn
 proc QIdentityProxyModelsetItemData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
-
   var roles_Keys_CArray = newSeq[cint](len(roles))
   var roles_Values_CArray = newSeq[pointer](len(roles))
   var roles_ctr = 0
@@ -1008,7 +954,6 @@ proc miqt_exec_callback_QIdentityProxyModel_setItemData(self: ptr cQIdentityProx
 
   virtualReturn
 proc QIdentityProxyModelsetHeaderData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool =
-
   fQIdentityProxyModel_virtualbase_setHeaderData(self.h, section, cint(orientation), value.h, role)
 
 type QIdentityProxyModelsetHeaderDataProc* = proc(section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool
@@ -1034,7 +979,6 @@ proc miqt_exec_callback_QIdentityProxyModel_setHeaderData(self: ptr cQIdentityPr
 
   virtualReturn
 proc QIdentityProxyModelclearItemData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQIdentityProxyModel_virtualbase_clearItemData(self.h, index.h)
 
 type QIdentityProxyModelclearItemDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
@@ -1054,7 +998,6 @@ proc miqt_exec_callback_QIdentityProxyModel_clearItemData(self: ptr cQIdentityPr
 
   virtualReturn
 proc QIdentityProxyModelbuddy*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQIdentityProxyModel_virtualbase_buddy(self.h, index.h))
 
 type QIdentityProxyModelbuddyProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -1074,7 +1017,6 @@ proc miqt_exec_callback_QIdentityProxyModel_buddy(self: ptr cQIdentityProxyModel
 
   virtualReturn.h
 proc QIdentityProxyModelcanFetchMore*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQIdentityProxyModel_virtualbase_canFetchMore(self.h, parent.h)
 
 type QIdentityProxyModelcanFetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1094,7 +1036,6 @@ proc miqt_exec_callback_QIdentityProxyModel_canFetchMore(self: ptr cQIdentityPro
 
   virtualReturn
 proc QIdentityProxyModelfetchMore*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): void =
-
   fQIdentityProxyModel_virtualbase_fetchMore(self.h, parent.h)
 
 type QIdentityProxyModelfetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): void
@@ -1112,7 +1053,6 @@ proc miqt_exec_callback_QIdentityProxyModel_fetchMore(self: ptr cQIdentityProxyM
 
   nimfunc[](slotval1)
 proc QIdentityProxyModelsort*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, column: cint, order: cint): void =
-
   fQIdentityProxyModel_virtualbase_sort(self.h, column, cint(order))
 
 type QIdentityProxyModelsortProc* = proc(column: cint, order: cint): void
@@ -1132,7 +1072,6 @@ proc miqt_exec_callback_QIdentityProxyModel_sort(self: ptr cQIdentityProxyModel,
 
   nimfunc[](slotval1, slotval2)
 proc QIdentityProxyModelspan*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQIdentityProxyModel_virtualbase_span(self.h, index.h))
 
 type QIdentityProxyModelspanProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
@@ -1152,7 +1091,6 @@ proc miqt_exec_callback_QIdentityProxyModel_span(self: ptr cQIdentityProxyModel,
 
   virtualReturn.h
 proc QIdentityProxyModelhasChildren*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQIdentityProxyModel_virtualbase_hasChildren(self.h, parent.h)
 
 type QIdentityProxyModelhasChildrenProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1172,7 +1110,6 @@ proc miqt_exec_callback_QIdentityProxyModel_hasChildren(self: ptr cQIdentityProx
 
   virtualReturn
 proc QIdentityProxyModelmimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
-
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
     indexes_CArray[i] = indexes[i].h
@@ -1201,7 +1138,6 @@ proc miqt_exec_callback_QIdentityProxyModel_mimeData(self: ptr cQIdentityProxyMo
 
   virtualReturn.h
 proc QIdentityProxyModelcanDropMimeData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQIdentityProxyModel_virtualbase_canDropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
 type QIdentityProxyModelcanDropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1229,7 +1165,6 @@ proc miqt_exec_callback_QIdentityProxyModel_canDropMimeData(self: ptr cQIdentity
 
   virtualReturn
 proc QIdentityProxyModelmimeTypes*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): seq[string] =
-
   var v_ma = fQIdentityProxyModel_virtualbase_mimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -1259,7 +1194,6 @@ proc miqt_exec_callback_QIdentityProxyModel_mimeTypes(self: ptr cQIdentityProxyM
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QIdentityProxyModelsupportedDragActions*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): cint =
-
   cint(fQIdentityProxyModel_virtualbase_supportedDragActions(self.h))
 
 type QIdentityProxyModelsupportedDragActionsProc* = proc(): cint
@@ -1277,7 +1211,6 @@ proc miqt_exec_callback_QIdentityProxyModel_supportedDragActions(self: ptr cQIde
 
   cint(virtualReturn)
 proc QIdentityProxyModelsupportedDropActions*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): cint =
-
   cint(fQIdentityProxyModel_virtualbase_supportedDropActions(self.h))
 
 type QIdentityProxyModelsupportedDropActionsProc* = proc(): cint
@@ -1295,7 +1228,6 @@ proc miqt_exec_callback_QIdentityProxyModel_supportedDropActions(self: ptr cQIde
 
   cint(virtualReturn)
 proc QIdentityProxyModelroleNames*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): Table[cint,seq[byte]] =
-
   var v_mm = fQIdentityProxyModel_virtualbase_roleNames(self.h)
   var vx_ret: Table[cint, seq[byte]]
   var v_Keys = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -1334,7 +1266,6 @@ proc miqt_exec_callback_QIdentityProxyModel_roleNames(self: ptr cQIdentityProxyM
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
 proc QIdentityProxyModelmultiData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void =
-
   fQIdentityProxyModel_virtualbase_multiData(self.h, index.h, roleDataSpan.h)
 
 type QIdentityProxyModelmultiDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void
@@ -1354,7 +1285,6 @@ proc miqt_exec_callback_QIdentityProxyModel_multiData(self: ptr cQIdentityProxyM
 
   nimfunc[](slotval1, slotval2)
 proc QIdentityProxyModelresetInternalData*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, ): void =
-
   fQIdentityProxyModel_virtualbase_resetInternalData(self.h)
 
 type QIdentityProxyModelresetInternalDataProc* = proc(): void
@@ -1370,7 +1300,6 @@ proc miqt_exec_callback_QIdentityProxyModel_resetInternalData(self: ptr cQIdenti
 
   nimfunc[]()
 proc QIdentityProxyModelevent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, event: gen_qcoreevent.QEvent): bool =
-
   fQIdentityProxyModel_virtualbase_event(self.h, event.h)
 
 type QIdentityProxyModeleventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1390,7 +1319,6 @@ proc miqt_exec_callback_QIdentityProxyModel_event(self: ptr cQIdentityProxyModel
 
   virtualReturn
 proc QIdentityProxyModeleventFilter*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQIdentityProxyModel_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QIdentityProxyModeleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1412,7 +1340,6 @@ proc miqt_exec_callback_QIdentityProxyModel_eventFilter(self: ptr cQIdentityProx
 
   virtualReturn
 proc QIdentityProxyModeltimerEvent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, event: gen_qcoreevent.QTimerEvent): void =
-
   fQIdentityProxyModel_virtualbase_timerEvent(self.h, event.h)
 
 type QIdentityProxyModeltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1430,7 +1357,6 @@ proc miqt_exec_callback_QIdentityProxyModel_timerEvent(self: ptr cQIdentityProxy
 
   nimfunc[](slotval1)
 proc QIdentityProxyModelchildEvent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, event: gen_qcoreevent.QChildEvent): void =
-
   fQIdentityProxyModel_virtualbase_childEvent(self.h, event.h)
 
 type QIdentityProxyModelchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1448,7 +1374,6 @@ proc miqt_exec_callback_QIdentityProxyModel_childEvent(self: ptr cQIdentityProxy
 
   nimfunc[](slotval1)
 proc QIdentityProxyModelcustomEvent*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, event: gen_qcoreevent.QEvent): void =
-
   fQIdentityProxyModel_virtualbase_customEvent(self.h, event.h)
 
 type QIdentityProxyModelcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1466,7 +1391,6 @@ proc miqt_exec_callback_QIdentityProxyModel_customEvent(self: ptr cQIdentityProx
 
   nimfunc[](slotval1)
 proc QIdentityProxyModelconnectNotify*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQIdentityProxyModel_virtualbase_connectNotify(self.h, signal.h)
 
 type QIdentityProxyModelconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1484,7 +1408,6 @@ proc miqt_exec_callback_QIdentityProxyModel_connectNotify(self: ptr cQIdentityPr
 
   nimfunc[](slotval1)
 proc QIdentityProxyModeldisconnectNotify*(self: gen_qidentityproxymodel_types.QIdentityProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQIdentityProxyModel_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QIdentityProxyModeldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

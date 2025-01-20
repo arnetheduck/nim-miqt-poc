@@ -61,14 +61,12 @@ proc fcQQmlAbstractUrlInterceptor_delete(self: pointer) {.importc: "QQmlAbstract
 func init*(T: type gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, h: ptr cQQmlAbstractUrlInterceptor): gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor =
   T(h: h)
 proc create*(T: type gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, ): gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor =
-
   gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor.init(fcQQmlAbstractUrlInterceptor_new())
-proc intercept*(self: gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, path: gen_qurl.QUrl, typeVal: cint): gen_qurl.QUrl =
 
+proc intercept*(self: gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, path: gen_qurl.QUrl, typeVal: cint): gen_qurl.QUrl =
   gen_qurl.QUrl(h: fcQQmlAbstractUrlInterceptor_intercept(self.h, path.h, cint(typeVal)))
 
 proc operatorAssign*(self: gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor, param1: gen_qqmlabstracturlinterceptor_types.QQmlAbstractUrlInterceptor): void =
-
   fcQQmlAbstractUrlInterceptor_operatorAssign(self.h, param1.h)
 
 type QQmlAbstractUrlInterceptorinterceptProc* = proc(path: gen_qurl.QUrl, typeVal: cint): gen_qurl.QUrl

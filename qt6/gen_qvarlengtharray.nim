@@ -48,14 +48,11 @@ proc fcQVLABaseBase_empty(self: pointer, ): bool {.importc: "QVLABaseBase_empty"
 func init*(T: type gen_qvarlengtharray_types.QVLABaseBase, h: ptr cQVLABaseBase): gen_qvarlengtharray_types.QVLABaseBase =
   T(h: h)
 proc capacity*(self: gen_qvarlengtharray_types.QVLABaseBase, ): int64 =
-
   fcQVLABaseBase_capacity(self.h)
 
 proc size*(self: gen_qvarlengtharray_types.QVLABaseBase, ): int64 =
-
   fcQVLABaseBase_size(self.h)
 
 proc empty*(self: gen_qvarlengtharray_types.QVLABaseBase, ): bool =
-
   fcQVLABaseBase_empty(self.h)
 

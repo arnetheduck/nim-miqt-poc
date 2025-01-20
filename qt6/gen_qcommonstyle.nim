@@ -172,115 +172,90 @@ proc fcQCommonStyle_delete(self: pointer) {.importc: "QCommonStyle_delete".}
 func init*(T: type gen_qcommonstyle_types.QCommonStyle, h: ptr cQCommonStyle): gen_qcommonstyle_types.QCommonStyle =
   T(h: h)
 proc create*(T: type gen_qcommonstyle_types.QCommonStyle, ): gen_qcommonstyle_types.QCommonStyle =
-
   gen_qcommonstyle_types.QCommonStyle.init(fcQCommonStyle_new())
-proc metaObject*(self: gen_qcommonstyle_types.QCommonStyle, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qcommonstyle_types.QCommonStyle, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCommonStyle_metaObject(self.h))
 
 proc metacast*(self: gen_qcommonstyle_types.QCommonStyle, param1: cstring): pointer =
-
   fcQCommonStyle_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcommonstyle_types.QCommonStyle, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCommonStyle_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcommonstyle_types.QCommonStyle, s: cstring): string =
-
   let v_ms = fcQCommonStyle_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc drawPrimitive*(self: gen_qcommonstyle_types.QCommonStyle, pe: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
-
   fcQCommonStyle_drawPrimitive(self.h, cint(pe), opt.h, p.h, w.h)
 
 proc drawControl*(self: gen_qcommonstyle_types.QCommonStyle, element: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
-
   fcQCommonStyle_drawControl(self.h, cint(element), opt.h, p.h, w.h)
 
 proc subElementRect*(self: gen_qcommonstyle_types.QCommonStyle, r: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQCommonStyle_subElementRect(self.h, cint(r), opt.h, widget.h))
 
 proc drawComplexControl*(self: gen_qcommonstyle_types.QCommonStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
-
   fcQCommonStyle_drawComplexControl(self.h, cint(cc), opt.h, p.h, w.h)
 
 proc hitTestComplexControl*(self: gen_qcommonstyle_types.QCommonStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, w: gen_qwidget.QWidget): cint =
-
   cint(fcQCommonStyle_hitTestComplexControl(self.h, cint(cc), opt.h, pt.h, w.h))
 
 proc subControlRect*(self: gen_qcommonstyle_types.QCommonStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, sc: cint, w: gen_qwidget.QWidget): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQCommonStyle_subControlRect(self.h, cint(cc), opt.h, cint(sc), w.h))
 
 proc sizeFromContents*(self: gen_qcommonstyle_types.QCommonStyle, ct: cint, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQCommonStyle_sizeFromContents(self.h, cint(ct), opt.h, contentsSize.h, widget.h))
 
 proc pixelMetric*(self: gen_qcommonstyle_types.QCommonStyle, m: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
-
   fcQCommonStyle_pixelMetric(self.h, cint(m), opt.h, widget.h)
 
 proc styleHint*(self: gen_qcommonstyle_types.QCommonStyle, sh: cint, opt: gen_qstyleoption.QStyleOption, w: gen_qwidget.QWidget, shret: gen_qstyleoption.QStyleHintReturn): cint =
-
   fcQCommonStyle_styleHint(self.h, cint(sh), opt.h, w.h, shret.h)
 
 proc standardIcon*(self: gen_qcommonstyle_types.QCommonStyle, standardIcon: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQCommonStyle_standardIcon(self.h, cint(standardIcon), opt.h, widget.h))
 
 proc standardPixmap*(self: gen_qcommonstyle_types.QCommonStyle, sp: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQCommonStyle_standardPixmap(self.h, cint(sp), opt.h, widget.h))
 
 proc generatedIconPixmap*(self: gen_qcommonstyle_types.QCommonStyle, iconMode: cint, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQCommonStyle_generatedIconPixmap(self.h, cint(iconMode), pixmap.h, opt.h))
 
 proc layoutSpacing*(self: gen_qcommonstyle_types.QCommonStyle, control1: cint, control2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
-
   fcQCommonStyle_layoutSpacing(self.h, cint(control1), cint(control2), cint(orientation), option.h, widget.h)
 
 proc polish*(self: gen_qcommonstyle_types.QCommonStyle, param1: gen_qpalette.QPalette): void =
-
   fcQCommonStyle_polish(self.h, param1.h)
 
-proc polishWithApp*(self: gen_qcommonstyle_types.QCommonStyle, app: gen_qapplication.QApplication): void =
-
+proc polish*(self: gen_qcommonstyle_types.QCommonStyle, app: gen_qapplication.QApplication): void =
   fcQCommonStyle_polishWithApp(self.h, app.h)
 
-proc polishWithWidget*(self: gen_qcommonstyle_types.QCommonStyle, widget: gen_qwidget.QWidget): void =
-
+proc polish*(self: gen_qcommonstyle_types.QCommonStyle, widget: gen_qwidget.QWidget): void =
   fcQCommonStyle_polishWithWidget(self.h, widget.h)
 
 proc unpolish*(self: gen_qcommonstyle_types.QCommonStyle, widget: gen_qwidget.QWidget): void =
-
   fcQCommonStyle_unpolish(self.h, widget.h)
 
-proc unpolishWithApplication*(self: gen_qcommonstyle_types.QCommonStyle, application: gen_qapplication.QApplication): void =
-
+proc unpolish*(self: gen_qcommonstyle_types.QCommonStyle, application: gen_qapplication.QApplication): void =
   fcQCommonStyle_unpolishWithApplication(self.h, application.h)
 
-proc tr2*(_: type gen_qcommonstyle_types.QCommonStyle, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qcommonstyle_types.QCommonStyle, s: cstring, c: cstring): string =
   let v_ms = fcQCommonStyle_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcommonstyle_types.QCommonStyle, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcommonstyle_types.QCommonStyle, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCommonStyle_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QCommonStylemetaObject*(self: gen_qcommonstyle_types.QCommonStyle, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQCommonStyle_virtualbase_metaObject(self.h))
 
 type QCommonStylemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -298,7 +273,6 @@ proc miqt_exec_callback_QCommonStyle_metaObject(self: ptr cQCommonStyle, slot: i
 
   virtualReturn.h
 proc QCommonStylemetacast*(self: gen_qcommonstyle_types.QCommonStyle, param1: cstring): pointer =
-
   fQCommonStyle_virtualbase_metacast(self.h, param1)
 
 type QCommonStylemetacastProc* = proc(param1: cstring): pointer
@@ -318,7 +292,6 @@ proc miqt_exec_callback_QCommonStyle_metacast(self: ptr cQCommonStyle, slot: int
 
   virtualReturn
 proc QCommonStylemetacall*(self: gen_qcommonstyle_types.QCommonStyle, param1: cint, param2: cint, param3: pointer): cint =
-
   fQCommonStyle_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QCommonStylemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -342,7 +315,6 @@ proc miqt_exec_callback_QCommonStyle_metacall(self: ptr cQCommonStyle, slot: int
 
   virtualReturn
 proc QCommonStyledrawPrimitive*(self: gen_qcommonstyle_types.QCommonStyle, pe: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
-
   fQCommonStyle_virtualbase_drawPrimitive(self.h, cint(pe), opt.h, p.h, w.h)
 
 type QCommonStyledrawPrimitiveProc* = proc(pe: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
@@ -366,7 +338,6 @@ proc miqt_exec_callback_QCommonStyle_drawPrimitive(self: ptr cQCommonStyle, slot
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QCommonStyledrawControl*(self: gen_qcommonstyle_types.QCommonStyle, element: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
-
   fQCommonStyle_virtualbase_drawControl(self.h, cint(element), opt.h, p.h, w.h)
 
 type QCommonStyledrawControlProc* = proc(element: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
@@ -390,7 +361,6 @@ proc miqt_exec_callback_QCommonStyle_drawControl(self: ptr cQCommonStyle, slot: 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QCommonStylesubElementRect*(self: gen_qcommonstyle_types.QCommonStyle, r: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQCommonStyle_virtualbase_subElementRect(self.h, cint(r), opt.h, widget.h))
 
 type QCommonStylesubElementRectProc* = proc(r: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect
@@ -414,7 +384,6 @@ proc miqt_exec_callback_QCommonStyle_subElementRect(self: ptr cQCommonStyle, slo
 
   virtualReturn.h
 proc QCommonStyledrawComplexControl*(self: gen_qcommonstyle_types.QCommonStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
-
   fQCommonStyle_virtualbase_drawComplexControl(self.h, cint(cc), opt.h, p.h, w.h)
 
 type QCommonStyledrawComplexControlProc* = proc(cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void
@@ -438,7 +407,6 @@ proc miqt_exec_callback_QCommonStyle_drawComplexControl(self: ptr cQCommonStyle,
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QCommonStylehitTestComplexControl*(self: gen_qcommonstyle_types.QCommonStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, w: gen_qwidget.QWidget): cint =
-
   cint(fQCommonStyle_virtualbase_hitTestComplexControl(self.h, cint(cc), opt.h, pt.h, w.h))
 
 type QCommonStylehitTestComplexControlProc* = proc(cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, w: gen_qwidget.QWidget): cint
@@ -464,7 +432,6 @@ proc miqt_exec_callback_QCommonStyle_hitTestComplexControl(self: ptr cQCommonSty
 
   cint(virtualReturn)
 proc QCommonStylesubControlRect*(self: gen_qcommonstyle_types.QCommonStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, sc: cint, w: gen_qwidget.QWidget): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQCommonStyle_virtualbase_subControlRect(self.h, cint(cc), opt.h, cint(sc), w.h))
 
 type QCommonStylesubControlRectProc* = proc(cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, sc: cint, w: gen_qwidget.QWidget): gen_qrect.QRect
@@ -490,7 +457,6 @@ proc miqt_exec_callback_QCommonStyle_subControlRect(self: ptr cQCommonStyle, slo
 
   virtualReturn.h
 proc QCommonStylesizeFromContents*(self: gen_qcommonstyle_types.QCommonStyle, ct: cint, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQCommonStyle_virtualbase_sizeFromContents(self.h, cint(ct), opt.h, contentsSize.h, widget.h))
 
 type QCommonStylesizeFromContentsProc* = proc(ct: cint, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, widget: gen_qwidget.QWidget): gen_qsize.QSize
@@ -516,7 +482,6 @@ proc miqt_exec_callback_QCommonStyle_sizeFromContents(self: ptr cQCommonStyle, s
 
   virtualReturn.h
 proc QCommonStylepixelMetric*(self: gen_qcommonstyle_types.QCommonStyle, m: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
-
   fQCommonStyle_virtualbase_pixelMetric(self.h, cint(m), opt.h, widget.h)
 
 type QCommonStylepixelMetricProc* = proc(m: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
@@ -540,7 +505,6 @@ proc miqt_exec_callback_QCommonStyle_pixelMetric(self: ptr cQCommonStyle, slot: 
 
   virtualReturn
 proc QCommonStylestyleHint*(self: gen_qcommonstyle_types.QCommonStyle, sh: cint, opt: gen_qstyleoption.QStyleOption, w: gen_qwidget.QWidget, shret: gen_qstyleoption.QStyleHintReturn): cint =
-
   fQCommonStyle_virtualbase_styleHint(self.h, cint(sh), opt.h, w.h, shret.h)
 
 type QCommonStylestyleHintProc* = proc(sh: cint, opt: gen_qstyleoption.QStyleOption, w: gen_qwidget.QWidget, shret: gen_qstyleoption.QStyleHintReturn): cint
@@ -566,7 +530,6 @@ proc miqt_exec_callback_QCommonStyle_styleHint(self: ptr cQCommonStyle, slot: in
 
   virtualReturn
 proc QCommonStylestandardIcon*(self: gen_qcommonstyle_types.QCommonStyle, standardIcon: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fQCommonStyle_virtualbase_standardIcon(self.h, cint(standardIcon), opt.h, widget.h))
 
 type QCommonStylestandardIconProc* = proc(standardIcon: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon
@@ -590,7 +553,6 @@ proc miqt_exec_callback_QCommonStyle_standardIcon(self: ptr cQCommonStyle, slot:
 
   virtualReturn.h
 proc QCommonStylestandardPixmap*(self: gen_qcommonstyle_types.QCommonStyle, sp: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fQCommonStyle_virtualbase_standardPixmap(self.h, cint(sp), opt.h, widget.h))
 
 type QCommonStylestandardPixmapProc* = proc(sp: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap
@@ -614,7 +576,6 @@ proc miqt_exec_callback_QCommonStyle_standardPixmap(self: ptr cQCommonStyle, slo
 
   virtualReturn.h
 proc QCommonStylegeneratedIconPixmap*(self: gen_qcommonstyle_types.QCommonStyle, iconMode: cint, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fQCommonStyle_virtualbase_generatedIconPixmap(self.h, cint(iconMode), pixmap.h, opt.h))
 
 type QCommonStylegeneratedIconPixmapProc* = proc(iconMode: cint, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap
@@ -638,7 +599,6 @@ proc miqt_exec_callback_QCommonStyle_generatedIconPixmap(self: ptr cQCommonStyle
 
   virtualReturn.h
 proc QCommonStylelayoutSpacing*(self: gen_qcommonstyle_types.QCommonStyle, control1: cint, control2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
-
   fQCommonStyle_virtualbase_layoutSpacing(self.h, cint(control1), cint(control2), cint(orientation), option.h, widget.h)
 
 type QCommonStylelayoutSpacingProc* = proc(control1: cint, control2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint
@@ -666,7 +626,6 @@ proc miqt_exec_callback_QCommonStyle_layoutSpacing(self: ptr cQCommonStyle, slot
 
   virtualReturn
 proc QCommonStylepolish*(self: gen_qcommonstyle_types.QCommonStyle, param1: gen_qpalette.QPalette): void =
-
   fQCommonStyle_virtualbase_polish(self.h, param1.h)
 
 type QCommonStylepolishProc* = proc(param1: gen_qpalette.QPalette): void
@@ -683,12 +642,11 @@ proc miqt_exec_callback_QCommonStyle_polish(self: ptr cQCommonStyle, slot: int, 
 
 
   nimfunc[](slotval1)
-proc QCommonStylepolishWithApp*(self: gen_qcommonstyle_types.QCommonStyle, app: gen_qapplication.QApplication): void =
-
+proc QCommonStylepolish*(self: gen_qcommonstyle_types.QCommonStyle, app: gen_qapplication.QApplication): void =
   fQCommonStyle_virtualbase_polishWithApp(self.h, app.h)
 
 type QCommonStylepolishWithAppProc* = proc(app: gen_qapplication.QApplication): void
-proc onpolishWithApp*(self: gen_qcommonstyle_types.QCommonStyle, slot: QCommonStylepolishWithAppProc) =
+proc onpolish*(self: gen_qcommonstyle_types.QCommonStyle, slot: QCommonStylepolishWithAppProc) =
   # TODO check subclass
   var tmp = new QCommonStylepolishWithAppProc
   tmp[] = slot
@@ -701,12 +659,11 @@ proc miqt_exec_callback_QCommonStyle_polishWithApp(self: ptr cQCommonStyle, slot
 
 
   nimfunc[](slotval1)
-proc QCommonStylepolishWithWidget*(self: gen_qcommonstyle_types.QCommonStyle, widget: gen_qwidget.QWidget): void =
-
+proc QCommonStylepolish*(self: gen_qcommonstyle_types.QCommonStyle, widget: gen_qwidget.QWidget): void =
   fQCommonStyle_virtualbase_polishWithWidget(self.h, widget.h)
 
 type QCommonStylepolishWithWidgetProc* = proc(widget: gen_qwidget.QWidget): void
-proc onpolishWithWidget*(self: gen_qcommonstyle_types.QCommonStyle, slot: QCommonStylepolishWithWidgetProc) =
+proc onpolish*(self: gen_qcommonstyle_types.QCommonStyle, slot: QCommonStylepolishWithWidgetProc) =
   # TODO check subclass
   var tmp = new QCommonStylepolishWithWidgetProc
   tmp[] = slot
@@ -720,7 +677,6 @@ proc miqt_exec_callback_QCommonStyle_polishWithWidget(self: ptr cQCommonStyle, s
 
   nimfunc[](slotval1)
 proc QCommonStyleunpolish*(self: gen_qcommonstyle_types.QCommonStyle, widget: gen_qwidget.QWidget): void =
-
   fQCommonStyle_virtualbase_unpolish(self.h, widget.h)
 
 type QCommonStyleunpolishProc* = proc(widget: gen_qwidget.QWidget): void
@@ -737,12 +693,11 @@ proc miqt_exec_callback_QCommonStyle_unpolish(self: ptr cQCommonStyle, slot: int
 
 
   nimfunc[](slotval1)
-proc QCommonStyleunpolishWithApplication*(self: gen_qcommonstyle_types.QCommonStyle, application: gen_qapplication.QApplication): void =
-
+proc QCommonStyleunpolish*(self: gen_qcommonstyle_types.QCommonStyle, application: gen_qapplication.QApplication): void =
   fQCommonStyle_virtualbase_unpolishWithApplication(self.h, application.h)
 
 type QCommonStyleunpolishWithApplicationProc* = proc(application: gen_qapplication.QApplication): void
-proc onunpolishWithApplication*(self: gen_qcommonstyle_types.QCommonStyle, slot: QCommonStyleunpolishWithApplicationProc) =
+proc onunpolish*(self: gen_qcommonstyle_types.QCommonStyle, slot: QCommonStyleunpolishWithApplicationProc) =
   # TODO check subclass
   var tmp = new QCommonStyleunpolishWithApplicationProc
   tmp[] = slot
@@ -756,7 +711,6 @@ proc miqt_exec_callback_QCommonStyle_unpolishWithApplication(self: ptr cQCommonS
 
   nimfunc[](slotval1)
 proc QCommonStyleitemTextRect*(self: gen_qcommonstyle_types.QCommonStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQCommonStyle_virtualbase_itemTextRect(self.h, fm.h, r.h, flags, enabled, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
 type QCommonStyleitemTextRectProc* = proc(fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
@@ -787,7 +741,6 @@ proc miqt_exec_callback_QCommonStyle_itemTextRect(self: ptr cQCommonStyle, slot:
 
   virtualReturn.h
 proc QCommonStyleitemPixmapRect*(self: gen_qcommonstyle_types.QCommonStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQCommonStyle_virtualbase_itemPixmapRect(self.h, r.h, flags, pixmap.h))
 
 type QCommonStyleitemPixmapRectProc* = proc(r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
@@ -811,7 +764,6 @@ proc miqt_exec_callback_QCommonStyle_itemPixmapRect(self: ptr cQCommonStyle, slo
 
   virtualReturn.h
 proc QCommonStyledrawItemText*(self: gen_qcommonstyle_types.QCommonStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void =
-
   fQCommonStyle_virtualbase_drawItemText(self.h, painter.h, rect.h, flags, pal.h, enabled, struct_miqt_string(data: text, len: csize_t(len(text))), cint(textRole))
 
 type QCommonStyledrawItemTextProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void
@@ -844,7 +796,6 @@ proc miqt_exec_callback_QCommonStyle_drawItemText(self: ptr cQCommonStyle, slot:
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7)
 proc QCommonStyledrawItemPixmap*(self: gen_qcommonstyle_types.QCommonStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
-
   fQCommonStyle_virtualbase_drawItemPixmap(self.h, painter.h, rect.h, alignment, pixmap.h)
 
 type QCommonStyledrawItemPixmapProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
@@ -868,7 +819,6 @@ proc miqt_exec_callback_QCommonStyle_drawItemPixmap(self: ptr cQCommonStyle, slo
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QCommonStylestandardPalette*(self: gen_qcommonstyle_types.QCommonStyle, ): gen_qpalette.QPalette =
-
   gen_qpalette.QPalette(h: fQCommonStyle_virtualbase_standardPalette(self.h))
 
 type QCommonStylestandardPaletteProc* = proc(): gen_qpalette.QPalette
@@ -886,7 +836,6 @@ proc miqt_exec_callback_QCommonStyle_standardPalette(self: ptr cQCommonStyle, sl
 
   virtualReturn.h
 proc QCommonStyleevent*(self: gen_qcommonstyle_types.QCommonStyle, event: gen_qcoreevent.QEvent): bool =
-
   fQCommonStyle_virtualbase_event(self.h, event.h)
 
 type QCommonStyleeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -906,7 +855,6 @@ proc miqt_exec_callback_QCommonStyle_event(self: ptr cQCommonStyle, slot: int, e
 
   virtualReturn
 proc QCommonStyleeventFilter*(self: gen_qcommonstyle_types.QCommonStyle, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQCommonStyle_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QCommonStyleeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -928,7 +876,6 @@ proc miqt_exec_callback_QCommonStyle_eventFilter(self: ptr cQCommonStyle, slot: 
 
   virtualReturn
 proc QCommonStyletimerEvent*(self: gen_qcommonstyle_types.QCommonStyle, event: gen_qcoreevent.QTimerEvent): void =
-
   fQCommonStyle_virtualbase_timerEvent(self.h, event.h)
 
 type QCommonStyletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -946,7 +893,6 @@ proc miqt_exec_callback_QCommonStyle_timerEvent(self: ptr cQCommonStyle, slot: i
 
   nimfunc[](slotval1)
 proc QCommonStylechildEvent*(self: gen_qcommonstyle_types.QCommonStyle, event: gen_qcoreevent.QChildEvent): void =
-
   fQCommonStyle_virtualbase_childEvent(self.h, event.h)
 
 type QCommonStylechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -964,7 +910,6 @@ proc miqt_exec_callback_QCommonStyle_childEvent(self: ptr cQCommonStyle, slot: i
 
   nimfunc[](slotval1)
 proc QCommonStylecustomEvent*(self: gen_qcommonstyle_types.QCommonStyle, event: gen_qcoreevent.QEvent): void =
-
   fQCommonStyle_virtualbase_customEvent(self.h, event.h)
 
 type QCommonStylecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -982,7 +927,6 @@ proc miqt_exec_callback_QCommonStyle_customEvent(self: ptr cQCommonStyle, slot: 
 
   nimfunc[](slotval1)
 proc QCommonStyleconnectNotify*(self: gen_qcommonstyle_types.QCommonStyle, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCommonStyle_virtualbase_connectNotify(self.h, signal.h)
 
 type QCommonStyleconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1000,7 +944,6 @@ proc miqt_exec_callback_QCommonStyle_connectNotify(self: ptr cQCommonStyle, slot
 
   nimfunc[](slotval1)
 proc QCommonStyledisconnectNotify*(self: gen_qcommonstyle_types.QCommonStyle, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCommonStyle_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QCommonStyledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

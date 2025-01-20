@@ -74,54 +74,45 @@ proc fcQScriptContextInfo_delete(self: pointer) {.importc: "QScriptContextInfo_d
 func init*(T: type gen_qscriptcontextinfo_types.QScriptContextInfo, h: ptr cQScriptContextInfo): gen_qscriptcontextinfo_types.QScriptContextInfo =
   T(h: h)
 proc create*(T: type gen_qscriptcontextinfo_types.QScriptContextInfo, context: gen_qscriptcontext.QScriptContext): gen_qscriptcontextinfo_types.QScriptContextInfo =
-
   gen_qscriptcontextinfo_types.QScriptContextInfo.init(fcQScriptContextInfo_new(context.h))
-proc create2*(T: type gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): gen_qscriptcontextinfo_types.QScriptContextInfo =
 
+proc create*(T: type gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): gen_qscriptcontextinfo_types.QScriptContextInfo =
   gen_qscriptcontextinfo_types.QScriptContextInfo.init(fcQScriptContextInfo_new2(other.h))
+
 proc create*(T: type gen_qscriptcontextinfo_types.QScriptContextInfo, ): gen_qscriptcontextinfo_types.QScriptContextInfo =
-
   gen_qscriptcontextinfo_types.QScriptContextInfo.init(fcQScriptContextInfo_new3())
-proc operatorAssign*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): void =
 
+proc operatorAssign*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): void =
   fcQScriptContextInfo_operatorAssign(self.h, other.h)
 
 proc isNull*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): bool =
-
   fcQScriptContextInfo_isNull(self.h)
 
 proc scriptId*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): clonglong =
-
   fcQScriptContextInfo_scriptId(self.h)
 
 proc fileName*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): string =
-
   let v_ms = fcQScriptContextInfo_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc lineNumber*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
-
   fcQScriptContextInfo_lineNumber(self.h)
 
 proc columnNumber*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
-
   fcQScriptContextInfo_columnNumber(self.h)
 
 proc functionName*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): string =
-
   let v_ms = fcQScriptContextInfo_functionName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc functionType*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
-
   cint(fcQScriptContextInfo_functionType(self.h))
 
 proc functionParameterNames*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): seq[string] =
-
   var v_ma = fcQScriptContextInfo_functionParameterNames(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -133,23 +124,18 @@ proc functionParameterNames*(self: gen_qscriptcontextinfo_types.QScriptContextIn
   vx_ret
 
 proc functionStartLineNumber*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
-
   fcQScriptContextInfo_functionStartLineNumber(self.h)
 
 proc functionEndLineNumber*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
-
   fcQScriptContextInfo_functionEndLineNumber(self.h)
 
 proc functionMetaIndex*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, ): cint =
-
   fcQScriptContextInfo_functionMetaIndex(self.h)
 
 proc operatorEqual*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): bool =
-
   fcQScriptContextInfo_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qscriptcontextinfo_types.QScriptContextInfo, other: gen_qscriptcontextinfo_types.QScriptContextInfo): bool =
-
   fcQScriptContextInfo_operatorNotEqual(self.h, other.h)
 
 proc delete*(self: gen_qscriptcontextinfo_types.QScriptContextInfo) =

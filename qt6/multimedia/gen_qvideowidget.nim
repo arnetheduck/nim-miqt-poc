@@ -192,102 +192,86 @@ proc fcQVideoWidget_delete(self: pointer) {.importc: "QVideoWidget_delete".}
 func init*(T: type gen_qvideowidget_types.QVideoWidget, h: ptr cQVideoWidget): gen_qvideowidget_types.QVideoWidget =
   T(h: h)
 proc create*(T: type gen_qvideowidget_types.QVideoWidget, parent: gen_qwidget.QWidget): gen_qvideowidget_types.QVideoWidget =
-
   gen_qvideowidget_types.QVideoWidget.init(fcQVideoWidget_new(parent.h))
+
 proc create*(T: type gen_qvideowidget_types.QVideoWidget, ): gen_qvideowidget_types.QVideoWidget =
-
   gen_qvideowidget_types.QVideoWidget.init(fcQVideoWidget_new2())
-proc metaObject*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQVideoWidget_metaObject(self.h))
 
 proc metacast*(self: gen_qvideowidget_types.QVideoWidget, param1: cstring): pointer =
-
   fcQVideoWidget_metacast(self.h, param1)
 
 proc metacall*(self: gen_qvideowidget_types.QVideoWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQVideoWidget_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring): string =
-
   let v_ms = fcQVideoWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc videoSink*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qvideosink.QVideoSink =
-
   gen_qvideosink.QVideoSink(h: fcQVideoWidget_videoSink(self.h))
 
 proc aspectRatioMode*(self: gen_qvideowidget_types.QVideoWidget, ): cint =
-
   cint(fcQVideoWidget_aspectRatioMode(self.h))
 
 proc sizeHint*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQVideoWidget_sizeHint(self.h))
 
 proc setFullScreen*(self: gen_qvideowidget_types.QVideoWidget, fullScreen: bool): void =
-
   fcQVideoWidget_setFullScreen(self.h, fullScreen)
 
 proc setAspectRatioMode*(self: gen_qvideowidget_types.QVideoWidget, mode: cint): void =
-
   fcQVideoWidget_setAspectRatioMode(self.h, cint(mode))
 
 proc fullScreenChanged*(self: gen_qvideowidget_types.QVideoWidget, fullScreen: bool): void =
-
   fcQVideoWidget_fullScreenChanged(self.h, fullScreen)
 
+type QVideoWidgetfullScreenChangedSlot* = proc(fullScreen: bool)
 proc miqt_exec_callback_QVideoWidget_fullScreenChanged(slot: int, fullScreen: bool) {.exportc.} =
-  type Cb = proc(fullScreen: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QVideoWidgetfullScreenChangedSlot](cast[pointer](slot))
   let slotval1 = fullScreen
-
 
   nimfunc[](slotval1)
 
-proc onfullScreenChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: proc(fullScreen: bool)) =
-  type Cb = proc(fullScreen: bool)
-  var tmp = new Cb
+proc onfullScreenChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetfullScreenChangedSlot) =
+  var tmp = new QVideoWidgetfullScreenChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWidget_connect_fullScreenChanged(self.h, cast[int](addr tmp[]))
-proc aspectRatioModeChanged*(self: gen_qvideowidget_types.QVideoWidget, mode: cint): void =
 
+proc aspectRatioModeChanged*(self: gen_qvideowidget_types.QVideoWidget, mode: cint): void =
   fcQVideoWidget_aspectRatioModeChanged(self.h, cint(mode))
 
+type QVideoWidgetaspectRatioModeChangedSlot* = proc(mode: cint)
 proc miqt_exec_callback_QVideoWidget_aspectRatioModeChanged(slot: int, mode: cint) {.exportc.} =
-  type Cb = proc(mode: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QVideoWidgetaspectRatioModeChangedSlot](cast[pointer](slot))
   let slotval1 = cint(mode)
-
 
   nimfunc[](slotval1)
 
-proc onaspectRatioModeChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: proc(mode: cint)) =
-  type Cb = proc(mode: cint)
-  var tmp = new Cb
+proc onaspectRatioModeChanged*(self: gen_qvideowidget_types.QVideoWidget, slot: QVideoWidgetaspectRatioModeChangedSlot) =
+  var tmp = new QVideoWidgetaspectRatioModeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQVideoWidget_connect_aspectRatioModeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring, c: cstring): string =
   let v_ms = fcQVideoWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qvideowidget_types.QVideoWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQVideoWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QVideoWidgetmetaObject*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQVideoWidget_virtualbase_metaObject(self.h))
 
 type QVideoWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -305,7 +289,6 @@ proc miqt_exec_callback_QVideoWidget_metaObject(self: ptr cQVideoWidget, slot: i
 
   virtualReturn.h
 proc QVideoWidgetmetacast*(self: gen_qvideowidget_types.QVideoWidget, param1: cstring): pointer =
-
   fQVideoWidget_virtualbase_metacast(self.h, param1)
 
 type QVideoWidgetmetacastProc* = proc(param1: cstring): pointer
@@ -325,7 +308,6 @@ proc miqt_exec_callback_QVideoWidget_metacast(self: ptr cQVideoWidget, slot: int
 
   virtualReturn
 proc QVideoWidgetmetacall*(self: gen_qvideowidget_types.QVideoWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fQVideoWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QVideoWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -349,7 +331,6 @@ proc miqt_exec_callback_QVideoWidget_metacall(self: ptr cQVideoWidget, slot: int
 
   virtualReturn
 proc QVideoWidgetsizeHint*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQVideoWidget_virtualbase_sizeHint(self.h))
 
 type QVideoWidgetsizeHintProc* = proc(): gen_qsize.QSize
@@ -367,7 +348,6 @@ proc miqt_exec_callback_QVideoWidget_sizeHint(self: ptr cQVideoWidget, slot: int
 
   virtualReturn.h
 proc QVideoWidgetevent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QEvent): bool =
-
   fQVideoWidget_virtualbase_event(self.h, event.h)
 
 type QVideoWidgeteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -387,7 +367,6 @@ proc miqt_exec_callback_QVideoWidget_event(self: ptr cQVideoWidget, slot: int, e
 
   virtualReturn
 proc QVideoWidgetshowEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QShowEvent): void =
-
   fQVideoWidget_virtualbase_showEvent(self.h, event.h)
 
 type QVideoWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -405,7 +384,6 @@ proc miqt_exec_callback_QVideoWidget_showEvent(self: ptr cQVideoWidget, slot: in
 
   nimfunc[](slotval1)
 proc QVideoWidgethideEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QHideEvent): void =
-
   fQVideoWidget_virtualbase_hideEvent(self.h, event.h)
 
 type QVideoWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -423,7 +401,6 @@ proc miqt_exec_callback_QVideoWidget_hideEvent(self: ptr cQVideoWidget, slot: in
 
   nimfunc[](slotval1)
 proc QVideoWidgetresizeEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QResizeEvent): void =
-
   fQVideoWidget_virtualbase_resizeEvent(self.h, event.h)
 
 type QVideoWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -441,7 +418,6 @@ proc miqt_exec_callback_QVideoWidget_resizeEvent(self: ptr cQVideoWidget, slot: 
 
   nimfunc[](slotval1)
 proc QVideoWidgetmoveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMoveEvent): void =
-
   fQVideoWidget_virtualbase_moveEvent(self.h, event.h)
 
 type QVideoWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -459,7 +435,6 @@ proc miqt_exec_callback_QVideoWidget_moveEvent(self: ptr cQVideoWidget, slot: in
 
   nimfunc[](slotval1)
 proc QVideoWidgetdevType*(self: gen_qvideowidget_types.QVideoWidget, ): cint =
-
   fQVideoWidget_virtualbase_devType(self.h)
 
 type QVideoWidgetdevTypeProc* = proc(): cint
@@ -477,7 +452,6 @@ proc miqt_exec_callback_QVideoWidget_devType(self: ptr cQVideoWidget, slot: int)
 
   virtualReturn
 proc QVideoWidgetsetVisible*(self: gen_qvideowidget_types.QVideoWidget, visible: bool): void =
-
   fQVideoWidget_virtualbase_setVisible(self.h, visible)
 
 type QVideoWidgetsetVisibleProc* = proc(visible: bool): void
@@ -495,7 +469,6 @@ proc miqt_exec_callback_QVideoWidget_setVisible(self: ptr cQVideoWidget, slot: i
 
   nimfunc[](slotval1)
 proc QVideoWidgetminimumSizeHint*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQVideoWidget_virtualbase_minimumSizeHint(self.h))
 
 type QVideoWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -513,7 +486,6 @@ proc miqt_exec_callback_QVideoWidget_minimumSizeHint(self: ptr cQVideoWidget, sl
 
   virtualReturn.h
 proc QVideoWidgetheightForWidth*(self: gen_qvideowidget_types.QVideoWidget, param1: cint): cint =
-
   fQVideoWidget_virtualbase_heightForWidth(self.h, param1)
 
 type QVideoWidgetheightForWidthProc* = proc(param1: cint): cint
@@ -533,7 +505,6 @@ proc miqt_exec_callback_QVideoWidget_heightForWidth(self: ptr cQVideoWidget, slo
 
   virtualReturn
 proc QVideoWidgethasHeightForWidth*(self: gen_qvideowidget_types.QVideoWidget, ): bool =
-
   fQVideoWidget_virtualbase_hasHeightForWidth(self.h)
 
 type QVideoWidgethasHeightForWidthProc* = proc(): bool
@@ -551,7 +522,6 @@ proc miqt_exec_callback_QVideoWidget_hasHeightForWidth(self: ptr cQVideoWidget, 
 
   virtualReturn
 proc QVideoWidgetpaintEngine*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQVideoWidget_virtualbase_paintEngine(self.h))
 
 type QVideoWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -569,7 +539,6 @@ proc miqt_exec_callback_QVideoWidget_paintEngine(self: ptr cQVideoWidget, slot: 
 
   virtualReturn.h
 proc QVideoWidgetmousePressEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMouseEvent): void =
-
   fQVideoWidget_virtualbase_mousePressEvent(self.h, event.h)
 
 type QVideoWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -587,7 +556,6 @@ proc miqt_exec_callback_QVideoWidget_mousePressEvent(self: ptr cQVideoWidget, sl
 
   nimfunc[](slotval1)
 proc QVideoWidgetmouseReleaseEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMouseEvent): void =
-
   fQVideoWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QVideoWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -605,7 +573,6 @@ proc miqt_exec_callback_QVideoWidget_mouseReleaseEvent(self: ptr cQVideoWidget, 
 
   nimfunc[](slotval1)
 proc QVideoWidgetmouseDoubleClickEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMouseEvent): void =
-
   fQVideoWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QVideoWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -623,7 +590,6 @@ proc miqt_exec_callback_QVideoWidget_mouseDoubleClickEvent(self: ptr cQVideoWidg
 
   nimfunc[](slotval1)
 proc QVideoWidgetmouseMoveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QMouseEvent): void =
-
   fQVideoWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QVideoWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -641,7 +607,6 @@ proc miqt_exec_callback_QVideoWidget_mouseMoveEvent(self: ptr cQVideoWidget, slo
 
   nimfunc[](slotval1)
 proc QVideoWidgetwheelEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QWheelEvent): void =
-
   fQVideoWidget_virtualbase_wheelEvent(self.h, event.h)
 
 type QVideoWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -659,7 +624,6 @@ proc miqt_exec_callback_QVideoWidget_wheelEvent(self: ptr cQVideoWidget, slot: i
 
   nimfunc[](slotval1)
 proc QVideoWidgetkeyPressEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QKeyEvent): void =
-
   fQVideoWidget_virtualbase_keyPressEvent(self.h, event.h)
 
 type QVideoWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -677,7 +641,6 @@ proc miqt_exec_callback_QVideoWidget_keyPressEvent(self: ptr cQVideoWidget, slot
 
   nimfunc[](slotval1)
 proc QVideoWidgetkeyReleaseEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QKeyEvent): void =
-
   fQVideoWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QVideoWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -695,7 +658,6 @@ proc miqt_exec_callback_QVideoWidget_keyReleaseEvent(self: ptr cQVideoWidget, sl
 
   nimfunc[](slotval1)
 proc QVideoWidgetfocusInEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QFocusEvent): void =
-
   fQVideoWidget_virtualbase_focusInEvent(self.h, event.h)
 
 type QVideoWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -713,7 +675,6 @@ proc miqt_exec_callback_QVideoWidget_focusInEvent(self: ptr cQVideoWidget, slot:
 
   nimfunc[](slotval1)
 proc QVideoWidgetfocusOutEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QFocusEvent): void =
-
   fQVideoWidget_virtualbase_focusOutEvent(self.h, event.h)
 
 type QVideoWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -731,7 +692,6 @@ proc miqt_exec_callback_QVideoWidget_focusOutEvent(self: ptr cQVideoWidget, slot
 
   nimfunc[](slotval1)
 proc QVideoWidgetenterEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QEnterEvent): void =
-
   fQVideoWidget_virtualbase_enterEvent(self.h, event.h)
 
 type QVideoWidgetenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -749,7 +709,6 @@ proc miqt_exec_callback_QVideoWidget_enterEvent(self: ptr cQVideoWidget, slot: i
 
   nimfunc[](slotval1)
 proc QVideoWidgetleaveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QEvent): void =
-
   fQVideoWidget_virtualbase_leaveEvent(self.h, event.h)
 
 type QVideoWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -767,7 +726,6 @@ proc miqt_exec_callback_QVideoWidget_leaveEvent(self: ptr cQVideoWidget, slot: i
 
   nimfunc[](slotval1)
 proc QVideoWidgetpaintEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QPaintEvent): void =
-
   fQVideoWidget_virtualbase_paintEvent(self.h, event.h)
 
 type QVideoWidgetpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -785,7 +743,6 @@ proc miqt_exec_callback_QVideoWidget_paintEvent(self: ptr cQVideoWidget, slot: i
 
   nimfunc[](slotval1)
 proc QVideoWidgetcloseEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QCloseEvent): void =
-
   fQVideoWidget_virtualbase_closeEvent(self.h, event.h)
 
 type QVideoWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -803,7 +760,6 @@ proc miqt_exec_callback_QVideoWidget_closeEvent(self: ptr cQVideoWidget, slot: i
 
   nimfunc[](slotval1)
 proc QVideoWidgetcontextMenuEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QContextMenuEvent): void =
-
   fQVideoWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QVideoWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -821,7 +777,6 @@ proc miqt_exec_callback_QVideoWidget_contextMenuEvent(self: ptr cQVideoWidget, s
 
   nimfunc[](slotval1)
 proc QVideoWidgettabletEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QTabletEvent): void =
-
   fQVideoWidget_virtualbase_tabletEvent(self.h, event.h)
 
 type QVideoWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -839,7 +794,6 @@ proc miqt_exec_callback_QVideoWidget_tabletEvent(self: ptr cQVideoWidget, slot: 
 
   nimfunc[](slotval1)
 proc QVideoWidgetactionEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QActionEvent): void =
-
   fQVideoWidget_virtualbase_actionEvent(self.h, event.h)
 
 type QVideoWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -857,7 +811,6 @@ proc miqt_exec_callback_QVideoWidget_actionEvent(self: ptr cQVideoWidget, slot: 
 
   nimfunc[](slotval1)
 proc QVideoWidgetdragEnterEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QDragEnterEvent): void =
-
   fQVideoWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QVideoWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -875,7 +828,6 @@ proc miqt_exec_callback_QVideoWidget_dragEnterEvent(self: ptr cQVideoWidget, slo
 
   nimfunc[](slotval1)
 proc QVideoWidgetdragMoveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QDragMoveEvent): void =
-
   fQVideoWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QVideoWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -893,7 +845,6 @@ proc miqt_exec_callback_QVideoWidget_dragMoveEvent(self: ptr cQVideoWidget, slot
 
   nimfunc[](slotval1)
 proc QVideoWidgetdragLeaveEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QDragLeaveEvent): void =
-
   fQVideoWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QVideoWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -911,7 +862,6 @@ proc miqt_exec_callback_QVideoWidget_dragLeaveEvent(self: ptr cQVideoWidget, slo
 
   nimfunc[](slotval1)
 proc QVideoWidgetdropEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qevent.QDropEvent): void =
-
   fQVideoWidget_virtualbase_dropEvent(self.h, event.h)
 
 type QVideoWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -929,7 +879,6 @@ proc miqt_exec_callback_QVideoWidget_dropEvent(self: ptr cQVideoWidget, slot: in
 
   nimfunc[](slotval1)
 proc QVideoWidgetnativeEvent*(self: gen_qvideowidget_types.QVideoWidget, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQVideoWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QVideoWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -956,7 +905,6 @@ proc miqt_exec_callback_QVideoWidget_nativeEvent(self: ptr cQVideoWidget, slot: 
 
   virtualReturn
 proc QVideoWidgetchangeEvent*(self: gen_qvideowidget_types.QVideoWidget, param1: gen_qcoreevent.QEvent): void =
-
   fQVideoWidget_virtualbase_changeEvent(self.h, param1.h)
 
 type QVideoWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -974,7 +922,6 @@ proc miqt_exec_callback_QVideoWidget_changeEvent(self: ptr cQVideoWidget, slot: 
 
   nimfunc[](slotval1)
 proc QVideoWidgetmetric*(self: gen_qvideowidget_types.QVideoWidget, param1: cint): cint =
-
   fQVideoWidget_virtualbase_metric(self.h, cint(param1))
 
 type QVideoWidgetmetricProc* = proc(param1: cint): cint
@@ -994,7 +941,6 @@ proc miqt_exec_callback_QVideoWidget_metric(self: ptr cQVideoWidget, slot: int, 
 
   virtualReturn
 proc QVideoWidgetinitPainter*(self: gen_qvideowidget_types.QVideoWidget, painter: gen_qpainter.QPainter): void =
-
   fQVideoWidget_virtualbase_initPainter(self.h, painter.h)
 
 type QVideoWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1012,7 +958,6 @@ proc miqt_exec_callback_QVideoWidget_initPainter(self: ptr cQVideoWidget, slot: 
 
   nimfunc[](slotval1)
 proc QVideoWidgetredirected*(self: gen_qvideowidget_types.QVideoWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQVideoWidget_virtualbase_redirected(self.h, offset.h))
 
 type QVideoWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1032,7 +977,6 @@ proc miqt_exec_callback_QVideoWidget_redirected(self: ptr cQVideoWidget, slot: i
 
   virtualReturn.h
 proc QVideoWidgetsharedPainter*(self: gen_qvideowidget_types.QVideoWidget, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQVideoWidget_virtualbase_sharedPainter(self.h))
 
 type QVideoWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1050,7 +994,6 @@ proc miqt_exec_callback_QVideoWidget_sharedPainter(self: ptr cQVideoWidget, slot
 
   virtualReturn.h
 proc QVideoWidgetinputMethodEvent*(self: gen_qvideowidget_types.QVideoWidget, param1: gen_qevent.QInputMethodEvent): void =
-
   fQVideoWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QVideoWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1068,7 +1011,6 @@ proc miqt_exec_callback_QVideoWidget_inputMethodEvent(self: ptr cQVideoWidget, s
 
   nimfunc[](slotval1)
 proc QVideoWidgetinputMethodQuery*(self: gen_qvideowidget_types.QVideoWidget, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQVideoWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QVideoWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1088,7 +1030,6 @@ proc miqt_exec_callback_QVideoWidget_inputMethodQuery(self: ptr cQVideoWidget, s
 
   virtualReturn.h
 proc QVideoWidgetfocusNextPrevChild*(self: gen_qvideowidget_types.QVideoWidget, next: bool): bool =
-
   fQVideoWidget_virtualbase_focusNextPrevChild(self.h, next)
 
 type QVideoWidgetfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1108,7 +1049,6 @@ proc miqt_exec_callback_QVideoWidget_focusNextPrevChild(self: ptr cQVideoWidget,
 
   virtualReturn
 proc QVideoWidgeteventFilter*(self: gen_qvideowidget_types.QVideoWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQVideoWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QVideoWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1130,7 +1070,6 @@ proc miqt_exec_callback_QVideoWidget_eventFilter(self: ptr cQVideoWidget, slot: 
 
   virtualReturn
 proc QVideoWidgettimerEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QTimerEvent): void =
-
   fQVideoWidget_virtualbase_timerEvent(self.h, event.h)
 
 type QVideoWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1148,7 +1087,6 @@ proc miqt_exec_callback_QVideoWidget_timerEvent(self: ptr cQVideoWidget, slot: i
 
   nimfunc[](slotval1)
 proc QVideoWidgetchildEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QChildEvent): void =
-
   fQVideoWidget_virtualbase_childEvent(self.h, event.h)
 
 type QVideoWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1166,7 +1104,6 @@ proc miqt_exec_callback_QVideoWidget_childEvent(self: ptr cQVideoWidget, slot: i
 
   nimfunc[](slotval1)
 proc QVideoWidgetcustomEvent*(self: gen_qvideowidget_types.QVideoWidget, event: gen_qcoreevent.QEvent): void =
-
   fQVideoWidget_virtualbase_customEvent(self.h, event.h)
 
 type QVideoWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1184,7 +1121,6 @@ proc miqt_exec_callback_QVideoWidget_customEvent(self: ptr cQVideoWidget, slot: 
 
   nimfunc[](slotval1)
 proc QVideoWidgetconnectNotify*(self: gen_qvideowidget_types.QVideoWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQVideoWidget_virtualbase_connectNotify(self.h, signal.h)
 
 type QVideoWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1202,7 +1138,6 @@ proc miqt_exec_callback_QVideoWidget_connectNotify(self: ptr cQVideoWidget, slot
 
   nimfunc[](slotval1)
 proc QVideoWidgetdisconnectNotify*(self: gen_qvideowidget_types.QVideoWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQVideoWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QVideoWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

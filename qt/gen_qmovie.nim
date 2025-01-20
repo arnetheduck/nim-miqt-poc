@@ -162,57 +162,51 @@ proc fcQMovie_delete(self: pointer) {.importc: "QMovie_delete".}
 func init*(T: type gen_qmovie_types.QMovie, h: ptr cQMovie): gen_qmovie_types.QMovie =
   T(h: h)
 proc create*(T: type gen_qmovie_types.QMovie, ): gen_qmovie_types.QMovie =
-
   gen_qmovie_types.QMovie.init(fcQMovie_new())
+
 proc create*(T: type gen_qmovie_types.QMovie, device: gen_qiodevice.QIODevice): gen_qmovie_types.QMovie =
-
   gen_qmovie_types.QMovie.init(fcQMovie_new2(device.h))
+
 proc create*(T: type gen_qmovie_types.QMovie, fileName: string): gen_qmovie_types.QMovie =
-
   gen_qmovie_types.QMovie.init(fcQMovie_new3(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
-proc create2*(T: type gen_qmovie_types.QMovie, parent: gen_qobject.QObject): gen_qmovie_types.QMovie =
 
+proc create*(T: type gen_qmovie_types.QMovie, parent: gen_qobject.QObject): gen_qmovie_types.QMovie =
   gen_qmovie_types.QMovie.init(fcQMovie_new4(parent.h))
+
 proc create*(T: type gen_qmovie_types.QMovie, device: gen_qiodevice.QIODevice, format: seq[byte]): gen_qmovie_types.QMovie =
-
   gen_qmovie_types.QMovie.init(fcQMovie_new5(device.h, struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format)))))
+
 proc create*(T: type gen_qmovie_types.QMovie, device: gen_qiodevice.QIODevice, format: seq[byte], parent: gen_qobject.QObject): gen_qmovie_types.QMovie =
-
   gen_qmovie_types.QMovie.init(fcQMovie_new6(device.h, struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format))), parent.h))
+
 proc create*(T: type gen_qmovie_types.QMovie, fileName: string, format: seq[byte]): gen_qmovie_types.QMovie =
-
   gen_qmovie_types.QMovie.init(fcQMovie_new7(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format)))))
+
 proc create*(T: type gen_qmovie_types.QMovie, fileName: string, format: seq[byte], parent: gen_qobject.QObject): gen_qmovie_types.QMovie =
-
   gen_qmovie_types.QMovie.init(fcQMovie_new8(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format))), parent.h))
-proc metaObject*(self: gen_qmovie_types.QMovie, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qmovie_types.QMovie, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMovie_metaObject(self.h))
 
 proc metacast*(self: gen_qmovie_types.QMovie, param1: cstring): pointer =
-
   fcQMovie_metacast(self.h, param1)
 
 proc metacall*(self: gen_qmovie_types.QMovie, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMovie_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qmovie_types.QMovie, s: cstring): string =
-
   let v_ms = fcQMovie_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qmovie_types.QMovie, s: cstring): string =
-
   let v_ms = fcQMovie_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportedFormats*(_: type gen_qmovie_types.QMovie, ): seq[seq[byte]] =
-
   var v_ma = fcQMovie_supportedFormats()
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -224,286 +218,237 @@ proc supportedFormats*(_: type gen_qmovie_types.QMovie, ): seq[seq[byte]] =
   vx_ret
 
 proc setDevice*(self: gen_qmovie_types.QMovie, device: gen_qiodevice.QIODevice): void =
-
   fcQMovie_setDevice(self.h, device.h)
 
 proc device*(self: gen_qmovie_types.QMovie, ): gen_qiodevice.QIODevice =
-
   gen_qiodevice.QIODevice(h: fcQMovie_device(self.h))
 
 proc setFileName*(self: gen_qmovie_types.QMovie, fileName: string): void =
-
   fcQMovie_setFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc fileName*(self: gen_qmovie_types.QMovie, ): string =
-
   let v_ms = fcQMovie_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFormat*(self: gen_qmovie_types.QMovie, format: seq[byte]): void =
-
   fcQMovie_setFormat(self.h, struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format))))
 
 proc format*(self: gen_qmovie_types.QMovie, ): seq[byte] =
-
   var v_bytearray = fcQMovie_format(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc setBackgroundColor*(self: gen_qmovie_types.QMovie, color: gen_qcolor.QColor): void =
-
   fcQMovie_setBackgroundColor(self.h, color.h)
 
 proc backgroundColor*(self: gen_qmovie_types.QMovie, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQMovie_backgroundColor(self.h))
 
 proc state*(self: gen_qmovie_types.QMovie, ): cint =
-
   cint(fcQMovie_state(self.h))
 
 proc frameRect*(self: gen_qmovie_types.QMovie, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQMovie_frameRect(self.h))
 
 proc currentImage*(self: gen_qmovie_types.QMovie, ): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fcQMovie_currentImage(self.h))
 
 proc currentPixmap*(self: gen_qmovie_types.QMovie, ): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQMovie_currentPixmap(self.h))
 
 proc isValid*(self: gen_qmovie_types.QMovie, ): bool =
-
   fcQMovie_isValid(self.h)
 
 proc lastError*(self: gen_qmovie_types.QMovie, ): cint =
-
   cint(fcQMovie_lastError(self.h))
 
 proc lastErrorString*(self: gen_qmovie_types.QMovie, ): string =
-
   let v_ms = fcQMovie_lastErrorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc jumpToFrame*(self: gen_qmovie_types.QMovie, frameNumber: cint): bool =
-
   fcQMovie_jumpToFrame(self.h, frameNumber)
 
 proc loopCount*(self: gen_qmovie_types.QMovie, ): cint =
-
   fcQMovie_loopCount(self.h)
 
 proc frameCount*(self: gen_qmovie_types.QMovie, ): cint =
-
   fcQMovie_frameCount(self.h)
 
 proc nextFrameDelay*(self: gen_qmovie_types.QMovie, ): cint =
-
   fcQMovie_nextFrameDelay(self.h)
 
 proc currentFrameNumber*(self: gen_qmovie_types.QMovie, ): cint =
-
   fcQMovie_currentFrameNumber(self.h)
 
 proc speed*(self: gen_qmovie_types.QMovie, ): cint =
-
   fcQMovie_speed(self.h)
 
 proc scaledSize*(self: gen_qmovie_types.QMovie, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQMovie_scaledSize(self.h))
 
 proc setScaledSize*(self: gen_qmovie_types.QMovie, size: gen_qsize.QSize): void =
-
   fcQMovie_setScaledSize(self.h, size.h)
 
 proc cacheMode*(self: gen_qmovie_types.QMovie, ): cint =
-
   cint(fcQMovie_cacheMode(self.h))
 
 proc setCacheMode*(self: gen_qmovie_types.QMovie, mode: cint): void =
-
   fcQMovie_setCacheMode(self.h, cint(mode))
 
 proc started*(self: gen_qmovie_types.QMovie, ): void =
-
   fcQMovie_started(self.h)
 
+type QMoviestartedSlot* = proc()
 proc miqt_exec_callback_QMovie_started(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QMoviestartedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onstarted*(self: gen_qmovie_types.QMovie, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onstarted*(self: gen_qmovie_types.QMovie, slot: QMoviestartedSlot) =
+  var tmp = new QMoviestartedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMovie_connect_started(self.h, cast[int](addr tmp[]))
-proc resized*(self: gen_qmovie_types.QMovie, size: gen_qsize.QSize): void =
 
+proc resized*(self: gen_qmovie_types.QMovie, size: gen_qsize.QSize): void =
   fcQMovie_resized(self.h, size.h)
 
+type QMovieresizedSlot* = proc(size: gen_qsize.QSize)
 proc miqt_exec_callback_QMovie_resized(slot: int, size: pointer) {.exportc.} =
-  type Cb = proc(size: gen_qsize.QSize)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMovieresizedSlot](cast[pointer](slot))
   let slotval1 = gen_qsize.QSize(h: size)
-
 
   nimfunc[](slotval1)
 
-proc onresized*(self: gen_qmovie_types.QMovie, slot: proc(size: gen_qsize.QSize)) =
-  type Cb = proc(size: gen_qsize.QSize)
-  var tmp = new Cb
+proc onresized*(self: gen_qmovie_types.QMovie, slot: QMovieresizedSlot) =
+  var tmp = new QMovieresizedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMovie_connect_resized(self.h, cast[int](addr tmp[]))
-proc updated*(self: gen_qmovie_types.QMovie, rect: gen_qrect.QRect): void =
 
+proc updated*(self: gen_qmovie_types.QMovie, rect: gen_qrect.QRect): void =
   fcQMovie_updated(self.h, rect.h)
 
+type QMovieupdatedSlot* = proc(rect: gen_qrect.QRect)
 proc miqt_exec_callback_QMovie_updated(slot: int, rect: pointer) {.exportc.} =
-  type Cb = proc(rect: gen_qrect.QRect)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMovieupdatedSlot](cast[pointer](slot))
   let slotval1 = gen_qrect.QRect(h: rect)
-
 
   nimfunc[](slotval1)
 
-proc onupdated*(self: gen_qmovie_types.QMovie, slot: proc(rect: gen_qrect.QRect)) =
-  type Cb = proc(rect: gen_qrect.QRect)
-  var tmp = new Cb
+proc onupdated*(self: gen_qmovie_types.QMovie, slot: QMovieupdatedSlot) =
+  var tmp = new QMovieupdatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMovie_connect_updated(self.h, cast[int](addr tmp[]))
-proc stateChanged*(self: gen_qmovie_types.QMovie, state: cint): void =
 
+proc stateChanged*(self: gen_qmovie_types.QMovie, state: cint): void =
   fcQMovie_stateChanged(self.h, cint(state))
 
+type QMoviestateChangedSlot* = proc(state: cint)
 proc miqt_exec_callback_QMovie_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMoviestateChangedSlot](cast[pointer](slot))
   let slotval1 = cint(state)
-
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: gen_qmovie_types.QMovie, slot: proc(state: cint)) =
-  type Cb = proc(state: cint)
-  var tmp = new Cb
+proc onstateChanged*(self: gen_qmovie_types.QMovie, slot: QMoviestateChangedSlot) =
+  var tmp = new QMoviestateChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMovie_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc error*(self: gen_qmovie_types.QMovie, error: cint): void =
 
+proc error*(self: gen_qmovie_types.QMovie, error: cint): void =
   fcQMovie_error(self.h, cint(error))
 
+type QMovieerrorSlot* = proc(error: cint)
 proc miqt_exec_callback_QMovie_error(slot: int, error: cint) {.exportc.} =
-  type Cb = proc(error: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMovieerrorSlot](cast[pointer](slot))
   let slotval1 = cint(error)
-
 
   nimfunc[](slotval1)
 
-proc onerror*(self: gen_qmovie_types.QMovie, slot: proc(error: cint)) =
-  type Cb = proc(error: cint)
-  var tmp = new Cb
+proc onerror*(self: gen_qmovie_types.QMovie, slot: QMovieerrorSlot) =
+  var tmp = new QMovieerrorSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMovie_connect_error(self.h, cast[int](addr tmp[]))
-proc finished*(self: gen_qmovie_types.QMovie, ): void =
 
+proc finished*(self: gen_qmovie_types.QMovie, ): void =
   fcQMovie_finished(self.h)
 
+type QMoviefinishedSlot* = proc()
 proc miqt_exec_callback_QMovie_finished(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QMoviefinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onfinished*(self: gen_qmovie_types.QMovie, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onfinished*(self: gen_qmovie_types.QMovie, slot: QMoviefinishedSlot) =
+  var tmp = new QMoviefinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMovie_connect_finished(self.h, cast[int](addr tmp[]))
-proc frameChanged*(self: gen_qmovie_types.QMovie, frameNumber: cint): void =
 
+proc frameChanged*(self: gen_qmovie_types.QMovie, frameNumber: cint): void =
   fcQMovie_frameChanged(self.h, frameNumber)
 
+type QMovieframeChangedSlot* = proc(frameNumber: cint)
 proc miqt_exec_callback_QMovie_frameChanged(slot: int, frameNumber: cint) {.exportc.} =
-  type Cb = proc(frameNumber: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMovieframeChangedSlot](cast[pointer](slot))
   let slotval1 = frameNumber
-
 
   nimfunc[](slotval1)
 
-proc onframeChanged*(self: gen_qmovie_types.QMovie, slot: proc(frameNumber: cint)) =
-  type Cb = proc(frameNumber: cint)
-  var tmp = new Cb
+proc onframeChanged*(self: gen_qmovie_types.QMovie, slot: QMovieframeChangedSlot) =
+  var tmp = new QMovieframeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMovie_connect_frameChanged(self.h, cast[int](addr tmp[]))
-proc start*(self: gen_qmovie_types.QMovie, ): void =
 
+proc start*(self: gen_qmovie_types.QMovie, ): void =
   fcQMovie_start(self.h)
 
 proc jumpToNextFrame*(self: gen_qmovie_types.QMovie, ): bool =
-
   fcQMovie_jumpToNextFrame(self.h)
 
 proc setPaused*(self: gen_qmovie_types.QMovie, paused: bool): void =
-
   fcQMovie_setPaused(self.h, paused)
 
 proc stop*(self: gen_qmovie_types.QMovie, ): void =
-
   fcQMovie_stop(self.h)
 
 proc setSpeed*(self: gen_qmovie_types.QMovie, percentSpeed: cint): void =
-
   fcQMovie_setSpeed(self.h, percentSpeed)
 
-proc tr2*(_: type gen_qmovie_types.QMovie, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qmovie_types.QMovie, s: cstring, c: cstring): string =
   let v_ms = fcQMovie_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qmovie_types.QMovie, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qmovie_types.QMovie, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMovie_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qmovie_types.QMovie, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qmovie_types.QMovie, s: cstring, c: cstring): string =
   let v_ms = fcQMovie_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qmovie_types.QMovie, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qmovie_types.QMovie, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMovie_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QMoviemetaObject*(self: gen_qmovie_types.QMovie, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQMovie_virtualbase_metaObject(self.h))
 
 type QMoviemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -521,7 +466,6 @@ proc miqt_exec_callback_QMovie_metaObject(self: ptr cQMovie, slot: int): pointer
 
   virtualReturn.h
 proc QMoviemetacast*(self: gen_qmovie_types.QMovie, param1: cstring): pointer =
-
   fQMovie_virtualbase_metacast(self.h, param1)
 
 type QMoviemetacastProc* = proc(param1: cstring): pointer
@@ -541,7 +485,6 @@ proc miqt_exec_callback_QMovie_metacast(self: ptr cQMovie, slot: int, param1: cs
 
   virtualReturn
 proc QMoviemetacall*(self: gen_qmovie_types.QMovie, param1: cint, param2: cint, param3: pointer): cint =
-
   fQMovie_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QMoviemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -565,7 +508,6 @@ proc miqt_exec_callback_QMovie_metacall(self: ptr cQMovie, slot: int, param1: ci
 
   virtualReturn
 proc QMovieevent*(self: gen_qmovie_types.QMovie, event: gen_qcoreevent.QEvent): bool =
-
   fQMovie_virtualbase_event(self.h, event.h)
 
 type QMovieeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -585,7 +527,6 @@ proc miqt_exec_callback_QMovie_event(self: ptr cQMovie, slot: int, event: pointe
 
   virtualReturn
 proc QMovieeventFilter*(self: gen_qmovie_types.QMovie, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQMovie_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QMovieeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -607,7 +548,6 @@ proc miqt_exec_callback_QMovie_eventFilter(self: ptr cQMovie, slot: int, watched
 
   virtualReturn
 proc QMovietimerEvent*(self: gen_qmovie_types.QMovie, event: gen_qcoreevent.QTimerEvent): void =
-
   fQMovie_virtualbase_timerEvent(self.h, event.h)
 
 type QMovietimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -625,7 +565,6 @@ proc miqt_exec_callback_QMovie_timerEvent(self: ptr cQMovie, slot: int, event: p
 
   nimfunc[](slotval1)
 proc QMoviechildEvent*(self: gen_qmovie_types.QMovie, event: gen_qcoreevent.QChildEvent): void =
-
   fQMovie_virtualbase_childEvent(self.h, event.h)
 
 type QMoviechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -643,7 +582,6 @@ proc miqt_exec_callback_QMovie_childEvent(self: ptr cQMovie, slot: int, event: p
 
   nimfunc[](slotval1)
 proc QMoviecustomEvent*(self: gen_qmovie_types.QMovie, event: gen_qcoreevent.QEvent): void =
-
   fQMovie_virtualbase_customEvent(self.h, event.h)
 
 type QMoviecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -661,7 +599,6 @@ proc miqt_exec_callback_QMovie_customEvent(self: ptr cQMovie, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QMovieconnectNotify*(self: gen_qmovie_types.QMovie, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMovie_virtualbase_connectNotify(self.h, signal.h)
 
 type QMovieconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -679,7 +616,6 @@ proc miqt_exec_callback_QMovie_connectNotify(self: ptr cQMovie, slot: int, signa
 
   nimfunc[](slotval1)
 proc QMoviedisconnectNotify*(self: gen_qmovie_types.QMovie, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMovie_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QMoviedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

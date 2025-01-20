@@ -196,23 +196,21 @@ proc fcQMetaObjectSuperData_delete(self: pointer) {.importc: "QMetaObject__Super
 func init*(T: type gen_qobjectdefs_types.QGenericArgument, h: ptr cQGenericArgument): gen_qobjectdefs_types.QGenericArgument =
   T(h: h)
 proc create*(T: type gen_qobjectdefs_types.QGenericArgument, ): gen_qobjectdefs_types.QGenericArgument =
-
   gen_qobjectdefs_types.QGenericArgument.init(fcQGenericArgument_new())
+
 proc create*(T: type gen_qobjectdefs_types.QGenericArgument, param1: gen_qobjectdefs_types.QGenericArgument): gen_qobjectdefs_types.QGenericArgument =
-
   gen_qobjectdefs_types.QGenericArgument.init(fcQGenericArgument_new2(param1.h))
+
 proc create*(T: type gen_qobjectdefs_types.QGenericArgument, aName: cstring): gen_qobjectdefs_types.QGenericArgument =
-
   gen_qobjectdefs_types.QGenericArgument.init(fcQGenericArgument_new3(aName))
+
 proc create*(T: type gen_qobjectdefs_types.QGenericArgument, aName: cstring, aData: pointer): gen_qobjectdefs_types.QGenericArgument =
-
   gen_qobjectdefs_types.QGenericArgument.init(fcQGenericArgument_new4(aName, aData))
-proc data*(self: gen_qobjectdefs_types.QGenericArgument, ): pointer =
 
+proc data*(self: gen_qobjectdefs_types.QGenericArgument, ): pointer =
   fcQGenericArgument_data(self.h)
 
 proc name*(self: gen_qobjectdefs_types.QGenericArgument, ): cstring =
-
   (fcQGenericArgument_name(self.h))
 
 proc delete*(self: gen_qobjectdefs_types.QGenericArgument) =
@@ -221,434 +219,335 @@ proc delete*(self: gen_qobjectdefs_types.QGenericArgument) =
 func init*(T: type gen_qobjectdefs_types.QGenericReturnArgument, h: ptr cQGenericReturnArgument): gen_qobjectdefs_types.QGenericReturnArgument =
   T(h: h)
 proc create*(T: type gen_qobjectdefs_types.QGenericReturnArgument, ): gen_qobjectdefs_types.QGenericReturnArgument =
-
   gen_qobjectdefs_types.QGenericReturnArgument.init(fcQGenericReturnArgument_new())
+
 proc create*(T: type gen_qobjectdefs_types.QGenericReturnArgument, param1: gen_qobjectdefs_types.QGenericReturnArgument): gen_qobjectdefs_types.QGenericReturnArgument =
-
   gen_qobjectdefs_types.QGenericReturnArgument.init(fcQGenericReturnArgument_new2(param1.h))
+
 proc create*(T: type gen_qobjectdefs_types.QGenericReturnArgument, aName: cstring): gen_qobjectdefs_types.QGenericReturnArgument =
-
   gen_qobjectdefs_types.QGenericReturnArgument.init(fcQGenericReturnArgument_new3(aName))
-proc create*(T: type gen_qobjectdefs_types.QGenericReturnArgument, aName: cstring, aData: pointer): gen_qobjectdefs_types.QGenericReturnArgument =
 
+proc create*(T: type gen_qobjectdefs_types.QGenericReturnArgument, aName: cstring, aData: pointer): gen_qobjectdefs_types.QGenericReturnArgument =
   gen_qobjectdefs_types.QGenericReturnArgument.init(fcQGenericReturnArgument_new4(aName, aData))
+
 proc delete*(self: gen_qobjectdefs_types.QGenericReturnArgument) =
   fcQGenericReturnArgument_delete(self.h)
 
 func init*(T: type gen_qobjectdefs_types.QMetaObject, h: ptr cQMetaObject): gen_qobjectdefs_types.QMetaObject =
   T(h: h)
 proc create*(T: type gen_qobjectdefs_types.QMetaObject, ): gen_qobjectdefs_types.QMetaObject =
-
   gen_qobjectdefs_types.QMetaObject.init(fcQMetaObject_new())
+
 proc create*(T: type gen_qobjectdefs_types.QMetaObject, param1: gen_qobjectdefs_types.QMetaObject): gen_qobjectdefs_types.QMetaObject =
-
   gen_qobjectdefs_types.QMetaObject.init(fcQMetaObject_new2(param1.h))
-proc className*(self: gen_qobjectdefs_types.QMetaObject, ): cstring =
 
+proc className*(self: gen_qobjectdefs_types.QMetaObject, ): cstring =
   (fcQMetaObject_className(self.h))
 
 proc superClass*(self: gen_qobjectdefs_types.QMetaObject, ): gen_qobjectdefs_types.QMetaObject =
-
   gen_qobjectdefs_types.QMetaObject(h: fcQMetaObject_superClass(self.h))
 
 proc inherits*(self: gen_qobjectdefs_types.QMetaObject, metaObject: gen_qobjectdefs_types.QMetaObject): bool =
-
   fcQMetaObject_inherits(self.h, metaObject.h)
 
 proc castX*(self: gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQMetaObject_castX(self.h, obj.h))
 
-proc castWithObj*(self: gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject): gen_qobject.QObject =
-
+proc castX2*(self: gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_castWithObj(self.h, obj.h))
 
 proc tr*(self: gen_qobjectdefs_types.QMetaObject, s: cstring, c: cstring): string =
-
   let v_ms = fcQMetaObject_tr(self.h, s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc methodOffset*(self: gen_qobjectdefs_types.QMetaObject, ): cint =
-
   fcQMetaObject_methodOffset(self.h)
 
 proc enumeratorOffset*(self: gen_qobjectdefs_types.QMetaObject, ): cint =
-
   fcQMetaObject_enumeratorOffset(self.h)
 
 proc propertyOffset*(self: gen_qobjectdefs_types.QMetaObject, ): cint =
-
   fcQMetaObject_propertyOffset(self.h)
 
 proc classInfoOffset*(self: gen_qobjectdefs_types.QMetaObject, ): cint =
-
   fcQMetaObject_classInfoOffset(self.h)
 
 proc constructorCount*(self: gen_qobjectdefs_types.QMetaObject, ): cint =
-
   fcQMetaObject_constructorCount(self.h)
 
 proc methodCount*(self: gen_qobjectdefs_types.QMetaObject, ): cint =
-
   fcQMetaObject_methodCount(self.h)
 
 proc enumeratorCount*(self: gen_qobjectdefs_types.QMetaObject, ): cint =
-
   fcQMetaObject_enumeratorCount(self.h)
 
 proc propertyCount*(self: gen_qobjectdefs_types.QMetaObject, ): cint =
-
   fcQMetaObject_propertyCount(self.h)
 
 proc classInfoCount*(self: gen_qobjectdefs_types.QMetaObject, ): cint =
-
   fcQMetaObject_classInfoCount(self.h)
 
 proc indexOfConstructor*(self: gen_qobjectdefs_types.QMetaObject, constructor: cstring): cint =
-
   fcQMetaObject_indexOfConstructor(self.h, constructor)
 
 proc indexOfMethod*(self: gen_qobjectdefs_types.QMetaObject, methodVal: cstring): cint =
-
   fcQMetaObject_indexOfMethod(self.h, methodVal)
 
 proc indexOfSignal*(self: gen_qobjectdefs_types.QMetaObject, signal: cstring): cint =
-
   fcQMetaObject_indexOfSignal(self.h, signal)
 
 proc indexOfSlot*(self: gen_qobjectdefs_types.QMetaObject, slot: cstring): cint =
-
   fcQMetaObject_indexOfSlot(self.h, slot)
 
 proc indexOfEnumerator*(self: gen_qobjectdefs_types.QMetaObject, name: cstring): cint =
-
   fcQMetaObject_indexOfEnumerator(self.h, name)
 
 proc indexOfProperty*(self: gen_qobjectdefs_types.QMetaObject, name: cstring): cint =
-
   fcQMetaObject_indexOfProperty(self.h, name)
 
 proc indexOfClassInfo*(self: gen_qobjectdefs_types.QMetaObject, name: cstring): cint =
-
   fcQMetaObject_indexOfClassInfo(self.h, name)
 
 proc constructor*(self: gen_qobjectdefs_types.QMetaObject, index: cint): gen_qmetaobject.QMetaMethod =
-
   gen_qmetaobject.QMetaMethod(h: fcQMetaObject_constructor(self.h, index))
 
 proc methodX*(self: gen_qobjectdefs_types.QMetaObject, index: cint): gen_qmetaobject.QMetaMethod =
-
   gen_qmetaobject.QMetaMethod(h: fcQMetaObject_methodX(self.h, index))
 
 proc enumerator*(self: gen_qobjectdefs_types.QMetaObject, index: cint): gen_qmetaobject.QMetaEnum =
-
   gen_qmetaobject.QMetaEnum(h: fcQMetaObject_enumerator(self.h, index))
 
 proc property*(self: gen_qobjectdefs_types.QMetaObject, index: cint): gen_qmetaobject.QMetaProperty =
-
   gen_qmetaobject.QMetaProperty(h: fcQMetaObject_property(self.h, index))
 
 proc classInfo*(self: gen_qobjectdefs_types.QMetaObject, index: cint): gen_qmetaobject.QMetaClassInfo =
-
   gen_qmetaobject.QMetaClassInfo(h: fcQMetaObject_classInfo(self.h, index))
 
 proc userProperty*(self: gen_qobjectdefs_types.QMetaObject, ): gen_qmetaobject.QMetaProperty =
-
   gen_qmetaobject.QMetaProperty(h: fcQMetaObject_userProperty(self.h))
 
 proc checkConnectArgs*(_: type gen_qobjectdefs_types.QMetaObject, signal: cstring, methodVal: cstring): bool =
-
   fcQMetaObject_checkConnectArgs(signal, methodVal)
 
-proc checkConnectArgs2*(_: type gen_qobjectdefs_types.QMetaObject, signal: gen_qmetaobject.QMetaMethod, methodVal: gen_qmetaobject.QMetaMethod): bool =
-
+proc checkConnectArgs*(_: type gen_qobjectdefs_types.QMetaObject, signal: gen_qmetaobject.QMetaMethod, methodVal: gen_qmetaobject.QMetaMethod): bool =
   fcQMetaObject_checkConnectArgs2(signal.h, methodVal.h)
 
 proc normalizedSignature*(_: type gen_qobjectdefs_types.QMetaObject, methodVal: cstring): seq[byte] =
-
   var v_bytearray = fcQMetaObject_normalizedSignature(methodVal)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc normalizedType*(_: type gen_qobjectdefs_types.QMetaObject, typeVal: cstring): seq[byte] =
-
   var v_bytearray = fcQMetaObject_normalizedType(typeVal)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc connect*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_index: cint, receiver: gen_qobject.QObject, method_index: cint): gen_qobjectdefs_types.QMetaObjectConnection =
-
   gen_qobjectdefs_types.QMetaObjectConnection(h: fcQMetaObject_connect(sender.h, signal_index, receiver.h, method_index))
 
 proc disconnect*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_index: cint, receiver: gen_qobject.QObject, method_index: cint): bool =
-
   fcQMetaObject_disconnect(sender.h, signal_index, receiver.h, method_index)
 
 proc disconnectOne*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_index: cint, receiver: gen_qobject.QObject, method_index: cint): bool =
-
   fcQMetaObject_disconnectOne(sender.h, signal_index, receiver.h, method_index)
 
 proc connectSlotsByName*(_: type gen_qobjectdefs_types.QMetaObject, o: gen_qobject.QObject): void =
-
   fcQMetaObject_connectSlotsByName(o.h)
 
 proc activate*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_index: cint, argv: pointer): void =
-
   fcQMetaObject_activate(sender.h, signal_index, argv)
 
-proc activate2*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, param2: gen_qobjectdefs_types.QMetaObject, local_signal_index: cint, argv: pointer): void =
-
+proc activate*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, param2: gen_qobjectdefs_types.QMetaObject, local_signal_index: cint, argv: pointer): void =
   fcQMetaObject_activate2(sender.h, param2.h, local_signal_index, argv)
 
-proc activate3*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_offset: cint, local_signal_index: cint, argv: pointer): void =
-
+proc activate*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_offset: cint, local_signal_index: cint, argv: pointer): void =
   fcQMetaObject_activate3(sender.h, signal_offset, local_signal_index, argv)
 
 proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument): bool =
-
   fcQMetaObject_invokeMethod(obj.h, member, cint(param3), retVal.h)
 
-proc invokeMethod2*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument): bool =
   fcQMetaObject_invokeMethod2(obj.h, member, retVal.h)
 
-proc invokeMethod3*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint): bool =
   fcQMetaObject_invokeMethod3(obj.h, member, cint(typeVal))
 
-proc invokeMethod4*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring): bool =
   fcQMetaObject_invokeMethod4(obj.h, member)
 
 proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQMetaObject_newInstance(self.h))
 
 proc staticMetacall*(self: gen_qobjectdefs_types.QMetaObject, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMetaObject_staticMetacall(self.h, cint(param1), param2, param3)
 
 proc metacall*(_: type gen_qobjectdefs_types.QMetaObject, param1: gen_qobject.QObject, param2: cint, param3: cint, param4: pointer): cint =
-
   fcQMetaObject_metacall(param1.h, cint(param2), param3, param4)
 
-proc tr3*(self: gen_qobjectdefs_types.QMetaObject, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(self: gen_qobjectdefs_types.QMetaObject, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMetaObject_tr3(self.h, s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc connect5*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_index: cint, receiver: gen_qobject.QObject, method_index: cint, typeVal: cint): gen_qobjectdefs_types.QMetaObjectConnection =
-
+proc connect*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_index: cint, receiver: gen_qobject.QObject, method_index: cint, typeVal: cint): gen_qobjectdefs_types.QMetaObjectConnection =
   gen_qobjectdefs_types.QMetaObjectConnection(h: fcQMetaObject_connect5(sender.h, signal_index, receiver.h, method_index, typeVal))
 
-proc connect6*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_index: cint, receiver: gen_qobject.QObject, method_index: cint, typeVal: cint, types: ptr cint): gen_qobjectdefs_types.QMetaObjectConnection =
-
+proc connect*(_: type gen_qobjectdefs_types.QMetaObject, sender: gen_qobject.QObject, signal_index: cint, receiver: gen_qobject.QObject, method_index: cint, typeVal: cint, types: ptr cint): gen_qobjectdefs_types.QMetaObjectConnection =
   gen_qobjectdefs_types.QMetaObjectConnection(h: fcQMetaObject_connect6(sender.h, signal_index, receiver.h, method_index, typeVal, types))
 
-proc invokeMethod5*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod5(obj.h, member, cint(param3), retVal.h, val0.h)
 
-proc invokeMethod6*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod6(obj.h, member, cint(param3), retVal.h, val0.h, val1.h)
 
-proc invokeMethod7*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod7(obj.h, member, cint(param3), retVal.h, val0.h, val1.h, val2.h)
 
-proc invokeMethod8*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod8(obj.h, member, cint(param3), retVal.h, val0.h, val1.h, val2.h, val3.h)
 
-proc invokeMethod9*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod9(obj.h, member, cint(param3), retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h)
 
-proc invokeMethod10*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod10(obj.h, member, cint(param3), retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h)
 
-proc invokeMethod11*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod11(obj.h, member, cint(param3), retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h)
 
-proc invokeMethod12*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod12(obj.h, member, cint(param3), retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h)
 
-proc invokeMethod13*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod13(obj.h, member, cint(param3), retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h)
 
-proc invokeMethod14*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, param3: cint, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod14(obj.h, member, cint(param3), retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h, val9.h)
 
-proc invokeMethod42*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod42(obj.h, member, retVal.h, val0.h)
 
-proc invokeMethod52*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod52(obj.h, member, retVal.h, val0.h, val1.h)
 
-proc invokeMethod62*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod62(obj.h, member, retVal.h, val0.h, val1.h, val2.h)
 
-proc invokeMethod72*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod72(obj.h, member, retVal.h, val0.h, val1.h, val2.h, val3.h)
 
-proc invokeMethod82*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod82(obj.h, member, retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h)
 
-proc invokeMethod92*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod92(obj.h, member, retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h)
 
-proc invokeMethod102*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod102(obj.h, member, retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h)
 
-proc invokeMethod112*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod112(obj.h, member, retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h)
 
-proc invokeMethod122*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod122(obj.h, member, retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h)
 
-proc invokeMethod132*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, retVal: gen_qobjectdefs_types.QGenericReturnArgument, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod132(obj.h, member, retVal.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h, val9.h)
 
-proc invokeMethod43*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod43(obj.h, member, cint(typeVal), val0.h)
 
-proc invokeMethod53*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod53(obj.h, member, cint(typeVal), val0.h, val1.h)
 
-proc invokeMethod63*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod63(obj.h, member, cint(typeVal), val0.h, val1.h, val2.h)
 
-proc invokeMethod73*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod73(obj.h, member, cint(typeVal), val0.h, val1.h, val2.h, val3.h)
 
-proc invokeMethod83*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod83(obj.h, member, cint(typeVal), val0.h, val1.h, val2.h, val3.h, val4.h)
 
-proc invokeMethod93*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod93(obj.h, member, cint(typeVal), val0.h, val1.h, val2.h, val3.h, val4.h, val5.h)
 
-proc invokeMethod103*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod103(obj.h, member, cint(typeVal), val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h)
 
-proc invokeMethod113*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod113(obj.h, member, cint(typeVal), val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h)
 
-proc invokeMethod123*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod123(obj.h, member, cint(typeVal), val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h)
 
-proc invokeMethod133*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, typeVal: cint, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod133(obj.h, member, cint(typeVal), val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h, val9.h)
 
-proc invokeMethod32*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod32(obj.h, member, val0.h)
 
-proc invokeMethod44*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod44(obj.h, member, val0.h, val1.h)
 
-proc invokeMethod54*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod54(obj.h, member, val0.h, val1.h, val2.h)
 
-proc invokeMethod64*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod64(obj.h, member, val0.h, val1.h, val2.h, val3.h)
 
-proc invokeMethod74*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod74(obj.h, member, val0.h, val1.h, val2.h, val3.h, val4.h)
 
-proc invokeMethod84*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod84(obj.h, member, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h)
 
-proc invokeMethod94*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod94(obj.h, member, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h)
 
-proc invokeMethod104*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod104(obj.h, member, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h)
 
-proc invokeMethod114*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod114(obj.h, member, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h)
 
-proc invokeMethod124*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): bool =
-
+proc invokeMethod*(_: type gen_qobjectdefs_types.QMetaObject, obj: gen_qobject.QObject, member: cstring, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): bool =
   fcQMetaObject_invokeMethod124(obj.h, member, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h, val9.h)
 
-proc newInstance1*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance1(self.h, val0.h))
 
-proc newInstance2*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance2(self.h, val0.h, val1.h))
 
-proc newInstance3*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance3(self.h, val0.h, val1.h, val2.h))
 
-proc newInstance4*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance4(self.h, val0.h, val1.h, val2.h, val3.h))
 
-proc newInstance5*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance5(self.h, val0.h, val1.h, val2.h, val3.h, val4.h))
 
-proc newInstance6*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance6(self.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h))
 
-proc newInstance7*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance7(self.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h))
 
-proc newInstance8*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance8(self.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h))
 
-proc newInstance9*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance9(self.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h))
 
-proc newInstance10*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
-
+proc newInstance*(self: gen_qobjectdefs_types.QMetaObject, val0: gen_qobjectdefs_types.QGenericArgument, val1: gen_qobjectdefs_types.QGenericArgument, val2: gen_qobjectdefs_types.QGenericArgument, val3: gen_qobjectdefs_types.QGenericArgument, val4: gen_qobjectdefs_types.QGenericArgument, val5: gen_qobjectdefs_types.QGenericArgument, val6: gen_qobjectdefs_types.QGenericArgument, val7: gen_qobjectdefs_types.QGenericArgument, val8: gen_qobjectdefs_types.QGenericArgument, val9: gen_qobjectdefs_types.QGenericArgument): gen_qobject.QObject =
   gen_qobject.QObject(h: fcQMetaObject_newInstance10(self.h, val0.h, val1.h, val2.h, val3.h, val4.h, val5.h, val6.h, val7.h, val8.h, val9.h))
 
 proc delete*(self: gen_qobjectdefs_types.QMetaObject) =
@@ -657,13 +556,12 @@ proc delete*(self: gen_qobjectdefs_types.QMetaObject) =
 func init*(T: type gen_qobjectdefs_types.QMetaObjectConnection, h: ptr cQMetaObjectConnection): gen_qobjectdefs_types.QMetaObjectConnection =
   T(h: h)
 proc create*(T: type gen_qobjectdefs_types.QMetaObjectConnection, ): gen_qobjectdefs_types.QMetaObjectConnection =
-
   gen_qobjectdefs_types.QMetaObjectConnection.init(fcQMetaObjectConnection_new())
+
 proc create*(T: type gen_qobjectdefs_types.QMetaObjectConnection, other: gen_qobjectdefs_types.QMetaObjectConnection): gen_qobjectdefs_types.QMetaObjectConnection =
-
   gen_qobjectdefs_types.QMetaObjectConnection.init(fcQMetaObjectConnection_new2(other.h))
-proc operatorAssign*(self: gen_qobjectdefs_types.QMetaObjectConnection, other: gen_qobjectdefs_types.QMetaObjectConnection): void =
 
+proc operatorAssign*(self: gen_qobjectdefs_types.QMetaObjectConnection, other: gen_qobjectdefs_types.QMetaObjectConnection): void =
   fcQMetaObjectConnection_operatorAssign(self.h, other.h)
 
 proc delete*(self: gen_qobjectdefs_types.QMetaObjectConnection) =
@@ -672,24 +570,21 @@ proc delete*(self: gen_qobjectdefs_types.QMetaObjectConnection) =
 func init*(T: type gen_qobjectdefs_types.QMetaObjectSuperData, h: ptr cQMetaObjectSuperData): gen_qobjectdefs_types.QMetaObjectSuperData =
   T(h: h)
 proc create*(T: type gen_qobjectdefs_types.QMetaObjectSuperData, ): gen_qobjectdefs_types.QMetaObjectSuperData =
-
   gen_qobjectdefs_types.QMetaObjectSuperData.init(fcQMetaObjectSuperData_new())
+
 proc create*(T: type gen_qobjectdefs_types.QMetaObjectSuperData, mo: gen_qobjectdefs_types.QMetaObject): gen_qobjectdefs_types.QMetaObjectSuperData =
-
   gen_qobjectdefs_types.QMetaObjectSuperData.init(fcQMetaObjectSuperData_new2(mo.h))
-proc create2*(T: type gen_qobjectdefs_types.QMetaObjectSuperData, param1: gen_qobjectdefs_types.QMetaObjectSuperData): gen_qobjectdefs_types.QMetaObjectSuperData =
 
+proc create*(T: type gen_qobjectdefs_types.QMetaObjectSuperData, param1: gen_qobjectdefs_types.QMetaObjectSuperData): gen_qobjectdefs_types.QMetaObjectSuperData =
   gen_qobjectdefs_types.QMetaObjectSuperData.init(fcQMetaObjectSuperData_new3(param1.h))
-proc operatorMinusGreater*(self: gen_qobjectdefs_types.QMetaObjectSuperData, ): gen_qobjectdefs_types.QMetaObject =
 
+proc operatorMinusGreater*(self: gen_qobjectdefs_types.QMetaObjectSuperData, ): gen_qobjectdefs_types.QMetaObject =
   gen_qobjectdefs_types.QMetaObject(h: fcQMetaObjectSuperData_operatorMinusGreater(self.h))
 
 proc ToConstQMetaObjectMultiply*(self: gen_qobjectdefs_types.QMetaObjectSuperData, ): gen_qobjectdefs_types.QMetaObject =
-
   gen_qobjectdefs_types.QMetaObject(h: fcQMetaObjectSuperData_ToConstQMetaObjectMultiply(self.h))
 
 proc operatorAssign*(self: gen_qobjectdefs_types.QMetaObjectSuperData, param1: gen_qobjectdefs_types.QMetaObjectSuperData): void =
-
   fcQMetaObjectSuperData_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qobjectdefs_types.QMetaObjectSuperData) =

@@ -64,49 +64,39 @@ proc fcQLockFile_delete(self: pointer) {.importc: "QLockFile_delete".}
 func init*(T: type gen_qlockfile_types.QLockFile, h: ptr cQLockFile): gen_qlockfile_types.QLockFile =
   T(h: h)
 proc create*(T: type gen_qlockfile_types.QLockFile, fileName: string): gen_qlockfile_types.QLockFile =
-
   gen_qlockfile_types.QLockFile.init(fcQLockFile_new(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
-proc fileName*(self: gen_qlockfile_types.QLockFile, ): string =
 
+proc fileName*(self: gen_qlockfile_types.QLockFile, ): string =
   let v_ms = fcQLockFile_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc lock*(self: gen_qlockfile_types.QLockFile, ): bool =
-
   fcQLockFile_lock(self.h)
 
 proc tryLock*(self: gen_qlockfile_types.QLockFile, ): bool =
-
   fcQLockFile_tryLock(self.h)
 
 proc unlock*(self: gen_qlockfile_types.QLockFile, ): void =
-
   fcQLockFile_unlock(self.h)
 
 proc setStaleLockTime*(self: gen_qlockfile_types.QLockFile, staleLockTime: cint): void =
-
   fcQLockFile_setStaleLockTime(self.h, staleLockTime)
 
 proc staleLockTime*(self: gen_qlockfile_types.QLockFile, ): cint =
-
   fcQLockFile_staleLockTime(self.h)
 
 proc isLocked*(self: gen_qlockfile_types.QLockFile, ): bool =
-
   fcQLockFile_isLocked(self.h)
 
 proc removeStaleLockFile*(self: gen_qlockfile_types.QLockFile, ): bool =
-
   fcQLockFile_removeStaleLockFile(self.h)
 
 proc error*(self: gen_qlockfile_types.QLockFile, ): cint =
-
   cint(fcQLockFile_error(self.h))
 
-proc tryLock1*(self: gen_qlockfile_types.QLockFile, timeout: cint): bool =
-
+proc tryLock*(self: gen_qlockfile_types.QLockFile, timeout: cint): bool =
   fcQLockFile_tryLock1(self.h, timeout)
 
 proc delete*(self: gen_qlockfile_types.QLockFile) =

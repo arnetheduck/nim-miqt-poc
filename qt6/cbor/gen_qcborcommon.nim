@@ -108,11 +108,9 @@ proc fcQCborError_delete(self: pointer) {.importc: "QCborError_delete".}
 func init*(T: type gen_qcborcommon_types.QCborError, h: ptr cQCborError): gen_qcborcommon_types.QCborError =
   T(h: h)
 proc ToQCborError__Code*(self: gen_qcborcommon_types.QCborError, ): cint =
-
   cint(fcQCborError_ToQCborError__Code(self.h))
 
 proc toString*(self: gen_qcborcommon_types.QCborError, ): string =
-
   let v_ms = fcQCborError_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

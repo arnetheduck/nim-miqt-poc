@@ -57,48 +57,39 @@ proc fcQQmlScriptString_delete(self: pointer) {.importc: "QQmlScriptString_delet
 func init*(T: type gen_qqmlscriptstring_types.QQmlScriptString, h: ptr cQQmlScriptString): gen_qqmlscriptstring_types.QQmlScriptString =
   T(h: h)
 proc create*(T: type gen_qqmlscriptstring_types.QQmlScriptString, ): gen_qqmlscriptstring_types.QQmlScriptString =
-
   gen_qqmlscriptstring_types.QQmlScriptString.init(fcQQmlScriptString_new())
+
 proc create*(T: type gen_qqmlscriptstring_types.QQmlScriptString, param1: gen_qqmlscriptstring_types.QQmlScriptString): gen_qqmlscriptstring_types.QQmlScriptString =
-
   gen_qqmlscriptstring_types.QQmlScriptString.init(fcQQmlScriptString_new2(param1.h))
-proc operatorAssign*(self: gen_qqmlscriptstring_types.QQmlScriptString, param1: gen_qqmlscriptstring_types.QQmlScriptString): void =
 
+proc operatorAssign*(self: gen_qqmlscriptstring_types.QQmlScriptString, param1: gen_qqmlscriptstring_types.QQmlScriptString): void =
   fcQQmlScriptString_operatorAssign(self.h, param1.h)
 
 proc operatorEqual*(self: gen_qqmlscriptstring_types.QQmlScriptString, param1: gen_qqmlscriptstring_types.QQmlScriptString): bool =
-
   fcQQmlScriptString_operatorEqual(self.h, param1.h)
 
 proc operatorNotEqual*(self: gen_qqmlscriptstring_types.QQmlScriptString, param1: gen_qqmlscriptstring_types.QQmlScriptString): bool =
-
   fcQQmlScriptString_operatorNotEqual(self.h, param1.h)
 
 proc isEmpty*(self: gen_qqmlscriptstring_types.QQmlScriptString, ): bool =
-
   fcQQmlScriptString_isEmpty(self.h)
 
 proc isUndefinedLiteral*(self: gen_qqmlscriptstring_types.QQmlScriptString, ): bool =
-
   fcQQmlScriptString_isUndefinedLiteral(self.h)
 
 proc isNullLiteral*(self: gen_qqmlscriptstring_types.QQmlScriptString, ): bool =
-
   fcQQmlScriptString_isNullLiteral(self.h)
 
 proc stringLiteral*(self: gen_qqmlscriptstring_types.QQmlScriptString, ): string =
-
   let v_ms = fcQQmlScriptString_stringLiteral(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc numberLiteral*(self: gen_qqmlscriptstring_types.QQmlScriptString, ok: ptr bool): float64 =
-
   fcQQmlScriptString_numberLiteral(self.h, ok)
 
 proc booleanLiteral*(self: gen_qqmlscriptstring_types.QQmlScriptString, ok: ptr bool): bool =
-
   fcQQmlScriptString_booleanLiteral(self.h, ok)
 
 proc delete*(self: gen_qqmlscriptstring_types.QQmlScriptString) =

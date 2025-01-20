@@ -64,62 +64,51 @@ proc fcQCameraInfoControl_delete(self: pointer) {.importc: "QCameraInfoControl_d
 func init*(T: type gen_qcamerainfocontrol_types.QCameraInfoControl, h: ptr cQCameraInfoControl): gen_qcamerainfocontrol_types.QCameraInfoControl =
   T(h: h)
 proc metaObject*(self: gen_qcamerainfocontrol_types.QCameraInfoControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQCameraInfoControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcamerainfocontrol_types.QCameraInfoControl, param1: cstring): pointer =
-
   fcQCameraInfoControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcamerainfocontrol_types.QCameraInfoControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCameraInfoControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring): string =
-
   let v_ms = fcQCameraInfoControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring): string =
-
   let v_ms = fcQCameraInfoControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc cameraPosition*(self: gen_qcamerainfocontrol_types.QCameraInfoControl, deviceName: string): cint =
-
   cint(fcQCameraInfoControl_cameraPosition(self.h, struct_miqt_string(data: deviceName, len: csize_t(len(deviceName)))))
 
 proc cameraOrientation*(self: gen_qcamerainfocontrol_types.QCameraInfoControl, deviceName: string): cint =
-
   fcQCameraInfoControl_cameraOrientation(self.h, struct_miqt_string(data: deviceName, len: csize_t(len(deviceName))))
 
-proc tr2*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraInfoControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraInfoControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraInfoControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcamerainfocontrol_types.QCameraInfoControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraInfoControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

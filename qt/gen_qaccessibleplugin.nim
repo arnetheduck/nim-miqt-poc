@@ -92,71 +92,60 @@ proc fcQAccessiblePlugin_delete(self: pointer) {.importc: "QAccessiblePlugin_del
 func init*(T: type gen_qaccessibleplugin_types.QAccessiblePlugin, h: ptr cQAccessiblePlugin): gen_qaccessibleplugin_types.QAccessiblePlugin =
   T(h: h)
 proc create*(T: type gen_qaccessibleplugin_types.QAccessiblePlugin, ): gen_qaccessibleplugin_types.QAccessiblePlugin =
-
   gen_qaccessibleplugin_types.QAccessiblePlugin.init(fcQAccessiblePlugin_new())
+
 proc create*(T: type gen_qaccessibleplugin_types.QAccessiblePlugin, parent: gen_qobject.QObject): gen_qaccessibleplugin_types.QAccessiblePlugin =
-
   gen_qaccessibleplugin_types.QAccessiblePlugin.init(fcQAccessiblePlugin_new2(parent.h))
-proc metaObject*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAccessiblePlugin_metaObject(self.h))
 
 proc metacast*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, param1: cstring): pointer =
-
   fcQAccessiblePlugin_metacast(self.h, param1)
 
 proc metacall*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAccessiblePlugin_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring): string =
-
   let v_ms = fcQAccessiblePlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring): string =
-
   let v_ms = fcQAccessiblePlugin_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc create*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, key: string, objectVal: gen_qobject.QObject): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fcQAccessiblePlugin_create(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), objectVal.h))
 
-proc tr2*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring, c: cstring): string =
   let v_ms = fcQAccessiblePlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAccessiblePlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring, c: cstring): string =
   let v_ms = fcQAccessiblePlugin_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qaccessibleplugin_types.QAccessiblePlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAccessiblePlugin_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QAccessiblePluginmetaObject*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQAccessiblePlugin_virtualbase_metaObject(self.h))
 
 type QAccessiblePluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -174,7 +163,6 @@ proc miqt_exec_callback_QAccessiblePlugin_metaObject(self: ptr cQAccessiblePlugi
 
   virtualReturn.h
 proc QAccessiblePluginmetacast*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, param1: cstring): pointer =
-
   fQAccessiblePlugin_virtualbase_metacast(self.h, param1)
 
 type QAccessiblePluginmetacastProc* = proc(param1: cstring): pointer
@@ -194,7 +182,6 @@ proc miqt_exec_callback_QAccessiblePlugin_metacast(self: ptr cQAccessiblePlugin,
 
   virtualReturn
 proc QAccessiblePluginmetacall*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAccessiblePlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAccessiblePluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -239,7 +226,6 @@ proc miqt_exec_callback_QAccessiblePlugin_create(self: ptr cQAccessiblePlugin, s
 
   virtualReturn.h
 proc QAccessiblePluginevent*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, event: gen_qcoreevent.QEvent): bool =
-
   fQAccessiblePlugin_virtualbase_event(self.h, event.h)
 
 type QAccessiblePlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -259,7 +245,6 @@ proc miqt_exec_callback_QAccessiblePlugin_event(self: ptr cQAccessiblePlugin, sl
 
   virtualReturn
 proc QAccessiblePlugineventFilter*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAccessiblePlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAccessiblePlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -281,7 +266,6 @@ proc miqt_exec_callback_QAccessiblePlugin_eventFilter(self: ptr cQAccessiblePlug
 
   virtualReturn
 proc QAccessiblePlugintimerEvent*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAccessiblePlugin_virtualbase_timerEvent(self.h, event.h)
 
 type QAccessiblePlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -299,7 +283,6 @@ proc miqt_exec_callback_QAccessiblePlugin_timerEvent(self: ptr cQAccessiblePlugi
 
   nimfunc[](slotval1)
 proc QAccessiblePluginchildEvent*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, event: gen_qcoreevent.QChildEvent): void =
-
   fQAccessiblePlugin_virtualbase_childEvent(self.h, event.h)
 
 type QAccessiblePluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -317,7 +300,6 @@ proc miqt_exec_callback_QAccessiblePlugin_childEvent(self: ptr cQAccessiblePlugi
 
   nimfunc[](slotval1)
 proc QAccessiblePlugincustomEvent*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, event: gen_qcoreevent.QEvent): void =
-
   fQAccessiblePlugin_virtualbase_customEvent(self.h, event.h)
 
 type QAccessiblePlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -335,7 +317,6 @@ proc miqt_exec_callback_QAccessiblePlugin_customEvent(self: ptr cQAccessiblePlug
 
   nimfunc[](slotval1)
 proc QAccessiblePluginconnectNotify*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAccessiblePlugin_virtualbase_connectNotify(self.h, signal.h)
 
 type QAccessiblePluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -353,7 +334,6 @@ proc miqt_exec_callback_QAccessiblePlugin_connectNotify(self: ptr cQAccessiblePl
 
   nimfunc[](slotval1)
 proc QAccessiblePlugindisconnectNotify*(self: gen_qaccessibleplugin_types.QAccessiblePlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAccessiblePlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAccessiblePlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

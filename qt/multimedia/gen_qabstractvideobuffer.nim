@@ -94,34 +94,27 @@ proc fcQAbstractPlanarVideoBuffer_delete(self: pointer) {.importc: "QAbstractPla
 func init*(T: type gen_qabstractvideobuffer_types.QAbstractVideoBuffer, h: ptr cQAbstractVideoBuffer): gen_qabstractvideobuffer_types.QAbstractVideoBuffer =
   T(h: h)
 proc create*(T: type gen_qabstractvideobuffer_types.QAbstractVideoBuffer, typeVal: cint): gen_qabstractvideobuffer_types.QAbstractVideoBuffer =
-
   gen_qabstractvideobuffer_types.QAbstractVideoBuffer.init(fcQAbstractVideoBuffer_new(cint(typeVal)))
-proc release*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): void =
 
+proc release*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): void =
   fcQAbstractVideoBuffer_release(self.h)
 
 proc handleType*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): cint =
-
   cint(fcQAbstractVideoBuffer_handleType(self.h))
 
 proc mapMode*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): cint =
-
   cint(fcQAbstractVideoBuffer_mapMode(self.h))
 
 proc map*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
-
   fcQAbstractVideoBuffer_map(self.h, cint(mode), numBytes, bytesPerLine)
 
 proc unmap*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): void =
-
   fcQAbstractVideoBuffer_unmap(self.h)
 
 proc handle*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQAbstractVideoBuffer_handle(self.h))
 
 proc QAbstractVideoBufferrelease*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): void =
-
   fQAbstractVideoBuffer_virtualbase_release(self.h)
 
 type QAbstractVideoBufferreleaseProc* = proc(): void
@@ -183,7 +176,6 @@ proc miqt_exec_callback_QAbstractVideoBuffer_unmap(self: ptr cQAbstractVideoBuff
 
   nimfunc[]()
 proc QAbstractVideoBufferhandle*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQAbstractVideoBuffer_virtualbase_handle(self.h))
 
 type QAbstractVideoBufferhandleProc* = proc(): gen_qvariant.QVariant
@@ -206,14 +198,12 @@ proc delete*(self: gen_qabstractvideobuffer_types.QAbstractVideoBuffer) =
 func init*(T: type gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, h: ptr cQAbstractPlanarVideoBuffer): gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer =
   T(h: h)
 proc create*(T: type gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, typeVal: cint): gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer =
-
   gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer.init(fcQAbstractPlanarVideoBuffer_new(cint(typeVal)))
-proc map*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
 
+proc map*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
   fcQAbstractPlanarVideoBuffer_map(self.h, cint(mode), numBytes, bytesPerLine)
 
 proc QAbstractPlanarVideoBuffermap*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8 =
-
   fQAbstractPlanarVideoBuffer_virtualbase_map(self.h, cint(mode), numBytes, bytesPerLine)
 
 type QAbstractPlanarVideoBuffermapProc* = proc(mode: cint, numBytes: ptr cint, bytesPerLine: ptr cint): ptr uint8
@@ -237,7 +227,6 @@ proc miqt_exec_callback_QAbstractPlanarVideoBuffer_map(self: ptr cQAbstractPlana
 
   virtualReturn
 proc QAbstractPlanarVideoBufferrelease*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, ): void =
-
   fQAbstractPlanarVideoBuffer_virtualbase_release(self.h)
 
 type QAbstractPlanarVideoBufferreleaseProc* = proc(): void
@@ -279,7 +268,6 @@ proc miqt_exec_callback_QAbstractPlanarVideoBuffer_unmap(self: ptr cQAbstractPla
 
   nimfunc[]()
 proc QAbstractPlanarVideoBufferhandle*(self: gen_qabstractvideobuffer_types.QAbstractPlanarVideoBuffer, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQAbstractPlanarVideoBuffer_virtualbase_handle(self.h))
 
 type QAbstractPlanarVideoBufferhandleProc* = proc(): gen_qvariant.QVariant

@@ -248,356 +248,298 @@ proc fcQWebEngineView_delete(self: pointer) {.importc: "QWebEngineView_delete".}
 func init*(T: type gen_qwebengineview_types.QWebEngineView, h: ptr cQWebEngineView): gen_qwebengineview_types.QWebEngineView =
   T(h: h)
 proc create*(T: type gen_qwebengineview_types.QWebEngineView, parent: gen_qwidget.QWidget): gen_qwebengineview_types.QWebEngineView =
-
   gen_qwebengineview_types.QWebEngineView.init(fcQWebEngineView_new(parent.h))
+
 proc create*(T: type gen_qwebengineview_types.QWebEngineView, ): gen_qwebengineview_types.QWebEngineView =
-
   gen_qwebengineview_types.QWebEngineView.init(fcQWebEngineView_new2())
-proc metaObject*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineView_metaObject(self.h))
 
 proc metacast*(self: gen_qwebengineview_types.QWebEngineView, param1: cstring): pointer =
-
   fcQWebEngineView_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebengineview_types.QWebEngineView, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebEngineView_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring): string =
-
   let v_ms = fcQWebEngineView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring): string =
-
   let v_ms = fcQWebEngineView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc page*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qwebenginepage.QWebEnginePage =
-
   gen_qwebenginepage.QWebEnginePage(h: fcQWebEngineView_page(self.h))
 
 proc setPage*(self: gen_qwebengineview_types.QWebEngineView, page: gen_qwebenginepage.QWebEnginePage): void =
-
   fcQWebEngineView_setPage(self.h, page.h)
 
 proc load*(self: gen_qwebengineview_types.QWebEngineView, url: gen_qurl.QUrl): void =
-
   fcQWebEngineView_load(self.h, url.h)
 
-proc loadWithRequest*(self: gen_qwebengineview_types.QWebEngineView, request: gen_qwebenginehttprequest.QWebEngineHttpRequest): void =
-
+proc load*(self: gen_qwebengineview_types.QWebEngineView, request: gen_qwebenginehttprequest.QWebEngineHttpRequest): void =
   fcQWebEngineView_loadWithRequest(self.h, request.h)
 
 proc setHtml*(self: gen_qwebengineview_types.QWebEngineView, html: string): void =
-
   fcQWebEngineView_setHtml(self.h, struct_miqt_string(data: html, len: csize_t(len(html))))
 
 proc setContent*(self: gen_qwebengineview_types.QWebEngineView, data: seq[byte]): void =
-
   fcQWebEngineView_setContent(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
 proc history*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qwebenginehistory.QWebEngineHistory =
-
   gen_qwebenginehistory.QWebEngineHistory(h: fcQWebEngineView_history(self.h))
 
 proc title*(self: gen_qwebengineview_types.QWebEngineView, ): string =
-
   let v_ms = fcQWebEngineView_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setUrl*(self: gen_qwebengineview_types.QWebEngineView, url: gen_qurl.QUrl): void =
-
   fcQWebEngineView_setUrl(self.h, url.h)
 
 proc url*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineView_url(self.h))
 
 proc iconUrl*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineView_iconUrl(self.h))
 
 proc icon*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQWebEngineView_icon(self.h))
 
 proc hasSelection*(self: gen_qwebengineview_types.QWebEngineView, ): bool =
-
   fcQWebEngineView_hasSelection(self.h)
 
 proc selectedText*(self: gen_qwebengineview_types.QWebEngineView, ): string =
-
   let v_ms = fcQWebEngineView_selectedText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc pageAction*(self: gen_qwebengineview_types.QWebEngineView, action: cint): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQWebEngineView_pageAction(self.h, cint(action)))
 
 proc triggerPageAction*(self: gen_qwebengineview_types.QWebEngineView, action: cint): void =
-
   fcQWebEngineView_triggerPageAction(self.h, cint(action))
 
 proc zoomFactor*(self: gen_qwebengineview_types.QWebEngineView, ): float64 =
-
   fcQWebEngineView_zoomFactor(self.h)
 
 proc setZoomFactor*(self: gen_qwebengineview_types.QWebEngineView, factor: float64): void =
-
   fcQWebEngineView_setZoomFactor(self.h, factor)
 
 proc findText*(self: gen_qwebengineview_types.QWebEngineView, subString: string): void =
-
   fcQWebEngineView_findText(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))))
 
 proc sizeHint*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWebEngineView_sizeHint(self.h))
 
 proc settings*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qwebenginesettings.QWebEngineSettings =
-
   gen_qwebenginesettings.QWebEngineSettings(h: fcQWebEngineView_settings(self.h))
 
 proc stop*(self: gen_qwebengineview_types.QWebEngineView, ): void =
-
   fcQWebEngineView_stop(self.h)
 
 proc back*(self: gen_qwebengineview_types.QWebEngineView, ): void =
-
   fcQWebEngineView_back(self.h)
 
 proc forward*(self: gen_qwebengineview_types.QWebEngineView, ): void =
-
   fcQWebEngineView_forward(self.h)
 
 proc reload*(self: gen_qwebengineview_types.QWebEngineView, ): void =
-
   fcQWebEngineView_reload(self.h)
 
 proc loadStarted*(self: gen_qwebengineview_types.QWebEngineView, ): void =
-
   fcQWebEngineView_loadStarted(self.h)
 
+type QWebEngineViewloadStartedSlot* = proc()
 proc miqt_exec_callback_QWebEngineView_loadStarted(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QWebEngineViewloadStartedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onloadStarted*(self: gen_qwebengineview_types.QWebEngineView, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onloadStarted*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewloadStartedSlot) =
+  var tmp = new QWebEngineViewloadStartedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_loadStarted(self.h, cast[int](addr tmp[]))
-proc loadProgress*(self: gen_qwebengineview_types.QWebEngineView, progress: cint): void =
 
+proc loadProgress*(self: gen_qwebengineview_types.QWebEngineView, progress: cint): void =
   fcQWebEngineView_loadProgress(self.h, progress)
 
+type QWebEngineViewloadProgressSlot* = proc(progress: cint)
 proc miqt_exec_callback_QWebEngineView_loadProgress(slot: int, progress: cint) {.exportc.} =
-  type Cb = proc(progress: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineViewloadProgressSlot](cast[pointer](slot))
   let slotval1 = progress
-
 
   nimfunc[](slotval1)
 
-proc onloadProgress*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(progress: cint)) =
-  type Cb = proc(progress: cint)
-  var tmp = new Cb
+proc onloadProgress*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewloadProgressSlot) =
+  var tmp = new QWebEngineViewloadProgressSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_loadProgress(self.h, cast[int](addr tmp[]))
-proc loadFinished*(self: gen_qwebengineview_types.QWebEngineView, param1: bool): void =
 
+proc loadFinished*(self: gen_qwebengineview_types.QWebEngineView, param1: bool): void =
   fcQWebEngineView_loadFinished(self.h, param1)
 
+type QWebEngineViewloadFinishedSlot* = proc(param1: bool)
 proc miqt_exec_callback_QWebEngineView_loadFinished(slot: int, param1: bool) {.exportc.} =
-  type Cb = proc(param1: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineViewloadFinishedSlot](cast[pointer](slot))
   let slotval1 = param1
-
 
   nimfunc[](slotval1)
 
-proc onloadFinished*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(param1: bool)) =
-  type Cb = proc(param1: bool)
-  var tmp = new Cb
+proc onloadFinished*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewloadFinishedSlot) =
+  var tmp = new QWebEngineViewloadFinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_loadFinished(self.h, cast[int](addr tmp[]))
-proc titleChanged*(self: gen_qwebengineview_types.QWebEngineView, title: string): void =
 
+proc titleChanged*(self: gen_qwebengineview_types.QWebEngineView, title: string): void =
   fcQWebEngineView_titleChanged(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
+type QWebEngineViewtitleChangedSlot* = proc(title: string)
 proc miqt_exec_callback_QWebEngineView_titleChanged(slot: int, title: struct_miqt_string) {.exportc.} =
-  type Cb = proc(title: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineViewtitleChangedSlot](cast[pointer](slot))
   let vtitle_ms = title
   let vtitlex_ret = string.fromBytes(toOpenArrayByte(vtitle_ms.data, 0, int(vtitle_ms.len)-1))
   c_free(vtitle_ms.data)
   let slotval1 = vtitlex_ret
 
-
   nimfunc[](slotval1)
 
-proc ontitleChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(title: string)) =
-  type Cb = proc(title: string)
-  var tmp = new Cb
+proc ontitleChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewtitleChangedSlot) =
+  var tmp = new QWebEngineViewtitleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_titleChanged(self.h, cast[int](addr tmp[]))
-proc selectionChanged*(self: gen_qwebengineview_types.QWebEngineView, ): void =
 
+proc selectionChanged*(self: gen_qwebengineview_types.QWebEngineView, ): void =
   fcQWebEngineView_selectionChanged(self.h)
 
+type QWebEngineViewselectionChangedSlot* = proc()
 proc miqt_exec_callback_QWebEngineView_selectionChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QWebEngineViewselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onselectionChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onselectionChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewselectionChangedSlot) =
+  var tmp = new QWebEngineViewselectionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_selectionChanged(self.h, cast[int](addr tmp[]))
-proc urlChanged*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qurl.QUrl): void =
 
+proc urlChanged*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qurl.QUrl): void =
   fcQWebEngineView_urlChanged(self.h, param1.h)
 
+type QWebEngineViewurlChangedSlot* = proc(param1: gen_qurl.QUrl)
 proc miqt_exec_callback_QWebEngineView_urlChanged(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qurl.QUrl)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineViewurlChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qurl.QUrl(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc onurlChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(param1: gen_qurl.QUrl)) =
-  type Cb = proc(param1: gen_qurl.QUrl)
-  var tmp = new Cb
+proc onurlChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewurlChangedSlot) =
+  var tmp = new QWebEngineViewurlChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_urlChanged(self.h, cast[int](addr tmp[]))
-proc iconUrlChanged*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qurl.QUrl): void =
 
+proc iconUrlChanged*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qurl.QUrl): void =
   fcQWebEngineView_iconUrlChanged(self.h, param1.h)
 
+type QWebEngineViewiconUrlChangedSlot* = proc(param1: gen_qurl.QUrl)
 proc miqt_exec_callback_QWebEngineView_iconUrlChanged(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qurl.QUrl)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineViewiconUrlChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qurl.QUrl(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc oniconUrlChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(param1: gen_qurl.QUrl)) =
-  type Cb = proc(param1: gen_qurl.QUrl)
-  var tmp = new Cb
+proc oniconUrlChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewiconUrlChangedSlot) =
+  var tmp = new QWebEngineViewiconUrlChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_iconUrlChanged(self.h, cast[int](addr tmp[]))
-proc iconChanged*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qicon.QIcon): void =
 
+proc iconChanged*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qicon.QIcon): void =
   fcQWebEngineView_iconChanged(self.h, param1.h)
 
+type QWebEngineViewiconChangedSlot* = proc(param1: gen_qicon.QIcon)
 proc miqt_exec_callback_QWebEngineView_iconChanged(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qicon.QIcon)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineViewiconChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qicon.QIcon(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc oniconChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(param1: gen_qicon.QIcon)) =
-  type Cb = proc(param1: gen_qicon.QIcon)
-  var tmp = new Cb
+proc oniconChanged*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewiconChangedSlot) =
+  var tmp = new QWebEngineViewiconChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_iconChanged(self.h, cast[int](addr tmp[]))
-proc renderProcessTerminated*(self: gen_qwebengineview_types.QWebEngineView, terminationStatus: cint, exitCode: cint): void =
 
+proc renderProcessTerminated*(self: gen_qwebengineview_types.QWebEngineView, terminationStatus: cint, exitCode: cint): void =
   fcQWebEngineView_renderProcessTerminated(self.h, cint(terminationStatus), exitCode)
 
+type QWebEngineViewrenderProcessTerminatedSlot* = proc(terminationStatus: cint, exitCode: cint)
 proc miqt_exec_callback_QWebEngineView_renderProcessTerminated(slot: int, terminationStatus: cint, exitCode: cint) {.exportc.} =
-  type Cb = proc(terminationStatus: cint, exitCode: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineViewrenderProcessTerminatedSlot](cast[pointer](slot))
   let slotval1 = cint(terminationStatus)
 
   let slotval2 = exitCode
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onrenderProcessTerminated*(self: gen_qwebengineview_types.QWebEngineView, slot: proc(terminationStatus: cint, exitCode: cint)) =
-  type Cb = proc(terminationStatus: cint, exitCode: cint)
-  var tmp = new Cb
+proc onrenderProcessTerminated*(self: gen_qwebengineview_types.QWebEngineView, slot: QWebEngineViewrenderProcessTerminatedSlot) =
+  var tmp = new QWebEngineViewrenderProcessTerminatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineView_connect_renderProcessTerminated(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qwebengineview_types.QWebEngineView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setHtml2*(self: gen_qwebengineview_types.QWebEngineView, html: string, baseUrl: gen_qurl.QUrl): void =
-
+proc setHtml*(self: gen_qwebengineview_types.QWebEngineView, html: string, baseUrl: gen_qurl.QUrl): void =
   fcQWebEngineView_setHtml2(self.h, struct_miqt_string(data: html, len: csize_t(len(html))), baseUrl.h)
 
-proc setContent2*(self: gen_qwebengineview_types.QWebEngineView, data: seq[byte], mimeType: string): void =
-
+proc setContent*(self: gen_qwebengineview_types.QWebEngineView, data: seq[byte], mimeType: string): void =
   fcQWebEngineView_setContent2(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))))
 
-proc setContent3*(self: gen_qwebengineview_types.QWebEngineView, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
-
+proc setContent*(self: gen_qwebengineview_types.QWebEngineView, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
   fcQWebEngineView_setContent3(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))), baseUrl.h)
 
-proc triggerPageAction2*(self: gen_qwebengineview_types.QWebEngineView, action: cint, checked: bool): void =
-
+proc triggerPageAction*(self: gen_qwebengineview_types.QWebEngineView, action: cint, checked: bool): void =
   fcQWebEngineView_triggerPageAction2(self.h, cint(action), checked)
 
-proc findText2*(self: gen_qwebengineview_types.QWebEngineView, subString: string, options: cint): void =
-
+proc findText*(self: gen_qwebengineview_types.QWebEngineView, subString: string, options: cint): void =
   fcQWebEngineView_findText2(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))), cint(options))
 
 proc QWebEngineViewmetaObject*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQWebEngineView_virtualbase_metaObject(self.h))
 
 type QWebEngineViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -615,7 +557,6 @@ proc miqt_exec_callback_QWebEngineView_metaObject(self: ptr cQWebEngineView, slo
 
   virtualReturn.h
 proc QWebEngineViewmetacast*(self: gen_qwebengineview_types.QWebEngineView, param1: cstring): pointer =
-
   fQWebEngineView_virtualbase_metacast(self.h, param1)
 
 type QWebEngineViewmetacastProc* = proc(param1: cstring): pointer
@@ -635,7 +576,6 @@ proc miqt_exec_callback_QWebEngineView_metacast(self: ptr cQWebEngineView, slot:
 
   virtualReturn
 proc QWebEngineViewmetacall*(self: gen_qwebengineview_types.QWebEngineView, param1: cint, param2: cint, param3: pointer): cint =
-
   fQWebEngineView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QWebEngineViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -659,7 +599,6 @@ proc miqt_exec_callback_QWebEngineView_metacall(self: ptr cQWebEngineView, slot:
 
   virtualReturn
 proc QWebEngineViewsizeHint*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWebEngineView_virtualbase_sizeHint(self.h))
 
 type QWebEngineViewsizeHintProc* = proc(): gen_qsize.QSize
@@ -677,7 +616,6 @@ proc miqt_exec_callback_QWebEngineView_sizeHint(self: ptr cQWebEngineView, slot:
 
   virtualReturn.h
 proc QWebEngineViewcreateWindow*(self: gen_qwebengineview_types.QWebEngineView, typeVal: cint): gen_qwebengineview_types.QWebEngineView =
-
   gen_qwebengineview_types.QWebEngineView(h: fQWebEngineView_virtualbase_createWindow(self.h, cint(typeVal)))
 
 type QWebEngineViewcreateWindowProc* = proc(typeVal: cint): gen_qwebengineview_types.QWebEngineView
@@ -697,7 +635,6 @@ proc miqt_exec_callback_QWebEngineView_createWindow(self: ptr cQWebEngineView, s
 
   virtualReturn.h
 proc QWebEngineViewcontextMenuEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QContextMenuEvent): void =
-
   fQWebEngineView_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QWebEngineViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -715,7 +652,6 @@ proc miqt_exec_callback_QWebEngineView_contextMenuEvent(self: ptr cQWebEngineVie
 
   nimfunc[](slotval1)
 proc QWebEngineViewevent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qcoreevent.QEvent): bool =
-
   fQWebEngineView_virtualbase_event(self.h, param1.h)
 
 type QWebEngineVieweventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -735,7 +671,6 @@ proc miqt_exec_callback_QWebEngineView_event(self: ptr cQWebEngineView, slot: in
 
   virtualReturn
 proc QWebEngineViewshowEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QShowEvent): void =
-
   fQWebEngineView_virtualbase_showEvent(self.h, param1.h)
 
 type QWebEngineViewshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -753,7 +688,6 @@ proc miqt_exec_callback_QWebEngineView_showEvent(self: ptr cQWebEngineView, slot
 
   nimfunc[](slotval1)
 proc QWebEngineViewhideEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QHideEvent): void =
-
   fQWebEngineView_virtualbase_hideEvent(self.h, param1.h)
 
 type QWebEngineViewhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
@@ -771,7 +705,6 @@ proc miqt_exec_callback_QWebEngineView_hideEvent(self: ptr cQWebEngineView, slot
 
   nimfunc[](slotval1)
 proc QWebEngineViewcloseEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QCloseEvent): void =
-
   fQWebEngineView_virtualbase_closeEvent(self.h, param1.h)
 
 type QWebEngineViewcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
@@ -789,7 +722,6 @@ proc miqt_exec_callback_QWebEngineView_closeEvent(self: ptr cQWebEngineView, slo
 
   nimfunc[](slotval1)
 proc QWebEngineViewdragEnterEvent*(self: gen_qwebengineview_types.QWebEngineView, e: gen_qevent.QDragEnterEvent): void =
-
   fQWebEngineView_virtualbase_dragEnterEvent(self.h, e.h)
 
 type QWebEngineViewdragEnterEventProc* = proc(e: gen_qevent.QDragEnterEvent): void
@@ -807,7 +739,6 @@ proc miqt_exec_callback_QWebEngineView_dragEnterEvent(self: ptr cQWebEngineView,
 
   nimfunc[](slotval1)
 proc QWebEngineViewdragLeaveEvent*(self: gen_qwebengineview_types.QWebEngineView, e: gen_qevent.QDragLeaveEvent): void =
-
   fQWebEngineView_virtualbase_dragLeaveEvent(self.h, e.h)
 
 type QWebEngineViewdragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
@@ -825,7 +756,6 @@ proc miqt_exec_callback_QWebEngineView_dragLeaveEvent(self: ptr cQWebEngineView,
 
   nimfunc[](slotval1)
 proc QWebEngineViewdragMoveEvent*(self: gen_qwebengineview_types.QWebEngineView, e: gen_qevent.QDragMoveEvent): void =
-
   fQWebEngineView_virtualbase_dragMoveEvent(self.h, e.h)
 
 type QWebEngineViewdragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
@@ -843,7 +773,6 @@ proc miqt_exec_callback_QWebEngineView_dragMoveEvent(self: ptr cQWebEngineView, 
 
   nimfunc[](slotval1)
 proc QWebEngineViewdropEvent*(self: gen_qwebengineview_types.QWebEngineView, e: gen_qevent.QDropEvent): void =
-
   fQWebEngineView_virtualbase_dropEvent(self.h, e.h)
 
 type QWebEngineViewdropEventProc* = proc(e: gen_qevent.QDropEvent): void
@@ -861,7 +790,6 @@ proc miqt_exec_callback_QWebEngineView_dropEvent(self: ptr cQWebEngineView, slot
 
   nimfunc[](slotval1)
 proc QWebEngineViewdevType*(self: gen_qwebengineview_types.QWebEngineView, ): cint =
-
   fQWebEngineView_virtualbase_devType(self.h)
 
 type QWebEngineViewdevTypeProc* = proc(): cint
@@ -879,7 +807,6 @@ proc miqt_exec_callback_QWebEngineView_devType(self: ptr cQWebEngineView, slot: 
 
   virtualReturn
 proc QWebEngineViewsetVisible*(self: gen_qwebengineview_types.QWebEngineView, visible: bool): void =
-
   fQWebEngineView_virtualbase_setVisible(self.h, visible)
 
 type QWebEngineViewsetVisibleProc* = proc(visible: bool): void
@@ -897,7 +824,6 @@ proc miqt_exec_callback_QWebEngineView_setVisible(self: ptr cQWebEngineView, slo
 
   nimfunc[](slotval1)
 proc QWebEngineViewminimumSizeHint*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWebEngineView_virtualbase_minimumSizeHint(self.h))
 
 type QWebEngineViewminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -915,7 +841,6 @@ proc miqt_exec_callback_QWebEngineView_minimumSizeHint(self: ptr cQWebEngineView
 
   virtualReturn.h
 proc QWebEngineViewheightForWidth*(self: gen_qwebengineview_types.QWebEngineView, param1: cint): cint =
-
   fQWebEngineView_virtualbase_heightForWidth(self.h, param1)
 
 type QWebEngineViewheightForWidthProc* = proc(param1: cint): cint
@@ -935,7 +860,6 @@ proc miqt_exec_callback_QWebEngineView_heightForWidth(self: ptr cQWebEngineView,
 
   virtualReturn
 proc QWebEngineViewhasHeightForWidth*(self: gen_qwebengineview_types.QWebEngineView, ): bool =
-
   fQWebEngineView_virtualbase_hasHeightForWidth(self.h)
 
 type QWebEngineViewhasHeightForWidthProc* = proc(): bool
@@ -953,7 +877,6 @@ proc miqt_exec_callback_QWebEngineView_hasHeightForWidth(self: ptr cQWebEngineVi
 
   virtualReturn
 proc QWebEngineViewpaintEngine*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQWebEngineView_virtualbase_paintEngine(self.h))
 
 type QWebEngineViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -971,7 +894,6 @@ proc miqt_exec_callback_QWebEngineView_paintEngine(self: ptr cQWebEngineView, sl
 
   virtualReturn.h
 proc QWebEngineViewmousePressEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMouseEvent): void =
-
   fQWebEngineView_virtualbase_mousePressEvent(self.h, event.h)
 
 type QWebEngineViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -989,7 +911,6 @@ proc miqt_exec_callback_QWebEngineView_mousePressEvent(self: ptr cQWebEngineView
 
   nimfunc[](slotval1)
 proc QWebEngineViewmouseReleaseEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMouseEvent): void =
-
   fQWebEngineView_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QWebEngineViewmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1007,7 +928,6 @@ proc miqt_exec_callback_QWebEngineView_mouseReleaseEvent(self: ptr cQWebEngineVi
 
   nimfunc[](slotval1)
 proc QWebEngineViewmouseDoubleClickEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMouseEvent): void =
-
   fQWebEngineView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QWebEngineViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1025,7 +945,6 @@ proc miqt_exec_callback_QWebEngineView_mouseDoubleClickEvent(self: ptr cQWebEngi
 
   nimfunc[](slotval1)
 proc QWebEngineViewmouseMoveEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMouseEvent): void =
-
   fQWebEngineView_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QWebEngineViewmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1043,7 +962,6 @@ proc miqt_exec_callback_QWebEngineView_mouseMoveEvent(self: ptr cQWebEngineView,
 
   nimfunc[](slotval1)
 proc QWebEngineViewwheelEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QWheelEvent): void =
-
   fQWebEngineView_virtualbase_wheelEvent(self.h, event.h)
 
 type QWebEngineViewwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -1061,7 +979,6 @@ proc miqt_exec_callback_QWebEngineView_wheelEvent(self: ptr cQWebEngineView, slo
 
   nimfunc[](slotval1)
 proc QWebEngineViewkeyPressEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QKeyEvent): void =
-
   fQWebEngineView_virtualbase_keyPressEvent(self.h, event.h)
 
 type QWebEngineViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1079,7 +996,6 @@ proc miqt_exec_callback_QWebEngineView_keyPressEvent(self: ptr cQWebEngineView, 
 
   nimfunc[](slotval1)
 proc QWebEngineViewkeyReleaseEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QKeyEvent): void =
-
   fQWebEngineView_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QWebEngineViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1097,7 +1013,6 @@ proc miqt_exec_callback_QWebEngineView_keyReleaseEvent(self: ptr cQWebEngineView
 
   nimfunc[](slotval1)
 proc QWebEngineViewfocusInEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QFocusEvent): void =
-
   fQWebEngineView_virtualbase_focusInEvent(self.h, event.h)
 
 type QWebEngineViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1115,7 +1030,6 @@ proc miqt_exec_callback_QWebEngineView_focusInEvent(self: ptr cQWebEngineView, s
 
   nimfunc[](slotval1)
 proc QWebEngineViewfocusOutEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QFocusEvent): void =
-
   fQWebEngineView_virtualbase_focusOutEvent(self.h, event.h)
 
 type QWebEngineViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1133,7 +1047,6 @@ proc miqt_exec_callback_QWebEngineView_focusOutEvent(self: ptr cQWebEngineView, 
 
   nimfunc[](slotval1)
 proc QWebEngineViewenterEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qcoreevent.QEvent): void =
-
   fQWebEngineView_virtualbase_enterEvent(self.h, event.h)
 
 type QWebEngineViewenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1151,7 +1064,6 @@ proc miqt_exec_callback_QWebEngineView_enterEvent(self: ptr cQWebEngineView, slo
 
   nimfunc[](slotval1)
 proc QWebEngineViewleaveEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qcoreevent.QEvent): void =
-
   fQWebEngineView_virtualbase_leaveEvent(self.h, event.h)
 
 type QWebEngineViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1169,7 +1081,6 @@ proc miqt_exec_callback_QWebEngineView_leaveEvent(self: ptr cQWebEngineView, slo
 
   nimfunc[](slotval1)
 proc QWebEngineViewpaintEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QPaintEvent): void =
-
   fQWebEngineView_virtualbase_paintEvent(self.h, event.h)
 
 type QWebEngineViewpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1187,7 +1098,6 @@ proc miqt_exec_callback_QWebEngineView_paintEvent(self: ptr cQWebEngineView, slo
 
   nimfunc[](slotval1)
 proc QWebEngineViewmoveEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QMoveEvent): void =
-
   fQWebEngineView_virtualbase_moveEvent(self.h, event.h)
 
 type QWebEngineViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1205,7 +1115,6 @@ proc miqt_exec_callback_QWebEngineView_moveEvent(self: ptr cQWebEngineView, slot
 
   nimfunc[](slotval1)
 proc QWebEngineViewresizeEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QResizeEvent): void =
-
   fQWebEngineView_virtualbase_resizeEvent(self.h, event.h)
 
 type QWebEngineViewresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -1223,7 +1132,6 @@ proc miqt_exec_callback_QWebEngineView_resizeEvent(self: ptr cQWebEngineView, sl
 
   nimfunc[](slotval1)
 proc QWebEngineViewtabletEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QTabletEvent): void =
-
   fQWebEngineView_virtualbase_tabletEvent(self.h, event.h)
 
 type QWebEngineViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1241,7 +1149,6 @@ proc miqt_exec_callback_QWebEngineView_tabletEvent(self: ptr cQWebEngineView, sl
 
   nimfunc[](slotval1)
 proc QWebEngineViewactionEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qevent.QActionEvent): void =
-
   fQWebEngineView_virtualbase_actionEvent(self.h, event.h)
 
 type QWebEngineViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1259,7 +1166,6 @@ proc miqt_exec_callback_QWebEngineView_actionEvent(self: ptr cQWebEngineView, sl
 
   nimfunc[](slotval1)
 proc QWebEngineViewnativeEvent*(self: gen_qwebengineview_types.QWebEngineView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQWebEngineView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QWebEngineViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1286,7 +1192,6 @@ proc miqt_exec_callback_QWebEngineView_nativeEvent(self: ptr cQWebEngineView, sl
 
   virtualReturn
 proc QWebEngineViewchangeEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qcoreevent.QEvent): void =
-
   fQWebEngineView_virtualbase_changeEvent(self.h, param1.h)
 
 type QWebEngineViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1304,7 +1209,6 @@ proc miqt_exec_callback_QWebEngineView_changeEvent(self: ptr cQWebEngineView, sl
 
   nimfunc[](slotval1)
 proc QWebEngineViewmetric*(self: gen_qwebengineview_types.QWebEngineView, param1: cint): cint =
-
   fQWebEngineView_virtualbase_metric(self.h, cint(param1))
 
 type QWebEngineViewmetricProc* = proc(param1: cint): cint
@@ -1324,7 +1228,6 @@ proc miqt_exec_callback_QWebEngineView_metric(self: ptr cQWebEngineView, slot: i
 
   virtualReturn
 proc QWebEngineViewinitPainter*(self: gen_qwebengineview_types.QWebEngineView, painter: gen_qpainter.QPainter): void =
-
   fQWebEngineView_virtualbase_initPainter(self.h, painter.h)
 
 type QWebEngineViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1342,7 +1245,6 @@ proc miqt_exec_callback_QWebEngineView_initPainter(self: ptr cQWebEngineView, sl
 
   nimfunc[](slotval1)
 proc QWebEngineViewredirected*(self: gen_qwebengineview_types.QWebEngineView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQWebEngineView_virtualbase_redirected(self.h, offset.h))
 
 type QWebEngineViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1362,7 +1264,6 @@ proc miqt_exec_callback_QWebEngineView_redirected(self: ptr cQWebEngineView, slo
 
   virtualReturn.h
 proc QWebEngineViewsharedPainter*(self: gen_qwebengineview_types.QWebEngineView, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQWebEngineView_virtualbase_sharedPainter(self.h))
 
 type QWebEngineViewsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1380,7 +1281,6 @@ proc miqt_exec_callback_QWebEngineView_sharedPainter(self: ptr cQWebEngineView, 
 
   virtualReturn.h
 proc QWebEngineViewinputMethodEvent*(self: gen_qwebengineview_types.QWebEngineView, param1: gen_qevent.QInputMethodEvent): void =
-
   fQWebEngineView_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QWebEngineViewinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1398,7 +1298,6 @@ proc miqt_exec_callback_QWebEngineView_inputMethodEvent(self: ptr cQWebEngineVie
 
   nimfunc[](slotval1)
 proc QWebEngineViewinputMethodQuery*(self: gen_qwebengineview_types.QWebEngineView, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQWebEngineView_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QWebEngineViewinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1418,7 +1317,6 @@ proc miqt_exec_callback_QWebEngineView_inputMethodQuery(self: ptr cQWebEngineVie
 
   virtualReturn.h
 proc QWebEngineViewfocusNextPrevChild*(self: gen_qwebengineview_types.QWebEngineView, next: bool): bool =
-
   fQWebEngineView_virtualbase_focusNextPrevChild(self.h, next)
 
 type QWebEngineViewfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1438,7 +1336,6 @@ proc miqt_exec_callback_QWebEngineView_focusNextPrevChild(self: ptr cQWebEngineV
 
   virtualReturn
 proc QWebEngineVieweventFilter*(self: gen_qwebengineview_types.QWebEngineView, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQWebEngineView_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QWebEngineVieweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1460,7 +1357,6 @@ proc miqt_exec_callback_QWebEngineView_eventFilter(self: ptr cQWebEngineView, sl
 
   virtualReturn
 proc QWebEngineViewtimerEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qcoreevent.QTimerEvent): void =
-
   fQWebEngineView_virtualbase_timerEvent(self.h, event.h)
 
 type QWebEngineViewtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1478,7 +1374,6 @@ proc miqt_exec_callback_QWebEngineView_timerEvent(self: ptr cQWebEngineView, slo
 
   nimfunc[](slotval1)
 proc QWebEngineViewchildEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qcoreevent.QChildEvent): void =
-
   fQWebEngineView_virtualbase_childEvent(self.h, event.h)
 
 type QWebEngineViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1496,7 +1391,6 @@ proc miqt_exec_callback_QWebEngineView_childEvent(self: ptr cQWebEngineView, slo
 
   nimfunc[](slotval1)
 proc QWebEngineViewcustomEvent*(self: gen_qwebengineview_types.QWebEngineView, event: gen_qcoreevent.QEvent): void =
-
   fQWebEngineView_virtualbase_customEvent(self.h, event.h)
 
 type QWebEngineViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1514,7 +1408,6 @@ proc miqt_exec_callback_QWebEngineView_customEvent(self: ptr cQWebEngineView, sl
 
   nimfunc[](slotval1)
 proc QWebEngineViewconnectNotify*(self: gen_qwebengineview_types.QWebEngineView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebEngineView_virtualbase_connectNotify(self.h, signal.h)
 
 type QWebEngineViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1532,7 +1425,6 @@ proc miqt_exec_callback_QWebEngineView_connectNotify(self: ptr cQWebEngineView, 
 
   nimfunc[](slotval1)
 proc QWebEngineViewdisconnectNotify*(self: gen_qwebengineview_types.QWebEngineView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebEngineView_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QWebEngineViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

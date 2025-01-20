@@ -298,114 +298,96 @@ proc fcQUndoView_delete(self: pointer) {.importc: "QUndoView_delete".}
 func init*(T: type gen_qundoview_types.QUndoView, h: ptr cQUndoView): gen_qundoview_types.QUndoView =
   T(h: h)
 proc create*(T: type gen_qundoview_types.QUndoView, parent: gen_qwidget.QWidget): gen_qundoview_types.QUndoView =
-
   gen_qundoview_types.QUndoView.init(fcQUndoView_new(parent.h))
+
 proc create*(T: type gen_qundoview_types.QUndoView, ): gen_qundoview_types.QUndoView =
-
   gen_qundoview_types.QUndoView.init(fcQUndoView_new2())
-proc create2*(T: type gen_qundoview_types.QUndoView, stack: gen_qundostack.QUndoStack): gen_qundoview_types.QUndoView =
 
+proc create*(T: type gen_qundoview_types.QUndoView, stack: gen_qundostack.QUndoStack): gen_qundoview_types.QUndoView =
   gen_qundoview_types.QUndoView.init(fcQUndoView_new3(stack.h))
-proc create2*(T: type gen_qundoview_types.QUndoView, group: gen_qundogroup.QUndoGroup): gen_qundoview_types.QUndoView =
 
+proc create*(T: type gen_qundoview_types.QUndoView, group: gen_qundogroup.QUndoGroup): gen_qundoview_types.QUndoView =
   gen_qundoview_types.QUndoView.init(fcQUndoView_new4(group.h))
+
 proc create*(T: type gen_qundoview_types.QUndoView, stack: gen_qundostack.QUndoStack, parent: gen_qwidget.QWidget): gen_qundoview_types.QUndoView =
-
   gen_qundoview_types.QUndoView.init(fcQUndoView_new5(stack.h, parent.h))
-proc create2*(T: type gen_qundoview_types.QUndoView, group: gen_qundogroup.QUndoGroup, parent: gen_qwidget.QWidget): gen_qundoview_types.QUndoView =
 
+proc create*(T: type gen_qundoview_types.QUndoView, group: gen_qundogroup.QUndoGroup, parent: gen_qwidget.QWidget): gen_qundoview_types.QUndoView =
   gen_qundoview_types.QUndoView.init(fcQUndoView_new6(group.h, parent.h))
-proc metaObject*(self: gen_qundoview_types.QUndoView, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qundoview_types.QUndoView, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQUndoView_metaObject(self.h))
 
 proc metacast*(self: gen_qundoview_types.QUndoView, param1: cstring): pointer =
-
   fcQUndoView_metacast(self.h, param1)
 
 proc metacall*(self: gen_qundoview_types.QUndoView, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQUndoView_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qundoview_types.QUndoView, s: cstring): string =
-
   let v_ms = fcQUndoView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qundoview_types.QUndoView, s: cstring): string =
-
   let v_ms = fcQUndoView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc stack*(self: gen_qundoview_types.QUndoView, ): gen_qundostack.QUndoStack =
-
   gen_qundostack.QUndoStack(h: fcQUndoView_stack(self.h))
 
 proc group*(self: gen_qundoview_types.QUndoView, ): gen_qundogroup.QUndoGroup =
-
   gen_qundogroup.QUndoGroup(h: fcQUndoView_group(self.h))
 
 proc setEmptyLabel*(self: gen_qundoview_types.QUndoView, label: string): void =
-
   fcQUndoView_setEmptyLabel(self.h, struct_miqt_string(data: label, len: csize_t(len(label))))
 
 proc emptyLabel*(self: gen_qundoview_types.QUndoView, ): string =
-
   let v_ms = fcQUndoView_emptyLabel(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setCleanIcon*(self: gen_qundoview_types.QUndoView, icon: gen_qicon.QIcon): void =
-
   fcQUndoView_setCleanIcon(self.h, icon.h)
 
 proc cleanIcon*(self: gen_qundoview_types.QUndoView, ): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQUndoView_cleanIcon(self.h))
 
 proc setStack*(self: gen_qundoview_types.QUndoView, stack: gen_qundostack.QUndoStack): void =
-
   fcQUndoView_setStack(self.h, stack.h)
 
 proc setGroup*(self: gen_qundoview_types.QUndoView, group: gen_qundogroup.QUndoGroup): void =
-
   fcQUndoView_setGroup(self.h, group.h)
 
-proc tr2*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring): string =
   let v_ms = fcQUndoView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQUndoView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring): string =
   let v_ms = fcQUndoView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qundoview_types.QUndoView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQUndoView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QUndoViewmetaObject*(self: gen_qundoview_types.QUndoView, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQUndoView_virtualbase_metaObject(self.h))
 
 type QUndoViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -423,7 +405,6 @@ proc miqt_exec_callback_QUndoView_metaObject(self: ptr cQUndoView, slot: int): p
 
   virtualReturn.h
 proc QUndoViewmetacast*(self: gen_qundoview_types.QUndoView, param1: cstring): pointer =
-
   fQUndoView_virtualbase_metacast(self.h, param1)
 
 type QUndoViewmetacastProc* = proc(param1: cstring): pointer
@@ -443,7 +424,6 @@ proc miqt_exec_callback_QUndoView_metacast(self: ptr cQUndoView, slot: int, para
 
   virtualReturn
 proc QUndoViewmetacall*(self: gen_qundoview_types.QUndoView, param1: cint, param2: cint, param3: pointer): cint =
-
   fQUndoView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QUndoViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -467,7 +447,6 @@ proc miqt_exec_callback_QUndoView_metacall(self: ptr cQUndoView, slot: int, para
 
   virtualReturn
 proc QUndoViewvisualRect*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQUndoView_virtualbase_visualRect(self.h, index.h))
 
 type QUndoViewvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
@@ -487,7 +466,6 @@ proc miqt_exec_callback_QUndoView_visualRect(self: ptr cQUndoView, slot: int, in
 
   virtualReturn.h
 proc QUndoViewscrollTo*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fQUndoView_virtualbase_scrollTo(self.h, index.h, cint(hint))
 
 type QUndoViewscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
@@ -507,7 +485,6 @@ proc miqt_exec_callback_QUndoView_scrollTo(self: ptr cQUndoView, slot: int, inde
 
   nimfunc[](slotval1, slotval2)
 proc QUndoViewindexAt*(self: gen_qundoview_types.QUndoView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQUndoView_virtualbase_indexAt(self.h, p.h))
 
 type QUndoViewindexAtProc* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
@@ -527,7 +504,6 @@ proc miqt_exec_callback_QUndoView_indexAt(self: ptr cQUndoView, slot: int, p: po
 
   virtualReturn.h
 proc QUndoViewdoItemsLayout*(self: gen_qundoview_types.QUndoView, ): void =
-
   fQUndoView_virtualbase_doItemsLayout(self.h)
 
 type QUndoViewdoItemsLayoutProc* = proc(): void
@@ -543,7 +519,6 @@ proc miqt_exec_callback_QUndoView_doItemsLayout(self: ptr cQUndoView, slot: int)
 
   nimfunc[]()
 proc QUndoViewreset*(self: gen_qundoview_types.QUndoView, ): void =
-
   fQUndoView_virtualbase_reset(self.h)
 
 type QUndoViewresetProc* = proc(): void
@@ -559,7 +534,6 @@ proc miqt_exec_callback_QUndoView_reset(self: ptr cQUndoView, slot: int): void {
 
   nimfunc[]()
 proc QUndoViewsetRootIndex*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQUndoView_virtualbase_setRootIndex(self.h, index.h)
 
 type QUndoViewsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
@@ -577,7 +551,6 @@ proc miqt_exec_callback_QUndoView_setRootIndex(self: ptr cQUndoView, slot: int, 
 
   nimfunc[](slotval1)
 proc QUndoViewevent*(self: gen_qundoview_types.QUndoView, e: gen_qcoreevent.QEvent): bool =
-
   fQUndoView_virtualbase_event(self.h, e.h)
 
 type QUndoVieweventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -597,7 +570,6 @@ proc miqt_exec_callback_QUndoView_event(self: ptr cQUndoView, slot: int, e: poin
 
   virtualReturn
 proc QUndoViewscrollContentsBy*(self: gen_qundoview_types.QUndoView, dx: cint, dy: cint): void =
-
   fQUndoView_virtualbase_scrollContentsBy(self.h, dx, dy)
 
 type QUndoViewscrollContentsByProc* = proc(dx: cint, dy: cint): void
@@ -617,7 +589,6 @@ proc miqt_exec_callback_QUndoView_scrollContentsBy(self: ptr cQUndoView, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QUndoViewdataChanged*(self: gen_qundoview_types.QUndoView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
-
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
@@ -648,7 +619,6 @@ proc miqt_exec_callback_QUndoView_dataChanged(self: ptr cQUndoView, slot: int, t
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QUndoViewrowsInserted*(self: gen_qundoview_types.QUndoView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQUndoView_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
 type QUndoViewrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -670,7 +640,6 @@ proc miqt_exec_callback_QUndoView_rowsInserted(self: ptr cQUndoView, slot: int, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QUndoViewrowsAboutToBeRemoved*(self: gen_qundoview_types.QUndoView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQUndoView_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
 type QUndoViewrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -692,7 +661,6 @@ proc miqt_exec_callback_QUndoView_rowsAboutToBeRemoved(self: ptr cQUndoView, slo
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QUndoViewmouseMoveEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QMouseEvent): void =
-
   fQUndoView_virtualbase_mouseMoveEvent(self.h, e.h)
 
 type QUndoViewmouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -710,7 +678,6 @@ proc miqt_exec_callback_QUndoView_mouseMoveEvent(self: ptr cQUndoView, slot: int
 
   nimfunc[](slotval1)
 proc QUndoViewmouseReleaseEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QMouseEvent): void =
-
   fQUndoView_virtualbase_mouseReleaseEvent(self.h, e.h)
 
 type QUndoViewmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -728,7 +695,6 @@ proc miqt_exec_callback_QUndoView_mouseReleaseEvent(self: ptr cQUndoView, slot: 
 
   nimfunc[](slotval1)
 proc QUndoViewwheelEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QWheelEvent): void =
-
   fQUndoView_virtualbase_wheelEvent(self.h, e.h)
 
 type QUndoViewwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
@@ -746,7 +712,6 @@ proc miqt_exec_callback_QUndoView_wheelEvent(self: ptr cQUndoView, slot: int, e:
 
   nimfunc[](slotval1)
 proc QUndoViewtimerEvent*(self: gen_qundoview_types.QUndoView, e: gen_qcoreevent.QTimerEvent): void =
-
   fQUndoView_virtualbase_timerEvent(self.h, e.h)
 
 type QUndoViewtimerEventProc* = proc(e: gen_qcoreevent.QTimerEvent): void
@@ -764,7 +729,6 @@ proc miqt_exec_callback_QUndoView_timerEvent(self: ptr cQUndoView, slot: int, e:
 
   nimfunc[](slotval1)
 proc QUndoViewresizeEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QResizeEvent): void =
-
   fQUndoView_virtualbase_resizeEvent(self.h, e.h)
 
 type QUndoViewresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
@@ -782,7 +746,6 @@ proc miqt_exec_callback_QUndoView_resizeEvent(self: ptr cQUndoView, slot: int, e
 
   nimfunc[](slotval1)
 proc QUndoViewdragMoveEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QDragMoveEvent): void =
-
   fQUndoView_virtualbase_dragMoveEvent(self.h, e.h)
 
 type QUndoViewdragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
@@ -800,7 +763,6 @@ proc miqt_exec_callback_QUndoView_dragMoveEvent(self: ptr cQUndoView, slot: int,
 
   nimfunc[](slotval1)
 proc QUndoViewdragLeaveEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QDragLeaveEvent): void =
-
   fQUndoView_virtualbase_dragLeaveEvent(self.h, e.h)
 
 type QUndoViewdragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
@@ -818,7 +780,6 @@ proc miqt_exec_callback_QUndoView_dragLeaveEvent(self: ptr cQUndoView, slot: int
 
   nimfunc[](slotval1)
 proc QUndoViewdropEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QDropEvent): void =
-
   fQUndoView_virtualbase_dropEvent(self.h, e.h)
 
 type QUndoViewdropEventProc* = proc(e: gen_qevent.QDropEvent): void
@@ -836,7 +797,6 @@ proc miqt_exec_callback_QUndoView_dropEvent(self: ptr cQUndoView, slot: int, e: 
 
   nimfunc[](slotval1)
 proc QUndoViewstartDrag*(self: gen_qundoview_types.QUndoView, supportedActions: cint): void =
-
   fQUndoView_virtualbase_startDrag(self.h, cint(supportedActions))
 
 type QUndoViewstartDragProc* = proc(supportedActions: cint): void
@@ -854,7 +814,6 @@ proc miqt_exec_callback_QUndoView_startDrag(self: ptr cQUndoView, slot: int, sup
 
   nimfunc[](slotval1)
 proc QUndoViewviewOptions*(self: gen_qundoview_types.QUndoView, ): gen_qstyleoption.QStyleOptionViewItem =
-
   gen_qstyleoption.QStyleOptionViewItem(h: fQUndoView_virtualbase_viewOptions(self.h))
 
 type QUndoViewviewOptionsProc* = proc(): gen_qstyleoption.QStyleOptionViewItem
@@ -872,7 +831,6 @@ proc miqt_exec_callback_QUndoView_viewOptions(self: ptr cQUndoView, slot: int): 
 
   virtualReturn.h
 proc QUndoViewpaintEvent*(self: gen_qundoview_types.QUndoView, e: gen_qevent.QPaintEvent): void =
-
   fQUndoView_virtualbase_paintEvent(self.h, e.h)
 
 type QUndoViewpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
@@ -890,7 +848,6 @@ proc miqt_exec_callback_QUndoView_paintEvent(self: ptr cQUndoView, slot: int, e:
 
   nimfunc[](slotval1)
 proc QUndoViewhorizontalOffset*(self: gen_qundoview_types.QUndoView, ): cint =
-
   fQUndoView_virtualbase_horizontalOffset(self.h)
 
 type QUndoViewhorizontalOffsetProc* = proc(): cint
@@ -908,7 +865,6 @@ proc miqt_exec_callback_QUndoView_horizontalOffset(self: ptr cQUndoView, slot: i
 
   virtualReturn
 proc QUndoViewverticalOffset*(self: gen_qundoview_types.QUndoView, ): cint =
-
   fQUndoView_virtualbase_verticalOffset(self.h)
 
 type QUndoViewverticalOffsetProc* = proc(): cint
@@ -926,7 +882,6 @@ proc miqt_exec_callback_QUndoView_verticalOffset(self: ptr cQUndoView, slot: int
 
   virtualReturn
 proc QUndoViewmoveCursor*(self: gen_qundoview_types.QUndoView, cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQUndoView_virtualbase_moveCursor(self.h, cint(cursorAction), cint(modifiers)))
 
 type QUndoViewmoveCursorProc* = proc(cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex
@@ -948,7 +903,6 @@ proc miqt_exec_callback_QUndoView_moveCursor(self: ptr cQUndoView, slot: int, cu
 
   virtualReturn.h
 proc QUndoViewsetSelection*(self: gen_qundoview_types.QUndoView, rect: gen_qrect.QRect, command: cint): void =
-
   fQUndoView_virtualbase_setSelection(self.h, rect.h, cint(command))
 
 type QUndoViewsetSelectionProc* = proc(rect: gen_qrect.QRect, command: cint): void
@@ -968,7 +922,6 @@ proc miqt_exec_callback_QUndoView_setSelection(self: ptr cQUndoView, slot: int, 
 
   nimfunc[](slotval1, slotval2)
 proc QUndoViewvisualRegionForSelection*(self: gen_qundoview_types.QUndoView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fQUndoView_virtualbase_visualRegionForSelection(self.h, selection.h))
 
 type QUndoViewvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
@@ -988,7 +941,6 @@ proc miqt_exec_callback_QUndoView_visualRegionForSelection(self: ptr cQUndoView,
 
   virtualReturn.h
 proc QUndoViewselectedIndexes*(self: gen_qundoview_types.QUndoView, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fQUndoView_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1015,7 +967,6 @@ proc miqt_exec_callback_QUndoView_selectedIndexes(self: ptr cQUndoView, slot: in
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QUndoViewupdateGeometries*(self: gen_qundoview_types.QUndoView, ): void =
-
   fQUndoView_virtualbase_updateGeometries(self.h)
 
 type QUndoViewupdateGeometriesProc* = proc(): void
@@ -1031,7 +982,6 @@ proc miqt_exec_callback_QUndoView_updateGeometries(self: ptr cQUndoView, slot: i
 
   nimfunc[]()
 proc QUndoViewisIndexHidden*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQUndoView_virtualbase_isIndexHidden(self.h, index.h)
 
 type QUndoViewisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
@@ -1051,7 +1001,6 @@ proc miqt_exec_callback_QUndoView_isIndexHidden(self: ptr cQUndoView, slot: int,
 
   virtualReturn
 proc QUndoViewselectionChanged*(self: gen_qundoview_types.QUndoView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
   fQUndoView_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
 type QUndoViewselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
@@ -1071,7 +1020,6 @@ proc miqt_exec_callback_QUndoView_selectionChanged(self: ptr cQUndoView, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QUndoViewcurrentChanged*(self: gen_qundoview_types.QUndoView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
-
   fQUndoView_virtualbase_currentChanged(self.h, current.h, previous.h)
 
 type QUndoViewcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
@@ -1091,7 +1039,6 @@ proc miqt_exec_callback_QUndoView_currentChanged(self: ptr cQUndoView, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QUndoViewviewportSizeHint*(self: gen_qundoview_types.QUndoView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQUndoView_virtualbase_viewportSizeHint(self.h))
 
 type QUndoViewviewportSizeHintProc* = proc(): gen_qsize.QSize
@@ -1109,7 +1056,6 @@ proc miqt_exec_callback_QUndoView_viewportSizeHint(self: ptr cQUndoView, slot: i
 
   virtualReturn.h
 proc QUndoViewsetModel*(self: gen_qundoview_types.QUndoView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fQUndoView_virtualbase_setModel(self.h, model.h)
 
 type QUndoViewsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
@@ -1127,7 +1073,6 @@ proc miqt_exec_callback_QUndoView_setModel(self: ptr cQUndoView, slot: int, mode
 
   nimfunc[](slotval1)
 proc QUndoViewsetSelectionModel*(self: gen_qundoview_types.QUndoView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
   fQUndoView_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
 type QUndoViewsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
@@ -1145,7 +1090,6 @@ proc miqt_exec_callback_QUndoView_setSelectionModel(self: ptr cQUndoView, slot: 
 
   nimfunc[](slotval1)
 proc QUndoViewkeyboardSearch*(self: gen_qundoview_types.QUndoView, search: string): void =
-
   fQUndoView_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
 type QUndoViewkeyboardSearchProc* = proc(search: string): void
@@ -1166,7 +1110,6 @@ proc miqt_exec_callback_QUndoView_keyboardSearch(self: ptr cQUndoView, slot: int
 
   nimfunc[](slotval1)
 proc QUndoViewsizeHintForRow*(self: gen_qundoview_types.QUndoView, row: cint): cint =
-
   fQUndoView_virtualbase_sizeHintForRow(self.h, row)
 
 type QUndoViewsizeHintForRowProc* = proc(row: cint): cint
@@ -1186,7 +1129,6 @@ proc miqt_exec_callback_QUndoView_sizeHintForRow(self: ptr cQUndoView, slot: int
 
   virtualReturn
 proc QUndoViewsizeHintForColumn*(self: gen_qundoview_types.QUndoView, column: cint): cint =
-
   fQUndoView_virtualbase_sizeHintForColumn(self.h, column)
 
 type QUndoViewsizeHintForColumnProc* = proc(column: cint): cint
@@ -1206,7 +1148,6 @@ proc miqt_exec_callback_QUndoView_sizeHintForColumn(self: ptr cQUndoView, slot: 
 
   virtualReturn
 proc QUndoViewinputMethodQuery*(self: gen_qundoview_types.QUndoView, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQUndoView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QUndoViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -1226,7 +1167,6 @@ proc miqt_exec_callback_QUndoView_inputMethodQuery(self: ptr cQUndoView, slot: i
 
   virtualReturn.h
 proc QUndoViewselectAll*(self: gen_qundoview_types.QUndoView, ): void =
-
   fQUndoView_virtualbase_selectAll(self.h)
 
 type QUndoViewselectAllProc* = proc(): void
@@ -1242,7 +1182,6 @@ proc miqt_exec_callback_QUndoView_selectAll(self: ptr cQUndoView, slot: int): vo
 
   nimfunc[]()
 proc QUndoViewupdateEditorData*(self: gen_qundoview_types.QUndoView, ): void =
-
   fQUndoView_virtualbase_updateEditorData(self.h)
 
 type QUndoViewupdateEditorDataProc* = proc(): void
@@ -1258,7 +1197,6 @@ proc miqt_exec_callback_QUndoView_updateEditorData(self: ptr cQUndoView, slot: i
 
   nimfunc[]()
 proc QUndoViewupdateEditorGeometries*(self: gen_qundoview_types.QUndoView, ): void =
-
   fQUndoView_virtualbase_updateEditorGeometries(self.h)
 
 type QUndoViewupdateEditorGeometriesProc* = proc(): void
@@ -1274,7 +1212,6 @@ proc miqt_exec_callback_QUndoView_updateEditorGeometries(self: ptr cQUndoView, s
 
   nimfunc[]()
 proc QUndoViewverticalScrollbarAction*(self: gen_qundoview_types.QUndoView, action: cint): void =
-
   fQUndoView_virtualbase_verticalScrollbarAction(self.h, action)
 
 type QUndoViewverticalScrollbarActionProc* = proc(action: cint): void
@@ -1292,7 +1229,6 @@ proc miqt_exec_callback_QUndoView_verticalScrollbarAction(self: ptr cQUndoView, 
 
   nimfunc[](slotval1)
 proc QUndoViewhorizontalScrollbarAction*(self: gen_qundoview_types.QUndoView, action: cint): void =
-
   fQUndoView_virtualbase_horizontalScrollbarAction(self.h, action)
 
 type QUndoViewhorizontalScrollbarActionProc* = proc(action: cint): void
@@ -1310,7 +1246,6 @@ proc miqt_exec_callback_QUndoView_horizontalScrollbarAction(self: ptr cQUndoView
 
   nimfunc[](slotval1)
 proc QUndoViewverticalScrollbarValueChanged*(self: gen_qundoview_types.QUndoView, value: cint): void =
-
   fQUndoView_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
 type QUndoViewverticalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1328,7 +1263,6 @@ proc miqt_exec_callback_QUndoView_verticalScrollbarValueChanged(self: ptr cQUndo
 
   nimfunc[](slotval1)
 proc QUndoViewhorizontalScrollbarValueChanged*(self: gen_qundoview_types.QUndoView, value: cint): void =
-
   fQUndoView_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
 type QUndoViewhorizontalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1346,7 +1280,6 @@ proc miqt_exec_callback_QUndoView_horizontalScrollbarValueChanged(self: ptr cQUn
 
   nimfunc[](slotval1)
 proc QUndoViewcloseEditor*(self: gen_qundoview_types.QUndoView, editor: gen_qwidget.QWidget, hint: cint): void =
-
   fQUndoView_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
 type QUndoViewcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
@@ -1366,7 +1299,6 @@ proc miqt_exec_callback_QUndoView_closeEditor(self: ptr cQUndoView, slot: int, e
 
   nimfunc[](slotval1, slotval2)
 proc QUndoViewcommitData*(self: gen_qundoview_types.QUndoView, editor: gen_qwidget.QWidget): void =
-
   fQUndoView_virtualbase_commitData(self.h, editor.h)
 
 type QUndoViewcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
@@ -1384,7 +1316,6 @@ proc miqt_exec_callback_QUndoView_commitData(self: ptr cQUndoView, slot: int, ed
 
   nimfunc[](slotval1)
 proc QUndoVieweditorDestroyed*(self: gen_qundoview_types.QUndoView, editor: gen_qobject.QObject): void =
-
   fQUndoView_virtualbase_editorDestroyed(self.h, editor.h)
 
 type QUndoVieweditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
@@ -1401,12 +1332,11 @@ proc miqt_exec_callback_QUndoView_editorDestroyed(self: ptr cQUndoView, slot: in
 
 
   nimfunc[](slotval1)
-proc QUndoViewedit2*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
-
+proc QUndoViewedit*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
   fQUndoView_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
 type QUndoViewedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: gen_qundoview_types.QUndoView, slot: QUndoViewedit2Proc) =
+proc onedit*(self: gen_qundoview_types.QUndoView, slot: QUndoViewedit2Proc) =
   # TODO check subclass
   var tmp = new QUndoViewedit2Proc
   tmp[] = slot
@@ -1426,7 +1356,6 @@ proc miqt_exec_callback_QUndoView_edit2(self: ptr cQUndoView, slot: int, index: 
 
   virtualReturn
 proc QUndoViewselectionCommand*(self: gen_qundoview_types.QUndoView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
-
   cint(fQUndoView_virtualbase_selectionCommand(self.h, index.h, event.h))
 
 type QUndoViewselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
@@ -1448,7 +1377,6 @@ proc miqt_exec_callback_QUndoView_selectionCommand(self: ptr cQUndoView, slot: i
 
   cint(virtualReturn)
 proc QUndoViewfocusNextPrevChild*(self: gen_qundoview_types.QUndoView, next: bool): bool =
-
   fQUndoView_virtualbase_focusNextPrevChild(self.h, next)
 
 type QUndoViewfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1468,7 +1396,6 @@ proc miqt_exec_callback_QUndoView_focusNextPrevChild(self: ptr cQUndoView, slot:
 
   virtualReturn
 proc QUndoViewviewportEvent*(self: gen_qundoview_types.QUndoView, event: gen_qcoreevent.QEvent): bool =
-
   fQUndoView_virtualbase_viewportEvent(self.h, event.h)
 
 type QUndoViewviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1488,7 +1415,6 @@ proc miqt_exec_callback_QUndoView_viewportEvent(self: ptr cQUndoView, slot: int,
 
   virtualReturn
 proc QUndoViewmousePressEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QMouseEvent): void =
-
   fQUndoView_virtualbase_mousePressEvent(self.h, event.h)
 
 type QUndoViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1506,7 +1432,6 @@ proc miqt_exec_callback_QUndoView_mousePressEvent(self: ptr cQUndoView, slot: in
 
   nimfunc[](slotval1)
 proc QUndoViewmouseDoubleClickEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QMouseEvent): void =
-
   fQUndoView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QUndoViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1524,7 +1449,6 @@ proc miqt_exec_callback_QUndoView_mouseDoubleClickEvent(self: ptr cQUndoView, sl
 
   nimfunc[](slotval1)
 proc QUndoViewdragEnterEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QDragEnterEvent): void =
-
   fQUndoView_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QUndoViewdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1542,7 +1466,6 @@ proc miqt_exec_callback_QUndoView_dragEnterEvent(self: ptr cQUndoView, slot: int
 
   nimfunc[](slotval1)
 proc QUndoViewfocusInEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QFocusEvent): void =
-
   fQUndoView_virtualbase_focusInEvent(self.h, event.h)
 
 type QUndoViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1560,7 +1483,6 @@ proc miqt_exec_callback_QUndoView_focusInEvent(self: ptr cQUndoView, slot: int, 
 
   nimfunc[](slotval1)
 proc QUndoViewfocusOutEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QFocusEvent): void =
-
   fQUndoView_virtualbase_focusOutEvent(self.h, event.h)
 
 type QUndoViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1578,7 +1500,6 @@ proc miqt_exec_callback_QUndoView_focusOutEvent(self: ptr cQUndoView, slot: int,
 
   nimfunc[](slotval1)
 proc QUndoViewkeyPressEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QKeyEvent): void =
-
   fQUndoView_virtualbase_keyPressEvent(self.h, event.h)
 
 type QUndoViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1596,7 +1517,6 @@ proc miqt_exec_callback_QUndoView_keyPressEvent(self: ptr cQUndoView, slot: int,
 
   nimfunc[](slotval1)
 proc QUndoViewinputMethodEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QInputMethodEvent): void =
-
   fQUndoView_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QUndoViewinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -1614,7 +1534,6 @@ proc miqt_exec_callback_QUndoView_inputMethodEvent(self: ptr cQUndoView, slot: i
 
   nimfunc[](slotval1)
 proc QUndoVieweventFilter*(self: gen_qundoview_types.QUndoView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQUndoView_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
 type QUndoVieweventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1636,7 +1555,6 @@ proc miqt_exec_callback_QUndoView_eventFilter(self: ptr cQUndoView, slot: int, o
 
   virtualReturn
 proc QUndoViewminimumSizeHint*(self: gen_qundoview_types.QUndoView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQUndoView_virtualbase_minimumSizeHint(self.h))
 
 type QUndoViewminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1654,7 +1572,6 @@ proc miqt_exec_callback_QUndoView_minimumSizeHint(self: ptr cQUndoView, slot: in
 
   virtualReturn.h
 proc QUndoViewsizeHint*(self: gen_qundoview_types.QUndoView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQUndoView_virtualbase_sizeHint(self.h))
 
 type QUndoViewsizeHintProc* = proc(): gen_qsize.QSize
@@ -1672,7 +1589,6 @@ proc miqt_exec_callback_QUndoView_sizeHint(self: ptr cQUndoView, slot: int): poi
 
   virtualReturn.h
 proc QUndoViewsetupViewport*(self: gen_qundoview_types.QUndoView, viewport: gen_qwidget.QWidget): void =
-
   fQUndoView_virtualbase_setupViewport(self.h, viewport.h)
 
 type QUndoViewsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
@@ -1690,7 +1606,6 @@ proc miqt_exec_callback_QUndoView_setupViewport(self: ptr cQUndoView, slot: int,
 
   nimfunc[](slotval1)
 proc QUndoViewcontextMenuEvent*(self: gen_qundoview_types.QUndoView, param1: gen_qevent.QContextMenuEvent): void =
-
   fQUndoView_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QUndoViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -1708,7 +1623,6 @@ proc miqt_exec_callback_QUndoView_contextMenuEvent(self: ptr cQUndoView, slot: i
 
   nimfunc[](slotval1)
 proc QUndoViewchangeEvent*(self: gen_qundoview_types.QUndoView, param1: gen_qcoreevent.QEvent): void =
-
   fQUndoView_virtualbase_changeEvent(self.h, param1.h)
 
 type QUndoViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1726,7 +1640,6 @@ proc miqt_exec_callback_QUndoView_changeEvent(self: ptr cQUndoView, slot: int, p
 
   nimfunc[](slotval1)
 proc QUndoViewdevType*(self: gen_qundoview_types.QUndoView, ): cint =
-
   fQUndoView_virtualbase_devType(self.h)
 
 type QUndoViewdevTypeProc* = proc(): cint
@@ -1744,7 +1657,6 @@ proc miqt_exec_callback_QUndoView_devType(self: ptr cQUndoView, slot: int): cint
 
   virtualReturn
 proc QUndoViewsetVisible*(self: gen_qundoview_types.QUndoView, visible: bool): void =
-
   fQUndoView_virtualbase_setVisible(self.h, visible)
 
 type QUndoViewsetVisibleProc* = proc(visible: bool): void
@@ -1762,7 +1674,6 @@ proc miqt_exec_callback_QUndoView_setVisible(self: ptr cQUndoView, slot: int, vi
 
   nimfunc[](slotval1)
 proc QUndoViewheightForWidth*(self: gen_qundoview_types.QUndoView, param1: cint): cint =
-
   fQUndoView_virtualbase_heightForWidth(self.h, param1)
 
 type QUndoViewheightForWidthProc* = proc(param1: cint): cint
@@ -1782,7 +1693,6 @@ proc miqt_exec_callback_QUndoView_heightForWidth(self: ptr cQUndoView, slot: int
 
   virtualReturn
 proc QUndoViewhasHeightForWidth*(self: gen_qundoview_types.QUndoView, ): bool =
-
   fQUndoView_virtualbase_hasHeightForWidth(self.h)
 
 type QUndoViewhasHeightForWidthProc* = proc(): bool
@@ -1800,7 +1710,6 @@ proc miqt_exec_callback_QUndoView_hasHeightForWidth(self: ptr cQUndoView, slot: 
 
   virtualReturn
 proc QUndoViewpaintEngine*(self: gen_qundoview_types.QUndoView, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQUndoView_virtualbase_paintEngine(self.h))
 
 type QUndoViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1818,7 +1727,6 @@ proc miqt_exec_callback_QUndoView_paintEngine(self: ptr cQUndoView, slot: int): 
 
   virtualReturn.h
 proc QUndoViewkeyReleaseEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QKeyEvent): void =
-
   fQUndoView_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QUndoViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1836,7 +1744,6 @@ proc miqt_exec_callback_QUndoView_keyReleaseEvent(self: ptr cQUndoView, slot: in
 
   nimfunc[](slotval1)
 proc QUndoViewenterEvent*(self: gen_qundoview_types.QUndoView, event: gen_qcoreevent.QEvent): void =
-
   fQUndoView_virtualbase_enterEvent(self.h, event.h)
 
 type QUndoViewenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1854,7 +1761,6 @@ proc miqt_exec_callback_QUndoView_enterEvent(self: ptr cQUndoView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QUndoViewleaveEvent*(self: gen_qundoview_types.QUndoView, event: gen_qcoreevent.QEvent): void =
-
   fQUndoView_virtualbase_leaveEvent(self.h, event.h)
 
 type QUndoViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1872,7 +1778,6 @@ proc miqt_exec_callback_QUndoView_leaveEvent(self: ptr cQUndoView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QUndoViewmoveEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QMoveEvent): void =
-
   fQUndoView_virtualbase_moveEvent(self.h, event.h)
 
 type QUndoViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1890,7 +1795,6 @@ proc miqt_exec_callback_QUndoView_moveEvent(self: ptr cQUndoView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QUndoViewcloseEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QCloseEvent): void =
-
   fQUndoView_virtualbase_closeEvent(self.h, event.h)
 
 type QUndoViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1908,7 +1812,6 @@ proc miqt_exec_callback_QUndoView_closeEvent(self: ptr cQUndoView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QUndoViewtabletEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QTabletEvent): void =
-
   fQUndoView_virtualbase_tabletEvent(self.h, event.h)
 
 type QUndoViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1926,7 +1829,6 @@ proc miqt_exec_callback_QUndoView_tabletEvent(self: ptr cQUndoView, slot: int, e
 
   nimfunc[](slotval1)
 proc QUndoViewactionEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QActionEvent): void =
-
   fQUndoView_virtualbase_actionEvent(self.h, event.h)
 
 type QUndoViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1944,7 +1846,6 @@ proc miqt_exec_callback_QUndoView_actionEvent(self: ptr cQUndoView, slot: int, e
 
   nimfunc[](slotval1)
 proc QUndoViewshowEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QShowEvent): void =
-
   fQUndoView_virtualbase_showEvent(self.h, event.h)
 
 type QUndoViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1962,7 +1863,6 @@ proc miqt_exec_callback_QUndoView_showEvent(self: ptr cQUndoView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QUndoViewhideEvent*(self: gen_qundoview_types.QUndoView, event: gen_qevent.QHideEvent): void =
-
   fQUndoView_virtualbase_hideEvent(self.h, event.h)
 
 type QUndoViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1980,7 +1880,6 @@ proc miqt_exec_callback_QUndoView_hideEvent(self: ptr cQUndoView, slot: int, eve
 
   nimfunc[](slotval1)
 proc QUndoViewnativeEvent*(self: gen_qundoview_types.QUndoView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQUndoView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QUndoViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -2007,7 +1906,6 @@ proc miqt_exec_callback_QUndoView_nativeEvent(self: ptr cQUndoView, slot: int, e
 
   virtualReturn
 proc QUndoViewmetric*(self: gen_qundoview_types.QUndoView, param1: cint): cint =
-
   fQUndoView_virtualbase_metric(self.h, cint(param1))
 
 type QUndoViewmetricProc* = proc(param1: cint): cint
@@ -2027,7 +1925,6 @@ proc miqt_exec_callback_QUndoView_metric(self: ptr cQUndoView, slot: int, param1
 
   virtualReturn
 proc QUndoViewinitPainter*(self: gen_qundoview_types.QUndoView, painter: gen_qpainter.QPainter): void =
-
   fQUndoView_virtualbase_initPainter(self.h, painter.h)
 
 type QUndoViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -2045,7 +1942,6 @@ proc miqt_exec_callback_QUndoView_initPainter(self: ptr cQUndoView, slot: int, p
 
   nimfunc[](slotval1)
 proc QUndoViewredirected*(self: gen_qundoview_types.QUndoView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQUndoView_virtualbase_redirected(self.h, offset.h))
 
 type QUndoViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -2065,7 +1961,6 @@ proc miqt_exec_callback_QUndoView_redirected(self: ptr cQUndoView, slot: int, of
 
   virtualReturn.h
 proc QUndoViewsharedPainter*(self: gen_qundoview_types.QUndoView, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQUndoView_virtualbase_sharedPainter(self.h))
 
 type QUndoViewsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -2083,7 +1978,6 @@ proc miqt_exec_callback_QUndoView_sharedPainter(self: ptr cQUndoView, slot: int)
 
   virtualReturn.h
 proc QUndoViewchildEvent*(self: gen_qundoview_types.QUndoView, event: gen_qcoreevent.QChildEvent): void =
-
   fQUndoView_virtualbase_childEvent(self.h, event.h)
 
 type QUndoViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -2101,7 +1995,6 @@ proc miqt_exec_callback_QUndoView_childEvent(self: ptr cQUndoView, slot: int, ev
 
   nimfunc[](slotval1)
 proc QUndoViewcustomEvent*(self: gen_qundoview_types.QUndoView, event: gen_qcoreevent.QEvent): void =
-
   fQUndoView_virtualbase_customEvent(self.h, event.h)
 
 type QUndoViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2119,7 +2012,6 @@ proc miqt_exec_callback_QUndoView_customEvent(self: ptr cQUndoView, slot: int, e
 
   nimfunc[](slotval1)
 proc QUndoViewconnectNotify*(self: gen_qundoview_types.QUndoView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQUndoView_virtualbase_connectNotify(self.h, signal.h)
 
 type QUndoViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2137,7 +2029,6 @@ proc miqt_exec_callback_QUndoView_connectNotify(self: ptr cQUndoView, slot: int,
 
   nimfunc[](slotval1)
 proc QUndoViewdisconnectNotify*(self: gen_qundoview_types.QUndoView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQUndoView_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QUndoViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

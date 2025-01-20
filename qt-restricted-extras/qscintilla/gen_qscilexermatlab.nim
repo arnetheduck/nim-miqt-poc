@@ -182,94 +182,78 @@ proc fcQsciLexerMatlab_delete(self: pointer) {.importc: "QsciLexerMatlab_delete"
 func init*(T: type gen_qscilexermatlab_types.QsciLexerMatlab, h: ptr cQsciLexerMatlab): gen_qscilexermatlab_types.QsciLexerMatlab =
   T(h: h)
 proc create*(T: type gen_qscilexermatlab_types.QsciLexerMatlab, ): gen_qscilexermatlab_types.QsciLexerMatlab =
-
   gen_qscilexermatlab_types.QsciLexerMatlab.init(fcQsciLexerMatlab_new())
+
 proc create*(T: type gen_qscilexermatlab_types.QsciLexerMatlab, parent: gen_qobject.QObject): gen_qscilexermatlab_types.QsciLexerMatlab =
-
   gen_qscilexermatlab_types.QsciLexerMatlab.init(fcQsciLexerMatlab_new2(parent.h))
-proc metaObject*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerMatlab_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexermatlab_types.QsciLexerMatlab, param1: cstring): pointer =
-
   fcQsciLexerMatlab_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexermatlab_types.QsciLexerMatlab, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerMatlab_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring): string =
-
   let v_ms = fcQsciLexerMatlab_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring): string =
-
   let v_ms = fcQsciLexerMatlab_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cstring =
-
   (fcQsciLexerMatlab_language(self.h))
 
 proc lexer*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cstring =
-
   (fcQsciLexerMatlab_lexer(self.h))
 
 proc defaultColor*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerMatlab_defaultColor(self.h, style))
 
 proc defaultFont*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerMatlab_defaultFont(self.h, style))
 
 proc keywords*(self: gen_qscilexermatlab_types.QsciLexerMatlab, set: cint): cstring =
-
   (fcQsciLexerMatlab_keywords(self.h, set))
 
 proc description*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): string =
-
   let v_ms = fcQsciLexerMatlab_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerMatlab_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerMatlab_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerMatlab_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexermatlab_types.QsciLexerMatlab, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerMatlab_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerMatlabmetaObject*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerMatlab_virtualbase_metaObject(self.h))
 
 type QsciLexerMatlabmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -287,7 +271,6 @@ proc miqt_exec_callback_QsciLexerMatlab_metaObject(self: ptr cQsciLexerMatlab, s
 
   virtualReturn.h
 proc QsciLexerMatlabmetacast*(self: gen_qscilexermatlab_types.QsciLexerMatlab, param1: cstring): pointer =
-
   fQsciLexerMatlab_virtualbase_metacast(self.h, param1)
 
 type QsciLexerMatlabmetacastProc* = proc(param1: cstring): pointer
@@ -307,7 +290,6 @@ proc miqt_exec_callback_QsciLexerMatlab_metacast(self: ptr cQsciLexerMatlab, slo
 
   virtualReturn
 proc QsciLexerMatlabmetacall*(self: gen_qscilexermatlab_types.QsciLexerMatlab, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerMatlab_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerMatlabmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -345,7 +327,6 @@ proc miqt_exec_callback_QsciLexerMatlab_language(self: ptr cQsciLexerMatlab, slo
 
   virtualReturn
 proc QsciLexerMatlablexer*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cstring =
-
   (fQsciLexerMatlab_virtualbase_lexer(self.h))
 
 type QsciLexerMatlablexerProc* = proc(): cstring
@@ -363,7 +344,6 @@ proc miqt_exec_callback_QsciLexerMatlab_lexer(self: ptr cQsciLexerMatlab, slot: 
 
   virtualReturn
 proc QsciLexerMatlablexerId*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cint =
-
   fQsciLexerMatlab_virtualbase_lexerId(self.h)
 
 type QsciLexerMatlablexerIdProc* = proc(): cint
@@ -381,7 +361,6 @@ proc miqt_exec_callback_QsciLexerMatlab_lexerId(self: ptr cQsciLexerMatlab, slot
 
   virtualReturn
 proc QsciLexerMatlabautoCompletionFillups*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cstring =
-
   (fQsciLexerMatlab_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerMatlabautoCompletionFillupsProc* = proc(): cstring
@@ -399,7 +378,6 @@ proc miqt_exec_callback_QsciLexerMatlab_autoCompletionFillups(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerMatlabautoCompletionWordSeparators*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): seq[string] =
-
   var v_ma = fQsciLexerMatlab_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -429,7 +407,6 @@ proc miqt_exec_callback_QsciLexerMatlab_autoCompletionWordSeparators(self: ptr c
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerMatlabblockEnd*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: ptr cint): cstring =
-
   (fQsciLexerMatlab_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerMatlabblockEndProc* = proc(style: ptr cint): cstring
@@ -449,7 +426,6 @@ proc miqt_exec_callback_QsciLexerMatlab_blockEnd(self: ptr cQsciLexerMatlab, slo
 
   virtualReturn
 proc QsciLexerMatlabblockLookback*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cint =
-
   fQsciLexerMatlab_virtualbase_blockLookback(self.h)
 
 type QsciLexerMatlabblockLookbackProc* = proc(): cint
@@ -467,7 +443,6 @@ proc miqt_exec_callback_QsciLexerMatlab_blockLookback(self: ptr cQsciLexerMatlab
 
   virtualReturn
 proc QsciLexerMatlabblockStart*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: ptr cint): cstring =
-
   (fQsciLexerMatlab_virtualbase_blockStart(self.h, style))
 
 type QsciLexerMatlabblockStartProc* = proc(style: ptr cint): cstring
@@ -487,7 +462,6 @@ proc miqt_exec_callback_QsciLexerMatlab_blockStart(self: ptr cQsciLexerMatlab, s
 
   virtualReturn
 proc QsciLexerMatlabblockStartKeyword*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: ptr cint): cstring =
-
   (fQsciLexerMatlab_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerMatlabblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -507,7 +481,6 @@ proc miqt_exec_callback_QsciLexerMatlab_blockStartKeyword(self: ptr cQsciLexerMa
 
   virtualReturn
 proc QsciLexerMatlabbraceStyle*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cint =
-
   fQsciLexerMatlab_virtualbase_braceStyle(self.h)
 
 type QsciLexerMatlabbraceStyleProc* = proc(): cint
@@ -525,7 +498,6 @@ proc miqt_exec_callback_QsciLexerMatlab_braceStyle(self: ptr cQsciLexerMatlab, s
 
   virtualReturn
 proc QsciLexerMatlabcaseSensitive*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): bool =
-
   fQsciLexerMatlab_virtualbase_caseSensitive(self.h)
 
 type QsciLexerMatlabcaseSensitiveProc* = proc(): bool
@@ -543,7 +515,6 @@ proc miqt_exec_callback_QsciLexerMatlab_caseSensitive(self: ptr cQsciLexerMatlab
 
   virtualReturn
 proc QsciLexerMatlabcolor*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerMatlab_virtualbase_color(self.h, style))
 
 type QsciLexerMatlabcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -563,7 +534,6 @@ proc miqt_exec_callback_QsciLexerMatlab_color(self: ptr cQsciLexerMatlab, slot: 
 
   virtualReturn.h
 proc QsciLexerMatlabeolFill*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): bool =
-
   fQsciLexerMatlab_virtualbase_eolFill(self.h, style)
 
 type QsciLexerMatlabeolFillProc* = proc(style: cint): bool
@@ -583,7 +553,6 @@ proc miqt_exec_callback_QsciLexerMatlab_eolFill(self: ptr cQsciLexerMatlab, slot
 
   virtualReturn
 proc QsciLexerMatlabfont*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerMatlab_virtualbase_font(self.h, style))
 
 type QsciLexerMatlabfontProc* = proc(style: cint): gen_qfont.QFont
@@ -603,7 +572,6 @@ proc miqt_exec_callback_QsciLexerMatlab_font(self: ptr cQsciLexerMatlab, slot: i
 
   virtualReturn.h
 proc QsciLexerMatlabindentationGuideView*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cint =
-
   fQsciLexerMatlab_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerMatlabindentationGuideViewProc* = proc(): cint
@@ -621,7 +589,6 @@ proc miqt_exec_callback_QsciLexerMatlab_indentationGuideView(self: ptr cQsciLexe
 
   virtualReturn
 proc QsciLexerMatlabkeywords*(self: gen_qscilexermatlab_types.QsciLexerMatlab, set: cint): cstring =
-
   (fQsciLexerMatlab_virtualbase_keywords(self.h, set))
 
 type QsciLexerMatlabkeywordsProc* = proc(set: cint): cstring
@@ -641,7 +608,6 @@ proc miqt_exec_callback_QsciLexerMatlab_keywords(self: ptr cQsciLexerMatlab, slo
 
   virtualReturn
 proc QsciLexerMatlabdefaultStyle*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cint =
-
   fQsciLexerMatlab_virtualbase_defaultStyle(self.h)
 
 type QsciLexerMatlabdefaultStyleProc* = proc(): cint
@@ -675,7 +641,6 @@ proc miqt_exec_callback_QsciLexerMatlab_description(self: ptr cQsciLexerMatlab, 
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerMatlabpaper*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerMatlab_virtualbase_paper(self.h, style))
 
 type QsciLexerMatlabpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -694,12 +659,11 @@ proc miqt_exec_callback_QsciLexerMatlab_paper(self: ptr cQsciLexerMatlab, slot: 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerMatlabdefaultColorWithStyle*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerMatlabdefaultColor*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerMatlab_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerMatlabdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexermatlab_types.QsciLexerMatlab, slot: QsciLexerMatlabdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexermatlab_types.QsciLexerMatlab, slot: QsciLexerMatlabdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerMatlabdefaultColorWithStyleProc
   tmp[] = slot
@@ -715,7 +679,6 @@ proc miqt_exec_callback_QsciLexerMatlab_defaultColorWithStyle(self: ptr cQsciLex
 
   virtualReturn.h
 proc QsciLexerMatlabdefaultEolFill*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): bool =
-
   fQsciLexerMatlab_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerMatlabdefaultEolFillProc* = proc(style: cint): bool
@@ -734,12 +697,11 @@ proc miqt_exec_callback_QsciLexerMatlab_defaultEolFill(self: ptr cQsciLexerMatla
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerMatlabdefaultFontWithStyle*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qfont.QFont =
-
+proc QsciLexerMatlabdefaultFont*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerMatlab_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerMatlabdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexermatlab_types.QsciLexerMatlab, slot: QsciLexerMatlabdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexermatlab_types.QsciLexerMatlab, slot: QsciLexerMatlabdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerMatlabdefaultFontWithStyleProc
   tmp[] = slot
@@ -754,12 +716,11 @@ proc miqt_exec_callback_QsciLexerMatlab_defaultFontWithStyle(self: ptr cQsciLexe
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerMatlabdefaultPaperWithStyle*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerMatlabdefaultPaper*(self: gen_qscilexermatlab_types.QsciLexerMatlab, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerMatlab_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerMatlabdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexermatlab_types.QsciLexerMatlab, slot: QsciLexerMatlabdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexermatlab_types.QsciLexerMatlab, slot: QsciLexerMatlabdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerMatlabdefaultPaperWithStyleProc
   tmp[] = slot
@@ -775,7 +736,6 @@ proc miqt_exec_callback_QsciLexerMatlab_defaultPaperWithStyle(self: ptr cQsciLex
 
   virtualReturn.h
 proc QsciLexerMatlabsetEditor*(self: gen_qscilexermatlab_types.QsciLexerMatlab, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerMatlab_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerMatlabsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -793,7 +753,6 @@ proc miqt_exec_callback_QsciLexerMatlab_setEditor(self: ptr cQsciLexerMatlab, sl
 
   nimfunc[](slotval1)
 proc QsciLexerMatlabrefreshProperties*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): void =
-
   fQsciLexerMatlab_virtualbase_refreshProperties(self.h)
 
 type QsciLexerMatlabrefreshPropertiesProc* = proc(): void
@@ -809,7 +768,6 @@ proc miqt_exec_callback_QsciLexerMatlab_refreshProperties(self: ptr cQsciLexerMa
 
   nimfunc[]()
 proc QsciLexerMatlabstyleBitsNeeded*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cint =
-
   fQsciLexerMatlab_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerMatlabstyleBitsNeededProc* = proc(): cint
@@ -827,7 +785,6 @@ proc miqt_exec_callback_QsciLexerMatlab_styleBitsNeeded(self: ptr cQsciLexerMatl
 
   virtualReturn
 proc QsciLexerMatlabwordCharacters*(self: gen_qscilexermatlab_types.QsciLexerMatlab, ): cstring =
-
   (fQsciLexerMatlab_virtualbase_wordCharacters(self.h))
 
 type QsciLexerMatlabwordCharactersProc* = proc(): cstring
@@ -845,7 +802,6 @@ proc miqt_exec_callback_QsciLexerMatlab_wordCharacters(self: ptr cQsciLexerMatla
 
   virtualReturn
 proc QsciLexerMatlabsetAutoIndentStyle*(self: gen_qscilexermatlab_types.QsciLexerMatlab, autoindentstyle: cint): void =
-
   fQsciLexerMatlab_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerMatlabsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -863,7 +819,6 @@ proc miqt_exec_callback_QsciLexerMatlab_setAutoIndentStyle(self: ptr cQsciLexerM
 
   nimfunc[](slotval1)
 proc QsciLexerMatlabsetColor*(self: gen_qscilexermatlab_types.QsciLexerMatlab, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerMatlab_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerMatlabsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -883,7 +838,6 @@ proc miqt_exec_callback_QsciLexerMatlab_setColor(self: ptr cQsciLexerMatlab, slo
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerMatlabsetEolFill*(self: gen_qscilexermatlab_types.QsciLexerMatlab, eoffill: bool, style: cint): void =
-
   fQsciLexerMatlab_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerMatlabsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -903,7 +857,6 @@ proc miqt_exec_callback_QsciLexerMatlab_setEolFill(self: ptr cQsciLexerMatlab, s
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerMatlabsetFont*(self: gen_qscilexermatlab_types.QsciLexerMatlab, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerMatlab_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerMatlabsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -923,7 +876,6 @@ proc miqt_exec_callback_QsciLexerMatlab_setFont(self: ptr cQsciLexerMatlab, slot
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerMatlabsetPaper*(self: gen_qscilexermatlab_types.QsciLexerMatlab, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerMatlab_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerMatlabsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -943,7 +895,6 @@ proc miqt_exec_callback_QsciLexerMatlab_setPaper(self: ptr cQsciLexerMatlab, slo
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerMatlabreadProperties*(self: gen_qscilexermatlab_types.QsciLexerMatlab, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerMatlab_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerMatlabreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -968,7 +919,6 @@ proc miqt_exec_callback_QsciLexerMatlab_readProperties(self: ptr cQsciLexerMatla
 
   virtualReturn
 proc QsciLexerMatlabwriteProperties*(self: gen_qscilexermatlab_types.QsciLexerMatlab, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerMatlab_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerMatlabwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -993,7 +943,6 @@ proc miqt_exec_callback_QsciLexerMatlab_writeProperties(self: ptr cQsciLexerMatl
 
   virtualReturn
 proc QsciLexerMatlabevent*(self: gen_qscilexermatlab_types.QsciLexerMatlab, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerMatlab_virtualbase_event(self.h, event.h)
 
 type QsciLexerMatlabeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1013,7 +962,6 @@ proc miqt_exec_callback_QsciLexerMatlab_event(self: ptr cQsciLexerMatlab, slot: 
 
   virtualReturn
 proc QsciLexerMatlabeventFilter*(self: gen_qscilexermatlab_types.QsciLexerMatlab, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerMatlab_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerMatlabeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1035,7 +983,6 @@ proc miqt_exec_callback_QsciLexerMatlab_eventFilter(self: ptr cQsciLexerMatlab, 
 
   virtualReturn
 proc QsciLexerMatlabtimerEvent*(self: gen_qscilexermatlab_types.QsciLexerMatlab, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerMatlab_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerMatlabtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1053,7 +1000,6 @@ proc miqt_exec_callback_QsciLexerMatlab_timerEvent(self: ptr cQsciLexerMatlab, s
 
   nimfunc[](slotval1)
 proc QsciLexerMatlabchildEvent*(self: gen_qscilexermatlab_types.QsciLexerMatlab, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerMatlab_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerMatlabchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1071,7 +1017,6 @@ proc miqt_exec_callback_QsciLexerMatlab_childEvent(self: ptr cQsciLexerMatlab, s
 
   nimfunc[](slotval1)
 proc QsciLexerMatlabcustomEvent*(self: gen_qscilexermatlab_types.QsciLexerMatlab, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerMatlab_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerMatlabcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1089,7 +1034,6 @@ proc miqt_exec_callback_QsciLexerMatlab_customEvent(self: ptr cQsciLexerMatlab, 
 
   nimfunc[](slotval1)
 proc QsciLexerMatlabconnectNotify*(self: gen_qscilexermatlab_types.QsciLexerMatlab, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerMatlab_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerMatlabconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1107,7 +1051,6 @@ proc miqt_exec_callback_QsciLexerMatlab_connectNotify(self: ptr cQsciLexerMatlab
 
   nimfunc[](slotval1)
 proc QsciLexerMatlabdisconnectNotify*(self: gen_qscilexermatlab_types.QsciLexerMatlab, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerMatlab_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerMatlabdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

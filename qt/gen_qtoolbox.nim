@@ -215,174 +215,142 @@ proc fcQToolBox_delete(self: pointer) {.importc: "QToolBox_delete".}
 func init*(T: type gen_qtoolbox_types.QToolBox, h: ptr cQToolBox): gen_qtoolbox_types.QToolBox =
   T(h: h)
 proc create*(T: type gen_qtoolbox_types.QToolBox, parent: gen_qwidget.QWidget): gen_qtoolbox_types.QToolBox =
-
   gen_qtoolbox_types.QToolBox.init(fcQToolBox_new(parent.h))
+
 proc create*(T: type gen_qtoolbox_types.QToolBox, ): gen_qtoolbox_types.QToolBox =
-
   gen_qtoolbox_types.QToolBox.init(fcQToolBox_new2())
+
 proc create*(T: type gen_qtoolbox_types.QToolBox, parent: gen_qwidget.QWidget, f: cint): gen_qtoolbox_types.QToolBox =
-
   gen_qtoolbox_types.QToolBox.init(fcQToolBox_new3(parent.h, cint(f)))
-proc metaObject*(self: gen_qtoolbox_types.QToolBox, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtoolbox_types.QToolBox, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQToolBox_metaObject(self.h))
 
 proc metacast*(self: gen_qtoolbox_types.QToolBox, param1: cstring): pointer =
-
   fcQToolBox_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtoolbox_types.QToolBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQToolBox_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtoolbox_types.QToolBox, s: cstring): string =
-
   let v_ms = fcQToolBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtoolbox_types.QToolBox, s: cstring): string =
-
   let v_ms = fcQToolBox_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc addItem*(self: gen_qtoolbox_types.QToolBox, widget: gen_qwidget.QWidget, text: string): cint =
-
   fcQToolBox_addItem(self.h, widget.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc addItem2*(self: gen_qtoolbox_types.QToolBox, widget: gen_qwidget.QWidget, icon: gen_qicon.QIcon, text: string): cint =
-
+proc addItem*(self: gen_qtoolbox_types.QToolBox, widget: gen_qwidget.QWidget, icon: gen_qicon.QIcon, text: string): cint =
   fcQToolBox_addItem2(self.h, widget.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc insertItem*(self: gen_qtoolbox_types.QToolBox, index: cint, widget: gen_qwidget.QWidget, text: string): cint =
-
   fcQToolBox_insertItem(self.h, index, widget.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc insertItem2*(self: gen_qtoolbox_types.QToolBox, index: cint, widget: gen_qwidget.QWidget, icon: gen_qicon.QIcon, text: string): cint =
-
+proc insertItem*(self: gen_qtoolbox_types.QToolBox, index: cint, widget: gen_qwidget.QWidget, icon: gen_qicon.QIcon, text: string): cint =
   fcQToolBox_insertItem2(self.h, index, widget.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc removeItem*(self: gen_qtoolbox_types.QToolBox, index: cint): void =
-
   fcQToolBox_removeItem(self.h, index)
 
 proc setItemEnabled*(self: gen_qtoolbox_types.QToolBox, index: cint, enabled: bool): void =
-
   fcQToolBox_setItemEnabled(self.h, index, enabled)
 
 proc isItemEnabled*(self: gen_qtoolbox_types.QToolBox, index: cint): bool =
-
   fcQToolBox_isItemEnabled(self.h, index)
 
 proc setItemText*(self: gen_qtoolbox_types.QToolBox, index: cint, text: string): void =
-
   fcQToolBox_setItemText(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc itemText*(self: gen_qtoolbox_types.QToolBox, index: cint): string =
-
   let v_ms = fcQToolBox_itemText(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setItemIcon*(self: gen_qtoolbox_types.QToolBox, index: cint, icon: gen_qicon.QIcon): void =
-
   fcQToolBox_setItemIcon(self.h, index, icon.h)
 
 proc itemIcon*(self: gen_qtoolbox_types.QToolBox, index: cint): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQToolBox_itemIcon(self.h, index))
 
 proc setItemToolTip*(self: gen_qtoolbox_types.QToolBox, index: cint, toolTip: string): void =
-
   fcQToolBox_setItemToolTip(self.h, index, struct_miqt_string(data: toolTip, len: csize_t(len(toolTip))))
 
 proc itemToolTip*(self: gen_qtoolbox_types.QToolBox, index: cint): string =
-
   let v_ms = fcQToolBox_itemToolTip(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc currentIndex*(self: gen_qtoolbox_types.QToolBox, ): cint =
-
   fcQToolBox_currentIndex(self.h)
 
 proc currentWidget*(self: gen_qtoolbox_types.QToolBox, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQToolBox_currentWidget(self.h))
 
 proc widget*(self: gen_qtoolbox_types.QToolBox, index: cint): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQToolBox_widget(self.h, index))
 
 proc indexOf*(self: gen_qtoolbox_types.QToolBox, widget: gen_qwidget.QWidget): cint =
-
   fcQToolBox_indexOf(self.h, widget.h)
 
 proc count*(self: gen_qtoolbox_types.QToolBox, ): cint =
-
   fcQToolBox_count(self.h)
 
 proc setCurrentIndex*(self: gen_qtoolbox_types.QToolBox, index: cint): void =
-
   fcQToolBox_setCurrentIndex(self.h, index)
 
 proc setCurrentWidget*(self: gen_qtoolbox_types.QToolBox, widget: gen_qwidget.QWidget): void =
-
   fcQToolBox_setCurrentWidget(self.h, widget.h)
 
 proc currentChanged*(self: gen_qtoolbox_types.QToolBox, index: cint): void =
-
   fcQToolBox_currentChanged(self.h, index)
 
+type QToolBoxcurrentChangedSlot* = proc(index: cint)
 proc miqt_exec_callback_QToolBox_currentChanged(slot: int, index: cint) {.exportc.} =
-  type Cb = proc(index: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QToolBoxcurrentChangedSlot](cast[pointer](slot))
   let slotval1 = index
-
 
   nimfunc[](slotval1)
 
-proc oncurrentChanged*(self: gen_qtoolbox_types.QToolBox, slot: proc(index: cint)) =
-  type Cb = proc(index: cint)
-  var tmp = new Cb
+proc oncurrentChanged*(self: gen_qtoolbox_types.QToolBox, slot: QToolBoxcurrentChangedSlot) =
+  var tmp = new QToolBoxcurrentChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQToolBox_connect_currentChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qtoolbox_types.QToolBox, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qtoolbox_types.QToolBox, s: cstring, c: cstring): string =
   let v_ms = fcQToolBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtoolbox_types.QToolBox, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtoolbox_types.QToolBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQToolBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtoolbox_types.QToolBox, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtoolbox_types.QToolBox, s: cstring, c: cstring): string =
   let v_ms = fcQToolBox_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtoolbox_types.QToolBox, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtoolbox_types.QToolBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQToolBox_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QToolBoxmetaObject*(self: gen_qtoolbox_types.QToolBox, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQToolBox_virtualbase_metaObject(self.h))
 
 type QToolBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -400,7 +368,6 @@ proc miqt_exec_callback_QToolBox_metaObject(self: ptr cQToolBox, slot: int): poi
 
   virtualReturn.h
 proc QToolBoxmetacast*(self: gen_qtoolbox_types.QToolBox, param1: cstring): pointer =
-
   fQToolBox_virtualbase_metacast(self.h, param1)
 
 type QToolBoxmetacastProc* = proc(param1: cstring): pointer
@@ -420,7 +387,6 @@ proc miqt_exec_callback_QToolBox_metacast(self: ptr cQToolBox, slot: int, param1
 
   virtualReturn
 proc QToolBoxmetacall*(self: gen_qtoolbox_types.QToolBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fQToolBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QToolBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -444,7 +410,6 @@ proc miqt_exec_callback_QToolBox_metacall(self: ptr cQToolBox, slot: int, param1
 
   virtualReturn
 proc QToolBoxevent*(self: gen_qtoolbox_types.QToolBox, e: gen_qcoreevent.QEvent): bool =
-
   fQToolBox_virtualbase_event(self.h, e.h)
 
 type QToolBoxeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -464,7 +429,6 @@ proc miqt_exec_callback_QToolBox_event(self: ptr cQToolBox, slot: int, e: pointe
 
   virtualReturn
 proc QToolBoxitemInserted*(self: gen_qtoolbox_types.QToolBox, index: cint): void =
-
   fQToolBox_virtualbase_itemInserted(self.h, index)
 
 type QToolBoxitemInsertedProc* = proc(index: cint): void
@@ -482,7 +446,6 @@ proc miqt_exec_callback_QToolBox_itemInserted(self: ptr cQToolBox, slot: int, in
 
   nimfunc[](slotval1)
 proc QToolBoxitemRemoved*(self: gen_qtoolbox_types.QToolBox, index: cint): void =
-
   fQToolBox_virtualbase_itemRemoved(self.h, index)
 
 type QToolBoxitemRemovedProc* = proc(index: cint): void
@@ -500,7 +463,6 @@ proc miqt_exec_callback_QToolBox_itemRemoved(self: ptr cQToolBox, slot: int, ind
 
   nimfunc[](slotval1)
 proc QToolBoxshowEvent*(self: gen_qtoolbox_types.QToolBox, e: gen_qevent.QShowEvent): void =
-
   fQToolBox_virtualbase_showEvent(self.h, e.h)
 
 type QToolBoxshowEventProc* = proc(e: gen_qevent.QShowEvent): void
@@ -518,7 +480,6 @@ proc miqt_exec_callback_QToolBox_showEvent(self: ptr cQToolBox, slot: int, e: po
 
   nimfunc[](slotval1)
 proc QToolBoxchangeEvent*(self: gen_qtoolbox_types.QToolBox, param1: gen_qcoreevent.QEvent): void =
-
   fQToolBox_virtualbase_changeEvent(self.h, param1.h)
 
 type QToolBoxchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -536,7 +497,6 @@ proc miqt_exec_callback_QToolBox_changeEvent(self: ptr cQToolBox, slot: int, par
 
   nimfunc[](slotval1)
 proc QToolBoxsizeHint*(self: gen_qtoolbox_types.QToolBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQToolBox_virtualbase_sizeHint(self.h))
 
 type QToolBoxsizeHintProc* = proc(): gen_qsize.QSize
@@ -554,7 +514,6 @@ proc miqt_exec_callback_QToolBox_sizeHint(self: ptr cQToolBox, slot: int): point
 
   virtualReturn.h
 proc QToolBoxpaintEvent*(self: gen_qtoolbox_types.QToolBox, param1: gen_qevent.QPaintEvent): void =
-
   fQToolBox_virtualbase_paintEvent(self.h, param1.h)
 
 type QToolBoxpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -572,7 +531,6 @@ proc miqt_exec_callback_QToolBox_paintEvent(self: ptr cQToolBox, slot: int, para
 
   nimfunc[](slotval1)
 proc QToolBoxdevType*(self: gen_qtoolbox_types.QToolBox, ): cint =
-
   fQToolBox_virtualbase_devType(self.h)
 
 type QToolBoxdevTypeProc* = proc(): cint
@@ -590,7 +548,6 @@ proc miqt_exec_callback_QToolBox_devType(self: ptr cQToolBox, slot: int): cint {
 
   virtualReturn
 proc QToolBoxsetVisible*(self: gen_qtoolbox_types.QToolBox, visible: bool): void =
-
   fQToolBox_virtualbase_setVisible(self.h, visible)
 
 type QToolBoxsetVisibleProc* = proc(visible: bool): void
@@ -608,7 +565,6 @@ proc miqt_exec_callback_QToolBox_setVisible(self: ptr cQToolBox, slot: int, visi
 
   nimfunc[](slotval1)
 proc QToolBoxminimumSizeHint*(self: gen_qtoolbox_types.QToolBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQToolBox_virtualbase_minimumSizeHint(self.h))
 
 type QToolBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -626,7 +582,6 @@ proc miqt_exec_callback_QToolBox_minimumSizeHint(self: ptr cQToolBox, slot: int)
 
   virtualReturn.h
 proc QToolBoxheightForWidth*(self: gen_qtoolbox_types.QToolBox, param1: cint): cint =
-
   fQToolBox_virtualbase_heightForWidth(self.h, param1)
 
 type QToolBoxheightForWidthProc* = proc(param1: cint): cint
@@ -646,7 +601,6 @@ proc miqt_exec_callback_QToolBox_heightForWidth(self: ptr cQToolBox, slot: int, 
 
   virtualReturn
 proc QToolBoxhasHeightForWidth*(self: gen_qtoolbox_types.QToolBox, ): bool =
-
   fQToolBox_virtualbase_hasHeightForWidth(self.h)
 
 type QToolBoxhasHeightForWidthProc* = proc(): bool
@@ -664,7 +618,6 @@ proc miqt_exec_callback_QToolBox_hasHeightForWidth(self: ptr cQToolBox, slot: in
 
   virtualReturn
 proc QToolBoxpaintEngine*(self: gen_qtoolbox_types.QToolBox, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQToolBox_virtualbase_paintEngine(self.h))
 
 type QToolBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -682,7 +635,6 @@ proc miqt_exec_callback_QToolBox_paintEngine(self: ptr cQToolBox, slot: int): po
 
   virtualReturn.h
 proc QToolBoxmousePressEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QMouseEvent): void =
-
   fQToolBox_virtualbase_mousePressEvent(self.h, event.h)
 
 type QToolBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -700,7 +652,6 @@ proc miqt_exec_callback_QToolBox_mousePressEvent(self: ptr cQToolBox, slot: int,
 
   nimfunc[](slotval1)
 proc QToolBoxmouseReleaseEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QMouseEvent): void =
-
   fQToolBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QToolBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -718,7 +669,6 @@ proc miqt_exec_callback_QToolBox_mouseReleaseEvent(self: ptr cQToolBox, slot: in
 
   nimfunc[](slotval1)
 proc QToolBoxmouseDoubleClickEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QMouseEvent): void =
-
   fQToolBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QToolBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -736,7 +686,6 @@ proc miqt_exec_callback_QToolBox_mouseDoubleClickEvent(self: ptr cQToolBox, slot
 
   nimfunc[](slotval1)
 proc QToolBoxmouseMoveEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QMouseEvent): void =
-
   fQToolBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QToolBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -754,7 +703,6 @@ proc miqt_exec_callback_QToolBox_mouseMoveEvent(self: ptr cQToolBox, slot: int, 
 
   nimfunc[](slotval1)
 proc QToolBoxwheelEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QWheelEvent): void =
-
   fQToolBox_virtualbase_wheelEvent(self.h, event.h)
 
 type QToolBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -772,7 +720,6 @@ proc miqt_exec_callback_QToolBox_wheelEvent(self: ptr cQToolBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QToolBoxkeyPressEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QKeyEvent): void =
-
   fQToolBox_virtualbase_keyPressEvent(self.h, event.h)
 
 type QToolBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -790,7 +737,6 @@ proc miqt_exec_callback_QToolBox_keyPressEvent(self: ptr cQToolBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QToolBoxkeyReleaseEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QKeyEvent): void =
-
   fQToolBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QToolBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -808,7 +754,6 @@ proc miqt_exec_callback_QToolBox_keyReleaseEvent(self: ptr cQToolBox, slot: int,
 
   nimfunc[](slotval1)
 proc QToolBoxfocusInEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QFocusEvent): void =
-
   fQToolBox_virtualbase_focusInEvent(self.h, event.h)
 
 type QToolBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -826,7 +771,6 @@ proc miqt_exec_callback_QToolBox_focusInEvent(self: ptr cQToolBox, slot: int, ev
 
   nimfunc[](slotval1)
 proc QToolBoxfocusOutEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QFocusEvent): void =
-
   fQToolBox_virtualbase_focusOutEvent(self.h, event.h)
 
 type QToolBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -844,7 +788,6 @@ proc miqt_exec_callback_QToolBox_focusOutEvent(self: ptr cQToolBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QToolBoxenterEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qcoreevent.QEvent): void =
-
   fQToolBox_virtualbase_enterEvent(self.h, event.h)
 
 type QToolBoxenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -862,7 +805,6 @@ proc miqt_exec_callback_QToolBox_enterEvent(self: ptr cQToolBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QToolBoxleaveEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qcoreevent.QEvent): void =
-
   fQToolBox_virtualbase_leaveEvent(self.h, event.h)
 
 type QToolBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -880,7 +822,6 @@ proc miqt_exec_callback_QToolBox_leaveEvent(self: ptr cQToolBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QToolBoxmoveEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QMoveEvent): void =
-
   fQToolBox_virtualbase_moveEvent(self.h, event.h)
 
 type QToolBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -898,7 +839,6 @@ proc miqt_exec_callback_QToolBox_moveEvent(self: ptr cQToolBox, slot: int, event
 
   nimfunc[](slotval1)
 proc QToolBoxresizeEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QResizeEvent): void =
-
   fQToolBox_virtualbase_resizeEvent(self.h, event.h)
 
 type QToolBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -916,7 +856,6 @@ proc miqt_exec_callback_QToolBox_resizeEvent(self: ptr cQToolBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QToolBoxcloseEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QCloseEvent): void =
-
   fQToolBox_virtualbase_closeEvent(self.h, event.h)
 
 type QToolBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -934,7 +873,6 @@ proc miqt_exec_callback_QToolBox_closeEvent(self: ptr cQToolBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QToolBoxcontextMenuEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QContextMenuEvent): void =
-
   fQToolBox_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QToolBoxcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -952,7 +890,6 @@ proc miqt_exec_callback_QToolBox_contextMenuEvent(self: ptr cQToolBox, slot: int
 
   nimfunc[](slotval1)
 proc QToolBoxtabletEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QTabletEvent): void =
-
   fQToolBox_virtualbase_tabletEvent(self.h, event.h)
 
 type QToolBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -970,7 +907,6 @@ proc miqt_exec_callback_QToolBox_tabletEvent(self: ptr cQToolBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QToolBoxactionEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QActionEvent): void =
-
   fQToolBox_virtualbase_actionEvent(self.h, event.h)
 
 type QToolBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -988,7 +924,6 @@ proc miqt_exec_callback_QToolBox_actionEvent(self: ptr cQToolBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QToolBoxdragEnterEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QDragEnterEvent): void =
-
   fQToolBox_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QToolBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1006,7 +941,6 @@ proc miqt_exec_callback_QToolBox_dragEnterEvent(self: ptr cQToolBox, slot: int, 
 
   nimfunc[](slotval1)
 proc QToolBoxdragMoveEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QDragMoveEvent): void =
-
   fQToolBox_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QToolBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1024,7 +958,6 @@ proc miqt_exec_callback_QToolBox_dragMoveEvent(self: ptr cQToolBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QToolBoxdragLeaveEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QDragLeaveEvent): void =
-
   fQToolBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QToolBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1042,7 +975,6 @@ proc miqt_exec_callback_QToolBox_dragLeaveEvent(self: ptr cQToolBox, slot: int, 
 
   nimfunc[](slotval1)
 proc QToolBoxdropEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QDropEvent): void =
-
   fQToolBox_virtualbase_dropEvent(self.h, event.h)
 
 type QToolBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1060,7 +992,6 @@ proc miqt_exec_callback_QToolBox_dropEvent(self: ptr cQToolBox, slot: int, event
 
   nimfunc[](slotval1)
 proc QToolBoxhideEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qevent.QHideEvent): void =
-
   fQToolBox_virtualbase_hideEvent(self.h, event.h)
 
 type QToolBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1078,7 +1009,6 @@ proc miqt_exec_callback_QToolBox_hideEvent(self: ptr cQToolBox, slot: int, event
 
   nimfunc[](slotval1)
 proc QToolBoxnativeEvent*(self: gen_qtoolbox_types.QToolBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQToolBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QToolBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1105,7 +1035,6 @@ proc miqt_exec_callback_QToolBox_nativeEvent(self: ptr cQToolBox, slot: int, eve
 
   virtualReturn
 proc QToolBoxmetric*(self: gen_qtoolbox_types.QToolBox, param1: cint): cint =
-
   fQToolBox_virtualbase_metric(self.h, cint(param1))
 
 type QToolBoxmetricProc* = proc(param1: cint): cint
@@ -1125,7 +1054,6 @@ proc miqt_exec_callback_QToolBox_metric(self: ptr cQToolBox, slot: int, param1: 
 
   virtualReturn
 proc QToolBoxinitPainter*(self: gen_qtoolbox_types.QToolBox, painter: gen_qpainter.QPainter): void =
-
   fQToolBox_virtualbase_initPainter(self.h, painter.h)
 
 type QToolBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1143,7 +1071,6 @@ proc miqt_exec_callback_QToolBox_initPainter(self: ptr cQToolBox, slot: int, pai
 
   nimfunc[](slotval1)
 proc QToolBoxredirected*(self: gen_qtoolbox_types.QToolBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQToolBox_virtualbase_redirected(self.h, offset.h))
 
 type QToolBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1163,7 +1090,6 @@ proc miqt_exec_callback_QToolBox_redirected(self: ptr cQToolBox, slot: int, offs
 
   virtualReturn.h
 proc QToolBoxsharedPainter*(self: gen_qtoolbox_types.QToolBox, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQToolBox_virtualbase_sharedPainter(self.h))
 
 type QToolBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1181,7 +1107,6 @@ proc miqt_exec_callback_QToolBox_sharedPainter(self: ptr cQToolBox, slot: int): 
 
   virtualReturn.h
 proc QToolBoxinputMethodEvent*(self: gen_qtoolbox_types.QToolBox, param1: gen_qevent.QInputMethodEvent): void =
-
   fQToolBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QToolBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1199,7 +1124,6 @@ proc miqt_exec_callback_QToolBox_inputMethodEvent(self: ptr cQToolBox, slot: int
 
   nimfunc[](slotval1)
 proc QToolBoxinputMethodQuery*(self: gen_qtoolbox_types.QToolBox, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQToolBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QToolBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1219,7 +1143,6 @@ proc miqt_exec_callback_QToolBox_inputMethodQuery(self: ptr cQToolBox, slot: int
 
   virtualReturn.h
 proc QToolBoxfocusNextPrevChild*(self: gen_qtoolbox_types.QToolBox, next: bool): bool =
-
   fQToolBox_virtualbase_focusNextPrevChild(self.h, next)
 
 type QToolBoxfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1239,7 +1162,6 @@ proc miqt_exec_callback_QToolBox_focusNextPrevChild(self: ptr cQToolBox, slot: i
 
   virtualReturn
 proc QToolBoxeventFilter*(self: gen_qtoolbox_types.QToolBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQToolBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QToolBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1261,7 +1183,6 @@ proc miqt_exec_callback_QToolBox_eventFilter(self: ptr cQToolBox, slot: int, wat
 
   virtualReturn
 proc QToolBoxtimerEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qcoreevent.QTimerEvent): void =
-
   fQToolBox_virtualbase_timerEvent(self.h, event.h)
 
 type QToolBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1279,7 +1200,6 @@ proc miqt_exec_callback_QToolBox_timerEvent(self: ptr cQToolBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QToolBoxchildEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qcoreevent.QChildEvent): void =
-
   fQToolBox_virtualbase_childEvent(self.h, event.h)
 
 type QToolBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1297,7 +1217,6 @@ proc miqt_exec_callback_QToolBox_childEvent(self: ptr cQToolBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QToolBoxcustomEvent*(self: gen_qtoolbox_types.QToolBox, event: gen_qcoreevent.QEvent): void =
-
   fQToolBox_virtualbase_customEvent(self.h, event.h)
 
 type QToolBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1315,7 +1234,6 @@ proc miqt_exec_callback_QToolBox_customEvent(self: ptr cQToolBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QToolBoxconnectNotify*(self: gen_qtoolbox_types.QToolBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQToolBox_virtualbase_connectNotify(self.h, signal.h)
 
 type QToolBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1333,7 +1251,6 @@ proc miqt_exec_callback_QToolBox_connectNotify(self: ptr cQToolBox, slot: int, s
 
   nimfunc[](slotval1)
 proc QToolBoxdisconnectNotify*(self: gen_qtoolbox_types.QToolBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQToolBox_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QToolBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

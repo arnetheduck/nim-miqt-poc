@@ -102,67 +102,54 @@ proc fcQNetworkConfiguration_delete(self: pointer) {.importc: "QNetworkConfigura
 func init*(T: type gen_qnetworkconfiguration_types.QNetworkConfiguration, h: ptr cQNetworkConfiguration): gen_qnetworkconfiguration_types.QNetworkConfiguration =
   T(h: h)
 proc create*(T: type gen_qnetworkconfiguration_types.QNetworkConfiguration, ): gen_qnetworkconfiguration_types.QNetworkConfiguration =
-
   gen_qnetworkconfiguration_types.QNetworkConfiguration.init(fcQNetworkConfiguration_new())
+
 proc create*(T: type gen_qnetworkconfiguration_types.QNetworkConfiguration, other: gen_qnetworkconfiguration_types.QNetworkConfiguration): gen_qnetworkconfiguration_types.QNetworkConfiguration =
-
   gen_qnetworkconfiguration_types.QNetworkConfiguration.init(fcQNetworkConfiguration_new2(other.h))
-proc operatorAssign*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, other: gen_qnetworkconfiguration_types.QNetworkConfiguration): void =
 
+proc operatorAssign*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, other: gen_qnetworkconfiguration_types.QNetworkConfiguration): void =
   fcQNetworkConfiguration_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, other: gen_qnetworkconfiguration_types.QNetworkConfiguration): void =
-
   fcQNetworkConfiguration_swap(self.h, other.h)
 
 proc operatorEqual*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, other: gen_qnetworkconfiguration_types.QNetworkConfiguration): bool =
-
   fcQNetworkConfiguration_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, other: gen_qnetworkconfiguration_types.QNetworkConfiguration): bool =
-
   fcQNetworkConfiguration_operatorNotEqual(self.h, other.h)
 
 proc state*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): cint =
-
   cint(fcQNetworkConfiguration_state(self.h))
 
 proc typeX*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): cint =
-
   cint(fcQNetworkConfiguration_typeX(self.h))
 
 proc purpose*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): cint =
-
   cint(fcQNetworkConfiguration_purpose(self.h))
 
 proc bearerType*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): cint =
-
   cint(fcQNetworkConfiguration_bearerType(self.h))
 
 proc bearerTypeFamily*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): cint =
-
   cint(fcQNetworkConfiguration_bearerTypeFamily(self.h))
 
 proc bearerTypeName*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): string =
-
   let v_ms = fcQNetworkConfiguration_bearerTypeName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc identifier*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): string =
-
   let v_ms = fcQNetworkConfiguration_identifier(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isRoamingAvailable*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): bool =
-
   fcQNetworkConfiguration_isRoamingAvailable(self.h)
 
 proc children*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): seq[gen_qnetworkconfiguration_types.QNetworkConfiguration] =
-
   var v_ma = fcQNetworkConfiguration_children(self.h)
   var vx_ret = newSeq[gen_qnetworkconfiguration_types.QNetworkConfiguration](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -171,22 +158,18 @@ proc children*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): s
   vx_ret
 
 proc name*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): string =
-
   let v_ms = fcQNetworkConfiguration_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isValid*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): bool =
-
   fcQNetworkConfiguration_isValid(self.h)
 
 proc connectTimeout*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, ): cint =
-
   fcQNetworkConfiguration_connectTimeout(self.h)
 
 proc setConnectTimeout*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration, timeout: cint): bool =
-
   fcQNetworkConfiguration_setConnectTimeout(self.h, timeout)
 
 proc delete*(self: gen_qnetworkconfiguration_types.QNetworkConfiguration) =

@@ -69,66 +69,54 @@ proc fcQPaintDeviceWindow_delete(self: pointer) {.importc: "QPaintDeviceWindow_d
 func init*(T: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, h: ptr cQPaintDeviceWindow): gen_qpaintdevicewindow_types.QPaintDeviceWindow =
   T(h: h)
 proc metaObject*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQPaintDeviceWindow_metaObject(self.h))
 
 proc metacast*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow, param1: cstring): pointer =
-
   fcQPaintDeviceWindow_metacast(self.h, param1)
 
 proc metacall*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQPaintDeviceWindow_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring): string =
-
   let v_ms = fcQPaintDeviceWindow_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring): string =
-
   let v_ms = fcQPaintDeviceWindow_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc update*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow, rect: gen_qrect.QRect): void =
-
   fcQPaintDeviceWindow_update(self.h, rect.h)
 
-proc updateWithRegion*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow, region: gen_qregion.QRegion): void =
-
+proc update*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow, region: gen_qregion.QRegion): void =
   fcQPaintDeviceWindow_updateWithRegion(self.h, region.h)
 
-proc update2*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow, ): void =
-
+proc update*(self: gen_qpaintdevicewindow_types.QPaintDeviceWindow, ): void =
   fcQPaintDeviceWindow_update2(self.h)
 
-proc tr2*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring, c: cstring): string =
   let v_ms = fcQPaintDeviceWindow_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPaintDeviceWindow_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring, c: cstring): string =
   let v_ms = fcQPaintDeviceWindow_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qpaintdevicewindow_types.QPaintDeviceWindow, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPaintDeviceWindow_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

@@ -51,7 +51,6 @@ proc fcQStaticPlugin_delete(self: pointer) {.importc: "QStaticPlugin_delete".}
 func init*(T: type gen_qplugin_types.QStaticPlugin, h: ptr cQStaticPlugin): gen_qplugin_types.QStaticPlugin =
   T(h: h)
 proc metaData*(self: gen_qplugin_types.QStaticPlugin, ): gen_qjsonobject.QJsonObject =
-
   gen_qjsonobject.QJsonObject(h: fcQStaticPlugin_metaData(self.h))
 
 proc delete*(self: gen_qplugin_types.QStaticPlugin) =

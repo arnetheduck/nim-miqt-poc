@@ -187,95 +187,75 @@ proc fcQItemSelection_delete(self: pointer) {.importc: "QItemSelection_delete".}
 func init*(T: type gen_qitemselectionmodel_types.QItemSelectionRange, h: ptr cQItemSelectionRange): gen_qitemselectionmodel_types.QItemSelectionRange =
   T(h: h)
 proc create*(T: type gen_qitemselectionmodel_types.QItemSelectionRange, ): gen_qitemselectionmodel_types.QItemSelectionRange =
-
   gen_qitemselectionmodel_types.QItemSelectionRange.init(fcQItemSelectionRange_new())
+
 proc create*(T: type gen_qitemselectionmodel_types.QItemSelectionRange, topL: gen_qabstractitemmodel.QModelIndex, bottomR: gen_qabstractitemmodel.QModelIndex): gen_qitemselectionmodel_types.QItemSelectionRange =
-
   gen_qitemselectionmodel_types.QItemSelectionRange.init(fcQItemSelectionRange_new2(topL.h, bottomR.h))
+
 proc create*(T: type gen_qitemselectionmodel_types.QItemSelectionRange, index: gen_qabstractitemmodel.QModelIndex): gen_qitemselectionmodel_types.QItemSelectionRange =
-
   gen_qitemselectionmodel_types.QItemSelectionRange.init(fcQItemSelectionRange_new3(index.h))
-proc create2*(T: type gen_qitemselectionmodel_types.QItemSelectionRange, param1: gen_qitemselectionmodel_types.QItemSelectionRange): gen_qitemselectionmodel_types.QItemSelectionRange =
 
+proc create*(T: type gen_qitemselectionmodel_types.QItemSelectionRange, param1: gen_qitemselectionmodel_types.QItemSelectionRange): gen_qitemselectionmodel_types.QItemSelectionRange =
   gen_qitemselectionmodel_types.QItemSelectionRange.init(fcQItemSelectionRange_new4(param1.h))
-proc swap*(self: gen_qitemselectionmodel_types.QItemSelectionRange, other: gen_qitemselectionmodel_types.QItemSelectionRange): void =
 
+proc swap*(self: gen_qitemselectionmodel_types.QItemSelectionRange, other: gen_qitemselectionmodel_types.QItemSelectionRange): void =
   fcQItemSelectionRange_swap(self.h, other.h)
 
 proc top*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): cint =
-
   fcQItemSelectionRange_top(self.h)
 
 proc left*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): cint =
-
   fcQItemSelectionRange_left(self.h)
 
 proc bottom*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): cint =
-
   fcQItemSelectionRange_bottom(self.h)
 
 proc right*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): cint =
-
   fcQItemSelectionRange_right(self.h)
 
 proc width*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): cint =
-
   fcQItemSelectionRange_width(self.h)
 
 proc height*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): cint =
-
   fcQItemSelectionRange_height(self.h)
 
 proc topLeft*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): gen_qabstractitemmodel.QPersistentModelIndex =
-
   gen_qabstractitemmodel.QPersistentModelIndex(h: fcQItemSelectionRange_topLeft(self.h))
 
 proc bottomRight*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): gen_qabstractitemmodel.QPersistentModelIndex =
-
   gen_qabstractitemmodel.QPersistentModelIndex(h: fcQItemSelectionRange_bottomRight(self.h))
 
 proc parent*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQItemSelectionRange_parent(self.h))
 
 proc model*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): gen_qabstractitemmodel.QAbstractItemModel =
-
   gen_qabstractitemmodel.QAbstractItemModel(h: fcQItemSelectionRange_model(self.h))
 
 proc contains*(self: gen_qitemselectionmodel_types.QItemSelectionRange, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQItemSelectionRange_contains(self.h, index.h)
 
-proc contains2*(self: gen_qitemselectionmodel_types.QItemSelectionRange, row: cint, column: cint, parentIndex: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc contains*(self: gen_qitemselectionmodel_types.QItemSelectionRange, row: cint, column: cint, parentIndex: gen_qabstractitemmodel.QModelIndex): bool =
   fcQItemSelectionRange_contains2(self.h, row, column, parentIndex.h)
 
 proc intersects*(self: gen_qitemselectionmodel_types.QItemSelectionRange, other: gen_qitemselectionmodel_types.QItemSelectionRange): bool =
-
   fcQItemSelectionRange_intersects(self.h, other.h)
 
 proc intersected*(self: gen_qitemselectionmodel_types.QItemSelectionRange, other: gen_qitemselectionmodel_types.QItemSelectionRange): gen_qitemselectionmodel_types.QItemSelectionRange =
-
   gen_qitemselectionmodel_types.QItemSelectionRange(h: fcQItemSelectionRange_intersected(self.h, other.h))
 
 proc operatorEqual*(self: gen_qitemselectionmodel_types.QItemSelectionRange, other: gen_qitemselectionmodel_types.QItemSelectionRange): bool =
-
   fcQItemSelectionRange_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qitemselectionmodel_types.QItemSelectionRange, other: gen_qitemselectionmodel_types.QItemSelectionRange): bool =
-
   fcQItemSelectionRange_operatorNotEqual(self.h, other.h)
 
 proc isValid*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): bool =
-
   fcQItemSelectionRange_isValid(self.h)
 
 proc isEmpty*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): bool =
-
   fcQItemSelectionRange_isEmpty(self.h)
 
 proc indexes*(self: gen_qitemselectionmodel_types.QItemSelectionRange, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fcQItemSelectionRange_indexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -289,63 +269,51 @@ proc delete*(self: gen_qitemselectionmodel_types.QItemSelectionRange) =
 func init*(T: type gen_qitemselectionmodel_types.QItemSelectionModel, h: ptr cQItemSelectionModel): gen_qitemselectionmodel_types.QItemSelectionModel =
   T(h: h)
 proc create*(T: type gen_qitemselectionmodel_types.QItemSelectionModel, ): gen_qitemselectionmodel_types.QItemSelectionModel =
-
   gen_qitemselectionmodel_types.QItemSelectionModel.init(fcQItemSelectionModel_new())
+
 proc create*(T: type gen_qitemselectionmodel_types.QItemSelectionModel, model: gen_qabstractitemmodel.QAbstractItemModel, parent: gen_qobject.QObject): gen_qitemselectionmodel_types.QItemSelectionModel =
-
   gen_qitemselectionmodel_types.QItemSelectionModel.init(fcQItemSelectionModel_new2(model.h, parent.h))
+
 proc create*(T: type gen_qitemselectionmodel_types.QItemSelectionModel, model: gen_qabstractitemmodel.QAbstractItemModel): gen_qitemselectionmodel_types.QItemSelectionModel =
-
   gen_qitemselectionmodel_types.QItemSelectionModel.init(fcQItemSelectionModel_new3(model.h))
-proc metaObject*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQItemSelectionModel_metaObject(self.h))
 
 proc metacast*(self: gen_qitemselectionmodel_types.QItemSelectionModel, param1: cstring): pointer =
-
   fcQItemSelectionModel_metacast(self.h, param1)
 
 proc metacall*(self: gen_qitemselectionmodel_types.QItemSelectionModel, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQItemSelectionModel_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qitemselectionmodel_types.QItemSelectionModel, s: cstring): string =
-
   let v_ms = fcQItemSelectionModel_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc currentIndex*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQItemSelectionModel_currentIndex(self.h))
 
 proc isSelected*(self: gen_qitemselectionmodel_types.QItemSelectionModel, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQItemSelectionModel_isSelected(self.h, index.h)
 
 proc isRowSelected*(self: gen_qitemselectionmodel_types.QItemSelectionModel, row: cint): bool =
-
   fcQItemSelectionModel_isRowSelected(self.h, row)
 
 proc isColumnSelected*(self: gen_qitemselectionmodel_types.QItemSelectionModel, column: cint): bool =
-
   fcQItemSelectionModel_isColumnSelected(self.h, column)
 
 proc rowIntersectsSelection*(self: gen_qitemselectionmodel_types.QItemSelectionModel, row: cint): bool =
-
   fcQItemSelectionModel_rowIntersectsSelection(self.h, row)
 
 proc columnIntersectsSelection*(self: gen_qitemselectionmodel_types.QItemSelectionModel, column: cint): bool =
-
   fcQItemSelectionModel_columnIntersectsSelection(self.h, column)
 
 proc hasSelection*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): bool =
-
   fcQItemSelectionModel_hasSelection(self.h)
 
 proc selectedIndexes*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fcQItemSelectionModel_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -354,7 +322,6 @@ proc selectedIndexes*(self: gen_qitemselectionmodel_types.QItemSelectionModel, )
   vx_ret
 
 proc selectedRows*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fcQItemSelectionModel_selectedRows(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -363,7 +330,6 @@ proc selectedRows*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): s
   vx_ret
 
 proc selectedColumns*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fcQItemSelectionModel_selectedColumns(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -372,179 +338,151 @@ proc selectedColumns*(self: gen_qitemselectionmodel_types.QItemSelectionModel, )
   vx_ret
 
 proc selection*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): gen_qitemselectionmodel_types.QItemSelection =
-
   gen_qitemselectionmodel_types.QItemSelection(h: fcQItemSelectionModel_selection(self.h))
 
 proc model*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): gen_qabstractitemmodel.QAbstractItemModel =
-
   gen_qabstractitemmodel.QAbstractItemModel(h: fcQItemSelectionModel_model(self.h))
 
 proc model2*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): gen_qabstractitemmodel.QAbstractItemModel =
-
   gen_qabstractitemmodel.QAbstractItemModel(h: fcQItemSelectionModel_model2(self.h))
 
 proc setModel*(self: gen_qitemselectionmodel_types.QItemSelectionModel, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fcQItemSelectionModel_setModel(self.h, model.h)
 
 proc setCurrentIndex*(self: gen_qitemselectionmodel_types.QItemSelectionModel, index: gen_qabstractitemmodel.QModelIndex, command: cint): void =
-
   fcQItemSelectionModel_setCurrentIndex(self.h, index.h, cint(command))
 
 proc select*(self: gen_qitemselectionmodel_types.QItemSelectionModel, index: gen_qabstractitemmodel.QModelIndex, command: cint): void =
-
   fcQItemSelectionModel_select(self.h, index.h, cint(command))
 
-proc select2*(self: gen_qitemselectionmodel_types.QItemSelectionModel, selection: gen_qitemselectionmodel_types.QItemSelection, command: cint): void =
-
+proc select*(self: gen_qitemselectionmodel_types.QItemSelectionModel, selection: gen_qitemselectionmodel_types.QItemSelection, command: cint): void =
   fcQItemSelectionModel_select2(self.h, selection.h, cint(command))
 
 proc clear*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): void =
-
   fcQItemSelectionModel_clear(self.h)
 
 proc reset*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): void =
-
   fcQItemSelectionModel_reset(self.h)
 
 proc clearSelection*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): void =
-
   fcQItemSelectionModel_clearSelection(self.h)
 
 proc clearCurrentIndex*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): void =
-
   fcQItemSelectionModel_clearCurrentIndex(self.h)
 
 proc selectionChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, selected: gen_qitemselectionmodel_types.QItemSelection, deselected: gen_qitemselectionmodel_types.QItemSelection): void =
-
   fcQItemSelectionModel_selectionChanged(self.h, selected.h, deselected.h)
 
+type QItemSelectionModelselectionChangedSlot* = proc(selected: gen_qitemselectionmodel_types.QItemSelection, deselected: gen_qitemselectionmodel_types.QItemSelection)
 proc miqt_exec_callback_QItemSelectionModel_selectionChanged(slot: int, selected: pointer, deselected: pointer) {.exportc.} =
-  type Cb = proc(selected: gen_qitemselectionmodel_types.QItemSelection, deselected: gen_qitemselectionmodel_types.QItemSelection)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QItemSelectionModelselectionChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qitemselectionmodel_types.QItemSelection(h: selected)
 
   let slotval2 = gen_qitemselectionmodel_types.QItemSelection(h: deselected)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onselectionChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: proc(selected: gen_qitemselectionmodel_types.QItemSelection, deselected: gen_qitemselectionmodel_types.QItemSelection)) =
-  type Cb = proc(selected: gen_qitemselectionmodel_types.QItemSelection, deselected: gen_qitemselectionmodel_types.QItemSelection)
-  var tmp = new Cb
+proc onselectionChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelselectionChangedSlot) =
+  var tmp = new QItemSelectionModelselectionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQItemSelectionModel_connect_selectionChanged(self.h, cast[int](addr tmp[]))
-proc currentChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
 
+proc currentChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
   fcQItemSelectionModel_currentChanged(self.h, current.h, previous.h)
 
+type QItemSelectionModelcurrentChangedSlot* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)
 proc miqt_exec_callback_QItemSelectionModel_currentChanged(slot: int, current: pointer, previous: pointer) {.exportc.} =
-  type Cb = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QItemSelectionModelcurrentChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: current)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: previous)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncurrentChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)) =
-  type Cb = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)
-  var tmp = new Cb
+proc oncurrentChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelcurrentChangedSlot) =
+  var tmp = new QItemSelectionModelcurrentChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQItemSelectionModel_connect_currentChanged(self.h, cast[int](addr tmp[]))
-proc currentRowChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
 
+proc currentRowChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
   fcQItemSelectionModel_currentRowChanged(self.h, current.h, previous.h)
 
+type QItemSelectionModelcurrentRowChangedSlot* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)
 proc miqt_exec_callback_QItemSelectionModel_currentRowChanged(slot: int, current: pointer, previous: pointer) {.exportc.} =
-  type Cb = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QItemSelectionModelcurrentRowChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: current)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: previous)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncurrentRowChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)) =
-  type Cb = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)
-  var tmp = new Cb
+proc oncurrentRowChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelcurrentRowChangedSlot) =
+  var tmp = new QItemSelectionModelcurrentRowChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQItemSelectionModel_connect_currentRowChanged(self.h, cast[int](addr tmp[]))
-proc currentColumnChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
 
+proc currentColumnChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
   fcQItemSelectionModel_currentColumnChanged(self.h, current.h, previous.h)
 
+type QItemSelectionModelcurrentColumnChangedSlot* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)
 proc miqt_exec_callback_QItemSelectionModel_currentColumnChanged(slot: int, current: pointer, previous: pointer) {.exportc.} =
-  type Cb = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QItemSelectionModelcurrentColumnChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: current)
 
   let slotval2 = gen_qabstractitemmodel.QModelIndex(h: previous)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncurrentColumnChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)) =
-  type Cb = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex)
-  var tmp = new Cb
+proc oncurrentColumnChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelcurrentColumnChangedSlot) =
+  var tmp = new QItemSelectionModelcurrentColumnChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQItemSelectionModel_connect_currentColumnChanged(self.h, cast[int](addr tmp[]))
-proc modelChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, model: gen_qabstractitemmodel.QAbstractItemModel): void =
 
+proc modelChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, model: gen_qabstractitemmodel.QAbstractItemModel): void =
   fcQItemSelectionModel_modelChanged(self.h, model.h)
 
+type QItemSelectionModelmodelChangedSlot* = proc(model: gen_qabstractitemmodel.QAbstractItemModel)
 proc miqt_exec_callback_QItemSelectionModel_modelChanged(slot: int, model: pointer) {.exportc.} =
-  type Cb = proc(model: gen_qabstractitemmodel.QAbstractItemModel)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QItemSelectionModelmodelChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QAbstractItemModel(h: model)
-
 
   nimfunc[](slotval1)
 
-proc onmodelChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: proc(model: gen_qabstractitemmodel.QAbstractItemModel)) =
-  type Cb = proc(model: gen_qabstractitemmodel.QAbstractItemModel)
-  var tmp = new Cb
+proc onmodelChanged*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelmodelChangedSlot) =
+  var tmp = new QItemSelectionModelmodelChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQItemSelectionModel_connect_modelChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qitemselectionmodel_types.QItemSelectionModel, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qitemselectionmodel_types.QItemSelectionModel, s: cstring, c: cstring): string =
   let v_ms = fcQItemSelectionModel_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qitemselectionmodel_types.QItemSelectionModel, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qitemselectionmodel_types.QItemSelectionModel, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQItemSelectionModel_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc isRowSelected2*(self: gen_qitemselectionmodel_types.QItemSelectionModel, row: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc isRowSelected*(self: gen_qitemselectionmodel_types.QItemSelectionModel, row: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
   fcQItemSelectionModel_isRowSelected2(self.h, row, parent.h)
 
-proc isColumnSelected2*(self: gen_qitemselectionmodel_types.QItemSelectionModel, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc isColumnSelected*(self: gen_qitemselectionmodel_types.QItemSelectionModel, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
   fcQItemSelectionModel_isColumnSelected2(self.h, column, parent.h)
 
-proc rowIntersectsSelection2*(self: gen_qitemselectionmodel_types.QItemSelectionModel, row: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc rowIntersectsSelection*(self: gen_qitemselectionmodel_types.QItemSelectionModel, row: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
   fcQItemSelectionModel_rowIntersectsSelection2(self.h, row, parent.h)
 
-proc columnIntersectsSelection2*(self: gen_qitemselectionmodel_types.QItemSelectionModel, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
+proc columnIntersectsSelection*(self: gen_qitemselectionmodel_types.QItemSelectionModel, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
   fcQItemSelectionModel_columnIntersectsSelection2(self.h, column, parent.h)
 
-proc selectedRows1*(self: gen_qitemselectionmodel_types.QItemSelectionModel, column: cint): seq[gen_qabstractitemmodel.QModelIndex] =
-
+proc selectedRows*(self: gen_qitemselectionmodel_types.QItemSelectionModel, column: cint): seq[gen_qabstractitemmodel.QModelIndex] =
   var v_ma = fcQItemSelectionModel_selectedRows1(self.h, column)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -552,8 +490,7 @@ proc selectedRows1*(self: gen_qitemselectionmodel_types.QItemSelectionModel, col
     vx_ret[i] = gen_qabstractitemmodel.QModelIndex(h: v_outCast[i])
   vx_ret
 
-proc selectedColumns1*(self: gen_qitemselectionmodel_types.QItemSelectionModel, row: cint): seq[gen_qabstractitemmodel.QModelIndex] =
-
+proc selectedColumns*(self: gen_qitemselectionmodel_types.QItemSelectionModel, row: cint): seq[gen_qabstractitemmodel.QModelIndex] =
   var v_ma = fcQItemSelectionModel_selectedColumns1(self.h, row)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -562,7 +499,6 @@ proc selectedColumns1*(self: gen_qitemselectionmodel_types.QItemSelectionModel, 
   vx_ret
 
 proc QItemSelectionModelmetaObject*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQItemSelectionModel_virtualbase_metaObject(self.h))
 
 type QItemSelectionModelmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -580,7 +516,6 @@ proc miqt_exec_callback_QItemSelectionModel_metaObject(self: ptr cQItemSelection
 
   virtualReturn.h
 proc QItemSelectionModelmetacast*(self: gen_qitemselectionmodel_types.QItemSelectionModel, param1: cstring): pointer =
-
   fQItemSelectionModel_virtualbase_metacast(self.h, param1)
 
 type QItemSelectionModelmetacastProc* = proc(param1: cstring): pointer
@@ -600,7 +535,6 @@ proc miqt_exec_callback_QItemSelectionModel_metacast(self: ptr cQItemSelectionMo
 
   virtualReturn
 proc QItemSelectionModelmetacall*(self: gen_qitemselectionmodel_types.QItemSelectionModel, param1: cint, param2: cint, param3: pointer): cint =
-
   fQItemSelectionModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QItemSelectionModelmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -624,7 +558,6 @@ proc miqt_exec_callback_QItemSelectionModel_metacall(self: ptr cQItemSelectionMo
 
   virtualReturn
 proc QItemSelectionModelsetCurrentIndex*(self: gen_qitemselectionmodel_types.QItemSelectionModel, index: gen_qabstractitemmodel.QModelIndex, command: cint): void =
-
   fQItemSelectionModel_virtualbase_setCurrentIndex(self.h, index.h, cint(command))
 
 type QItemSelectionModelsetCurrentIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex, command: cint): void
@@ -644,7 +577,6 @@ proc miqt_exec_callback_QItemSelectionModel_setCurrentIndex(self: ptr cQItemSele
 
   nimfunc[](slotval1, slotval2)
 proc QItemSelectionModelselect*(self: gen_qitemselectionmodel_types.QItemSelectionModel, index: gen_qabstractitemmodel.QModelIndex, command: cint): void =
-
   fQItemSelectionModel_virtualbase_select(self.h, index.h, cint(command))
 
 type QItemSelectionModelselectProc* = proc(index: gen_qabstractitemmodel.QModelIndex, command: cint): void
@@ -663,12 +595,11 @@ proc miqt_exec_callback_QItemSelectionModel_select(self: ptr cQItemSelectionMode
 
 
   nimfunc[](slotval1, slotval2)
-proc QItemSelectionModelselect2*(self: gen_qitemselectionmodel_types.QItemSelectionModel, selection: gen_qitemselectionmodel_types.QItemSelection, command: cint): void =
-
+proc QItemSelectionModelselect*(self: gen_qitemselectionmodel_types.QItemSelectionModel, selection: gen_qitemselectionmodel_types.QItemSelection, command: cint): void =
   fQItemSelectionModel_virtualbase_select2(self.h, selection.h, cint(command))
 
 type QItemSelectionModelselect2Proc* = proc(selection: gen_qitemselectionmodel_types.QItemSelection, command: cint): void
-proc onselect2*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelselect2Proc) =
+proc onselect*(self: gen_qitemselectionmodel_types.QItemSelectionModel, slot: QItemSelectionModelselect2Proc) =
   # TODO check subclass
   var tmp = new QItemSelectionModelselect2Proc
   tmp[] = slot
@@ -684,7 +615,6 @@ proc miqt_exec_callback_QItemSelectionModel_select2(self: ptr cQItemSelectionMod
 
   nimfunc[](slotval1, slotval2)
 proc QItemSelectionModelclear*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): void =
-
   fQItemSelectionModel_virtualbase_clear(self.h)
 
 type QItemSelectionModelclearProc* = proc(): void
@@ -700,7 +630,6 @@ proc miqt_exec_callback_QItemSelectionModel_clear(self: ptr cQItemSelectionModel
 
   nimfunc[]()
 proc QItemSelectionModelreset*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): void =
-
   fQItemSelectionModel_virtualbase_reset(self.h)
 
 type QItemSelectionModelresetProc* = proc(): void
@@ -716,7 +645,6 @@ proc miqt_exec_callback_QItemSelectionModel_reset(self: ptr cQItemSelectionModel
 
   nimfunc[]()
 proc QItemSelectionModelclearCurrentIndex*(self: gen_qitemselectionmodel_types.QItemSelectionModel, ): void =
-
   fQItemSelectionModel_virtualbase_clearCurrentIndex(self.h)
 
 type QItemSelectionModelclearCurrentIndexProc* = proc(): void
@@ -732,7 +660,6 @@ proc miqt_exec_callback_QItemSelectionModel_clearCurrentIndex(self: ptr cQItemSe
 
   nimfunc[]()
 proc QItemSelectionModelevent*(self: gen_qitemselectionmodel_types.QItemSelectionModel, event: gen_qcoreevent.QEvent): bool =
-
   fQItemSelectionModel_virtualbase_event(self.h, event.h)
 
 type QItemSelectionModeleventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -752,7 +679,6 @@ proc miqt_exec_callback_QItemSelectionModel_event(self: ptr cQItemSelectionModel
 
   virtualReturn
 proc QItemSelectionModeleventFilter*(self: gen_qitemselectionmodel_types.QItemSelectionModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQItemSelectionModel_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QItemSelectionModeleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -774,7 +700,6 @@ proc miqt_exec_callback_QItemSelectionModel_eventFilter(self: ptr cQItemSelectio
 
   virtualReturn
 proc QItemSelectionModeltimerEvent*(self: gen_qitemselectionmodel_types.QItemSelectionModel, event: gen_qcoreevent.QTimerEvent): void =
-
   fQItemSelectionModel_virtualbase_timerEvent(self.h, event.h)
 
 type QItemSelectionModeltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -792,7 +717,6 @@ proc miqt_exec_callback_QItemSelectionModel_timerEvent(self: ptr cQItemSelection
 
   nimfunc[](slotval1)
 proc QItemSelectionModelchildEvent*(self: gen_qitemselectionmodel_types.QItemSelectionModel, event: gen_qcoreevent.QChildEvent): void =
-
   fQItemSelectionModel_virtualbase_childEvent(self.h, event.h)
 
 type QItemSelectionModelchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -810,7 +734,6 @@ proc miqt_exec_callback_QItemSelectionModel_childEvent(self: ptr cQItemSelection
 
   nimfunc[](slotval1)
 proc QItemSelectionModelcustomEvent*(self: gen_qitemselectionmodel_types.QItemSelectionModel, event: gen_qcoreevent.QEvent): void =
-
   fQItemSelectionModel_virtualbase_customEvent(self.h, event.h)
 
 type QItemSelectionModelcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -828,7 +751,6 @@ proc miqt_exec_callback_QItemSelectionModel_customEvent(self: ptr cQItemSelectio
 
   nimfunc[](slotval1)
 proc QItemSelectionModelconnectNotify*(self: gen_qitemselectionmodel_types.QItemSelectionModel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQItemSelectionModel_virtualbase_connectNotify(self.h, signal.h)
 
 type QItemSelectionModelconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -846,7 +768,6 @@ proc miqt_exec_callback_QItemSelectionModel_connectNotify(self: ptr cQItemSelect
 
   nimfunc[](slotval1)
 proc QItemSelectionModeldisconnectNotify*(self: gen_qitemselectionmodel_types.QItemSelectionModel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQItemSelectionModel_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QItemSelectionModeldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -871,24 +792,21 @@ proc delete*(self: gen_qitemselectionmodel_types.QItemSelectionModel) =
 func init*(T: type gen_qitemselectionmodel_types.QItemSelection, h: ptr cQItemSelection): gen_qitemselectionmodel_types.QItemSelection =
   T(h: h)
 proc create*(T: type gen_qitemselectionmodel_types.QItemSelection, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex): gen_qitemselectionmodel_types.QItemSelection =
-
   gen_qitemselectionmodel_types.QItemSelection.init(fcQItemSelection_new(topLeft.h, bottomRight.h))
+
 proc create*(T: type gen_qitemselectionmodel_types.QItemSelection, ): gen_qitemselectionmodel_types.QItemSelection =
-
   gen_qitemselectionmodel_types.QItemSelection.init(fcQItemSelection_new2())
+
 proc create*(T: type gen_qitemselectionmodel_types.QItemSelection, param1: gen_qitemselectionmodel_types.QItemSelection): gen_qitemselectionmodel_types.QItemSelection =
-
   gen_qitemselectionmodel_types.QItemSelection.init(fcQItemSelection_new3(param1.h))
-proc select*(self: gen_qitemselectionmodel_types.QItemSelection, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex): void =
 
+proc select*(self: gen_qitemselectionmodel_types.QItemSelection, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex): void =
   fcQItemSelection_select(self.h, topLeft.h, bottomRight.h)
 
 proc contains*(self: gen_qitemselectionmodel_types.QItemSelection, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQItemSelection_contains(self.h, index.h)
 
 proc indexes*(self: gen_qitemselectionmodel_types.QItemSelection, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fcQItemSelection_indexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -897,11 +815,9 @@ proc indexes*(self: gen_qitemselectionmodel_types.QItemSelection, ): seq[gen_qab
   vx_ret
 
 proc merge*(self: gen_qitemselectionmodel_types.QItemSelection, other: gen_qitemselectionmodel_types.QItemSelection, command: cint): void =
-
   fcQItemSelection_merge(self.h, other.h, cint(command))
 
 proc split*(_: type gen_qitemselectionmodel_types.QItemSelection, range: gen_qitemselectionmodel_types.QItemSelectionRange, other: gen_qitemselectionmodel_types.QItemSelectionRange, resultVal: gen_qitemselectionmodel_types.QItemSelection): void =
-
   fcQItemSelection_split(range.h, other.h, resultVal.h)
 
 proc delete*(self: gen_qitemselectionmodel_types.QItemSelection) =

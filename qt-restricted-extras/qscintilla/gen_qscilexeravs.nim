@@ -199,122 +199,99 @@ proc fcQsciLexerAVS_delete(self: pointer) {.importc: "QsciLexerAVS_delete".}
 func init*(T: type gen_qscilexeravs_types.QsciLexerAVS, h: ptr cQsciLexerAVS): gen_qscilexeravs_types.QsciLexerAVS =
   T(h: h)
 proc create*(T: type gen_qscilexeravs_types.QsciLexerAVS, ): gen_qscilexeravs_types.QsciLexerAVS =
-
   gen_qscilexeravs_types.QsciLexerAVS.init(fcQsciLexerAVS_new())
+
 proc create*(T: type gen_qscilexeravs_types.QsciLexerAVS, parent: gen_qobject.QObject): gen_qscilexeravs_types.QsciLexerAVS =
-
   gen_qscilexeravs_types.QsciLexerAVS.init(fcQsciLexerAVS_new2(parent.h))
-proc metaObject*(self: gen_qscilexeravs_types.QsciLexerAVS, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexeravs_types.QsciLexerAVS, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerAVS_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexeravs_types.QsciLexerAVS, param1: cstring): pointer =
-
   fcQsciLexerAVS_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexeravs_types.QsciLexerAVS, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerAVS_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring): string =
-
   let v_ms = fcQsciLexerAVS_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring): string =
-
   let v_ms = fcQsciLexerAVS_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cstring =
-
   (fcQsciLexerAVS_language(self.h))
 
 proc lexer*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cstring =
-
   (fcQsciLexerAVS_lexer(self.h))
 
 proc braceStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cint =
-
   fcQsciLexerAVS_braceStyle(self.h)
 
 proc wordCharacters*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cstring =
-
   (fcQsciLexerAVS_wordCharacters(self.h))
 
 proc defaultColor*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerAVS_defaultColor(self.h, style))
 
 proc defaultFont*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerAVS_defaultFont(self.h, style))
 
 proc keywords*(self: gen_qscilexeravs_types.QsciLexerAVS, set: cint): cstring =
-
   (fcQsciLexerAVS_keywords(self.h, set))
 
 proc description*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): string =
-
   let v_ms = fcQsciLexerAVS_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexeravs_types.QsciLexerAVS, ): void =
-
   fcQsciLexerAVS_refreshProperties(self.h)
 
 proc foldComments*(self: gen_qscilexeravs_types.QsciLexerAVS, ): bool =
-
   fcQsciLexerAVS_foldComments(self.h)
 
 proc foldCompact*(self: gen_qscilexeravs_types.QsciLexerAVS, ): bool =
-
   fcQsciLexerAVS_foldCompact(self.h)
 
 proc setFoldComments*(self: gen_qscilexeravs_types.QsciLexerAVS, fold: bool): void =
-
   fcQsciLexerAVS_setFoldComments(self.h, fold)
 
 proc setFoldCompact*(self: gen_qscilexeravs_types.QsciLexerAVS, fold: bool): void =
-
   fcQsciLexerAVS_setFoldCompact(self.h, fold)
 
-proc tr2*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerAVS_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerAVS_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerAVS_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexeravs_types.QsciLexerAVS, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerAVS_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerAVSmetaObject*(self: gen_qscilexeravs_types.QsciLexerAVS, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerAVS_virtualbase_metaObject(self.h))
 
 type QsciLexerAVSmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -332,7 +309,6 @@ proc miqt_exec_callback_QsciLexerAVS_metaObject(self: ptr cQsciLexerAVS, slot: i
 
   virtualReturn.h
 proc QsciLexerAVSmetacast*(self: gen_qscilexeravs_types.QsciLexerAVS, param1: cstring): pointer =
-
   fQsciLexerAVS_virtualbase_metacast(self.h, param1)
 
 type QsciLexerAVSmetacastProc* = proc(param1: cstring): pointer
@@ -352,7 +328,6 @@ proc miqt_exec_callback_QsciLexerAVS_metacast(self: ptr cQsciLexerAVS, slot: int
 
   virtualReturn
 proc QsciLexerAVSmetacall*(self: gen_qscilexeravs_types.QsciLexerAVS, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerAVS_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerAVSmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -376,7 +351,6 @@ proc miqt_exec_callback_QsciLexerAVS_metacall(self: ptr cQsciLexerAVS, slot: int
 
   virtualReturn
 proc QsciLexerAVSsetFoldComments*(self: gen_qscilexeravs_types.QsciLexerAVS, fold: bool): void =
-
   fQsciLexerAVS_virtualbase_setFoldComments(self.h, fold)
 
 type QsciLexerAVSsetFoldCommentsProc* = proc(fold: bool): void
@@ -394,7 +368,6 @@ proc miqt_exec_callback_QsciLexerAVS_setFoldComments(self: ptr cQsciLexerAVS, sl
 
   nimfunc[](slotval1)
 proc QsciLexerAVSsetFoldCompact*(self: gen_qscilexeravs_types.QsciLexerAVS, fold: bool): void =
-
   fQsciLexerAVS_virtualbase_setFoldCompact(self.h, fold)
 
 type QsciLexerAVSsetFoldCompactProc* = proc(fold: bool): void
@@ -426,7 +399,6 @@ proc miqt_exec_callback_QsciLexerAVS_language(self: ptr cQsciLexerAVS, slot: int
 
   virtualReturn
 proc QsciLexerAVSlexer*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cstring =
-
   (fQsciLexerAVS_virtualbase_lexer(self.h))
 
 type QsciLexerAVSlexerProc* = proc(): cstring
@@ -444,7 +416,6 @@ proc miqt_exec_callback_QsciLexerAVS_lexer(self: ptr cQsciLexerAVS, slot: int): 
 
   virtualReturn
 proc QsciLexerAVSlexerId*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cint =
-
   fQsciLexerAVS_virtualbase_lexerId(self.h)
 
 type QsciLexerAVSlexerIdProc* = proc(): cint
@@ -462,7 +433,6 @@ proc miqt_exec_callback_QsciLexerAVS_lexerId(self: ptr cQsciLexerAVS, slot: int)
 
   virtualReturn
 proc QsciLexerAVSautoCompletionFillups*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cstring =
-
   (fQsciLexerAVS_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerAVSautoCompletionFillupsProc* = proc(): cstring
@@ -480,7 +450,6 @@ proc miqt_exec_callback_QsciLexerAVS_autoCompletionFillups(self: ptr cQsciLexerA
 
   virtualReturn
 proc QsciLexerAVSautoCompletionWordSeparators*(self: gen_qscilexeravs_types.QsciLexerAVS, ): seq[string] =
-
   var v_ma = fQsciLexerAVS_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -510,7 +479,6 @@ proc miqt_exec_callback_QsciLexerAVS_autoCompletionWordSeparators(self: ptr cQsc
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerAVSblockEnd*(self: gen_qscilexeravs_types.QsciLexerAVS, style: ptr cint): cstring =
-
   (fQsciLexerAVS_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerAVSblockEndProc* = proc(style: ptr cint): cstring
@@ -530,7 +498,6 @@ proc miqt_exec_callback_QsciLexerAVS_blockEnd(self: ptr cQsciLexerAVS, slot: int
 
   virtualReturn
 proc QsciLexerAVSblockLookback*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cint =
-
   fQsciLexerAVS_virtualbase_blockLookback(self.h)
 
 type QsciLexerAVSblockLookbackProc* = proc(): cint
@@ -548,7 +515,6 @@ proc miqt_exec_callback_QsciLexerAVS_blockLookback(self: ptr cQsciLexerAVS, slot
 
   virtualReturn
 proc QsciLexerAVSblockStart*(self: gen_qscilexeravs_types.QsciLexerAVS, style: ptr cint): cstring =
-
   (fQsciLexerAVS_virtualbase_blockStart(self.h, style))
 
 type QsciLexerAVSblockStartProc* = proc(style: ptr cint): cstring
@@ -568,7 +534,6 @@ proc miqt_exec_callback_QsciLexerAVS_blockStart(self: ptr cQsciLexerAVS, slot: i
 
   virtualReturn
 proc QsciLexerAVSblockStartKeyword*(self: gen_qscilexeravs_types.QsciLexerAVS, style: ptr cint): cstring =
-
   (fQsciLexerAVS_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerAVSblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -588,7 +553,6 @@ proc miqt_exec_callback_QsciLexerAVS_blockStartKeyword(self: ptr cQsciLexerAVS, 
 
   virtualReturn
 proc QsciLexerAVSbraceStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cint =
-
   fQsciLexerAVS_virtualbase_braceStyle(self.h)
 
 type QsciLexerAVSbraceStyleProc* = proc(): cint
@@ -606,7 +570,6 @@ proc miqt_exec_callback_QsciLexerAVS_braceStyle(self: ptr cQsciLexerAVS, slot: i
 
   virtualReturn
 proc QsciLexerAVScaseSensitive*(self: gen_qscilexeravs_types.QsciLexerAVS, ): bool =
-
   fQsciLexerAVS_virtualbase_caseSensitive(self.h)
 
 type QsciLexerAVScaseSensitiveProc* = proc(): bool
@@ -624,7 +587,6 @@ proc miqt_exec_callback_QsciLexerAVS_caseSensitive(self: ptr cQsciLexerAVS, slot
 
   virtualReturn
 proc QsciLexerAVScolor*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerAVS_virtualbase_color(self.h, style))
 
 type QsciLexerAVScolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -644,7 +606,6 @@ proc miqt_exec_callback_QsciLexerAVS_color(self: ptr cQsciLexerAVS, slot: int, s
 
   virtualReturn.h
 proc QsciLexerAVSeolFill*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): bool =
-
   fQsciLexerAVS_virtualbase_eolFill(self.h, style)
 
 type QsciLexerAVSeolFillProc* = proc(style: cint): bool
@@ -664,7 +625,6 @@ proc miqt_exec_callback_QsciLexerAVS_eolFill(self: ptr cQsciLexerAVS, slot: int,
 
   virtualReturn
 proc QsciLexerAVSfont*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerAVS_virtualbase_font(self.h, style))
 
 type QsciLexerAVSfontProc* = proc(style: cint): gen_qfont.QFont
@@ -684,7 +644,6 @@ proc miqt_exec_callback_QsciLexerAVS_font(self: ptr cQsciLexerAVS, slot: int, st
 
   virtualReturn.h
 proc QsciLexerAVSindentationGuideView*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cint =
-
   fQsciLexerAVS_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerAVSindentationGuideViewProc* = proc(): cint
@@ -702,7 +661,6 @@ proc miqt_exec_callback_QsciLexerAVS_indentationGuideView(self: ptr cQsciLexerAV
 
   virtualReturn
 proc QsciLexerAVSkeywords*(self: gen_qscilexeravs_types.QsciLexerAVS, set: cint): cstring =
-
   (fQsciLexerAVS_virtualbase_keywords(self.h, set))
 
 type QsciLexerAVSkeywordsProc* = proc(set: cint): cstring
@@ -722,7 +680,6 @@ proc miqt_exec_callback_QsciLexerAVS_keywords(self: ptr cQsciLexerAVS, slot: int
 
   virtualReturn
 proc QsciLexerAVSdefaultStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cint =
-
   fQsciLexerAVS_virtualbase_defaultStyle(self.h)
 
 type QsciLexerAVSdefaultStyleProc* = proc(): cint
@@ -756,7 +713,6 @@ proc miqt_exec_callback_QsciLexerAVS_description(self: ptr cQsciLexerAVS, slot: 
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerAVSpaper*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerAVS_virtualbase_paper(self.h, style))
 
 type QsciLexerAVSpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -775,12 +731,11 @@ proc miqt_exec_callback_QsciLexerAVS_paper(self: ptr cQsciLexerAVS, slot: int, s
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerAVSdefaultColorWithStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerAVSdefaultColor*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerAVS_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerAVSdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, slot: QsciLexerAVSdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexeravs_types.QsciLexerAVS, slot: QsciLexerAVSdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerAVSdefaultColorWithStyleProc
   tmp[] = slot
@@ -796,7 +751,6 @@ proc miqt_exec_callback_QsciLexerAVS_defaultColorWithStyle(self: ptr cQsciLexerA
 
   virtualReturn.h
 proc QsciLexerAVSdefaultEolFill*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): bool =
-
   fQsciLexerAVS_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerAVSdefaultEolFillProc* = proc(style: cint): bool
@@ -815,12 +769,11 @@ proc miqt_exec_callback_QsciLexerAVS_defaultEolFill(self: ptr cQsciLexerAVS, slo
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerAVSdefaultFontWithStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qfont.QFont =
-
+proc QsciLexerAVSdefaultFont*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerAVS_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerAVSdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, slot: QsciLexerAVSdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexeravs_types.QsciLexerAVS, slot: QsciLexerAVSdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerAVSdefaultFontWithStyleProc
   tmp[] = slot
@@ -835,12 +788,11 @@ proc miqt_exec_callback_QsciLexerAVS_defaultFontWithStyle(self: ptr cQsciLexerAV
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerAVSdefaultPaperWithStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerAVSdefaultPaper*(self: gen_qscilexeravs_types.QsciLexerAVS, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerAVS_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerAVSdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, slot: QsciLexerAVSdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexeravs_types.QsciLexerAVS, slot: QsciLexerAVSdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerAVSdefaultPaperWithStyleProc
   tmp[] = slot
@@ -856,7 +808,6 @@ proc miqt_exec_callback_QsciLexerAVS_defaultPaperWithStyle(self: ptr cQsciLexerA
 
   virtualReturn.h
 proc QsciLexerAVSsetEditor*(self: gen_qscilexeravs_types.QsciLexerAVS, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerAVS_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerAVSsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -874,7 +825,6 @@ proc miqt_exec_callback_QsciLexerAVS_setEditor(self: ptr cQsciLexerAVS, slot: in
 
   nimfunc[](slotval1)
 proc QsciLexerAVSrefreshProperties*(self: gen_qscilexeravs_types.QsciLexerAVS, ): void =
-
   fQsciLexerAVS_virtualbase_refreshProperties(self.h)
 
 type QsciLexerAVSrefreshPropertiesProc* = proc(): void
@@ -890,7 +840,6 @@ proc miqt_exec_callback_QsciLexerAVS_refreshProperties(self: ptr cQsciLexerAVS, 
 
   nimfunc[]()
 proc QsciLexerAVSstyleBitsNeeded*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cint =
-
   fQsciLexerAVS_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerAVSstyleBitsNeededProc* = proc(): cint
@@ -908,7 +857,6 @@ proc miqt_exec_callback_QsciLexerAVS_styleBitsNeeded(self: ptr cQsciLexerAVS, sl
 
   virtualReturn
 proc QsciLexerAVSwordCharacters*(self: gen_qscilexeravs_types.QsciLexerAVS, ): cstring =
-
   (fQsciLexerAVS_virtualbase_wordCharacters(self.h))
 
 type QsciLexerAVSwordCharactersProc* = proc(): cstring
@@ -926,7 +874,6 @@ proc miqt_exec_callback_QsciLexerAVS_wordCharacters(self: ptr cQsciLexerAVS, slo
 
   virtualReturn
 proc QsciLexerAVSsetAutoIndentStyle*(self: gen_qscilexeravs_types.QsciLexerAVS, autoindentstyle: cint): void =
-
   fQsciLexerAVS_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerAVSsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -944,7 +891,6 @@ proc miqt_exec_callback_QsciLexerAVS_setAutoIndentStyle(self: ptr cQsciLexerAVS,
 
   nimfunc[](slotval1)
 proc QsciLexerAVSsetColor*(self: gen_qscilexeravs_types.QsciLexerAVS, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerAVS_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerAVSsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -964,7 +910,6 @@ proc miqt_exec_callback_QsciLexerAVS_setColor(self: ptr cQsciLexerAVS, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerAVSsetEolFill*(self: gen_qscilexeravs_types.QsciLexerAVS, eoffill: bool, style: cint): void =
-
   fQsciLexerAVS_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerAVSsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -984,7 +929,6 @@ proc miqt_exec_callback_QsciLexerAVS_setEolFill(self: ptr cQsciLexerAVS, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerAVSsetFont*(self: gen_qscilexeravs_types.QsciLexerAVS, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerAVS_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerAVSsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1004,7 +948,6 @@ proc miqt_exec_callback_QsciLexerAVS_setFont(self: ptr cQsciLexerAVS, slot: int,
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerAVSsetPaper*(self: gen_qscilexeravs_types.QsciLexerAVS, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerAVS_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerAVSsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1024,7 +967,6 @@ proc miqt_exec_callback_QsciLexerAVS_setPaper(self: ptr cQsciLexerAVS, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerAVSreadProperties*(self: gen_qscilexeravs_types.QsciLexerAVS, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerAVS_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerAVSreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1049,7 +991,6 @@ proc miqt_exec_callback_QsciLexerAVS_readProperties(self: ptr cQsciLexerAVS, slo
 
   virtualReturn
 proc QsciLexerAVSwriteProperties*(self: gen_qscilexeravs_types.QsciLexerAVS, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerAVS_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerAVSwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1074,7 +1015,6 @@ proc miqt_exec_callback_QsciLexerAVS_writeProperties(self: ptr cQsciLexerAVS, sl
 
   virtualReturn
 proc QsciLexerAVSevent*(self: gen_qscilexeravs_types.QsciLexerAVS, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerAVS_virtualbase_event(self.h, event.h)
 
 type QsciLexerAVSeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1094,7 +1034,6 @@ proc miqt_exec_callback_QsciLexerAVS_event(self: ptr cQsciLexerAVS, slot: int, e
 
   virtualReturn
 proc QsciLexerAVSeventFilter*(self: gen_qscilexeravs_types.QsciLexerAVS, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerAVS_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerAVSeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1116,7 +1055,6 @@ proc miqt_exec_callback_QsciLexerAVS_eventFilter(self: ptr cQsciLexerAVS, slot: 
 
   virtualReturn
 proc QsciLexerAVStimerEvent*(self: gen_qscilexeravs_types.QsciLexerAVS, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerAVS_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerAVStimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1134,7 +1072,6 @@ proc miqt_exec_callback_QsciLexerAVS_timerEvent(self: ptr cQsciLexerAVS, slot: i
 
   nimfunc[](slotval1)
 proc QsciLexerAVSchildEvent*(self: gen_qscilexeravs_types.QsciLexerAVS, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerAVS_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerAVSchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1152,7 +1089,6 @@ proc miqt_exec_callback_QsciLexerAVS_childEvent(self: ptr cQsciLexerAVS, slot: i
 
   nimfunc[](slotval1)
 proc QsciLexerAVScustomEvent*(self: gen_qscilexeravs_types.QsciLexerAVS, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerAVS_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerAVScustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1170,7 +1106,6 @@ proc miqt_exec_callback_QsciLexerAVS_customEvent(self: ptr cQsciLexerAVS, slot: 
 
   nimfunc[](slotval1)
 proc QsciLexerAVSconnectNotify*(self: gen_qscilexeravs_types.QsciLexerAVS, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerAVS_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerAVSconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1188,7 +1123,6 @@ proc miqt_exec_callback_QsciLexerAVS_connectNotify(self: ptr cQsciLexerAVS, slot
 
   nimfunc[](slotval1)
 proc QsciLexerAVSdisconnectNotify*(self: gen_qscilexeravs_types.QsciLexerAVS, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerAVS_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerAVSdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

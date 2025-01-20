@@ -106,53 +106,45 @@ proc fcQPluginLoader_delete(self: pointer) {.importc: "QPluginLoader_delete".}
 func init*(T: type gen_qpluginloader_types.QPluginLoader, h: ptr cQPluginLoader): gen_qpluginloader_types.QPluginLoader =
   T(h: h)
 proc create*(T: type gen_qpluginloader_types.QPluginLoader, ): gen_qpluginloader_types.QPluginLoader =
-
   gen_qpluginloader_types.QPluginLoader.init(fcQPluginLoader_new())
+
 proc create*(T: type gen_qpluginloader_types.QPluginLoader, fileName: string): gen_qpluginloader_types.QPluginLoader =
-
   gen_qpluginloader_types.QPluginLoader.init(fcQPluginLoader_new2(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+
 proc create*(T: type gen_qpluginloader_types.QPluginLoader, parent: gen_qobject.QObject): gen_qpluginloader_types.QPluginLoader =
-
   gen_qpluginloader_types.QPluginLoader.init(fcQPluginLoader_new3(parent.h))
+
 proc create*(T: type gen_qpluginloader_types.QPluginLoader, fileName: string, parent: gen_qobject.QObject): gen_qpluginloader_types.QPluginLoader =
-
   gen_qpluginloader_types.QPluginLoader.init(fcQPluginLoader_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), parent.h))
-proc metaObject*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPluginLoader_metaObject(self.h))
 
 proc metacast*(self: gen_qpluginloader_types.QPluginLoader, param1: cstring): pointer =
-
   fcQPluginLoader_metacast(self.h, param1)
 
 proc metacall*(self: gen_qpluginloader_types.QPluginLoader, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQPluginLoader_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring): string =
-
   let v_ms = fcQPluginLoader_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring): string =
-
   let v_ms = fcQPluginLoader_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc instance*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQPluginLoader_instance(self.h))
 
 proc metaData*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qjsonobject.QJsonObject =
-
   gen_qjsonobject.QJsonObject(h: fcQPluginLoader_metaData(self.h))
 
 proc staticInstances*(_: type gen_qpluginloader_types.QPluginLoader, ): seq[gen_qobject.QObject] =
-
   var v_ma = fcQPluginLoader_staticInstances()
   var vx_ret = newSeq[gen_qobject.QObject](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -161,7 +153,6 @@ proc staticInstances*(_: type gen_qpluginloader_types.QPluginLoader, ): seq[gen_
   vx_ret
 
 proc staticPlugins*(_: type gen_qpluginloader_types.QPluginLoader, ): seq[gen_qplugin.QStaticPlugin] =
-
   var v_ma = fcQPluginLoader_staticPlugins()
   var vx_ret = newSeq[gen_qplugin.QStaticPlugin](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -170,73 +161,60 @@ proc staticPlugins*(_: type gen_qpluginloader_types.QPluginLoader, ): seq[gen_qp
   vx_ret
 
 proc load*(self: gen_qpluginloader_types.QPluginLoader, ): bool =
-
   fcQPluginLoader_load(self.h)
 
 proc unload*(self: gen_qpluginloader_types.QPluginLoader, ): bool =
-
   fcQPluginLoader_unload(self.h)
 
 proc isLoaded*(self: gen_qpluginloader_types.QPluginLoader, ): bool =
-
   fcQPluginLoader_isLoaded(self.h)
 
 proc setFileName*(self: gen_qpluginloader_types.QPluginLoader, fileName: string): void =
-
   fcQPluginLoader_setFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc fileName*(self: gen_qpluginloader_types.QPluginLoader, ): string =
-
   let v_ms = fcQPluginLoader_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc errorString*(self: gen_qpluginloader_types.QPluginLoader, ): string =
-
   let v_ms = fcQPluginLoader_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setLoadHints*(self: gen_qpluginloader_types.QPluginLoader, loadHints: cint): void =
-
   fcQPluginLoader_setLoadHints(self.h, cint(loadHints))
 
 proc loadHints*(self: gen_qpluginloader_types.QPluginLoader, ): cint =
-
   cint(fcQPluginLoader_loadHints(self.h))
 
-proc tr2*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring): string =
   let v_ms = fcQPluginLoader_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPluginLoader_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring): string =
   let v_ms = fcQPluginLoader_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qpluginloader_types.QPluginLoader, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPluginLoader_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QPluginLoadermetaObject*(self: gen_qpluginloader_types.QPluginLoader, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQPluginLoader_virtualbase_metaObject(self.h))
 
 type QPluginLoadermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -254,7 +232,6 @@ proc miqt_exec_callback_QPluginLoader_metaObject(self: ptr cQPluginLoader, slot:
 
   virtualReturn.h
 proc QPluginLoadermetacast*(self: gen_qpluginloader_types.QPluginLoader, param1: cstring): pointer =
-
   fQPluginLoader_virtualbase_metacast(self.h, param1)
 
 type QPluginLoadermetacastProc* = proc(param1: cstring): pointer
@@ -274,7 +251,6 @@ proc miqt_exec_callback_QPluginLoader_metacast(self: ptr cQPluginLoader, slot: i
 
   virtualReturn
 proc QPluginLoadermetacall*(self: gen_qpluginloader_types.QPluginLoader, param1: cint, param2: cint, param3: pointer): cint =
-
   fQPluginLoader_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QPluginLoadermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -298,7 +274,6 @@ proc miqt_exec_callback_QPluginLoader_metacall(self: ptr cQPluginLoader, slot: i
 
   virtualReturn
 proc QPluginLoaderevent*(self: gen_qpluginloader_types.QPluginLoader, event: gen_qcoreevent.QEvent): bool =
-
   fQPluginLoader_virtualbase_event(self.h, event.h)
 
 type QPluginLoadereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -318,7 +293,6 @@ proc miqt_exec_callback_QPluginLoader_event(self: ptr cQPluginLoader, slot: int,
 
   virtualReturn
 proc QPluginLoadereventFilter*(self: gen_qpluginloader_types.QPluginLoader, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQPluginLoader_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QPluginLoadereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -340,7 +314,6 @@ proc miqt_exec_callback_QPluginLoader_eventFilter(self: ptr cQPluginLoader, slot
 
   virtualReturn
 proc QPluginLoadertimerEvent*(self: gen_qpluginloader_types.QPluginLoader, event: gen_qcoreevent.QTimerEvent): void =
-
   fQPluginLoader_virtualbase_timerEvent(self.h, event.h)
 
 type QPluginLoadertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -358,7 +331,6 @@ proc miqt_exec_callback_QPluginLoader_timerEvent(self: ptr cQPluginLoader, slot:
 
   nimfunc[](slotval1)
 proc QPluginLoaderchildEvent*(self: gen_qpluginloader_types.QPluginLoader, event: gen_qcoreevent.QChildEvent): void =
-
   fQPluginLoader_virtualbase_childEvent(self.h, event.h)
 
 type QPluginLoaderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -376,7 +348,6 @@ proc miqt_exec_callback_QPluginLoader_childEvent(self: ptr cQPluginLoader, slot:
 
   nimfunc[](slotval1)
 proc QPluginLoadercustomEvent*(self: gen_qpluginloader_types.QPluginLoader, event: gen_qcoreevent.QEvent): void =
-
   fQPluginLoader_virtualbase_customEvent(self.h, event.h)
 
 type QPluginLoadercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -394,7 +365,6 @@ proc miqt_exec_callback_QPluginLoader_customEvent(self: ptr cQPluginLoader, slot
 
   nimfunc[](slotval1)
 proc QPluginLoaderconnectNotify*(self: gen_qpluginloader_types.QPluginLoader, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPluginLoader_virtualbase_connectNotify(self.h, signal.h)
 
 type QPluginLoaderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -412,7 +382,6 @@ proc miqt_exec_callback_QPluginLoader_connectNotify(self: ptr cQPluginLoader, sl
 
   nimfunc[](slotval1)
 proc QPluginLoaderdisconnectNotify*(self: gen_qpluginloader_types.QPluginLoader, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPluginLoader_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QPluginLoaderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

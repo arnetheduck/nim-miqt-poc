@@ -136,128 +136,106 @@ proc fcQWaveDecoder_delete(self: pointer) {.importc: "QWaveDecoder_delete".}
 func init*(T: type gen_qwavedecoder_types.QWaveDecoder, h: ptr cQWaveDecoder): gen_qwavedecoder_types.QWaveDecoder =
   T(h: h)
 proc create*(T: type gen_qwavedecoder_types.QWaveDecoder, device: gen_qiodevice.QIODevice): gen_qwavedecoder_types.QWaveDecoder =
-
   gen_qwavedecoder_types.QWaveDecoder.init(fcQWaveDecoder_new(device.h))
+
 proc create*(T: type gen_qwavedecoder_types.QWaveDecoder, device: gen_qiodevice.QIODevice, format: gen_qaudioformat.QAudioFormat): gen_qwavedecoder_types.QWaveDecoder =
-
   gen_qwavedecoder_types.QWaveDecoder.init(fcQWaveDecoder_new2(device.h, format.h))
-proc create2*(T: type gen_qwavedecoder_types.QWaveDecoder, device: gen_qiodevice.QIODevice, parent: gen_qobject.QObject): gen_qwavedecoder_types.QWaveDecoder =
 
+proc create*(T: type gen_qwavedecoder_types.QWaveDecoder, device: gen_qiodevice.QIODevice, parent: gen_qobject.QObject): gen_qwavedecoder_types.QWaveDecoder =
   gen_qwavedecoder_types.QWaveDecoder.init(fcQWaveDecoder_new3(device.h, parent.h))
+
 proc create*(T: type gen_qwavedecoder_types.QWaveDecoder, device: gen_qiodevice.QIODevice, format: gen_qaudioformat.QAudioFormat, parent: gen_qobject.QObject): gen_qwavedecoder_types.QWaveDecoder =
-
   gen_qwavedecoder_types.QWaveDecoder.init(fcQWaveDecoder_new4(device.h, format.h, parent.h))
-proc metaObject*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWaveDecoder_metaObject(self.h))
 
 proc metacast*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cstring): pointer =
-
   fcQWaveDecoder_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWaveDecoder_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwavedecoder_types.QWaveDecoder, s: cstring): string =
-
   let v_ms = fcQWaveDecoder_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc audioFormat*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qaudioformat.QAudioFormat =
-
   gen_qaudioformat.QAudioFormat(h: fcQWaveDecoder_audioFormat(self.h))
 
 proc getDevice*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qiodevice.QIODevice =
-
   gen_qiodevice.QIODevice(h: fcQWaveDecoder_getDevice(self.h))
 
 proc duration*(self: gen_qwavedecoder_types.QWaveDecoder, ): cint =
-
   fcQWaveDecoder_duration(self.h)
 
 proc headerLength*(_: type gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
-
   fcQWaveDecoder_headerLength()
 
 proc open*(self: gen_qwavedecoder_types.QWaveDecoder, mode: cint): bool =
-
   fcQWaveDecoder_open(self.h, cint(mode))
 
 proc close*(self: gen_qwavedecoder_types.QWaveDecoder, ): void =
-
   fcQWaveDecoder_close(self.h)
 
 proc seek*(self: gen_qwavedecoder_types.QWaveDecoder, pos: clonglong): bool =
-
   fcQWaveDecoder_seek(self.h, pos)
 
 proc pos*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
-
   fcQWaveDecoder_pos(self.h)
 
 proc size*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
-
   fcQWaveDecoder_size(self.h)
 
 proc isSequential*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
-
   fcQWaveDecoder_isSequential(self.h)
 
 proc bytesAvailable*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
-
   fcQWaveDecoder_bytesAvailable(self.h)
 
 proc formatKnown*(self: gen_qwavedecoder_types.QWaveDecoder, ): void =
-
   fcQWaveDecoder_formatKnown(self.h)
 
+type QWaveDecoderformatKnownSlot* = proc()
 proc miqt_exec_callback_QWaveDecoder_formatKnown(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QWaveDecoderformatKnownSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onformatKnown*(self: gen_qwavedecoder_types.QWaveDecoder, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onformatKnown*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderformatKnownSlot) =
+  var tmp = new QWaveDecoderformatKnownSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWaveDecoder_connect_formatKnown(self.h, cast[int](addr tmp[]))
-proc parsingError*(self: gen_qwavedecoder_types.QWaveDecoder, ): void =
 
+proc parsingError*(self: gen_qwavedecoder_types.QWaveDecoder, ): void =
   fcQWaveDecoder_parsingError(self.h)
 
+type QWaveDecoderparsingErrorSlot* = proc()
 proc miqt_exec_callback_QWaveDecoder_parsingError(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QWaveDecoderparsingErrorSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onparsingError*(self: gen_qwavedecoder_types.QWaveDecoder, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onparsingError*(self: gen_qwavedecoder_types.QWaveDecoder, slot: QWaveDecoderparsingErrorSlot) =
+  var tmp = new QWaveDecoderparsingErrorSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWaveDecoder_connect_parsingError(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qwavedecoder_types.QWaveDecoder, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qwavedecoder_types.QWaveDecoder, s: cstring, c: cstring): string =
   let v_ms = fcQWaveDecoder_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwavedecoder_types.QWaveDecoder, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwavedecoder_types.QWaveDecoder, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWaveDecoder_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QWaveDecodermetaObject*(self: gen_qwavedecoder_types.QWaveDecoder, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQWaveDecoder_virtualbase_metaObject(self.h))
 
 type QWaveDecodermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -275,7 +253,6 @@ proc miqt_exec_callback_QWaveDecoder_metaObject(self: ptr cQWaveDecoder, slot: i
 
   virtualReturn.h
 proc QWaveDecodermetacast*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cstring): pointer =
-
   fQWaveDecoder_virtualbase_metacast(self.h, param1)
 
 type QWaveDecodermetacastProc* = proc(param1: cstring): pointer
@@ -295,7 +272,6 @@ proc miqt_exec_callback_QWaveDecoder_metacast(self: ptr cQWaveDecoder, slot: int
 
   virtualReturn
 proc QWaveDecodermetacall*(self: gen_qwavedecoder_types.QWaveDecoder, param1: cint, param2: cint, param3: pointer): cint =
-
   fQWaveDecoder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QWaveDecodermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -319,7 +295,6 @@ proc miqt_exec_callback_QWaveDecoder_metacall(self: ptr cQWaveDecoder, slot: int
 
   virtualReturn
 proc QWaveDecoderopen*(self: gen_qwavedecoder_types.QWaveDecoder, mode: cint): bool =
-
   fQWaveDecoder_virtualbase_open(self.h, cint(mode))
 
 type QWaveDecoderopenProc* = proc(mode: cint): bool
@@ -339,7 +314,6 @@ proc miqt_exec_callback_QWaveDecoder_open(self: ptr cQWaveDecoder, slot: int, mo
 
   virtualReturn
 proc QWaveDecoderclose*(self: gen_qwavedecoder_types.QWaveDecoder, ): void =
-
   fQWaveDecoder_virtualbase_close(self.h)
 
 type QWaveDecodercloseProc* = proc(): void
@@ -355,7 +329,6 @@ proc miqt_exec_callback_QWaveDecoder_close(self: ptr cQWaveDecoder, slot: int): 
 
   nimfunc[]()
 proc QWaveDecoderseek*(self: gen_qwavedecoder_types.QWaveDecoder, pos: clonglong): bool =
-
   fQWaveDecoder_virtualbase_seek(self.h, pos)
 
 type QWaveDecoderseekProc* = proc(pos: clonglong): bool
@@ -375,7 +348,6 @@ proc miqt_exec_callback_QWaveDecoder_seek(self: ptr cQWaveDecoder, slot: int, po
 
   virtualReturn
 proc QWaveDecoderpos*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
-
   fQWaveDecoder_virtualbase_pos(self.h)
 
 type QWaveDecoderposProc* = proc(): clonglong
@@ -393,7 +365,6 @@ proc miqt_exec_callback_QWaveDecoder_pos(self: ptr cQWaveDecoder, slot: int): cl
 
   virtualReturn
 proc QWaveDecodersize*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
-
   fQWaveDecoder_virtualbase_size(self.h)
 
 type QWaveDecodersizeProc* = proc(): clonglong
@@ -411,7 +382,6 @@ proc miqt_exec_callback_QWaveDecoder_size(self: ptr cQWaveDecoder, slot: int): c
 
   virtualReturn
 proc QWaveDecoderisSequential*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
-
   fQWaveDecoder_virtualbase_isSequential(self.h)
 
 type QWaveDecoderisSequentialProc* = proc(): bool
@@ -429,7 +399,6 @@ proc miqt_exec_callback_QWaveDecoder_isSequential(self: ptr cQWaveDecoder, slot:
 
   virtualReturn
 proc QWaveDecoderbytesAvailable*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
-
   fQWaveDecoder_virtualbase_bytesAvailable(self.h)
 
 type QWaveDecoderbytesAvailableProc* = proc(): clonglong
@@ -447,7 +416,6 @@ proc miqt_exec_callback_QWaveDecoder_bytesAvailable(self: ptr cQWaveDecoder, slo
 
   virtualReturn
 proc QWaveDecoderatEnd*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
-
   fQWaveDecoder_virtualbase_atEnd(self.h)
 
 type QWaveDecoderatEndProc* = proc(): bool
@@ -465,7 +433,6 @@ proc miqt_exec_callback_QWaveDecoder_atEnd(self: ptr cQWaveDecoder, slot: int): 
 
   virtualReturn
 proc QWaveDecoderreset*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
-
   fQWaveDecoder_virtualbase_reset(self.h)
 
 type QWaveDecoderresetProc* = proc(): bool
@@ -483,7 +450,6 @@ proc miqt_exec_callback_QWaveDecoder_reset(self: ptr cQWaveDecoder, slot: int): 
 
   virtualReturn
 proc QWaveDecoderbytesToWrite*(self: gen_qwavedecoder_types.QWaveDecoder, ): clonglong =
-
   fQWaveDecoder_virtualbase_bytesToWrite(self.h)
 
 type QWaveDecoderbytesToWriteProc* = proc(): clonglong
@@ -501,7 +467,6 @@ proc miqt_exec_callback_QWaveDecoder_bytesToWrite(self: ptr cQWaveDecoder, slot:
 
   virtualReturn
 proc QWaveDecodercanReadLine*(self: gen_qwavedecoder_types.QWaveDecoder, ): bool =
-
   fQWaveDecoder_virtualbase_canReadLine(self.h)
 
 type QWaveDecodercanReadLineProc* = proc(): bool
@@ -519,7 +484,6 @@ proc miqt_exec_callback_QWaveDecoder_canReadLine(self: ptr cQWaveDecoder, slot: 
 
   virtualReturn
 proc QWaveDecoderwaitForReadyRead*(self: gen_qwavedecoder_types.QWaveDecoder, msecs: cint): bool =
-
   fQWaveDecoder_virtualbase_waitForReadyRead(self.h, msecs)
 
 type QWaveDecoderwaitForReadyReadProc* = proc(msecs: cint): bool
@@ -539,7 +503,6 @@ proc miqt_exec_callback_QWaveDecoder_waitForReadyRead(self: ptr cQWaveDecoder, s
 
   virtualReturn
 proc QWaveDecoderwaitForBytesWritten*(self: gen_qwavedecoder_types.QWaveDecoder, msecs: cint): bool =
-
   fQWaveDecoder_virtualbase_waitForBytesWritten(self.h, msecs)
 
 type QWaveDecoderwaitForBytesWrittenProc* = proc(msecs: cint): bool
@@ -559,7 +522,6 @@ proc miqt_exec_callback_QWaveDecoder_waitForBytesWritten(self: ptr cQWaveDecoder
 
   virtualReturn
 proc QWaveDecoderreadLineData*(self: gen_qwavedecoder_types.QWaveDecoder, data: cstring, maxlen: clonglong): clonglong =
-
   fQWaveDecoder_virtualbase_readLineData(self.h, data, maxlen)
 
 type QWaveDecoderreadLineDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
@@ -581,7 +543,6 @@ proc miqt_exec_callback_QWaveDecoder_readLineData(self: ptr cQWaveDecoder, slot:
 
   virtualReturn
 proc QWaveDecoderskipData*(self: gen_qwavedecoder_types.QWaveDecoder, maxSize: clonglong): clonglong =
-
   fQWaveDecoder_virtualbase_skipData(self.h, maxSize)
 
 type QWaveDecoderskipDataProc* = proc(maxSize: clonglong): clonglong
@@ -601,7 +562,6 @@ proc miqt_exec_callback_QWaveDecoder_skipData(self: ptr cQWaveDecoder, slot: int
 
   virtualReturn
 proc QWaveDecoderevent*(self: gen_qwavedecoder_types.QWaveDecoder, event: gen_qcoreevent.QEvent): bool =
-
   fQWaveDecoder_virtualbase_event(self.h, event.h)
 
 type QWaveDecodereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -621,7 +581,6 @@ proc miqt_exec_callback_QWaveDecoder_event(self: ptr cQWaveDecoder, slot: int, e
 
   virtualReturn
 proc QWaveDecodereventFilter*(self: gen_qwavedecoder_types.QWaveDecoder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQWaveDecoder_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QWaveDecodereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -643,7 +602,6 @@ proc miqt_exec_callback_QWaveDecoder_eventFilter(self: ptr cQWaveDecoder, slot: 
 
   virtualReturn
 proc QWaveDecodertimerEvent*(self: gen_qwavedecoder_types.QWaveDecoder, event: gen_qcoreevent.QTimerEvent): void =
-
   fQWaveDecoder_virtualbase_timerEvent(self.h, event.h)
 
 type QWaveDecodertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -661,7 +619,6 @@ proc miqt_exec_callback_QWaveDecoder_timerEvent(self: ptr cQWaveDecoder, slot: i
 
   nimfunc[](slotval1)
 proc QWaveDecoderchildEvent*(self: gen_qwavedecoder_types.QWaveDecoder, event: gen_qcoreevent.QChildEvent): void =
-
   fQWaveDecoder_virtualbase_childEvent(self.h, event.h)
 
 type QWaveDecoderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -679,7 +636,6 @@ proc miqt_exec_callback_QWaveDecoder_childEvent(self: ptr cQWaveDecoder, slot: i
 
   nimfunc[](slotval1)
 proc QWaveDecodercustomEvent*(self: gen_qwavedecoder_types.QWaveDecoder, event: gen_qcoreevent.QEvent): void =
-
   fQWaveDecoder_virtualbase_customEvent(self.h, event.h)
 
 type QWaveDecodercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -697,7 +653,6 @@ proc miqt_exec_callback_QWaveDecoder_customEvent(self: ptr cQWaveDecoder, slot: 
 
   nimfunc[](slotval1)
 proc QWaveDecoderconnectNotify*(self: gen_qwavedecoder_types.QWaveDecoder, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWaveDecoder_virtualbase_connectNotify(self.h, signal.h)
 
 type QWaveDecoderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -715,7 +670,6 @@ proc miqt_exec_callback_QWaveDecoder_connectNotify(self: ptr cQWaveDecoder, slot
 
   nimfunc[](slotval1)
 proc QWaveDecoderdisconnectNotify*(self: gen_qwavedecoder_types.QWaveDecoder, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWaveDecoder_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QWaveDecoderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

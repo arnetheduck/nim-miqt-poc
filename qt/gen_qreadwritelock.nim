@@ -72,37 +72,30 @@ proc fcQWriteLocker_delete(self: pointer) {.importc: "QWriteLocker_delete".}
 func init*(T: type gen_qreadwritelock_types.QReadWriteLock, h: ptr cQReadWriteLock): gen_qreadwritelock_types.QReadWriteLock =
   T(h: h)
 proc create*(T: type gen_qreadwritelock_types.QReadWriteLock, ): gen_qreadwritelock_types.QReadWriteLock =
-
   gen_qreadwritelock_types.QReadWriteLock.init(fcQReadWriteLock_new())
+
 proc create*(T: type gen_qreadwritelock_types.QReadWriteLock, recursionMode: cint): gen_qreadwritelock_types.QReadWriteLock =
-
   gen_qreadwritelock_types.QReadWriteLock.init(fcQReadWriteLock_new2(cint(recursionMode)))
-proc lockForRead*(self: gen_qreadwritelock_types.QReadWriteLock, ): void =
 
+proc lockForRead*(self: gen_qreadwritelock_types.QReadWriteLock, ): void =
   fcQReadWriteLock_lockForRead(self.h)
 
 proc tryLockForRead*(self: gen_qreadwritelock_types.QReadWriteLock, ): bool =
-
   fcQReadWriteLock_tryLockForRead(self.h)
 
-proc tryLockForReadWithTimeout*(self: gen_qreadwritelock_types.QReadWriteLock, timeout: cint): bool =
-
+proc tryLockForRead*(self: gen_qreadwritelock_types.QReadWriteLock, timeout: cint): bool =
   fcQReadWriteLock_tryLockForReadWithTimeout(self.h, timeout)
 
 proc lockForWrite*(self: gen_qreadwritelock_types.QReadWriteLock, ): void =
-
   fcQReadWriteLock_lockForWrite(self.h)
 
 proc tryLockForWrite*(self: gen_qreadwritelock_types.QReadWriteLock, ): bool =
-
   fcQReadWriteLock_tryLockForWrite(self.h)
 
-proc tryLockForWriteWithTimeout*(self: gen_qreadwritelock_types.QReadWriteLock, timeout: cint): bool =
-
+proc tryLockForWrite*(self: gen_qreadwritelock_types.QReadWriteLock, timeout: cint): bool =
   fcQReadWriteLock_tryLockForWriteWithTimeout(self.h, timeout)
 
 proc unlock*(self: gen_qreadwritelock_types.QReadWriteLock, ): void =
-
   fcQReadWriteLock_unlock(self.h)
 
 proc delete*(self: gen_qreadwritelock_types.QReadWriteLock) =
@@ -111,18 +104,15 @@ proc delete*(self: gen_qreadwritelock_types.QReadWriteLock) =
 func init*(T: type gen_qreadwritelock_types.QReadLocker, h: ptr cQReadLocker): gen_qreadwritelock_types.QReadLocker =
   T(h: h)
 proc create*(T: type gen_qreadwritelock_types.QReadLocker, readWriteLock: gen_qreadwritelock_types.QReadWriteLock): gen_qreadwritelock_types.QReadLocker =
-
   gen_qreadwritelock_types.QReadLocker.init(fcQReadLocker_new(readWriteLock.h))
-proc unlock*(self: gen_qreadwritelock_types.QReadLocker, ): void =
 
+proc unlock*(self: gen_qreadwritelock_types.QReadLocker, ): void =
   fcQReadLocker_unlock(self.h)
 
 proc relock*(self: gen_qreadwritelock_types.QReadLocker, ): void =
-
   fcQReadLocker_relock(self.h)
 
 proc readWriteLock*(self: gen_qreadwritelock_types.QReadLocker, ): gen_qreadwritelock_types.QReadWriteLock =
-
   gen_qreadwritelock_types.QReadWriteLock(h: fcQReadLocker_readWriteLock(self.h))
 
 proc delete*(self: gen_qreadwritelock_types.QReadLocker) =
@@ -131,18 +121,15 @@ proc delete*(self: gen_qreadwritelock_types.QReadLocker) =
 func init*(T: type gen_qreadwritelock_types.QWriteLocker, h: ptr cQWriteLocker): gen_qreadwritelock_types.QWriteLocker =
   T(h: h)
 proc create*(T: type gen_qreadwritelock_types.QWriteLocker, readWriteLock: gen_qreadwritelock_types.QReadWriteLock): gen_qreadwritelock_types.QWriteLocker =
-
   gen_qreadwritelock_types.QWriteLocker.init(fcQWriteLocker_new(readWriteLock.h))
-proc unlock*(self: gen_qreadwritelock_types.QWriteLocker, ): void =
 
+proc unlock*(self: gen_qreadwritelock_types.QWriteLocker, ): void =
   fcQWriteLocker_unlock(self.h)
 
 proc relock*(self: gen_qreadwritelock_types.QWriteLocker, ): void =
-
   fcQWriteLocker_relock(self.h)
 
 proc readWriteLock*(self: gen_qreadwritelock_types.QWriteLocker, ): gen_qreadwritelock_types.QReadWriteLock =
-
   gen_qreadwritelock_types.QReadWriteLock(h: fcQWriteLocker_readWriteLock(self.h))
 
 proc delete*(self: gen_qreadwritelock_types.QWriteLocker) =

@@ -119,84 +119,66 @@ proc fcQImageEncoderSettings_delete(self: pointer) {.importc: "QImageEncoderSett
 func init*(T: type gen_qmediaencodersettings_types.QAudioEncoderSettings, h: ptr cQAudioEncoderSettings): gen_qmediaencodersettings_types.QAudioEncoderSettings =
   T(h: h)
 proc create*(T: type gen_qmediaencodersettings_types.QAudioEncoderSettings, ): gen_qmediaencodersettings_types.QAudioEncoderSettings =
-
   gen_qmediaencodersettings_types.QAudioEncoderSettings.init(fcQAudioEncoderSettings_new())
+
 proc create*(T: type gen_qmediaencodersettings_types.QAudioEncoderSettings, other: gen_qmediaencodersettings_types.QAudioEncoderSettings): gen_qmediaencodersettings_types.QAudioEncoderSettings =
-
   gen_qmediaencodersettings_types.QAudioEncoderSettings.init(fcQAudioEncoderSettings_new2(other.h))
-proc operatorAssign*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, other: gen_qmediaencodersettings_types.QAudioEncoderSettings): void =
 
+proc operatorAssign*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, other: gen_qmediaencodersettings_types.QAudioEncoderSettings): void =
   fcQAudioEncoderSettings_operatorAssign(self.h, other.h)
 
 proc operatorEqual*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, other: gen_qmediaencodersettings_types.QAudioEncoderSettings): bool =
-
   fcQAudioEncoderSettings_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, other: gen_qmediaencodersettings_types.QAudioEncoderSettings): bool =
-
   fcQAudioEncoderSettings_operatorNotEqual(self.h, other.h)
 
 proc isNull*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, ): bool =
-
   fcQAudioEncoderSettings_isNull(self.h)
 
 proc encodingMode*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, ): cint =
-
   cint(fcQAudioEncoderSettings_encodingMode(self.h))
 
 proc setEncodingMode*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, encodingMode: cint): void =
-
   fcQAudioEncoderSettings_setEncodingMode(self.h, cint(encodingMode))
 
 proc codec*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, ): string =
-
   let v_ms = fcQAudioEncoderSettings_codec(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setCodec*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, codec: string): void =
-
   fcQAudioEncoderSettings_setCodec(self.h, struct_miqt_string(data: codec, len: csize_t(len(codec))))
 
 proc bitRate*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, ): cint =
-
   fcQAudioEncoderSettings_bitRate(self.h)
 
 proc setBitRate*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, bitrate: cint): void =
-
   fcQAudioEncoderSettings_setBitRate(self.h, bitrate)
 
 proc channelCount*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, ): cint =
-
   fcQAudioEncoderSettings_channelCount(self.h)
 
 proc setChannelCount*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, channels: cint): void =
-
   fcQAudioEncoderSettings_setChannelCount(self.h, channels)
 
 proc sampleRate*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, ): cint =
-
   fcQAudioEncoderSettings_sampleRate(self.h)
 
 proc setSampleRate*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, rate: cint): void =
-
   fcQAudioEncoderSettings_setSampleRate(self.h, rate)
 
 proc quality*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, ): cint =
-
   cint(fcQAudioEncoderSettings_quality(self.h))
 
 proc setQuality*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, quality: cint): void =
-
   fcQAudioEncoderSettings_setQuality(self.h, cint(quality))
 
 proc encodingOption*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, option: string): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQAudioEncoderSettings_encodingOption(self.h, struct_miqt_string(data: option, len: csize_t(len(option)))))
 
 proc encodingOptions*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, ): Table[string,gen_qvariant.QVariant] =
-
   var v_mm = fcQAudioEncoderSettings_encodingOptions(self.h)
   var vx_ret: Table[string, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[struct_miqt_string]](v_mm.keys)
@@ -213,11 +195,9 @@ proc encodingOptions*(self: gen_qmediaencodersettings_types.QAudioEncoderSetting
   vx_ret
 
 proc setEncodingOption*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, option: string, value: gen_qvariant.QVariant): void =
-
   fcQAudioEncoderSettings_setEncodingOption(self.h, struct_miqt_string(data: option, len: csize_t(len(option))), value.h)
 
 proc setEncodingOptions*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings, options: Table[string,gen_qvariant.QVariant]): void =
-
   var options_Keys_CArray = newSeq[struct_miqt_string](len(options))
   var options_Values_CArray = newSeq[pointer](len(options))
   var options_ctr = 0
@@ -234,88 +214,69 @@ proc delete*(self: gen_qmediaencodersettings_types.QAudioEncoderSettings) =
 func init*(T: type gen_qmediaencodersettings_types.QVideoEncoderSettings, h: ptr cQVideoEncoderSettings): gen_qmediaencodersettings_types.QVideoEncoderSettings =
   T(h: h)
 proc create*(T: type gen_qmediaencodersettings_types.QVideoEncoderSettings, ): gen_qmediaencodersettings_types.QVideoEncoderSettings =
-
   gen_qmediaencodersettings_types.QVideoEncoderSettings.init(fcQVideoEncoderSettings_new())
+
 proc create*(T: type gen_qmediaencodersettings_types.QVideoEncoderSettings, other: gen_qmediaencodersettings_types.QVideoEncoderSettings): gen_qmediaencodersettings_types.QVideoEncoderSettings =
-
   gen_qmediaencodersettings_types.QVideoEncoderSettings.init(fcQVideoEncoderSettings_new2(other.h))
-proc operatorAssign*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, other: gen_qmediaencodersettings_types.QVideoEncoderSettings): void =
 
+proc operatorAssign*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, other: gen_qmediaencodersettings_types.QVideoEncoderSettings): void =
   fcQVideoEncoderSettings_operatorAssign(self.h, other.h)
 
 proc operatorEqual*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, other: gen_qmediaencodersettings_types.QVideoEncoderSettings): bool =
-
   fcQVideoEncoderSettings_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, other: gen_qmediaencodersettings_types.QVideoEncoderSettings): bool =
-
   fcQVideoEncoderSettings_operatorNotEqual(self.h, other.h)
 
 proc isNull*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, ): bool =
-
   fcQVideoEncoderSettings_isNull(self.h)
 
 proc encodingMode*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, ): cint =
-
   cint(fcQVideoEncoderSettings_encodingMode(self.h))
 
 proc setEncodingMode*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, encodingMode: cint): void =
-
   fcQVideoEncoderSettings_setEncodingMode(self.h, cint(encodingMode))
 
 proc codec*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, ): string =
-
   let v_ms = fcQVideoEncoderSettings_codec(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setCodec*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, codec: string): void =
-
   fcQVideoEncoderSettings_setCodec(self.h, struct_miqt_string(data: codec, len: csize_t(len(codec))))
 
 proc resolution*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQVideoEncoderSettings_resolution(self.h))
 
 proc setResolution*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, resolution: gen_qsize.QSize): void =
-
   fcQVideoEncoderSettings_setResolution(self.h, resolution.h)
 
-proc setResolution2*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, width: cint, height: cint): void =
-
+proc setResolution*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, width: cint, height: cint): void =
   fcQVideoEncoderSettings_setResolution2(self.h, width, height)
 
 proc frameRate*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, ): float64 =
-
   fcQVideoEncoderSettings_frameRate(self.h)
 
 proc setFrameRate*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, rate: float64): void =
-
   fcQVideoEncoderSettings_setFrameRate(self.h, rate)
 
 proc bitRate*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, ): cint =
-
   fcQVideoEncoderSettings_bitRate(self.h)
 
 proc setBitRate*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, bitrate: cint): void =
-
   fcQVideoEncoderSettings_setBitRate(self.h, bitrate)
 
 proc quality*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, ): cint =
-
   cint(fcQVideoEncoderSettings_quality(self.h))
 
 proc setQuality*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, quality: cint): void =
-
   fcQVideoEncoderSettings_setQuality(self.h, cint(quality))
 
 proc encodingOption*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, option: string): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQVideoEncoderSettings_encodingOption(self.h, struct_miqt_string(data: option, len: csize_t(len(option)))))
 
 proc encodingOptions*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, ): Table[string,gen_qvariant.QVariant] =
-
   var v_mm = fcQVideoEncoderSettings_encodingOptions(self.h)
   var vx_ret: Table[string, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[struct_miqt_string]](v_mm.keys)
@@ -332,11 +293,9 @@ proc encodingOptions*(self: gen_qmediaencodersettings_types.QVideoEncoderSetting
   vx_ret
 
 proc setEncodingOption*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, option: string, value: gen_qvariant.QVariant): void =
-
   fcQVideoEncoderSettings_setEncodingOption(self.h, struct_miqt_string(data: option, len: csize_t(len(option))), value.h)
 
 proc setEncodingOptions*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings, options: Table[string,gen_qvariant.QVariant]): void =
-
   var options_Keys_CArray = newSeq[struct_miqt_string](len(options))
   var options_Values_CArray = newSeq[pointer](len(options))
   var options_ctr = 0
@@ -353,64 +312,51 @@ proc delete*(self: gen_qmediaencodersettings_types.QVideoEncoderSettings) =
 func init*(T: type gen_qmediaencodersettings_types.QImageEncoderSettings, h: ptr cQImageEncoderSettings): gen_qmediaencodersettings_types.QImageEncoderSettings =
   T(h: h)
 proc create*(T: type gen_qmediaencodersettings_types.QImageEncoderSettings, ): gen_qmediaencodersettings_types.QImageEncoderSettings =
-
   gen_qmediaencodersettings_types.QImageEncoderSettings.init(fcQImageEncoderSettings_new())
+
 proc create*(T: type gen_qmediaencodersettings_types.QImageEncoderSettings, other: gen_qmediaencodersettings_types.QImageEncoderSettings): gen_qmediaencodersettings_types.QImageEncoderSettings =
-
   gen_qmediaencodersettings_types.QImageEncoderSettings.init(fcQImageEncoderSettings_new2(other.h))
-proc operatorAssign*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, other: gen_qmediaencodersettings_types.QImageEncoderSettings): void =
 
+proc operatorAssign*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, other: gen_qmediaencodersettings_types.QImageEncoderSettings): void =
   fcQImageEncoderSettings_operatorAssign(self.h, other.h)
 
 proc operatorEqual*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, other: gen_qmediaencodersettings_types.QImageEncoderSettings): bool =
-
   fcQImageEncoderSettings_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, other: gen_qmediaencodersettings_types.QImageEncoderSettings): bool =
-
   fcQImageEncoderSettings_operatorNotEqual(self.h, other.h)
 
 proc isNull*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, ): bool =
-
   fcQImageEncoderSettings_isNull(self.h)
 
 proc codec*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, ): string =
-
   let v_ms = fcQImageEncoderSettings_codec(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setCodec*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, codec: string): void =
-
   fcQImageEncoderSettings_setCodec(self.h, struct_miqt_string(data: codec, len: csize_t(len(codec))))
 
 proc resolution*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQImageEncoderSettings_resolution(self.h))
 
 proc setResolution*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, resolution: gen_qsize.QSize): void =
-
   fcQImageEncoderSettings_setResolution(self.h, resolution.h)
 
-proc setResolution2*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, width: cint, height: cint): void =
-
+proc setResolution*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, width: cint, height: cint): void =
   fcQImageEncoderSettings_setResolution2(self.h, width, height)
 
 proc quality*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, ): cint =
-
   cint(fcQImageEncoderSettings_quality(self.h))
 
 proc setQuality*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, quality: cint): void =
-
   fcQImageEncoderSettings_setQuality(self.h, cint(quality))
 
 proc encodingOption*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, option: string): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQImageEncoderSettings_encodingOption(self.h, struct_miqt_string(data: option, len: csize_t(len(option)))))
 
 proc encodingOptions*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, ): Table[string,gen_qvariant.QVariant] =
-
   var v_mm = fcQImageEncoderSettings_encodingOptions(self.h)
   var vx_ret: Table[string, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[struct_miqt_string]](v_mm.keys)
@@ -427,11 +373,9 @@ proc encodingOptions*(self: gen_qmediaencodersettings_types.QImageEncoderSetting
   vx_ret
 
 proc setEncodingOption*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, option: string, value: gen_qvariant.QVariant): void =
-
   fcQImageEncoderSettings_setEncodingOption(self.h, struct_miqt_string(data: option, len: csize_t(len(option))), value.h)
 
 proc setEncodingOptions*(self: gen_qmediaencodersettings_types.QImageEncoderSettings, options: Table[string,gen_qvariant.QVariant]): void =
-
   var options_Keys_CArray = newSeq[struct_miqt_string](len(options))
   var options_Values_CArray = newSeq[pointer](len(options))
   var options_ctr = 0

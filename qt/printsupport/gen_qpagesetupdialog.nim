@@ -203,85 +203,72 @@ proc fcQPageSetupDialog_delete(self: pointer) {.importc: "QPageSetupDialog_delet
 func init*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, h: ptr cQPageSetupDialog): gen_qpagesetupdialog_types.QPageSetupDialog =
   T(h: h)
 proc create*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, parent: gen_qwidget.QWidget): gen_qpagesetupdialog_types.QPageSetupDialog =
-
   gen_qpagesetupdialog_types.QPageSetupDialog.init(fcQPageSetupDialog_new(parent.h))
-proc create2*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, printer: gen_qprinter.QPrinter): gen_qpagesetupdialog_types.QPageSetupDialog =
 
+proc create*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, printer: gen_qprinter.QPrinter): gen_qpagesetupdialog_types.QPageSetupDialog =
   gen_qpagesetupdialog_types.QPageSetupDialog.init(fcQPageSetupDialog_new2(printer.h))
+
 proc create*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qpagesetupdialog_types.QPageSetupDialog =
-
   gen_qpagesetupdialog_types.QPageSetupDialog.init(fcQPageSetupDialog_new3())
+
 proc create*(T: type gen_qpagesetupdialog_types.QPageSetupDialog, printer: gen_qprinter.QPrinter, parent: gen_qwidget.QWidget): gen_qpagesetupdialog_types.QPageSetupDialog =
-
   gen_qpagesetupdialog_types.QPageSetupDialog.init(fcQPageSetupDialog_new4(printer.h, parent.h))
-proc metaObject*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPageSetupDialog_metaObject(self.h))
 
 proc metacast*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cstring): pointer =
-
   fcQPageSetupDialog_metacast(self.h, param1)
 
 proc metacall*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQPageSetupDialog_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring): string =
-
   let v_ms = fcQPageSetupDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring): string =
-
   let v_ms = fcQPageSetupDialog_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc exec*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): cint =
-
   fcQPageSetupDialog_exec(self.h)
 
 proc done*(self: gen_qpagesetupdialog_types.QPageSetupDialog, resultVal: cint): void =
-
   fcQPageSetupDialog_done(self.h, resultVal)
 
 proc printer*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qprinter.QPrinter =
-
   gen_qprinter.QPrinter(h: fcQPageSetupDialog_printer(self.h))
 
-proc tr2*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring): string =
   let v_ms = fcQPageSetupDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPageSetupDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring): string =
   let v_ms = fcQPageSetupDialog_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qpagesetupdialog_types.QPageSetupDialog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPageSetupDialog_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QPageSetupDialogmetaObject*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQPageSetupDialog_virtualbase_metaObject(self.h))
 
 type QPageSetupDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -299,7 +286,6 @@ proc miqt_exec_callback_QPageSetupDialog_metaObject(self: ptr cQPageSetupDialog,
 
   virtualReturn.h
 proc QPageSetupDialogmetacast*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cstring): pointer =
-
   fQPageSetupDialog_virtualbase_metacast(self.h, param1)
 
 type QPageSetupDialogmetacastProc* = proc(param1: cstring): pointer
@@ -319,7 +305,6 @@ proc miqt_exec_callback_QPageSetupDialog_metacast(self: ptr cQPageSetupDialog, s
 
   virtualReturn
 proc QPageSetupDialogmetacall*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fQPageSetupDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QPageSetupDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -343,7 +328,6 @@ proc miqt_exec_callback_QPageSetupDialog_metacall(self: ptr cQPageSetupDialog, s
 
   virtualReturn
 proc QPageSetupDialogexec*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): cint =
-
   fQPageSetupDialog_virtualbase_exec(self.h)
 
 type QPageSetupDialogexecProc* = proc(): cint
@@ -361,7 +345,6 @@ proc miqt_exec_callback_QPageSetupDialog_exec(self: ptr cQPageSetupDialog, slot:
 
   virtualReturn
 proc QPageSetupDialogdone*(self: gen_qpagesetupdialog_types.QPageSetupDialog, resultVal: cint): void =
-
   fQPageSetupDialog_virtualbase_done(self.h, resultVal)
 
 type QPageSetupDialogdoneProc* = proc(resultVal: cint): void
@@ -379,7 +362,6 @@ proc miqt_exec_callback_QPageSetupDialog_done(self: ptr cQPageSetupDialog, slot:
 
   nimfunc[](slotval1)
 proc QPageSetupDialogsetVisible*(self: gen_qpagesetupdialog_types.QPageSetupDialog, visible: bool): void =
-
   fQPageSetupDialog_virtualbase_setVisible(self.h, visible)
 
 type QPageSetupDialogsetVisibleProc* = proc(visible: bool): void
@@ -397,7 +379,6 @@ proc miqt_exec_callback_QPageSetupDialog_setVisible(self: ptr cQPageSetupDialog,
 
   nimfunc[](slotval1)
 proc QPageSetupDialogsizeHint*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQPageSetupDialog_virtualbase_sizeHint(self.h))
 
 type QPageSetupDialogsizeHintProc* = proc(): gen_qsize.QSize
@@ -415,7 +396,6 @@ proc miqt_exec_callback_QPageSetupDialog_sizeHint(self: ptr cQPageSetupDialog, s
 
   virtualReturn.h
 proc QPageSetupDialogminimumSizeHint*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQPageSetupDialog_virtualbase_minimumSizeHint(self.h))
 
 type QPageSetupDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -433,7 +413,6 @@ proc miqt_exec_callback_QPageSetupDialog_minimumSizeHint(self: ptr cQPageSetupDi
 
   virtualReturn.h
 proc QPageSetupDialogopen*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): void =
-
   fQPageSetupDialog_virtualbase_open(self.h)
 
 type QPageSetupDialogopenProc* = proc(): void
@@ -449,7 +428,6 @@ proc miqt_exec_callback_QPageSetupDialog_open(self: ptr cQPageSetupDialog, slot:
 
   nimfunc[]()
 proc QPageSetupDialogaccept*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): void =
-
   fQPageSetupDialog_virtualbase_accept(self.h)
 
 type QPageSetupDialogacceptProc* = proc(): void
@@ -465,7 +443,6 @@ proc miqt_exec_callback_QPageSetupDialog_accept(self: ptr cQPageSetupDialog, slo
 
   nimfunc[]()
 proc QPageSetupDialogreject*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): void =
-
   fQPageSetupDialog_virtualbase_reject(self.h)
 
 type QPageSetupDialogrejectProc* = proc(): void
@@ -481,7 +458,6 @@ proc miqt_exec_callback_QPageSetupDialog_reject(self: ptr cQPageSetupDialog, slo
 
   nimfunc[]()
 proc QPageSetupDialogkeyPressEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QKeyEvent): void =
-
   fQPageSetupDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QPageSetupDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -499,7 +475,6 @@ proc miqt_exec_callback_QPageSetupDialog_keyPressEvent(self: ptr cQPageSetupDial
 
   nimfunc[](slotval1)
 proc QPageSetupDialogcloseEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QCloseEvent): void =
-
   fQPageSetupDialog_virtualbase_closeEvent(self.h, param1.h)
 
 type QPageSetupDialogcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
@@ -517,7 +492,6 @@ proc miqt_exec_callback_QPageSetupDialog_closeEvent(self: ptr cQPageSetupDialog,
 
   nimfunc[](slotval1)
 proc QPageSetupDialogshowEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QShowEvent): void =
-
   fQPageSetupDialog_virtualbase_showEvent(self.h, param1.h)
 
 type QPageSetupDialogshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -535,7 +509,6 @@ proc miqt_exec_callback_QPageSetupDialog_showEvent(self: ptr cQPageSetupDialog, 
 
   nimfunc[](slotval1)
 proc QPageSetupDialogresizeEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QResizeEvent): void =
-
   fQPageSetupDialog_virtualbase_resizeEvent(self.h, param1.h)
 
 type QPageSetupDialogresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -553,7 +526,6 @@ proc miqt_exec_callback_QPageSetupDialog_resizeEvent(self: ptr cQPageSetupDialog
 
   nimfunc[](slotval1)
 proc QPageSetupDialogcontextMenuEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QContextMenuEvent): void =
-
   fQPageSetupDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QPageSetupDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -571,7 +543,6 @@ proc miqt_exec_callback_QPageSetupDialog_contextMenuEvent(self: ptr cQPageSetupD
 
   nimfunc[](slotval1)
 proc QPageSetupDialogeventFilter*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQPageSetupDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QPageSetupDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -593,7 +564,6 @@ proc miqt_exec_callback_QPageSetupDialog_eventFilter(self: ptr cQPageSetupDialog
 
   virtualReturn
 proc QPageSetupDialogdevType*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): cint =
-
   fQPageSetupDialog_virtualbase_devType(self.h)
 
 type QPageSetupDialogdevTypeProc* = proc(): cint
@@ -611,7 +581,6 @@ proc miqt_exec_callback_QPageSetupDialog_devType(self: ptr cQPageSetupDialog, sl
 
   virtualReturn
 proc QPageSetupDialogheightForWidth*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint): cint =
-
   fQPageSetupDialog_virtualbase_heightForWidth(self.h, param1)
 
 type QPageSetupDialogheightForWidthProc* = proc(param1: cint): cint
@@ -631,7 +600,6 @@ proc miqt_exec_callback_QPageSetupDialog_heightForWidth(self: ptr cQPageSetupDia
 
   virtualReturn
 proc QPageSetupDialoghasHeightForWidth*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): bool =
-
   fQPageSetupDialog_virtualbase_hasHeightForWidth(self.h)
 
 type QPageSetupDialoghasHeightForWidthProc* = proc(): bool
@@ -649,7 +617,6 @@ proc miqt_exec_callback_QPageSetupDialog_hasHeightForWidth(self: ptr cQPageSetup
 
   virtualReturn
 proc QPageSetupDialogpaintEngine*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQPageSetupDialog_virtualbase_paintEngine(self.h))
 
 type QPageSetupDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -667,7 +634,6 @@ proc miqt_exec_callback_QPageSetupDialog_paintEngine(self: ptr cQPageSetupDialog
 
   virtualReturn.h
 proc QPageSetupDialogevent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QEvent): bool =
-
   fQPageSetupDialog_virtualbase_event(self.h, event.h)
 
 type QPageSetupDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -687,7 +653,6 @@ proc miqt_exec_callback_QPageSetupDialog_event(self: ptr cQPageSetupDialog, slot
 
   virtualReturn
 proc QPageSetupDialogmousePressEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
-
   fQPageSetupDialog_virtualbase_mousePressEvent(self.h, event.h)
 
 type QPageSetupDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -705,7 +670,6 @@ proc miqt_exec_callback_QPageSetupDialog_mousePressEvent(self: ptr cQPageSetupDi
 
   nimfunc[](slotval1)
 proc QPageSetupDialogmouseReleaseEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
-
   fQPageSetupDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QPageSetupDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -723,7 +687,6 @@ proc miqt_exec_callback_QPageSetupDialog_mouseReleaseEvent(self: ptr cQPageSetup
 
   nimfunc[](slotval1)
 proc QPageSetupDialogmouseDoubleClickEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
-
   fQPageSetupDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QPageSetupDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -741,7 +704,6 @@ proc miqt_exec_callback_QPageSetupDialog_mouseDoubleClickEvent(self: ptr cQPageS
 
   nimfunc[](slotval1)
 proc QPageSetupDialogmouseMoveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMouseEvent): void =
-
   fQPageSetupDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QPageSetupDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -759,7 +721,6 @@ proc miqt_exec_callback_QPageSetupDialog_mouseMoveEvent(self: ptr cQPageSetupDia
 
   nimfunc[](slotval1)
 proc QPageSetupDialogwheelEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QWheelEvent): void =
-
   fQPageSetupDialog_virtualbase_wheelEvent(self.h, event.h)
 
 type QPageSetupDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -777,7 +738,6 @@ proc miqt_exec_callback_QPageSetupDialog_wheelEvent(self: ptr cQPageSetupDialog,
 
   nimfunc[](slotval1)
 proc QPageSetupDialogkeyReleaseEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QKeyEvent): void =
-
   fQPageSetupDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QPageSetupDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -795,7 +755,6 @@ proc miqt_exec_callback_QPageSetupDialog_keyReleaseEvent(self: ptr cQPageSetupDi
 
   nimfunc[](slotval1)
 proc QPageSetupDialogfocusInEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QFocusEvent): void =
-
   fQPageSetupDialog_virtualbase_focusInEvent(self.h, event.h)
 
 type QPageSetupDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -813,7 +772,6 @@ proc miqt_exec_callback_QPageSetupDialog_focusInEvent(self: ptr cQPageSetupDialo
 
   nimfunc[](slotval1)
 proc QPageSetupDialogfocusOutEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QFocusEvent): void =
-
   fQPageSetupDialog_virtualbase_focusOutEvent(self.h, event.h)
 
 type QPageSetupDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -831,7 +789,6 @@ proc miqt_exec_callback_QPageSetupDialog_focusOutEvent(self: ptr cQPageSetupDial
 
   nimfunc[](slotval1)
 proc QPageSetupDialogenterEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QEvent): void =
-
   fQPageSetupDialog_virtualbase_enterEvent(self.h, event.h)
 
 type QPageSetupDialogenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -849,7 +806,6 @@ proc miqt_exec_callback_QPageSetupDialog_enterEvent(self: ptr cQPageSetupDialog,
 
   nimfunc[](slotval1)
 proc QPageSetupDialogleaveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QEvent): void =
-
   fQPageSetupDialog_virtualbase_leaveEvent(self.h, event.h)
 
 type QPageSetupDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -867,7 +823,6 @@ proc miqt_exec_callback_QPageSetupDialog_leaveEvent(self: ptr cQPageSetupDialog,
 
   nimfunc[](slotval1)
 proc QPageSetupDialogpaintEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QPaintEvent): void =
-
   fQPageSetupDialog_virtualbase_paintEvent(self.h, event.h)
 
 type QPageSetupDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -885,7 +840,6 @@ proc miqt_exec_callback_QPageSetupDialog_paintEvent(self: ptr cQPageSetupDialog,
 
   nimfunc[](slotval1)
 proc QPageSetupDialogmoveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QMoveEvent): void =
-
   fQPageSetupDialog_virtualbase_moveEvent(self.h, event.h)
 
 type QPageSetupDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -903,7 +857,6 @@ proc miqt_exec_callback_QPageSetupDialog_moveEvent(self: ptr cQPageSetupDialog, 
 
   nimfunc[](slotval1)
 proc QPageSetupDialogtabletEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QTabletEvent): void =
-
   fQPageSetupDialog_virtualbase_tabletEvent(self.h, event.h)
 
 type QPageSetupDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -921,7 +874,6 @@ proc miqt_exec_callback_QPageSetupDialog_tabletEvent(self: ptr cQPageSetupDialog
 
   nimfunc[](slotval1)
 proc QPageSetupDialogactionEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QActionEvent): void =
-
   fQPageSetupDialog_virtualbase_actionEvent(self.h, event.h)
 
 type QPageSetupDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -939,7 +891,6 @@ proc miqt_exec_callback_QPageSetupDialog_actionEvent(self: ptr cQPageSetupDialog
 
   nimfunc[](slotval1)
 proc QPageSetupDialogdragEnterEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QDragEnterEvent): void =
-
   fQPageSetupDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QPageSetupDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -957,7 +908,6 @@ proc miqt_exec_callback_QPageSetupDialog_dragEnterEvent(self: ptr cQPageSetupDia
 
   nimfunc[](slotval1)
 proc QPageSetupDialogdragMoveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QDragMoveEvent): void =
-
   fQPageSetupDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QPageSetupDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -975,7 +925,6 @@ proc miqt_exec_callback_QPageSetupDialog_dragMoveEvent(self: ptr cQPageSetupDial
 
   nimfunc[](slotval1)
 proc QPageSetupDialogdragLeaveEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QDragLeaveEvent): void =
-
   fQPageSetupDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QPageSetupDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -993,7 +942,6 @@ proc miqt_exec_callback_QPageSetupDialog_dragLeaveEvent(self: ptr cQPageSetupDia
 
   nimfunc[](slotval1)
 proc QPageSetupDialogdropEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QDropEvent): void =
-
   fQPageSetupDialog_virtualbase_dropEvent(self.h, event.h)
 
 type QPageSetupDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1011,7 +959,6 @@ proc miqt_exec_callback_QPageSetupDialog_dropEvent(self: ptr cQPageSetupDialog, 
 
   nimfunc[](slotval1)
 proc QPageSetupDialoghideEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qevent.QHideEvent): void =
-
   fQPageSetupDialog_virtualbase_hideEvent(self.h, event.h)
 
 type QPageSetupDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1029,7 +976,6 @@ proc miqt_exec_callback_QPageSetupDialog_hideEvent(self: ptr cQPageSetupDialog, 
 
   nimfunc[](slotval1)
 proc QPageSetupDialognativeEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQPageSetupDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QPageSetupDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1056,7 +1002,6 @@ proc miqt_exec_callback_QPageSetupDialog_nativeEvent(self: ptr cQPageSetupDialog
 
   virtualReturn
 proc QPageSetupDialogchangeEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qcoreevent.QEvent): void =
-
   fQPageSetupDialog_virtualbase_changeEvent(self.h, param1.h)
 
 type QPageSetupDialogchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1074,7 +1019,6 @@ proc miqt_exec_callback_QPageSetupDialog_changeEvent(self: ptr cQPageSetupDialog
 
   nimfunc[](slotval1)
 proc QPageSetupDialogmetric*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint): cint =
-
   fQPageSetupDialog_virtualbase_metric(self.h, cint(param1))
 
 type QPageSetupDialogmetricProc* = proc(param1: cint): cint
@@ -1094,7 +1038,6 @@ proc miqt_exec_callback_QPageSetupDialog_metric(self: ptr cQPageSetupDialog, slo
 
   virtualReturn
 proc QPageSetupDialoginitPainter*(self: gen_qpagesetupdialog_types.QPageSetupDialog, painter: gen_qpainter.QPainter): void =
-
   fQPageSetupDialog_virtualbase_initPainter(self.h, painter.h)
 
 type QPageSetupDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1112,7 +1055,6 @@ proc miqt_exec_callback_QPageSetupDialog_initPainter(self: ptr cQPageSetupDialog
 
   nimfunc[](slotval1)
 proc QPageSetupDialogredirected*(self: gen_qpagesetupdialog_types.QPageSetupDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQPageSetupDialog_virtualbase_redirected(self.h, offset.h))
 
 type QPageSetupDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1132,7 +1074,6 @@ proc miqt_exec_callback_QPageSetupDialog_redirected(self: ptr cQPageSetupDialog,
 
   virtualReturn.h
 proc QPageSetupDialogsharedPainter*(self: gen_qpagesetupdialog_types.QPageSetupDialog, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQPageSetupDialog_virtualbase_sharedPainter(self.h))
 
 type QPageSetupDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1150,7 +1091,6 @@ proc miqt_exec_callback_QPageSetupDialog_sharedPainter(self: ptr cQPageSetupDial
 
   virtualReturn.h
 proc QPageSetupDialoginputMethodEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: gen_qevent.QInputMethodEvent): void =
-
   fQPageSetupDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QPageSetupDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1168,7 +1108,6 @@ proc miqt_exec_callback_QPageSetupDialog_inputMethodEvent(self: ptr cQPageSetupD
 
   nimfunc[](slotval1)
 proc QPageSetupDialoginputMethodQuery*(self: gen_qpagesetupdialog_types.QPageSetupDialog, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQPageSetupDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QPageSetupDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1188,7 +1127,6 @@ proc miqt_exec_callback_QPageSetupDialog_inputMethodQuery(self: ptr cQPageSetupD
 
   virtualReturn.h
 proc QPageSetupDialogfocusNextPrevChild*(self: gen_qpagesetupdialog_types.QPageSetupDialog, next: bool): bool =
-
   fQPageSetupDialog_virtualbase_focusNextPrevChild(self.h, next)
 
 type QPageSetupDialogfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1208,7 +1146,6 @@ proc miqt_exec_callback_QPageSetupDialog_focusNextPrevChild(self: ptr cQPageSetu
 
   virtualReturn
 proc QPageSetupDialogtimerEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QTimerEvent): void =
-
   fQPageSetupDialog_virtualbase_timerEvent(self.h, event.h)
 
 type QPageSetupDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1226,7 +1163,6 @@ proc miqt_exec_callback_QPageSetupDialog_timerEvent(self: ptr cQPageSetupDialog,
 
   nimfunc[](slotval1)
 proc QPageSetupDialogchildEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QChildEvent): void =
-
   fQPageSetupDialog_virtualbase_childEvent(self.h, event.h)
 
 type QPageSetupDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1244,7 +1180,6 @@ proc miqt_exec_callback_QPageSetupDialog_childEvent(self: ptr cQPageSetupDialog,
 
   nimfunc[](slotval1)
 proc QPageSetupDialogcustomEvent*(self: gen_qpagesetupdialog_types.QPageSetupDialog, event: gen_qcoreevent.QEvent): void =
-
   fQPageSetupDialog_virtualbase_customEvent(self.h, event.h)
 
 type QPageSetupDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1262,7 +1197,6 @@ proc miqt_exec_callback_QPageSetupDialog_customEvent(self: ptr cQPageSetupDialog
 
   nimfunc[](slotval1)
 proc QPageSetupDialogconnectNotify*(self: gen_qpagesetupdialog_types.QPageSetupDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPageSetupDialog_virtualbase_connectNotify(self.h, signal.h)
 
 type QPageSetupDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1280,7 +1214,6 @@ proc miqt_exec_callback_QPageSetupDialog_connectNotify(self: ptr cQPageSetupDial
 
   nimfunc[](slotval1)
 proc QPageSetupDialogdisconnectNotify*(self: gen_qpagesetupdialog_types.QPageSetupDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPageSetupDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QPageSetupDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -185,255 +185,198 @@ proc fcQGridLayout_delete(self: pointer) {.importc: "QGridLayout_delete".}
 func init*(T: type gen_qgridlayout_types.QGridLayout, h: ptr cQGridLayout): gen_qgridlayout_types.QGridLayout =
   T(h: h)
 proc create*(T: type gen_qgridlayout_types.QGridLayout, parent: gen_qwidget.QWidget): gen_qgridlayout_types.QGridLayout =
-
   gen_qgridlayout_types.QGridLayout.init(fcQGridLayout_new(parent.h))
+
 proc create*(T: type gen_qgridlayout_types.QGridLayout, ): gen_qgridlayout_types.QGridLayout =
-
   gen_qgridlayout_types.QGridLayout.init(fcQGridLayout_new2())
-proc metaObject*(self: gen_qgridlayout_types.QGridLayout, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgridlayout_types.QGridLayout, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGridLayout_metaObject(self.h))
 
 proc metacast*(self: gen_qgridlayout_types.QGridLayout, param1: cstring): pointer =
-
   fcQGridLayout_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgridlayout_types.QGridLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGridLayout_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgridlayout_types.QGridLayout, s: cstring): string =
-
   let v_ms = fcQGridLayout_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qgridlayout_types.QGridLayout, s: cstring): string =
-
   let v_ms = fcQGridLayout_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sizeHint*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQGridLayout_sizeHint(self.h))
 
 proc minimumSize*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQGridLayout_minimumSize(self.h))
 
 proc maximumSize*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQGridLayout_maximumSize(self.h))
 
 proc setHorizontalSpacing*(self: gen_qgridlayout_types.QGridLayout, spacing: cint): void =
-
   fcQGridLayout_setHorizontalSpacing(self.h, spacing)
 
 proc horizontalSpacing*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   fcQGridLayout_horizontalSpacing(self.h)
 
 proc setVerticalSpacing*(self: gen_qgridlayout_types.QGridLayout, spacing: cint): void =
-
   fcQGridLayout_setVerticalSpacing(self.h, spacing)
 
 proc verticalSpacing*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   fcQGridLayout_verticalSpacing(self.h)
 
 proc setSpacing*(self: gen_qgridlayout_types.QGridLayout, spacing: cint): void =
-
   fcQGridLayout_setSpacing(self.h, spacing)
 
 proc spacing*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   fcQGridLayout_spacing(self.h)
 
 proc setRowStretch*(self: gen_qgridlayout_types.QGridLayout, row: cint, stretch: cint): void =
-
   fcQGridLayout_setRowStretch(self.h, row, stretch)
 
 proc setColumnStretch*(self: gen_qgridlayout_types.QGridLayout, column: cint, stretch: cint): void =
-
   fcQGridLayout_setColumnStretch(self.h, column, stretch)
 
 proc rowStretch*(self: gen_qgridlayout_types.QGridLayout, row: cint): cint =
-
   fcQGridLayout_rowStretch(self.h, row)
 
 proc columnStretch*(self: gen_qgridlayout_types.QGridLayout, column: cint): cint =
-
   fcQGridLayout_columnStretch(self.h, column)
 
 proc setRowMinimumHeight*(self: gen_qgridlayout_types.QGridLayout, row: cint, minSize: cint): void =
-
   fcQGridLayout_setRowMinimumHeight(self.h, row, minSize)
 
 proc setColumnMinimumWidth*(self: gen_qgridlayout_types.QGridLayout, column: cint, minSize: cint): void =
-
   fcQGridLayout_setColumnMinimumWidth(self.h, column, minSize)
 
 proc rowMinimumHeight*(self: gen_qgridlayout_types.QGridLayout, row: cint): cint =
-
   fcQGridLayout_rowMinimumHeight(self.h, row)
 
 proc columnMinimumWidth*(self: gen_qgridlayout_types.QGridLayout, column: cint): cint =
-
   fcQGridLayout_columnMinimumWidth(self.h, column)
 
 proc columnCount*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   fcQGridLayout_columnCount(self.h)
 
 proc rowCount*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   fcQGridLayout_rowCount(self.h)
 
 proc cellRect*(self: gen_qgridlayout_types.QGridLayout, row: cint, column: cint): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQGridLayout_cellRect(self.h, row, column))
 
 proc hasHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, ): bool =
-
   fcQGridLayout_hasHeightForWidth(self.h)
 
 proc heightForWidth*(self: gen_qgridlayout_types.QGridLayout, param1: cint): cint =
-
   fcQGridLayout_heightForWidth(self.h, param1)
 
 proc minimumHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, param1: cint): cint =
-
   fcQGridLayout_minimumHeightForWidth(self.h, param1)
 
 proc expandingDirections*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   cint(fcQGridLayout_expandingDirections(self.h))
 
 proc invalidate*(self: gen_qgridlayout_types.QGridLayout, ): void =
-
   fcQGridLayout_invalidate(self.h)
 
 proc addWidget*(self: gen_qgridlayout_types.QGridLayout, w: gen_qwidget.QWidget): void =
-
   fcQGridLayout_addWidget(self.h, w.h)
 
-proc addWidget2*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint): void =
-
+proc addWidget*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint): void =
   fcQGridLayout_addWidget2(self.h, param1.h, row, column)
 
-proc addWidget3*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
-
+proc addWidget*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
   fcQGridLayout_addWidget3(self.h, param1.h, row, column, rowSpan, columnSpan)
 
 proc addLayout*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint): void =
-
   fcQGridLayout_addLayout(self.h, param1.h, row, column)
 
-proc addLayout2*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
-
+proc addLayout*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
   fcQGridLayout_addLayout2(self.h, param1.h, row, column, rowSpan, columnSpan)
 
 proc setOriginCorner*(self: gen_qgridlayout_types.QGridLayout, originCorner: cint): void =
-
   fcQGridLayout_setOriginCorner(self.h, cint(originCorner))
 
 proc originCorner*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   cint(fcQGridLayout_originCorner(self.h))
 
 proc itemAt*(self: gen_qgridlayout_types.QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fcQGridLayout_itemAt(self.h, index))
 
 proc itemAtPosition*(self: gen_qgridlayout_types.QGridLayout, row: cint, column: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fcQGridLayout_itemAtPosition(self.h, row, column))
 
 proc takeAt*(self: gen_qgridlayout_types.QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fcQGridLayout_takeAt(self.h, index))
 
 proc count*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   fcQGridLayout_count(self.h)
 
 proc setGeometry*(self: gen_qgridlayout_types.QGridLayout, geometry: gen_qrect.QRect): void =
-
   fcQGridLayout_setGeometry(self.h, geometry.h)
 
 proc addItem*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint): void =
-
   fcQGridLayout_addItem(self.h, item.h, row, column)
 
 proc setDefaultPositioning*(self: gen_qgridlayout_types.QGridLayout, n: cint, orient: cint): void =
-
   fcQGridLayout_setDefaultPositioning(self.h, n, cint(orient))
 
 proc getItemPosition*(self: gen_qgridlayout_types.QGridLayout, idx: cint, row: ptr cint, column: ptr cint, rowSpan: ptr cint, columnSpan: ptr cint): void =
-
   fcQGridLayout_getItemPosition(self.h, idx, row, column, rowSpan, columnSpan)
 
-proc tr2*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring): string =
   let v_ms = fcQGridLayout_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGridLayout_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring): string =
   let v_ms = fcQGridLayout_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qgridlayout_types.QGridLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGridLayout_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc addWidget4*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, param4: cint): void =
-
+proc addWidget*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, param4: cint): void =
   fcQGridLayout_addWidget4(self.h, param1.h, row, column, cint(param4))
 
-proc addWidget6*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void =
-
+proc addWidget*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void =
   fcQGridLayout_addWidget6(self.h, param1.h, row, column, rowSpan, columnSpan, cint(param6))
 
-proc addLayout4*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, param4: cint): void =
-
+proc addLayout*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, param4: cint): void =
   fcQGridLayout_addLayout4(self.h, param1.h, row, column, cint(param4))
 
-proc addLayout6*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void =
-
+proc addLayout*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayout.QLayout, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void =
   fcQGridLayout_addLayout6(self.h, param1.h, row, column, rowSpan, columnSpan, cint(param6))
 
-proc addItem4*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint): void =
-
+proc addItem*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint): void =
   fcQGridLayout_addItem4(self.h, item.h, row, column, rowSpan)
 
-proc addItem5*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
-
+proc addItem*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
   fcQGridLayout_addItem5(self.h, item.h, row, column, rowSpan, columnSpan)
 
-proc addItem6*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void =
-
+proc addItem*(self: gen_qgridlayout_types.QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void =
   fcQGridLayout_addItem6(self.h, item.h, row, column, rowSpan, columnSpan, cint(param6))
 
 proc QGridLayoutmetaObject*(self: gen_qgridlayout_types.QGridLayout, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQGridLayout_virtualbase_metaObject(self.h))
 
 type QGridLayoutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -451,7 +394,6 @@ proc miqt_exec_callback_QGridLayout_metaObject(self: ptr cQGridLayout, slot: int
 
   virtualReturn.h
 proc QGridLayoutmetacast*(self: gen_qgridlayout_types.QGridLayout, param1: cstring): pointer =
-
   fQGridLayout_virtualbase_metacast(self.h, param1)
 
 type QGridLayoutmetacastProc* = proc(param1: cstring): pointer
@@ -471,7 +413,6 @@ proc miqt_exec_callback_QGridLayout_metacast(self: ptr cQGridLayout, slot: int, 
 
   virtualReturn
 proc QGridLayoutmetacall*(self: gen_qgridlayout_types.QGridLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGridLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGridLayoutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -495,7 +436,6 @@ proc miqt_exec_callback_QGridLayout_metacall(self: ptr cQGridLayout, slot: int, 
 
   virtualReturn
 proc QGridLayoutsizeHint*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQGridLayout_virtualbase_sizeHint(self.h))
 
 type QGridLayoutsizeHintProc* = proc(): gen_qsize.QSize
@@ -513,7 +453,6 @@ proc miqt_exec_callback_QGridLayout_sizeHint(self: ptr cQGridLayout, slot: int):
 
   virtualReturn.h
 proc QGridLayoutminimumSize*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQGridLayout_virtualbase_minimumSize(self.h))
 
 type QGridLayoutminimumSizeProc* = proc(): gen_qsize.QSize
@@ -531,7 +470,6 @@ proc miqt_exec_callback_QGridLayout_minimumSize(self: ptr cQGridLayout, slot: in
 
   virtualReturn.h
 proc QGridLayoutmaximumSize*(self: gen_qgridlayout_types.QGridLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQGridLayout_virtualbase_maximumSize(self.h))
 
 type QGridLayoutmaximumSizeProc* = proc(): gen_qsize.QSize
@@ -549,7 +487,6 @@ proc miqt_exec_callback_QGridLayout_maximumSize(self: ptr cQGridLayout, slot: in
 
   virtualReturn.h
 proc QGridLayouthasHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, ): bool =
-
   fQGridLayout_virtualbase_hasHeightForWidth(self.h)
 
 type QGridLayouthasHeightForWidthProc* = proc(): bool
@@ -567,7 +504,6 @@ proc miqt_exec_callback_QGridLayout_hasHeightForWidth(self: ptr cQGridLayout, sl
 
   virtualReturn
 proc QGridLayoutheightForWidth*(self: gen_qgridlayout_types.QGridLayout, param1: cint): cint =
-
   fQGridLayout_virtualbase_heightForWidth(self.h, param1)
 
 type QGridLayoutheightForWidthProc* = proc(param1: cint): cint
@@ -587,7 +523,6 @@ proc miqt_exec_callback_QGridLayout_heightForWidth(self: ptr cQGridLayout, slot:
 
   virtualReturn
 proc QGridLayoutminimumHeightForWidth*(self: gen_qgridlayout_types.QGridLayout, param1: cint): cint =
-
   fQGridLayout_virtualbase_minimumHeightForWidth(self.h, param1)
 
 type QGridLayoutminimumHeightForWidthProc* = proc(param1: cint): cint
@@ -607,7 +542,6 @@ proc miqt_exec_callback_QGridLayout_minimumHeightForWidth(self: ptr cQGridLayout
 
   virtualReturn
 proc QGridLayoutexpandingDirections*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   cint(fQGridLayout_virtualbase_expandingDirections(self.h))
 
 type QGridLayoutexpandingDirectionsProc* = proc(): cint
@@ -625,7 +559,6 @@ proc miqt_exec_callback_QGridLayout_expandingDirections(self: ptr cQGridLayout, 
 
   cint(virtualReturn)
 proc QGridLayoutinvalidate*(self: gen_qgridlayout_types.QGridLayout, ): void =
-
   fQGridLayout_virtualbase_invalidate(self.h)
 
 type QGridLayoutinvalidateProc* = proc(): void
@@ -641,7 +574,6 @@ proc miqt_exec_callback_QGridLayout_invalidate(self: ptr cQGridLayout, slot: int
 
   nimfunc[]()
 proc QGridLayoutitemAt*(self: gen_qgridlayout_types.QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fQGridLayout_virtualbase_itemAt(self.h, index))
 
 type QGridLayoutitemAtProc* = proc(index: cint): gen_qlayoutitem.QLayoutItem
@@ -661,7 +593,6 @@ proc miqt_exec_callback_QGridLayout_itemAt(self: ptr cQGridLayout, slot: int, in
 
   virtualReturn.h
 proc QGridLayouttakeAt*(self: gen_qgridlayout_types.QGridLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fQGridLayout_virtualbase_takeAt(self.h, index))
 
 type QGridLayouttakeAtProc* = proc(index: cint): gen_qlayoutitem.QLayoutItem
@@ -681,7 +612,6 @@ proc miqt_exec_callback_QGridLayout_takeAt(self: ptr cQGridLayout, slot: int, in
 
   virtualReturn.h
 proc QGridLayoutcount*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   fQGridLayout_virtualbase_count(self.h)
 
 type QGridLayoutcountProc* = proc(): cint
@@ -699,7 +629,6 @@ proc miqt_exec_callback_QGridLayout_count(self: ptr cQGridLayout, slot: int): ci
 
   virtualReturn
 proc QGridLayoutsetGeometry*(self: gen_qgridlayout_types.QGridLayout, geometry: gen_qrect.QRect): void =
-
   fQGridLayout_virtualbase_setGeometry(self.h, geometry.h)
 
 type QGridLayoutsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
@@ -716,12 +645,11 @@ proc miqt_exec_callback_QGridLayout_setGeometry(self: ptr cQGridLayout, slot: in
 
 
   nimfunc[](slotval1)
-proc QGridLayoutaddItemWithQLayoutItem*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayoutitem.QLayoutItem): void =
-
+proc QGridLayoutaddItem*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qlayoutitem.QLayoutItem): void =
   fQGridLayout_virtualbase_addItemWithQLayoutItem(self.h, param1.h)
 
 type QGridLayoutaddItemWithQLayoutItemProc* = proc(param1: gen_qlayoutitem.QLayoutItem): void
-proc onaddItemWithQLayoutItem*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutaddItemWithQLayoutItemProc) =
+proc onaddItem*(self: gen_qgridlayout_types.QGridLayout, slot: QGridLayoutaddItemWithQLayoutItemProc) =
   # TODO check subclass
   var tmp = new QGridLayoutaddItemWithQLayoutItemProc
   tmp[] = slot
@@ -735,7 +663,6 @@ proc miqt_exec_callback_QGridLayout_addItemWithQLayoutItem(self: ptr cQGridLayou
 
   nimfunc[](slotval1)
 proc QGridLayoutgeometry*(self: gen_qgridlayout_types.QGridLayout, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQGridLayout_virtualbase_geometry(self.h))
 
 type QGridLayoutgeometryProc* = proc(): gen_qrect.QRect
@@ -753,7 +680,6 @@ proc miqt_exec_callback_QGridLayout_geometry(self: ptr cQGridLayout, slot: int):
 
   virtualReturn.h
 proc QGridLayoutindexOf*(self: gen_qgridlayout_types.QGridLayout, param1: gen_qwidget.QWidget): cint =
-
   fQGridLayout_virtualbase_indexOf(self.h, param1.h)
 
 type QGridLayoutindexOfProc* = proc(param1: gen_qwidget.QWidget): cint
@@ -773,7 +699,6 @@ proc miqt_exec_callback_QGridLayout_indexOf(self: ptr cQGridLayout, slot: int, p
 
   virtualReturn
 proc QGridLayoutisEmpty*(self: gen_qgridlayout_types.QGridLayout, ): bool =
-
   fQGridLayout_virtualbase_isEmpty(self.h)
 
 type QGridLayoutisEmptyProc* = proc(): bool
@@ -791,7 +716,6 @@ proc miqt_exec_callback_QGridLayout_isEmpty(self: ptr cQGridLayout, slot: int): 
 
   virtualReturn
 proc QGridLayoutcontrolTypes*(self: gen_qgridlayout_types.QGridLayout, ): cint =
-
   cint(fQGridLayout_virtualbase_controlTypes(self.h))
 
 type QGridLayoutcontrolTypesProc* = proc(): cint
@@ -809,7 +733,6 @@ proc miqt_exec_callback_QGridLayout_controlTypes(self: ptr cQGridLayout, slot: i
 
   cint(virtualReturn)
 proc QGridLayoutlayout*(self: gen_qgridlayout_types.QGridLayout, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fQGridLayout_virtualbase_layout(self.h))
 
 type QGridLayoutlayoutProc* = proc(): gen_qlayout.QLayout
@@ -827,7 +750,6 @@ proc miqt_exec_callback_QGridLayout_layout(self: ptr cQGridLayout, slot: int): p
 
   virtualReturn.h
 proc QGridLayoutchildEvent*(self: gen_qgridlayout_types.QGridLayout, e: gen_qcoreevent.QChildEvent): void =
-
   fQGridLayout_virtualbase_childEvent(self.h, e.h)
 
 type QGridLayoutchildEventProc* = proc(e: gen_qcoreevent.QChildEvent): void
@@ -845,7 +767,6 @@ proc miqt_exec_callback_QGridLayout_childEvent(self: ptr cQGridLayout, slot: int
 
   nimfunc[](slotval1)
 proc QGridLayoutevent*(self: gen_qgridlayout_types.QGridLayout, event: gen_qcoreevent.QEvent): bool =
-
   fQGridLayout_virtualbase_event(self.h, event.h)
 
 type QGridLayouteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -865,7 +786,6 @@ proc miqt_exec_callback_QGridLayout_event(self: ptr cQGridLayout, slot: int, eve
 
   virtualReturn
 proc QGridLayouteventFilter*(self: gen_qgridlayout_types.QGridLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGridLayout_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGridLayouteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -887,7 +807,6 @@ proc miqt_exec_callback_QGridLayout_eventFilter(self: ptr cQGridLayout, slot: in
 
   virtualReturn
 proc QGridLayouttimerEvent*(self: gen_qgridlayout_types.QGridLayout, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGridLayout_virtualbase_timerEvent(self.h, event.h)
 
 type QGridLayouttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -905,7 +824,6 @@ proc miqt_exec_callback_QGridLayout_timerEvent(self: ptr cQGridLayout, slot: int
 
   nimfunc[](slotval1)
 proc QGridLayoutcustomEvent*(self: gen_qgridlayout_types.QGridLayout, event: gen_qcoreevent.QEvent): void =
-
   fQGridLayout_virtualbase_customEvent(self.h, event.h)
 
 type QGridLayoutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -923,7 +841,6 @@ proc miqt_exec_callback_QGridLayout_customEvent(self: ptr cQGridLayout, slot: in
 
   nimfunc[](slotval1)
 proc QGridLayoutconnectNotify*(self: gen_qgridlayout_types.QGridLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGridLayout_virtualbase_connectNotify(self.h, signal.h)
 
 type QGridLayoutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -941,7 +858,6 @@ proc miqt_exec_callback_QGridLayout_connectNotify(self: ptr cQGridLayout, slot: 
 
   nimfunc[](slotval1)
 proc QGridLayoutdisconnectNotify*(self: gen_qgridlayout_types.QGridLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGridLayout_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGridLayoutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -959,7 +875,6 @@ proc miqt_exec_callback_QGridLayout_disconnectNotify(self: ptr cQGridLayout, slo
 
   nimfunc[](slotval1)
 proc QGridLayoutwidget*(self: gen_qgridlayout_types.QGridLayout, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQGridLayout_virtualbase_widget(self.h))
 
 type QGridLayoutwidgetProc* = proc(): gen_qwidget.QWidget
@@ -977,7 +892,6 @@ proc miqt_exec_callback_QGridLayout_widget(self: ptr cQGridLayout, slot: int): p
 
   virtualReturn.h
 proc QGridLayoutspacerItem*(self: gen_qgridlayout_types.QGridLayout, ): gen_qlayoutitem.QSpacerItem =
-
   gen_qlayoutitem.QSpacerItem(h: fQGridLayout_virtualbase_spacerItem(self.h))
 
 type QGridLayoutspacerItemProc* = proc(): gen_qlayoutitem.QSpacerItem

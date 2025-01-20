@@ -296,502 +296,406 @@ proc fcQLineEdit_delete(self: pointer) {.importc: "QLineEdit_delete".}
 func init*(T: type gen_qlineedit_types.QLineEdit, h: ptr cQLineEdit): gen_qlineedit_types.QLineEdit =
   T(h: h)
 proc create*(T: type gen_qlineedit_types.QLineEdit, parent: gen_qwidget.QWidget): gen_qlineedit_types.QLineEdit =
-
   gen_qlineedit_types.QLineEdit.init(fcQLineEdit_new(parent.h))
+
 proc create*(T: type gen_qlineedit_types.QLineEdit, ): gen_qlineedit_types.QLineEdit =
-
   gen_qlineedit_types.QLineEdit.init(fcQLineEdit_new2())
+
 proc create*(T: type gen_qlineedit_types.QLineEdit, param1: string): gen_qlineedit_types.QLineEdit =
-
   gen_qlineedit_types.QLineEdit.init(fcQLineEdit_new3(struct_miqt_string(data: param1, len: csize_t(len(param1)))))
+
 proc create*(T: type gen_qlineedit_types.QLineEdit, param1: string, parent: gen_qwidget.QWidget): gen_qlineedit_types.QLineEdit =
-
   gen_qlineedit_types.QLineEdit.init(fcQLineEdit_new4(struct_miqt_string(data: param1, len: csize_t(len(param1))), parent.h))
-proc metaObject*(self: gen_qlineedit_types.QLineEdit, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qlineedit_types.QLineEdit, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQLineEdit_metaObject(self.h))
 
 proc metacast*(self: gen_qlineedit_types.QLineEdit, param1: cstring): pointer =
-
   fcQLineEdit_metacast(self.h, param1)
 
 proc metacall*(self: gen_qlineedit_types.QLineEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQLineEdit_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qlineedit_types.QLineEdit, s: cstring): string =
-
   let v_ms = fcQLineEdit_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qlineedit_types.QLineEdit, s: cstring): string =
-
   let v_ms = fcQLineEdit_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc text*(self: gen_qlineedit_types.QLineEdit, ): string =
-
   let v_ms = fcQLineEdit_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc displayText*(self: gen_qlineedit_types.QLineEdit, ): string =
-
   let v_ms = fcQLineEdit_displayText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc placeholderText*(self: gen_qlineedit_types.QLineEdit, ): string =
-
   let v_ms = fcQLineEdit_placeholderText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPlaceholderText*(self: gen_qlineedit_types.QLineEdit, placeholderText: string): void =
-
   fcQLineEdit_setPlaceholderText(self.h, struct_miqt_string(data: placeholderText, len: csize_t(len(placeholderText))))
 
 proc maxLength*(self: gen_qlineedit_types.QLineEdit, ): cint =
-
   fcQLineEdit_maxLength(self.h)
 
 proc setMaxLength*(self: gen_qlineedit_types.QLineEdit, maxLength: cint): void =
-
   fcQLineEdit_setMaxLength(self.h, maxLength)
 
 proc setFrame*(self: gen_qlineedit_types.QLineEdit, frame: bool): void =
-
   fcQLineEdit_setFrame(self.h, frame)
 
 proc hasFrame*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fcQLineEdit_hasFrame(self.h)
 
 proc setClearButtonEnabled*(self: gen_qlineedit_types.QLineEdit, enable: bool): void =
-
   fcQLineEdit_setClearButtonEnabled(self.h, enable)
 
 proc isClearButtonEnabled*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fcQLineEdit_isClearButtonEnabled(self.h)
 
 proc echoMode*(self: gen_qlineedit_types.QLineEdit, ): cint =
-
   cint(fcQLineEdit_echoMode(self.h))
 
 proc setEchoMode*(self: gen_qlineedit_types.QLineEdit, echoMode: cint): void =
-
   fcQLineEdit_setEchoMode(self.h, cint(echoMode))
 
 proc isReadOnly*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fcQLineEdit_isReadOnly(self.h)
 
 proc setReadOnly*(self: gen_qlineedit_types.QLineEdit, readOnly: bool): void =
-
   fcQLineEdit_setReadOnly(self.h, readOnly)
 
 proc setValidator*(self: gen_qlineedit_types.QLineEdit, validator: gen_qvalidator.QValidator): void =
-
   fcQLineEdit_setValidator(self.h, validator.h)
 
 proc validator*(self: gen_qlineedit_types.QLineEdit, ): gen_qvalidator.QValidator =
-
   gen_qvalidator.QValidator(h: fcQLineEdit_validator(self.h))
 
 proc setCompleter*(self: gen_qlineedit_types.QLineEdit, completer: gen_qcompleter.QCompleter): void =
-
   fcQLineEdit_setCompleter(self.h, completer.h)
 
 proc completer*(self: gen_qlineedit_types.QLineEdit, ): gen_qcompleter.QCompleter =
-
   gen_qcompleter.QCompleter(h: fcQLineEdit_completer(self.h))
 
 proc sizeHint*(self: gen_qlineedit_types.QLineEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQLineEdit_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qlineedit_types.QLineEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQLineEdit_minimumSizeHint(self.h))
 
 proc cursorPosition*(self: gen_qlineedit_types.QLineEdit, ): cint =
-
   fcQLineEdit_cursorPosition(self.h)
 
 proc setCursorPosition*(self: gen_qlineedit_types.QLineEdit, cursorPosition: cint): void =
-
   fcQLineEdit_setCursorPosition(self.h, cursorPosition)
 
 proc cursorPositionAt*(self: gen_qlineedit_types.QLineEdit, pos: gen_qpoint.QPoint): cint =
-
   fcQLineEdit_cursorPositionAt(self.h, pos.h)
 
 proc setAlignment*(self: gen_qlineedit_types.QLineEdit, flag: cint): void =
-
   fcQLineEdit_setAlignment(self.h, cint(flag))
 
 proc alignment*(self: gen_qlineedit_types.QLineEdit, ): cint =
-
   cint(fcQLineEdit_alignment(self.h))
 
 proc cursorForward*(self: gen_qlineedit_types.QLineEdit, mark: bool): void =
-
   fcQLineEdit_cursorForward(self.h, mark)
 
 proc cursorBackward*(self: gen_qlineedit_types.QLineEdit, mark: bool): void =
-
   fcQLineEdit_cursorBackward(self.h, mark)
 
 proc cursorWordForward*(self: gen_qlineedit_types.QLineEdit, mark: bool): void =
-
   fcQLineEdit_cursorWordForward(self.h, mark)
 
 proc cursorWordBackward*(self: gen_qlineedit_types.QLineEdit, mark: bool): void =
-
   fcQLineEdit_cursorWordBackward(self.h, mark)
 
 proc backspace*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_backspace(self.h)
 
 proc del*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_del(self.h)
 
 proc home*(self: gen_qlineedit_types.QLineEdit, mark: bool): void =
-
   fcQLineEdit_home(self.h, mark)
 
 proc endX*(self: gen_qlineedit_types.QLineEdit, mark: bool): void =
-
   fcQLineEdit_endX(self.h, mark)
 
 proc isModified*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fcQLineEdit_isModified(self.h)
 
 proc setModified*(self: gen_qlineedit_types.QLineEdit, modified: bool): void =
-
   fcQLineEdit_setModified(self.h, modified)
 
 proc setSelection*(self: gen_qlineedit_types.QLineEdit, param1: cint, param2: cint): void =
-
   fcQLineEdit_setSelection(self.h, param1, param2)
 
 proc hasSelectedText*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fcQLineEdit_hasSelectedText(self.h)
 
 proc selectedText*(self: gen_qlineedit_types.QLineEdit, ): string =
-
   let v_ms = fcQLineEdit_selectedText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc selectionStart*(self: gen_qlineedit_types.QLineEdit, ): cint =
-
   fcQLineEdit_selectionStart(self.h)
 
 proc selectionEnd*(self: gen_qlineedit_types.QLineEdit, ): cint =
-
   fcQLineEdit_selectionEnd(self.h)
 
 proc selectionLength*(self: gen_qlineedit_types.QLineEdit, ): cint =
-
   fcQLineEdit_selectionLength(self.h)
 
 proc isUndoAvailable*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fcQLineEdit_isUndoAvailable(self.h)
 
 proc isRedoAvailable*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fcQLineEdit_isRedoAvailable(self.h)
 
 proc setDragEnabled*(self: gen_qlineedit_types.QLineEdit, b: bool): void =
-
   fcQLineEdit_setDragEnabled(self.h, b)
 
 proc dragEnabled*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fcQLineEdit_dragEnabled(self.h)
 
 proc setCursorMoveStyle*(self: gen_qlineedit_types.QLineEdit, style: cint): void =
-
   fcQLineEdit_setCursorMoveStyle(self.h, cint(style))
 
 proc cursorMoveStyle*(self: gen_qlineedit_types.QLineEdit, ): cint =
-
   cint(fcQLineEdit_cursorMoveStyle(self.h))
 
 proc inputMask*(self: gen_qlineedit_types.QLineEdit, ): string =
-
   let v_ms = fcQLineEdit_inputMask(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setInputMask*(self: gen_qlineedit_types.QLineEdit, inputMask: string): void =
-
   fcQLineEdit_setInputMask(self.h, struct_miqt_string(data: inputMask, len: csize_t(len(inputMask))))
 
 proc hasAcceptableInput*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fcQLineEdit_hasAcceptableInput(self.h)
 
 proc setTextMargins*(self: gen_qlineedit_types.QLineEdit, left: cint, top: cint, right: cint, bottom: cint): void =
-
   fcQLineEdit_setTextMargins(self.h, left, top, right, bottom)
 
-proc setTextMarginsWithMargins*(self: gen_qlineedit_types.QLineEdit, margins: gen_qmargins.QMargins): void =
-
+proc setTextMargins*(self: gen_qlineedit_types.QLineEdit, margins: gen_qmargins.QMargins): void =
   fcQLineEdit_setTextMarginsWithMargins(self.h, margins.h)
 
 proc getTextMargins*(self: gen_qlineedit_types.QLineEdit, left: ptr cint, top: ptr cint, right: ptr cint, bottom: ptr cint): void =
-
   fcQLineEdit_getTextMargins(self.h, left, top, right, bottom)
 
 proc textMargins*(self: gen_qlineedit_types.QLineEdit, ): gen_qmargins.QMargins =
-
   gen_qmargins.QMargins(h: fcQLineEdit_textMargins(self.h))
 
 proc addAction*(self: gen_qlineedit_types.QLineEdit, action: gen_qaction.QAction, position: cint): void =
-
   fcQLineEdit_addAction(self.h, action.h, cint(position))
 
-proc addAction2*(self: gen_qlineedit_types.QLineEdit, icon: gen_qicon.QIcon, position: cint): gen_qaction.QAction =
-
+proc addAction*(self: gen_qlineedit_types.QLineEdit, icon: gen_qicon.QIcon, position: cint): gen_qaction.QAction =
   gen_qaction.QAction(h: fcQLineEdit_addAction2(self.h, icon.h, cint(position)))
 
 proc setText*(self: gen_qlineedit_types.QLineEdit, text: string): void =
-
   fcQLineEdit_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc clear*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_clear(self.h)
 
 proc selectAll*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_selectAll(self.h)
 
 proc undo*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_undo(self.h)
 
 proc redo*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_redo(self.h)
 
 proc cut*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_cut(self.h)
 
 proc copy*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_copy(self.h)
 
 proc paste*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_paste(self.h)
 
 proc deselect*(self: gen_qlineedit_types.QLineEdit, ): void =
-
   fcQLineEdit_deselect(self.h)
 
 proc insert*(self: gen_qlineedit_types.QLineEdit, param1: string): void =
-
   fcQLineEdit_insert(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 proc createStandardContextMenu*(self: gen_qlineedit_types.QLineEdit, ): gen_qmenu.QMenu =
-
   gen_qmenu.QMenu(h: fcQLineEdit_createStandardContextMenu(self.h))
 
 proc textChanged*(self: gen_qlineedit_types.QLineEdit, param1: string): void =
-
   fcQLineEdit_textChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
+type QLineEdittextChangedSlot* = proc(param1: string)
 proc miqt_exec_callback_QLineEdit_textChanged(slot: int, param1: struct_miqt_string) {.exportc.} =
-  type Cb = proc(param1: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QLineEdittextChangedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
   c_free(vparam1_ms.data)
   let slotval1 = vparam1x_ret
 
-
   nimfunc[](slotval1)
 
-proc ontextChanged*(self: gen_qlineedit_types.QLineEdit, slot: proc(param1: string)) =
-  type Cb = proc(param1: string)
-  var tmp = new Cb
+proc ontextChanged*(self: gen_qlineedit_types.QLineEdit, slot: QLineEdittextChangedSlot) =
+  var tmp = new QLineEdittextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLineEdit_connect_textChanged(self.h, cast[int](addr tmp[]))
-proc textEdited*(self: gen_qlineedit_types.QLineEdit, param1: string): void =
 
+proc textEdited*(self: gen_qlineedit_types.QLineEdit, param1: string): void =
   fcQLineEdit_textEdited(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
+type QLineEdittextEditedSlot* = proc(param1: string)
 proc miqt_exec_callback_QLineEdit_textEdited(slot: int, param1: struct_miqt_string) {.exportc.} =
-  type Cb = proc(param1: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QLineEdittextEditedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
   c_free(vparam1_ms.data)
   let slotval1 = vparam1x_ret
 
-
   nimfunc[](slotval1)
 
-proc ontextEdited*(self: gen_qlineedit_types.QLineEdit, slot: proc(param1: string)) =
-  type Cb = proc(param1: string)
-  var tmp = new Cb
+proc ontextEdited*(self: gen_qlineedit_types.QLineEdit, slot: QLineEdittextEditedSlot) =
+  var tmp = new QLineEdittextEditedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLineEdit_connect_textEdited(self.h, cast[int](addr tmp[]))
-proc cursorPositionChanged*(self: gen_qlineedit_types.QLineEdit, param1: cint, param2: cint): void =
 
+proc cursorPositionChanged*(self: gen_qlineedit_types.QLineEdit, param1: cint, param2: cint): void =
   fcQLineEdit_cursorPositionChanged(self.h, param1, param2)
 
+type QLineEditcursorPositionChangedSlot* = proc(param1: cint, param2: cint)
 proc miqt_exec_callback_QLineEdit_cursorPositionChanged(slot: int, param1: cint, param2: cint) {.exportc.} =
-  type Cb = proc(param1: cint, param2: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QLineEditcursorPositionChangedSlot](cast[pointer](slot))
   let slotval1 = param1
 
   let slotval2 = param2
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncursorPositionChanged*(self: gen_qlineedit_types.QLineEdit, slot: proc(param1: cint, param2: cint)) =
-  type Cb = proc(param1: cint, param2: cint)
-  var tmp = new Cb
+proc oncursorPositionChanged*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditcursorPositionChangedSlot) =
+  var tmp = new QLineEditcursorPositionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLineEdit_connect_cursorPositionChanged(self.h, cast[int](addr tmp[]))
-proc returnPressed*(self: gen_qlineedit_types.QLineEdit, ): void =
 
+proc returnPressed*(self: gen_qlineedit_types.QLineEdit, ): void =
   fcQLineEdit_returnPressed(self.h)
 
+type QLineEditreturnPressedSlot* = proc()
 proc miqt_exec_callback_QLineEdit_returnPressed(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QLineEditreturnPressedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onreturnPressed*(self: gen_qlineedit_types.QLineEdit, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onreturnPressed*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditreturnPressedSlot) =
+  var tmp = new QLineEditreturnPressedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLineEdit_connect_returnPressed(self.h, cast[int](addr tmp[]))
-proc editingFinished*(self: gen_qlineedit_types.QLineEdit, ): void =
 
+proc editingFinished*(self: gen_qlineedit_types.QLineEdit, ): void =
   fcQLineEdit_editingFinished(self.h)
 
+type QLineEditeditingFinishedSlot* = proc()
 proc miqt_exec_callback_QLineEdit_editingFinished(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QLineEditeditingFinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc oneditingFinished*(self: gen_qlineedit_types.QLineEdit, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc oneditingFinished*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditeditingFinishedSlot) =
+  var tmp = new QLineEditeditingFinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLineEdit_connect_editingFinished(self.h, cast[int](addr tmp[]))
-proc selectionChanged*(self: gen_qlineedit_types.QLineEdit, ): void =
 
+proc selectionChanged*(self: gen_qlineedit_types.QLineEdit, ): void =
   fcQLineEdit_selectionChanged(self.h)
 
+type QLineEditselectionChangedSlot* = proc()
 proc miqt_exec_callback_QLineEdit_selectionChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QLineEditselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onselectionChanged*(self: gen_qlineedit_types.QLineEdit, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onselectionChanged*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditselectionChangedSlot) =
+  var tmp = new QLineEditselectionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLineEdit_connect_selectionChanged(self.h, cast[int](addr tmp[]))
-proc inputRejected*(self: gen_qlineedit_types.QLineEdit, ): void =
 
+proc inputRejected*(self: gen_qlineedit_types.QLineEdit, ): void =
   fcQLineEdit_inputRejected(self.h)
 
+type QLineEditinputRejectedSlot* = proc()
 proc miqt_exec_callback_QLineEdit_inputRejected(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QLineEditinputRejectedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc oninputRejected*(self: gen_qlineedit_types.QLineEdit, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc oninputRejected*(self: gen_qlineedit_types.QLineEdit, slot: QLineEditinputRejectedSlot) =
+  var tmp = new QLineEditinputRejectedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLineEdit_connect_inputRejected(self.h, cast[int](addr tmp[]))
-proc inputMethodQuery*(self: gen_qlineedit_types.QLineEdit, param1: cint): gen_qvariant.QVariant =
 
+proc inputMethodQuery*(self: gen_qlineedit_types.QLineEdit, param1: cint): gen_qvariant.QVariant =
   gen_qvariant.QVariant(h: fcQLineEdit_inputMethodQuery(self.h, cint(param1)))
 
-proc inputMethodQuery2*(self: gen_qlineedit_types.QLineEdit, property: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
+proc inputMethodQuery*(self: gen_qlineedit_types.QLineEdit, property: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
   gen_qvariant.QVariant(h: fcQLineEdit_inputMethodQuery2(self.h, cint(property), argument.h))
 
 proc event*(self: gen_qlineedit_types.QLineEdit, param1: gen_qcoreevent.QEvent): bool =
-
   fcQLineEdit_event(self.h, param1.h)
 
-proc tr2*(_: type gen_qlineedit_types.QLineEdit, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qlineedit_types.QLineEdit, s: cstring, c: cstring): string =
   let v_ms = fcQLineEdit_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qlineedit_types.QLineEdit, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qlineedit_types.QLineEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQLineEdit_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qlineedit_types.QLineEdit, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qlineedit_types.QLineEdit, s: cstring, c: cstring): string =
   let v_ms = fcQLineEdit_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qlineedit_types.QLineEdit, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qlineedit_types.QLineEdit, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQLineEdit_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc cursorForward2*(self: gen_qlineedit_types.QLineEdit, mark: bool, steps: cint): void =
-
+proc cursorForward*(self: gen_qlineedit_types.QLineEdit, mark: bool, steps: cint): void =
   fcQLineEdit_cursorForward2(self.h, mark, steps)
 
-proc cursorBackward2*(self: gen_qlineedit_types.QLineEdit, mark: bool, steps: cint): void =
-
+proc cursorBackward*(self: gen_qlineedit_types.QLineEdit, mark: bool, steps: cint): void =
   fcQLineEdit_cursorBackward2(self.h, mark, steps)
 
 proc QLineEditmetaObject*(self: gen_qlineedit_types.QLineEdit, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQLineEdit_virtualbase_metaObject(self.h))
 
 type QLineEditmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -809,7 +713,6 @@ proc miqt_exec_callback_QLineEdit_metaObject(self: ptr cQLineEdit, slot: int): p
 
   virtualReturn.h
 proc QLineEditmetacast*(self: gen_qlineedit_types.QLineEdit, param1: cstring): pointer =
-
   fQLineEdit_virtualbase_metacast(self.h, param1)
 
 type QLineEditmetacastProc* = proc(param1: cstring): pointer
@@ -829,7 +732,6 @@ proc miqt_exec_callback_QLineEdit_metacast(self: ptr cQLineEdit, slot: int, para
 
   virtualReturn
 proc QLineEditmetacall*(self: gen_qlineedit_types.QLineEdit, param1: cint, param2: cint, param3: pointer): cint =
-
   fQLineEdit_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QLineEditmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -853,7 +755,6 @@ proc miqt_exec_callback_QLineEdit_metacall(self: ptr cQLineEdit, slot: int, para
 
   virtualReturn
 proc QLineEditsizeHint*(self: gen_qlineedit_types.QLineEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQLineEdit_virtualbase_sizeHint(self.h))
 
 type QLineEditsizeHintProc* = proc(): gen_qsize.QSize
@@ -871,7 +772,6 @@ proc miqt_exec_callback_QLineEdit_sizeHint(self: ptr cQLineEdit, slot: int): poi
 
   virtualReturn.h
 proc QLineEditminimumSizeHint*(self: gen_qlineedit_types.QLineEdit, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQLineEdit_virtualbase_minimumSizeHint(self.h))
 
 type QLineEditminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -889,7 +789,6 @@ proc miqt_exec_callback_QLineEdit_minimumSizeHint(self: ptr cQLineEdit, slot: in
 
   virtualReturn.h
 proc QLineEditmousePressEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QMouseEvent): void =
-
   fQLineEdit_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QLineEditmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -907,7 +806,6 @@ proc miqt_exec_callback_QLineEdit_mousePressEvent(self: ptr cQLineEdit, slot: in
 
   nimfunc[](slotval1)
 proc QLineEditmouseMoveEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QMouseEvent): void =
-
   fQLineEdit_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QLineEditmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -925,7 +823,6 @@ proc miqt_exec_callback_QLineEdit_mouseMoveEvent(self: ptr cQLineEdit, slot: int
 
   nimfunc[](slotval1)
 proc QLineEditmouseReleaseEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QMouseEvent): void =
-
   fQLineEdit_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QLineEditmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -943,7 +840,6 @@ proc miqt_exec_callback_QLineEdit_mouseReleaseEvent(self: ptr cQLineEdit, slot: 
 
   nimfunc[](slotval1)
 proc QLineEditmouseDoubleClickEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QMouseEvent): void =
-
   fQLineEdit_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
 type QLineEditmouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -961,7 +857,6 @@ proc miqt_exec_callback_QLineEdit_mouseDoubleClickEvent(self: ptr cQLineEdit, sl
 
   nimfunc[](slotval1)
 proc QLineEditkeyPressEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QKeyEvent): void =
-
   fQLineEdit_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QLineEditkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -979,7 +874,6 @@ proc miqt_exec_callback_QLineEdit_keyPressEvent(self: ptr cQLineEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QLineEditfocusInEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QFocusEvent): void =
-
   fQLineEdit_virtualbase_focusInEvent(self.h, param1.h)
 
 type QLineEditfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -997,7 +891,6 @@ proc miqt_exec_callback_QLineEdit_focusInEvent(self: ptr cQLineEdit, slot: int, 
 
   nimfunc[](slotval1)
 proc QLineEditfocusOutEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QFocusEvent): void =
-
   fQLineEdit_virtualbase_focusOutEvent(self.h, param1.h)
 
 type QLineEditfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -1015,7 +908,6 @@ proc miqt_exec_callback_QLineEdit_focusOutEvent(self: ptr cQLineEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QLineEditpaintEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QPaintEvent): void =
-
   fQLineEdit_virtualbase_paintEvent(self.h, param1.h)
 
 type QLineEditpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -1033,7 +925,6 @@ proc miqt_exec_callback_QLineEdit_paintEvent(self: ptr cQLineEdit, slot: int, pa
 
   nimfunc[](slotval1)
 proc QLineEditdragEnterEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QDragEnterEvent): void =
-
   fQLineEdit_virtualbase_dragEnterEvent(self.h, param1.h)
 
 type QLineEditdragEnterEventProc* = proc(param1: gen_qevent.QDragEnterEvent): void
@@ -1051,7 +942,6 @@ proc miqt_exec_callback_QLineEdit_dragEnterEvent(self: ptr cQLineEdit, slot: int
 
   nimfunc[](slotval1)
 proc QLineEditdragMoveEvent*(self: gen_qlineedit_types.QLineEdit, e: gen_qevent.QDragMoveEvent): void =
-
   fQLineEdit_virtualbase_dragMoveEvent(self.h, e.h)
 
 type QLineEditdragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
@@ -1069,7 +959,6 @@ proc miqt_exec_callback_QLineEdit_dragMoveEvent(self: ptr cQLineEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QLineEditdragLeaveEvent*(self: gen_qlineedit_types.QLineEdit, e: gen_qevent.QDragLeaveEvent): void =
-
   fQLineEdit_virtualbase_dragLeaveEvent(self.h, e.h)
 
 type QLineEditdragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
@@ -1087,7 +976,6 @@ proc miqt_exec_callback_QLineEdit_dragLeaveEvent(self: ptr cQLineEdit, slot: int
 
   nimfunc[](slotval1)
 proc QLineEditdropEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QDropEvent): void =
-
   fQLineEdit_virtualbase_dropEvent(self.h, param1.h)
 
 type QLineEditdropEventProc* = proc(param1: gen_qevent.QDropEvent): void
@@ -1105,7 +993,6 @@ proc miqt_exec_callback_QLineEdit_dropEvent(self: ptr cQLineEdit, slot: int, par
 
   nimfunc[](slotval1)
 proc QLineEditchangeEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qcoreevent.QEvent): void =
-
   fQLineEdit_virtualbase_changeEvent(self.h, param1.h)
 
 type QLineEditchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1123,7 +1010,6 @@ proc miqt_exec_callback_QLineEdit_changeEvent(self: ptr cQLineEdit, slot: int, p
 
   nimfunc[](slotval1)
 proc QLineEditcontextMenuEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QContextMenuEvent): void =
-
   fQLineEdit_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QLineEditcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -1141,7 +1027,6 @@ proc miqt_exec_callback_QLineEdit_contextMenuEvent(self: ptr cQLineEdit, slot: i
 
   nimfunc[](slotval1)
 proc QLineEditinputMethodEvent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qevent.QInputMethodEvent): void =
-
   fQLineEdit_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QLineEditinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1159,7 +1044,6 @@ proc miqt_exec_callback_QLineEdit_inputMethodEvent(self: ptr cQLineEdit, slot: i
 
   nimfunc[](slotval1)
 proc QLineEditinputMethodQuery*(self: gen_qlineedit_types.QLineEdit, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQLineEdit_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QLineEditinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1179,7 +1063,6 @@ proc miqt_exec_callback_QLineEdit_inputMethodQuery(self: ptr cQLineEdit, slot: i
 
   virtualReturn.h
 proc QLineEditevent*(self: gen_qlineedit_types.QLineEdit, param1: gen_qcoreevent.QEvent): bool =
-
   fQLineEdit_virtualbase_event(self.h, param1.h)
 
 type QLineEditeventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -1199,7 +1082,6 @@ proc miqt_exec_callback_QLineEdit_event(self: ptr cQLineEdit, slot: int, param1:
 
   virtualReturn
 proc QLineEditdevType*(self: gen_qlineedit_types.QLineEdit, ): cint =
-
   fQLineEdit_virtualbase_devType(self.h)
 
 type QLineEditdevTypeProc* = proc(): cint
@@ -1217,7 +1099,6 @@ proc miqt_exec_callback_QLineEdit_devType(self: ptr cQLineEdit, slot: int): cint
 
   virtualReturn
 proc QLineEditsetVisible*(self: gen_qlineedit_types.QLineEdit, visible: bool): void =
-
   fQLineEdit_virtualbase_setVisible(self.h, visible)
 
 type QLineEditsetVisibleProc* = proc(visible: bool): void
@@ -1235,7 +1116,6 @@ proc miqt_exec_callback_QLineEdit_setVisible(self: ptr cQLineEdit, slot: int, vi
 
   nimfunc[](slotval1)
 proc QLineEditheightForWidth*(self: gen_qlineedit_types.QLineEdit, param1: cint): cint =
-
   fQLineEdit_virtualbase_heightForWidth(self.h, param1)
 
 type QLineEditheightForWidthProc* = proc(param1: cint): cint
@@ -1255,7 +1135,6 @@ proc miqt_exec_callback_QLineEdit_heightForWidth(self: ptr cQLineEdit, slot: int
 
   virtualReturn
 proc QLineEdithasHeightForWidth*(self: gen_qlineedit_types.QLineEdit, ): bool =
-
   fQLineEdit_virtualbase_hasHeightForWidth(self.h)
 
 type QLineEdithasHeightForWidthProc* = proc(): bool
@@ -1273,7 +1152,6 @@ proc miqt_exec_callback_QLineEdit_hasHeightForWidth(self: ptr cQLineEdit, slot: 
 
   virtualReturn
 proc QLineEditpaintEngine*(self: gen_qlineedit_types.QLineEdit, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQLineEdit_virtualbase_paintEngine(self.h))
 
 type QLineEditpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1291,7 +1169,6 @@ proc miqt_exec_callback_QLineEdit_paintEngine(self: ptr cQLineEdit, slot: int): 
 
   virtualReturn.h
 proc QLineEditwheelEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qevent.QWheelEvent): void =
-
   fQLineEdit_virtualbase_wheelEvent(self.h, event.h)
 
 type QLineEditwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -1309,7 +1186,6 @@ proc miqt_exec_callback_QLineEdit_wheelEvent(self: ptr cQLineEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QLineEditkeyReleaseEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qevent.QKeyEvent): void =
-
   fQLineEdit_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QLineEditkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1327,7 +1203,6 @@ proc miqt_exec_callback_QLineEdit_keyReleaseEvent(self: ptr cQLineEdit, slot: in
 
   nimfunc[](slotval1)
 proc QLineEditenterEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qcoreevent.QEvent): void =
-
   fQLineEdit_virtualbase_enterEvent(self.h, event.h)
 
 type QLineEditenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1345,7 +1220,6 @@ proc miqt_exec_callback_QLineEdit_enterEvent(self: ptr cQLineEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QLineEditleaveEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qcoreevent.QEvent): void =
-
   fQLineEdit_virtualbase_leaveEvent(self.h, event.h)
 
 type QLineEditleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1363,7 +1237,6 @@ proc miqt_exec_callback_QLineEdit_leaveEvent(self: ptr cQLineEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QLineEditmoveEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qevent.QMoveEvent): void =
-
   fQLineEdit_virtualbase_moveEvent(self.h, event.h)
 
 type QLineEditmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1381,7 +1254,6 @@ proc miqt_exec_callback_QLineEdit_moveEvent(self: ptr cQLineEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QLineEditresizeEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qevent.QResizeEvent): void =
-
   fQLineEdit_virtualbase_resizeEvent(self.h, event.h)
 
 type QLineEditresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -1399,7 +1271,6 @@ proc miqt_exec_callback_QLineEdit_resizeEvent(self: ptr cQLineEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QLineEditcloseEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qevent.QCloseEvent): void =
-
   fQLineEdit_virtualbase_closeEvent(self.h, event.h)
 
 type QLineEditcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1417,7 +1288,6 @@ proc miqt_exec_callback_QLineEdit_closeEvent(self: ptr cQLineEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QLineEdittabletEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qevent.QTabletEvent): void =
-
   fQLineEdit_virtualbase_tabletEvent(self.h, event.h)
 
 type QLineEdittabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1435,7 +1305,6 @@ proc miqt_exec_callback_QLineEdit_tabletEvent(self: ptr cQLineEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QLineEditactionEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qevent.QActionEvent): void =
-
   fQLineEdit_virtualbase_actionEvent(self.h, event.h)
 
 type QLineEditactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1453,7 +1322,6 @@ proc miqt_exec_callback_QLineEdit_actionEvent(self: ptr cQLineEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QLineEditshowEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qevent.QShowEvent): void =
-
   fQLineEdit_virtualbase_showEvent(self.h, event.h)
 
 type QLineEditshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1471,7 +1339,6 @@ proc miqt_exec_callback_QLineEdit_showEvent(self: ptr cQLineEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QLineEdithideEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qevent.QHideEvent): void =
-
   fQLineEdit_virtualbase_hideEvent(self.h, event.h)
 
 type QLineEdithideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1489,7 +1356,6 @@ proc miqt_exec_callback_QLineEdit_hideEvent(self: ptr cQLineEdit, slot: int, eve
 
   nimfunc[](slotval1)
 proc QLineEditnativeEvent*(self: gen_qlineedit_types.QLineEdit, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQLineEdit_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QLineEditnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1516,7 +1382,6 @@ proc miqt_exec_callback_QLineEdit_nativeEvent(self: ptr cQLineEdit, slot: int, e
 
   virtualReturn
 proc QLineEditmetric*(self: gen_qlineedit_types.QLineEdit, param1: cint): cint =
-
   fQLineEdit_virtualbase_metric(self.h, cint(param1))
 
 type QLineEditmetricProc* = proc(param1: cint): cint
@@ -1536,7 +1401,6 @@ proc miqt_exec_callback_QLineEdit_metric(self: ptr cQLineEdit, slot: int, param1
 
   virtualReturn
 proc QLineEditinitPainter*(self: gen_qlineedit_types.QLineEdit, painter: gen_qpainter.QPainter): void =
-
   fQLineEdit_virtualbase_initPainter(self.h, painter.h)
 
 type QLineEditinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1554,7 +1418,6 @@ proc miqt_exec_callback_QLineEdit_initPainter(self: ptr cQLineEdit, slot: int, p
 
   nimfunc[](slotval1)
 proc QLineEditredirected*(self: gen_qlineedit_types.QLineEdit, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQLineEdit_virtualbase_redirected(self.h, offset.h))
 
 type QLineEditredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1574,7 +1437,6 @@ proc miqt_exec_callback_QLineEdit_redirected(self: ptr cQLineEdit, slot: int, of
 
   virtualReturn.h
 proc QLineEditsharedPainter*(self: gen_qlineedit_types.QLineEdit, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQLineEdit_virtualbase_sharedPainter(self.h))
 
 type QLineEditsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1592,7 +1454,6 @@ proc miqt_exec_callback_QLineEdit_sharedPainter(self: ptr cQLineEdit, slot: int)
 
   virtualReturn.h
 proc QLineEditfocusNextPrevChild*(self: gen_qlineedit_types.QLineEdit, next: bool): bool =
-
   fQLineEdit_virtualbase_focusNextPrevChild(self.h, next)
 
 type QLineEditfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1612,7 +1473,6 @@ proc miqt_exec_callback_QLineEdit_focusNextPrevChild(self: ptr cQLineEdit, slot:
 
   virtualReturn
 proc QLineEditeventFilter*(self: gen_qlineedit_types.QLineEdit, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQLineEdit_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QLineEditeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1634,7 +1494,6 @@ proc miqt_exec_callback_QLineEdit_eventFilter(self: ptr cQLineEdit, slot: int, w
 
   virtualReturn
 proc QLineEdittimerEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qcoreevent.QTimerEvent): void =
-
   fQLineEdit_virtualbase_timerEvent(self.h, event.h)
 
 type QLineEdittimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1652,7 +1511,6 @@ proc miqt_exec_callback_QLineEdit_timerEvent(self: ptr cQLineEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QLineEditchildEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qcoreevent.QChildEvent): void =
-
   fQLineEdit_virtualbase_childEvent(self.h, event.h)
 
 type QLineEditchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1670,7 +1528,6 @@ proc miqt_exec_callback_QLineEdit_childEvent(self: ptr cQLineEdit, slot: int, ev
 
   nimfunc[](slotval1)
 proc QLineEditcustomEvent*(self: gen_qlineedit_types.QLineEdit, event: gen_qcoreevent.QEvent): void =
-
   fQLineEdit_virtualbase_customEvent(self.h, event.h)
 
 type QLineEditcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1688,7 +1545,6 @@ proc miqt_exec_callback_QLineEdit_customEvent(self: ptr cQLineEdit, slot: int, e
 
   nimfunc[](slotval1)
 proc QLineEditconnectNotify*(self: gen_qlineedit_types.QLineEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLineEdit_virtualbase_connectNotify(self.h, signal.h)
 
 type QLineEditconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1706,7 +1562,6 @@ proc miqt_exec_callback_QLineEdit_connectNotify(self: ptr cQLineEdit, slot: int,
 
   nimfunc[](slotval1)
 proc QLineEditdisconnectNotify*(self: gen_qlineedit_types.QLineEdit, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLineEdit_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QLineEditdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

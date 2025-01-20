@@ -192,89 +192,75 @@ proc fcQSvgWidget_delete(self: pointer) {.importc: "QSvgWidget_delete".}
 func init*(T: type gen_qsvgwidget_types.QSvgWidget, h: ptr cQSvgWidget): gen_qsvgwidget_types.QSvgWidget =
   T(h: h)
 proc create*(T: type gen_qsvgwidget_types.QSvgWidget, parent: gen_qwidget.QWidget): gen_qsvgwidget_types.QSvgWidget =
-
   gen_qsvgwidget_types.QSvgWidget.init(fcQSvgWidget_new(parent.h))
+
 proc create*(T: type gen_qsvgwidget_types.QSvgWidget, ): gen_qsvgwidget_types.QSvgWidget =
-
   gen_qsvgwidget_types.QSvgWidget.init(fcQSvgWidget_new2())
+
 proc create*(T: type gen_qsvgwidget_types.QSvgWidget, file: string): gen_qsvgwidget_types.QSvgWidget =
-
   gen_qsvgwidget_types.QSvgWidget.init(fcQSvgWidget_new3(struct_miqt_string(data: file, len: csize_t(len(file)))))
+
 proc create*(T: type gen_qsvgwidget_types.QSvgWidget, file: string, parent: gen_qwidget.QWidget): gen_qsvgwidget_types.QSvgWidget =
-
   gen_qsvgwidget_types.QSvgWidget.init(fcQSvgWidget_new4(struct_miqt_string(data: file, len: csize_t(len(file))), parent.h))
-proc metaObject*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSvgWidget_metaObject(self.h))
 
 proc metacast*(self: gen_qsvgwidget_types.QSvgWidget, param1: cstring): pointer =
-
   fcQSvgWidget_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsvgwidget_types.QSvgWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSvgWidget_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring): string =
-
   let v_ms = fcQSvgWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring): string =
-
   let v_ms = fcQSvgWidget_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc renderer*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qsvgrenderer.QSvgRenderer =
-
   gen_qsvgrenderer.QSvgRenderer(h: fcQSvgWidget_renderer(self.h))
 
 proc sizeHint*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSvgWidget_sizeHint(self.h))
 
 proc load*(self: gen_qsvgwidget_types.QSvgWidget, file: string): void =
-
   fcQSvgWidget_load(self.h, struct_miqt_string(data: file, len: csize_t(len(file))))
 
-proc loadWithContents*(self: gen_qsvgwidget_types.QSvgWidget, contents: seq[byte]): void =
-
+proc load*(self: gen_qsvgwidget_types.QSvgWidget, contents: seq[byte]): void =
   fcQSvgWidget_loadWithContents(self.h, struct_miqt_string(data: cast[cstring](if len(contents) == 0: nil else: unsafeAddr contents[0]), len: csize_t(len(contents))))
 
-proc tr2*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring, c: cstring): string =
   let v_ms = fcQSvgWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSvgWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring, c: cstring): string =
   let v_ms = fcQSvgWidget_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qsvgwidget_types.QSvgWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSvgWidget_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QSvgWidgetmetaObject*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSvgWidget_virtualbase_metaObject(self.h))
 
 type QSvgWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -292,7 +278,6 @@ proc miqt_exec_callback_QSvgWidget_metaObject(self: ptr cQSvgWidget, slot: int):
 
   virtualReturn.h
 proc QSvgWidgetmetacast*(self: gen_qsvgwidget_types.QSvgWidget, param1: cstring): pointer =
-
   fQSvgWidget_virtualbase_metacast(self.h, param1)
 
 type QSvgWidgetmetacastProc* = proc(param1: cstring): pointer
@@ -312,7 +297,6 @@ proc miqt_exec_callback_QSvgWidget_metacast(self: ptr cQSvgWidget, slot: int, pa
 
   virtualReturn
 proc QSvgWidgetmetacall*(self: gen_qsvgwidget_types.QSvgWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSvgWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSvgWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -336,7 +320,6 @@ proc miqt_exec_callback_QSvgWidget_metacall(self: ptr cQSvgWidget, slot: int, pa
 
   virtualReturn
 proc QSvgWidgetsizeHint*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSvgWidget_virtualbase_sizeHint(self.h))
 
 type QSvgWidgetsizeHintProc* = proc(): gen_qsize.QSize
@@ -354,7 +337,6 @@ proc miqt_exec_callback_QSvgWidget_sizeHint(self: ptr cQSvgWidget, slot: int): p
 
   virtualReturn.h
 proc QSvgWidgetpaintEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QPaintEvent): void =
-
   fQSvgWidget_virtualbase_paintEvent(self.h, event.h)
 
 type QSvgWidgetpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -372,7 +354,6 @@ proc miqt_exec_callback_QSvgWidget_paintEvent(self: ptr cQSvgWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QSvgWidgetdevType*(self: gen_qsvgwidget_types.QSvgWidget, ): cint =
-
   fQSvgWidget_virtualbase_devType(self.h)
 
 type QSvgWidgetdevTypeProc* = proc(): cint
@@ -390,7 +371,6 @@ proc miqt_exec_callback_QSvgWidget_devType(self: ptr cQSvgWidget, slot: int): ci
 
   virtualReturn
 proc QSvgWidgetsetVisible*(self: gen_qsvgwidget_types.QSvgWidget, visible: bool): void =
-
   fQSvgWidget_virtualbase_setVisible(self.h, visible)
 
 type QSvgWidgetsetVisibleProc* = proc(visible: bool): void
@@ -408,7 +388,6 @@ proc miqt_exec_callback_QSvgWidget_setVisible(self: ptr cQSvgWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QSvgWidgetminimumSizeHint*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSvgWidget_virtualbase_minimumSizeHint(self.h))
 
 type QSvgWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -426,7 +405,6 @@ proc miqt_exec_callback_QSvgWidget_minimumSizeHint(self: ptr cQSvgWidget, slot: 
 
   virtualReturn.h
 proc QSvgWidgetheightForWidth*(self: gen_qsvgwidget_types.QSvgWidget, param1: cint): cint =
-
   fQSvgWidget_virtualbase_heightForWidth(self.h, param1)
 
 type QSvgWidgetheightForWidthProc* = proc(param1: cint): cint
@@ -446,7 +424,6 @@ proc miqt_exec_callback_QSvgWidget_heightForWidth(self: ptr cQSvgWidget, slot: i
 
   virtualReturn
 proc QSvgWidgethasHeightForWidth*(self: gen_qsvgwidget_types.QSvgWidget, ): bool =
-
   fQSvgWidget_virtualbase_hasHeightForWidth(self.h)
 
 type QSvgWidgethasHeightForWidthProc* = proc(): bool
@@ -464,7 +441,6 @@ proc miqt_exec_callback_QSvgWidget_hasHeightForWidth(self: ptr cQSvgWidget, slot
 
   virtualReturn
 proc QSvgWidgetpaintEngine*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQSvgWidget_virtualbase_paintEngine(self.h))
 
 type QSvgWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -482,7 +458,6 @@ proc miqt_exec_callback_QSvgWidget_paintEngine(self: ptr cQSvgWidget, slot: int)
 
   virtualReturn.h
 proc QSvgWidgetevent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qcoreevent.QEvent): bool =
-
   fQSvgWidget_virtualbase_event(self.h, event.h)
 
 type QSvgWidgeteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -502,7 +477,6 @@ proc miqt_exec_callback_QSvgWidget_event(self: ptr cQSvgWidget, slot: int, event
 
   virtualReturn
 proc QSvgWidgetmousePressEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QMouseEvent): void =
-
   fQSvgWidget_virtualbase_mousePressEvent(self.h, event.h)
 
 type QSvgWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -520,7 +494,6 @@ proc miqt_exec_callback_QSvgWidget_mousePressEvent(self: ptr cQSvgWidget, slot: 
 
   nimfunc[](slotval1)
 proc QSvgWidgetmouseReleaseEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QMouseEvent): void =
-
   fQSvgWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QSvgWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -538,7 +511,6 @@ proc miqt_exec_callback_QSvgWidget_mouseReleaseEvent(self: ptr cQSvgWidget, slot
 
   nimfunc[](slotval1)
 proc QSvgWidgetmouseDoubleClickEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QMouseEvent): void =
-
   fQSvgWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QSvgWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -556,7 +528,6 @@ proc miqt_exec_callback_QSvgWidget_mouseDoubleClickEvent(self: ptr cQSvgWidget, 
 
   nimfunc[](slotval1)
 proc QSvgWidgetmouseMoveEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QMouseEvent): void =
-
   fQSvgWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QSvgWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -574,7 +545,6 @@ proc miqt_exec_callback_QSvgWidget_mouseMoveEvent(self: ptr cQSvgWidget, slot: i
 
   nimfunc[](slotval1)
 proc QSvgWidgetwheelEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QWheelEvent): void =
-
   fQSvgWidget_virtualbase_wheelEvent(self.h, event.h)
 
 type QSvgWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -592,7 +562,6 @@ proc miqt_exec_callback_QSvgWidget_wheelEvent(self: ptr cQSvgWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QSvgWidgetkeyPressEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QKeyEvent): void =
-
   fQSvgWidget_virtualbase_keyPressEvent(self.h, event.h)
 
 type QSvgWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -610,7 +579,6 @@ proc miqt_exec_callback_QSvgWidget_keyPressEvent(self: ptr cQSvgWidget, slot: in
 
   nimfunc[](slotval1)
 proc QSvgWidgetkeyReleaseEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QKeyEvent): void =
-
   fQSvgWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QSvgWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -628,7 +596,6 @@ proc miqt_exec_callback_QSvgWidget_keyReleaseEvent(self: ptr cQSvgWidget, slot: 
 
   nimfunc[](slotval1)
 proc QSvgWidgetfocusInEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QFocusEvent): void =
-
   fQSvgWidget_virtualbase_focusInEvent(self.h, event.h)
 
 type QSvgWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -646,7 +613,6 @@ proc miqt_exec_callback_QSvgWidget_focusInEvent(self: ptr cQSvgWidget, slot: int
 
   nimfunc[](slotval1)
 proc QSvgWidgetfocusOutEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QFocusEvent): void =
-
   fQSvgWidget_virtualbase_focusOutEvent(self.h, event.h)
 
 type QSvgWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -664,7 +630,6 @@ proc miqt_exec_callback_QSvgWidget_focusOutEvent(self: ptr cQSvgWidget, slot: in
 
   nimfunc[](slotval1)
 proc QSvgWidgetenterEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qcoreevent.QEvent): void =
-
   fQSvgWidget_virtualbase_enterEvent(self.h, event.h)
 
 type QSvgWidgetenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -682,7 +647,6 @@ proc miqt_exec_callback_QSvgWidget_enterEvent(self: ptr cQSvgWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QSvgWidgetleaveEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qcoreevent.QEvent): void =
-
   fQSvgWidget_virtualbase_leaveEvent(self.h, event.h)
 
 type QSvgWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -700,7 +664,6 @@ proc miqt_exec_callback_QSvgWidget_leaveEvent(self: ptr cQSvgWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QSvgWidgetmoveEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QMoveEvent): void =
-
   fQSvgWidget_virtualbase_moveEvent(self.h, event.h)
 
 type QSvgWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -718,7 +681,6 @@ proc miqt_exec_callback_QSvgWidget_moveEvent(self: ptr cQSvgWidget, slot: int, e
 
   nimfunc[](slotval1)
 proc QSvgWidgetresizeEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QResizeEvent): void =
-
   fQSvgWidget_virtualbase_resizeEvent(self.h, event.h)
 
 type QSvgWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -736,7 +698,6 @@ proc miqt_exec_callback_QSvgWidget_resizeEvent(self: ptr cQSvgWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QSvgWidgetcloseEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QCloseEvent): void =
-
   fQSvgWidget_virtualbase_closeEvent(self.h, event.h)
 
 type QSvgWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -754,7 +715,6 @@ proc miqt_exec_callback_QSvgWidget_closeEvent(self: ptr cQSvgWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QSvgWidgetcontextMenuEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QContextMenuEvent): void =
-
   fQSvgWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QSvgWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -772,7 +732,6 @@ proc miqt_exec_callback_QSvgWidget_contextMenuEvent(self: ptr cQSvgWidget, slot:
 
   nimfunc[](slotval1)
 proc QSvgWidgettabletEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QTabletEvent): void =
-
   fQSvgWidget_virtualbase_tabletEvent(self.h, event.h)
 
 type QSvgWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -790,7 +749,6 @@ proc miqt_exec_callback_QSvgWidget_tabletEvent(self: ptr cQSvgWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QSvgWidgetactionEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QActionEvent): void =
-
   fQSvgWidget_virtualbase_actionEvent(self.h, event.h)
 
 type QSvgWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -808,7 +766,6 @@ proc miqt_exec_callback_QSvgWidget_actionEvent(self: ptr cQSvgWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QSvgWidgetdragEnterEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QDragEnterEvent): void =
-
   fQSvgWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QSvgWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -826,7 +783,6 @@ proc miqt_exec_callback_QSvgWidget_dragEnterEvent(self: ptr cQSvgWidget, slot: i
 
   nimfunc[](slotval1)
 proc QSvgWidgetdragMoveEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QDragMoveEvent): void =
-
   fQSvgWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QSvgWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -844,7 +800,6 @@ proc miqt_exec_callback_QSvgWidget_dragMoveEvent(self: ptr cQSvgWidget, slot: in
 
   nimfunc[](slotval1)
 proc QSvgWidgetdragLeaveEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QDragLeaveEvent): void =
-
   fQSvgWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QSvgWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -862,7 +817,6 @@ proc miqt_exec_callback_QSvgWidget_dragLeaveEvent(self: ptr cQSvgWidget, slot: i
 
   nimfunc[](slotval1)
 proc QSvgWidgetdropEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QDropEvent): void =
-
   fQSvgWidget_virtualbase_dropEvent(self.h, event.h)
 
 type QSvgWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -880,7 +834,6 @@ proc miqt_exec_callback_QSvgWidget_dropEvent(self: ptr cQSvgWidget, slot: int, e
 
   nimfunc[](slotval1)
 proc QSvgWidgetshowEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QShowEvent): void =
-
   fQSvgWidget_virtualbase_showEvent(self.h, event.h)
 
 type QSvgWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -898,7 +851,6 @@ proc miqt_exec_callback_QSvgWidget_showEvent(self: ptr cQSvgWidget, slot: int, e
 
   nimfunc[](slotval1)
 proc QSvgWidgethideEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qevent.QHideEvent): void =
-
   fQSvgWidget_virtualbase_hideEvent(self.h, event.h)
 
 type QSvgWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -916,7 +868,6 @@ proc miqt_exec_callback_QSvgWidget_hideEvent(self: ptr cQSvgWidget, slot: int, e
 
   nimfunc[](slotval1)
 proc QSvgWidgetnativeEvent*(self: gen_qsvgwidget_types.QSvgWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQSvgWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QSvgWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -943,7 +894,6 @@ proc miqt_exec_callback_QSvgWidget_nativeEvent(self: ptr cQSvgWidget, slot: int,
 
   virtualReturn
 proc QSvgWidgetchangeEvent*(self: gen_qsvgwidget_types.QSvgWidget, param1: gen_qcoreevent.QEvent): void =
-
   fQSvgWidget_virtualbase_changeEvent(self.h, param1.h)
 
 type QSvgWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -961,7 +911,6 @@ proc miqt_exec_callback_QSvgWidget_changeEvent(self: ptr cQSvgWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QSvgWidgetmetric*(self: gen_qsvgwidget_types.QSvgWidget, param1: cint): cint =
-
   fQSvgWidget_virtualbase_metric(self.h, cint(param1))
 
 type QSvgWidgetmetricProc* = proc(param1: cint): cint
@@ -981,7 +930,6 @@ proc miqt_exec_callback_QSvgWidget_metric(self: ptr cQSvgWidget, slot: int, para
 
   virtualReturn
 proc QSvgWidgetinitPainter*(self: gen_qsvgwidget_types.QSvgWidget, painter: gen_qpainter.QPainter): void =
-
   fQSvgWidget_virtualbase_initPainter(self.h, painter.h)
 
 type QSvgWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -999,7 +947,6 @@ proc miqt_exec_callback_QSvgWidget_initPainter(self: ptr cQSvgWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QSvgWidgetredirected*(self: gen_qsvgwidget_types.QSvgWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQSvgWidget_virtualbase_redirected(self.h, offset.h))
 
 type QSvgWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1019,7 +966,6 @@ proc miqt_exec_callback_QSvgWidget_redirected(self: ptr cQSvgWidget, slot: int, 
 
   virtualReturn.h
 proc QSvgWidgetsharedPainter*(self: gen_qsvgwidget_types.QSvgWidget, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQSvgWidget_virtualbase_sharedPainter(self.h))
 
 type QSvgWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1037,7 +983,6 @@ proc miqt_exec_callback_QSvgWidget_sharedPainter(self: ptr cQSvgWidget, slot: in
 
   virtualReturn.h
 proc QSvgWidgetinputMethodEvent*(self: gen_qsvgwidget_types.QSvgWidget, param1: gen_qevent.QInputMethodEvent): void =
-
   fQSvgWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QSvgWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1055,7 +1000,6 @@ proc miqt_exec_callback_QSvgWidget_inputMethodEvent(self: ptr cQSvgWidget, slot:
 
   nimfunc[](slotval1)
 proc QSvgWidgetinputMethodQuery*(self: gen_qsvgwidget_types.QSvgWidget, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQSvgWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QSvgWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1075,7 +1019,6 @@ proc miqt_exec_callback_QSvgWidget_inputMethodQuery(self: ptr cQSvgWidget, slot:
 
   virtualReturn.h
 proc QSvgWidgetfocusNextPrevChild*(self: gen_qsvgwidget_types.QSvgWidget, next: bool): bool =
-
   fQSvgWidget_virtualbase_focusNextPrevChild(self.h, next)
 
 type QSvgWidgetfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1095,7 +1038,6 @@ proc miqt_exec_callback_QSvgWidget_focusNextPrevChild(self: ptr cQSvgWidget, slo
 
   virtualReturn
 proc QSvgWidgeteventFilter*(self: gen_qsvgwidget_types.QSvgWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSvgWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSvgWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1117,7 +1059,6 @@ proc miqt_exec_callback_QSvgWidget_eventFilter(self: ptr cQSvgWidget, slot: int,
 
   virtualReturn
 proc QSvgWidgettimerEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSvgWidget_virtualbase_timerEvent(self.h, event.h)
 
 type QSvgWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1135,7 +1076,6 @@ proc miqt_exec_callback_QSvgWidget_timerEvent(self: ptr cQSvgWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QSvgWidgetchildEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qcoreevent.QChildEvent): void =
-
   fQSvgWidget_virtualbase_childEvent(self.h, event.h)
 
 type QSvgWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1153,7 +1093,6 @@ proc miqt_exec_callback_QSvgWidget_childEvent(self: ptr cQSvgWidget, slot: int, 
 
   nimfunc[](slotval1)
 proc QSvgWidgetcustomEvent*(self: gen_qsvgwidget_types.QSvgWidget, event: gen_qcoreevent.QEvent): void =
-
   fQSvgWidget_virtualbase_customEvent(self.h, event.h)
 
 type QSvgWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1171,7 +1110,6 @@ proc miqt_exec_callback_QSvgWidget_customEvent(self: ptr cQSvgWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QSvgWidgetconnectNotify*(self: gen_qsvgwidget_types.QSvgWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSvgWidget_virtualbase_connectNotify(self.h, signal.h)
 
 type QSvgWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1189,7 +1127,6 @@ proc miqt_exec_callback_QSvgWidget_connectNotify(self: ptr cQSvgWidget, slot: in
 
   nimfunc[](slotval1)
 proc QSvgWidgetdisconnectNotify*(self: gen_qsvgwidget_types.QSvgWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSvgWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSvgWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

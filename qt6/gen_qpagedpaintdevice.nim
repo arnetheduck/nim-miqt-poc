@@ -72,35 +72,27 @@ proc fcQPagedPaintDevice_delete(self: pointer) {.importc: "QPagedPaintDevice_del
 func init*(T: type gen_qpagedpaintdevice_types.QPagedPaintDevice, h: ptr cQPagedPaintDevice): gen_qpagedpaintdevice_types.QPagedPaintDevice =
   T(h: h)
 proc newPage*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): bool =
-
   fcQPagedPaintDevice_newPage(self.h)
 
 proc setPageLayout*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, pageLayout: gen_qpagelayout.QPageLayout): bool =
-
   fcQPagedPaintDevice_setPageLayout(self.h, pageLayout.h)
 
 proc setPageSize*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, pageSize: gen_qpagesize.QPageSize): bool =
-
   fcQPagedPaintDevice_setPageSize(self.h, pageSize.h)
 
 proc setPageOrientation*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, orientation: cint): bool =
-
   fcQPagedPaintDevice_setPageOrientation(self.h, cint(orientation))
 
 proc setPageMargins*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, margins: gen_qmargins.QMarginsF, units: cint): bool =
-
   fcQPagedPaintDevice_setPageMargins(self.h, margins.h, cint(units))
 
 proc pageLayout*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): gen_qpagelayout.QPageLayout =
-
   gen_qpagelayout.QPageLayout(h: fcQPagedPaintDevice_pageLayout(self.h))
 
 proc setPageRanges*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ranges: gen_qpageranges.QPageRanges): void =
-
   fcQPagedPaintDevice_setPageRanges(self.h, ranges.h)
 
 proc pageRanges*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice, ): gen_qpageranges.QPageRanges =
-
   gen_qpageranges.QPageRanges(h: fcQPagedPaintDevice_pageRanges(self.h))
 
 proc delete*(self: gen_qpagedpaintdevice_types.QPagedPaintDevice) =

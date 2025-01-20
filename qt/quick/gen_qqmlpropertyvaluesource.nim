@@ -54,14 +54,12 @@ proc fcQQmlPropertyValueSource_delete(self: pointer) {.importc: "QQmlPropertyVal
 func init*(T: type gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, h: ptr cQQmlPropertyValueSource): gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource =
   T(h: h)
 proc create*(T: type gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, ): gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource =
-
   gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource.init(fcQQmlPropertyValueSource_new())
-proc setTarget*(self: gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, target: gen_qqmlproperty.QQmlProperty): void =
 
+proc setTarget*(self: gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, target: gen_qqmlproperty.QQmlProperty): void =
   fcQQmlPropertyValueSource_setTarget(self.h, target.h)
 
 proc operatorAssign*(self: gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource, param1: gen_qqmlpropertyvaluesource_types.QQmlPropertyValueSource): void =
-
   fcQQmlPropertyValueSource_operatorAssign(self.h, param1.h)
 
 type QQmlPropertyValueSourcesetTargetProc* = proc(target: gen_qqmlproperty.QQmlProperty): void

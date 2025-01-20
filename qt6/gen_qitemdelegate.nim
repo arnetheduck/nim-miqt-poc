@@ -145,86 +145,69 @@ proc fcQItemDelegate_delete(self: pointer) {.importc: "QItemDelegate_delete".}
 func init*(T: type gen_qitemdelegate_types.QItemDelegate, h: ptr cQItemDelegate): gen_qitemdelegate_types.QItemDelegate =
   T(h: h)
 proc create*(T: type gen_qitemdelegate_types.QItemDelegate, ): gen_qitemdelegate_types.QItemDelegate =
-
   gen_qitemdelegate_types.QItemDelegate.init(fcQItemDelegate_new())
+
 proc create*(T: type gen_qitemdelegate_types.QItemDelegate, parent: gen_qobject.QObject): gen_qitemdelegate_types.QItemDelegate =
-
   gen_qitemdelegate_types.QItemDelegate.init(fcQItemDelegate_new2(parent.h))
-proc metaObject*(self: gen_qitemdelegate_types.QItemDelegate, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qitemdelegate_types.QItemDelegate, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQItemDelegate_metaObject(self.h))
 
 proc metacast*(self: gen_qitemdelegate_types.QItemDelegate, param1: cstring): pointer =
-
   fcQItemDelegate_metacast(self.h, param1)
 
 proc metacall*(self: gen_qitemdelegate_types.QItemDelegate, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQItemDelegate_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qitemdelegate_types.QItemDelegate, s: cstring): string =
-
   let v_ms = fcQItemDelegate_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc hasClipping*(self: gen_qitemdelegate_types.QItemDelegate, ): bool =
-
   fcQItemDelegate_hasClipping(self.h)
 
 proc setClipping*(self: gen_qitemdelegate_types.QItemDelegate, clip: bool): void =
-
   fcQItemDelegate_setClipping(self.h, clip)
 
 proc paint*(self: gen_qitemdelegate_types.QItemDelegate, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQItemDelegate_paint(self.h, painter.h, option.h, index.h)
 
 proc sizeHint*(self: gen_qitemdelegate_types.QItemDelegate, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQItemDelegate_sizeHint(self.h, option.h, index.h))
 
 proc createEditor*(self: gen_qitemdelegate_types.QItemDelegate, parent: gen_qwidget.QWidget, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQItemDelegate_createEditor(self.h, parent.h, option.h, index.h))
 
 proc setEditorData*(self: gen_qitemdelegate_types.QItemDelegate, editor: gen_qwidget.QWidget, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQItemDelegate_setEditorData(self.h, editor.h, index.h)
 
 proc setModelData*(self: gen_qitemdelegate_types.QItemDelegate, editor: gen_qwidget.QWidget, model: gen_qabstractitemmodel.QAbstractItemModel, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQItemDelegate_setModelData(self.h, editor.h, model.h, index.h)
 
 proc updateEditorGeometry*(self: gen_qitemdelegate_types.QItemDelegate, editor: gen_qwidget.QWidget, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQItemDelegate_updateEditorGeometry(self.h, editor.h, option.h, index.h)
 
 proc itemEditorFactory*(self: gen_qitemdelegate_types.QItemDelegate, ): gen_qitemeditorfactory.QItemEditorFactory =
-
   gen_qitemeditorfactory.QItemEditorFactory(h: fcQItemDelegate_itemEditorFactory(self.h))
 
 proc setItemEditorFactory*(self: gen_qitemdelegate_types.QItemDelegate, factory: gen_qitemeditorfactory.QItemEditorFactory): void =
-
   fcQItemDelegate_setItemEditorFactory(self.h, factory.h)
 
-proc tr2*(_: type gen_qitemdelegate_types.QItemDelegate, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qitemdelegate_types.QItemDelegate, s: cstring, c: cstring): string =
   let v_ms = fcQItemDelegate_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qitemdelegate_types.QItemDelegate, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qitemdelegate_types.QItemDelegate, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQItemDelegate_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QItemDelegatemetaObject*(self: gen_qitemdelegate_types.QItemDelegate, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQItemDelegate_virtualbase_metaObject(self.h))
 
 type QItemDelegatemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -242,7 +225,6 @@ proc miqt_exec_callback_QItemDelegate_metaObject(self: ptr cQItemDelegate, slot:
 
   virtualReturn.h
 proc QItemDelegatemetacast*(self: gen_qitemdelegate_types.QItemDelegate, param1: cstring): pointer =
-
   fQItemDelegate_virtualbase_metacast(self.h, param1)
 
 type QItemDelegatemetacastProc* = proc(param1: cstring): pointer
@@ -262,7 +244,6 @@ proc miqt_exec_callback_QItemDelegate_metacast(self: ptr cQItemDelegate, slot: i
 
   virtualReturn
 proc QItemDelegatemetacall*(self: gen_qitemdelegate_types.QItemDelegate, param1: cint, param2: cint, param3: pointer): cint =
-
   fQItemDelegate_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QItemDelegatemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -286,7 +267,6 @@ proc miqt_exec_callback_QItemDelegate_metacall(self: ptr cQItemDelegate, slot: i
 
   virtualReturn
 proc QItemDelegatepaint*(self: gen_qitemdelegate_types.QItemDelegate, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQItemDelegate_virtualbase_paint(self.h, painter.h, option.h, index.h)
 
 type QItemDelegatepaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): void
@@ -308,7 +288,6 @@ proc miqt_exec_callback_QItemDelegate_paint(self: ptr cQItemDelegate, slot: int,
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QItemDelegatesizeHint*(self: gen_qitemdelegate_types.QItemDelegate, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQItemDelegate_virtualbase_sizeHint(self.h, option.h, index.h))
 
 type QItemDelegatesizeHintProc* = proc(option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
@@ -330,7 +309,6 @@ proc miqt_exec_callback_QItemDelegate_sizeHint(self: ptr cQItemDelegate, slot: i
 
   virtualReturn.h
 proc QItemDelegatecreateEditor*(self: gen_qitemdelegate_types.QItemDelegate, parent: gen_qwidget.QWidget, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQItemDelegate_virtualbase_createEditor(self.h, parent.h, option.h, index.h))
 
 type QItemDelegatecreateEditorProc* = proc(parent: gen_qwidget.QWidget, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): gen_qwidget.QWidget
@@ -354,7 +332,6 @@ proc miqt_exec_callback_QItemDelegate_createEditor(self: ptr cQItemDelegate, slo
 
   virtualReturn.h
 proc QItemDelegatesetEditorData*(self: gen_qitemdelegate_types.QItemDelegate, editor: gen_qwidget.QWidget, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQItemDelegate_virtualbase_setEditorData(self.h, editor.h, index.h)
 
 type QItemDelegatesetEditorDataProc* = proc(editor: gen_qwidget.QWidget, index: gen_qabstractitemmodel.QModelIndex): void
@@ -374,7 +351,6 @@ proc miqt_exec_callback_QItemDelegate_setEditorData(self: ptr cQItemDelegate, sl
 
   nimfunc[](slotval1, slotval2)
 proc QItemDelegatesetModelData*(self: gen_qitemdelegate_types.QItemDelegate, editor: gen_qwidget.QWidget, model: gen_qabstractitemmodel.QAbstractItemModel, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQItemDelegate_virtualbase_setModelData(self.h, editor.h, model.h, index.h)
 
 type QItemDelegatesetModelDataProc* = proc(editor: gen_qwidget.QWidget, model: gen_qabstractitemmodel.QAbstractItemModel, index: gen_qabstractitemmodel.QModelIndex): void
@@ -396,7 +372,6 @@ proc miqt_exec_callback_QItemDelegate_setModelData(self: ptr cQItemDelegate, slo
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QItemDelegateupdateEditorGeometry*(self: gen_qitemdelegate_types.QItemDelegate, editor: gen_qwidget.QWidget, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQItemDelegate_virtualbase_updateEditorGeometry(self.h, editor.h, option.h, index.h)
 
 type QItemDelegateupdateEditorGeometryProc* = proc(editor: gen_qwidget.QWidget, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): void
@@ -418,7 +393,6 @@ proc miqt_exec_callback_QItemDelegate_updateEditorGeometry(self: ptr cQItemDeleg
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QItemDelegatedrawDisplay*(self: gen_qitemdelegate_types.QItemDelegate, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, rect: gen_qrect.QRect, text: string): void =
-
   fQItemDelegate_virtualbase_drawDisplay(self.h, painter.h, option.h, rect.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 type QItemDelegatedrawDisplayProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, rect: gen_qrect.QRect, text: string): void
@@ -445,7 +419,6 @@ proc miqt_exec_callback_QItemDelegate_drawDisplay(self: ptr cQItemDelegate, slot
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QItemDelegatedrawDecoration*(self: gen_qitemdelegate_types.QItemDelegate, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, rect: gen_qrect.QRect, pixmap: gen_qpixmap.QPixmap): void =
-
   fQItemDelegate_virtualbase_drawDecoration(self.h, painter.h, option.h, rect.h, pixmap.h)
 
 type QItemDelegatedrawDecorationProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, rect: gen_qrect.QRect, pixmap: gen_qpixmap.QPixmap): void
@@ -469,7 +442,6 @@ proc miqt_exec_callback_QItemDelegate_drawDecoration(self: ptr cQItemDelegate, s
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QItemDelegatedrawFocus*(self: gen_qitemdelegate_types.QItemDelegate, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, rect: gen_qrect.QRect): void =
-
   fQItemDelegate_virtualbase_drawFocus(self.h, painter.h, option.h, rect.h)
 
 type QItemDelegatedrawFocusProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, rect: gen_qrect.QRect): void
@@ -491,7 +463,6 @@ proc miqt_exec_callback_QItemDelegate_drawFocus(self: ptr cQItemDelegate, slot: 
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QItemDelegatedrawCheck*(self: gen_qitemdelegate_types.QItemDelegate, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, rect: gen_qrect.QRect, state: cint): void =
-
   fQItemDelegate_virtualbase_drawCheck(self.h, painter.h, option.h, rect.h, cint(state))
 
 type QItemDelegatedrawCheckProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionViewItem, rect: gen_qrect.QRect, state: cint): void
@@ -515,7 +486,6 @@ proc miqt_exec_callback_QItemDelegate_drawCheck(self: ptr cQItemDelegate, slot: 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QItemDelegateeventFilter*(self: gen_qitemdelegate_types.QItemDelegate, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQItemDelegate_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
 type QItemDelegateeventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -537,7 +507,6 @@ proc miqt_exec_callback_QItemDelegate_eventFilter(self: ptr cQItemDelegate, slot
 
   virtualReturn
 proc QItemDelegateeditorEvent*(self: gen_qitemdelegate_types.QItemDelegate, event: gen_qcoreevent.QEvent, model: gen_qabstractitemmodel.QAbstractItemModel, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQItemDelegate_virtualbase_editorEvent(self.h, event.h, model.h, option.h, index.h)
 
 type QItemDelegateeditorEventProc* = proc(event: gen_qcoreevent.QEvent, model: gen_qabstractitemmodel.QAbstractItemModel, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): bool
@@ -563,7 +532,6 @@ proc miqt_exec_callback_QItemDelegate_editorEvent(self: ptr cQItemDelegate, slot
 
   virtualReturn
 proc QItemDelegatedestroyEditor*(self: gen_qitemdelegate_types.QItemDelegate, editor: gen_qwidget.QWidget, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQItemDelegate_virtualbase_destroyEditor(self.h, editor.h, index.h)
 
 type QItemDelegatedestroyEditorProc* = proc(editor: gen_qwidget.QWidget, index: gen_qabstractitemmodel.QModelIndex): void
@@ -583,7 +551,6 @@ proc miqt_exec_callback_QItemDelegate_destroyEditor(self: ptr cQItemDelegate, sl
 
   nimfunc[](slotval1, slotval2)
 proc QItemDelegatehelpEvent*(self: gen_qitemdelegate_types.QItemDelegate, event: gen_qevent.QHelpEvent, view: gen_qabstractitemview.QAbstractItemView, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQItemDelegate_virtualbase_helpEvent(self.h, event.h, view.h, option.h, index.h)
 
 type QItemDelegatehelpEventProc* = proc(event: gen_qevent.QHelpEvent, view: gen_qabstractitemview.QAbstractItemView, option: gen_qstyleoption.QStyleOptionViewItem, index: gen_qabstractitemmodel.QModelIndex): bool
@@ -609,7 +576,6 @@ proc miqt_exec_callback_QItemDelegate_helpEvent(self: ptr cQItemDelegate, slot: 
 
   virtualReturn
 proc QItemDelegatepaintingRoles*(self: gen_qitemdelegate_types.QItemDelegate, ): seq[cint] =
-
   var v_ma = fQItemDelegate_virtualbase_paintingRoles(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -636,7 +602,6 @@ proc miqt_exec_callback_QItemDelegate_paintingRoles(self: ptr cQItemDelegate, sl
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QItemDelegateevent*(self: gen_qitemdelegate_types.QItemDelegate, event: gen_qcoreevent.QEvent): bool =
-
   fQItemDelegate_virtualbase_event(self.h, event.h)
 
 type QItemDelegateeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -656,7 +621,6 @@ proc miqt_exec_callback_QItemDelegate_event(self: ptr cQItemDelegate, slot: int,
 
   virtualReturn
 proc QItemDelegatetimerEvent*(self: gen_qitemdelegate_types.QItemDelegate, event: gen_qcoreevent.QTimerEvent): void =
-
   fQItemDelegate_virtualbase_timerEvent(self.h, event.h)
 
 type QItemDelegatetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -674,7 +638,6 @@ proc miqt_exec_callback_QItemDelegate_timerEvent(self: ptr cQItemDelegate, slot:
 
   nimfunc[](slotval1)
 proc QItemDelegatechildEvent*(self: gen_qitemdelegate_types.QItemDelegate, event: gen_qcoreevent.QChildEvent): void =
-
   fQItemDelegate_virtualbase_childEvent(self.h, event.h)
 
 type QItemDelegatechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -692,7 +655,6 @@ proc miqt_exec_callback_QItemDelegate_childEvent(self: ptr cQItemDelegate, slot:
 
   nimfunc[](slotval1)
 proc QItemDelegatecustomEvent*(self: gen_qitemdelegate_types.QItemDelegate, event: gen_qcoreevent.QEvent): void =
-
   fQItemDelegate_virtualbase_customEvent(self.h, event.h)
 
 type QItemDelegatecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -710,7 +672,6 @@ proc miqt_exec_callback_QItemDelegate_customEvent(self: ptr cQItemDelegate, slot
 
   nimfunc[](slotval1)
 proc QItemDelegateconnectNotify*(self: gen_qitemdelegate_types.QItemDelegate, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQItemDelegate_virtualbase_connectNotify(self.h, signal.h)
 
 type QItemDelegateconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -728,7 +689,6 @@ proc miqt_exec_callback_QItemDelegate_connectNotify(self: ptr cQItemDelegate, sl
 
   nimfunc[](slotval1)
 proc QItemDelegatedisconnectNotify*(self: gen_qitemdelegate_types.QItemDelegate, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQItemDelegate_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QItemDelegatedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

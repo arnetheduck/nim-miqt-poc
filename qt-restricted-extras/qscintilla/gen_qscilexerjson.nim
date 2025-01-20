@@ -196,130 +196,105 @@ proc fcQsciLexerJSON_delete(self: pointer) {.importc: "QsciLexerJSON_delete".}
 func init*(T: type gen_qscilexerjson_types.QsciLexerJSON, h: ptr cQsciLexerJSON): gen_qscilexerjson_types.QsciLexerJSON =
   T(h: h)
 proc create*(T: type gen_qscilexerjson_types.QsciLexerJSON, ): gen_qscilexerjson_types.QsciLexerJSON =
-
   gen_qscilexerjson_types.QsciLexerJSON.init(fcQsciLexerJSON_new())
+
 proc create*(T: type gen_qscilexerjson_types.QsciLexerJSON, parent: gen_qobject.QObject): gen_qscilexerjson_types.QsciLexerJSON =
-
   gen_qscilexerjson_types.QsciLexerJSON.init(fcQsciLexerJSON_new2(parent.h))
-proc metaObject*(self: gen_qscilexerjson_types.QsciLexerJSON, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerjson_types.QsciLexerJSON, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerJSON_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerjson_types.QsciLexerJSON, param1: cstring): pointer =
-
   fcQsciLexerJSON_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerjson_types.QsciLexerJSON, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerJSON_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring): string =
-
   let v_ms = fcQsciLexerJSON_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring): string =
-
   let v_ms = fcQsciLexerJSON_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cstring =
-
   (fcQsciLexerJSON_language(self.h))
 
 proc lexer*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cstring =
-
   (fcQsciLexerJSON_lexer(self.h))
 
 proc defaultColor*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerJSON_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): bool =
-
   fcQsciLexerJSON_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerJSON_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerJSON_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerjson_types.QsciLexerJSON, set: cint): cstring =
-
   (fcQsciLexerJSON_keywords(self.h, set))
 
 proc description*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): string =
-
   let v_ms = fcQsciLexerJSON_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexerjson_types.QsciLexerJSON, ): void =
-
   fcQsciLexerJSON_refreshProperties(self.h)
 
 proc setHighlightComments*(self: gen_qscilexerjson_types.QsciLexerJSON, highlight: bool): void =
-
   fcQsciLexerJSON_setHighlightComments(self.h, highlight)
 
 proc highlightComments*(self: gen_qscilexerjson_types.QsciLexerJSON, ): bool =
-
   fcQsciLexerJSON_highlightComments(self.h)
 
 proc setHighlightEscapeSequences*(self: gen_qscilexerjson_types.QsciLexerJSON, highlight: bool): void =
-
   fcQsciLexerJSON_setHighlightEscapeSequences(self.h, highlight)
 
 proc highlightEscapeSequences*(self: gen_qscilexerjson_types.QsciLexerJSON, ): bool =
-
   fcQsciLexerJSON_highlightEscapeSequences(self.h)
 
 proc setFoldCompact*(self: gen_qscilexerjson_types.QsciLexerJSON, fold: bool): void =
-
   fcQsciLexerJSON_setFoldCompact(self.h, fold)
 
 proc foldCompact*(self: gen_qscilexerjson_types.QsciLexerJSON, ): bool =
-
   fcQsciLexerJSON_foldCompact(self.h)
 
-proc tr2*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerJSON_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerJSON_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerJSON_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexerjson_types.QsciLexerJSON, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerJSON_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerJSONmetaObject*(self: gen_qscilexerjson_types.QsciLexerJSON, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerJSON_virtualbase_metaObject(self.h))
 
 type QsciLexerJSONmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -337,7 +312,6 @@ proc miqt_exec_callback_QsciLexerJSON_metaObject(self: ptr cQsciLexerJSON, slot:
 
   virtualReturn.h
 proc QsciLexerJSONmetacast*(self: gen_qscilexerjson_types.QsciLexerJSON, param1: cstring): pointer =
-
   fQsciLexerJSON_virtualbase_metacast(self.h, param1)
 
 type QsciLexerJSONmetacastProc* = proc(param1: cstring): pointer
@@ -357,7 +331,6 @@ proc miqt_exec_callback_QsciLexerJSON_metacast(self: ptr cQsciLexerJSON, slot: i
 
   virtualReturn
 proc QsciLexerJSONmetacall*(self: gen_qscilexerjson_types.QsciLexerJSON, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerJSON_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerJSONmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -395,7 +368,6 @@ proc miqt_exec_callback_QsciLexerJSON_language(self: ptr cQsciLexerJSON, slot: i
 
   virtualReturn
 proc QsciLexerJSONlexer*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cstring =
-
   (fQsciLexerJSON_virtualbase_lexer(self.h))
 
 type QsciLexerJSONlexerProc* = proc(): cstring
@@ -413,7 +385,6 @@ proc miqt_exec_callback_QsciLexerJSON_lexer(self: ptr cQsciLexerJSON, slot: int)
 
   virtualReturn
 proc QsciLexerJSONlexerId*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cint =
-
   fQsciLexerJSON_virtualbase_lexerId(self.h)
 
 type QsciLexerJSONlexerIdProc* = proc(): cint
@@ -431,7 +402,6 @@ proc miqt_exec_callback_QsciLexerJSON_lexerId(self: ptr cQsciLexerJSON, slot: in
 
   virtualReturn
 proc QsciLexerJSONautoCompletionFillups*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cstring =
-
   (fQsciLexerJSON_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerJSONautoCompletionFillupsProc* = proc(): cstring
@@ -449,7 +419,6 @@ proc miqt_exec_callback_QsciLexerJSON_autoCompletionFillups(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerJSONautoCompletionWordSeparators*(self: gen_qscilexerjson_types.QsciLexerJSON, ): seq[string] =
-
   var v_ma = fQsciLexerJSON_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -479,7 +448,6 @@ proc miqt_exec_callback_QsciLexerJSON_autoCompletionWordSeparators(self: ptr cQs
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerJSONblockEnd*(self: gen_qscilexerjson_types.QsciLexerJSON, style: ptr cint): cstring =
-
   (fQsciLexerJSON_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerJSONblockEndProc* = proc(style: ptr cint): cstring
@@ -499,7 +467,6 @@ proc miqt_exec_callback_QsciLexerJSON_blockEnd(self: ptr cQsciLexerJSON, slot: i
 
   virtualReturn
 proc QsciLexerJSONblockLookback*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cint =
-
   fQsciLexerJSON_virtualbase_blockLookback(self.h)
 
 type QsciLexerJSONblockLookbackProc* = proc(): cint
@@ -517,7 +484,6 @@ proc miqt_exec_callback_QsciLexerJSON_blockLookback(self: ptr cQsciLexerJSON, sl
 
   virtualReturn
 proc QsciLexerJSONblockStart*(self: gen_qscilexerjson_types.QsciLexerJSON, style: ptr cint): cstring =
-
   (fQsciLexerJSON_virtualbase_blockStart(self.h, style))
 
 type QsciLexerJSONblockStartProc* = proc(style: ptr cint): cstring
@@ -537,7 +503,6 @@ proc miqt_exec_callback_QsciLexerJSON_blockStart(self: ptr cQsciLexerJSON, slot:
 
   virtualReturn
 proc QsciLexerJSONblockStartKeyword*(self: gen_qscilexerjson_types.QsciLexerJSON, style: ptr cint): cstring =
-
   (fQsciLexerJSON_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerJSONblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -557,7 +522,6 @@ proc miqt_exec_callback_QsciLexerJSON_blockStartKeyword(self: ptr cQsciLexerJSON
 
   virtualReturn
 proc QsciLexerJSONbraceStyle*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cint =
-
   fQsciLexerJSON_virtualbase_braceStyle(self.h)
 
 type QsciLexerJSONbraceStyleProc* = proc(): cint
@@ -575,7 +539,6 @@ proc miqt_exec_callback_QsciLexerJSON_braceStyle(self: ptr cQsciLexerJSON, slot:
 
   virtualReturn
 proc QsciLexerJSONcaseSensitive*(self: gen_qscilexerjson_types.QsciLexerJSON, ): bool =
-
   fQsciLexerJSON_virtualbase_caseSensitive(self.h)
 
 type QsciLexerJSONcaseSensitiveProc* = proc(): bool
@@ -593,7 +556,6 @@ proc miqt_exec_callback_QsciLexerJSON_caseSensitive(self: ptr cQsciLexerJSON, sl
 
   virtualReturn
 proc QsciLexerJSONcolor*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerJSON_virtualbase_color(self.h, style))
 
 type QsciLexerJSONcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -613,7 +575,6 @@ proc miqt_exec_callback_QsciLexerJSON_color(self: ptr cQsciLexerJSON, slot: int,
 
   virtualReturn.h
 proc QsciLexerJSONeolFill*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): bool =
-
   fQsciLexerJSON_virtualbase_eolFill(self.h, style)
 
 type QsciLexerJSONeolFillProc* = proc(style: cint): bool
@@ -633,7 +594,6 @@ proc miqt_exec_callback_QsciLexerJSON_eolFill(self: ptr cQsciLexerJSON, slot: in
 
   virtualReturn
 proc QsciLexerJSONfont*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerJSON_virtualbase_font(self.h, style))
 
 type QsciLexerJSONfontProc* = proc(style: cint): gen_qfont.QFont
@@ -653,7 +613,6 @@ proc miqt_exec_callback_QsciLexerJSON_font(self: ptr cQsciLexerJSON, slot: int, 
 
   virtualReturn.h
 proc QsciLexerJSONindentationGuideView*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cint =
-
   fQsciLexerJSON_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerJSONindentationGuideViewProc* = proc(): cint
@@ -671,7 +630,6 @@ proc miqt_exec_callback_QsciLexerJSON_indentationGuideView(self: ptr cQsciLexerJ
 
   virtualReturn
 proc QsciLexerJSONkeywords*(self: gen_qscilexerjson_types.QsciLexerJSON, set: cint): cstring =
-
   (fQsciLexerJSON_virtualbase_keywords(self.h, set))
 
 type QsciLexerJSONkeywordsProc* = proc(set: cint): cstring
@@ -691,7 +649,6 @@ proc miqt_exec_callback_QsciLexerJSON_keywords(self: ptr cQsciLexerJSON, slot: i
 
   virtualReturn
 proc QsciLexerJSONdefaultStyle*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cint =
-
   fQsciLexerJSON_virtualbase_defaultStyle(self.h)
 
 type QsciLexerJSONdefaultStyleProc* = proc(): cint
@@ -725,7 +682,6 @@ proc miqt_exec_callback_QsciLexerJSON_description(self: ptr cQsciLexerJSON, slot
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerJSONpaper*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerJSON_virtualbase_paper(self.h, style))
 
 type QsciLexerJSONpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -744,12 +700,11 @@ proc miqt_exec_callback_QsciLexerJSON_paper(self: ptr cQsciLexerJSON, slot: int,
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerJSONdefaultColorWithStyle*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJSONdefaultColor*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerJSON_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerJSONdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerjson_types.QsciLexerJSON, slot: QsciLexerJSONdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerjson_types.QsciLexerJSON, slot: QsciLexerJSONdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerJSONdefaultColorWithStyleProc
   tmp[] = slot
@@ -765,7 +720,6 @@ proc miqt_exec_callback_QsciLexerJSON_defaultColorWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerJSONdefaultEolFill*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): bool =
-
   fQsciLexerJSON_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerJSONdefaultEolFillProc* = proc(style: cint): bool
@@ -784,12 +738,11 @@ proc miqt_exec_callback_QsciLexerJSON_defaultEolFill(self: ptr cQsciLexerJSON, s
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerJSONdefaultFontWithStyle*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qfont.QFont =
-
+proc QsciLexerJSONdefaultFont*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerJSON_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerJSONdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerjson_types.QsciLexerJSON, slot: QsciLexerJSONdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerjson_types.QsciLexerJSON, slot: QsciLexerJSONdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerJSONdefaultFontWithStyleProc
   tmp[] = slot
@@ -804,12 +757,11 @@ proc miqt_exec_callback_QsciLexerJSON_defaultFontWithStyle(self: ptr cQsciLexerJ
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerJSONdefaultPaperWithStyle*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJSONdefaultPaper*(self: gen_qscilexerjson_types.QsciLexerJSON, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerJSON_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerJSONdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerjson_types.QsciLexerJSON, slot: QsciLexerJSONdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerjson_types.QsciLexerJSON, slot: QsciLexerJSONdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerJSONdefaultPaperWithStyleProc
   tmp[] = slot
@@ -825,7 +777,6 @@ proc miqt_exec_callback_QsciLexerJSON_defaultPaperWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerJSONsetEditor*(self: gen_qscilexerjson_types.QsciLexerJSON, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerJSON_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerJSONsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -843,7 +794,6 @@ proc miqt_exec_callback_QsciLexerJSON_setEditor(self: ptr cQsciLexerJSON, slot: 
 
   nimfunc[](slotval1)
 proc QsciLexerJSONrefreshProperties*(self: gen_qscilexerjson_types.QsciLexerJSON, ): void =
-
   fQsciLexerJSON_virtualbase_refreshProperties(self.h)
 
 type QsciLexerJSONrefreshPropertiesProc* = proc(): void
@@ -859,7 +809,6 @@ proc miqt_exec_callback_QsciLexerJSON_refreshProperties(self: ptr cQsciLexerJSON
 
   nimfunc[]()
 proc QsciLexerJSONstyleBitsNeeded*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cint =
-
   fQsciLexerJSON_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerJSONstyleBitsNeededProc* = proc(): cint
@@ -877,7 +826,6 @@ proc miqt_exec_callback_QsciLexerJSON_styleBitsNeeded(self: ptr cQsciLexerJSON, 
 
   virtualReturn
 proc QsciLexerJSONwordCharacters*(self: gen_qscilexerjson_types.QsciLexerJSON, ): cstring =
-
   (fQsciLexerJSON_virtualbase_wordCharacters(self.h))
 
 type QsciLexerJSONwordCharactersProc* = proc(): cstring
@@ -895,7 +843,6 @@ proc miqt_exec_callback_QsciLexerJSON_wordCharacters(self: ptr cQsciLexerJSON, s
 
   virtualReturn
 proc QsciLexerJSONsetAutoIndentStyle*(self: gen_qscilexerjson_types.QsciLexerJSON, autoindentstyle: cint): void =
-
   fQsciLexerJSON_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerJSONsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -913,7 +860,6 @@ proc miqt_exec_callback_QsciLexerJSON_setAutoIndentStyle(self: ptr cQsciLexerJSO
 
   nimfunc[](slotval1)
 proc QsciLexerJSONsetColor*(self: gen_qscilexerjson_types.QsciLexerJSON, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerJSON_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerJSONsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -933,7 +879,6 @@ proc miqt_exec_callback_QsciLexerJSON_setColor(self: ptr cQsciLexerJSON, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJSONsetEolFill*(self: gen_qscilexerjson_types.QsciLexerJSON, eoffill: bool, style: cint): void =
-
   fQsciLexerJSON_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerJSONsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -953,7 +898,6 @@ proc miqt_exec_callback_QsciLexerJSON_setEolFill(self: ptr cQsciLexerJSON, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJSONsetFont*(self: gen_qscilexerjson_types.QsciLexerJSON, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerJSON_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerJSONsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -973,7 +917,6 @@ proc miqt_exec_callback_QsciLexerJSON_setFont(self: ptr cQsciLexerJSON, slot: in
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJSONsetPaper*(self: gen_qscilexerjson_types.QsciLexerJSON, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerJSON_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerJSONsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -993,7 +936,6 @@ proc miqt_exec_callback_QsciLexerJSON_setPaper(self: ptr cQsciLexerJSON, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJSONreadProperties*(self: gen_qscilexerjson_types.QsciLexerJSON, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerJSON_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerJSONreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1018,7 +960,6 @@ proc miqt_exec_callback_QsciLexerJSON_readProperties(self: ptr cQsciLexerJSON, s
 
   virtualReturn
 proc QsciLexerJSONwriteProperties*(self: gen_qscilexerjson_types.QsciLexerJSON, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerJSON_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerJSONwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1043,7 +984,6 @@ proc miqt_exec_callback_QsciLexerJSON_writeProperties(self: ptr cQsciLexerJSON, 
 
   virtualReturn
 proc QsciLexerJSONevent*(self: gen_qscilexerjson_types.QsciLexerJSON, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerJSON_virtualbase_event(self.h, event.h)
 
 type QsciLexerJSONeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1063,7 +1003,6 @@ proc miqt_exec_callback_QsciLexerJSON_event(self: ptr cQsciLexerJSON, slot: int,
 
   virtualReturn
 proc QsciLexerJSONeventFilter*(self: gen_qscilexerjson_types.QsciLexerJSON, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerJSON_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerJSONeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1085,7 +1024,6 @@ proc miqt_exec_callback_QsciLexerJSON_eventFilter(self: ptr cQsciLexerJSON, slot
 
   virtualReturn
 proc QsciLexerJSONtimerEvent*(self: gen_qscilexerjson_types.QsciLexerJSON, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerJSON_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerJSONtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1103,7 +1041,6 @@ proc miqt_exec_callback_QsciLexerJSON_timerEvent(self: ptr cQsciLexerJSON, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerJSONchildEvent*(self: gen_qscilexerjson_types.QsciLexerJSON, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerJSON_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerJSONchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1121,7 +1058,6 @@ proc miqt_exec_callback_QsciLexerJSON_childEvent(self: ptr cQsciLexerJSON, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerJSONcustomEvent*(self: gen_qscilexerjson_types.QsciLexerJSON, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerJSON_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerJSONcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1139,7 +1075,6 @@ proc miqt_exec_callback_QsciLexerJSON_customEvent(self: ptr cQsciLexerJSON, slot
 
   nimfunc[](slotval1)
 proc QsciLexerJSONconnectNotify*(self: gen_qscilexerjson_types.QsciLexerJSON, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerJSON_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerJSONconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1157,7 +1092,6 @@ proc miqt_exec_callback_QsciLexerJSON_connectNotify(self: ptr cQsciLexerJSON, sl
 
   nimfunc[](slotval1)
 proc QsciLexerJSONdisconnectNotify*(self: gen_qscilexerjson_types.QsciLexerJSON, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerJSON_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerJSONdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

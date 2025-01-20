@@ -235,40 +235,33 @@ proc fcQsciLexerPerl_delete(self: pointer) {.importc: "QsciLexerPerl_delete".}
 func init*(T: type gen_qscilexerperl_types.QsciLexerPerl, h: ptr cQsciLexerPerl): gen_qscilexerperl_types.QsciLexerPerl =
   T(h: h)
 proc create*(T: type gen_qscilexerperl_types.QsciLexerPerl, ): gen_qscilexerperl_types.QsciLexerPerl =
-
   gen_qscilexerperl_types.QsciLexerPerl.init(fcQsciLexerPerl_new())
+
 proc create*(T: type gen_qscilexerperl_types.QsciLexerPerl, parent: gen_qobject.QObject): gen_qscilexerperl_types.QsciLexerPerl =
-
   gen_qscilexerperl_types.QsciLexerPerl.init(fcQsciLexerPerl_new2(parent.h))
-proc metaObject*(self: gen_qscilexerperl_types.QsciLexerPerl, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerperl_types.QsciLexerPerl, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerPerl_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerperl_types.QsciLexerPerl, param1: cstring): pointer =
-
   fcQsciLexerPerl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerperl_types.QsciLexerPerl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerPerl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerperl_types.QsciLexerPerl, s: cstring): string =
-
   let v_ms = fcQsciLexerPerl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cstring =
-
   (fcQsciLexerPerl_language(self.h))
 
 proc lexer*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cstring =
-
   (fcQsciLexerPerl_lexer(self.h))
 
 proc autoCompletionWordSeparators*(self: gen_qscilexerperl_types.QsciLexerPerl, ): seq[string] =
-
   var v_ma = fcQsciLexerPerl_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -280,116 +273,90 @@ proc autoCompletionWordSeparators*(self: gen_qscilexerperl_types.QsciLexerPerl, 
   vx_ret
 
 proc blockEnd*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cstring =
-
   (fcQsciLexerPerl_blockEnd(self.h))
 
 proc blockStart*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cstring =
-
   (fcQsciLexerPerl_blockStart(self.h))
 
 proc braceStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cint =
-
   fcQsciLexerPerl_braceStyle(self.h)
 
 proc wordCharacters*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cstring =
-
   (fcQsciLexerPerl_wordCharacters(self.h))
 
 proc defaultColor*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerPerl_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): bool =
-
   fcQsciLexerPerl_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerPerl_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerPerl_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerperl_types.QsciLexerPerl, set: cint): cstring =
-
   (fcQsciLexerPerl_keywords(self.h, set))
 
 proc description*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): string =
-
   let v_ms = fcQsciLexerPerl_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexerperl_types.QsciLexerPerl, ): void =
-
   fcQsciLexerPerl_refreshProperties(self.h)
 
 proc setFoldAtElse*(self: gen_qscilexerperl_types.QsciLexerPerl, fold: bool): void =
-
   fcQsciLexerPerl_setFoldAtElse(self.h, fold)
 
 proc foldAtElse*(self: gen_qscilexerperl_types.QsciLexerPerl, ): bool =
-
   fcQsciLexerPerl_foldAtElse(self.h)
 
 proc foldComments*(self: gen_qscilexerperl_types.QsciLexerPerl, ): bool =
-
   fcQsciLexerPerl_foldComments(self.h)
 
 proc foldCompact*(self: gen_qscilexerperl_types.QsciLexerPerl, ): bool =
-
   fcQsciLexerPerl_foldCompact(self.h)
 
 proc setFoldPackages*(self: gen_qscilexerperl_types.QsciLexerPerl, fold: bool): void =
-
   fcQsciLexerPerl_setFoldPackages(self.h, fold)
 
 proc foldPackages*(self: gen_qscilexerperl_types.QsciLexerPerl, ): bool =
-
   fcQsciLexerPerl_foldPackages(self.h)
 
 proc setFoldPODBlocks*(self: gen_qscilexerperl_types.QsciLexerPerl, fold: bool): void =
-
   fcQsciLexerPerl_setFoldPODBlocks(self.h, fold)
 
 proc foldPODBlocks*(self: gen_qscilexerperl_types.QsciLexerPerl, ): bool =
-
   fcQsciLexerPerl_foldPODBlocks(self.h)
 
 proc setFoldComments*(self: gen_qscilexerperl_types.QsciLexerPerl, fold: bool): void =
-
   fcQsciLexerPerl_setFoldComments(self.h, fold)
 
 proc setFoldCompact*(self: gen_qscilexerperl_types.QsciLexerPerl, fold: bool): void =
-
   fcQsciLexerPerl_setFoldCompact(self.h, fold)
 
-proc tr2*(_: type gen_qscilexerperl_types.QsciLexerPerl, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerperl_types.QsciLexerPerl, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerPerl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerperl_types.QsciLexerPerl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerperl_types.QsciLexerPerl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerPerl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc blockEnd1*(self: gen_qscilexerperl_types.QsciLexerPerl, style: ptr cint): cstring =
-
+proc blockEnd*(self: gen_qscilexerperl_types.QsciLexerPerl, style: ptr cint): cstring =
   (fcQsciLexerPerl_blockEnd1(self.h, style))
 
-proc blockStart1*(self: gen_qscilexerperl_types.QsciLexerPerl, style: ptr cint): cstring =
-
+proc blockStart*(self: gen_qscilexerperl_types.QsciLexerPerl, style: ptr cint): cstring =
   (fcQsciLexerPerl_blockStart1(self.h, style))
 
 proc QsciLexerPerlmetaObject*(self: gen_qscilexerperl_types.QsciLexerPerl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerPerl_virtualbase_metaObject(self.h))
 
 type QsciLexerPerlmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -407,7 +374,6 @@ proc miqt_exec_callback_QsciLexerPerl_metaObject(self: ptr cQsciLexerPerl, slot:
 
   virtualReturn.h
 proc QsciLexerPerlmetacast*(self: gen_qscilexerperl_types.QsciLexerPerl, param1: cstring): pointer =
-
   fQsciLexerPerl_virtualbase_metacast(self.h, param1)
 
 type QsciLexerPerlmetacastProc* = proc(param1: cstring): pointer
@@ -427,7 +393,6 @@ proc miqt_exec_callback_QsciLexerPerl_metacast(self: ptr cQsciLexerPerl, slot: i
 
   virtualReturn
 proc QsciLexerPerlmetacall*(self: gen_qscilexerperl_types.QsciLexerPerl, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerPerl_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerPerlmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -451,7 +416,6 @@ proc miqt_exec_callback_QsciLexerPerl_metacall(self: ptr cQsciLexerPerl, slot: i
 
   virtualReturn
 proc QsciLexerPerlsetFoldComments*(self: gen_qscilexerperl_types.QsciLexerPerl, fold: bool): void =
-
   fQsciLexerPerl_virtualbase_setFoldComments(self.h, fold)
 
 type QsciLexerPerlsetFoldCommentsProc* = proc(fold: bool): void
@@ -469,7 +433,6 @@ proc miqt_exec_callback_QsciLexerPerl_setFoldComments(self: ptr cQsciLexerPerl, 
 
   nimfunc[](slotval1)
 proc QsciLexerPerlsetFoldCompact*(self: gen_qscilexerperl_types.QsciLexerPerl, fold: bool): void =
-
   fQsciLexerPerl_virtualbase_setFoldCompact(self.h, fold)
 
 type QsciLexerPerlsetFoldCompactProc* = proc(fold: bool): void
@@ -501,7 +464,6 @@ proc miqt_exec_callback_QsciLexerPerl_language(self: ptr cQsciLexerPerl, slot: i
 
   virtualReturn
 proc QsciLexerPerllexer*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cstring =
-
   (fQsciLexerPerl_virtualbase_lexer(self.h))
 
 type QsciLexerPerllexerProc* = proc(): cstring
@@ -519,7 +481,6 @@ proc miqt_exec_callback_QsciLexerPerl_lexer(self: ptr cQsciLexerPerl, slot: int)
 
   virtualReturn
 proc QsciLexerPerllexerId*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cint =
-
   fQsciLexerPerl_virtualbase_lexerId(self.h)
 
 type QsciLexerPerllexerIdProc* = proc(): cint
@@ -537,7 +498,6 @@ proc miqt_exec_callback_QsciLexerPerl_lexerId(self: ptr cQsciLexerPerl, slot: in
 
   virtualReturn
 proc QsciLexerPerlautoCompletionFillups*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cstring =
-
   (fQsciLexerPerl_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerPerlautoCompletionFillupsProc* = proc(): cstring
@@ -555,7 +515,6 @@ proc miqt_exec_callback_QsciLexerPerl_autoCompletionFillups(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerPerlautoCompletionWordSeparators*(self: gen_qscilexerperl_types.QsciLexerPerl, ): seq[string] =
-
   var v_ma = fQsciLexerPerl_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -585,7 +544,6 @@ proc miqt_exec_callback_QsciLexerPerl_autoCompletionWordSeparators(self: ptr cQs
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerPerlblockEnd*(self: gen_qscilexerperl_types.QsciLexerPerl, style: ptr cint): cstring =
-
   (fQsciLexerPerl_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerPerlblockEndProc* = proc(style: ptr cint): cstring
@@ -605,7 +563,6 @@ proc miqt_exec_callback_QsciLexerPerl_blockEnd(self: ptr cQsciLexerPerl, slot: i
 
   virtualReturn
 proc QsciLexerPerlblockLookback*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cint =
-
   fQsciLexerPerl_virtualbase_blockLookback(self.h)
 
 type QsciLexerPerlblockLookbackProc* = proc(): cint
@@ -623,7 +580,6 @@ proc miqt_exec_callback_QsciLexerPerl_blockLookback(self: ptr cQsciLexerPerl, sl
 
   virtualReturn
 proc QsciLexerPerlblockStart*(self: gen_qscilexerperl_types.QsciLexerPerl, style: ptr cint): cstring =
-
   (fQsciLexerPerl_virtualbase_blockStart(self.h, style))
 
 type QsciLexerPerlblockStartProc* = proc(style: ptr cint): cstring
@@ -643,7 +599,6 @@ proc miqt_exec_callback_QsciLexerPerl_blockStart(self: ptr cQsciLexerPerl, slot:
 
   virtualReturn
 proc QsciLexerPerlblockStartKeyword*(self: gen_qscilexerperl_types.QsciLexerPerl, style: ptr cint): cstring =
-
   (fQsciLexerPerl_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerPerlblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -663,7 +618,6 @@ proc miqt_exec_callback_QsciLexerPerl_blockStartKeyword(self: ptr cQsciLexerPerl
 
   virtualReturn
 proc QsciLexerPerlbraceStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cint =
-
   fQsciLexerPerl_virtualbase_braceStyle(self.h)
 
 type QsciLexerPerlbraceStyleProc* = proc(): cint
@@ -681,7 +635,6 @@ proc miqt_exec_callback_QsciLexerPerl_braceStyle(self: ptr cQsciLexerPerl, slot:
 
   virtualReturn
 proc QsciLexerPerlcaseSensitive*(self: gen_qscilexerperl_types.QsciLexerPerl, ): bool =
-
   fQsciLexerPerl_virtualbase_caseSensitive(self.h)
 
 type QsciLexerPerlcaseSensitiveProc* = proc(): bool
@@ -699,7 +652,6 @@ proc miqt_exec_callback_QsciLexerPerl_caseSensitive(self: ptr cQsciLexerPerl, sl
 
   virtualReturn
 proc QsciLexerPerlcolor*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerPerl_virtualbase_color(self.h, style))
 
 type QsciLexerPerlcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -719,7 +671,6 @@ proc miqt_exec_callback_QsciLexerPerl_color(self: ptr cQsciLexerPerl, slot: int,
 
   virtualReturn.h
 proc QsciLexerPerleolFill*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): bool =
-
   fQsciLexerPerl_virtualbase_eolFill(self.h, style)
 
 type QsciLexerPerleolFillProc* = proc(style: cint): bool
@@ -739,7 +690,6 @@ proc miqt_exec_callback_QsciLexerPerl_eolFill(self: ptr cQsciLexerPerl, slot: in
 
   virtualReturn
 proc QsciLexerPerlfont*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerPerl_virtualbase_font(self.h, style))
 
 type QsciLexerPerlfontProc* = proc(style: cint): gen_qfont.QFont
@@ -759,7 +709,6 @@ proc miqt_exec_callback_QsciLexerPerl_font(self: ptr cQsciLexerPerl, slot: int, 
 
   virtualReturn.h
 proc QsciLexerPerlindentationGuideView*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cint =
-
   fQsciLexerPerl_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerPerlindentationGuideViewProc* = proc(): cint
@@ -777,7 +726,6 @@ proc miqt_exec_callback_QsciLexerPerl_indentationGuideView(self: ptr cQsciLexerP
 
   virtualReturn
 proc QsciLexerPerlkeywords*(self: gen_qscilexerperl_types.QsciLexerPerl, set: cint): cstring =
-
   (fQsciLexerPerl_virtualbase_keywords(self.h, set))
 
 type QsciLexerPerlkeywordsProc* = proc(set: cint): cstring
@@ -797,7 +745,6 @@ proc miqt_exec_callback_QsciLexerPerl_keywords(self: ptr cQsciLexerPerl, slot: i
 
   virtualReturn
 proc QsciLexerPerldefaultStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cint =
-
   fQsciLexerPerl_virtualbase_defaultStyle(self.h)
 
 type QsciLexerPerldefaultStyleProc* = proc(): cint
@@ -831,7 +778,6 @@ proc miqt_exec_callback_QsciLexerPerl_description(self: ptr cQsciLexerPerl, slot
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerPerlpaper*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerPerl_virtualbase_paper(self.h, style))
 
 type QsciLexerPerlpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -850,12 +796,11 @@ proc miqt_exec_callback_QsciLexerPerl_paper(self: ptr cQsciLexerPerl, slot: int,
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerPerldefaultColorWithStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerPerldefaultColor*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerPerl_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerPerldefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, slot: QsciLexerPerldefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerperl_types.QsciLexerPerl, slot: QsciLexerPerldefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerPerldefaultColorWithStyleProc
   tmp[] = slot
@@ -871,7 +816,6 @@ proc miqt_exec_callback_QsciLexerPerl_defaultColorWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerPerldefaultEolFill*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): bool =
-
   fQsciLexerPerl_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerPerldefaultEolFillProc* = proc(style: cint): bool
@@ -890,12 +834,11 @@ proc miqt_exec_callback_QsciLexerPerl_defaultEolFill(self: ptr cQsciLexerPerl, s
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerPerldefaultFontWithStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qfont.QFont =
-
+proc QsciLexerPerldefaultFont*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerPerl_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerPerldefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, slot: QsciLexerPerldefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerperl_types.QsciLexerPerl, slot: QsciLexerPerldefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerPerldefaultFontWithStyleProc
   tmp[] = slot
@@ -910,12 +853,11 @@ proc miqt_exec_callback_QsciLexerPerl_defaultFontWithStyle(self: ptr cQsciLexerP
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerPerldefaultPaperWithStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerPerldefaultPaper*(self: gen_qscilexerperl_types.QsciLexerPerl, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerPerl_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerPerldefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, slot: QsciLexerPerldefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerperl_types.QsciLexerPerl, slot: QsciLexerPerldefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerPerldefaultPaperWithStyleProc
   tmp[] = slot
@@ -931,7 +873,6 @@ proc miqt_exec_callback_QsciLexerPerl_defaultPaperWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerPerlsetEditor*(self: gen_qscilexerperl_types.QsciLexerPerl, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerPerl_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerPerlsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -949,7 +890,6 @@ proc miqt_exec_callback_QsciLexerPerl_setEditor(self: ptr cQsciLexerPerl, slot: 
 
   nimfunc[](slotval1)
 proc QsciLexerPerlrefreshProperties*(self: gen_qscilexerperl_types.QsciLexerPerl, ): void =
-
   fQsciLexerPerl_virtualbase_refreshProperties(self.h)
 
 type QsciLexerPerlrefreshPropertiesProc* = proc(): void
@@ -965,7 +905,6 @@ proc miqt_exec_callback_QsciLexerPerl_refreshProperties(self: ptr cQsciLexerPerl
 
   nimfunc[]()
 proc QsciLexerPerlstyleBitsNeeded*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cint =
-
   fQsciLexerPerl_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerPerlstyleBitsNeededProc* = proc(): cint
@@ -983,7 +922,6 @@ proc miqt_exec_callback_QsciLexerPerl_styleBitsNeeded(self: ptr cQsciLexerPerl, 
 
   virtualReturn
 proc QsciLexerPerlwordCharacters*(self: gen_qscilexerperl_types.QsciLexerPerl, ): cstring =
-
   (fQsciLexerPerl_virtualbase_wordCharacters(self.h))
 
 type QsciLexerPerlwordCharactersProc* = proc(): cstring
@@ -1001,7 +939,6 @@ proc miqt_exec_callback_QsciLexerPerl_wordCharacters(self: ptr cQsciLexerPerl, s
 
   virtualReturn
 proc QsciLexerPerlsetAutoIndentStyle*(self: gen_qscilexerperl_types.QsciLexerPerl, autoindentstyle: cint): void =
-
   fQsciLexerPerl_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerPerlsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -1019,7 +956,6 @@ proc miqt_exec_callback_QsciLexerPerl_setAutoIndentStyle(self: ptr cQsciLexerPer
 
   nimfunc[](slotval1)
 proc QsciLexerPerlsetColor*(self: gen_qscilexerperl_types.QsciLexerPerl, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerPerl_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerPerlsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1039,7 +975,6 @@ proc miqt_exec_callback_QsciLexerPerl_setColor(self: ptr cQsciLexerPerl, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPerlsetEolFill*(self: gen_qscilexerperl_types.QsciLexerPerl, eoffill: bool, style: cint): void =
-
   fQsciLexerPerl_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerPerlsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -1059,7 +994,6 @@ proc miqt_exec_callback_QsciLexerPerl_setEolFill(self: ptr cQsciLexerPerl, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPerlsetFont*(self: gen_qscilexerperl_types.QsciLexerPerl, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerPerl_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerPerlsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1079,7 +1013,6 @@ proc miqt_exec_callback_QsciLexerPerl_setFont(self: ptr cQsciLexerPerl, slot: in
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPerlsetPaper*(self: gen_qscilexerperl_types.QsciLexerPerl, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerPerl_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerPerlsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1099,7 +1032,6 @@ proc miqt_exec_callback_QsciLexerPerl_setPaper(self: ptr cQsciLexerPerl, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerPerlreadProperties*(self: gen_qscilexerperl_types.QsciLexerPerl, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerPerl_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerPerlreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1124,7 +1056,6 @@ proc miqt_exec_callback_QsciLexerPerl_readProperties(self: ptr cQsciLexerPerl, s
 
   virtualReturn
 proc QsciLexerPerlwriteProperties*(self: gen_qscilexerperl_types.QsciLexerPerl, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerPerl_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerPerlwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1149,7 +1080,6 @@ proc miqt_exec_callback_QsciLexerPerl_writeProperties(self: ptr cQsciLexerPerl, 
 
   virtualReturn
 proc QsciLexerPerlevent*(self: gen_qscilexerperl_types.QsciLexerPerl, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerPerl_virtualbase_event(self.h, event.h)
 
 type QsciLexerPerleventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1169,7 +1099,6 @@ proc miqt_exec_callback_QsciLexerPerl_event(self: ptr cQsciLexerPerl, slot: int,
 
   virtualReturn
 proc QsciLexerPerleventFilter*(self: gen_qscilexerperl_types.QsciLexerPerl, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerPerl_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerPerleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1191,7 +1120,6 @@ proc miqt_exec_callback_QsciLexerPerl_eventFilter(self: ptr cQsciLexerPerl, slot
 
   virtualReturn
 proc QsciLexerPerltimerEvent*(self: gen_qscilexerperl_types.QsciLexerPerl, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerPerl_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerPerltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1209,7 +1137,6 @@ proc miqt_exec_callback_QsciLexerPerl_timerEvent(self: ptr cQsciLexerPerl, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerPerlchildEvent*(self: gen_qscilexerperl_types.QsciLexerPerl, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerPerl_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerPerlchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1227,7 +1154,6 @@ proc miqt_exec_callback_QsciLexerPerl_childEvent(self: ptr cQsciLexerPerl, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerPerlcustomEvent*(self: gen_qscilexerperl_types.QsciLexerPerl, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerPerl_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerPerlcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1245,7 +1171,6 @@ proc miqt_exec_callback_QsciLexerPerl_customEvent(self: ptr cQsciLexerPerl, slot
 
   nimfunc[](slotval1)
 proc QsciLexerPerlconnectNotify*(self: gen_qscilexerperl_types.QsciLexerPerl, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerPerl_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerPerlconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1263,7 +1188,6 @@ proc miqt_exec_callback_QsciLexerPerl_connectNotify(self: ptr cQsciLexerPerl, sl
 
   nimfunc[](slotval1)
 proc QsciLexerPerldisconnectNotify*(self: gen_qscilexerperl_types.QsciLexerPerl, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerPerl_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerPerldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

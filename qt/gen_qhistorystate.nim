@@ -111,97 +111,81 @@ proc fcQHistoryState_delete(self: pointer) {.importc: "QHistoryState_delete".}
 func init*(T: type gen_qhistorystate_types.QHistoryState, h: ptr cQHistoryState): gen_qhistorystate_types.QHistoryState =
   T(h: h)
 proc create*(T: type gen_qhistorystate_types.QHistoryState, ): gen_qhistorystate_types.QHistoryState =
-
   gen_qhistorystate_types.QHistoryState.init(fcQHistoryState_new())
+
 proc create*(T: type gen_qhistorystate_types.QHistoryState, typeVal: cint): gen_qhistorystate_types.QHistoryState =
-
   gen_qhistorystate_types.QHistoryState.init(fcQHistoryState_new2(cint(typeVal)))
+
 proc create*(T: type gen_qhistorystate_types.QHistoryState, parent: gen_qstate.QState): gen_qhistorystate_types.QHistoryState =
-
   gen_qhistorystate_types.QHistoryState.init(fcQHistoryState_new3(parent.h))
+
 proc create*(T: type gen_qhistorystate_types.QHistoryState, typeVal: cint, parent: gen_qstate.QState): gen_qhistorystate_types.QHistoryState =
-
   gen_qhistorystate_types.QHistoryState.init(fcQHistoryState_new4(cint(typeVal), parent.h))
-proc metaObject*(self: gen_qhistorystate_types.QHistoryState, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qhistorystate_types.QHistoryState, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQHistoryState_metaObject(self.h))
 
 proc metacast*(self: gen_qhistorystate_types.QHistoryState, param1: cstring): pointer =
-
   fcQHistoryState_metacast(self.h, param1)
 
 proc metacall*(self: gen_qhistorystate_types.QHistoryState, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQHistoryState_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qhistorystate_types.QHistoryState, s: cstring): string =
-
   let v_ms = fcQHistoryState_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qhistorystate_types.QHistoryState, s: cstring): string =
-
   let v_ms = fcQHistoryState_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc defaultTransition*(self: gen_qhistorystate_types.QHistoryState, ): gen_qabstracttransition.QAbstractTransition =
-
   gen_qabstracttransition.QAbstractTransition(h: fcQHistoryState_defaultTransition(self.h))
 
 proc setDefaultTransition*(self: gen_qhistorystate_types.QHistoryState, transition: gen_qabstracttransition.QAbstractTransition): void =
-
   fcQHistoryState_setDefaultTransition(self.h, transition.h)
 
 proc defaultState*(self: gen_qhistorystate_types.QHistoryState, ): gen_qabstractstate.QAbstractState =
-
   gen_qabstractstate.QAbstractState(h: fcQHistoryState_defaultState(self.h))
 
 proc setDefaultState*(self: gen_qhistorystate_types.QHistoryState, state: gen_qabstractstate.QAbstractState): void =
-
   fcQHistoryState_setDefaultState(self.h, state.h)
 
 proc historyType*(self: gen_qhistorystate_types.QHistoryState, ): cint =
-
   cint(fcQHistoryState_historyType(self.h))
 
 proc setHistoryType*(self: gen_qhistorystate_types.QHistoryState, typeVal: cint): void =
-
   fcQHistoryState_setHistoryType(self.h, cint(typeVal))
 
-proc tr2*(_: type gen_qhistorystate_types.QHistoryState, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qhistorystate_types.QHistoryState, s: cstring, c: cstring): string =
   let v_ms = fcQHistoryState_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qhistorystate_types.QHistoryState, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qhistorystate_types.QHistoryState, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQHistoryState_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qhistorystate_types.QHistoryState, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qhistorystate_types.QHistoryState, s: cstring, c: cstring): string =
   let v_ms = fcQHistoryState_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qhistorystate_types.QHistoryState, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qhistorystate_types.QHistoryState, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQHistoryState_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QHistoryStatemetaObject*(self: gen_qhistorystate_types.QHistoryState, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQHistoryState_virtualbase_metaObject(self.h))
 
 type QHistoryStatemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -219,7 +203,6 @@ proc miqt_exec_callback_QHistoryState_metaObject(self: ptr cQHistoryState, slot:
 
   virtualReturn.h
 proc QHistoryStatemetacast*(self: gen_qhistorystate_types.QHistoryState, param1: cstring): pointer =
-
   fQHistoryState_virtualbase_metacast(self.h, param1)
 
 type QHistoryStatemetacastProc* = proc(param1: cstring): pointer
@@ -239,7 +222,6 @@ proc miqt_exec_callback_QHistoryState_metacast(self: ptr cQHistoryState, slot: i
 
   virtualReturn
 proc QHistoryStatemetacall*(self: gen_qhistorystate_types.QHistoryState, param1: cint, param2: cint, param3: pointer): cint =
-
   fQHistoryState_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QHistoryStatemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -263,7 +245,6 @@ proc miqt_exec_callback_QHistoryState_metacall(self: ptr cQHistoryState, slot: i
 
   virtualReturn
 proc QHistoryStateonEntry*(self: gen_qhistorystate_types.QHistoryState, event: gen_qcoreevent.QEvent): void =
-
   fQHistoryState_virtualbase_onEntry(self.h, event.h)
 
 type QHistoryStateonEntryProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -281,7 +262,6 @@ proc miqt_exec_callback_QHistoryState_onEntry(self: ptr cQHistoryState, slot: in
 
   nimfunc[](slotval1)
 proc QHistoryStateonExit*(self: gen_qhistorystate_types.QHistoryState, event: gen_qcoreevent.QEvent): void =
-
   fQHistoryState_virtualbase_onExit(self.h, event.h)
 
 type QHistoryStateonExitProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -299,7 +279,6 @@ proc miqt_exec_callback_QHistoryState_onExit(self: ptr cQHistoryState, slot: int
 
   nimfunc[](slotval1)
 proc QHistoryStateevent*(self: gen_qhistorystate_types.QHistoryState, e: gen_qcoreevent.QEvent): bool =
-
   fQHistoryState_virtualbase_event(self.h, e.h)
 
 type QHistoryStateeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -319,7 +298,6 @@ proc miqt_exec_callback_QHistoryState_event(self: ptr cQHistoryState, slot: int,
 
   virtualReturn
 proc QHistoryStateeventFilter*(self: gen_qhistorystate_types.QHistoryState, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQHistoryState_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QHistoryStateeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -341,7 +319,6 @@ proc miqt_exec_callback_QHistoryState_eventFilter(self: ptr cQHistoryState, slot
 
   virtualReturn
 proc QHistoryStatetimerEvent*(self: gen_qhistorystate_types.QHistoryState, event: gen_qcoreevent.QTimerEvent): void =
-
   fQHistoryState_virtualbase_timerEvent(self.h, event.h)
 
 type QHistoryStatetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -359,7 +336,6 @@ proc miqt_exec_callback_QHistoryState_timerEvent(self: ptr cQHistoryState, slot:
 
   nimfunc[](slotval1)
 proc QHistoryStatechildEvent*(self: gen_qhistorystate_types.QHistoryState, event: gen_qcoreevent.QChildEvent): void =
-
   fQHistoryState_virtualbase_childEvent(self.h, event.h)
 
 type QHistoryStatechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -377,7 +353,6 @@ proc miqt_exec_callback_QHistoryState_childEvent(self: ptr cQHistoryState, slot:
 
   nimfunc[](slotval1)
 proc QHistoryStatecustomEvent*(self: gen_qhistorystate_types.QHistoryState, event: gen_qcoreevent.QEvent): void =
-
   fQHistoryState_virtualbase_customEvent(self.h, event.h)
 
 type QHistoryStatecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -395,7 +370,6 @@ proc miqt_exec_callback_QHistoryState_customEvent(self: ptr cQHistoryState, slot
 
   nimfunc[](slotval1)
 proc QHistoryStateconnectNotify*(self: gen_qhistorystate_types.QHistoryState, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQHistoryState_virtualbase_connectNotify(self.h, signal.h)
 
 type QHistoryStateconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -413,7 +387,6 @@ proc miqt_exec_callback_QHistoryState_connectNotify(self: ptr cQHistoryState, sl
 
   nimfunc[](slotval1)
 proc QHistoryStatedisconnectNotify*(self: gen_qhistorystate_types.QHistoryState, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQHistoryState_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QHistoryStatedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

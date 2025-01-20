@@ -47,7 +47,6 @@ proc fcQScopedPointerPodDeleter_delete(self: pointer) {.importc: "QScopedPointer
 func init*(T: type gen_qscopedpointer_types.QScopedPointerPodDeleter, h: ptr cQScopedPointerPodDeleter): gen_qscopedpointer_types.QScopedPointerPodDeleter =
   T(h: h)
 proc cleanup*(_: type gen_qscopedpointer_types.QScopedPointerPodDeleter, pointer: pointer): void =
-
   fcQScopedPointerPodDeleter_cleanup(pointer)
 
 proc delete*(self: gen_qscopedpointer_types.QScopedPointerPodDeleter) =

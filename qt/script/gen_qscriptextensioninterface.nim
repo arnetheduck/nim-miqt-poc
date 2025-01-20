@@ -57,14 +57,12 @@ proc fcQScriptExtensionInterface_delete(self: pointer) {.importc: "QScriptExtens
 func init*(T: type gen_qscriptextensioninterface_types.QScriptExtensionInterface, h: ptr cQScriptExtensionInterface): gen_qscriptextensioninterface_types.QScriptExtensionInterface =
   T(h: h)
 proc create*(T: type gen_qscriptextensioninterface_types.QScriptExtensionInterface, param1: gen_qscriptextensioninterface_types.QScriptExtensionInterface): gen_qscriptextensioninterface_types.QScriptExtensionInterface =
-
   gen_qscriptextensioninterface_types.QScriptExtensionInterface.init(fcQScriptExtensionInterface_new(param1.h))
-proc initialize*(self: gen_qscriptextensioninterface_types.QScriptExtensionInterface, key: string, engine: gen_qscriptengine.QScriptEngine): void =
 
+proc initialize*(self: gen_qscriptextensioninterface_types.QScriptExtensionInterface, key: string, engine: gen_qscriptengine.QScriptEngine): void =
   fcQScriptExtensionInterface_initialize(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), engine.h)
 
 proc operatorAssign*(self: gen_qscriptextensioninterface_types.QScriptExtensionInterface, param1: gen_qscriptextensioninterface_types.QScriptExtensionInterface): void =
-
   fcQScriptExtensionInterface_operatorAssign(self.h, param1.h)
 
 type QScriptExtensionInterfaceinitializeProc* = proc(key: string, engine: gen_qscriptengine.QScriptEngine): void

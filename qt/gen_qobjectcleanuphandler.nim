@@ -91,80 +91,66 @@ proc fcQObjectCleanupHandler_delete(self: pointer) {.importc: "QObjectCleanupHan
 func init*(T: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, h: ptr cQObjectCleanupHandler): gen_qobjectcleanuphandler_types.QObjectCleanupHandler =
   T(h: h)
 proc create*(T: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): gen_qobjectcleanuphandler_types.QObjectCleanupHandler =
-
   gen_qobjectcleanuphandler_types.QObjectCleanupHandler.init(fcQObjectCleanupHandler_new())
-proc metaObject*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQObjectCleanupHandler_metaObject(self.h))
 
 proc metacast*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, param1: cstring): pointer =
-
   fcQObjectCleanupHandler_metacast(self.h, param1)
 
 proc metacall*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQObjectCleanupHandler_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring): string =
-
   let v_ms = fcQObjectCleanupHandler_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring): string =
-
   let v_ms = fcQObjectCleanupHandler_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc add*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, objectVal: gen_qobject.QObject): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQObjectCleanupHandler_add(self.h, objectVal.h))
 
 proc remove*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, objectVal: gen_qobject.QObject): void =
-
   fcQObjectCleanupHandler_remove(self.h, objectVal.h)
 
 proc isEmpty*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): bool =
-
   fcQObjectCleanupHandler_isEmpty(self.h)
 
 proc clear*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): void =
-
   fcQObjectCleanupHandler_clear(self.h)
 
-proc tr2*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring): string =
   let v_ms = fcQObjectCleanupHandler_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQObjectCleanupHandler_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring): string =
   let v_ms = fcQObjectCleanupHandler_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qobjectcleanuphandler_types.QObjectCleanupHandler, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQObjectCleanupHandler_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QObjectCleanupHandlermetaObject*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQObjectCleanupHandler_virtualbase_metaObject(self.h))
 
 type QObjectCleanupHandlermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -182,7 +168,6 @@ proc miqt_exec_callback_QObjectCleanupHandler_metaObject(self: ptr cQObjectClean
 
   virtualReturn.h
 proc QObjectCleanupHandlermetacast*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, param1: cstring): pointer =
-
   fQObjectCleanupHandler_virtualbase_metacast(self.h, param1)
 
 type QObjectCleanupHandlermetacastProc* = proc(param1: cstring): pointer
@@ -202,7 +187,6 @@ proc miqt_exec_callback_QObjectCleanupHandler_metacast(self: ptr cQObjectCleanup
 
   virtualReturn
 proc QObjectCleanupHandlermetacall*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, param1: cint, param2: cint, param3: pointer): cint =
-
   fQObjectCleanupHandler_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QObjectCleanupHandlermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -226,7 +210,6 @@ proc miqt_exec_callback_QObjectCleanupHandler_metacall(self: ptr cQObjectCleanup
 
   virtualReturn
 proc QObjectCleanupHandlerevent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, event: gen_qcoreevent.QEvent): bool =
-
   fQObjectCleanupHandler_virtualbase_event(self.h, event.h)
 
 type QObjectCleanupHandlereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -246,7 +229,6 @@ proc miqt_exec_callback_QObjectCleanupHandler_event(self: ptr cQObjectCleanupHan
 
   virtualReturn
 proc QObjectCleanupHandlereventFilter*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQObjectCleanupHandler_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QObjectCleanupHandlereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -268,7 +250,6 @@ proc miqt_exec_callback_QObjectCleanupHandler_eventFilter(self: ptr cQObjectClea
 
   virtualReturn
 proc QObjectCleanupHandlertimerEvent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, event: gen_qcoreevent.QTimerEvent): void =
-
   fQObjectCleanupHandler_virtualbase_timerEvent(self.h, event.h)
 
 type QObjectCleanupHandlertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -286,7 +267,6 @@ proc miqt_exec_callback_QObjectCleanupHandler_timerEvent(self: ptr cQObjectClean
 
   nimfunc[](slotval1)
 proc QObjectCleanupHandlerchildEvent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, event: gen_qcoreevent.QChildEvent): void =
-
   fQObjectCleanupHandler_virtualbase_childEvent(self.h, event.h)
 
 type QObjectCleanupHandlerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -304,7 +284,6 @@ proc miqt_exec_callback_QObjectCleanupHandler_childEvent(self: ptr cQObjectClean
 
   nimfunc[](slotval1)
 proc QObjectCleanupHandlercustomEvent*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, event: gen_qcoreevent.QEvent): void =
-
   fQObjectCleanupHandler_virtualbase_customEvent(self.h, event.h)
 
 type QObjectCleanupHandlercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -322,7 +301,6 @@ proc miqt_exec_callback_QObjectCleanupHandler_customEvent(self: ptr cQObjectClea
 
   nimfunc[](slotval1)
 proc QObjectCleanupHandlerconnectNotify*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQObjectCleanupHandler_virtualbase_connectNotify(self.h, signal.h)
 
 type QObjectCleanupHandlerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -340,7 +318,6 @@ proc miqt_exec_callback_QObjectCleanupHandler_connectNotify(self: ptr cQObjectCl
 
   nimfunc[](slotval1)
 proc QObjectCleanupHandlerdisconnectNotify*(self: gen_qobjectcleanuphandler_types.QObjectCleanupHandler, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQObjectCleanupHandler_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QObjectCleanupHandlerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

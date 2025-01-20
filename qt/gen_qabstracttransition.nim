@@ -114,51 +114,42 @@ proc fcQAbstractTransition_delete(self: pointer) {.importc: "QAbstractTransition
 func init*(T: type gen_qabstracttransition_types.QAbstractTransition, h: ptr cQAbstractTransition): gen_qabstracttransition_types.QAbstractTransition =
   T(h: h)
 proc create*(T: type gen_qabstracttransition_types.QAbstractTransition, ): gen_qabstracttransition_types.QAbstractTransition =
-
   gen_qabstracttransition_types.QAbstractTransition.init(fcQAbstractTransition_new())
+
 proc create*(T: type gen_qabstracttransition_types.QAbstractTransition, sourceState: gen_qstate.QState): gen_qabstracttransition_types.QAbstractTransition =
-
   gen_qabstracttransition_types.QAbstractTransition.init(fcQAbstractTransition_new2(sourceState.h))
-proc metaObject*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractTransition_metaObject(self.h))
 
 proc metacast*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cstring): pointer =
-
   fcQAbstractTransition_metacast(self.h, param1)
 
 proc metacall*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAbstractTransition_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring): string =
-
   let v_ms = fcQAbstractTransition_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring): string =
-
   let v_ms = fcQAbstractTransition_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sourceState*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qstate.QState =
-
   gen_qstate.QState(h: fcQAbstractTransition_sourceState(self.h))
 
 proc targetState*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qabstractstate.QAbstractState =
-
   gen_qabstractstate.QAbstractState(h: fcQAbstractTransition_targetState(self.h))
 
 proc setTargetState*(self: gen_qabstracttransition_types.QAbstractTransition, target: gen_qabstractstate.QAbstractState): void =
-
   fcQAbstractTransition_setTargetState(self.h, target.h)
 
 proc targetStates*(self: gen_qabstracttransition_types.QAbstractTransition, ): seq[gen_qabstractstate.QAbstractState] =
-
   var v_ma = fcQAbstractTransition_targetStates(self.h)
   var vx_ret = newSeq[gen_qabstractstate.QAbstractState](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -167,7 +158,6 @@ proc targetStates*(self: gen_qabstracttransition_types.QAbstractTransition, ): s
   vx_ret
 
 proc setTargetStates*(self: gen_qabstracttransition_types.QAbstractTransition, targets: seq[gen_qabstractstate.QAbstractState]): void =
-
   var targets_CArray = newSeq[pointer](len(targets))
   for i in 0..<len(targets):
     targets_CArray[i] = targets[i].h
@@ -175,27 +165,21 @@ proc setTargetStates*(self: gen_qabstracttransition_types.QAbstractTransition, t
   fcQAbstractTransition_setTargetStates(self.h, struct_miqt_array(len: csize_t(len(targets)), data: if len(targets) == 0: nil else: addr(targets_CArray[0])))
 
 proc transitionType*(self: gen_qabstracttransition_types.QAbstractTransition, ): cint =
-
   cint(fcQAbstractTransition_transitionType(self.h))
 
 proc setTransitionType*(self: gen_qabstracttransition_types.QAbstractTransition, typeVal: cint): void =
-
   fcQAbstractTransition_setTransitionType(self.h, cint(typeVal))
 
 proc machine*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qstatemachine.QStateMachine =
-
   gen_qstatemachine.QStateMachine(h: fcQAbstractTransition_machine(self.h))
 
 proc addAnimation*(self: gen_qabstracttransition_types.QAbstractTransition, animation: gen_qabstractanimation.QAbstractAnimation): void =
-
   fcQAbstractTransition_addAnimation(self.h, animation.h)
 
 proc removeAnimation*(self: gen_qabstracttransition_types.QAbstractTransition, animation: gen_qabstractanimation.QAbstractAnimation): void =
-
   fcQAbstractTransition_removeAnimation(self.h, animation.h)
 
 proc animations*(self: gen_qabstracttransition_types.QAbstractTransition, ): seq[gen_qabstractanimation.QAbstractAnimation] =
-
   var v_ma = fcQAbstractTransition_animations(self.h)
   var vx_ret = newSeq[gen_qabstractanimation.QAbstractAnimation](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -203,36 +187,31 @@ proc animations*(self: gen_qabstracttransition_types.QAbstractTransition, ): seq
     vx_ret[i] = gen_qabstractanimation.QAbstractAnimation(h: v_outCast[i])
   vx_ret
 
-proc tr2*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring): string =
   let v_ms = fcQAbstractTransition_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAbstractTransition_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring): string =
   let v_ms = fcQAbstractTransition_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qabstracttransition_types.QAbstractTransition, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAbstractTransition_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QAbstractTransitionmetaObject*(self: gen_qabstracttransition_types.QAbstractTransition, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQAbstractTransition_virtualbase_metaObject(self.h))
 
 type QAbstractTransitionmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -250,7 +229,6 @@ proc miqt_exec_callback_QAbstractTransition_metaObject(self: ptr cQAbstractTrans
 
   virtualReturn.h
 proc QAbstractTransitionmetacast*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cstring): pointer =
-
   fQAbstractTransition_virtualbase_metacast(self.h, param1)
 
 type QAbstractTransitionmetacastProc* = proc(param1: cstring): pointer
@@ -270,7 +248,6 @@ proc miqt_exec_callback_QAbstractTransition_metacast(self: ptr cQAbstractTransit
 
   virtualReturn
 proc QAbstractTransitionmetacall*(self: gen_qabstracttransition_types.QAbstractTransition, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAbstractTransition_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAbstractTransitionmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -324,7 +301,6 @@ proc miqt_exec_callback_QAbstractTransition_onTransition(self: ptr cQAbstractTra
 
   nimfunc[](slotval1)
 proc QAbstractTransitionevent*(self: gen_qabstracttransition_types.QAbstractTransition, e: gen_qcoreevent.QEvent): bool =
-
   fQAbstractTransition_virtualbase_event(self.h, e.h)
 
 type QAbstractTransitioneventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -344,7 +320,6 @@ proc miqt_exec_callback_QAbstractTransition_event(self: ptr cQAbstractTransition
 
   virtualReturn
 proc QAbstractTransitioneventFilter*(self: gen_qabstracttransition_types.QAbstractTransition, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAbstractTransition_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAbstractTransitioneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -366,7 +341,6 @@ proc miqt_exec_callback_QAbstractTransition_eventFilter(self: ptr cQAbstractTran
 
   virtualReturn
 proc QAbstractTransitiontimerEvent*(self: gen_qabstracttransition_types.QAbstractTransition, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAbstractTransition_virtualbase_timerEvent(self.h, event.h)
 
 type QAbstractTransitiontimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -384,7 +358,6 @@ proc miqt_exec_callback_QAbstractTransition_timerEvent(self: ptr cQAbstractTrans
 
   nimfunc[](slotval1)
 proc QAbstractTransitionchildEvent*(self: gen_qabstracttransition_types.QAbstractTransition, event: gen_qcoreevent.QChildEvent): void =
-
   fQAbstractTransition_virtualbase_childEvent(self.h, event.h)
 
 type QAbstractTransitionchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -402,7 +375,6 @@ proc miqt_exec_callback_QAbstractTransition_childEvent(self: ptr cQAbstractTrans
 
   nimfunc[](slotval1)
 proc QAbstractTransitioncustomEvent*(self: gen_qabstracttransition_types.QAbstractTransition, event: gen_qcoreevent.QEvent): void =
-
   fQAbstractTransition_virtualbase_customEvent(self.h, event.h)
 
 type QAbstractTransitioncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -420,7 +392,6 @@ proc miqt_exec_callback_QAbstractTransition_customEvent(self: ptr cQAbstractTran
 
   nimfunc[](slotval1)
 proc QAbstractTransitionconnectNotify*(self: gen_qabstracttransition_types.QAbstractTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAbstractTransition_virtualbase_connectNotify(self.h, signal.h)
 
 type QAbstractTransitionconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -438,7 +409,6 @@ proc miqt_exec_callback_QAbstractTransition_connectNotify(self: ptr cQAbstractTr
 
   nimfunc[](slotval1)
 proc QAbstractTransitiondisconnectNotify*(self: gen_qabstracttransition_types.QAbstractTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAbstractTransition_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAbstractTransitiondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

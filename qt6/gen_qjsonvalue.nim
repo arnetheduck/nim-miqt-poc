@@ -165,162 +165,132 @@ proc fcQJsonValueRef_delete(self: pointer) {.importc: "QJsonValueRef_delete".}
 func init*(T: type gen_qjsonvalue_types.QJsonValue, h: ptr cQJsonValue): gen_qjsonvalue_types.QJsonValue =
   T(h: h)
 proc create*(T: type gen_qjsonvalue_types.QJsonValue, ): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new())
+
 proc create*(T: type gen_qjsonvalue_types.QJsonValue, b: bool): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new2(b))
+
 proc create*(T: type gen_qjsonvalue_types.QJsonValue, n: float64): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new3(n))
+
 proc create*(T: type gen_qjsonvalue_types.QJsonValue, n: cint): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new4(n))
+
 proc create*(T: type gen_qjsonvalue_types.QJsonValue, v: clonglong): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new5(v))
+
 proc create*(T: type gen_qjsonvalue_types.QJsonValue, s: string): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new6(struct_miqt_string(data: s, len: csize_t(len(s)))))
+
 proc create*(T: type gen_qjsonvalue_types.QJsonValue, s: cstring): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new7(s))
+
 proc create*(T: type gen_qjsonvalue_types.QJsonValue, a: gen_qjsonarray.QJsonArray): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new8(a.h))
-proc create2*(T: type gen_qjsonvalue_types.QJsonValue, o: gen_qjsonobject.QJsonObject): gen_qjsonvalue_types.QJsonValue =
 
+proc create*(T: type gen_qjsonvalue_types.QJsonValue, o: gen_qjsonobject.QJsonObject): gen_qjsonvalue_types.QJsonValue =
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new9(o.h))
-proc create2*(T: type gen_qjsonvalue_types.QJsonValue, other: gen_qjsonvalue_types.QJsonValue): gen_qjsonvalue_types.QJsonValue =
 
+proc create*(T: type gen_qjsonvalue_types.QJsonValue, other: gen_qjsonvalue_types.QJsonValue): gen_qjsonvalue_types.QJsonValue =
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new10(other.h))
+
 proc create2*(T: type gen_qjsonvalue_types.QJsonValue, param1: cint): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue.init(fcQJsonValue_new11(cint(param1)))
-proc operatorAssign*(self: gen_qjsonvalue_types.QJsonValue, other: gen_qjsonvalue_types.QJsonValue): void =
 
+proc operatorAssign*(self: gen_qjsonvalue_types.QJsonValue, other: gen_qjsonvalue_types.QJsonValue): void =
   fcQJsonValue_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qjsonvalue_types.QJsonValue, other: gen_qjsonvalue_types.QJsonValue): void =
-
   fcQJsonValue_swap(self.h, other.h)
 
 proc fromVariant*(_: type gen_qjsonvalue_types.QJsonValue, variant: gen_qvariant.QVariant): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue(h: fcQJsonValue_fromVariant(variant.h))
 
 proc toVariant*(self: gen_qjsonvalue_types.QJsonValue, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQJsonValue_toVariant(self.h))
 
 proc typeX*(self: gen_qjsonvalue_types.QJsonValue, ): cint =
-
   cint(fcQJsonValue_typeX(self.h))
 
 proc isNull*(self: gen_qjsonvalue_types.QJsonValue, ): bool =
-
   fcQJsonValue_isNull(self.h)
 
 proc isBool*(self: gen_qjsonvalue_types.QJsonValue, ): bool =
-
   fcQJsonValue_isBool(self.h)
 
 proc isDouble*(self: gen_qjsonvalue_types.QJsonValue, ): bool =
-
   fcQJsonValue_isDouble(self.h)
 
 proc isString*(self: gen_qjsonvalue_types.QJsonValue, ): bool =
-
   fcQJsonValue_isString(self.h)
 
 proc isArray*(self: gen_qjsonvalue_types.QJsonValue, ): bool =
-
   fcQJsonValue_isArray(self.h)
 
 proc isObject*(self: gen_qjsonvalue_types.QJsonValue, ): bool =
-
   fcQJsonValue_isObject(self.h)
 
 proc isUndefined*(self: gen_qjsonvalue_types.QJsonValue, ): bool =
-
   fcQJsonValue_isUndefined(self.h)
 
 proc toBool*(self: gen_qjsonvalue_types.QJsonValue, ): bool =
-
   fcQJsonValue_toBool(self.h)
 
 proc toInt*(self: gen_qjsonvalue_types.QJsonValue, ): cint =
-
   fcQJsonValue_toInt(self.h)
 
 proc toInteger*(self: gen_qjsonvalue_types.QJsonValue, ): clonglong =
-
   fcQJsonValue_toInteger(self.h)
 
 proc toDouble*(self: gen_qjsonvalue_types.QJsonValue, ): float64 =
-
   fcQJsonValue_toDouble(self.h)
 
 proc toString*(self: gen_qjsonvalue_types.QJsonValue, ): string =
-
   let v_ms = fcQJsonValue_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc toStringWithDefaultValue*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: string): string =
-
+proc toString*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: string): string =
   let v_ms = fcQJsonValue_toStringWithDefaultValue(self.h, struct_miqt_string(data: defaultValue, len: csize_t(len(defaultValue))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc toArray*(self: gen_qjsonvalue_types.QJsonValue, ): gen_qjsonarray.QJsonArray =
-
   gen_qjsonarray.QJsonArray(h: fcQJsonValue_toArray(self.h))
 
-proc toArrayWithDefaultValue*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: gen_qjsonarray.QJsonArray): gen_qjsonarray.QJsonArray =
-
+proc toArray*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: gen_qjsonarray.QJsonArray): gen_qjsonarray.QJsonArray =
   gen_qjsonarray.QJsonArray(h: fcQJsonValue_toArrayWithDefaultValue(self.h, defaultValue.h))
 
 proc toObject*(self: gen_qjsonvalue_types.QJsonValue, ): gen_qjsonobject.QJsonObject =
-
   gen_qjsonobject.QJsonObject(h: fcQJsonValue_toObject(self.h))
 
-proc toObjectWithDefaultValue*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: gen_qjsonobject.QJsonObject): gen_qjsonobject.QJsonObject =
-
+proc toObject*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: gen_qjsonobject.QJsonObject): gen_qjsonobject.QJsonObject =
   gen_qjsonobject.QJsonObject(h: fcQJsonValue_toObjectWithDefaultValue(self.h, defaultValue.h))
 
 proc operatorSubscript*(self: gen_qjsonvalue_types.QJsonValue, key: string): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue(h: fcQJsonValue_operatorSubscript(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc operatorSubscriptWithQsizetype*(self: gen_qjsonvalue_types.QJsonValue, i: int64): gen_qjsonvalue_types.QJsonValue =
-
+proc operatorSubscript*(self: gen_qjsonvalue_types.QJsonValue, i: int64): gen_qjsonvalue_types.QJsonValue =
   gen_qjsonvalue_types.QJsonValue(h: fcQJsonValue_operatorSubscriptWithQsizetype(self.h, i))
 
 proc operatorEqual*(self: gen_qjsonvalue_types.QJsonValue, other: gen_qjsonvalue_types.QJsonValue): bool =
-
   fcQJsonValue_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qjsonvalue_types.QJsonValue, other: gen_qjsonvalue_types.QJsonValue): bool =
-
   fcQJsonValue_operatorNotEqual(self.h, other.h)
 
-proc toBool1*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: bool): bool =
-
+proc toBool*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: bool): bool =
   fcQJsonValue_toBool1(self.h, defaultValue)
 
-proc toInt1*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: cint): cint =
-
+proc toInt*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: cint): cint =
   fcQJsonValue_toInt1(self.h, defaultValue)
 
-proc toInteger1*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: clonglong): clonglong =
-
+proc toInteger*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: clonglong): clonglong =
   fcQJsonValue_toInteger1(self.h, defaultValue)
 
-proc toDouble1*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: float64): float64 =
-
+proc toDouble*(self: gen_qjsonvalue_types.QJsonValue, defaultValue: float64): float64 =
   fcQJsonValue_toDouble1(self.h, defaultValue)
 
 proc delete*(self: gen_qjsonvalue_types.QJsonValue) =
@@ -329,109 +299,84 @@ proc delete*(self: gen_qjsonvalue_types.QJsonValue) =
 func init*(T: type gen_qjsonvalue_types.QJsonValueConstRef, h: ptr cQJsonValueConstRef): gen_qjsonvalue_types.QJsonValueConstRef =
   T(h: h)
 proc create*(T: type gen_qjsonvalue_types.QJsonValueConstRef, param1: gen_qjsonvalue_types.QJsonValueConstRef): gen_qjsonvalue_types.QJsonValueConstRef =
-
   gen_qjsonvalue_types.QJsonValueConstRef.init(fcQJsonValueConstRef_new(param1.h))
-proc ToQJsonValue*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): gen_qjsonvalue_types.QJsonValue =
 
+proc ToQJsonValue*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): gen_qjsonvalue_types.QJsonValue =
   gen_qjsonvalue_types.QJsonValue(h: fcQJsonValueConstRef_ToQJsonValue(self.h))
 
 proc toVariant*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQJsonValueConstRef_toVariant(self.h))
 
 proc typeX*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): cint =
-
   cint(fcQJsonValueConstRef_typeX(self.h))
 
 proc isNull*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): bool =
-
   fcQJsonValueConstRef_isNull(self.h)
 
 proc isBool*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): bool =
-
   fcQJsonValueConstRef_isBool(self.h)
 
 proc isDouble*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): bool =
-
   fcQJsonValueConstRef_isDouble(self.h)
 
 proc isString*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): bool =
-
   fcQJsonValueConstRef_isString(self.h)
 
 proc isArray*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): bool =
-
   fcQJsonValueConstRef_isArray(self.h)
 
 proc isObject*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): bool =
-
   fcQJsonValueConstRef_isObject(self.h)
 
 proc isUndefined*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): bool =
-
   fcQJsonValueConstRef_isUndefined(self.h)
 
 proc toBool*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): bool =
-
   fcQJsonValueConstRef_toBool(self.h)
 
 proc toInt*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): cint =
-
   fcQJsonValueConstRef_toInt(self.h)
 
 proc toInteger*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): clonglong =
-
   fcQJsonValueConstRef_toInteger(self.h)
 
 proc toDouble*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): float64 =
-
   fcQJsonValueConstRef_toDouble(self.h)
 
 proc toString*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): string =
-
   let v_ms = fcQJsonValueConstRef_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc toArray*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): gen_qjsonarray.QJsonArray =
-
   gen_qjsonarray.QJsonArray(h: fcQJsonValueConstRef_toArray(self.h))
 
 proc toObject*(self: gen_qjsonvalue_types.QJsonValueConstRef, ): gen_qjsonobject.QJsonObject =
-
   gen_qjsonobject.QJsonObject(h: fcQJsonValueConstRef_toObject(self.h))
 
-proc operatorSubscriptWithQsizetype*(self: gen_qjsonvalue_types.QJsonValueConstRef, i: int64): gen_qjsonvalue_types.QJsonValue =
-
+proc operatorSubscript*(self: gen_qjsonvalue_types.QJsonValueConstRef, i: int64): gen_qjsonvalue_types.QJsonValue =
   gen_qjsonvalue_types.QJsonValue(h: fcQJsonValueConstRef_operatorSubscriptWithQsizetype(self.h, i))
 
 proc operatorEqual*(self: gen_qjsonvalue_types.QJsonValueConstRef, other: gen_qjsonvalue_types.QJsonValue): bool =
-
   fcQJsonValueConstRef_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qjsonvalue_types.QJsonValueConstRef, other: gen_qjsonvalue_types.QJsonValue): bool =
-
   fcQJsonValueConstRef_operatorNotEqual(self.h, other.h)
 
-proc toBool1*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: bool): bool =
-
+proc toBool*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: bool): bool =
   fcQJsonValueConstRef_toBool1(self.h, defaultValue)
 
-proc toInt1*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: cint): cint =
-
+proc toInt*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: cint): cint =
   fcQJsonValueConstRef_toInt1(self.h, defaultValue)
 
-proc toInteger1*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: clonglong): clonglong =
-
+proc toInteger*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: clonglong): clonglong =
   fcQJsonValueConstRef_toInteger1(self.h, defaultValue)
 
-proc toDouble1*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: float64): float64 =
-
+proc toDouble*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: float64): float64 =
   fcQJsonValueConstRef_toDouble1(self.h, defaultValue)
 
-proc toString1*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: string): string =
-
+proc toString*(self: gen_qjsonvalue_types.QJsonValueConstRef, defaultValue: string): string =
   let v_ms = fcQJsonValueConstRef_toString1(self.h, struct_miqt_string(data: defaultValue, len: csize_t(len(defaultValue))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -443,123 +388,96 @@ proc delete*(self: gen_qjsonvalue_types.QJsonValueConstRef) =
 func init*(T: type gen_qjsonvalue_types.QJsonValueRef, h: ptr cQJsonValueRef): gen_qjsonvalue_types.QJsonValueRef =
   T(h: h)
 proc create*(T: type gen_qjsonvalue_types.QJsonValueRef, param1: gen_qjsonvalue_types.QJsonValueRef): gen_qjsonvalue_types.QJsonValueRef =
-
   gen_qjsonvalue_types.QJsonValueRef.init(fcQJsonValueRef_new(param1.h))
+
 proc create*(T: type gen_qjsonvalue_types.QJsonValueRef, array: gen_qjsonarray.QJsonArray, idx: int64): gen_qjsonvalue_types.QJsonValueRef =
-
   gen_qjsonvalue_types.QJsonValueRef.init(fcQJsonValueRef_new2(array.h, idx))
-proc create2*(T: type gen_qjsonvalue_types.QJsonValueRef, objectVal: gen_qjsonobject.QJsonObject, idx: int64): gen_qjsonvalue_types.QJsonValueRef =
 
+proc create*(T: type gen_qjsonvalue_types.QJsonValueRef, objectVal: gen_qjsonobject.QJsonObject, idx: int64): gen_qjsonvalue_types.QJsonValueRef =
   gen_qjsonvalue_types.QJsonValueRef.init(fcQJsonValueRef_new3(objectVal.h, idx))
-proc operatorAssign*(self: gen_qjsonvalue_types.QJsonValueRef, val: gen_qjsonvalue_types.QJsonValue): void =
 
+proc operatorAssign*(self: gen_qjsonvalue_types.QJsonValueRef, val: gen_qjsonvalue_types.QJsonValue): void =
   fcQJsonValueRef_operatorAssign(self.h, val.h)
 
-proc operatorAssignWithVal*(self: gen_qjsonvalue_types.QJsonValueRef, val: gen_qjsonvalue_types.QJsonValueRef): void =
-
+proc operatorAssign*(self: gen_qjsonvalue_types.QJsonValueRef, val: gen_qjsonvalue_types.QJsonValueRef): void =
   fcQJsonValueRef_operatorAssignWithVal(self.h, val.h)
 
 proc ToQJsonValue*(self: gen_qjsonvalue_types.QJsonValueRef, ): gen_qjsonvalue_types.QJsonValue =
-
   gen_qjsonvalue_types.QJsonValue(h: fcQJsonValueRef_ToQJsonValue(self.h))
 
 proc toVariant*(self: gen_qjsonvalue_types.QJsonValueRef, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQJsonValueRef_toVariant(self.h))
 
 proc typeX*(self: gen_qjsonvalue_types.QJsonValueRef, ): cint =
-
   cint(fcQJsonValueRef_typeX(self.h))
 
 proc isNull*(self: gen_qjsonvalue_types.QJsonValueRef, ): bool =
-
   fcQJsonValueRef_isNull(self.h)
 
 proc isBool*(self: gen_qjsonvalue_types.QJsonValueRef, ): bool =
-
   fcQJsonValueRef_isBool(self.h)
 
 proc isDouble*(self: gen_qjsonvalue_types.QJsonValueRef, ): bool =
-
   fcQJsonValueRef_isDouble(self.h)
 
 proc isString*(self: gen_qjsonvalue_types.QJsonValueRef, ): bool =
-
   fcQJsonValueRef_isString(self.h)
 
 proc isArray*(self: gen_qjsonvalue_types.QJsonValueRef, ): bool =
-
   fcQJsonValueRef_isArray(self.h)
 
 proc isObject*(self: gen_qjsonvalue_types.QJsonValueRef, ): bool =
-
   fcQJsonValueRef_isObject(self.h)
 
 proc isUndefined*(self: gen_qjsonvalue_types.QJsonValueRef, ): bool =
-
   fcQJsonValueRef_isUndefined(self.h)
 
 proc toBool*(self: gen_qjsonvalue_types.QJsonValueRef, ): bool =
-
   fcQJsonValueRef_toBool(self.h)
 
 proc toInt*(self: gen_qjsonvalue_types.QJsonValueRef, ): cint =
-
   fcQJsonValueRef_toInt(self.h)
 
 proc toInteger*(self: gen_qjsonvalue_types.QJsonValueRef, ): clonglong =
-
   fcQJsonValueRef_toInteger(self.h)
 
 proc toDouble*(self: gen_qjsonvalue_types.QJsonValueRef, ): float64 =
-
   fcQJsonValueRef_toDouble(self.h)
 
 proc toString*(self: gen_qjsonvalue_types.QJsonValueRef, ): string =
-
   let v_ms = fcQJsonValueRef_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc toArray*(self: gen_qjsonvalue_types.QJsonValueRef, ): gen_qjsonarray.QJsonArray =
-
   gen_qjsonarray.QJsonArray(h: fcQJsonValueRef_toArray(self.h))
 
 proc toObject*(self: gen_qjsonvalue_types.QJsonValueRef, ): gen_qjsonobject.QJsonObject =
-
   gen_qjsonobject.QJsonObject(h: fcQJsonValueRef_toObject(self.h))
 
-proc operatorSubscriptWithQsizetype*(self: gen_qjsonvalue_types.QJsonValueRef, i: int64): gen_qjsonvalue_types.QJsonValue =
-
+proc operatorSubscript*(self: gen_qjsonvalue_types.QJsonValueRef, i: int64): gen_qjsonvalue_types.QJsonValue =
   gen_qjsonvalue_types.QJsonValue(h: fcQJsonValueRef_operatorSubscriptWithQsizetype(self.h, i))
 
 proc operatorEqual*(self: gen_qjsonvalue_types.QJsonValueRef, other: gen_qjsonvalue_types.QJsonValue): bool =
-
   fcQJsonValueRef_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qjsonvalue_types.QJsonValueRef, other: gen_qjsonvalue_types.QJsonValue): bool =
-
   fcQJsonValueRef_operatorNotEqual(self.h, other.h)
 
-proc toBool1*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: bool): bool =
-
+proc toBool*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: bool): bool =
   fcQJsonValueRef_toBool1(self.h, defaultValue)
 
-proc toInt1*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: cint): cint =
-
+proc toInt*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: cint): cint =
   fcQJsonValueRef_toInt1(self.h, defaultValue)
 
-proc toInteger1*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: clonglong): clonglong =
-
+proc toInteger*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: clonglong): clonglong =
   fcQJsonValueRef_toInteger1(self.h, defaultValue)
 
-proc toDouble1*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: float64): float64 =
-
+proc toDouble*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: float64): float64 =
   fcQJsonValueRef_toDouble1(self.h, defaultValue)
 
-proc toString1*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: string): string =
-
+proc toString*(self: gen_qjsonvalue_types.QJsonValueRef, defaultValue: string): string =
   let v_ms = fcQJsonValueRef_toString1(self.h, struct_miqt_string(data: defaultValue, len: csize_t(len(defaultValue))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

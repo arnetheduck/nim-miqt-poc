@@ -81,67 +81,51 @@ proc fcQPaintDevice_delete(self: pointer) {.importc: "QPaintDevice_delete".}
 func init*(T: type gen_qpaintdevice_types.QPaintDevice, h: ptr cQPaintDevice): gen_qpaintdevice_types.QPaintDevice =
   T(h: h)
 proc devType*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_devType(self.h)
 
 proc paintingActive*(self: gen_qpaintdevice_types.QPaintDevice, ): bool =
-
   fcQPaintDevice_paintingActive(self.h)
 
 proc paintEngine*(self: gen_qpaintdevice_types.QPaintDevice, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fcQPaintDevice_paintEngine(self.h))
 
 proc width*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_width(self.h)
 
 proc height*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_height(self.h)
 
 proc widthMM*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_widthMM(self.h)
 
 proc heightMM*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_heightMM(self.h)
 
 proc logicalDpiX*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_logicalDpiX(self.h)
 
 proc logicalDpiY*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_logicalDpiY(self.h)
 
 proc physicalDpiX*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_physicalDpiX(self.h)
 
 proc physicalDpiY*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_physicalDpiY(self.h)
 
 proc devicePixelRatio*(self: gen_qpaintdevice_types.QPaintDevice, ): float64 =
-
   fcQPaintDevice_devicePixelRatio(self.h)
 
 proc devicePixelRatioF*(self: gen_qpaintdevice_types.QPaintDevice, ): float64 =
-
   fcQPaintDevice_devicePixelRatioF(self.h)
 
 proc colorCount*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_colorCount(self.h)
 
 proc depth*(self: gen_qpaintdevice_types.QPaintDevice, ): cint =
-
   fcQPaintDevice_depth(self.h)
 
 proc devicePixelRatioFScale*(_: type gen_qpaintdevice_types.QPaintDevice, ): float64 =
-
   fcQPaintDevice_devicePixelRatioFScale()
 
 proc delete*(self: gen_qpaintdevice_types.QPaintDevice) =

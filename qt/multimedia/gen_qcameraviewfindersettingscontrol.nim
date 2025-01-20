@@ -93,66 +93,54 @@ proc fcQCameraViewfinderSettingsControl2_delete(self: pointer) {.importc: "QCame
 func init*(T: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, h: ptr cQCameraViewfinderSettingsControl): gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl =
   T(h: h)
 proc metaObject*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQCameraViewfinderSettingsControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, param1: cstring): pointer =
-
   fcQCameraViewfinderSettingsControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCameraViewfinderSettingsControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring): string =
-
   let v_ms = fcQCameraViewfinderSettingsControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring): string =
-
   let v_ms = fcQCameraViewfinderSettingsControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isViewfinderParameterSupported*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, parameter: cint): bool =
-
   fcQCameraViewfinderSettingsControl_isViewfinderParameterSupported(self.h, cint(parameter))
 
 proc viewfinderParameter*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, parameter: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQCameraViewfinderSettingsControl_viewfinderParameter(self.h, cint(parameter)))
 
 proc setViewfinderParameter*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, parameter: cint, value: gen_qvariant.QVariant): void =
-
   fcQCameraViewfinderSettingsControl_setViewfinderParameter(self.h, cint(parameter), value.h)
 
-proc tr2*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraViewfinderSettingsControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraViewfinderSettingsControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraViewfinderSettingsControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraViewfinderSettingsControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -166,33 +154,27 @@ proc delete*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderS
 func init*(T: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, h: ptr cQCameraViewfinderSettingsControl2): gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2 =
   T(h: h)
 proc metaObject*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQCameraViewfinderSettingsControl2_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, param1: cstring): pointer =
-
   fcQCameraViewfinderSettingsControl2_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCameraViewfinderSettingsControl2_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring): string =
-
   let v_ms = fcQCameraViewfinderSettingsControl2_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring): string =
-
   let v_ms = fcQCameraViewfinderSettingsControl2_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportedViewfinderSettings*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, ): seq[gen_qcameraviewfindersettings.QCameraViewfinderSettings] =
-
   var v_ma = fcQCameraViewfinderSettingsControl2_supportedViewfinderSettings(self.h)
   var vx_ret = newSeq[gen_qcameraviewfindersettings.QCameraViewfinderSettings](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -201,36 +183,30 @@ proc supportedViewfinderSettings*(self: gen_qcameraviewfindersettingscontrol_typ
   vx_ret
 
 proc viewfinderSettings*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, ): gen_qcameraviewfindersettings.QCameraViewfinderSettings =
-
   gen_qcameraviewfindersettings.QCameraViewfinderSettings(h: fcQCameraViewfinderSettingsControl2_viewfinderSettings(self.h))
 
 proc setViewfinderSettings*(self: gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): void =
-
   fcQCameraViewfinderSettingsControl2_setViewfinderSettings(self.h, settings.h)
 
-proc tr2*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring, c: cstring): string =
   let v_ms = fcQCameraViewfinderSettingsControl2_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraViewfinderSettingsControl2_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring, c: cstring): string =
   let v_ms = fcQCameraViewfinderSettingsControl2_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcameraviewfindersettingscontrol_types.QCameraViewfinderSettingsControl2, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraViewfinderSettingsControl2_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

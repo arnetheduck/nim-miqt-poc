@@ -95,26 +95,21 @@ proc fcQSGMaterialShaderRenderState_delete(self: pointer) {.importc: "QSGMateria
 func init*(T: type gen_qsgmaterialshader_types.QSGMaterialShader, h: ptr cQSGMaterialShader): gen_qsgmaterialshader_types.QSGMaterialShader =
   T(h: h)
 proc create*(T: type gen_qsgmaterialshader_types.QSGMaterialShader, ): gen_qsgmaterialshader_types.QSGMaterialShader =
-
   gen_qsgmaterialshader_types.QSGMaterialShader.init(fcQSGMaterialShader_new())
-proc activate*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): void =
 
+proc activate*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): void =
   fcQSGMaterialShader_activate(self.h)
 
 proc deactivate*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): void =
-
   fcQSGMaterialShader_deactivate(self.h)
 
 proc updateState*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, newMaterial: gen_qsgmaterial.QSGMaterial, oldMaterial: gen_qsgmaterial.QSGMaterial): void =
-
   fcQSGMaterialShader_updateState(self.h, state.h, newMaterial.h, oldMaterial.h)
 
 proc attributeNames*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): cstring =
-
   (fcQSGMaterialShader_attributeNames(self.h))
 
 proc QSGMaterialShaderactivate*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): void =
-
   fQSGMaterialShader_virtualbase_activate(self.h)
 
 type QSGMaterialShaderactivateProc* = proc(): void
@@ -130,7 +125,6 @@ proc miqt_exec_callback_QSGMaterialShader_activate(self: ptr cQSGMaterialShader,
 
   nimfunc[]()
 proc QSGMaterialShaderdeactivate*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): void =
-
   fQSGMaterialShader_virtualbase_deactivate(self.h)
 
 type QSGMaterialShaderdeactivateProc* = proc(): void
@@ -146,7 +140,6 @@ proc miqt_exec_callback_QSGMaterialShader_deactivate(self: ptr cQSGMaterialShade
 
   nimfunc[]()
 proc QSGMaterialShaderupdateState*(self: gen_qsgmaterialshader_types.QSGMaterialShader, state: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, newMaterial: gen_qsgmaterial.QSGMaterial, oldMaterial: gen_qsgmaterial.QSGMaterial): void =
-
   fQSGMaterialShader_virtualbase_updateState(self.h, state.h, newMaterial.h, oldMaterial.h)
 
 type QSGMaterialShaderupdateStateProc* = proc(state: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, newMaterial: gen_qsgmaterial.QSGMaterial, oldMaterial: gen_qsgmaterial.QSGMaterial): void
@@ -182,7 +175,6 @@ proc miqt_exec_callback_QSGMaterialShader_attributeNames(self: ptr cQSGMaterialS
 
   virtualReturn
 proc QSGMaterialShadercompile*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): void =
-
   fQSGMaterialShader_virtualbase_compile(self.h)
 
 type QSGMaterialShadercompileProc* = proc(): void
@@ -198,7 +190,6 @@ proc miqt_exec_callback_QSGMaterialShader_compile(self: ptr cQSGMaterialShader, 
 
   nimfunc[]()
 proc QSGMaterialShaderinitialize*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): void =
-
   fQSGMaterialShader_virtualbase_initialize(self.h)
 
 type QSGMaterialShaderinitializeProc* = proc(): void
@@ -214,7 +205,6 @@ proc miqt_exec_callback_QSGMaterialShader_initialize(self: ptr cQSGMaterialShade
 
   nimfunc[]()
 proc QSGMaterialShadervertexShader*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): cstring =
-
   (fQSGMaterialShader_virtualbase_vertexShader(self.h))
 
 type QSGMaterialShadervertexShaderProc* = proc(): cstring
@@ -232,7 +222,6 @@ proc miqt_exec_callback_QSGMaterialShader_vertexShader(self: ptr cQSGMaterialSha
 
   virtualReturn
 proc QSGMaterialShaderfragmentShader*(self: gen_qsgmaterialshader_types.QSGMaterialShader, ): cstring =
-
   (fQSGMaterialShader_virtualbase_fragmentShader(self.h))
 
 type QSGMaterialShaderfragmentShaderProc* = proc(): cstring
@@ -255,51 +244,39 @@ proc delete*(self: gen_qsgmaterialshader_types.QSGMaterialShader) =
 func init*(T: type gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, h: ptr cQSGMaterialShaderRenderState): gen_qsgmaterialshader_types.QSGMaterialShaderRenderState =
   T(h: h)
 proc dirtyStates*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): cint =
-
   cint(fcQSGMaterialShaderRenderState_dirtyStates(self.h))
 
 proc isMatrixDirty*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): bool =
-
   fcQSGMaterialShaderRenderState_isMatrixDirty(self.h)
 
 proc isOpacityDirty*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): bool =
-
   fcQSGMaterialShaderRenderState_isOpacityDirty(self.h)
 
 proc isCachedMaterialDataDirty*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): bool =
-
   fcQSGMaterialShaderRenderState_isCachedMaterialDataDirty(self.h)
 
 proc opacity*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): float32 =
-
   fcQSGMaterialShaderRenderState_opacity(self.h)
 
 proc combinedMatrix*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qmatrix4x4.QMatrix4x4 =
-
   gen_qmatrix4x4.QMatrix4x4(h: fcQSGMaterialShaderRenderState_combinedMatrix(self.h))
 
 proc modelViewMatrix*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qmatrix4x4.QMatrix4x4 =
-
   gen_qmatrix4x4.QMatrix4x4(h: fcQSGMaterialShaderRenderState_modelViewMatrix(self.h))
 
 proc projectionMatrix*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qmatrix4x4.QMatrix4x4 =
-
   gen_qmatrix4x4.QMatrix4x4(h: fcQSGMaterialShaderRenderState_projectionMatrix(self.h))
 
 proc viewportRect*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQSGMaterialShaderRenderState_viewportRect(self.h))
 
 proc deviceRect*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQSGMaterialShaderRenderState_deviceRect(self.h))
 
 proc determinant*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): float32 =
-
   fcQSGMaterialShaderRenderState_determinant(self.h)
 
 proc devicePixelRatio*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState, ): float32 =
-
   fcQSGMaterialShaderRenderState_devicePixelRatio(self.h)
 
 proc delete*(self: gen_qsgmaterialshader_types.QSGMaterialShaderRenderState) =

@@ -97,53 +97,42 @@ proc fcQScriptClass_delete(self: pointer) {.importc: "QScriptClass_delete".}
 func init*(T: type gen_qscriptclass_types.QScriptClass, h: ptr cQScriptClass): gen_qscriptclass_types.QScriptClass =
   T(h: h)
 proc create*(T: type gen_qscriptclass_types.QScriptClass, engine: gen_qscriptengine.QScriptEngine): gen_qscriptclass_types.QScriptClass =
-
   gen_qscriptclass_types.QScriptClass.init(fcQScriptClass_new(engine.h))
-proc engine*(self: gen_qscriptclass_types.QScriptClass, ): gen_qscriptengine.QScriptEngine =
 
+proc engine*(self: gen_qscriptclass_types.QScriptClass, ): gen_qscriptengine.QScriptEngine =
   gen_qscriptengine.QScriptEngine(h: fcQScriptClass_engine(self.h))
 
 proc queryProperty*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, flags: cint, id: ptr cuint): cint =
-
   cint(fcQScriptClass_queryProperty(self.h, objectVal.h, name.h, cint(flags), id))
 
 proc property*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, id: cuint): gen_qscriptvalue.QScriptValue =
-
   gen_qscriptvalue.QScriptValue(h: fcQScriptClass_property(self.h, objectVal.h, name.h, id))
 
 proc setProperty*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, id: cuint, value: gen_qscriptvalue.QScriptValue): void =
-
   fcQScriptClass_setProperty(self.h, objectVal.h, name.h, id, value.h)
 
 proc propertyFlags*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, id: cuint): cint =
-
   cint(fcQScriptClass_propertyFlags(self.h, objectVal.h, name.h, id))
 
 proc newIterator*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue): gen_qscriptclasspropertyiterator.QScriptClassPropertyIterator =
-
   gen_qscriptclasspropertyiterator.QScriptClassPropertyIterator(h: fcQScriptClass_newIterator(self.h, objectVal.h))
 
 proc prototype*(self: gen_qscriptclass_types.QScriptClass, ): gen_qscriptvalue.QScriptValue =
-
   gen_qscriptvalue.QScriptValue(h: fcQScriptClass_prototype(self.h))
 
 proc name*(self: gen_qscriptclass_types.QScriptClass, ): string =
-
   let v_ms = fcQScriptClass_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportsExtension*(self: gen_qscriptclass_types.QScriptClass, extension: cint): bool =
-
   fcQScriptClass_supportsExtension(self.h, cint(extension))
 
 proc extension*(self: gen_qscriptclass_types.QScriptClass, extension: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQScriptClass_extension(self.h, cint(extension), argument.h))
 
 proc QScriptClassqueryProperty*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, flags: cint, id: ptr cuint): cint =
-
   cint(fQScriptClass_virtualbase_queryProperty(self.h, objectVal.h, name.h, cint(flags), id))
 
 type QScriptClassqueryPropertyProc* = proc(objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, flags: cint, id: ptr cuint): cint
@@ -169,7 +158,6 @@ proc miqt_exec_callback_QScriptClass_queryProperty(self: ptr cQScriptClass, slot
 
   cint(virtualReturn)
 proc QScriptClassproperty*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, id: cuint): gen_qscriptvalue.QScriptValue =
-
   gen_qscriptvalue.QScriptValue(h: fQScriptClass_virtualbase_property(self.h, objectVal.h, name.h, id))
 
 type QScriptClasspropertyProc* = proc(objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, id: cuint): gen_qscriptvalue.QScriptValue
@@ -193,7 +181,6 @@ proc miqt_exec_callback_QScriptClass_property(self: ptr cQScriptClass, slot: int
 
   virtualReturn.h
 proc QScriptClasssetProperty*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, id: cuint, value: gen_qscriptvalue.QScriptValue): void =
-
   fQScriptClass_virtualbase_setProperty(self.h, objectVal.h, name.h, id, value.h)
 
 type QScriptClasssetPropertyProc* = proc(objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, id: cuint, value: gen_qscriptvalue.QScriptValue): void
@@ -217,7 +204,6 @@ proc miqt_exec_callback_QScriptClass_setProperty(self: ptr cQScriptClass, slot: 
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QScriptClasspropertyFlags*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, id: cuint): cint =
-
   cint(fQScriptClass_virtualbase_propertyFlags(self.h, objectVal.h, name.h, id))
 
 type QScriptClasspropertyFlagsProc* = proc(objectVal: gen_qscriptvalue.QScriptValue, name: gen_qscriptstring.QScriptString, id: cuint): cint
@@ -241,7 +227,6 @@ proc miqt_exec_callback_QScriptClass_propertyFlags(self: ptr cQScriptClass, slot
 
   cint(virtualReturn)
 proc QScriptClassnewIterator*(self: gen_qscriptclass_types.QScriptClass, objectVal: gen_qscriptvalue.QScriptValue): gen_qscriptclasspropertyiterator.QScriptClassPropertyIterator =
-
   gen_qscriptclasspropertyiterator.QScriptClassPropertyIterator(h: fQScriptClass_virtualbase_newIterator(self.h, objectVal.h))
 
 type QScriptClassnewIteratorProc* = proc(objectVal: gen_qscriptvalue.QScriptValue): gen_qscriptclasspropertyiterator.QScriptClassPropertyIterator
@@ -261,7 +246,6 @@ proc miqt_exec_callback_QScriptClass_newIterator(self: ptr cQScriptClass, slot: 
 
   virtualReturn.h
 proc QScriptClassprototype*(self: gen_qscriptclass_types.QScriptClass, ): gen_qscriptvalue.QScriptValue =
-
   gen_qscriptvalue.QScriptValue(h: fQScriptClass_virtualbase_prototype(self.h))
 
 type QScriptClassprototypeProc* = proc(): gen_qscriptvalue.QScriptValue
@@ -279,7 +263,6 @@ proc miqt_exec_callback_QScriptClass_prototype(self: ptr cQScriptClass, slot: in
 
   virtualReturn.h
 proc QScriptClassname*(self: gen_qscriptclass_types.QScriptClass, ): string =
-
   let v_ms = fQScriptClass_virtualbase_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -300,7 +283,6 @@ proc miqt_exec_callback_QScriptClass_name(self: ptr cQScriptClass, slot: int): s
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QScriptClasssupportsExtension*(self: gen_qscriptclass_types.QScriptClass, extension: cint): bool =
-
   fQScriptClass_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QScriptClasssupportsExtensionProc* = proc(extension: cint): bool
@@ -320,7 +302,6 @@ proc miqt_exec_callback_QScriptClass_supportsExtension(self: ptr cQScriptClass, 
 
   virtualReturn
 proc QScriptClassextension*(self: gen_qscriptclass_types.QScriptClass, extension: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQScriptClass_virtualbase_extension(self.h, cint(extension), argument.h))
 
 type QScriptClassextensionProc* = proc(extension: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant

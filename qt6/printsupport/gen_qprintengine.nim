@@ -92,31 +92,24 @@ proc fcQPrintEngine_delete(self: pointer) {.importc: "QPrintEngine_delete".}
 func init*(T: type gen_qprintengine_types.QPrintEngine, h: ptr cQPrintEngine): gen_qprintengine_types.QPrintEngine =
   T(h: h)
 proc setProperty*(self: gen_qprintengine_types.QPrintEngine, key: cint, value: gen_qvariant.QVariant): void =
-
   fcQPrintEngine_setProperty(self.h, cint(key), value.h)
 
 proc property*(self: gen_qprintengine_types.QPrintEngine, key: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQPrintEngine_property(self.h, cint(key)))
 
 proc newPage*(self: gen_qprintengine_types.QPrintEngine, ): bool =
-
   fcQPrintEngine_newPage(self.h)
 
 proc abort*(self: gen_qprintengine_types.QPrintEngine, ): bool =
-
   fcQPrintEngine_abort(self.h)
 
 proc metric*(self: gen_qprintengine_types.QPrintEngine, param1: cint): cint =
-
   fcQPrintEngine_metric(self.h, cint(param1))
 
 proc printerState*(self: gen_qprintengine_types.QPrintEngine, ): cint =
-
   cint(fcQPrintEngine_printerState(self.h))
 
 proc operatorAssign*(self: gen_qprintengine_types.QPrintEngine, param1: gen_qprintengine_types.QPrintEngine): void =
-
   fcQPrintEngine_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qprintengine_types.QPrintEngine) =

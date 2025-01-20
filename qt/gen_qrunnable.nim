@@ -52,22 +52,18 @@ proc fcQRunnable_delete(self: pointer) {.importc: "QRunnable_delete".}
 func init*(T: type gen_qrunnable_types.QRunnable, h: ptr cQRunnable): gen_qrunnable_types.QRunnable =
   T(h: h)
 proc create*(T: type gen_qrunnable_types.QRunnable, ): gen_qrunnable_types.QRunnable =
-
   gen_qrunnable_types.QRunnable.init(fcQRunnable_new())
-proc run*(self: gen_qrunnable_types.QRunnable, ): void =
 
+proc run*(self: gen_qrunnable_types.QRunnable, ): void =
   fcQRunnable_run(self.h)
 
 proc autoDelete*(self: gen_qrunnable_types.QRunnable, ): bool =
-
   fcQRunnable_autoDelete(self.h)
 
 proc setAutoDelete*(self: gen_qrunnable_types.QRunnable, x_autoDelete: bool): void =
-
   fcQRunnable_setAutoDelete(self.h, x_autoDelete)
 
 proc operatorAssign*(self: gen_qrunnable_types.QRunnable, param1: gen_qrunnable_types.QRunnable): void =
-
   fcQRunnable_operatorAssign(self.h, param1.h)
 
 type QRunnablerunProc* = proc(): void

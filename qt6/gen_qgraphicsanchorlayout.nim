@@ -113,53 +113,42 @@ proc fcQGraphicsAnchorLayout_delete(self: pointer) {.importc: "QGraphicsAnchorLa
 func init*(T: type gen_qgraphicsanchorlayout_types.QGraphicsAnchor, h: ptr cQGraphicsAnchor): gen_qgraphicsanchorlayout_types.QGraphicsAnchor =
   T(h: h)
 proc metaObject*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsAnchor_metaObject(self.h))
 
 proc metacast*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor, param1: cstring): pointer =
-
   fcQGraphicsAnchor_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGraphicsAnchor_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgraphicsanchorlayout_types.QGraphicsAnchor, s: cstring): string =
-
   let v_ms = fcQGraphicsAnchor_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setSpacing*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor, spacing: float64): void =
-
   fcQGraphicsAnchor_setSpacing(self.h, spacing)
 
 proc unsetSpacing*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor, ): void =
-
   fcQGraphicsAnchor_unsetSpacing(self.h)
 
 proc spacing*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor, ): float64 =
-
   fcQGraphicsAnchor_spacing(self.h)
 
 proc setSizePolicy*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor, policy: cint): void =
-
   fcQGraphicsAnchor_setSizePolicy(self.h, cint(policy))
 
 proc sizePolicy*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor, ): cint =
-
   cint(fcQGraphicsAnchor_sizePolicy(self.h))
 
-proc tr2*(_: type gen_qgraphicsanchorlayout_types.QGraphicsAnchor, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qgraphicsanchorlayout_types.QGraphicsAnchor, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsAnchor_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgraphicsanchorlayout_types.QGraphicsAnchor, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgraphicsanchorlayout_types.QGraphicsAnchor, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsAnchor_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -173,73 +162,57 @@ proc delete*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchor) =
 func init*(T: type gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, h: ptr cQGraphicsAnchorLayout): gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout =
   T(h: h)
 proc create*(T: type gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, ): gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout =
-
   gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout.init(fcQGraphicsAnchorLayout_new())
+
 proc create*(T: type gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout =
-
   gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout.init(fcQGraphicsAnchorLayout_new2(parent.h))
-proc addAnchor*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, firstItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, firstEdge: cint, secondItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, secondEdge: cint): gen_qgraphicsanchorlayout_types.QGraphicsAnchor =
 
+proc addAnchor*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, firstItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, firstEdge: cint, secondItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, secondEdge: cint): gen_qgraphicsanchorlayout_types.QGraphicsAnchor =
   gen_qgraphicsanchorlayout_types.QGraphicsAnchor(h: fcQGraphicsAnchorLayout_addAnchor(self.h, firstItem.h, cint(firstEdge), secondItem.h, cint(secondEdge)))
 
 proc anchor*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, firstItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, firstEdge: cint, secondItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, secondEdge: cint): gen_qgraphicsanchorlayout_types.QGraphicsAnchor =
-
   gen_qgraphicsanchorlayout_types.QGraphicsAnchor(h: fcQGraphicsAnchorLayout_anchor(self.h, firstItem.h, cint(firstEdge), secondItem.h, cint(secondEdge)))
 
 proc addCornerAnchors*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, firstItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, firstCorner: cint, secondItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, secondCorner: cint): void =
-
   fcQGraphicsAnchorLayout_addCornerAnchors(self.h, firstItem.h, cint(firstCorner), secondItem.h, cint(secondCorner))
 
 proc addAnchors*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, firstItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, secondItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
-
   fcQGraphicsAnchorLayout_addAnchors(self.h, firstItem.h, secondItem.h)
 
 proc setHorizontalSpacing*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, spacing: float64): void =
-
   fcQGraphicsAnchorLayout_setHorizontalSpacing(self.h, spacing)
 
 proc setVerticalSpacing*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, spacing: float64): void =
-
   fcQGraphicsAnchorLayout_setVerticalSpacing(self.h, spacing)
 
 proc setSpacing*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, spacing: float64): void =
-
   fcQGraphicsAnchorLayout_setSpacing(self.h, spacing)
 
 proc horizontalSpacing*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, ): float64 =
-
   fcQGraphicsAnchorLayout_horizontalSpacing(self.h)
 
 proc verticalSpacing*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, ): float64 =
-
   fcQGraphicsAnchorLayout_verticalSpacing(self.h)
 
 proc removeAt*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, index: cint): void =
-
   fcQGraphicsAnchorLayout_removeAt(self.h, index)
 
 proc setGeometry*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, rect: gen_qrect.QRectF): void =
-
   fcQGraphicsAnchorLayout_setGeometry(self.h, rect.h)
 
 proc count*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, ): cint =
-
   fcQGraphicsAnchorLayout_count(self.h)
 
 proc itemAt*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
-
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fcQGraphicsAnchorLayout_itemAt(self.h, index))
 
 proc invalidate*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, ): void =
-
   fcQGraphicsAnchorLayout_invalidate(self.h)
 
-proc addAnchors3*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, firstItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, secondItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, orientations: cint): void =
-
+proc addAnchors*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, firstItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, secondItem: gen_qgraphicslayoutitem.QGraphicsLayoutItem, orientations: cint): void =
   fcQGraphicsAnchorLayout_addAnchors3(self.h, firstItem.h, secondItem.h, cint(orientations))
 
 proc QGraphicsAnchorLayoutremoveAt*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, index: cint): void =
-
   fQGraphicsAnchorLayout_virtualbase_removeAt(self.h, index)
 
 type QGraphicsAnchorLayoutremoveAtProc* = proc(index: cint): void
@@ -257,7 +230,6 @@ proc miqt_exec_callback_QGraphicsAnchorLayout_removeAt(self: ptr cQGraphicsAncho
 
   nimfunc[](slotval1)
 proc QGraphicsAnchorLayoutsetGeometry*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, rect: gen_qrect.QRectF): void =
-
   fQGraphicsAnchorLayout_virtualbase_setGeometry(self.h, rect.h)
 
 type QGraphicsAnchorLayoutsetGeometryProc* = proc(rect: gen_qrect.QRectF): void
@@ -275,7 +247,6 @@ proc miqt_exec_callback_QGraphicsAnchorLayout_setGeometry(self: ptr cQGraphicsAn
 
   nimfunc[](slotval1)
 proc QGraphicsAnchorLayoutcount*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, ): cint =
-
   fQGraphicsAnchorLayout_virtualbase_count(self.h)
 
 type QGraphicsAnchorLayoutcountProc* = proc(): cint
@@ -293,7 +264,6 @@ proc miqt_exec_callback_QGraphicsAnchorLayout_count(self: ptr cQGraphicsAnchorLa
 
   virtualReturn
 proc QGraphicsAnchorLayoutitemAt*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
-
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fQGraphicsAnchorLayout_virtualbase_itemAt(self.h, index))
 
 type QGraphicsAnchorLayoutitemAtProc* = proc(index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
@@ -313,7 +283,6 @@ proc miqt_exec_callback_QGraphicsAnchorLayout_itemAt(self: ptr cQGraphicsAnchorL
 
   virtualReturn.h
 proc QGraphicsAnchorLayoutinvalidate*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, ): void =
-
   fQGraphicsAnchorLayout_virtualbase_invalidate(self.h)
 
 type QGraphicsAnchorLayoutinvalidateProc* = proc(): void
@@ -329,7 +298,6 @@ proc miqt_exec_callback_QGraphicsAnchorLayout_invalidate(self: ptr cQGraphicsAnc
 
   nimfunc[]()
 proc QGraphicsAnchorLayoutsizeHint*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fQGraphicsAnchorLayout_virtualbase_sizeHint(self.h, cint(which), constraint.h))
 
 type QGraphicsAnchorLayoutsizeHintProc* = proc(which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
@@ -351,7 +319,6 @@ proc miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(self: ptr cQGraphicsAncho
 
   virtualReturn.h
 proc QGraphicsAnchorLayoutgetContentsMargins*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
   fQGraphicsAnchorLayout_virtualbase_getContentsMargins(self.h, left, top, right, bottom)
 
 type QGraphicsAnchorLayoutgetContentsMarginsProc* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
@@ -375,7 +342,6 @@ proc miqt_exec_callback_QGraphicsAnchorLayout_getContentsMargins(self: ptr cQGra
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QGraphicsAnchorLayoutupdateGeometry*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, ): void =
-
   fQGraphicsAnchorLayout_virtualbase_updateGeometry(self.h)
 
 type QGraphicsAnchorLayoutupdateGeometryProc* = proc(): void
@@ -391,7 +357,6 @@ proc miqt_exec_callback_QGraphicsAnchorLayout_updateGeometry(self: ptr cQGraphic
 
   nimfunc[]()
 proc QGraphicsAnchorLayoutwidgetEvent*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, e: gen_qcoreevent.QEvent): void =
-
   fQGraphicsAnchorLayout_virtualbase_widgetEvent(self.h, e.h)
 
 type QGraphicsAnchorLayoutwidgetEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -409,7 +374,6 @@ proc miqt_exec_callback_QGraphicsAnchorLayout_widgetEvent(self: ptr cQGraphicsAn
 
   nimfunc[](slotval1)
 proc QGraphicsAnchorLayoutisEmpty*(self: gen_qgraphicsanchorlayout_types.QGraphicsAnchorLayout, ): bool =
-
   fQGraphicsAnchorLayout_virtualbase_isEmpty(self.h)
 
 type QGraphicsAnchorLayoutisEmptyProc* = proc(): bool

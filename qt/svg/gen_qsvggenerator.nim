@@ -91,83 +91,66 @@ proc fcQSvgGenerator_delete(self: pointer) {.importc: "QSvgGenerator_delete".}
 func init*(T: type gen_qsvggenerator_types.QSvgGenerator, h: ptr cQSvgGenerator): gen_qsvggenerator_types.QSvgGenerator =
   T(h: h)
 proc create*(T: type gen_qsvggenerator_types.QSvgGenerator, ): gen_qsvggenerator_types.QSvgGenerator =
-
   gen_qsvggenerator_types.QSvgGenerator.init(fcQSvgGenerator_new())
-proc title*(self: gen_qsvggenerator_types.QSvgGenerator, ): string =
 
+proc title*(self: gen_qsvggenerator_types.QSvgGenerator, ): string =
   let v_ms = fcQSvgGenerator_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTitle*(self: gen_qsvggenerator_types.QSvgGenerator, title: string): void =
-
   fcQSvgGenerator_setTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
 proc description*(self: gen_qsvggenerator_types.QSvgGenerator, ): string =
-
   let v_ms = fcQSvgGenerator_description(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDescription*(self: gen_qsvggenerator_types.QSvgGenerator, description: string): void =
-
   fcQSvgGenerator_setDescription(self.h, struct_miqt_string(data: description, len: csize_t(len(description))))
 
 proc size*(self: gen_qsvggenerator_types.QSvgGenerator, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSvgGenerator_size(self.h))
 
 proc setSize*(self: gen_qsvggenerator_types.QSvgGenerator, size: gen_qsize.QSize): void =
-
   fcQSvgGenerator_setSize(self.h, size.h)
 
 proc viewBox*(self: gen_qsvggenerator_types.QSvgGenerator, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQSvgGenerator_viewBox(self.h))
 
 proc viewBoxF*(self: gen_qsvggenerator_types.QSvgGenerator, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQSvgGenerator_viewBoxF(self.h))
 
 proc setViewBox*(self: gen_qsvggenerator_types.QSvgGenerator, viewBox: gen_qrect.QRect): void =
-
   fcQSvgGenerator_setViewBox(self.h, viewBox.h)
 
-proc setViewBoxWithViewBox*(self: gen_qsvggenerator_types.QSvgGenerator, viewBox: gen_qrect.QRectF): void =
-
+proc setViewBox*(self: gen_qsvggenerator_types.QSvgGenerator, viewBox: gen_qrect.QRectF): void =
   fcQSvgGenerator_setViewBoxWithViewBox(self.h, viewBox.h)
 
 proc fileName*(self: gen_qsvggenerator_types.QSvgGenerator, ): string =
-
   let v_ms = fcQSvgGenerator_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFileName*(self: gen_qsvggenerator_types.QSvgGenerator, fileName: string): void =
-
   fcQSvgGenerator_setFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc outputDevice*(self: gen_qsvggenerator_types.QSvgGenerator, ): gen_qiodevice.QIODevice =
-
   gen_qiodevice.QIODevice(h: fcQSvgGenerator_outputDevice(self.h))
 
 proc setOutputDevice*(self: gen_qsvggenerator_types.QSvgGenerator, outputDevice: gen_qiodevice.QIODevice): void =
-
   fcQSvgGenerator_setOutputDevice(self.h, outputDevice.h)
 
 proc setResolution*(self: gen_qsvggenerator_types.QSvgGenerator, dpi: cint): void =
-
   fcQSvgGenerator_setResolution(self.h, dpi)
 
 proc resolution*(self: gen_qsvggenerator_types.QSvgGenerator, ): cint =
-
   fcQSvgGenerator_resolution(self.h)
 
 proc QSvgGeneratorpaintEngine*(self: gen_qsvggenerator_types.QSvgGenerator, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQSvgGenerator_virtualbase_paintEngine(self.h))
 
 type QSvgGeneratorpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -185,7 +168,6 @@ proc miqt_exec_callback_QSvgGenerator_paintEngine(self: ptr cQSvgGenerator, slot
 
   virtualReturn.h
 proc QSvgGeneratormetric*(self: gen_qsvggenerator_types.QSvgGenerator, metric: cint): cint =
-
   fQSvgGenerator_virtualbase_metric(self.h, cint(metric))
 
 type QSvgGeneratormetricProc* = proc(metric: cint): cint
@@ -205,7 +187,6 @@ proc miqt_exec_callback_QSvgGenerator_metric(self: ptr cQSvgGenerator, slot: int
 
   virtualReturn
 proc QSvgGeneratordevType*(self: gen_qsvggenerator_types.QSvgGenerator, ): cint =
-
   fQSvgGenerator_virtualbase_devType(self.h)
 
 type QSvgGeneratordevTypeProc* = proc(): cint
@@ -223,7 +204,6 @@ proc miqt_exec_callback_QSvgGenerator_devType(self: ptr cQSvgGenerator, slot: in
 
   virtualReturn
 proc QSvgGeneratorinitPainter*(self: gen_qsvggenerator_types.QSvgGenerator, painter: gen_qpainter.QPainter): void =
-
   fQSvgGenerator_virtualbase_initPainter(self.h, painter.h)
 
 type QSvgGeneratorinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -241,7 +221,6 @@ proc miqt_exec_callback_QSvgGenerator_initPainter(self: ptr cQSvgGenerator, slot
 
   nimfunc[](slotval1)
 proc QSvgGeneratorredirected*(self: gen_qsvggenerator_types.QSvgGenerator, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQSvgGenerator_virtualbase_redirected(self.h, offset.h))
 
 type QSvgGeneratorredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -261,7 +240,6 @@ proc miqt_exec_callback_QSvgGenerator_redirected(self: ptr cQSvgGenerator, slot:
 
   virtualReturn.h
 proc QSvgGeneratorsharedPainter*(self: gen_qsvggenerator_types.QSvgGenerator, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQSvgGenerator_virtualbase_sharedPainter(self.h))
 
 type QSvgGeneratorsharedPainterProc* = proc(): gen_qpainter.QPainter

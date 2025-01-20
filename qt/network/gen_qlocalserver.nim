@@ -125,168 +125,137 @@ proc fcQLocalServer_delete(self: pointer) {.importc: "QLocalServer_delete".}
 func init*(T: type gen_qlocalserver_types.QLocalServer, h: ptr cQLocalServer): gen_qlocalserver_types.QLocalServer =
   T(h: h)
 proc create*(T: type gen_qlocalserver_types.QLocalServer, ): gen_qlocalserver_types.QLocalServer =
-
   gen_qlocalserver_types.QLocalServer.init(fcQLocalServer_new())
+
 proc create*(T: type gen_qlocalserver_types.QLocalServer, parent: gen_qobject.QObject): gen_qlocalserver_types.QLocalServer =
-
   gen_qlocalserver_types.QLocalServer.init(fcQLocalServer_new2(parent.h))
-proc metaObject*(self: gen_qlocalserver_types.QLocalServer, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qlocalserver_types.QLocalServer, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQLocalServer_metaObject(self.h))
 
 proc metacast*(self: gen_qlocalserver_types.QLocalServer, param1: cstring): pointer =
-
   fcQLocalServer_metacast(self.h, param1)
 
 proc metacall*(self: gen_qlocalserver_types.QLocalServer, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQLocalServer_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qlocalserver_types.QLocalServer, s: cstring): string =
-
   let v_ms = fcQLocalServer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qlocalserver_types.QLocalServer, s: cstring): string =
-
   let v_ms = fcQLocalServer_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc newConnection*(self: gen_qlocalserver_types.QLocalServer, ): void =
-
   fcQLocalServer_newConnection(self.h)
 
+type QLocalServernewConnectionSlot* = proc()
 proc miqt_exec_callback_QLocalServer_newConnection(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QLocalServernewConnectionSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onnewConnection*(self: gen_qlocalserver_types.QLocalServer, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onnewConnection*(self: gen_qlocalserver_types.QLocalServer, slot: QLocalServernewConnectionSlot) =
+  var tmp = new QLocalServernewConnectionSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLocalServer_connect_newConnection(self.h, cast[int](addr tmp[]))
-proc close*(self: gen_qlocalserver_types.QLocalServer, ): void =
 
+proc close*(self: gen_qlocalserver_types.QLocalServer, ): void =
   fcQLocalServer_close(self.h)
 
 proc errorString*(self: gen_qlocalserver_types.QLocalServer, ): string =
-
   let v_ms = fcQLocalServer_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc hasPendingConnections*(self: gen_qlocalserver_types.QLocalServer, ): bool =
-
   fcQLocalServer_hasPendingConnections(self.h)
 
 proc isListening*(self: gen_qlocalserver_types.QLocalServer, ): bool =
-
   fcQLocalServer_isListening(self.h)
 
 proc listen*(self: gen_qlocalserver_types.QLocalServer, name: string): bool =
-
   fcQLocalServer_listen(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
-proc listenWithSocketDescriptor*(self: gen_qlocalserver_types.QLocalServer, socketDescriptor: uint): bool =
-
+proc listen*(self: gen_qlocalserver_types.QLocalServer, socketDescriptor: uint): bool =
   fcQLocalServer_listenWithSocketDescriptor(self.h, socketDescriptor)
 
 proc maxPendingConnections*(self: gen_qlocalserver_types.QLocalServer, ): cint =
-
   fcQLocalServer_maxPendingConnections(self.h)
 
 proc nextPendingConnection*(self: gen_qlocalserver_types.QLocalServer, ): gen_qlocalsocket.QLocalSocket =
-
   gen_qlocalsocket.QLocalSocket(h: fcQLocalServer_nextPendingConnection(self.h))
 
 proc serverName*(self: gen_qlocalserver_types.QLocalServer, ): string =
-
   let v_ms = fcQLocalServer_serverName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc fullServerName*(self: gen_qlocalserver_types.QLocalServer, ): string =
-
   let v_ms = fcQLocalServer_fullServerName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc removeServer*(_: type gen_qlocalserver_types.QLocalServer, name: string): bool =
-
   fcQLocalServer_removeServer(struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc serverError*(self: gen_qlocalserver_types.QLocalServer, ): cint =
-
   cint(fcQLocalServer_serverError(self.h))
 
 proc setMaxPendingConnections*(self: gen_qlocalserver_types.QLocalServer, numConnections: cint): void =
-
   fcQLocalServer_setMaxPendingConnections(self.h, numConnections)
 
 proc waitForNewConnection*(self: gen_qlocalserver_types.QLocalServer, ): bool =
-
   fcQLocalServer_waitForNewConnection(self.h)
 
 proc setSocketOptions*(self: gen_qlocalserver_types.QLocalServer, options: cint): void =
-
   fcQLocalServer_setSocketOptions(self.h, cint(options))
 
 proc socketOptions*(self: gen_qlocalserver_types.QLocalServer, ): cint =
-
   cint(fcQLocalServer_socketOptions(self.h))
 
 proc socketDescriptor*(self: gen_qlocalserver_types.QLocalServer, ): uint =
-
   fcQLocalServer_socketDescriptor(self.h)
 
-proc tr2*(_: type gen_qlocalserver_types.QLocalServer, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qlocalserver_types.QLocalServer, s: cstring, c: cstring): string =
   let v_ms = fcQLocalServer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qlocalserver_types.QLocalServer, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qlocalserver_types.QLocalServer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQLocalServer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qlocalserver_types.QLocalServer, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qlocalserver_types.QLocalServer, s: cstring, c: cstring): string =
   let v_ms = fcQLocalServer_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qlocalserver_types.QLocalServer, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qlocalserver_types.QLocalServer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQLocalServer_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc waitForNewConnection1*(self: gen_qlocalserver_types.QLocalServer, msec: cint): bool =
-
+proc waitForNewConnection*(self: gen_qlocalserver_types.QLocalServer, msec: cint): bool =
   fcQLocalServer_waitForNewConnection1(self.h, msec)
 
-proc waitForNewConnection2*(self: gen_qlocalserver_types.QLocalServer, msec: cint, timedOut: ptr bool): bool =
-
+proc waitForNewConnection*(self: gen_qlocalserver_types.QLocalServer, msec: cint, timedOut: ptr bool): bool =
   fcQLocalServer_waitForNewConnection2(self.h, msec, timedOut)
 
 proc QLocalServermetaObject*(self: gen_qlocalserver_types.QLocalServer, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQLocalServer_virtualbase_metaObject(self.h))
 
 type QLocalServermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -304,7 +273,6 @@ proc miqt_exec_callback_QLocalServer_metaObject(self: ptr cQLocalServer, slot: i
 
   virtualReturn.h
 proc QLocalServermetacast*(self: gen_qlocalserver_types.QLocalServer, param1: cstring): pointer =
-
   fQLocalServer_virtualbase_metacast(self.h, param1)
 
 type QLocalServermetacastProc* = proc(param1: cstring): pointer
@@ -324,7 +292,6 @@ proc miqt_exec_callback_QLocalServer_metacast(self: ptr cQLocalServer, slot: int
 
   virtualReturn
 proc QLocalServermetacall*(self: gen_qlocalserver_types.QLocalServer, param1: cint, param2: cint, param3: pointer): cint =
-
   fQLocalServer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QLocalServermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -348,7 +315,6 @@ proc miqt_exec_callback_QLocalServer_metacall(self: ptr cQLocalServer, slot: int
 
   virtualReturn
 proc QLocalServerhasPendingConnections*(self: gen_qlocalserver_types.QLocalServer, ): bool =
-
   fQLocalServer_virtualbase_hasPendingConnections(self.h)
 
 type QLocalServerhasPendingConnectionsProc* = proc(): bool
@@ -366,7 +332,6 @@ proc miqt_exec_callback_QLocalServer_hasPendingConnections(self: ptr cQLocalServ
 
   virtualReturn
 proc QLocalServernextPendingConnection*(self: gen_qlocalserver_types.QLocalServer, ): gen_qlocalsocket.QLocalSocket =
-
   gen_qlocalsocket.QLocalSocket(h: fQLocalServer_virtualbase_nextPendingConnection(self.h))
 
 type QLocalServernextPendingConnectionProc* = proc(): gen_qlocalsocket.QLocalSocket
@@ -384,7 +349,6 @@ proc miqt_exec_callback_QLocalServer_nextPendingConnection(self: ptr cQLocalServ
 
   virtualReturn.h
 proc QLocalServerincomingConnection*(self: gen_qlocalserver_types.QLocalServer, socketDescriptor: uint): void =
-
   fQLocalServer_virtualbase_incomingConnection(self.h, socketDescriptor)
 
 type QLocalServerincomingConnectionProc* = proc(socketDescriptor: uint): void
@@ -402,7 +366,6 @@ proc miqt_exec_callback_QLocalServer_incomingConnection(self: ptr cQLocalServer,
 
   nimfunc[](slotval1)
 proc QLocalServerevent*(self: gen_qlocalserver_types.QLocalServer, event: gen_qcoreevent.QEvent): bool =
-
   fQLocalServer_virtualbase_event(self.h, event.h)
 
 type QLocalServereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -422,7 +385,6 @@ proc miqt_exec_callback_QLocalServer_event(self: ptr cQLocalServer, slot: int, e
 
   virtualReturn
 proc QLocalServereventFilter*(self: gen_qlocalserver_types.QLocalServer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQLocalServer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QLocalServereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -444,7 +406,6 @@ proc miqt_exec_callback_QLocalServer_eventFilter(self: ptr cQLocalServer, slot: 
 
   virtualReturn
 proc QLocalServertimerEvent*(self: gen_qlocalserver_types.QLocalServer, event: gen_qcoreevent.QTimerEvent): void =
-
   fQLocalServer_virtualbase_timerEvent(self.h, event.h)
 
 type QLocalServertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -462,7 +423,6 @@ proc miqt_exec_callback_QLocalServer_timerEvent(self: ptr cQLocalServer, slot: i
 
   nimfunc[](slotval1)
 proc QLocalServerchildEvent*(self: gen_qlocalserver_types.QLocalServer, event: gen_qcoreevent.QChildEvent): void =
-
   fQLocalServer_virtualbase_childEvent(self.h, event.h)
 
 type QLocalServerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -480,7 +440,6 @@ proc miqt_exec_callback_QLocalServer_childEvent(self: ptr cQLocalServer, slot: i
 
   nimfunc[](slotval1)
 proc QLocalServercustomEvent*(self: gen_qlocalserver_types.QLocalServer, event: gen_qcoreevent.QEvent): void =
-
   fQLocalServer_virtualbase_customEvent(self.h, event.h)
 
 type QLocalServercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -498,7 +457,6 @@ proc miqt_exec_callback_QLocalServer_customEvent(self: ptr cQLocalServer, slot: 
 
   nimfunc[](slotval1)
 proc QLocalServerconnectNotify*(self: gen_qlocalserver_types.QLocalServer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLocalServer_virtualbase_connectNotify(self.h, signal.h)
 
 type QLocalServerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -516,7 +474,6 @@ proc miqt_exec_callback_QLocalServer_connectNotify(self: ptr cQLocalServer, slot
 
   nimfunc[](slotval1)
 proc QLocalServerdisconnectNotify*(self: gen_qlocalserver_types.QLocalServer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLocalServer_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QLocalServerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

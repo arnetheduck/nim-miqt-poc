@@ -182,102 +182,84 @@ proc fcQsciLexerMakefile_delete(self: pointer) {.importc: "QsciLexerMakefile_del
 func init*(T: type gen_qscilexermakefile_types.QsciLexerMakefile, h: ptr cQsciLexerMakefile): gen_qscilexermakefile_types.QsciLexerMakefile =
   T(h: h)
 proc create*(T: type gen_qscilexermakefile_types.QsciLexerMakefile, ): gen_qscilexermakefile_types.QsciLexerMakefile =
-
   gen_qscilexermakefile_types.QsciLexerMakefile.init(fcQsciLexerMakefile_new())
+
 proc create*(T: type gen_qscilexermakefile_types.QsciLexerMakefile, parent: gen_qobject.QObject): gen_qscilexermakefile_types.QsciLexerMakefile =
-
   gen_qscilexermakefile_types.QsciLexerMakefile.init(fcQsciLexerMakefile_new2(parent.h))
-proc metaObject*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerMakefile_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexermakefile_types.QsciLexerMakefile, param1: cstring): pointer =
-
   fcQsciLexerMakefile_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexermakefile_types.QsciLexerMakefile, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerMakefile_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring): string =
-
   let v_ms = fcQsciLexerMakefile_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring): string =
-
   let v_ms = fcQsciLexerMakefile_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cstring =
-
   (fcQsciLexerMakefile_language(self.h))
 
 proc lexer*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cstring =
-
   (fcQsciLexerMakefile_lexer(self.h))
 
 proc wordCharacters*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cstring =
-
   (fcQsciLexerMakefile_wordCharacters(self.h))
 
 proc defaultColor*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerMakefile_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): bool =
-
   fcQsciLexerMakefile_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerMakefile_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerMakefile_defaultPaper(self.h, style))
 
 proc description*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): string =
-
   let v_ms = fcQsciLexerMakefile_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerMakefile_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerMakefile_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerMakefile_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexermakefile_types.QsciLexerMakefile, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerMakefile_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerMakefilemetaObject*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerMakefile_virtualbase_metaObject(self.h))
 
 type QsciLexerMakefilemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -295,7 +277,6 @@ proc miqt_exec_callback_QsciLexerMakefile_metaObject(self: ptr cQsciLexerMakefil
 
   virtualReturn.h
 proc QsciLexerMakefilemetacast*(self: gen_qscilexermakefile_types.QsciLexerMakefile, param1: cstring): pointer =
-
   fQsciLexerMakefile_virtualbase_metacast(self.h, param1)
 
 type QsciLexerMakefilemetacastProc* = proc(param1: cstring): pointer
@@ -315,7 +296,6 @@ proc miqt_exec_callback_QsciLexerMakefile_metacast(self: ptr cQsciLexerMakefile,
 
   virtualReturn
 proc QsciLexerMakefilemetacall*(self: gen_qscilexermakefile_types.QsciLexerMakefile, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerMakefile_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerMakefilemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -353,7 +333,6 @@ proc miqt_exec_callback_QsciLexerMakefile_language(self: ptr cQsciLexerMakefile,
 
   virtualReturn
 proc QsciLexerMakefilelexer*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cstring =
-
   (fQsciLexerMakefile_virtualbase_lexer(self.h))
 
 type QsciLexerMakefilelexerProc* = proc(): cstring
@@ -371,7 +350,6 @@ proc miqt_exec_callback_QsciLexerMakefile_lexer(self: ptr cQsciLexerMakefile, sl
 
   virtualReturn
 proc QsciLexerMakefilelexerId*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cint =
-
   fQsciLexerMakefile_virtualbase_lexerId(self.h)
 
 type QsciLexerMakefilelexerIdProc* = proc(): cint
@@ -389,7 +367,6 @@ proc miqt_exec_callback_QsciLexerMakefile_lexerId(self: ptr cQsciLexerMakefile, 
 
   virtualReturn
 proc QsciLexerMakefileautoCompletionFillups*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cstring =
-
   (fQsciLexerMakefile_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerMakefileautoCompletionFillupsProc* = proc(): cstring
@@ -407,7 +384,6 @@ proc miqt_exec_callback_QsciLexerMakefile_autoCompletionFillups(self: ptr cQsciL
 
   virtualReturn
 proc QsciLexerMakefileautoCompletionWordSeparators*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): seq[string] =
-
   var v_ma = fQsciLexerMakefile_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -437,7 +413,6 @@ proc miqt_exec_callback_QsciLexerMakefile_autoCompletionWordSeparators(self: ptr
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerMakefileblockEnd*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: ptr cint): cstring =
-
   (fQsciLexerMakefile_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerMakefileblockEndProc* = proc(style: ptr cint): cstring
@@ -457,7 +432,6 @@ proc miqt_exec_callback_QsciLexerMakefile_blockEnd(self: ptr cQsciLexerMakefile,
 
   virtualReturn
 proc QsciLexerMakefileblockLookback*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cint =
-
   fQsciLexerMakefile_virtualbase_blockLookback(self.h)
 
 type QsciLexerMakefileblockLookbackProc* = proc(): cint
@@ -475,7 +449,6 @@ proc miqt_exec_callback_QsciLexerMakefile_blockLookback(self: ptr cQsciLexerMake
 
   virtualReturn
 proc QsciLexerMakefileblockStart*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: ptr cint): cstring =
-
   (fQsciLexerMakefile_virtualbase_blockStart(self.h, style))
 
 type QsciLexerMakefileblockStartProc* = proc(style: ptr cint): cstring
@@ -495,7 +468,6 @@ proc miqt_exec_callback_QsciLexerMakefile_blockStart(self: ptr cQsciLexerMakefil
 
   virtualReturn
 proc QsciLexerMakefileblockStartKeyword*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: ptr cint): cstring =
-
   (fQsciLexerMakefile_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerMakefileblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -515,7 +487,6 @@ proc miqt_exec_callback_QsciLexerMakefile_blockStartKeyword(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerMakefilebraceStyle*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cint =
-
   fQsciLexerMakefile_virtualbase_braceStyle(self.h)
 
 type QsciLexerMakefilebraceStyleProc* = proc(): cint
@@ -533,7 +504,6 @@ proc miqt_exec_callback_QsciLexerMakefile_braceStyle(self: ptr cQsciLexerMakefil
 
   virtualReturn
 proc QsciLexerMakefilecaseSensitive*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): bool =
-
   fQsciLexerMakefile_virtualbase_caseSensitive(self.h)
 
 type QsciLexerMakefilecaseSensitiveProc* = proc(): bool
@@ -551,7 +521,6 @@ proc miqt_exec_callback_QsciLexerMakefile_caseSensitive(self: ptr cQsciLexerMake
 
   virtualReturn
 proc QsciLexerMakefilecolor*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerMakefile_virtualbase_color(self.h, style))
 
 type QsciLexerMakefilecolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -571,7 +540,6 @@ proc miqt_exec_callback_QsciLexerMakefile_color(self: ptr cQsciLexerMakefile, sl
 
   virtualReturn.h
 proc QsciLexerMakefileeolFill*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): bool =
-
   fQsciLexerMakefile_virtualbase_eolFill(self.h, style)
 
 type QsciLexerMakefileeolFillProc* = proc(style: cint): bool
@@ -591,7 +559,6 @@ proc miqt_exec_callback_QsciLexerMakefile_eolFill(self: ptr cQsciLexerMakefile, 
 
   virtualReturn
 proc QsciLexerMakefilefont*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerMakefile_virtualbase_font(self.h, style))
 
 type QsciLexerMakefilefontProc* = proc(style: cint): gen_qfont.QFont
@@ -611,7 +578,6 @@ proc miqt_exec_callback_QsciLexerMakefile_font(self: ptr cQsciLexerMakefile, slo
 
   virtualReturn.h
 proc QsciLexerMakefileindentationGuideView*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cint =
-
   fQsciLexerMakefile_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerMakefileindentationGuideViewProc* = proc(): cint
@@ -629,7 +595,6 @@ proc miqt_exec_callback_QsciLexerMakefile_indentationGuideView(self: ptr cQsciLe
 
   virtualReturn
 proc QsciLexerMakefilekeywords*(self: gen_qscilexermakefile_types.QsciLexerMakefile, set: cint): cstring =
-
   (fQsciLexerMakefile_virtualbase_keywords(self.h, set))
 
 type QsciLexerMakefilekeywordsProc* = proc(set: cint): cstring
@@ -649,7 +614,6 @@ proc miqt_exec_callback_QsciLexerMakefile_keywords(self: ptr cQsciLexerMakefile,
 
   virtualReturn
 proc QsciLexerMakefiledefaultStyle*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cint =
-
   fQsciLexerMakefile_virtualbase_defaultStyle(self.h)
 
 type QsciLexerMakefiledefaultStyleProc* = proc(): cint
@@ -683,7 +647,6 @@ proc miqt_exec_callback_QsciLexerMakefile_description(self: ptr cQsciLexerMakefi
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerMakefilepaper*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerMakefile_virtualbase_paper(self.h, style))
 
 type QsciLexerMakefilepaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -702,12 +665,11 @@ proc miqt_exec_callback_QsciLexerMakefile_paper(self: ptr cQsciLexerMakefile, sl
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerMakefiledefaultColorWithStyle*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerMakefiledefaultColor*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerMakefile_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerMakefiledefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexermakefile_types.QsciLexerMakefile, slot: QsciLexerMakefiledefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexermakefile_types.QsciLexerMakefile, slot: QsciLexerMakefiledefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerMakefiledefaultColorWithStyleProc
   tmp[] = slot
@@ -723,7 +685,6 @@ proc miqt_exec_callback_QsciLexerMakefile_defaultColorWithStyle(self: ptr cQsciL
 
   virtualReturn.h
 proc QsciLexerMakefiledefaultEolFill*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): bool =
-
   fQsciLexerMakefile_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerMakefiledefaultEolFillProc* = proc(style: cint): bool
@@ -742,12 +703,11 @@ proc miqt_exec_callback_QsciLexerMakefile_defaultEolFill(self: ptr cQsciLexerMak
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerMakefiledefaultFontWithStyle*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qfont.QFont =
-
+proc QsciLexerMakefiledefaultFont*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerMakefile_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerMakefiledefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexermakefile_types.QsciLexerMakefile, slot: QsciLexerMakefiledefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexermakefile_types.QsciLexerMakefile, slot: QsciLexerMakefiledefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerMakefiledefaultFontWithStyleProc
   tmp[] = slot
@@ -762,12 +722,11 @@ proc miqt_exec_callback_QsciLexerMakefile_defaultFontWithStyle(self: ptr cQsciLe
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerMakefiledefaultPaperWithStyle*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerMakefiledefaultPaper*(self: gen_qscilexermakefile_types.QsciLexerMakefile, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerMakefile_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerMakefiledefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexermakefile_types.QsciLexerMakefile, slot: QsciLexerMakefiledefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexermakefile_types.QsciLexerMakefile, slot: QsciLexerMakefiledefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerMakefiledefaultPaperWithStyleProc
   tmp[] = slot
@@ -783,7 +742,6 @@ proc miqt_exec_callback_QsciLexerMakefile_defaultPaperWithStyle(self: ptr cQsciL
 
   virtualReturn.h
 proc QsciLexerMakefilesetEditor*(self: gen_qscilexermakefile_types.QsciLexerMakefile, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerMakefile_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerMakefilesetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -801,7 +759,6 @@ proc miqt_exec_callback_QsciLexerMakefile_setEditor(self: ptr cQsciLexerMakefile
 
   nimfunc[](slotval1)
 proc QsciLexerMakefilerefreshProperties*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): void =
-
   fQsciLexerMakefile_virtualbase_refreshProperties(self.h)
 
 type QsciLexerMakefilerefreshPropertiesProc* = proc(): void
@@ -817,7 +774,6 @@ proc miqt_exec_callback_QsciLexerMakefile_refreshProperties(self: ptr cQsciLexer
 
   nimfunc[]()
 proc QsciLexerMakefilestyleBitsNeeded*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cint =
-
   fQsciLexerMakefile_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerMakefilestyleBitsNeededProc* = proc(): cint
@@ -835,7 +791,6 @@ proc miqt_exec_callback_QsciLexerMakefile_styleBitsNeeded(self: ptr cQsciLexerMa
 
   virtualReturn
 proc QsciLexerMakefilewordCharacters*(self: gen_qscilexermakefile_types.QsciLexerMakefile, ): cstring =
-
   (fQsciLexerMakefile_virtualbase_wordCharacters(self.h))
 
 type QsciLexerMakefilewordCharactersProc* = proc(): cstring
@@ -853,7 +808,6 @@ proc miqt_exec_callback_QsciLexerMakefile_wordCharacters(self: ptr cQsciLexerMak
 
   virtualReturn
 proc QsciLexerMakefilesetAutoIndentStyle*(self: gen_qscilexermakefile_types.QsciLexerMakefile, autoindentstyle: cint): void =
-
   fQsciLexerMakefile_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerMakefilesetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -871,7 +825,6 @@ proc miqt_exec_callback_QsciLexerMakefile_setAutoIndentStyle(self: ptr cQsciLexe
 
   nimfunc[](slotval1)
 proc QsciLexerMakefilesetColor*(self: gen_qscilexermakefile_types.QsciLexerMakefile, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerMakefile_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerMakefilesetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -891,7 +844,6 @@ proc miqt_exec_callback_QsciLexerMakefile_setColor(self: ptr cQsciLexerMakefile,
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerMakefilesetEolFill*(self: gen_qscilexermakefile_types.QsciLexerMakefile, eoffill: bool, style: cint): void =
-
   fQsciLexerMakefile_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerMakefilesetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -911,7 +863,6 @@ proc miqt_exec_callback_QsciLexerMakefile_setEolFill(self: ptr cQsciLexerMakefil
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerMakefilesetFont*(self: gen_qscilexermakefile_types.QsciLexerMakefile, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerMakefile_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerMakefilesetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -931,7 +882,6 @@ proc miqt_exec_callback_QsciLexerMakefile_setFont(self: ptr cQsciLexerMakefile, 
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerMakefilesetPaper*(self: gen_qscilexermakefile_types.QsciLexerMakefile, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerMakefile_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerMakefilesetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -951,7 +901,6 @@ proc miqt_exec_callback_QsciLexerMakefile_setPaper(self: ptr cQsciLexerMakefile,
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerMakefilereadProperties*(self: gen_qscilexermakefile_types.QsciLexerMakefile, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerMakefile_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerMakefilereadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -976,7 +925,6 @@ proc miqt_exec_callback_QsciLexerMakefile_readProperties(self: ptr cQsciLexerMak
 
   virtualReturn
 proc QsciLexerMakefilewriteProperties*(self: gen_qscilexermakefile_types.QsciLexerMakefile, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerMakefile_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerMakefilewritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1001,7 +949,6 @@ proc miqt_exec_callback_QsciLexerMakefile_writeProperties(self: ptr cQsciLexerMa
 
   virtualReturn
 proc QsciLexerMakefileevent*(self: gen_qscilexermakefile_types.QsciLexerMakefile, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerMakefile_virtualbase_event(self.h, event.h)
 
 type QsciLexerMakefileeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1021,7 +968,6 @@ proc miqt_exec_callback_QsciLexerMakefile_event(self: ptr cQsciLexerMakefile, sl
 
   virtualReturn
 proc QsciLexerMakefileeventFilter*(self: gen_qscilexermakefile_types.QsciLexerMakefile, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerMakefile_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerMakefileeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1043,7 +989,6 @@ proc miqt_exec_callback_QsciLexerMakefile_eventFilter(self: ptr cQsciLexerMakefi
 
   virtualReturn
 proc QsciLexerMakefiletimerEvent*(self: gen_qscilexermakefile_types.QsciLexerMakefile, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerMakefile_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerMakefiletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1061,7 +1006,6 @@ proc miqt_exec_callback_QsciLexerMakefile_timerEvent(self: ptr cQsciLexerMakefil
 
   nimfunc[](slotval1)
 proc QsciLexerMakefilechildEvent*(self: gen_qscilexermakefile_types.QsciLexerMakefile, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerMakefile_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerMakefilechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1079,7 +1023,6 @@ proc miqt_exec_callback_QsciLexerMakefile_childEvent(self: ptr cQsciLexerMakefil
 
   nimfunc[](slotval1)
 proc QsciLexerMakefilecustomEvent*(self: gen_qscilexermakefile_types.QsciLexerMakefile, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerMakefile_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerMakefilecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1097,7 +1040,6 @@ proc miqt_exec_callback_QsciLexerMakefile_customEvent(self: ptr cQsciLexerMakefi
 
   nimfunc[](slotval1)
 proc QsciLexerMakefileconnectNotify*(self: gen_qscilexermakefile_types.QsciLexerMakefile, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerMakefile_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerMakefileconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1115,7 +1057,6 @@ proc miqt_exec_callback_QsciLexerMakefile_connectNotify(self: ptr cQsciLexerMake
 
   nimfunc[](slotval1)
 proc QsciLexerMakefiledisconnectNotify*(self: gen_qscilexermakefile_types.QsciLexerMakefile, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerMakefile_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerMakefiledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

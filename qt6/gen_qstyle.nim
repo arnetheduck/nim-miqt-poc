@@ -772,190 +772,147 @@ proc fcQStyle_delete(self: pointer) {.importc: "QStyle_delete".}
 func init*(T: type gen_qstyle_types.QStyle, h: ptr cQStyle): gen_qstyle_types.QStyle =
   T(h: h)
 proc create*(T: type gen_qstyle_types.QStyle, ): gen_qstyle_types.QStyle =
-
   gen_qstyle_types.QStyle.init(fcQStyle_new())
-proc metaObject*(self: gen_qstyle_types.QStyle, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qstyle_types.QStyle, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQStyle_metaObject(self.h))
 
 proc metacast*(self: gen_qstyle_types.QStyle, param1: cstring): pointer =
-
   fcQStyle_metacast(self.h, param1)
 
 proc metacall*(self: gen_qstyle_types.QStyle, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQStyle_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qstyle_types.QStyle, s: cstring): string =
-
   let v_ms = fcQStyle_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc name*(self: gen_qstyle_types.QStyle, ): string =
-
   let v_ms = fcQStyle_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc polish*(self: gen_qstyle_types.QStyle, widget: gen_qwidget.QWidget): void =
-
   fcQStyle_polish(self.h, widget.h)
 
 proc unpolish*(self: gen_qstyle_types.QStyle, widget: gen_qwidget.QWidget): void =
-
   fcQStyle_unpolish(self.h, widget.h)
 
-proc polishWithApplication*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
-
+proc polish*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
   fcQStyle_polishWithApplication(self.h, application.h)
 
-proc unpolishWithApplication*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
-
+proc unpolish*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
   fcQStyle_unpolishWithApplication(self.h, application.h)
 
-proc polishWithPalette*(self: gen_qstyle_types.QStyle, palette: gen_qpalette.QPalette): void =
-
+proc polish*(self: gen_qstyle_types.QStyle, palette: gen_qpalette.QPalette): void =
   fcQStyle_polishWithPalette(self.h, palette.h)
 
 proc itemTextRect*(self: gen_qstyle_types.QStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQStyle_itemTextRect(self.h, fm.h, r.h, flags, enabled, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
 proc itemPixmapRect*(self: gen_qstyle_types.QStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQStyle_itemPixmapRect(self.h, r.h, flags, pixmap.h))
 
 proc drawItemText*(self: gen_qstyle_types.QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void =
-
   fcQStyle_drawItemText(self.h, painter.h, rect.h, flags, pal.h, enabled, struct_miqt_string(data: text, len: csize_t(len(text))), cint(textRole))
 
 proc drawItemPixmap*(self: gen_qstyle_types.QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
-
   fcQStyle_drawItemPixmap(self.h, painter.h, rect.h, alignment, pixmap.h)
 
 proc standardPalette*(self: gen_qstyle_types.QStyle, ): gen_qpalette.QPalette =
-
   gen_qpalette.QPalette(h: fcQStyle_standardPalette(self.h))
 
 proc drawPrimitive*(self: gen_qstyle_types.QStyle, pe: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
-
   fcQStyle_drawPrimitive(self.h, cint(pe), opt.h, p.h, w.h)
 
 proc drawControl*(self: gen_qstyle_types.QStyle, element: cint, opt: gen_qstyleoption.QStyleOption, p: gen_qpainter.QPainter, w: gen_qwidget.QWidget): void =
-
   fcQStyle_drawControl(self.h, cint(element), opt.h, p.h, w.h)
 
 proc subElementRect*(self: gen_qstyle_types.QStyle, subElement: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQStyle_subElementRect(self.h, cint(subElement), option.h, widget.h))
 
 proc drawComplexControl*(self: gen_qstyle_types.QStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, p: gen_qpainter.QPainter, widget: gen_qwidget.QWidget): void =
-
   fcQStyle_drawComplexControl(self.h, cint(cc), opt.h, p.h, widget.h)
 
 proc hitTestComplexControl*(self: gen_qstyle_types.QStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, pt: gen_qpoint.QPoint, widget: gen_qwidget.QWidget): cint =
-
   cint(fcQStyle_hitTestComplexControl(self.h, cint(cc), opt.h, pt.h, widget.h))
 
 proc subControlRect*(self: gen_qstyle_types.QStyle, cc: cint, opt: gen_qstyleoption.QStyleOptionComplex, sc: cint, widget: gen_qwidget.QWidget): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQStyle_subControlRect(self.h, cint(cc), opt.h, cint(sc), widget.h))
 
 proc pixelMetric*(self: gen_qstyle_types.QStyle, metric: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
-
   fcQStyle_pixelMetric(self.h, cint(metric), option.h, widget.h)
 
 proc sizeFromContents*(self: gen_qstyle_types.QStyle, ct: cint, opt: gen_qstyleoption.QStyleOption, contentsSize: gen_qsize.QSize, w: gen_qwidget.QWidget): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQStyle_sizeFromContents(self.h, cint(ct), opt.h, contentsSize.h, w.h))
 
 proc styleHint*(self: gen_qstyle_types.QStyle, stylehint: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget, returnData: gen_qstyleoption.QStyleHintReturn): cint =
-
   fcQStyle_styleHint(self.h, cint(stylehint), opt.h, widget.h, returnData.h)
 
 proc standardPixmap*(self: gen_qstyle_types.QStyle, standardPixmap: cint, opt: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQStyle_standardPixmap(self.h, cint(standardPixmap), opt.h, widget.h))
 
 proc standardIcon*(self: gen_qstyle_types.QStyle, standardIcon: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQStyle_standardIcon(self.h, cint(standardIcon), option.h, widget.h))
 
 proc generatedIconPixmap*(self: gen_qstyle_types.QStyle, iconMode: cint, pixmap: gen_qpixmap.QPixmap, opt: gen_qstyleoption.QStyleOption): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQStyle_generatedIconPixmap(self.h, cint(iconMode), pixmap.h, opt.h))
 
 proc visualRect*(_: type gen_qstyle_types.QStyle, direction: cint, boundingRect: gen_qrect.QRect, logicalRect: gen_qrect.QRect): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQStyle_visualRect(cint(direction), boundingRect.h, logicalRect.h))
 
 proc visualPos*(_: type gen_qstyle_types.QStyle, direction: cint, boundingRect: gen_qrect.QRect, logicalPos: gen_qpoint.QPoint): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQStyle_visualPos(cint(direction), boundingRect.h, logicalPos.h))
 
 proc sliderPositionFromValue*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, val: cint, space: cint): cint =
-
   fcQStyle_sliderPositionFromValue(min, max, val, space)
 
 proc sliderValueFromPosition*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, pos: cint, space: cint): cint =
-
   fcQStyle_sliderValueFromPosition(min, max, pos, space)
 
 proc visualAlignment*(_: type gen_qstyle_types.QStyle, direction: cint, alignment: cint): cint =
-
   cint(fcQStyle_visualAlignment(cint(direction), cint(alignment)))
 
 proc alignedRect*(_: type gen_qstyle_types.QStyle, direction: cint, alignment: cint, size: gen_qsize.QSize, rectangle: gen_qrect.QRect): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQStyle_alignedRect(cint(direction), cint(alignment), size.h, rectangle.h))
 
 proc layoutSpacing*(self: gen_qstyle_types.QStyle, control1: cint, control2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
-
   fcQStyle_layoutSpacing(self.h, cint(control1), cint(control2), cint(orientation), option.h, widget.h)
 
 proc combinedLayoutSpacing*(self: gen_qstyle_types.QStyle, controls1: cint, controls2: cint, orientation: cint): cint =
-
   fcQStyle_combinedLayoutSpacing(self.h, cint(controls1), cint(controls2), cint(orientation))
 
 proc proxy*(self: gen_qstyle_types.QStyle, ): gen_qstyle_types.QStyle =
-
   gen_qstyle_types.QStyle(h: fcQStyle_proxy(self.h))
 
-proc tr2*(_: type gen_qstyle_types.QStyle, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qstyle_types.QStyle, s: cstring, c: cstring): string =
   let v_ms = fcQStyle_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qstyle_types.QStyle, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qstyle_types.QStyle, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQStyle_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc sliderPositionFromValue5*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, val: cint, space: cint, upsideDown: bool): cint =
-
+proc sliderPositionFromValue*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, val: cint, space: cint, upsideDown: bool): cint =
   fcQStyle_sliderPositionFromValue5(min, max, val, space, upsideDown)
 
-proc sliderValueFromPosition5*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, pos: cint, space: cint, upsideDown: bool): cint =
-
+proc sliderValueFromPosition*(_: type gen_qstyle_types.QStyle, min: cint, max: cint, pos: cint, space: cint, upsideDown: bool): cint =
   fcQStyle_sliderValueFromPosition5(min, max, pos, space, upsideDown)
 
-proc combinedLayoutSpacing4*(self: gen_qstyle_types.QStyle, controls1: cint, controls2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption): cint =
-
+proc combinedLayoutSpacing*(self: gen_qstyle_types.QStyle, controls1: cint, controls2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption): cint =
   fcQStyle_combinedLayoutSpacing4(self.h, cint(controls1), cint(controls2), cint(orientation), option.h)
 
-proc combinedLayoutSpacing5*(self: gen_qstyle_types.QStyle, controls1: cint, controls2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
-
+proc combinedLayoutSpacing*(self: gen_qstyle_types.QStyle, controls1: cint, controls2: cint, orientation: cint, option: gen_qstyleoption.QStyleOption, widget: gen_qwidget.QWidget): cint =
   fcQStyle_combinedLayoutSpacing5(self.h, cint(controls1), cint(controls2), cint(orientation), option.h, widget.h)
 
 proc QStylemetaObject*(self: gen_qstyle_types.QStyle, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQStyle_virtualbase_metaObject(self.h))
 
 type QStylemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -973,7 +930,6 @@ proc miqt_exec_callback_QStyle_metaObject(self: ptr cQStyle, slot: int): pointer
 
   virtualReturn.h
 proc QStylemetacast*(self: gen_qstyle_types.QStyle, param1: cstring): pointer =
-
   fQStyle_virtualbase_metacast(self.h, param1)
 
 type QStylemetacastProc* = proc(param1: cstring): pointer
@@ -993,7 +949,6 @@ proc miqt_exec_callback_QStyle_metacast(self: ptr cQStyle, slot: int, param1: cs
 
   virtualReturn
 proc QStylemetacall*(self: gen_qstyle_types.QStyle, param1: cint, param2: cint, param3: pointer): cint =
-
   fQStyle_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QStylemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -1017,7 +972,6 @@ proc miqt_exec_callback_QStyle_metacall(self: ptr cQStyle, slot: int, param1: ci
 
   virtualReturn
 proc QStylepolish*(self: gen_qstyle_types.QStyle, widget: gen_qwidget.QWidget): void =
-
   fQStyle_virtualbase_polish(self.h, widget.h)
 
 type QStylepolishProc* = proc(widget: gen_qwidget.QWidget): void
@@ -1035,7 +989,6 @@ proc miqt_exec_callback_QStyle_polish(self: ptr cQStyle, slot: int, widget: poin
 
   nimfunc[](slotval1)
 proc QStyleunpolish*(self: gen_qstyle_types.QStyle, widget: gen_qwidget.QWidget): void =
-
   fQStyle_virtualbase_unpolish(self.h, widget.h)
 
 type QStyleunpolishProc* = proc(widget: gen_qwidget.QWidget): void
@@ -1052,12 +1005,11 @@ proc miqt_exec_callback_QStyle_unpolish(self: ptr cQStyle, slot: int, widget: po
 
 
   nimfunc[](slotval1)
-proc QStylepolishWithApplication*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
-
+proc QStylepolish*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
   fQStyle_virtualbase_polishWithApplication(self.h, application.h)
 
 type QStylepolishWithApplicationProc* = proc(application: gen_qapplication.QApplication): void
-proc onpolishWithApplication*(self: gen_qstyle_types.QStyle, slot: QStylepolishWithApplicationProc) =
+proc onpolish*(self: gen_qstyle_types.QStyle, slot: QStylepolishWithApplicationProc) =
   # TODO check subclass
   var tmp = new QStylepolishWithApplicationProc
   tmp[] = slot
@@ -1070,12 +1022,11 @@ proc miqt_exec_callback_QStyle_polishWithApplication(self: ptr cQStyle, slot: in
 
 
   nimfunc[](slotval1)
-proc QStyleunpolishWithApplication*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
-
+proc QStyleunpolish*(self: gen_qstyle_types.QStyle, application: gen_qapplication.QApplication): void =
   fQStyle_virtualbase_unpolishWithApplication(self.h, application.h)
 
 type QStyleunpolishWithApplicationProc* = proc(application: gen_qapplication.QApplication): void
-proc onunpolishWithApplication*(self: gen_qstyle_types.QStyle, slot: QStyleunpolishWithApplicationProc) =
+proc onunpolish*(self: gen_qstyle_types.QStyle, slot: QStyleunpolishWithApplicationProc) =
   # TODO check subclass
   var tmp = new QStyleunpolishWithApplicationProc
   tmp[] = slot
@@ -1088,12 +1039,11 @@ proc miqt_exec_callback_QStyle_unpolishWithApplication(self: ptr cQStyle, slot: 
 
 
   nimfunc[](slotval1)
-proc QStylepolishWithPalette*(self: gen_qstyle_types.QStyle, palette: gen_qpalette.QPalette): void =
-
+proc QStylepolish*(self: gen_qstyle_types.QStyle, palette: gen_qpalette.QPalette): void =
   fQStyle_virtualbase_polishWithPalette(self.h, palette.h)
 
 type QStylepolishWithPaletteProc* = proc(palette: gen_qpalette.QPalette): void
-proc onpolishWithPalette*(self: gen_qstyle_types.QStyle, slot: QStylepolishWithPaletteProc) =
+proc onpolish*(self: gen_qstyle_types.QStyle, slot: QStylepolishWithPaletteProc) =
   # TODO check subclass
   var tmp = new QStylepolishWithPaletteProc
   tmp[] = slot
@@ -1107,7 +1057,6 @@ proc miqt_exec_callback_QStyle_polishWithPalette(self: ptr cQStyle, slot: int, p
 
   nimfunc[](slotval1)
 proc QStyleitemTextRect*(self: gen_qstyle_types.QStyle, fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQStyle_virtualbase_itemTextRect(self.h, fm.h, r.h, flags, enabled, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
 type QStyleitemTextRectProc* = proc(fm: gen_qfontmetrics.QFontMetrics, r: gen_qrect.QRect, flags: cint, enabled: bool, text: string): gen_qrect.QRect
@@ -1138,7 +1087,6 @@ proc miqt_exec_callback_QStyle_itemTextRect(self: ptr cQStyle, slot: int, fm: po
 
   virtualReturn.h
 proc QStyleitemPixmapRect*(self: gen_qstyle_types.QStyle, r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQStyle_virtualbase_itemPixmapRect(self.h, r.h, flags, pixmap.h))
 
 type QStyleitemPixmapRectProc* = proc(r: gen_qrect.QRect, flags: cint, pixmap: gen_qpixmap.QPixmap): gen_qrect.QRect
@@ -1162,7 +1110,6 @@ proc miqt_exec_callback_QStyle_itemPixmapRect(self: ptr cQStyle, slot: int, r: p
 
   virtualReturn.h
 proc QStyledrawItemText*(self: gen_qstyle_types.QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void =
-
   fQStyle_virtualbase_drawItemText(self.h, painter.h, rect.h, flags, pal.h, enabled, struct_miqt_string(data: text, len: csize_t(len(text))), cint(textRole))
 
 type QStyledrawItemTextProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, flags: cint, pal: gen_qpalette.QPalette, enabled: bool, text: string, textRole: cint): void
@@ -1195,7 +1142,6 @@ proc miqt_exec_callback_QStyle_drawItemText(self: ptr cQStyle, slot: int, painte
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7)
 proc QStyledrawItemPixmap*(self: gen_qstyle_types.QStyle, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void =
-
   fQStyle_virtualbase_drawItemPixmap(self.h, painter.h, rect.h, alignment, pixmap.h)
 
 type QStyledrawItemPixmapProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, alignment: cint, pixmap: gen_qpixmap.QPixmap): void
@@ -1219,7 +1165,6 @@ proc miqt_exec_callback_QStyle_drawItemPixmap(self: ptr cQStyle, slot: int, pain
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QStylestandardPalette*(self: gen_qstyle_types.QStyle, ): gen_qpalette.QPalette =
-
   gen_qpalette.QPalette(h: fQStyle_virtualbase_standardPalette(self.h))
 
 type QStylestandardPaletteProc* = proc(): gen_qpalette.QPalette
@@ -1509,7 +1454,6 @@ proc miqt_exec_callback_QStyle_layoutSpacing(self: ptr cQStyle, slot: int, contr
 
   virtualReturn
 proc QStyleevent*(self: gen_qstyle_types.QStyle, event: gen_qcoreevent.QEvent): bool =
-
   fQStyle_virtualbase_event(self.h, event.h)
 
 type QStyleeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1529,7 +1473,6 @@ proc miqt_exec_callback_QStyle_event(self: ptr cQStyle, slot: int, event: pointe
 
   virtualReturn
 proc QStyleeventFilter*(self: gen_qstyle_types.QStyle, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQStyle_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QStyleeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1551,7 +1494,6 @@ proc miqt_exec_callback_QStyle_eventFilter(self: ptr cQStyle, slot: int, watched
 
   virtualReturn
 proc QStyletimerEvent*(self: gen_qstyle_types.QStyle, event: gen_qcoreevent.QTimerEvent): void =
-
   fQStyle_virtualbase_timerEvent(self.h, event.h)
 
 type QStyletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1569,7 +1511,6 @@ proc miqt_exec_callback_QStyle_timerEvent(self: ptr cQStyle, slot: int, event: p
 
   nimfunc[](slotval1)
 proc QStylechildEvent*(self: gen_qstyle_types.QStyle, event: gen_qcoreevent.QChildEvent): void =
-
   fQStyle_virtualbase_childEvent(self.h, event.h)
 
 type QStylechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1587,7 +1528,6 @@ proc miqt_exec_callback_QStyle_childEvent(self: ptr cQStyle, slot: int, event: p
 
   nimfunc[](slotval1)
 proc QStylecustomEvent*(self: gen_qstyle_types.QStyle, event: gen_qcoreevent.QEvent): void =
-
   fQStyle_virtualbase_customEvent(self.h, event.h)
 
 type QStylecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1605,7 +1545,6 @@ proc miqt_exec_callback_QStyle_customEvent(self: ptr cQStyle, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QStyleconnectNotify*(self: gen_qstyle_types.QStyle, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStyle_virtualbase_connectNotify(self.h, signal.h)
 
 type QStyleconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1623,7 +1562,6 @@ proc miqt_exec_callback_QStyle_connectNotify(self: ptr cQStyle, slot: int, signa
 
   nimfunc[](slotval1)
 proc QStyledisconnectNotify*(self: gen_qstyle_types.QStyle, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStyle_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QStyledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

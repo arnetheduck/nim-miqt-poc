@@ -246,46 +246,42 @@ proc fcQFont_delete(self: pointer) {.importc: "QFont_delete".}
 func init*(T: type gen_qfont_types.QFont, h: ptr cQFont): gen_qfont_types.QFont =
   T(h: h)
 proc create*(T: type gen_qfont_types.QFont, ): gen_qfont_types.QFont =
-
   gen_qfont_types.QFont.init(fcQFont_new())
+
 proc create*(T: type gen_qfont_types.QFont, family: string): gen_qfont_types.QFont =
-
   gen_qfont_types.QFont.init(fcQFont_new2(struct_miqt_string(data: family, len: csize_t(len(family)))))
+
 proc create*(T: type gen_qfont_types.QFont, font: gen_qfont_types.QFont, pd: gen_qpaintdevice.QPaintDevice): gen_qfont_types.QFont =
-
   gen_qfont_types.QFont.init(fcQFont_new3(font.h, pd.h))
+
 proc create2*(T: type gen_qfont_types.QFont, font: gen_qfont_types.QFont, pd: gen_qpaintdevice.QPaintDevice): gen_qfont_types.QFont =
-
   gen_qfont_types.QFont.init(fcQFont_new4(font.h, pd.h))
+
 proc create*(T: type gen_qfont_types.QFont, font: gen_qfont_types.QFont): gen_qfont_types.QFont =
-
   gen_qfont_types.QFont.init(fcQFont_new5(font.h))
+
 proc create*(T: type gen_qfont_types.QFont, family: string, pointSize: cint): gen_qfont_types.QFont =
-
   gen_qfont_types.QFont.init(fcQFont_new6(struct_miqt_string(data: family, len: csize_t(len(family))), pointSize))
+
 proc create*(T: type gen_qfont_types.QFont, family: string, pointSize: cint, weight: cint): gen_qfont_types.QFont =
-
   gen_qfont_types.QFont.init(fcQFont_new7(struct_miqt_string(data: family, len: csize_t(len(family))), pointSize, weight))
+
 proc create*(T: type gen_qfont_types.QFont, family: string, pointSize: cint, weight: cint, italic: bool): gen_qfont_types.QFont =
-
   gen_qfont_types.QFont.init(fcQFont_new8(struct_miqt_string(data: family, len: csize_t(len(family))), pointSize, weight, italic))
-proc swap*(self: gen_qfont_types.QFont, other: gen_qfont_types.QFont): void =
 
+proc swap*(self: gen_qfont_types.QFont, other: gen_qfont_types.QFont): void =
   fcQFont_swap(self.h, other.h)
 
 proc family*(self: gen_qfont_types.QFont, ): string =
-
   let v_ms = fcQFont_family(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFamily*(self: gen_qfont_types.QFont, family: string): void =
-
   fcQFont_setFamily(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
 
 proc families*(self: gen_qfont_types.QFont, ): seq[string] =
-
   var v_ma = fcQFont_families(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -297,7 +293,6 @@ proc families*(self: gen_qfont_types.QFont, ): seq[string] =
   vx_ret
 
 proc setFamilies*(self: gen_qfont_types.QFont, families: seq[string]): void =
-
   var families_CArray = newSeq[struct_miqt_string](len(families))
   for i in 0..<len(families):
     families_CArray[i] = struct_miqt_string(data: families[i], len: csize_t(len(families[i])))
@@ -305,246 +300,189 @@ proc setFamilies*(self: gen_qfont_types.QFont, families: seq[string]): void =
   fcQFont_setFamilies(self.h, struct_miqt_array(len: csize_t(len(families)), data: if len(families) == 0: nil else: addr(families_CArray[0])))
 
 proc styleName*(self: gen_qfont_types.QFont, ): string =
-
   let v_ms = fcQFont_styleName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setStyleName*(self: gen_qfont_types.QFont, styleName: string): void =
-
   fcQFont_setStyleName(self.h, struct_miqt_string(data: styleName, len: csize_t(len(styleName))))
 
 proc pointSize*(self: gen_qfont_types.QFont, ): cint =
-
   fcQFont_pointSize(self.h)
 
 proc setPointSize*(self: gen_qfont_types.QFont, pointSize: cint): void =
-
   fcQFont_setPointSize(self.h, pointSize)
 
 proc pointSizeF*(self: gen_qfont_types.QFont, ): float64 =
-
   fcQFont_pointSizeF(self.h)
 
 proc setPointSizeF*(self: gen_qfont_types.QFont, pointSizeF: float64): void =
-
   fcQFont_setPointSizeF(self.h, pointSizeF)
 
 proc pixelSize*(self: gen_qfont_types.QFont, ): cint =
-
   fcQFont_pixelSize(self.h)
 
 proc setPixelSize*(self: gen_qfont_types.QFont, pixelSize: cint): void =
-
   fcQFont_setPixelSize(self.h, pixelSize)
 
 proc weight*(self: gen_qfont_types.QFont, ): cint =
-
   fcQFont_weight(self.h)
 
 proc setWeight*(self: gen_qfont_types.QFont, weight: cint): void =
-
   fcQFont_setWeight(self.h, weight)
 
 proc bold*(self: gen_qfont_types.QFont, ): bool =
-
   fcQFont_bold(self.h)
 
 proc setBold*(self: gen_qfont_types.QFont, bold: bool): void =
-
   fcQFont_setBold(self.h, bold)
 
 proc setStyle*(self: gen_qfont_types.QFont, style: cint): void =
-
   fcQFont_setStyle(self.h, cint(style))
 
 proc style*(self: gen_qfont_types.QFont, ): cint =
-
   cint(fcQFont_style(self.h))
 
 proc italic*(self: gen_qfont_types.QFont, ): bool =
-
   fcQFont_italic(self.h)
 
 proc setItalic*(self: gen_qfont_types.QFont, b: bool): void =
-
   fcQFont_setItalic(self.h, b)
 
 proc underline*(self: gen_qfont_types.QFont, ): bool =
-
   fcQFont_underline(self.h)
 
 proc setUnderline*(self: gen_qfont_types.QFont, underline: bool): void =
-
   fcQFont_setUnderline(self.h, underline)
 
 proc overline*(self: gen_qfont_types.QFont, ): bool =
-
   fcQFont_overline(self.h)
 
 proc setOverline*(self: gen_qfont_types.QFont, overline: bool): void =
-
   fcQFont_setOverline(self.h, overline)
 
 proc strikeOut*(self: gen_qfont_types.QFont, ): bool =
-
   fcQFont_strikeOut(self.h)
 
 proc setStrikeOut*(self: gen_qfont_types.QFont, strikeOut: bool): void =
-
   fcQFont_setStrikeOut(self.h, strikeOut)
 
 proc fixedPitch*(self: gen_qfont_types.QFont, ): bool =
-
   fcQFont_fixedPitch(self.h)
 
 proc setFixedPitch*(self: gen_qfont_types.QFont, fixedPitch: bool): void =
-
   fcQFont_setFixedPitch(self.h, fixedPitch)
 
 proc kerning*(self: gen_qfont_types.QFont, ): bool =
-
   fcQFont_kerning(self.h)
 
 proc setKerning*(self: gen_qfont_types.QFont, kerning: bool): void =
-
   fcQFont_setKerning(self.h, kerning)
 
 proc styleHint*(self: gen_qfont_types.QFont, ): cint =
-
   cint(fcQFont_styleHint(self.h))
 
 proc styleStrategy*(self: gen_qfont_types.QFont, ): cint =
-
   cint(fcQFont_styleStrategy(self.h))
 
 proc setStyleHint*(self: gen_qfont_types.QFont, param1: cint): void =
-
   fcQFont_setStyleHint(self.h, cint(param1))
 
 proc setStyleStrategy*(self: gen_qfont_types.QFont, s: cint): void =
-
   fcQFont_setStyleStrategy(self.h, cint(s))
 
 proc stretch*(self: gen_qfont_types.QFont, ): cint =
-
   fcQFont_stretch(self.h)
 
 proc setStretch*(self: gen_qfont_types.QFont, stretch: cint): void =
-
   fcQFont_setStretch(self.h, stretch)
 
 proc letterSpacing*(self: gen_qfont_types.QFont, ): float64 =
-
   fcQFont_letterSpacing(self.h)
 
 proc letterSpacingType*(self: gen_qfont_types.QFont, ): cint =
-
   cint(fcQFont_letterSpacingType(self.h))
 
 proc setLetterSpacing*(self: gen_qfont_types.QFont, typeVal: cint, spacing: float64): void =
-
   fcQFont_setLetterSpacing(self.h, cint(typeVal), spacing)
 
 proc wordSpacing*(self: gen_qfont_types.QFont, ): float64 =
-
   fcQFont_wordSpacing(self.h)
 
 proc setWordSpacing*(self: gen_qfont_types.QFont, spacing: float64): void =
-
   fcQFont_setWordSpacing(self.h, spacing)
 
 proc setCapitalization*(self: gen_qfont_types.QFont, capitalization: cint): void =
-
   fcQFont_setCapitalization(self.h, cint(capitalization))
 
 proc capitalization*(self: gen_qfont_types.QFont, ): cint =
-
   cint(fcQFont_capitalization(self.h))
 
 proc setHintingPreference*(self: gen_qfont_types.QFont, hintingPreference: cint): void =
-
   fcQFont_setHintingPreference(self.h, cint(hintingPreference))
 
 proc hintingPreference*(self: gen_qfont_types.QFont, ): cint =
-
   cint(fcQFont_hintingPreference(self.h))
 
 proc rawMode*(self: gen_qfont_types.QFont, ): bool =
-
   fcQFont_rawMode(self.h)
 
 proc setRawMode*(self: gen_qfont_types.QFont, rawMode: bool): void =
-
   fcQFont_setRawMode(self.h, rawMode)
 
 proc exactMatch*(self: gen_qfont_types.QFont, ): bool =
-
   fcQFont_exactMatch(self.h)
 
 proc operatorAssign*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): void =
-
   fcQFont_operatorAssign(self.h, param1.h)
 
 proc operatorEqual*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): bool =
-
   fcQFont_operatorEqual(self.h, param1.h)
 
 proc operatorNotEqual*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): bool =
-
   fcQFont_operatorNotEqual(self.h, param1.h)
 
 proc operatorLesser*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): bool =
-
   fcQFont_operatorLesser(self.h, param1.h)
 
 proc ToQVariant*(self: gen_qfont_types.QFont, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQFont_ToQVariant(self.h))
 
 proc isCopyOf*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): bool =
-
   fcQFont_isCopyOf(self.h, param1.h)
 
 proc setRawName*(self: gen_qfont_types.QFont, rawName: string): void =
-
   fcQFont_setRawName(self.h, struct_miqt_string(data: rawName, len: csize_t(len(rawName))))
 
 proc rawName*(self: gen_qfont_types.QFont, ): string =
-
   let v_ms = fcQFont_rawName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc key*(self: gen_qfont_types.QFont, ): string =
-
   let v_ms = fcQFont_key(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc toString*(self: gen_qfont_types.QFont, ): string =
-
   let v_ms = fcQFont_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc fromString*(self: gen_qfont_types.QFont, param1: string): bool =
-
   fcQFont_fromString(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 proc substitute*(_: type gen_qfont_types.QFont, param1: string): string =
-
   let v_ms = fcQFont_substitute(struct_miqt_string(data: param1, len: csize_t(len(param1))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc substitutes*(_: type gen_qfont_types.QFont, param1: string): seq[string] =
-
   var v_ma = fcQFont_substitutes(struct_miqt_string(data: param1, len: csize_t(len(param1))))
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -556,7 +494,6 @@ proc substitutes*(_: type gen_qfont_types.QFont, param1: string): seq[string] =
   vx_ret
 
 proc substitutions*(_: type gen_qfont_types.QFont, ): seq[string] =
-
   var v_ma = fcQFont_substitutions()
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -568,11 +505,9 @@ proc substitutions*(_: type gen_qfont_types.QFont, ): seq[string] =
   vx_ret
 
 proc insertSubstitution*(_: type gen_qfont_types.QFont, param1: string, param2: string): void =
-
   fcQFont_insertSubstitution(struct_miqt_string(data: param1, len: csize_t(len(param1))), struct_miqt_string(data: param2, len: csize_t(len(param2))))
 
 proc insertSubstitutions*(_: type gen_qfont_types.QFont, param1: string, param2: seq[string]): void =
-
   var param2_CArray = newSeq[struct_miqt_string](len(param2))
   for i in 0..<len(param2):
     param2_CArray[i] = struct_miqt_string(data: param2[i], len: csize_t(len(param2[i])))
@@ -580,56 +515,45 @@ proc insertSubstitutions*(_: type gen_qfont_types.QFont, param1: string, param2:
   fcQFont_insertSubstitutions(struct_miqt_string(data: param1, len: csize_t(len(param1))), struct_miqt_array(len: csize_t(len(param2)), data: if len(param2) == 0: nil else: addr(param2_CArray[0])))
 
 proc removeSubstitutions*(_: type gen_qfont_types.QFont, param1: string): void =
-
   fcQFont_removeSubstitutions(struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
 proc initialize*(_: type gen_qfont_types.QFont, ): void =
-
   fcQFont_initialize()
 
 proc cleanup*(_: type gen_qfont_types.QFont, ): void =
-
   fcQFont_cleanup()
 
 proc cacheStatistics*(_: type gen_qfont_types.QFont, ): void =
-
   fcQFont_cacheStatistics()
 
 proc defaultFamily*(self: gen_qfont_types.QFont, ): string =
-
   let v_ms = fcQFont_defaultFamily(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc lastResortFamily*(self: gen_qfont_types.QFont, ): string =
-
   let v_ms = fcQFont_lastResortFamily(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc lastResortFont*(self: gen_qfont_types.QFont, ): string =
-
   let v_ms = fcQFont_lastResortFont(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc resolve*(self: gen_qfont_types.QFont, param1: gen_qfont_types.QFont): gen_qfont_types.QFont =
-
   gen_qfont_types.QFont(h: fcQFont_resolve(self.h, param1.h))
 
-proc resolve2*(self: gen_qfont_types.QFont, ): cuint =
-
+proc resolve*(self: gen_qfont_types.QFont, ): cuint =
   fcQFont_resolve2(self.h)
 
-proc resolveWithMask*(self: gen_qfont_types.QFont, mask: cuint): void =
-
+proc resolve*(self: gen_qfont_types.QFont, mask: cuint): void =
   fcQFont_resolveWithMask(self.h, mask)
 
-proc setStyleHint2*(self: gen_qfont_types.QFont, param1: cint, param2: cint): void =
-
+proc setStyleHint*(self: gen_qfont_types.QFont, param1: cint, param2: cint): void =
   fcQFont_setStyleHint2(self.h, cint(param1), cint(param2))
 
 proc staticMetaObject*(_: type gen_qfont_types.QFont): gen_qobjectdefs.QMetaObject =

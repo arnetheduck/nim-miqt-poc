@@ -75,18 +75,15 @@ proc fcQCollator_delete(self: pointer) {.importc: "QCollator_delete".}
 func init*(T: type gen_qcollator_types.QCollatorSortKey, h: ptr cQCollatorSortKey): gen_qcollator_types.QCollatorSortKey =
   T(h: h)
 proc create*(T: type gen_qcollator_types.QCollatorSortKey, other: gen_qcollator_types.QCollatorSortKey): gen_qcollator_types.QCollatorSortKey =
-
   gen_qcollator_types.QCollatorSortKey.init(fcQCollatorSortKey_new(other.h))
-proc operatorAssign*(self: gen_qcollator_types.QCollatorSortKey, other: gen_qcollator_types.QCollatorSortKey): void =
 
+proc operatorAssign*(self: gen_qcollator_types.QCollatorSortKey, other: gen_qcollator_types.QCollatorSortKey): void =
   fcQCollatorSortKey_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qcollator_types.QCollatorSortKey, other: gen_qcollator_types.QCollatorSortKey): void =
-
   fcQCollatorSortKey_swap(self.h, other.h)
 
 proc compare*(self: gen_qcollator_types.QCollatorSortKey, key: gen_qcollator_types.QCollatorSortKey): cint =
-
   fcQCollatorSortKey_compare(self.h, key.h)
 
 proc delete*(self: gen_qcollator_types.QCollatorSortKey) =
@@ -95,68 +92,54 @@ proc delete*(self: gen_qcollator_types.QCollatorSortKey) =
 func init*(T: type gen_qcollator_types.QCollator, h: ptr cQCollator): gen_qcollator_types.QCollator =
   T(h: h)
 proc create*(T: type gen_qcollator_types.QCollator, ): gen_qcollator_types.QCollator =
-
   gen_qcollator_types.QCollator.init(fcQCollator_new())
+
 proc create*(T: type gen_qcollator_types.QCollator, locale: gen_qlocale.QLocale): gen_qcollator_types.QCollator =
-
   gen_qcollator_types.QCollator.init(fcQCollator_new2(locale.h))
-proc create2*(T: type gen_qcollator_types.QCollator, param1: gen_qcollator_types.QCollator): gen_qcollator_types.QCollator =
 
+proc create*(T: type gen_qcollator_types.QCollator, param1: gen_qcollator_types.QCollator): gen_qcollator_types.QCollator =
   gen_qcollator_types.QCollator.init(fcQCollator_new3(param1.h))
-proc operatorAssign*(self: gen_qcollator_types.QCollator, param1: gen_qcollator_types.QCollator): void =
 
+proc operatorAssign*(self: gen_qcollator_types.QCollator, param1: gen_qcollator_types.QCollator): void =
   fcQCollator_operatorAssign(self.h, param1.h)
 
 proc swap*(self: gen_qcollator_types.QCollator, other: gen_qcollator_types.QCollator): void =
-
   fcQCollator_swap(self.h, other.h)
 
 proc setLocale*(self: gen_qcollator_types.QCollator, locale: gen_qlocale.QLocale): void =
-
   fcQCollator_setLocale(self.h, locale.h)
 
 proc locale*(self: gen_qcollator_types.QCollator, ): gen_qlocale.QLocale =
-
   gen_qlocale.QLocale(h: fcQCollator_locale(self.h))
 
 proc caseSensitivity*(self: gen_qcollator_types.QCollator, ): cint =
-
   cint(fcQCollator_caseSensitivity(self.h))
 
 proc setCaseSensitivity*(self: gen_qcollator_types.QCollator, cs: cint): void =
-
   fcQCollator_setCaseSensitivity(self.h, cint(cs))
 
 proc setNumericMode*(self: gen_qcollator_types.QCollator, on: bool): void =
-
   fcQCollator_setNumericMode(self.h, on)
 
 proc numericMode*(self: gen_qcollator_types.QCollator, ): bool =
-
   fcQCollator_numericMode(self.h)
 
 proc setIgnorePunctuation*(self: gen_qcollator_types.QCollator, on: bool): void =
-
   fcQCollator_setIgnorePunctuation(self.h, on)
 
 proc ignorePunctuation*(self: gen_qcollator_types.QCollator, ): bool =
-
   fcQCollator_ignorePunctuation(self.h)
 
 proc compare*(self: gen_qcollator_types.QCollator, s1: string, s2: string): cint =
-
   fcQCollator_compare(self.h, struct_miqt_string(data: s1, len: csize_t(len(s1))), struct_miqt_string(data: s2, len: csize_t(len(s2))))
 
-proc compare2*(self: gen_qcollator_types.QCollator, s1: gen_qchar.QChar, len1: int64, s2: gen_qchar.QChar, len2: int64): cint =
-
+proc compare*(self: gen_qcollator_types.QCollator, s1: gen_qchar.QChar, len1: int64, s2: gen_qchar.QChar, len2: int64): cint =
   fcQCollator_compare2(self.h, s1.h, len1, s2.h, len2)
 
 proc operatorCall*(self: gen_qcollator_types.QCollator, s1: string, s2: string): bool =
-
   fcQCollator_operatorCall(self.h, struct_miqt_string(data: s1, len: csize_t(len(s1))), struct_miqt_string(data: s2, len: csize_t(len(s2))))
 
 proc sortKey*(self: gen_qcollator_types.QCollator, string: string): gen_qcollator_types.QCollatorSortKey =
-
   gen_qcollator_types.QCollatorSortKey(h: fcQCollator_sortKey(self.h, struct_miqt_string(data: string, len: csize_t(len(string)))))
 
 proc delete*(self: gen_qcollator_types.QCollator) =

@@ -231,80 +231,63 @@ proc fcQWidgetItemV2_delete(self: pointer) {.importc: "QWidgetItemV2_delete".}
 func init*(T: type gen_qlayoutitem_types.QLayoutItem, h: ptr cQLayoutItem): gen_qlayoutitem_types.QLayoutItem =
   T(h: h)
 proc create*(T: type gen_qlayoutitem_types.QLayoutItem, ): gen_qlayoutitem_types.QLayoutItem =
-
   gen_qlayoutitem_types.QLayoutItem.init(fcQLayoutItem_new())
+
 proc create*(T: type gen_qlayoutitem_types.QLayoutItem, param1: gen_qlayoutitem_types.QLayoutItem): gen_qlayoutitem_types.QLayoutItem =
-
   gen_qlayoutitem_types.QLayoutItem.init(fcQLayoutItem_new2(param1.h))
+
 proc create*(T: type gen_qlayoutitem_types.QLayoutItem, alignment: cint): gen_qlayoutitem_types.QLayoutItem =
-
   gen_qlayoutitem_types.QLayoutItem.init(fcQLayoutItem_new3(cint(alignment)))
-proc sizeHint*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qsize.QSize =
 
+proc sizeHint*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qsize.QSize =
   gen_qsize.QSize(h: fcQLayoutItem_sizeHint(self.h))
 
 proc minimumSize*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQLayoutItem_minimumSize(self.h))
 
 proc maximumSize*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQLayoutItem_maximumSize(self.h))
 
 proc expandingDirections*(self: gen_qlayoutitem_types.QLayoutItem, ): cint =
-
   cint(fcQLayoutItem_expandingDirections(self.h))
 
 proc setGeometry*(self: gen_qlayoutitem_types.QLayoutItem, geometry: gen_qrect.QRect): void =
-
   fcQLayoutItem_setGeometry(self.h, geometry.h)
 
 proc geometry*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQLayoutItem_geometry(self.h))
 
 proc isEmpty*(self: gen_qlayoutitem_types.QLayoutItem, ): bool =
-
   fcQLayoutItem_isEmpty(self.h)
 
 proc hasHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, ): bool =
-
   fcQLayoutItem_hasHeightForWidth(self.h)
 
 proc heightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, param1: cint): cint =
-
   fcQLayoutItem_heightForWidth(self.h, param1)
 
 proc minimumHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, param1: cint): cint =
-
   fcQLayoutItem_minimumHeightForWidth(self.h, param1)
 
 proc invalidate*(self: gen_qlayoutitem_types.QLayoutItem, ): void =
-
   fcQLayoutItem_invalidate(self.h)
 
 proc widget*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQLayoutItem_widget(self.h))
 
 proc layout*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fcQLayoutItem_layout(self.h))
 
 proc spacerItem*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem(h: fcQLayoutItem_spacerItem(self.h))
 
 proc alignment*(self: gen_qlayoutitem_types.QLayoutItem, ): cint =
-
   cint(fcQLayoutItem_alignment(self.h))
 
 proc setAlignment*(self: gen_qlayoutitem_types.QLayoutItem, a: cint): void =
-
   fcQLayoutItem_setAlignment(self.h, cint(a))
 
 proc controlTypes*(self: gen_qlayoutitem_types.QLayoutItem, ): cint =
-
   cint(fcQLayoutItem_controlTypes(self.h))
 
 type QLayoutItemsizeHintProc* = proc(): gen_qsize.QSize
@@ -406,7 +389,6 @@ proc miqt_exec_callback_QLayoutItem_isEmpty(self: ptr cQLayoutItem, slot: int): 
 
   virtualReturn
 proc QLayoutItemhasHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, ): bool =
-
   fQLayoutItem_virtualbase_hasHeightForWidth(self.h)
 
 type QLayoutItemhasHeightForWidthProc* = proc(): bool
@@ -424,7 +406,6 @@ proc miqt_exec_callback_QLayoutItem_hasHeightForWidth(self: ptr cQLayoutItem, sl
 
   virtualReturn
 proc QLayoutItemheightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, param1: cint): cint =
-
   fQLayoutItem_virtualbase_heightForWidth(self.h, param1)
 
 type QLayoutItemheightForWidthProc* = proc(param1: cint): cint
@@ -444,7 +425,6 @@ proc miqt_exec_callback_QLayoutItem_heightForWidth(self: ptr cQLayoutItem, slot:
 
   virtualReturn
 proc QLayoutItemminimumHeightForWidth*(self: gen_qlayoutitem_types.QLayoutItem, param1: cint): cint =
-
   fQLayoutItem_virtualbase_minimumHeightForWidth(self.h, param1)
 
 type QLayoutItemminimumHeightForWidthProc* = proc(param1: cint): cint
@@ -464,7 +444,6 @@ proc miqt_exec_callback_QLayoutItem_minimumHeightForWidth(self: ptr cQLayoutItem
 
   virtualReturn
 proc QLayoutIteminvalidate*(self: gen_qlayoutitem_types.QLayoutItem, ): void =
-
   fQLayoutItem_virtualbase_invalidate(self.h)
 
 type QLayoutIteminvalidateProc* = proc(): void
@@ -480,7 +459,6 @@ proc miqt_exec_callback_QLayoutItem_invalidate(self: ptr cQLayoutItem, slot: int
 
   nimfunc[]()
 proc QLayoutItemwidget*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQLayoutItem_virtualbase_widget(self.h))
 
 type QLayoutItemwidgetProc* = proc(): gen_qwidget.QWidget
@@ -498,7 +476,6 @@ proc miqt_exec_callback_QLayoutItem_widget(self: ptr cQLayoutItem, slot: int): p
 
   virtualReturn.h
 proc QLayoutItemlayout*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fQLayoutItem_virtualbase_layout(self.h))
 
 type QLayoutItemlayoutProc* = proc(): gen_qlayout.QLayout
@@ -516,7 +493,6 @@ proc miqt_exec_callback_QLayoutItem_layout(self: ptr cQLayoutItem, slot: int): p
 
   virtualReturn.h
 proc QLayoutItemspacerItem*(self: gen_qlayoutitem_types.QLayoutItem, ): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem(h: fQLayoutItem_virtualbase_spacerItem(self.h))
 
 type QLayoutItemspacerItemProc* = proc(): gen_qlayoutitem_types.QSpacerItem
@@ -534,7 +510,6 @@ proc miqt_exec_callback_QLayoutItem_spacerItem(self: ptr cQLayoutItem, slot: int
 
   virtualReturn.h
 proc QLayoutItemcontrolTypes*(self: gen_qlayoutitem_types.QLayoutItem, ): cint =
-
   cint(fQLayoutItem_virtualbase_controlTypes(self.h))
 
 type QLayoutItemcontrolTypesProc* = proc(): cint
@@ -557,67 +532,54 @@ proc delete*(self: gen_qlayoutitem_types.QLayoutItem) =
 func init*(T: type gen_qlayoutitem_types.QSpacerItem, h: ptr cQSpacerItem): gen_qlayoutitem_types.QSpacerItem =
   T(h: h)
 proc create*(T: type gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem.init(fcQSpacerItem_new(w, h))
+
 proc create*(T: type gen_qlayoutitem_types.QSpacerItem, param1: gen_qlayoutitem_types.QSpacerItem): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem.init(fcQSpacerItem_new2(param1.h))
+
 proc create*(T: type gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem.init(fcQSpacerItem_new3(w, h, cint(hData)))
+
 proc create*(T: type gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint, vData: cint): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem.init(fcQSpacerItem_new4(w, h, cint(hData), cint(vData)))
-proc changeSize*(self: gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint): void =
 
+proc changeSize*(self: gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint): void =
   fcQSpacerItem_changeSize(self.h, w, h)
 
 proc sizeHint*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSpacerItem_sizeHint(self.h))
 
 proc minimumSize*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSpacerItem_minimumSize(self.h))
 
 proc maximumSize*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSpacerItem_maximumSize(self.h))
 
 proc expandingDirections*(self: gen_qlayoutitem_types.QSpacerItem, ): cint =
-
   cint(fcQSpacerItem_expandingDirections(self.h))
 
 proc isEmpty*(self: gen_qlayoutitem_types.QSpacerItem, ): bool =
-
   fcQSpacerItem_isEmpty(self.h)
 
 proc setGeometry*(self: gen_qlayoutitem_types.QSpacerItem, geometry: gen_qrect.QRect): void =
-
   fcQSpacerItem_setGeometry(self.h, geometry.h)
 
 proc geometry*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQSpacerItem_geometry(self.h))
 
 proc spacerItem*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem(h: fcQSpacerItem_spacerItem(self.h))
 
 proc sizePolicy*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsizepolicy.QSizePolicy =
-
   gen_qsizepolicy.QSizePolicy(h: fcQSpacerItem_sizePolicy(self.h))
 
-proc changeSize3*(self: gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint): void =
-
+proc changeSize*(self: gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint): void =
   fcQSpacerItem_changeSize3(self.h, w, h, cint(hData))
 
-proc changeSize4*(self: gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint, vData: cint): void =
-
+proc changeSize*(self: gen_qlayoutitem_types.QSpacerItem, w: cint, h: cint, hData: cint, vData: cint): void =
   fcQSpacerItem_changeSize4(self.h, w, h, cint(hData), cint(vData))
 
 proc QSpacerItemsizeHint*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSpacerItem_virtualbase_sizeHint(self.h))
 
 type QSpacerItemsizeHintProc* = proc(): gen_qsize.QSize
@@ -635,7 +597,6 @@ proc miqt_exec_callback_QSpacerItem_sizeHint(self: ptr cQSpacerItem, slot: int):
 
   virtualReturn.h
 proc QSpacerItemminimumSize*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSpacerItem_virtualbase_minimumSize(self.h))
 
 type QSpacerItemminimumSizeProc* = proc(): gen_qsize.QSize
@@ -653,7 +614,6 @@ proc miqt_exec_callback_QSpacerItem_minimumSize(self: ptr cQSpacerItem, slot: in
 
   virtualReturn.h
 proc QSpacerItemmaximumSize*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSpacerItem_virtualbase_maximumSize(self.h))
 
 type QSpacerItemmaximumSizeProc* = proc(): gen_qsize.QSize
@@ -671,7 +631,6 @@ proc miqt_exec_callback_QSpacerItem_maximumSize(self: ptr cQSpacerItem, slot: in
 
   virtualReturn.h
 proc QSpacerItemexpandingDirections*(self: gen_qlayoutitem_types.QSpacerItem, ): cint =
-
   cint(fQSpacerItem_virtualbase_expandingDirections(self.h))
 
 type QSpacerItemexpandingDirectionsProc* = proc(): cint
@@ -689,7 +648,6 @@ proc miqt_exec_callback_QSpacerItem_expandingDirections(self: ptr cQSpacerItem, 
 
   cint(virtualReturn)
 proc QSpacerItemisEmpty*(self: gen_qlayoutitem_types.QSpacerItem, ): bool =
-
   fQSpacerItem_virtualbase_isEmpty(self.h)
 
 type QSpacerItemisEmptyProc* = proc(): bool
@@ -707,7 +665,6 @@ proc miqt_exec_callback_QSpacerItem_isEmpty(self: ptr cQSpacerItem, slot: int): 
 
   virtualReturn
 proc QSpacerItemsetGeometry*(self: gen_qlayoutitem_types.QSpacerItem, geometry: gen_qrect.QRect): void =
-
   fQSpacerItem_virtualbase_setGeometry(self.h, geometry.h)
 
 type QSpacerItemsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
@@ -725,7 +682,6 @@ proc miqt_exec_callback_QSpacerItem_setGeometry(self: ptr cQSpacerItem, slot: in
 
   nimfunc[](slotval1)
 proc QSpacerItemgeometry*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQSpacerItem_virtualbase_geometry(self.h))
 
 type QSpacerItemgeometryProc* = proc(): gen_qrect.QRect
@@ -743,7 +699,6 @@ proc miqt_exec_callback_QSpacerItem_geometry(self: ptr cQSpacerItem, slot: int):
 
   virtualReturn.h
 proc QSpacerItemspacerItem*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem(h: fQSpacerItem_virtualbase_spacerItem(self.h))
 
 type QSpacerItemspacerItemProc* = proc(): gen_qlayoutitem_types.QSpacerItem
@@ -761,7 +716,6 @@ proc miqt_exec_callback_QSpacerItem_spacerItem(self: ptr cQSpacerItem, slot: int
 
   virtualReturn.h
 proc QSpacerItemhasHeightForWidth*(self: gen_qlayoutitem_types.QSpacerItem, ): bool =
-
   fQSpacerItem_virtualbase_hasHeightForWidth(self.h)
 
 type QSpacerItemhasHeightForWidthProc* = proc(): bool
@@ -779,7 +733,6 @@ proc miqt_exec_callback_QSpacerItem_hasHeightForWidth(self: ptr cQSpacerItem, sl
 
   virtualReturn
 proc QSpacerItemheightForWidth*(self: gen_qlayoutitem_types.QSpacerItem, param1: cint): cint =
-
   fQSpacerItem_virtualbase_heightForWidth(self.h, param1)
 
 type QSpacerItemheightForWidthProc* = proc(param1: cint): cint
@@ -799,7 +752,6 @@ proc miqt_exec_callback_QSpacerItem_heightForWidth(self: ptr cQSpacerItem, slot:
 
   virtualReturn
 proc QSpacerItemminimumHeightForWidth*(self: gen_qlayoutitem_types.QSpacerItem, param1: cint): cint =
-
   fQSpacerItem_virtualbase_minimumHeightForWidth(self.h, param1)
 
 type QSpacerItemminimumHeightForWidthProc* = proc(param1: cint): cint
@@ -819,7 +771,6 @@ proc miqt_exec_callback_QSpacerItem_minimumHeightForWidth(self: ptr cQSpacerItem
 
   virtualReturn
 proc QSpacerIteminvalidate*(self: gen_qlayoutitem_types.QSpacerItem, ): void =
-
   fQSpacerItem_virtualbase_invalidate(self.h)
 
 type QSpacerIteminvalidateProc* = proc(): void
@@ -835,7 +786,6 @@ proc miqt_exec_callback_QSpacerItem_invalidate(self: ptr cQSpacerItem, slot: int
 
   nimfunc[]()
 proc QSpacerItemwidget*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQSpacerItem_virtualbase_widget(self.h))
 
 type QSpacerItemwidgetProc* = proc(): gen_qwidget.QWidget
@@ -853,7 +803,6 @@ proc miqt_exec_callback_QSpacerItem_widget(self: ptr cQSpacerItem, slot: int): p
 
   virtualReturn.h
 proc QSpacerItemlayout*(self: gen_qlayoutitem_types.QSpacerItem, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fQSpacerItem_virtualbase_layout(self.h))
 
 type QSpacerItemlayoutProc* = proc(): gen_qlayout.QLayout
@@ -871,7 +820,6 @@ proc miqt_exec_callback_QSpacerItem_layout(self: ptr cQSpacerItem, slot: int): p
 
   virtualReturn.h
 proc QSpacerItemcontrolTypes*(self: gen_qlayoutitem_types.QSpacerItem, ): cint =
-
   cint(fQSpacerItem_virtualbase_controlTypes(self.h))
 
 type QSpacerItemcontrolTypesProc* = proc(): cint
@@ -894,58 +842,45 @@ proc delete*(self: gen_qlayoutitem_types.QSpacerItem) =
 func init*(T: type gen_qlayoutitem_types.QWidgetItem, h: ptr cQWidgetItem): gen_qlayoutitem_types.QWidgetItem =
   T(h: h)
 proc create*(T: type gen_qlayoutitem_types.QWidgetItem, w: gen_qwidget.QWidget): gen_qlayoutitem_types.QWidgetItem =
-
   gen_qlayoutitem_types.QWidgetItem.init(fcQWidgetItem_new(w.h))
-proc sizeHint*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
 
+proc sizeHint*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
   gen_qsize.QSize(h: fcQWidgetItem_sizeHint(self.h))
 
 proc minimumSize*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidgetItem_minimumSize(self.h))
 
 proc maximumSize*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidgetItem_maximumSize(self.h))
 
 proc expandingDirections*(self: gen_qlayoutitem_types.QWidgetItem, ): cint =
-
   cint(fcQWidgetItem_expandingDirections(self.h))
 
 proc isEmpty*(self: gen_qlayoutitem_types.QWidgetItem, ): bool =
-
   fcQWidgetItem_isEmpty(self.h)
 
 proc setGeometry*(self: gen_qlayoutitem_types.QWidgetItem, geometry: gen_qrect.QRect): void =
-
   fcQWidgetItem_setGeometry(self.h, geometry.h)
 
 proc geometry*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQWidgetItem_geometry(self.h))
 
 proc widget*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQWidgetItem_widget(self.h))
 
 proc hasHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, ): bool =
-
   fcQWidgetItem_hasHeightForWidth(self.h)
 
 proc heightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, param1: cint): cint =
-
   fcQWidgetItem_heightForWidth(self.h, param1)
 
 proc minimumHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, param1: cint): cint =
-
   fcQWidgetItem_minimumHeightForWidth(self.h, param1)
 
 proc controlTypes*(self: gen_qlayoutitem_types.QWidgetItem, ): cint =
-
   cint(fcQWidgetItem_controlTypes(self.h))
 
 proc QWidgetItemsizeHint*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWidgetItem_virtualbase_sizeHint(self.h))
 
 type QWidgetItemsizeHintProc* = proc(): gen_qsize.QSize
@@ -963,7 +898,6 @@ proc miqt_exec_callback_QWidgetItem_sizeHint(self: ptr cQWidgetItem, slot: int):
 
   virtualReturn.h
 proc QWidgetItemminimumSize*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWidgetItem_virtualbase_minimumSize(self.h))
 
 type QWidgetItemminimumSizeProc* = proc(): gen_qsize.QSize
@@ -981,7 +915,6 @@ proc miqt_exec_callback_QWidgetItem_minimumSize(self: ptr cQWidgetItem, slot: in
 
   virtualReturn.h
 proc QWidgetItemmaximumSize*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWidgetItem_virtualbase_maximumSize(self.h))
 
 type QWidgetItemmaximumSizeProc* = proc(): gen_qsize.QSize
@@ -999,7 +932,6 @@ proc miqt_exec_callback_QWidgetItem_maximumSize(self: ptr cQWidgetItem, slot: in
 
   virtualReturn.h
 proc QWidgetItemexpandingDirections*(self: gen_qlayoutitem_types.QWidgetItem, ): cint =
-
   cint(fQWidgetItem_virtualbase_expandingDirections(self.h))
 
 type QWidgetItemexpandingDirectionsProc* = proc(): cint
@@ -1017,7 +949,6 @@ proc miqt_exec_callback_QWidgetItem_expandingDirections(self: ptr cQWidgetItem, 
 
   cint(virtualReturn)
 proc QWidgetItemisEmpty*(self: gen_qlayoutitem_types.QWidgetItem, ): bool =
-
   fQWidgetItem_virtualbase_isEmpty(self.h)
 
 type QWidgetItemisEmptyProc* = proc(): bool
@@ -1035,7 +966,6 @@ proc miqt_exec_callback_QWidgetItem_isEmpty(self: ptr cQWidgetItem, slot: int): 
 
   virtualReturn
 proc QWidgetItemsetGeometry*(self: gen_qlayoutitem_types.QWidgetItem, geometry: gen_qrect.QRect): void =
-
   fQWidgetItem_virtualbase_setGeometry(self.h, geometry.h)
 
 type QWidgetItemsetGeometryProc* = proc(geometry: gen_qrect.QRect): void
@@ -1053,7 +983,6 @@ proc miqt_exec_callback_QWidgetItem_setGeometry(self: ptr cQWidgetItem, slot: in
 
   nimfunc[](slotval1)
 proc QWidgetItemgeometry*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQWidgetItem_virtualbase_geometry(self.h))
 
 type QWidgetItemgeometryProc* = proc(): gen_qrect.QRect
@@ -1071,7 +1000,6 @@ proc miqt_exec_callback_QWidgetItem_geometry(self: ptr cQWidgetItem, slot: int):
 
   virtualReturn.h
 proc QWidgetItemwidget*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQWidgetItem_virtualbase_widget(self.h))
 
 type QWidgetItemwidgetProc* = proc(): gen_qwidget.QWidget
@@ -1089,7 +1017,6 @@ proc miqt_exec_callback_QWidgetItem_widget(self: ptr cQWidgetItem, slot: int): p
 
   virtualReturn.h
 proc QWidgetItemhasHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, ): bool =
-
   fQWidgetItem_virtualbase_hasHeightForWidth(self.h)
 
 type QWidgetItemhasHeightForWidthProc* = proc(): bool
@@ -1107,7 +1034,6 @@ proc miqt_exec_callback_QWidgetItem_hasHeightForWidth(self: ptr cQWidgetItem, sl
 
   virtualReturn
 proc QWidgetItemheightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, param1: cint): cint =
-
   fQWidgetItem_virtualbase_heightForWidth(self.h, param1)
 
 type QWidgetItemheightForWidthProc* = proc(param1: cint): cint
@@ -1127,7 +1053,6 @@ proc miqt_exec_callback_QWidgetItem_heightForWidth(self: ptr cQWidgetItem, slot:
 
   virtualReturn
 proc QWidgetItemminimumHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItem, param1: cint): cint =
-
   fQWidgetItem_virtualbase_minimumHeightForWidth(self.h, param1)
 
 type QWidgetItemminimumHeightForWidthProc* = proc(param1: cint): cint
@@ -1147,7 +1072,6 @@ proc miqt_exec_callback_QWidgetItem_minimumHeightForWidth(self: ptr cQWidgetItem
 
   virtualReturn
 proc QWidgetItemcontrolTypes*(self: gen_qlayoutitem_types.QWidgetItem, ): cint =
-
   cint(fQWidgetItem_virtualbase_controlTypes(self.h))
 
 type QWidgetItemcontrolTypesProc* = proc(): cint
@@ -1165,7 +1089,6 @@ proc miqt_exec_callback_QWidgetItem_controlTypes(self: ptr cQWidgetItem, slot: i
 
   cint(virtualReturn)
 proc QWidgetIteminvalidate*(self: gen_qlayoutitem_types.QWidgetItem, ): void =
-
   fQWidgetItem_virtualbase_invalidate(self.h)
 
 type QWidgetIteminvalidateProc* = proc(): void
@@ -1181,7 +1104,6 @@ proc miqt_exec_callback_QWidgetItem_invalidate(self: ptr cQWidgetItem, slot: int
 
   nimfunc[]()
 proc QWidgetItemlayout*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fQWidgetItem_virtualbase_layout(self.h))
 
 type QWidgetItemlayoutProc* = proc(): gen_qlayout.QLayout
@@ -1199,7 +1121,6 @@ proc miqt_exec_callback_QWidgetItem_layout(self: ptr cQWidgetItem, slot: int): p
 
   virtualReturn.h
 proc QWidgetItemspacerItem*(self: gen_qlayoutitem_types.QWidgetItem, ): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem(h: fQWidgetItem_virtualbase_spacerItem(self.h))
 
 type QWidgetItemspacerItemProc* = proc(): gen_qlayoutitem_types.QSpacerItem
@@ -1222,26 +1143,21 @@ proc delete*(self: gen_qlayoutitem_types.QWidgetItem) =
 func init*(T: type gen_qlayoutitem_types.QWidgetItemV2, h: ptr cQWidgetItemV2): gen_qlayoutitem_types.QWidgetItemV2 =
   T(h: h)
 proc create*(T: type gen_qlayoutitem_types.QWidgetItemV2, widget: gen_qwidget.QWidget): gen_qlayoutitem_types.QWidgetItemV2 =
-
   gen_qlayoutitem_types.QWidgetItemV2.init(fcQWidgetItemV2_new(widget.h))
-proc sizeHint*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
 
+proc sizeHint*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
   gen_qsize.QSize(h: fcQWidgetItemV2_sizeHint(self.h))
 
 proc minimumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidgetItemV2_minimumSize(self.h))
 
 proc maximumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWidgetItemV2_maximumSize(self.h))
 
 proc heightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, width: cint): cint =
-
   fcQWidgetItemV2_heightForWidth(self.h, width)
 
 proc QWidgetItemV2sizeHint*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWidgetItemV2_virtualbase_sizeHint(self.h))
 
 type QWidgetItemV2sizeHintProc* = proc(): gen_qsize.QSize
@@ -1259,7 +1175,6 @@ proc miqt_exec_callback_QWidgetItemV2_sizeHint(self: ptr cQWidgetItemV2, slot: i
 
   virtualReturn.h
 proc QWidgetItemV2minimumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWidgetItemV2_virtualbase_minimumSize(self.h))
 
 type QWidgetItemV2minimumSizeProc* = proc(): gen_qsize.QSize
@@ -1277,7 +1192,6 @@ proc miqt_exec_callback_QWidgetItemV2_minimumSize(self: ptr cQWidgetItemV2, slot
 
   virtualReturn.h
 proc QWidgetItemV2maximumSize*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWidgetItemV2_virtualbase_maximumSize(self.h))
 
 type QWidgetItemV2maximumSizeProc* = proc(): gen_qsize.QSize
@@ -1295,7 +1209,6 @@ proc miqt_exec_callback_QWidgetItemV2_maximumSize(self: ptr cQWidgetItemV2, slot
 
   virtualReturn.h
 proc QWidgetItemV2heightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, width: cint): cint =
-
   fQWidgetItemV2_virtualbase_heightForWidth(self.h, width)
 
 type QWidgetItemV2heightForWidthProc* = proc(width: cint): cint
@@ -1315,7 +1228,6 @@ proc miqt_exec_callback_QWidgetItemV2_heightForWidth(self: ptr cQWidgetItemV2, s
 
   virtualReturn
 proc QWidgetItemV2expandingDirections*(self: gen_qlayoutitem_types.QWidgetItemV2, ): cint =
-
   cint(fQWidgetItemV2_virtualbase_expandingDirections(self.h))
 
 type QWidgetItemV2expandingDirectionsProc* = proc(): cint
@@ -1333,7 +1245,6 @@ proc miqt_exec_callback_QWidgetItemV2_expandingDirections(self: ptr cQWidgetItem
 
   cint(virtualReturn)
 proc QWidgetItemV2isEmpty*(self: gen_qlayoutitem_types.QWidgetItemV2, ): bool =
-
   fQWidgetItemV2_virtualbase_isEmpty(self.h)
 
 type QWidgetItemV2isEmptyProc* = proc(): bool
@@ -1351,7 +1262,6 @@ proc miqt_exec_callback_QWidgetItemV2_isEmpty(self: ptr cQWidgetItemV2, slot: in
 
   virtualReturn
 proc QWidgetItemV2setGeometry*(self: gen_qlayoutitem_types.QWidgetItemV2, geometry: gen_qrect.QRect): void =
-
   fQWidgetItemV2_virtualbase_setGeometry(self.h, geometry.h)
 
 type QWidgetItemV2setGeometryProc* = proc(geometry: gen_qrect.QRect): void
@@ -1369,7 +1279,6 @@ proc miqt_exec_callback_QWidgetItemV2_setGeometry(self: ptr cQWidgetItemV2, slot
 
   nimfunc[](slotval1)
 proc QWidgetItemV2geometry*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQWidgetItemV2_virtualbase_geometry(self.h))
 
 type QWidgetItemV2geometryProc* = proc(): gen_qrect.QRect
@@ -1387,7 +1296,6 @@ proc miqt_exec_callback_QWidgetItemV2_geometry(self: ptr cQWidgetItemV2, slot: i
 
   virtualReturn.h
 proc QWidgetItemV2widget*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQWidgetItemV2_virtualbase_widget(self.h))
 
 type QWidgetItemV2widgetProc* = proc(): gen_qwidget.QWidget
@@ -1405,7 +1313,6 @@ proc miqt_exec_callback_QWidgetItemV2_widget(self: ptr cQWidgetItemV2, slot: int
 
   virtualReturn.h
 proc QWidgetItemV2hasHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, ): bool =
-
   fQWidgetItemV2_virtualbase_hasHeightForWidth(self.h)
 
 type QWidgetItemV2hasHeightForWidthProc* = proc(): bool
@@ -1423,7 +1330,6 @@ proc miqt_exec_callback_QWidgetItemV2_hasHeightForWidth(self: ptr cQWidgetItemV2
 
   virtualReturn
 proc QWidgetItemV2minimumHeightForWidth*(self: gen_qlayoutitem_types.QWidgetItemV2, param1: cint): cint =
-
   fQWidgetItemV2_virtualbase_minimumHeightForWidth(self.h, param1)
 
 type QWidgetItemV2minimumHeightForWidthProc* = proc(param1: cint): cint
@@ -1443,7 +1349,6 @@ proc miqt_exec_callback_QWidgetItemV2_minimumHeightForWidth(self: ptr cQWidgetIt
 
   virtualReturn
 proc QWidgetItemV2controlTypes*(self: gen_qlayoutitem_types.QWidgetItemV2, ): cint =
-
   cint(fQWidgetItemV2_virtualbase_controlTypes(self.h))
 
 type QWidgetItemV2controlTypesProc* = proc(): cint
@@ -1461,7 +1366,6 @@ proc miqt_exec_callback_QWidgetItemV2_controlTypes(self: ptr cQWidgetItemV2, slo
 
   cint(virtualReturn)
 proc QWidgetItemV2invalidate*(self: gen_qlayoutitem_types.QWidgetItemV2, ): void =
-
   fQWidgetItemV2_virtualbase_invalidate(self.h)
 
 type QWidgetItemV2invalidateProc* = proc(): void
@@ -1477,7 +1381,6 @@ proc miqt_exec_callback_QWidgetItemV2_invalidate(self: ptr cQWidgetItemV2, slot:
 
   nimfunc[]()
 proc QWidgetItemV2layout*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fQWidgetItemV2_virtualbase_layout(self.h))
 
 type QWidgetItemV2layoutProc* = proc(): gen_qlayout.QLayout
@@ -1495,7 +1398,6 @@ proc miqt_exec_callback_QWidgetItemV2_layout(self: ptr cQWidgetItemV2, slot: int
 
   virtualReturn.h
 proc QWidgetItemV2spacerItem*(self: gen_qlayoutitem_types.QWidgetItemV2, ): gen_qlayoutitem_types.QSpacerItem =
-
   gen_qlayoutitem_types.QSpacerItem(h: fQWidgetItemV2_virtualbase_spacerItem(self.h))
 
 type QWidgetItemV2spacerItemProc* = proc(): gen_qlayoutitem_types.QSpacerItem

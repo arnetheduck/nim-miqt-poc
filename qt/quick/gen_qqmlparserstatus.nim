@@ -51,14 +51,12 @@ proc fcQQmlParserStatus_delete(self: pointer) {.importc: "QQmlParserStatus_delet
 func init*(T: type gen_qqmlparserstatus_types.QQmlParserStatus, h: ptr cQQmlParserStatus): gen_qqmlparserstatus_types.QQmlParserStatus =
   T(h: h)
 proc create*(T: type gen_qqmlparserstatus_types.QQmlParserStatus, ): gen_qqmlparserstatus_types.QQmlParserStatus =
-
   gen_qqmlparserstatus_types.QQmlParserStatus.init(fcQQmlParserStatus_new())
-proc classBegin*(self: gen_qqmlparserstatus_types.QQmlParserStatus, ): void =
 
+proc classBegin*(self: gen_qqmlparserstatus_types.QQmlParserStatus, ): void =
   fcQQmlParserStatus_classBegin(self.h)
 
 proc componentComplete*(self: gen_qqmlparserstatus_types.QQmlParserStatus, ): void =
-
   fcQQmlParserStatus_componentComplete(self.h)
 
 type QQmlParserStatusclassBeginProc* = proc(): void

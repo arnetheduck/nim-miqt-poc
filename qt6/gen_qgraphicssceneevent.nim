@@ -240,26 +240,21 @@ proc fcQGraphicsSceneMoveEvent_delete(self: pointer) {.importc: "QGraphicsSceneM
 func init*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneEvent, h: ptr cQGraphicsSceneEvent): gen_qgraphicssceneevent_types.QGraphicsSceneEvent =
   T(h: h)
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneEvent, typeVal: cint): gen_qgraphicssceneevent_types.QGraphicsSceneEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneEvent.init(fcQGraphicsSceneEvent_new(cint(typeVal)))
-proc widget*(self: gen_qgraphicssceneevent_types.QGraphicsSceneEvent, ): gen_qwidget.QWidget =
 
+proc widget*(self: gen_qgraphicssceneevent_types.QGraphicsSceneEvent, ): gen_qwidget.QWidget =
   gen_qwidget.QWidget(h: fcQGraphicsSceneEvent_widget(self.h))
 
 proc setWidget*(self: gen_qgraphicssceneevent_types.QGraphicsSceneEvent, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsSceneEvent_setWidget(self.h, widget.h)
 
 proc timestamp*(self: gen_qgraphicssceneevent_types.QGraphicsSceneEvent, ): culonglong =
-
   fcQGraphicsSceneEvent_timestamp(self.h)
 
 proc setTimestamp*(self: gen_qgraphicssceneevent_types.QGraphicsSceneEvent, ts: culonglong): void =
-
   fcQGraphicsSceneEvent_setTimestamp(self.h, ts)
 
 proc QGraphicsSceneEventsetAccepted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneEvent, accepted: bool): void =
-
   fQGraphicsSceneEvent_virtualbase_setAccepted(self.h, accepted)
 
 type QGraphicsSceneEventsetAcceptedProc* = proc(accepted: bool): void
@@ -277,7 +272,6 @@ proc miqt_exec_callback_QGraphicsSceneEvent_setAccepted(self: ptr cQGraphicsScen
 
   nimfunc[](slotval1)
 proc QGraphicsSceneEventclone*(self: gen_qgraphicssceneevent_types.QGraphicsSceneEvent, ): gen_qcoreevent.QEvent =
-
   gen_qcoreevent.QEvent(h: fQGraphicsSceneEvent_virtualbase_clone(self.h))
 
 type QGraphicsSceneEventcloneProc* = proc(): gen_qcoreevent.QEvent
@@ -300,125 +294,96 @@ proc delete*(self: gen_qgraphicssceneevent_types.QGraphicsSceneEvent) =
 func init*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, h: ptr cQGraphicsSceneMouseEvent): gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent =
   T(h: h)
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent.init(fcQGraphicsSceneMouseEvent_new())
+
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, typeVal: cint): gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent.init(fcQGraphicsSceneMouseEvent_new2(cint(typeVal)))
-proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): gen_qpoint.QPointF =
 
+proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsSceneMouseEvent_pos(self.h))
 
 proc setPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneMouseEvent_setPos(self.h, pos.h)
 
 proc scenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneMouseEvent_scenePos(self.h))
 
 proc setScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneMouseEvent_setScenePos(self.h, pos.h)
 
 proc screenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneMouseEvent_screenPos(self.h))
 
 proc setScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, pos: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneMouseEvent_setScreenPos(self.h, pos.h)
 
 proc buttonDownPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, button: cint): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneMouseEvent_buttonDownPos(self.h, cint(button)))
 
 proc setButtonDownPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, button: cint, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneMouseEvent_setButtonDownPos(self.h, cint(button), pos.h)
 
 proc buttonDownScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, button: cint): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneMouseEvent_buttonDownScenePos(self.h, cint(button)))
 
 proc setButtonDownScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, button: cint, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneMouseEvent_setButtonDownScenePos(self.h, cint(button), pos.h)
 
 proc buttonDownScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, button: cint): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneMouseEvent_buttonDownScreenPos(self.h, cint(button)))
 
 proc setButtonDownScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, button: cint, pos: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneMouseEvent_setButtonDownScreenPos(self.h, cint(button), pos.h)
 
 proc lastPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneMouseEvent_lastPos(self.h))
 
 proc setLastPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneMouseEvent_setLastPos(self.h, pos.h)
 
 proc lastScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneMouseEvent_lastScenePos(self.h))
 
 proc setLastScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneMouseEvent_setLastScenePos(self.h, pos.h)
 
 proc lastScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneMouseEvent_lastScreenPos(self.h))
 
 proc setLastScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, pos: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneMouseEvent_setLastScreenPos(self.h, pos.h)
 
 proc buttons*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): cint =
-
   cint(fcQGraphicsSceneMouseEvent_buttons(self.h))
 
 proc setButtons*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, buttons: cint): void =
-
   fcQGraphicsSceneMouseEvent_setButtons(self.h, cint(buttons))
 
 proc button*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): cint =
-
   cint(fcQGraphicsSceneMouseEvent_button(self.h))
 
 proc setButton*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, button: cint): void =
-
   fcQGraphicsSceneMouseEvent_setButton(self.h, cint(button))
 
 proc modifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): cint =
-
   cint(fcQGraphicsSceneMouseEvent_modifiers(self.h))
 
 proc setModifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, modifiers: cint): void =
-
   fcQGraphicsSceneMouseEvent_setModifiers(self.h, cint(modifiers))
 
 proc source*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): cint =
-
   cint(fcQGraphicsSceneMouseEvent_source(self.h))
 
 proc setSource*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, source: cint): void =
-
   fcQGraphicsSceneMouseEvent_setSource(self.h, cint(source))
 
 proc flags*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): cint =
-
   cint(fcQGraphicsSceneMouseEvent_flags(self.h))
 
 proc setFlags*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, flags: cint): void =
-
   fcQGraphicsSceneMouseEvent_setFlags(self.h, cint(flags))
 
 proc QGraphicsSceneMouseEventsetAccepted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, accepted: bool): void =
-
   fQGraphicsSceneMouseEvent_virtualbase_setAccepted(self.h, accepted)
 
 type QGraphicsSceneMouseEventsetAcceptedProc* = proc(accepted: bool): void
@@ -436,7 +401,6 @@ proc miqt_exec_callback_QGraphicsSceneMouseEvent_setAccepted(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsSceneMouseEventclone*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent, ): gen_qcoreevent.QEvent =
-
   gen_qcoreevent.QEvent(h: fQGraphicsSceneMouseEvent_virtualbase_clone(self.h))
 
 type QGraphicsSceneMouseEventcloneProc* = proc(): gen_qcoreevent.QEvent
@@ -459,93 +423,72 @@ proc delete*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMouseEvent) =
 func init*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, h: ptr cQGraphicsSceneWheelEvent): gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent =
   T(h: h)
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent.init(fcQGraphicsSceneWheelEvent_new())
+
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, typeVal: cint): gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent.init(fcQGraphicsSceneWheelEvent_new2(cint(typeVal)))
-proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): gen_qpoint.QPointF =
 
+proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsSceneWheelEvent_pos(self.h))
 
 proc setPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneWheelEvent_setPos(self.h, pos.h)
 
 proc scenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneWheelEvent_scenePos(self.h))
 
 proc setScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneWheelEvent_setScenePos(self.h, pos.h)
 
 proc screenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneWheelEvent_screenPos(self.h))
 
 proc setScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, pos: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneWheelEvent_setScreenPos(self.h, pos.h)
 
 proc buttons*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): cint =
-
   cint(fcQGraphicsSceneWheelEvent_buttons(self.h))
 
 proc setButtons*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, buttons: cint): void =
-
   fcQGraphicsSceneWheelEvent_setButtons(self.h, cint(buttons))
 
 proc modifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): cint =
-
   cint(fcQGraphicsSceneWheelEvent_modifiers(self.h))
 
 proc setModifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, modifiers: cint): void =
-
   fcQGraphicsSceneWheelEvent_setModifiers(self.h, cint(modifiers))
 
 proc delta*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): cint =
-
   fcQGraphicsSceneWheelEvent_delta(self.h)
 
 proc setDelta*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, delta: cint): void =
-
   fcQGraphicsSceneWheelEvent_setDelta(self.h, delta)
 
 proc orientation*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): cint =
-
   cint(fcQGraphicsSceneWheelEvent_orientation(self.h))
 
 proc setOrientation*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, orientation: cint): void =
-
   fcQGraphicsSceneWheelEvent_setOrientation(self.h, cint(orientation))
 
 proc phase*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): cint =
-
   cint(fcQGraphicsSceneWheelEvent_phase(self.h))
 
 proc setPhase*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, scrollPhase: cint): void =
-
   fcQGraphicsSceneWheelEvent_setPhase(self.h, cint(scrollPhase))
 
 proc pixelDelta*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneWheelEvent_pixelDelta(self.h))
 
 proc setPixelDelta*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, delta: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneWheelEvent_setPixelDelta(self.h, delta.h)
 
 proc isInverted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): bool =
-
   fcQGraphicsSceneWheelEvent_isInverted(self.h)
 
 proc setInverted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, inverted: bool): void =
-
   fcQGraphicsSceneWheelEvent_setInverted(self.h, inverted)
 
 proc QGraphicsSceneWheelEventsetAccepted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, accepted: bool): void =
-
   fQGraphicsSceneWheelEvent_virtualbase_setAccepted(self.h, accepted)
 
 type QGraphicsSceneWheelEventsetAcceptedProc* = proc(accepted: bool): void
@@ -563,7 +506,6 @@ proc miqt_exec_callback_QGraphicsSceneWheelEvent_setAccepted(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsSceneWheelEventclone*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent, ): gen_qcoreevent.QEvent =
-
   gen_qcoreevent.QEvent(h: fQGraphicsSceneWheelEvent_virtualbase_clone(self.h))
 
 type QGraphicsSceneWheelEventcloneProc* = proc(): gen_qcoreevent.QEvent
@@ -586,53 +528,42 @@ proc delete*(self: gen_qgraphicssceneevent_types.QGraphicsSceneWheelEvent) =
 func init*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, h: ptr cQGraphicsSceneContextMenuEvent): gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent =
   T(h: h)
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, ): gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent.init(fcQGraphicsSceneContextMenuEvent_new())
+
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, typeVal: cint): gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent.init(fcQGraphicsSceneContextMenuEvent_new2(cint(typeVal)))
-proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, ): gen_qpoint.QPointF =
 
+proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, ): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsSceneContextMenuEvent_pos(self.h))
 
 proc setPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneContextMenuEvent_setPos(self.h, pos.h)
 
 proc scenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneContextMenuEvent_scenePos(self.h))
 
 proc setScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneContextMenuEvent_setScenePos(self.h, pos.h)
 
 proc screenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneContextMenuEvent_screenPos(self.h))
 
 proc setScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, pos: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneContextMenuEvent_setScreenPos(self.h, pos.h)
 
 proc modifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, ): cint =
-
   cint(fcQGraphicsSceneContextMenuEvent_modifiers(self.h))
 
 proc setModifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, modifiers: cint): void =
-
   fcQGraphicsSceneContextMenuEvent_setModifiers(self.h, cint(modifiers))
 
 proc reason*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, ): cint =
-
   cint(fcQGraphicsSceneContextMenuEvent_reason(self.h))
 
 proc setReason*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, reason: cint): void =
-
   fcQGraphicsSceneContextMenuEvent_setReason(self.h, cint(reason))
 
 proc QGraphicsSceneContextMenuEventsetAccepted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, accepted: bool): void =
-
   fQGraphicsSceneContextMenuEvent_virtualbase_setAccepted(self.h, accepted)
 
 type QGraphicsSceneContextMenuEventsetAcceptedProc* = proc(accepted: bool): void
@@ -650,7 +581,6 @@ proc miqt_exec_callback_QGraphicsSceneContextMenuEvent_setAccepted(self: ptr cQG
 
   nimfunc[](slotval1)
 proc QGraphicsSceneContextMenuEventclone*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent, ): gen_qcoreevent.QEvent =
-
   gen_qcoreevent.QEvent(h: fQGraphicsSceneContextMenuEvent_virtualbase_clone(self.h))
 
 type QGraphicsSceneContextMenuEventcloneProc* = proc(): gen_qcoreevent.QEvent
@@ -673,69 +603,54 @@ proc delete*(self: gen_qgraphicssceneevent_types.QGraphicsSceneContextMenuEvent)
 func init*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, h: ptr cQGraphicsSceneHoverEvent): gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent =
   T(h: h)
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent.init(fcQGraphicsSceneHoverEvent_new())
+
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, typeVal: cint): gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent.init(fcQGraphicsSceneHoverEvent_new2(cint(typeVal)))
-proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): gen_qpoint.QPointF =
 
+proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsSceneHoverEvent_pos(self.h))
 
 proc setPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneHoverEvent_setPos(self.h, pos.h)
 
 proc scenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneHoverEvent_scenePos(self.h))
 
 proc setScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneHoverEvent_setScenePos(self.h, pos.h)
 
 proc screenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneHoverEvent_screenPos(self.h))
 
 proc setScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, pos: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneHoverEvent_setScreenPos(self.h, pos.h)
 
 proc lastPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneHoverEvent_lastPos(self.h))
 
 proc setLastPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneHoverEvent_setLastPos(self.h, pos.h)
 
 proc lastScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneHoverEvent_lastScenePos(self.h))
 
 proc setLastScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneHoverEvent_setLastScenePos(self.h, pos.h)
 
 proc lastScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneHoverEvent_lastScreenPos(self.h))
 
 proc setLastScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, pos: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneHoverEvent_setLastScreenPos(self.h, pos.h)
 
 proc modifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): cint =
-
   cint(fcQGraphicsSceneHoverEvent_modifiers(self.h))
 
 proc setModifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, modifiers: cint): void =
-
   fcQGraphicsSceneHoverEvent_setModifiers(self.h, cint(modifiers))
 
 proc QGraphicsSceneHoverEventsetAccepted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, accepted: bool): void =
-
   fQGraphicsSceneHoverEvent_virtualbase_setAccepted(self.h, accepted)
 
 type QGraphicsSceneHoverEventsetAcceptedProc* = proc(accepted: bool): void
@@ -753,7 +668,6 @@ proc miqt_exec_callback_QGraphicsSceneHoverEvent_setAccepted(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsSceneHoverEventclone*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent, ): gen_qcoreevent.QEvent =
-
   gen_qcoreevent.QEvent(h: fQGraphicsSceneHoverEvent_virtualbase_clone(self.h))
 
 type QGraphicsSceneHoverEventcloneProc* = proc(): gen_qcoreevent.QEvent
@@ -776,29 +690,24 @@ proc delete*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHoverEvent) =
 func init*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, h: ptr cQGraphicsSceneHelpEvent): gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent =
   T(h: h)
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, ): gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent.init(fcQGraphicsSceneHelpEvent_new())
+
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, typeVal: cint): gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent.init(fcQGraphicsSceneHelpEvent_new2(cint(typeVal)))
-proc scenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, ): gen_qpoint.QPointF =
 
+proc scenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, ): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsSceneHelpEvent_scenePos(self.h))
 
 proc setScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneHelpEvent_setScenePos(self.h, pos.h)
 
 proc screenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneHelpEvent_screenPos(self.h))
 
 proc setScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, pos: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneHelpEvent_setScreenPos(self.h, pos.h)
 
 proc QGraphicsSceneHelpEventsetAccepted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, accepted: bool): void =
-
   fQGraphicsSceneHelpEvent_virtualbase_setAccepted(self.h, accepted)
 
 type QGraphicsSceneHelpEventsetAcceptedProc* = proc(accepted: bool): void
@@ -816,7 +725,6 @@ proc miqt_exec_callback_QGraphicsSceneHelpEvent_setAccepted(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsSceneHelpEventclone*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent, ): gen_qcoreevent.QEvent =
-
   gen_qcoreevent.QEvent(h: fQGraphicsSceneHelpEvent_virtualbase_clone(self.h))
 
 type QGraphicsSceneHelpEventcloneProc* = proc(): gen_qcoreevent.QEvent
@@ -839,97 +747,75 @@ proc delete*(self: gen_qgraphicssceneevent_types.QGraphicsSceneHelpEvent) =
 func init*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, h: ptr cQGraphicsSceneDragDropEvent): gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent =
   T(h: h)
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent.init(fcQGraphicsSceneDragDropEvent_new())
+
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, typeVal: cint): gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent.init(fcQGraphicsSceneDragDropEvent_new2(cint(typeVal)))
-proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): gen_qpoint.QPointF =
 
+proc pos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsSceneDragDropEvent_pos(self.h))
 
 proc setPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneDragDropEvent_setPos(self.h, pos.h)
 
 proc scenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneDragDropEvent_scenePos(self.h))
 
 proc setScenePos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneDragDropEvent_setScenePos(self.h, pos.h)
 
 proc screenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQGraphicsSceneDragDropEvent_screenPos(self.h))
 
 proc setScreenPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, pos: gen_qpoint.QPoint): void =
-
   fcQGraphicsSceneDragDropEvent_setScreenPos(self.h, pos.h)
 
 proc buttons*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): cint =
-
   cint(fcQGraphicsSceneDragDropEvent_buttons(self.h))
 
 proc setButtons*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, buttons: cint): void =
-
   fcQGraphicsSceneDragDropEvent_setButtons(self.h, cint(buttons))
 
 proc modifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): cint =
-
   cint(fcQGraphicsSceneDragDropEvent_modifiers(self.h))
 
 proc setModifiers*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, modifiers: cint): void =
-
   fcQGraphicsSceneDragDropEvent_setModifiers(self.h, cint(modifiers))
 
 proc possibleActions*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): cint =
-
   cint(fcQGraphicsSceneDragDropEvent_possibleActions(self.h))
 
 proc setPossibleActions*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, actions: cint): void =
-
   fcQGraphicsSceneDragDropEvent_setPossibleActions(self.h, cint(actions))
 
 proc proposedAction*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): cint =
-
   cint(fcQGraphicsSceneDragDropEvent_proposedAction(self.h))
 
 proc setProposedAction*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, action: cint): void =
-
   fcQGraphicsSceneDragDropEvent_setProposedAction(self.h, cint(action))
 
 proc acceptProposedAction*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): void =
-
   fcQGraphicsSceneDragDropEvent_acceptProposedAction(self.h)
 
 proc dropAction*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): cint =
-
   cint(fcQGraphicsSceneDragDropEvent_dropAction(self.h))
 
 proc setDropAction*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, action: cint): void =
-
   fcQGraphicsSceneDragDropEvent_setDropAction(self.h, cint(action))
 
 proc source*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQGraphicsSceneDragDropEvent_source(self.h))
 
 proc setSource*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, source: gen_qwidget.QWidget): void =
-
   fcQGraphicsSceneDragDropEvent_setSource(self.h, source.h)
 
 proc mimeData*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): gen_qmimedata.QMimeData =
-
   gen_qmimedata.QMimeData(h: fcQGraphicsSceneDragDropEvent_mimeData(self.h))
 
 proc setMimeData*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, data: gen_qmimedata.QMimeData): void =
-
   fcQGraphicsSceneDragDropEvent_setMimeData(self.h, data.h)
 
 proc QGraphicsSceneDragDropEventsetAccepted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, accepted: bool): void =
-
   fQGraphicsSceneDragDropEvent_virtualbase_setAccepted(self.h, accepted)
 
 type QGraphicsSceneDragDropEventsetAcceptedProc* = proc(accepted: bool): void
@@ -947,7 +833,6 @@ proc miqt_exec_callback_QGraphicsSceneDragDropEvent_setAccepted(self: ptr cQGrap
 
   nimfunc[](slotval1)
 proc QGraphicsSceneDragDropEventclone*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent, ): gen_qcoreevent.QEvent =
-
   gen_qcoreevent.QEvent(h: fQGraphicsSceneDragDropEvent_virtualbase_clone(self.h))
 
 type QGraphicsSceneDragDropEventcloneProc* = proc(): gen_qcoreevent.QEvent
@@ -970,26 +855,21 @@ proc delete*(self: gen_qgraphicssceneevent_types.QGraphicsSceneDragDropEvent) =
 func init*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent, h: ptr cQGraphicsSceneResizeEvent): gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent =
   T(h: h)
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent, ): gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent.init(fcQGraphicsSceneResizeEvent_new())
-proc oldSize*(self: gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent, ): gen_qsize.QSizeF =
 
+proc oldSize*(self: gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent, ): gen_qsize.QSizeF =
   gen_qsize.QSizeF(h: fcQGraphicsSceneResizeEvent_oldSize(self.h))
 
 proc setOldSize*(self: gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent, size: gen_qsize.QSizeF): void =
-
   fcQGraphicsSceneResizeEvent_setOldSize(self.h, size.h)
 
 proc newSize*(self: gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent, ): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fcQGraphicsSceneResizeEvent_newSize(self.h))
 
 proc setNewSize*(self: gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent, size: gen_qsize.QSizeF): void =
-
   fcQGraphicsSceneResizeEvent_setNewSize(self.h, size.h)
 
 proc QGraphicsSceneResizeEventsetAccepted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent, accepted: bool): void =
-
   fQGraphicsSceneResizeEvent_virtualbase_setAccepted(self.h, accepted)
 
 type QGraphicsSceneResizeEventsetAcceptedProc* = proc(accepted: bool): void
@@ -1007,7 +887,6 @@ proc miqt_exec_callback_QGraphicsSceneResizeEvent_setAccepted(self: ptr cQGraphi
 
   nimfunc[](slotval1)
 proc QGraphicsSceneResizeEventclone*(self: gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent, ): gen_qcoreevent.QEvent =
-
   gen_qcoreevent.QEvent(h: fQGraphicsSceneResizeEvent_virtualbase_clone(self.h))
 
 type QGraphicsSceneResizeEventcloneProc* = proc(): gen_qcoreevent.QEvent
@@ -1030,26 +909,21 @@ proc delete*(self: gen_qgraphicssceneevent_types.QGraphicsSceneResizeEvent) =
 func init*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent, h: ptr cQGraphicsSceneMoveEvent): gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent =
   T(h: h)
 proc create*(T: type gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent, ): gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent =
-
   gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent.init(fcQGraphicsSceneMoveEvent_new())
-proc oldPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent, ): gen_qpoint.QPointF =
 
+proc oldPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent, ): gen_qpoint.QPointF =
   gen_qpoint.QPointF(h: fcQGraphicsSceneMoveEvent_oldPos(self.h))
 
 proc setOldPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneMoveEvent_setOldPos(self.h, pos.h)
 
 proc newPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsSceneMoveEvent_newPos(self.h))
 
 proc setNewPos*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsSceneMoveEvent_setNewPos(self.h, pos.h)
 
 proc QGraphicsSceneMoveEventsetAccepted*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent, accepted: bool): void =
-
   fQGraphicsSceneMoveEvent_virtualbase_setAccepted(self.h, accepted)
 
 type QGraphicsSceneMoveEventsetAcceptedProc* = proc(accepted: bool): void
@@ -1067,7 +941,6 @@ proc miqt_exec_callback_QGraphicsSceneMoveEvent_setAccepted(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsSceneMoveEventclone*(self: gen_qgraphicssceneevent_types.QGraphicsSceneMoveEvent, ): gen_qcoreevent.QEvent =
-
   gen_qcoreevent.QEvent(h: fQGraphicsSceneMoveEvent_virtualbase_clone(self.h))
 
 type QGraphicsSceneMoveEventcloneProc* = proc(): gen_qcoreevent.QEvent

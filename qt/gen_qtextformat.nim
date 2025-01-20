@@ -559,36 +559,30 @@ proc fcQTextTableCellFormat_delete(self: pointer) {.importc: "QTextTableCellForm
 func init*(T: type gen_qtextformat_types.QTextLength, h: ptr cQTextLength): gen_qtextformat_types.QTextLength =
   T(h: h)
 proc create*(T: type gen_qtextformat_types.QTextLength, ): gen_qtextformat_types.QTextLength =
-
   gen_qtextformat_types.QTextLength.init(fcQTextLength_new())
+
 proc create*(T: type gen_qtextformat_types.QTextLength, typeVal: cint, value: float64): gen_qtextformat_types.QTextLength =
-
   gen_qtextformat_types.QTextLength.init(fcQTextLength_new2(cint(typeVal), value))
+
 proc create*(T: type gen_qtextformat_types.QTextLength, param1: gen_qtextformat_types.QTextLength): gen_qtextformat_types.QTextLength =
-
   gen_qtextformat_types.QTextLength.init(fcQTextLength_new3(param1.h))
-proc typeX*(self: gen_qtextformat_types.QTextLength, ): cint =
 
+proc typeX*(self: gen_qtextformat_types.QTextLength, ): cint =
   cint(fcQTextLength_typeX(self.h))
 
 proc value*(self: gen_qtextformat_types.QTextLength, maximumLength: float64): float64 =
-
   fcQTextLength_value(self.h, maximumLength)
 
 proc rawValue*(self: gen_qtextformat_types.QTextLength, ): float64 =
-
   fcQTextLength_rawValue(self.h)
 
 proc operatorEqual*(self: gen_qtextformat_types.QTextLength, other: gen_qtextformat_types.QTextLength): bool =
-
   fcQTextLength_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qtextformat_types.QTextLength, other: gen_qtextformat_types.QTextLength): bool =
-
   fcQTextLength_operatorNotEqual(self.h, other.h)
 
 proc ToQVariant*(self: gen_qtextformat_types.QTextLength, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQTextLength_ToQVariant(self.h))
 
 proc delete*(self: gen_qtextformat_types.QTextLength) =
@@ -597,99 +591,78 @@ proc delete*(self: gen_qtextformat_types.QTextLength) =
 func init*(T: type gen_qtextformat_types.QTextFormat, h: ptr cQTextFormat): gen_qtextformat_types.QTextFormat =
   T(h: h)
 proc create*(T: type gen_qtextformat_types.QTextFormat, ): gen_qtextformat_types.QTextFormat =
-
   gen_qtextformat_types.QTextFormat.init(fcQTextFormat_new())
+
 proc create*(T: type gen_qtextformat_types.QTextFormat, typeVal: cint): gen_qtextformat_types.QTextFormat =
-
   gen_qtextformat_types.QTextFormat.init(fcQTextFormat_new2(typeVal))
+
 proc create*(T: type gen_qtextformat_types.QTextFormat, rhs: gen_qtextformat_types.QTextFormat): gen_qtextformat_types.QTextFormat =
-
   gen_qtextformat_types.QTextFormat.init(fcQTextFormat_new3(rhs.h))
-proc operatorAssign*(self: gen_qtextformat_types.QTextFormat, rhs: gen_qtextformat_types.QTextFormat): void =
 
+proc operatorAssign*(self: gen_qtextformat_types.QTextFormat, rhs: gen_qtextformat_types.QTextFormat): void =
   fcQTextFormat_operatorAssign(self.h, rhs.h)
 
 proc swap*(self: gen_qtextformat_types.QTextFormat, other: gen_qtextformat_types.QTextFormat): void =
-
   fcQTextFormat_swap(self.h, other.h)
 
 proc merge*(self: gen_qtextformat_types.QTextFormat, other: gen_qtextformat_types.QTextFormat): void =
-
   fcQTextFormat_merge(self.h, other.h)
 
 proc isValid*(self: gen_qtextformat_types.QTextFormat, ): bool =
-
   fcQTextFormat_isValid(self.h)
 
 proc isEmpty*(self: gen_qtextformat_types.QTextFormat, ): bool =
-
   fcQTextFormat_isEmpty(self.h)
 
 proc typeX*(self: gen_qtextformat_types.QTextFormat, ): cint =
-
   fcQTextFormat_typeX(self.h)
 
 proc objectIndex*(self: gen_qtextformat_types.QTextFormat, ): cint =
-
   fcQTextFormat_objectIndex(self.h)
 
 proc setObjectIndex*(self: gen_qtextformat_types.QTextFormat, objectVal: cint): void =
-
   fcQTextFormat_setObjectIndex(self.h, objectVal)
 
 proc property*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQTextFormat_property(self.h, propertyId))
 
 proc setProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint, value: gen_qvariant.QVariant): void =
-
   fcQTextFormat_setProperty(self.h, propertyId, value.h)
 
 proc clearProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): void =
-
   fcQTextFormat_clearProperty(self.h, propertyId)
 
 proc hasProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): bool =
-
   fcQTextFormat_hasProperty(self.h, propertyId)
 
 proc boolProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): bool =
-
   fcQTextFormat_boolProperty(self.h, propertyId)
 
 proc intProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): cint =
-
   fcQTextFormat_intProperty(self.h, propertyId)
 
 proc doubleProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): float64 =
-
   fcQTextFormat_doubleProperty(self.h, propertyId)
 
 proc stringProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): string =
-
   let v_ms = fcQTextFormat_stringProperty(self.h, propertyId)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc colorProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQTextFormat_colorProperty(self.h, propertyId))
 
 proc penProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): gen_qpen.QPen =
-
   gen_qpen.QPen(h: fcQTextFormat_penProperty(self.h, propertyId))
 
 proc brushProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTextFormat_brushProperty(self.h, propertyId))
 
 proc lengthProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): gen_qtextformat_types.QTextLength =
-
   gen_qtextformat_types.QTextLength(h: fcQTextFormat_lengthProperty(self.h, propertyId))
 
 proc lengthVectorProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint): seq[gen_qtextformat_types.QTextLength] =
-
   var v_ma = fcQTextFormat_lengthVectorProperty(self.h, propertyId)
   var vx_ret = newSeq[gen_qtextformat_types.QTextLength](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -697,8 +670,7 @@ proc lengthVectorProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: 
     vx_ret[i] = gen_qtextformat_types.QTextLength(h: v_outCast[i])
   vx_ret
 
-proc setProperty2*(self: gen_qtextformat_types.QTextFormat, propertyId: cint, lengths: seq[gen_qtextformat_types.QTextLength]): void =
-
+proc setProperty*(self: gen_qtextformat_types.QTextFormat, propertyId: cint, lengths: seq[gen_qtextformat_types.QTextLength]): void =
   var lengths_CArray = newSeq[pointer](len(lengths))
   for i in 0..<len(lengths):
     lengths_CArray[i] = lengths[i].h
@@ -706,7 +678,6 @@ proc setProperty2*(self: gen_qtextformat_types.QTextFormat, propertyId: cint, le
   fcQTextFormat_setProperty2(self.h, propertyId, struct_miqt_array(len: csize_t(len(lengths)), data: if len(lengths) == 0: nil else: addr(lengths_CArray[0])))
 
 proc properties*(self: gen_qtextformat_types.QTextFormat, ): Table[cint,gen_qvariant.QVariant] =
-
   var v_mm = fcQTextFormat_properties(self.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -720,115 +691,87 @@ proc properties*(self: gen_qtextformat_types.QTextFormat, ): Table[cint,gen_qvar
   vx_ret
 
 proc propertyCount*(self: gen_qtextformat_types.QTextFormat, ): cint =
-
   fcQTextFormat_propertyCount(self.h)
 
 proc setObjectType*(self: gen_qtextformat_types.QTextFormat, typeVal: cint): void =
-
   fcQTextFormat_setObjectType(self.h, typeVal)
 
 proc objectType*(self: gen_qtextformat_types.QTextFormat, ): cint =
-
   fcQTextFormat_objectType(self.h)
 
 proc isCharFormat*(self: gen_qtextformat_types.QTextFormat, ): bool =
-
   fcQTextFormat_isCharFormat(self.h)
 
 proc isBlockFormat*(self: gen_qtextformat_types.QTextFormat, ): bool =
-
   fcQTextFormat_isBlockFormat(self.h)
 
 proc isListFormat*(self: gen_qtextformat_types.QTextFormat, ): bool =
-
   fcQTextFormat_isListFormat(self.h)
 
 proc isFrameFormat*(self: gen_qtextformat_types.QTextFormat, ): bool =
-
   fcQTextFormat_isFrameFormat(self.h)
 
 proc isImageFormat*(self: gen_qtextformat_types.QTextFormat, ): bool =
-
   fcQTextFormat_isImageFormat(self.h)
 
 proc isTableFormat*(self: gen_qtextformat_types.QTextFormat, ): bool =
-
   fcQTextFormat_isTableFormat(self.h)
 
 proc isTableCellFormat*(self: gen_qtextformat_types.QTextFormat, ): bool =
-
   fcQTextFormat_isTableCellFormat(self.h)
 
 proc toBlockFormat*(self: gen_qtextformat_types.QTextFormat, ): gen_qtextformat_types.QTextBlockFormat =
-
   gen_qtextformat_types.QTextBlockFormat(h: fcQTextFormat_toBlockFormat(self.h))
 
 proc toCharFormat*(self: gen_qtextformat_types.QTextFormat, ): gen_qtextformat_types.QTextCharFormat =
-
   gen_qtextformat_types.QTextCharFormat(h: fcQTextFormat_toCharFormat(self.h))
 
 proc toListFormat*(self: gen_qtextformat_types.QTextFormat, ): gen_qtextformat_types.QTextListFormat =
-
   gen_qtextformat_types.QTextListFormat(h: fcQTextFormat_toListFormat(self.h))
 
 proc toTableFormat*(self: gen_qtextformat_types.QTextFormat, ): gen_qtextformat_types.QTextTableFormat =
-
   gen_qtextformat_types.QTextTableFormat(h: fcQTextFormat_toTableFormat(self.h))
 
 proc toFrameFormat*(self: gen_qtextformat_types.QTextFormat, ): gen_qtextformat_types.QTextFrameFormat =
-
   gen_qtextformat_types.QTextFrameFormat(h: fcQTextFormat_toFrameFormat(self.h))
 
 proc toImageFormat*(self: gen_qtextformat_types.QTextFormat, ): gen_qtextformat_types.QTextImageFormat =
-
   gen_qtextformat_types.QTextImageFormat(h: fcQTextFormat_toImageFormat(self.h))
 
 proc toTableCellFormat*(self: gen_qtextformat_types.QTextFormat, ): gen_qtextformat_types.QTextTableCellFormat =
-
   gen_qtextformat_types.QTextTableCellFormat(h: fcQTextFormat_toTableCellFormat(self.h))
 
 proc operatorEqual*(self: gen_qtextformat_types.QTextFormat, rhs: gen_qtextformat_types.QTextFormat): bool =
-
   fcQTextFormat_operatorEqual(self.h, rhs.h)
 
 proc operatorNotEqual*(self: gen_qtextformat_types.QTextFormat, rhs: gen_qtextformat_types.QTextFormat): bool =
-
   fcQTextFormat_operatorNotEqual(self.h, rhs.h)
 
 proc ToQVariant*(self: gen_qtextformat_types.QTextFormat, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQTextFormat_ToQVariant(self.h))
 
 proc setLayoutDirection*(self: gen_qtextformat_types.QTextFormat, direction: cint): void =
-
   fcQTextFormat_setLayoutDirection(self.h, cint(direction))
 
 proc layoutDirection*(self: gen_qtextformat_types.QTextFormat, ): cint =
-
   cint(fcQTextFormat_layoutDirection(self.h))
 
 proc setBackground*(self: gen_qtextformat_types.QTextFormat, brush: gen_qbrush.QBrush): void =
-
   fcQTextFormat_setBackground(self.h, brush.h)
 
 proc background*(self: gen_qtextformat_types.QTextFormat, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTextFormat_background(self.h))
 
 proc clearBackground*(self: gen_qtextformat_types.QTextFormat, ): void =
-
   fcQTextFormat_clearBackground(self.h)
 
 proc setForeground*(self: gen_qtextformat_types.QTextFormat, brush: gen_qbrush.QBrush): void =
-
   fcQTextFormat_setForeground(self.h, brush.h)
 
 proc foreground*(self: gen_qtextformat_types.QTextFormat, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTextFormat_foreground(self.h))
 
 proc clearForeground*(self: gen_qtextformat_types.QTextFormat, ): void =
-
   fcQTextFormat_clearForeground(self.h)
 
 proc staticMetaObject*(_: type gen_qtextformat_types.QTextFormat): gen_qobjectdefs.QMetaObject =
@@ -839,40 +782,33 @@ proc delete*(self: gen_qtextformat_types.QTextFormat) =
 func init*(T: type gen_qtextformat_types.QTextCharFormat, h: ptr cQTextCharFormat): gen_qtextformat_types.QTextCharFormat =
   T(h: h)
 proc create*(T: type gen_qtextformat_types.QTextCharFormat, ): gen_qtextformat_types.QTextCharFormat =
-
   gen_qtextformat_types.QTextCharFormat.init(fcQTextCharFormat_new())
+
 proc create*(T: type gen_qtextformat_types.QTextCharFormat, param1: gen_qtextformat_types.QTextCharFormat): gen_qtextformat_types.QTextCharFormat =
-
   gen_qtextformat_types.QTextCharFormat.init(fcQTextCharFormat_new2(param1.h))
-proc isValid*(self: gen_qtextformat_types.QTextCharFormat, ): bool =
 
+proc isValid*(self: gen_qtextformat_types.QTextCharFormat, ): bool =
   fcQTextCharFormat_isValid(self.h)
 
 proc setFont*(self: gen_qtextformat_types.QTextCharFormat, font: gen_qfont.QFont, behavior: cint): void =
-
   fcQTextCharFormat_setFont(self.h, font.h, cint(behavior))
 
-proc setFontWithFont*(self: gen_qtextformat_types.QTextCharFormat, font: gen_qfont.QFont): void =
-
+proc setFont*(self: gen_qtextformat_types.QTextCharFormat, font: gen_qfont.QFont): void =
   fcQTextCharFormat_setFontWithFont(self.h, font.h)
 
 proc font*(self: gen_qtextformat_types.QTextCharFormat, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQTextCharFormat_font(self.h))
 
 proc setFontFamily*(self: gen_qtextformat_types.QTextCharFormat, family: string): void =
-
   fcQTextCharFormat_setFontFamily(self.h, struct_miqt_string(data: family, len: csize_t(len(family))))
 
 proc fontFamily*(self: gen_qtextformat_types.QTextCharFormat, ): string =
-
   let v_ms = fcQTextCharFormat_fontFamily(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFontFamilies*(self: gen_qtextformat_types.QTextCharFormat, families: seq[string]): void =
-
   var families_CArray = newSeq[struct_miqt_string](len(families))
   for i in 0..<len(families):
     families_CArray[i] = struct_miqt_string(data: families[i], len: csize_t(len(families[i])))
@@ -880,220 +816,168 @@ proc setFontFamilies*(self: gen_qtextformat_types.QTextCharFormat, families: seq
   fcQTextCharFormat_setFontFamilies(self.h, struct_miqt_array(len: csize_t(len(families)), data: if len(families) == 0: nil else: addr(families_CArray[0])))
 
 proc fontFamilies*(self: gen_qtextformat_types.QTextCharFormat, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQTextCharFormat_fontFamilies(self.h))
 
 proc setFontStyleName*(self: gen_qtextformat_types.QTextCharFormat, styleName: string): void =
-
   fcQTextCharFormat_setFontStyleName(self.h, struct_miqt_string(data: styleName, len: csize_t(len(styleName))))
 
 proc fontStyleName*(self: gen_qtextformat_types.QTextCharFormat, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQTextCharFormat_fontStyleName(self.h))
 
 proc setFontPointSize*(self: gen_qtextformat_types.QTextCharFormat, size: float64): void =
-
   fcQTextCharFormat_setFontPointSize(self.h, size)
 
 proc fontPointSize*(self: gen_qtextformat_types.QTextCharFormat, ): float64 =
-
   fcQTextCharFormat_fontPointSize(self.h)
 
 proc setFontWeight*(self: gen_qtextformat_types.QTextCharFormat, weight: cint): void =
-
   fcQTextCharFormat_setFontWeight(self.h, weight)
 
 proc fontWeight*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   fcQTextCharFormat_fontWeight(self.h)
 
 proc setFontItalic*(self: gen_qtextformat_types.QTextCharFormat, italic: bool): void =
-
   fcQTextCharFormat_setFontItalic(self.h, italic)
 
 proc fontItalic*(self: gen_qtextformat_types.QTextCharFormat, ): bool =
-
   fcQTextCharFormat_fontItalic(self.h)
 
 proc setFontCapitalization*(self: gen_qtextformat_types.QTextCharFormat, capitalization: cint): void =
-
   fcQTextCharFormat_setFontCapitalization(self.h, cint(capitalization))
 
 proc fontCapitalization*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   cint(fcQTextCharFormat_fontCapitalization(self.h))
 
 proc setFontLetterSpacingType*(self: gen_qtextformat_types.QTextCharFormat, letterSpacingType: cint): void =
-
   fcQTextCharFormat_setFontLetterSpacingType(self.h, cint(letterSpacingType))
 
 proc fontLetterSpacingType*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   cint(fcQTextCharFormat_fontLetterSpacingType(self.h))
 
 proc setFontLetterSpacing*(self: gen_qtextformat_types.QTextCharFormat, spacing: float64): void =
-
   fcQTextCharFormat_setFontLetterSpacing(self.h, spacing)
 
 proc fontLetterSpacing*(self: gen_qtextformat_types.QTextCharFormat, ): float64 =
-
   fcQTextCharFormat_fontLetterSpacing(self.h)
 
 proc setFontWordSpacing*(self: gen_qtextformat_types.QTextCharFormat, spacing: float64): void =
-
   fcQTextCharFormat_setFontWordSpacing(self.h, spacing)
 
 proc fontWordSpacing*(self: gen_qtextformat_types.QTextCharFormat, ): float64 =
-
   fcQTextCharFormat_fontWordSpacing(self.h)
 
 proc setFontUnderline*(self: gen_qtextformat_types.QTextCharFormat, underline: bool): void =
-
   fcQTextCharFormat_setFontUnderline(self.h, underline)
 
 proc fontUnderline*(self: gen_qtextformat_types.QTextCharFormat, ): bool =
-
   fcQTextCharFormat_fontUnderline(self.h)
 
 proc setFontOverline*(self: gen_qtextformat_types.QTextCharFormat, overline: bool): void =
-
   fcQTextCharFormat_setFontOverline(self.h, overline)
 
 proc fontOverline*(self: gen_qtextformat_types.QTextCharFormat, ): bool =
-
   fcQTextCharFormat_fontOverline(self.h)
 
 proc setFontStrikeOut*(self: gen_qtextformat_types.QTextCharFormat, strikeOut: bool): void =
-
   fcQTextCharFormat_setFontStrikeOut(self.h, strikeOut)
 
 proc fontStrikeOut*(self: gen_qtextformat_types.QTextCharFormat, ): bool =
-
   fcQTextCharFormat_fontStrikeOut(self.h)
 
 proc setUnderlineColor*(self: gen_qtextformat_types.QTextCharFormat, color: gen_qcolor.QColor): void =
-
   fcQTextCharFormat_setUnderlineColor(self.h, color.h)
 
 proc underlineColor*(self: gen_qtextformat_types.QTextCharFormat, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQTextCharFormat_underlineColor(self.h))
 
 proc setFontFixedPitch*(self: gen_qtextformat_types.QTextCharFormat, fixedPitch: bool): void =
-
   fcQTextCharFormat_setFontFixedPitch(self.h, fixedPitch)
 
 proc fontFixedPitch*(self: gen_qtextformat_types.QTextCharFormat, ): bool =
-
   fcQTextCharFormat_fontFixedPitch(self.h)
 
 proc setFontStretch*(self: gen_qtextformat_types.QTextCharFormat, factor: cint): void =
-
   fcQTextCharFormat_setFontStretch(self.h, factor)
 
 proc fontStretch*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   fcQTextCharFormat_fontStretch(self.h)
 
 proc setFontStyleHint*(self: gen_qtextformat_types.QTextCharFormat, hint: cint): void =
-
   fcQTextCharFormat_setFontStyleHint(self.h, cint(hint))
 
 proc setFontStyleStrategy*(self: gen_qtextformat_types.QTextCharFormat, strategy: cint): void =
-
   fcQTextCharFormat_setFontStyleStrategy(self.h, cint(strategy))
 
 proc fontStyleHint*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   cint(fcQTextCharFormat_fontStyleHint(self.h))
 
 proc fontStyleStrategy*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   cint(fcQTextCharFormat_fontStyleStrategy(self.h))
 
 proc setFontHintingPreference*(self: gen_qtextformat_types.QTextCharFormat, hintingPreference: cint): void =
-
   fcQTextCharFormat_setFontHintingPreference(self.h, cint(hintingPreference))
 
 proc fontHintingPreference*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   cint(fcQTextCharFormat_fontHintingPreference(self.h))
 
 proc setFontKerning*(self: gen_qtextformat_types.QTextCharFormat, enable: bool): void =
-
   fcQTextCharFormat_setFontKerning(self.h, enable)
 
 proc fontKerning*(self: gen_qtextformat_types.QTextCharFormat, ): bool =
-
   fcQTextCharFormat_fontKerning(self.h)
 
 proc setUnderlineStyle*(self: gen_qtextformat_types.QTextCharFormat, style: cint): void =
-
   fcQTextCharFormat_setUnderlineStyle(self.h, cint(style))
 
 proc underlineStyle*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   cint(fcQTextCharFormat_underlineStyle(self.h))
 
 proc setVerticalAlignment*(self: gen_qtextformat_types.QTextCharFormat, alignment: cint): void =
-
   fcQTextCharFormat_setVerticalAlignment(self.h, cint(alignment))
 
 proc verticalAlignment*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   cint(fcQTextCharFormat_verticalAlignment(self.h))
 
 proc setTextOutline*(self: gen_qtextformat_types.QTextCharFormat, pen: gen_qpen.QPen): void =
-
   fcQTextCharFormat_setTextOutline(self.h, pen.h)
 
 proc textOutline*(self: gen_qtextformat_types.QTextCharFormat, ): gen_qpen.QPen =
-
   gen_qpen.QPen(h: fcQTextCharFormat_textOutline(self.h))
 
 proc setToolTip*(self: gen_qtextformat_types.QTextCharFormat, tip: string): void =
-
   fcQTextCharFormat_setToolTip(self.h, struct_miqt_string(data: tip, len: csize_t(len(tip))))
 
 proc toolTip*(self: gen_qtextformat_types.QTextCharFormat, ): string =
-
   let v_ms = fcQTextCharFormat_toolTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setAnchor*(self: gen_qtextformat_types.QTextCharFormat, anchor: bool): void =
-
   fcQTextCharFormat_setAnchor(self.h, anchor)
 
 proc isAnchor*(self: gen_qtextformat_types.QTextCharFormat, ): bool =
-
   fcQTextCharFormat_isAnchor(self.h)
 
 proc setAnchorHref*(self: gen_qtextformat_types.QTextCharFormat, value: string): void =
-
   fcQTextCharFormat_setAnchorHref(self.h, struct_miqt_string(data: value, len: csize_t(len(value))))
 
 proc anchorHref*(self: gen_qtextformat_types.QTextCharFormat, ): string =
-
   let v_ms = fcQTextCharFormat_anchorHref(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setAnchorName*(self: gen_qtextformat_types.QTextCharFormat, name: string): void =
-
   fcQTextCharFormat_setAnchorName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc anchorName*(self: gen_qtextformat_types.QTextCharFormat, ): string =
-
   let v_ms = fcQTextCharFormat_anchorName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setAnchorNames*(self: gen_qtextformat_types.QTextCharFormat, names: seq[string]): void =
-
   var names_CArray = newSeq[struct_miqt_string](len(names))
   for i in 0..<len(names):
     names_CArray[i] = struct_miqt_string(data: names[i], len: csize_t(len(names[i])))
@@ -1101,7 +985,6 @@ proc setAnchorNames*(self: gen_qtextformat_types.QTextCharFormat, names: seq[str
   fcQTextCharFormat_setAnchorNames(self.h, struct_miqt_array(len: csize_t(len(names)), data: if len(names) == 0: nil else: addr(names_CArray[0])))
 
 proc anchorNames*(self: gen_qtextformat_types.QTextCharFormat, ): seq[string] =
-
   var v_ma = fcQTextCharFormat_anchorNames(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -1113,23 +996,18 @@ proc anchorNames*(self: gen_qtextformat_types.QTextCharFormat, ): seq[string] =
   vx_ret
 
 proc setTableCellRowSpan*(self: gen_qtextformat_types.QTextCharFormat, tableCellRowSpan: cint): void =
-
   fcQTextCharFormat_setTableCellRowSpan(self.h, tableCellRowSpan)
 
 proc tableCellRowSpan*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   fcQTextCharFormat_tableCellRowSpan(self.h)
 
 proc setTableCellColumnSpan*(self: gen_qtextformat_types.QTextCharFormat, tableCellColumnSpan: cint): void =
-
   fcQTextCharFormat_setTableCellColumnSpan(self.h, tableCellColumnSpan)
 
 proc tableCellColumnSpan*(self: gen_qtextformat_types.QTextCharFormat, ): cint =
-
   fcQTextCharFormat_tableCellColumnSpan(self.h)
 
-proc setFontStyleHint2*(self: gen_qtextformat_types.QTextCharFormat, hint: cint, strategy: cint): void =
-
+proc setFontStyleHint*(self: gen_qtextformat_types.QTextCharFormat, hint: cint, strategy: cint): void =
   fcQTextCharFormat_setFontStyleHint2(self.h, cint(hint), cint(strategy))
 
 proc delete*(self: gen_qtextformat_types.QTextCharFormat) =
@@ -1138,113 +1016,87 @@ proc delete*(self: gen_qtextformat_types.QTextCharFormat) =
 func init*(T: type gen_qtextformat_types.QTextBlockFormat, h: ptr cQTextBlockFormat): gen_qtextformat_types.QTextBlockFormat =
   T(h: h)
 proc create*(T: type gen_qtextformat_types.QTextBlockFormat, ): gen_qtextformat_types.QTextBlockFormat =
-
   gen_qtextformat_types.QTextBlockFormat.init(fcQTextBlockFormat_new())
+
 proc create*(T: type gen_qtextformat_types.QTextBlockFormat, param1: gen_qtextformat_types.QTextBlockFormat): gen_qtextformat_types.QTextBlockFormat =
-
   gen_qtextformat_types.QTextBlockFormat.init(fcQTextBlockFormat_new2(param1.h))
-proc isValid*(self: gen_qtextformat_types.QTextBlockFormat, ): bool =
 
+proc isValid*(self: gen_qtextformat_types.QTextBlockFormat, ): bool =
   fcQTextBlockFormat_isValid(self.h)
 
 proc setAlignment*(self: gen_qtextformat_types.QTextBlockFormat, alignment: cint): void =
-
   fcQTextBlockFormat_setAlignment(self.h, cint(alignment))
 
 proc alignment*(self: gen_qtextformat_types.QTextBlockFormat, ): cint =
-
   cint(fcQTextBlockFormat_alignment(self.h))
 
 proc setTopMargin*(self: gen_qtextformat_types.QTextBlockFormat, margin: float64): void =
-
   fcQTextBlockFormat_setTopMargin(self.h, margin)
 
 proc topMargin*(self: gen_qtextformat_types.QTextBlockFormat, ): float64 =
-
   fcQTextBlockFormat_topMargin(self.h)
 
 proc setBottomMargin*(self: gen_qtextformat_types.QTextBlockFormat, margin: float64): void =
-
   fcQTextBlockFormat_setBottomMargin(self.h, margin)
 
 proc bottomMargin*(self: gen_qtextformat_types.QTextBlockFormat, ): float64 =
-
   fcQTextBlockFormat_bottomMargin(self.h)
 
 proc setLeftMargin*(self: gen_qtextformat_types.QTextBlockFormat, margin: float64): void =
-
   fcQTextBlockFormat_setLeftMargin(self.h, margin)
 
 proc leftMargin*(self: gen_qtextformat_types.QTextBlockFormat, ): float64 =
-
   fcQTextBlockFormat_leftMargin(self.h)
 
 proc setRightMargin*(self: gen_qtextformat_types.QTextBlockFormat, margin: float64): void =
-
   fcQTextBlockFormat_setRightMargin(self.h, margin)
 
 proc rightMargin*(self: gen_qtextformat_types.QTextBlockFormat, ): float64 =
-
   fcQTextBlockFormat_rightMargin(self.h)
 
 proc setTextIndent*(self: gen_qtextformat_types.QTextBlockFormat, aindent: float64): void =
-
   fcQTextBlockFormat_setTextIndent(self.h, aindent)
 
 proc textIndent*(self: gen_qtextformat_types.QTextBlockFormat, ): float64 =
-
   fcQTextBlockFormat_textIndent(self.h)
 
 proc setIndent*(self: gen_qtextformat_types.QTextBlockFormat, indent: cint): void =
-
   fcQTextBlockFormat_setIndent(self.h, indent)
 
 proc indent*(self: gen_qtextformat_types.QTextBlockFormat, ): cint =
-
   fcQTextBlockFormat_indent(self.h)
 
 proc setHeadingLevel*(self: gen_qtextformat_types.QTextBlockFormat, alevel: cint): void =
-
   fcQTextBlockFormat_setHeadingLevel(self.h, alevel)
 
 proc headingLevel*(self: gen_qtextformat_types.QTextBlockFormat, ): cint =
-
   fcQTextBlockFormat_headingLevel(self.h)
 
 proc setLineHeight*(self: gen_qtextformat_types.QTextBlockFormat, height: float64, heightType: cint): void =
-
   fcQTextBlockFormat_setLineHeight(self.h, height, heightType)
 
 proc lineHeight*(self: gen_qtextformat_types.QTextBlockFormat, scriptLineHeight: float64, scaling: float64): float64 =
-
   fcQTextBlockFormat_lineHeight(self.h, scriptLineHeight, scaling)
 
-proc lineHeight2*(self: gen_qtextformat_types.QTextBlockFormat, ): float64 =
-
+proc lineHeight*(self: gen_qtextformat_types.QTextBlockFormat, ): float64 =
   fcQTextBlockFormat_lineHeight2(self.h)
 
 proc lineHeightType*(self: gen_qtextformat_types.QTextBlockFormat, ): cint =
-
   fcQTextBlockFormat_lineHeightType(self.h)
 
 proc setNonBreakableLines*(self: gen_qtextformat_types.QTextBlockFormat, b: bool): void =
-
   fcQTextBlockFormat_setNonBreakableLines(self.h, b)
 
 proc nonBreakableLines*(self: gen_qtextformat_types.QTextBlockFormat, ): bool =
-
   fcQTextBlockFormat_nonBreakableLines(self.h)
 
 proc setPageBreakPolicy*(self: gen_qtextformat_types.QTextBlockFormat, flags: cint): void =
-
   fcQTextBlockFormat_setPageBreakPolicy(self.h, cint(flags))
 
 proc pageBreakPolicy*(self: gen_qtextformat_types.QTextBlockFormat, ): cint =
-
   cint(fcQTextBlockFormat_pageBreakPolicy(self.h))
 
 proc setTabPositions*(self: gen_qtextformat_types.QTextBlockFormat, tabs: seq[gen_qtextoption.QTextOptionTab]): void =
-
   var tabs_CArray = newSeq[pointer](len(tabs))
   for i in 0..<len(tabs):
     tabs_CArray[i] = tabs[i].h
@@ -1252,7 +1104,6 @@ proc setTabPositions*(self: gen_qtextformat_types.QTextBlockFormat, tabs: seq[ge
   fcQTextBlockFormat_setTabPositions(self.h, struct_miqt_array(len: csize_t(len(tabs)), data: if len(tabs) == 0: nil else: addr(tabs_CArray[0])))
 
 proc tabPositions*(self: gen_qtextformat_types.QTextBlockFormat, ): seq[gen_qtextoption.QTextOptionTab] =
-
   var v_ma = fcQTextBlockFormat_tabPositions(self.h)
   var vx_ret = newSeq[gen_qtextoption.QTextOptionTab](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1261,11 +1112,9 @@ proc tabPositions*(self: gen_qtextformat_types.QTextBlockFormat, ): seq[gen_qtex
   vx_ret
 
 proc setMarker*(self: gen_qtextformat_types.QTextBlockFormat, marker: cint): void =
-
   fcQTextBlockFormat_setMarker(self.h, cint(marker))
 
 proc marker*(self: gen_qtextformat_types.QTextBlockFormat, ): cint =
-
   cint(fcQTextBlockFormat_marker(self.h))
 
 proc delete*(self: gen_qtextformat_types.QTextBlockFormat) =
@@ -1274,48 +1123,39 @@ proc delete*(self: gen_qtextformat_types.QTextBlockFormat) =
 func init*(T: type gen_qtextformat_types.QTextListFormat, h: ptr cQTextListFormat): gen_qtextformat_types.QTextListFormat =
   T(h: h)
 proc create*(T: type gen_qtextformat_types.QTextListFormat, ): gen_qtextformat_types.QTextListFormat =
-
   gen_qtextformat_types.QTextListFormat.init(fcQTextListFormat_new())
+
 proc create*(T: type gen_qtextformat_types.QTextListFormat, param1: gen_qtextformat_types.QTextListFormat): gen_qtextformat_types.QTextListFormat =
-
   gen_qtextformat_types.QTextListFormat.init(fcQTextListFormat_new2(param1.h))
-proc isValid*(self: gen_qtextformat_types.QTextListFormat, ): bool =
 
+proc isValid*(self: gen_qtextformat_types.QTextListFormat, ): bool =
   fcQTextListFormat_isValid(self.h)
 
 proc setStyle*(self: gen_qtextformat_types.QTextListFormat, style: cint): void =
-
   fcQTextListFormat_setStyle(self.h, cint(style))
 
 proc style*(self: gen_qtextformat_types.QTextListFormat, ): cint =
-
   cint(fcQTextListFormat_style(self.h))
 
 proc setIndent*(self: gen_qtextformat_types.QTextListFormat, indent: cint): void =
-
   fcQTextListFormat_setIndent(self.h, indent)
 
 proc indent*(self: gen_qtextformat_types.QTextListFormat, ): cint =
-
   fcQTextListFormat_indent(self.h)
 
 proc setNumberPrefix*(self: gen_qtextformat_types.QTextListFormat, numberPrefix: string): void =
-
   fcQTextListFormat_setNumberPrefix(self.h, struct_miqt_string(data: numberPrefix, len: csize_t(len(numberPrefix))))
 
 proc numberPrefix*(self: gen_qtextformat_types.QTextListFormat, ): string =
-
   let v_ms = fcQTextListFormat_numberPrefix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setNumberSuffix*(self: gen_qtextformat_types.QTextListFormat, numberSuffix: string): void =
-
   fcQTextListFormat_setNumberSuffix(self.h, struct_miqt_string(data: numberSuffix, len: csize_t(len(numberSuffix))))
 
 proc numberSuffix*(self: gen_qtextformat_types.QTextListFormat, ): string =
-
   let v_ms = fcQTextListFormat_numberSuffix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -1327,49 +1167,39 @@ proc delete*(self: gen_qtextformat_types.QTextListFormat) =
 func init*(T: type gen_qtextformat_types.QTextImageFormat, h: ptr cQTextImageFormat): gen_qtextformat_types.QTextImageFormat =
   T(h: h)
 proc create*(T: type gen_qtextformat_types.QTextImageFormat, ): gen_qtextformat_types.QTextImageFormat =
-
   gen_qtextformat_types.QTextImageFormat.init(fcQTextImageFormat_new())
-proc isValid*(self: gen_qtextformat_types.QTextImageFormat, ): bool =
 
+proc isValid*(self: gen_qtextformat_types.QTextImageFormat, ): bool =
   fcQTextImageFormat_isValid(self.h)
 
 proc setName*(self: gen_qtextformat_types.QTextImageFormat, name: string): void =
-
   fcQTextImageFormat_setName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc name*(self: gen_qtextformat_types.QTextImageFormat, ): string =
-
   let v_ms = fcQTextImageFormat_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWidth*(self: gen_qtextformat_types.QTextImageFormat, width: float64): void =
-
   fcQTextImageFormat_setWidth(self.h, width)
 
 proc width*(self: gen_qtextformat_types.QTextImageFormat, ): float64 =
-
   fcQTextImageFormat_width(self.h)
 
 proc setHeight*(self: gen_qtextformat_types.QTextImageFormat, height: float64): void =
-
   fcQTextImageFormat_setHeight(self.h, height)
 
 proc height*(self: gen_qtextformat_types.QTextImageFormat, ): float64 =
-
   fcQTextImageFormat_height(self.h)
 
 proc setQuality*(self: gen_qtextformat_types.QTextImageFormat, ): void =
-
   fcQTextImageFormat_setQuality(self.h)
 
 proc quality*(self: gen_qtextformat_types.QTextImageFormat, ): cint =
-
   fcQTextImageFormat_quality(self.h)
 
-proc setQuality1*(self: gen_qtextformat_types.QTextImageFormat, quality: cint): void =
-
+proc setQuality*(self: gen_qtextformat_types.QTextImageFormat, quality: cint): void =
   fcQTextImageFormat_setQuality1(self.h, quality)
 
 proc delete*(self: gen_qtextformat_types.QTextImageFormat) =
@@ -1378,125 +1208,96 @@ proc delete*(self: gen_qtextformat_types.QTextImageFormat) =
 func init*(T: type gen_qtextformat_types.QTextFrameFormat, h: ptr cQTextFrameFormat): gen_qtextformat_types.QTextFrameFormat =
   T(h: h)
 proc create*(T: type gen_qtextformat_types.QTextFrameFormat, ): gen_qtextformat_types.QTextFrameFormat =
-
   gen_qtextformat_types.QTextFrameFormat.init(fcQTextFrameFormat_new())
+
 proc create*(T: type gen_qtextformat_types.QTextFrameFormat, param1: gen_qtextformat_types.QTextFrameFormat): gen_qtextformat_types.QTextFrameFormat =
-
   gen_qtextformat_types.QTextFrameFormat.init(fcQTextFrameFormat_new2(param1.h))
-proc isValid*(self: gen_qtextformat_types.QTextFrameFormat, ): bool =
 
+proc isValid*(self: gen_qtextformat_types.QTextFrameFormat, ): bool =
   fcQTextFrameFormat_isValid(self.h)
 
 proc setPosition*(self: gen_qtextformat_types.QTextFrameFormat, f: cint): void =
-
   fcQTextFrameFormat_setPosition(self.h, cint(f))
 
 proc position*(self: gen_qtextformat_types.QTextFrameFormat, ): cint =
-
   cint(fcQTextFrameFormat_position(self.h))
 
 proc setBorder*(self: gen_qtextformat_types.QTextFrameFormat, border: float64): void =
-
   fcQTextFrameFormat_setBorder(self.h, border)
 
 proc border*(self: gen_qtextformat_types.QTextFrameFormat, ): float64 =
-
   fcQTextFrameFormat_border(self.h)
 
 proc setBorderBrush*(self: gen_qtextformat_types.QTextFrameFormat, brush: gen_qbrush.QBrush): void =
-
   fcQTextFrameFormat_setBorderBrush(self.h, brush.h)
 
 proc borderBrush*(self: gen_qtextformat_types.QTextFrameFormat, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTextFrameFormat_borderBrush(self.h))
 
 proc setBorderStyle*(self: gen_qtextformat_types.QTextFrameFormat, style: cint): void =
-
   fcQTextFrameFormat_setBorderStyle(self.h, cint(style))
 
 proc borderStyle*(self: gen_qtextformat_types.QTextFrameFormat, ): cint =
-
   cint(fcQTextFrameFormat_borderStyle(self.h))
 
 proc setMargin*(self: gen_qtextformat_types.QTextFrameFormat, margin: float64): void =
-
   fcQTextFrameFormat_setMargin(self.h, margin)
 
 proc margin*(self: gen_qtextformat_types.QTextFrameFormat, ): float64 =
-
   fcQTextFrameFormat_margin(self.h)
 
 proc setTopMargin*(self: gen_qtextformat_types.QTextFrameFormat, margin: float64): void =
-
   fcQTextFrameFormat_setTopMargin(self.h, margin)
 
 proc topMargin*(self: gen_qtextformat_types.QTextFrameFormat, ): float64 =
-
   fcQTextFrameFormat_topMargin(self.h)
 
 proc setBottomMargin*(self: gen_qtextformat_types.QTextFrameFormat, margin: float64): void =
-
   fcQTextFrameFormat_setBottomMargin(self.h, margin)
 
 proc bottomMargin*(self: gen_qtextformat_types.QTextFrameFormat, ): float64 =
-
   fcQTextFrameFormat_bottomMargin(self.h)
 
 proc setLeftMargin*(self: gen_qtextformat_types.QTextFrameFormat, margin: float64): void =
-
   fcQTextFrameFormat_setLeftMargin(self.h, margin)
 
 proc leftMargin*(self: gen_qtextformat_types.QTextFrameFormat, ): float64 =
-
   fcQTextFrameFormat_leftMargin(self.h)
 
 proc setRightMargin*(self: gen_qtextformat_types.QTextFrameFormat, margin: float64): void =
-
   fcQTextFrameFormat_setRightMargin(self.h, margin)
 
 proc rightMargin*(self: gen_qtextformat_types.QTextFrameFormat, ): float64 =
-
   fcQTextFrameFormat_rightMargin(self.h)
 
 proc setPadding*(self: gen_qtextformat_types.QTextFrameFormat, padding: float64): void =
-
   fcQTextFrameFormat_setPadding(self.h, padding)
 
 proc padding*(self: gen_qtextformat_types.QTextFrameFormat, ): float64 =
-
   fcQTextFrameFormat_padding(self.h)
 
 proc setWidth*(self: gen_qtextformat_types.QTextFrameFormat, width: float64): void =
-
   fcQTextFrameFormat_setWidth(self.h, width)
 
-proc setWidthWithLength*(self: gen_qtextformat_types.QTextFrameFormat, length: gen_qtextformat_types.QTextLength): void =
-
+proc setWidth*(self: gen_qtextformat_types.QTextFrameFormat, length: gen_qtextformat_types.QTextLength): void =
   fcQTextFrameFormat_setWidthWithLength(self.h, length.h)
 
 proc width*(self: gen_qtextformat_types.QTextFrameFormat, ): gen_qtextformat_types.QTextLength =
-
   gen_qtextformat_types.QTextLength(h: fcQTextFrameFormat_width(self.h))
 
 proc setHeight*(self: gen_qtextformat_types.QTextFrameFormat, height: float64): void =
-
   fcQTextFrameFormat_setHeight(self.h, height)
 
-proc setHeightWithHeight*(self: gen_qtextformat_types.QTextFrameFormat, height: gen_qtextformat_types.QTextLength): void =
-
+proc setHeight*(self: gen_qtextformat_types.QTextFrameFormat, height: gen_qtextformat_types.QTextLength): void =
   fcQTextFrameFormat_setHeightWithHeight(self.h, height.h)
 
 proc height*(self: gen_qtextformat_types.QTextFrameFormat, ): gen_qtextformat_types.QTextLength =
-
   gen_qtextformat_types.QTextLength(h: fcQTextFrameFormat_height(self.h))
 
 proc setPageBreakPolicy*(self: gen_qtextformat_types.QTextFrameFormat, flags: cint): void =
-
   fcQTextFrameFormat_setPageBreakPolicy(self.h, cint(flags))
 
 proc pageBreakPolicy*(self: gen_qtextformat_types.QTextFrameFormat, ): cint =
-
   cint(fcQTextFrameFormat_pageBreakPolicy(self.h))
 
 proc delete*(self: gen_qtextformat_types.QTextFrameFormat) =
@@ -1505,22 +1306,18 @@ proc delete*(self: gen_qtextformat_types.QTextFrameFormat) =
 func init*(T: type gen_qtextformat_types.QTextTableFormat, h: ptr cQTextTableFormat): gen_qtextformat_types.QTextTableFormat =
   T(h: h)
 proc create*(T: type gen_qtextformat_types.QTextTableFormat, ): gen_qtextformat_types.QTextTableFormat =
-
   gen_qtextformat_types.QTextTableFormat.init(fcQTextTableFormat_new())
-proc isValid*(self: gen_qtextformat_types.QTextTableFormat, ): bool =
 
+proc isValid*(self: gen_qtextformat_types.QTextTableFormat, ): bool =
   fcQTextTableFormat_isValid(self.h)
 
 proc columns*(self: gen_qtextformat_types.QTextTableFormat, ): cint =
-
   fcQTextTableFormat_columns(self.h)
 
 proc setColumns*(self: gen_qtextformat_types.QTextTableFormat, columns: cint): void =
-
   fcQTextTableFormat_setColumns(self.h, columns)
 
 proc setColumnWidthConstraints*(self: gen_qtextformat_types.QTextTableFormat, constraints: seq[gen_qtextformat_types.QTextLength]): void =
-
   var constraints_CArray = newSeq[pointer](len(constraints))
   for i in 0..<len(constraints):
     constraints_CArray[i] = constraints[i].h
@@ -1528,7 +1325,6 @@ proc setColumnWidthConstraints*(self: gen_qtextformat_types.QTextTableFormat, co
   fcQTextTableFormat_setColumnWidthConstraints(self.h, struct_miqt_array(len: csize_t(len(constraints)), data: if len(constraints) == 0: nil else: addr(constraints_CArray[0])))
 
 proc columnWidthConstraints*(self: gen_qtextformat_types.QTextTableFormat, ): seq[gen_qtextformat_types.QTextLength] =
-
   var v_ma = fcQTextTableFormat_columnWidthConstraints(self.h)
   var vx_ret = newSeq[gen_qtextformat_types.QTextLength](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1537,47 +1333,36 @@ proc columnWidthConstraints*(self: gen_qtextformat_types.QTextTableFormat, ): se
   vx_ret
 
 proc clearColumnWidthConstraints*(self: gen_qtextformat_types.QTextTableFormat, ): void =
-
   fcQTextTableFormat_clearColumnWidthConstraints(self.h)
 
 proc cellSpacing*(self: gen_qtextformat_types.QTextTableFormat, ): float64 =
-
   fcQTextTableFormat_cellSpacing(self.h)
 
 proc setCellSpacing*(self: gen_qtextformat_types.QTextTableFormat, spacing: float64): void =
-
   fcQTextTableFormat_setCellSpacing(self.h, spacing)
 
 proc cellPadding*(self: gen_qtextformat_types.QTextTableFormat, ): float64 =
-
   fcQTextTableFormat_cellPadding(self.h)
 
 proc setCellPadding*(self: gen_qtextformat_types.QTextTableFormat, padding: float64): void =
-
   fcQTextTableFormat_setCellPadding(self.h, padding)
 
 proc setAlignment*(self: gen_qtextformat_types.QTextTableFormat, alignment: cint): void =
-
   fcQTextTableFormat_setAlignment(self.h, cint(alignment))
 
 proc alignment*(self: gen_qtextformat_types.QTextTableFormat, ): cint =
-
   cint(fcQTextTableFormat_alignment(self.h))
 
 proc setHeaderRowCount*(self: gen_qtextformat_types.QTextTableFormat, count: cint): void =
-
   fcQTextTableFormat_setHeaderRowCount(self.h, count)
 
 proc headerRowCount*(self: gen_qtextformat_types.QTextTableFormat, ): cint =
-
   fcQTextTableFormat_headerRowCount(self.h)
 
 proc setBorderCollapse*(self: gen_qtextformat_types.QTextTableFormat, borderCollapse: bool): void =
-
   fcQTextTableFormat_setBorderCollapse(self.h, borderCollapse)
 
 proc borderCollapse*(self: gen_qtextformat_types.QTextTableFormat, ): bool =
-
   fcQTextTableFormat_borderCollapse(self.h)
 
 proc delete*(self: gen_qtextformat_types.QTextTableFormat) =
@@ -1586,154 +1371,117 @@ proc delete*(self: gen_qtextformat_types.QTextTableFormat) =
 func init*(T: type gen_qtextformat_types.QTextTableCellFormat, h: ptr cQTextTableCellFormat): gen_qtextformat_types.QTextTableCellFormat =
   T(h: h)
 proc create*(T: type gen_qtextformat_types.QTextTableCellFormat, ): gen_qtextformat_types.QTextTableCellFormat =
-
   gen_qtextformat_types.QTextTableCellFormat.init(fcQTextTableCellFormat_new())
-proc isValid*(self: gen_qtextformat_types.QTextTableCellFormat, ): bool =
 
+proc isValid*(self: gen_qtextformat_types.QTextTableCellFormat, ): bool =
   fcQTextTableCellFormat_isValid(self.h)
 
 proc setTopPadding*(self: gen_qtextformat_types.QTextTableCellFormat, padding: float64): void =
-
   fcQTextTableCellFormat_setTopPadding(self.h, padding)
 
 proc topPadding*(self: gen_qtextformat_types.QTextTableCellFormat, ): float64 =
-
   fcQTextTableCellFormat_topPadding(self.h)
 
 proc setBottomPadding*(self: gen_qtextformat_types.QTextTableCellFormat, padding: float64): void =
-
   fcQTextTableCellFormat_setBottomPadding(self.h, padding)
 
 proc bottomPadding*(self: gen_qtextformat_types.QTextTableCellFormat, ): float64 =
-
   fcQTextTableCellFormat_bottomPadding(self.h)
 
 proc setLeftPadding*(self: gen_qtextformat_types.QTextTableCellFormat, padding: float64): void =
-
   fcQTextTableCellFormat_setLeftPadding(self.h, padding)
 
 proc leftPadding*(self: gen_qtextformat_types.QTextTableCellFormat, ): float64 =
-
   fcQTextTableCellFormat_leftPadding(self.h)
 
 proc setRightPadding*(self: gen_qtextformat_types.QTextTableCellFormat, padding: float64): void =
-
   fcQTextTableCellFormat_setRightPadding(self.h, padding)
 
 proc rightPadding*(self: gen_qtextformat_types.QTextTableCellFormat, ): float64 =
-
   fcQTextTableCellFormat_rightPadding(self.h)
 
 proc setPadding*(self: gen_qtextformat_types.QTextTableCellFormat, padding: float64): void =
-
   fcQTextTableCellFormat_setPadding(self.h, padding)
 
 proc setTopBorder*(self: gen_qtextformat_types.QTextTableCellFormat, width: float64): void =
-
   fcQTextTableCellFormat_setTopBorder(self.h, width)
 
 proc topBorder*(self: gen_qtextformat_types.QTextTableCellFormat, ): float64 =
-
   fcQTextTableCellFormat_topBorder(self.h)
 
 proc setBottomBorder*(self: gen_qtextformat_types.QTextTableCellFormat, width: float64): void =
-
   fcQTextTableCellFormat_setBottomBorder(self.h, width)
 
 proc bottomBorder*(self: gen_qtextformat_types.QTextTableCellFormat, ): float64 =
-
   fcQTextTableCellFormat_bottomBorder(self.h)
 
 proc setLeftBorder*(self: gen_qtextformat_types.QTextTableCellFormat, width: float64): void =
-
   fcQTextTableCellFormat_setLeftBorder(self.h, width)
 
 proc leftBorder*(self: gen_qtextformat_types.QTextTableCellFormat, ): float64 =
-
   fcQTextTableCellFormat_leftBorder(self.h)
 
 proc setRightBorder*(self: gen_qtextformat_types.QTextTableCellFormat, width: float64): void =
-
   fcQTextTableCellFormat_setRightBorder(self.h, width)
 
 proc rightBorder*(self: gen_qtextformat_types.QTextTableCellFormat, ): float64 =
-
   fcQTextTableCellFormat_rightBorder(self.h)
 
 proc setBorder*(self: gen_qtextformat_types.QTextTableCellFormat, width: float64): void =
-
   fcQTextTableCellFormat_setBorder(self.h, width)
 
 proc setTopBorderStyle*(self: gen_qtextformat_types.QTextTableCellFormat, style: cint): void =
-
   fcQTextTableCellFormat_setTopBorderStyle(self.h, cint(style))
 
 proc topBorderStyle*(self: gen_qtextformat_types.QTextTableCellFormat, ): cint =
-
   cint(fcQTextTableCellFormat_topBorderStyle(self.h))
 
 proc setBottomBorderStyle*(self: gen_qtextformat_types.QTextTableCellFormat, style: cint): void =
-
   fcQTextTableCellFormat_setBottomBorderStyle(self.h, cint(style))
 
 proc bottomBorderStyle*(self: gen_qtextformat_types.QTextTableCellFormat, ): cint =
-
   cint(fcQTextTableCellFormat_bottomBorderStyle(self.h))
 
 proc setLeftBorderStyle*(self: gen_qtextformat_types.QTextTableCellFormat, style: cint): void =
-
   fcQTextTableCellFormat_setLeftBorderStyle(self.h, cint(style))
 
 proc leftBorderStyle*(self: gen_qtextformat_types.QTextTableCellFormat, ): cint =
-
   cint(fcQTextTableCellFormat_leftBorderStyle(self.h))
 
 proc setRightBorderStyle*(self: gen_qtextformat_types.QTextTableCellFormat, style: cint): void =
-
   fcQTextTableCellFormat_setRightBorderStyle(self.h, cint(style))
 
 proc rightBorderStyle*(self: gen_qtextformat_types.QTextTableCellFormat, ): cint =
-
   cint(fcQTextTableCellFormat_rightBorderStyle(self.h))
 
 proc setBorderStyle*(self: gen_qtextformat_types.QTextTableCellFormat, style: cint): void =
-
   fcQTextTableCellFormat_setBorderStyle(self.h, cint(style))
 
 proc setTopBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, brush: gen_qbrush.QBrush): void =
-
   fcQTextTableCellFormat_setTopBorderBrush(self.h, brush.h)
 
 proc topBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTextTableCellFormat_topBorderBrush(self.h))
 
 proc setBottomBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, brush: gen_qbrush.QBrush): void =
-
   fcQTextTableCellFormat_setBottomBorderBrush(self.h, brush.h)
 
 proc bottomBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTextTableCellFormat_bottomBorderBrush(self.h))
 
 proc setLeftBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, brush: gen_qbrush.QBrush): void =
-
   fcQTextTableCellFormat_setLeftBorderBrush(self.h, brush.h)
 
 proc leftBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTextTableCellFormat_leftBorderBrush(self.h))
 
 proc setRightBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, brush: gen_qbrush.QBrush): void =
-
   fcQTextTableCellFormat_setRightBorderBrush(self.h, brush.h)
 
 proc rightBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQTextTableCellFormat_rightBorderBrush(self.h))
 
 proc setBorderBrush*(self: gen_qtextformat_types.QTextTableCellFormat, brush: gen_qbrush.QBrush): void =
-
   fcQTextTableCellFormat_setBorderBrush(self.h, brush.h)
 
 proc delete*(self: gen_qtextformat_types.QTextTableCellFormat) =

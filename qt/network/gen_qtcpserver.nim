@@ -126,192 +126,156 @@ proc fcQTcpServer_delete(self: pointer) {.importc: "QTcpServer_delete".}
 func init*(T: type gen_qtcpserver_types.QTcpServer, h: ptr cQTcpServer): gen_qtcpserver_types.QTcpServer =
   T(h: h)
 proc create*(T: type gen_qtcpserver_types.QTcpServer, ): gen_qtcpserver_types.QTcpServer =
-
   gen_qtcpserver_types.QTcpServer.init(fcQTcpServer_new())
+
 proc create*(T: type gen_qtcpserver_types.QTcpServer, parent: gen_qobject.QObject): gen_qtcpserver_types.QTcpServer =
-
   gen_qtcpserver_types.QTcpServer.init(fcQTcpServer_new2(parent.h))
-proc metaObject*(self: gen_qtcpserver_types.QTcpServer, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtcpserver_types.QTcpServer, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTcpServer_metaObject(self.h))
 
 proc metacast*(self: gen_qtcpserver_types.QTcpServer, param1: cstring): pointer =
-
   fcQTcpServer_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtcpserver_types.QTcpServer, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTcpServer_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtcpserver_types.QTcpServer, s: cstring): string =
-
   let v_ms = fcQTcpServer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtcpserver_types.QTcpServer, s: cstring): string =
-
   let v_ms = fcQTcpServer_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc listen*(self: gen_qtcpserver_types.QTcpServer, ): bool =
-
   fcQTcpServer_listen(self.h)
 
 proc close*(self: gen_qtcpserver_types.QTcpServer, ): void =
-
   fcQTcpServer_close(self.h)
 
 proc isListening*(self: gen_qtcpserver_types.QTcpServer, ): bool =
-
   fcQTcpServer_isListening(self.h)
 
 proc setMaxPendingConnections*(self: gen_qtcpserver_types.QTcpServer, numConnections: cint): void =
-
   fcQTcpServer_setMaxPendingConnections(self.h, numConnections)
 
 proc maxPendingConnections*(self: gen_qtcpserver_types.QTcpServer, ): cint =
-
   fcQTcpServer_maxPendingConnections(self.h)
 
 proc serverPort*(self: gen_qtcpserver_types.QTcpServer, ): cushort =
-
   fcQTcpServer_serverPort(self.h)
 
 proc serverAddress*(self: gen_qtcpserver_types.QTcpServer, ): gen_qhostaddress.QHostAddress =
-
   gen_qhostaddress.QHostAddress(h: fcQTcpServer_serverAddress(self.h))
 
 proc socketDescriptor*(self: gen_qtcpserver_types.QTcpServer, ): uint =
-
   fcQTcpServer_socketDescriptor(self.h)
 
 proc setSocketDescriptor*(self: gen_qtcpserver_types.QTcpServer, socketDescriptor: uint): bool =
-
   fcQTcpServer_setSocketDescriptor(self.h, socketDescriptor)
 
 proc waitForNewConnection*(self: gen_qtcpserver_types.QTcpServer, ): bool =
-
   fcQTcpServer_waitForNewConnection(self.h)
 
 proc hasPendingConnections*(self: gen_qtcpserver_types.QTcpServer, ): bool =
-
   fcQTcpServer_hasPendingConnections(self.h)
 
 proc nextPendingConnection*(self: gen_qtcpserver_types.QTcpServer, ): gen_qtcpsocket.QTcpSocket =
-
   gen_qtcpsocket.QTcpSocket(h: fcQTcpServer_nextPendingConnection(self.h))
 
 proc serverError*(self: gen_qtcpserver_types.QTcpServer, ): cint =
-
   cint(fcQTcpServer_serverError(self.h))
 
 proc errorString*(self: gen_qtcpserver_types.QTcpServer, ): string =
-
   let v_ms = fcQTcpServer_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc pauseAccepting*(self: gen_qtcpserver_types.QTcpServer, ): void =
-
   fcQTcpServer_pauseAccepting(self.h)
 
 proc resumeAccepting*(self: gen_qtcpserver_types.QTcpServer, ): void =
-
   fcQTcpServer_resumeAccepting(self.h)
 
 proc setProxy*(self: gen_qtcpserver_types.QTcpServer, networkProxy: gen_qnetworkproxy.QNetworkProxy): void =
-
   fcQTcpServer_setProxy(self.h, networkProxy.h)
 
 proc proxy*(self: gen_qtcpserver_types.QTcpServer, ): gen_qnetworkproxy.QNetworkProxy =
-
   gen_qnetworkproxy.QNetworkProxy(h: fcQTcpServer_proxy(self.h))
 
 proc newConnection*(self: gen_qtcpserver_types.QTcpServer, ): void =
-
   fcQTcpServer_newConnection(self.h)
 
+type QTcpServernewConnectionSlot* = proc()
 proc miqt_exec_callback_QTcpServer_newConnection(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QTcpServernewConnectionSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onnewConnection*(self: gen_qtcpserver_types.QTcpServer, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onnewConnection*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServernewConnectionSlot) =
+  var tmp = new QTcpServernewConnectionSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTcpServer_connect_newConnection(self.h, cast[int](addr tmp[]))
-proc acceptError*(self: gen_qtcpserver_types.QTcpServer, socketError: cint): void =
 
+proc acceptError*(self: gen_qtcpserver_types.QTcpServer, socketError: cint): void =
   fcQTcpServer_acceptError(self.h, cint(socketError))
 
+type QTcpServeracceptErrorSlot* = proc(socketError: cint)
 proc miqt_exec_callback_QTcpServer_acceptError(slot: int, socketError: cint) {.exportc.} =
-  type Cb = proc(socketError: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTcpServeracceptErrorSlot](cast[pointer](slot))
   let slotval1 = cint(socketError)
-
 
   nimfunc[](slotval1)
 
-proc onacceptError*(self: gen_qtcpserver_types.QTcpServer, slot: proc(socketError: cint)) =
-  type Cb = proc(socketError: cint)
-  var tmp = new Cb
+proc onacceptError*(self: gen_qtcpserver_types.QTcpServer, slot: QTcpServeracceptErrorSlot) =
+  var tmp = new QTcpServeracceptErrorSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTcpServer_connect_acceptError(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring): string =
   let v_ms = fcQTcpServer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTcpServer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring): string =
   let v_ms = fcQTcpServer_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtcpserver_types.QTcpServer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTcpServer_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc listen1*(self: gen_qtcpserver_types.QTcpServer, address: gen_qhostaddress.QHostAddress): bool =
-
+proc listen*(self: gen_qtcpserver_types.QTcpServer, address: gen_qhostaddress.QHostAddress): bool =
   fcQTcpServer_listen1(self.h, address.h)
 
-proc listen2*(self: gen_qtcpserver_types.QTcpServer, address: gen_qhostaddress.QHostAddress, port: cushort): bool =
-
+proc listen*(self: gen_qtcpserver_types.QTcpServer, address: gen_qhostaddress.QHostAddress, port: cushort): bool =
   fcQTcpServer_listen2(self.h, address.h, port)
 
-proc waitForNewConnection1*(self: gen_qtcpserver_types.QTcpServer, msec: cint): bool =
-
+proc waitForNewConnection*(self: gen_qtcpserver_types.QTcpServer, msec: cint): bool =
   fcQTcpServer_waitForNewConnection1(self.h, msec)
 
-proc waitForNewConnection2*(self: gen_qtcpserver_types.QTcpServer, msec: cint, timedOut: ptr bool): bool =
-
+proc waitForNewConnection*(self: gen_qtcpserver_types.QTcpServer, msec: cint, timedOut: ptr bool): bool =
   fcQTcpServer_waitForNewConnection2(self.h, msec, timedOut)
 
 proc QTcpServermetaObject*(self: gen_qtcpserver_types.QTcpServer, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTcpServer_virtualbase_metaObject(self.h))
 
 type QTcpServermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -329,7 +293,6 @@ proc miqt_exec_callback_QTcpServer_metaObject(self: ptr cQTcpServer, slot: int):
 
   virtualReturn.h
 proc QTcpServermetacast*(self: gen_qtcpserver_types.QTcpServer, param1: cstring): pointer =
-
   fQTcpServer_virtualbase_metacast(self.h, param1)
 
 type QTcpServermetacastProc* = proc(param1: cstring): pointer
@@ -349,7 +312,6 @@ proc miqt_exec_callback_QTcpServer_metacast(self: ptr cQTcpServer, slot: int, pa
 
   virtualReturn
 proc QTcpServermetacall*(self: gen_qtcpserver_types.QTcpServer, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTcpServer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTcpServermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -373,7 +335,6 @@ proc miqt_exec_callback_QTcpServer_metacall(self: ptr cQTcpServer, slot: int, pa
 
   virtualReturn
 proc QTcpServerhasPendingConnections*(self: gen_qtcpserver_types.QTcpServer, ): bool =
-
   fQTcpServer_virtualbase_hasPendingConnections(self.h)
 
 type QTcpServerhasPendingConnectionsProc* = proc(): bool
@@ -391,7 +352,6 @@ proc miqt_exec_callback_QTcpServer_hasPendingConnections(self: ptr cQTcpServer, 
 
   virtualReturn
 proc QTcpServernextPendingConnection*(self: gen_qtcpserver_types.QTcpServer, ): gen_qtcpsocket.QTcpSocket =
-
   gen_qtcpsocket.QTcpSocket(h: fQTcpServer_virtualbase_nextPendingConnection(self.h))
 
 type QTcpServernextPendingConnectionProc* = proc(): gen_qtcpsocket.QTcpSocket
@@ -409,7 +369,6 @@ proc miqt_exec_callback_QTcpServer_nextPendingConnection(self: ptr cQTcpServer, 
 
   virtualReturn.h
 proc QTcpServerincomingConnection*(self: gen_qtcpserver_types.QTcpServer, handle: uint): void =
-
   fQTcpServer_virtualbase_incomingConnection(self.h, handle)
 
 type QTcpServerincomingConnectionProc* = proc(handle: uint): void
@@ -427,7 +386,6 @@ proc miqt_exec_callback_QTcpServer_incomingConnection(self: ptr cQTcpServer, slo
 
   nimfunc[](slotval1)
 proc QTcpServerevent*(self: gen_qtcpserver_types.QTcpServer, event: gen_qcoreevent.QEvent): bool =
-
   fQTcpServer_virtualbase_event(self.h, event.h)
 
 type QTcpServereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -447,7 +405,6 @@ proc miqt_exec_callback_QTcpServer_event(self: ptr cQTcpServer, slot: int, event
 
   virtualReturn
 proc QTcpServereventFilter*(self: gen_qtcpserver_types.QTcpServer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTcpServer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTcpServereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -469,7 +426,6 @@ proc miqt_exec_callback_QTcpServer_eventFilter(self: ptr cQTcpServer, slot: int,
 
   virtualReturn
 proc QTcpServertimerEvent*(self: gen_qtcpserver_types.QTcpServer, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTcpServer_virtualbase_timerEvent(self.h, event.h)
 
 type QTcpServertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -487,7 +443,6 @@ proc miqt_exec_callback_QTcpServer_timerEvent(self: ptr cQTcpServer, slot: int, 
 
   nimfunc[](slotval1)
 proc QTcpServerchildEvent*(self: gen_qtcpserver_types.QTcpServer, event: gen_qcoreevent.QChildEvent): void =
-
   fQTcpServer_virtualbase_childEvent(self.h, event.h)
 
 type QTcpServerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -505,7 +460,6 @@ proc miqt_exec_callback_QTcpServer_childEvent(self: ptr cQTcpServer, slot: int, 
 
   nimfunc[](slotval1)
 proc QTcpServercustomEvent*(self: gen_qtcpserver_types.QTcpServer, event: gen_qcoreevent.QEvent): void =
-
   fQTcpServer_virtualbase_customEvent(self.h, event.h)
 
 type QTcpServercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -523,7 +477,6 @@ proc miqt_exec_callback_QTcpServer_customEvent(self: ptr cQTcpServer, slot: int,
 
   nimfunc[](slotval1)
 proc QTcpServerconnectNotify*(self: gen_qtcpserver_types.QTcpServer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTcpServer_virtualbase_connectNotify(self.h, signal.h)
 
 type QTcpServerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -541,7 +494,6 @@ proc miqt_exec_callback_QTcpServer_connectNotify(self: ptr cQTcpServer, slot: in
 
   nimfunc[](slotval1)
 proc QTcpServerdisconnectNotify*(self: gen_qtcpserver_types.QTcpServer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTcpServer_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTcpServerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

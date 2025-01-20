@@ -113,135 +113,112 @@ proc fcQQuickRenderControl_delete(self: pointer) {.importc: "QQuickRenderControl
 func init*(T: type gen_qquickrendercontrol_types.QQuickRenderControl, h: ptr cQQuickRenderControl): gen_qquickrendercontrol_types.QQuickRenderControl =
   T(h: h)
 proc create*(T: type gen_qquickrendercontrol_types.QQuickRenderControl, ): gen_qquickrendercontrol_types.QQuickRenderControl =
-
   gen_qquickrendercontrol_types.QQuickRenderControl.init(fcQQuickRenderControl_new())
+
 proc create*(T: type gen_qquickrendercontrol_types.QQuickRenderControl, parent: gen_qobject.QObject): gen_qquickrendercontrol_types.QQuickRenderControl =
-
   gen_qquickrendercontrol_types.QQuickRenderControl.init(fcQQuickRenderControl_new2(parent.h))
-proc metaObject*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickRenderControl_metaObject(self.h))
 
 proc metacast*(self: gen_qquickrendercontrol_types.QQuickRenderControl, param1: cstring): pointer =
-
   fcQQuickRenderControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qquickrendercontrol_types.QQuickRenderControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQuickRenderControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring): string =
-
   let v_ms = fcQQuickRenderControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring): string =
-
   let v_ms = fcQQuickRenderControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc prepareThread*(self: gen_qquickrendercontrol_types.QQuickRenderControl, targetThread: gen_qthread.QThread): void =
-
   fcQQuickRenderControl_prepareThread(self.h, targetThread.h)
 
 proc invalidate*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): void =
-
   fcQQuickRenderControl_invalidate(self.h)
 
 proc polishItems*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): void =
-
   fcQQuickRenderControl_polishItems(self.h)
 
 proc render*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): void =
-
   fcQQuickRenderControl_render(self.h)
 
 proc sync*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): bool =
-
   fcQQuickRenderControl_sync(self.h)
 
 proc grab*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fcQQuickRenderControl_grab(self.h))
 
 proc renderWindowFor*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, win: gen_qquickwindow.QQuickWindow): gen_qwindow.QWindow =
-
   gen_qwindow.QWindow(h: fcQQuickRenderControl_renderWindowFor(win.h))
 
 proc renderWindow*(self: gen_qquickrendercontrol_types.QQuickRenderControl, offset: gen_qpoint.QPoint): gen_qwindow.QWindow =
-
   gen_qwindow.QWindow(h: fcQQuickRenderControl_renderWindow(self.h, offset.h))
 
 proc renderRequested*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): void =
-
   fcQQuickRenderControl_renderRequested(self.h)
 
+type QQuickRenderControlrenderRequestedSlot* = proc()
 proc miqt_exec_callback_QQuickRenderControl_renderRequested(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickRenderControlrenderRequestedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onrenderRequested*(self: gen_qquickrendercontrol_types.QQuickRenderControl, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onrenderRequested*(self: gen_qquickrendercontrol_types.QQuickRenderControl, slot: QQuickRenderControlrenderRequestedSlot) =
+  var tmp = new QQuickRenderControlrenderRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickRenderControl_connect_renderRequested(self.h, cast[int](addr tmp[]))
-proc sceneChanged*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): void =
 
+proc sceneChanged*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): void =
   fcQQuickRenderControl_sceneChanged(self.h)
 
+type QQuickRenderControlsceneChangedSlot* = proc()
 proc miqt_exec_callback_QQuickRenderControl_sceneChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickRenderControlsceneChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onsceneChanged*(self: gen_qquickrendercontrol_types.QQuickRenderControl, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onsceneChanged*(self: gen_qquickrendercontrol_types.QQuickRenderControl, slot: QQuickRenderControlsceneChangedSlot) =
+  var tmp = new QQuickRenderControlsceneChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickRenderControl_connect_sceneChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring, c: cstring): string =
   let v_ms = fcQQuickRenderControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickRenderControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring, c: cstring): string =
   let v_ms = fcQQuickRenderControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickRenderControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc renderWindowFor2*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, win: gen_qquickwindow.QQuickWindow, offset: gen_qpoint.QPoint): gen_qwindow.QWindow =
-
+proc renderWindowFor*(_: type gen_qquickrendercontrol_types.QQuickRenderControl, win: gen_qquickwindow.QQuickWindow, offset: gen_qpoint.QPoint): gen_qwindow.QWindow =
   gen_qwindow.QWindow(h: fcQQuickRenderControl_renderWindowFor2(win.h, offset.h))
 
 proc QQuickRenderControlmetaObject*(self: gen_qquickrendercontrol_types.QQuickRenderControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQuickRenderControl_virtualbase_metaObject(self.h))
 
 type QQuickRenderControlmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -259,7 +236,6 @@ proc miqt_exec_callback_QQuickRenderControl_metaObject(self: ptr cQQuickRenderCo
 
   virtualReturn.h
 proc QQuickRenderControlmetacast*(self: gen_qquickrendercontrol_types.QQuickRenderControl, param1: cstring): pointer =
-
   fQQuickRenderControl_virtualbase_metacast(self.h, param1)
 
 type QQuickRenderControlmetacastProc* = proc(param1: cstring): pointer
@@ -279,7 +255,6 @@ proc miqt_exec_callback_QQuickRenderControl_metacast(self: ptr cQQuickRenderCont
 
   virtualReturn
 proc QQuickRenderControlmetacall*(self: gen_qquickrendercontrol_types.QQuickRenderControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQuickRenderControl_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQuickRenderControlmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -303,7 +278,6 @@ proc miqt_exec_callback_QQuickRenderControl_metacall(self: ptr cQQuickRenderCont
 
   virtualReturn
 proc QQuickRenderControlrenderWindow*(self: gen_qquickrendercontrol_types.QQuickRenderControl, offset: gen_qpoint.QPoint): gen_qwindow.QWindow =
-
   gen_qwindow.QWindow(h: fQQuickRenderControl_virtualbase_renderWindow(self.h, offset.h))
 
 type QQuickRenderControlrenderWindowProc* = proc(offset: gen_qpoint.QPoint): gen_qwindow.QWindow
@@ -323,7 +297,6 @@ proc miqt_exec_callback_QQuickRenderControl_renderWindow(self: ptr cQQuickRender
 
   virtualReturn.h
 proc QQuickRenderControlevent*(self: gen_qquickrendercontrol_types.QQuickRenderControl, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickRenderControl_virtualbase_event(self.h, event.h)
 
 type QQuickRenderControleventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -343,7 +316,6 @@ proc miqt_exec_callback_QQuickRenderControl_event(self: ptr cQQuickRenderControl
 
   virtualReturn
 proc QQuickRenderControleventFilter*(self: gen_qquickrendercontrol_types.QQuickRenderControl, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickRenderControl_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQuickRenderControleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -365,7 +337,6 @@ proc miqt_exec_callback_QQuickRenderControl_eventFilter(self: ptr cQQuickRenderC
 
   virtualReturn
 proc QQuickRenderControltimerEvent*(self: gen_qquickrendercontrol_types.QQuickRenderControl, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQuickRenderControl_virtualbase_timerEvent(self.h, event.h)
 
 type QQuickRenderControltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -383,7 +354,6 @@ proc miqt_exec_callback_QQuickRenderControl_timerEvent(self: ptr cQQuickRenderCo
 
   nimfunc[](slotval1)
 proc QQuickRenderControlchildEvent*(self: gen_qquickrendercontrol_types.QQuickRenderControl, event: gen_qcoreevent.QChildEvent): void =
-
   fQQuickRenderControl_virtualbase_childEvent(self.h, event.h)
 
 type QQuickRenderControlchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -401,7 +371,6 @@ proc miqt_exec_callback_QQuickRenderControl_childEvent(self: ptr cQQuickRenderCo
 
   nimfunc[](slotval1)
 proc QQuickRenderControlcustomEvent*(self: gen_qquickrendercontrol_types.QQuickRenderControl, event: gen_qcoreevent.QEvent): void =
-
   fQQuickRenderControl_virtualbase_customEvent(self.h, event.h)
 
 type QQuickRenderControlcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -419,7 +388,6 @@ proc miqt_exec_callback_QQuickRenderControl_customEvent(self: ptr cQQuickRenderC
 
   nimfunc[](slotval1)
 proc QQuickRenderControlconnectNotify*(self: gen_qquickrendercontrol_types.QQuickRenderControl, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickRenderControl_virtualbase_connectNotify(self.h, signal.h)
 
 type QQuickRenderControlconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -437,7 +405,6 @@ proc miqt_exec_callback_QQuickRenderControl_connectNotify(self: ptr cQQuickRende
 
   nimfunc[](slotval1)
 proc QQuickRenderControldisconnectNotify*(self: gen_qquickrendercontrol_types.QQuickRenderControl, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickRenderControl_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQuickRenderControldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

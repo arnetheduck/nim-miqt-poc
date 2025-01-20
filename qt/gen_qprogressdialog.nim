@@ -231,190 +231,155 @@ proc fcQProgressDialog_delete(self: pointer) {.importc: "QProgressDialog_delete"
 func init*(T: type gen_qprogressdialog_types.QProgressDialog, h: ptr cQProgressDialog): gen_qprogressdialog_types.QProgressDialog =
   T(h: h)
 proc create*(T: type gen_qprogressdialog_types.QProgressDialog, parent: gen_qwidget.QWidget): gen_qprogressdialog_types.QProgressDialog =
-
   gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new(parent.h))
+
 proc create*(T: type gen_qprogressdialog_types.QProgressDialog, ): gen_qprogressdialog_types.QProgressDialog =
-
   gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new2())
+
 proc create*(T: type gen_qprogressdialog_types.QProgressDialog, labelText: string, cancelButtonText: string, minimum: cint, maximum: cint): gen_qprogressdialog_types.QProgressDialog =
-
   gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new3(struct_miqt_string(data: labelText, len: csize_t(len(labelText))), struct_miqt_string(data: cancelButtonText, len: csize_t(len(cancelButtonText))), minimum, maximum))
+
 proc create*(T: type gen_qprogressdialog_types.QProgressDialog, parent: gen_qwidget.QWidget, flags: cint): gen_qprogressdialog_types.QProgressDialog =
-
   gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new4(parent.h, cint(flags)))
+
 proc create*(T: type gen_qprogressdialog_types.QProgressDialog, labelText: string, cancelButtonText: string, minimum: cint, maximum: cint, parent: gen_qwidget.QWidget): gen_qprogressdialog_types.QProgressDialog =
-
   gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new5(struct_miqt_string(data: labelText, len: csize_t(len(labelText))), struct_miqt_string(data: cancelButtonText, len: csize_t(len(cancelButtonText))), minimum, maximum, parent.h))
+
 proc create*(T: type gen_qprogressdialog_types.QProgressDialog, labelText: string, cancelButtonText: string, minimum: cint, maximum: cint, parent: gen_qwidget.QWidget, flags: cint): gen_qprogressdialog_types.QProgressDialog =
-
   gen_qprogressdialog_types.QProgressDialog.init(fcQProgressDialog_new6(struct_miqt_string(data: labelText, len: csize_t(len(labelText))), struct_miqt_string(data: cancelButtonText, len: csize_t(len(cancelButtonText))), minimum, maximum, parent.h, cint(flags)))
-proc metaObject*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQProgressDialog_metaObject(self.h))
 
 proc metacast*(self: gen_qprogressdialog_types.QProgressDialog, param1: cstring): pointer =
-
   fcQProgressDialog_metacast(self.h, param1)
 
 proc metacall*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQProgressDialog_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring): string =
-
   let v_ms = fcQProgressDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring): string =
-
   let v_ms = fcQProgressDialog_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setLabel*(self: gen_qprogressdialog_types.QProgressDialog, label: gen_qlabel.QLabel): void =
-
   fcQProgressDialog_setLabel(self.h, label.h)
 
 proc setCancelButton*(self: gen_qprogressdialog_types.QProgressDialog, button: gen_qpushbutton.QPushButton): void =
-
   fcQProgressDialog_setCancelButton(self.h, button.h)
 
 proc setBar*(self: gen_qprogressdialog_types.QProgressDialog, bar: gen_qprogressbar.QProgressBar): void =
-
   fcQProgressDialog_setBar(self.h, bar.h)
 
 proc wasCanceled*(self: gen_qprogressdialog_types.QProgressDialog, ): bool =
-
   fcQProgressDialog_wasCanceled(self.h)
 
 proc minimum*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
-
   fcQProgressDialog_minimum(self.h)
 
 proc maximum*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
-
   fcQProgressDialog_maximum(self.h)
 
 proc value*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
-
   fcQProgressDialog_value(self.h)
 
 proc sizeHint*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQProgressDialog_sizeHint(self.h))
 
 proc labelText*(self: gen_qprogressdialog_types.QProgressDialog, ): string =
-
   let v_ms = fcQProgressDialog_labelText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc minimumDuration*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
-
   fcQProgressDialog_minimumDuration(self.h)
 
 proc setAutoReset*(self: gen_qprogressdialog_types.QProgressDialog, reset: bool): void =
-
   fcQProgressDialog_setAutoReset(self.h, reset)
 
 proc autoReset*(self: gen_qprogressdialog_types.QProgressDialog, ): bool =
-
   fcQProgressDialog_autoReset(self.h)
 
 proc setAutoClose*(self: gen_qprogressdialog_types.QProgressDialog, close: bool): void =
-
   fcQProgressDialog_setAutoClose(self.h, close)
 
 proc autoClose*(self: gen_qprogressdialog_types.QProgressDialog, ): bool =
-
   fcQProgressDialog_autoClose(self.h)
 
 proc cancel*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
-
   fcQProgressDialog_cancel(self.h)
 
 proc reset*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
-
   fcQProgressDialog_reset(self.h)
 
 proc setMaximum*(self: gen_qprogressdialog_types.QProgressDialog, maximum: cint): void =
-
   fcQProgressDialog_setMaximum(self.h, maximum)
 
 proc setMinimum*(self: gen_qprogressdialog_types.QProgressDialog, minimum: cint): void =
-
   fcQProgressDialog_setMinimum(self.h, minimum)
 
 proc setRange*(self: gen_qprogressdialog_types.QProgressDialog, minimum: cint, maximum: cint): void =
-
   fcQProgressDialog_setRange(self.h, minimum, maximum)
 
 proc setValue*(self: gen_qprogressdialog_types.QProgressDialog, progress: cint): void =
-
   fcQProgressDialog_setValue(self.h, progress)
 
 proc setLabelText*(self: gen_qprogressdialog_types.QProgressDialog, text: string): void =
-
   fcQProgressDialog_setLabelText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc setCancelButtonText*(self: gen_qprogressdialog_types.QProgressDialog, text: string): void =
-
   fcQProgressDialog_setCancelButtonText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc setMinimumDuration*(self: gen_qprogressdialog_types.QProgressDialog, ms: cint): void =
-
   fcQProgressDialog_setMinimumDuration(self.h, ms)
 
 proc canceled*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
-
   fcQProgressDialog_canceled(self.h)
 
+type QProgressDialogcanceledSlot* = proc()
 proc miqt_exec_callback_QProgressDialog_canceled(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QProgressDialogcanceledSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc oncanceled*(self: gen_qprogressdialog_types.QProgressDialog, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc oncanceled*(self: gen_qprogressdialog_types.QProgressDialog, slot: QProgressDialogcanceledSlot) =
+  var tmp = new QProgressDialogcanceledSlot
   tmp[] = slot
   GC_ref(tmp)
   fQProgressDialog_connect_canceled(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring): string =
   let v_ms = fcQProgressDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQProgressDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring): string =
   let v_ms = fcQProgressDialog_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qprogressdialog_types.QProgressDialog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQProgressDialog_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QProgressDialogmetaObject*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQProgressDialog_virtualbase_metaObject(self.h))
 
 type QProgressDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -432,7 +397,6 @@ proc miqt_exec_callback_QProgressDialog_metaObject(self: ptr cQProgressDialog, s
 
   virtualReturn.h
 proc QProgressDialogmetacast*(self: gen_qprogressdialog_types.QProgressDialog, param1: cstring): pointer =
-
   fQProgressDialog_virtualbase_metacast(self.h, param1)
 
 type QProgressDialogmetacastProc* = proc(param1: cstring): pointer
@@ -452,7 +416,6 @@ proc miqt_exec_callback_QProgressDialog_metacast(self: ptr cQProgressDialog, slo
 
   virtualReturn
 proc QProgressDialogmetacall*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fQProgressDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QProgressDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -476,7 +439,6 @@ proc miqt_exec_callback_QProgressDialog_metacall(self: ptr cQProgressDialog, slo
 
   virtualReturn
 proc QProgressDialogsizeHint*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQProgressDialog_virtualbase_sizeHint(self.h))
 
 type QProgressDialogsizeHintProc* = proc(): gen_qsize.QSize
@@ -494,7 +456,6 @@ proc miqt_exec_callback_QProgressDialog_sizeHint(self: ptr cQProgressDialog, slo
 
   virtualReturn.h
 proc QProgressDialogresizeEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QResizeEvent): void =
-
   fQProgressDialog_virtualbase_resizeEvent(self.h, event.h)
 
 type QProgressDialogresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -512,7 +473,6 @@ proc miqt_exec_callback_QProgressDialog_resizeEvent(self: ptr cQProgressDialog, 
 
   nimfunc[](slotval1)
 proc QProgressDialogcloseEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QCloseEvent): void =
-
   fQProgressDialog_virtualbase_closeEvent(self.h, event.h)
 
 type QProgressDialogcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -530,7 +490,6 @@ proc miqt_exec_callback_QProgressDialog_closeEvent(self: ptr cQProgressDialog, s
 
   nimfunc[](slotval1)
 proc QProgressDialogchangeEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QEvent): void =
-
   fQProgressDialog_virtualbase_changeEvent(self.h, event.h)
 
 type QProgressDialogchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -548,7 +507,6 @@ proc miqt_exec_callback_QProgressDialog_changeEvent(self: ptr cQProgressDialog, 
 
   nimfunc[](slotval1)
 proc QProgressDialogshowEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QShowEvent): void =
-
   fQProgressDialog_virtualbase_showEvent(self.h, event.h)
 
 type QProgressDialogshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -566,7 +524,6 @@ proc miqt_exec_callback_QProgressDialog_showEvent(self: ptr cQProgressDialog, sl
 
   nimfunc[](slotval1)
 proc QProgressDialogsetVisible*(self: gen_qprogressdialog_types.QProgressDialog, visible: bool): void =
-
   fQProgressDialog_virtualbase_setVisible(self.h, visible)
 
 type QProgressDialogsetVisibleProc* = proc(visible: bool): void
@@ -584,7 +541,6 @@ proc miqt_exec_callback_QProgressDialog_setVisible(self: ptr cQProgressDialog, s
 
   nimfunc[](slotval1)
 proc QProgressDialogminimumSizeHint*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQProgressDialog_virtualbase_minimumSizeHint(self.h))
 
 type QProgressDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -602,7 +558,6 @@ proc miqt_exec_callback_QProgressDialog_minimumSizeHint(self: ptr cQProgressDial
 
   virtualReturn.h
 proc QProgressDialogopen*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
-
   fQProgressDialog_virtualbase_open(self.h)
 
 type QProgressDialogopenProc* = proc(): void
@@ -618,7 +573,6 @@ proc miqt_exec_callback_QProgressDialog_open(self: ptr cQProgressDialog, slot: i
 
   nimfunc[]()
 proc QProgressDialogexec*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
-
   fQProgressDialog_virtualbase_exec(self.h)
 
 type QProgressDialogexecProc* = proc(): cint
@@ -636,7 +590,6 @@ proc miqt_exec_callback_QProgressDialog_exec(self: ptr cQProgressDialog, slot: i
 
   virtualReturn
 proc QProgressDialogdone*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint): void =
-
   fQProgressDialog_virtualbase_done(self.h, param1)
 
 type QProgressDialogdoneProc* = proc(param1: cint): void
@@ -654,7 +607,6 @@ proc miqt_exec_callback_QProgressDialog_done(self: ptr cQProgressDialog, slot: i
 
   nimfunc[](slotval1)
 proc QProgressDialogaccept*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
-
   fQProgressDialog_virtualbase_accept(self.h)
 
 type QProgressDialogacceptProc* = proc(): void
@@ -670,7 +622,6 @@ proc miqt_exec_callback_QProgressDialog_accept(self: ptr cQProgressDialog, slot:
 
   nimfunc[]()
 proc QProgressDialogreject*(self: gen_qprogressdialog_types.QProgressDialog, ): void =
-
   fQProgressDialog_virtualbase_reject(self.h)
 
 type QProgressDialogrejectProc* = proc(): void
@@ -686,7 +637,6 @@ proc miqt_exec_callback_QProgressDialog_reject(self: ptr cQProgressDialog, slot:
 
   nimfunc[]()
 proc QProgressDialogkeyPressEvent*(self: gen_qprogressdialog_types.QProgressDialog, param1: gen_qevent.QKeyEvent): void =
-
   fQProgressDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QProgressDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -704,7 +654,6 @@ proc miqt_exec_callback_QProgressDialog_keyPressEvent(self: ptr cQProgressDialog
 
   nimfunc[](slotval1)
 proc QProgressDialogcontextMenuEvent*(self: gen_qprogressdialog_types.QProgressDialog, param1: gen_qevent.QContextMenuEvent): void =
-
   fQProgressDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QProgressDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -722,7 +671,6 @@ proc miqt_exec_callback_QProgressDialog_contextMenuEvent(self: ptr cQProgressDia
 
   nimfunc[](slotval1)
 proc QProgressDialogeventFilter*(self: gen_qprogressdialog_types.QProgressDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQProgressDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QProgressDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -744,7 +692,6 @@ proc miqt_exec_callback_QProgressDialog_eventFilter(self: ptr cQProgressDialog, 
 
   virtualReturn
 proc QProgressDialogdevType*(self: gen_qprogressdialog_types.QProgressDialog, ): cint =
-
   fQProgressDialog_virtualbase_devType(self.h)
 
 type QProgressDialogdevTypeProc* = proc(): cint
@@ -762,7 +709,6 @@ proc miqt_exec_callback_QProgressDialog_devType(self: ptr cQProgressDialog, slot
 
   virtualReturn
 proc QProgressDialogheightForWidth*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint): cint =
-
   fQProgressDialog_virtualbase_heightForWidth(self.h, param1)
 
 type QProgressDialogheightForWidthProc* = proc(param1: cint): cint
@@ -782,7 +728,6 @@ proc miqt_exec_callback_QProgressDialog_heightForWidth(self: ptr cQProgressDialo
 
   virtualReturn
 proc QProgressDialoghasHeightForWidth*(self: gen_qprogressdialog_types.QProgressDialog, ): bool =
-
   fQProgressDialog_virtualbase_hasHeightForWidth(self.h)
 
 type QProgressDialoghasHeightForWidthProc* = proc(): bool
@@ -800,7 +745,6 @@ proc miqt_exec_callback_QProgressDialog_hasHeightForWidth(self: ptr cQProgressDi
 
   virtualReturn
 proc QProgressDialogpaintEngine*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQProgressDialog_virtualbase_paintEngine(self.h))
 
 type QProgressDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -818,7 +762,6 @@ proc miqt_exec_callback_QProgressDialog_paintEngine(self: ptr cQProgressDialog, 
 
   virtualReturn.h
 proc QProgressDialogevent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QEvent): bool =
-
   fQProgressDialog_virtualbase_event(self.h, event.h)
 
 type QProgressDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -838,7 +781,6 @@ proc miqt_exec_callback_QProgressDialog_event(self: ptr cQProgressDialog, slot: 
 
   virtualReturn
 proc QProgressDialogmousePressEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMouseEvent): void =
-
   fQProgressDialog_virtualbase_mousePressEvent(self.h, event.h)
 
 type QProgressDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -856,7 +798,6 @@ proc miqt_exec_callback_QProgressDialog_mousePressEvent(self: ptr cQProgressDial
 
   nimfunc[](slotval1)
 proc QProgressDialogmouseReleaseEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMouseEvent): void =
-
   fQProgressDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QProgressDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -874,7 +815,6 @@ proc miqt_exec_callback_QProgressDialog_mouseReleaseEvent(self: ptr cQProgressDi
 
   nimfunc[](slotval1)
 proc QProgressDialogmouseDoubleClickEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMouseEvent): void =
-
   fQProgressDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QProgressDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -892,7 +832,6 @@ proc miqt_exec_callback_QProgressDialog_mouseDoubleClickEvent(self: ptr cQProgre
 
   nimfunc[](slotval1)
 proc QProgressDialogmouseMoveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMouseEvent): void =
-
   fQProgressDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QProgressDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -910,7 +849,6 @@ proc miqt_exec_callback_QProgressDialog_mouseMoveEvent(self: ptr cQProgressDialo
 
   nimfunc[](slotval1)
 proc QProgressDialogwheelEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QWheelEvent): void =
-
   fQProgressDialog_virtualbase_wheelEvent(self.h, event.h)
 
 type QProgressDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -928,7 +866,6 @@ proc miqt_exec_callback_QProgressDialog_wheelEvent(self: ptr cQProgressDialog, s
 
   nimfunc[](slotval1)
 proc QProgressDialogkeyReleaseEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QKeyEvent): void =
-
   fQProgressDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QProgressDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -946,7 +883,6 @@ proc miqt_exec_callback_QProgressDialog_keyReleaseEvent(self: ptr cQProgressDial
 
   nimfunc[](slotval1)
 proc QProgressDialogfocusInEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QFocusEvent): void =
-
   fQProgressDialog_virtualbase_focusInEvent(self.h, event.h)
 
 type QProgressDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -964,7 +900,6 @@ proc miqt_exec_callback_QProgressDialog_focusInEvent(self: ptr cQProgressDialog,
 
   nimfunc[](slotval1)
 proc QProgressDialogfocusOutEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QFocusEvent): void =
-
   fQProgressDialog_virtualbase_focusOutEvent(self.h, event.h)
 
 type QProgressDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -982,7 +917,6 @@ proc miqt_exec_callback_QProgressDialog_focusOutEvent(self: ptr cQProgressDialog
 
   nimfunc[](slotval1)
 proc QProgressDialogenterEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QEvent): void =
-
   fQProgressDialog_virtualbase_enterEvent(self.h, event.h)
 
 type QProgressDialogenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1000,7 +934,6 @@ proc miqt_exec_callback_QProgressDialog_enterEvent(self: ptr cQProgressDialog, s
 
   nimfunc[](slotval1)
 proc QProgressDialogleaveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QEvent): void =
-
   fQProgressDialog_virtualbase_leaveEvent(self.h, event.h)
 
 type QProgressDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1018,7 +951,6 @@ proc miqt_exec_callback_QProgressDialog_leaveEvent(self: ptr cQProgressDialog, s
 
   nimfunc[](slotval1)
 proc QProgressDialogpaintEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QPaintEvent): void =
-
   fQProgressDialog_virtualbase_paintEvent(self.h, event.h)
 
 type QProgressDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1036,7 +968,6 @@ proc miqt_exec_callback_QProgressDialog_paintEvent(self: ptr cQProgressDialog, s
 
   nimfunc[](slotval1)
 proc QProgressDialogmoveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QMoveEvent): void =
-
   fQProgressDialog_virtualbase_moveEvent(self.h, event.h)
 
 type QProgressDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1054,7 +985,6 @@ proc miqt_exec_callback_QProgressDialog_moveEvent(self: ptr cQProgressDialog, sl
 
   nimfunc[](slotval1)
 proc QProgressDialogtabletEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QTabletEvent): void =
-
   fQProgressDialog_virtualbase_tabletEvent(self.h, event.h)
 
 type QProgressDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1072,7 +1002,6 @@ proc miqt_exec_callback_QProgressDialog_tabletEvent(self: ptr cQProgressDialog, 
 
   nimfunc[](slotval1)
 proc QProgressDialogactionEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QActionEvent): void =
-
   fQProgressDialog_virtualbase_actionEvent(self.h, event.h)
 
 type QProgressDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1090,7 +1019,6 @@ proc miqt_exec_callback_QProgressDialog_actionEvent(self: ptr cQProgressDialog, 
 
   nimfunc[](slotval1)
 proc QProgressDialogdragEnterEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QDragEnterEvent): void =
-
   fQProgressDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QProgressDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1108,7 +1036,6 @@ proc miqt_exec_callback_QProgressDialog_dragEnterEvent(self: ptr cQProgressDialo
 
   nimfunc[](slotval1)
 proc QProgressDialogdragMoveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QDragMoveEvent): void =
-
   fQProgressDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QProgressDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1126,7 +1053,6 @@ proc miqt_exec_callback_QProgressDialog_dragMoveEvent(self: ptr cQProgressDialog
 
   nimfunc[](slotval1)
 proc QProgressDialogdragLeaveEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QDragLeaveEvent): void =
-
   fQProgressDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QProgressDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1144,7 +1070,6 @@ proc miqt_exec_callback_QProgressDialog_dragLeaveEvent(self: ptr cQProgressDialo
 
   nimfunc[](slotval1)
 proc QProgressDialogdropEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QDropEvent): void =
-
   fQProgressDialog_virtualbase_dropEvent(self.h, event.h)
 
 type QProgressDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1162,7 +1087,6 @@ proc miqt_exec_callback_QProgressDialog_dropEvent(self: ptr cQProgressDialog, sl
 
   nimfunc[](slotval1)
 proc QProgressDialoghideEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qevent.QHideEvent): void =
-
   fQProgressDialog_virtualbase_hideEvent(self.h, event.h)
 
 type QProgressDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1180,7 +1104,6 @@ proc miqt_exec_callback_QProgressDialog_hideEvent(self: ptr cQProgressDialog, sl
 
   nimfunc[](slotval1)
 proc QProgressDialognativeEvent*(self: gen_qprogressdialog_types.QProgressDialog, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQProgressDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QProgressDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1207,7 +1130,6 @@ proc miqt_exec_callback_QProgressDialog_nativeEvent(self: ptr cQProgressDialog, 
 
   virtualReturn
 proc QProgressDialogmetric*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint): cint =
-
   fQProgressDialog_virtualbase_metric(self.h, cint(param1))
 
 type QProgressDialogmetricProc* = proc(param1: cint): cint
@@ -1227,7 +1149,6 @@ proc miqt_exec_callback_QProgressDialog_metric(self: ptr cQProgressDialog, slot:
 
   virtualReturn
 proc QProgressDialoginitPainter*(self: gen_qprogressdialog_types.QProgressDialog, painter: gen_qpainter.QPainter): void =
-
   fQProgressDialog_virtualbase_initPainter(self.h, painter.h)
 
 type QProgressDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1245,7 +1166,6 @@ proc miqt_exec_callback_QProgressDialog_initPainter(self: ptr cQProgressDialog, 
 
   nimfunc[](slotval1)
 proc QProgressDialogredirected*(self: gen_qprogressdialog_types.QProgressDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQProgressDialog_virtualbase_redirected(self.h, offset.h))
 
 type QProgressDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1265,7 +1185,6 @@ proc miqt_exec_callback_QProgressDialog_redirected(self: ptr cQProgressDialog, s
 
   virtualReturn.h
 proc QProgressDialogsharedPainter*(self: gen_qprogressdialog_types.QProgressDialog, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQProgressDialog_virtualbase_sharedPainter(self.h))
 
 type QProgressDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1283,7 +1202,6 @@ proc miqt_exec_callback_QProgressDialog_sharedPainter(self: ptr cQProgressDialog
 
   virtualReturn.h
 proc QProgressDialoginputMethodEvent*(self: gen_qprogressdialog_types.QProgressDialog, param1: gen_qevent.QInputMethodEvent): void =
-
   fQProgressDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QProgressDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1301,7 +1219,6 @@ proc miqt_exec_callback_QProgressDialog_inputMethodEvent(self: ptr cQProgressDia
 
   nimfunc[](slotval1)
 proc QProgressDialoginputMethodQuery*(self: gen_qprogressdialog_types.QProgressDialog, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQProgressDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QProgressDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1321,7 +1238,6 @@ proc miqt_exec_callback_QProgressDialog_inputMethodQuery(self: ptr cQProgressDia
 
   virtualReturn.h
 proc QProgressDialogfocusNextPrevChild*(self: gen_qprogressdialog_types.QProgressDialog, next: bool): bool =
-
   fQProgressDialog_virtualbase_focusNextPrevChild(self.h, next)
 
 type QProgressDialogfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1341,7 +1257,6 @@ proc miqt_exec_callback_QProgressDialog_focusNextPrevChild(self: ptr cQProgressD
 
   virtualReturn
 proc QProgressDialogtimerEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QTimerEvent): void =
-
   fQProgressDialog_virtualbase_timerEvent(self.h, event.h)
 
 type QProgressDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1359,7 +1274,6 @@ proc miqt_exec_callback_QProgressDialog_timerEvent(self: ptr cQProgressDialog, s
 
   nimfunc[](slotval1)
 proc QProgressDialogchildEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QChildEvent): void =
-
   fQProgressDialog_virtualbase_childEvent(self.h, event.h)
 
 type QProgressDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1377,7 +1291,6 @@ proc miqt_exec_callback_QProgressDialog_childEvent(self: ptr cQProgressDialog, s
 
   nimfunc[](slotval1)
 proc QProgressDialogcustomEvent*(self: gen_qprogressdialog_types.QProgressDialog, event: gen_qcoreevent.QEvent): void =
-
   fQProgressDialog_virtualbase_customEvent(self.h, event.h)
 
 type QProgressDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1395,7 +1308,6 @@ proc miqt_exec_callback_QProgressDialog_customEvent(self: ptr cQProgressDialog, 
 
   nimfunc[](slotval1)
 proc QProgressDialogconnectNotify*(self: gen_qprogressdialog_types.QProgressDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQProgressDialog_virtualbase_connectNotify(self.h, signal.h)
 
 type QProgressDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1413,7 +1325,6 @@ proc miqt_exec_callback_QProgressDialog_connectNotify(self: ptr cQProgressDialog
 
   nimfunc[](slotval1)
 proc QProgressDialogdisconnectNotify*(self: gen_qprogressdialog_types.QProgressDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQProgressDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QProgressDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

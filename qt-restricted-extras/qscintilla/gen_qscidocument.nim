@@ -49,13 +49,12 @@ proc fcQsciDocument_delete(self: pointer) {.importc: "QsciDocument_delete".}
 func init*(T: type gen_qscidocument_types.QsciDocument, h: ptr cQsciDocument): gen_qscidocument_types.QsciDocument =
   T(h: h)
 proc create*(T: type gen_qscidocument_types.QsciDocument, ): gen_qscidocument_types.QsciDocument =
-
   gen_qscidocument_types.QsciDocument.init(fcQsciDocument_new())
+
 proc create*(T: type gen_qscidocument_types.QsciDocument, param1: gen_qscidocument_types.QsciDocument): gen_qscidocument_types.QsciDocument =
-
   gen_qscidocument_types.QsciDocument.init(fcQsciDocument_new2(param1.h))
-proc operatorAssign*(self: gen_qscidocument_types.QsciDocument, param1: gen_qscidocument_types.QsciDocument): void =
 
+proc operatorAssign*(self: gen_qscidocument_types.QsciDocument, param1: gen_qscidocument_types.QsciDocument): void =
   fcQsciDocument_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qscidocument_types.QsciDocument) =

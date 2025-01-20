@@ -66,18 +66,15 @@ proc fcQItemEditorFactory_delete(self: pointer) {.importc: "QItemEditorFactory_d
 func init*(T: type gen_qitemeditorfactory_types.QItemEditorCreatorBase, h: ptr cQItemEditorCreatorBase): gen_qitemeditorfactory_types.QItemEditorCreatorBase =
   T(h: h)
 proc createWidget*(self: gen_qitemeditorfactory_types.QItemEditorCreatorBase, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQItemEditorCreatorBase_createWidget(self.h, parent.h))
 
 proc valuePropertyName*(self: gen_qitemeditorfactory_types.QItemEditorCreatorBase, ): seq[byte] =
-
   var v_bytearray = fcQItemEditorCreatorBase_valuePropertyName(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc operatorAssign*(self: gen_qitemeditorfactory_types.QItemEditorCreatorBase, param1: gen_qitemeditorfactory_types.QItemEditorCreatorBase): void =
-
   fcQItemEditorCreatorBase_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qitemeditorfactory_types.QItemEditorCreatorBase) =
@@ -86,36 +83,30 @@ proc delete*(self: gen_qitemeditorfactory_types.QItemEditorCreatorBase) =
 func init*(T: type gen_qitemeditorfactory_types.QItemEditorFactory, h: ptr cQItemEditorFactory): gen_qitemeditorfactory_types.QItemEditorFactory =
   T(h: h)
 proc create*(T: type gen_qitemeditorfactory_types.QItemEditorFactory, ): gen_qitemeditorfactory_types.QItemEditorFactory =
-
   gen_qitemeditorfactory_types.QItemEditorFactory.init(fcQItemEditorFactory_new())
+
 proc create*(T: type gen_qitemeditorfactory_types.QItemEditorFactory, param1: gen_qitemeditorfactory_types.QItemEditorFactory): gen_qitemeditorfactory_types.QItemEditorFactory =
-
   gen_qitemeditorfactory_types.QItemEditorFactory.init(fcQItemEditorFactory_new2(param1.h))
-proc createEditor*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
 
+proc createEditor*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
   gen_qwidget.QWidget(h: fcQItemEditorFactory_createEditor(self.h, userType, parent.h))
 
 proc valuePropertyName*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint): seq[byte] =
-
   var v_bytearray = fcQItemEditorFactory_valuePropertyName(self.h, userType)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc registerEditor*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint, creator: gen_qitemeditorfactory_types.QItemEditorCreatorBase): void =
-
   fcQItemEditorFactory_registerEditor(self.h, userType, creator.h)
 
 proc defaultFactory*(_: type gen_qitemeditorfactory_types.QItemEditorFactory, ): gen_qitemeditorfactory_types.QItemEditorFactory =
-
   gen_qitemeditorfactory_types.QItemEditorFactory(h: fcQItemEditorFactory_defaultFactory())
 
 proc setDefaultFactory*(_: type gen_qitemeditorfactory_types.QItemEditorFactory, factory: gen_qitemeditorfactory_types.QItemEditorFactory): void =
-
   fcQItemEditorFactory_setDefaultFactory(factory.h)
 
 proc QItemEditorFactorycreateEditor*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQItemEditorFactory_virtualbase_createEditor(self.h, userType, parent.h))
 
 type QItemEditorFactorycreateEditorProc* = proc(userType: cint, parent: gen_qwidget.QWidget): gen_qwidget.QWidget
@@ -137,7 +128,6 @@ proc miqt_exec_callback_QItemEditorFactory_createEditor(self: ptr cQItemEditorFa
 
   virtualReturn.h
 proc QItemEditorFactoryvaluePropertyName*(self: gen_qitemeditorfactory_types.QItemEditorFactory, userType: cint): seq[byte] =
-
   var v_bytearray = fQItemEditorFactory_virtualbase_valuePropertyName(self.h, userType)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)

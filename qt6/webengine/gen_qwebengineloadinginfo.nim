@@ -79,37 +79,30 @@ proc fcQWebEngineLoadingInfo_delete(self: pointer) {.importc: "QWebEngineLoading
 func init*(T: type gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, h: ptr cQWebEngineLoadingInfo): gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo =
   T(h: h)
 proc create*(T: type gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, other: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo): gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo =
-
   gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo.init(fcQWebEngineLoadingInfo_new(other.h))
-proc operatorAssign*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, other: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo): void =
 
+proc operatorAssign*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, other: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo): void =
   fcQWebEngineLoadingInfo_operatorAssign(self.h, other.h)
 
 proc url*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineLoadingInfo_url(self.h))
 
 proc isErrorPage*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): bool =
-
   fcQWebEngineLoadingInfo_isErrorPage(self.h)
 
 proc status*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): cint =
-
   cint(fcQWebEngineLoadingInfo_status(self.h))
 
 proc errorString*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): string =
-
   let v_ms = fcQWebEngineLoadingInfo_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc errorDomain*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): cint =
-
   cint(fcQWebEngineLoadingInfo_errorDomain(self.h))
 
 proc errorCode*(self: gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo, ): cint =
-
   fcQWebEngineLoadingInfo_errorCode(self.h)
 
 proc staticMetaObject*(_: type gen_qwebengineloadinginfo_types.QWebEngineLoadingInfo): gen_qobjectdefs.QMetaObject =

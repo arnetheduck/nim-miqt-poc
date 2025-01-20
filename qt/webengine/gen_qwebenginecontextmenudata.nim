@@ -105,62 +105,51 @@ proc fcQWebEngineContextMenuData_delete(self: pointer) {.importc: "QWebEngineCon
 func init*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, h: ptr cQWebEngineContextMenuData): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
   T(h: h)
 proc create*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
-
   gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData.init(fcQWebEngineContextMenuData_new())
+
 proc create*(T: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, other: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData =
-
   gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData.init(fcQWebEngineContextMenuData_new2(other.h))
-proc operatorAssign*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, other: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): void =
 
+proc operatorAssign*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, other: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): void =
   fcQWebEngineContextMenuData_operatorAssign(self.h, other.h)
 
 proc isValid*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): bool =
-
   fcQWebEngineContextMenuData_isValid(self.h)
 
 proc position*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQWebEngineContextMenuData_position(self.h))
 
 proc selectedText*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): string =
-
   let v_ms = fcQWebEngineContextMenuData_selectedText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc linkText*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): string =
-
   let v_ms = fcQWebEngineContextMenuData_linkText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc linkUrl*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineContextMenuData_linkUrl(self.h))
 
 proc mediaUrl*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineContextMenuData_mediaUrl(self.h))
 
 proc mediaType*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): cint =
-
   cint(fcQWebEngineContextMenuData_mediaType(self.h))
 
 proc isContentEditable*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): bool =
-
   fcQWebEngineContextMenuData_isContentEditable(self.h)
 
 proc misspelledWord*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): string =
-
   let v_ms = fcQWebEngineContextMenuData_misspelledWord(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc spellCheckerSuggestions*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): seq[string] =
-
   var v_ma = fcQWebEngineContextMenuData_spellCheckerSuggestions(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -172,11 +161,9 @@ proc spellCheckerSuggestions*(self: gen_qwebenginecontextmenudata_types.QWebEngi
   vx_ret
 
 proc mediaFlags*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): cint =
-
   cint(fcQWebEngineContextMenuData_mediaFlags(self.h))
 
 proc editFlags*(self: gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData, ): cint =
-
   cint(fcQWebEngineContextMenuData_editFlags(self.h))
 
 proc staticMetaObject*(_: type gen_qwebenginecontextmenudata_types.QWebEngineContextMenuData): gen_qobjectdefs.QMetaObject =

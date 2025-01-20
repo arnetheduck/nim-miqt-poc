@@ -81,64 +81,51 @@ proc fcQSessionManager_staticMetaObject(): pointer {.importc: "QSessionManager_s
 func init*(T: type gen_qsessionmanager_types.QSessionManager, h: ptr cQSessionManager): gen_qsessionmanager_types.QSessionManager =
   T(h: h)
 proc metaObject*(self: gen_qsessionmanager_types.QSessionManager, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQSessionManager_metaObject(self.h))
 
 proc metacast*(self: gen_qsessionmanager_types.QSessionManager, param1: cstring): pointer =
-
   fcQSessionManager_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsessionmanager_types.QSessionManager, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSessionManager_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsessionmanager_types.QSessionManager, s: cstring): string =
-
   let v_ms = fcQSessionManager_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sessionId*(self: gen_qsessionmanager_types.QSessionManager, ): string =
-
   let v_ms = fcQSessionManager_sessionId(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sessionKey*(self: gen_qsessionmanager_types.QSessionManager, ): string =
-
   let v_ms = fcQSessionManager_sessionKey(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc allowsInteraction*(self: gen_qsessionmanager_types.QSessionManager, ): bool =
-
   fcQSessionManager_allowsInteraction(self.h)
 
 proc allowsErrorInteraction*(self: gen_qsessionmanager_types.QSessionManager, ): bool =
-
   fcQSessionManager_allowsErrorInteraction(self.h)
 
 proc release*(self: gen_qsessionmanager_types.QSessionManager, ): void =
-
   fcQSessionManager_release(self.h)
 
 proc cancel*(self: gen_qsessionmanager_types.QSessionManager, ): void =
-
   fcQSessionManager_cancel(self.h)
 
 proc setRestartHint*(self: gen_qsessionmanager_types.QSessionManager, restartHint: cint): void =
-
   fcQSessionManager_setRestartHint(self.h, cint(restartHint))
 
 proc restartHint*(self: gen_qsessionmanager_types.QSessionManager, ): cint =
-
   cint(fcQSessionManager_restartHint(self.h))
 
 proc setRestartCommand*(self: gen_qsessionmanager_types.QSessionManager, restartCommand: seq[string]): void =
-
   var restartCommand_CArray = newSeq[struct_miqt_string](len(restartCommand))
   for i in 0..<len(restartCommand):
     restartCommand_CArray[i] = struct_miqt_string(data: restartCommand[i], len: csize_t(len(restartCommand[i])))
@@ -146,7 +133,6 @@ proc setRestartCommand*(self: gen_qsessionmanager_types.QSessionManager, restart
   fcQSessionManager_setRestartCommand(self.h, struct_miqt_array(len: csize_t(len(restartCommand)), data: if len(restartCommand) == 0: nil else: addr(restartCommand_CArray[0])))
 
 proc restartCommand*(self: gen_qsessionmanager_types.QSessionManager, ): seq[string] =
-
   var v_ma = fcQSessionManager_restartCommand(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -158,7 +144,6 @@ proc restartCommand*(self: gen_qsessionmanager_types.QSessionManager, ): seq[str
   vx_ret
 
 proc setDiscardCommand*(self: gen_qsessionmanager_types.QSessionManager, discardCommand: seq[string]): void =
-
   var discardCommand_CArray = newSeq[struct_miqt_string](len(discardCommand))
   for i in 0..<len(discardCommand):
     discardCommand_CArray[i] = struct_miqt_string(data: discardCommand[i], len: csize_t(len(discardCommand[i])))
@@ -166,7 +151,6 @@ proc setDiscardCommand*(self: gen_qsessionmanager_types.QSessionManager, discard
   fcQSessionManager_setDiscardCommand(self.h, struct_miqt_array(len: csize_t(len(discardCommand)), data: if len(discardCommand) == 0: nil else: addr(discardCommand_CArray[0])))
 
 proc discardCommand*(self: gen_qsessionmanager_types.QSessionManager, ): seq[string] =
-
   var v_ma = fcQSessionManager_discardCommand(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -178,11 +162,9 @@ proc discardCommand*(self: gen_qsessionmanager_types.QSessionManager, ): seq[str
   vx_ret
 
 proc setManagerProperty*(self: gen_qsessionmanager_types.QSessionManager, name: string, value: string): void =
-
   fcQSessionManager_setManagerProperty(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: value, len: csize_t(len(value))))
 
-proc setManagerProperty2*(self: gen_qsessionmanager_types.QSessionManager, name: string, value: seq[string]): void =
-
+proc setManagerProperty*(self: gen_qsessionmanager_types.QSessionManager, name: string, value: seq[string]): void =
   var value_CArray = newSeq[struct_miqt_string](len(value))
   for i in 0..<len(value):
     value_CArray[i] = struct_miqt_string(data: value[i], len: csize_t(len(value[i])))
@@ -190,22 +172,18 @@ proc setManagerProperty2*(self: gen_qsessionmanager_types.QSessionManager, name:
   fcQSessionManager_setManagerProperty2(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_array(len: csize_t(len(value)), data: if len(value) == 0: nil else: addr(value_CArray[0])))
 
 proc isPhase2*(self: gen_qsessionmanager_types.QSessionManager, ): bool =
-
   fcQSessionManager_isPhase2(self.h)
 
 proc requestPhase2*(self: gen_qsessionmanager_types.QSessionManager, ): void =
-
   fcQSessionManager_requestPhase2(self.h)
 
-proc tr2*(_: type gen_qsessionmanager_types.QSessionManager, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qsessionmanager_types.QSessionManager, s: cstring, c: cstring): string =
   let v_ms = fcQSessionManager_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsessionmanager_types.QSessionManager, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsessionmanager_types.QSessionManager, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSessionManager_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

@@ -331,263 +331,204 @@ proc fcQTableView_delete(self: pointer) {.importc: "QTableView_delete".}
 func init*(T: type gen_qtableview_types.QTableView, h: ptr cQTableView): gen_qtableview_types.QTableView =
   T(h: h)
 proc create*(T: type gen_qtableview_types.QTableView, parent: gen_qwidget.QWidget): gen_qtableview_types.QTableView =
-
   gen_qtableview_types.QTableView.init(fcQTableView_new(parent.h))
+
 proc create*(T: type gen_qtableview_types.QTableView, ): gen_qtableview_types.QTableView =
-
   gen_qtableview_types.QTableView.init(fcQTableView_new2())
-proc metaObject*(self: gen_qtableview_types.QTableView, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtableview_types.QTableView, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTableView_metaObject(self.h))
 
 proc metacast*(self: gen_qtableview_types.QTableView, param1: cstring): pointer =
-
   fcQTableView_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtableview_types.QTableView, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTableView_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtableview_types.QTableView, s: cstring): string =
-
   let v_ms = fcQTableView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtableview_types.QTableView, s: cstring): string =
-
   let v_ms = fcQTableView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setModel*(self: gen_qtableview_types.QTableView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fcQTableView_setModel(self.h, model.h)
 
 proc setRootIndex*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQTableView_setRootIndex(self.h, index.h)
 
 proc setSelectionModel*(self: gen_qtableview_types.QTableView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
   fcQTableView_setSelectionModel(self.h, selectionModel.h)
 
 proc doItemsLayout*(self: gen_qtableview_types.QTableView, ): void =
-
   fcQTableView_doItemsLayout(self.h)
 
 proc horizontalHeader*(self: gen_qtableview_types.QTableView, ): gen_qheaderview.QHeaderView =
-
   gen_qheaderview.QHeaderView(h: fcQTableView_horizontalHeader(self.h))
 
 proc verticalHeader*(self: gen_qtableview_types.QTableView, ): gen_qheaderview.QHeaderView =
-
   gen_qheaderview.QHeaderView(h: fcQTableView_verticalHeader(self.h))
 
 proc setHorizontalHeader*(self: gen_qtableview_types.QTableView, header: gen_qheaderview.QHeaderView): void =
-
   fcQTableView_setHorizontalHeader(self.h, header.h)
 
 proc setVerticalHeader*(self: gen_qtableview_types.QTableView, header: gen_qheaderview.QHeaderView): void =
-
   fcQTableView_setVerticalHeader(self.h, header.h)
 
 proc rowViewportPosition*(self: gen_qtableview_types.QTableView, row: cint): cint =
-
   fcQTableView_rowViewportPosition(self.h, row)
 
 proc rowAt*(self: gen_qtableview_types.QTableView, y: cint): cint =
-
   fcQTableView_rowAt(self.h, y)
 
 proc setRowHeight*(self: gen_qtableview_types.QTableView, row: cint, height: cint): void =
-
   fcQTableView_setRowHeight(self.h, row, height)
 
 proc rowHeight*(self: gen_qtableview_types.QTableView, row: cint): cint =
-
   fcQTableView_rowHeight(self.h, row)
 
 proc columnViewportPosition*(self: gen_qtableview_types.QTableView, column: cint): cint =
-
   fcQTableView_columnViewportPosition(self.h, column)
 
 proc columnAt*(self: gen_qtableview_types.QTableView, x: cint): cint =
-
   fcQTableView_columnAt(self.h, x)
 
 proc setColumnWidth*(self: gen_qtableview_types.QTableView, column: cint, width: cint): void =
-
   fcQTableView_setColumnWidth(self.h, column, width)
 
 proc columnWidth*(self: gen_qtableview_types.QTableView, column: cint): cint =
-
   fcQTableView_columnWidth(self.h, column)
 
 proc isRowHidden*(self: gen_qtableview_types.QTableView, row: cint): bool =
-
   fcQTableView_isRowHidden(self.h, row)
 
 proc setRowHidden*(self: gen_qtableview_types.QTableView, row: cint, hide: bool): void =
-
   fcQTableView_setRowHidden(self.h, row, hide)
 
 proc isColumnHidden*(self: gen_qtableview_types.QTableView, column: cint): bool =
-
   fcQTableView_isColumnHidden(self.h, column)
 
 proc setColumnHidden*(self: gen_qtableview_types.QTableView, column: cint, hide: bool): void =
-
   fcQTableView_setColumnHidden(self.h, column, hide)
 
 proc setSortingEnabled*(self: gen_qtableview_types.QTableView, enable: bool): void =
-
   fcQTableView_setSortingEnabled(self.h, enable)
 
 proc isSortingEnabled*(self: gen_qtableview_types.QTableView, ): bool =
-
   fcQTableView_isSortingEnabled(self.h)
 
 proc showGrid*(self: gen_qtableview_types.QTableView, ): bool =
-
   fcQTableView_showGrid(self.h)
 
 proc gridStyle*(self: gen_qtableview_types.QTableView, ): cint =
-
   cint(fcQTableView_gridStyle(self.h))
 
 proc setGridStyle*(self: gen_qtableview_types.QTableView, style: cint): void =
-
   fcQTableView_setGridStyle(self.h, cint(style))
 
 proc setWordWrap*(self: gen_qtableview_types.QTableView, on: bool): void =
-
   fcQTableView_setWordWrap(self.h, on)
 
 proc wordWrap*(self: gen_qtableview_types.QTableView, ): bool =
-
   fcQTableView_wordWrap(self.h)
 
 proc setCornerButtonEnabled*(self: gen_qtableview_types.QTableView, enable: bool): void =
-
   fcQTableView_setCornerButtonEnabled(self.h, enable)
 
 proc isCornerButtonEnabled*(self: gen_qtableview_types.QTableView, ): bool =
-
   fcQTableView_isCornerButtonEnabled(self.h)
 
 proc visualRect*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQTableView_visualRect(self.h, index.h))
 
 proc scrollTo*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fcQTableView_scrollTo(self.h, index.h, cint(hint))
 
 proc indexAt*(self: gen_qtableview_types.QTableView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQTableView_indexAt(self.h, p.h))
 
 proc setSpan*(self: gen_qtableview_types.QTableView, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void =
-
   fcQTableView_setSpan(self.h, row, column, rowSpan, columnSpan)
 
 proc rowSpan*(self: gen_qtableview_types.QTableView, row: cint, column: cint): cint =
-
   fcQTableView_rowSpan(self.h, row, column)
 
 proc columnSpan*(self: gen_qtableview_types.QTableView, row: cint, column: cint): cint =
-
   fcQTableView_columnSpan(self.h, row, column)
 
 proc clearSpans*(self: gen_qtableview_types.QTableView, ): void =
-
   fcQTableView_clearSpans(self.h)
 
 proc selectRow*(self: gen_qtableview_types.QTableView, row: cint): void =
-
   fcQTableView_selectRow(self.h, row)
 
 proc selectColumn*(self: gen_qtableview_types.QTableView, column: cint): void =
-
   fcQTableView_selectColumn(self.h, column)
 
 proc hideRow*(self: gen_qtableview_types.QTableView, row: cint): void =
-
   fcQTableView_hideRow(self.h, row)
 
 proc hideColumn*(self: gen_qtableview_types.QTableView, column: cint): void =
-
   fcQTableView_hideColumn(self.h, column)
 
 proc showRow*(self: gen_qtableview_types.QTableView, row: cint): void =
-
   fcQTableView_showRow(self.h, row)
 
 proc showColumn*(self: gen_qtableview_types.QTableView, column: cint): void =
-
   fcQTableView_showColumn(self.h, column)
 
 proc resizeRowToContents*(self: gen_qtableview_types.QTableView, row: cint): void =
-
   fcQTableView_resizeRowToContents(self.h, row)
 
 proc resizeRowsToContents*(self: gen_qtableview_types.QTableView, ): void =
-
   fcQTableView_resizeRowsToContents(self.h)
 
 proc resizeColumnToContents*(self: gen_qtableview_types.QTableView, column: cint): void =
-
   fcQTableView_resizeColumnToContents(self.h, column)
 
 proc resizeColumnsToContents*(self: gen_qtableview_types.QTableView, ): void =
-
   fcQTableView_resizeColumnsToContents(self.h)
 
 proc sortByColumn*(self: gen_qtableview_types.QTableView, column: cint): void =
-
   fcQTableView_sortByColumn(self.h, column)
 
-proc sortByColumn2*(self: gen_qtableview_types.QTableView, column: cint, order: cint): void =
-
+proc sortByColumn*(self: gen_qtableview_types.QTableView, column: cint, order: cint): void =
   fcQTableView_sortByColumn2(self.h, column, cint(order))
 
 proc setShowGrid*(self: gen_qtableview_types.QTableView, show: bool): void =
-
   fcQTableView_setShowGrid(self.h, show)
 
-proc tr2*(_: type gen_qtableview_types.QTableView, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qtableview_types.QTableView, s: cstring, c: cstring): string =
   let v_ms = fcQTableView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtableview_types.QTableView, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtableview_types.QTableView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTableView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtableview_types.QTableView, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtableview_types.QTableView, s: cstring, c: cstring): string =
   let v_ms = fcQTableView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtableview_types.QTableView, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtableview_types.QTableView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTableView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QTableViewmetaObject*(self: gen_qtableview_types.QTableView, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTableView_virtualbase_metaObject(self.h))
 
 type QTableViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -605,7 +546,6 @@ proc miqt_exec_callback_QTableView_metaObject(self: ptr cQTableView, slot: int):
 
   virtualReturn.h
 proc QTableViewmetacast*(self: gen_qtableview_types.QTableView, param1: cstring): pointer =
-
   fQTableView_virtualbase_metacast(self.h, param1)
 
 type QTableViewmetacastProc* = proc(param1: cstring): pointer
@@ -625,7 +565,6 @@ proc miqt_exec_callback_QTableView_metacast(self: ptr cQTableView, slot: int, pa
 
   virtualReturn
 proc QTableViewmetacall*(self: gen_qtableview_types.QTableView, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTableView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTableViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -649,7 +588,6 @@ proc miqt_exec_callback_QTableView_metacall(self: ptr cQTableView, slot: int, pa
 
   virtualReturn
 proc QTableViewsetModel*(self: gen_qtableview_types.QTableView, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fQTableView_virtualbase_setModel(self.h, model.h)
 
 type QTableViewsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
@@ -667,7 +605,6 @@ proc miqt_exec_callback_QTableView_setModel(self: ptr cQTableView, slot: int, mo
 
   nimfunc[](slotval1)
 proc QTableViewsetRootIndex*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex): void =
-
   fQTableView_virtualbase_setRootIndex(self.h, index.h)
 
 type QTableViewsetRootIndexProc* = proc(index: gen_qabstractitemmodel.QModelIndex): void
@@ -685,7 +622,6 @@ proc miqt_exec_callback_QTableView_setRootIndex(self: ptr cQTableView, slot: int
 
   nimfunc[](slotval1)
 proc QTableViewsetSelectionModel*(self: gen_qtableview_types.QTableView, selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void =
-
   fQTableView_virtualbase_setSelectionModel(self.h, selectionModel.h)
 
 type QTableViewsetSelectionModelProc* = proc(selectionModel: gen_qitemselectionmodel.QItemSelectionModel): void
@@ -703,7 +639,6 @@ proc miqt_exec_callback_QTableView_setSelectionModel(self: ptr cQTableView, slot
 
   nimfunc[](slotval1)
 proc QTableViewdoItemsLayout*(self: gen_qtableview_types.QTableView, ): void =
-
   fQTableView_virtualbase_doItemsLayout(self.h)
 
 type QTableViewdoItemsLayoutProc* = proc(): void
@@ -719,7 +654,6 @@ proc miqt_exec_callback_QTableView_doItemsLayout(self: ptr cQTableView, slot: in
 
   nimfunc[]()
 proc QTableViewvisualRect*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQTableView_virtualbase_visualRect(self.h, index.h))
 
 type QTableViewvisualRectProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qrect.QRect
@@ -739,7 +673,6 @@ proc miqt_exec_callback_QTableView_visualRect(self: ptr cQTableView, slot: int, 
 
   virtualReturn.h
 proc QTableViewscrollTo*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex, hint: cint): void =
-
   fQTableView_virtualbase_scrollTo(self.h, index.h, cint(hint))
 
 type QTableViewscrollToProc* = proc(index: gen_qabstractitemmodel.QModelIndex, hint: cint): void
@@ -759,7 +692,6 @@ proc miqt_exec_callback_QTableView_scrollTo(self: ptr cQTableView, slot: int, in
 
   nimfunc[](slotval1, slotval2)
 proc QTableViewindexAt*(self: gen_qtableview_types.QTableView, p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQTableView_virtualbase_indexAt(self.h, p.h))
 
 type QTableViewindexAtProc* = proc(p: gen_qpoint.QPoint): gen_qabstractitemmodel.QModelIndex
@@ -779,7 +711,6 @@ proc miqt_exec_callback_QTableView_indexAt(self: ptr cQTableView, slot: int, p: 
 
   virtualReturn.h
 proc QTableViewscrollContentsBy*(self: gen_qtableview_types.QTableView, dx: cint, dy: cint): void =
-
   fQTableView_virtualbase_scrollContentsBy(self.h, dx, dy)
 
 type QTableViewscrollContentsByProc* = proc(dx: cint, dy: cint): void
@@ -799,7 +730,6 @@ proc miqt_exec_callback_QTableView_scrollContentsBy(self: ptr cQTableView, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QTableViewviewOptions*(self: gen_qtableview_types.QTableView, ): gen_qstyleoption.QStyleOptionViewItem =
-
   gen_qstyleoption.QStyleOptionViewItem(h: fQTableView_virtualbase_viewOptions(self.h))
 
 type QTableViewviewOptionsProc* = proc(): gen_qstyleoption.QStyleOptionViewItem
@@ -817,7 +747,6 @@ proc miqt_exec_callback_QTableView_viewOptions(self: ptr cQTableView, slot: int)
 
   virtualReturn.h
 proc QTableViewpaintEvent*(self: gen_qtableview_types.QTableView, e: gen_qevent.QPaintEvent): void =
-
   fQTableView_virtualbase_paintEvent(self.h, e.h)
 
 type QTableViewpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
@@ -835,7 +764,6 @@ proc miqt_exec_callback_QTableView_paintEvent(self: ptr cQTableView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTableViewtimerEvent*(self: gen_qtableview_types.QTableView, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTableView_virtualbase_timerEvent(self.h, event.h)
 
 type QTableViewtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -853,7 +781,6 @@ proc miqt_exec_callback_QTableView_timerEvent(self: ptr cQTableView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTableViewhorizontalOffset*(self: gen_qtableview_types.QTableView, ): cint =
-
   fQTableView_virtualbase_horizontalOffset(self.h)
 
 type QTableViewhorizontalOffsetProc* = proc(): cint
@@ -871,7 +798,6 @@ proc miqt_exec_callback_QTableView_horizontalOffset(self: ptr cQTableView, slot:
 
   virtualReturn
 proc QTableViewverticalOffset*(self: gen_qtableview_types.QTableView, ): cint =
-
   fQTableView_virtualbase_verticalOffset(self.h)
 
 type QTableViewverticalOffsetProc* = proc(): cint
@@ -889,7 +815,6 @@ proc miqt_exec_callback_QTableView_verticalOffset(self: ptr cQTableView, slot: i
 
   virtualReturn
 proc QTableViewmoveCursor*(self: gen_qtableview_types.QTableView, cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQTableView_virtualbase_moveCursor(self.h, cint(cursorAction), cint(modifiers)))
 
 type QTableViewmoveCursorProc* = proc(cursorAction: cint, modifiers: cint): gen_qabstractitemmodel.QModelIndex
@@ -911,7 +836,6 @@ proc miqt_exec_callback_QTableView_moveCursor(self: ptr cQTableView, slot: int, 
 
   virtualReturn.h
 proc QTableViewsetSelection*(self: gen_qtableview_types.QTableView, rect: gen_qrect.QRect, command: cint): void =
-
   fQTableView_virtualbase_setSelection(self.h, rect.h, cint(command))
 
 type QTableViewsetSelectionProc* = proc(rect: gen_qrect.QRect, command: cint): void
@@ -931,7 +855,6 @@ proc miqt_exec_callback_QTableView_setSelection(self: ptr cQTableView, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QTableViewvisualRegionForSelection*(self: gen_qtableview_types.QTableView, selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion =
-
   gen_qregion.QRegion(h: fQTableView_virtualbase_visualRegionForSelection(self.h, selection.h))
 
 type QTableViewvisualRegionForSelectionProc* = proc(selection: gen_qitemselectionmodel.QItemSelection): gen_qregion.QRegion
@@ -951,7 +874,6 @@ proc miqt_exec_callback_QTableView_visualRegionForSelection(self: ptr cQTableVie
 
   virtualReturn.h
 proc QTableViewselectedIndexes*(self: gen_qtableview_types.QTableView, ): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fQTableView_virtualbase_selectedIndexes(self.h)
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -978,7 +900,6 @@ proc miqt_exec_callback_QTableView_selectedIndexes(self: ptr cQTableView, slot: 
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QTableViewupdateGeometries*(self: gen_qtableview_types.QTableView, ): void =
-
   fQTableView_virtualbase_updateGeometries(self.h)
 
 type QTableViewupdateGeometriesProc* = proc(): void
@@ -994,7 +915,6 @@ proc miqt_exec_callback_QTableView_updateGeometries(self: ptr cQTableView, slot:
 
   nimfunc[]()
 proc QTableViewviewportSizeHint*(self: gen_qtableview_types.QTableView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTableView_virtualbase_viewportSizeHint(self.h))
 
 type QTableViewviewportSizeHintProc* = proc(): gen_qsize.QSize
@@ -1012,7 +932,6 @@ proc miqt_exec_callback_QTableView_viewportSizeHint(self: ptr cQTableView, slot:
 
   virtualReturn.h
 proc QTableViewsizeHintForRow*(self: gen_qtableview_types.QTableView, row: cint): cint =
-
   fQTableView_virtualbase_sizeHintForRow(self.h, row)
 
 type QTableViewsizeHintForRowProc* = proc(row: cint): cint
@@ -1032,7 +951,6 @@ proc miqt_exec_callback_QTableView_sizeHintForRow(self: ptr cQTableView, slot: i
 
   virtualReturn
 proc QTableViewsizeHintForColumn*(self: gen_qtableview_types.QTableView, column: cint): cint =
-
   fQTableView_virtualbase_sizeHintForColumn(self.h, column)
 
 type QTableViewsizeHintForColumnProc* = proc(column: cint): cint
@@ -1052,7 +970,6 @@ proc miqt_exec_callback_QTableView_sizeHintForColumn(self: ptr cQTableView, slot
 
   virtualReturn
 proc QTableViewverticalScrollbarAction*(self: gen_qtableview_types.QTableView, action: cint): void =
-
   fQTableView_virtualbase_verticalScrollbarAction(self.h, action)
 
 type QTableViewverticalScrollbarActionProc* = proc(action: cint): void
@@ -1070,7 +987,6 @@ proc miqt_exec_callback_QTableView_verticalScrollbarAction(self: ptr cQTableView
 
   nimfunc[](slotval1)
 proc QTableViewhorizontalScrollbarAction*(self: gen_qtableview_types.QTableView, action: cint): void =
-
   fQTableView_virtualbase_horizontalScrollbarAction(self.h, action)
 
 type QTableViewhorizontalScrollbarActionProc* = proc(action: cint): void
@@ -1088,7 +1004,6 @@ proc miqt_exec_callback_QTableView_horizontalScrollbarAction(self: ptr cQTableVi
 
   nimfunc[](slotval1)
 proc QTableViewisIndexHidden*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQTableView_virtualbase_isIndexHidden(self.h, index.h)
 
 type QTableViewisIndexHiddenProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
@@ -1108,7 +1023,6 @@ proc miqt_exec_callback_QTableView_isIndexHidden(self: ptr cQTableView, slot: in
 
   virtualReturn
 proc QTableViewselectionChanged*(self: gen_qtableview_types.QTableView, selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void =
-
   fQTableView_virtualbase_selectionChanged(self.h, selected.h, deselected.h)
 
 type QTableViewselectionChangedProc* = proc(selected: gen_qitemselectionmodel.QItemSelection, deselected: gen_qitemselectionmodel.QItemSelection): void
@@ -1128,7 +1042,6 @@ proc miqt_exec_callback_QTableView_selectionChanged(self: ptr cQTableView, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QTableViewcurrentChanged*(self: gen_qtableview_types.QTableView, current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void =
-
   fQTableView_virtualbase_currentChanged(self.h, current.h, previous.h)
 
 type QTableViewcurrentChangedProc* = proc(current: gen_qabstractitemmodel.QModelIndex, previous: gen_qabstractitemmodel.QModelIndex): void
@@ -1148,7 +1061,6 @@ proc miqt_exec_callback_QTableView_currentChanged(self: ptr cQTableView, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QTableViewkeyboardSearch*(self: gen_qtableview_types.QTableView, search: string): void =
-
   fQTableView_virtualbase_keyboardSearch(self.h, struct_miqt_string(data: search, len: csize_t(len(search))))
 
 type QTableViewkeyboardSearchProc* = proc(search: string): void
@@ -1169,7 +1081,6 @@ proc miqt_exec_callback_QTableView_keyboardSearch(self: ptr cQTableView, slot: i
 
   nimfunc[](slotval1)
 proc QTableViewinputMethodQuery*(self: gen_qtableview_types.QTableView, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQTableView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QTableViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -1189,7 +1100,6 @@ proc miqt_exec_callback_QTableView_inputMethodQuery(self: ptr cQTableView, slot:
 
   virtualReturn.h
 proc QTableViewreset*(self: gen_qtableview_types.QTableView, ): void =
-
   fQTableView_virtualbase_reset(self.h)
 
 type QTableViewresetProc* = proc(): void
@@ -1205,7 +1115,6 @@ proc miqt_exec_callback_QTableView_reset(self: ptr cQTableView, slot: int): void
 
   nimfunc[]()
 proc QTableViewselectAll*(self: gen_qtableview_types.QTableView, ): void =
-
   fQTableView_virtualbase_selectAll(self.h)
 
 type QTableViewselectAllProc* = proc(): void
@@ -1221,7 +1130,6 @@ proc miqt_exec_callback_QTableView_selectAll(self: ptr cQTableView, slot: int): 
 
   nimfunc[]()
 proc QTableViewdataChanged*(self: gen_qtableview_types.QTableView, topLeft: gen_qabstractitemmodel.QModelIndex, bottomRight: gen_qabstractitemmodel.QModelIndex, roles: seq[cint]): void =
-
   var roles_CArray = newSeq[cint](len(roles))
   for i in 0..<len(roles):
     roles_CArray[i] = roles[i]
@@ -1252,7 +1160,6 @@ proc miqt_exec_callback_QTableView_dataChanged(self: ptr cQTableView, slot: int,
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTableViewrowsInserted*(self: gen_qtableview_types.QTableView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQTableView_virtualbase_rowsInserted(self.h, parent.h, start, endVal)
 
 type QTableViewrowsInsertedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -1274,7 +1181,6 @@ proc miqt_exec_callback_QTableView_rowsInserted(self: ptr cQTableView, slot: int
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTableViewrowsAboutToBeRemoved*(self: gen_qtableview_types.QTableView, parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void =
-
   fQTableView_virtualbase_rowsAboutToBeRemoved(self.h, parent.h, start, endVal)
 
 type QTableViewrowsAboutToBeRemovedProc* = proc(parent: gen_qabstractitemmodel.QModelIndex, start: cint, endVal: cint): void
@@ -1296,7 +1202,6 @@ proc miqt_exec_callback_QTableView_rowsAboutToBeRemoved(self: ptr cQTableView, s
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QTableViewupdateEditorData*(self: gen_qtableview_types.QTableView, ): void =
-
   fQTableView_virtualbase_updateEditorData(self.h)
 
 type QTableViewupdateEditorDataProc* = proc(): void
@@ -1312,7 +1217,6 @@ proc miqt_exec_callback_QTableView_updateEditorData(self: ptr cQTableView, slot:
 
   nimfunc[]()
 proc QTableViewupdateEditorGeometries*(self: gen_qtableview_types.QTableView, ): void =
-
   fQTableView_virtualbase_updateEditorGeometries(self.h)
 
 type QTableViewupdateEditorGeometriesProc* = proc(): void
@@ -1328,7 +1232,6 @@ proc miqt_exec_callback_QTableView_updateEditorGeometries(self: ptr cQTableView,
 
   nimfunc[]()
 proc QTableViewverticalScrollbarValueChanged*(self: gen_qtableview_types.QTableView, value: cint): void =
-
   fQTableView_virtualbase_verticalScrollbarValueChanged(self.h, value)
 
 type QTableViewverticalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1346,7 +1249,6 @@ proc miqt_exec_callback_QTableView_verticalScrollbarValueChanged(self: ptr cQTab
 
   nimfunc[](slotval1)
 proc QTableViewhorizontalScrollbarValueChanged*(self: gen_qtableview_types.QTableView, value: cint): void =
-
   fQTableView_virtualbase_horizontalScrollbarValueChanged(self.h, value)
 
 type QTableViewhorizontalScrollbarValueChangedProc* = proc(value: cint): void
@@ -1364,7 +1266,6 @@ proc miqt_exec_callback_QTableView_horizontalScrollbarValueChanged(self: ptr cQT
 
   nimfunc[](slotval1)
 proc QTableViewcloseEditor*(self: gen_qtableview_types.QTableView, editor: gen_qwidget.QWidget, hint: cint): void =
-
   fQTableView_virtualbase_closeEditor(self.h, editor.h, cint(hint))
 
 type QTableViewcloseEditorProc* = proc(editor: gen_qwidget.QWidget, hint: cint): void
@@ -1384,7 +1285,6 @@ proc miqt_exec_callback_QTableView_closeEditor(self: ptr cQTableView, slot: int,
 
   nimfunc[](slotval1, slotval2)
 proc QTableViewcommitData*(self: gen_qtableview_types.QTableView, editor: gen_qwidget.QWidget): void =
-
   fQTableView_virtualbase_commitData(self.h, editor.h)
 
 type QTableViewcommitDataProc* = proc(editor: gen_qwidget.QWidget): void
@@ -1402,7 +1302,6 @@ proc miqt_exec_callback_QTableView_commitData(self: ptr cQTableView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTableVieweditorDestroyed*(self: gen_qtableview_types.QTableView, editor: gen_qobject.QObject): void =
-
   fQTableView_virtualbase_editorDestroyed(self.h, editor.h)
 
 type QTableVieweditorDestroyedProc* = proc(editor: gen_qobject.QObject): void
@@ -1419,12 +1318,11 @@ proc miqt_exec_callback_QTableView_editorDestroyed(self: ptr cQTableView, slot: 
 
 
   nimfunc[](slotval1)
-proc QTableViewedit2*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
-
+proc QTableViewedit*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool =
   fQTableView_virtualbase_edit2(self.h, index.h, cint(trigger), event.h)
 
 type QTableViewedit2Proc* = proc(index: gen_qabstractitemmodel.QModelIndex, trigger: cint, event: gen_qcoreevent.QEvent): bool
-proc onedit2*(self: gen_qtableview_types.QTableView, slot: QTableViewedit2Proc) =
+proc onedit*(self: gen_qtableview_types.QTableView, slot: QTableViewedit2Proc) =
   # TODO check subclass
   var tmp = new QTableViewedit2Proc
   tmp[] = slot
@@ -1444,7 +1342,6 @@ proc miqt_exec_callback_QTableView_edit2(self: ptr cQTableView, slot: int, index
 
   virtualReturn
 proc QTableViewselectionCommand*(self: gen_qtableview_types.QTableView, index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint =
-
   cint(fQTableView_virtualbase_selectionCommand(self.h, index.h, event.h))
 
 type QTableViewselectionCommandProc* = proc(index: gen_qabstractitemmodel.QModelIndex, event: gen_qcoreevent.QEvent): cint
@@ -1466,7 +1363,6 @@ proc miqt_exec_callback_QTableView_selectionCommand(self: ptr cQTableView, slot:
 
   cint(virtualReturn)
 proc QTableViewstartDrag*(self: gen_qtableview_types.QTableView, supportedActions: cint): void =
-
   fQTableView_virtualbase_startDrag(self.h, cint(supportedActions))
 
 type QTableViewstartDragProc* = proc(supportedActions: cint): void
@@ -1484,7 +1380,6 @@ proc miqt_exec_callback_QTableView_startDrag(self: ptr cQTableView, slot: int, s
 
   nimfunc[](slotval1)
 proc QTableViewfocusNextPrevChild*(self: gen_qtableview_types.QTableView, next: bool): bool =
-
   fQTableView_virtualbase_focusNextPrevChild(self.h, next)
 
 type QTableViewfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1504,7 +1399,6 @@ proc miqt_exec_callback_QTableView_focusNextPrevChild(self: ptr cQTableView, slo
 
   virtualReturn
 proc QTableViewevent*(self: gen_qtableview_types.QTableView, event: gen_qcoreevent.QEvent): bool =
-
   fQTableView_virtualbase_event(self.h, event.h)
 
 type QTableVieweventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1524,7 +1418,6 @@ proc miqt_exec_callback_QTableView_event(self: ptr cQTableView, slot: int, event
 
   virtualReturn
 proc QTableViewviewportEvent*(self: gen_qtableview_types.QTableView, event: gen_qcoreevent.QEvent): bool =
-
   fQTableView_virtualbase_viewportEvent(self.h, event.h)
 
 type QTableViewviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1544,7 +1437,6 @@ proc miqt_exec_callback_QTableView_viewportEvent(self: ptr cQTableView, slot: in
 
   virtualReturn
 proc QTableViewmousePressEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QMouseEvent): void =
-
   fQTableView_virtualbase_mousePressEvent(self.h, event.h)
 
 type QTableViewmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1562,7 +1454,6 @@ proc miqt_exec_callback_QTableView_mousePressEvent(self: ptr cQTableView, slot: 
 
   nimfunc[](slotval1)
 proc QTableViewmouseMoveEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QMouseEvent): void =
-
   fQTableView_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QTableViewmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1580,7 +1471,6 @@ proc miqt_exec_callback_QTableView_mouseMoveEvent(self: ptr cQTableView, slot: i
 
   nimfunc[](slotval1)
 proc QTableViewmouseReleaseEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QMouseEvent): void =
-
   fQTableView_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QTableViewmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1598,7 +1488,6 @@ proc miqt_exec_callback_QTableView_mouseReleaseEvent(self: ptr cQTableView, slot
 
   nimfunc[](slotval1)
 proc QTableViewmouseDoubleClickEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QMouseEvent): void =
-
   fQTableView_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QTableViewmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1616,7 +1505,6 @@ proc miqt_exec_callback_QTableView_mouseDoubleClickEvent(self: ptr cQTableView, 
 
   nimfunc[](slotval1)
 proc QTableViewdragEnterEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QDragEnterEvent): void =
-
   fQTableView_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QTableViewdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1634,7 +1522,6 @@ proc miqt_exec_callback_QTableView_dragEnterEvent(self: ptr cQTableView, slot: i
 
   nimfunc[](slotval1)
 proc QTableViewdragMoveEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QDragMoveEvent): void =
-
   fQTableView_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QTableViewdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1652,7 +1539,6 @@ proc miqt_exec_callback_QTableView_dragMoveEvent(self: ptr cQTableView, slot: in
 
   nimfunc[](slotval1)
 proc QTableViewdragLeaveEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QDragLeaveEvent): void =
-
   fQTableView_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QTableViewdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1670,7 +1556,6 @@ proc miqt_exec_callback_QTableView_dragLeaveEvent(self: ptr cQTableView, slot: i
 
   nimfunc[](slotval1)
 proc QTableViewdropEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QDropEvent): void =
-
   fQTableView_virtualbase_dropEvent(self.h, event.h)
 
 type QTableViewdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1688,7 +1573,6 @@ proc miqt_exec_callback_QTableView_dropEvent(self: ptr cQTableView, slot: int, e
 
   nimfunc[](slotval1)
 proc QTableViewfocusInEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QFocusEvent): void =
-
   fQTableView_virtualbase_focusInEvent(self.h, event.h)
 
 type QTableViewfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1706,7 +1590,6 @@ proc miqt_exec_callback_QTableView_focusInEvent(self: ptr cQTableView, slot: int
 
   nimfunc[](slotval1)
 proc QTableViewfocusOutEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QFocusEvent): void =
-
   fQTableView_virtualbase_focusOutEvent(self.h, event.h)
 
 type QTableViewfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1724,7 +1607,6 @@ proc miqt_exec_callback_QTableView_focusOutEvent(self: ptr cQTableView, slot: in
 
   nimfunc[](slotval1)
 proc QTableViewkeyPressEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QKeyEvent): void =
-
   fQTableView_virtualbase_keyPressEvent(self.h, event.h)
 
 type QTableViewkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1742,7 +1624,6 @@ proc miqt_exec_callback_QTableView_keyPressEvent(self: ptr cQTableView, slot: in
 
   nimfunc[](slotval1)
 proc QTableViewresizeEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QResizeEvent): void =
-
   fQTableView_virtualbase_resizeEvent(self.h, event.h)
 
 type QTableViewresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -1760,7 +1641,6 @@ proc miqt_exec_callback_QTableView_resizeEvent(self: ptr cQTableView, slot: int,
 
   nimfunc[](slotval1)
 proc QTableViewinputMethodEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QInputMethodEvent): void =
-
   fQTableView_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QTableViewinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -1778,7 +1658,6 @@ proc miqt_exec_callback_QTableView_inputMethodEvent(self: ptr cQTableView, slot:
 
   nimfunc[](slotval1)
 proc QTableVieweventFilter*(self: gen_qtableview_types.QTableView, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTableView_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
 type QTableVieweventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1800,7 +1679,6 @@ proc miqt_exec_callback_QTableView_eventFilter(self: ptr cQTableView, slot: int,
 
   virtualReturn
 proc QTableViewminimumSizeHint*(self: gen_qtableview_types.QTableView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTableView_virtualbase_minimumSizeHint(self.h))
 
 type QTableViewminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1818,7 +1696,6 @@ proc miqt_exec_callback_QTableView_minimumSizeHint(self: ptr cQTableView, slot: 
 
   virtualReturn.h
 proc QTableViewsizeHint*(self: gen_qtableview_types.QTableView, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTableView_virtualbase_sizeHint(self.h))
 
 type QTableViewsizeHintProc* = proc(): gen_qsize.QSize
@@ -1836,7 +1713,6 @@ proc miqt_exec_callback_QTableView_sizeHint(self: ptr cQTableView, slot: int): p
 
   virtualReturn.h
 proc QTableViewsetupViewport*(self: gen_qtableview_types.QTableView, viewport: gen_qwidget.QWidget): void =
-
   fQTableView_virtualbase_setupViewport(self.h, viewport.h)
 
 type QTableViewsetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
@@ -1854,7 +1730,6 @@ proc miqt_exec_callback_QTableView_setupViewport(self: ptr cQTableView, slot: in
 
   nimfunc[](slotval1)
 proc QTableViewwheelEvent*(self: gen_qtableview_types.QTableView, param1: gen_qevent.QWheelEvent): void =
-
   fQTableView_virtualbase_wheelEvent(self.h, param1.h)
 
 type QTableViewwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -1872,7 +1747,6 @@ proc miqt_exec_callback_QTableView_wheelEvent(self: ptr cQTableView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTableViewcontextMenuEvent*(self: gen_qtableview_types.QTableView, param1: gen_qevent.QContextMenuEvent): void =
-
   fQTableView_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QTableViewcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -1890,7 +1764,6 @@ proc miqt_exec_callback_QTableView_contextMenuEvent(self: ptr cQTableView, slot:
 
   nimfunc[](slotval1)
 proc QTableViewchangeEvent*(self: gen_qtableview_types.QTableView, param1: gen_qcoreevent.QEvent): void =
-
   fQTableView_virtualbase_changeEvent(self.h, param1.h)
 
 type QTableViewchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1908,7 +1781,6 @@ proc miqt_exec_callback_QTableView_changeEvent(self: ptr cQTableView, slot: int,
 
   nimfunc[](slotval1)
 proc QTableViewdevType*(self: gen_qtableview_types.QTableView, ): cint =
-
   fQTableView_virtualbase_devType(self.h)
 
 type QTableViewdevTypeProc* = proc(): cint
@@ -1926,7 +1798,6 @@ proc miqt_exec_callback_QTableView_devType(self: ptr cQTableView, slot: int): ci
 
   virtualReturn
 proc QTableViewsetVisible*(self: gen_qtableview_types.QTableView, visible: bool): void =
-
   fQTableView_virtualbase_setVisible(self.h, visible)
 
 type QTableViewsetVisibleProc* = proc(visible: bool): void
@@ -1944,7 +1815,6 @@ proc miqt_exec_callback_QTableView_setVisible(self: ptr cQTableView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTableViewheightForWidth*(self: gen_qtableview_types.QTableView, param1: cint): cint =
-
   fQTableView_virtualbase_heightForWidth(self.h, param1)
 
 type QTableViewheightForWidthProc* = proc(param1: cint): cint
@@ -1964,7 +1834,6 @@ proc miqt_exec_callback_QTableView_heightForWidth(self: ptr cQTableView, slot: i
 
   virtualReturn
 proc QTableViewhasHeightForWidth*(self: gen_qtableview_types.QTableView, ): bool =
-
   fQTableView_virtualbase_hasHeightForWidth(self.h)
 
 type QTableViewhasHeightForWidthProc* = proc(): bool
@@ -1982,7 +1851,6 @@ proc miqt_exec_callback_QTableView_hasHeightForWidth(self: ptr cQTableView, slot
 
   virtualReturn
 proc QTableViewpaintEngine*(self: gen_qtableview_types.QTableView, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQTableView_virtualbase_paintEngine(self.h))
 
 type QTableViewpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -2000,7 +1868,6 @@ proc miqt_exec_callback_QTableView_paintEngine(self: ptr cQTableView, slot: int)
 
   virtualReturn.h
 proc QTableViewkeyReleaseEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QKeyEvent): void =
-
   fQTableView_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QTableViewkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2018,7 +1885,6 @@ proc miqt_exec_callback_QTableView_keyReleaseEvent(self: ptr cQTableView, slot: 
 
   nimfunc[](slotval1)
 proc QTableViewenterEvent*(self: gen_qtableview_types.QTableView, event: gen_qcoreevent.QEvent): void =
-
   fQTableView_virtualbase_enterEvent(self.h, event.h)
 
 type QTableViewenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2036,7 +1902,6 @@ proc miqt_exec_callback_QTableView_enterEvent(self: ptr cQTableView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTableViewleaveEvent*(self: gen_qtableview_types.QTableView, event: gen_qcoreevent.QEvent): void =
-
   fQTableView_virtualbase_leaveEvent(self.h, event.h)
 
 type QTableViewleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2054,7 +1919,6 @@ proc miqt_exec_callback_QTableView_leaveEvent(self: ptr cQTableView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTableViewmoveEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QMoveEvent): void =
-
   fQTableView_virtualbase_moveEvent(self.h, event.h)
 
 type QTableViewmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -2072,7 +1936,6 @@ proc miqt_exec_callback_QTableView_moveEvent(self: ptr cQTableView, slot: int, e
 
   nimfunc[](slotval1)
 proc QTableViewcloseEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QCloseEvent): void =
-
   fQTableView_virtualbase_closeEvent(self.h, event.h)
 
 type QTableViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -2090,7 +1953,6 @@ proc miqt_exec_callback_QTableView_closeEvent(self: ptr cQTableView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTableViewtabletEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QTabletEvent): void =
-
   fQTableView_virtualbase_tabletEvent(self.h, event.h)
 
 type QTableViewtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -2108,7 +1970,6 @@ proc miqt_exec_callback_QTableView_tabletEvent(self: ptr cQTableView, slot: int,
 
   nimfunc[](slotval1)
 proc QTableViewactionEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QActionEvent): void =
-
   fQTableView_virtualbase_actionEvent(self.h, event.h)
 
 type QTableViewactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -2126,7 +1987,6 @@ proc miqt_exec_callback_QTableView_actionEvent(self: ptr cQTableView, slot: int,
 
   nimfunc[](slotval1)
 proc QTableViewshowEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QShowEvent): void =
-
   fQTableView_virtualbase_showEvent(self.h, event.h)
 
 type QTableViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -2144,7 +2004,6 @@ proc miqt_exec_callback_QTableView_showEvent(self: ptr cQTableView, slot: int, e
 
   nimfunc[](slotval1)
 proc QTableViewhideEvent*(self: gen_qtableview_types.QTableView, event: gen_qevent.QHideEvent): void =
-
   fQTableView_virtualbase_hideEvent(self.h, event.h)
 
 type QTableViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -2162,7 +2021,6 @@ proc miqt_exec_callback_QTableView_hideEvent(self: ptr cQTableView, slot: int, e
 
   nimfunc[](slotval1)
 proc QTableViewnativeEvent*(self: gen_qtableview_types.QTableView, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQTableView_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QTableViewnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -2189,7 +2047,6 @@ proc miqt_exec_callback_QTableView_nativeEvent(self: ptr cQTableView, slot: int,
 
   virtualReturn
 proc QTableViewmetric*(self: gen_qtableview_types.QTableView, param1: cint): cint =
-
   fQTableView_virtualbase_metric(self.h, cint(param1))
 
 type QTableViewmetricProc* = proc(param1: cint): cint
@@ -2209,7 +2066,6 @@ proc miqt_exec_callback_QTableView_metric(self: ptr cQTableView, slot: int, para
 
   virtualReturn
 proc QTableViewinitPainter*(self: gen_qtableview_types.QTableView, painter: gen_qpainter.QPainter): void =
-
   fQTableView_virtualbase_initPainter(self.h, painter.h)
 
 type QTableViewinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -2227,7 +2083,6 @@ proc miqt_exec_callback_QTableView_initPainter(self: ptr cQTableView, slot: int,
 
   nimfunc[](slotval1)
 proc QTableViewredirected*(self: gen_qtableview_types.QTableView, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQTableView_virtualbase_redirected(self.h, offset.h))
 
 type QTableViewredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -2247,7 +2102,6 @@ proc miqt_exec_callback_QTableView_redirected(self: ptr cQTableView, slot: int, 
 
   virtualReturn.h
 proc QTableViewsharedPainter*(self: gen_qtableview_types.QTableView, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQTableView_virtualbase_sharedPainter(self.h))
 
 type QTableViewsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -2265,7 +2119,6 @@ proc miqt_exec_callback_QTableView_sharedPainter(self: ptr cQTableView, slot: in
 
   virtualReturn.h
 proc QTableViewchildEvent*(self: gen_qtableview_types.QTableView, event: gen_qcoreevent.QChildEvent): void =
-
   fQTableView_virtualbase_childEvent(self.h, event.h)
 
 type QTableViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -2283,7 +2136,6 @@ proc miqt_exec_callback_QTableView_childEvent(self: ptr cQTableView, slot: int, 
 
   nimfunc[](slotval1)
 proc QTableViewcustomEvent*(self: gen_qtableview_types.QTableView, event: gen_qcoreevent.QEvent): void =
-
   fQTableView_virtualbase_customEvent(self.h, event.h)
 
 type QTableViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2301,7 +2153,6 @@ proc miqt_exec_callback_QTableView_customEvent(self: ptr cQTableView, slot: int,
 
   nimfunc[](slotval1)
 proc QTableViewconnectNotify*(self: gen_qtableview_types.QTableView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTableView_virtualbase_connectNotify(self.h, signal.h)
 
 type QTableViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2319,7 +2170,6 @@ proc miqt_exec_callback_QTableView_connectNotify(self: ptr cQTableView, slot: in
 
   nimfunc[](slotval1)
 proc QTableViewdisconnectNotify*(self: gen_qtableview_types.QTableView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTableView_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTableViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

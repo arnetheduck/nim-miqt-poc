@@ -124,67 +124,54 @@ proc fcQWebEngineContextMenuRequest_delete(self: pointer) {.importc: "QWebEngine
 func init*(T: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, h: ptr cQWebEngineContextMenuRequest): gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest =
   T(h: h)
 proc metaObject*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineContextMenuRequest_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, param1: cstring): pointer =
-
   fcQWebEngineContextMenuRequest_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebEngineContextMenuRequest_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, s: cstring): string =
-
   let v_ms = fcQWebEngineContextMenuRequest_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc position*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): gen_qpoint.QPoint =
-
   gen_qpoint.QPoint(h: fcQWebEngineContextMenuRequest_position(self.h))
 
 proc selectedText*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): string =
-
   let v_ms = fcQWebEngineContextMenuRequest_selectedText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc linkText*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): string =
-
   let v_ms = fcQWebEngineContextMenuRequest_linkText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc linkUrl*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineContextMenuRequest_linkUrl(self.h))
 
 proc mediaUrl*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineContextMenuRequest_mediaUrl(self.h))
 
 proc mediaType*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): cint =
-
   cint(fcQWebEngineContextMenuRequest_mediaType(self.h))
 
 proc isContentEditable*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): bool =
-
   fcQWebEngineContextMenuRequest_isContentEditable(self.h)
 
 proc misspelledWord*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): string =
-
   let v_ms = fcQWebEngineContextMenuRequest_misspelledWord(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc spellCheckerSuggestions*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): seq[string] =
-
   var v_ma = fcQWebEngineContextMenuRequest_spellCheckerSuggestions(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -196,30 +183,24 @@ proc spellCheckerSuggestions*(self: gen_qwebenginecontextmenurequest_types.QWebE
   vx_ret
 
 proc isAccepted*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): bool =
-
   fcQWebEngineContextMenuRequest_isAccepted(self.h)
 
 proc setAccepted*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, accepted: bool): void =
-
   fcQWebEngineContextMenuRequest_setAccepted(self.h, accepted)
 
 proc mediaFlags*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): cint =
-
   cint(fcQWebEngineContextMenuRequest_mediaFlags(self.h))
 
 proc editFlags*(self: gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, ): cint =
-
   cint(fcQWebEngineContextMenuRequest_editFlags(self.h))
 
-proc tr2*(_: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineContextMenuRequest_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebenginecontextmenurequest_types.QWebEngineContextMenuRequest, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineContextMenuRequest_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

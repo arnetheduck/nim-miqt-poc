@@ -156,78 +156,60 @@ proc fcQNetworkReply_delete(self: pointer) {.importc: "QNetworkReply_delete".}
 func init*(T: type gen_qnetworkreply_types.QNetworkReply, h: ptr cQNetworkReply): gen_qnetworkreply_types.QNetworkReply =
   T(h: h)
 proc metaObject*(self: gen_qnetworkreply_types.QNetworkReply, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQNetworkReply_metaObject(self.h))
 
 proc metacast*(self: gen_qnetworkreply_types.QNetworkReply, param1: cstring): pointer =
-
   fcQNetworkReply_metacast(self.h, param1)
 
 proc metacall*(self: gen_qnetworkreply_types.QNetworkReply, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQNetworkReply_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qnetworkreply_types.QNetworkReply, s: cstring): string =
-
   let v_ms = fcQNetworkReply_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc close*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
-
   fcQNetworkReply_close(self.h)
 
 proc isSequential*(self: gen_qnetworkreply_types.QNetworkReply, ): bool =
-
   fcQNetworkReply_isSequential(self.h)
 
 proc readBufferSize*(self: gen_qnetworkreply_types.QNetworkReply, ): clonglong =
-
   fcQNetworkReply_readBufferSize(self.h)
 
 proc setReadBufferSize*(self: gen_qnetworkreply_types.QNetworkReply, size: clonglong): void =
-
   fcQNetworkReply_setReadBufferSize(self.h, size)
 
 proc manager*(self: gen_qnetworkreply_types.QNetworkReply, ): gen_qnetworkaccessmanager.QNetworkAccessManager =
-
   gen_qnetworkaccessmanager.QNetworkAccessManager(h: fcQNetworkReply_manager(self.h))
 
 proc operation*(self: gen_qnetworkreply_types.QNetworkReply, ): cint =
-
   cint(fcQNetworkReply_operation(self.h))
 
 proc request*(self: gen_qnetworkreply_types.QNetworkReply, ): gen_qnetworkrequest.QNetworkRequest =
-
   gen_qnetworkrequest.QNetworkRequest(h: fcQNetworkReply_request(self.h))
 
 proc error*(self: gen_qnetworkreply_types.QNetworkReply, ): cint =
-
   cint(fcQNetworkReply_error(self.h))
 
 proc isFinished*(self: gen_qnetworkreply_types.QNetworkReply, ): bool =
-
   fcQNetworkReply_isFinished(self.h)
 
 proc isRunning*(self: gen_qnetworkreply_types.QNetworkReply, ): bool =
-
   fcQNetworkReply_isRunning(self.h)
 
 proc url*(self: gen_qnetworkreply_types.QNetworkReply, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQNetworkReply_url(self.h))
 
 proc header*(self: gen_qnetworkreply_types.QNetworkReply, header: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQNetworkReply_header(self.h, cint(header)))
 
 proc hasRawHeader*(self: gen_qnetworkreply_types.QNetworkReply, headerName: seq[byte]): bool =
-
   fcQNetworkReply_hasRawHeader(self.h, struct_miqt_string(data: cast[cstring](if len(headerName) == 0: nil else: unsafeAddr headerName[0]), len: csize_t(len(headerName))))
 
 proc rawHeaderList*(self: gen_qnetworkreply_types.QNetworkReply, ): seq[seq[byte]] =
-
   var v_ma = fcQNetworkReply_rawHeaderList(self.h)
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -239,14 +221,12 @@ proc rawHeaderList*(self: gen_qnetworkreply_types.QNetworkReply, ): seq[seq[byte
   vx_ret
 
 proc rawHeader*(self: gen_qnetworkreply_types.QNetworkReply, headerName: seq[byte]): seq[byte] =
-
   var v_bytearray = fcQNetworkReply_rawHeader(self.h, struct_miqt_string(data: cast[cstring](if len(headerName) == 0: nil else: unsafeAddr headerName[0]), len: csize_t(len(headerName))))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc rawHeaderPairs*(self: gen_qnetworkreply_types.QNetworkReply, ): seq[tuple[first: seq[byte], second: seq[byte]]] =
-
   var v_ma = fcQNetworkReply_rawHeaderPairs(self.h)
   var vx_ret = newSeq[tuple[first: seq[byte], second: seq[byte]]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
@@ -268,19 +248,15 @@ proc rawHeaderPairs*(self: gen_qnetworkreply_types.QNetworkReply, ): seq[tuple[f
   vx_ret
 
 proc attribute*(self: gen_qnetworkreply_types.QNetworkReply, code: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQNetworkReply_attribute(self.h, cint(code)))
 
 proc sslConfiguration*(self: gen_qnetworkreply_types.QNetworkReply, ): gen_qsslconfiguration.QSslConfiguration =
-
   gen_qsslconfiguration.QSslConfiguration(h: fcQNetworkReply_sslConfiguration(self.h))
 
 proc setSslConfiguration*(self: gen_qnetworkreply_types.QNetworkReply, configuration: gen_qsslconfiguration.QSslConfiguration): void =
-
   fcQNetworkReply_setSslConfiguration(self.h, configuration.h)
 
 proc ignoreSslErrors*(self: gen_qnetworkreply_types.QNetworkReply, errors: seq[gen_qsslerror.QSslError]): void =
-
   var errors_CArray = newSeq[pointer](len(errors))
   for i in 0..<len(errors):
     errors_CArray[i] = errors[i].h
@@ -288,122 +264,107 @@ proc ignoreSslErrors*(self: gen_qnetworkreply_types.QNetworkReply, errors: seq[g
   fcQNetworkReply_ignoreSslErrors(self.h, struct_miqt_array(len: csize_t(len(errors)), data: if len(errors) == 0: nil else: addr(errors_CArray[0])))
 
 proc abort*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
-
   fcQNetworkReply_abort(self.h)
 
-proc ignoreSslErrors2*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
-
+proc ignoreSslErrors*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
   fcQNetworkReply_ignoreSslErrors2(self.h)
 
 proc socketStartedConnecting*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
-
   fcQNetworkReply_socketStartedConnecting(self.h)
 
+type QNetworkReplysocketStartedConnectingSlot* = proc()
 proc miqt_exec_callback_QNetworkReply_socketStartedConnecting(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QNetworkReplysocketStartedConnectingSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onsocketStartedConnecting*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onsocketStartedConnecting*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplysocketStartedConnectingSlot) =
+  var tmp = new QNetworkReplysocketStartedConnectingSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_socketStartedConnecting(self.h, cast[int](addr tmp[]))
-proc requestSent*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
 
+proc requestSent*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
   fcQNetworkReply_requestSent(self.h)
 
+type QNetworkReplyrequestSentSlot* = proc()
 proc miqt_exec_callback_QNetworkReply_requestSent(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QNetworkReplyrequestSentSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onrequestSent*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onrequestSent*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplyrequestSentSlot) =
+  var tmp = new QNetworkReplyrequestSentSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_requestSent(self.h, cast[int](addr tmp[]))
-proc metaDataChanged*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
 
+proc metaDataChanged*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
   fcQNetworkReply_metaDataChanged(self.h)
 
+type QNetworkReplymetaDataChangedSlot* = proc()
 proc miqt_exec_callback_QNetworkReply_metaDataChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QNetworkReplymetaDataChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onmetaDataChanged*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onmetaDataChanged*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplymetaDataChangedSlot) =
+  var tmp = new QNetworkReplymetaDataChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_metaDataChanged(self.h, cast[int](addr tmp[]))
-proc finished*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
 
+proc finished*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
   fcQNetworkReply_finished(self.h)
 
+type QNetworkReplyfinishedSlot* = proc()
 proc miqt_exec_callback_QNetworkReply_finished(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QNetworkReplyfinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onfinished*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onfinished*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplyfinishedSlot) =
+  var tmp = new QNetworkReplyfinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_finished(self.h, cast[int](addr tmp[]))
-proc errorOccurred*(self: gen_qnetworkreply_types.QNetworkReply, param1: cint): void =
 
+proc errorOccurred*(self: gen_qnetworkreply_types.QNetworkReply, param1: cint): void =
   fcQNetworkReply_errorOccurred(self.h, cint(param1))
 
+type QNetworkReplyerrorOccurredSlot* = proc(param1: cint)
 proc miqt_exec_callback_QNetworkReply_errorOccurred(slot: int, param1: cint) {.exportc.} =
-  type Cb = proc(param1: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkReplyerrorOccurredSlot](cast[pointer](slot))
   let slotval1 = cint(param1)
-
 
   nimfunc[](slotval1)
 
-proc onerrorOccurred*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc(param1: cint)) =
-  type Cb = proc(param1: cint)
-  var tmp = new Cb
+proc onerrorOccurred*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplyerrorOccurredSlot) =
+  var tmp = new QNetworkReplyerrorOccurredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_errorOccurred(self.h, cast[int](addr tmp[]))
-proc encrypted*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
 
+proc encrypted*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
   fcQNetworkReply_encrypted(self.h)
 
+type QNetworkReplyencryptedSlot* = proc()
 proc miqt_exec_callback_QNetworkReply_encrypted(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QNetworkReplyencryptedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onencrypted*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onencrypted*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplyencryptedSlot) =
+  var tmp = new QNetworkReplyencryptedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_encrypted(self.h, cast[int](addr tmp[]))
-proc sslErrors*(self: gen_qnetworkreply_types.QNetworkReply, errors: seq[gen_qsslerror.QSslError]): void =
 
+proc sslErrors*(self: gen_qnetworkreply_types.QNetworkReply, errors: seq[gen_qsslerror.QSslError]): void =
   var errors_CArray = newSeq[pointer](len(errors))
   for i in 0..<len(errors):
     errors_CArray[i] = errors[i].h
 
   fcQNetworkReply_sslErrors(self.h, struct_miqt_array(len: csize_t(len(errors)), data: if len(errors) == 0: nil else: addr(errors_CArray[0])))
 
+type QNetworkReplysslErrorsSlot* = proc(errors: seq[gen_qsslerror.QSslError])
 proc miqt_exec_callback_QNetworkReply_sslErrors(slot: int, errors: struct_miqt_array) {.exportc.} =
-  type Cb = proc(errors: seq[gen_qsslerror.QSslError])
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkReplysslErrorsSlot](cast[pointer](slot))
   var verrors_ma = errors
   var verrorsx_ret = newSeq[gen_qsslerror.QSslError](int(verrors_ma.len))
   let verrors_outCast = cast[ptr UncheckedArray[pointer]](verrors_ma.data)
@@ -411,116 +372,103 @@ proc miqt_exec_callback_QNetworkReply_sslErrors(slot: int, errors: struct_miqt_a
     verrorsx_ret[i] = gen_qsslerror.QSslError(h: verrors_outCast[i])
   let slotval1 = verrorsx_ret
 
-
   nimfunc[](slotval1)
 
-proc onsslErrors*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc(errors: seq[gen_qsslerror.QSslError])) =
-  type Cb = proc(errors: seq[gen_qsslerror.QSslError])
-  var tmp = new Cb
+proc onsslErrors*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplysslErrorsSlot) =
+  var tmp = new QNetworkReplysslErrorsSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_sslErrors(self.h, cast[int](addr tmp[]))
-proc preSharedKeyAuthenticationRequired*(self: gen_qnetworkreply_types.QNetworkReply, authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator): void =
 
+proc preSharedKeyAuthenticationRequired*(self: gen_qnetworkreply_types.QNetworkReply, authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator): void =
   fcQNetworkReply_preSharedKeyAuthenticationRequired(self.h, authenticator.h)
 
+type QNetworkReplypreSharedKeyAuthenticationRequiredSlot* = proc(authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator)
 proc miqt_exec_callback_QNetworkReply_preSharedKeyAuthenticationRequired(slot: int, authenticator: pointer) {.exportc.} =
-  type Cb = proc(authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkReplypreSharedKeyAuthenticationRequiredSlot](cast[pointer](slot))
   let slotval1 = gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator(h: authenticator)
-
 
   nimfunc[](slotval1)
 
-proc onpreSharedKeyAuthenticationRequired*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc(authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator)) =
-  type Cb = proc(authenticator: gen_qsslpresharedkeyauthenticator.QSslPreSharedKeyAuthenticator)
-  var tmp = new Cb
+proc onpreSharedKeyAuthenticationRequired*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplypreSharedKeyAuthenticationRequiredSlot) =
+  var tmp = new QNetworkReplypreSharedKeyAuthenticationRequiredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_preSharedKeyAuthenticationRequired(self.h, cast[int](addr tmp[]))
-proc redirected*(self: gen_qnetworkreply_types.QNetworkReply, url: gen_qurl.QUrl): void =
 
+proc redirected*(self: gen_qnetworkreply_types.QNetworkReply, url: gen_qurl.QUrl): void =
   fcQNetworkReply_redirected(self.h, url.h)
 
+type QNetworkReplyredirectedSlot* = proc(url: gen_qurl.QUrl)
 proc miqt_exec_callback_QNetworkReply_redirected(slot: int, url: pointer) {.exportc.} =
-  type Cb = proc(url: gen_qurl.QUrl)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkReplyredirectedSlot](cast[pointer](slot))
   let slotval1 = gen_qurl.QUrl(h: url)
-
 
   nimfunc[](slotval1)
 
-proc onredirected*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc(url: gen_qurl.QUrl)) =
-  type Cb = proc(url: gen_qurl.QUrl)
-  var tmp = new Cb
+proc onredirected*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplyredirectedSlot) =
+  var tmp = new QNetworkReplyredirectedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_redirected(self.h, cast[int](addr tmp[]))
-proc redirectAllowed*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
 
+proc redirectAllowed*(self: gen_qnetworkreply_types.QNetworkReply, ): void =
   fcQNetworkReply_redirectAllowed(self.h)
 
+type QNetworkReplyredirectAllowedSlot* = proc()
 proc miqt_exec_callback_QNetworkReply_redirectAllowed(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QNetworkReplyredirectAllowedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onredirectAllowed*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onredirectAllowed*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplyredirectAllowedSlot) =
+  var tmp = new QNetworkReplyredirectAllowedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_redirectAllowed(self.h, cast[int](addr tmp[]))
-proc uploadProgress*(self: gen_qnetworkreply_types.QNetworkReply, bytesSent: clonglong, bytesTotal: clonglong): void =
 
+proc uploadProgress*(self: gen_qnetworkreply_types.QNetworkReply, bytesSent: clonglong, bytesTotal: clonglong): void =
   fcQNetworkReply_uploadProgress(self.h, bytesSent, bytesTotal)
 
+type QNetworkReplyuploadProgressSlot* = proc(bytesSent: clonglong, bytesTotal: clonglong)
 proc miqt_exec_callback_QNetworkReply_uploadProgress(slot: int, bytesSent: clonglong, bytesTotal: clonglong) {.exportc.} =
-  type Cb = proc(bytesSent: clonglong, bytesTotal: clonglong)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkReplyuploadProgressSlot](cast[pointer](slot))
   let slotval1 = bytesSent
 
   let slotval2 = bytesTotal
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onuploadProgress*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc(bytesSent: clonglong, bytesTotal: clonglong)) =
-  type Cb = proc(bytesSent: clonglong, bytesTotal: clonglong)
-  var tmp = new Cb
+proc onuploadProgress*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplyuploadProgressSlot) =
+  var tmp = new QNetworkReplyuploadProgressSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_uploadProgress(self.h, cast[int](addr tmp[]))
-proc downloadProgress*(self: gen_qnetworkreply_types.QNetworkReply, bytesReceived: clonglong, bytesTotal: clonglong): void =
 
+proc downloadProgress*(self: gen_qnetworkreply_types.QNetworkReply, bytesReceived: clonglong, bytesTotal: clonglong): void =
   fcQNetworkReply_downloadProgress(self.h, bytesReceived, bytesTotal)
 
+type QNetworkReplydownloadProgressSlot* = proc(bytesReceived: clonglong, bytesTotal: clonglong)
 proc miqt_exec_callback_QNetworkReply_downloadProgress(slot: int, bytesReceived: clonglong, bytesTotal: clonglong) {.exportc.} =
-  type Cb = proc(bytesReceived: clonglong, bytesTotal: clonglong)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QNetworkReplydownloadProgressSlot](cast[pointer](slot))
   let slotval1 = bytesReceived
 
   let slotval2 = bytesTotal
 
-
   nimfunc[](slotval1, slotval2)
 
-proc ondownloadProgress*(self: gen_qnetworkreply_types.QNetworkReply, slot: proc(bytesReceived: clonglong, bytesTotal: clonglong)) =
-  type Cb = proc(bytesReceived: clonglong, bytesTotal: clonglong)
-  var tmp = new Cb
+proc ondownloadProgress*(self: gen_qnetworkreply_types.QNetworkReply, slot: QNetworkReplydownloadProgressSlot) =
+  var tmp = new QNetworkReplydownloadProgressSlot
   tmp[] = slot
   GC_ref(tmp)
   fQNetworkReply_connect_downloadProgress(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qnetworkreply_types.QNetworkReply, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qnetworkreply_types.QNetworkReply, s: cstring, c: cstring): string =
   let v_ms = fcQNetworkReply_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qnetworkreply_types.QNetworkReply, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qnetworkreply_types.QNetworkReply, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQNetworkReply_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

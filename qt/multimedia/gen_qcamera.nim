@@ -246,57 +246,51 @@ proc fcQCameraFrameRateRange_delete(self: pointer) {.importc: "QCamera__FrameRat
 func init*(T: type gen_qcamera_types.QCamera, h: ptr cQCamera): gen_qcamera_types.QCamera =
   T(h: h)
 proc create*(T: type gen_qcamera_types.QCamera, ): gen_qcamera_types.QCamera =
-
   gen_qcamera_types.QCamera.init(fcQCamera_new())
+
 proc create*(T: type gen_qcamera_types.QCamera, deviceName: seq[byte]): gen_qcamera_types.QCamera =
-
   gen_qcamera_types.QCamera.init(fcQCamera_new2(struct_miqt_string(data: cast[cstring](if len(deviceName) == 0: nil else: unsafeAddr deviceName[0]), len: csize_t(len(deviceName)))))
+
 proc create*(T: type gen_qcamera_types.QCamera, cameraInfo: gen_qcamerainfo.QCameraInfo): gen_qcamera_types.QCamera =
-
   gen_qcamera_types.QCamera.init(fcQCamera_new3(cameraInfo.h))
+
 proc create*(T: type gen_qcamera_types.QCamera, position: cint): gen_qcamera_types.QCamera =
-
   gen_qcamera_types.QCamera.init(fcQCamera_new4(cint(position)))
-proc create2*(T: type gen_qcamera_types.QCamera, parent: gen_qobject.QObject): gen_qcamera_types.QCamera =
 
+proc create*(T: type gen_qcamera_types.QCamera, parent: gen_qobject.QObject): gen_qcamera_types.QCamera =
   gen_qcamera_types.QCamera.init(fcQCamera_new5(parent.h))
+
 proc create*(T: type gen_qcamera_types.QCamera, deviceName: seq[byte], parent: gen_qobject.QObject): gen_qcamera_types.QCamera =
-
   gen_qcamera_types.QCamera.init(fcQCamera_new6(struct_miqt_string(data: cast[cstring](if len(deviceName) == 0: nil else: unsafeAddr deviceName[0]), len: csize_t(len(deviceName))), parent.h))
+
 proc create*(T: type gen_qcamera_types.QCamera, cameraInfo: gen_qcamerainfo.QCameraInfo, parent: gen_qobject.QObject): gen_qcamera_types.QCamera =
-
   gen_qcamera_types.QCamera.init(fcQCamera_new7(cameraInfo.h, parent.h))
+
 proc create*(T: type gen_qcamera_types.QCamera, position: cint, parent: gen_qobject.QObject): gen_qcamera_types.QCamera =
-
   gen_qcamera_types.QCamera.init(fcQCamera_new8(cint(position), parent.h))
-proc metaObject*(self: gen_qcamera_types.QCamera, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qcamera_types.QCamera, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCamera_metaObject(self.h))
 
 proc metacast*(self: gen_qcamera_types.QCamera, param1: cstring): pointer =
-
   fcQCamera_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcamera_types.QCamera, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCamera_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcamera_types.QCamera, s: cstring): string =
-
   let v_ms = fcQCamera_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcamera_types.QCamera, s: cstring): string =
-
   let v_ms = fcQCamera_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc availableDevices*(_: type gen_qcamera_types.QCamera, ): seq[seq[byte]] =
-
   var v_ma = fcQCamera_availableDevices()
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -308,66 +302,51 @@ proc availableDevices*(_: type gen_qcamera_types.QCamera, ): seq[seq[byte]] =
   vx_ret
 
 proc deviceDescription*(_: type gen_qcamera_types.QCamera, device: seq[byte]): string =
-
   let v_ms = fcQCamera_deviceDescription(struct_miqt_string(data: cast[cstring](if len(device) == 0: nil else: unsafeAddr device[0]), len: csize_t(len(device))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc availability*(self: gen_qcamera_types.QCamera, ): cint =
-
   cint(fcQCamera_availability(self.h))
 
 proc state*(self: gen_qcamera_types.QCamera, ): cint =
-
   cint(fcQCamera_state(self.h))
 
 proc status*(self: gen_qcamera_types.QCamera, ): cint =
-
   cint(fcQCamera_status(self.h))
 
 proc captureMode*(self: gen_qcamera_types.QCamera, ): cint =
-
   cint(fcQCamera_captureMode(self.h))
 
 proc isCaptureModeSupported*(self: gen_qcamera_types.QCamera, mode: cint): bool =
-
   fcQCamera_isCaptureModeSupported(self.h, cint(mode))
 
 proc exposure*(self: gen_qcamera_types.QCamera, ): gen_qcameraexposure.QCameraExposure =
-
   gen_qcameraexposure.QCameraExposure(h: fcQCamera_exposure(self.h))
 
 proc focus*(self: gen_qcamera_types.QCamera, ): gen_qcamerafocus.QCameraFocus =
-
   gen_qcamerafocus.QCameraFocus(h: fcQCamera_focus(self.h))
 
 proc imageProcessing*(self: gen_qcamera_types.QCamera, ): gen_qcameraimageprocessing.QCameraImageProcessing =
-
   gen_qcameraimageprocessing.QCameraImageProcessing(h: fcQCamera_imageProcessing(self.h))
 
 proc setViewfinder*(self: gen_qcamera_types.QCamera, viewfinder: gen_qvideowidget.QVideoWidget): void =
-
   fcQCamera_setViewfinder(self.h, viewfinder.h)
 
-proc setViewfinderWithViewfinder*(self: gen_qcamera_types.QCamera, viewfinder: gen_qgraphicsvideoitem.QGraphicsVideoItem): void =
-
+proc setViewfinder*(self: gen_qcamera_types.QCamera, viewfinder: gen_qgraphicsvideoitem.QGraphicsVideoItem): void =
   fcQCamera_setViewfinderWithViewfinder(self.h, viewfinder.h)
 
-proc setViewfinderWithSurface*(self: gen_qcamera_types.QCamera, surface: gen_qabstractvideosurface.QAbstractVideoSurface): void =
-
+proc setViewfinder*(self: gen_qcamera_types.QCamera, surface: gen_qabstractvideosurface.QAbstractVideoSurface): void =
   fcQCamera_setViewfinderWithSurface(self.h, surface.h)
 
 proc viewfinderSettings*(self: gen_qcamera_types.QCamera, ): gen_qcameraviewfindersettings.QCameraViewfinderSettings =
-
   gen_qcameraviewfindersettings.QCameraViewfinderSettings(h: fcQCamera_viewfinderSettings(self.h))
 
 proc setViewfinderSettings*(self: gen_qcamera_types.QCamera, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): void =
-
   fcQCamera_setViewfinderSettings(self.h, settings.h)
 
 proc supportedViewfinderSettings*(self: gen_qcamera_types.QCamera, ): seq[gen_qcameraviewfindersettings.QCameraViewfinderSettings] =
-
   var v_ma = fcQCamera_supportedViewfinderSettings(self.h)
   var vx_ret = newSeq[gen_qcameraviewfindersettings.QCameraViewfinderSettings](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -376,7 +355,6 @@ proc supportedViewfinderSettings*(self: gen_qcamera_types.QCamera, ): seq[gen_qc
   vx_ret
 
 proc supportedViewfinderResolutions*(self: gen_qcamera_types.QCamera, ): seq[gen_qsize.QSize] =
-
   var v_ma = fcQCamera_supportedViewfinderResolutions(self.h)
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -385,7 +363,6 @@ proc supportedViewfinderResolutions*(self: gen_qcamera_types.QCamera, ): seq[gen
   vx_ret
 
 proc supportedViewfinderFrameRateRanges*(self: gen_qcamera_types.QCamera, ): seq[gen_qcamera_types.QCameraFrameRateRange] =
-
   var v_ma = fcQCamera_supportedViewfinderFrameRateRanges(self.h)
   var vx_ret = newSeq[gen_qcamera_types.QCameraFrameRateRange](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -394,7 +371,6 @@ proc supportedViewfinderFrameRateRanges*(self: gen_qcamera_types.QCamera, ): seq
   vx_ret
 
 proc supportedViewfinderPixelFormats*(self: gen_qcamera_types.QCamera, ): seq[cint] =
-
   var v_ma = fcQCamera_supportedViewfinderPixelFormats(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -403,262 +379,224 @@ proc supportedViewfinderPixelFormats*(self: gen_qcamera_types.QCamera, ): seq[ci
   vx_ret
 
 proc error*(self: gen_qcamera_types.QCamera, ): cint =
-
   cint(fcQCamera_error(self.h))
 
 proc errorString*(self: gen_qcamera_types.QCamera, ): string =
-
   let v_ms = fcQCamera_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportedLocks*(self: gen_qcamera_types.QCamera, ): cint =
-
   cint(fcQCamera_supportedLocks(self.h))
 
 proc requestedLocks*(self: gen_qcamera_types.QCamera, ): cint =
-
   cint(fcQCamera_requestedLocks(self.h))
 
 proc lockStatus*(self: gen_qcamera_types.QCamera, ): cint =
-
   cint(fcQCamera_lockStatus(self.h))
 
-proc lockStatusWithLock*(self: gen_qcamera_types.QCamera, lock: cint): cint =
-
+proc lockStatus*(self: gen_qcamera_types.QCamera, lock: cint): cint =
   cint(fcQCamera_lockStatusWithLock(self.h, cint(lock)))
 
 proc setCaptureMode*(self: gen_qcamera_types.QCamera, mode: cint): void =
-
   fcQCamera_setCaptureMode(self.h, cint(mode))
 
 proc load*(self: gen_qcamera_types.QCamera, ): void =
-
   fcQCamera_load(self.h)
 
 proc unload*(self: gen_qcamera_types.QCamera, ): void =
-
   fcQCamera_unload(self.h)
 
 proc start*(self: gen_qcamera_types.QCamera, ): void =
-
   fcQCamera_start(self.h)
 
 proc stop*(self: gen_qcamera_types.QCamera, ): void =
-
   fcQCamera_stop(self.h)
 
 proc searchAndLock*(self: gen_qcamera_types.QCamera, ): void =
-
   fcQCamera_searchAndLock(self.h)
 
 proc unlock*(self: gen_qcamera_types.QCamera, ): void =
-
   fcQCamera_unlock(self.h)
 
-proc searchAndLockWithLocks*(self: gen_qcamera_types.QCamera, locks: cint): void =
-
+proc searchAndLock*(self: gen_qcamera_types.QCamera, locks: cint): void =
   fcQCamera_searchAndLockWithLocks(self.h, cint(locks))
 
-proc unlockWithLocks*(self: gen_qcamera_types.QCamera, locks: cint): void =
-
+proc unlock*(self: gen_qcamera_types.QCamera, locks: cint): void =
   fcQCamera_unlockWithLocks(self.h, cint(locks))
 
 proc stateChanged*(self: gen_qcamera_types.QCamera, state: cint): void =
-
   fcQCamera_stateChanged(self.h, cint(state))
 
+type QCamerastateChangedSlot* = proc(state: cint)
 proc miqt_exec_callback_QCamera_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCamerastateChangedSlot](cast[pointer](slot))
   let slotval1 = cint(state)
-
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: gen_qcamera_types.QCamera, slot: proc(state: cint)) =
-  type Cb = proc(state: cint)
-  var tmp = new Cb
+proc onstateChanged*(self: gen_qcamera_types.QCamera, slot: QCamerastateChangedSlot) =
+  var tmp = new QCamerastateChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCamera_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc captureModeChanged*(self: gen_qcamera_types.QCamera, param1: cint): void =
 
+proc captureModeChanged*(self: gen_qcamera_types.QCamera, param1: cint): void =
   fcQCamera_captureModeChanged(self.h, cint(param1))
 
+type QCameracaptureModeChangedSlot* = proc(param1: cint)
 proc miqt_exec_callback_QCamera_captureModeChanged(slot: int, param1: cint) {.exportc.} =
-  type Cb = proc(param1: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameracaptureModeChangedSlot](cast[pointer](slot))
   let slotval1 = cint(param1)
-
 
   nimfunc[](slotval1)
 
-proc oncaptureModeChanged*(self: gen_qcamera_types.QCamera, slot: proc(param1: cint)) =
-  type Cb = proc(param1: cint)
-  var tmp = new Cb
+proc oncaptureModeChanged*(self: gen_qcamera_types.QCamera, slot: QCameracaptureModeChangedSlot) =
+  var tmp = new QCameracaptureModeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCamera_connect_captureModeChanged(self.h, cast[int](addr tmp[]))
-proc statusChanged*(self: gen_qcamera_types.QCamera, status: cint): void =
 
+proc statusChanged*(self: gen_qcamera_types.QCamera, status: cint): void =
   fcQCamera_statusChanged(self.h, cint(status))
 
+type QCamerastatusChangedSlot* = proc(status: cint)
 proc miqt_exec_callback_QCamera_statusChanged(slot: int, status: cint) {.exportc.} =
-  type Cb = proc(status: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCamerastatusChangedSlot](cast[pointer](slot))
   let slotval1 = cint(status)
-
 
   nimfunc[](slotval1)
 
-proc onstatusChanged*(self: gen_qcamera_types.QCamera, slot: proc(status: cint)) =
-  type Cb = proc(status: cint)
-  var tmp = new Cb
+proc onstatusChanged*(self: gen_qcamera_types.QCamera, slot: QCamerastatusChangedSlot) =
+  var tmp = new QCamerastatusChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCamera_connect_statusChanged(self.h, cast[int](addr tmp[]))
-proc locked*(self: gen_qcamera_types.QCamera, ): void =
 
+proc locked*(self: gen_qcamera_types.QCamera, ): void =
   fcQCamera_locked(self.h)
 
+type QCameralockedSlot* = proc()
 proc miqt_exec_callback_QCamera_locked(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QCameralockedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onlocked*(self: gen_qcamera_types.QCamera, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onlocked*(self: gen_qcamera_types.QCamera, slot: QCameralockedSlot) =
+  var tmp = new QCameralockedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCamera_connect_locked(self.h, cast[int](addr tmp[]))
-proc lockFailed*(self: gen_qcamera_types.QCamera, ): void =
 
+proc lockFailed*(self: gen_qcamera_types.QCamera, ): void =
   fcQCamera_lockFailed(self.h)
 
+type QCameralockFailedSlot* = proc()
 proc miqt_exec_callback_QCamera_lockFailed(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QCameralockFailedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onlockFailed*(self: gen_qcamera_types.QCamera, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onlockFailed*(self: gen_qcamera_types.QCamera, slot: QCameralockFailedSlot) =
+  var tmp = new QCameralockFailedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCamera_connect_lockFailed(self.h, cast[int](addr tmp[]))
-proc lockStatusChanged*(self: gen_qcamera_types.QCamera, status: cint, reason: cint): void =
 
+proc lockStatusChanged*(self: gen_qcamera_types.QCamera, status: cint, reason: cint): void =
   fcQCamera_lockStatusChanged(self.h, cint(status), cint(reason))
 
+type QCameralockStatusChangedSlot* = proc(status: cint, reason: cint)
 proc miqt_exec_callback_QCamera_lockStatusChanged(slot: int, status: cint, reason: cint) {.exportc.} =
-  type Cb = proc(status: cint, reason: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameralockStatusChangedSlot](cast[pointer](slot))
   let slotval1 = cint(status)
 
   let slotval2 = cint(reason)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onlockStatusChanged*(self: gen_qcamera_types.QCamera, slot: proc(status: cint, reason: cint)) =
-  type Cb = proc(status: cint, reason: cint)
-  var tmp = new Cb
+proc onlockStatusChanged*(self: gen_qcamera_types.QCamera, slot: QCameralockStatusChangedSlot) =
+  var tmp = new QCameralockStatusChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCamera_connect_lockStatusChanged(self.h, cast[int](addr tmp[]))
-proc lockStatusChanged2*(self: gen_qcamera_types.QCamera, lock: cint, status: cint, reason: cint): void =
 
+proc lockStatusChanged*(self: gen_qcamera_types.QCamera, lock: cint, status: cint, reason: cint): void =
   fcQCamera_lockStatusChanged2(self.h, cint(lock), cint(status), cint(reason))
 
+type QCameralockStatusChanged2Slot* = proc(lock: cint, status: cint, reason: cint)
 proc miqt_exec_callback_QCamera_lockStatusChanged2(slot: int, lock: cint, status: cint, reason: cint) {.exportc.} =
-  type Cb = proc(lock: cint, status: cint, reason: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameralockStatusChanged2Slot](cast[pointer](slot))
   let slotval1 = cint(lock)
 
   let slotval2 = cint(status)
 
   let slotval3 = cint(reason)
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onlockStatusChanged2*(self: gen_qcamera_types.QCamera, slot: proc(lock: cint, status: cint, reason: cint)) =
-  type Cb = proc(lock: cint, status: cint, reason: cint)
-  var tmp = new Cb
+proc onlockStatusChanged*(self: gen_qcamera_types.QCamera, slot: QCameralockStatusChanged2Slot) =
+  var tmp = new QCameralockStatusChanged2Slot
   tmp[] = slot
   GC_ref(tmp)
   fQCamera_connect_lockStatusChanged2(self.h, cast[int](addr tmp[]))
-proc errorWithQCameraError*(self: gen_qcamera_types.QCamera, param1: cint): void =
 
+proc error*(self: gen_qcamera_types.QCamera, param1: cint): void =
   fcQCamera_errorWithQCameraError(self.h, cint(param1))
 
+type QCameraerrorWithQCameraErrorSlot* = proc(param1: cint)
 proc miqt_exec_callback_QCamera_errorWithQCameraError(slot: int, param1: cint) {.exportc.} =
-  type Cb = proc(param1: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraerrorWithQCameraErrorSlot](cast[pointer](slot))
   let slotval1 = cint(param1)
-
 
   nimfunc[](slotval1)
 
-proc onerrorWithQCameraError*(self: gen_qcamera_types.QCamera, slot: proc(param1: cint)) =
-  type Cb = proc(param1: cint)
-  var tmp = new Cb
+proc onerror*(self: gen_qcamera_types.QCamera, slot: QCameraerrorWithQCameraErrorSlot) =
+  var tmp = new QCameraerrorWithQCameraErrorSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCamera_connect_errorWithQCameraError(self.h, cast[int](addr tmp[]))
-proc errorOccurred*(self: gen_qcamera_types.QCamera, param1: cint): void =
 
+proc errorOccurred*(self: gen_qcamera_types.QCamera, param1: cint): void =
   fcQCamera_errorOccurred(self.h, cint(param1))
 
+type QCameraerrorOccurredSlot* = proc(param1: cint)
 proc miqt_exec_callback_QCamera_errorOccurred(slot: int, param1: cint) {.exportc.} =
-  type Cb = proc(param1: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraerrorOccurredSlot](cast[pointer](slot))
   let slotval1 = cint(param1)
-
 
   nimfunc[](slotval1)
 
-proc onerrorOccurred*(self: gen_qcamera_types.QCamera, slot: proc(param1: cint)) =
-  type Cb = proc(param1: cint)
-  var tmp = new Cb
+proc onerrorOccurred*(self: gen_qcamera_types.QCamera, slot: QCameraerrorOccurredSlot) =
+  var tmp = new QCameraerrorOccurredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCamera_connect_errorOccurred(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qcamera_types.QCamera, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qcamera_types.QCamera, s: cstring, c: cstring): string =
   let v_ms = fcQCamera_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcamera_types.QCamera, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcamera_types.QCamera, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCamera_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcamera_types.QCamera, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcamera_types.QCamera, s: cstring, c: cstring): string =
   let v_ms = fcQCamera_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcamera_types.QCamera, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcamera_types.QCamera, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCamera_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc supportedViewfinderSettings1*(self: gen_qcamera_types.QCamera, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): seq[gen_qcameraviewfindersettings.QCameraViewfinderSettings] =
-
+proc supportedViewfinderSettings*(self: gen_qcamera_types.QCamera, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): seq[gen_qcameraviewfindersettings.QCameraViewfinderSettings] =
   var v_ma = fcQCamera_supportedViewfinderSettings1(self.h, settings.h)
   var vx_ret = newSeq[gen_qcameraviewfindersettings.QCameraViewfinderSettings](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -666,8 +604,7 @@ proc supportedViewfinderSettings1*(self: gen_qcamera_types.QCamera, settings: ge
     vx_ret[i] = gen_qcameraviewfindersettings.QCameraViewfinderSettings(h: v_outCast[i])
   vx_ret
 
-proc supportedViewfinderResolutions1*(self: gen_qcamera_types.QCamera, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): seq[gen_qsize.QSize] =
-
+proc supportedViewfinderResolutions*(self: gen_qcamera_types.QCamera, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): seq[gen_qsize.QSize] =
   var v_ma = fcQCamera_supportedViewfinderResolutions1(self.h, settings.h)
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -675,8 +612,7 @@ proc supportedViewfinderResolutions1*(self: gen_qcamera_types.QCamera, settings:
     vx_ret[i] = gen_qsize.QSize(h: v_outCast[i])
   vx_ret
 
-proc supportedViewfinderFrameRateRanges1*(self: gen_qcamera_types.QCamera, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): seq[gen_qcamera_types.QCameraFrameRateRange] =
-
+proc supportedViewfinderFrameRateRanges*(self: gen_qcamera_types.QCamera, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): seq[gen_qcamera_types.QCameraFrameRateRange] =
   var v_ma = fcQCamera_supportedViewfinderFrameRateRanges1(self.h, settings.h)
   var vx_ret = newSeq[gen_qcamera_types.QCameraFrameRateRange](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -684,8 +620,7 @@ proc supportedViewfinderFrameRateRanges1*(self: gen_qcamera_types.QCamera, setti
     vx_ret[i] = gen_qcamera_types.QCameraFrameRateRange(h: v_outCast[i])
   vx_ret
 
-proc supportedViewfinderPixelFormats1*(self: gen_qcamera_types.QCamera, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): seq[cint] =
-
+proc supportedViewfinderPixelFormats*(self: gen_qcamera_types.QCamera, settings: gen_qcameraviewfindersettings.QCameraViewfinderSettings): seq[cint] =
   var v_ma = fcQCamera_supportedViewfinderPixelFormats1(self.h, settings.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -694,7 +629,6 @@ proc supportedViewfinderPixelFormats1*(self: gen_qcamera_types.QCamera, settings
   vx_ret
 
 proc QCamerametaObject*(self: gen_qcamera_types.QCamera, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQCamera_virtualbase_metaObject(self.h))
 
 type QCamerametaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -712,7 +646,6 @@ proc miqt_exec_callback_QCamera_metaObject(self: ptr cQCamera, slot: int): point
 
   virtualReturn.h
 proc QCamerametacast*(self: gen_qcamera_types.QCamera, param1: cstring): pointer =
-
   fQCamera_virtualbase_metacast(self.h, param1)
 
 type QCamerametacastProc* = proc(param1: cstring): pointer
@@ -732,7 +665,6 @@ proc miqt_exec_callback_QCamera_metacast(self: ptr cQCamera, slot: int, param1: 
 
   virtualReturn
 proc QCamerametacall*(self: gen_qcamera_types.QCamera, param1: cint, param2: cint, param3: pointer): cint =
-
   fQCamera_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QCamerametacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -756,7 +688,6 @@ proc miqt_exec_callback_QCamera_metacall(self: ptr cQCamera, slot: int, param1: 
 
   virtualReturn
 proc QCameraavailability*(self: gen_qcamera_types.QCamera, ): cint =
-
   cint(fQCamera_virtualbase_availability(self.h))
 
 type QCameraavailabilityProc* = proc(): cint
@@ -774,7 +705,6 @@ proc miqt_exec_callback_QCamera_availability(self: ptr cQCamera, slot: int): cin
 
   cint(virtualReturn)
 proc QCameraisAvailable*(self: gen_qcamera_types.QCamera, ): bool =
-
   fQCamera_virtualbase_isAvailable(self.h)
 
 type QCameraisAvailableProc* = proc(): bool
@@ -792,7 +722,6 @@ proc miqt_exec_callback_QCamera_isAvailable(self: ptr cQCamera, slot: int): bool
 
   virtualReturn
 proc QCameraservice*(self: gen_qcamera_types.QCamera, ): gen_qmediaservice.QMediaService =
-
   gen_qmediaservice.QMediaService(h: fQCamera_virtualbase_service(self.h))
 
 type QCameraserviceProc* = proc(): gen_qmediaservice.QMediaService
@@ -810,7 +739,6 @@ proc miqt_exec_callback_QCamera_service(self: ptr cQCamera, slot: int): pointer 
 
   virtualReturn.h
 proc QCamerabindX*(self: gen_qcamera_types.QCamera, param1: gen_qobject.QObject): bool =
-
   fQCamera_virtualbase_bind(self.h, param1.h)
 
 type QCamerabindXProc* = proc(param1: gen_qobject.QObject): bool
@@ -830,7 +758,6 @@ proc miqt_exec_callback_QCamera_bind(self: ptr cQCamera, slot: int, param1: poin
 
   virtualReturn
 proc QCameraunbind*(self: gen_qcamera_types.QCamera, param1: gen_qobject.QObject): void =
-
   fQCamera_virtualbase_unbind(self.h, param1.h)
 
 type QCameraunbindProc* = proc(param1: gen_qobject.QObject): void
@@ -848,7 +775,6 @@ proc miqt_exec_callback_QCamera_unbind(self: ptr cQCamera, slot: int, param1: po
 
   nimfunc[](slotval1)
 proc QCameraevent*(self: gen_qcamera_types.QCamera, event: gen_qcoreevent.QEvent): bool =
-
   fQCamera_virtualbase_event(self.h, event.h)
 
 type QCameraeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -868,7 +794,6 @@ proc miqt_exec_callback_QCamera_event(self: ptr cQCamera, slot: int, event: poin
 
   virtualReturn
 proc QCameraeventFilter*(self: gen_qcamera_types.QCamera, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQCamera_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QCameraeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -890,7 +815,6 @@ proc miqt_exec_callback_QCamera_eventFilter(self: ptr cQCamera, slot: int, watch
 
   virtualReturn
 proc QCameratimerEvent*(self: gen_qcamera_types.QCamera, event: gen_qcoreevent.QTimerEvent): void =
-
   fQCamera_virtualbase_timerEvent(self.h, event.h)
 
 type QCameratimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -908,7 +832,6 @@ proc miqt_exec_callback_QCamera_timerEvent(self: ptr cQCamera, slot: int, event:
 
   nimfunc[](slotval1)
 proc QCamerachildEvent*(self: gen_qcamera_types.QCamera, event: gen_qcoreevent.QChildEvent): void =
-
   fQCamera_virtualbase_childEvent(self.h, event.h)
 
 type QCamerachildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -926,7 +849,6 @@ proc miqt_exec_callback_QCamera_childEvent(self: ptr cQCamera, slot: int, event:
 
   nimfunc[](slotval1)
 proc QCameracustomEvent*(self: gen_qcamera_types.QCamera, event: gen_qcoreevent.QEvent): void =
-
   fQCamera_virtualbase_customEvent(self.h, event.h)
 
 type QCameracustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -944,7 +866,6 @@ proc miqt_exec_callback_QCamera_customEvent(self: ptr cQCamera, slot: int, event
 
   nimfunc[](slotval1)
 proc QCameraconnectNotify*(self: gen_qcamera_types.QCamera, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCamera_virtualbase_connectNotify(self.h, signal.h)
 
 type QCameraconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -962,7 +883,6 @@ proc miqt_exec_callback_QCamera_connectNotify(self: ptr cQCamera, slot: int, sig
 
   nimfunc[](slotval1)
 proc QCameradisconnectNotify*(self: gen_qcamera_types.QCamera, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCamera_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QCameradisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -987,13 +907,13 @@ proc delete*(self: gen_qcamera_types.QCamera) =
 func init*(T: type gen_qcamera_types.QCameraFrameRateRange, h: ptr cQCameraFrameRateRange): gen_qcamera_types.QCameraFrameRateRange =
   T(h: h)
 proc create*(T: type gen_qcamera_types.QCameraFrameRateRange, ): gen_qcamera_types.QCameraFrameRateRange =
-
   gen_qcamera_types.QCameraFrameRateRange.init(fcQCameraFrameRateRange_new())
+
 proc create*(T: type gen_qcamera_types.QCameraFrameRateRange, minimum: float64, maximum: float64): gen_qcamera_types.QCameraFrameRateRange =
-
   gen_qcamera_types.QCameraFrameRateRange.init(fcQCameraFrameRateRange_new2(minimum, maximum))
-proc create*(T: type gen_qcamera_types.QCameraFrameRateRange, param1: gen_qcamera_types.QCameraFrameRateRange): gen_qcamera_types.QCameraFrameRateRange =
 
+proc create*(T: type gen_qcamera_types.QCameraFrameRateRange, param1: gen_qcamera_types.QCameraFrameRateRange): gen_qcamera_types.QCameraFrameRateRange =
   gen_qcamera_types.QCameraFrameRateRange.init(fcQCameraFrameRateRange_new3(param1.h))
+
 proc delete*(self: gen_qcamera_types.QCameraFrameRateRange) =
   fcQCameraFrameRateRange_delete(self.h)

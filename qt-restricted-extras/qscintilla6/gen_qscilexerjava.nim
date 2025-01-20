@@ -173,54 +173,45 @@ proc fcQsciLexerJava_delete(self: pointer) {.importc: "QsciLexerJava_delete".}
 func init*(T: type gen_qscilexerjava_types.QsciLexerJava, h: ptr cQsciLexerJava): gen_qscilexerjava_types.QsciLexerJava =
   T(h: h)
 proc create*(T: type gen_qscilexerjava_types.QsciLexerJava, ): gen_qscilexerjava_types.QsciLexerJava =
-
   gen_qscilexerjava_types.QsciLexerJava.init(fcQsciLexerJava_new())
+
 proc create*(T: type gen_qscilexerjava_types.QsciLexerJava, parent: gen_qobject.QObject): gen_qscilexerjava_types.QsciLexerJava =
-
   gen_qscilexerjava_types.QsciLexerJava.init(fcQsciLexerJava_new2(parent.h))
-proc metaObject*(self: gen_qscilexerjava_types.QsciLexerJava, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerjava_types.QsciLexerJava, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerJava_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerjava_types.QsciLexerJava, param1: cstring): pointer =
-
   fcQsciLexerJava_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerjava_types.QsciLexerJava, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerJava_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring): string =
-
   let v_ms = fcQsciLexerJava_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerjava_types.QsciLexerJava, ): cstring =
-
   (fcQsciLexerJava_language(self.h))
 
 proc keywords*(self: gen_qscilexerjava_types.QsciLexerJava, set: cint): cstring =
-
   (fcQsciLexerJava_keywords(self.h, set))
 
-proc tr2*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerJava_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerjava_types.QsciLexerJava, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerJava_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerJavametaObject*(self: gen_qscilexerjava_types.QsciLexerJava, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerJava_virtualbase_metaObject(self.h))
 
 type QsciLexerJavametaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -238,7 +229,6 @@ proc miqt_exec_callback_QsciLexerJava_metaObject(self: ptr cQsciLexerJava, slot:
 
   virtualReturn.h
 proc QsciLexerJavametacast*(self: gen_qscilexerjava_types.QsciLexerJava, param1: cstring): pointer =
-
   fQsciLexerJava_virtualbase_metacast(self.h, param1)
 
 type QsciLexerJavametacastProc* = proc(param1: cstring): pointer
@@ -258,7 +248,6 @@ proc miqt_exec_callback_QsciLexerJava_metacast(self: ptr cQsciLexerJava, slot: i
 
   virtualReturn
 proc QsciLexerJavametacall*(self: gen_qscilexerjava_types.QsciLexerJava, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerJava_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerJavametacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -282,7 +271,6 @@ proc miqt_exec_callback_QsciLexerJava_metacall(self: ptr cQsciLexerJava, slot: i
 
   virtualReturn
 proc QsciLexerJavasetFoldAtElse*(self: gen_qscilexerjava_types.QsciLexerJava, fold: bool): void =
-
   fQsciLexerJava_virtualbase_setFoldAtElse(self.h, fold)
 
 type QsciLexerJavasetFoldAtElseProc* = proc(fold: bool): void
@@ -300,7 +288,6 @@ proc miqt_exec_callback_QsciLexerJava_setFoldAtElse(self: ptr cQsciLexerJava, sl
 
   nimfunc[](slotval1)
 proc QsciLexerJavasetFoldComments*(self: gen_qscilexerjava_types.QsciLexerJava, fold: bool): void =
-
   fQsciLexerJava_virtualbase_setFoldComments(self.h, fold)
 
 type QsciLexerJavasetFoldCommentsProc* = proc(fold: bool): void
@@ -318,7 +305,6 @@ proc miqt_exec_callback_QsciLexerJava_setFoldComments(self: ptr cQsciLexerJava, 
 
   nimfunc[](slotval1)
 proc QsciLexerJavasetFoldCompact*(self: gen_qscilexerjava_types.QsciLexerJava, fold: bool): void =
-
   fQsciLexerJava_virtualbase_setFoldCompact(self.h, fold)
 
 type QsciLexerJavasetFoldCompactProc* = proc(fold: bool): void
@@ -336,7 +322,6 @@ proc miqt_exec_callback_QsciLexerJava_setFoldCompact(self: ptr cQsciLexerJava, s
 
   nimfunc[](slotval1)
 proc QsciLexerJavasetFoldPreprocessor*(self: gen_qscilexerjava_types.QsciLexerJava, fold: bool): void =
-
   fQsciLexerJava_virtualbase_setFoldPreprocessor(self.h, fold)
 
 type QsciLexerJavasetFoldPreprocessorProc* = proc(fold: bool): void
@@ -354,7 +339,6 @@ proc miqt_exec_callback_QsciLexerJava_setFoldPreprocessor(self: ptr cQsciLexerJa
 
   nimfunc[](slotval1)
 proc QsciLexerJavasetStylePreprocessor*(self: gen_qscilexerjava_types.QsciLexerJava, style: bool): void =
-
   fQsciLexerJava_virtualbase_setStylePreprocessor(self.h, style)
 
 type QsciLexerJavasetStylePreprocessorProc* = proc(style: bool): void
@@ -386,7 +370,6 @@ proc miqt_exec_callback_QsciLexerJava_language(self: ptr cQsciLexerJava, slot: i
 
   virtualReturn
 proc QsciLexerJavalexer*(self: gen_qscilexerjava_types.QsciLexerJava, ): cstring =
-
   (fQsciLexerJava_virtualbase_lexer(self.h))
 
 type QsciLexerJavalexerProc* = proc(): cstring
@@ -404,7 +387,6 @@ proc miqt_exec_callback_QsciLexerJava_lexer(self: ptr cQsciLexerJava, slot: int)
 
   virtualReturn
 proc QsciLexerJavalexerId*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
-
   fQsciLexerJava_virtualbase_lexerId(self.h)
 
 type QsciLexerJavalexerIdProc* = proc(): cint
@@ -422,7 +404,6 @@ proc miqt_exec_callback_QsciLexerJava_lexerId(self: ptr cQsciLexerJava, slot: in
 
   virtualReturn
 proc QsciLexerJavaautoCompletionFillups*(self: gen_qscilexerjava_types.QsciLexerJava, ): cstring =
-
   (fQsciLexerJava_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerJavaautoCompletionFillupsProc* = proc(): cstring
@@ -440,7 +421,6 @@ proc miqt_exec_callback_QsciLexerJava_autoCompletionFillups(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerJavaautoCompletionWordSeparators*(self: gen_qscilexerjava_types.QsciLexerJava, ): seq[string] =
-
   var v_ma = fQsciLexerJava_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -470,7 +450,6 @@ proc miqt_exec_callback_QsciLexerJava_autoCompletionWordSeparators(self: ptr cQs
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerJavablockEnd*(self: gen_qscilexerjava_types.QsciLexerJava, style: ptr cint): cstring =
-
   (fQsciLexerJava_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerJavablockEndProc* = proc(style: ptr cint): cstring
@@ -490,7 +469,6 @@ proc miqt_exec_callback_QsciLexerJava_blockEnd(self: ptr cQsciLexerJava, slot: i
 
   virtualReturn
 proc QsciLexerJavablockLookback*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
-
   fQsciLexerJava_virtualbase_blockLookback(self.h)
 
 type QsciLexerJavablockLookbackProc* = proc(): cint
@@ -508,7 +486,6 @@ proc miqt_exec_callback_QsciLexerJava_blockLookback(self: ptr cQsciLexerJava, sl
 
   virtualReturn
 proc QsciLexerJavablockStart*(self: gen_qscilexerjava_types.QsciLexerJava, style: ptr cint): cstring =
-
   (fQsciLexerJava_virtualbase_blockStart(self.h, style))
 
 type QsciLexerJavablockStartProc* = proc(style: ptr cint): cstring
@@ -528,7 +505,6 @@ proc miqt_exec_callback_QsciLexerJava_blockStart(self: ptr cQsciLexerJava, slot:
 
   virtualReturn
 proc QsciLexerJavablockStartKeyword*(self: gen_qscilexerjava_types.QsciLexerJava, style: ptr cint): cstring =
-
   (fQsciLexerJava_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerJavablockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -548,7 +524,6 @@ proc miqt_exec_callback_QsciLexerJava_blockStartKeyword(self: ptr cQsciLexerJava
 
   virtualReturn
 proc QsciLexerJavabraceStyle*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
-
   fQsciLexerJava_virtualbase_braceStyle(self.h)
 
 type QsciLexerJavabraceStyleProc* = proc(): cint
@@ -566,7 +541,6 @@ proc miqt_exec_callback_QsciLexerJava_braceStyle(self: ptr cQsciLexerJava, slot:
 
   virtualReturn
 proc QsciLexerJavacaseSensitive*(self: gen_qscilexerjava_types.QsciLexerJava, ): bool =
-
   fQsciLexerJava_virtualbase_caseSensitive(self.h)
 
 type QsciLexerJavacaseSensitiveProc* = proc(): bool
@@ -584,7 +558,6 @@ proc miqt_exec_callback_QsciLexerJava_caseSensitive(self: ptr cQsciLexerJava, sl
 
   virtualReturn
 proc QsciLexerJavacolor*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerJava_virtualbase_color(self.h, style))
 
 type QsciLexerJavacolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -604,7 +577,6 @@ proc miqt_exec_callback_QsciLexerJava_color(self: ptr cQsciLexerJava, slot: int,
 
   virtualReturn.h
 proc QsciLexerJavaeolFill*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): bool =
-
   fQsciLexerJava_virtualbase_eolFill(self.h, style)
 
 type QsciLexerJavaeolFillProc* = proc(style: cint): bool
@@ -624,7 +596,6 @@ proc miqt_exec_callback_QsciLexerJava_eolFill(self: ptr cQsciLexerJava, slot: in
 
   virtualReturn
 proc QsciLexerJavafont*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerJava_virtualbase_font(self.h, style))
 
 type QsciLexerJavafontProc* = proc(style: cint): gen_qfont.QFont
@@ -644,7 +615,6 @@ proc miqt_exec_callback_QsciLexerJava_font(self: ptr cQsciLexerJava, slot: int, 
 
   virtualReturn.h
 proc QsciLexerJavaindentationGuideView*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
-
   fQsciLexerJava_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerJavaindentationGuideViewProc* = proc(): cint
@@ -662,7 +632,6 @@ proc miqt_exec_callback_QsciLexerJava_indentationGuideView(self: ptr cQsciLexerJ
 
   virtualReturn
 proc QsciLexerJavakeywords*(self: gen_qscilexerjava_types.QsciLexerJava, set: cint): cstring =
-
   (fQsciLexerJava_virtualbase_keywords(self.h, set))
 
 type QsciLexerJavakeywordsProc* = proc(set: cint): cstring
@@ -682,7 +651,6 @@ proc miqt_exec_callback_QsciLexerJava_keywords(self: ptr cQsciLexerJava, slot: i
 
   virtualReturn
 proc QsciLexerJavadefaultStyle*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
-
   fQsciLexerJava_virtualbase_defaultStyle(self.h)
 
 type QsciLexerJavadefaultStyleProc* = proc(): cint
@@ -716,7 +684,6 @@ proc miqt_exec_callback_QsciLexerJava_description(self: ptr cQsciLexerJava, slot
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerJavapaper*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerJava_virtualbase_paper(self.h, style))
 
 type QsciLexerJavapaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -735,12 +702,11 @@ proc miqt_exec_callback_QsciLexerJava_paper(self: ptr cQsciLexerJava, slot: int,
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerJavadefaultColorWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJavadefaultColor*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerJava_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerJavadefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerJavadefaultColorWithStyleProc
   tmp[] = slot
@@ -756,7 +722,6 @@ proc miqt_exec_callback_QsciLexerJava_defaultColorWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerJavadefaultEolFill*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): bool =
-
   fQsciLexerJava_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerJavadefaultEolFillProc* = proc(style: cint): bool
@@ -775,12 +740,11 @@ proc miqt_exec_callback_QsciLexerJava_defaultEolFill(self: ptr cQsciLexerJava, s
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerJavadefaultFontWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qfont.QFont =
-
+proc QsciLexerJavadefaultFont*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerJava_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerJavadefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerJavadefaultFontWithStyleProc
   tmp[] = slot
@@ -795,12 +759,11 @@ proc miqt_exec_callback_QsciLexerJava_defaultFontWithStyle(self: ptr cQsciLexerJ
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerJavadefaultPaperWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerJavadefaultPaper*(self: gen_qscilexerjava_types.QsciLexerJava, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerJava_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerJavadefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerjava_types.QsciLexerJava, slot: QsciLexerJavadefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerJavadefaultPaperWithStyleProc
   tmp[] = slot
@@ -816,7 +779,6 @@ proc miqt_exec_callback_QsciLexerJava_defaultPaperWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerJavasetEditor*(self: gen_qscilexerjava_types.QsciLexerJava, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerJava_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerJavasetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -834,7 +796,6 @@ proc miqt_exec_callback_QsciLexerJava_setEditor(self: ptr cQsciLexerJava, slot: 
 
   nimfunc[](slotval1)
 proc QsciLexerJavarefreshProperties*(self: gen_qscilexerjava_types.QsciLexerJava, ): void =
-
   fQsciLexerJava_virtualbase_refreshProperties(self.h)
 
 type QsciLexerJavarefreshPropertiesProc* = proc(): void
@@ -850,7 +811,6 @@ proc miqt_exec_callback_QsciLexerJava_refreshProperties(self: ptr cQsciLexerJava
 
   nimfunc[]()
 proc QsciLexerJavastyleBitsNeeded*(self: gen_qscilexerjava_types.QsciLexerJava, ): cint =
-
   fQsciLexerJava_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerJavastyleBitsNeededProc* = proc(): cint
@@ -868,7 +828,6 @@ proc miqt_exec_callback_QsciLexerJava_styleBitsNeeded(self: ptr cQsciLexerJava, 
 
   virtualReturn
 proc QsciLexerJavawordCharacters*(self: gen_qscilexerjava_types.QsciLexerJava, ): cstring =
-
   (fQsciLexerJava_virtualbase_wordCharacters(self.h))
 
 type QsciLexerJavawordCharactersProc* = proc(): cstring
@@ -886,7 +845,6 @@ proc miqt_exec_callback_QsciLexerJava_wordCharacters(self: ptr cQsciLexerJava, s
 
   virtualReturn
 proc QsciLexerJavasetAutoIndentStyle*(self: gen_qscilexerjava_types.QsciLexerJava, autoindentstyle: cint): void =
-
   fQsciLexerJava_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerJavasetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -904,7 +862,6 @@ proc miqt_exec_callback_QsciLexerJava_setAutoIndentStyle(self: ptr cQsciLexerJav
 
   nimfunc[](slotval1)
 proc QsciLexerJavasetColor*(self: gen_qscilexerjava_types.QsciLexerJava, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerJava_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerJavasetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -924,7 +881,6 @@ proc miqt_exec_callback_QsciLexerJava_setColor(self: ptr cQsciLexerJava, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJavasetEolFill*(self: gen_qscilexerjava_types.QsciLexerJava, eoffill: bool, style: cint): void =
-
   fQsciLexerJava_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerJavasetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -944,7 +900,6 @@ proc miqt_exec_callback_QsciLexerJava_setEolFill(self: ptr cQsciLexerJava, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJavasetFont*(self: gen_qscilexerjava_types.QsciLexerJava, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerJava_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerJavasetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -964,7 +919,6 @@ proc miqt_exec_callback_QsciLexerJava_setFont(self: ptr cQsciLexerJava, slot: in
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJavasetPaper*(self: gen_qscilexerjava_types.QsciLexerJava, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerJava_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerJavasetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -984,7 +938,6 @@ proc miqt_exec_callback_QsciLexerJava_setPaper(self: ptr cQsciLexerJava, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerJavareadProperties*(self: gen_qscilexerjava_types.QsciLexerJava, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerJava_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerJavareadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1009,7 +962,6 @@ proc miqt_exec_callback_QsciLexerJava_readProperties(self: ptr cQsciLexerJava, s
 
   virtualReturn
 proc QsciLexerJavawriteProperties*(self: gen_qscilexerjava_types.QsciLexerJava, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerJava_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerJavawritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1034,7 +986,6 @@ proc miqt_exec_callback_QsciLexerJava_writeProperties(self: ptr cQsciLexerJava, 
 
   virtualReturn
 proc QsciLexerJavaevent*(self: gen_qscilexerjava_types.QsciLexerJava, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerJava_virtualbase_event(self.h, event.h)
 
 type QsciLexerJavaeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1054,7 +1005,6 @@ proc miqt_exec_callback_QsciLexerJava_event(self: ptr cQsciLexerJava, slot: int,
 
   virtualReturn
 proc QsciLexerJavaeventFilter*(self: gen_qscilexerjava_types.QsciLexerJava, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerJava_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerJavaeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1076,7 +1026,6 @@ proc miqt_exec_callback_QsciLexerJava_eventFilter(self: ptr cQsciLexerJava, slot
 
   virtualReturn
 proc QsciLexerJavatimerEvent*(self: gen_qscilexerjava_types.QsciLexerJava, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerJava_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerJavatimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1094,7 +1043,6 @@ proc miqt_exec_callback_QsciLexerJava_timerEvent(self: ptr cQsciLexerJava, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerJavachildEvent*(self: gen_qscilexerjava_types.QsciLexerJava, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerJava_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerJavachildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1112,7 +1060,6 @@ proc miqt_exec_callback_QsciLexerJava_childEvent(self: ptr cQsciLexerJava, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerJavacustomEvent*(self: gen_qscilexerjava_types.QsciLexerJava, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerJava_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerJavacustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1130,7 +1077,6 @@ proc miqt_exec_callback_QsciLexerJava_customEvent(self: ptr cQsciLexerJava, slot
 
   nimfunc[](slotval1)
 proc QsciLexerJavaconnectNotify*(self: gen_qscilexerjava_types.QsciLexerJava, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerJava_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerJavaconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1148,7 +1094,6 @@ proc miqt_exec_callback_QsciLexerJava_connectNotify(self: ptr cQsciLexerJava, sl
 
   nimfunc[](slotval1)
 proc QsciLexerJavadisconnectNotify*(self: gen_qscilexerjava_types.QsciLexerJava, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerJava_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerJavadisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

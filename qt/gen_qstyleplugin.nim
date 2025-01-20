@@ -92,71 +92,60 @@ proc fcQStylePlugin_delete(self: pointer) {.importc: "QStylePlugin_delete".}
 func init*(T: type gen_qstyleplugin_types.QStylePlugin, h: ptr cQStylePlugin): gen_qstyleplugin_types.QStylePlugin =
   T(h: h)
 proc create*(T: type gen_qstyleplugin_types.QStylePlugin, ): gen_qstyleplugin_types.QStylePlugin =
-
   gen_qstyleplugin_types.QStylePlugin.init(fcQStylePlugin_new())
+
 proc create*(T: type gen_qstyleplugin_types.QStylePlugin, parent: gen_qobject.QObject): gen_qstyleplugin_types.QStylePlugin =
-
   gen_qstyleplugin_types.QStylePlugin.init(fcQStylePlugin_new2(parent.h))
-proc metaObject*(self: gen_qstyleplugin_types.QStylePlugin, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qstyleplugin_types.QStylePlugin, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQStylePlugin_metaObject(self.h))
 
 proc metacast*(self: gen_qstyleplugin_types.QStylePlugin, param1: cstring): pointer =
-
   fcQStylePlugin_metacast(self.h, param1)
 
 proc metacall*(self: gen_qstyleplugin_types.QStylePlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQStylePlugin_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring): string =
-
   let v_ms = fcQStylePlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring): string =
-
   let v_ms = fcQStylePlugin_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc create*(self: gen_qstyleplugin_types.QStylePlugin, key: string): gen_qstyle.QStyle =
-
   gen_qstyle.QStyle(h: fcQStylePlugin_create(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc tr2*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring, c: cstring): string =
   let v_ms = fcQStylePlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQStylePlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring, c: cstring): string =
   let v_ms = fcQStylePlugin_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qstyleplugin_types.QStylePlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQStylePlugin_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QStylePluginmetaObject*(self: gen_qstyleplugin_types.QStylePlugin, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQStylePlugin_virtualbase_metaObject(self.h))
 
 type QStylePluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -174,7 +163,6 @@ proc miqt_exec_callback_QStylePlugin_metaObject(self: ptr cQStylePlugin, slot: i
 
   virtualReturn.h
 proc QStylePluginmetacast*(self: gen_qstyleplugin_types.QStylePlugin, param1: cstring): pointer =
-
   fQStylePlugin_virtualbase_metacast(self.h, param1)
 
 type QStylePluginmetacastProc* = proc(param1: cstring): pointer
@@ -194,7 +182,6 @@ proc miqt_exec_callback_QStylePlugin_metacast(self: ptr cQStylePlugin, slot: int
 
   virtualReturn
 proc QStylePluginmetacall*(self: gen_qstyleplugin_types.QStylePlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fQStylePlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QStylePluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -237,7 +224,6 @@ proc miqt_exec_callback_QStylePlugin_create(self: ptr cQStylePlugin, slot: int, 
 
   virtualReturn.h
 proc QStylePluginevent*(self: gen_qstyleplugin_types.QStylePlugin, event: gen_qcoreevent.QEvent): bool =
-
   fQStylePlugin_virtualbase_event(self.h, event.h)
 
 type QStylePlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -257,7 +243,6 @@ proc miqt_exec_callback_QStylePlugin_event(self: ptr cQStylePlugin, slot: int, e
 
   virtualReturn
 proc QStylePlugineventFilter*(self: gen_qstyleplugin_types.QStylePlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQStylePlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QStylePlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -279,7 +264,6 @@ proc miqt_exec_callback_QStylePlugin_eventFilter(self: ptr cQStylePlugin, slot: 
 
   virtualReturn
 proc QStylePlugintimerEvent*(self: gen_qstyleplugin_types.QStylePlugin, event: gen_qcoreevent.QTimerEvent): void =
-
   fQStylePlugin_virtualbase_timerEvent(self.h, event.h)
 
 type QStylePlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -297,7 +281,6 @@ proc miqt_exec_callback_QStylePlugin_timerEvent(self: ptr cQStylePlugin, slot: i
 
   nimfunc[](slotval1)
 proc QStylePluginchildEvent*(self: gen_qstyleplugin_types.QStylePlugin, event: gen_qcoreevent.QChildEvent): void =
-
   fQStylePlugin_virtualbase_childEvent(self.h, event.h)
 
 type QStylePluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -315,7 +298,6 @@ proc miqt_exec_callback_QStylePlugin_childEvent(self: ptr cQStylePlugin, slot: i
 
   nimfunc[](slotval1)
 proc QStylePlugincustomEvent*(self: gen_qstyleplugin_types.QStylePlugin, event: gen_qcoreevent.QEvent): void =
-
   fQStylePlugin_virtualbase_customEvent(self.h, event.h)
 
 type QStylePlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -333,7 +315,6 @@ proc miqt_exec_callback_QStylePlugin_customEvent(self: ptr cQStylePlugin, slot: 
 
   nimfunc[](slotval1)
 proc QStylePluginconnectNotify*(self: gen_qstyleplugin_types.QStylePlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStylePlugin_virtualbase_connectNotify(self.h, signal.h)
 
 type QStylePluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -351,7 +332,6 @@ proc miqt_exec_callback_QStylePlugin_connectNotify(self: ptr cQStylePlugin, slot
 
   nimfunc[](slotval1)
 proc QStylePlugindisconnectNotify*(self: gen_qstyleplugin_types.QStylePlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQStylePlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QStylePlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

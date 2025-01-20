@@ -130,39 +130,33 @@ proc fcQAbstractVideoSurface_delete(self: pointer) {.importc: "QAbstractVideoSur
 func init*(T: type gen_qabstractvideosurface_types.QAbstractVideoSurface, h: ptr cQAbstractVideoSurface): gen_qabstractvideosurface_types.QAbstractVideoSurface =
   T(h: h)
 proc create*(T: type gen_qabstractvideosurface_types.QAbstractVideoSurface, ): gen_qabstractvideosurface_types.QAbstractVideoSurface =
-
   gen_qabstractvideosurface_types.QAbstractVideoSurface.init(fcQAbstractVideoSurface_new())
+
 proc create*(T: type gen_qabstractvideosurface_types.QAbstractVideoSurface, parent: gen_qobject.QObject): gen_qabstractvideosurface_types.QAbstractVideoSurface =
-
   gen_qabstractvideosurface_types.QAbstractVideoSurface.init(fcQAbstractVideoSurface_new2(parent.h))
-proc metaObject*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractVideoSurface_metaObject(self.h))
 
 proc metacast*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, param1: cstring): pointer =
-
   fcQAbstractVideoSurface_metacast(self.h, param1)
 
 proc metacall*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAbstractVideoSurface_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring): string =
-
   let v_ms = fcQAbstractVideoSurface_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring): string =
-
   let v_ms = fcQAbstractVideoSurface_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportedPixelFormats*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, typeVal: cint): seq[cint] =
-
   var v_ma = fcQAbstractVideoSurface_supportedPixelFormats(self.h, cint(typeVal))
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -171,141 +165,119 @@ proc supportedPixelFormats*(self: gen_qabstractvideosurface_types.QAbstractVideo
   vx_ret
 
 proc isFormatSupported*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, format: gen_qvideosurfaceformat.QVideoSurfaceFormat): bool =
-
   fcQAbstractVideoSurface_isFormatSupported(self.h, format.h)
 
 proc nearestFormat*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, format: gen_qvideosurfaceformat.QVideoSurfaceFormat): gen_qvideosurfaceformat.QVideoSurfaceFormat =
-
   gen_qvideosurfaceformat.QVideoSurfaceFormat(h: fcQAbstractVideoSurface_nearestFormat(self.h, format.h))
 
 proc surfaceFormat*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): gen_qvideosurfaceformat.QVideoSurfaceFormat =
-
   gen_qvideosurfaceformat.QVideoSurfaceFormat(h: fcQAbstractVideoSurface_surfaceFormat(self.h))
 
 proc nativeResolution*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQAbstractVideoSurface_nativeResolution(self.h))
 
 proc start*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, format: gen_qvideosurfaceformat.QVideoSurfaceFormat): bool =
-
   fcQAbstractVideoSurface_start(self.h, format.h)
 
 proc stop*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): void =
-
   fcQAbstractVideoSurface_stop(self.h)
 
 proc isActive*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): bool =
-
   fcQAbstractVideoSurface_isActive(self.h)
 
 proc present*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, frame: gen_qvideoframe.QVideoFrame): bool =
-
   fcQAbstractVideoSurface_present(self.h, frame.h)
 
 proc error*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): cint =
-
   cint(fcQAbstractVideoSurface_error(self.h))
 
 proc activeChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, active: bool): void =
-
   fcQAbstractVideoSurface_activeChanged(self.h, active)
 
+type QAbstractVideoSurfaceactiveChangedSlot* = proc(active: bool)
 proc miqt_exec_callback_QAbstractVideoSurface_activeChanged(slot: int, active: bool) {.exportc.} =
-  type Cb = proc(active: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAbstractVideoSurfaceactiveChangedSlot](cast[pointer](slot))
   let slotval1 = active
-
 
   nimfunc[](slotval1)
 
-proc onactiveChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: proc(active: bool)) =
-  type Cb = proc(active: bool)
-  var tmp = new Cb
+proc onactiveChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: QAbstractVideoSurfaceactiveChangedSlot) =
+  var tmp = new QAbstractVideoSurfaceactiveChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractVideoSurface_connect_activeChanged(self.h, cast[int](addr tmp[]))
-proc surfaceFormatChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, format: gen_qvideosurfaceformat.QVideoSurfaceFormat): void =
 
+proc surfaceFormatChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, format: gen_qvideosurfaceformat.QVideoSurfaceFormat): void =
   fcQAbstractVideoSurface_surfaceFormatChanged(self.h, format.h)
 
+type QAbstractVideoSurfacesurfaceFormatChangedSlot* = proc(format: gen_qvideosurfaceformat.QVideoSurfaceFormat)
 proc miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged(slot: int, format: pointer) {.exportc.} =
-  type Cb = proc(format: gen_qvideosurfaceformat.QVideoSurfaceFormat)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAbstractVideoSurfacesurfaceFormatChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qvideosurfaceformat.QVideoSurfaceFormat(h: format)
-
 
   nimfunc[](slotval1)
 
-proc onsurfaceFormatChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: proc(format: gen_qvideosurfaceformat.QVideoSurfaceFormat)) =
-  type Cb = proc(format: gen_qvideosurfaceformat.QVideoSurfaceFormat)
-  var tmp = new Cb
+proc onsurfaceFormatChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: QAbstractVideoSurfacesurfaceFormatChangedSlot) =
+  var tmp = new QAbstractVideoSurfacesurfaceFormatChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractVideoSurface_connect_surfaceFormatChanged(self.h, cast[int](addr tmp[]))
-proc supportedFormatsChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): void =
 
+proc supportedFormatsChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): void =
   fcQAbstractVideoSurface_supportedFormatsChanged(self.h)
 
+type QAbstractVideoSurfacesupportedFormatsChangedSlot* = proc()
 proc miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QAbstractVideoSurfacesupportedFormatsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onsupportedFormatsChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onsupportedFormatsChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: QAbstractVideoSurfacesupportedFormatsChangedSlot) =
+  var tmp = new QAbstractVideoSurfacesupportedFormatsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractVideoSurface_connect_supportedFormatsChanged(self.h, cast[int](addr tmp[]))
-proc nativeResolutionChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, resolution: gen_qsize.QSize): void =
 
+proc nativeResolutionChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, resolution: gen_qsize.QSize): void =
   fcQAbstractVideoSurface_nativeResolutionChanged(self.h, resolution.h)
 
+type QAbstractVideoSurfacenativeResolutionChangedSlot* = proc(resolution: gen_qsize.QSize)
 proc miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged(slot: int, resolution: pointer) {.exportc.} =
-  type Cb = proc(resolution: gen_qsize.QSize)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAbstractVideoSurfacenativeResolutionChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qsize.QSize(h: resolution)
-
 
   nimfunc[](slotval1)
 
-proc onnativeResolutionChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: proc(resolution: gen_qsize.QSize)) =
-  type Cb = proc(resolution: gen_qsize.QSize)
-  var tmp = new Cb
+proc onnativeResolutionChanged*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, slot: QAbstractVideoSurfacenativeResolutionChangedSlot) =
+  var tmp = new QAbstractVideoSurfacenativeResolutionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractVideoSurface_connect_nativeResolutionChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring, c: cstring): string =
   let v_ms = fcQAbstractVideoSurface_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAbstractVideoSurface_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring, c: cstring): string =
   let v_ms = fcQAbstractVideoSurface_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qabstractvideosurface_types.QAbstractVideoSurface, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAbstractVideoSurface_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QAbstractVideoSurfacemetaObject*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQAbstractVideoSurface_virtualbase_metaObject(self.h))
 
 type QAbstractVideoSurfacemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -323,7 +295,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_metaObject(self: ptr cQAbstractVid
 
   virtualReturn.h
 proc QAbstractVideoSurfacemetacast*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, param1: cstring): pointer =
-
   fQAbstractVideoSurface_virtualbase_metacast(self.h, param1)
 
 type QAbstractVideoSurfacemetacastProc* = proc(param1: cstring): pointer
@@ -343,7 +314,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_metacast(self: ptr cQAbstractVideo
 
   virtualReturn
 proc QAbstractVideoSurfacemetacall*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAbstractVideoSurface_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAbstractVideoSurfacemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -387,7 +357,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_supportedPixelFormats(self: ptr cQ
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QAbstractVideoSurfaceisFormatSupported*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, format: gen_qvideosurfaceformat.QVideoSurfaceFormat): bool =
-
   fQAbstractVideoSurface_virtualbase_isFormatSupported(self.h, format.h)
 
 type QAbstractVideoSurfaceisFormatSupportedProc* = proc(format: gen_qvideosurfaceformat.QVideoSurfaceFormat): bool
@@ -407,7 +376,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_isFormatSupported(self: ptr cQAbst
 
   virtualReturn
 proc QAbstractVideoSurfacenearestFormat*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, format: gen_qvideosurfaceformat.QVideoSurfaceFormat): gen_qvideosurfaceformat.QVideoSurfaceFormat =
-
   gen_qvideosurfaceformat.QVideoSurfaceFormat(h: fQAbstractVideoSurface_virtualbase_nearestFormat(self.h, format.h))
 
 type QAbstractVideoSurfacenearestFormatProc* = proc(format: gen_qvideosurfaceformat.QVideoSurfaceFormat): gen_qvideosurfaceformat.QVideoSurfaceFormat
@@ -427,7 +395,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_nearestFormat(self: ptr cQAbstract
 
   virtualReturn.h
 proc QAbstractVideoSurfacestart*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, format: gen_qvideosurfaceformat.QVideoSurfaceFormat): bool =
-
   fQAbstractVideoSurface_virtualbase_start(self.h, format.h)
 
 type QAbstractVideoSurfacestartProc* = proc(format: gen_qvideosurfaceformat.QVideoSurfaceFormat): bool
@@ -447,7 +414,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_start(self: ptr cQAbstractVideoSur
 
   virtualReturn
 proc QAbstractVideoSurfacestop*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, ): void =
-
   fQAbstractVideoSurface_virtualbase_stop(self.h)
 
 type QAbstractVideoSurfacestopProc* = proc(): void
@@ -479,7 +445,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_present(self: ptr cQAbstractVideoS
 
   virtualReturn
 proc QAbstractVideoSurfaceevent*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, event: gen_qcoreevent.QEvent): bool =
-
   fQAbstractVideoSurface_virtualbase_event(self.h, event.h)
 
 type QAbstractVideoSurfaceeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -499,7 +464,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_event(self: ptr cQAbstractVideoSur
 
   virtualReturn
 proc QAbstractVideoSurfaceeventFilter*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAbstractVideoSurface_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAbstractVideoSurfaceeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -521,7 +485,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_eventFilter(self: ptr cQAbstractVi
 
   virtualReturn
 proc QAbstractVideoSurfacetimerEvent*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAbstractVideoSurface_virtualbase_timerEvent(self.h, event.h)
 
 type QAbstractVideoSurfacetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -539,7 +502,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_timerEvent(self: ptr cQAbstractVid
 
   nimfunc[](slotval1)
 proc QAbstractVideoSurfacechildEvent*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, event: gen_qcoreevent.QChildEvent): void =
-
   fQAbstractVideoSurface_virtualbase_childEvent(self.h, event.h)
 
 type QAbstractVideoSurfacechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -557,7 +519,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_childEvent(self: ptr cQAbstractVid
 
   nimfunc[](slotval1)
 proc QAbstractVideoSurfacecustomEvent*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, event: gen_qcoreevent.QEvent): void =
-
   fQAbstractVideoSurface_virtualbase_customEvent(self.h, event.h)
 
 type QAbstractVideoSurfacecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -575,7 +536,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_customEvent(self: ptr cQAbstractVi
 
   nimfunc[](slotval1)
 proc QAbstractVideoSurfaceconnectNotify*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAbstractVideoSurface_virtualbase_connectNotify(self.h, signal.h)
 
 type QAbstractVideoSurfaceconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -593,7 +553,6 @@ proc miqt_exec_callback_QAbstractVideoSurface_connectNotify(self: ptr cQAbstract
 
   nimfunc[](slotval1)
 proc QAbstractVideoSurfacedisconnectNotify*(self: gen_qabstractvideosurface_types.QAbstractVideoSurface, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAbstractVideoSurface_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAbstractVideoSurfacedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -79,126 +79,104 @@ proc fcQWebEngineNotification_delete(self: pointer) {.importc: "QWebEngineNotifi
 func init*(T: type gen_qwebenginenotification_types.QWebEngineNotification, h: ptr cQWebEngineNotification): gen_qwebenginenotification_types.QWebEngineNotification =
   T(h: h)
 proc metaObject*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineNotification_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginenotification_types.QWebEngineNotification, param1: cstring): pointer =
-
   fcQWebEngineNotification_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebenginenotification_types.QWebEngineNotification, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebEngineNotification_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring): string =
-
   let v_ms = fcQWebEngineNotification_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring): string =
-
   let v_ms = fcQWebEngineNotification_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc matches*(self: gen_qwebenginenotification_types.QWebEngineNotification, other: gen_qwebenginenotification_types.QWebEngineNotification): bool =
-
   fcQWebEngineNotification_matches(self.h, other.h)
 
 proc origin*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineNotification_origin(self.h))
 
 proc icon*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fcQWebEngineNotification_icon(self.h))
 
 proc title*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): string =
-
   let v_ms = fcQWebEngineNotification_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc message*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): string =
-
   let v_ms = fcQWebEngineNotification_message(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc tag*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): string =
-
   let v_ms = fcQWebEngineNotification_tag(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): string =
-
   let v_ms = fcQWebEngineNotification_language(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc direction*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): cint =
-
   cint(fcQWebEngineNotification_direction(self.h))
 
 proc show*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): void =
-
   fcQWebEngineNotification_show(self.h)
 
 proc click*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): void =
-
   fcQWebEngineNotification_click(self.h)
 
 proc close*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): void =
-
   fcQWebEngineNotification_close(self.h)
 
 proc closed*(self: gen_qwebenginenotification_types.QWebEngineNotification, ): void =
-
   fcQWebEngineNotification_closed(self.h)
 
+type QWebEngineNotificationclosedSlot* = proc()
 proc miqt_exec_callback_QWebEngineNotification_closed(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QWebEngineNotificationclosedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onclosed*(self: gen_qwebenginenotification_types.QWebEngineNotification, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onclosed*(self: gen_qwebenginenotification_types.QWebEngineNotification, slot: QWebEngineNotificationclosedSlot) =
+  var tmp = new QWebEngineNotificationclosedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineNotification_connect_closed(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineNotification_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineNotification_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineNotification_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qwebenginenotification_types.QWebEngineNotification, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineNotification_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

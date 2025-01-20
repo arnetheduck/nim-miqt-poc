@@ -70,48 +70,39 @@ proc fcQAudioDeviceInfo_delete(self: pointer) {.importc: "QAudioDeviceInfo_delet
 func init*(T: type gen_qaudiodeviceinfo_types.QAudioDeviceInfo, h: ptr cQAudioDeviceInfo): gen_qaudiodeviceinfo_types.QAudioDeviceInfo =
   T(h: h)
 proc create*(T: type gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): gen_qaudiodeviceinfo_types.QAudioDeviceInfo =
-
   gen_qaudiodeviceinfo_types.QAudioDeviceInfo.init(fcQAudioDeviceInfo_new())
+
 proc create*(T: type gen_qaudiodeviceinfo_types.QAudioDeviceInfo, other: gen_qaudiodeviceinfo_types.QAudioDeviceInfo): gen_qaudiodeviceinfo_types.QAudioDeviceInfo =
-
   gen_qaudiodeviceinfo_types.QAudioDeviceInfo.init(fcQAudioDeviceInfo_new2(other.h))
-proc operatorAssign*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, other: gen_qaudiodeviceinfo_types.QAudioDeviceInfo): void =
 
+proc operatorAssign*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, other: gen_qaudiodeviceinfo_types.QAudioDeviceInfo): void =
   fcQAudioDeviceInfo_operatorAssign(self.h, other.h)
 
 proc operatorEqual*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, other: gen_qaudiodeviceinfo_types.QAudioDeviceInfo): bool =
-
   fcQAudioDeviceInfo_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, other: gen_qaudiodeviceinfo_types.QAudioDeviceInfo): bool =
-
   fcQAudioDeviceInfo_operatorNotEqual(self.h, other.h)
 
 proc isNull*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): bool =
-
   fcQAudioDeviceInfo_isNull(self.h)
 
 proc deviceName*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): string =
-
   let v_ms = fcQAudioDeviceInfo_deviceName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isFormatSupported*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, format: gen_qaudioformat.QAudioFormat): bool =
-
   fcQAudioDeviceInfo_isFormatSupported(self.h, format.h)
 
 proc preferredFormat*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): gen_qaudioformat.QAudioFormat =
-
   gen_qaudioformat.QAudioFormat(h: fcQAudioDeviceInfo_preferredFormat(self.h))
 
 proc nearestFormat*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, format: gen_qaudioformat.QAudioFormat): gen_qaudioformat.QAudioFormat =
-
   gen_qaudioformat.QAudioFormat(h: fcQAudioDeviceInfo_nearestFormat(self.h, format.h))
 
 proc supportedCodecs*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): seq[string] =
-
   var v_ma = fcQAudioDeviceInfo_supportedCodecs(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -123,7 +114,6 @@ proc supportedCodecs*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): seq[
   vx_ret
 
 proc supportedSampleRates*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): seq[cint] =
-
   var v_ma = fcQAudioDeviceInfo_supportedSampleRates(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -132,7 +122,6 @@ proc supportedSampleRates*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ):
   vx_ret
 
 proc supportedChannelCounts*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): seq[cint] =
-
   var v_ma = fcQAudioDeviceInfo_supportedChannelCounts(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -141,7 +130,6 @@ proc supportedChannelCounts*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, 
   vx_ret
 
 proc supportedSampleSizes*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): seq[cint] =
-
   var v_ma = fcQAudioDeviceInfo_supportedSampleSizes(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -150,7 +138,6 @@ proc supportedSampleSizes*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ):
   vx_ret
 
 proc supportedByteOrders*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): seq[cint] =
-
   var v_ma = fcQAudioDeviceInfo_supportedByteOrders(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -159,7 +146,6 @@ proc supportedByteOrders*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): 
   vx_ret
 
 proc supportedSampleTypes*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): seq[cint] =
-
   var v_ma = fcQAudioDeviceInfo_supportedSampleTypes(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -168,22 +154,18 @@ proc supportedSampleTypes*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ):
   vx_ret
 
 proc realm*(self: gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): string =
-
   let v_ms = fcQAudioDeviceInfo_realm(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc defaultInputDevice*(_: type gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): gen_qaudiodeviceinfo_types.QAudioDeviceInfo =
-
   gen_qaudiodeviceinfo_types.QAudioDeviceInfo(h: fcQAudioDeviceInfo_defaultInputDevice())
 
 proc defaultOutputDevice*(_: type gen_qaudiodeviceinfo_types.QAudioDeviceInfo, ): gen_qaudiodeviceinfo_types.QAudioDeviceInfo =
-
   gen_qaudiodeviceinfo_types.QAudioDeviceInfo(h: fcQAudioDeviceInfo_defaultOutputDevice())
 
 proc availableDevices*(_: type gen_qaudiodeviceinfo_types.QAudioDeviceInfo, mode: cint): seq[gen_qaudiodeviceinfo_types.QAudioDeviceInfo] =
-
   var v_ma = fcQAudioDeviceInfo_availableDevices(cint(mode))
   var vx_ret = newSeq[gen_qaudiodeviceinfo_types.QAudioDeviceInfo](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)

@@ -298,392 +298,322 @@ proc fcQGraphicsWebView_delete(self: pointer) {.importc: "QGraphicsWebView_delet
 func init*(T: type gen_qgraphicswebview_types.QGraphicsWebView, h: ptr cQGraphicsWebView): gen_qgraphicswebview_types.QGraphicsWebView =
   T(h: h)
 proc create*(T: type gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qgraphicswebview_types.QGraphicsWebView =
-
   gen_qgraphicswebview_types.QGraphicsWebView.init(fcQGraphicsWebView_new())
+
 proc create*(T: type gen_qgraphicswebview_types.QGraphicsWebView, parent: gen_qgraphicsitem.QGraphicsItem): gen_qgraphicswebview_types.QGraphicsWebView =
-
   gen_qgraphicswebview_types.QGraphicsWebView.init(fcQGraphicsWebView_new2(parent.h))
-proc metaObject*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsWebView_metaObject(self.h))
 
 proc metacast*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cstring): pointer =
-
   fcQGraphicsWebView_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGraphicsWebView_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring): string =
-
   let v_ms = fcQGraphicsWebView_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring): string =
-
   let v_ms = fcQGraphicsWebView_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc page*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qwebpage.QWebPage =
-
   gen_qwebpage.QWebPage(h: fcQGraphicsWebView_page(self.h))
 
 proc setPage*(self: gen_qgraphicswebview_types.QGraphicsWebView, page: gen_qwebpage.QWebPage): void =
-
   fcQGraphicsWebView_setPage(self.h, page.h)
 
 proc url*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQGraphicsWebView_url(self.h))
 
 proc setUrl*(self: gen_qgraphicswebview_types.QGraphicsWebView, url: gen_qurl.QUrl): void =
-
   fcQGraphicsWebView_setUrl(self.h, url.h)
 
 proc title*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): string =
-
   let v_ms = fcQGraphicsWebView_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc icon*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQGraphicsWebView_icon(self.h))
 
 proc zoomFactor*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): float64 =
-
   fcQGraphicsWebView_zoomFactor(self.h)
 
 proc setZoomFactor*(self: gen_qgraphicswebview_types.QGraphicsWebView, zoomFactor: float64): void =
-
   fcQGraphicsWebView_setZoomFactor(self.h, zoomFactor)
 
 proc isModified*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): bool =
-
   fcQGraphicsWebView_isModified(self.h)
 
 proc load*(self: gen_qgraphicswebview_types.QGraphicsWebView, url: gen_qurl.QUrl): void =
-
   fcQGraphicsWebView_load(self.h, url.h)
 
-proc loadWithRequest*(self: gen_qgraphicswebview_types.QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest): void =
-
+proc load*(self: gen_qgraphicswebview_types.QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest): void =
   fcQGraphicsWebView_loadWithRequest(self.h, request.h)
 
 proc setHtml*(self: gen_qgraphicswebview_types.QGraphicsWebView, html: string): void =
-
   fcQGraphicsWebView_setHtml(self.h, struct_miqt_string(data: html, len: csize_t(len(html))))
 
 proc setContent*(self: gen_qgraphicswebview_types.QGraphicsWebView, data: seq[byte]): void =
-
   fcQGraphicsWebView_setContent(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
 proc history*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qwebhistory.QWebHistory =
-
   gen_qwebhistory.QWebHistory(h: fcQGraphicsWebView_history(self.h))
 
 proc settings*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qwebsettings.QWebSettings =
-
   gen_qwebsettings.QWebSettings(h: fcQGraphicsWebView_settings(self.h))
 
 proc pageAction*(self: gen_qgraphicswebview_types.QGraphicsWebView, action: cint): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQGraphicsWebView_pageAction(self.h, cint(action)))
 
 proc triggerPageAction*(self: gen_qgraphicswebview_types.QGraphicsWebView, action: cint): void =
-
   fcQGraphicsWebView_triggerPageAction(self.h, cint(action))
 
 proc findText*(self: gen_qgraphicswebview_types.QGraphicsWebView, subString: string): bool =
-
   fcQGraphicsWebView_findText(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))))
 
 proc resizesToContents*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): bool =
-
   fcQGraphicsWebView_resizesToContents(self.h)
 
 proc setResizesToContents*(self: gen_qgraphicswebview_types.QGraphicsWebView, enabled: bool): void =
-
   fcQGraphicsWebView_setResizesToContents(self.h, enabled)
 
 proc isTiledBackingStoreFrozen*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): bool =
-
   fcQGraphicsWebView_isTiledBackingStoreFrozen(self.h)
 
 proc setTiledBackingStoreFrozen*(self: gen_qgraphicswebview_types.QGraphicsWebView, frozen: bool): void =
-
   fcQGraphicsWebView_setTiledBackingStoreFrozen(self.h, frozen)
 
 proc setGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, rect: gen_qrect.QRectF): void =
-
   fcQGraphicsWebView_setGeometry(self.h, rect.h)
 
 proc updateGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
-
   fcQGraphicsWebView_updateGeometry(self.h)
 
 proc paint*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsWebView_paint(self.h, param1.h, options.h, widget.h)
 
 proc itemChange*(self: gen_qgraphicswebview_types.QGraphicsWebView, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQGraphicsWebView_itemChange(self.h, cint(change), value.h))
 
 proc event*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qcoreevent.QEvent): bool =
-
   fcQGraphicsWebView_event(self.h, param1.h)
 
 proc sizeHint*(self: gen_qgraphicswebview_types.QGraphicsWebView, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fcQGraphicsWebView_sizeHint(self.h, cint(which), constraint.h))
 
 proc inputMethodQuery*(self: gen_qgraphicswebview_types.QGraphicsWebView, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQGraphicsWebView_inputMethodQuery(self.h, cint(query)))
 
 proc renderHints*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): cint =
-
   cint(fcQGraphicsWebView_renderHints(self.h))
 
 proc setRenderHints*(self: gen_qgraphicswebview_types.QGraphicsWebView, renderHints: cint): void =
-
   fcQGraphicsWebView_setRenderHints(self.h, cint(renderHints))
 
 proc setRenderHint*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cint): void =
-
   fcQGraphicsWebView_setRenderHint(self.h, cint(param1))
 
 proc stop*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
-
   fcQGraphicsWebView_stop(self.h)
 
 proc back*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
-
   fcQGraphicsWebView_back(self.h)
 
 proc forward*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
-
   fcQGraphicsWebView_forward(self.h)
 
 proc reload*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
-
   fcQGraphicsWebView_reload(self.h)
 
 proc loadStarted*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
-
   fcQGraphicsWebView_loadStarted(self.h)
 
+type QGraphicsWebViewloadStartedSlot* = proc()
 proc miqt_exec_callback_QGraphicsWebView_loadStarted(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsWebViewloadStartedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onloadStarted*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onloadStarted*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewloadStartedSlot) =
+  var tmp = new QGraphicsWebViewloadStartedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_loadStarted(self.h, cast[int](addr tmp[]))
-proc loadFinished*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: bool): void =
 
+proc loadFinished*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: bool): void =
   fcQGraphicsWebView_loadFinished(self.h, param1)
 
+type QGraphicsWebViewloadFinishedSlot* = proc(param1: bool)
 proc miqt_exec_callback_QGraphicsWebView_loadFinished(slot: int, param1: bool) {.exportc.} =
-  type Cb = proc(param1: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsWebViewloadFinishedSlot](cast[pointer](slot))
   let slotval1 = param1
-
 
   nimfunc[](slotval1)
 
-proc onloadFinished*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(param1: bool)) =
-  type Cb = proc(param1: bool)
-  var tmp = new Cb
+proc onloadFinished*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewloadFinishedSlot) =
+  var tmp = new QGraphicsWebViewloadFinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_loadFinished(self.h, cast[int](addr tmp[]))
-proc loadProgress*(self: gen_qgraphicswebview_types.QGraphicsWebView, progress: cint): void =
 
+proc loadProgress*(self: gen_qgraphicswebview_types.QGraphicsWebView, progress: cint): void =
   fcQGraphicsWebView_loadProgress(self.h, progress)
 
+type QGraphicsWebViewloadProgressSlot* = proc(progress: cint)
 proc miqt_exec_callback_QGraphicsWebView_loadProgress(slot: int, progress: cint) {.exportc.} =
-  type Cb = proc(progress: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsWebViewloadProgressSlot](cast[pointer](slot))
   let slotval1 = progress
-
 
   nimfunc[](slotval1)
 
-proc onloadProgress*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(progress: cint)) =
-  type Cb = proc(progress: cint)
-  var tmp = new Cb
+proc onloadProgress*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewloadProgressSlot) =
+  var tmp = new QGraphicsWebViewloadProgressSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_loadProgress(self.h, cast[int](addr tmp[]))
-proc urlChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qurl.QUrl): void =
 
+proc urlChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qurl.QUrl): void =
   fcQGraphicsWebView_urlChanged(self.h, param1.h)
 
+type QGraphicsWebViewurlChangedSlot* = proc(param1: gen_qurl.QUrl)
 proc miqt_exec_callback_QGraphicsWebView_urlChanged(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qurl.QUrl)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsWebViewurlChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qurl.QUrl(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc onurlChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(param1: gen_qurl.QUrl)) =
-  type Cb = proc(param1: gen_qurl.QUrl)
-  var tmp = new Cb
+proc onurlChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewurlChangedSlot) =
+  var tmp = new QGraphicsWebViewurlChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_urlChanged(self.h, cast[int](addr tmp[]))
-proc titleChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: string): void =
 
+proc titleChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: string): void =
   fcQGraphicsWebView_titleChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
+type QGraphicsWebViewtitleChangedSlot* = proc(param1: string)
 proc miqt_exec_callback_QGraphicsWebView_titleChanged(slot: int, param1: struct_miqt_string) {.exportc.} =
-  type Cb = proc(param1: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsWebViewtitleChangedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
   c_free(vparam1_ms.data)
   let slotval1 = vparam1x_ret
 
-
   nimfunc[](slotval1)
 
-proc ontitleChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(param1: string)) =
-  type Cb = proc(param1: string)
-  var tmp = new Cb
+proc ontitleChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewtitleChangedSlot) =
+  var tmp = new QGraphicsWebViewtitleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_titleChanged(self.h, cast[int](addr tmp[]))
-proc iconChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
 
+proc iconChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
   fcQGraphicsWebView_iconChanged(self.h)
 
+type QGraphicsWebViewiconChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsWebView_iconChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsWebViewiconChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc oniconChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc oniconChanged*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewiconChangedSlot) =
+  var tmp = new QGraphicsWebViewiconChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_iconChanged(self.h, cast[int](addr tmp[]))
-proc statusBarMessage*(self: gen_qgraphicswebview_types.QGraphicsWebView, message: string): void =
 
+proc statusBarMessage*(self: gen_qgraphicswebview_types.QGraphicsWebView, message: string): void =
   fcQGraphicsWebView_statusBarMessage(self.h, struct_miqt_string(data: message, len: csize_t(len(message))))
 
+type QGraphicsWebViewstatusBarMessageSlot* = proc(message: string)
 proc miqt_exec_callback_QGraphicsWebView_statusBarMessage(slot: int, message: struct_miqt_string) {.exportc.} =
-  type Cb = proc(message: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsWebViewstatusBarMessageSlot](cast[pointer](slot))
   let vmessage_ms = message
   let vmessagex_ret = string.fromBytes(toOpenArrayByte(vmessage_ms.data, 0, int(vmessage_ms.len)-1))
   c_free(vmessage_ms.data)
   let slotval1 = vmessagex_ret
 
-
   nimfunc[](slotval1)
 
-proc onstatusBarMessage*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(message: string)) =
-  type Cb = proc(message: string)
-  var tmp = new Cb
+proc onstatusBarMessage*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewstatusBarMessageSlot) =
+  var tmp = new QGraphicsWebViewstatusBarMessageSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_statusBarMessage(self.h, cast[int](addr tmp[]))
-proc linkClicked*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qurl.QUrl): void =
 
+proc linkClicked*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qurl.QUrl): void =
   fcQGraphicsWebView_linkClicked(self.h, param1.h)
 
+type QGraphicsWebViewlinkClickedSlot* = proc(param1: gen_qurl.QUrl)
 proc miqt_exec_callback_QGraphicsWebView_linkClicked(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qurl.QUrl)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsWebViewlinkClickedSlot](cast[pointer](slot))
   let slotval1 = gen_qurl.QUrl(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc onlinkClicked*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: proc(param1: gen_qurl.QUrl)) =
-  type Cb = proc(param1: gen_qurl.QUrl)
-  var tmp = new Cb
+proc onlinkClicked*(self: gen_qgraphicswebview_types.QGraphicsWebView, slot: QGraphicsWebViewlinkClickedSlot) =
+  var tmp = new QGraphicsWebViewlinkClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsWebView_connect_linkClicked(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsWebView_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsWebView_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsWebView_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qgraphicswebview_types.QGraphicsWebView, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsWebView_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc load2*(self: gen_qgraphicswebview_types.QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest, operation: cint): void =
-
+proc load*(self: gen_qgraphicswebview_types.QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest, operation: cint): void =
   fcQGraphicsWebView_load2(self.h, request.h, cint(operation))
 
-proc load3*(self: gen_qgraphicswebview_types.QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest, operation: cint, body: seq[byte]): void =
-
+proc load*(self: gen_qgraphicswebview_types.QGraphicsWebView, request: gen_qnetworkrequest.QNetworkRequest, operation: cint, body: seq[byte]): void =
   fcQGraphicsWebView_load3(self.h, request.h, cint(operation), struct_miqt_string(data: cast[cstring](if len(body) == 0: nil else: unsafeAddr body[0]), len: csize_t(len(body))))
 
-proc setHtml2*(self: gen_qgraphicswebview_types.QGraphicsWebView, html: string, baseUrl: gen_qurl.QUrl): void =
-
+proc setHtml*(self: gen_qgraphicswebview_types.QGraphicsWebView, html: string, baseUrl: gen_qurl.QUrl): void =
   fcQGraphicsWebView_setHtml2(self.h, struct_miqt_string(data: html, len: csize_t(len(html))), baseUrl.h)
 
-proc setContent2*(self: gen_qgraphicswebview_types.QGraphicsWebView, data: seq[byte], mimeType: string): void =
-
+proc setContent*(self: gen_qgraphicswebview_types.QGraphicsWebView, data: seq[byte], mimeType: string): void =
   fcQGraphicsWebView_setContent2(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))))
 
-proc setContent3*(self: gen_qgraphicswebview_types.QGraphicsWebView, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
-
+proc setContent*(self: gen_qgraphicswebview_types.QGraphicsWebView, data: seq[byte], mimeType: string, baseUrl: gen_qurl.QUrl): void =
   fcQGraphicsWebView_setContent3(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), struct_miqt_string(data: mimeType, len: csize_t(len(mimeType))), baseUrl.h)
 
-proc triggerPageAction2*(self: gen_qgraphicswebview_types.QGraphicsWebView, action: cint, checked: bool): void =
-
+proc triggerPageAction*(self: gen_qgraphicswebview_types.QGraphicsWebView, action: cint, checked: bool): void =
   fcQGraphicsWebView_triggerPageAction2(self.h, cint(action), checked)
 
-proc findText2*(self: gen_qgraphicswebview_types.QGraphicsWebView, subString: string, options: cint): bool =
-
+proc findText*(self: gen_qgraphicswebview_types.QGraphicsWebView, subString: string, options: cint): bool =
   fcQGraphicsWebView_findText2(self.h, struct_miqt_string(data: subString, len: csize_t(len(subString))), cint(options))
 
-proc setRenderHint2*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cint, enabled: bool): void =
-
+proc setRenderHint*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cint, enabled: bool): void =
   fcQGraphicsWebView_setRenderHint2(self.h, cint(param1), enabled)
 
 proc QGraphicsWebViewmetaObject*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQGraphicsWebView_virtualbase_metaObject(self.h))
 
 type QGraphicsWebViewmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -701,7 +631,6 @@ proc miqt_exec_callback_QGraphicsWebView_metaObject(self: ptr cQGraphicsWebView,
 
   virtualReturn.h
 proc QGraphicsWebViewmetacast*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cstring): pointer =
-
   fQGraphicsWebView_virtualbase_metacast(self.h, param1)
 
 type QGraphicsWebViewmetacastProc* = proc(param1: cstring): pointer
@@ -721,7 +650,6 @@ proc miqt_exec_callback_QGraphicsWebView_metacast(self: ptr cQGraphicsWebView, s
 
   virtualReturn
 proc QGraphicsWebViewmetacall*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGraphicsWebView_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGraphicsWebViewmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -745,7 +673,6 @@ proc miqt_exec_callback_QGraphicsWebView_metacall(self: ptr cQGraphicsWebView, s
 
   virtualReturn
 proc QGraphicsWebViewsetGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, rect: gen_qrect.QRectF): void =
-
   fQGraphicsWebView_virtualbase_setGeometry(self.h, rect.h)
 
 type QGraphicsWebViewsetGeometryProc* = proc(rect: gen_qrect.QRectF): void
@@ -763,7 +690,6 @@ proc miqt_exec_callback_QGraphicsWebView_setGeometry(self: ptr cQGraphicsWebView
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewupdateGeometry*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
-
   fQGraphicsWebView_virtualbase_updateGeometry(self.h)
 
 type QGraphicsWebViewupdateGeometryProc* = proc(): void
@@ -779,7 +705,6 @@ proc miqt_exec_callback_QGraphicsWebView_updateGeometry(self: ptr cQGraphicsWebV
 
   nimfunc[]()
 proc QGraphicsWebViewpaint*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsWebView_virtualbase_paint(self.h, param1.h, options.h, widget.h)
 
 type QGraphicsWebViewpaintProc* = proc(param1: gen_qpainter.QPainter, options: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -801,7 +726,6 @@ proc miqt_exec_callback_QGraphicsWebView_paint(self: ptr cQGraphicsWebView, slot
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsWebViewitemChange*(self: gen_qgraphicswebview_types.QGraphicsWebView, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsWebView_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsWebViewitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -823,7 +747,6 @@ proc miqt_exec_callback_QGraphicsWebView_itemChange(self: ptr cQGraphicsWebView,
 
   virtualReturn.h
 proc QGraphicsWebViewevent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsWebView_virtualbase_event(self.h, param1.h)
 
 type QGraphicsWebVieweventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -843,7 +766,6 @@ proc miqt_exec_callback_QGraphicsWebView_event(self: ptr cQGraphicsWebView, slot
 
   virtualReturn
 proc QGraphicsWebViewsizeHint*(self: gen_qgraphicswebview_types.QGraphicsWebView, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fQGraphicsWebView_virtualbase_sizeHint(self.h, cint(which), constraint.h))
 
 type QGraphicsWebViewsizeHintProc* = proc(which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
@@ -865,7 +787,6 @@ proc miqt_exec_callback_QGraphicsWebView_sizeHint(self: ptr cQGraphicsWebView, s
 
   virtualReturn.h
 proc QGraphicsWebViewinputMethodQuery*(self: gen_qgraphicswebview_types.QGraphicsWebView, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsWebView_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsWebViewinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -885,7 +806,6 @@ proc miqt_exec_callback_QGraphicsWebView_inputMethodQuery(self: ptr cQGraphicsWe
 
   virtualReturn.h
 proc QGraphicsWebViewmousePressEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsWebView_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QGraphicsWebViewmousePressEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -903,7 +823,6 @@ proc miqt_exec_callback_QGraphicsWebView_mousePressEvent(self: ptr cQGraphicsWeb
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewmouseDoubleClickEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsWebView_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
 type QGraphicsWebViewmouseDoubleClickEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -921,7 +840,6 @@ proc miqt_exec_callback_QGraphicsWebView_mouseDoubleClickEvent(self: ptr cQGraph
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewmouseReleaseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsWebView_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QGraphicsWebViewmouseReleaseEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -939,7 +857,6 @@ proc miqt_exec_callback_QGraphicsWebView_mouseReleaseEvent(self: ptr cQGraphicsW
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewmouseMoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsWebView_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QGraphicsWebViewmouseMoveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -957,7 +874,6 @@ proc miqt_exec_callback_QGraphicsWebView_mouseMoveEvent(self: ptr cQGraphicsWebV
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewhoverMoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsWebView_virtualbase_hoverMoveEvent(self.h, param1.h)
 
 type QGraphicsWebViewhoverMoveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -975,7 +891,6 @@ proc miqt_exec_callback_QGraphicsWebView_hoverMoveEvent(self: ptr cQGraphicsWebV
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewhoverLeaveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsWebView_virtualbase_hoverLeaveEvent(self.h, param1.h)
 
 type QGraphicsWebViewhoverLeaveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -993,7 +908,6 @@ proc miqt_exec_callback_QGraphicsWebView_hoverLeaveEvent(self: ptr cQGraphicsWeb
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewwheelEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsWebView_virtualbase_wheelEvent(self.h, param1.h)
 
 type QGraphicsWebViewwheelEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -1011,7 +925,6 @@ proc miqt_exec_callback_QGraphicsWebView_wheelEvent(self: ptr cQGraphicsWebView,
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewkeyPressEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QKeyEvent): void =
-
   fQGraphicsWebView_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QGraphicsWebViewkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -1029,7 +942,6 @@ proc miqt_exec_callback_QGraphicsWebView_keyPressEvent(self: ptr cQGraphicsWebVi
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewkeyReleaseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QKeyEvent): void =
-
   fQGraphicsWebView_virtualbase_keyReleaseEvent(self.h, param1.h)
 
 type QGraphicsWebViewkeyReleaseEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -1047,7 +959,6 @@ proc miqt_exec_callback_QGraphicsWebView_keyReleaseEvent(self: ptr cQGraphicsWeb
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewcontextMenuEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsWebView_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QGraphicsWebViewcontextMenuEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -1065,7 +976,6 @@ proc miqt_exec_callback_QGraphicsWebView_contextMenuEvent(self: ptr cQGraphicsWe
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewdragEnterEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsWebView_virtualbase_dragEnterEvent(self.h, param1.h)
 
 type QGraphicsWebViewdragEnterEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -1083,7 +993,6 @@ proc miqt_exec_callback_QGraphicsWebView_dragEnterEvent(self: ptr cQGraphicsWebV
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewdragLeaveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsWebView_virtualbase_dragLeaveEvent(self.h, param1.h)
 
 type QGraphicsWebViewdragLeaveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -1101,7 +1010,6 @@ proc miqt_exec_callback_QGraphicsWebView_dragLeaveEvent(self: ptr cQGraphicsWebV
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewdragMoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsWebView_virtualbase_dragMoveEvent(self.h, param1.h)
 
 type QGraphicsWebViewdragMoveEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -1119,7 +1027,6 @@ proc miqt_exec_callback_QGraphicsWebView_dragMoveEvent(self: ptr cQGraphicsWebVi
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewdropEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsWebView_virtualbase_dropEvent(self.h, param1.h)
 
 type QGraphicsWebViewdropEventProc* = proc(param1: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -1137,7 +1044,6 @@ proc miqt_exec_callback_QGraphicsWebView_dropEvent(self: ptr cQGraphicsWebView, 
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewfocusInEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QFocusEvent): void =
-
   fQGraphicsWebView_virtualbase_focusInEvent(self.h, param1.h)
 
 type QGraphicsWebViewfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -1155,7 +1061,6 @@ proc miqt_exec_callback_QGraphicsWebView_focusInEvent(self: ptr cQGraphicsWebVie
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewfocusOutEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QFocusEvent): void =
-
   fQGraphicsWebView_virtualbase_focusOutEvent(self.h, param1.h)
 
 type QGraphicsWebViewfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -1173,7 +1078,6 @@ proc miqt_exec_callback_QGraphicsWebView_focusOutEvent(self: ptr cQGraphicsWebVi
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewinputMethodEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsWebView_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QGraphicsWebViewinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1191,7 +1095,6 @@ proc miqt_exec_callback_QGraphicsWebView_inputMethodEvent(self: ptr cQGraphicsWe
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewfocusNextPrevChild*(self: gen_qgraphicswebview_types.QGraphicsWebView, next: bool): bool =
-
   fQGraphicsWebView_virtualbase_focusNextPrevChild(self.h, next)
 
 type QGraphicsWebViewfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1211,7 +1114,6 @@ proc miqt_exec_callback_QGraphicsWebView_focusNextPrevChild(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsWebViewsceneEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, param1: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsWebView_virtualbase_sceneEvent(self.h, param1.h)
 
 type QGraphicsWebViewsceneEventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -1231,7 +1133,6 @@ proc miqt_exec_callback_QGraphicsWebView_sceneEvent(self: ptr cQGraphicsWebView,
 
   virtualReturn
 proc QGraphicsWebViewgetContentsMargins*(self: gen_qgraphicswebview_types.QGraphicsWebView, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
   fQGraphicsWebView_virtualbase_getContentsMargins(self.h, left, top, right, bottom)
 
 type QGraphicsWebViewgetContentsMarginsProc* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
@@ -1255,7 +1156,6 @@ proc miqt_exec_callback_QGraphicsWebView_getContentsMargins(self: ptr cQGraphics
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QGraphicsWebViewtypeX*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): cint =
-
   fQGraphicsWebView_virtualbase_type(self.h)
 
 type QGraphicsWebViewtypeXProc* = proc(): cint
@@ -1273,7 +1173,6 @@ proc miqt_exec_callback_QGraphicsWebView_type(self: ptr cQGraphicsWebView, slot:
 
   virtualReturn
 proc QGraphicsWebViewpaintWindowFrame*(self: gen_qgraphicswebview_types.QGraphicsWebView, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsWebView_virtualbase_paintWindowFrame(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsWebViewpaintWindowFrameProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -1295,7 +1194,6 @@ proc miqt_exec_callback_QGraphicsWebView_paintWindowFrame(self: ptr cQGraphicsWe
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsWebViewboundingRect*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsWebView_virtualbase_boundingRect(self.h))
 
 type QGraphicsWebViewboundingRectProc* = proc(): gen_qrect.QRectF
@@ -1313,7 +1211,6 @@ proc miqt_exec_callback_QGraphicsWebView_boundingRect(self: ptr cQGraphicsWebVie
 
   virtualReturn.h
 proc QGraphicsWebViewshape*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsWebView_virtualbase_shape(self.h))
 
 type QGraphicsWebViewshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -1331,7 +1228,6 @@ proc miqt_exec_callback_QGraphicsWebView_shape(self: ptr cQGraphicsWebView, slot
 
   virtualReturn.h
 proc QGraphicsWebViewinitStyleOption*(self: gen_qgraphicswebview_types.QGraphicsWebView, option: gen_qstyleoption.QStyleOption): void =
-
   fQGraphicsWebView_virtualbase_initStyleOption(self.h, option.h)
 
 type QGraphicsWebViewinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOption): void
@@ -1349,7 +1245,6 @@ proc miqt_exec_callback_QGraphicsWebView_initStyleOption(self: ptr cQGraphicsWeb
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewpropertyChange*(self: gen_qgraphicswebview_types.QGraphicsWebView, propertyName: string, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsWebView_virtualbase_propertyChange(self.h, struct_miqt_string(data: propertyName, len: csize_t(len(propertyName))), value.h))
 
 type QGraphicsWebViewpropertyChangeProc* = proc(propertyName: string, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -1374,7 +1269,6 @@ proc miqt_exec_callback_QGraphicsWebView_propertyChange(self: ptr cQGraphicsWebV
 
   virtualReturn.h
 proc QGraphicsWebViewwindowFrameEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, e: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsWebView_virtualbase_windowFrameEvent(self.h, e.h)
 
 type QGraphicsWebViewwindowFrameEventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -1394,7 +1288,6 @@ proc miqt_exec_callback_QGraphicsWebView_windowFrameEvent(self: ptr cQGraphicsWe
 
   virtualReturn
 proc QGraphicsWebViewwindowFrameSectionAt*(self: gen_qgraphicswebview_types.QGraphicsWebView, pos: gen_qpoint.QPointF): cint =
-
   cint(fQGraphicsWebView_virtualbase_windowFrameSectionAt(self.h, pos.h))
 
 type QGraphicsWebViewwindowFrameSectionAtProc* = proc(pos: gen_qpoint.QPointF): cint
@@ -1414,7 +1307,6 @@ proc miqt_exec_callback_QGraphicsWebView_windowFrameSectionAt(self: ptr cQGraphi
 
   cint(virtualReturn)
 proc QGraphicsWebViewchangeEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsWebView_virtualbase_changeEvent(self.h, event.h)
 
 type QGraphicsWebViewchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1432,7 +1324,6 @@ proc miqt_exec_callback_QGraphicsWebView_changeEvent(self: ptr cQGraphicsWebView
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewcloseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qevent.QCloseEvent): void =
-
   fQGraphicsWebView_virtualbase_closeEvent(self.h, event.h)
 
 type QGraphicsWebViewcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1450,7 +1341,6 @@ proc miqt_exec_callback_QGraphicsWebView_closeEvent(self: ptr cQGraphicsWebView,
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewhideEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qevent.QHideEvent): void =
-
   fQGraphicsWebView_virtualbase_hideEvent(self.h, event.h)
 
 type QGraphicsWebViewhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1468,7 +1358,6 @@ proc miqt_exec_callback_QGraphicsWebView_hideEvent(self: ptr cQGraphicsWebView, 
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewmoveEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): void =
-
   fQGraphicsWebView_virtualbase_moveEvent(self.h, event.h)
 
 type QGraphicsWebViewmoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMoveEvent): void
@@ -1486,7 +1375,6 @@ proc miqt_exec_callback_QGraphicsWebView_moveEvent(self: ptr cQGraphicsWebView, 
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewpolishEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): void =
-
   fQGraphicsWebView_virtualbase_polishEvent(self.h)
 
 type QGraphicsWebViewpolishEventProc* = proc(): void
@@ -1502,7 +1390,6 @@ proc miqt_exec_callback_QGraphicsWebView_polishEvent(self: ptr cQGraphicsWebView
 
   nimfunc[]()
 proc QGraphicsWebViewresizeEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): void =
-
   fQGraphicsWebView_virtualbase_resizeEvent(self.h, event.h)
 
 type QGraphicsWebViewresizeEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneResizeEvent): void
@@ -1520,7 +1407,6 @@ proc miqt_exec_callback_QGraphicsWebView_resizeEvent(self: ptr cQGraphicsWebView
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewshowEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qevent.QShowEvent): void =
-
   fQGraphicsWebView_virtualbase_showEvent(self.h, event.h)
 
 type QGraphicsWebViewshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1538,7 +1424,6 @@ proc miqt_exec_callback_QGraphicsWebView_showEvent(self: ptr cQGraphicsWebView, 
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewgrabMouseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsWebView_virtualbase_grabMouseEvent(self.h, event.h)
 
 type QGraphicsWebViewgrabMouseEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1556,7 +1441,6 @@ proc miqt_exec_callback_QGraphicsWebView_grabMouseEvent(self: ptr cQGraphicsWebV
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewungrabMouseEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsWebView_virtualbase_ungrabMouseEvent(self.h, event.h)
 
 type QGraphicsWebViewungrabMouseEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1574,7 +1458,6 @@ proc miqt_exec_callback_QGraphicsWebView_ungrabMouseEvent(self: ptr cQGraphicsWe
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewgrabKeyboardEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsWebView_virtualbase_grabKeyboardEvent(self.h, event.h)
 
 type QGraphicsWebViewgrabKeyboardEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1592,7 +1475,6 @@ proc miqt_exec_callback_QGraphicsWebView_grabKeyboardEvent(self: ptr cQGraphicsW
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewungrabKeyboardEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsWebView_virtualbase_ungrabKeyboardEvent(self.h, event.h)
 
 type QGraphicsWebViewungrabKeyboardEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1610,7 +1492,6 @@ proc miqt_exec_callback_QGraphicsWebView_ungrabKeyboardEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsWebVieweventFilter*(self: gen_qgraphicswebview_types.QGraphicsWebView, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsWebView_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGraphicsWebVieweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1632,7 +1513,6 @@ proc miqt_exec_callback_QGraphicsWebView_eventFilter(self: ptr cQGraphicsWebView
 
   virtualReturn
 proc QGraphicsWebViewtimerEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGraphicsWebView_virtualbase_timerEvent(self.h, event.h)
 
 type QGraphicsWebViewtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1650,7 +1530,6 @@ proc miqt_exec_callback_QGraphicsWebView_timerEvent(self: ptr cQGraphicsWebView,
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewchildEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QChildEvent): void =
-
   fQGraphicsWebView_virtualbase_childEvent(self.h, event.h)
 
 type QGraphicsWebViewchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1668,7 +1547,6 @@ proc miqt_exec_callback_QGraphicsWebView_childEvent(self: ptr cQGraphicsWebView,
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewcustomEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsWebView_virtualbase_customEvent(self.h, event.h)
 
 type QGraphicsWebViewcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1686,7 +1564,6 @@ proc miqt_exec_callback_QGraphicsWebView_customEvent(self: ptr cQGraphicsWebView
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewconnectNotify*(self: gen_qgraphicswebview_types.QGraphicsWebView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsWebView_virtualbase_connectNotify(self.h, signal.h)
 
 type QGraphicsWebViewconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1704,7 +1581,6 @@ proc miqt_exec_callback_QGraphicsWebView_connectNotify(self: ptr cQGraphicsWebVi
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewdisconnectNotify*(self: gen_qgraphicswebview_types.QGraphicsWebView, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsWebView_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGraphicsWebViewdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1722,7 +1598,6 @@ proc miqt_exec_callback_QGraphicsWebView_disconnectNotify(self: ptr cQGraphicsWe
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewadvance*(self: gen_qgraphicswebview_types.QGraphicsWebView, phase: cint): void =
-
   fQGraphicsWebView_virtualbase_advance(self.h, phase)
 
 type QGraphicsWebViewadvanceProc* = proc(phase: cint): void
@@ -1740,7 +1615,6 @@ proc miqt_exec_callback_QGraphicsWebView_advance(self: ptr cQGraphicsWebView, sl
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewcontains*(self: gen_qgraphicswebview_types.QGraphicsWebView, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsWebView_virtualbase_contains(self.h, point.h)
 
 type QGraphicsWebViewcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -1760,7 +1634,6 @@ proc miqt_exec_callback_QGraphicsWebView_contains(self: ptr cQGraphicsWebView, s
 
   virtualReturn
 proc QGraphicsWebViewcollidesWithItem*(self: gen_qgraphicswebview_types.QGraphicsWebView, other: gen_qgraphicsitem.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsWebView_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsWebViewcollidesWithItemProc* = proc(other: gen_qgraphicsitem.QGraphicsItem, mode: cint): bool
@@ -1782,7 +1655,6 @@ proc miqt_exec_callback_QGraphicsWebView_collidesWithItem(self: ptr cQGraphicsWe
 
   virtualReturn
 proc QGraphicsWebViewcollidesWithPath*(self: gen_qgraphicswebview_types.QGraphicsWebView, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsWebView_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsWebViewcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -1804,7 +1676,6 @@ proc miqt_exec_callback_QGraphicsWebView_collidesWithPath(self: ptr cQGraphicsWe
 
   virtualReturn
 proc QGraphicsWebViewisObscuredBy*(self: gen_qgraphicswebview_types.QGraphicsWebView, item: gen_qgraphicsitem.QGraphicsItem): bool =
-
   fQGraphicsWebView_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsWebViewisObscuredByProc* = proc(item: gen_qgraphicsitem.QGraphicsItem): bool
@@ -1824,7 +1695,6 @@ proc miqt_exec_callback_QGraphicsWebView_isObscuredBy(self: ptr cQGraphicsWebVie
 
   virtualReturn
 proc QGraphicsWebViewopaqueArea*(self: gen_qgraphicswebview_types.QGraphicsWebView, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsWebView_virtualbase_opaqueArea(self.h))
 
 type QGraphicsWebViewopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -1842,7 +1712,6 @@ proc miqt_exec_callback_QGraphicsWebView_opaqueArea(self: ptr cQGraphicsWebView,
 
   virtualReturn.h
 proc QGraphicsWebViewsceneEventFilter*(self: gen_qgraphicswebview_types.QGraphicsWebView, watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsWebView_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsWebViewsceneEventFilterProc* = proc(watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -1864,7 +1733,6 @@ proc miqt_exec_callback_QGraphicsWebView_sceneEventFilter(self: ptr cQGraphicsWe
 
   virtualReturn
 proc QGraphicsWebViewhoverEnterEvent*(self: gen_qgraphicswebview_types.QGraphicsWebView, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsWebView_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsWebViewhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -1882,7 +1750,6 @@ proc miqt_exec_callback_QGraphicsWebView_hoverEnterEvent(self: ptr cQGraphicsWeb
 
   nimfunc[](slotval1)
 proc QGraphicsWebViewsupportsExtension*(self: gen_qgraphicswebview_types.QGraphicsWebView, extension: cint): bool =
-
   fQGraphicsWebView_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsWebViewsupportsExtensionProc* = proc(extension: cint): bool
@@ -1902,7 +1769,6 @@ proc miqt_exec_callback_QGraphicsWebView_supportsExtension(self: ptr cQGraphicsW
 
   virtualReturn
 proc QGraphicsWebViewsetExtension*(self: gen_qgraphicswebview_types.QGraphicsWebView, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsWebView_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsWebViewsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -1922,7 +1788,6 @@ proc miqt_exec_callback_QGraphicsWebView_setExtension(self: ptr cQGraphicsWebVie
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsWebViewextension*(self: gen_qgraphicswebview_types.QGraphicsWebView, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsWebView_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsWebViewextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant

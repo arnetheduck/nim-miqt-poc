@@ -124,69 +124,57 @@ proc fcQState_delete(self: pointer) {.importc: "QState_delete".}
 func init*(T: type gen_qstate_types.QState, h: ptr cQState): gen_qstate_types.QState =
   T(h: h)
 proc create*(T: type gen_qstate_types.QState, ): gen_qstate_types.QState =
-
   gen_qstate_types.QState.init(fcQState_new())
+
 proc create*(T: type gen_qstate_types.QState, childMode: cint): gen_qstate_types.QState =
-
   gen_qstate_types.QState.init(fcQState_new2(cint(childMode)))
+
 proc create*(T: type gen_qstate_types.QState, parent: gen_qstate_types.QState): gen_qstate_types.QState =
-
   gen_qstate_types.QState.init(fcQState_new3(parent.h))
+
 proc create*(T: type gen_qstate_types.QState, childMode: cint, parent: gen_qstate_types.QState): gen_qstate_types.QState =
-
   gen_qstate_types.QState.init(fcQState_new4(cint(childMode), parent.h))
-proc metaObject*(self: gen_qstate_types.QState, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qstate_types.QState, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQState_metaObject(self.h))
 
 proc metacast*(self: gen_qstate_types.QState, param1: cstring): pointer =
-
   fcQState_metacast(self.h, param1)
 
 proc metacall*(self: gen_qstate_types.QState, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQState_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qstate_types.QState, s: cstring): string =
-
   let v_ms = fcQState_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qstate_types.QState, s: cstring): string =
-
   let v_ms = fcQState_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc errorState*(self: gen_qstate_types.QState, ): gen_qabstractstate.QAbstractState =
-
   gen_qabstractstate.QAbstractState(h: fcQState_errorState(self.h))
 
 proc setErrorState*(self: gen_qstate_types.QState, state: gen_qabstractstate.QAbstractState): void =
-
   fcQState_setErrorState(self.h, state.h)
 
 proc addTransition*(self: gen_qstate_types.QState, transition: gen_qabstracttransition.QAbstractTransition): void =
-
   fcQState_addTransition(self.h, transition.h)
 
-proc addTransition2*(self: gen_qstate_types.QState, sender: gen_qobject.QObject, signal: cstring, target: gen_qabstractstate.QAbstractState): gen_qsignaltransition.QSignalTransition =
-
+proc addTransition*(self: gen_qstate_types.QState, sender: gen_qobject.QObject, signal: cstring, target: gen_qabstractstate.QAbstractState): gen_qsignaltransition.QSignalTransition =
   gen_qsignaltransition.QSignalTransition(h: fcQState_addTransition2(self.h, sender.h, signal, target.h))
 
-proc addTransitionWithTarget*(self: gen_qstate_types.QState, target: gen_qabstractstate.QAbstractState): gen_qabstracttransition.QAbstractTransition =
-
+proc addTransition*(self: gen_qstate_types.QState, target: gen_qabstractstate.QAbstractState): gen_qabstracttransition.QAbstractTransition =
   gen_qabstracttransition.QAbstractTransition(h: fcQState_addTransitionWithTarget(self.h, target.h))
 
 proc removeTransition*(self: gen_qstate_types.QState, transition: gen_qabstracttransition.QAbstractTransition): void =
-
   fcQState_removeTransition(self.h, transition.h)
 
 proc transitions*(self: gen_qstate_types.QState, ): seq[gen_qabstracttransition.QAbstractTransition] =
-
   var v_ma = fcQState_transitions(self.h)
   var vx_ret = newSeq[gen_qabstracttransition.QAbstractTransition](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -195,55 +183,45 @@ proc transitions*(self: gen_qstate_types.QState, ): seq[gen_qabstracttransition.
   vx_ret
 
 proc initialState*(self: gen_qstate_types.QState, ): gen_qabstractstate.QAbstractState =
-
   gen_qabstractstate.QAbstractState(h: fcQState_initialState(self.h))
 
 proc setInitialState*(self: gen_qstate_types.QState, state: gen_qabstractstate.QAbstractState): void =
-
   fcQState_setInitialState(self.h, state.h)
 
 proc childMode*(self: gen_qstate_types.QState, ): cint =
-
   cint(fcQState_childMode(self.h))
 
 proc setChildMode*(self: gen_qstate_types.QState, mode: cint): void =
-
   fcQState_setChildMode(self.h, cint(mode))
 
 proc assignProperty*(self: gen_qstate_types.QState, objectVal: gen_qobject.QObject, name: cstring, value: gen_qvariant.QVariant): void =
-
   fcQState_assignProperty(self.h, objectVal.h, name, value.h)
 
-proc tr2*(_: type gen_qstate_types.QState, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qstate_types.QState, s: cstring, c: cstring): string =
   let v_ms = fcQState_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qstate_types.QState, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qstate_types.QState, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQState_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qstate_types.QState, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qstate_types.QState, s: cstring, c: cstring): string =
   let v_ms = fcQState_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qstate_types.QState, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qstate_types.QState, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQState_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QStatemetaObject*(self: gen_qstate_types.QState, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQState_virtualbase_metaObject(self.h))
 
 type QStatemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -261,7 +239,6 @@ proc miqt_exec_callback_QState_metaObject(self: ptr cQState, slot: int): pointer
 
   virtualReturn.h
 proc QStatemetacast*(self: gen_qstate_types.QState, param1: cstring): pointer =
-
   fQState_virtualbase_metacast(self.h, param1)
 
 type QStatemetacastProc* = proc(param1: cstring): pointer
@@ -281,7 +258,6 @@ proc miqt_exec_callback_QState_metacast(self: ptr cQState, slot: int, param1: cs
 
   virtualReturn
 proc QStatemetacall*(self: gen_qstate_types.QState, param1: cint, param2: cint, param3: pointer): cint =
-
   fQState_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QStatemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -305,7 +281,6 @@ proc miqt_exec_callback_QState_metacall(self: ptr cQState, slot: int, param1: ci
 
   virtualReturn
 proc QStateonEntry*(self: gen_qstate_types.QState, event: gen_qcoreevent.QEvent): void =
-
   fQState_virtualbase_onEntry(self.h, event.h)
 
 type QStateonEntryProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -323,7 +298,6 @@ proc miqt_exec_callback_QState_onEntry(self: ptr cQState, slot: int, event: poin
 
   nimfunc[](slotval1)
 proc QStateonExit*(self: gen_qstate_types.QState, event: gen_qcoreevent.QEvent): void =
-
   fQState_virtualbase_onExit(self.h, event.h)
 
 type QStateonExitProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -341,7 +315,6 @@ proc miqt_exec_callback_QState_onExit(self: ptr cQState, slot: int, event: point
 
   nimfunc[](slotval1)
 proc QStateevent*(self: gen_qstate_types.QState, e: gen_qcoreevent.QEvent): bool =
-
   fQState_virtualbase_event(self.h, e.h)
 
 type QStateeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -361,7 +334,6 @@ proc miqt_exec_callback_QState_event(self: ptr cQState, slot: int, e: pointer): 
 
   virtualReturn
 proc QStateeventFilter*(self: gen_qstate_types.QState, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQState_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QStateeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -383,7 +355,6 @@ proc miqt_exec_callback_QState_eventFilter(self: ptr cQState, slot: int, watched
 
   virtualReturn
 proc QStatetimerEvent*(self: gen_qstate_types.QState, event: gen_qcoreevent.QTimerEvent): void =
-
   fQState_virtualbase_timerEvent(self.h, event.h)
 
 type QStatetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -401,7 +372,6 @@ proc miqt_exec_callback_QState_timerEvent(self: ptr cQState, slot: int, event: p
 
   nimfunc[](slotval1)
 proc QStatechildEvent*(self: gen_qstate_types.QState, event: gen_qcoreevent.QChildEvent): void =
-
   fQState_virtualbase_childEvent(self.h, event.h)
 
 type QStatechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -419,7 +389,6 @@ proc miqt_exec_callback_QState_childEvent(self: ptr cQState, slot: int, event: p
 
   nimfunc[](slotval1)
 proc QStatecustomEvent*(self: gen_qstate_types.QState, event: gen_qcoreevent.QEvent): void =
-
   fQState_virtualbase_customEvent(self.h, event.h)
 
 type QStatecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -437,7 +406,6 @@ proc miqt_exec_callback_QState_customEvent(self: ptr cQState, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QStateconnectNotify*(self: gen_qstate_types.QState, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQState_virtualbase_connectNotify(self.h, signal.h)
 
 type QStateconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -455,7 +423,6 @@ proc miqt_exec_callback_QState_connectNotify(self: ptr cQState, slot: int, signa
 
   nimfunc[](slotval1)
 proc QStatedisconnectNotify*(self: gen_qstate_types.QState, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQState_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QStatedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

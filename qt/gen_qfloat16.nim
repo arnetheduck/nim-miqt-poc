@@ -53,29 +53,24 @@ proc fcqfloat16_delete(self: pointer) {.importc: "qfloat16_delete".}
 func init*(T: type gen_qfloat16_types.qfloat16, h: ptr cqfloat16): gen_qfloat16_types.qfloat16 =
   T(h: h)
 proc create*(T: type gen_qfloat16_types.qfloat16, ): gen_qfloat16_types.qfloat16 =
-
   gen_qfloat16_types.qfloat16.init(fcqfloat16_new())
+
 proc create*(T: type gen_qfloat16_types.qfloat16, f: float32): gen_qfloat16_types.qfloat16 =
-
   gen_qfloat16_types.qfloat16.init(fcqfloat16_new2(f))
-proc isInf*(self: gen_qfloat16_types.qfloat16, ): bool =
 
+proc isInf*(self: gen_qfloat16_types.qfloat16, ): bool =
   fcqfloat16_isInf(self.h)
 
 proc isNaN*(self: gen_qfloat16_types.qfloat16, ): bool =
-
   fcqfloat16_isNaN(self.h)
 
 proc isFinite*(self: gen_qfloat16_types.qfloat16, ): bool =
-
   fcqfloat16_isFinite(self.h)
 
 proc fpClassify*(self: gen_qfloat16_types.qfloat16, ): cint =
-
   fcqfloat16_fpClassify(self.h)
 
 proc isNormal*(self: gen_qfloat16_types.qfloat16, ): bool =
-
   fcqfloat16_isNormal(self.h)
 
 proc delete*(self: gen_qfloat16_types.qfloat16) =

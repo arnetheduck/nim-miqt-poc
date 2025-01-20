@@ -100,58 +100,48 @@ proc fcQSctpServer_delete(self: pointer) {.importc: "QSctpServer_delete".}
 func init*(T: type gen_qsctpserver_types.QSctpServer, h: ptr cQSctpServer): gen_qsctpserver_types.QSctpServer =
   T(h: h)
 proc create*(T: type gen_qsctpserver_types.QSctpServer, ): gen_qsctpserver_types.QSctpServer =
-
   gen_qsctpserver_types.QSctpServer.init(fcQSctpServer_new())
+
 proc create*(T: type gen_qsctpserver_types.QSctpServer, parent: gen_qobject.QObject): gen_qsctpserver_types.QSctpServer =
-
   gen_qsctpserver_types.QSctpServer.init(fcQSctpServer_new2(parent.h))
-proc metaObject*(self: gen_qsctpserver_types.QSctpServer, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsctpserver_types.QSctpServer, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSctpServer_metaObject(self.h))
 
 proc metacast*(self: gen_qsctpserver_types.QSctpServer, param1: cstring): pointer =
-
   fcQSctpServer_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsctpserver_types.QSctpServer, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSctpServer_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsctpserver_types.QSctpServer, s: cstring): string =
-
   let v_ms = fcQSctpServer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setMaximumChannelCount*(self: gen_qsctpserver_types.QSctpServer, count: cint): void =
-
   fcQSctpServer_setMaximumChannelCount(self.h, count)
 
 proc maximumChannelCount*(self: gen_qsctpserver_types.QSctpServer, ): cint =
-
   fcQSctpServer_maximumChannelCount(self.h)
 
 proc nextPendingDatagramConnection*(self: gen_qsctpserver_types.QSctpServer, ): gen_qsctpsocket.QSctpSocket =
-
   gen_qsctpsocket.QSctpSocket(h: fcQSctpServer_nextPendingDatagramConnection(self.h))
 
-proc tr2*(_: type gen_qsctpserver_types.QSctpServer, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qsctpserver_types.QSctpServer, s: cstring, c: cstring): string =
   let v_ms = fcQSctpServer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsctpserver_types.QSctpServer, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsctpserver_types.QSctpServer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSctpServer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QSctpServermetaObject*(self: gen_qsctpserver_types.QSctpServer, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSctpServer_virtualbase_metaObject(self.h))
 
 type QSctpServermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -169,7 +159,6 @@ proc miqt_exec_callback_QSctpServer_metaObject(self: ptr cQSctpServer, slot: int
 
   virtualReturn.h
 proc QSctpServermetacast*(self: gen_qsctpserver_types.QSctpServer, param1: cstring): pointer =
-
   fQSctpServer_virtualbase_metacast(self.h, param1)
 
 type QSctpServermetacastProc* = proc(param1: cstring): pointer
@@ -189,7 +178,6 @@ proc miqt_exec_callback_QSctpServer_metacast(self: ptr cQSctpServer, slot: int, 
 
   virtualReturn
 proc QSctpServermetacall*(self: gen_qsctpserver_types.QSctpServer, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSctpServer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSctpServermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -213,7 +201,6 @@ proc miqt_exec_callback_QSctpServer_metacall(self: ptr cQSctpServer, slot: int, 
 
   virtualReturn
 proc QSctpServerincomingConnection*(self: gen_qsctpserver_types.QSctpServer, handle: uint): void =
-
   fQSctpServer_virtualbase_incomingConnection(self.h, handle)
 
 type QSctpServerincomingConnectionProc* = proc(handle: uint): void
@@ -231,7 +218,6 @@ proc miqt_exec_callback_QSctpServer_incomingConnection(self: ptr cQSctpServer, s
 
   nimfunc[](slotval1)
 proc QSctpServerhasPendingConnections*(self: gen_qsctpserver_types.QSctpServer, ): bool =
-
   fQSctpServer_virtualbase_hasPendingConnections(self.h)
 
 type QSctpServerhasPendingConnectionsProc* = proc(): bool
@@ -249,7 +235,6 @@ proc miqt_exec_callback_QSctpServer_hasPendingConnections(self: ptr cQSctpServer
 
   virtualReturn
 proc QSctpServernextPendingConnection*(self: gen_qsctpserver_types.QSctpServer, ): gen_qtcpsocket.QTcpSocket =
-
   gen_qtcpsocket.QTcpSocket(h: fQSctpServer_virtualbase_nextPendingConnection(self.h))
 
 type QSctpServernextPendingConnectionProc* = proc(): gen_qtcpsocket.QTcpSocket
@@ -267,7 +252,6 @@ proc miqt_exec_callback_QSctpServer_nextPendingConnection(self: ptr cQSctpServer
 
   virtualReturn.h
 proc QSctpServerevent*(self: gen_qsctpserver_types.QSctpServer, event: gen_qcoreevent.QEvent): bool =
-
   fQSctpServer_virtualbase_event(self.h, event.h)
 
 type QSctpServereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -287,7 +271,6 @@ proc miqt_exec_callback_QSctpServer_event(self: ptr cQSctpServer, slot: int, eve
 
   virtualReturn
 proc QSctpServereventFilter*(self: gen_qsctpserver_types.QSctpServer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSctpServer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSctpServereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -309,7 +292,6 @@ proc miqt_exec_callback_QSctpServer_eventFilter(self: ptr cQSctpServer, slot: in
 
   virtualReturn
 proc QSctpServertimerEvent*(self: gen_qsctpserver_types.QSctpServer, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSctpServer_virtualbase_timerEvent(self.h, event.h)
 
 type QSctpServertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -327,7 +309,6 @@ proc miqt_exec_callback_QSctpServer_timerEvent(self: ptr cQSctpServer, slot: int
 
   nimfunc[](slotval1)
 proc QSctpServerchildEvent*(self: gen_qsctpserver_types.QSctpServer, event: gen_qcoreevent.QChildEvent): void =
-
   fQSctpServer_virtualbase_childEvent(self.h, event.h)
 
 type QSctpServerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -345,7 +326,6 @@ proc miqt_exec_callback_QSctpServer_childEvent(self: ptr cQSctpServer, slot: int
 
   nimfunc[](slotval1)
 proc QSctpServercustomEvent*(self: gen_qsctpserver_types.QSctpServer, event: gen_qcoreevent.QEvent): void =
-
   fQSctpServer_virtualbase_customEvent(self.h, event.h)
 
 type QSctpServercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -363,7 +343,6 @@ proc miqt_exec_callback_QSctpServer_customEvent(self: ptr cQSctpServer, slot: in
 
   nimfunc[](slotval1)
 proc QSctpServerconnectNotify*(self: gen_qsctpserver_types.QSctpServer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSctpServer_virtualbase_connectNotify(self.h, signal.h)
 
 type QSctpServerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -381,7 +360,6 @@ proc miqt_exec_callback_QSctpServer_connectNotify(self: ptr cQSctpServer, slot: 
 
   nimfunc[](slotval1)
 proc QSctpServerdisconnectNotify*(self: gen_qsctpserver_types.QSctpServer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSctpServer_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSctpServerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

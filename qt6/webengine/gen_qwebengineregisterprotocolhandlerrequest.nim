@@ -61,36 +61,30 @@ proc fcQWebEngineRegisterProtocolHandlerRequest_delete(self: pointer) {.importc:
 func init*(T: type gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, h: ptr cQWebEngineRegisterProtocolHandlerRequest): gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest =
   T(h: h)
 proc create*(T: type gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, ): gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest =
-
   gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest.init(fcQWebEngineRegisterProtocolHandlerRequest_new())
+
 proc create*(T: type gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, param1: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest): gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest =
-
   gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest.init(fcQWebEngineRegisterProtocolHandlerRequest_new2(param1.h))
-proc accept*(self: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, ): void =
 
+proc accept*(self: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, ): void =
   fcQWebEngineRegisterProtocolHandlerRequest_accept(self.h)
 
 proc reject*(self: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, ): void =
-
   fcQWebEngineRegisterProtocolHandlerRequest_reject(self.h)
 
 proc origin*(self: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineRegisterProtocolHandlerRequest_origin(self.h))
 
 proc scheme*(self: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, ): string =
-
   let v_ms = fcQWebEngineRegisterProtocolHandlerRequest_scheme(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc operatorEqual*(self: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, that: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest): bool =
-
   fcQWebEngineRegisterProtocolHandlerRequest_operatorEqual(self.h, that.h)
 
 proc operatorNotEqual*(self: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest, that: gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest): bool =
-
   fcQWebEngineRegisterProtocolHandlerRequest_operatorNotEqual(self.h, that.h)
 
 proc staticMetaObject*(_: type gen_qwebengineregisterprotocolhandlerrequest_types.QWebEngineRegisterProtocolHandlerRequest): gen_qobjectdefs.QMetaObject =

@@ -102,92 +102,78 @@ proc fcQSignalTransition_delete(self: pointer) {.importc: "QSignalTransition_del
 func init*(T: type gen_qsignaltransition_types.QSignalTransition, h: ptr cQSignalTransition): gen_qsignaltransition_types.QSignalTransition =
   T(h: h)
 proc create*(T: type gen_qsignaltransition_types.QSignalTransition, ): gen_qsignaltransition_types.QSignalTransition =
-
   gen_qsignaltransition_types.QSignalTransition.init(fcQSignalTransition_new())
+
 proc create*(T: type gen_qsignaltransition_types.QSignalTransition, sender: gen_qobject.QObject, signal: cstring): gen_qsignaltransition_types.QSignalTransition =
-
   gen_qsignaltransition_types.QSignalTransition.init(fcQSignalTransition_new2(sender.h, signal))
+
 proc create*(T: type gen_qsignaltransition_types.QSignalTransition, sourceState: gen_qstate.QState): gen_qsignaltransition_types.QSignalTransition =
-
   gen_qsignaltransition_types.QSignalTransition.init(fcQSignalTransition_new3(sourceState.h))
+
 proc create*(T: type gen_qsignaltransition_types.QSignalTransition, sender: gen_qobject.QObject, signal: cstring, sourceState: gen_qstate.QState): gen_qsignaltransition_types.QSignalTransition =
-
   gen_qsignaltransition_types.QSignalTransition.init(fcQSignalTransition_new4(sender.h, signal, sourceState.h))
-proc metaObject*(self: gen_qsignaltransition_types.QSignalTransition, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsignaltransition_types.QSignalTransition, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSignalTransition_metaObject(self.h))
 
 proc metacast*(self: gen_qsignaltransition_types.QSignalTransition, param1: cstring): pointer =
-
   fcQSignalTransition_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsignaltransition_types.QSignalTransition, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSignalTransition_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring): string =
-
   let v_ms = fcQSignalTransition_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring): string =
-
   let v_ms = fcQSignalTransition_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc senderObject*(self: gen_qsignaltransition_types.QSignalTransition, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQSignalTransition_senderObject(self.h))
 
 proc setSenderObject*(self: gen_qsignaltransition_types.QSignalTransition, sender: gen_qobject.QObject): void =
-
   fcQSignalTransition_setSenderObject(self.h, sender.h)
 
 proc signal*(self: gen_qsignaltransition_types.QSignalTransition, ): seq[byte] =
-
   var v_bytearray = fcQSignalTransition_signal(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc setSignal*(self: gen_qsignaltransition_types.QSignalTransition, signal: seq[byte]): void =
-
   fcQSignalTransition_setSignal(self.h, struct_miqt_string(data: cast[cstring](if len(signal) == 0: nil else: unsafeAddr signal[0]), len: csize_t(len(signal))))
 
-proc tr2*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring, c: cstring): string =
   let v_ms = fcQSignalTransition_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSignalTransition_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring, c: cstring): string =
   let v_ms = fcQSignalTransition_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qsignaltransition_types.QSignalTransition, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSignalTransition_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QSignalTransitionmetaObject*(self: gen_qsignaltransition_types.QSignalTransition, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSignalTransition_virtualbase_metaObject(self.h))
 
 type QSignalTransitionmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -205,7 +191,6 @@ proc miqt_exec_callback_QSignalTransition_metaObject(self: ptr cQSignalTransitio
 
   virtualReturn.h
 proc QSignalTransitionmetacast*(self: gen_qsignaltransition_types.QSignalTransition, param1: cstring): pointer =
-
   fQSignalTransition_virtualbase_metacast(self.h, param1)
 
 type QSignalTransitionmetacastProc* = proc(param1: cstring): pointer
@@ -225,7 +210,6 @@ proc miqt_exec_callback_QSignalTransition_metacast(self: ptr cQSignalTransition,
 
   virtualReturn
 proc QSignalTransitionmetacall*(self: gen_qsignaltransition_types.QSignalTransition, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSignalTransition_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSignalTransitionmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -249,7 +233,6 @@ proc miqt_exec_callback_QSignalTransition_metacall(self: ptr cQSignalTransition,
 
   virtualReturn
 proc QSignalTransitioneventTest*(self: gen_qsignaltransition_types.QSignalTransition, event: gen_qcoreevent.QEvent): bool =
-
   fQSignalTransition_virtualbase_eventTest(self.h, event.h)
 
 type QSignalTransitioneventTestProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -269,7 +252,6 @@ proc miqt_exec_callback_QSignalTransition_eventTest(self: ptr cQSignalTransition
 
   virtualReturn
 proc QSignalTransitiononTransition*(self: gen_qsignaltransition_types.QSignalTransition, event: gen_qcoreevent.QEvent): void =
-
   fQSignalTransition_virtualbase_onTransition(self.h, event.h)
 
 type QSignalTransitiononTransitionProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -287,7 +269,6 @@ proc miqt_exec_callback_QSignalTransition_onTransition(self: ptr cQSignalTransit
 
   nimfunc[](slotval1)
 proc QSignalTransitionevent*(self: gen_qsignaltransition_types.QSignalTransition, e: gen_qcoreevent.QEvent): bool =
-
   fQSignalTransition_virtualbase_event(self.h, e.h)
 
 type QSignalTransitioneventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -307,7 +288,6 @@ proc miqt_exec_callback_QSignalTransition_event(self: ptr cQSignalTransition, sl
 
   virtualReturn
 proc QSignalTransitioneventFilter*(self: gen_qsignaltransition_types.QSignalTransition, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSignalTransition_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSignalTransitioneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -329,7 +309,6 @@ proc miqt_exec_callback_QSignalTransition_eventFilter(self: ptr cQSignalTransiti
 
   virtualReturn
 proc QSignalTransitiontimerEvent*(self: gen_qsignaltransition_types.QSignalTransition, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSignalTransition_virtualbase_timerEvent(self.h, event.h)
 
 type QSignalTransitiontimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -347,7 +326,6 @@ proc miqt_exec_callback_QSignalTransition_timerEvent(self: ptr cQSignalTransitio
 
   nimfunc[](slotval1)
 proc QSignalTransitionchildEvent*(self: gen_qsignaltransition_types.QSignalTransition, event: gen_qcoreevent.QChildEvent): void =
-
   fQSignalTransition_virtualbase_childEvent(self.h, event.h)
 
 type QSignalTransitionchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -365,7 +343,6 @@ proc miqt_exec_callback_QSignalTransition_childEvent(self: ptr cQSignalTransitio
 
   nimfunc[](slotval1)
 proc QSignalTransitioncustomEvent*(self: gen_qsignaltransition_types.QSignalTransition, event: gen_qcoreevent.QEvent): void =
-
   fQSignalTransition_virtualbase_customEvent(self.h, event.h)
 
 type QSignalTransitioncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -383,7 +360,6 @@ proc miqt_exec_callback_QSignalTransition_customEvent(self: ptr cQSignalTransiti
 
   nimfunc[](slotval1)
 proc QSignalTransitionconnectNotify*(self: gen_qsignaltransition_types.QSignalTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSignalTransition_virtualbase_connectNotify(self.h, signal.h)
 
 type QSignalTransitionconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -401,7 +377,6 @@ proc miqt_exec_callback_QSignalTransition_connectNotify(self: ptr cQSignalTransi
 
   nimfunc[](slotval1)
 proc QSignalTransitiondisconnectNotify*(self: gen_qsignaltransition_types.QSignalTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSignalTransition_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSignalTransitiondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

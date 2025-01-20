@@ -113,7 +113,6 @@ proc fcQHostAddress_delete(self: pointer) {.importc: "QHostAddress_delete".}
 func init*(T: type gen_qhostaddress_types.QIPv6Address, h: ptr cQIPv6Address): gen_qhostaddress_types.QIPv6Address =
   T(h: h)
 proc operatorSubscript*(self: gen_qhostaddress_types.QIPv6Address, index: cint): uint8 =
-
   fcQIPv6Address_operatorSubscript(self.h, index)
 
 proc delete*(self: gen_qhostaddress_types.QIPv6Address) =
@@ -122,122 +121,99 @@ proc delete*(self: gen_qhostaddress_types.QIPv6Address) =
 func init*(T: type gen_qhostaddress_types.QHostAddress, h: ptr cQHostAddress): gen_qhostaddress_types.QHostAddress =
   T(h: h)
 proc create*(T: type gen_qhostaddress_types.QHostAddress, ): gen_qhostaddress_types.QHostAddress =
-
   gen_qhostaddress_types.QHostAddress.init(fcQHostAddress_new())
+
 proc create*(T: type gen_qhostaddress_types.QHostAddress, ip4Addr: cuint): gen_qhostaddress_types.QHostAddress =
-
   gen_qhostaddress_types.QHostAddress.init(fcQHostAddress_new2(ip4Addr))
+
 proc create*(T: type gen_qhostaddress_types.QHostAddress, ip6Addr: ptr uint8): gen_qhostaddress_types.QHostAddress =
-
   gen_qhostaddress_types.QHostAddress.init(fcQHostAddress_new3(ip6Addr))
+
 proc create*(T: type gen_qhostaddress_types.QHostAddress, ip6Addr: gen_qhostaddress_types.QIPv6Address): gen_qhostaddress_types.QHostAddress =
-
   gen_qhostaddress_types.QHostAddress.init(fcQHostAddress_new4(ip6Addr.h))
+
 proc create*(T: type gen_qhostaddress_types.QHostAddress, address: string): gen_qhostaddress_types.QHostAddress =
-
   gen_qhostaddress_types.QHostAddress.init(fcQHostAddress_new5(struct_miqt_string(data: address, len: csize_t(len(address)))))
-proc create2*(T: type gen_qhostaddress_types.QHostAddress, copy: gen_qhostaddress_types.QHostAddress): gen_qhostaddress_types.QHostAddress =
 
+proc create*(T: type gen_qhostaddress_types.QHostAddress, copy: gen_qhostaddress_types.QHostAddress): gen_qhostaddress_types.QHostAddress =
   gen_qhostaddress_types.QHostAddress.init(fcQHostAddress_new6(copy.h))
+
 proc create*(T: type gen_qhostaddress_types.QHostAddress, address: cint): gen_qhostaddress_types.QHostAddress =
-
   gen_qhostaddress_types.QHostAddress.init(fcQHostAddress_new7(cint(address)))
-proc operatorAssign*(self: gen_qhostaddress_types.QHostAddress, other: gen_qhostaddress_types.QHostAddress): void =
 
+proc operatorAssign*(self: gen_qhostaddress_types.QHostAddress, other: gen_qhostaddress_types.QHostAddress): void =
   fcQHostAddress_operatorAssign(self.h, other.h)
 
-proc operatorAssignWithAddress*(self: gen_qhostaddress_types.QHostAddress, address: cint): void =
-
+proc operatorAssign*(self: gen_qhostaddress_types.QHostAddress, address: cint): void =
   fcQHostAddress_operatorAssignWithAddress(self.h, cint(address))
 
 proc swap*(self: gen_qhostaddress_types.QHostAddress, other: gen_qhostaddress_types.QHostAddress): void =
-
   fcQHostAddress_swap(self.h, other.h)
 
 proc setAddress*(self: gen_qhostaddress_types.QHostAddress, ip4Addr: cuint): void =
-
   fcQHostAddress_setAddress(self.h, ip4Addr)
 
-proc setAddressWithIp6Addr*(self: gen_qhostaddress_types.QHostAddress, ip6Addr: ptr uint8): void =
-
+proc setAddress*(self: gen_qhostaddress_types.QHostAddress, ip6Addr: ptr uint8): void =
   fcQHostAddress_setAddressWithIp6Addr(self.h, ip6Addr)
 
-proc setAddress2*(self: gen_qhostaddress_types.QHostAddress, ip6Addr: gen_qhostaddress_types.QIPv6Address): void =
-
+proc setAddress*(self: gen_qhostaddress_types.QHostAddress, ip6Addr: gen_qhostaddress_types.QIPv6Address): void =
   fcQHostAddress_setAddress2(self.h, ip6Addr.h)
 
-proc setAddress3*(self: gen_qhostaddress_types.QHostAddress, address: string): bool =
-
+proc setAddress*(self: gen_qhostaddress_types.QHostAddress, address: string): bool =
   fcQHostAddress_setAddress3(self.h, struct_miqt_string(data: address, len: csize_t(len(address))))
 
-proc setAddress4*(self: gen_qhostaddress_types.QHostAddress, address: cint): void =
-
+proc setAddress*(self: gen_qhostaddress_types.QHostAddress, address: cint): void =
   fcQHostAddress_setAddress4(self.h, cint(address))
 
 proc protocol*(self: gen_qhostaddress_types.QHostAddress, ): cint =
-
   cint(fcQHostAddress_protocol(self.h))
 
 proc toIPv4Address*(self: gen_qhostaddress_types.QHostAddress, ): cuint =
-
   fcQHostAddress_toIPv4Address(self.h)
 
 proc toIPv6Address*(self: gen_qhostaddress_types.QHostAddress, ): gen_qhostaddress_types.QIPv6Address =
-
   gen_qhostaddress_types.QIPv6Address(h: fcQHostAddress_toIPv6Address(self.h))
 
 proc toString*(self: gen_qhostaddress_types.QHostAddress, ): string =
-
   let v_ms = fcQHostAddress_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc scopeId*(self: gen_qhostaddress_types.QHostAddress, ): string =
-
   let v_ms = fcQHostAddress_scopeId(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setScopeId*(self: gen_qhostaddress_types.QHostAddress, id: string): void =
-
   fcQHostAddress_setScopeId(self.h, struct_miqt_string(data: id, len: csize_t(len(id))))
 
 proc isEqual*(self: gen_qhostaddress_types.QHostAddress, address: gen_qhostaddress_types.QHostAddress): bool =
-
   fcQHostAddress_isEqual(self.h, address.h)
 
 proc operatorEqual*(self: gen_qhostaddress_types.QHostAddress, address: gen_qhostaddress_types.QHostAddress): bool =
-
   fcQHostAddress_operatorEqual(self.h, address.h)
 
-proc operatorEqualWithAddress*(self: gen_qhostaddress_types.QHostAddress, address: cint): bool =
-
+proc operatorEqual*(self: gen_qhostaddress_types.QHostAddress, address: cint): bool =
   fcQHostAddress_operatorEqualWithAddress(self.h, cint(address))
 
 proc operatorNotEqual*(self: gen_qhostaddress_types.QHostAddress, address: gen_qhostaddress_types.QHostAddress): bool =
-
   fcQHostAddress_operatorNotEqual(self.h, address.h)
 
-proc operatorNotEqualWithAddress*(self: gen_qhostaddress_types.QHostAddress, address: cint): bool =
-
+proc operatorNotEqual*(self: gen_qhostaddress_types.QHostAddress, address: cint): bool =
   fcQHostAddress_operatorNotEqualWithAddress(self.h, cint(address))
 
 proc isNull*(self: gen_qhostaddress_types.QHostAddress, ): bool =
-
   fcQHostAddress_isNull(self.h)
 
 proc clear*(self: gen_qhostaddress_types.QHostAddress, ): void =
-
   fcQHostAddress_clear(self.h)
 
 proc isInSubnet*(self: gen_qhostaddress_types.QHostAddress, subnet: gen_qhostaddress_types.QHostAddress, netmask: cint): bool =
-
   fcQHostAddress_isInSubnet(self.h, subnet.h, netmask)
 
-proc isInSubnetWithSubnet*(self: gen_qhostaddress_types.QHostAddress, subnet: tuple[first: gen_qhostaddress_types.QHostAddress, second: cint]): bool =
-
+proc isInSubnet*(self: gen_qhostaddress_types.QHostAddress, subnet: tuple[first: gen_qhostaddress_types.QHostAddress, second: cint]): bool =
   var subnet_CArray_First: pointer
   var subnet_CArray_Second: cint
   subnet_CArray_First = subnet.first.h
@@ -245,35 +221,27 @@ proc isInSubnetWithSubnet*(self: gen_qhostaddress_types.QHostAddress, subnet: tu
   fcQHostAddress_isInSubnetWithSubnet(self.h, struct_miqt_map(len: 1,keys: addr(subnet_CArray_First),values: addr(subnet_CArray_Second),))
 
 proc isLoopback*(self: gen_qhostaddress_types.QHostAddress, ): bool =
-
   fcQHostAddress_isLoopback(self.h)
 
 proc isGlobal*(self: gen_qhostaddress_types.QHostAddress, ): bool =
-
   fcQHostAddress_isGlobal(self.h)
 
 proc isLinkLocal*(self: gen_qhostaddress_types.QHostAddress, ): bool =
-
   fcQHostAddress_isLinkLocal(self.h)
 
 proc isSiteLocal*(self: gen_qhostaddress_types.QHostAddress, ): bool =
-
   fcQHostAddress_isSiteLocal(self.h)
 
 proc isUniqueLocalUnicast*(self: gen_qhostaddress_types.QHostAddress, ): bool =
-
   fcQHostAddress_isUniqueLocalUnicast(self.h)
 
 proc isMulticast*(self: gen_qhostaddress_types.QHostAddress, ): bool =
-
   fcQHostAddress_isMulticast(self.h)
 
 proc isBroadcast*(self: gen_qhostaddress_types.QHostAddress, ): bool =
-
   fcQHostAddress_isBroadcast(self.h)
 
 proc parseSubnet*(_: type gen_qhostaddress_types.QHostAddress, subnet: string): tuple[first: gen_qhostaddress_types.QHostAddress, second: cint] =
-
   var v_mm = fcQHostAddress_parseSubnet(struct_miqt_string(data: subnet, len: csize_t(len(subnet))))
   var v_First_CArray = cast[ptr UncheckedArray[pointer]](v_mm.keys)
   var v_Second_CArray = cast[ptr UncheckedArray[cint]](v_mm.values)
@@ -283,12 +251,10 @@ proc parseSubnet*(_: type gen_qhostaddress_types.QHostAddress, subnet: string): 
 
   (first: v_entry_First , second: v_entry_Second )
 
-proc toIPv4Address1*(self: gen_qhostaddress_types.QHostAddress, ok: ptr bool): cuint =
-
+proc toIPv4Address*(self: gen_qhostaddress_types.QHostAddress, ok: ptr bool): cuint =
   fcQHostAddress_toIPv4Address1(self.h, ok)
 
-proc isEqual2*(self: gen_qhostaddress_types.QHostAddress, address: gen_qhostaddress_types.QHostAddress, mode: cint): bool =
-
+proc isEqual*(self: gen_qhostaddress_types.QHostAddress, address: gen_qhostaddress_types.QHostAddress, mode: cint): bool =
   fcQHostAddress_isEqual2(self.h, address.h, cint(mode))
 
 proc staticMetaObject*(_: type gen_qhostaddress_types.QHostAddress): gen_qobjectdefs.QMetaObject =

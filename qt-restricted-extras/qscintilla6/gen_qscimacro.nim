@@ -99,73 +99,60 @@ proc fcQsciMacro_delete(self: pointer) {.importc: "QsciMacro_delete".}
 func init*(T: type gen_qscimacro_types.QsciMacro, h: ptr cQsciMacro): gen_qscimacro_types.QsciMacro =
   T(h: h)
 proc create*(T: type gen_qscimacro_types.QsciMacro, parent: gen_qsciscintilla.QsciScintilla): gen_qscimacro_types.QsciMacro =
-
   gen_qscimacro_types.QsciMacro.init(fcQsciMacro_new(parent.h))
+
 proc create*(T: type gen_qscimacro_types.QsciMacro, asc: string, parent: gen_qsciscintilla.QsciScintilla): gen_qscimacro_types.QsciMacro =
-
   gen_qscimacro_types.QsciMacro.init(fcQsciMacro_new2(struct_miqt_string(data: asc, len: csize_t(len(asc))), parent.h))
-proc metaObject*(self: gen_qscimacro_types.QsciMacro, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscimacro_types.QsciMacro, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciMacro_metaObject(self.h))
 
 proc metacast*(self: gen_qscimacro_types.QsciMacro, param1: cstring): pointer =
-
   fcQsciMacro_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscimacro_types.QsciMacro, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciMacro_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscimacro_types.QsciMacro, s: cstring): string =
-
   let v_ms = fcQsciMacro_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc clear*(self: gen_qscimacro_types.QsciMacro, ): void =
-
   fcQsciMacro_clear(self.h)
 
 proc load*(self: gen_qscimacro_types.QsciMacro, asc: string): bool =
-
   fcQsciMacro_load(self.h, struct_miqt_string(data: asc, len: csize_t(len(asc))))
 
 proc save*(self: gen_qscimacro_types.QsciMacro, ): string =
-
   let v_ms = fcQsciMacro_save(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc play*(self: gen_qscimacro_types.QsciMacro, ): void =
-
   fcQsciMacro_play(self.h)
 
 proc startRecording*(self: gen_qscimacro_types.QsciMacro, ): void =
-
   fcQsciMacro_startRecording(self.h)
 
 proc endRecording*(self: gen_qscimacro_types.QsciMacro, ): void =
-
   fcQsciMacro_endRecording(self.h)
 
-proc tr2*(_: type gen_qscimacro_types.QsciMacro, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscimacro_types.QsciMacro, s: cstring, c: cstring): string =
   let v_ms = fcQsciMacro_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscimacro_types.QsciMacro, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscimacro_types.QsciMacro, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciMacro_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciMacrometaObject*(self: gen_qscimacro_types.QsciMacro, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciMacro_virtualbase_metaObject(self.h))
 
 type QsciMacrometaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -183,7 +170,6 @@ proc miqt_exec_callback_QsciMacro_metaObject(self: ptr cQsciMacro, slot: int): p
 
   virtualReturn.h
 proc QsciMacrometacast*(self: gen_qscimacro_types.QsciMacro, param1: cstring): pointer =
-
   fQsciMacro_virtualbase_metacast(self.h, param1)
 
 type QsciMacrometacastProc* = proc(param1: cstring): pointer
@@ -203,7 +189,6 @@ proc miqt_exec_callback_QsciMacro_metacast(self: ptr cQsciMacro, slot: int, para
 
   virtualReturn
 proc QsciMacrometacall*(self: gen_qscimacro_types.QsciMacro, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciMacro_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciMacrometacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -227,7 +212,6 @@ proc miqt_exec_callback_QsciMacro_metacall(self: ptr cQsciMacro, slot: int, para
 
   virtualReturn
 proc QsciMacroplay*(self: gen_qscimacro_types.QsciMacro, ): void =
-
   fQsciMacro_virtualbase_play(self.h)
 
 type QsciMacroplayProc* = proc(): void
@@ -243,7 +227,6 @@ proc miqt_exec_callback_QsciMacro_play(self: ptr cQsciMacro, slot: int): void {.
 
   nimfunc[]()
 proc QsciMacrostartRecording*(self: gen_qscimacro_types.QsciMacro, ): void =
-
   fQsciMacro_virtualbase_startRecording(self.h)
 
 type QsciMacrostartRecordingProc* = proc(): void
@@ -259,7 +242,6 @@ proc miqt_exec_callback_QsciMacro_startRecording(self: ptr cQsciMacro, slot: int
 
   nimfunc[]()
 proc QsciMacroendRecording*(self: gen_qscimacro_types.QsciMacro, ): void =
-
   fQsciMacro_virtualbase_endRecording(self.h)
 
 type QsciMacroendRecordingProc* = proc(): void
@@ -275,7 +257,6 @@ proc miqt_exec_callback_QsciMacro_endRecording(self: ptr cQsciMacro, slot: int):
 
   nimfunc[]()
 proc QsciMacroevent*(self: gen_qscimacro_types.QsciMacro, event: gen_qcoreevent.QEvent): bool =
-
   fQsciMacro_virtualbase_event(self.h, event.h)
 
 type QsciMacroeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -295,7 +276,6 @@ proc miqt_exec_callback_QsciMacro_event(self: ptr cQsciMacro, slot: int, event: 
 
   virtualReturn
 proc QsciMacroeventFilter*(self: gen_qscimacro_types.QsciMacro, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciMacro_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciMacroeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -317,7 +297,6 @@ proc miqt_exec_callback_QsciMacro_eventFilter(self: ptr cQsciMacro, slot: int, w
 
   virtualReturn
 proc QsciMacrotimerEvent*(self: gen_qscimacro_types.QsciMacro, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciMacro_virtualbase_timerEvent(self.h, event.h)
 
 type QsciMacrotimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -335,7 +314,6 @@ proc miqt_exec_callback_QsciMacro_timerEvent(self: ptr cQsciMacro, slot: int, ev
 
   nimfunc[](slotval1)
 proc QsciMacrochildEvent*(self: gen_qscimacro_types.QsciMacro, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciMacro_virtualbase_childEvent(self.h, event.h)
 
 type QsciMacrochildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -353,7 +331,6 @@ proc miqt_exec_callback_QsciMacro_childEvent(self: ptr cQsciMacro, slot: int, ev
 
   nimfunc[](slotval1)
 proc QsciMacrocustomEvent*(self: gen_qscimacro_types.QsciMacro, event: gen_qcoreevent.QEvent): void =
-
   fQsciMacro_virtualbase_customEvent(self.h, event.h)
 
 type QsciMacrocustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -371,7 +348,6 @@ proc miqt_exec_callback_QsciMacro_customEvent(self: ptr cQsciMacro, slot: int, e
 
   nimfunc[](slotval1)
 proc QsciMacroconnectNotify*(self: gen_qscimacro_types.QsciMacro, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciMacro_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciMacroconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -389,7 +365,6 @@ proc miqt_exec_callback_QsciMacro_connectNotify(self: ptr cQsciMacro, slot: int,
 
   nimfunc[](slotval1)
 proc QsciMacrodisconnectNotify*(self: gen_qscimacro_types.QsciMacro, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciMacro_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciMacrodisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -105,111 +105,90 @@ proc fcQTranslator_delete(self: pointer) {.importc: "QTranslator_delete".}
 func init*(T: type gen_qtranslator_types.QTranslator, h: ptr cQTranslator): gen_qtranslator_types.QTranslator =
   T(h: h)
 proc create*(T: type gen_qtranslator_types.QTranslator, ): gen_qtranslator_types.QTranslator =
-
   gen_qtranslator_types.QTranslator.init(fcQTranslator_new())
+
 proc create*(T: type gen_qtranslator_types.QTranslator, parent: gen_qobject.QObject): gen_qtranslator_types.QTranslator =
-
   gen_qtranslator_types.QTranslator.init(fcQTranslator_new2(parent.h))
-proc metaObject*(self: gen_qtranslator_types.QTranslator, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtranslator_types.QTranslator, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTranslator_metaObject(self.h))
 
 proc metacast*(self: gen_qtranslator_types.QTranslator, param1: cstring): pointer =
-
   fcQTranslator_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtranslator_types.QTranslator, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTranslator_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtranslator_types.QTranslator, s: cstring): string =
-
   let v_ms = fcQTranslator_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc translate*(self: gen_qtranslator_types.QTranslator, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string =
-
   let v_ms = fcQTranslator_translate(self.h, context, sourceText, disambiguation, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isEmpty*(self: gen_qtranslator_types.QTranslator, ): bool =
-
   fcQTranslator_isEmpty(self.h)
 
 proc language*(self: gen_qtranslator_types.QTranslator, ): string =
-
   let v_ms = fcQTranslator_language(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc filePath*(self: gen_qtranslator_types.QTranslator, ): string =
-
   let v_ms = fcQTranslator_filePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc load*(self: gen_qtranslator_types.QTranslator, filename: string): bool =
-
   fcQTranslator_load(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc load2*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string): bool =
-
+proc load*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string): bool =
   fcQTranslator_load2(self.h, locale.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc load3*(self: gen_qtranslator_types.QTranslator, data: ptr uint8, len: cint): bool =
-
+proc load*(self: gen_qtranslator_types.QTranslator, data: ptr uint8, len: cint): bool =
   fcQTranslator_load3(self.h, data, len)
 
-proc tr2*(_: type gen_qtranslator_types.QTranslator, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qtranslator_types.QTranslator, s: cstring, c: cstring): string =
   let v_ms = fcQTranslator_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtranslator_types.QTranslator, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtranslator_types.QTranslator, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTranslator_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc load22*(self: gen_qtranslator_types.QTranslator, filename: string, directory: string): bool =
-
+proc load*(self: gen_qtranslator_types.QTranslator, filename: string, directory: string): bool =
   fcQTranslator_load22(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
-proc load32*(self: gen_qtranslator_types.QTranslator, filename: string, directory: string, search_delimiters: string): bool =
-
+proc load*(self: gen_qtranslator_types.QTranslator, filename: string, directory: string, search_delimiters: string): bool =
   fcQTranslator_load32(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: directory, len: csize_t(len(directory))), struct_miqt_string(data: search_delimiters, len: csize_t(len(search_delimiters))))
 
-proc load4*(self: gen_qtranslator_types.QTranslator, filename: string, directory: string, search_delimiters: string, suffix: string): bool =
-
+proc load*(self: gen_qtranslator_types.QTranslator, filename: string, directory: string, search_delimiters: string, suffix: string): bool =
   fcQTranslator_load4(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: directory, len: csize_t(len(directory))), struct_miqt_string(data: search_delimiters, len: csize_t(len(search_delimiters))), struct_miqt_string(data: suffix, len: csize_t(len(suffix))))
 
-proc load33*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string): bool =
-
+proc load*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string): bool =
   fcQTranslator_load33(self.h, locale.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
-proc load42*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string, directory: string): bool =
-
+proc load*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string, directory: string): bool =
   fcQTranslator_load42(self.h, locale.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: prefix, len: csize_t(len(prefix))), struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
-proc load5*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string, directory: string, suffix: string): bool =
-
+proc load*(self: gen_qtranslator_types.QTranslator, locale: gen_qlocale.QLocale, filename: string, prefix: string, directory: string, suffix: string): bool =
   fcQTranslator_load5(self.h, locale.h, struct_miqt_string(data: filename, len: csize_t(len(filename))), struct_miqt_string(data: prefix, len: csize_t(len(prefix))), struct_miqt_string(data: directory, len: csize_t(len(directory))), struct_miqt_string(data: suffix, len: csize_t(len(suffix))))
 
-proc load34*(self: gen_qtranslator_types.QTranslator, data: ptr uint8, len: cint, directory: string): bool =
-
+proc load*(self: gen_qtranslator_types.QTranslator, data: ptr uint8, len: cint, directory: string): bool =
   fcQTranslator_load34(self.h, data, len, struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
 proc QTranslatormetaObject*(self: gen_qtranslator_types.QTranslator, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTranslator_virtualbase_metaObject(self.h))
 
 type QTranslatormetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -227,7 +206,6 @@ proc miqt_exec_callback_QTranslator_metaObject(self: ptr cQTranslator, slot: int
 
   virtualReturn.h
 proc QTranslatormetacast*(self: gen_qtranslator_types.QTranslator, param1: cstring): pointer =
-
   fQTranslator_virtualbase_metacast(self.h, param1)
 
 type QTranslatormetacastProc* = proc(param1: cstring): pointer
@@ -247,7 +225,6 @@ proc miqt_exec_callback_QTranslator_metacast(self: ptr cQTranslator, slot: int, 
 
   virtualReturn
 proc QTranslatormetacall*(self: gen_qtranslator_types.QTranslator, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTranslator_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTranslatormetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -271,7 +248,6 @@ proc miqt_exec_callback_QTranslator_metacall(self: ptr cQTranslator, slot: int, 
 
   virtualReturn
 proc QTranslatortranslate*(self: gen_qtranslator_types.QTranslator, context: cstring, sourceText: cstring, disambiguation: cstring, n: cint): string =
-
   let v_ms = fQTranslator_virtualbase_translate(self.h, context, sourceText, disambiguation, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -300,7 +276,6 @@ proc miqt_exec_callback_QTranslator_translate(self: ptr cQTranslator, slot: int,
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QTranslatorisEmpty*(self: gen_qtranslator_types.QTranslator, ): bool =
-
   fQTranslator_virtualbase_isEmpty(self.h)
 
 type QTranslatorisEmptyProc* = proc(): bool
@@ -318,7 +293,6 @@ proc miqt_exec_callback_QTranslator_isEmpty(self: ptr cQTranslator, slot: int): 
 
   virtualReturn
 proc QTranslatorevent*(self: gen_qtranslator_types.QTranslator, event: gen_qcoreevent.QEvent): bool =
-
   fQTranslator_virtualbase_event(self.h, event.h)
 
 type QTranslatoreventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -338,7 +312,6 @@ proc miqt_exec_callback_QTranslator_event(self: ptr cQTranslator, slot: int, eve
 
   virtualReturn
 proc QTranslatoreventFilter*(self: gen_qtranslator_types.QTranslator, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTranslator_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTranslatoreventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -360,7 +333,6 @@ proc miqt_exec_callback_QTranslator_eventFilter(self: ptr cQTranslator, slot: in
 
   virtualReturn
 proc QTranslatortimerEvent*(self: gen_qtranslator_types.QTranslator, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTranslator_virtualbase_timerEvent(self.h, event.h)
 
 type QTranslatortimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -378,7 +350,6 @@ proc miqt_exec_callback_QTranslator_timerEvent(self: ptr cQTranslator, slot: int
 
   nimfunc[](slotval1)
 proc QTranslatorchildEvent*(self: gen_qtranslator_types.QTranslator, event: gen_qcoreevent.QChildEvent): void =
-
   fQTranslator_virtualbase_childEvent(self.h, event.h)
 
 type QTranslatorchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -396,7 +367,6 @@ proc miqt_exec_callback_QTranslator_childEvent(self: ptr cQTranslator, slot: int
 
   nimfunc[](slotval1)
 proc QTranslatorcustomEvent*(self: gen_qtranslator_types.QTranslator, event: gen_qcoreevent.QEvent): void =
-
   fQTranslator_virtualbase_customEvent(self.h, event.h)
 
 type QTranslatorcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -414,7 +384,6 @@ proc miqt_exec_callback_QTranslator_customEvent(self: ptr cQTranslator, slot: in
 
   nimfunc[](slotval1)
 proc QTranslatorconnectNotify*(self: gen_qtranslator_types.QTranslator, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTranslator_virtualbase_connectNotify(self.h, signal.h)
 
 type QTranslatorconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -432,7 +401,6 @@ proc miqt_exec_callback_QTranslator_connectNotify(self: ptr cQTranslator, slot: 
 
   nimfunc[](slotval1)
 proc QTranslatordisconnectNotify*(self: gen_qtranslator_types.QTranslator, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTranslator_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTranslatordisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

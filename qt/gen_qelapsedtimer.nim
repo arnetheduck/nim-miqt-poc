@@ -69,62 +69,48 @@ proc fcQElapsedTimer_delete(self: pointer) {.importc: "QElapsedTimer_delete".}
 func init*(T: type gen_qelapsedtimer_types.QElapsedTimer, h: ptr cQElapsedTimer): gen_qelapsedtimer_types.QElapsedTimer =
   T(h: h)
 proc create*(T: type gen_qelapsedtimer_types.QElapsedTimer, ): gen_qelapsedtimer_types.QElapsedTimer =
-
   gen_qelapsedtimer_types.QElapsedTimer.init(fcQElapsedTimer_new())
-proc clockType*(_: type gen_qelapsedtimer_types.QElapsedTimer, ): cint =
 
+proc clockType*(_: type gen_qelapsedtimer_types.QElapsedTimer, ): cint =
   cint(fcQElapsedTimer_clockType())
 
 proc isMonotonic*(_: type gen_qelapsedtimer_types.QElapsedTimer, ): bool =
-
   fcQElapsedTimer_isMonotonic()
 
 proc start*(self: gen_qelapsedtimer_types.QElapsedTimer, ): void =
-
   fcQElapsedTimer_start(self.h)
 
 proc restart*(self: gen_qelapsedtimer_types.QElapsedTimer, ): clonglong =
-
   fcQElapsedTimer_restart(self.h)
 
 proc invalidate*(self: gen_qelapsedtimer_types.QElapsedTimer, ): void =
-
   fcQElapsedTimer_invalidate(self.h)
 
 proc isValid*(self: gen_qelapsedtimer_types.QElapsedTimer, ): bool =
-
   fcQElapsedTimer_isValid(self.h)
 
 proc nsecsElapsed*(self: gen_qelapsedtimer_types.QElapsedTimer, ): clonglong =
-
   fcQElapsedTimer_nsecsElapsed(self.h)
 
 proc elapsed*(self: gen_qelapsedtimer_types.QElapsedTimer, ): clonglong =
-
   fcQElapsedTimer_elapsed(self.h)
 
 proc hasExpired*(self: gen_qelapsedtimer_types.QElapsedTimer, timeout: clonglong): bool =
-
   fcQElapsedTimer_hasExpired(self.h, timeout)
 
 proc msecsSinceReference*(self: gen_qelapsedtimer_types.QElapsedTimer, ): clonglong =
-
   fcQElapsedTimer_msecsSinceReference(self.h)
 
 proc msecsTo*(self: gen_qelapsedtimer_types.QElapsedTimer, other: gen_qelapsedtimer_types.QElapsedTimer): clonglong =
-
   fcQElapsedTimer_msecsTo(self.h, other.h)
 
 proc secsTo*(self: gen_qelapsedtimer_types.QElapsedTimer, other: gen_qelapsedtimer_types.QElapsedTimer): clonglong =
-
   fcQElapsedTimer_secsTo(self.h, other.h)
 
 proc operatorEqual*(self: gen_qelapsedtimer_types.QElapsedTimer, other: gen_qelapsedtimer_types.QElapsedTimer): bool =
-
   fcQElapsedTimer_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qelapsedtimer_types.QElapsedTimer, other: gen_qelapsedtimer_types.QElapsedTimer): bool =
-
   fcQElapsedTimer_operatorNotEqual(self.h, other.h)
 
 proc delete*(self: gen_qelapsedtimer_types.QElapsedTimer) =

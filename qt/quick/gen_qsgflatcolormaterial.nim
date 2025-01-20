@@ -68,30 +68,24 @@ proc fcQSGFlatColorMaterial_delete(self: pointer) {.importc: "QSGFlatColorMateri
 func init*(T: type gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, h: ptr cQSGFlatColorMaterial): gen_qsgflatcolormaterial_types.QSGFlatColorMaterial =
   T(h: h)
 proc create*(T: type gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgflatcolormaterial_types.QSGFlatColorMaterial =
-
   gen_qsgflatcolormaterial_types.QSGFlatColorMaterial.init(fcQSGFlatColorMaterial_new())
-proc typeX*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
 
+proc typeX*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
   gen_qsgmaterialtype.QSGMaterialType(h: fcQSGFlatColorMaterial_typeX(self.h))
 
 proc createShader*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
-
   gen_qsgmaterialshader.QSGMaterialShader(h: fcQSGFlatColorMaterial_createShader(self.h))
 
 proc setColor*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, color: gen_qcolor.QColor): void =
-
   fcQSGFlatColorMaterial_setColor(self.h, color.h)
 
 proc color*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQSGFlatColorMaterial_color(self.h))
 
 proc compare*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
-
   fcQSGFlatColorMaterial_compare(self.h, other.h)
 
 proc QSGFlatColorMaterialtypeX*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
-
   gen_qsgmaterialtype.QSGMaterialType(h: fQSGFlatColorMaterial_virtualbase_type(self.h))
 
 type QSGFlatColorMaterialtypeXProc* = proc(): gen_qsgmaterialtype.QSGMaterialType
@@ -109,7 +103,6 @@ proc miqt_exec_callback_QSGFlatColorMaterial_type(self: ptr cQSGFlatColorMateria
 
   virtualReturn.h
 proc QSGFlatColorMaterialcreateShader*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
-
   gen_qsgmaterialshader.QSGMaterialShader(h: fQSGFlatColorMaterial_virtualbase_createShader(self.h))
 
 type QSGFlatColorMaterialcreateShaderProc* = proc(): gen_qsgmaterialshader.QSGMaterialShader
@@ -127,7 +120,6 @@ proc miqt_exec_callback_QSGFlatColorMaterial_createShader(self: ptr cQSGFlatColo
 
   virtualReturn.h
 proc QSGFlatColorMaterialcompare*(self: gen_qsgflatcolormaterial_types.QSGFlatColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
-
   fQSGFlatColorMaterial_virtualbase_compare(self.h, other.h)
 
 type QSGFlatColorMaterialcompareProc* = proc(other: gen_qsgmaterial.QSGMaterial): cint

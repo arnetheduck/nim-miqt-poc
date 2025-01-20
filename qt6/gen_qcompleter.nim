@@ -155,189 +155,152 @@ proc fcQCompleter_delete(self: pointer) {.importc: "QCompleter_delete".}
 func init*(T: type gen_qcompleter_types.QCompleter, h: ptr cQCompleter): gen_qcompleter_types.QCompleter =
   T(h: h)
 proc create*(T: type gen_qcompleter_types.QCompleter, ): gen_qcompleter_types.QCompleter =
-
   gen_qcompleter_types.QCompleter.init(fcQCompleter_new())
+
 proc create*(T: type gen_qcompleter_types.QCompleter, model: gen_qabstractitemmodel.QAbstractItemModel): gen_qcompleter_types.QCompleter =
-
   gen_qcompleter_types.QCompleter.init(fcQCompleter_new2(model.h))
-proc create*(T: type gen_qcompleter_types.QCompleter, completions: seq[string]): gen_qcompleter_types.QCompleter =
 
+proc create*(T: type gen_qcompleter_types.QCompleter, completions: seq[string]): gen_qcompleter_types.QCompleter =
   var completions_CArray = newSeq[struct_miqt_string](len(completions))
   for i in 0..<len(completions):
     completions_CArray[i] = struct_miqt_string(data: completions[i], len: csize_t(len(completions[i])))
 
   gen_qcompleter_types.QCompleter.init(fcQCompleter_new3(struct_miqt_array(len: csize_t(len(completions)), data: if len(completions) == 0: nil else: addr(completions_CArray[0]))))
-proc create2*(T: type gen_qcompleter_types.QCompleter, parent: gen_qobject.QObject): gen_qcompleter_types.QCompleter =
 
+proc create*(T: type gen_qcompleter_types.QCompleter, parent: gen_qobject.QObject): gen_qcompleter_types.QCompleter =
   gen_qcompleter_types.QCompleter.init(fcQCompleter_new4(parent.h))
+
 proc create*(T: type gen_qcompleter_types.QCompleter, model: gen_qabstractitemmodel.QAbstractItemModel, parent: gen_qobject.QObject): gen_qcompleter_types.QCompleter =
-
   gen_qcompleter_types.QCompleter.init(fcQCompleter_new5(model.h, parent.h))
-proc create*(T: type gen_qcompleter_types.QCompleter, completions: seq[string], parent: gen_qobject.QObject): gen_qcompleter_types.QCompleter =
 
+proc create*(T: type gen_qcompleter_types.QCompleter, completions: seq[string], parent: gen_qobject.QObject): gen_qcompleter_types.QCompleter =
   var completions_CArray = newSeq[struct_miqt_string](len(completions))
   for i in 0..<len(completions):
     completions_CArray[i] = struct_miqt_string(data: completions[i], len: csize_t(len(completions[i])))
 
   gen_qcompleter_types.QCompleter.init(fcQCompleter_new6(struct_miqt_array(len: csize_t(len(completions)), data: if len(completions) == 0: nil else: addr(completions_CArray[0])), parent.h))
-proc metaObject*(self: gen_qcompleter_types.QCompleter, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qcompleter_types.QCompleter, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCompleter_metaObject(self.h))
 
 proc metacast*(self: gen_qcompleter_types.QCompleter, param1: cstring): pointer =
-
   fcQCompleter_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcompleter_types.QCompleter, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCompleter_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcompleter_types.QCompleter, s: cstring): string =
-
   let v_ms = fcQCompleter_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWidget*(self: gen_qcompleter_types.QCompleter, widget: gen_qwidget.QWidget): void =
-
   fcQCompleter_setWidget(self.h, widget.h)
 
 proc widget*(self: gen_qcompleter_types.QCompleter, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQCompleter_widget(self.h))
 
 proc setModel*(self: gen_qcompleter_types.QCompleter, c: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fcQCompleter_setModel(self.h, c.h)
 
 proc model*(self: gen_qcompleter_types.QCompleter, ): gen_qabstractitemmodel.QAbstractItemModel =
-
   gen_qabstractitemmodel.QAbstractItemModel(h: fcQCompleter_model(self.h))
 
 proc setCompletionMode*(self: gen_qcompleter_types.QCompleter, mode: cint): void =
-
   fcQCompleter_setCompletionMode(self.h, cint(mode))
 
 proc completionMode*(self: gen_qcompleter_types.QCompleter, ): cint =
-
   cint(fcQCompleter_completionMode(self.h))
 
 proc setFilterMode*(self: gen_qcompleter_types.QCompleter, filterMode: cint): void =
-
   fcQCompleter_setFilterMode(self.h, cint(filterMode))
 
 proc filterMode*(self: gen_qcompleter_types.QCompleter, ): cint =
-
   cint(fcQCompleter_filterMode(self.h))
 
 proc popup*(self: gen_qcompleter_types.QCompleter, ): gen_qabstractitemview.QAbstractItemView =
-
   gen_qabstractitemview.QAbstractItemView(h: fcQCompleter_popup(self.h))
 
 proc setPopup*(self: gen_qcompleter_types.QCompleter, popup: gen_qabstractitemview.QAbstractItemView): void =
-
   fcQCompleter_setPopup(self.h, popup.h)
 
 proc setCaseSensitivity*(self: gen_qcompleter_types.QCompleter, caseSensitivity: cint): void =
-
   fcQCompleter_setCaseSensitivity(self.h, cint(caseSensitivity))
 
 proc caseSensitivity*(self: gen_qcompleter_types.QCompleter, ): cint =
-
   cint(fcQCompleter_caseSensitivity(self.h))
 
 proc setModelSorting*(self: gen_qcompleter_types.QCompleter, sorting: cint): void =
-
   fcQCompleter_setModelSorting(self.h, cint(sorting))
 
 proc modelSorting*(self: gen_qcompleter_types.QCompleter, ): cint =
-
   cint(fcQCompleter_modelSorting(self.h))
 
 proc setCompletionColumn*(self: gen_qcompleter_types.QCompleter, column: cint): void =
-
   fcQCompleter_setCompletionColumn(self.h, column)
 
 proc completionColumn*(self: gen_qcompleter_types.QCompleter, ): cint =
-
   fcQCompleter_completionColumn(self.h)
 
 proc setCompletionRole*(self: gen_qcompleter_types.QCompleter, role: cint): void =
-
   fcQCompleter_setCompletionRole(self.h, role)
 
 proc completionRole*(self: gen_qcompleter_types.QCompleter, ): cint =
-
   fcQCompleter_completionRole(self.h)
 
 proc wrapAround*(self: gen_qcompleter_types.QCompleter, ): bool =
-
   fcQCompleter_wrapAround(self.h)
 
 proc maxVisibleItems*(self: gen_qcompleter_types.QCompleter, ): cint =
-
   fcQCompleter_maxVisibleItems(self.h)
 
 proc setMaxVisibleItems*(self: gen_qcompleter_types.QCompleter, maxItems: cint): void =
-
   fcQCompleter_setMaxVisibleItems(self.h, maxItems)
 
 proc completionCount*(self: gen_qcompleter_types.QCompleter, ): cint =
-
   fcQCompleter_completionCount(self.h)
 
 proc setCurrentRow*(self: gen_qcompleter_types.QCompleter, row: cint): bool =
-
   fcQCompleter_setCurrentRow(self.h, row)
 
 proc currentRow*(self: gen_qcompleter_types.QCompleter, ): cint =
-
   fcQCompleter_currentRow(self.h)
 
 proc currentIndex*(self: gen_qcompleter_types.QCompleter, ): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQCompleter_currentIndex(self.h))
 
 proc currentCompletion*(self: gen_qcompleter_types.QCompleter, ): string =
-
   let v_ms = fcQCompleter_currentCompletion(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc completionModel*(self: gen_qcompleter_types.QCompleter, ): gen_qabstractitemmodel.QAbstractItemModel =
-
   gen_qabstractitemmodel.QAbstractItemModel(h: fcQCompleter_completionModel(self.h))
 
 proc completionPrefix*(self: gen_qcompleter_types.QCompleter, ): string =
-
   let v_ms = fcQCompleter_completionPrefix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setCompletionPrefix*(self: gen_qcompleter_types.QCompleter, prefix: string): void =
-
   fcQCompleter_setCompletionPrefix(self.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 proc complete*(self: gen_qcompleter_types.QCompleter, ): void =
-
   fcQCompleter_complete(self.h)
 
 proc setWrapAround*(self: gen_qcompleter_types.QCompleter, wrap: bool): void =
-
   fcQCompleter_setWrapAround(self.h, wrap)
 
 proc pathFromIndex*(self: gen_qcompleter_types.QCompleter, index: gen_qabstractitemmodel.QModelIndex): string =
-
   let v_ms = fcQCompleter_pathFromIndex(self.h, index.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc splitPath*(self: gen_qcompleter_types.QCompleter, path: string): seq[string] =
-
   var v_ma = fcQCompleter_splitPath(self.h, struct_miqt_string(data: path, len: csize_t(len(path))))
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -349,103 +312,91 @@ proc splitPath*(self: gen_qcompleter_types.QCompleter, path: string): seq[string
   vx_ret
 
 proc activated*(self: gen_qcompleter_types.QCompleter, text: string): void =
-
   fcQCompleter_activated(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
+type QCompleteractivatedSlot* = proc(text: string)
 proc miqt_exec_callback_QCompleter_activated(slot: int, text: struct_miqt_string) {.exportc.} =
-  type Cb = proc(text: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCompleteractivatedSlot](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
 
-
   nimfunc[](slotval1)
 
-proc onactivated*(self: gen_qcompleter_types.QCompleter, slot: proc(text: string)) =
-  type Cb = proc(text: string)
-  var tmp = new Cb
+proc onactivated*(self: gen_qcompleter_types.QCompleter, slot: QCompleteractivatedSlot) =
+  var tmp = new QCompleteractivatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCompleter_connect_activated(self.h, cast[int](addr tmp[]))
-proc activatedWithIndex*(self: gen_qcompleter_types.QCompleter, index: gen_qabstractitemmodel.QModelIndex): void =
 
+proc activated*(self: gen_qcompleter_types.QCompleter, index: gen_qabstractitemmodel.QModelIndex): void =
   fcQCompleter_activatedWithIndex(self.h, index.h)
 
+type QCompleteractivatedWithIndexSlot* = proc(index: gen_qabstractitemmodel.QModelIndex)
 proc miqt_exec_callback_QCompleter_activatedWithIndex(slot: int, index: pointer) {.exportc.} =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCompleteractivatedWithIndexSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
-
 
   nimfunc[](slotval1)
 
-proc onactivatedWithIndex*(self: gen_qcompleter_types.QCompleter, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  var tmp = new Cb
+proc onactivated*(self: gen_qcompleter_types.QCompleter, slot: QCompleteractivatedWithIndexSlot) =
+  var tmp = new QCompleteractivatedWithIndexSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCompleter_connect_activatedWithIndex(self.h, cast[int](addr tmp[]))
-proc highlighted*(self: gen_qcompleter_types.QCompleter, text: string): void =
 
+proc highlighted*(self: gen_qcompleter_types.QCompleter, text: string): void =
   fcQCompleter_highlighted(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
+type QCompleterhighlightedSlot* = proc(text: string)
 proc miqt_exec_callback_QCompleter_highlighted(slot: int, text: struct_miqt_string) {.exportc.} =
-  type Cb = proc(text: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCompleterhighlightedSlot](cast[pointer](slot))
   let vtext_ms = text
   let vtextx_ret = string.fromBytes(toOpenArrayByte(vtext_ms.data, 0, int(vtext_ms.len)-1))
   c_free(vtext_ms.data)
   let slotval1 = vtextx_ret
 
-
   nimfunc[](slotval1)
 
-proc onhighlighted*(self: gen_qcompleter_types.QCompleter, slot: proc(text: string)) =
-  type Cb = proc(text: string)
-  var tmp = new Cb
+proc onhighlighted*(self: gen_qcompleter_types.QCompleter, slot: QCompleterhighlightedSlot) =
+  var tmp = new QCompleterhighlightedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCompleter_connect_highlighted(self.h, cast[int](addr tmp[]))
-proc highlightedWithIndex*(self: gen_qcompleter_types.QCompleter, index: gen_qabstractitemmodel.QModelIndex): void =
 
+proc highlighted*(self: gen_qcompleter_types.QCompleter, index: gen_qabstractitemmodel.QModelIndex): void =
   fcQCompleter_highlightedWithIndex(self.h, index.h)
 
+type QCompleterhighlightedWithIndexSlot* = proc(index: gen_qabstractitemmodel.QModelIndex)
 proc miqt_exec_callback_QCompleter_highlightedWithIndex(slot: int, index: pointer) {.exportc.} =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCompleterhighlightedWithIndexSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractitemmodel.QModelIndex(h: index)
-
 
   nimfunc[](slotval1)
 
-proc onhighlightedWithIndex*(self: gen_qcompleter_types.QCompleter, slot: proc(index: gen_qabstractitemmodel.QModelIndex)) =
-  type Cb = proc(index: gen_qabstractitemmodel.QModelIndex)
-  var tmp = new Cb
+proc onhighlighted*(self: gen_qcompleter_types.QCompleter, slot: QCompleterhighlightedWithIndexSlot) =
+  var tmp = new QCompleterhighlightedWithIndexSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCompleter_connect_highlightedWithIndex(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qcompleter_types.QCompleter, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qcompleter_types.QCompleter, s: cstring, c: cstring): string =
   let v_ms = fcQCompleter_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcompleter_types.QCompleter, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcompleter_types.QCompleter, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCompleter_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc complete1*(self: gen_qcompleter_types.QCompleter, rect: gen_qrect.QRect): void =
-
+proc complete*(self: gen_qcompleter_types.QCompleter, rect: gen_qrect.QRect): void =
   fcQCompleter_complete1(self.h, rect.h)
 
 proc QCompletermetaObject*(self: gen_qcompleter_types.QCompleter, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQCompleter_virtualbase_metaObject(self.h))
 
 type QCompletermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -463,7 +414,6 @@ proc miqt_exec_callback_QCompleter_metaObject(self: ptr cQCompleter, slot: int):
 
   virtualReturn.h
 proc QCompletermetacast*(self: gen_qcompleter_types.QCompleter, param1: cstring): pointer =
-
   fQCompleter_virtualbase_metacast(self.h, param1)
 
 type QCompletermetacastProc* = proc(param1: cstring): pointer
@@ -483,7 +433,6 @@ proc miqt_exec_callback_QCompleter_metacast(self: ptr cQCompleter, slot: int, pa
 
   virtualReturn
 proc QCompletermetacall*(self: gen_qcompleter_types.QCompleter, param1: cint, param2: cint, param3: pointer): cint =
-
   fQCompleter_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QCompletermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -507,7 +456,6 @@ proc miqt_exec_callback_QCompleter_metacall(self: ptr cQCompleter, slot: int, pa
 
   virtualReturn
 proc QCompleterpathFromIndex*(self: gen_qcompleter_types.QCompleter, index: gen_qabstractitemmodel.QModelIndex): string =
-
   let v_ms = fQCompleter_virtualbase_pathFromIndex(self.h, index.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -530,7 +478,6 @@ proc miqt_exec_callback_QCompleter_pathFromIndex(self: ptr cQCompleter, slot: in
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QCompletersplitPath*(self: gen_qcompleter_types.QCompleter, path: string): seq[string] =
-
   var v_ma = fQCompleter_virtualbase_splitPath(self.h, struct_miqt_string(data: path, len: csize_t(len(path))))
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -565,7 +512,6 @@ proc miqt_exec_callback_QCompleter_splitPath(self: ptr cQCompleter, slot: int, p
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QCompletereventFilter*(self: gen_qcompleter_types.QCompleter, o: gen_qobject.QObject, e: gen_qcoreevent.QEvent): bool =
-
   fQCompleter_virtualbase_eventFilter(self.h, o.h, e.h)
 
 type QCompletereventFilterProc* = proc(o: gen_qobject.QObject, e: gen_qcoreevent.QEvent): bool
@@ -587,7 +533,6 @@ proc miqt_exec_callback_QCompleter_eventFilter(self: ptr cQCompleter, slot: int,
 
   virtualReturn
 proc QCompleterevent*(self: gen_qcompleter_types.QCompleter, param1: gen_qcoreevent.QEvent): bool =
-
   fQCompleter_virtualbase_event(self.h, param1.h)
 
 type QCompletereventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -607,7 +552,6 @@ proc miqt_exec_callback_QCompleter_event(self: ptr cQCompleter, slot: int, param
 
   virtualReturn
 proc QCompletertimerEvent*(self: gen_qcompleter_types.QCompleter, event: gen_qcoreevent.QTimerEvent): void =
-
   fQCompleter_virtualbase_timerEvent(self.h, event.h)
 
 type QCompletertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -625,7 +569,6 @@ proc miqt_exec_callback_QCompleter_timerEvent(self: ptr cQCompleter, slot: int, 
 
   nimfunc[](slotval1)
 proc QCompleterchildEvent*(self: gen_qcompleter_types.QCompleter, event: gen_qcoreevent.QChildEvent): void =
-
   fQCompleter_virtualbase_childEvent(self.h, event.h)
 
 type QCompleterchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -643,7 +586,6 @@ proc miqt_exec_callback_QCompleter_childEvent(self: ptr cQCompleter, slot: int, 
 
   nimfunc[](slotval1)
 proc QCompletercustomEvent*(self: gen_qcompleter_types.QCompleter, event: gen_qcoreevent.QEvent): void =
-
   fQCompleter_virtualbase_customEvent(self.h, event.h)
 
 type QCompletercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -661,7 +603,6 @@ proc miqt_exec_callback_QCompleter_customEvent(self: ptr cQCompleter, slot: int,
 
   nimfunc[](slotval1)
 proc QCompleterconnectNotify*(self: gen_qcompleter_types.QCompleter, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCompleter_virtualbase_connectNotify(self.h, signal.h)
 
 type QCompleterconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -679,7 +620,6 @@ proc miqt_exec_callback_QCompleter_connectNotify(self: ptr cQCompleter, slot: in
 
   nimfunc[](slotval1)
 proc QCompleterdisconnectNotify*(self: gen_qcompleter_types.QCompleter, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCompleter_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QCompleterdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

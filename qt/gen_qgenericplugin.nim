@@ -90,71 +90,60 @@ proc fcQGenericPlugin_delete(self: pointer) {.importc: "QGenericPlugin_delete".}
 func init*(T: type gen_qgenericplugin_types.QGenericPlugin, h: ptr cQGenericPlugin): gen_qgenericplugin_types.QGenericPlugin =
   T(h: h)
 proc create*(T: type gen_qgenericplugin_types.QGenericPlugin, ): gen_qgenericplugin_types.QGenericPlugin =
-
   gen_qgenericplugin_types.QGenericPlugin.init(fcQGenericPlugin_new())
+
 proc create*(T: type gen_qgenericplugin_types.QGenericPlugin, parent: gen_qobject.QObject): gen_qgenericplugin_types.QGenericPlugin =
-
   gen_qgenericplugin_types.QGenericPlugin.init(fcQGenericPlugin_new2(parent.h))
-proc metaObject*(self: gen_qgenericplugin_types.QGenericPlugin, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgenericplugin_types.QGenericPlugin, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGenericPlugin_metaObject(self.h))
 
 proc metacast*(self: gen_qgenericplugin_types.QGenericPlugin, param1: cstring): pointer =
-
   fcQGenericPlugin_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgenericplugin_types.QGenericPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGenericPlugin_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring): string =
-
   let v_ms = fcQGenericPlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring): string =
-
   let v_ms = fcQGenericPlugin_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc create*(self: gen_qgenericplugin_types.QGenericPlugin, name: string, spec: string): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQGenericPlugin_create(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), struct_miqt_string(data: spec, len: csize_t(len(spec)))))
 
-proc tr2*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQGenericPlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGenericPlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQGenericPlugin_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qgenericplugin_types.QGenericPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGenericPlugin_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QGenericPluginmetaObject*(self: gen_qgenericplugin_types.QGenericPlugin, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQGenericPlugin_virtualbase_metaObject(self.h))
 
 type QGenericPluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -172,7 +161,6 @@ proc miqt_exec_callback_QGenericPlugin_metaObject(self: ptr cQGenericPlugin, slo
 
   virtualReturn.h
 proc QGenericPluginmetacast*(self: gen_qgenericplugin_types.QGenericPlugin, param1: cstring): pointer =
-
   fQGenericPlugin_virtualbase_metacast(self.h, param1)
 
 type QGenericPluginmetacastProc* = proc(param1: cstring): pointer
@@ -192,7 +180,6 @@ proc miqt_exec_callback_QGenericPlugin_metacast(self: ptr cQGenericPlugin, slot:
 
   virtualReturn
 proc QGenericPluginmetacall*(self: gen_qgenericplugin_types.QGenericPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGenericPlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGenericPluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -240,7 +227,6 @@ proc miqt_exec_callback_QGenericPlugin_create(self: ptr cQGenericPlugin, slot: i
 
   virtualReturn.h
 proc QGenericPluginevent*(self: gen_qgenericplugin_types.QGenericPlugin, event: gen_qcoreevent.QEvent): bool =
-
   fQGenericPlugin_virtualbase_event(self.h, event.h)
 
 type QGenericPlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -260,7 +246,6 @@ proc miqt_exec_callback_QGenericPlugin_event(self: ptr cQGenericPlugin, slot: in
 
   virtualReturn
 proc QGenericPlugineventFilter*(self: gen_qgenericplugin_types.QGenericPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGenericPlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGenericPlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -282,7 +267,6 @@ proc miqt_exec_callback_QGenericPlugin_eventFilter(self: ptr cQGenericPlugin, sl
 
   virtualReturn
 proc QGenericPlugintimerEvent*(self: gen_qgenericplugin_types.QGenericPlugin, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGenericPlugin_virtualbase_timerEvent(self.h, event.h)
 
 type QGenericPlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -300,7 +284,6 @@ proc miqt_exec_callback_QGenericPlugin_timerEvent(self: ptr cQGenericPlugin, slo
 
   nimfunc[](slotval1)
 proc QGenericPluginchildEvent*(self: gen_qgenericplugin_types.QGenericPlugin, event: gen_qcoreevent.QChildEvent): void =
-
   fQGenericPlugin_virtualbase_childEvent(self.h, event.h)
 
 type QGenericPluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -318,7 +301,6 @@ proc miqt_exec_callback_QGenericPlugin_childEvent(self: ptr cQGenericPlugin, slo
 
   nimfunc[](slotval1)
 proc QGenericPlugincustomEvent*(self: gen_qgenericplugin_types.QGenericPlugin, event: gen_qcoreevent.QEvent): void =
-
   fQGenericPlugin_virtualbase_customEvent(self.h, event.h)
 
 type QGenericPlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -336,7 +318,6 @@ proc miqt_exec_callback_QGenericPlugin_customEvent(self: ptr cQGenericPlugin, sl
 
   nimfunc[](slotval1)
 proc QGenericPluginconnectNotify*(self: gen_qgenericplugin_types.QGenericPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGenericPlugin_virtualbase_connectNotify(self.h, signal.h)
 
 type QGenericPluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -354,7 +335,6 @@ proc miqt_exec_callback_QGenericPlugin_connectNotify(self: ptr cQGenericPlugin, 
 
   nimfunc[](slotval1)
 proc QGenericPlugindisconnectNotify*(self: gen_qgenericplugin_types.QGenericPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGenericPlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGenericPlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

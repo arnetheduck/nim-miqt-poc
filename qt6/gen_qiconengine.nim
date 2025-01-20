@@ -108,49 +108,39 @@ proc fcQIconEngineScaledPixmapArgument_delete(self: pointer) {.importc: "QIconEn
 func init*(T: type gen_qiconengine_types.QIconEngine, h: ptr cQIconEngine): gen_qiconengine_types.QIconEngine =
   T(h: h)
 proc create*(T: type gen_qiconengine_types.QIconEngine, ): gen_qiconengine_types.QIconEngine =
-
   gen_qiconengine_types.QIconEngine.init(fcQIconEngine_new())
-proc paint*(self: gen_qiconengine_types.QIconEngine, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: cint, state: cint): void =
 
+proc paint*(self: gen_qiconengine_types.QIconEngine, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: cint, state: cint): void =
   fcQIconEngine_paint(self.h, painter.h, rect.h, cint(mode), cint(state))
 
 proc actualSize*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQIconEngine_actualSize(self.h, size.h, cint(mode), cint(state)))
 
 proc pixmap*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQIconEngine_pixmap(self.h, size.h, cint(mode), cint(state)))
 
 proc addPixmap*(self: gen_qiconengine_types.QIconEngine, pixmap: gen_qpixmap.QPixmap, mode: cint, state: cint): void =
-
   fcQIconEngine_addPixmap(self.h, pixmap.h, cint(mode), cint(state))
 
 proc addFile*(self: gen_qiconengine_types.QIconEngine, fileName: string, size: gen_qsize.QSize, mode: cint, state: cint): void =
-
   fcQIconEngine_addFile(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), size.h, cint(mode), cint(state))
 
 proc key*(self: gen_qiconengine_types.QIconEngine, ): string =
-
   let v_ms = fcQIconEngine_key(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc clone*(self: gen_qiconengine_types.QIconEngine, ): gen_qiconengine_types.QIconEngine =
-
   gen_qiconengine_types.QIconEngine(h: fcQIconEngine_clone(self.h))
 
 proc read*(self: gen_qiconengine_types.QIconEngine, inVal: gen_qdatastream.QDataStream): bool =
-
   fcQIconEngine_read(self.h, inVal.h)
 
 proc write*(self: gen_qiconengine_types.QIconEngine, outVal: gen_qdatastream.QDataStream): bool =
-
   fcQIconEngine_write(self.h, outVal.h)
 
 proc availableSizes*(self: gen_qiconengine_types.QIconEngine, mode: cint, state: cint): seq[gen_qsize.QSize] =
-
   var v_ma = fcQIconEngine_availableSizes(self.h, cint(mode), cint(state))
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -159,22 +149,18 @@ proc availableSizes*(self: gen_qiconengine_types.QIconEngine, mode: cint, state:
   vx_ret
 
 proc iconName*(self: gen_qiconengine_types.QIconEngine, ): string =
-
   let v_ms = fcQIconEngine_iconName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isNull*(self: gen_qiconengine_types.QIconEngine, ): bool =
-
   fcQIconEngine_isNull(self.h)
 
 proc scaledPixmap*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint, scale: float64): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQIconEngine_scaledPixmap(self.h, size.h, cint(mode), cint(state), scale))
 
 proc virtualHook*(self: gen_qiconengine_types.QIconEngine, id: cint, data: pointer): void =
-
   fcQIconEngine_virtualHook(self.h, id, data)
 
 type QIconEnginepaintProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, mode: cint, state: cint): void
@@ -198,7 +184,6 @@ proc miqt_exec_callback_QIconEngine_paint(self: ptr cQIconEngine, slot: int, pai
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QIconEngineactualSize*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQIconEngine_virtualbase_actualSize(self.h, size.h, cint(mode), cint(state)))
 
 type QIconEngineactualSizeProc* = proc(size: gen_qsize.QSize, mode: cint, state: cint): gen_qsize.QSize
@@ -222,7 +207,6 @@ proc miqt_exec_callback_QIconEngine_actualSize(self: ptr cQIconEngine, slot: int
 
   virtualReturn.h
 proc QIconEnginepixmap*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fQIconEngine_virtualbase_pixmap(self.h, size.h, cint(mode), cint(state)))
 
 type QIconEnginepixmapProc* = proc(size: gen_qsize.QSize, mode: cint, state: cint): gen_qpixmap.QPixmap
@@ -246,7 +230,6 @@ proc miqt_exec_callback_QIconEngine_pixmap(self: ptr cQIconEngine, slot: int, si
 
   virtualReturn.h
 proc QIconEngineaddPixmap*(self: gen_qiconengine_types.QIconEngine, pixmap: gen_qpixmap.QPixmap, mode: cint, state: cint): void =
-
   fQIconEngine_virtualbase_addPixmap(self.h, pixmap.h, cint(mode), cint(state))
 
 type QIconEngineaddPixmapProc* = proc(pixmap: gen_qpixmap.QPixmap, mode: cint, state: cint): void
@@ -268,7 +251,6 @@ proc miqt_exec_callback_QIconEngine_addPixmap(self: ptr cQIconEngine, slot: int,
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QIconEngineaddFile*(self: gen_qiconengine_types.QIconEngine, fileName: string, size: gen_qsize.QSize, mode: cint, state: cint): void =
-
   fQIconEngine_virtualbase_addFile(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), size.h, cint(mode), cint(state))
 
 type QIconEngineaddFileProc* = proc(fileName: string, size: gen_qsize.QSize, mode: cint, state: cint): void
@@ -295,7 +277,6 @@ proc miqt_exec_callback_QIconEngine_addFile(self: ptr cQIconEngine, slot: int, f
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QIconEnginekey*(self: gen_qiconengine_types.QIconEngine, ): string =
-
   let v_ms = fQIconEngine_virtualbase_key(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -330,7 +311,6 @@ proc miqt_exec_callback_QIconEngine_clone(self: ptr cQIconEngine, slot: int): po
 
   virtualReturn.h
 proc QIconEngineread*(self: gen_qiconengine_types.QIconEngine, inVal: gen_qdatastream.QDataStream): bool =
-
   fQIconEngine_virtualbase_read(self.h, inVal.h)
 
 type QIconEnginereadProc* = proc(inVal: gen_qdatastream.QDataStream): bool
@@ -350,7 +330,6 @@ proc miqt_exec_callback_QIconEngine_read(self: ptr cQIconEngine, slot: int, inVa
 
   virtualReturn
 proc QIconEnginewrite*(self: gen_qiconengine_types.QIconEngine, outVal: gen_qdatastream.QDataStream): bool =
-
   fQIconEngine_virtualbase_write(self.h, outVal.h)
 
 type QIconEnginewriteProc* = proc(outVal: gen_qdatastream.QDataStream): bool
@@ -370,7 +349,6 @@ proc miqt_exec_callback_QIconEngine_write(self: ptr cQIconEngine, slot: int, out
 
   virtualReturn
 proc QIconEngineavailableSizes*(self: gen_qiconengine_types.QIconEngine, mode: cint, state: cint): seq[gen_qsize.QSize] =
-
   var v_ma = fQIconEngine_virtualbase_availableSizes(self.h, cint(mode), cint(state))
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -401,7 +379,6 @@ proc miqt_exec_callback_QIconEngine_availableSizes(self: ptr cQIconEngine, slot:
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QIconEngineiconName*(self: gen_qiconengine_types.QIconEngine, ): string =
-
   let v_ms = fQIconEngine_virtualbase_iconName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -422,7 +399,6 @@ proc miqt_exec_callback_QIconEngine_iconName(self: ptr cQIconEngine, slot: int):
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QIconEngineisNull*(self: gen_qiconengine_types.QIconEngine, ): bool =
-
   fQIconEngine_virtualbase_isNull(self.h)
 
 type QIconEngineisNullProc* = proc(): bool
@@ -440,7 +416,6 @@ proc miqt_exec_callback_QIconEngine_isNull(self: ptr cQIconEngine, slot: int): b
 
   virtualReturn
 proc QIconEnginescaledPixmap*(self: gen_qiconengine_types.QIconEngine, size: gen_qsize.QSize, mode: cint, state: cint, scale: float64): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fQIconEngine_virtualbase_scaledPixmap(self.h, size.h, cint(mode), cint(state), scale))
 
 type QIconEnginescaledPixmapProc* = proc(size: gen_qsize.QSize, mode: cint, state: cint, scale: float64): gen_qpixmap.QPixmap
@@ -466,7 +441,6 @@ proc miqt_exec_callback_QIconEngine_scaledPixmap(self: ptr cQIconEngine, slot: i
 
   virtualReturn.h
 proc QIconEnginevirtualHook*(self: gen_qiconengine_types.QIconEngine, id: cint, data: pointer): void =
-
   fQIconEngine_virtualbase_virtualHook(self.h, id, data)
 
 type QIconEnginevirtualHookProc* = proc(id: cint, data: pointer): void
@@ -491,10 +465,9 @@ proc delete*(self: gen_qiconengine_types.QIconEngine) =
 func init*(T: type gen_qiconengine_types.QIconEngineScaledPixmapArgument, h: ptr cQIconEngineScaledPixmapArgument): gen_qiconengine_types.QIconEngineScaledPixmapArgument =
   T(h: h)
 proc create*(T: type gen_qiconengine_types.QIconEngineScaledPixmapArgument, param1: gen_qiconengine_types.QIconEngineScaledPixmapArgument): gen_qiconengine_types.QIconEngineScaledPixmapArgument =
-
   gen_qiconengine_types.QIconEngineScaledPixmapArgument.init(fcQIconEngineScaledPixmapArgument_new(param1.h))
-proc operatorAssign*(self: gen_qiconengine_types.QIconEngineScaledPixmapArgument, param1: gen_qiconengine_types.QIconEngineScaledPixmapArgument): void =
 
+proc operatorAssign*(self: gen_qiconengine_types.QIconEngineScaledPixmapArgument, param1: gen_qiconengine_types.QIconEngineScaledPixmapArgument): void =
   fcQIconEngineScaledPixmapArgument_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qiconengine_types.QIconEngineScaledPixmapArgument) =

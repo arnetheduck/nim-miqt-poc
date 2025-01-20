@@ -122,52 +122,42 @@ proc fcQGraphicsItemAnimation_delete(self: pointer) {.importc: "QGraphicsItemAni
 func init*(T: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, h: ptr cQGraphicsItemAnimation): gen_qgraphicsitemanimation_types.QGraphicsItemAnimation =
   T(h: h)
 proc create*(T: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): gen_qgraphicsitemanimation_types.QGraphicsItemAnimation =
-
   gen_qgraphicsitemanimation_types.QGraphicsItemAnimation.init(fcQGraphicsItemAnimation_new())
+
 proc create*(T: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, parent: gen_qobject.QObject): gen_qgraphicsitemanimation_types.QGraphicsItemAnimation =
-
   gen_qgraphicsitemanimation_types.QGraphicsItemAnimation.init(fcQGraphicsItemAnimation_new2(parent.h))
-proc metaObject*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsItemAnimation_metaObject(self.h))
 
 proc metacast*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, param1: cstring): pointer =
-
   fcQGraphicsItemAnimation_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGraphicsItemAnimation_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, s: cstring): string =
-
   let v_ms = fcQGraphicsItemAnimation_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc item*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): gen_qgraphicsitem.QGraphicsItem =
-
   gen_qgraphicsitem.QGraphicsItem(h: fcQGraphicsItemAnimation_item(self.h))
 
 proc setItem*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, item: gen_qgraphicsitem.QGraphicsItem): void =
-
   fcQGraphicsItemAnimation_setItem(self.h, item.h)
 
 proc timeLine*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): gen_qtimeline.QTimeLine =
-
   gen_qtimeline.QTimeLine(h: fcQGraphicsItemAnimation_timeLine(self.h))
 
 proc setTimeLine*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, timeLine: gen_qtimeline.QTimeLine): void =
-
   fcQGraphicsItemAnimation_setTimeLine(self.h, timeLine.h)
 
 proc posAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsItemAnimation_posAt(self.h, step))
 
 proc posList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): seq[tuple[first: float64, second: gen_qpoint.QPointF]] =
-
   var v_ma = fcQGraphicsItemAnimation_posList(self.h)
   var vx_ret = newSeq[tuple[first: float64, second: gen_qpoint.QPointF]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
@@ -183,19 +173,15 @@ proc posList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): 
   vx_ret
 
 proc setPosAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64, pos: gen_qpoint.QPointF): void =
-
   fcQGraphicsItemAnimation_setPosAt(self.h, step, pos.h)
 
 proc transformAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): gen_qtransform.QTransform =
-
   gen_qtransform.QTransform(h: fcQGraphicsItemAnimation_transformAt(self.h, step))
 
 proc rotationAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): float64 =
-
   fcQGraphicsItemAnimation_rotationAt(self.h, step)
 
 proc rotationList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): seq[tuple[first: float64, second: float64]] =
-
   var v_ma = fcQGraphicsItemAnimation_rotationList(self.h)
   var vx_ret = newSeq[tuple[first: float64, second: float64]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
@@ -211,19 +197,15 @@ proc rotationList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation
   vx_ret
 
 proc setRotationAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64, angle: float64): void =
-
   fcQGraphicsItemAnimation_setRotationAt(self.h, step, angle)
 
 proc xTranslationAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): float64 =
-
   fcQGraphicsItemAnimation_xTranslationAt(self.h, step)
 
 proc yTranslationAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): float64 =
-
   fcQGraphicsItemAnimation_yTranslationAt(self.h, step)
 
 proc translationList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): seq[tuple[first: float64, second: gen_qpoint.QPointF]] =
-
   var v_ma = fcQGraphicsItemAnimation_translationList(self.h)
   var vx_ret = newSeq[tuple[first: float64, second: gen_qpoint.QPointF]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
@@ -239,19 +221,15 @@ proc translationList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimat
   vx_ret
 
 proc setTranslationAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64, dx: float64, dy: float64): void =
-
   fcQGraphicsItemAnimation_setTranslationAt(self.h, step, dx, dy)
 
 proc verticalScaleAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): float64 =
-
   fcQGraphicsItemAnimation_verticalScaleAt(self.h, step)
 
 proc horizontalScaleAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): float64 =
-
   fcQGraphicsItemAnimation_horizontalScaleAt(self.h, step)
 
 proc scaleList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): seq[tuple[first: float64, second: gen_qpoint.QPointF]] =
-
   var v_ma = fcQGraphicsItemAnimation_scaleList(self.h)
   var vx_ret = newSeq[tuple[first: float64, second: gen_qpoint.QPointF]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
@@ -267,19 +245,15 @@ proc scaleList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, )
   vx_ret
 
 proc setScaleAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64, sx: float64, sy: float64): void =
-
   fcQGraphicsItemAnimation_setScaleAt(self.h, step, sx, sy)
 
 proc verticalShearAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): float64 =
-
   fcQGraphicsItemAnimation_verticalShearAt(self.h, step)
 
 proc horizontalShearAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): float64 =
-
   fcQGraphicsItemAnimation_horizontalShearAt(self.h, step)
 
 proc shearList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): seq[tuple[first: float64, second: gen_qpoint.QPointF]] =
-
   var v_ma = fcQGraphicsItemAnimation_shearList(self.h)
   var vx_ret = newSeq[tuple[first: float64, second: gen_qpoint.QPointF]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
@@ -295,33 +269,27 @@ proc shearList*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, )
   vx_ret
 
 proc setShearAt*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64, sh: float64, sv: float64): void =
-
   fcQGraphicsItemAnimation_setShearAt(self.h, step, sh, sv)
 
 proc clear*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): void =
-
   fcQGraphicsItemAnimation_clear(self.h)
 
 proc setStep*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, x: float64): void =
-
   fcQGraphicsItemAnimation_setStep(self.h, x)
 
-proc tr2*(_: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsItemAnimation_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsItemAnimation_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QGraphicsItemAnimationmetaObject*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQGraphicsItemAnimation_virtualbase_metaObject(self.h))
 
 type QGraphicsItemAnimationmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -339,7 +307,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_metaObject(self: ptr cQGraphicsIt
 
   virtualReturn.h
 proc QGraphicsItemAnimationmetacast*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, param1: cstring): pointer =
-
   fQGraphicsItemAnimation_virtualbase_metacast(self.h, param1)
 
 type QGraphicsItemAnimationmetacastProc* = proc(param1: cstring): pointer
@@ -359,7 +326,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_metacast(self: ptr cQGraphicsItem
 
   virtualReturn
 proc QGraphicsItemAnimationmetacall*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGraphicsItemAnimation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGraphicsItemAnimationmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -383,7 +349,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_metacall(self: ptr cQGraphicsItem
 
   virtualReturn
 proc QGraphicsItemAnimationbeforeAnimationStep*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): void =
-
   fQGraphicsItemAnimation_virtualbase_beforeAnimationStep(self.h, step)
 
 type QGraphicsItemAnimationbeforeAnimationStepProc* = proc(step: float64): void
@@ -401,7 +366,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_beforeAnimationStep(self: ptr cQG
 
   nimfunc[](slotval1)
 proc QGraphicsItemAnimationafterAnimationStep*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, step: float64): void =
-
   fQGraphicsItemAnimation_virtualbase_afterAnimationStep(self.h, step)
 
 type QGraphicsItemAnimationafterAnimationStepProc* = proc(step: float64): void
@@ -419,7 +383,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_afterAnimationStep(self: ptr cQGr
 
   nimfunc[](slotval1)
 proc QGraphicsItemAnimationevent*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsItemAnimation_virtualbase_event(self.h, event.h)
 
 type QGraphicsItemAnimationeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -439,7 +402,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_event(self: ptr cQGraphicsItemAni
 
   virtualReturn
 proc QGraphicsItemAnimationeventFilter*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsItemAnimation_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGraphicsItemAnimationeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -461,7 +423,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_eventFilter(self: ptr cQGraphicsI
 
   virtualReturn
 proc QGraphicsItemAnimationtimerEvent*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGraphicsItemAnimation_virtualbase_timerEvent(self.h, event.h)
 
 type QGraphicsItemAnimationtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -479,7 +440,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_timerEvent(self: ptr cQGraphicsIt
 
   nimfunc[](slotval1)
 proc QGraphicsItemAnimationchildEvent*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, event: gen_qcoreevent.QChildEvent): void =
-
   fQGraphicsItemAnimation_virtualbase_childEvent(self.h, event.h)
 
 type QGraphicsItemAnimationchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -497,7 +457,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_childEvent(self: ptr cQGraphicsIt
 
   nimfunc[](slotval1)
 proc QGraphicsItemAnimationcustomEvent*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsItemAnimation_virtualbase_customEvent(self.h, event.h)
 
 type QGraphicsItemAnimationcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -515,7 +474,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_customEvent(self: ptr cQGraphicsI
 
   nimfunc[](slotval1)
 proc QGraphicsItemAnimationconnectNotify*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsItemAnimation_virtualbase_connectNotify(self.h, signal.h)
 
 type QGraphicsItemAnimationconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -533,7 +491,6 @@ proc miqt_exec_callback_QGraphicsItemAnimation_connectNotify(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsItemAnimationdisconnectNotify*(self: gen_qgraphicsitemanimation_types.QGraphicsItemAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsItemAnimation_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGraphicsItemAnimationdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

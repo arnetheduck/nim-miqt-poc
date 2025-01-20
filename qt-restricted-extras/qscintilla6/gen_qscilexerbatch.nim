@@ -182,89 +182,72 @@ proc fcQsciLexerBatch_delete(self: pointer) {.importc: "QsciLexerBatch_delete".}
 func init*(T: type gen_qscilexerbatch_types.QsciLexerBatch, h: ptr cQsciLexerBatch): gen_qscilexerbatch_types.QsciLexerBatch =
   T(h: h)
 proc create*(T: type gen_qscilexerbatch_types.QsciLexerBatch, ): gen_qscilexerbatch_types.QsciLexerBatch =
-
   gen_qscilexerbatch_types.QsciLexerBatch.init(fcQsciLexerBatch_new())
+
 proc create*(T: type gen_qscilexerbatch_types.QsciLexerBatch, parent: gen_qobject.QObject): gen_qscilexerbatch_types.QsciLexerBatch =
-
   gen_qscilexerbatch_types.QsciLexerBatch.init(fcQsciLexerBatch_new2(parent.h))
-proc metaObject*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerBatch_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerbatch_types.QsciLexerBatch, param1: cstring): pointer =
-
   fcQsciLexerBatch_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerbatch_types.QsciLexerBatch, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerBatch_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerbatch_types.QsciLexerBatch, s: cstring): string =
-
   let v_ms = fcQsciLexerBatch_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cstring =
-
   (fcQsciLexerBatch_language(self.h))
 
 proc lexer*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cstring =
-
   (fcQsciLexerBatch_lexer(self.h))
 
 proc wordCharacters*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cstring =
-
   (fcQsciLexerBatch_wordCharacters(self.h))
 
 proc caseSensitive*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): bool =
-
   fcQsciLexerBatch_caseSensitive(self.h)
 
 proc defaultColor*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerBatch_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): bool =
-
   fcQsciLexerBatch_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerBatch_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerBatch_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerbatch_types.QsciLexerBatch, set: cint): cstring =
-
   (fcQsciLexerBatch_keywords(self.h, set))
 
 proc description*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): string =
-
   let v_ms = fcQsciLexerBatch_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qscilexerbatch_types.QsciLexerBatch, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerbatch_types.QsciLexerBatch, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerBatch_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerbatch_types.QsciLexerBatch, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerbatch_types.QsciLexerBatch, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerBatch_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerBatchmetaObject*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerBatch_virtualbase_metaObject(self.h))
 
 type QsciLexerBatchmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -282,7 +265,6 @@ proc miqt_exec_callback_QsciLexerBatch_metaObject(self: ptr cQsciLexerBatch, slo
 
   virtualReturn.h
 proc QsciLexerBatchmetacast*(self: gen_qscilexerbatch_types.QsciLexerBatch, param1: cstring): pointer =
-
   fQsciLexerBatch_virtualbase_metacast(self.h, param1)
 
 type QsciLexerBatchmetacastProc* = proc(param1: cstring): pointer
@@ -302,7 +284,6 @@ proc miqt_exec_callback_QsciLexerBatch_metacast(self: ptr cQsciLexerBatch, slot:
 
   virtualReturn
 proc QsciLexerBatchmetacall*(self: gen_qscilexerbatch_types.QsciLexerBatch, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerBatch_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerBatchmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -340,7 +321,6 @@ proc miqt_exec_callback_QsciLexerBatch_language(self: ptr cQsciLexerBatch, slot:
 
   virtualReturn
 proc QsciLexerBatchlexer*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cstring =
-
   (fQsciLexerBatch_virtualbase_lexer(self.h))
 
 type QsciLexerBatchlexerProc* = proc(): cstring
@@ -358,7 +338,6 @@ proc miqt_exec_callback_QsciLexerBatch_lexer(self: ptr cQsciLexerBatch, slot: in
 
   virtualReturn
 proc QsciLexerBatchlexerId*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cint =
-
   fQsciLexerBatch_virtualbase_lexerId(self.h)
 
 type QsciLexerBatchlexerIdProc* = proc(): cint
@@ -376,7 +355,6 @@ proc miqt_exec_callback_QsciLexerBatch_lexerId(self: ptr cQsciLexerBatch, slot: 
 
   virtualReturn
 proc QsciLexerBatchautoCompletionFillups*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cstring =
-
   (fQsciLexerBatch_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerBatchautoCompletionFillupsProc* = proc(): cstring
@@ -394,7 +372,6 @@ proc miqt_exec_callback_QsciLexerBatch_autoCompletionFillups(self: ptr cQsciLexe
 
   virtualReturn
 proc QsciLexerBatchautoCompletionWordSeparators*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): seq[string] =
-
   var v_ma = fQsciLexerBatch_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -424,7 +401,6 @@ proc miqt_exec_callback_QsciLexerBatch_autoCompletionWordSeparators(self: ptr cQ
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerBatchblockEnd*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: ptr cint): cstring =
-
   (fQsciLexerBatch_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerBatchblockEndProc* = proc(style: ptr cint): cstring
@@ -444,7 +420,6 @@ proc miqt_exec_callback_QsciLexerBatch_blockEnd(self: ptr cQsciLexerBatch, slot:
 
   virtualReturn
 proc QsciLexerBatchblockLookback*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cint =
-
   fQsciLexerBatch_virtualbase_blockLookback(self.h)
 
 type QsciLexerBatchblockLookbackProc* = proc(): cint
@@ -462,7 +437,6 @@ proc miqt_exec_callback_QsciLexerBatch_blockLookback(self: ptr cQsciLexerBatch, 
 
   virtualReturn
 proc QsciLexerBatchblockStart*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: ptr cint): cstring =
-
   (fQsciLexerBatch_virtualbase_blockStart(self.h, style))
 
 type QsciLexerBatchblockStartProc* = proc(style: ptr cint): cstring
@@ -482,7 +456,6 @@ proc miqt_exec_callback_QsciLexerBatch_blockStart(self: ptr cQsciLexerBatch, slo
 
   virtualReturn
 proc QsciLexerBatchblockStartKeyword*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: ptr cint): cstring =
-
   (fQsciLexerBatch_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerBatchblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -502,7 +475,6 @@ proc miqt_exec_callback_QsciLexerBatch_blockStartKeyword(self: ptr cQsciLexerBat
 
   virtualReturn
 proc QsciLexerBatchbraceStyle*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cint =
-
   fQsciLexerBatch_virtualbase_braceStyle(self.h)
 
 type QsciLexerBatchbraceStyleProc* = proc(): cint
@@ -520,7 +492,6 @@ proc miqt_exec_callback_QsciLexerBatch_braceStyle(self: ptr cQsciLexerBatch, slo
 
   virtualReturn
 proc QsciLexerBatchcaseSensitive*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): bool =
-
   fQsciLexerBatch_virtualbase_caseSensitive(self.h)
 
 type QsciLexerBatchcaseSensitiveProc* = proc(): bool
@@ -538,7 +509,6 @@ proc miqt_exec_callback_QsciLexerBatch_caseSensitive(self: ptr cQsciLexerBatch, 
 
   virtualReturn
 proc QsciLexerBatchcolor*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerBatch_virtualbase_color(self.h, style))
 
 type QsciLexerBatchcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -558,7 +528,6 @@ proc miqt_exec_callback_QsciLexerBatch_color(self: ptr cQsciLexerBatch, slot: in
 
   virtualReturn.h
 proc QsciLexerBatcheolFill*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): bool =
-
   fQsciLexerBatch_virtualbase_eolFill(self.h, style)
 
 type QsciLexerBatcheolFillProc* = proc(style: cint): bool
@@ -578,7 +547,6 @@ proc miqt_exec_callback_QsciLexerBatch_eolFill(self: ptr cQsciLexerBatch, slot: 
 
   virtualReturn
 proc QsciLexerBatchfont*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerBatch_virtualbase_font(self.h, style))
 
 type QsciLexerBatchfontProc* = proc(style: cint): gen_qfont.QFont
@@ -598,7 +566,6 @@ proc miqt_exec_callback_QsciLexerBatch_font(self: ptr cQsciLexerBatch, slot: int
 
   virtualReturn.h
 proc QsciLexerBatchindentationGuideView*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cint =
-
   fQsciLexerBatch_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerBatchindentationGuideViewProc* = proc(): cint
@@ -616,7 +583,6 @@ proc miqt_exec_callback_QsciLexerBatch_indentationGuideView(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerBatchkeywords*(self: gen_qscilexerbatch_types.QsciLexerBatch, set: cint): cstring =
-
   (fQsciLexerBatch_virtualbase_keywords(self.h, set))
 
 type QsciLexerBatchkeywordsProc* = proc(set: cint): cstring
@@ -636,7 +602,6 @@ proc miqt_exec_callback_QsciLexerBatch_keywords(self: ptr cQsciLexerBatch, slot:
 
   virtualReturn
 proc QsciLexerBatchdefaultStyle*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cint =
-
   fQsciLexerBatch_virtualbase_defaultStyle(self.h)
 
 type QsciLexerBatchdefaultStyleProc* = proc(): cint
@@ -670,7 +635,6 @@ proc miqt_exec_callback_QsciLexerBatch_description(self: ptr cQsciLexerBatch, sl
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerBatchpaper*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerBatch_virtualbase_paper(self.h, style))
 
 type QsciLexerBatchpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -689,12 +653,11 @@ proc miqt_exec_callback_QsciLexerBatch_paper(self: ptr cQsciLexerBatch, slot: in
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerBatchdefaultColorWithStyle*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerBatchdefaultColor*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerBatch_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerBatchdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerbatch_types.QsciLexerBatch, slot: QsciLexerBatchdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerbatch_types.QsciLexerBatch, slot: QsciLexerBatchdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerBatchdefaultColorWithStyleProc
   tmp[] = slot
@@ -710,7 +673,6 @@ proc miqt_exec_callback_QsciLexerBatch_defaultColorWithStyle(self: ptr cQsciLexe
 
   virtualReturn.h
 proc QsciLexerBatchdefaultEolFill*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): bool =
-
   fQsciLexerBatch_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerBatchdefaultEolFillProc* = proc(style: cint): bool
@@ -729,12 +691,11 @@ proc miqt_exec_callback_QsciLexerBatch_defaultEolFill(self: ptr cQsciLexerBatch,
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerBatchdefaultFontWithStyle*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qfont.QFont =
-
+proc QsciLexerBatchdefaultFont*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerBatch_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerBatchdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerbatch_types.QsciLexerBatch, slot: QsciLexerBatchdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerbatch_types.QsciLexerBatch, slot: QsciLexerBatchdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerBatchdefaultFontWithStyleProc
   tmp[] = slot
@@ -749,12 +710,11 @@ proc miqt_exec_callback_QsciLexerBatch_defaultFontWithStyle(self: ptr cQsciLexer
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerBatchdefaultPaperWithStyle*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerBatchdefaultPaper*(self: gen_qscilexerbatch_types.QsciLexerBatch, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerBatch_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerBatchdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerbatch_types.QsciLexerBatch, slot: QsciLexerBatchdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerbatch_types.QsciLexerBatch, slot: QsciLexerBatchdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerBatchdefaultPaperWithStyleProc
   tmp[] = slot
@@ -770,7 +730,6 @@ proc miqt_exec_callback_QsciLexerBatch_defaultPaperWithStyle(self: ptr cQsciLexe
 
   virtualReturn.h
 proc QsciLexerBatchsetEditor*(self: gen_qscilexerbatch_types.QsciLexerBatch, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerBatch_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerBatchsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -788,7 +747,6 @@ proc miqt_exec_callback_QsciLexerBatch_setEditor(self: ptr cQsciLexerBatch, slot
 
   nimfunc[](slotval1)
 proc QsciLexerBatchrefreshProperties*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): void =
-
   fQsciLexerBatch_virtualbase_refreshProperties(self.h)
 
 type QsciLexerBatchrefreshPropertiesProc* = proc(): void
@@ -804,7 +762,6 @@ proc miqt_exec_callback_QsciLexerBatch_refreshProperties(self: ptr cQsciLexerBat
 
   nimfunc[]()
 proc QsciLexerBatchstyleBitsNeeded*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cint =
-
   fQsciLexerBatch_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerBatchstyleBitsNeededProc* = proc(): cint
@@ -822,7 +779,6 @@ proc miqt_exec_callback_QsciLexerBatch_styleBitsNeeded(self: ptr cQsciLexerBatch
 
   virtualReturn
 proc QsciLexerBatchwordCharacters*(self: gen_qscilexerbatch_types.QsciLexerBatch, ): cstring =
-
   (fQsciLexerBatch_virtualbase_wordCharacters(self.h))
 
 type QsciLexerBatchwordCharactersProc* = proc(): cstring
@@ -840,7 +796,6 @@ proc miqt_exec_callback_QsciLexerBatch_wordCharacters(self: ptr cQsciLexerBatch,
 
   virtualReturn
 proc QsciLexerBatchsetAutoIndentStyle*(self: gen_qscilexerbatch_types.QsciLexerBatch, autoindentstyle: cint): void =
-
   fQsciLexerBatch_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerBatchsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -858,7 +813,6 @@ proc miqt_exec_callback_QsciLexerBatch_setAutoIndentStyle(self: ptr cQsciLexerBa
 
   nimfunc[](slotval1)
 proc QsciLexerBatchsetColor*(self: gen_qscilexerbatch_types.QsciLexerBatch, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerBatch_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerBatchsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -878,7 +832,6 @@ proc miqt_exec_callback_QsciLexerBatch_setColor(self: ptr cQsciLexerBatch, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerBatchsetEolFill*(self: gen_qscilexerbatch_types.QsciLexerBatch, eoffill: bool, style: cint): void =
-
   fQsciLexerBatch_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerBatchsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -898,7 +851,6 @@ proc miqt_exec_callback_QsciLexerBatch_setEolFill(self: ptr cQsciLexerBatch, slo
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerBatchsetFont*(self: gen_qscilexerbatch_types.QsciLexerBatch, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerBatch_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerBatchsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -918,7 +870,6 @@ proc miqt_exec_callback_QsciLexerBatch_setFont(self: ptr cQsciLexerBatch, slot: 
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerBatchsetPaper*(self: gen_qscilexerbatch_types.QsciLexerBatch, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerBatch_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerBatchsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -938,7 +889,6 @@ proc miqt_exec_callback_QsciLexerBatch_setPaper(self: ptr cQsciLexerBatch, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerBatchreadProperties*(self: gen_qscilexerbatch_types.QsciLexerBatch, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerBatch_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerBatchreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -963,7 +913,6 @@ proc miqt_exec_callback_QsciLexerBatch_readProperties(self: ptr cQsciLexerBatch,
 
   virtualReturn
 proc QsciLexerBatchwriteProperties*(self: gen_qscilexerbatch_types.QsciLexerBatch, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerBatch_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerBatchwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -988,7 +937,6 @@ proc miqt_exec_callback_QsciLexerBatch_writeProperties(self: ptr cQsciLexerBatch
 
   virtualReturn
 proc QsciLexerBatchevent*(self: gen_qscilexerbatch_types.QsciLexerBatch, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerBatch_virtualbase_event(self.h, event.h)
 
 type QsciLexerBatcheventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1008,7 +956,6 @@ proc miqt_exec_callback_QsciLexerBatch_event(self: ptr cQsciLexerBatch, slot: in
 
   virtualReturn
 proc QsciLexerBatcheventFilter*(self: gen_qscilexerbatch_types.QsciLexerBatch, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerBatch_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerBatcheventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1030,7 +977,6 @@ proc miqt_exec_callback_QsciLexerBatch_eventFilter(self: ptr cQsciLexerBatch, sl
 
   virtualReturn
 proc QsciLexerBatchtimerEvent*(self: gen_qscilexerbatch_types.QsciLexerBatch, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerBatch_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerBatchtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1048,7 +994,6 @@ proc miqt_exec_callback_QsciLexerBatch_timerEvent(self: ptr cQsciLexerBatch, slo
 
   nimfunc[](slotval1)
 proc QsciLexerBatchchildEvent*(self: gen_qscilexerbatch_types.QsciLexerBatch, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerBatch_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerBatchchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1066,7 +1011,6 @@ proc miqt_exec_callback_QsciLexerBatch_childEvent(self: ptr cQsciLexerBatch, slo
 
   nimfunc[](slotval1)
 proc QsciLexerBatchcustomEvent*(self: gen_qscilexerbatch_types.QsciLexerBatch, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerBatch_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerBatchcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1084,7 +1028,6 @@ proc miqt_exec_callback_QsciLexerBatch_customEvent(self: ptr cQsciLexerBatch, sl
 
   nimfunc[](slotval1)
 proc QsciLexerBatchconnectNotify*(self: gen_qscilexerbatch_types.QsciLexerBatch, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerBatch_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerBatchconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1102,7 +1045,6 @@ proc miqt_exec_callback_QsciLexerBatch_connectNotify(self: ptr cQsciLexerBatch, 
 
   nimfunc[](slotval1)
 proc QsciLexerBatchdisconnectNotify*(self: gen_qscilexerbatch_types.QsciLexerBatch, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerBatch_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerBatchdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -106,97 +106,81 @@ proc fcQMouseEventTransition_delete(self: pointer) {.importc: "QMouseEventTransi
 func init*(T: type gen_qmouseeventtransition_types.QMouseEventTransition, h: ptr cQMouseEventTransition): gen_qmouseeventtransition_types.QMouseEventTransition =
   T(h: h)
 proc create*(T: type gen_qmouseeventtransition_types.QMouseEventTransition, ): gen_qmouseeventtransition_types.QMouseEventTransition =
-
   gen_qmouseeventtransition_types.QMouseEventTransition.init(fcQMouseEventTransition_new())
+
 proc create*(T: type gen_qmouseeventtransition_types.QMouseEventTransition, objectVal: gen_qobject.QObject, typeVal: cint, button: cint): gen_qmouseeventtransition_types.QMouseEventTransition =
-
   gen_qmouseeventtransition_types.QMouseEventTransition.init(fcQMouseEventTransition_new2(objectVal.h, cint(typeVal), cint(button)))
+
 proc create*(T: type gen_qmouseeventtransition_types.QMouseEventTransition, sourceState: gen_qstate.QState): gen_qmouseeventtransition_types.QMouseEventTransition =
-
   gen_qmouseeventtransition_types.QMouseEventTransition.init(fcQMouseEventTransition_new3(sourceState.h))
+
 proc create*(T: type gen_qmouseeventtransition_types.QMouseEventTransition, objectVal: gen_qobject.QObject, typeVal: cint, button: cint, sourceState: gen_qstate.QState): gen_qmouseeventtransition_types.QMouseEventTransition =
-
   gen_qmouseeventtransition_types.QMouseEventTransition.init(fcQMouseEventTransition_new4(objectVal.h, cint(typeVal), cint(button), sourceState.h))
-proc metaObject*(self: gen_qmouseeventtransition_types.QMouseEventTransition, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qmouseeventtransition_types.QMouseEventTransition, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMouseEventTransition_metaObject(self.h))
 
 proc metacast*(self: gen_qmouseeventtransition_types.QMouseEventTransition, param1: cstring): pointer =
-
   fcQMouseEventTransition_metacast(self.h, param1)
 
 proc metacall*(self: gen_qmouseeventtransition_types.QMouseEventTransition, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMouseEventTransition_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring): string =
-
   let v_ms = fcQMouseEventTransition_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring): string =
-
   let v_ms = fcQMouseEventTransition_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc button*(self: gen_qmouseeventtransition_types.QMouseEventTransition, ): cint =
-
   cint(fcQMouseEventTransition_button(self.h))
 
 proc setButton*(self: gen_qmouseeventtransition_types.QMouseEventTransition, button: cint): void =
-
   fcQMouseEventTransition_setButton(self.h, cint(button))
 
 proc modifierMask*(self: gen_qmouseeventtransition_types.QMouseEventTransition, ): cint =
-
   cint(fcQMouseEventTransition_modifierMask(self.h))
 
 proc setModifierMask*(self: gen_qmouseeventtransition_types.QMouseEventTransition, modifiers: cint): void =
-
   fcQMouseEventTransition_setModifierMask(self.h, cint(modifiers))
 
 proc hitTestPath*(self: gen_qmouseeventtransition_types.QMouseEventTransition, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQMouseEventTransition_hitTestPath(self.h))
 
 proc setHitTestPath*(self: gen_qmouseeventtransition_types.QMouseEventTransition, path: gen_qpainterpath.QPainterPath): void =
-
   fcQMouseEventTransition_setHitTestPath(self.h, path.h)
 
-proc tr2*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring, c: cstring): string =
   let v_ms = fcQMouseEventTransition_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMouseEventTransition_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring, c: cstring): string =
   let v_ms = fcQMouseEventTransition_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qmouseeventtransition_types.QMouseEventTransition, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMouseEventTransition_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QMouseEventTransitionmetaObject*(self: gen_qmouseeventtransition_types.QMouseEventTransition, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQMouseEventTransition_virtualbase_metaObject(self.h))
 
 type QMouseEventTransitionmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -214,7 +198,6 @@ proc miqt_exec_callback_QMouseEventTransition_metaObject(self: ptr cQMouseEventT
 
   virtualReturn.h
 proc QMouseEventTransitionmetacast*(self: gen_qmouseeventtransition_types.QMouseEventTransition, param1: cstring): pointer =
-
   fQMouseEventTransition_virtualbase_metacast(self.h, param1)
 
 type QMouseEventTransitionmetacastProc* = proc(param1: cstring): pointer
@@ -234,7 +217,6 @@ proc miqt_exec_callback_QMouseEventTransition_metacast(self: ptr cQMouseEventTra
 
   virtualReturn
 proc QMouseEventTransitionmetacall*(self: gen_qmouseeventtransition_types.QMouseEventTransition, param1: cint, param2: cint, param3: pointer): cint =
-
   fQMouseEventTransition_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QMouseEventTransitionmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -258,7 +240,6 @@ proc miqt_exec_callback_QMouseEventTransition_metacall(self: ptr cQMouseEventTra
 
   virtualReturn
 proc QMouseEventTransitiononTransition*(self: gen_qmouseeventtransition_types.QMouseEventTransition, event: gen_qcoreevent.QEvent): void =
-
   fQMouseEventTransition_virtualbase_onTransition(self.h, event.h)
 
 type QMouseEventTransitiononTransitionProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -276,7 +257,6 @@ proc miqt_exec_callback_QMouseEventTransition_onTransition(self: ptr cQMouseEven
 
   nimfunc[](slotval1)
 proc QMouseEventTransitioneventTest*(self: gen_qmouseeventtransition_types.QMouseEventTransition, event: gen_qcoreevent.QEvent): bool =
-
   fQMouseEventTransition_virtualbase_eventTest(self.h, event.h)
 
 type QMouseEventTransitioneventTestProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -296,7 +276,6 @@ proc miqt_exec_callback_QMouseEventTransition_eventTest(self: ptr cQMouseEventTr
 
   virtualReturn
 proc QMouseEventTransitionevent*(self: gen_qmouseeventtransition_types.QMouseEventTransition, e: gen_qcoreevent.QEvent): bool =
-
   fQMouseEventTransition_virtualbase_event(self.h, e.h)
 
 type QMouseEventTransitioneventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -316,7 +295,6 @@ proc miqt_exec_callback_QMouseEventTransition_event(self: ptr cQMouseEventTransi
 
   virtualReturn
 proc QMouseEventTransitioneventFilter*(self: gen_qmouseeventtransition_types.QMouseEventTransition, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQMouseEventTransition_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QMouseEventTransitioneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -338,7 +316,6 @@ proc miqt_exec_callback_QMouseEventTransition_eventFilter(self: ptr cQMouseEvent
 
   virtualReturn
 proc QMouseEventTransitiontimerEvent*(self: gen_qmouseeventtransition_types.QMouseEventTransition, event: gen_qcoreevent.QTimerEvent): void =
-
   fQMouseEventTransition_virtualbase_timerEvent(self.h, event.h)
 
 type QMouseEventTransitiontimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -356,7 +333,6 @@ proc miqt_exec_callback_QMouseEventTransition_timerEvent(self: ptr cQMouseEventT
 
   nimfunc[](slotval1)
 proc QMouseEventTransitionchildEvent*(self: gen_qmouseeventtransition_types.QMouseEventTransition, event: gen_qcoreevent.QChildEvent): void =
-
   fQMouseEventTransition_virtualbase_childEvent(self.h, event.h)
 
 type QMouseEventTransitionchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -374,7 +350,6 @@ proc miqt_exec_callback_QMouseEventTransition_childEvent(self: ptr cQMouseEventT
 
   nimfunc[](slotval1)
 proc QMouseEventTransitioncustomEvent*(self: gen_qmouseeventtransition_types.QMouseEventTransition, event: gen_qcoreevent.QEvent): void =
-
   fQMouseEventTransition_virtualbase_customEvent(self.h, event.h)
 
 type QMouseEventTransitioncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -392,7 +367,6 @@ proc miqt_exec_callback_QMouseEventTransition_customEvent(self: ptr cQMouseEvent
 
   nimfunc[](slotval1)
 proc QMouseEventTransitionconnectNotify*(self: gen_qmouseeventtransition_types.QMouseEventTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMouseEventTransition_virtualbase_connectNotify(self.h, signal.h)
 
 type QMouseEventTransitionconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -410,7 +384,6 @@ proc miqt_exec_callback_QMouseEventTransition_connectNotify(self: ptr cQMouseEve
 
   nimfunc[](slotval1)
 proc QMouseEventTransitiondisconnectNotify*(self: gen_qmouseeventtransition_types.QMouseEventTransition, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMouseEventTransition_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QMouseEventTransitiondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

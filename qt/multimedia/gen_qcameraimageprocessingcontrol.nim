@@ -85,70 +85,57 @@ proc fcQCameraImageProcessingControl_delete(self: pointer) {.importc: "QCameraIm
 func init*(T: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, h: ptr cQCameraImageProcessingControl): gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl =
   T(h: h)
 proc metaObject*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQCameraImageProcessingControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, param1: cstring): pointer =
-
   fcQCameraImageProcessingControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCameraImageProcessingControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring): string =
-
   let v_ms = fcQCameraImageProcessingControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring): string =
-
   let v_ms = fcQCameraImageProcessingControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isParameterSupported*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, param1: cint): bool =
-
   fcQCameraImageProcessingControl_isParameterSupported(self.h, cint(param1))
 
 proc isParameterValueSupported*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, parameter: cint, value: gen_qvariant.QVariant): bool =
-
   fcQCameraImageProcessingControl_isParameterValueSupported(self.h, cint(parameter), value.h)
 
 proc parameter*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, parameter: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQCameraImageProcessingControl_parameter(self.h, cint(parameter)))
 
 proc setParameter*(self: gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, parameter: cint, value: gen_qvariant.QVariant): void =
-
   fcQCameraImageProcessingControl_setParameter(self.h, cint(parameter), value.h)
 
-proc tr2*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraImageProcessingControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraImageProcessingControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraImageProcessingControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcameraimageprocessingcontrol_types.QCameraImageProcessingControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraImageProcessingControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

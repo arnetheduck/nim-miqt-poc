@@ -450,55 +450,45 @@ proc fcQWizardPage_delete(self: pointer) {.importc: "QWizardPage_delete".}
 func init*(T: type gen_qwizard_types.QWizard, h: ptr cQWizard): gen_qwizard_types.QWizard =
   T(h: h)
 proc create*(T: type gen_qwizard_types.QWizard, parent: gen_qwidget.QWidget): gen_qwizard_types.QWizard =
-
   gen_qwizard_types.QWizard.init(fcQWizard_new(parent.h))
+
 proc create*(T: type gen_qwizard_types.QWizard, ): gen_qwizard_types.QWizard =
-
   gen_qwizard_types.QWizard.init(fcQWizard_new2())
+
 proc create*(T: type gen_qwizard_types.QWizard, parent: gen_qwidget.QWidget, flags: cint): gen_qwizard_types.QWizard =
-
   gen_qwizard_types.QWizard.init(fcQWizard_new3(parent.h, cint(flags)))
-proc metaObject*(self: gen_qwizard_types.QWizard, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qwizard_types.QWizard, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWizard_metaObject(self.h))
 
 proc metacast*(self: gen_qwizard_types.QWizard, param1: cstring): pointer =
-
   fcQWizard_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwizard_types.QWizard, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWizard_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwizard_types.QWizard, s: cstring): string =
-
   let v_ms = fcQWizard_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc addPage*(self: gen_qwizard_types.QWizard, page: gen_qwizard_types.QWizardPage): cint =
-
   fcQWizard_addPage(self.h, page.h)
 
 proc setPage*(self: gen_qwizard_types.QWizard, id: cint, page: gen_qwizard_types.QWizardPage): void =
-
   fcQWizard_setPage(self.h, id, page.h)
 
 proc removePage*(self: gen_qwizard_types.QWizard, id: cint): void =
-
   fcQWizard_removePage(self.h, id)
 
 proc page*(self: gen_qwizard_types.QWizard, id: cint): gen_qwizard_types.QWizardPage =
-
   gen_qwizard_types.QWizardPage(h: fcQWizard_page(self.h, id))
 
 proc hasVisitedPage*(self: gen_qwizard_types.QWizard, id: cint): bool =
-
   fcQWizard_hasVisitedPage(self.h, id)
 
 proc visitedIds*(self: gen_qwizard_types.QWizard, ): seq[cint] =
-
   var v_ma = fcQWizard_visitedIds(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -507,7 +497,6 @@ proc visitedIds*(self: gen_qwizard_types.QWizard, ): seq[cint] =
   vx_ret
 
 proc pageIds*(self: gen_qwizard_types.QWizard, ): seq[cint] =
-
   var v_ma = fcQWizard_pageIds(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -516,74 +505,57 @@ proc pageIds*(self: gen_qwizard_types.QWizard, ): seq[cint] =
   vx_ret
 
 proc setStartId*(self: gen_qwizard_types.QWizard, id: cint): void =
-
   fcQWizard_setStartId(self.h, id)
 
 proc startId*(self: gen_qwizard_types.QWizard, ): cint =
-
   fcQWizard_startId(self.h)
 
 proc currentPage*(self: gen_qwizard_types.QWizard, ): gen_qwizard_types.QWizardPage =
-
   gen_qwizard_types.QWizardPage(h: fcQWizard_currentPage(self.h))
 
 proc currentId*(self: gen_qwizard_types.QWizard, ): cint =
-
   fcQWizard_currentId(self.h)
 
 proc validateCurrentPage*(self: gen_qwizard_types.QWizard, ): bool =
-
   fcQWizard_validateCurrentPage(self.h)
 
 proc nextId*(self: gen_qwizard_types.QWizard, ): cint =
-
   fcQWizard_nextId(self.h)
 
 proc setField*(self: gen_qwizard_types.QWizard, name: string, value: gen_qvariant.QVariant): void =
-
   fcQWizard_setField(self.h, struct_miqt_string(data: name, len: csize_t(len(name))), value.h)
 
 proc field*(self: gen_qwizard_types.QWizard, name: string): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQWizard_field(self.h, struct_miqt_string(data: name, len: csize_t(len(name)))))
 
 proc setWizardStyle*(self: gen_qwizard_types.QWizard, style: cint): void =
-
   fcQWizard_setWizardStyle(self.h, cint(style))
 
 proc wizardStyle*(self: gen_qwizard_types.QWizard, ): cint =
-
   cint(fcQWizard_wizardStyle(self.h))
 
 proc setOption*(self: gen_qwizard_types.QWizard, option: cint): void =
-
   fcQWizard_setOption(self.h, cint(option))
 
 proc testOption*(self: gen_qwizard_types.QWizard, option: cint): bool =
-
   fcQWizard_testOption(self.h, cint(option))
 
 proc setOptions*(self: gen_qwizard_types.QWizard, options: cint): void =
-
   fcQWizard_setOptions(self.h, cint(options))
 
 proc options*(self: gen_qwizard_types.QWizard, ): cint =
-
   cint(fcQWizard_options(self.h))
 
 proc setButtonText*(self: gen_qwizard_types.QWizard, which: cint, text: string): void =
-
   fcQWizard_setButtonText(self.h, cint(which), struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc buttonText*(self: gen_qwizard_types.QWizard, which: cint): string =
-
   let v_ms = fcQWizard_buttonText(self.h, cint(which))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setButtonLayout*(self: gen_qwizard_types.QWizard, layout: seq[cint]): void =
-
   var layout_CArray = newSeq[cint](len(layout))
   for i in 0..<len(layout):
     layout_CArray[i] = cint(layout[i])
@@ -591,181 +563,150 @@ proc setButtonLayout*(self: gen_qwizard_types.QWizard, layout: seq[cint]): void 
   fcQWizard_setButtonLayout(self.h, struct_miqt_array(len: csize_t(len(layout)), data: if len(layout) == 0: nil else: addr(layout_CArray[0])))
 
 proc setButton*(self: gen_qwizard_types.QWizard, which: cint, button: gen_qabstractbutton.QAbstractButton): void =
-
   fcQWizard_setButton(self.h, cint(which), button.h)
 
 proc button*(self: gen_qwizard_types.QWizard, which: cint): gen_qabstractbutton.QAbstractButton =
-
   gen_qabstractbutton.QAbstractButton(h: fcQWizard_button(self.h, cint(which)))
 
 proc setTitleFormat*(self: gen_qwizard_types.QWizard, format: cint): void =
-
   fcQWizard_setTitleFormat(self.h, cint(format))
 
 proc titleFormat*(self: gen_qwizard_types.QWizard, ): cint =
-
   cint(fcQWizard_titleFormat(self.h))
 
 proc setSubTitleFormat*(self: gen_qwizard_types.QWizard, format: cint): void =
-
   fcQWizard_setSubTitleFormat(self.h, cint(format))
 
 proc subTitleFormat*(self: gen_qwizard_types.QWizard, ): cint =
-
   cint(fcQWizard_subTitleFormat(self.h))
 
 proc setPixmap*(self: gen_qwizard_types.QWizard, which: cint, pixmap: gen_qpixmap.QPixmap): void =
-
   fcQWizard_setPixmap(self.h, cint(which), pixmap.h)
 
 proc pixmap*(self: gen_qwizard_types.QWizard, which: cint): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQWizard_pixmap(self.h, cint(which)))
 
 proc setSideWidget*(self: gen_qwizard_types.QWizard, widget: gen_qwidget.QWidget): void =
-
   fcQWizard_setSideWidget(self.h, widget.h)
 
 proc sideWidget*(self: gen_qwizard_types.QWizard, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQWizard_sideWidget(self.h))
 
 proc setDefaultProperty*(self: gen_qwizard_types.QWizard, className: cstring, property: cstring, changedSignal: cstring): void =
-
   fcQWizard_setDefaultProperty(self.h, className, property, changedSignal)
 
 proc setVisible*(self: gen_qwizard_types.QWizard, visible: bool): void =
-
   fcQWizard_setVisible(self.h, visible)
 
 proc sizeHint*(self: gen_qwizard_types.QWizard, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQWizard_sizeHint(self.h))
 
 proc currentIdChanged*(self: gen_qwizard_types.QWizard, id: cint): void =
-
   fcQWizard_currentIdChanged(self.h, id)
 
+type QWizardcurrentIdChangedSlot* = proc(id: cint)
 proc miqt_exec_callback_QWizard_currentIdChanged(slot: int, id: cint) {.exportc.} =
-  type Cb = proc(id: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWizardcurrentIdChangedSlot](cast[pointer](slot))
   let slotval1 = id
-
 
   nimfunc[](slotval1)
 
-proc oncurrentIdChanged*(self: gen_qwizard_types.QWizard, slot: proc(id: cint)) =
-  type Cb = proc(id: cint)
-  var tmp = new Cb
+proc oncurrentIdChanged*(self: gen_qwizard_types.QWizard, slot: QWizardcurrentIdChangedSlot) =
+  var tmp = new QWizardcurrentIdChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_currentIdChanged(self.h, cast[int](addr tmp[]))
-proc helpRequested*(self: gen_qwizard_types.QWizard, ): void =
 
+proc helpRequested*(self: gen_qwizard_types.QWizard, ): void =
   fcQWizard_helpRequested(self.h)
 
+type QWizardhelpRequestedSlot* = proc()
 proc miqt_exec_callback_QWizard_helpRequested(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QWizardhelpRequestedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onhelpRequested*(self: gen_qwizard_types.QWizard, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onhelpRequested*(self: gen_qwizard_types.QWizard, slot: QWizardhelpRequestedSlot) =
+  var tmp = new QWizardhelpRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_helpRequested(self.h, cast[int](addr tmp[]))
-proc customButtonClicked*(self: gen_qwizard_types.QWizard, which: cint): void =
 
+proc customButtonClicked*(self: gen_qwizard_types.QWizard, which: cint): void =
   fcQWizard_customButtonClicked(self.h, which)
 
+type QWizardcustomButtonClickedSlot* = proc(which: cint)
 proc miqt_exec_callback_QWizard_customButtonClicked(slot: int, which: cint) {.exportc.} =
-  type Cb = proc(which: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWizardcustomButtonClickedSlot](cast[pointer](slot))
   let slotval1 = which
-
 
   nimfunc[](slotval1)
 
-proc oncustomButtonClicked*(self: gen_qwizard_types.QWizard, slot: proc(which: cint)) =
-  type Cb = proc(which: cint)
-  var tmp = new Cb
+proc oncustomButtonClicked*(self: gen_qwizard_types.QWizard, slot: QWizardcustomButtonClickedSlot) =
+  var tmp = new QWizardcustomButtonClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_customButtonClicked(self.h, cast[int](addr tmp[]))
-proc pageAdded*(self: gen_qwizard_types.QWizard, id: cint): void =
 
+proc pageAdded*(self: gen_qwizard_types.QWizard, id: cint): void =
   fcQWizard_pageAdded(self.h, id)
 
+type QWizardpageAddedSlot* = proc(id: cint)
 proc miqt_exec_callback_QWizard_pageAdded(slot: int, id: cint) {.exportc.} =
-  type Cb = proc(id: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWizardpageAddedSlot](cast[pointer](slot))
   let slotval1 = id
-
 
   nimfunc[](slotval1)
 
-proc onpageAdded*(self: gen_qwizard_types.QWizard, slot: proc(id: cint)) =
-  type Cb = proc(id: cint)
-  var tmp = new Cb
+proc onpageAdded*(self: gen_qwizard_types.QWizard, slot: QWizardpageAddedSlot) =
+  var tmp = new QWizardpageAddedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_pageAdded(self.h, cast[int](addr tmp[]))
-proc pageRemoved*(self: gen_qwizard_types.QWizard, id: cint): void =
 
+proc pageRemoved*(self: gen_qwizard_types.QWizard, id: cint): void =
   fcQWizard_pageRemoved(self.h, id)
 
+type QWizardpageRemovedSlot* = proc(id: cint)
 proc miqt_exec_callback_QWizard_pageRemoved(slot: int, id: cint) {.exportc.} =
-  type Cb = proc(id: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWizardpageRemovedSlot](cast[pointer](slot))
   let slotval1 = id
-
 
   nimfunc[](slotval1)
 
-proc onpageRemoved*(self: gen_qwizard_types.QWizard, slot: proc(id: cint)) =
-  type Cb = proc(id: cint)
-  var tmp = new Cb
+proc onpageRemoved*(self: gen_qwizard_types.QWizard, slot: QWizardpageRemovedSlot) =
+  var tmp = new QWizardpageRemovedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWizard_connect_pageRemoved(self.h, cast[int](addr tmp[]))
-proc back*(self: gen_qwizard_types.QWizard, ): void =
 
+proc back*(self: gen_qwizard_types.QWizard, ): void =
   fcQWizard_back(self.h)
 
 proc next*(self: gen_qwizard_types.QWizard, ): void =
-
   fcQWizard_next(self.h)
 
 proc setCurrentId*(self: gen_qwizard_types.QWizard, id: cint): void =
-
   fcQWizard_setCurrentId(self.h, id)
 
 proc restart*(self: gen_qwizard_types.QWizard, ): void =
-
   fcQWizard_restart(self.h)
 
-proc tr2*(_: type gen_qwizard_types.QWizard, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qwizard_types.QWizard, s: cstring, c: cstring): string =
   let v_ms = fcQWizard_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwizard_types.QWizard, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwizard_types.QWizard, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWizard_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOption2*(self: gen_qwizard_types.QWizard, option: cint, on: bool): void =
-
+proc setOption*(self: gen_qwizard_types.QWizard, option: cint, on: bool): void =
   fcQWizard_setOption2(self.h, cint(option), on)
 
 proc QWizardmetaObject*(self: gen_qwizard_types.QWizard, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQWizard_virtualbase_metaObject(self.h))
 
 type QWizardmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -783,7 +724,6 @@ proc miqt_exec_callback_QWizard_metaObject(self: ptr cQWizard, slot: int): point
 
   virtualReturn.h
 proc QWizardmetacast*(self: gen_qwizard_types.QWizard, param1: cstring): pointer =
-
   fQWizard_virtualbase_metacast(self.h, param1)
 
 type QWizardmetacastProc* = proc(param1: cstring): pointer
@@ -803,7 +743,6 @@ proc miqt_exec_callback_QWizard_metacast(self: ptr cQWizard, slot: int, param1: 
 
   virtualReturn
 proc QWizardmetacall*(self: gen_qwizard_types.QWizard, param1: cint, param2: cint, param3: pointer): cint =
-
   fQWizard_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QWizardmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -827,7 +766,6 @@ proc miqt_exec_callback_QWizard_metacall(self: ptr cQWizard, slot: int, param1: 
 
   virtualReturn
 proc QWizardvalidateCurrentPage*(self: gen_qwizard_types.QWizard, ): bool =
-
   fQWizard_virtualbase_validateCurrentPage(self.h)
 
 type QWizardvalidateCurrentPageProc* = proc(): bool
@@ -845,7 +783,6 @@ proc miqt_exec_callback_QWizard_validateCurrentPage(self: ptr cQWizard, slot: in
 
   virtualReturn
 proc QWizardnextId*(self: gen_qwizard_types.QWizard, ): cint =
-
   fQWizard_virtualbase_nextId(self.h)
 
 type QWizardnextIdProc* = proc(): cint
@@ -863,7 +800,6 @@ proc miqt_exec_callback_QWizard_nextId(self: ptr cQWizard, slot: int): cint {.ex
 
   virtualReturn
 proc QWizardsetVisible*(self: gen_qwizard_types.QWizard, visible: bool): void =
-
   fQWizard_virtualbase_setVisible(self.h, visible)
 
 type QWizardsetVisibleProc* = proc(visible: bool): void
@@ -881,7 +817,6 @@ proc miqt_exec_callback_QWizard_setVisible(self: ptr cQWizard, slot: int, visibl
 
   nimfunc[](slotval1)
 proc QWizardsizeHint*(self: gen_qwizard_types.QWizard, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWizard_virtualbase_sizeHint(self.h))
 
 type QWizardsizeHintProc* = proc(): gen_qsize.QSize
@@ -899,7 +834,6 @@ proc miqt_exec_callback_QWizard_sizeHint(self: ptr cQWizard, slot: int): pointer
 
   virtualReturn.h
 proc QWizardevent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QEvent): bool =
-
   fQWizard_virtualbase_event(self.h, event.h)
 
 type QWizardeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -919,7 +853,6 @@ proc miqt_exec_callback_QWizard_event(self: ptr cQWizard, slot: int, event: poin
 
   virtualReturn
 proc QWizardresizeEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QResizeEvent): void =
-
   fQWizard_virtualbase_resizeEvent(self.h, event.h)
 
 type QWizardresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -937,7 +870,6 @@ proc miqt_exec_callback_QWizard_resizeEvent(self: ptr cQWizard, slot: int, event
 
   nimfunc[](slotval1)
 proc QWizardpaintEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QPaintEvent): void =
-
   fQWizard_virtualbase_paintEvent(self.h, event.h)
 
 type QWizardpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -955,7 +887,6 @@ proc miqt_exec_callback_QWizard_paintEvent(self: ptr cQWizard, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWizarddone*(self: gen_qwizard_types.QWizard, resultVal: cint): void =
-
   fQWizard_virtualbase_done(self.h, resultVal)
 
 type QWizarddoneProc* = proc(resultVal: cint): void
@@ -973,7 +904,6 @@ proc miqt_exec_callback_QWizard_done(self: ptr cQWizard, slot: int, resultVal: c
 
   nimfunc[](slotval1)
 proc QWizardinitializePage*(self: gen_qwizard_types.QWizard, id: cint): void =
-
   fQWizard_virtualbase_initializePage(self.h, id)
 
 type QWizardinitializePageProc* = proc(id: cint): void
@@ -991,7 +921,6 @@ proc miqt_exec_callback_QWizard_initializePage(self: ptr cQWizard, slot: int, id
 
   nimfunc[](slotval1)
 proc QWizardcleanupPage*(self: gen_qwizard_types.QWizard, id: cint): void =
-
   fQWizard_virtualbase_cleanupPage(self.h, id)
 
 type QWizardcleanupPageProc* = proc(id: cint): void
@@ -1009,7 +938,6 @@ proc miqt_exec_callback_QWizard_cleanupPage(self: ptr cQWizard, slot: int, id: c
 
   nimfunc[](slotval1)
 proc QWizardminimumSizeHint*(self: gen_qwizard_types.QWizard, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWizard_virtualbase_minimumSizeHint(self.h))
 
 type QWizardminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1027,7 +955,6 @@ proc miqt_exec_callback_QWizard_minimumSizeHint(self: ptr cQWizard, slot: int): 
 
   virtualReturn.h
 proc QWizardopen*(self: gen_qwizard_types.QWizard, ): void =
-
   fQWizard_virtualbase_open(self.h)
 
 type QWizardopenProc* = proc(): void
@@ -1043,7 +970,6 @@ proc miqt_exec_callback_QWizard_open(self: ptr cQWizard, slot: int): void {.expo
 
   nimfunc[]()
 proc QWizardexec*(self: gen_qwizard_types.QWizard, ): cint =
-
   fQWizard_virtualbase_exec(self.h)
 
 type QWizardexecProc* = proc(): cint
@@ -1061,7 +987,6 @@ proc miqt_exec_callback_QWizard_exec(self: ptr cQWizard, slot: int): cint {.expo
 
   virtualReturn
 proc QWizardaccept*(self: gen_qwizard_types.QWizard, ): void =
-
   fQWizard_virtualbase_accept(self.h)
 
 type QWizardacceptProc* = proc(): void
@@ -1077,7 +1002,6 @@ proc miqt_exec_callback_QWizard_accept(self: ptr cQWizard, slot: int): void {.ex
 
   nimfunc[]()
 proc QWizardreject*(self: gen_qwizard_types.QWizard, ): void =
-
   fQWizard_virtualbase_reject(self.h)
 
 type QWizardrejectProc* = proc(): void
@@ -1093,7 +1017,6 @@ proc miqt_exec_callback_QWizard_reject(self: ptr cQWizard, slot: int): void {.ex
 
   nimfunc[]()
 proc QWizardkeyPressEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QKeyEvent): void =
-
   fQWizard_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QWizardkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -1111,7 +1034,6 @@ proc miqt_exec_callback_QWizard_keyPressEvent(self: ptr cQWizard, slot: int, par
 
   nimfunc[](slotval1)
 proc QWizardcloseEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QCloseEvent): void =
-
   fQWizard_virtualbase_closeEvent(self.h, param1.h)
 
 type QWizardcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
@@ -1129,7 +1051,6 @@ proc miqt_exec_callback_QWizard_closeEvent(self: ptr cQWizard, slot: int, param1
 
   nimfunc[](slotval1)
 proc QWizardshowEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QShowEvent): void =
-
   fQWizard_virtualbase_showEvent(self.h, param1.h)
 
 type QWizardshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -1147,7 +1068,6 @@ proc miqt_exec_callback_QWizard_showEvent(self: ptr cQWizard, slot: int, param1:
 
   nimfunc[](slotval1)
 proc QWizardcontextMenuEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QContextMenuEvent): void =
-
   fQWizard_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QWizardcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -1165,7 +1085,6 @@ proc miqt_exec_callback_QWizard_contextMenuEvent(self: ptr cQWizard, slot: int, 
 
   nimfunc[](slotval1)
 proc QWizardeventFilter*(self: gen_qwizard_types.QWizard, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQWizard_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QWizardeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -1187,7 +1106,6 @@ proc miqt_exec_callback_QWizard_eventFilter(self: ptr cQWizard, slot: int, param
 
   virtualReturn
 proc QWizarddevType*(self: gen_qwizard_types.QWizard, ): cint =
-
   fQWizard_virtualbase_devType(self.h)
 
 type QWizarddevTypeProc* = proc(): cint
@@ -1205,7 +1123,6 @@ proc miqt_exec_callback_QWizard_devType(self: ptr cQWizard, slot: int): cint {.e
 
   virtualReturn
 proc QWizardheightForWidth*(self: gen_qwizard_types.QWizard, param1: cint): cint =
-
   fQWizard_virtualbase_heightForWidth(self.h, param1)
 
 type QWizardheightForWidthProc* = proc(param1: cint): cint
@@ -1225,7 +1142,6 @@ proc miqt_exec_callback_QWizard_heightForWidth(self: ptr cQWizard, slot: int, pa
 
   virtualReturn
 proc QWizardhasHeightForWidth*(self: gen_qwizard_types.QWizard, ): bool =
-
   fQWizard_virtualbase_hasHeightForWidth(self.h)
 
 type QWizardhasHeightForWidthProc* = proc(): bool
@@ -1243,7 +1159,6 @@ proc miqt_exec_callback_QWizard_hasHeightForWidth(self: ptr cQWizard, slot: int)
 
   virtualReturn
 proc QWizardpaintEngine*(self: gen_qwizard_types.QWizard, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQWizard_virtualbase_paintEngine(self.h))
 
 type QWizardpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1261,7 +1176,6 @@ proc miqt_exec_callback_QWizard_paintEngine(self: ptr cQWizard, slot: int): poin
 
   virtualReturn.h
 proc QWizardmousePressEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMouseEvent): void =
-
   fQWizard_virtualbase_mousePressEvent(self.h, event.h)
 
 type QWizardmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1279,7 +1193,6 @@ proc miqt_exec_callback_QWizard_mousePressEvent(self: ptr cQWizard, slot: int, e
 
   nimfunc[](slotval1)
 proc QWizardmouseReleaseEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMouseEvent): void =
-
   fQWizard_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QWizardmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1297,7 +1210,6 @@ proc miqt_exec_callback_QWizard_mouseReleaseEvent(self: ptr cQWizard, slot: int,
 
   nimfunc[](slotval1)
 proc QWizardmouseDoubleClickEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMouseEvent): void =
-
   fQWizard_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QWizardmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1315,7 +1227,6 @@ proc miqt_exec_callback_QWizard_mouseDoubleClickEvent(self: ptr cQWizard, slot: 
 
   nimfunc[](slotval1)
 proc QWizardmouseMoveEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMouseEvent): void =
-
   fQWizard_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QWizardmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1333,7 +1244,6 @@ proc miqt_exec_callback_QWizard_mouseMoveEvent(self: ptr cQWizard, slot: int, ev
 
   nimfunc[](slotval1)
 proc QWizardwheelEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QWheelEvent): void =
-
   fQWizard_virtualbase_wheelEvent(self.h, event.h)
 
 type QWizardwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -1351,7 +1261,6 @@ proc miqt_exec_callback_QWizard_wheelEvent(self: ptr cQWizard, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWizardkeyReleaseEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QKeyEvent): void =
-
   fQWizard_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QWizardkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1369,7 +1278,6 @@ proc miqt_exec_callback_QWizard_keyReleaseEvent(self: ptr cQWizard, slot: int, e
 
   nimfunc[](slotval1)
 proc QWizardfocusInEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QFocusEvent): void =
-
   fQWizard_virtualbase_focusInEvent(self.h, event.h)
 
 type QWizardfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1387,7 +1295,6 @@ proc miqt_exec_callback_QWizard_focusInEvent(self: ptr cQWizard, slot: int, even
 
   nimfunc[](slotval1)
 proc QWizardfocusOutEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QFocusEvent): void =
-
   fQWizard_virtualbase_focusOutEvent(self.h, event.h)
 
 type QWizardfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1405,7 +1312,6 @@ proc miqt_exec_callback_QWizard_focusOutEvent(self: ptr cQWizard, slot: int, eve
 
   nimfunc[](slotval1)
 proc QWizardenterEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QEnterEvent): void =
-
   fQWizard_virtualbase_enterEvent(self.h, event.h)
 
 type QWizardenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -1423,7 +1329,6 @@ proc miqt_exec_callback_QWizard_enterEvent(self: ptr cQWizard, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWizardleaveEvent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QEvent): void =
-
   fQWizard_virtualbase_leaveEvent(self.h, event.h)
 
 type QWizardleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1441,7 +1346,6 @@ proc miqt_exec_callback_QWizard_leaveEvent(self: ptr cQWizard, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWizardmoveEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QMoveEvent): void =
-
   fQWizard_virtualbase_moveEvent(self.h, event.h)
 
 type QWizardmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1459,7 +1363,6 @@ proc miqt_exec_callback_QWizard_moveEvent(self: ptr cQWizard, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QWizardtabletEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QTabletEvent): void =
-
   fQWizard_virtualbase_tabletEvent(self.h, event.h)
 
 type QWizardtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1477,7 +1380,6 @@ proc miqt_exec_callback_QWizard_tabletEvent(self: ptr cQWizard, slot: int, event
 
   nimfunc[](slotval1)
 proc QWizardactionEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QActionEvent): void =
-
   fQWizard_virtualbase_actionEvent(self.h, event.h)
 
 type QWizardactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1495,7 +1397,6 @@ proc miqt_exec_callback_QWizard_actionEvent(self: ptr cQWizard, slot: int, event
 
   nimfunc[](slotval1)
 proc QWizarddragEnterEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QDragEnterEvent): void =
-
   fQWizard_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QWizarddragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1513,7 +1414,6 @@ proc miqt_exec_callback_QWizard_dragEnterEvent(self: ptr cQWizard, slot: int, ev
 
   nimfunc[](slotval1)
 proc QWizarddragMoveEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QDragMoveEvent): void =
-
   fQWizard_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QWizarddragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1531,7 +1431,6 @@ proc miqt_exec_callback_QWizard_dragMoveEvent(self: ptr cQWizard, slot: int, eve
 
   nimfunc[](slotval1)
 proc QWizarddragLeaveEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QDragLeaveEvent): void =
-
   fQWizard_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QWizarddragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1549,7 +1448,6 @@ proc miqt_exec_callback_QWizard_dragLeaveEvent(self: ptr cQWizard, slot: int, ev
 
   nimfunc[](slotval1)
 proc QWizarddropEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QDropEvent): void =
-
   fQWizard_virtualbase_dropEvent(self.h, event.h)
 
 type QWizarddropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1567,7 +1465,6 @@ proc miqt_exec_callback_QWizard_dropEvent(self: ptr cQWizard, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QWizardhideEvent*(self: gen_qwizard_types.QWizard, event: gen_qevent.QHideEvent): void =
-
   fQWizard_virtualbase_hideEvent(self.h, event.h)
 
 type QWizardhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1585,7 +1482,6 @@ proc miqt_exec_callback_QWizard_hideEvent(self: ptr cQWizard, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QWizardnativeEvent*(self: gen_qwizard_types.QWizard, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQWizard_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QWizardnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1612,7 +1508,6 @@ proc miqt_exec_callback_QWizard_nativeEvent(self: ptr cQWizard, slot: int, event
 
   virtualReturn
 proc QWizardchangeEvent*(self: gen_qwizard_types.QWizard, param1: gen_qcoreevent.QEvent): void =
-
   fQWizard_virtualbase_changeEvent(self.h, param1.h)
 
 type QWizardchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1630,7 +1525,6 @@ proc miqt_exec_callback_QWizard_changeEvent(self: ptr cQWizard, slot: int, param
 
   nimfunc[](slotval1)
 proc QWizardmetric*(self: gen_qwizard_types.QWizard, param1: cint): cint =
-
   fQWizard_virtualbase_metric(self.h, cint(param1))
 
 type QWizardmetricProc* = proc(param1: cint): cint
@@ -1650,7 +1544,6 @@ proc miqt_exec_callback_QWizard_metric(self: ptr cQWizard, slot: int, param1: ci
 
   virtualReturn
 proc QWizardinitPainter*(self: gen_qwizard_types.QWizard, painter: gen_qpainter.QPainter): void =
-
   fQWizard_virtualbase_initPainter(self.h, painter.h)
 
 type QWizardinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1668,7 +1561,6 @@ proc miqt_exec_callback_QWizard_initPainter(self: ptr cQWizard, slot: int, paint
 
   nimfunc[](slotval1)
 proc QWizardredirected*(self: gen_qwizard_types.QWizard, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQWizard_virtualbase_redirected(self.h, offset.h))
 
 type QWizardredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1688,7 +1580,6 @@ proc miqt_exec_callback_QWizard_redirected(self: ptr cQWizard, slot: int, offset
 
   virtualReturn.h
 proc QWizardsharedPainter*(self: gen_qwizard_types.QWizard, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQWizard_virtualbase_sharedPainter(self.h))
 
 type QWizardsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1706,7 +1597,6 @@ proc miqt_exec_callback_QWizard_sharedPainter(self: ptr cQWizard, slot: int): po
 
   virtualReturn.h
 proc QWizardinputMethodEvent*(self: gen_qwizard_types.QWizard, param1: gen_qevent.QInputMethodEvent): void =
-
   fQWizard_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QWizardinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1724,7 +1614,6 @@ proc miqt_exec_callback_QWizard_inputMethodEvent(self: ptr cQWizard, slot: int, 
 
   nimfunc[](slotval1)
 proc QWizardinputMethodQuery*(self: gen_qwizard_types.QWizard, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQWizard_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QWizardinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1744,7 +1633,6 @@ proc miqt_exec_callback_QWizard_inputMethodQuery(self: ptr cQWizard, slot: int, 
 
   virtualReturn.h
 proc QWizardfocusNextPrevChild*(self: gen_qwizard_types.QWizard, next: bool): bool =
-
   fQWizard_virtualbase_focusNextPrevChild(self.h, next)
 
 type QWizardfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1764,7 +1652,6 @@ proc miqt_exec_callback_QWizard_focusNextPrevChild(self: ptr cQWizard, slot: int
 
   virtualReturn
 proc QWizardtimerEvent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QTimerEvent): void =
-
   fQWizard_virtualbase_timerEvent(self.h, event.h)
 
 type QWizardtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1782,7 +1669,6 @@ proc miqt_exec_callback_QWizard_timerEvent(self: ptr cQWizard, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWizardchildEvent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QChildEvent): void =
-
   fQWizard_virtualbase_childEvent(self.h, event.h)
 
 type QWizardchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1800,7 +1686,6 @@ proc miqt_exec_callback_QWizard_childEvent(self: ptr cQWizard, slot: int, event:
 
   nimfunc[](slotval1)
 proc QWizardcustomEvent*(self: gen_qwizard_types.QWizard, event: gen_qcoreevent.QEvent): void =
-
   fQWizard_virtualbase_customEvent(self.h, event.h)
 
 type QWizardcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1818,7 +1703,6 @@ proc miqt_exec_callback_QWizard_customEvent(self: ptr cQWizard, slot: int, event
 
   nimfunc[](slotval1)
 proc QWizardconnectNotify*(self: gen_qwizard_types.QWizard, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWizard_virtualbase_connectNotify(self.h, signal.h)
 
 type QWizardconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1836,7 +1720,6 @@ proc miqt_exec_callback_QWizard_connectNotify(self: ptr cQWizard, slot: int, sig
 
   nimfunc[](slotval1)
 proc QWizarddisconnectNotify*(self: gen_qwizard_types.QWizard, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWizard_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QWizarddisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1861,139 +1744,113 @@ proc delete*(self: gen_qwizard_types.QWizard) =
 func init*(T: type gen_qwizard_types.QWizardPage, h: ptr cQWizardPage): gen_qwizard_types.QWizardPage =
   T(h: h)
 proc create*(T: type gen_qwizard_types.QWizardPage, parent: gen_qwidget.QWidget): gen_qwizard_types.QWizardPage =
-
   gen_qwizard_types.QWizardPage.init(fcQWizardPage_new(parent.h))
+
 proc create*(T: type gen_qwizard_types.QWizardPage, ): gen_qwizard_types.QWizardPage =
-
   gen_qwizard_types.QWizardPage.init(fcQWizardPage_new2())
-proc metaObject*(self: gen_qwizard_types.QWizardPage, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qwizard_types.QWizardPage, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWizardPage_metaObject(self.h))
 
 proc metacast*(self: gen_qwizard_types.QWizardPage, param1: cstring): pointer =
-
   fcQWizardPage_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwizard_types.QWizardPage, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWizardPage_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwizard_types.QWizardPage, s: cstring): string =
-
   let v_ms = fcQWizardPage_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTitle*(self: gen_qwizard_types.QWizardPage, title: string): void =
-
   fcQWizardPage_setTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
 proc title*(self: gen_qwizard_types.QWizardPage, ): string =
-
   let v_ms = fcQWizardPage_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setSubTitle*(self: gen_qwizard_types.QWizardPage, subTitle: string): void =
-
   fcQWizardPage_setSubTitle(self.h, struct_miqt_string(data: subTitle, len: csize_t(len(subTitle))))
 
 proc subTitle*(self: gen_qwizard_types.QWizardPage, ): string =
-
   let v_ms = fcQWizardPage_subTitle(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPixmap*(self: gen_qwizard_types.QWizardPage, which: cint, pixmap: gen_qpixmap.QPixmap): void =
-
   fcQWizardPage_setPixmap(self.h, cint(which), pixmap.h)
 
 proc pixmap*(self: gen_qwizard_types.QWizardPage, which: cint): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQWizardPage_pixmap(self.h, cint(which)))
 
 proc setFinalPage*(self: gen_qwizard_types.QWizardPage, finalPage: bool): void =
-
   fcQWizardPage_setFinalPage(self.h, finalPage)
 
 proc isFinalPage*(self: gen_qwizard_types.QWizardPage, ): bool =
-
   fcQWizardPage_isFinalPage(self.h)
 
 proc setCommitPage*(self: gen_qwizard_types.QWizardPage, commitPage: bool): void =
-
   fcQWizardPage_setCommitPage(self.h, commitPage)
 
 proc isCommitPage*(self: gen_qwizard_types.QWizardPage, ): bool =
-
   fcQWizardPage_isCommitPage(self.h)
 
 proc setButtonText*(self: gen_qwizard_types.QWizardPage, which: cint, text: string): void =
-
   fcQWizardPage_setButtonText(self.h, cint(which), struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc buttonText*(self: gen_qwizard_types.QWizardPage, which: cint): string =
-
   let v_ms = fcQWizardPage_buttonText(self.h, cint(which))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc initializePage*(self: gen_qwizard_types.QWizardPage, ): void =
-
   fcQWizardPage_initializePage(self.h)
 
 proc cleanupPage*(self: gen_qwizard_types.QWizardPage, ): void =
-
   fcQWizardPage_cleanupPage(self.h)
 
 proc validatePage*(self: gen_qwizard_types.QWizardPage, ): bool =
-
   fcQWizardPage_validatePage(self.h)
 
 proc isComplete*(self: gen_qwizard_types.QWizardPage, ): bool =
-
   fcQWizardPage_isComplete(self.h)
 
 proc nextId*(self: gen_qwizard_types.QWizardPage, ): cint =
-
   fcQWizardPage_nextId(self.h)
 
 proc completeChanged*(self: gen_qwizard_types.QWizardPage, ): void =
-
   fcQWizardPage_completeChanged(self.h)
 
+type QWizardPagecompleteChangedSlot* = proc()
 proc miqt_exec_callback_QWizardPage_completeChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QWizardPagecompleteChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc oncompleteChanged*(self: gen_qwizard_types.QWizardPage, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc oncompleteChanged*(self: gen_qwizard_types.QWizardPage, slot: QWizardPagecompleteChangedSlot) =
+  var tmp = new QWizardPagecompleteChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWizardPage_connect_completeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qwizard_types.QWizardPage, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qwizard_types.QWizardPage, s: cstring, c: cstring): string =
   let v_ms = fcQWizardPage_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwizard_types.QWizardPage, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwizard_types.QWizardPage, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWizardPage_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QWizardPagemetaObject*(self: gen_qwizard_types.QWizardPage, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQWizardPage_virtualbase_metaObject(self.h))
 
 type QWizardPagemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -2011,7 +1868,6 @@ proc miqt_exec_callback_QWizardPage_metaObject(self: ptr cQWizardPage, slot: int
 
   virtualReturn.h
 proc QWizardPagemetacast*(self: gen_qwizard_types.QWizardPage, param1: cstring): pointer =
-
   fQWizardPage_virtualbase_metacast(self.h, param1)
 
 type QWizardPagemetacastProc* = proc(param1: cstring): pointer
@@ -2031,7 +1887,6 @@ proc miqt_exec_callback_QWizardPage_metacast(self: ptr cQWizardPage, slot: int, 
 
   virtualReturn
 proc QWizardPagemetacall*(self: gen_qwizard_types.QWizardPage, param1: cint, param2: cint, param3: pointer): cint =
-
   fQWizardPage_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QWizardPagemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -2055,7 +1910,6 @@ proc miqt_exec_callback_QWizardPage_metacall(self: ptr cQWizardPage, slot: int, 
 
   virtualReturn
 proc QWizardPageinitializePage*(self: gen_qwizard_types.QWizardPage, ): void =
-
   fQWizardPage_virtualbase_initializePage(self.h)
 
 type QWizardPageinitializePageProc* = proc(): void
@@ -2071,7 +1925,6 @@ proc miqt_exec_callback_QWizardPage_initializePage(self: ptr cQWizardPage, slot:
 
   nimfunc[]()
 proc QWizardPagecleanupPage*(self: gen_qwizard_types.QWizardPage, ): void =
-
   fQWizardPage_virtualbase_cleanupPage(self.h)
 
 type QWizardPagecleanupPageProc* = proc(): void
@@ -2087,7 +1940,6 @@ proc miqt_exec_callback_QWizardPage_cleanupPage(self: ptr cQWizardPage, slot: in
 
   nimfunc[]()
 proc QWizardPagevalidatePage*(self: gen_qwizard_types.QWizardPage, ): bool =
-
   fQWizardPage_virtualbase_validatePage(self.h)
 
 type QWizardPagevalidatePageProc* = proc(): bool
@@ -2105,7 +1957,6 @@ proc miqt_exec_callback_QWizardPage_validatePage(self: ptr cQWizardPage, slot: i
 
   virtualReturn
 proc QWizardPageisComplete*(self: gen_qwizard_types.QWizardPage, ): bool =
-
   fQWizardPage_virtualbase_isComplete(self.h)
 
 type QWizardPageisCompleteProc* = proc(): bool
@@ -2123,7 +1974,6 @@ proc miqt_exec_callback_QWizardPage_isComplete(self: ptr cQWizardPage, slot: int
 
   virtualReturn
 proc QWizardPagenextId*(self: gen_qwizard_types.QWizardPage, ): cint =
-
   fQWizardPage_virtualbase_nextId(self.h)
 
 type QWizardPagenextIdProc* = proc(): cint
@@ -2141,7 +1991,6 @@ proc miqt_exec_callback_QWizardPage_nextId(self: ptr cQWizardPage, slot: int): c
 
   virtualReturn
 proc QWizardPagedevType*(self: gen_qwizard_types.QWizardPage, ): cint =
-
   fQWizardPage_virtualbase_devType(self.h)
 
 type QWizardPagedevTypeProc* = proc(): cint
@@ -2159,7 +2008,6 @@ proc miqt_exec_callback_QWizardPage_devType(self: ptr cQWizardPage, slot: int): 
 
   virtualReturn
 proc QWizardPagesetVisible*(self: gen_qwizard_types.QWizardPage, visible: bool): void =
-
   fQWizardPage_virtualbase_setVisible(self.h, visible)
 
 type QWizardPagesetVisibleProc* = proc(visible: bool): void
@@ -2177,7 +2025,6 @@ proc miqt_exec_callback_QWizardPage_setVisible(self: ptr cQWizardPage, slot: int
 
   nimfunc[](slotval1)
 proc QWizardPagesizeHint*(self: gen_qwizard_types.QWizardPage, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWizardPage_virtualbase_sizeHint(self.h))
 
 type QWizardPagesizeHintProc* = proc(): gen_qsize.QSize
@@ -2195,7 +2042,6 @@ proc miqt_exec_callback_QWizardPage_sizeHint(self: ptr cQWizardPage, slot: int):
 
   virtualReturn.h
 proc QWizardPageminimumSizeHint*(self: gen_qwizard_types.QWizardPage, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQWizardPage_virtualbase_minimumSizeHint(self.h))
 
 type QWizardPageminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -2213,7 +2059,6 @@ proc miqt_exec_callback_QWizardPage_minimumSizeHint(self: ptr cQWizardPage, slot
 
   virtualReturn.h
 proc QWizardPageheightForWidth*(self: gen_qwizard_types.QWizardPage, param1: cint): cint =
-
   fQWizardPage_virtualbase_heightForWidth(self.h, param1)
 
 type QWizardPageheightForWidthProc* = proc(param1: cint): cint
@@ -2233,7 +2078,6 @@ proc miqt_exec_callback_QWizardPage_heightForWidth(self: ptr cQWizardPage, slot:
 
   virtualReturn
 proc QWizardPagehasHeightForWidth*(self: gen_qwizard_types.QWizardPage, ): bool =
-
   fQWizardPage_virtualbase_hasHeightForWidth(self.h)
 
 type QWizardPagehasHeightForWidthProc* = proc(): bool
@@ -2251,7 +2095,6 @@ proc miqt_exec_callback_QWizardPage_hasHeightForWidth(self: ptr cQWizardPage, sl
 
   virtualReturn
 proc QWizardPagepaintEngine*(self: gen_qwizard_types.QWizardPage, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQWizardPage_virtualbase_paintEngine(self.h))
 
 type QWizardPagepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -2269,7 +2112,6 @@ proc miqt_exec_callback_QWizardPage_paintEngine(self: ptr cQWizardPage, slot: in
 
   virtualReturn.h
 proc QWizardPageevent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QEvent): bool =
-
   fQWizardPage_virtualbase_event(self.h, event.h)
 
 type QWizardPageeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -2289,7 +2131,6 @@ proc miqt_exec_callback_QWizardPage_event(self: ptr cQWizardPage, slot: int, eve
 
   virtualReturn
 proc QWizardPagemousePressEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMouseEvent): void =
-
   fQWizardPage_virtualbase_mousePressEvent(self.h, event.h)
 
 type QWizardPagemousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2307,7 +2148,6 @@ proc miqt_exec_callback_QWizardPage_mousePressEvent(self: ptr cQWizardPage, slot
 
   nimfunc[](slotval1)
 proc QWizardPagemouseReleaseEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMouseEvent): void =
-
   fQWizardPage_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QWizardPagemouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2325,7 +2165,6 @@ proc miqt_exec_callback_QWizardPage_mouseReleaseEvent(self: ptr cQWizardPage, sl
 
   nimfunc[](slotval1)
 proc QWizardPagemouseDoubleClickEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMouseEvent): void =
-
   fQWizardPage_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QWizardPagemouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2343,7 +2182,6 @@ proc miqt_exec_callback_QWizardPage_mouseDoubleClickEvent(self: ptr cQWizardPage
 
   nimfunc[](slotval1)
 proc QWizardPagemouseMoveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMouseEvent): void =
-
   fQWizardPage_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QWizardPagemouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2361,7 +2199,6 @@ proc miqt_exec_callback_QWizardPage_mouseMoveEvent(self: ptr cQWizardPage, slot:
 
   nimfunc[](slotval1)
 proc QWizardPagewheelEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QWheelEvent): void =
-
   fQWizardPage_virtualbase_wheelEvent(self.h, event.h)
 
 type QWizardPagewheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -2379,7 +2216,6 @@ proc miqt_exec_callback_QWizardPage_wheelEvent(self: ptr cQWizardPage, slot: int
 
   nimfunc[](slotval1)
 proc QWizardPagekeyPressEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QKeyEvent): void =
-
   fQWizardPage_virtualbase_keyPressEvent(self.h, event.h)
 
 type QWizardPagekeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2397,7 +2233,6 @@ proc miqt_exec_callback_QWizardPage_keyPressEvent(self: ptr cQWizardPage, slot: 
 
   nimfunc[](slotval1)
 proc QWizardPagekeyReleaseEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QKeyEvent): void =
-
   fQWizardPage_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QWizardPagekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2415,7 +2250,6 @@ proc miqt_exec_callback_QWizardPage_keyReleaseEvent(self: ptr cQWizardPage, slot
 
   nimfunc[](slotval1)
 proc QWizardPagefocusInEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QFocusEvent): void =
-
   fQWizardPage_virtualbase_focusInEvent(self.h, event.h)
 
 type QWizardPagefocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2433,7 +2267,6 @@ proc miqt_exec_callback_QWizardPage_focusInEvent(self: ptr cQWizardPage, slot: i
 
   nimfunc[](slotval1)
 proc QWizardPagefocusOutEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QFocusEvent): void =
-
   fQWizardPage_virtualbase_focusOutEvent(self.h, event.h)
 
 type QWizardPagefocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2451,7 +2284,6 @@ proc miqt_exec_callback_QWizardPage_focusOutEvent(self: ptr cQWizardPage, slot: 
 
   nimfunc[](slotval1)
 proc QWizardPageenterEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QEnterEvent): void =
-
   fQWizardPage_virtualbase_enterEvent(self.h, event.h)
 
 type QWizardPageenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -2469,7 +2301,6 @@ proc miqt_exec_callback_QWizardPage_enterEvent(self: ptr cQWizardPage, slot: int
 
   nimfunc[](slotval1)
 proc QWizardPageleaveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QEvent): void =
-
   fQWizardPage_virtualbase_leaveEvent(self.h, event.h)
 
 type QWizardPageleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2487,7 +2318,6 @@ proc miqt_exec_callback_QWizardPage_leaveEvent(self: ptr cQWizardPage, slot: int
 
   nimfunc[](slotval1)
 proc QWizardPagepaintEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QPaintEvent): void =
-
   fQWizardPage_virtualbase_paintEvent(self.h, event.h)
 
 type QWizardPagepaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -2505,7 +2335,6 @@ proc miqt_exec_callback_QWizardPage_paintEvent(self: ptr cQWizardPage, slot: int
 
   nimfunc[](slotval1)
 proc QWizardPagemoveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QMoveEvent): void =
-
   fQWizardPage_virtualbase_moveEvent(self.h, event.h)
 
 type QWizardPagemoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -2523,7 +2352,6 @@ proc miqt_exec_callback_QWizardPage_moveEvent(self: ptr cQWizardPage, slot: int,
 
   nimfunc[](slotval1)
 proc QWizardPageresizeEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QResizeEvent): void =
-
   fQWizardPage_virtualbase_resizeEvent(self.h, event.h)
 
 type QWizardPageresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -2541,7 +2369,6 @@ proc miqt_exec_callback_QWizardPage_resizeEvent(self: ptr cQWizardPage, slot: in
 
   nimfunc[](slotval1)
 proc QWizardPagecloseEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QCloseEvent): void =
-
   fQWizardPage_virtualbase_closeEvent(self.h, event.h)
 
 type QWizardPagecloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -2559,7 +2386,6 @@ proc miqt_exec_callback_QWizardPage_closeEvent(self: ptr cQWizardPage, slot: int
 
   nimfunc[](slotval1)
 proc QWizardPagecontextMenuEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QContextMenuEvent): void =
-
   fQWizardPage_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QWizardPagecontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -2577,7 +2403,6 @@ proc miqt_exec_callback_QWizardPage_contextMenuEvent(self: ptr cQWizardPage, slo
 
   nimfunc[](slotval1)
 proc QWizardPagetabletEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QTabletEvent): void =
-
   fQWizardPage_virtualbase_tabletEvent(self.h, event.h)
 
 type QWizardPagetabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -2595,7 +2420,6 @@ proc miqt_exec_callback_QWizardPage_tabletEvent(self: ptr cQWizardPage, slot: in
 
   nimfunc[](slotval1)
 proc QWizardPageactionEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QActionEvent): void =
-
   fQWizardPage_virtualbase_actionEvent(self.h, event.h)
 
 type QWizardPageactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -2613,7 +2437,6 @@ proc miqt_exec_callback_QWizardPage_actionEvent(self: ptr cQWizardPage, slot: in
 
   nimfunc[](slotval1)
 proc QWizardPagedragEnterEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QDragEnterEvent): void =
-
   fQWizardPage_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QWizardPagedragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -2631,7 +2454,6 @@ proc miqt_exec_callback_QWizardPage_dragEnterEvent(self: ptr cQWizardPage, slot:
 
   nimfunc[](slotval1)
 proc QWizardPagedragMoveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QDragMoveEvent): void =
-
   fQWizardPage_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QWizardPagedragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -2649,7 +2471,6 @@ proc miqt_exec_callback_QWizardPage_dragMoveEvent(self: ptr cQWizardPage, slot: 
 
   nimfunc[](slotval1)
 proc QWizardPagedragLeaveEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QDragLeaveEvent): void =
-
   fQWizardPage_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QWizardPagedragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -2667,7 +2488,6 @@ proc miqt_exec_callback_QWizardPage_dragLeaveEvent(self: ptr cQWizardPage, slot:
 
   nimfunc[](slotval1)
 proc QWizardPagedropEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QDropEvent): void =
-
   fQWizardPage_virtualbase_dropEvent(self.h, event.h)
 
 type QWizardPagedropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -2685,7 +2505,6 @@ proc miqt_exec_callback_QWizardPage_dropEvent(self: ptr cQWizardPage, slot: int,
 
   nimfunc[](slotval1)
 proc QWizardPageshowEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QShowEvent): void =
-
   fQWizardPage_virtualbase_showEvent(self.h, event.h)
 
 type QWizardPageshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -2703,7 +2522,6 @@ proc miqt_exec_callback_QWizardPage_showEvent(self: ptr cQWizardPage, slot: int,
 
   nimfunc[](slotval1)
 proc QWizardPagehideEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qevent.QHideEvent): void =
-
   fQWizardPage_virtualbase_hideEvent(self.h, event.h)
 
 type QWizardPagehideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -2721,7 +2539,6 @@ proc miqt_exec_callback_QWizardPage_hideEvent(self: ptr cQWizardPage, slot: int,
 
   nimfunc[](slotval1)
 proc QWizardPagenativeEvent*(self: gen_qwizard_types.QWizardPage, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQWizardPage_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QWizardPagenativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -2748,7 +2565,6 @@ proc miqt_exec_callback_QWizardPage_nativeEvent(self: ptr cQWizardPage, slot: in
 
   virtualReturn
 proc QWizardPagechangeEvent*(self: gen_qwizard_types.QWizardPage, param1: gen_qcoreevent.QEvent): void =
-
   fQWizardPage_virtualbase_changeEvent(self.h, param1.h)
 
 type QWizardPagechangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -2766,7 +2582,6 @@ proc miqt_exec_callback_QWizardPage_changeEvent(self: ptr cQWizardPage, slot: in
 
   nimfunc[](slotval1)
 proc QWizardPagemetric*(self: gen_qwizard_types.QWizardPage, param1: cint): cint =
-
   fQWizardPage_virtualbase_metric(self.h, cint(param1))
 
 type QWizardPagemetricProc* = proc(param1: cint): cint
@@ -2786,7 +2601,6 @@ proc miqt_exec_callback_QWizardPage_metric(self: ptr cQWizardPage, slot: int, pa
 
   virtualReturn
 proc QWizardPageinitPainter*(self: gen_qwizard_types.QWizardPage, painter: gen_qpainter.QPainter): void =
-
   fQWizardPage_virtualbase_initPainter(self.h, painter.h)
 
 type QWizardPageinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -2804,7 +2618,6 @@ proc miqt_exec_callback_QWizardPage_initPainter(self: ptr cQWizardPage, slot: in
 
   nimfunc[](slotval1)
 proc QWizardPageredirected*(self: gen_qwizard_types.QWizardPage, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQWizardPage_virtualbase_redirected(self.h, offset.h))
 
 type QWizardPageredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -2824,7 +2637,6 @@ proc miqt_exec_callback_QWizardPage_redirected(self: ptr cQWizardPage, slot: int
 
   virtualReturn.h
 proc QWizardPagesharedPainter*(self: gen_qwizard_types.QWizardPage, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQWizardPage_virtualbase_sharedPainter(self.h))
 
 type QWizardPagesharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -2842,7 +2654,6 @@ proc miqt_exec_callback_QWizardPage_sharedPainter(self: ptr cQWizardPage, slot: 
 
   virtualReturn.h
 proc QWizardPageinputMethodEvent*(self: gen_qwizard_types.QWizardPage, param1: gen_qevent.QInputMethodEvent): void =
-
   fQWizardPage_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QWizardPageinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -2860,7 +2671,6 @@ proc miqt_exec_callback_QWizardPage_inputMethodEvent(self: ptr cQWizardPage, slo
 
   nimfunc[](slotval1)
 proc QWizardPageinputMethodQuery*(self: gen_qwizard_types.QWizardPage, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQWizardPage_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QWizardPageinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -2880,7 +2690,6 @@ proc miqt_exec_callback_QWizardPage_inputMethodQuery(self: ptr cQWizardPage, slo
 
   virtualReturn.h
 proc QWizardPagefocusNextPrevChild*(self: gen_qwizard_types.QWizardPage, next: bool): bool =
-
   fQWizardPage_virtualbase_focusNextPrevChild(self.h, next)
 
 type QWizardPagefocusNextPrevChildProc* = proc(next: bool): bool
@@ -2900,7 +2709,6 @@ proc miqt_exec_callback_QWizardPage_focusNextPrevChild(self: ptr cQWizardPage, s
 
   virtualReturn
 proc QWizardPageeventFilter*(self: gen_qwizard_types.QWizardPage, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQWizardPage_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QWizardPageeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -2922,7 +2730,6 @@ proc miqt_exec_callback_QWizardPage_eventFilter(self: ptr cQWizardPage, slot: in
 
   virtualReturn
 proc QWizardPagetimerEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QTimerEvent): void =
-
   fQWizardPage_virtualbase_timerEvent(self.h, event.h)
 
 type QWizardPagetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -2940,7 +2747,6 @@ proc miqt_exec_callback_QWizardPage_timerEvent(self: ptr cQWizardPage, slot: int
 
   nimfunc[](slotval1)
 proc QWizardPagechildEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QChildEvent): void =
-
   fQWizardPage_virtualbase_childEvent(self.h, event.h)
 
 type QWizardPagechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -2958,7 +2764,6 @@ proc miqt_exec_callback_QWizardPage_childEvent(self: ptr cQWizardPage, slot: int
 
   nimfunc[](slotval1)
 proc QWizardPagecustomEvent*(self: gen_qwizard_types.QWizardPage, event: gen_qcoreevent.QEvent): void =
-
   fQWizardPage_virtualbase_customEvent(self.h, event.h)
 
 type QWizardPagecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2976,7 +2781,6 @@ proc miqt_exec_callback_QWizardPage_customEvent(self: ptr cQWizardPage, slot: in
 
   nimfunc[](slotval1)
 proc QWizardPageconnectNotify*(self: gen_qwizard_types.QWizardPage, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWizardPage_virtualbase_connectNotify(self.h, signal.h)
 
 type QWizardPageconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2994,7 +2798,6 @@ proc miqt_exec_callback_QWizardPage_connectNotify(self: ptr cQWizardPage, slot: 
 
   nimfunc[](slotval1)
 proc QWizardPagedisconnectNotify*(self: gen_qwizard_types.QWizardPage, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWizardPage_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QWizardPagedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -105,119 +105,93 @@ proc fcQGraphicsLinearLayout_delete(self: pointer) {.importc: "QGraphicsLinearLa
 func init*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, h: ptr cQGraphicsLinearLayout): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
   T(h: h)
 proc create*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
-
   gen_qgraphicslinearlayout_types.QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new())
+
 proc create*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, orientation: cint): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
-
   gen_qgraphicslinearlayout_types.QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new2(cint(orientation)))
+
 proc create*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
-
   gen_qgraphicslinearlayout_types.QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new3(parent.h))
+
 proc create*(T: type gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, orientation: cint, parent: gen_qgraphicslayoutitem.QGraphicsLayoutItem): gen_qgraphicslinearlayout_types.QGraphicsLinearLayout =
-
   gen_qgraphicslinearlayout_types.QGraphicsLinearLayout.init(fcQGraphicsLinearLayout_new4(cint(orientation), parent.h))
-proc setOrientation*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, orientation: cint): void =
 
+proc setOrientation*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, orientation: cint): void =
   fcQGraphicsLinearLayout_setOrientation(self.h, cint(orientation))
 
 proc orientation*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): cint =
-
   cint(fcQGraphicsLinearLayout_orientation(self.h))
 
 proc addItem*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
-
   fcQGraphicsLinearLayout_addItem(self.h, item.h)
 
 proc addStretch*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
-
   fcQGraphicsLinearLayout_addStretch(self.h)
 
 proc insertItem*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
-
   fcQGraphicsLinearLayout_insertItem(self.h, index, item.h)
 
 proc insertStretch*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): void =
-
   fcQGraphicsLinearLayout_insertStretch(self.h, index)
 
 proc removeItem*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): void =
-
   fcQGraphicsLinearLayout_removeItem(self.h, item.h)
 
 proc removeAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): void =
-
   fcQGraphicsLinearLayout_removeAt(self.h, index)
 
 proc setSpacing*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, spacing: float64): void =
-
   fcQGraphicsLinearLayout_setSpacing(self.h, spacing)
 
 proc spacing*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): float64 =
-
   fcQGraphicsLinearLayout_spacing(self.h)
 
 proc setItemSpacing*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint, spacing: float64): void =
-
   fcQGraphicsLinearLayout_setItemSpacing(self.h, index, spacing)
 
 proc itemSpacing*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): float64 =
-
   fcQGraphicsLinearLayout_itemSpacing(self.h, index)
 
 proc setStretchFactor*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, stretch: cint): void =
-
   fcQGraphicsLinearLayout_setStretchFactor(self.h, item.h, stretch)
 
 proc stretchFactor*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): cint =
-
   fcQGraphicsLinearLayout_stretchFactor(self.h, item.h)
 
 proc setAlignment*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem, alignment: cint): void =
-
   fcQGraphicsLinearLayout_setAlignment(self.h, item.h, cint(alignment))
 
 proc alignment*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, item: gen_qgraphicslayoutitem.QGraphicsLayoutItem): cint =
-
   cint(fcQGraphicsLinearLayout_alignment(self.h, item.h))
 
 proc setGeometry*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, rect: gen_qrect.QRectF): void =
-
   fcQGraphicsLinearLayout_setGeometry(self.h, rect.h)
 
 proc count*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): cint =
-
   fcQGraphicsLinearLayout_count(self.h)
 
 proc itemAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
-
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fcQGraphicsLinearLayout_itemAt(self.h, index))
 
 proc invalidate*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
-
   fcQGraphicsLinearLayout_invalidate(self.h)
 
 proc sizeHint*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fcQGraphicsLinearLayout_sizeHint(self.h, cint(which), constraint.h))
 
 proc dump*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
-
   fcQGraphicsLinearLayout_dump(self.h)
 
-proc addStretch1*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, stretch: cint): void =
-
+proc addStretch*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, stretch: cint): void =
   fcQGraphicsLinearLayout_addStretch1(self.h, stretch)
 
-proc insertStretch2*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint, stretch: cint): void =
-
+proc insertStretch*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint, stretch: cint): void =
   fcQGraphicsLinearLayout_insertStretch2(self.h, index, stretch)
 
-proc dump1*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, indent: cint): void =
-
+proc dump*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, indent: cint): void =
   fcQGraphicsLinearLayout_dump1(self.h, indent)
 
 proc QGraphicsLinearLayoutremoveAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): void =
-
   fQGraphicsLinearLayout_virtualbase_removeAt(self.h, index)
 
 type QGraphicsLinearLayoutremoveAtProc* = proc(index: cint): void
@@ -235,7 +209,6 @@ proc miqt_exec_callback_QGraphicsLinearLayout_removeAt(self: ptr cQGraphicsLinea
 
   nimfunc[](slotval1)
 proc QGraphicsLinearLayoutsetGeometry*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, rect: gen_qrect.QRectF): void =
-
   fQGraphicsLinearLayout_virtualbase_setGeometry(self.h, rect.h)
 
 type QGraphicsLinearLayoutsetGeometryProc* = proc(rect: gen_qrect.QRectF): void
@@ -253,7 +226,6 @@ proc miqt_exec_callback_QGraphicsLinearLayout_setGeometry(self: ptr cQGraphicsLi
 
   nimfunc[](slotval1)
 proc QGraphicsLinearLayoutcount*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): cint =
-
   fQGraphicsLinearLayout_virtualbase_count(self.h)
 
 type QGraphicsLinearLayoutcountProc* = proc(): cint
@@ -271,7 +243,6 @@ proc miqt_exec_callback_QGraphicsLinearLayout_count(self: ptr cQGraphicsLinearLa
 
   virtualReturn
 proc QGraphicsLinearLayoutitemAt*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem =
-
   gen_qgraphicslayoutitem.QGraphicsLayoutItem(h: fQGraphicsLinearLayout_virtualbase_itemAt(self.h, index))
 
 type QGraphicsLinearLayoutitemAtProc* = proc(index: cint): gen_qgraphicslayoutitem.QGraphicsLayoutItem
@@ -291,7 +262,6 @@ proc miqt_exec_callback_QGraphicsLinearLayout_itemAt(self: ptr cQGraphicsLinearL
 
   virtualReturn.h
 proc QGraphicsLinearLayoutinvalidate*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
-
   fQGraphicsLinearLayout_virtualbase_invalidate(self.h)
 
 type QGraphicsLinearLayoutinvalidateProc* = proc(): void
@@ -307,7 +277,6 @@ proc miqt_exec_callback_QGraphicsLinearLayout_invalidate(self: ptr cQGraphicsLin
 
   nimfunc[]()
 proc QGraphicsLinearLayoutsizeHint*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fQGraphicsLinearLayout_virtualbase_sizeHint(self.h, cint(which), constraint.h))
 
 type QGraphicsLinearLayoutsizeHintProc* = proc(which: cint, constraint: gen_qsize.QSizeF): gen_qsize.QSizeF
@@ -329,7 +298,6 @@ proc miqt_exec_callback_QGraphicsLinearLayout_sizeHint(self: ptr cQGraphicsLinea
 
   virtualReturn.h
 proc QGraphicsLinearLayoutgetContentsMargins*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void =
-
   fQGraphicsLinearLayout_virtualbase_getContentsMargins(self.h, left, top, right, bottom)
 
 type QGraphicsLinearLayoutgetContentsMarginsProc* = proc(left: ptr float64, top: ptr float64, right: ptr float64, bottom: ptr float64): void
@@ -353,7 +321,6 @@ proc miqt_exec_callback_QGraphicsLinearLayout_getContentsMargins(self: ptr cQGra
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QGraphicsLinearLayoutupdateGeometry*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, ): void =
-
   fQGraphicsLinearLayout_virtualbase_updateGeometry(self.h)
 
 type QGraphicsLinearLayoutupdateGeometryProc* = proc(): void
@@ -369,7 +336,6 @@ proc miqt_exec_callback_QGraphicsLinearLayout_updateGeometry(self: ptr cQGraphic
 
   nimfunc[]()
 proc QGraphicsLinearLayoutwidgetEvent*(self: gen_qgraphicslinearlayout_types.QGraphicsLinearLayout, e: gen_qcoreevent.QEvent): void =
-
   fQGraphicsLinearLayout_virtualbase_widgetEvent(self.h, e.h)
 
 type QGraphicsLinearLayoutwidgetEventProc* = proc(e: gen_qcoreevent.QEvent): void

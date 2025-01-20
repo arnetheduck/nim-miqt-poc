@@ -87,114 +87,97 @@ proc fcQCameraImageCaptureControl_delete(self: pointer) {.importc: "QCameraImage
 func init*(T: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, h: ptr cQCameraImageCaptureControl): gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl =
   T(h: h)
 proc metaObject*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQCameraImageCaptureControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, param1: cstring): pointer =
-
   fcQCameraImageCaptureControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCameraImageCaptureControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring): string =
-
   let v_ms = fcQCameraImageCaptureControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring): string =
-
   let v_ms = fcQCameraImageCaptureControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isReadyForCapture*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, ): bool =
-
   fcQCameraImageCaptureControl_isReadyForCapture(self.h)
 
 proc driveMode*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, ): cint =
-
   cint(fcQCameraImageCaptureControl_driveMode(self.h))
 
 proc setDriveMode*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, mode: cint): void =
-
   fcQCameraImageCaptureControl_setDriveMode(self.h, cint(mode))
 
 proc capture*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, fileName: string): cint =
-
   fcQCameraImageCaptureControl_capture(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc cancelCapture*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, ): void =
-
   fcQCameraImageCaptureControl_cancelCapture(self.h)
 
 proc readyForCaptureChanged*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, ready: bool): void =
-
   fcQCameraImageCaptureControl_readyForCaptureChanged(self.h, ready)
 
+type QCameraImageCaptureControlreadyForCaptureChangedSlot* = proc(ready: bool)
 proc miqt_exec_callback_QCameraImageCaptureControl_readyForCaptureChanged(slot: int, ready: bool) {.exportc.} =
-  type Cb = proc(ready: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraImageCaptureControlreadyForCaptureChangedSlot](cast[pointer](slot))
   let slotval1 = ready
-
 
   nimfunc[](slotval1)
 
-proc onreadyForCaptureChanged*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: proc(ready: bool)) =
-  type Cb = proc(ready: bool)
-  var tmp = new Cb
+proc onreadyForCaptureChanged*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: QCameraImageCaptureControlreadyForCaptureChangedSlot) =
+  var tmp = new QCameraImageCaptureControlreadyForCaptureChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCameraImageCaptureControl_connect_readyForCaptureChanged(self.h, cast[int](addr tmp[]))
-proc imageExposed*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, requestId: cint): void =
 
+proc imageExposed*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, requestId: cint): void =
   fcQCameraImageCaptureControl_imageExposed(self.h, requestId)
 
+type QCameraImageCaptureControlimageExposedSlot* = proc(requestId: cint)
 proc miqt_exec_callback_QCameraImageCaptureControl_imageExposed(slot: int, requestId: cint) {.exportc.} =
-  type Cb = proc(requestId: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraImageCaptureControlimageExposedSlot](cast[pointer](slot))
   let slotval1 = requestId
-
 
   nimfunc[](slotval1)
 
-proc onimageExposed*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: proc(requestId: cint)) =
-  type Cb = proc(requestId: cint)
-  var tmp = new Cb
+proc onimageExposed*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: QCameraImageCaptureControlimageExposedSlot) =
+  var tmp = new QCameraImageCaptureControlimageExposedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCameraImageCaptureControl_connect_imageExposed(self.h, cast[int](addr tmp[]))
-proc imageCaptured*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, requestId: cint, preview: gen_qimage.QImage): void =
 
+proc imageCaptured*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, requestId: cint, preview: gen_qimage.QImage): void =
   fcQCameraImageCaptureControl_imageCaptured(self.h, requestId, preview.h)
 
+type QCameraImageCaptureControlimageCapturedSlot* = proc(requestId: cint, preview: gen_qimage.QImage)
 proc miqt_exec_callback_QCameraImageCaptureControl_imageCaptured(slot: int, requestId: cint, preview: pointer) {.exportc.} =
-  type Cb = proc(requestId: cint, preview: gen_qimage.QImage)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraImageCaptureControlimageCapturedSlot](cast[pointer](slot))
   let slotval1 = requestId
 
   let slotval2 = gen_qimage.QImage(h: preview)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onimageCaptured*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: proc(requestId: cint, preview: gen_qimage.QImage)) =
-  type Cb = proc(requestId: cint, preview: gen_qimage.QImage)
-  var tmp = new Cb
+proc onimageCaptured*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: QCameraImageCaptureControlimageCapturedSlot) =
+  var tmp = new QCameraImageCaptureControlimageCapturedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCameraImageCaptureControl_connect_imageCaptured(self.h, cast[int](addr tmp[]))
-proc imageMetadataAvailable*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, id: cint, key: string, value: gen_qvariant.QVariant): void =
 
+proc imageMetadataAvailable*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, id: cint, key: string, value: gen_qvariant.QVariant): void =
   fcQCameraImageCaptureControl_imageMetadataAvailable(self.h, id, struct_miqt_string(data: key, len: csize_t(len(key))), value.h)
 
+type QCameraImageCaptureControlimageMetadataAvailableSlot* = proc(id: cint, key: string, value: gen_qvariant.QVariant)
 proc miqt_exec_callback_QCameraImageCaptureControl_imageMetadataAvailable(slot: int, id: cint, key: struct_miqt_string, value: pointer) {.exportc.} =
-  type Cb = proc(id: cint, key: string, value: gen_qvariant.QVariant)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraImageCaptureControlimageMetadataAvailableSlot](cast[pointer](slot))
   let slotval1 = id
 
   let vkey_ms = key
@@ -204,42 +187,38 @@ proc miqt_exec_callback_QCameraImageCaptureControl_imageMetadataAvailable(slot: 
 
   let slotval3 = gen_qvariant.QVariant(h: value)
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onimageMetadataAvailable*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: proc(id: cint, key: string, value: gen_qvariant.QVariant)) =
-  type Cb = proc(id: cint, key: string, value: gen_qvariant.QVariant)
-  var tmp = new Cb
+proc onimageMetadataAvailable*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: QCameraImageCaptureControlimageMetadataAvailableSlot) =
+  var tmp = new QCameraImageCaptureControlimageMetadataAvailableSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCameraImageCaptureControl_connect_imageMetadataAvailable(self.h, cast[int](addr tmp[]))
-proc imageAvailable*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, requestId: cint, buffer: gen_qvideoframe.QVideoFrame): void =
 
+proc imageAvailable*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, requestId: cint, buffer: gen_qvideoframe.QVideoFrame): void =
   fcQCameraImageCaptureControl_imageAvailable(self.h, requestId, buffer.h)
 
+type QCameraImageCaptureControlimageAvailableSlot* = proc(requestId: cint, buffer: gen_qvideoframe.QVideoFrame)
 proc miqt_exec_callback_QCameraImageCaptureControl_imageAvailable(slot: int, requestId: cint, buffer: pointer) {.exportc.} =
-  type Cb = proc(requestId: cint, buffer: gen_qvideoframe.QVideoFrame)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraImageCaptureControlimageAvailableSlot](cast[pointer](slot))
   let slotval1 = requestId
 
   let slotval2 = gen_qvideoframe.QVideoFrame(h: buffer)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onimageAvailable*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: proc(requestId: cint, buffer: gen_qvideoframe.QVideoFrame)) =
-  type Cb = proc(requestId: cint, buffer: gen_qvideoframe.QVideoFrame)
-  var tmp = new Cb
+proc onimageAvailable*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: QCameraImageCaptureControlimageAvailableSlot) =
+  var tmp = new QCameraImageCaptureControlimageAvailableSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCameraImageCaptureControl_connect_imageAvailable(self.h, cast[int](addr tmp[]))
-proc imageSaved*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, requestId: cint, fileName: string): void =
 
+proc imageSaved*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, requestId: cint, fileName: string): void =
   fcQCameraImageCaptureControl_imageSaved(self.h, requestId, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
+type QCameraImageCaptureControlimageSavedSlot* = proc(requestId: cint, fileName: string)
 proc miqt_exec_callback_QCameraImageCaptureControl_imageSaved(slot: int, requestId: cint, fileName: struct_miqt_string) {.exportc.} =
-  type Cb = proc(requestId: cint, fileName: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraImageCaptureControlimageSavedSlot](cast[pointer](slot))
   let slotval1 = requestId
 
   let vfileName_ms = fileName
@@ -247,22 +226,20 @@ proc miqt_exec_callback_QCameraImageCaptureControl_imageSaved(slot: int, request
   c_free(vfileName_ms.data)
   let slotval2 = vfileNamex_ret
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onimageSaved*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: proc(requestId: cint, fileName: string)) =
-  type Cb = proc(requestId: cint, fileName: string)
-  var tmp = new Cb
+proc onimageSaved*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: QCameraImageCaptureControlimageSavedSlot) =
+  var tmp = new QCameraImageCaptureControlimageSavedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCameraImageCaptureControl_connect_imageSaved(self.h, cast[int](addr tmp[]))
-proc error*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, id: cint, error: cint, errorString: string): void =
 
+proc error*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, id: cint, error: cint, errorString: string): void =
   fcQCameraImageCaptureControl_error(self.h, id, error, struct_miqt_string(data: errorString, len: csize_t(len(errorString))))
 
+type QCameraImageCaptureControlerrorSlot* = proc(id: cint, error: cint, errorString: string)
 proc miqt_exec_callback_QCameraImageCaptureControl_error(slot: int, id: cint, error: cint, errorString: struct_miqt_string) {.exportc.} =
-  type Cb = proc(id: cint, error: cint, errorString: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraImageCaptureControlerrorSlot](cast[pointer](slot))
   let slotval1 = id
 
   let slotval2 = error
@@ -272,38 +249,33 @@ proc miqt_exec_callback_QCameraImageCaptureControl_error(slot: int, id: cint, er
   c_free(verrorString_ms.data)
   let slotval3 = verrorStringx_ret
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onerror*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: proc(id: cint, error: cint, errorString: string)) =
-  type Cb = proc(id: cint, error: cint, errorString: string)
-  var tmp = new Cb
+proc onerror*(self: gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, slot: QCameraImageCaptureControlerrorSlot) =
+  var tmp = new QCameraImageCaptureControlerrorSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCameraImageCaptureControl_connect_error(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraImageCaptureControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraImageCaptureControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraImageCaptureControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcameraimagecapturecontrol_types.QCameraImageCaptureControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraImageCaptureControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

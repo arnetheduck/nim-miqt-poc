@@ -48,11 +48,9 @@ proc fcQContiguousCacheData_delete(self: pointer) {.importc: "QContiguousCacheDa
 func init*(T: type gen_qcontiguouscache_types.QContiguousCacheData, h: ptr cQContiguousCacheData): gen_qcontiguouscache_types.QContiguousCacheData =
   T(h: h)
 proc allocateData*(_: type gen_qcontiguouscache_types.QContiguousCacheData, size: cint, alignment: cint): gen_qcontiguouscache_types.QContiguousCacheData =
-
   gen_qcontiguouscache_types.QContiguousCacheData(h: fcQContiguousCacheData_allocateData(size, alignment))
 
 proc freeData*(_: type gen_qcontiguouscache_types.QContiguousCacheData, data: gen_qcontiguouscache_types.QContiguousCacheData): void =
-
   fcQContiguousCacheData_freeData(data.h)
 
 proc delete*(self: gen_qcontiguouscache_types.QContiguousCacheData) =

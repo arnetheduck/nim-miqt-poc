@@ -104,99 +104,81 @@ proc fcQAnimationGroup_delete(self: pointer) {.importc: "QAnimationGroup_delete"
 func init*(T: type gen_qanimationgroup_types.QAnimationGroup, h: ptr cQAnimationGroup): gen_qanimationgroup_types.QAnimationGroup =
   T(h: h)
 proc create*(T: type gen_qanimationgroup_types.QAnimationGroup, ): gen_qanimationgroup_types.QAnimationGroup =
-
   gen_qanimationgroup_types.QAnimationGroup.init(fcQAnimationGroup_new())
+
 proc create*(T: type gen_qanimationgroup_types.QAnimationGroup, parent: gen_qobject.QObject): gen_qanimationgroup_types.QAnimationGroup =
-
   gen_qanimationgroup_types.QAnimationGroup.init(fcQAnimationGroup_new2(parent.h))
-proc metaObject*(self: gen_qanimationgroup_types.QAnimationGroup, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qanimationgroup_types.QAnimationGroup, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAnimationGroup_metaObject(self.h))
 
 proc metacast*(self: gen_qanimationgroup_types.QAnimationGroup, param1: cstring): pointer =
-
   fcQAnimationGroup_metacast(self.h, param1)
 
 proc metacall*(self: gen_qanimationgroup_types.QAnimationGroup, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAnimationGroup_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring): string =
-
   let v_ms = fcQAnimationGroup_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring): string =
-
   let v_ms = fcQAnimationGroup_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc animationAt*(self: gen_qanimationgroup_types.QAnimationGroup, index: cint): gen_qabstractanimation.QAbstractAnimation =
-
   gen_qabstractanimation.QAbstractAnimation(h: fcQAnimationGroup_animationAt(self.h, index))
 
 proc animationCount*(self: gen_qanimationgroup_types.QAnimationGroup, ): cint =
-
   fcQAnimationGroup_animationCount(self.h)
 
 proc indexOfAnimation*(self: gen_qanimationgroup_types.QAnimationGroup, animation: gen_qabstractanimation.QAbstractAnimation): cint =
-
   fcQAnimationGroup_indexOfAnimation(self.h, animation.h)
 
 proc addAnimation*(self: gen_qanimationgroup_types.QAnimationGroup, animation: gen_qabstractanimation.QAbstractAnimation): void =
-
   fcQAnimationGroup_addAnimation(self.h, animation.h)
 
 proc insertAnimation*(self: gen_qanimationgroup_types.QAnimationGroup, index: cint, animation: gen_qabstractanimation.QAbstractAnimation): void =
-
   fcQAnimationGroup_insertAnimation(self.h, index, animation.h)
 
 proc removeAnimation*(self: gen_qanimationgroup_types.QAnimationGroup, animation: gen_qabstractanimation.QAbstractAnimation): void =
-
   fcQAnimationGroup_removeAnimation(self.h, animation.h)
 
 proc takeAnimation*(self: gen_qanimationgroup_types.QAnimationGroup, index: cint): gen_qabstractanimation.QAbstractAnimation =
-
   gen_qabstractanimation.QAbstractAnimation(h: fcQAnimationGroup_takeAnimation(self.h, index))
 
 proc clear*(self: gen_qanimationgroup_types.QAnimationGroup, ): void =
-
   fcQAnimationGroup_clear(self.h)
 
-proc tr2*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring, c: cstring): string =
   let v_ms = fcQAnimationGroup_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAnimationGroup_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring, c: cstring): string =
   let v_ms = fcQAnimationGroup_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qanimationgroup_types.QAnimationGroup, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAnimationGroup_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QAnimationGroupmetaObject*(self: gen_qanimationgroup_types.QAnimationGroup, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQAnimationGroup_virtualbase_metaObject(self.h))
 
 type QAnimationGroupmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -214,7 +196,6 @@ proc miqt_exec_callback_QAnimationGroup_metaObject(self: ptr cQAnimationGroup, s
 
   virtualReturn.h
 proc QAnimationGroupmetacast*(self: gen_qanimationgroup_types.QAnimationGroup, param1: cstring): pointer =
-
   fQAnimationGroup_virtualbase_metacast(self.h, param1)
 
 type QAnimationGroupmetacastProc* = proc(param1: cstring): pointer
@@ -234,7 +215,6 @@ proc miqt_exec_callback_QAnimationGroup_metacast(self: ptr cQAnimationGroup, slo
 
   virtualReturn
 proc QAnimationGroupmetacall*(self: gen_qanimationgroup_types.QAnimationGroup, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAnimationGroup_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAnimationGroupmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -258,7 +238,6 @@ proc miqt_exec_callback_QAnimationGroup_metacall(self: ptr cQAnimationGroup, slo
 
   virtualReturn
 proc QAnimationGroupevent*(self: gen_qanimationgroup_types.QAnimationGroup, event: gen_qcoreevent.QEvent): bool =
-
   fQAnimationGroup_virtualbase_event(self.h, event.h)
 
 type QAnimationGroupeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -306,7 +285,6 @@ proc miqt_exec_callback_QAnimationGroup_updateCurrentTime(self: ptr cQAnimationG
 
   nimfunc[](slotval1)
 proc QAnimationGroupupdateState*(self: gen_qanimationgroup_types.QAnimationGroup, newState: cint, oldState: cint): void =
-
   fQAnimationGroup_virtualbase_updateState(self.h, cint(newState), cint(oldState))
 
 type QAnimationGroupupdateStateProc* = proc(newState: cint, oldState: cint): void
@@ -326,7 +304,6 @@ proc miqt_exec_callback_QAnimationGroup_updateState(self: ptr cQAnimationGroup, 
 
   nimfunc[](slotval1, slotval2)
 proc QAnimationGroupupdateDirection*(self: gen_qanimationgroup_types.QAnimationGroup, direction: cint): void =
-
   fQAnimationGroup_virtualbase_updateDirection(self.h, cint(direction))
 
 type QAnimationGroupupdateDirectionProc* = proc(direction: cint): void
@@ -344,7 +321,6 @@ proc miqt_exec_callback_QAnimationGroup_updateDirection(self: ptr cQAnimationGro
 
   nimfunc[](slotval1)
 proc QAnimationGroupeventFilter*(self: gen_qanimationgroup_types.QAnimationGroup, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAnimationGroup_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAnimationGroupeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -366,7 +342,6 @@ proc miqt_exec_callback_QAnimationGroup_eventFilter(self: ptr cQAnimationGroup, 
 
   virtualReturn
 proc QAnimationGrouptimerEvent*(self: gen_qanimationgroup_types.QAnimationGroup, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAnimationGroup_virtualbase_timerEvent(self.h, event.h)
 
 type QAnimationGrouptimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -384,7 +359,6 @@ proc miqt_exec_callback_QAnimationGroup_timerEvent(self: ptr cQAnimationGroup, s
 
   nimfunc[](slotval1)
 proc QAnimationGroupchildEvent*(self: gen_qanimationgroup_types.QAnimationGroup, event: gen_qcoreevent.QChildEvent): void =
-
   fQAnimationGroup_virtualbase_childEvent(self.h, event.h)
 
 type QAnimationGroupchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -402,7 +376,6 @@ proc miqt_exec_callback_QAnimationGroup_childEvent(self: ptr cQAnimationGroup, s
 
   nimfunc[](slotval1)
 proc QAnimationGroupcustomEvent*(self: gen_qanimationgroup_types.QAnimationGroup, event: gen_qcoreevent.QEvent): void =
-
   fQAnimationGroup_virtualbase_customEvent(self.h, event.h)
 
 type QAnimationGroupcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -420,7 +393,6 @@ proc miqt_exec_callback_QAnimationGroup_customEvent(self: ptr cQAnimationGroup, 
 
   nimfunc[](slotval1)
 proc QAnimationGroupconnectNotify*(self: gen_qanimationgroup_types.QAnimationGroup, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAnimationGroup_virtualbase_connectNotify(self.h, signal.h)
 
 type QAnimationGroupconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -438,7 +410,6 @@ proc miqt_exec_callback_QAnimationGroup_connectNotify(self: ptr cQAnimationGroup
 
   nimfunc[](slotval1)
 proc QAnimationGroupdisconnectNotify*(self: gen_qanimationgroup_types.QAnimationGroup, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAnimationGroup_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAnimationGroupdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

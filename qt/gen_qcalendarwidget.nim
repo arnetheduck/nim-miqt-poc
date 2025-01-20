@@ -263,139 +263,108 @@ proc fcQCalendarWidget_delete(self: pointer) {.importc: "QCalendarWidget_delete"
 func init*(T: type gen_qcalendarwidget_types.QCalendarWidget, h: ptr cQCalendarWidget): gen_qcalendarwidget_types.QCalendarWidget =
   T(h: h)
 proc create*(T: type gen_qcalendarwidget_types.QCalendarWidget, parent: gen_qwidget.QWidget): gen_qcalendarwidget_types.QCalendarWidget =
-
   gen_qcalendarwidget_types.QCalendarWidget.init(fcQCalendarWidget_new(parent.h))
+
 proc create*(T: type gen_qcalendarwidget_types.QCalendarWidget, ): gen_qcalendarwidget_types.QCalendarWidget =
-
   gen_qcalendarwidget_types.QCalendarWidget.init(fcQCalendarWidget_new2())
-proc metaObject*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCalendarWidget_metaObject(self.h))
 
 proc metacast*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cstring): pointer =
-
   fcQCalendarWidget_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCalendarWidget_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring): string =
-
   let v_ms = fcQCalendarWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring): string =
-
   let v_ms = fcQCalendarWidget_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQCalendarWidget_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQCalendarWidget_minimumSizeHint(self.h))
 
 proc selectedDate*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qdatetime.QDate =
-
   gen_qdatetime.QDate(h: fcQCalendarWidget_selectedDate(self.h))
 
 proc yearShown*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
-
   fcQCalendarWidget_yearShown(self.h)
 
 proc monthShown*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
-
   fcQCalendarWidget_monthShown(self.h)
 
 proc minimumDate*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qdatetime.QDate =
-
   gen_qdatetime.QDate(h: fcQCalendarWidget_minimumDate(self.h))
 
 proc setMinimumDate*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
-
   fcQCalendarWidget_setMinimumDate(self.h, date.h)
 
 proc maximumDate*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qdatetime.QDate =
-
   gen_qdatetime.QDate(h: fcQCalendarWidget_maximumDate(self.h))
 
 proc setMaximumDate*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
-
   fcQCalendarWidget_setMaximumDate(self.h, date.h)
 
 proc firstDayOfWeek*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
-
   cint(fcQCalendarWidget_firstDayOfWeek(self.h))
 
 proc setFirstDayOfWeek*(self: gen_qcalendarwidget_types.QCalendarWidget, dayOfWeek: cint): void =
-
   fcQCalendarWidget_setFirstDayOfWeek(self.h, cint(dayOfWeek))
 
 proc isNavigationBarVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, ): bool =
-
   fcQCalendarWidget_isNavigationBarVisible(self.h)
 
 proc isGridVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, ): bool =
-
   fcQCalendarWidget_isGridVisible(self.h)
 
 proc calendar*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qcalendar.QCalendar =
-
   gen_qcalendar.QCalendar(h: fcQCalendarWidget_calendar(self.h))
 
 proc setCalendar*(self: gen_qcalendarwidget_types.QCalendarWidget, calendar: gen_qcalendar.QCalendar): void =
-
   fcQCalendarWidget_setCalendar(self.h, calendar.h)
 
 proc selectionMode*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
-
   cint(fcQCalendarWidget_selectionMode(self.h))
 
 proc setSelectionMode*(self: gen_qcalendarwidget_types.QCalendarWidget, mode: cint): void =
-
   fcQCalendarWidget_setSelectionMode(self.h, cint(mode))
 
 proc horizontalHeaderFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
-
   cint(fcQCalendarWidget_horizontalHeaderFormat(self.h))
 
 proc setHorizontalHeaderFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, format: cint): void =
-
   fcQCalendarWidget_setHorizontalHeaderFormat(self.h, cint(format))
 
 proc verticalHeaderFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
-
   cint(fcQCalendarWidget_verticalHeaderFormat(self.h))
 
 proc setVerticalHeaderFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, format: cint): void =
-
   fcQCalendarWidget_setVerticalHeaderFormat(self.h, cint(format))
 
 proc headerTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qtextformat.QTextCharFormat =
-
   gen_qtextformat.QTextCharFormat(h: fcQCalendarWidget_headerTextFormat(self.h))
 
 proc setHeaderTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, format: gen_qtextformat.QTextCharFormat): void =
-
   fcQCalendarWidget_setHeaderTextFormat(self.h, format.h)
 
 proc weekdayTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, dayOfWeek: cint): gen_qtextformat.QTextCharFormat =
-
   gen_qtextformat.QTextCharFormat(h: fcQCalendarWidget_weekdayTextFormat(self.h, cint(dayOfWeek)))
 
 proc setWeekdayTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, dayOfWeek: cint, format: gen_qtextformat.QTextCharFormat): void =
-
   fcQCalendarWidget_setWeekdayTextFormat(self.h, cint(dayOfWeek), format.h)
 
 proc dateTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): Table[gen_qdatetime.QDate,gen_qtextformat.QTextCharFormat] =
-
   var v_mm = fcQCalendarWidget_dateTextFormat(self.h)
   var vx_ret: Table[gen_qdatetime.QDate, gen_qtextformat.QTextCharFormat]
   var v_Keys = cast[ptr UncheckedArray[pointer]](v_mm.keys)
@@ -408,176 +377,146 @@ proc dateTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, ): Table[g
     vx_ret[v_entry_Key] = v_entry_Value
   vx_ret
 
-proc dateTextFormatWithDate*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): gen_qtextformat.QTextCharFormat =
-
+proc dateTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): gen_qtextformat.QTextCharFormat =
   gen_qtextformat.QTextCharFormat(h: fcQCalendarWidget_dateTextFormatWithDate(self.h, date.h))
 
 proc setDateTextFormat*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate, format: gen_qtextformat.QTextCharFormat): void =
-
   fcQCalendarWidget_setDateTextFormat(self.h, date.h, format.h)
 
 proc isDateEditEnabled*(self: gen_qcalendarwidget_types.QCalendarWidget, ): bool =
-
   fcQCalendarWidget_isDateEditEnabled(self.h)
 
 proc setDateEditEnabled*(self: gen_qcalendarwidget_types.QCalendarWidget, enable: bool): void =
-
   fcQCalendarWidget_setDateEditEnabled(self.h, enable)
 
 proc dateEditAcceptDelay*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
-
   fcQCalendarWidget_dateEditAcceptDelay(self.h)
 
 proc setDateEditAcceptDelay*(self: gen_qcalendarwidget_types.QCalendarWidget, delay: cint): void =
-
   fcQCalendarWidget_setDateEditAcceptDelay(self.h, delay)
 
 proc setSelectedDate*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
-
   fcQCalendarWidget_setSelectedDate(self.h, date.h)
 
 proc setDateRange*(self: gen_qcalendarwidget_types.QCalendarWidget, min: gen_qdatetime.QDate, max: gen_qdatetime.QDate): void =
-
   fcQCalendarWidget_setDateRange(self.h, min.h, max.h)
 
 proc setCurrentPage*(self: gen_qcalendarwidget_types.QCalendarWidget, year: cint, month: cint): void =
-
   fcQCalendarWidget_setCurrentPage(self.h, year, month)
 
 proc setGridVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, show: bool): void =
-
   fcQCalendarWidget_setGridVisible(self.h, show)
 
 proc setNavigationBarVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, visible: bool): void =
-
   fcQCalendarWidget_setNavigationBarVisible(self.h, visible)
 
 proc showNextMonth*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
-
   fcQCalendarWidget_showNextMonth(self.h)
 
 proc showPreviousMonth*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
-
   fcQCalendarWidget_showPreviousMonth(self.h)
 
 proc showNextYear*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
-
   fcQCalendarWidget_showNextYear(self.h)
 
 proc showPreviousYear*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
-
   fcQCalendarWidget_showPreviousYear(self.h)
 
 proc showSelectedDate*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
-
   fcQCalendarWidget_showSelectedDate(self.h)
 
 proc showToday*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
-
   fcQCalendarWidget_showToday(self.h)
 
 proc selectionChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, ): void =
-
   fcQCalendarWidget_selectionChanged(self.h)
 
+type QCalendarWidgetselectionChangedSlot* = proc()
 proc miqt_exec_callback_QCalendarWidget_selectionChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QCalendarWidgetselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onselectionChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onselectionChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetselectionChangedSlot) =
+  var tmp = new QCalendarWidgetselectionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCalendarWidget_connect_selectionChanged(self.h, cast[int](addr tmp[]))
-proc clicked*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
 
+proc clicked*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
   fcQCalendarWidget_clicked(self.h, date.h)
 
+type QCalendarWidgetclickedSlot* = proc(date: gen_qdatetime.QDate)
 proc miqt_exec_callback_QCalendarWidget_clicked(slot: int, date: pointer) {.exportc.} =
-  type Cb = proc(date: gen_qdatetime.QDate)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCalendarWidgetclickedSlot](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QDate(h: date)
-
 
   nimfunc[](slotval1)
 
-proc onclicked*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: proc(date: gen_qdatetime.QDate)) =
-  type Cb = proc(date: gen_qdatetime.QDate)
-  var tmp = new Cb
+proc onclicked*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetclickedSlot) =
+  var tmp = new QCalendarWidgetclickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCalendarWidget_connect_clicked(self.h, cast[int](addr tmp[]))
-proc activated*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
 
+proc activated*(self: gen_qcalendarwidget_types.QCalendarWidget, date: gen_qdatetime.QDate): void =
   fcQCalendarWidget_activated(self.h, date.h)
 
+type QCalendarWidgetactivatedSlot* = proc(date: gen_qdatetime.QDate)
 proc miqt_exec_callback_QCalendarWidget_activated(slot: int, date: pointer) {.exportc.} =
-  type Cb = proc(date: gen_qdatetime.QDate)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCalendarWidgetactivatedSlot](cast[pointer](slot))
   let slotval1 = gen_qdatetime.QDate(h: date)
-
 
   nimfunc[](slotval1)
 
-proc onactivated*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: proc(date: gen_qdatetime.QDate)) =
-  type Cb = proc(date: gen_qdatetime.QDate)
-  var tmp = new Cb
+proc onactivated*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetactivatedSlot) =
+  var tmp = new QCalendarWidgetactivatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCalendarWidget_connect_activated(self.h, cast[int](addr tmp[]))
-proc currentPageChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, year: cint, month: cint): void =
 
+proc currentPageChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, year: cint, month: cint): void =
   fcQCalendarWidget_currentPageChanged(self.h, year, month)
 
+type QCalendarWidgetcurrentPageChangedSlot* = proc(year: cint, month: cint)
 proc miqt_exec_callback_QCalendarWidget_currentPageChanged(slot: int, year: cint, month: cint) {.exportc.} =
-  type Cb = proc(year: cint, month: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCalendarWidgetcurrentPageChangedSlot](cast[pointer](slot))
   let slotval1 = year
 
   let slotval2 = month
 
-
   nimfunc[](slotval1, slotval2)
 
-proc oncurrentPageChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: proc(year: cint, month: cint)) =
-  type Cb = proc(year: cint, month: cint)
-  var tmp = new Cb
+proc oncurrentPageChanged*(self: gen_qcalendarwidget_types.QCalendarWidget, slot: QCalendarWidgetcurrentPageChangedSlot) =
+  var tmp = new QCalendarWidgetcurrentPageChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCalendarWidget_connect_currentPageChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring): string =
   let v_ms = fcQCalendarWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCalendarWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring): string =
   let v_ms = fcQCalendarWidget_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcalendarwidget_types.QCalendarWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCalendarWidget_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QCalendarWidgetmetaObject*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQCalendarWidget_virtualbase_metaObject(self.h))
 
 type QCalendarWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -595,7 +534,6 @@ proc miqt_exec_callback_QCalendarWidget_metaObject(self: ptr cQCalendarWidget, s
 
   virtualReturn.h
 proc QCalendarWidgetmetacast*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cstring): pointer =
-
   fQCalendarWidget_virtualbase_metacast(self.h, param1)
 
 type QCalendarWidgetmetacastProc* = proc(param1: cstring): pointer
@@ -615,7 +553,6 @@ proc miqt_exec_callback_QCalendarWidget_metacast(self: ptr cQCalendarWidget, slo
 
   virtualReturn
 proc QCalendarWidgetmetacall*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fQCalendarWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QCalendarWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -639,7 +576,6 @@ proc miqt_exec_callback_QCalendarWidget_metacall(self: ptr cQCalendarWidget, slo
 
   virtualReturn
 proc QCalendarWidgetsizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQCalendarWidget_virtualbase_sizeHint(self.h))
 
 type QCalendarWidgetsizeHintProc* = proc(): gen_qsize.QSize
@@ -657,7 +593,6 @@ proc miqt_exec_callback_QCalendarWidget_sizeHint(self: ptr cQCalendarWidget, slo
 
   virtualReturn.h
 proc QCalendarWidgetminimumSizeHint*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQCalendarWidget_virtualbase_minimumSizeHint(self.h))
 
 type QCalendarWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -675,7 +610,6 @@ proc miqt_exec_callback_QCalendarWidget_minimumSizeHint(self: ptr cQCalendarWidg
 
   virtualReturn.h
 proc QCalendarWidgetevent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QEvent): bool =
-
   fQCalendarWidget_virtualbase_event(self.h, event.h)
 
 type QCalendarWidgeteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -695,7 +629,6 @@ proc miqt_exec_callback_QCalendarWidget_event(self: ptr cQCalendarWidget, slot: 
 
   virtualReturn
 proc QCalendarWidgeteventFilter*(self: gen_qcalendarwidget_types.QCalendarWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQCalendarWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QCalendarWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -717,7 +650,6 @@ proc miqt_exec_callback_QCalendarWidget_eventFilter(self: ptr cQCalendarWidget, 
 
   virtualReturn
 proc QCalendarWidgetmousePressEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMouseEvent): void =
-
   fQCalendarWidget_virtualbase_mousePressEvent(self.h, event.h)
 
 type QCalendarWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -735,7 +667,6 @@ proc miqt_exec_callback_QCalendarWidget_mousePressEvent(self: ptr cQCalendarWidg
 
   nimfunc[](slotval1)
 proc QCalendarWidgetresizeEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QResizeEvent): void =
-
   fQCalendarWidget_virtualbase_resizeEvent(self.h, event.h)
 
 type QCalendarWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -753,7 +684,6 @@ proc miqt_exec_callback_QCalendarWidget_resizeEvent(self: ptr cQCalendarWidget, 
 
   nimfunc[](slotval1)
 proc QCalendarWidgetkeyPressEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QKeyEvent): void =
-
   fQCalendarWidget_virtualbase_keyPressEvent(self.h, event.h)
 
 type QCalendarWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -771,7 +701,6 @@ proc miqt_exec_callback_QCalendarWidget_keyPressEvent(self: ptr cQCalendarWidget
 
   nimfunc[](slotval1)
 proc QCalendarWidgetpaintCell*(self: gen_qcalendarwidget_types.QCalendarWidget, painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): void =
-
   fQCalendarWidget_virtualbase_paintCell(self.h, painter.h, rect.h, date.h)
 
 type QCalendarWidgetpaintCellProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRect, date: gen_qdatetime.QDate): void
@@ -793,7 +722,6 @@ proc miqt_exec_callback_QCalendarWidget_paintCell(self: ptr cQCalendarWidget, sl
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QCalendarWidgetdevType*(self: gen_qcalendarwidget_types.QCalendarWidget, ): cint =
-
   fQCalendarWidget_virtualbase_devType(self.h)
 
 type QCalendarWidgetdevTypeProc* = proc(): cint
@@ -811,7 +739,6 @@ proc miqt_exec_callback_QCalendarWidget_devType(self: ptr cQCalendarWidget, slot
 
   virtualReturn
 proc QCalendarWidgetsetVisible*(self: gen_qcalendarwidget_types.QCalendarWidget, visible: bool): void =
-
   fQCalendarWidget_virtualbase_setVisible(self.h, visible)
 
 type QCalendarWidgetsetVisibleProc* = proc(visible: bool): void
@@ -829,7 +756,6 @@ proc miqt_exec_callback_QCalendarWidget_setVisible(self: ptr cQCalendarWidget, s
 
   nimfunc[](slotval1)
 proc QCalendarWidgetheightForWidth*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint): cint =
-
   fQCalendarWidget_virtualbase_heightForWidth(self.h, param1)
 
 type QCalendarWidgetheightForWidthProc* = proc(param1: cint): cint
@@ -849,7 +775,6 @@ proc miqt_exec_callback_QCalendarWidget_heightForWidth(self: ptr cQCalendarWidge
 
   virtualReturn
 proc QCalendarWidgethasHeightForWidth*(self: gen_qcalendarwidget_types.QCalendarWidget, ): bool =
-
   fQCalendarWidget_virtualbase_hasHeightForWidth(self.h)
 
 type QCalendarWidgethasHeightForWidthProc* = proc(): bool
@@ -867,7 +792,6 @@ proc miqt_exec_callback_QCalendarWidget_hasHeightForWidth(self: ptr cQCalendarWi
 
   virtualReturn
 proc QCalendarWidgetpaintEngine*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQCalendarWidget_virtualbase_paintEngine(self.h))
 
 type QCalendarWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -885,7 +809,6 @@ proc miqt_exec_callback_QCalendarWidget_paintEngine(self: ptr cQCalendarWidget, 
 
   virtualReturn.h
 proc QCalendarWidgetmouseReleaseEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMouseEvent): void =
-
   fQCalendarWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QCalendarWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -903,7 +826,6 @@ proc miqt_exec_callback_QCalendarWidget_mouseReleaseEvent(self: ptr cQCalendarWi
 
   nimfunc[](slotval1)
 proc QCalendarWidgetmouseDoubleClickEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMouseEvent): void =
-
   fQCalendarWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QCalendarWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -921,7 +843,6 @@ proc miqt_exec_callback_QCalendarWidget_mouseDoubleClickEvent(self: ptr cQCalend
 
   nimfunc[](slotval1)
 proc QCalendarWidgetmouseMoveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMouseEvent): void =
-
   fQCalendarWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QCalendarWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -939,7 +860,6 @@ proc miqt_exec_callback_QCalendarWidget_mouseMoveEvent(self: ptr cQCalendarWidge
 
   nimfunc[](slotval1)
 proc QCalendarWidgetwheelEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QWheelEvent): void =
-
   fQCalendarWidget_virtualbase_wheelEvent(self.h, event.h)
 
 type QCalendarWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -957,7 +877,6 @@ proc miqt_exec_callback_QCalendarWidget_wheelEvent(self: ptr cQCalendarWidget, s
 
   nimfunc[](slotval1)
 proc QCalendarWidgetkeyReleaseEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QKeyEvent): void =
-
   fQCalendarWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QCalendarWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -975,7 +894,6 @@ proc miqt_exec_callback_QCalendarWidget_keyReleaseEvent(self: ptr cQCalendarWidg
 
   nimfunc[](slotval1)
 proc QCalendarWidgetfocusInEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QFocusEvent): void =
-
   fQCalendarWidget_virtualbase_focusInEvent(self.h, event.h)
 
 type QCalendarWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -993,7 +911,6 @@ proc miqt_exec_callback_QCalendarWidget_focusInEvent(self: ptr cQCalendarWidget,
 
   nimfunc[](slotval1)
 proc QCalendarWidgetfocusOutEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QFocusEvent): void =
-
   fQCalendarWidget_virtualbase_focusOutEvent(self.h, event.h)
 
 type QCalendarWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1011,7 +928,6 @@ proc miqt_exec_callback_QCalendarWidget_focusOutEvent(self: ptr cQCalendarWidget
 
   nimfunc[](slotval1)
 proc QCalendarWidgetenterEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QEvent): void =
-
   fQCalendarWidget_virtualbase_enterEvent(self.h, event.h)
 
 type QCalendarWidgetenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1029,7 +945,6 @@ proc miqt_exec_callback_QCalendarWidget_enterEvent(self: ptr cQCalendarWidget, s
 
   nimfunc[](slotval1)
 proc QCalendarWidgetleaveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QEvent): void =
-
   fQCalendarWidget_virtualbase_leaveEvent(self.h, event.h)
 
 type QCalendarWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1047,7 +962,6 @@ proc miqt_exec_callback_QCalendarWidget_leaveEvent(self: ptr cQCalendarWidget, s
 
   nimfunc[](slotval1)
 proc QCalendarWidgetpaintEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QPaintEvent): void =
-
   fQCalendarWidget_virtualbase_paintEvent(self.h, event.h)
 
 type QCalendarWidgetpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1065,7 +979,6 @@ proc miqt_exec_callback_QCalendarWidget_paintEvent(self: ptr cQCalendarWidget, s
 
   nimfunc[](slotval1)
 proc QCalendarWidgetmoveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QMoveEvent): void =
-
   fQCalendarWidget_virtualbase_moveEvent(self.h, event.h)
 
 type QCalendarWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1083,7 +996,6 @@ proc miqt_exec_callback_QCalendarWidget_moveEvent(self: ptr cQCalendarWidget, sl
 
   nimfunc[](slotval1)
 proc QCalendarWidgetcloseEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QCloseEvent): void =
-
   fQCalendarWidget_virtualbase_closeEvent(self.h, event.h)
 
 type QCalendarWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1101,7 +1013,6 @@ proc miqt_exec_callback_QCalendarWidget_closeEvent(self: ptr cQCalendarWidget, s
 
   nimfunc[](slotval1)
 proc QCalendarWidgetcontextMenuEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QContextMenuEvent): void =
-
   fQCalendarWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QCalendarWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -1119,7 +1030,6 @@ proc miqt_exec_callback_QCalendarWidget_contextMenuEvent(self: ptr cQCalendarWid
 
   nimfunc[](slotval1)
 proc QCalendarWidgettabletEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QTabletEvent): void =
-
   fQCalendarWidget_virtualbase_tabletEvent(self.h, event.h)
 
 type QCalendarWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1137,7 +1047,6 @@ proc miqt_exec_callback_QCalendarWidget_tabletEvent(self: ptr cQCalendarWidget, 
 
   nimfunc[](slotval1)
 proc QCalendarWidgetactionEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QActionEvent): void =
-
   fQCalendarWidget_virtualbase_actionEvent(self.h, event.h)
 
 type QCalendarWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1155,7 +1064,6 @@ proc miqt_exec_callback_QCalendarWidget_actionEvent(self: ptr cQCalendarWidget, 
 
   nimfunc[](slotval1)
 proc QCalendarWidgetdragEnterEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QDragEnterEvent): void =
-
   fQCalendarWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QCalendarWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1173,7 +1081,6 @@ proc miqt_exec_callback_QCalendarWidget_dragEnterEvent(self: ptr cQCalendarWidge
 
   nimfunc[](slotval1)
 proc QCalendarWidgetdragMoveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QDragMoveEvent): void =
-
   fQCalendarWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QCalendarWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1191,7 +1098,6 @@ proc miqt_exec_callback_QCalendarWidget_dragMoveEvent(self: ptr cQCalendarWidget
 
   nimfunc[](slotval1)
 proc QCalendarWidgetdragLeaveEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QDragLeaveEvent): void =
-
   fQCalendarWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QCalendarWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1209,7 +1115,6 @@ proc miqt_exec_callback_QCalendarWidget_dragLeaveEvent(self: ptr cQCalendarWidge
 
   nimfunc[](slotval1)
 proc QCalendarWidgetdropEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QDropEvent): void =
-
   fQCalendarWidget_virtualbase_dropEvent(self.h, event.h)
 
 type QCalendarWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1227,7 +1132,6 @@ proc miqt_exec_callback_QCalendarWidget_dropEvent(self: ptr cQCalendarWidget, sl
 
   nimfunc[](slotval1)
 proc QCalendarWidgetshowEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QShowEvent): void =
-
   fQCalendarWidget_virtualbase_showEvent(self.h, event.h)
 
 type QCalendarWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1245,7 +1149,6 @@ proc miqt_exec_callback_QCalendarWidget_showEvent(self: ptr cQCalendarWidget, sl
 
   nimfunc[](slotval1)
 proc QCalendarWidgethideEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qevent.QHideEvent): void =
-
   fQCalendarWidget_virtualbase_hideEvent(self.h, event.h)
 
 type QCalendarWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1263,7 +1166,6 @@ proc miqt_exec_callback_QCalendarWidget_hideEvent(self: ptr cQCalendarWidget, sl
 
   nimfunc[](slotval1)
 proc QCalendarWidgetnativeEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQCalendarWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QCalendarWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1290,7 +1192,6 @@ proc miqt_exec_callback_QCalendarWidget_nativeEvent(self: ptr cQCalendarWidget, 
 
   virtualReturn
 proc QCalendarWidgetchangeEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: gen_qcoreevent.QEvent): void =
-
   fQCalendarWidget_virtualbase_changeEvent(self.h, param1.h)
 
 type QCalendarWidgetchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1308,7 +1209,6 @@ proc miqt_exec_callback_QCalendarWidget_changeEvent(self: ptr cQCalendarWidget, 
 
   nimfunc[](slotval1)
 proc QCalendarWidgetmetric*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint): cint =
-
   fQCalendarWidget_virtualbase_metric(self.h, cint(param1))
 
 type QCalendarWidgetmetricProc* = proc(param1: cint): cint
@@ -1328,7 +1228,6 @@ proc miqt_exec_callback_QCalendarWidget_metric(self: ptr cQCalendarWidget, slot:
 
   virtualReturn
 proc QCalendarWidgetinitPainter*(self: gen_qcalendarwidget_types.QCalendarWidget, painter: gen_qpainter.QPainter): void =
-
   fQCalendarWidget_virtualbase_initPainter(self.h, painter.h)
 
 type QCalendarWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1346,7 +1245,6 @@ proc miqt_exec_callback_QCalendarWidget_initPainter(self: ptr cQCalendarWidget, 
 
   nimfunc[](slotval1)
 proc QCalendarWidgetredirected*(self: gen_qcalendarwidget_types.QCalendarWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQCalendarWidget_virtualbase_redirected(self.h, offset.h))
 
 type QCalendarWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1366,7 +1264,6 @@ proc miqt_exec_callback_QCalendarWidget_redirected(self: ptr cQCalendarWidget, s
 
   virtualReturn.h
 proc QCalendarWidgetsharedPainter*(self: gen_qcalendarwidget_types.QCalendarWidget, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQCalendarWidget_virtualbase_sharedPainter(self.h))
 
 type QCalendarWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1384,7 +1281,6 @@ proc miqt_exec_callback_QCalendarWidget_sharedPainter(self: ptr cQCalendarWidget
 
   virtualReturn.h
 proc QCalendarWidgetinputMethodEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: gen_qevent.QInputMethodEvent): void =
-
   fQCalendarWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QCalendarWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1402,7 +1298,6 @@ proc miqt_exec_callback_QCalendarWidget_inputMethodEvent(self: ptr cQCalendarWid
 
   nimfunc[](slotval1)
 proc QCalendarWidgetinputMethodQuery*(self: gen_qcalendarwidget_types.QCalendarWidget, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQCalendarWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QCalendarWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1422,7 +1317,6 @@ proc miqt_exec_callback_QCalendarWidget_inputMethodQuery(self: ptr cQCalendarWid
 
   virtualReturn.h
 proc QCalendarWidgetfocusNextPrevChild*(self: gen_qcalendarwidget_types.QCalendarWidget, next: bool): bool =
-
   fQCalendarWidget_virtualbase_focusNextPrevChild(self.h, next)
 
 type QCalendarWidgetfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1442,7 +1336,6 @@ proc miqt_exec_callback_QCalendarWidget_focusNextPrevChild(self: ptr cQCalendarW
 
   virtualReturn
 proc QCalendarWidgettimerEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QTimerEvent): void =
-
   fQCalendarWidget_virtualbase_timerEvent(self.h, event.h)
 
 type QCalendarWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1460,7 +1353,6 @@ proc miqt_exec_callback_QCalendarWidget_timerEvent(self: ptr cQCalendarWidget, s
 
   nimfunc[](slotval1)
 proc QCalendarWidgetchildEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QChildEvent): void =
-
   fQCalendarWidget_virtualbase_childEvent(self.h, event.h)
 
 type QCalendarWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1478,7 +1370,6 @@ proc miqt_exec_callback_QCalendarWidget_childEvent(self: ptr cQCalendarWidget, s
 
   nimfunc[](slotval1)
 proc QCalendarWidgetcustomEvent*(self: gen_qcalendarwidget_types.QCalendarWidget, event: gen_qcoreevent.QEvent): void =
-
   fQCalendarWidget_virtualbase_customEvent(self.h, event.h)
 
 type QCalendarWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1496,7 +1387,6 @@ proc miqt_exec_callback_QCalendarWidget_customEvent(self: ptr cQCalendarWidget, 
 
   nimfunc[](slotval1)
 proc QCalendarWidgetconnectNotify*(self: gen_qcalendarwidget_types.QCalendarWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCalendarWidget_virtualbase_connectNotify(self.h, signal.h)
 
 type QCalendarWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1514,7 +1404,6 @@ proc miqt_exec_callback_QCalendarWidget_connectNotify(self: ptr cQCalendarWidget
 
   nimfunc[](slotval1)
 proc QCalendarWidgetdisconnectNotify*(self: gen_qcalendarwidget_types.QCalendarWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCalendarWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QCalendarWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

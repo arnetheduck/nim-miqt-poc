@@ -127,176 +127,143 @@ proc fcQSvgRenderer_delete(self: pointer) {.importc: "QSvgRenderer_delete".}
 func init*(T: type gen_qsvgrenderer_types.QSvgRenderer, h: ptr cQSvgRenderer): gen_qsvgrenderer_types.QSvgRenderer =
   T(h: h)
 proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, ): gen_qsvgrenderer_types.QSvgRenderer =
-
   gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new())
+
 proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, filename: string): gen_qsvgrenderer_types.QSvgRenderer =
-
   gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new2(struct_miqt_string(data: filename, len: csize_t(len(filename)))))
-proc create2*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: seq[byte]): gen_qsvgrenderer_types.QSvgRenderer =
 
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: seq[byte]): gen_qsvgrenderer_types.QSvgRenderer =
   gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new3(struct_miqt_string(data: cast[cstring](if len(contents) == 0: nil else: unsafeAddr contents[0]), len: csize_t(len(contents)))))
+
 proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: gen_qxmlstream.QXmlStreamReader): gen_qsvgrenderer_types.QSvgRenderer =
-
   gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new4(contents.h))
-proc create2*(T: type gen_qsvgrenderer_types.QSvgRenderer, parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
 
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
   gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new5(parent.h))
+
 proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, filename: string, parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
-
   gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new6(struct_miqt_string(data: filename, len: csize_t(len(filename))), parent.h))
-proc create2*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: seq[byte], parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
 
+proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: seq[byte], parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
   gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new7(struct_miqt_string(data: cast[cstring](if len(contents) == 0: nil else: unsafeAddr contents[0]), len: csize_t(len(contents))), parent.h))
+
 proc create*(T: type gen_qsvgrenderer_types.QSvgRenderer, contents: gen_qxmlstream.QXmlStreamReader, parent: gen_qobject.QObject): gen_qsvgrenderer_types.QSvgRenderer =
-
   gen_qsvgrenderer_types.QSvgRenderer.init(fcQSvgRenderer_new8(contents.h, parent.h))
-proc metaObject*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSvgRenderer_metaObject(self.h))
 
 proc metacast*(self: gen_qsvgrenderer_types.QSvgRenderer, param1: cstring): pointer =
-
   fcQSvgRenderer_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsvgrenderer_types.QSvgRenderer, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSvgRenderer_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsvgrenderer_types.QSvgRenderer, s: cstring): string =
-
   let v_ms = fcQSvgRenderer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isValid*(self: gen_qsvgrenderer_types.QSvgRenderer, ): bool =
-
   fcQSvgRenderer_isValid(self.h)
 
 proc defaultSize*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSvgRenderer_defaultSize(self.h))
 
 proc viewBox*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQSvgRenderer_viewBox(self.h))
 
 proc viewBoxF*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQSvgRenderer_viewBoxF(self.h))
 
 proc setViewBox*(self: gen_qsvgrenderer_types.QSvgRenderer, viewbox: gen_qrect.QRect): void =
-
   fcQSvgRenderer_setViewBox(self.h, viewbox.h)
 
-proc setViewBoxWithViewbox*(self: gen_qsvgrenderer_types.QSvgRenderer, viewbox: gen_qrect.QRectF): void =
-
+proc setViewBox*(self: gen_qsvgrenderer_types.QSvgRenderer, viewbox: gen_qrect.QRectF): void =
   fcQSvgRenderer_setViewBoxWithViewbox(self.h, viewbox.h)
 
 proc aspectRatioMode*(self: gen_qsvgrenderer_types.QSvgRenderer, ): cint =
-
   cint(fcQSvgRenderer_aspectRatioMode(self.h))
 
 proc setAspectRatioMode*(self: gen_qsvgrenderer_types.QSvgRenderer, mode: cint): void =
-
   fcQSvgRenderer_setAspectRatioMode(self.h, cint(mode))
 
 proc animated*(self: gen_qsvgrenderer_types.QSvgRenderer, ): bool =
-
   fcQSvgRenderer_animated(self.h)
 
 proc framesPerSecond*(self: gen_qsvgrenderer_types.QSvgRenderer, ): cint =
-
   fcQSvgRenderer_framesPerSecond(self.h)
 
 proc setFramesPerSecond*(self: gen_qsvgrenderer_types.QSvgRenderer, num: cint): void =
-
   fcQSvgRenderer_setFramesPerSecond(self.h, num)
 
 proc currentFrame*(self: gen_qsvgrenderer_types.QSvgRenderer, ): cint =
-
   fcQSvgRenderer_currentFrame(self.h)
 
 proc setCurrentFrame*(self: gen_qsvgrenderer_types.QSvgRenderer, currentFrame: cint): void =
-
   fcQSvgRenderer_setCurrentFrame(self.h, currentFrame)
 
 proc animationDuration*(self: gen_qsvgrenderer_types.QSvgRenderer, ): cint =
-
   fcQSvgRenderer_animationDuration(self.h)
 
 proc boundsOnElement*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQSvgRenderer_boundsOnElement(self.h, struct_miqt_string(data: id, len: csize_t(len(id)))))
 
 proc elementExists*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): bool =
-
   fcQSvgRenderer_elementExists(self.h, struct_miqt_string(data: id, len: csize_t(len(id))))
 
 proc transformForElement*(self: gen_qsvgrenderer_types.QSvgRenderer, id: string): gen_qtransform.QTransform =
-
   gen_qtransform.QTransform(h: fcQSvgRenderer_transformForElement(self.h, struct_miqt_string(data: id, len: csize_t(len(id)))))
 
 proc load*(self: gen_qsvgrenderer_types.QSvgRenderer, filename: string): bool =
-
   fcQSvgRenderer_load(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
-proc loadWithContents*(self: gen_qsvgrenderer_types.QSvgRenderer, contents: seq[byte]): bool =
-
+proc load*(self: gen_qsvgrenderer_types.QSvgRenderer, contents: seq[byte]): bool =
   fcQSvgRenderer_loadWithContents(self.h, struct_miqt_string(data: cast[cstring](if len(contents) == 0: nil else: unsafeAddr contents[0]), len: csize_t(len(contents))))
 
-proc load2*(self: gen_qsvgrenderer_types.QSvgRenderer, contents: gen_qxmlstream.QXmlStreamReader): bool =
-
+proc load*(self: gen_qsvgrenderer_types.QSvgRenderer, contents: gen_qxmlstream.QXmlStreamReader): bool =
   fcQSvgRenderer_load2(self.h, contents.h)
 
 proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter): void =
-
   fcQSvgRenderer_render(self.h, p.h)
 
-proc render2*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter, bounds: gen_qrect.QRectF): void =
-
+proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter, bounds: gen_qrect.QRectF): void =
   fcQSvgRenderer_render2(self.h, p.h, bounds.h)
 
-proc render3*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter, elementId: string): void =
-
+proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter, elementId: string): void =
   fcQSvgRenderer_render3(self.h, p.h, struct_miqt_string(data: elementId, len: csize_t(len(elementId))))
 
 proc repaintNeeded*(self: gen_qsvgrenderer_types.QSvgRenderer, ): void =
-
   fcQSvgRenderer_repaintNeeded(self.h)
 
+type QSvgRendererrepaintNeededSlot* = proc()
 proc miqt_exec_callback_QSvgRenderer_repaintNeeded(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QSvgRendererrepaintNeededSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onrepaintNeeded*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onrepaintNeeded*(self: gen_qsvgrenderer_types.QSvgRenderer, slot: QSvgRendererrepaintNeededSlot) =
+  var tmp = new QSvgRendererrepaintNeededSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSvgRenderer_connect_repaintNeeded(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qsvgrenderer_types.QSvgRenderer, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qsvgrenderer_types.QSvgRenderer, s: cstring, c: cstring): string =
   let v_ms = fcQSvgRenderer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsvgrenderer_types.QSvgRenderer, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsvgrenderer_types.QSvgRenderer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSvgRenderer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc render32*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter, elementId: string, bounds: gen_qrect.QRectF): void =
-
+proc render*(self: gen_qsvgrenderer_types.QSvgRenderer, p: gen_qpainter.QPainter, elementId: string, bounds: gen_qrect.QRectF): void =
   fcQSvgRenderer_render32(self.h, p.h, struct_miqt_string(data: elementId, len: csize_t(len(elementId))), bounds.h)
 
 proc QSvgRenderermetaObject*(self: gen_qsvgrenderer_types.QSvgRenderer, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSvgRenderer_virtualbase_metaObject(self.h))
 
 type QSvgRenderermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -314,7 +281,6 @@ proc miqt_exec_callback_QSvgRenderer_metaObject(self: ptr cQSvgRenderer, slot: i
 
   virtualReturn.h
 proc QSvgRenderermetacast*(self: gen_qsvgrenderer_types.QSvgRenderer, param1: cstring): pointer =
-
   fQSvgRenderer_virtualbase_metacast(self.h, param1)
 
 type QSvgRenderermetacastProc* = proc(param1: cstring): pointer
@@ -334,7 +300,6 @@ proc miqt_exec_callback_QSvgRenderer_metacast(self: ptr cQSvgRenderer, slot: int
 
   virtualReturn
 proc QSvgRenderermetacall*(self: gen_qsvgrenderer_types.QSvgRenderer, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSvgRenderer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSvgRenderermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -358,7 +323,6 @@ proc miqt_exec_callback_QSvgRenderer_metacall(self: ptr cQSvgRenderer, slot: int
 
   virtualReturn
 proc QSvgRendererevent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent.QEvent): bool =
-
   fQSvgRenderer_virtualbase_event(self.h, event.h)
 
 type QSvgRenderereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -378,7 +342,6 @@ proc miqt_exec_callback_QSvgRenderer_event(self: ptr cQSvgRenderer, slot: int, e
 
   virtualReturn
 proc QSvgRenderereventFilter*(self: gen_qsvgrenderer_types.QSvgRenderer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSvgRenderer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSvgRenderereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -400,7 +363,6 @@ proc miqt_exec_callback_QSvgRenderer_eventFilter(self: ptr cQSvgRenderer, slot: 
 
   virtualReturn
 proc QSvgRenderertimerEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSvgRenderer_virtualbase_timerEvent(self.h, event.h)
 
 type QSvgRenderertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -418,7 +380,6 @@ proc miqt_exec_callback_QSvgRenderer_timerEvent(self: ptr cQSvgRenderer, slot: i
 
   nimfunc[](slotval1)
 proc QSvgRendererchildEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent.QChildEvent): void =
-
   fQSvgRenderer_virtualbase_childEvent(self.h, event.h)
 
 type QSvgRendererchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -436,7 +397,6 @@ proc miqt_exec_callback_QSvgRenderer_childEvent(self: ptr cQSvgRenderer, slot: i
 
   nimfunc[](slotval1)
 proc QSvgRenderercustomEvent*(self: gen_qsvgrenderer_types.QSvgRenderer, event: gen_qcoreevent.QEvent): void =
-
   fQSvgRenderer_virtualbase_customEvent(self.h, event.h)
 
 type QSvgRenderercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -454,7 +414,6 @@ proc miqt_exec_callback_QSvgRenderer_customEvent(self: ptr cQSvgRenderer, slot: 
 
   nimfunc[](slotval1)
 proc QSvgRendererconnectNotify*(self: gen_qsvgrenderer_types.QSvgRenderer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSvgRenderer_virtualbase_connectNotify(self.h, signal.h)
 
 type QSvgRendererconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -472,7 +431,6 @@ proc miqt_exec_callback_QSvgRenderer_connectNotify(self: ptr cQSvgRenderer, slot
 
   nimfunc[](slotval1)
 proc QSvgRendererdisconnectNotify*(self: gen_qsvgrenderer_types.QSvgRenderer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSvgRenderer_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSvgRendererdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

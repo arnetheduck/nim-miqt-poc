@@ -99,60 +99,51 @@ proc fcQPauseAnimation_delete(self: pointer) {.importc: "QPauseAnimation_delete"
 func init*(T: type gen_qpauseanimation_types.QPauseAnimation, h: ptr cQPauseAnimation): gen_qpauseanimation_types.QPauseAnimation =
   T(h: h)
 proc create*(T: type gen_qpauseanimation_types.QPauseAnimation, ): gen_qpauseanimation_types.QPauseAnimation =
-
   gen_qpauseanimation_types.QPauseAnimation.init(fcQPauseAnimation_new())
+
 proc create*(T: type gen_qpauseanimation_types.QPauseAnimation, msecs: cint): gen_qpauseanimation_types.QPauseAnimation =
-
   gen_qpauseanimation_types.QPauseAnimation.init(fcQPauseAnimation_new2(msecs))
+
 proc create*(T: type gen_qpauseanimation_types.QPauseAnimation, parent: gen_qobject.QObject): gen_qpauseanimation_types.QPauseAnimation =
-
   gen_qpauseanimation_types.QPauseAnimation.init(fcQPauseAnimation_new3(parent.h))
+
 proc create*(T: type gen_qpauseanimation_types.QPauseAnimation, msecs: cint, parent: gen_qobject.QObject): gen_qpauseanimation_types.QPauseAnimation =
-
   gen_qpauseanimation_types.QPauseAnimation.init(fcQPauseAnimation_new4(msecs, parent.h))
-proc metaObject*(self: gen_qpauseanimation_types.QPauseAnimation, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qpauseanimation_types.QPauseAnimation, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPauseAnimation_metaObject(self.h))
 
 proc metacast*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cstring): pointer =
-
   fcQPauseAnimation_metacast(self.h, param1)
 
 proc metacall*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQPauseAnimation_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring): string =
-
   let v_ms = fcQPauseAnimation_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc duration*(self: gen_qpauseanimation_types.QPauseAnimation, ): cint =
-
   fcQPauseAnimation_duration(self.h)
 
 proc setDuration*(self: gen_qpauseanimation_types.QPauseAnimation, msecs: cint): void =
-
   fcQPauseAnimation_setDuration(self.h, msecs)
 
-proc tr2*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring, c: cstring): string =
   let v_ms = fcQPauseAnimation_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qpauseanimation_types.QPauseAnimation, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPauseAnimation_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QPauseAnimationmetaObject*(self: gen_qpauseanimation_types.QPauseAnimation, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQPauseAnimation_virtualbase_metaObject(self.h))
 
 type QPauseAnimationmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -170,7 +161,6 @@ proc miqt_exec_callback_QPauseAnimation_metaObject(self: ptr cQPauseAnimation, s
 
   virtualReturn.h
 proc QPauseAnimationmetacast*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cstring): pointer =
-
   fQPauseAnimation_virtualbase_metacast(self.h, param1)
 
 type QPauseAnimationmetacastProc* = proc(param1: cstring): pointer
@@ -190,7 +180,6 @@ proc miqt_exec_callback_QPauseAnimation_metacast(self: ptr cQPauseAnimation, slo
 
   virtualReturn
 proc QPauseAnimationmetacall*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cint, param2: cint, param3: pointer): cint =
-
   fQPauseAnimation_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QPauseAnimationmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -214,7 +203,6 @@ proc miqt_exec_callback_QPauseAnimation_metacall(self: ptr cQPauseAnimation, slo
 
   virtualReturn
 proc QPauseAnimationduration*(self: gen_qpauseanimation_types.QPauseAnimation, ): cint =
-
   fQPauseAnimation_virtualbase_duration(self.h)
 
 type QPauseAnimationdurationProc* = proc(): cint
@@ -232,7 +220,6 @@ proc miqt_exec_callback_QPauseAnimation_duration(self: ptr cQPauseAnimation, slo
 
   virtualReturn
 proc QPauseAnimationevent*(self: gen_qpauseanimation_types.QPauseAnimation, e: gen_qcoreevent.QEvent): bool =
-
   fQPauseAnimation_virtualbase_event(self.h, e.h)
 
 type QPauseAnimationeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -252,7 +239,6 @@ proc miqt_exec_callback_QPauseAnimation_event(self: ptr cQPauseAnimation, slot: 
 
   virtualReturn
 proc QPauseAnimationupdateCurrentTime*(self: gen_qpauseanimation_types.QPauseAnimation, param1: cint): void =
-
   fQPauseAnimation_virtualbase_updateCurrentTime(self.h, param1)
 
 type QPauseAnimationupdateCurrentTimeProc* = proc(param1: cint): void
@@ -270,7 +256,6 @@ proc miqt_exec_callback_QPauseAnimation_updateCurrentTime(self: ptr cQPauseAnima
 
   nimfunc[](slotval1)
 proc QPauseAnimationupdateState*(self: gen_qpauseanimation_types.QPauseAnimation, newState: cint, oldState: cint): void =
-
   fQPauseAnimation_virtualbase_updateState(self.h, cint(newState), cint(oldState))
 
 type QPauseAnimationupdateStateProc* = proc(newState: cint, oldState: cint): void
@@ -290,7 +275,6 @@ proc miqt_exec_callback_QPauseAnimation_updateState(self: ptr cQPauseAnimation, 
 
   nimfunc[](slotval1, slotval2)
 proc QPauseAnimationupdateDirection*(self: gen_qpauseanimation_types.QPauseAnimation, direction: cint): void =
-
   fQPauseAnimation_virtualbase_updateDirection(self.h, cint(direction))
 
 type QPauseAnimationupdateDirectionProc* = proc(direction: cint): void
@@ -308,7 +292,6 @@ proc miqt_exec_callback_QPauseAnimation_updateDirection(self: ptr cQPauseAnimati
 
   nimfunc[](slotval1)
 proc QPauseAnimationeventFilter*(self: gen_qpauseanimation_types.QPauseAnimation, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQPauseAnimation_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QPauseAnimationeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -330,7 +313,6 @@ proc miqt_exec_callback_QPauseAnimation_eventFilter(self: ptr cQPauseAnimation, 
 
   virtualReturn
 proc QPauseAnimationtimerEvent*(self: gen_qpauseanimation_types.QPauseAnimation, event: gen_qcoreevent.QTimerEvent): void =
-
   fQPauseAnimation_virtualbase_timerEvent(self.h, event.h)
 
 type QPauseAnimationtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -348,7 +330,6 @@ proc miqt_exec_callback_QPauseAnimation_timerEvent(self: ptr cQPauseAnimation, s
 
   nimfunc[](slotval1)
 proc QPauseAnimationchildEvent*(self: gen_qpauseanimation_types.QPauseAnimation, event: gen_qcoreevent.QChildEvent): void =
-
   fQPauseAnimation_virtualbase_childEvent(self.h, event.h)
 
 type QPauseAnimationchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -366,7 +347,6 @@ proc miqt_exec_callback_QPauseAnimation_childEvent(self: ptr cQPauseAnimation, s
 
   nimfunc[](slotval1)
 proc QPauseAnimationcustomEvent*(self: gen_qpauseanimation_types.QPauseAnimation, event: gen_qcoreevent.QEvent): void =
-
   fQPauseAnimation_virtualbase_customEvent(self.h, event.h)
 
 type QPauseAnimationcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -384,7 +364,6 @@ proc miqt_exec_callback_QPauseAnimation_customEvent(self: ptr cQPauseAnimation, 
 
   nimfunc[](slotval1)
 proc QPauseAnimationconnectNotify*(self: gen_qpauseanimation_types.QPauseAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPauseAnimation_virtualbase_connectNotify(self.h, signal.h)
 
 type QPauseAnimationconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -402,7 +381,6 @@ proc miqt_exec_callback_QPauseAnimation_connectNotify(self: ptr cQPauseAnimation
 
   nimfunc[](slotval1)
 proc QPauseAnimationdisconnectNotify*(self: gen_qpauseanimation_types.QPauseAnimation, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPauseAnimation_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QPauseAnimationdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

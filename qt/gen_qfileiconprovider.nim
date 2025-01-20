@@ -78,33 +78,27 @@ proc fcQFileIconProvider_delete(self: pointer) {.importc: "QFileIconProvider_del
 func init*(T: type gen_qfileiconprovider_types.QFileIconProvider, h: ptr cQFileIconProvider): gen_qfileiconprovider_types.QFileIconProvider =
   T(h: h)
 proc create*(T: type gen_qfileiconprovider_types.QFileIconProvider, ): gen_qfileiconprovider_types.QFileIconProvider =
-
   gen_qfileiconprovider_types.QFileIconProvider.init(fcQFileIconProvider_new())
-proc icon*(self: gen_qfileiconprovider_types.QFileIconProvider, typeVal: cint): gen_qicon.QIcon =
 
+proc icon*(self: gen_qfileiconprovider_types.QFileIconProvider, typeVal: cint): gen_qicon.QIcon =
   gen_qicon.QIcon(h: fcQFileIconProvider_icon(self.h, cint(typeVal)))
 
-proc iconWithInfo*(self: gen_qfileiconprovider_types.QFileIconProvider, info: gen_qfileinfo.QFileInfo): gen_qicon.QIcon =
-
+proc icon*(self: gen_qfileiconprovider_types.QFileIconProvider, info: gen_qfileinfo.QFileInfo): gen_qicon.QIcon =
   gen_qicon.QIcon(h: fcQFileIconProvider_iconWithInfo(self.h, info.h))
 
 proc typeX*(self: gen_qfileiconprovider_types.QFileIconProvider, info: gen_qfileinfo.QFileInfo): string =
-
   let v_ms = fcQFileIconProvider_typeX(self.h, info.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setOptions*(self: gen_qfileiconprovider_types.QFileIconProvider, options: cint): void =
-
   fcQFileIconProvider_setOptions(self.h, cint(options))
 
 proc options*(self: gen_qfileiconprovider_types.QFileIconProvider, ): cint =
-
   cint(fcQFileIconProvider_options(self.h))
 
 proc QFileIconProvidericon*(self: gen_qfileiconprovider_types.QFileIconProvider, typeVal: cint): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fQFileIconProvider_virtualbase_icon(self.h, cint(typeVal)))
 
 type QFileIconProvidericonProc* = proc(typeVal: cint): gen_qicon.QIcon
@@ -123,12 +117,11 @@ proc miqt_exec_callback_QFileIconProvider_icon(self: ptr cQFileIconProvider, slo
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QFileIconProvidericonWithInfo*(self: gen_qfileiconprovider_types.QFileIconProvider, info: gen_qfileinfo.QFileInfo): gen_qicon.QIcon =
-
+proc QFileIconProvidericon*(self: gen_qfileiconprovider_types.QFileIconProvider, info: gen_qfileinfo.QFileInfo): gen_qicon.QIcon =
   gen_qicon.QIcon(h: fQFileIconProvider_virtualbase_iconWithInfo(self.h, info.h))
 
 type QFileIconProvidericonWithInfoProc* = proc(info: gen_qfileinfo.QFileInfo): gen_qicon.QIcon
-proc oniconWithInfo*(self: gen_qfileiconprovider_types.QFileIconProvider, slot: QFileIconProvidericonWithInfoProc) =
+proc onicon*(self: gen_qfileiconprovider_types.QFileIconProvider, slot: QFileIconProvidericonWithInfoProc) =
   # TODO check subclass
   var tmp = new QFileIconProvidericonWithInfoProc
   tmp[] = slot
@@ -144,7 +137,6 @@ proc miqt_exec_callback_QFileIconProvider_iconWithInfo(self: ptr cQFileIconProvi
 
   virtualReturn.h
 proc QFileIconProvidertypeX*(self: gen_qfileiconprovider_types.QFileIconProvider, info: gen_qfileinfo.QFileInfo): string =
-
   let v_ms = fQFileIconProvider_virtualbase_type(self.h, info.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

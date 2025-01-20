@@ -181,69 +181,57 @@ proc fcQsciLexerDiff_delete(self: pointer) {.importc: "QsciLexerDiff_delete".}
 func init*(T: type gen_qscilexerdiff_types.QsciLexerDiff, h: ptr cQsciLexerDiff): gen_qscilexerdiff_types.QsciLexerDiff =
   T(h: h)
 proc create*(T: type gen_qscilexerdiff_types.QsciLexerDiff, ): gen_qscilexerdiff_types.QsciLexerDiff =
-
   gen_qscilexerdiff_types.QsciLexerDiff.init(fcQsciLexerDiff_new())
+
 proc create*(T: type gen_qscilexerdiff_types.QsciLexerDiff, parent: gen_qobject.QObject): gen_qscilexerdiff_types.QsciLexerDiff =
-
   gen_qscilexerdiff_types.QsciLexerDiff.init(fcQsciLexerDiff_new2(parent.h))
-proc metaObject*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerDiff_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerdiff_types.QsciLexerDiff, param1: cstring): pointer =
-
   fcQsciLexerDiff_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerdiff_types.QsciLexerDiff, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerDiff_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerdiff_types.QsciLexerDiff, s: cstring): string =
-
   let v_ms = fcQsciLexerDiff_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cstring =
-
   (fcQsciLexerDiff_language(self.h))
 
 proc lexer*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cstring =
-
   (fcQsciLexerDiff_lexer(self.h))
 
 proc wordCharacters*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cstring =
-
   (fcQsciLexerDiff_wordCharacters(self.h))
 
 proc defaultColor*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerDiff_defaultColor(self.h, style))
 
 proc description*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): string =
-
   let v_ms = fcQsciLexerDiff_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qscilexerdiff_types.QsciLexerDiff, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerdiff_types.QsciLexerDiff, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerDiff_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerdiff_types.QsciLexerDiff, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerdiff_types.QsciLexerDiff, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerDiff_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerDiffmetaObject*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerDiff_virtualbase_metaObject(self.h))
 
 type QsciLexerDiffmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -261,7 +249,6 @@ proc miqt_exec_callback_QsciLexerDiff_metaObject(self: ptr cQsciLexerDiff, slot:
 
   virtualReturn.h
 proc QsciLexerDiffmetacast*(self: gen_qscilexerdiff_types.QsciLexerDiff, param1: cstring): pointer =
-
   fQsciLexerDiff_virtualbase_metacast(self.h, param1)
 
 type QsciLexerDiffmetacastProc* = proc(param1: cstring): pointer
@@ -281,7 +268,6 @@ proc miqt_exec_callback_QsciLexerDiff_metacast(self: ptr cQsciLexerDiff, slot: i
 
   virtualReturn
 proc QsciLexerDiffmetacall*(self: gen_qscilexerdiff_types.QsciLexerDiff, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerDiff_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerDiffmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -319,7 +305,6 @@ proc miqt_exec_callback_QsciLexerDiff_language(self: ptr cQsciLexerDiff, slot: i
 
   virtualReturn
 proc QsciLexerDifflexer*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cstring =
-
   (fQsciLexerDiff_virtualbase_lexer(self.h))
 
 type QsciLexerDifflexerProc* = proc(): cstring
@@ -337,7 +322,6 @@ proc miqt_exec_callback_QsciLexerDiff_lexer(self: ptr cQsciLexerDiff, slot: int)
 
   virtualReturn
 proc QsciLexerDifflexerId*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cint =
-
   fQsciLexerDiff_virtualbase_lexerId(self.h)
 
 type QsciLexerDifflexerIdProc* = proc(): cint
@@ -355,7 +339,6 @@ proc miqt_exec_callback_QsciLexerDiff_lexerId(self: ptr cQsciLexerDiff, slot: in
 
   virtualReturn
 proc QsciLexerDiffautoCompletionFillups*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cstring =
-
   (fQsciLexerDiff_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerDiffautoCompletionFillupsProc* = proc(): cstring
@@ -373,7 +356,6 @@ proc miqt_exec_callback_QsciLexerDiff_autoCompletionFillups(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerDiffautoCompletionWordSeparators*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): seq[string] =
-
   var v_ma = fQsciLexerDiff_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -403,7 +385,6 @@ proc miqt_exec_callback_QsciLexerDiff_autoCompletionWordSeparators(self: ptr cQs
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerDiffblockEnd*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: ptr cint): cstring =
-
   (fQsciLexerDiff_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerDiffblockEndProc* = proc(style: ptr cint): cstring
@@ -423,7 +404,6 @@ proc miqt_exec_callback_QsciLexerDiff_blockEnd(self: ptr cQsciLexerDiff, slot: i
 
   virtualReturn
 proc QsciLexerDiffblockLookback*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cint =
-
   fQsciLexerDiff_virtualbase_blockLookback(self.h)
 
 type QsciLexerDiffblockLookbackProc* = proc(): cint
@@ -441,7 +421,6 @@ proc miqt_exec_callback_QsciLexerDiff_blockLookback(self: ptr cQsciLexerDiff, sl
 
   virtualReturn
 proc QsciLexerDiffblockStart*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: ptr cint): cstring =
-
   (fQsciLexerDiff_virtualbase_blockStart(self.h, style))
 
 type QsciLexerDiffblockStartProc* = proc(style: ptr cint): cstring
@@ -461,7 +440,6 @@ proc miqt_exec_callback_QsciLexerDiff_blockStart(self: ptr cQsciLexerDiff, slot:
 
   virtualReturn
 proc QsciLexerDiffblockStartKeyword*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: ptr cint): cstring =
-
   (fQsciLexerDiff_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerDiffblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -481,7 +459,6 @@ proc miqt_exec_callback_QsciLexerDiff_blockStartKeyword(self: ptr cQsciLexerDiff
 
   virtualReturn
 proc QsciLexerDiffbraceStyle*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cint =
-
   fQsciLexerDiff_virtualbase_braceStyle(self.h)
 
 type QsciLexerDiffbraceStyleProc* = proc(): cint
@@ -499,7 +476,6 @@ proc miqt_exec_callback_QsciLexerDiff_braceStyle(self: ptr cQsciLexerDiff, slot:
 
   virtualReturn
 proc QsciLexerDiffcaseSensitive*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): bool =
-
   fQsciLexerDiff_virtualbase_caseSensitive(self.h)
 
 type QsciLexerDiffcaseSensitiveProc* = proc(): bool
@@ -517,7 +493,6 @@ proc miqt_exec_callback_QsciLexerDiff_caseSensitive(self: ptr cQsciLexerDiff, sl
 
   virtualReturn
 proc QsciLexerDiffcolor*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerDiff_virtualbase_color(self.h, style))
 
 type QsciLexerDiffcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -537,7 +512,6 @@ proc miqt_exec_callback_QsciLexerDiff_color(self: ptr cQsciLexerDiff, slot: int,
 
   virtualReturn.h
 proc QsciLexerDiffeolFill*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): bool =
-
   fQsciLexerDiff_virtualbase_eolFill(self.h, style)
 
 type QsciLexerDiffeolFillProc* = proc(style: cint): bool
@@ -557,7 +531,6 @@ proc miqt_exec_callback_QsciLexerDiff_eolFill(self: ptr cQsciLexerDiff, slot: in
 
   virtualReturn
 proc QsciLexerDifffont*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerDiff_virtualbase_font(self.h, style))
 
 type QsciLexerDifffontProc* = proc(style: cint): gen_qfont.QFont
@@ -577,7 +550,6 @@ proc miqt_exec_callback_QsciLexerDiff_font(self: ptr cQsciLexerDiff, slot: int, 
 
   virtualReturn.h
 proc QsciLexerDiffindentationGuideView*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cint =
-
   fQsciLexerDiff_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerDiffindentationGuideViewProc* = proc(): cint
@@ -595,7 +567,6 @@ proc miqt_exec_callback_QsciLexerDiff_indentationGuideView(self: ptr cQsciLexerD
 
   virtualReturn
 proc QsciLexerDiffkeywords*(self: gen_qscilexerdiff_types.QsciLexerDiff, set: cint): cstring =
-
   (fQsciLexerDiff_virtualbase_keywords(self.h, set))
 
 type QsciLexerDiffkeywordsProc* = proc(set: cint): cstring
@@ -615,7 +586,6 @@ proc miqt_exec_callback_QsciLexerDiff_keywords(self: ptr cQsciLexerDiff, slot: i
 
   virtualReturn
 proc QsciLexerDiffdefaultStyle*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cint =
-
   fQsciLexerDiff_virtualbase_defaultStyle(self.h)
 
 type QsciLexerDiffdefaultStyleProc* = proc(): cint
@@ -649,7 +619,6 @@ proc miqt_exec_callback_QsciLexerDiff_description(self: ptr cQsciLexerDiff, slot
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerDiffpaper*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerDiff_virtualbase_paper(self.h, style))
 
 type QsciLexerDiffpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -668,12 +637,11 @@ proc miqt_exec_callback_QsciLexerDiff_paper(self: ptr cQsciLexerDiff, slot: int,
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerDiffdefaultColorWithStyle*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerDiffdefaultColor*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerDiff_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerDiffdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerdiff_types.QsciLexerDiff, slot: QsciLexerDiffdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerdiff_types.QsciLexerDiff, slot: QsciLexerDiffdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerDiffdefaultColorWithStyleProc
   tmp[] = slot
@@ -689,7 +657,6 @@ proc miqt_exec_callback_QsciLexerDiff_defaultColorWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerDiffdefaultEolFill*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): bool =
-
   fQsciLexerDiff_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerDiffdefaultEolFillProc* = proc(style: cint): bool
@@ -708,12 +675,11 @@ proc miqt_exec_callback_QsciLexerDiff_defaultEolFill(self: ptr cQsciLexerDiff, s
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerDiffdefaultFontWithStyle*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qfont.QFont =
-
+proc QsciLexerDiffdefaultFont*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerDiff_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerDiffdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerdiff_types.QsciLexerDiff, slot: QsciLexerDiffdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerdiff_types.QsciLexerDiff, slot: QsciLexerDiffdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerDiffdefaultFontWithStyleProc
   tmp[] = slot
@@ -728,12 +694,11 @@ proc miqt_exec_callback_QsciLexerDiff_defaultFontWithStyle(self: ptr cQsciLexerD
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerDiffdefaultPaperWithStyle*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerDiffdefaultPaper*(self: gen_qscilexerdiff_types.QsciLexerDiff, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerDiff_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerDiffdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerdiff_types.QsciLexerDiff, slot: QsciLexerDiffdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerdiff_types.QsciLexerDiff, slot: QsciLexerDiffdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerDiffdefaultPaperWithStyleProc
   tmp[] = slot
@@ -749,7 +714,6 @@ proc miqt_exec_callback_QsciLexerDiff_defaultPaperWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerDiffsetEditor*(self: gen_qscilexerdiff_types.QsciLexerDiff, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerDiff_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerDiffsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -767,7 +731,6 @@ proc miqt_exec_callback_QsciLexerDiff_setEditor(self: ptr cQsciLexerDiff, slot: 
 
   nimfunc[](slotval1)
 proc QsciLexerDiffrefreshProperties*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): void =
-
   fQsciLexerDiff_virtualbase_refreshProperties(self.h)
 
 type QsciLexerDiffrefreshPropertiesProc* = proc(): void
@@ -783,7 +746,6 @@ proc miqt_exec_callback_QsciLexerDiff_refreshProperties(self: ptr cQsciLexerDiff
 
   nimfunc[]()
 proc QsciLexerDiffstyleBitsNeeded*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cint =
-
   fQsciLexerDiff_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerDiffstyleBitsNeededProc* = proc(): cint
@@ -801,7 +763,6 @@ proc miqt_exec_callback_QsciLexerDiff_styleBitsNeeded(self: ptr cQsciLexerDiff, 
 
   virtualReturn
 proc QsciLexerDiffwordCharacters*(self: gen_qscilexerdiff_types.QsciLexerDiff, ): cstring =
-
   (fQsciLexerDiff_virtualbase_wordCharacters(self.h))
 
 type QsciLexerDiffwordCharactersProc* = proc(): cstring
@@ -819,7 +780,6 @@ proc miqt_exec_callback_QsciLexerDiff_wordCharacters(self: ptr cQsciLexerDiff, s
 
   virtualReturn
 proc QsciLexerDiffsetAutoIndentStyle*(self: gen_qscilexerdiff_types.QsciLexerDiff, autoindentstyle: cint): void =
-
   fQsciLexerDiff_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerDiffsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -837,7 +797,6 @@ proc miqt_exec_callback_QsciLexerDiff_setAutoIndentStyle(self: ptr cQsciLexerDif
 
   nimfunc[](slotval1)
 proc QsciLexerDiffsetColor*(self: gen_qscilexerdiff_types.QsciLexerDiff, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerDiff_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerDiffsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -857,7 +816,6 @@ proc miqt_exec_callback_QsciLexerDiff_setColor(self: ptr cQsciLexerDiff, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerDiffsetEolFill*(self: gen_qscilexerdiff_types.QsciLexerDiff, eoffill: bool, style: cint): void =
-
   fQsciLexerDiff_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerDiffsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -877,7 +835,6 @@ proc miqt_exec_callback_QsciLexerDiff_setEolFill(self: ptr cQsciLexerDiff, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerDiffsetFont*(self: gen_qscilexerdiff_types.QsciLexerDiff, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerDiff_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerDiffsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -897,7 +854,6 @@ proc miqt_exec_callback_QsciLexerDiff_setFont(self: ptr cQsciLexerDiff, slot: in
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerDiffsetPaper*(self: gen_qscilexerdiff_types.QsciLexerDiff, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerDiff_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerDiffsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -917,7 +873,6 @@ proc miqt_exec_callback_QsciLexerDiff_setPaper(self: ptr cQsciLexerDiff, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerDiffreadProperties*(self: gen_qscilexerdiff_types.QsciLexerDiff, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerDiff_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerDiffreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -942,7 +897,6 @@ proc miqt_exec_callback_QsciLexerDiff_readProperties(self: ptr cQsciLexerDiff, s
 
   virtualReturn
 proc QsciLexerDiffwriteProperties*(self: gen_qscilexerdiff_types.QsciLexerDiff, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerDiff_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerDiffwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -967,7 +921,6 @@ proc miqt_exec_callback_QsciLexerDiff_writeProperties(self: ptr cQsciLexerDiff, 
 
   virtualReturn
 proc QsciLexerDiffevent*(self: gen_qscilexerdiff_types.QsciLexerDiff, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerDiff_virtualbase_event(self.h, event.h)
 
 type QsciLexerDiffeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -987,7 +940,6 @@ proc miqt_exec_callback_QsciLexerDiff_event(self: ptr cQsciLexerDiff, slot: int,
 
   virtualReturn
 proc QsciLexerDiffeventFilter*(self: gen_qscilexerdiff_types.QsciLexerDiff, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerDiff_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerDiffeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1009,7 +961,6 @@ proc miqt_exec_callback_QsciLexerDiff_eventFilter(self: ptr cQsciLexerDiff, slot
 
   virtualReturn
 proc QsciLexerDifftimerEvent*(self: gen_qscilexerdiff_types.QsciLexerDiff, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerDiff_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerDifftimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1027,7 +978,6 @@ proc miqt_exec_callback_QsciLexerDiff_timerEvent(self: ptr cQsciLexerDiff, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerDiffchildEvent*(self: gen_qscilexerdiff_types.QsciLexerDiff, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerDiff_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerDiffchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1045,7 +995,6 @@ proc miqt_exec_callback_QsciLexerDiff_childEvent(self: ptr cQsciLexerDiff, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerDiffcustomEvent*(self: gen_qscilexerdiff_types.QsciLexerDiff, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerDiff_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerDiffcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1063,7 +1012,6 @@ proc miqt_exec_callback_QsciLexerDiff_customEvent(self: ptr cQsciLexerDiff, slot
 
   nimfunc[](slotval1)
 proc QsciLexerDiffconnectNotify*(self: gen_qscilexerdiff_types.QsciLexerDiff, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerDiff_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerDiffconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1081,7 +1029,6 @@ proc miqt_exec_callback_QsciLexerDiff_connectNotify(self: ptr cQsciLexerDiff, sl
 
   nimfunc[](slotval1)
 proc QsciLexerDiffdisconnectNotify*(self: gen_qscilexerdiff_types.QsciLexerDiff, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerDiff_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerDiffdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

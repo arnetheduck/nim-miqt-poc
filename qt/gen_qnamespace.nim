@@ -1549,7 +1549,6 @@ proc fcQInternal_delete(self: pointer) {.importc: "QInternal_delete".}
 func init*(T: type gen_qnamespace_types.QInternal, h: ptr cQInternal): gen_qnamespace_types.QInternal =
   T(h: h)
 proc activateCallbacks*(_: type gen_qnamespace_types.QInternal, param1: cint, param2: pointer): bool =
-
   fcQInternal_activateCallbacks(cint(param1), param2)
 
 proc delete*(self: gen_qnamespace_types.QInternal) =

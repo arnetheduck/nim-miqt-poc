@@ -118,72 +118,56 @@ proc fcQWebEngineSettings_resetUnknownUrlSchemePolicy(self: pointer, ): void {.i
 func init*(T: type gen_qwebenginesettings_types.QWebEngineSettings, h: ptr cQWebEngineSettings): gen_qwebenginesettings_types.QWebEngineSettings =
   T(h: h)
 proc globalSettings*(_: type gen_qwebenginesettings_types.QWebEngineSettings, ): gen_qwebenginesettings_types.QWebEngineSettings =
-
   gen_qwebenginesettings_types.QWebEngineSettings(h: fcQWebEngineSettings_globalSettings())
 
 proc defaultSettings*(_: type gen_qwebenginesettings_types.QWebEngineSettings, ): gen_qwebenginesettings_types.QWebEngineSettings =
-
   gen_qwebenginesettings_types.QWebEngineSettings(h: fcQWebEngineSettings_defaultSettings())
 
 proc setFontFamily*(self: gen_qwebenginesettings_types.QWebEngineSettings, which: cint, family: string): void =
-
   fcQWebEngineSettings_setFontFamily(self.h, cint(which), struct_miqt_string(data: family, len: csize_t(len(family))))
 
 proc fontFamily*(self: gen_qwebenginesettings_types.QWebEngineSettings, which: cint): string =
-
   let v_ms = fcQWebEngineSettings_fontFamily(self.h, cint(which))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc resetFontFamily*(self: gen_qwebenginesettings_types.QWebEngineSettings, which: cint): void =
-
   fcQWebEngineSettings_resetFontFamily(self.h, cint(which))
 
 proc setFontSize*(self: gen_qwebenginesettings_types.QWebEngineSettings, typeVal: cint, size: cint): void =
-
   fcQWebEngineSettings_setFontSize(self.h, cint(typeVal), size)
 
 proc fontSize*(self: gen_qwebenginesettings_types.QWebEngineSettings, typeVal: cint): cint =
-
   fcQWebEngineSettings_fontSize(self.h, cint(typeVal))
 
 proc resetFontSize*(self: gen_qwebenginesettings_types.QWebEngineSettings, typeVal: cint): void =
-
   fcQWebEngineSettings_resetFontSize(self.h, cint(typeVal))
 
 proc setAttribute*(self: gen_qwebenginesettings_types.QWebEngineSettings, attr: cint, on: bool): void =
-
   fcQWebEngineSettings_setAttribute(self.h, cint(attr), on)
 
 proc testAttribute*(self: gen_qwebenginesettings_types.QWebEngineSettings, attr: cint): bool =
-
   fcQWebEngineSettings_testAttribute(self.h, cint(attr))
 
 proc resetAttribute*(self: gen_qwebenginesettings_types.QWebEngineSettings, attr: cint): void =
-
   fcQWebEngineSettings_resetAttribute(self.h, cint(attr))
 
 proc setDefaultTextEncoding*(self: gen_qwebenginesettings_types.QWebEngineSettings, encoding: string): void =
-
   fcQWebEngineSettings_setDefaultTextEncoding(self.h, struct_miqt_string(data: encoding, len: csize_t(len(encoding))))
 
 proc defaultTextEncoding*(self: gen_qwebenginesettings_types.QWebEngineSettings, ): string =
-
   let v_ms = fcQWebEngineSettings_defaultTextEncoding(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc unknownUrlSchemePolicy*(self: gen_qwebenginesettings_types.QWebEngineSettings, ): cint =
-
   cint(fcQWebEngineSettings_unknownUrlSchemePolicy(self.h))
 
 proc setUnknownUrlSchemePolicy*(self: gen_qwebenginesettings_types.QWebEngineSettings, policy: cint): void =
-
   fcQWebEngineSettings_setUnknownUrlSchemePolicy(self.h, cint(policy))
 
 proc resetUnknownUrlSchemePolicy*(self: gen_qwebenginesettings_types.QWebEngineSettings, ): void =
-
   fcQWebEngineSettings_resetUnknownUrlSchemePolicy(self.h)
 

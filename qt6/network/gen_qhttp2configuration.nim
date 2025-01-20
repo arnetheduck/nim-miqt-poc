@@ -60,57 +60,45 @@ proc fcQHttp2Configuration_delete(self: pointer) {.importc: "QHttp2Configuration
 func init*(T: type gen_qhttp2configuration_types.QHttp2Configuration, h: ptr cQHttp2Configuration): gen_qhttp2configuration_types.QHttp2Configuration =
   T(h: h)
 proc create*(T: type gen_qhttp2configuration_types.QHttp2Configuration, ): gen_qhttp2configuration_types.QHttp2Configuration =
-
   gen_qhttp2configuration_types.QHttp2Configuration.init(fcQHttp2Configuration_new())
+
 proc create*(T: type gen_qhttp2configuration_types.QHttp2Configuration, other: gen_qhttp2configuration_types.QHttp2Configuration): gen_qhttp2configuration_types.QHttp2Configuration =
-
   gen_qhttp2configuration_types.QHttp2Configuration.init(fcQHttp2Configuration_new2(other.h))
-proc operatorAssign*(self: gen_qhttp2configuration_types.QHttp2Configuration, other: gen_qhttp2configuration_types.QHttp2Configuration): void =
 
+proc operatorAssign*(self: gen_qhttp2configuration_types.QHttp2Configuration, other: gen_qhttp2configuration_types.QHttp2Configuration): void =
   fcQHttp2Configuration_operatorAssign(self.h, other.h)
 
 proc setServerPushEnabled*(self: gen_qhttp2configuration_types.QHttp2Configuration, enable: bool): void =
-
   fcQHttp2Configuration_setServerPushEnabled(self.h, enable)
 
 proc serverPushEnabled*(self: gen_qhttp2configuration_types.QHttp2Configuration, ): bool =
-
   fcQHttp2Configuration_serverPushEnabled(self.h)
 
 proc setHuffmanCompressionEnabled*(self: gen_qhttp2configuration_types.QHttp2Configuration, enable: bool): void =
-
   fcQHttp2Configuration_setHuffmanCompressionEnabled(self.h, enable)
 
 proc huffmanCompressionEnabled*(self: gen_qhttp2configuration_types.QHttp2Configuration, ): bool =
-
   fcQHttp2Configuration_huffmanCompressionEnabled(self.h)
 
 proc setSessionReceiveWindowSize*(self: gen_qhttp2configuration_types.QHttp2Configuration, size: cuint): bool =
-
   fcQHttp2Configuration_setSessionReceiveWindowSize(self.h, size)
 
 proc sessionReceiveWindowSize*(self: gen_qhttp2configuration_types.QHttp2Configuration, ): cuint =
-
   fcQHttp2Configuration_sessionReceiveWindowSize(self.h)
 
 proc setStreamReceiveWindowSize*(self: gen_qhttp2configuration_types.QHttp2Configuration, size: cuint): bool =
-
   fcQHttp2Configuration_setStreamReceiveWindowSize(self.h, size)
 
 proc streamReceiveWindowSize*(self: gen_qhttp2configuration_types.QHttp2Configuration, ): cuint =
-
   fcQHttp2Configuration_streamReceiveWindowSize(self.h)
 
 proc setMaxFrameSize*(self: gen_qhttp2configuration_types.QHttp2Configuration, size: cuint): bool =
-
   fcQHttp2Configuration_setMaxFrameSize(self.h, size)
 
 proc maxFrameSize*(self: gen_qhttp2configuration_types.QHttp2Configuration, ): cuint =
-
   fcQHttp2Configuration_maxFrameSize(self.h)
 
 proc swap*(self: gen_qhttp2configuration_types.QHttp2Configuration, other: gen_qhttp2configuration_types.QHttp2Configuration): void =
-
   fcQHttp2Configuration_swap(self.h, other.h)
 
 proc delete*(self: gen_qhttp2configuration_types.QHttp2Configuration) =

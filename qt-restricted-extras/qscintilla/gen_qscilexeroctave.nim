@@ -167,79 +167,66 @@ proc fcQsciLexerOctave_delete(self: pointer) {.importc: "QsciLexerOctave_delete"
 func init*(T: type gen_qscilexeroctave_types.QsciLexerOctave, h: ptr cQsciLexerOctave): gen_qscilexeroctave_types.QsciLexerOctave =
   T(h: h)
 proc create*(T: type gen_qscilexeroctave_types.QsciLexerOctave, ): gen_qscilexeroctave_types.QsciLexerOctave =
-
   gen_qscilexeroctave_types.QsciLexerOctave.init(fcQsciLexerOctave_new())
+
 proc create*(T: type gen_qscilexeroctave_types.QsciLexerOctave, parent: gen_qobject.QObject): gen_qscilexeroctave_types.QsciLexerOctave =
-
   gen_qscilexeroctave_types.QsciLexerOctave.init(fcQsciLexerOctave_new2(parent.h))
-proc metaObject*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerOctave_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexeroctave_types.QsciLexerOctave, param1: cstring): pointer =
-
   fcQsciLexerOctave_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexeroctave_types.QsciLexerOctave, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerOctave_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring): string =
-
   let v_ms = fcQsciLexerOctave_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring): string =
-
   let v_ms = fcQsciLexerOctave_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cstring =
-
   (fcQsciLexerOctave_language(self.h))
 
 proc lexer*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cstring =
-
   (fcQsciLexerOctave_lexer(self.h))
 
 proc keywords*(self: gen_qscilexeroctave_types.QsciLexerOctave, set: cint): cstring =
-
   (fcQsciLexerOctave_keywords(self.h, set))
 
-proc tr2*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerOctave_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerOctave_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerOctave_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexeroctave_types.QsciLexerOctave, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerOctave_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerOctavemetaObject*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerOctave_virtualbase_metaObject(self.h))
 
 type QsciLexerOctavemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -257,7 +244,6 @@ proc miqt_exec_callback_QsciLexerOctave_metaObject(self: ptr cQsciLexerOctave, s
 
   virtualReturn.h
 proc QsciLexerOctavemetacast*(self: gen_qscilexeroctave_types.QsciLexerOctave, param1: cstring): pointer =
-
   fQsciLexerOctave_virtualbase_metacast(self.h, param1)
 
 type QsciLexerOctavemetacastProc* = proc(param1: cstring): pointer
@@ -277,7 +263,6 @@ proc miqt_exec_callback_QsciLexerOctave_metacast(self: ptr cQsciLexerOctave, slo
 
   virtualReturn
 proc QsciLexerOctavemetacall*(self: gen_qscilexeroctave_types.QsciLexerOctave, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerOctave_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerOctavemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -315,7 +300,6 @@ proc miqt_exec_callback_QsciLexerOctave_language(self: ptr cQsciLexerOctave, slo
 
   virtualReturn
 proc QsciLexerOctavelexer*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cstring =
-
   (fQsciLexerOctave_virtualbase_lexer(self.h))
 
 type QsciLexerOctavelexerProc* = proc(): cstring
@@ -333,7 +317,6 @@ proc miqt_exec_callback_QsciLexerOctave_lexer(self: ptr cQsciLexerOctave, slot: 
 
   virtualReturn
 proc QsciLexerOctavelexerId*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cint =
-
   fQsciLexerOctave_virtualbase_lexerId(self.h)
 
 type QsciLexerOctavelexerIdProc* = proc(): cint
@@ -351,7 +334,6 @@ proc miqt_exec_callback_QsciLexerOctave_lexerId(self: ptr cQsciLexerOctave, slot
 
   virtualReturn
 proc QsciLexerOctaveautoCompletionFillups*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cstring =
-
   (fQsciLexerOctave_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerOctaveautoCompletionFillupsProc* = proc(): cstring
@@ -369,7 +351,6 @@ proc miqt_exec_callback_QsciLexerOctave_autoCompletionFillups(self: ptr cQsciLex
 
   virtualReturn
 proc QsciLexerOctaveautoCompletionWordSeparators*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): seq[string] =
-
   var v_ma = fQsciLexerOctave_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -399,7 +380,6 @@ proc miqt_exec_callback_QsciLexerOctave_autoCompletionWordSeparators(self: ptr c
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerOctaveblockEnd*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: ptr cint): cstring =
-
   (fQsciLexerOctave_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerOctaveblockEndProc* = proc(style: ptr cint): cstring
@@ -419,7 +399,6 @@ proc miqt_exec_callback_QsciLexerOctave_blockEnd(self: ptr cQsciLexerOctave, slo
 
   virtualReturn
 proc QsciLexerOctaveblockLookback*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cint =
-
   fQsciLexerOctave_virtualbase_blockLookback(self.h)
 
 type QsciLexerOctaveblockLookbackProc* = proc(): cint
@@ -437,7 +416,6 @@ proc miqt_exec_callback_QsciLexerOctave_blockLookback(self: ptr cQsciLexerOctave
 
   virtualReturn
 proc QsciLexerOctaveblockStart*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: ptr cint): cstring =
-
   (fQsciLexerOctave_virtualbase_blockStart(self.h, style))
 
 type QsciLexerOctaveblockStartProc* = proc(style: ptr cint): cstring
@@ -457,7 +435,6 @@ proc miqt_exec_callback_QsciLexerOctave_blockStart(self: ptr cQsciLexerOctave, s
 
   virtualReturn
 proc QsciLexerOctaveblockStartKeyword*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: ptr cint): cstring =
-
   (fQsciLexerOctave_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerOctaveblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -477,7 +454,6 @@ proc miqt_exec_callback_QsciLexerOctave_blockStartKeyword(self: ptr cQsciLexerOc
 
   virtualReturn
 proc QsciLexerOctavebraceStyle*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cint =
-
   fQsciLexerOctave_virtualbase_braceStyle(self.h)
 
 type QsciLexerOctavebraceStyleProc* = proc(): cint
@@ -495,7 +471,6 @@ proc miqt_exec_callback_QsciLexerOctave_braceStyle(self: ptr cQsciLexerOctave, s
 
   virtualReturn
 proc QsciLexerOctavecaseSensitive*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): bool =
-
   fQsciLexerOctave_virtualbase_caseSensitive(self.h)
 
 type QsciLexerOctavecaseSensitiveProc* = proc(): bool
@@ -513,7 +488,6 @@ proc miqt_exec_callback_QsciLexerOctave_caseSensitive(self: ptr cQsciLexerOctave
 
   virtualReturn
 proc QsciLexerOctavecolor*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerOctave_virtualbase_color(self.h, style))
 
 type QsciLexerOctavecolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -533,7 +507,6 @@ proc miqt_exec_callback_QsciLexerOctave_color(self: ptr cQsciLexerOctave, slot: 
 
   virtualReturn.h
 proc QsciLexerOctaveeolFill*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): bool =
-
   fQsciLexerOctave_virtualbase_eolFill(self.h, style)
 
 type QsciLexerOctaveeolFillProc* = proc(style: cint): bool
@@ -553,7 +526,6 @@ proc miqt_exec_callback_QsciLexerOctave_eolFill(self: ptr cQsciLexerOctave, slot
 
   virtualReturn
 proc QsciLexerOctavefont*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerOctave_virtualbase_font(self.h, style))
 
 type QsciLexerOctavefontProc* = proc(style: cint): gen_qfont.QFont
@@ -573,7 +545,6 @@ proc miqt_exec_callback_QsciLexerOctave_font(self: ptr cQsciLexerOctave, slot: i
 
   virtualReturn.h
 proc QsciLexerOctaveindentationGuideView*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cint =
-
   fQsciLexerOctave_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerOctaveindentationGuideViewProc* = proc(): cint
@@ -591,7 +562,6 @@ proc miqt_exec_callback_QsciLexerOctave_indentationGuideView(self: ptr cQsciLexe
 
   virtualReturn
 proc QsciLexerOctavekeywords*(self: gen_qscilexeroctave_types.QsciLexerOctave, set: cint): cstring =
-
   (fQsciLexerOctave_virtualbase_keywords(self.h, set))
 
 type QsciLexerOctavekeywordsProc* = proc(set: cint): cstring
@@ -611,7 +581,6 @@ proc miqt_exec_callback_QsciLexerOctave_keywords(self: ptr cQsciLexerOctave, slo
 
   virtualReturn
 proc QsciLexerOctavedefaultStyle*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cint =
-
   fQsciLexerOctave_virtualbase_defaultStyle(self.h)
 
 type QsciLexerOctavedefaultStyleProc* = proc(): cint
@@ -645,7 +614,6 @@ proc miqt_exec_callback_QsciLexerOctave_description(self: ptr cQsciLexerOctave, 
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerOctavepaper*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerOctave_virtualbase_paper(self.h, style))
 
 type QsciLexerOctavepaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -664,12 +632,11 @@ proc miqt_exec_callback_QsciLexerOctave_paper(self: ptr cQsciLexerOctave, slot: 
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerOctavedefaultColorWithStyle*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerOctavedefaultColor*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerOctave_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerOctavedefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexeroctave_types.QsciLexerOctave, slot: QsciLexerOctavedefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexeroctave_types.QsciLexerOctave, slot: QsciLexerOctavedefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerOctavedefaultColorWithStyleProc
   tmp[] = slot
@@ -685,7 +652,6 @@ proc miqt_exec_callback_QsciLexerOctave_defaultColorWithStyle(self: ptr cQsciLex
 
   virtualReturn.h
 proc QsciLexerOctavedefaultEolFill*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): bool =
-
   fQsciLexerOctave_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerOctavedefaultEolFillProc* = proc(style: cint): bool
@@ -704,12 +670,11 @@ proc miqt_exec_callback_QsciLexerOctave_defaultEolFill(self: ptr cQsciLexerOctav
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerOctavedefaultFontWithStyle*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): gen_qfont.QFont =
-
+proc QsciLexerOctavedefaultFont*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerOctave_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerOctavedefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexeroctave_types.QsciLexerOctave, slot: QsciLexerOctavedefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexeroctave_types.QsciLexerOctave, slot: QsciLexerOctavedefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerOctavedefaultFontWithStyleProc
   tmp[] = slot
@@ -724,12 +689,11 @@ proc miqt_exec_callback_QsciLexerOctave_defaultFontWithStyle(self: ptr cQsciLexe
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerOctavedefaultPaperWithStyle*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerOctavedefaultPaper*(self: gen_qscilexeroctave_types.QsciLexerOctave, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerOctave_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerOctavedefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexeroctave_types.QsciLexerOctave, slot: QsciLexerOctavedefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexeroctave_types.QsciLexerOctave, slot: QsciLexerOctavedefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerOctavedefaultPaperWithStyleProc
   tmp[] = slot
@@ -745,7 +709,6 @@ proc miqt_exec_callback_QsciLexerOctave_defaultPaperWithStyle(self: ptr cQsciLex
 
   virtualReturn.h
 proc QsciLexerOctavesetEditor*(self: gen_qscilexeroctave_types.QsciLexerOctave, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerOctave_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerOctavesetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -763,7 +726,6 @@ proc miqt_exec_callback_QsciLexerOctave_setEditor(self: ptr cQsciLexerOctave, sl
 
   nimfunc[](slotval1)
 proc QsciLexerOctaverefreshProperties*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): void =
-
   fQsciLexerOctave_virtualbase_refreshProperties(self.h)
 
 type QsciLexerOctaverefreshPropertiesProc* = proc(): void
@@ -779,7 +741,6 @@ proc miqt_exec_callback_QsciLexerOctave_refreshProperties(self: ptr cQsciLexerOc
 
   nimfunc[]()
 proc QsciLexerOctavestyleBitsNeeded*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cint =
-
   fQsciLexerOctave_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerOctavestyleBitsNeededProc* = proc(): cint
@@ -797,7 +758,6 @@ proc miqt_exec_callback_QsciLexerOctave_styleBitsNeeded(self: ptr cQsciLexerOcta
 
   virtualReturn
 proc QsciLexerOctavewordCharacters*(self: gen_qscilexeroctave_types.QsciLexerOctave, ): cstring =
-
   (fQsciLexerOctave_virtualbase_wordCharacters(self.h))
 
 type QsciLexerOctavewordCharactersProc* = proc(): cstring
@@ -815,7 +775,6 @@ proc miqt_exec_callback_QsciLexerOctave_wordCharacters(self: ptr cQsciLexerOctav
 
   virtualReturn
 proc QsciLexerOctavesetAutoIndentStyle*(self: gen_qscilexeroctave_types.QsciLexerOctave, autoindentstyle: cint): void =
-
   fQsciLexerOctave_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerOctavesetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -833,7 +792,6 @@ proc miqt_exec_callback_QsciLexerOctave_setAutoIndentStyle(self: ptr cQsciLexerO
 
   nimfunc[](slotval1)
 proc QsciLexerOctavesetColor*(self: gen_qscilexeroctave_types.QsciLexerOctave, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerOctave_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerOctavesetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -853,7 +811,6 @@ proc miqt_exec_callback_QsciLexerOctave_setColor(self: ptr cQsciLexerOctave, slo
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerOctavesetEolFill*(self: gen_qscilexeroctave_types.QsciLexerOctave, eoffill: bool, style: cint): void =
-
   fQsciLexerOctave_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerOctavesetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -873,7 +830,6 @@ proc miqt_exec_callback_QsciLexerOctave_setEolFill(self: ptr cQsciLexerOctave, s
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerOctavesetFont*(self: gen_qscilexeroctave_types.QsciLexerOctave, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerOctave_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerOctavesetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -893,7 +849,6 @@ proc miqt_exec_callback_QsciLexerOctave_setFont(self: ptr cQsciLexerOctave, slot
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerOctavesetPaper*(self: gen_qscilexeroctave_types.QsciLexerOctave, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerOctave_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerOctavesetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -913,7 +868,6 @@ proc miqt_exec_callback_QsciLexerOctave_setPaper(self: ptr cQsciLexerOctave, slo
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerOctavereadProperties*(self: gen_qscilexeroctave_types.QsciLexerOctave, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerOctave_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerOctavereadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -938,7 +892,6 @@ proc miqt_exec_callback_QsciLexerOctave_readProperties(self: ptr cQsciLexerOctav
 
   virtualReturn
 proc QsciLexerOctavewriteProperties*(self: gen_qscilexeroctave_types.QsciLexerOctave, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerOctave_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerOctavewritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -963,7 +916,6 @@ proc miqt_exec_callback_QsciLexerOctave_writeProperties(self: ptr cQsciLexerOcta
 
   virtualReturn
 proc QsciLexerOctaveevent*(self: gen_qscilexeroctave_types.QsciLexerOctave, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerOctave_virtualbase_event(self.h, event.h)
 
 type QsciLexerOctaveeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -983,7 +935,6 @@ proc miqt_exec_callback_QsciLexerOctave_event(self: ptr cQsciLexerOctave, slot: 
 
   virtualReturn
 proc QsciLexerOctaveeventFilter*(self: gen_qscilexeroctave_types.QsciLexerOctave, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerOctave_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerOctaveeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1005,7 +956,6 @@ proc miqt_exec_callback_QsciLexerOctave_eventFilter(self: ptr cQsciLexerOctave, 
 
   virtualReturn
 proc QsciLexerOctavetimerEvent*(self: gen_qscilexeroctave_types.QsciLexerOctave, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerOctave_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerOctavetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1023,7 +973,6 @@ proc miqt_exec_callback_QsciLexerOctave_timerEvent(self: ptr cQsciLexerOctave, s
 
   nimfunc[](slotval1)
 proc QsciLexerOctavechildEvent*(self: gen_qscilexeroctave_types.QsciLexerOctave, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerOctave_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerOctavechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1041,7 +990,6 @@ proc miqt_exec_callback_QsciLexerOctave_childEvent(self: ptr cQsciLexerOctave, s
 
   nimfunc[](slotval1)
 proc QsciLexerOctavecustomEvent*(self: gen_qscilexeroctave_types.QsciLexerOctave, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerOctave_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerOctavecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1059,7 +1007,6 @@ proc miqt_exec_callback_QsciLexerOctave_customEvent(self: ptr cQsciLexerOctave, 
 
   nimfunc[](slotval1)
 proc QsciLexerOctaveconnectNotify*(self: gen_qscilexeroctave_types.QsciLexerOctave, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerOctave_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerOctaveconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1077,7 +1024,6 @@ proc miqt_exec_callback_QsciLexerOctave_connectNotify(self: ptr cQsciLexerOctave
 
   nimfunc[](slotval1)
 proc QsciLexerOctavedisconnectNotify*(self: gen_qscilexeroctave_types.QsciLexerOctave, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerOctave_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerOctavedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

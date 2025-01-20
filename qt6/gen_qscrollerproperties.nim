@@ -96,37 +96,30 @@ proc fcQScrollerProperties_delete(self: pointer) {.importc: "QScrollerProperties
 func init*(T: type gen_qscrollerproperties_types.QScrollerProperties, h: ptr cQScrollerProperties): gen_qscrollerproperties_types.QScrollerProperties =
   T(h: h)
 proc create*(T: type gen_qscrollerproperties_types.QScrollerProperties, ): gen_qscrollerproperties_types.QScrollerProperties =
-
   gen_qscrollerproperties_types.QScrollerProperties.init(fcQScrollerProperties_new())
+
 proc create*(T: type gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): gen_qscrollerproperties_types.QScrollerProperties =
-
   gen_qscrollerproperties_types.QScrollerProperties.init(fcQScrollerProperties_new2(sp.h))
-proc operatorAssign*(self: gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): void =
 
+proc operatorAssign*(self: gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): void =
   fcQScrollerProperties_operatorAssign(self.h, sp.h)
 
 proc operatorEqual*(self: gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): bool =
-
   fcQScrollerProperties_operatorEqual(self.h, sp.h)
 
 proc operatorNotEqual*(self: gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): bool =
-
   fcQScrollerProperties_operatorNotEqual(self.h, sp.h)
 
 proc setDefaultScrollerProperties*(_: type gen_qscrollerproperties_types.QScrollerProperties, sp: gen_qscrollerproperties_types.QScrollerProperties): void =
-
   fcQScrollerProperties_setDefaultScrollerProperties(sp.h)
 
 proc unsetDefaultScrollerProperties*(_: type gen_qscrollerproperties_types.QScrollerProperties, ): void =
-
   fcQScrollerProperties_unsetDefaultScrollerProperties()
 
 proc scrollMetric*(self: gen_qscrollerproperties_types.QScrollerProperties, metric: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQScrollerProperties_scrollMetric(self.h, cint(metric)))
 
 proc setScrollMetric*(self: gen_qscrollerproperties_types.QScrollerProperties, metric: cint, value: gen_qvariant.QVariant): void =
-
   fcQScrollerProperties_setScrollMetric(self.h, cint(metric), value.h)
 
 proc delete*(self: gen_qscrollerproperties_types.QScrollerProperties) =

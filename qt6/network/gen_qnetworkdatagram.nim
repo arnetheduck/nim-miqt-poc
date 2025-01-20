@@ -74,97 +74,78 @@ proc fcQNetworkDatagram_delete(self: pointer) {.importc: "QNetworkDatagram_delet
 func init*(T: type gen_qnetworkdatagram_types.QNetworkDatagram, h: ptr cQNetworkDatagram): gen_qnetworkdatagram_types.QNetworkDatagram =
   T(h: h)
 proc create*(T: type gen_qnetworkdatagram_types.QNetworkDatagram, ): gen_qnetworkdatagram_types.QNetworkDatagram =
-
   gen_qnetworkdatagram_types.QNetworkDatagram.init(fcQNetworkDatagram_new())
+
 proc create*(T: type gen_qnetworkdatagram_types.QNetworkDatagram, data: seq[byte]): gen_qnetworkdatagram_types.QNetworkDatagram =
-
   gen_qnetworkdatagram_types.QNetworkDatagram.init(fcQNetworkDatagram_new2(struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
+
 proc create*(T: type gen_qnetworkdatagram_types.QNetworkDatagram, other: gen_qnetworkdatagram_types.QNetworkDatagram): gen_qnetworkdatagram_types.QNetworkDatagram =
-
   gen_qnetworkdatagram_types.QNetworkDatagram.init(fcQNetworkDatagram_new3(other.h))
+
 proc create*(T: type gen_qnetworkdatagram_types.QNetworkDatagram, data: seq[byte], destinationAddress: gen_qhostaddress.QHostAddress): gen_qnetworkdatagram_types.QNetworkDatagram =
-
   gen_qnetworkdatagram_types.QNetworkDatagram.init(fcQNetworkDatagram_new4(struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), destinationAddress.h))
+
 proc create*(T: type gen_qnetworkdatagram_types.QNetworkDatagram, data: seq[byte], destinationAddress: gen_qhostaddress.QHostAddress, port: cushort): gen_qnetworkdatagram_types.QNetworkDatagram =
-
   gen_qnetworkdatagram_types.QNetworkDatagram.init(fcQNetworkDatagram_new5(struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))), destinationAddress.h, port))
-proc operatorAssign*(self: gen_qnetworkdatagram_types.QNetworkDatagram, other: gen_qnetworkdatagram_types.QNetworkDatagram): void =
 
+proc operatorAssign*(self: gen_qnetworkdatagram_types.QNetworkDatagram, other: gen_qnetworkdatagram_types.QNetworkDatagram): void =
   fcQNetworkDatagram_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qnetworkdatagram_types.QNetworkDatagram, other: gen_qnetworkdatagram_types.QNetworkDatagram): void =
-
   fcQNetworkDatagram_swap(self.h, other.h)
 
 proc clear*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): void =
-
   fcQNetworkDatagram_clear(self.h)
 
 proc isValid*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): bool =
-
   fcQNetworkDatagram_isValid(self.h)
 
 proc isNull*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): bool =
-
   fcQNetworkDatagram_isNull(self.h)
 
 proc interfaceIndex*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): cuint =
-
   fcQNetworkDatagram_interfaceIndex(self.h)
 
 proc setInterfaceIndex*(self: gen_qnetworkdatagram_types.QNetworkDatagram, index: cuint): void =
-
   fcQNetworkDatagram_setInterfaceIndex(self.h, index)
 
 proc senderAddress*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): gen_qhostaddress.QHostAddress =
-
   gen_qhostaddress.QHostAddress(h: fcQNetworkDatagram_senderAddress(self.h))
 
 proc destinationAddress*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): gen_qhostaddress.QHostAddress =
-
   gen_qhostaddress.QHostAddress(h: fcQNetworkDatagram_destinationAddress(self.h))
 
 proc senderPort*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): cint =
-
   fcQNetworkDatagram_senderPort(self.h)
 
 proc destinationPort*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): cint =
-
   fcQNetworkDatagram_destinationPort(self.h)
 
 proc setSender*(self: gen_qnetworkdatagram_types.QNetworkDatagram, address: gen_qhostaddress.QHostAddress): void =
-
   fcQNetworkDatagram_setSender(self.h, address.h)
 
 proc setDestination*(self: gen_qnetworkdatagram_types.QNetworkDatagram, address: gen_qhostaddress.QHostAddress, port: cushort): void =
-
   fcQNetworkDatagram_setDestination(self.h, address.h, port)
 
 proc hopLimit*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): cint =
-
   fcQNetworkDatagram_hopLimit(self.h)
 
 proc setHopLimit*(self: gen_qnetworkdatagram_types.QNetworkDatagram, count: cint): void =
-
   fcQNetworkDatagram_setHopLimit(self.h, count)
 
 proc data*(self: gen_qnetworkdatagram_types.QNetworkDatagram, ): seq[byte] =
-
   var v_bytearray = fcQNetworkDatagram_data(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc setData*(self: gen_qnetworkdatagram_types.QNetworkDatagram, data: seq[byte]): void =
-
   fcQNetworkDatagram_setData(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
 proc makeReply*(self: gen_qnetworkdatagram_types.QNetworkDatagram, payload: seq[byte]): gen_qnetworkdatagram_types.QNetworkDatagram =
-
   gen_qnetworkdatagram_types.QNetworkDatagram(h: fcQNetworkDatagram_makeReply(self.h, struct_miqt_string(data: cast[cstring](if len(payload) == 0: nil else: unsafeAddr payload[0]), len: csize_t(len(payload)))))
 
-proc setSender2*(self: gen_qnetworkdatagram_types.QNetworkDatagram, address: gen_qhostaddress.QHostAddress, port: cushort): void =
-
+proc setSender*(self: gen_qnetworkdatagram_types.QNetworkDatagram, address: gen_qhostaddress.QHostAddress, port: cushort): void =
   fcQNetworkDatagram_setSender2(self.h, address.h, port)
 
 proc delete*(self: gen_qnetworkdatagram_types.QNetworkDatagram) =

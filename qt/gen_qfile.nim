@@ -163,221 +163,180 @@ proc fcQFile_delete(self: pointer) {.importc: "QFile_delete".}
 func init*(T: type gen_qfile_types.QFile, h: ptr cQFile): gen_qfile_types.QFile =
   T(h: h)
 proc create*(T: type gen_qfile_types.QFile, ): gen_qfile_types.QFile =
-
   gen_qfile_types.QFile.init(fcQFile_new())
+
 proc create*(T: type gen_qfile_types.QFile, name: string): gen_qfile_types.QFile =
-
   gen_qfile_types.QFile.init(fcQFile_new2(struct_miqt_string(data: name, len: csize_t(len(name)))))
+
 proc create*(T: type gen_qfile_types.QFile, parent: gen_qobject.QObject): gen_qfile_types.QFile =
-
   gen_qfile_types.QFile.init(fcQFile_new3(parent.h))
+
 proc create*(T: type gen_qfile_types.QFile, name: string, parent: gen_qobject.QObject): gen_qfile_types.QFile =
-
   gen_qfile_types.QFile.init(fcQFile_new4(struct_miqt_string(data: name, len: csize_t(len(name))), parent.h))
-proc metaObject*(self: gen_qfile_types.QFile, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qfile_types.QFile, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFile_metaObject(self.h))
 
 proc metacast*(self: gen_qfile_types.QFile, param1: cstring): pointer =
-
   fcQFile_metacast(self.h, param1)
 
 proc metacall*(self: gen_qfile_types.QFile, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQFile_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qfile_types.QFile, s: cstring): string =
-
   let v_ms = fcQFile_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qfile_types.QFile, s: cstring): string =
-
   let v_ms = fcQFile_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc fileName*(self: gen_qfile_types.QFile, ): string =
-
   let v_ms = fcQFile_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFileName*(self: gen_qfile_types.QFile, name: string): void =
-
   fcQFile_setFileName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc encodeName*(_: type gen_qfile_types.QFile, fileName: string): seq[byte] =
-
   var v_bytearray = fcQFile_encodeName(struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc decodeName*(_: type gen_qfile_types.QFile, localFileName: seq[byte]): string =
-
   let v_ms = fcQFile_decodeName(struct_miqt_string(data: cast[cstring](if len(localFileName) == 0: nil else: unsafeAddr localFileName[0]), len: csize_t(len(localFileName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc decodeNameWithLocalFileName*(_: type gen_qfile_types.QFile, localFileName: cstring): string =
-
+proc decodeName*(_: type gen_qfile_types.QFile, localFileName: cstring): string =
   let v_ms = fcQFile_decodeNameWithLocalFileName(localFileName)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc exists*(self: gen_qfile_types.QFile, ): bool =
-
   fcQFile_exists(self.h)
 
-proc existsWithFileName*(_: type gen_qfile_types.QFile, fileName: string): bool =
-
+proc exists*(_: type gen_qfile_types.QFile, fileName: string): bool =
   fcQFile_existsWithFileName(struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc readLink*(self: gen_qfile_types.QFile, ): string =
-
   let v_ms = fcQFile_readLink(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc readLinkWithFileName*(_: type gen_qfile_types.QFile, fileName: string): string =
-
+proc readLink*(_: type gen_qfile_types.QFile, fileName: string): string =
   let v_ms = fcQFile_readLinkWithFileName(struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc symLinkTarget*(self: gen_qfile_types.QFile, ): string =
-
   let v_ms = fcQFile_symLinkTarget(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc symLinkTargetWithFileName*(_: type gen_qfile_types.QFile, fileName: string): string =
-
+proc symLinkTarget*(_: type gen_qfile_types.QFile, fileName: string): string =
   let v_ms = fcQFile_symLinkTargetWithFileName(struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc remove*(self: gen_qfile_types.QFile, ): bool =
-
   fcQFile_remove(self.h)
 
-proc removeWithFileName*(_: type gen_qfile_types.QFile, fileName: string): bool =
-
+proc remove*(_: type gen_qfile_types.QFile, fileName: string): bool =
   fcQFile_removeWithFileName(struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc moveToTrash*(self: gen_qfile_types.QFile, ): bool =
-
   fcQFile_moveToTrash(self.h)
 
-proc moveToTrashWithFileName*(_: type gen_qfile_types.QFile, fileName: string): bool =
-
+proc moveToTrash*(_: type gen_qfile_types.QFile, fileName: string): bool =
   fcQFile_moveToTrashWithFileName(struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc rename*(self: gen_qfile_types.QFile, newName: string): bool =
-
   fcQFile_rename(self.h, struct_miqt_string(data: newName, len: csize_t(len(newName))))
 
-proc rename2*(_: type gen_qfile_types.QFile, oldName: string, newName: string): bool =
-
+proc rename*(_: type gen_qfile_types.QFile, oldName: string, newName: string): bool =
   fcQFile_rename2(struct_miqt_string(data: oldName, len: csize_t(len(oldName))), struct_miqt_string(data: newName, len: csize_t(len(newName))))
 
 proc link*(self: gen_qfile_types.QFile, newName: string): bool =
-
   fcQFile_link(self.h, struct_miqt_string(data: newName, len: csize_t(len(newName))))
 
-proc link2*(_: type gen_qfile_types.QFile, oldname: string, newName: string): bool =
-
+proc link*(_: type gen_qfile_types.QFile, oldname: string, newName: string): bool =
   fcQFile_link2(struct_miqt_string(data: oldname, len: csize_t(len(oldname))), struct_miqt_string(data: newName, len: csize_t(len(newName))))
 
 proc copy*(self: gen_qfile_types.QFile, newName: string): bool =
-
   fcQFile_copy(self.h, struct_miqt_string(data: newName, len: csize_t(len(newName))))
 
-proc copy2*(_: type gen_qfile_types.QFile, fileName: string, newName: string): bool =
-
+proc copy*(_: type gen_qfile_types.QFile, fileName: string, newName: string): bool =
   fcQFile_copy2(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: newName, len: csize_t(len(newName))))
 
 proc open*(self: gen_qfile_types.QFile, flags: cint): bool =
-
   fcQFile_open(self.h, cint(flags))
 
-proc open3*(self: gen_qfile_types.QFile, fd: cint, ioFlags: cint): bool =
-
+proc open*(self: gen_qfile_types.QFile, fd: cint, ioFlags: cint): bool =
   fcQFile_open3(self.h, fd, cint(ioFlags))
 
 proc size*(self: gen_qfile_types.QFile, ): clonglong =
-
   fcQFile_size(self.h)
 
 proc resize*(self: gen_qfile_types.QFile, sz: clonglong): bool =
-
   fcQFile_resize(self.h, sz)
 
-proc resize2*(_: type gen_qfile_types.QFile, filename: string, sz: clonglong): bool =
-
+proc resize*(_: type gen_qfile_types.QFile, filename: string, sz: clonglong): bool =
   fcQFile_resize2(struct_miqt_string(data: filename, len: csize_t(len(filename))), sz)
 
 proc permissions*(self: gen_qfile_types.QFile, ): cint =
-
   cint(fcQFile_permissions(self.h))
 
-proc permissionsWithFilename*(_: type gen_qfile_types.QFile, filename: string): cint =
-
+proc permissions*(_: type gen_qfile_types.QFile, filename: string): cint =
   cint(fcQFile_permissionsWithFilename(struct_miqt_string(data: filename, len: csize_t(len(filename)))))
 
 proc setPermissions*(self: gen_qfile_types.QFile, permissionSpec: cint): bool =
-
   fcQFile_setPermissions(self.h, cint(permissionSpec))
 
-proc setPermissions2*(_: type gen_qfile_types.QFile, filename: string, permissionSpec: cint): bool =
-
+proc setPermissions*(_: type gen_qfile_types.QFile, filename: string, permissionSpec: cint): bool =
   fcQFile_setPermissions2(struct_miqt_string(data: filename, len: csize_t(len(filename))), cint(permissionSpec))
 
-proc tr2*(_: type gen_qfile_types.QFile, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qfile_types.QFile, s: cstring, c: cstring): string =
   let v_ms = fcQFile_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qfile_types.QFile, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qfile_types.QFile, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFile_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qfile_types.QFile, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qfile_types.QFile, s: cstring, c: cstring): string =
   let v_ms = fcQFile_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qfile_types.QFile, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qfile_types.QFile, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFile_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc open33*(self: gen_qfile_types.QFile, fd: cint, ioFlags: cint, handleFlags: cint): bool =
-
+proc open*(self: gen_qfile_types.QFile, fd: cint, ioFlags: cint, handleFlags: cint): bool =
   fcQFile_open33(self.h, fd, cint(ioFlags), cint(handleFlags))
 
 proc QFilemetaObject*(self: gen_qfile_types.QFile, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQFile_virtualbase_metaObject(self.h))
 
 type QFilemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -395,7 +354,6 @@ proc miqt_exec_callback_QFile_metaObject(self: ptr cQFile, slot: int): pointer {
 
   virtualReturn.h
 proc QFilemetacast*(self: gen_qfile_types.QFile, param1: cstring): pointer =
-
   fQFile_virtualbase_metacast(self.h, param1)
 
 type QFilemetacastProc* = proc(param1: cstring): pointer
@@ -415,7 +373,6 @@ proc miqt_exec_callback_QFile_metacast(self: ptr cQFile, slot: int, param1: cstr
 
   virtualReturn
 proc QFilemetacall*(self: gen_qfile_types.QFile, param1: cint, param2: cint, param3: pointer): cint =
-
   fQFile_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QFilemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -439,7 +396,6 @@ proc miqt_exec_callback_QFile_metacall(self: ptr cQFile, slot: int, param1: cint
 
   virtualReturn
 proc QFilefileName*(self: gen_qfile_types.QFile, ): string =
-
   let v_ms = fQFile_virtualbase_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -460,7 +416,6 @@ proc miqt_exec_callback_QFile_fileName(self: ptr cQFile, slot: int): struct_miqt
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QFileopen*(self: gen_qfile_types.QFile, flags: cint): bool =
-
   fQFile_virtualbase_open(self.h, cint(flags))
 
 type QFileopenProc* = proc(flags: cint): bool
@@ -480,7 +435,6 @@ proc miqt_exec_callback_QFile_open(self: ptr cQFile, slot: int, flags: cint): bo
 
   virtualReturn
 proc QFilesize*(self: gen_qfile_types.QFile, ): clonglong =
-
   fQFile_virtualbase_size(self.h)
 
 type QFilesizeProc* = proc(): clonglong
@@ -498,7 +452,6 @@ proc miqt_exec_callback_QFile_size(self: ptr cQFile, slot: int): clonglong {.exp
 
   virtualReturn
 proc QFileresize*(self: gen_qfile_types.QFile, sz: clonglong): bool =
-
   fQFile_virtualbase_resize(self.h, sz)
 
 type QFileresizeProc* = proc(sz: clonglong): bool
@@ -518,7 +471,6 @@ proc miqt_exec_callback_QFile_resize(self: ptr cQFile, slot: int, sz: clonglong)
 
   virtualReturn
 proc QFilepermissions*(self: gen_qfile_types.QFile, ): cint =
-
   cint(fQFile_virtualbase_permissions(self.h))
 
 type QFilepermissionsProc* = proc(): cint
@@ -536,7 +488,6 @@ proc miqt_exec_callback_QFile_permissions(self: ptr cQFile, slot: int): cint {.e
 
   cint(virtualReturn)
 proc QFilesetPermissions*(self: gen_qfile_types.QFile, permissionSpec: cint): bool =
-
   fQFile_virtualbase_setPermissions(self.h, cint(permissionSpec))
 
 type QFilesetPermissionsProc* = proc(permissionSpec: cint): bool
@@ -556,7 +507,6 @@ proc miqt_exec_callback_QFile_setPermissions(self: ptr cQFile, slot: int, permis
 
   virtualReturn
 proc QFileclose*(self: gen_qfile_types.QFile, ): void =
-
   fQFile_virtualbase_close(self.h)
 
 type QFilecloseProc* = proc(): void
@@ -572,7 +522,6 @@ proc miqt_exec_callback_QFile_close(self: ptr cQFile, slot: int): void {.exportc
 
   nimfunc[]()
 proc QFileisSequential*(self: gen_qfile_types.QFile, ): bool =
-
   fQFile_virtualbase_isSequential(self.h)
 
 type QFileisSequentialProc* = proc(): bool
@@ -590,7 +539,6 @@ proc miqt_exec_callback_QFile_isSequential(self: ptr cQFile, slot: int): bool {.
 
   virtualReturn
 proc QFilepos*(self: gen_qfile_types.QFile, ): clonglong =
-
   fQFile_virtualbase_pos(self.h)
 
 type QFileposProc* = proc(): clonglong
@@ -608,7 +556,6 @@ proc miqt_exec_callback_QFile_pos(self: ptr cQFile, slot: int): clonglong {.expo
 
   virtualReturn
 proc QFileseek*(self: gen_qfile_types.QFile, offset: clonglong): bool =
-
   fQFile_virtualbase_seek(self.h, offset)
 
 type QFileseekProc* = proc(offset: clonglong): bool
@@ -628,7 +575,6 @@ proc miqt_exec_callback_QFile_seek(self: ptr cQFile, slot: int, offset: clonglon
 
   virtualReturn
 proc QFileatEnd*(self: gen_qfile_types.QFile, ): bool =
-
   fQFile_virtualbase_atEnd(self.h)
 
 type QFileatEndProc* = proc(): bool
@@ -646,7 +592,6 @@ proc miqt_exec_callback_QFile_atEnd(self: ptr cQFile, slot: int): bool {.exportc
 
   virtualReturn
 proc QFilereadData*(self: gen_qfile_types.QFile, data: cstring, maxlen: clonglong): clonglong =
-
   fQFile_virtualbase_readData(self.h, data, maxlen)
 
 type QFilereadDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
@@ -668,7 +613,6 @@ proc miqt_exec_callback_QFile_readData(self: ptr cQFile, slot: int, data: cstrin
 
   virtualReturn
 proc QFilewriteData*(self: gen_qfile_types.QFile, data: cstring, len: clonglong): clonglong =
-
   fQFile_virtualbase_writeData(self.h, data, len)
 
 type QFilewriteDataProc* = proc(data: cstring, len: clonglong): clonglong
@@ -690,7 +634,6 @@ proc miqt_exec_callback_QFile_writeData(self: ptr cQFile, slot: int, data: cstri
 
   virtualReturn
 proc QFilereadLineData*(self: gen_qfile_types.QFile, data: cstring, maxlen: clonglong): clonglong =
-
   fQFile_virtualbase_readLineData(self.h, data, maxlen)
 
 type QFilereadLineDataProc* = proc(data: cstring, maxlen: clonglong): clonglong
@@ -712,7 +655,6 @@ proc miqt_exec_callback_QFile_readLineData(self: ptr cQFile, slot: int, data: cs
 
   virtualReturn
 proc QFilereset*(self: gen_qfile_types.QFile, ): bool =
-
   fQFile_virtualbase_reset(self.h)
 
 type QFileresetProc* = proc(): bool
@@ -730,7 +672,6 @@ proc miqt_exec_callback_QFile_reset(self: ptr cQFile, slot: int): bool {.exportc
 
   virtualReturn
 proc QFilebytesAvailable*(self: gen_qfile_types.QFile, ): clonglong =
-
   fQFile_virtualbase_bytesAvailable(self.h)
 
 type QFilebytesAvailableProc* = proc(): clonglong
@@ -748,7 +689,6 @@ proc miqt_exec_callback_QFile_bytesAvailable(self: ptr cQFile, slot: int): clong
 
   virtualReturn
 proc QFilebytesToWrite*(self: gen_qfile_types.QFile, ): clonglong =
-
   fQFile_virtualbase_bytesToWrite(self.h)
 
 type QFilebytesToWriteProc* = proc(): clonglong
@@ -766,7 +706,6 @@ proc miqt_exec_callback_QFile_bytesToWrite(self: ptr cQFile, slot: int): clonglo
 
   virtualReturn
 proc QFilecanReadLine*(self: gen_qfile_types.QFile, ): bool =
-
   fQFile_virtualbase_canReadLine(self.h)
 
 type QFilecanReadLineProc* = proc(): bool
@@ -784,7 +723,6 @@ proc miqt_exec_callback_QFile_canReadLine(self: ptr cQFile, slot: int): bool {.e
 
   virtualReturn
 proc QFilewaitForReadyRead*(self: gen_qfile_types.QFile, msecs: cint): bool =
-
   fQFile_virtualbase_waitForReadyRead(self.h, msecs)
 
 type QFilewaitForReadyReadProc* = proc(msecs: cint): bool
@@ -804,7 +742,6 @@ proc miqt_exec_callback_QFile_waitForReadyRead(self: ptr cQFile, slot: int, msec
 
   virtualReturn
 proc QFilewaitForBytesWritten*(self: gen_qfile_types.QFile, msecs: cint): bool =
-
   fQFile_virtualbase_waitForBytesWritten(self.h, msecs)
 
 type QFilewaitForBytesWrittenProc* = proc(msecs: cint): bool
@@ -824,7 +761,6 @@ proc miqt_exec_callback_QFile_waitForBytesWritten(self: ptr cQFile, slot: int, m
 
   virtualReturn
 proc QFileevent*(self: gen_qfile_types.QFile, event: gen_qcoreevent.QEvent): bool =
-
   fQFile_virtualbase_event(self.h, event.h)
 
 type QFileeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -844,7 +780,6 @@ proc miqt_exec_callback_QFile_event(self: ptr cQFile, slot: int, event: pointer)
 
   virtualReturn
 proc QFileeventFilter*(self: gen_qfile_types.QFile, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQFile_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QFileeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -866,7 +801,6 @@ proc miqt_exec_callback_QFile_eventFilter(self: ptr cQFile, slot: int, watched: 
 
   virtualReturn
 proc QFiletimerEvent*(self: gen_qfile_types.QFile, event: gen_qcoreevent.QTimerEvent): void =
-
   fQFile_virtualbase_timerEvent(self.h, event.h)
 
 type QFiletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -884,7 +818,6 @@ proc miqt_exec_callback_QFile_timerEvent(self: ptr cQFile, slot: int, event: poi
 
   nimfunc[](slotval1)
 proc QFilechildEvent*(self: gen_qfile_types.QFile, event: gen_qcoreevent.QChildEvent): void =
-
   fQFile_virtualbase_childEvent(self.h, event.h)
 
 type QFilechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -902,7 +835,6 @@ proc miqt_exec_callback_QFile_childEvent(self: ptr cQFile, slot: int, event: poi
 
   nimfunc[](slotval1)
 proc QFilecustomEvent*(self: gen_qfile_types.QFile, event: gen_qcoreevent.QEvent): void =
-
   fQFile_virtualbase_customEvent(self.h, event.h)
 
 type QFilecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -920,7 +852,6 @@ proc miqt_exec_callback_QFile_customEvent(self: ptr cQFile, slot: int, event: po
 
   nimfunc[](slotval1)
 proc QFileconnectNotify*(self: gen_qfile_types.QFile, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFile_virtualbase_connectNotify(self.h, signal.h)
 
 type QFileconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -938,7 +869,6 @@ proc miqt_exec_callback_QFile_connectNotify(self: ptr cQFile, slot: int, signal:
 
   nimfunc[](slotval1)
 proc QFiledisconnectNotify*(self: gen_qfile_types.QFile, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFile_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QFiledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

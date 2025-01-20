@@ -55,11 +55,9 @@ proc fcQWebEngineClientCertificateStore_clear(self: pointer, ): void {.importc: 
 func init*(T: type gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, h: ptr cQWebEngineClientCertificateStore): gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore =
   T(h: h)
 proc add*(self: gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, certificate: gen_qsslcertificate.QSslCertificate, privateKey: gen_qsslkey.QSslKey): void =
-
   fcQWebEngineClientCertificateStore_add(self.h, certificate.h, privateKey.h)
 
 proc certificates*(self: gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, ): seq[gen_qsslcertificate.QSslCertificate] =
-
   var v_ma = fcQWebEngineClientCertificateStore_certificates(self.h)
   var vx_ret = newSeq[gen_qsslcertificate.QSslCertificate](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -68,10 +66,8 @@ proc certificates*(self: gen_qwebengineclientcertificatestore_types.QWebEngineCl
   vx_ret
 
 proc remove*(self: gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, certificate: gen_qsslcertificate.QSslCertificate): void =
-
   fcQWebEngineClientCertificateStore_remove(self.h, certificate.h)
 
 proc clear*(self: gen_qwebengineclientcertificatestore_types.QWebEngineClientCertificateStore, ): void =
-
   fcQWebEngineClientCertificateStore_clear(self.h)
 

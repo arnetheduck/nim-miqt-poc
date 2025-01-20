@@ -71,65 +71,54 @@ proc fcQMimeType_delete(self: pointer) {.importc: "QMimeType_delete".}
 func init*(T: type gen_qmimetype_types.QMimeType, h: ptr cQMimeType): gen_qmimetype_types.QMimeType =
   T(h: h)
 proc create*(T: type gen_qmimetype_types.QMimeType, ): gen_qmimetype_types.QMimeType =
-
   gen_qmimetype_types.QMimeType.init(fcQMimeType_new())
+
 proc create*(T: type gen_qmimetype_types.QMimeType, other: gen_qmimetype_types.QMimeType): gen_qmimetype_types.QMimeType =
-
   gen_qmimetype_types.QMimeType.init(fcQMimeType_new2(other.h))
-proc operatorAssign*(self: gen_qmimetype_types.QMimeType, other: gen_qmimetype_types.QMimeType): void =
 
+proc operatorAssign*(self: gen_qmimetype_types.QMimeType, other: gen_qmimetype_types.QMimeType): void =
   fcQMimeType_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qmimetype_types.QMimeType, other: gen_qmimetype_types.QMimeType): void =
-
   fcQMimeType_swap(self.h, other.h)
 
 proc operatorEqual*(self: gen_qmimetype_types.QMimeType, other: gen_qmimetype_types.QMimeType): bool =
-
   fcQMimeType_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qmimetype_types.QMimeType, other: gen_qmimetype_types.QMimeType): bool =
-
   fcQMimeType_operatorNotEqual(self.h, other.h)
 
 proc isValid*(self: gen_qmimetype_types.QMimeType, ): bool =
-
   fcQMimeType_isValid(self.h)
 
 proc isDefault*(self: gen_qmimetype_types.QMimeType, ): bool =
-
   fcQMimeType_isDefault(self.h)
 
 proc name*(self: gen_qmimetype_types.QMimeType, ): string =
-
   let v_ms = fcQMimeType_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc comment*(self: gen_qmimetype_types.QMimeType, ): string =
-
   let v_ms = fcQMimeType_comment(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc genericIconName*(self: gen_qmimetype_types.QMimeType, ): string =
-
   let v_ms = fcQMimeType_genericIconName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc iconName*(self: gen_qmimetype_types.QMimeType, ): string =
-
   let v_ms = fcQMimeType_iconName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc globPatterns*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
-
   var v_ma = fcQMimeType_globPatterns(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -141,7 +130,6 @@ proc globPatterns*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
   vx_ret
 
 proc parentMimeTypes*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
-
   var v_ma = fcQMimeType_parentMimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -153,7 +141,6 @@ proc parentMimeTypes*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
   vx_ret
 
 proc allAncestors*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
-
   var v_ma = fcQMimeType_allAncestors(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -165,7 +152,6 @@ proc allAncestors*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
   vx_ret
 
 proc aliases*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
-
   var v_ma = fcQMimeType_aliases(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -177,7 +163,6 @@ proc aliases*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
   vx_ret
 
 proc suffixes*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
-
   var v_ma = fcQMimeType_suffixes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -189,18 +174,15 @@ proc suffixes*(self: gen_qmimetype_types.QMimeType, ): seq[string] =
   vx_ret
 
 proc preferredSuffix*(self: gen_qmimetype_types.QMimeType, ): string =
-
   let v_ms = fcQMimeType_preferredSuffix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc inherits*(self: gen_qmimetype_types.QMimeType, mimeTypeName: string): bool =
-
   fcQMimeType_inherits(self.h, struct_miqt_string(data: mimeTypeName, len: csize_t(len(mimeTypeName))))
 
 proc filterString*(self: gen_qmimetype_types.QMimeType, ): string =
-
   let v_ms = fcQMimeType_filterString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

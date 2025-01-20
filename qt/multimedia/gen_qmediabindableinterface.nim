@@ -51,7 +51,6 @@ proc fcQMediaBindableInterface_delete(self: pointer) {.importc: "QMediaBindableI
 func init*(T: type gen_qmediabindableinterface_types.QMediaBindableInterface, h: ptr cQMediaBindableInterface): gen_qmediabindableinterface_types.QMediaBindableInterface =
   T(h: h)
 proc mediaObject*(self: gen_qmediabindableinterface_types.QMediaBindableInterface, ): gen_qmediaobject.QMediaObject =
-
   gen_qmediaobject.QMediaObject(h: fcQMediaBindableInterface_mediaObject(self.h))
 
 proc delete*(self: gen_qmediabindableinterface_types.QMediaBindableInterface) =

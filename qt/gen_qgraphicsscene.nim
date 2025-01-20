@@ -308,103 +308,84 @@ proc fcQGraphicsScene_delete(self: pointer) {.importc: "QGraphicsScene_delete".}
 func init*(T: type gen_qgraphicsscene_types.QGraphicsScene, h: ptr cQGraphicsScene): gen_qgraphicsscene_types.QGraphicsScene =
   T(h: h)
 proc create*(T: type gen_qgraphicsscene_types.QGraphicsScene, ): gen_qgraphicsscene_types.QGraphicsScene =
-
   gen_qgraphicsscene_types.QGraphicsScene.init(fcQGraphicsScene_new())
+
 proc create*(T: type gen_qgraphicsscene_types.QGraphicsScene, sceneRect: gen_qrect.QRectF): gen_qgraphicsscene_types.QGraphicsScene =
-
   gen_qgraphicsscene_types.QGraphicsScene.init(fcQGraphicsScene_new2(sceneRect.h))
+
 proc create*(T: type gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, width: float64, height: float64): gen_qgraphicsscene_types.QGraphicsScene =
-
   gen_qgraphicsscene_types.QGraphicsScene.init(fcQGraphicsScene_new3(x, y, width, height))
-proc create2*(T: type gen_qgraphicsscene_types.QGraphicsScene, parent: gen_qobject.QObject): gen_qgraphicsscene_types.QGraphicsScene =
 
+proc create*(T: type gen_qgraphicsscene_types.QGraphicsScene, parent: gen_qobject.QObject): gen_qgraphicsscene_types.QGraphicsScene =
   gen_qgraphicsscene_types.QGraphicsScene.init(fcQGraphicsScene_new4(parent.h))
+
 proc create*(T: type gen_qgraphicsscene_types.QGraphicsScene, sceneRect: gen_qrect.QRectF, parent: gen_qobject.QObject): gen_qgraphicsscene_types.QGraphicsScene =
-
   gen_qgraphicsscene_types.QGraphicsScene.init(fcQGraphicsScene_new5(sceneRect.h, parent.h))
+
 proc create*(T: type gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, width: float64, height: float64, parent: gen_qobject.QObject): gen_qgraphicsscene_types.QGraphicsScene =
-
   gen_qgraphicsscene_types.QGraphicsScene.init(fcQGraphicsScene_new6(x, y, width, height, parent.h))
-proc metaObject*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsScene_metaObject(self.h))
 
 proc metacast*(self: gen_qgraphicsscene_types.QGraphicsScene, param1: cstring): pointer =
-
   fcQGraphicsScene_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgraphicsscene_types.QGraphicsScene, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGraphicsScene_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring): string =
-
   let v_ms = fcQGraphicsScene_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring): string =
-
   let v_ms = fcQGraphicsScene_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sceneRect*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsScene_sceneRect(self.h))
 
 proc width*(self: gen_qgraphicsscene_types.QGraphicsScene, ): float64 =
-
   fcQGraphicsScene_width(self.h)
 
 proc height*(self: gen_qgraphicsscene_types.QGraphicsScene, ): float64 =
-
   fcQGraphicsScene_height(self.h)
 
 proc setSceneRect*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): void =
-
   fcQGraphicsScene_setSceneRect(self.h, rect.h)
 
-proc setSceneRect2*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64): void =
-
+proc setSceneRect*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64): void =
   fcQGraphicsScene_setSceneRect2(self.h, x, y, w, h)
 
 proc render*(self: gen_qgraphicsscene_types.QGraphicsScene, painter: gen_qpainter.QPainter): void =
-
   fcQGraphicsScene_render(self.h, painter.h)
 
 proc itemIndexMethod*(self: gen_qgraphicsscene_types.QGraphicsScene, ): cint =
-
   cint(fcQGraphicsScene_itemIndexMethod(self.h))
 
 proc setItemIndexMethod*(self: gen_qgraphicsscene_types.QGraphicsScene, methodVal: cint): void =
-
   fcQGraphicsScene_setItemIndexMethod(self.h, cint(methodVal))
 
 proc isSortCacheEnabled*(self: gen_qgraphicsscene_types.QGraphicsScene, ): bool =
-
   fcQGraphicsScene_isSortCacheEnabled(self.h)
 
 proc setSortCacheEnabled*(self: gen_qgraphicsscene_types.QGraphicsScene, enabled: bool): void =
-
   fcQGraphicsScene_setSortCacheEnabled(self.h, enabled)
 
 proc bspTreeDepth*(self: gen_qgraphicsscene_types.QGraphicsScene, ): cint =
-
   fcQGraphicsScene_bspTreeDepth(self.h)
 
 proc setBspTreeDepth*(self: gen_qgraphicsscene_types.QGraphicsScene, depth: cint): void =
-
   fcQGraphicsScene_setBspTreeDepth(self.h, depth)
 
 proc itemsBoundingRect*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsScene_itemsBoundingRect(self.h))
 
 proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, ): seq[gen_qgraphicsitem.QGraphicsItem] =
-
   var v_ma = fcQGraphicsScene_items(self.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -412,8 +393,7 @@ proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, ): seq[gen_qgraphicsi
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc itemsWithPos*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPointF): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPointF): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_itemsWithPos(self.h, pos.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -421,8 +401,7 @@ proc itemsWithPos*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoin
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc itemsWithRect*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_itemsWithRect(self.h, rect.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -430,8 +409,7 @@ proc itemsWithRect*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qre
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc itemsWithPath*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_itemsWithPath(self.h, path.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -440,7 +418,6 @@ proc itemsWithPath*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpa
   vx_ret
 
 proc collidingItems*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem): seq[gen_qgraphicsitem.QGraphicsItem] =
-
   var v_ma = fcQGraphicsScene_collidingItems(self.h, item.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -449,11 +426,9 @@ proc collidingItems*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qg
   vx_ret
 
 proc itemAt*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPointF, deviceTransform: gen_qtransform.QTransform): gen_qgraphicsitem.QGraphicsItem =
-
   gen_qgraphicsitem.QGraphicsItem(h: fcQGraphicsScene_itemAt(self.h, pos.h, deviceTransform.h))
 
-proc items2*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, mode: cint, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, mode: cint, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items2(self.h, x, y, w, h, cint(mode), cint(order))
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -461,12 +436,10 @@ proc items2*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc itemAt2*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, deviceTransform: gen_qtransform.QTransform): gen_qgraphicsitem.QGraphicsItem =
-
+proc itemAt*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, deviceTransform: gen_qtransform.QTransform): gen_qgraphicsitem.QGraphicsItem =
   gen_qgraphicsitem.QGraphicsItem(h: fcQGraphicsScene_itemAt2(self.h, x, y, deviceTransform.h))
 
 proc selectedItems*(self: gen_qgraphicsscene_types.QGraphicsScene, ): seq[gen_qgraphicsitem.QGraphicsItem] =
-
   var v_ma = fcQGraphicsScene_selectedItems(self.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -475,23 +448,18 @@ proc selectedItems*(self: gen_qgraphicsscene_types.QGraphicsScene, ): seq[gen_qg
   vx_ret
 
 proc selectionArea*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fcQGraphicsScene_selectionArea(self.h))
 
 proc setSelectionArea*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, deviceTransform: gen_qtransform.QTransform): void =
-
   fcQGraphicsScene_setSelectionArea(self.h, path.h, deviceTransform.h)
 
-proc setSelectionAreaWithPath*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath): void =
-
+proc setSelectionArea*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath): void =
   fcQGraphicsScene_setSelectionAreaWithPath(self.h, path.h)
 
-proc setSelectionArea2*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, selectionOperation: cint): void =
-
+proc setSelectionArea*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, selectionOperation: cint): void =
   fcQGraphicsScene_setSelectionArea2(self.h, path.h, cint(selectionOperation))
 
 proc createItemGroup*(self: gen_qgraphicsscene_types.QGraphicsScene, items: seq[gen_qgraphicsitem.QGraphicsItem]): gen_qgraphicsitem.QGraphicsItemGroup =
-
   var items_CArray = newSeq[pointer](len(items))
   for i in 0..<len(items):
     items_CArray[i] = items[i].h
@@ -499,115 +467,87 @@ proc createItemGroup*(self: gen_qgraphicsscene_types.QGraphicsScene, items: seq[
   gen_qgraphicsitem.QGraphicsItemGroup(h: fcQGraphicsScene_createItemGroup(self.h, struct_miqt_array(len: csize_t(len(items)), data: if len(items) == 0: nil else: addr(items_CArray[0]))))
 
 proc destroyItemGroup*(self: gen_qgraphicsscene_types.QGraphicsScene, group: gen_qgraphicsitem.QGraphicsItemGroup): void =
-
   fcQGraphicsScene_destroyItemGroup(self.h, group.h)
 
 proc addItem*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem): void =
-
   fcQGraphicsScene_addItem(self.h, item.h)
 
 proc addEllipse*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): gen_qgraphicsitem.QGraphicsEllipseItem =
-
   gen_qgraphicsitem.QGraphicsEllipseItem(h: fcQGraphicsScene_addEllipse(self.h, rect.h))
 
 proc addLine*(self: gen_qgraphicsscene_types.QGraphicsScene, line: gen_qline.QLineF): gen_qgraphicsitem.QGraphicsLineItem =
-
   gen_qgraphicsitem.QGraphicsLineItem(h: fcQGraphicsScene_addLine(self.h, line.h))
 
 proc addPath*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath): gen_qgraphicsitem.QGraphicsPathItem =
-
   gen_qgraphicsitem.QGraphicsPathItem(h: fcQGraphicsScene_addPath(self.h, path.h))
 
 proc addPixmap*(self: gen_qgraphicsscene_types.QGraphicsScene, pixmap: gen_qpixmap.QPixmap): gen_qgraphicsitem.QGraphicsPixmapItem =
-
   gen_qgraphicsitem.QGraphicsPixmapItem(h: fcQGraphicsScene_addPixmap(self.h, pixmap.h))
 
 proc addRect*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): gen_qgraphicsitem.QGraphicsRectItem =
-
   gen_qgraphicsitem.QGraphicsRectItem(h: fcQGraphicsScene_addRect(self.h, rect.h))
 
 proc addText*(self: gen_qgraphicsscene_types.QGraphicsScene, text: string): gen_qgraphicsitem.QGraphicsTextItem =
-
   gen_qgraphicsitem.QGraphicsTextItem(h: fcQGraphicsScene_addText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
 proc addSimpleText*(self: gen_qgraphicsscene_types.QGraphicsScene, text: string): gen_qgraphicsitem.QGraphicsSimpleTextItem =
-
   gen_qgraphicsitem.QGraphicsSimpleTextItem(h: fcQGraphicsScene_addSimpleText(self.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
 
 proc addWidget*(self: gen_qgraphicsscene_types.QGraphicsScene, widget: gen_qwidget.QWidget): gen_qgraphicsproxywidget.QGraphicsProxyWidget =
-
   gen_qgraphicsproxywidget.QGraphicsProxyWidget(h: fcQGraphicsScene_addWidget(self.h, widget.h))
 
-proc addEllipse2*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64): gen_qgraphicsitem.QGraphicsEllipseItem =
-
+proc addEllipse*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64): gen_qgraphicsitem.QGraphicsEllipseItem =
   gen_qgraphicsitem.QGraphicsEllipseItem(h: fcQGraphicsScene_addEllipse2(self.h, x, y, w, h))
 
-proc addLine2*(self: gen_qgraphicsscene_types.QGraphicsScene, x1: float64, y1: float64, x2: float64, y2: float64): gen_qgraphicsitem.QGraphicsLineItem =
-
+proc addLine*(self: gen_qgraphicsscene_types.QGraphicsScene, x1: float64, y1: float64, x2: float64, y2: float64): gen_qgraphicsitem.QGraphicsLineItem =
   gen_qgraphicsitem.QGraphicsLineItem(h: fcQGraphicsScene_addLine2(self.h, x1, y1, x2, y2))
 
-proc addRect2*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64): gen_qgraphicsitem.QGraphicsRectItem =
-
+proc addRect*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64): gen_qgraphicsitem.QGraphicsRectItem =
   gen_qgraphicsitem.QGraphicsRectItem(h: fcQGraphicsScene_addRect2(self.h, x, y, w, h))
 
 proc removeItem*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem): void =
-
   fcQGraphicsScene_removeItem(self.h, item.h)
 
 proc focusItem*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qgraphicsitem.QGraphicsItem =
-
   gen_qgraphicsitem.QGraphicsItem(h: fcQGraphicsScene_focusItem(self.h))
 
 proc setFocusItem*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem): void =
-
   fcQGraphicsScene_setFocusItem(self.h, item.h)
 
 proc hasFocus*(self: gen_qgraphicsscene_types.QGraphicsScene, ): bool =
-
   fcQGraphicsScene_hasFocus(self.h)
 
 proc setFocus*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
-
   fcQGraphicsScene_setFocus(self.h)
 
 proc clearFocus*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
-
   fcQGraphicsScene_clearFocus(self.h)
 
 proc setStickyFocus*(self: gen_qgraphicsscene_types.QGraphicsScene, enabled: bool): void =
-
   fcQGraphicsScene_setStickyFocus(self.h, enabled)
 
 proc stickyFocus*(self: gen_qgraphicsscene_types.QGraphicsScene, ): bool =
-
   fcQGraphicsScene_stickyFocus(self.h)
 
 proc mouseGrabberItem*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qgraphicsitem.QGraphicsItem =
-
   gen_qgraphicsitem.QGraphicsItem(h: fcQGraphicsScene_mouseGrabberItem(self.h))
 
 proc backgroundBrush*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQGraphicsScene_backgroundBrush(self.h))
 
 proc setBackgroundBrush*(self: gen_qgraphicsscene_types.QGraphicsScene, brush: gen_qbrush.QBrush): void =
-
   fcQGraphicsScene_setBackgroundBrush(self.h, brush.h)
 
 proc foregroundBrush*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQGraphicsScene_foregroundBrush(self.h))
 
 proc setForegroundBrush*(self: gen_qgraphicsscene_types.QGraphicsScene, brush: gen_qbrush.QBrush): void =
-
   fcQGraphicsScene_setForegroundBrush(self.h, brush.h)
 
 proc inputMethodQuery*(self: gen_qgraphicsscene_types.QGraphicsScene, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQGraphicsScene_inputMethodQuery(self.h, cint(query)))
 
 proc views*(self: gen_qgraphicsscene_types.QGraphicsScene, ): seq[gen_qgraphicsview.QGraphicsView] =
-
   var v_ma = fcQGraphicsScene_views(self.h)
   var vx_ret = newSeq[gen_qgraphicsview.QGraphicsView](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -616,108 +556,84 @@ proc views*(self: gen_qgraphicsscene_types.QGraphicsScene, ): seq[gen_qgraphicsv
   vx_ret
 
 proc update*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64): void =
-
   fcQGraphicsScene_update(self.h, x, y, w, h)
 
 proc invalidate*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64): void =
-
   fcQGraphicsScene_invalidate(self.h, x, y, w, h)
 
 proc style*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qstyle.QStyle =
-
   gen_qstyle.QStyle(h: fcQGraphicsScene_style(self.h))
 
 proc setStyle*(self: gen_qgraphicsscene_types.QGraphicsScene, style: gen_qstyle.QStyle): void =
-
   fcQGraphicsScene_setStyle(self.h, style.h)
 
 proc font*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQGraphicsScene_font(self.h))
 
 proc setFont*(self: gen_qgraphicsscene_types.QGraphicsScene, font: gen_qfont.QFont): void =
-
   fcQGraphicsScene_setFont(self.h, font.h)
 
 proc palette*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qpalette.QPalette =
-
   gen_qpalette.QPalette(h: fcQGraphicsScene_palette(self.h))
 
 proc setPalette*(self: gen_qgraphicsscene_types.QGraphicsScene, palette: gen_qpalette.QPalette): void =
-
   fcQGraphicsScene_setPalette(self.h, palette.h)
 
 proc isActive*(self: gen_qgraphicsscene_types.QGraphicsScene, ): bool =
-
   fcQGraphicsScene_isActive(self.h)
 
 proc activePanel*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qgraphicsitem.QGraphicsItem =
-
   gen_qgraphicsitem.QGraphicsItem(h: fcQGraphicsScene_activePanel(self.h))
 
 proc setActivePanel*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem): void =
-
   fcQGraphicsScene_setActivePanel(self.h, item.h)
 
 proc activeWindow*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qgraphicswidget.QGraphicsWidget =
-
   gen_qgraphicswidget.QGraphicsWidget(h: fcQGraphicsScene_activeWindow(self.h))
 
 proc setActiveWindow*(self: gen_qgraphicsscene_types.QGraphicsScene, widget: gen_qgraphicswidget.QGraphicsWidget): void =
-
   fcQGraphicsScene_setActiveWindow(self.h, widget.h)
 
 proc sendEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fcQGraphicsScene_sendEvent(self.h, item.h, event.h)
 
 proc minimumRenderSize*(self: gen_qgraphicsscene_types.QGraphicsScene, ): float64 =
-
   fcQGraphicsScene_minimumRenderSize(self.h)
 
 proc setMinimumRenderSize*(self: gen_qgraphicsscene_types.QGraphicsScene, minSize: float64): void =
-
   fcQGraphicsScene_setMinimumRenderSize(self.h, minSize)
 
 proc focusOnTouch*(self: gen_qgraphicsscene_types.QGraphicsScene, ): bool =
-
   fcQGraphicsScene_focusOnTouch(self.h)
 
 proc setFocusOnTouch*(self: gen_qgraphicsscene_types.QGraphicsScene, enabled: bool): void =
-
   fcQGraphicsScene_setFocusOnTouch(self.h, enabled)
 
-proc update2*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
-
+proc update*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
   fcQGraphicsScene_update2(self.h)
 
-proc invalidate2*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
-
+proc invalidate*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
   fcQGraphicsScene_invalidate2(self.h)
 
 proc advance*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
-
   fcQGraphicsScene_advance(self.h)
 
 proc clearSelection*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
-
   fcQGraphicsScene_clearSelection(self.h)
 
 proc clear*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
-
   fcQGraphicsScene_clear(self.h)
 
 proc changed*(self: gen_qgraphicsscene_types.QGraphicsScene, region: seq[gen_qrect.QRectF]): void =
-
   var region_CArray = newSeq[pointer](len(region))
   for i in 0..<len(region):
     region_CArray[i] = region[i].h
 
   fcQGraphicsScene_changed(self.h, struct_miqt_array(len: csize_t(len(region)), data: if len(region) == 0: nil else: addr(region_CArray[0])))
 
+type QGraphicsScenechangedSlot* = proc(region: seq[gen_qrect.QRectF])
 proc miqt_exec_callback_QGraphicsScene_changed(slot: int, region: struct_miqt_array) {.exportc.} =
-  type Cb = proc(region: seq[gen_qrect.QRectF])
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsScenechangedSlot](cast[pointer](slot))
   var vregion_ma = region
   var vregionx_ret = newSeq[gen_qrect.QRectF](int(vregion_ma.len))
   let vregion_outCast = cast[ptr UncheckedArray[pointer]](vregion_ma.data)
@@ -725,113 +641,98 @@ proc miqt_exec_callback_QGraphicsScene_changed(slot: int, region: struct_miqt_ar
     vregionx_ret[i] = gen_qrect.QRectF(h: vregion_outCast[i])
   let slotval1 = vregionx_ret
 
-
   nimfunc[](slotval1)
 
-proc onchanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: proc(region: seq[gen_qrect.QRectF])) =
-  type Cb = proc(region: seq[gen_qrect.QRectF])
-  var tmp = new Cb
+proc onchanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: QGraphicsScenechangedSlot) =
+  var tmp = new QGraphicsScenechangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsScene_connect_changed(self.h, cast[int](addr tmp[]))
-proc sceneRectChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): void =
 
+proc sceneRectChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): void =
   fcQGraphicsScene_sceneRectChanged(self.h, rect.h)
 
+type QGraphicsScenesceneRectChangedSlot* = proc(rect: gen_qrect.QRectF)
 proc miqt_exec_callback_QGraphicsScene_sceneRectChanged(slot: int, rect: pointer) {.exportc.} =
-  type Cb = proc(rect: gen_qrect.QRectF)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsScenesceneRectChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qrect.QRectF(h: rect)
-
 
   nimfunc[](slotval1)
 
-proc onsceneRectChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: proc(rect: gen_qrect.QRectF)) =
-  type Cb = proc(rect: gen_qrect.QRectF)
-  var tmp = new Cb
+proc onsceneRectChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: QGraphicsScenesceneRectChangedSlot) =
+  var tmp = new QGraphicsScenesceneRectChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsScene_connect_sceneRectChanged(self.h, cast[int](addr tmp[]))
-proc selectionChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
 
+proc selectionChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, ): void =
   fcQGraphicsScene_selectionChanged(self.h)
 
+type QGraphicsSceneselectionChangedSlot* = proc()
 proc miqt_exec_callback_QGraphicsScene_selectionChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGraphicsSceneselectionChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onselectionChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onselectionChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: QGraphicsSceneselectionChangedSlot) =
+  var tmp = new QGraphicsSceneselectionChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsScene_connect_selectionChanged(self.h, cast[int](addr tmp[]))
-proc focusItemChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, newFocus: gen_qgraphicsitem.QGraphicsItem, oldFocus: gen_qgraphicsitem.QGraphicsItem, reason: cint): void =
 
+proc focusItemChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, newFocus: gen_qgraphicsitem.QGraphicsItem, oldFocus: gen_qgraphicsitem.QGraphicsItem, reason: cint): void =
   fcQGraphicsScene_focusItemChanged(self.h, newFocus.h, oldFocus.h, cint(reason))
 
+type QGraphicsScenefocusItemChangedSlot* = proc(newFocus: gen_qgraphicsitem.QGraphicsItem, oldFocus: gen_qgraphicsitem.QGraphicsItem, reason: cint)
 proc miqt_exec_callback_QGraphicsScene_focusItemChanged(slot: int, newFocus: pointer, oldFocus: pointer, reason: cint) {.exportc.} =
-  type Cb = proc(newFocus: gen_qgraphicsitem.QGraphicsItem, oldFocus: gen_qgraphicsitem.QGraphicsItem, reason: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsScenefocusItemChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qgraphicsitem.QGraphicsItem(h: newFocus)
 
   let slotval2 = gen_qgraphicsitem.QGraphicsItem(h: oldFocus)
 
   let slotval3 = cint(reason)
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onfocusItemChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: proc(newFocus: gen_qgraphicsitem.QGraphicsItem, oldFocus: gen_qgraphicsitem.QGraphicsItem, reason: cint)) =
-  type Cb = proc(newFocus: gen_qgraphicsitem.QGraphicsItem, oldFocus: gen_qgraphicsitem.QGraphicsItem, reason: cint)
-  var tmp = new Cb
+proc onfocusItemChanged*(self: gen_qgraphicsscene_types.QGraphicsScene, slot: QGraphicsScenefocusItemChangedSlot) =
+  var tmp = new QGraphicsScenefocusItemChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsScene_connect_focusItemChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsScene_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsScene_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsScene_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qgraphicsscene_types.QGraphicsScene, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsScene_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc render2*(self: gen_qgraphicsscene_types.QGraphicsScene, painter: gen_qpainter.QPainter, target: gen_qrect.QRectF): void =
-
+proc render*(self: gen_qgraphicsscene_types.QGraphicsScene, painter: gen_qpainter.QPainter, target: gen_qrect.QRectF): void =
   fcQGraphicsScene_render2(self.h, painter.h, target.h)
 
-proc render3*(self: gen_qgraphicsscene_types.QGraphicsScene, painter: gen_qpainter.QPainter, target: gen_qrect.QRectF, source: gen_qrect.QRectF): void =
-
+proc render*(self: gen_qgraphicsscene_types.QGraphicsScene, painter: gen_qpainter.QPainter, target: gen_qrect.QRectF, source: gen_qrect.QRectF): void =
   fcQGraphicsScene_render3(self.h, painter.h, target.h, source.h)
 
-proc render4*(self: gen_qgraphicsscene_types.QGraphicsScene, painter: gen_qpainter.QPainter, target: gen_qrect.QRectF, source: gen_qrect.QRectF, aspectRatioMode: cint): void =
-
+proc render*(self: gen_qgraphicsscene_types.QGraphicsScene, painter: gen_qpainter.QPainter, target: gen_qrect.QRectF, source: gen_qrect.QRectF, aspectRatioMode: cint): void =
   fcQGraphicsScene_render4(self.h, painter.h, target.h, source.h, cint(aspectRatioMode))
 
-proc items1*(self: gen_qgraphicsscene_types.QGraphicsScene, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items1(self.h, cint(order))
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -839,8 +740,7 @@ proc items1*(self: gen_qgraphicsscene_types.QGraphicsScene, order: cint): seq[ge
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items22*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPointF, mode: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPointF, mode: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items22(self.h, pos.h, cint(mode))
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -848,8 +748,7 @@ proc items22*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPo
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items3*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPointF, mode: cint, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPointF, mode: cint, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items3(self.h, pos.h, cint(mode), cint(order))
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -857,8 +756,7 @@ proc items3*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPoi
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items4*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPointF, mode: cint, order: cint, deviceTransform: gen_qtransform.QTransform): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPointF, mode: cint, order: cint, deviceTransform: gen_qtransform.QTransform): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items4(self.h, pos.h, cint(mode), cint(order), deviceTransform.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -866,8 +764,7 @@ proc items4*(self: gen_qgraphicsscene_types.QGraphicsScene, pos: gen_qpoint.QPoi
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items23*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, mode: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, mode: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items23(self.h, rect.h, cint(mode))
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -875,8 +772,7 @@ proc items23*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRe
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items32*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, mode: cint, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, mode: cint, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items32(self.h, rect.h, cint(mode), cint(order))
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -884,8 +780,7 @@ proc items32*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRe
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items42*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, mode: cint, order: cint, deviceTransform: gen_qtransform.QTransform): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, mode: cint, order: cint, deviceTransform: gen_qtransform.QTransform): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items42(self.h, rect.h, cint(mode), cint(order), deviceTransform.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -893,8 +788,7 @@ proc items42*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRe
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items25*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items25(self.h, path.h, cint(mode))
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -902,8 +796,7 @@ proc items25*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterp
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items34*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint, order: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items34(self.h, path.h, cint(mode), cint(order))
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -911,8 +804,7 @@ proc items34*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterp
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items44*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint, order: cint, deviceTransform: gen_qtransform.QTransform): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint, order: cint, deviceTransform: gen_qtransform.QTransform): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items44(self.h, path.h, cint(mode), cint(order), deviceTransform.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -920,8 +812,7 @@ proc items44*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterp
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc collidingItems2*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem, mode: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc collidingItems*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem, mode: cint): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_collidingItems2(self.h, item.h, cint(mode))
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -929,8 +820,7 @@ proc collidingItems2*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_q
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc items7*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, mode: cint, order: cint, deviceTransform: gen_qtransform.QTransform): seq[gen_qgraphicsitem.QGraphicsItem] =
-
+proc items*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, mode: cint, order: cint, deviceTransform: gen_qtransform.QTransform): seq[gen_qgraphicsitem.QGraphicsItem] =
   var v_ma = fcQGraphicsScene_items7(self.h, x, y, w, h, cint(mode), cint(order), deviceTransform.h)
   var vx_ret = newSeq[gen_qgraphicsitem.QGraphicsItem](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -938,108 +828,82 @@ proc items7*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float
     vx_ret[i] = gen_qgraphicsitem.QGraphicsItem(h: v_outCast[i])
   vx_ret
 
-proc setSelectionArea22*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint): void =
-
+proc setSelectionArea2*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint): void =
   fcQGraphicsScene_setSelectionArea22(self.h, path.h, cint(mode))
 
-proc setSelectionArea3*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint, deviceTransform: gen_qtransform.QTransform): void =
-
+proc setSelectionArea*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, mode: cint, deviceTransform: gen_qtransform.QTransform): void =
   fcQGraphicsScene_setSelectionArea3(self.h, path.h, cint(mode), deviceTransform.h)
 
-proc setSelectionArea32*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, selectionOperation: cint, mode: cint): void =
-
+proc setSelectionArea*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, selectionOperation: cint, mode: cint): void =
   fcQGraphicsScene_setSelectionArea32(self.h, path.h, cint(selectionOperation), cint(mode))
 
-proc setSelectionArea4*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, selectionOperation: cint, mode: cint, deviceTransform: gen_qtransform.QTransform): void =
-
+proc setSelectionArea*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, selectionOperation: cint, mode: cint, deviceTransform: gen_qtransform.QTransform): void =
   fcQGraphicsScene_setSelectionArea4(self.h, path.h, cint(selectionOperation), cint(mode), deviceTransform.h)
 
-proc addEllipse22*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsEllipseItem =
-
+proc addEllipse*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsEllipseItem =
   gen_qgraphicsitem.QGraphicsEllipseItem(h: fcQGraphicsScene_addEllipse22(self.h, rect.h, pen.h))
 
-proc addEllipse3*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsEllipseItem =
-
+proc addEllipse*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsEllipseItem =
   gen_qgraphicsitem.QGraphicsEllipseItem(h: fcQGraphicsScene_addEllipse3(self.h, rect.h, pen.h, brush.h))
 
-proc addLine22*(self: gen_qgraphicsscene_types.QGraphicsScene, line: gen_qline.QLineF, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsLineItem =
-
+proc addLine*(self: gen_qgraphicsscene_types.QGraphicsScene, line: gen_qline.QLineF, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsLineItem =
   gen_qgraphicsitem.QGraphicsLineItem(h: fcQGraphicsScene_addLine22(self.h, line.h, pen.h))
 
-proc addPath2*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsPathItem =
-
+proc addPath*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsPathItem =
   gen_qgraphicsitem.QGraphicsPathItem(h: fcQGraphicsScene_addPath2(self.h, path.h, pen.h))
 
-proc addPath3*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsPathItem =
-
+proc addPath*(self: gen_qgraphicsscene_types.QGraphicsScene, path: gen_qpainterpath.QPainterPath, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsPathItem =
   gen_qgraphicsitem.QGraphicsPathItem(h: fcQGraphicsScene_addPath3(self.h, path.h, pen.h, brush.h))
 
-proc addRect22*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsRectItem =
-
+proc addRect*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsRectItem =
   gen_qgraphicsitem.QGraphicsRectItem(h: fcQGraphicsScene_addRect22(self.h, rect.h, pen.h))
 
-proc addRect3*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsRectItem =
-
+proc addRect*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsRectItem =
   gen_qgraphicsitem.QGraphicsRectItem(h: fcQGraphicsScene_addRect3(self.h, rect.h, pen.h, brush.h))
 
-proc addText2*(self: gen_qgraphicsscene_types.QGraphicsScene, text: string, font: gen_qfont.QFont): gen_qgraphicsitem.QGraphicsTextItem =
-
+proc addText*(self: gen_qgraphicsscene_types.QGraphicsScene, text: string, font: gen_qfont.QFont): gen_qgraphicsitem.QGraphicsTextItem =
   gen_qgraphicsitem.QGraphicsTextItem(h: fcQGraphicsScene_addText2(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), font.h))
 
-proc addSimpleText2*(self: gen_qgraphicsscene_types.QGraphicsScene, text: string, font: gen_qfont.QFont): gen_qgraphicsitem.QGraphicsSimpleTextItem =
-
+proc addSimpleText*(self: gen_qgraphicsscene_types.QGraphicsScene, text: string, font: gen_qfont.QFont): gen_qgraphicsitem.QGraphicsSimpleTextItem =
   gen_qgraphicsitem.QGraphicsSimpleTextItem(h: fcQGraphicsScene_addSimpleText2(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), font.h))
 
-proc addWidget2*(self: gen_qgraphicsscene_types.QGraphicsScene, widget: gen_qwidget.QWidget, wFlags: cint): gen_qgraphicsproxywidget.QGraphicsProxyWidget =
-
+proc addWidget*(self: gen_qgraphicsscene_types.QGraphicsScene, widget: gen_qwidget.QWidget, wFlags: cint): gen_qgraphicsproxywidget.QGraphicsProxyWidget =
   gen_qgraphicsproxywidget.QGraphicsProxyWidget(h: fcQGraphicsScene_addWidget2(self.h, widget.h, cint(wFlags)))
 
-proc addEllipse5*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsEllipseItem =
-
+proc addEllipse*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsEllipseItem =
   gen_qgraphicsitem.QGraphicsEllipseItem(h: fcQGraphicsScene_addEllipse5(self.h, x, y, w, h, pen.h))
 
-proc addEllipse6*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsEllipseItem =
-
+proc addEllipse*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsEllipseItem =
   gen_qgraphicsitem.QGraphicsEllipseItem(h: fcQGraphicsScene_addEllipse6(self.h, x, y, w, h, pen.h, brush.h))
 
-proc addLine5*(self: gen_qgraphicsscene_types.QGraphicsScene, x1: float64, y1: float64, x2: float64, y2: float64, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsLineItem =
-
+proc addLine*(self: gen_qgraphicsscene_types.QGraphicsScene, x1: float64, y1: float64, x2: float64, y2: float64, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsLineItem =
   gen_qgraphicsitem.QGraphicsLineItem(h: fcQGraphicsScene_addLine5(self.h, x1, y1, x2, y2, pen.h))
 
-proc addRect5*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsRectItem =
-
+proc addRect*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, pen: gen_qpen.QPen): gen_qgraphicsitem.QGraphicsRectItem =
   gen_qgraphicsitem.QGraphicsRectItem(h: fcQGraphicsScene_addRect5(self.h, x, y, w, h, pen.h))
 
-proc addRect6*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsRectItem =
-
+proc addRect*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, pen: gen_qpen.QPen, brush: gen_qbrush.QBrush): gen_qgraphicsitem.QGraphicsRectItem =
   gen_qgraphicsitem.QGraphicsRectItem(h: fcQGraphicsScene_addRect6(self.h, x, y, w, h, pen.h, brush.h))
 
-proc setFocusItem2*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem, focusReason: cint): void =
-
+proc setFocusItem*(self: gen_qgraphicsscene_types.QGraphicsScene, item: gen_qgraphicsitem.QGraphicsItem, focusReason: cint): void =
   fcQGraphicsScene_setFocusItem2(self.h, item.h, cint(focusReason))
 
-proc setFocus1*(self: gen_qgraphicsscene_types.QGraphicsScene, focusReason: cint): void =
-
+proc setFocus*(self: gen_qgraphicsscene_types.QGraphicsScene, focusReason: cint): void =
   fcQGraphicsScene_setFocus1(self.h, cint(focusReason))
 
-proc invalidate5*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, layers: cint): void =
-
+proc invalidate*(self: gen_qgraphicsscene_types.QGraphicsScene, x: float64, y: float64, w: float64, h: float64, layers: cint): void =
   fcQGraphicsScene_invalidate5(self.h, x, y, w, h, cint(layers))
 
-proc update1*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): void =
-
+proc update*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): void =
   fcQGraphicsScene_update1(self.h, rect.h)
 
-proc invalidate1*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): void =
-
+proc invalidate*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF): void =
   fcQGraphicsScene_invalidate1(self.h, rect.h)
 
-proc invalidate22*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, layers: cint): void =
-
+proc invalidate*(self: gen_qgraphicsscene_types.QGraphicsScene, rect: gen_qrect.QRectF, layers: cint): void =
   fcQGraphicsScene_invalidate22(self.h, rect.h, cint(layers))
 
 proc QGraphicsScenemetaObject*(self: gen_qgraphicsscene_types.QGraphicsScene, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQGraphicsScene_virtualbase_metaObject(self.h))
 
 type QGraphicsScenemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -1057,7 +921,6 @@ proc miqt_exec_callback_QGraphicsScene_metaObject(self: ptr cQGraphicsScene, slo
 
   virtualReturn.h
 proc QGraphicsScenemetacast*(self: gen_qgraphicsscene_types.QGraphicsScene, param1: cstring): pointer =
-
   fQGraphicsScene_virtualbase_metacast(self.h, param1)
 
 type QGraphicsScenemetacastProc* = proc(param1: cstring): pointer
@@ -1077,7 +940,6 @@ proc miqt_exec_callback_QGraphicsScene_metacast(self: ptr cQGraphicsScene, slot:
 
   virtualReturn
 proc QGraphicsScenemetacall*(self: gen_qgraphicsscene_types.QGraphicsScene, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGraphicsScene_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGraphicsScenemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -1101,7 +963,6 @@ proc miqt_exec_callback_QGraphicsScene_metacall(self: ptr cQGraphicsScene, slot:
 
   virtualReturn
 proc QGraphicsSceneinputMethodQuery*(self: gen_qgraphicsscene_types.QGraphicsScene, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsScene_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsSceneinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -1121,7 +982,6 @@ proc miqt_exec_callback_QGraphicsScene_inputMethodQuery(self: ptr cQGraphicsScen
 
   virtualReturn.h
 proc QGraphicsSceneevent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsScene_virtualbase_event(self.h, event.h)
 
 type QGraphicsSceneeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1141,7 +1001,6 @@ proc miqt_exec_callback_QGraphicsScene_event(self: ptr cQGraphicsScene, slot: in
 
   virtualReturn
 proc QGraphicsSceneeventFilter*(self: gen_qgraphicsscene_types.QGraphicsScene, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsScene_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGraphicsSceneeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1163,7 +1022,6 @@ proc miqt_exec_callback_QGraphicsScene_eventFilter(self: ptr cQGraphicsScene, sl
 
   virtualReturn
 proc QGraphicsScenecontextMenuEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsScene_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsScenecontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -1181,7 +1039,6 @@ proc miqt_exec_callback_QGraphicsScene_contextMenuEvent(self: ptr cQGraphicsScen
 
   nimfunc[](slotval1)
 proc QGraphicsScenedragEnterEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsScene_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsScenedragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -1199,7 +1056,6 @@ proc miqt_exec_callback_QGraphicsScene_dragEnterEvent(self: ptr cQGraphicsScene,
 
   nimfunc[](slotval1)
 proc QGraphicsScenedragMoveEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsScene_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsScenedragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -1217,7 +1073,6 @@ proc miqt_exec_callback_QGraphicsScene_dragMoveEvent(self: ptr cQGraphicsScene, 
 
   nimfunc[](slotval1)
 proc QGraphicsScenedragLeaveEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsScene_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsScenedragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -1235,7 +1090,6 @@ proc miqt_exec_callback_QGraphicsScene_dragLeaveEvent(self: ptr cQGraphicsScene,
 
   nimfunc[](slotval1)
 proc QGraphicsScenedropEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsScene_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsScenedropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -1253,7 +1107,6 @@ proc miqt_exec_callback_QGraphicsScene_dropEvent(self: ptr cQGraphicsScene, slot
 
   nimfunc[](slotval1)
 proc QGraphicsScenefocusInEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsScene_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsScenefocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1271,7 +1124,6 @@ proc miqt_exec_callback_QGraphicsScene_focusInEvent(self: ptr cQGraphicsScene, s
 
   nimfunc[](slotval1)
 proc QGraphicsScenefocusOutEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsScene_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsScenefocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1289,7 +1141,6 @@ proc miqt_exec_callback_QGraphicsScene_focusOutEvent(self: ptr cQGraphicsScene, 
 
   nimfunc[](slotval1)
 proc QGraphicsScenehelpEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneHelpEvent): void =
-
   fQGraphicsScene_virtualbase_helpEvent(self.h, event.h)
 
 type QGraphicsScenehelpEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHelpEvent): void
@@ -1307,7 +1158,6 @@ proc miqt_exec_callback_QGraphicsScene_helpEvent(self: ptr cQGraphicsScene, slot
 
   nimfunc[](slotval1)
 proc QGraphicsScenekeyPressEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsScene_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsScenekeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1325,7 +1175,6 @@ proc miqt_exec_callback_QGraphicsScene_keyPressEvent(self: ptr cQGraphicsScene, 
 
   nimfunc[](slotval1)
 proc QGraphicsScenekeyReleaseEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsScene_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsScenekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1343,7 +1192,6 @@ proc miqt_exec_callback_QGraphicsScene_keyReleaseEvent(self: ptr cQGraphicsScene
 
   nimfunc[](slotval1)
 proc QGraphicsScenemousePressEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsScene_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsScenemousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -1361,7 +1209,6 @@ proc miqt_exec_callback_QGraphicsScene_mousePressEvent(self: ptr cQGraphicsScene
 
   nimfunc[](slotval1)
 proc QGraphicsScenemouseMoveEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsScene_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsScenemouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -1379,7 +1226,6 @@ proc miqt_exec_callback_QGraphicsScene_mouseMoveEvent(self: ptr cQGraphicsScene,
 
   nimfunc[](slotval1)
 proc QGraphicsScenemouseReleaseEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsScene_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsScenemouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -1397,7 +1243,6 @@ proc miqt_exec_callback_QGraphicsScene_mouseReleaseEvent(self: ptr cQGraphicsSce
 
   nimfunc[](slotval1)
 proc QGraphicsScenemouseDoubleClickEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsScene_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsScenemouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -1415,7 +1260,6 @@ proc miqt_exec_callback_QGraphicsScene_mouseDoubleClickEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsScenewheelEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsScene_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsScenewheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -1433,7 +1277,6 @@ proc miqt_exec_callback_QGraphicsScene_wheelEvent(self: ptr cQGraphicsScene, slo
 
   nimfunc[](slotval1)
 proc QGraphicsSceneinputMethodEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsScene_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsSceneinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -1451,7 +1294,6 @@ proc miqt_exec_callback_QGraphicsScene_inputMethodEvent(self: ptr cQGraphicsScen
 
   nimfunc[](slotval1)
 proc QGraphicsScenedrawBackground*(self: gen_qgraphicsscene_types.QGraphicsScene, painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF): void =
-
   fQGraphicsScene_virtualbase_drawBackground(self.h, painter.h, rect.h)
 
 type QGraphicsScenedrawBackgroundProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF): void
@@ -1471,7 +1313,6 @@ proc miqt_exec_callback_QGraphicsScene_drawBackground(self: ptr cQGraphicsScene,
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsScenedrawForeground*(self: gen_qgraphicsscene_types.QGraphicsScene, painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF): void =
-
   fQGraphicsScene_virtualbase_drawForeground(self.h, painter.h, rect.h)
 
 type QGraphicsScenedrawForegroundProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF): void
@@ -1491,7 +1332,6 @@ proc miqt_exec_callback_QGraphicsScene_drawForeground(self: ptr cQGraphicsScene,
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsScenetimerEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGraphicsScene_virtualbase_timerEvent(self.h, event.h)
 
 type QGraphicsScenetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1509,7 +1349,6 @@ proc miqt_exec_callback_QGraphicsScene_timerEvent(self: ptr cQGraphicsScene, slo
 
   nimfunc[](slotval1)
 proc QGraphicsScenechildEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qcoreevent.QChildEvent): void =
-
   fQGraphicsScene_virtualbase_childEvent(self.h, event.h)
 
 type QGraphicsScenechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1527,7 +1366,6 @@ proc miqt_exec_callback_QGraphicsScene_childEvent(self: ptr cQGraphicsScene, slo
 
   nimfunc[](slotval1)
 proc QGraphicsScenecustomEvent*(self: gen_qgraphicsscene_types.QGraphicsScene, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsScene_virtualbase_customEvent(self.h, event.h)
 
 type QGraphicsScenecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1545,7 +1383,6 @@ proc miqt_exec_callback_QGraphicsScene_customEvent(self: ptr cQGraphicsScene, sl
 
   nimfunc[](slotval1)
 proc QGraphicsSceneconnectNotify*(self: gen_qgraphicsscene_types.QGraphicsScene, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsScene_virtualbase_connectNotify(self.h, signal.h)
 
 type QGraphicsSceneconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1563,7 +1400,6 @@ proc miqt_exec_callback_QGraphicsScene_connectNotify(self: ptr cQGraphicsScene, 
 
   nimfunc[](slotval1)
 proc QGraphicsScenedisconnectNotify*(self: gen_qgraphicsscene_types.QGraphicsScene, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsScene_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGraphicsScenedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

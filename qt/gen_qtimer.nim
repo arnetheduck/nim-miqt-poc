@@ -100,115 +100,93 @@ proc fcQTimer_delete(self: pointer) {.importc: "QTimer_delete".}
 func init*(T: type gen_qtimer_types.QTimer, h: ptr cQTimer): gen_qtimer_types.QTimer =
   T(h: h)
 proc create*(T: type gen_qtimer_types.QTimer, ): gen_qtimer_types.QTimer =
-
   gen_qtimer_types.QTimer.init(fcQTimer_new())
+
 proc create*(T: type gen_qtimer_types.QTimer, parent: gen_qobject.QObject): gen_qtimer_types.QTimer =
-
   gen_qtimer_types.QTimer.init(fcQTimer_new2(parent.h))
-proc metaObject*(self: gen_qtimer_types.QTimer, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtimer_types.QTimer, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTimer_metaObject(self.h))
 
 proc metacast*(self: gen_qtimer_types.QTimer, param1: cstring): pointer =
-
   fcQTimer_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtimer_types.QTimer, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTimer_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtimer_types.QTimer, s: cstring): string =
-
   let v_ms = fcQTimer_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtimer_types.QTimer, s: cstring): string =
-
   let v_ms = fcQTimer_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isActive*(self: gen_qtimer_types.QTimer, ): bool =
-
   fcQTimer_isActive(self.h)
 
 proc timerId*(self: gen_qtimer_types.QTimer, ): cint =
-
   fcQTimer_timerId(self.h)
 
 proc setInterval*(self: gen_qtimer_types.QTimer, msec: cint): void =
-
   fcQTimer_setInterval(self.h, msec)
 
 proc interval*(self: gen_qtimer_types.QTimer, ): cint =
-
   fcQTimer_interval(self.h)
 
 proc remainingTime*(self: gen_qtimer_types.QTimer, ): cint =
-
   fcQTimer_remainingTime(self.h)
 
 proc setTimerType*(self: gen_qtimer_types.QTimer, atype: cint): void =
-
   fcQTimer_setTimerType(self.h, cint(atype))
 
 proc timerType*(self: gen_qtimer_types.QTimer, ): cint =
-
   cint(fcQTimer_timerType(self.h))
 
 proc setSingleShot*(self: gen_qtimer_types.QTimer, singleShot: bool): void =
-
   fcQTimer_setSingleShot(self.h, singleShot)
 
 proc isSingleShot*(self: gen_qtimer_types.QTimer, ): bool =
-
   fcQTimer_isSingleShot(self.h)
 
 proc start*(self: gen_qtimer_types.QTimer, msec: cint): void =
-
   fcQTimer_start(self.h, msec)
 
-proc start2*(self: gen_qtimer_types.QTimer, ): void =
-
+proc start*(self: gen_qtimer_types.QTimer, ): void =
   fcQTimer_start2(self.h)
 
 proc stop*(self: gen_qtimer_types.QTimer, ): void =
-
   fcQTimer_stop(self.h)
 
-proc tr2*(_: type gen_qtimer_types.QTimer, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qtimer_types.QTimer, s: cstring, c: cstring): string =
   let v_ms = fcQTimer_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtimer_types.QTimer, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtimer_types.QTimer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTimer_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtimer_types.QTimer, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtimer_types.QTimer, s: cstring, c: cstring): string =
   let v_ms = fcQTimer_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtimer_types.QTimer, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtimer_types.QTimer, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTimer_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QTimermetaObject*(self: gen_qtimer_types.QTimer, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTimer_virtualbase_metaObject(self.h))
 
 type QTimermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -226,7 +204,6 @@ proc miqt_exec_callback_QTimer_metaObject(self: ptr cQTimer, slot: int): pointer
 
   virtualReturn.h
 proc QTimermetacast*(self: gen_qtimer_types.QTimer, param1: cstring): pointer =
-
   fQTimer_virtualbase_metacast(self.h, param1)
 
 type QTimermetacastProc* = proc(param1: cstring): pointer
@@ -246,7 +223,6 @@ proc miqt_exec_callback_QTimer_metacast(self: ptr cQTimer, slot: int, param1: cs
 
   virtualReturn
 proc QTimermetacall*(self: gen_qtimer_types.QTimer, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTimer_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTimermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -270,7 +246,6 @@ proc miqt_exec_callback_QTimer_metacall(self: ptr cQTimer, slot: int, param1: ci
 
   virtualReturn
 proc QTimertimerEvent*(self: gen_qtimer_types.QTimer, param1: gen_qcoreevent.QTimerEvent): void =
-
   fQTimer_virtualbase_timerEvent(self.h, param1.h)
 
 type QTimertimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
@@ -288,7 +263,6 @@ proc miqt_exec_callback_QTimer_timerEvent(self: ptr cQTimer, slot: int, param1: 
 
   nimfunc[](slotval1)
 proc QTimerevent*(self: gen_qtimer_types.QTimer, event: gen_qcoreevent.QEvent): bool =
-
   fQTimer_virtualbase_event(self.h, event.h)
 
 type QTimereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -308,7 +282,6 @@ proc miqt_exec_callback_QTimer_event(self: ptr cQTimer, slot: int, event: pointe
 
   virtualReturn
 proc QTimereventFilter*(self: gen_qtimer_types.QTimer, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTimer_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTimereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -330,7 +303,6 @@ proc miqt_exec_callback_QTimer_eventFilter(self: ptr cQTimer, slot: int, watched
 
   virtualReturn
 proc QTimerchildEvent*(self: gen_qtimer_types.QTimer, event: gen_qcoreevent.QChildEvent): void =
-
   fQTimer_virtualbase_childEvent(self.h, event.h)
 
 type QTimerchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -348,7 +320,6 @@ proc miqt_exec_callback_QTimer_childEvent(self: ptr cQTimer, slot: int, event: p
 
   nimfunc[](slotval1)
 proc QTimercustomEvent*(self: gen_qtimer_types.QTimer, event: gen_qcoreevent.QEvent): void =
-
   fQTimer_virtualbase_customEvent(self.h, event.h)
 
 type QTimercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -366,7 +337,6 @@ proc miqt_exec_callback_QTimer_customEvent(self: ptr cQTimer, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QTimerconnectNotify*(self: gen_qtimer_types.QTimer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTimer_virtualbase_connectNotify(self.h, signal.h)
 
 type QTimerconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -384,7 +354,6 @@ proc miqt_exec_callback_QTimer_connectNotify(self: ptr cQTimer, slot: int, signa
 
   nimfunc[](slotval1)
 proc QTimerdisconnectNotify*(self: gen_qtimer_types.QTimer, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTimer_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTimerdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

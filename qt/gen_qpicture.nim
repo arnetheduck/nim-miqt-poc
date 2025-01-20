@@ -132,84 +132,66 @@ proc fcQPictureIO_delete(self: pointer) {.importc: "QPictureIO_delete".}
 func init*(T: type gen_qpicture_types.QPicture, h: ptr cQPicture): gen_qpicture_types.QPicture =
   T(h: h)
 proc create*(T: type gen_qpicture_types.QPicture, ): gen_qpicture_types.QPicture =
-
   gen_qpicture_types.QPicture.init(fcQPicture_new())
+
 proc create*(T: type gen_qpicture_types.QPicture, param1: gen_qpicture_types.QPicture): gen_qpicture_types.QPicture =
-
   gen_qpicture_types.QPicture.init(fcQPicture_new2(param1.h))
+
 proc create*(T: type gen_qpicture_types.QPicture, formatVersion: cint): gen_qpicture_types.QPicture =
-
   gen_qpicture_types.QPicture.init(fcQPicture_new3(formatVersion))
-proc isNull*(self: gen_qpicture_types.QPicture, ): bool =
 
+proc isNull*(self: gen_qpicture_types.QPicture, ): bool =
   fcQPicture_isNull(self.h)
 
 proc devType*(self: gen_qpicture_types.QPicture, ): cint =
-
   fcQPicture_devType(self.h)
 
 proc size*(self: gen_qpicture_types.QPicture, ): cuint =
-
   fcQPicture_size(self.h)
 
 proc data*(self: gen_qpicture_types.QPicture, ): cstring =
-
   (fcQPicture_data(self.h))
 
 proc setData*(self: gen_qpicture_types.QPicture, data: cstring, size: cuint): void =
-
   fcQPicture_setData(self.h, data, size)
 
 proc play*(self: gen_qpicture_types.QPicture, p: gen_qpainter.QPainter): bool =
-
   fcQPicture_play(self.h, p.h)
 
 proc load*(self: gen_qpicture_types.QPicture, dev: gen_qiodevice.QIODevice): bool =
-
   fcQPicture_load(self.h, dev.h)
 
-proc loadWithFileName*(self: gen_qpicture_types.QPicture, fileName: string): bool =
-
+proc load*(self: gen_qpicture_types.QPicture, fileName: string): bool =
   fcQPicture_loadWithFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc save*(self: gen_qpicture_types.QPicture, dev: gen_qiodevice.QIODevice): bool =
-
   fcQPicture_save(self.h, dev.h)
 
-proc saveWithFileName*(self: gen_qpicture_types.QPicture, fileName: string): bool =
-
+proc save*(self: gen_qpicture_types.QPicture, fileName: string): bool =
   fcQPicture_saveWithFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc boundingRect*(self: gen_qpicture_types.QPicture, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQPicture_boundingRect(self.h))
 
 proc setBoundingRect*(self: gen_qpicture_types.QPicture, r: gen_qrect.QRect): void =
-
   fcQPicture_setBoundingRect(self.h, r.h)
 
 proc operatorAssign*(self: gen_qpicture_types.QPicture, p: gen_qpicture_types.QPicture): void =
-
   fcQPicture_operatorAssign(self.h, p.h)
 
 proc swap*(self: gen_qpicture_types.QPicture, other: gen_qpicture_types.QPicture): void =
-
   fcQPicture_swap(self.h, other.h)
 
 proc detach*(self: gen_qpicture_types.QPicture, ): void =
-
   fcQPicture_detach(self.h)
 
 proc isDetached*(self: gen_qpicture_types.QPicture, ): bool =
-
   fcQPicture_isDetached(self.h)
 
 proc pictureFormat*(_: type gen_qpicture_types.QPicture, fileName: string): cstring =
-
   (fcQPicture_pictureFormat(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
 
 proc inputFormats*(_: type gen_qpicture_types.QPicture, ): seq[seq[byte]] =
-
   var v_ma = fcQPicture_inputFormats()
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -221,7 +203,6 @@ proc inputFormats*(_: type gen_qpicture_types.QPicture, ): seq[seq[byte]] =
   vx_ret
 
 proc outputFormats*(_: type gen_qpicture_types.QPicture, ): seq[seq[byte]] =
-
   var v_ma = fcQPicture_outputFormats()
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -233,7 +214,6 @@ proc outputFormats*(_: type gen_qpicture_types.QPicture, ): seq[seq[byte]] =
   vx_ret
 
 proc inputFormatList*(_: type gen_qpicture_types.QPicture, ): seq[string] =
-
   var v_ma = fcQPicture_inputFormatList()
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -245,7 +225,6 @@ proc inputFormatList*(_: type gen_qpicture_types.QPicture, ): seq[string] =
   vx_ret
 
 proc outputFormatList*(_: type gen_qpicture_types.QPicture, ): seq[string] =
-
   var v_ma = fcQPicture_outputFormatList()
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -257,27 +236,21 @@ proc outputFormatList*(_: type gen_qpicture_types.QPicture, ): seq[string] =
   vx_ret
 
 proc paintEngine*(self: gen_qpicture_types.QPicture, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fcQPicture_paintEngine(self.h))
 
-proc load2*(self: gen_qpicture_types.QPicture, dev: gen_qiodevice.QIODevice, format: cstring): bool =
-
+proc load*(self: gen_qpicture_types.QPicture, dev: gen_qiodevice.QIODevice, format: cstring): bool =
   fcQPicture_load2(self.h, dev.h, format)
 
-proc load22*(self: gen_qpicture_types.QPicture, fileName: string, format: cstring): bool =
-
+proc load*(self: gen_qpicture_types.QPicture, fileName: string, format: cstring): bool =
   fcQPicture_load22(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), format)
 
-proc save2*(self: gen_qpicture_types.QPicture, dev: gen_qiodevice.QIODevice, format: cstring): bool =
-
+proc save*(self: gen_qpicture_types.QPicture, dev: gen_qiodevice.QIODevice, format: cstring): bool =
   fcQPicture_save2(self.h, dev.h, format)
 
-proc save22*(self: gen_qpicture_types.QPicture, fileName: string, format: cstring): bool =
-
+proc save*(self: gen_qpicture_types.QPicture, fileName: string, format: cstring): bool =
   fcQPicture_save22(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), format)
 
 proc QPicturedevType*(self: gen_qpicture_types.QPicture, ): cint =
-
   fQPicture_virtualbase_devType(self.h)
 
 type QPicturedevTypeProc* = proc(): cint
@@ -295,7 +268,6 @@ proc miqt_exec_callback_QPicture_devType(self: ptr cQPicture, slot: int): cint {
 
   virtualReturn
 proc QPicturesetData*(self: gen_qpicture_types.QPicture, data: cstring, size: cuint): void =
-
   fQPicture_virtualbase_setData(self.h, data, size)
 
 type QPicturesetDataProc* = proc(data: cstring, size: cuint): void
@@ -315,7 +287,6 @@ proc miqt_exec_callback_QPicture_setData(self: ptr cQPicture, slot: int, data: c
 
   nimfunc[](slotval1, slotval2)
 proc QPicturepaintEngine*(self: gen_qpicture_types.QPicture, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQPicture_virtualbase_paintEngine(self.h))
 
 type QPicturepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -333,7 +304,6 @@ proc miqt_exec_callback_QPicture_paintEngine(self: ptr cQPicture, slot: int): po
 
   virtualReturn.h
 proc QPicturemetric*(self: gen_qpicture_types.QPicture, m: cint): cint =
-
   fQPicture_virtualbase_metric(self.h, cint(m))
 
 type QPicturemetricProc* = proc(m: cint): cint
@@ -353,7 +323,6 @@ proc miqt_exec_callback_QPicture_metric(self: ptr cQPicture, slot: int, m: cint)
 
   virtualReturn
 proc QPictureinitPainter*(self: gen_qpicture_types.QPicture, painter: gen_qpainter.QPainter): void =
-
   fQPicture_virtualbase_initPainter(self.h, painter.h)
 
 type QPictureinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -371,7 +340,6 @@ proc miqt_exec_callback_QPicture_initPainter(self: ptr cQPicture, slot: int, pai
 
   nimfunc[](slotval1)
 proc QPictureredirected*(self: gen_qpicture_types.QPicture, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQPicture_virtualbase_redirected(self.h, offset.h))
 
 type QPictureredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -391,7 +359,6 @@ proc miqt_exec_callback_QPicture_redirected(self: ptr cQPicture, slot: int, offs
 
   virtualReturn.h
 proc QPicturesharedPainter*(self: gen_qpicture_types.QPicture, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQPicture_virtualbase_sharedPainter(self.h))
 
 type QPicturesharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -414,116 +381,93 @@ proc delete*(self: gen_qpicture_types.QPicture) =
 func init*(T: type gen_qpicture_types.QPictureIO, h: ptr cQPictureIO): gen_qpicture_types.QPictureIO =
   T(h: h)
 proc create*(T: type gen_qpicture_types.QPictureIO, ): gen_qpicture_types.QPictureIO =
-
   gen_qpicture_types.QPictureIO.init(fcQPictureIO_new())
+
 proc create*(T: type gen_qpicture_types.QPictureIO, ioDevice: gen_qiodevice.QIODevice, format: cstring): gen_qpicture_types.QPictureIO =
-
   gen_qpicture_types.QPictureIO.init(fcQPictureIO_new2(ioDevice.h, format))
+
 proc create*(T: type gen_qpicture_types.QPictureIO, fileName: string, format: cstring): gen_qpicture_types.QPictureIO =
-
   gen_qpicture_types.QPictureIO.init(fcQPictureIO_new3(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), format))
-proc picture*(self: gen_qpicture_types.QPictureIO, ): gen_qpicture_types.QPicture =
 
+proc picture*(self: gen_qpicture_types.QPictureIO, ): gen_qpicture_types.QPicture =
   gen_qpicture_types.QPicture(h: fcQPictureIO_picture(self.h))
 
 proc status*(self: gen_qpicture_types.QPictureIO, ): cint =
-
   fcQPictureIO_status(self.h)
 
 proc format*(self: gen_qpicture_types.QPictureIO, ): cstring =
-
   (fcQPictureIO_format(self.h))
 
 proc ioDevice*(self: gen_qpicture_types.QPictureIO, ): gen_qiodevice.QIODevice =
-
   gen_qiodevice.QIODevice(h: fcQPictureIO_ioDevice(self.h))
 
 proc fileName*(self: gen_qpicture_types.QPictureIO, ): string =
-
   let v_ms = fcQPictureIO_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc quality*(self: gen_qpicture_types.QPictureIO, ): cint =
-
   fcQPictureIO_quality(self.h)
 
 proc description*(self: gen_qpicture_types.QPictureIO, ): string =
-
   let v_ms = fcQPictureIO_description(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc parameters*(self: gen_qpicture_types.QPictureIO, ): cstring =
-
   (fcQPictureIO_parameters(self.h))
 
 proc gamma*(self: gen_qpicture_types.QPictureIO, ): float32 =
-
   fcQPictureIO_gamma(self.h)
 
 proc setPicture*(self: gen_qpicture_types.QPictureIO, picture: gen_qpicture_types.QPicture): void =
-
   fcQPictureIO_setPicture(self.h, picture.h)
 
 proc setStatus*(self: gen_qpicture_types.QPictureIO, status: cint): void =
-
   fcQPictureIO_setStatus(self.h, status)
 
 proc setFormat*(self: gen_qpicture_types.QPictureIO, format: cstring): void =
-
   fcQPictureIO_setFormat(self.h, format)
 
 proc setIODevice*(self: gen_qpicture_types.QPictureIO, iODevice: gen_qiodevice.QIODevice): void =
-
   fcQPictureIO_setIODevice(self.h, iODevice.h)
 
 proc setFileName*(self: gen_qpicture_types.QPictureIO, fileName: string): void =
-
   fcQPictureIO_setFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc setQuality*(self: gen_qpicture_types.QPictureIO, quality: cint): void =
-
   fcQPictureIO_setQuality(self.h, quality)
 
 proc setDescription*(self: gen_qpicture_types.QPictureIO, description: string): void =
-
   fcQPictureIO_setDescription(self.h, struct_miqt_string(data: description, len: csize_t(len(description))))
 
 proc setParameters*(self: gen_qpicture_types.QPictureIO, parameters: cstring): void =
-
   fcQPictureIO_setParameters(self.h, parameters)
 
 proc setGamma*(self: gen_qpicture_types.QPictureIO, gamma: float32): void =
-
   fcQPictureIO_setGamma(self.h, gamma)
 
 proc read*(self: gen_qpicture_types.QPictureIO, ): bool =
-
   fcQPictureIO_read(self.h)
 
 proc write*(self: gen_qpicture_types.QPictureIO, ): bool =
-
   fcQPictureIO_write(self.h)
 
 proc pictureFormat*(_: type gen_qpicture_types.QPictureIO, fileName: string): seq[byte] =
-
   var v_bytearray = fcQPictureIO_pictureFormat(struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
-proc pictureFormatWithQIODevice*(_: type gen_qpicture_types.QPictureIO, param1: gen_qiodevice.QIODevice): seq[byte] =
-
+proc pictureFormat*(_: type gen_qpicture_types.QPictureIO, param1: gen_qiodevice.QIODevice): seq[byte] =
   var v_bytearray = fcQPictureIO_pictureFormatWithQIODevice(param1.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc inputFormats*(_: type gen_qpicture_types.QPictureIO, ): seq[seq[byte]] =
-
   var v_ma = fcQPictureIO_inputFormats()
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -535,7 +479,6 @@ proc inputFormats*(_: type gen_qpicture_types.QPictureIO, ): seq[seq[byte]] =
   vx_ret
 
 proc outputFormats*(_: type gen_qpicture_types.QPictureIO, ): seq[seq[byte]] =
-
   var v_ma = fcQPictureIO_outputFormats()
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)

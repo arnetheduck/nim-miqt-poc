@@ -59,29 +59,24 @@ proc fcQColorTransform_delete(self: pointer) {.importc: "QColorTransform_delete"
 func init*(T: type gen_qcolortransform_types.QColorTransform, h: ptr cQColorTransform): gen_qcolortransform_types.QColorTransform =
   T(h: h)
 proc create*(T: type gen_qcolortransform_types.QColorTransform, ): gen_qcolortransform_types.QColorTransform =
-
   gen_qcolortransform_types.QColorTransform.init(fcQColorTransform_new())
+
 proc create*(T: type gen_qcolortransform_types.QColorTransform, colorTransform: gen_qcolortransform_types.QColorTransform): gen_qcolortransform_types.QColorTransform =
-
   gen_qcolortransform_types.QColorTransform.init(fcQColorTransform_new2(colorTransform.h))
-proc operatorAssign*(self: gen_qcolortransform_types.QColorTransform, other: gen_qcolortransform_types.QColorTransform): void =
 
+proc operatorAssign*(self: gen_qcolortransform_types.QColorTransform, other: gen_qcolortransform_types.QColorTransform): void =
   fcQColorTransform_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qcolortransform_types.QColorTransform, other: gen_qcolortransform_types.QColorTransform): void =
-
   fcQColorTransform_swap(self.h, other.h)
 
 proc map*(self: gen_qcolortransform_types.QColorTransform, argb: cuint): cuint =
-
   fcQColorTransform_map(self.h, argb)
 
-proc mapWithRgba64*(self: gen_qcolortransform_types.QColorTransform, rgba64: gen_qrgba64.QRgba64): gen_qrgba64.QRgba64 =
-
+proc map*(self: gen_qcolortransform_types.QColorTransform, rgba64: gen_qrgba64.QRgba64): gen_qrgba64.QRgba64 =
   gen_qrgba64.QRgba64(h: fcQColorTransform_mapWithRgba64(self.h, rgba64.h))
 
-proc mapWithColor*(self: gen_qcolortransform_types.QColorTransform, color: gen_qcolor.QColor): gen_qcolor.QColor =
-
+proc map*(self: gen_qcolortransform_types.QColorTransform, color: gen_qcolor.QColor): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fcQColorTransform_mapWithColor(self.h, color.h))
 
 proc delete*(self: gen_qcolortransform_types.QColorTransform) =

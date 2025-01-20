@@ -76,33 +76,27 @@ proc fcQOcspResponse_delete(self: pointer) {.importc: "QOcspResponse_delete".}
 func init*(T: type gen_qocspresponse_types.QOcspResponse, h: ptr cQOcspResponse): gen_qocspresponse_types.QOcspResponse =
   T(h: h)
 proc create*(T: type gen_qocspresponse_types.QOcspResponse, ): gen_qocspresponse_types.QOcspResponse =
-
   gen_qocspresponse_types.QOcspResponse.init(fcQOcspResponse_new())
+
 proc create*(T: type gen_qocspresponse_types.QOcspResponse, other: gen_qocspresponse_types.QOcspResponse): gen_qocspresponse_types.QOcspResponse =
-
   gen_qocspresponse_types.QOcspResponse.init(fcQOcspResponse_new2(other.h))
-proc operatorAssign*(self: gen_qocspresponse_types.QOcspResponse, other: gen_qocspresponse_types.QOcspResponse): void =
 
+proc operatorAssign*(self: gen_qocspresponse_types.QOcspResponse, other: gen_qocspresponse_types.QOcspResponse): void =
   fcQOcspResponse_operatorAssign(self.h, other.h)
 
 proc certificateStatus*(self: gen_qocspresponse_types.QOcspResponse, ): cint =
-
   cint(fcQOcspResponse_certificateStatus(self.h))
 
 proc revocationReason*(self: gen_qocspresponse_types.QOcspResponse, ): cint =
-
   cint(fcQOcspResponse_revocationReason(self.h))
 
 proc responder*(self: gen_qocspresponse_types.QOcspResponse, ): gen_qsslcertificate.QSslCertificate =
-
   gen_qsslcertificate.QSslCertificate(h: fcQOcspResponse_responder(self.h))
 
 proc subject*(self: gen_qocspresponse_types.QOcspResponse, ): gen_qsslcertificate.QSslCertificate =
-
   gen_qsslcertificate.QSslCertificate(h: fcQOcspResponse_subject(self.h))
 
 proc swap*(self: gen_qocspresponse_types.QOcspResponse, other: gen_qocspresponse_types.QOcspResponse): void =
-
   fcQOcspResponse_swap(self.h, other.h)
 
 proc delete*(self: gen_qocspresponse_types.QOcspResponse) =

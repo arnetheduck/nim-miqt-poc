@@ -92,68 +92,57 @@ proc fcQQuickTextDocument_delete(self: pointer) {.importc: "QQuickTextDocument_d
 func init*(T: type gen_qquicktextdocument_types.QQuickTextDocument, h: ptr cQQuickTextDocument): gen_qquicktextdocument_types.QQuickTextDocument =
   T(h: h)
 proc create*(T: type gen_qquicktextdocument_types.QQuickTextDocument, parent: gen_qquickitem.QQuickItem): gen_qquicktextdocument_types.QQuickTextDocument =
-
   gen_qquicktextdocument_types.QQuickTextDocument.init(fcQQuickTextDocument_new(parent.h))
-proc metaObject*(self: gen_qquicktextdocument_types.QQuickTextDocument, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qquicktextdocument_types.QQuickTextDocument, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickTextDocument_metaObject(self.h))
 
 proc metacast*(self: gen_qquicktextdocument_types.QQuickTextDocument, param1: cstring): pointer =
-
   fcQQuickTextDocument_metacast(self.h, param1)
 
 proc metacall*(self: gen_qquicktextdocument_types.QQuickTextDocument, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQuickTextDocument_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring): string =
-
   let v_ms = fcQQuickTextDocument_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring): string =
-
   let v_ms = fcQQuickTextDocument_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc textDocument*(self: gen_qquicktextdocument_types.QQuickTextDocument, ): gen_qtextdocument.QTextDocument =
-
   gen_qtextdocument.QTextDocument(h: fcQQuickTextDocument_textDocument(self.h))
 
-proc tr2*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring): string =
   let v_ms = fcQQuickTextDocument_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickTextDocument_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring): string =
   let v_ms = fcQQuickTextDocument_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qquicktextdocument_types.QQuickTextDocument, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickTextDocument_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QQuickTextDocumentmetaObject*(self: gen_qquicktextdocument_types.QQuickTextDocument, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQuickTextDocument_virtualbase_metaObject(self.h))
 
 type QQuickTextDocumentmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -171,7 +160,6 @@ proc miqt_exec_callback_QQuickTextDocument_metaObject(self: ptr cQQuickTextDocum
 
   virtualReturn.h
 proc QQuickTextDocumentmetacast*(self: gen_qquicktextdocument_types.QQuickTextDocument, param1: cstring): pointer =
-
   fQQuickTextDocument_virtualbase_metacast(self.h, param1)
 
 type QQuickTextDocumentmetacastProc* = proc(param1: cstring): pointer
@@ -191,7 +179,6 @@ proc miqt_exec_callback_QQuickTextDocument_metacast(self: ptr cQQuickTextDocumen
 
   virtualReturn
 proc QQuickTextDocumentmetacall*(self: gen_qquicktextdocument_types.QQuickTextDocument, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQuickTextDocument_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQuickTextDocumentmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -215,7 +202,6 @@ proc miqt_exec_callback_QQuickTextDocument_metacall(self: ptr cQQuickTextDocumen
 
   virtualReturn
 proc QQuickTextDocumentevent*(self: gen_qquicktextdocument_types.QQuickTextDocument, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickTextDocument_virtualbase_event(self.h, event.h)
 
 type QQuickTextDocumenteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -235,7 +221,6 @@ proc miqt_exec_callback_QQuickTextDocument_event(self: ptr cQQuickTextDocument, 
 
   virtualReturn
 proc QQuickTextDocumenteventFilter*(self: gen_qquicktextdocument_types.QQuickTextDocument, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickTextDocument_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQuickTextDocumenteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -257,7 +242,6 @@ proc miqt_exec_callback_QQuickTextDocument_eventFilter(self: ptr cQQuickTextDocu
 
   virtualReturn
 proc QQuickTextDocumenttimerEvent*(self: gen_qquicktextdocument_types.QQuickTextDocument, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQuickTextDocument_virtualbase_timerEvent(self.h, event.h)
 
 type QQuickTextDocumenttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -275,7 +259,6 @@ proc miqt_exec_callback_QQuickTextDocument_timerEvent(self: ptr cQQuickTextDocum
 
   nimfunc[](slotval1)
 proc QQuickTextDocumentchildEvent*(self: gen_qquicktextdocument_types.QQuickTextDocument, event: gen_qcoreevent.QChildEvent): void =
-
   fQQuickTextDocument_virtualbase_childEvent(self.h, event.h)
 
 type QQuickTextDocumentchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -293,7 +276,6 @@ proc miqt_exec_callback_QQuickTextDocument_childEvent(self: ptr cQQuickTextDocum
 
   nimfunc[](slotval1)
 proc QQuickTextDocumentcustomEvent*(self: gen_qquicktextdocument_types.QQuickTextDocument, event: gen_qcoreevent.QEvent): void =
-
   fQQuickTextDocument_virtualbase_customEvent(self.h, event.h)
 
 type QQuickTextDocumentcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -311,7 +293,6 @@ proc miqt_exec_callback_QQuickTextDocument_customEvent(self: ptr cQQuickTextDocu
 
   nimfunc[](slotval1)
 proc QQuickTextDocumentconnectNotify*(self: gen_qquicktextdocument_types.QQuickTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickTextDocument_virtualbase_connectNotify(self.h, signal.h)
 
 type QQuickTextDocumentconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -329,7 +310,6 @@ proc miqt_exec_callback_QQuickTextDocument_connectNotify(self: ptr cQQuickTextDo
 
   nimfunc[](slotval1)
 proc QQuickTextDocumentdisconnectNotify*(self: gen_qquicktextdocument_types.QQuickTextDocument, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickTextDocument_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQuickTextDocumentdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -7,6 +7,7 @@ import (
 	"sort"
 	"strings"
 )
+import "regexp"
 
 type nimFileState struct {
 	stdImports         map[string]struct{}
@@ -35,13 +36,88 @@ func nimReservedWord(s string) bool {
 	}
 }
 
-func (nm CppMethod) nimMethodName() string {
-	// Also make the first letter uppercase so it becomes public in Go
-	tmp := nm.SafeMethodName()
+func safeMethodName(tmp string) string {
+	// Strip redundant Qt prefix, we know these are all Qt functions
+	tmp = strings.TrimPrefix(tmp, "qt_")
+
+	// Operator-overload methods have names not representable in binding
+	// languages. Replace more specific cases first
+	replacer := strings.NewReplacer(
+
+		// `operator ` with a trailing space only occurs in conversion operators
+		// Add a fake _ here, but it will be replaced with camelcase in the regex below
+		`operator `, `To `,
+		`::`, `__`, // e.g. `operator QCborError::Code`
+
+		`==`, `Equal`,
+		`!=`, `NotEqual`,
+		`>=`, `GreaterOrEqual`,
+		`<=`, `LesserOrEqual`,
+		`=`, `Assign`,
+
+		`<<`, `ShiftLeft`, // Qt classes use it more for stream functions e.g. in QDataStream
+		`>>`, `ShiftRight`,
+		`>`, `Greater`,
+		`<`, `Lesser`,
+
+		`+`, `Plus`,
+		`-`, `Minus`,
+		`*`, `Multiply`,
+		`/`, `Divide`,
+		`%`, `Modulo`,
+
+		`&&`, `LogicalAnd`,
+		`||`, `LogicalOr`,
+		`!`, `Not`,
+		`&`, `BitwiseAnd`,
+		`|`, `BitwiseOr`,
+		`~`, `BitwiseXor`,
+		`^`, `BitwiseNot`,
+
+		`->`, `PointerDereference`,
+		`[]`, `Subscript`,
+		`()`, `Call`,
+	)
+	tmp = replacer.Replace(tmp)
+
+	// Replace spaces (e.g. `operator long long` with CamelCase
+	tmp = regexp.MustCompile(` ([a-zA-Z])`).ReplaceAllStringFunc(tmp, func(match string) string { return strings.ToUpper(match[1:]) })
+
+	// Also replace any underscore_case with CamelCase
+	// Only catch lowercase letters in this one, not uppercase, as it causes a
+	// lot of churn for Scintilla
+	tmp = regexp.MustCompile(`_([a-z])`).ReplaceAllStringFunc(tmp, func(match string) string { return strings.ToUpper(match[1:]) })
 	if nimReservedWord(tmp) {
 		tmp += "X"
 	}
+
 	return tmp
+}
+func (nm CppMethod) rawMethodName() string {
+	return safeMethodName(nm.MethodName)
+}
+
+func (nm CppMethod) nimMethodName() string {
+	return safeMethodName(nm.CppCallTarget())
+}
+
+func uniqueName(gfs *nimFileState, sigs map[string]struct{}, m CppMethod) string {
+	paramsX := m.nimMethodName()
+	for _, p := range m.Parameters {
+		paramsX = paramsX + "," + p.renderTypeNim(gfs, false)
+	}
+	orig := paramsX
+	j := 0
+	for {
+		if _, ok := sigs[paramsX]; ok {
+			j += 1
+			paramsX = maybeSuffix(j) + orig
+		} else {
+			sigs[paramsX] = struct{}{}
+			break
+		}
+	}
+	return m.nimMethodName() + maybeSuffix(j)
 }
 
 func (p CppParameter) nimParameterName() string {
@@ -353,7 +429,6 @@ func (gfs *nimFileState) emitParametersNim2CABIForwarding(m CppMethod) (preamble
 
 	skipNext := false
 
-	preamble += "\n"
 	for i, p := range m.Parameters {
 
 		if IsArgcArgv(m.Parameters, i) {
@@ -881,16 +956,16 @@ func init*(T: type %[1]s, h: ptr %[2]s): %[1]s =
 `, rawClassName, maybeSuffix(i), cabiParams, cabiNewName(c, i))
 
 			nimParams := gfs.emitParametersNim(ctor.Parameters, false)
-			// Use c abi for uniqueness to avoid enum typedef-driven conflicts
 			paramsX := ""
 			for _, p := range ctor.Parameters {
-				paramsX = paramsX + "," + p.renderTypeNim(&gfs, true)
+				paramsX = paramsX + "," + p.renderTypeNim(&gfs, false)
 			}
+			orig := paramsX
 			j := 0
 			for {
 				if _, ok := sigs[paramsX]; ok {
 					j += 1
-					paramsX = maybeSuffix(j) + nimParams
+					paramsX = maybeSuffix(j) + orig
 				} else {
 					sigs[paramsX] = struct{}{}
 					break
@@ -899,12 +974,12 @@ func init*(T: type %[1]s, h: ptr %[2]s): %[1]s =
 
 			fmt.Fprintf(&ret, `proc create%[2]s*(T: type %[3]s, %[4]s): %[3]s =
 %[5]s  %[3]s.init(f%[6]s_new%[1]s(%[7]s))
+
 `, maybeSuffix(i), maybeSuffix(j), nimPkgClassName, nimParams,
 				preamble, rawClassName, forwarding)
 		}
 
 		for _, m := range c.Methods {
-
 			if m.IsProtected {
 				continue // Don't add a direct call for it
 			}
@@ -913,7 +988,8 @@ func init*(T: type %[1]s, h: ptr %[2]s): %[1]s =
 
 			returnTypeDecl := m.ReturnType.renderReturnTypeNim(&gfs, false)
 			rawReturnTypeDecl := m.ReturnType.renderReturnTypeNim(&gfs, true)
-			rawMethodName := "f" + rawClassName + `_` + m.nimMethodName()
+			rawMethodName := "f" + rawClassName + `_` + m.rawMethodName()
+			nimMethodName := uniqueName(&gfs, sigs, m)
 			rvalue := rawMethodName + `(` + forwarding + `)`
 
 			params := ifv(m.IsStatic, `_: type `, `self: `) + nimPkgClassName + ", " + gfs.emitParametersNim(m.Parameters, false)
@@ -926,7 +1002,7 @@ func init*(T: type %[1]s, h: ptr %[2]s): %[1]s =
 
 			fmt.Fprintf(&ret, `proc %[1]s*(%[2]s): %[3]s =
 %[4]s%[5]s
-`, m.nimMethodName(), params, returnTypeDecl, preamble, gfs.emitCabiToNim("", m.ReturnType, rvalue))
+`, nimMethodName, params, returnTypeDecl, preamble, gfs.emitCabiToNim("", m.ReturnType, rvalue))
 
 			// Add Connect() wrappers for signal functions
 			if m.IsSignal {
@@ -942,27 +1018,26 @@ func init*(T: type %[1]s, h: ptr %[2]s): %[1]s =
 					conversion += gfs.emitCabiToNim(fmt.Sprintf("let slotval%d = ", i+1), pp, pp.nimParameterName()) + "\n"
 				}
 
+				cbTypeName := nimClassName + m.rawMethodName() + "Slot"
 				cbType := `proc(` + gfs.emitParametersNim(m.Parameters, false) + `)`
 
 				fmt.Fprintf(&cabi, `proc f%[1]s(self: pointer, slot: int) {.importc: "%[1]s".}
-`,
-					cabiConnectName(c, m))
+`, cabiConnectName(c, m))
 
-				fmt.Fprintf(&ret, `proc %[1]s(%[2]s) {.exportc.} =
-  type Cb = %[3]s
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-%[4]s
-  nimfunc[](%[5]s)
+				fmt.Fprintf(&ret, `type %[1]s* = %[2]s
+proc %[3]s(%[4]s) {.exportc.} =
+  let nimfunc = cast[ptr %[1]s](cast[pointer](slot))
+%[5]s  nimfunc[](%[6]s)
 
-proc on%[7]s*(self: %[8]s, slot: %[3]s) =
-  type Cb = %[3]s
-  var tmp = new Cb
+proc on%[8]s*(self: %[9]s, slot: %[1]s) =
+  var tmp = new %[1]s
   tmp[] = slot
   GC_ref(tmp)
-  f%[6]s(self.h, cast[int](addr tmp[]))
-`,
-					cabiCallbackName(c, m), strings.Join(namedParams, ", "), cbType, conversion,
-					strings.Join(paramNames, `, `), cabiConnectName(c, m), m.nimMethodName(), nimPkgClassName)
+  f%[7]s(self.h, cast[int](addr tmp[]))
+
+`, cbTypeName, cbType, cabiCallbackName(c, m), strings.Join(namedParams, ", "),
+					conversion, strings.Join(paramNames, `, `), cabiConnectName(c, m),
+					m.nimMethodName(), nimPkgClassName)
 			}
 		}
 
@@ -1009,12 +1084,12 @@ proc on%[7]s*(self: %[8]s, slot: %[3]s) =
 				}
 
 				cabiReturnType := m.ReturnType.parameterTypeNim(&gfs)
-				cbTypeName := nimClassName + m.nimMethodName() + "Proc"
+				cbTypeName := nimClassName + m.rawMethodName() + "Proc"
 				cbType := `proc(`
 				cbType += gfs.emitParametersNim(m.Parameters, false)
 				cbType += `): ` + m.ReturnType.renderReturnTypeNim(&gfs, false)
 
-				cabi.WriteString(`proc f` + rawClassName + `_override_virtual_` + m.nimMethodName() + `(self: pointer, slot: int) {.importc: "` + cabiOverrideVirtualName(c, m) + `".}
+				cabi.WriteString(`proc f` + rawClassName + `_override_virtual_` + m.rawMethodName() + `(self: pointer, slot: int) {.importc: "` + cabiOverrideVirtualName(c, m) + `".}
 `)
 
 				ret.WriteString(`type ` + cbTypeName + "* = " + cbType + `
@@ -1023,7 +1098,7 @@ proc on` + m.nimMethodName() + `*(self: ` + nimPkgClassName + `, slot: ` + cbTyp
   var tmp = new ` + cbTypeName + `
   tmp[] = slot
   GC_ref(tmp)
-  f` + rawClassName + `_override_virtual_` + m.nimMethodName() + `(self.h, cast[int](addr tmp[]))
+  f` + rawClassName + `_override_virtual_` + m.rawMethodName() + `(self.h, cast[int](addr tmp[]))
 
 proc ` + cabiCallbackName(c, m) + `(self: ptr ` + rawClassName + `, slot: int` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(namedParams, `, `) + `): ` + cabiReturnType + ` {.exportc: "` + cabiCallbackName(c, m) + ` ".} =
   var nimfunc = cast[ptr ` + cbTypeName + `](cast[pointer](slot))

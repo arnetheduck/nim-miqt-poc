@@ -142,139 +142,108 @@ proc fcQVideoFrame_delete(self: pointer) {.importc: "QVideoFrame_delete".}
 func init*(T: type gen_qvideoframe_types.QVideoFrame, h: ptr cQVideoFrame): gen_qvideoframe_types.QVideoFrame =
   T(h: h)
 proc create*(T: type gen_qvideoframe_types.QVideoFrame, ): gen_qvideoframe_types.QVideoFrame =
-
   gen_qvideoframe_types.QVideoFrame.init(fcQVideoFrame_new())
+
 proc create*(T: type gen_qvideoframe_types.QVideoFrame, bytes: cint, size: gen_qsize.QSize, bytesPerLine: cint, format: cint): gen_qvideoframe_types.QVideoFrame =
-
   gen_qvideoframe_types.QVideoFrame.init(fcQVideoFrame_new2(bytes, size.h, bytesPerLine, cint(format)))
+
 proc create*(T: type gen_qvideoframe_types.QVideoFrame, image: gen_qimage.QImage): gen_qvideoframe_types.QVideoFrame =
-
   gen_qvideoframe_types.QVideoFrame.init(fcQVideoFrame_new3(image.h))
-proc create2*(T: type gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): gen_qvideoframe_types.QVideoFrame =
 
+proc create*(T: type gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): gen_qvideoframe_types.QVideoFrame =
   gen_qvideoframe_types.QVideoFrame.init(fcQVideoFrame_new4(other.h))
-proc operatorAssign*(self: gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): void =
 
+proc operatorAssign*(self: gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): void =
   fcQVideoFrame_operatorAssign(self.h, other.h)
 
 proc operatorEqual*(self: gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): bool =
-
   fcQVideoFrame_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qvideoframe_types.QVideoFrame, other: gen_qvideoframe_types.QVideoFrame): bool =
-
   fcQVideoFrame_operatorNotEqual(self.h, other.h)
 
 proc isValid*(self: gen_qvideoframe_types.QVideoFrame, ): bool =
-
   fcQVideoFrame_isValid(self.h)
 
 proc pixelFormat*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
-
   cint(fcQVideoFrame_pixelFormat(self.h))
 
 proc handleType*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
-
   cint(fcQVideoFrame_handleType(self.h))
 
 proc size*(self: gen_qvideoframe_types.QVideoFrame, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQVideoFrame_size(self.h))
 
 proc width*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
-
   fcQVideoFrame_width(self.h)
 
 proc height*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
-
   fcQVideoFrame_height(self.h)
 
 proc fieldType*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
-
   cint(fcQVideoFrame_fieldType(self.h))
 
 proc setFieldType*(self: gen_qvideoframe_types.QVideoFrame, fieldType: cint): void =
-
   fcQVideoFrame_setFieldType(self.h, cint(fieldType))
 
 proc isMapped*(self: gen_qvideoframe_types.QVideoFrame, ): bool =
-
   fcQVideoFrame_isMapped(self.h)
 
 proc isReadable*(self: gen_qvideoframe_types.QVideoFrame, ): bool =
-
   fcQVideoFrame_isReadable(self.h)
 
 proc isWritable*(self: gen_qvideoframe_types.QVideoFrame, ): bool =
-
   fcQVideoFrame_isWritable(self.h)
 
 proc mapMode*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
-
   cint(fcQVideoFrame_mapMode(self.h))
 
 proc map*(self: gen_qvideoframe_types.QVideoFrame, mode: cint): bool =
-
   fcQVideoFrame_map(self.h, cint(mode))
 
 proc unmap*(self: gen_qvideoframe_types.QVideoFrame, ): void =
-
   fcQVideoFrame_unmap(self.h)
 
 proc bytesPerLine*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
-
   fcQVideoFrame_bytesPerLine(self.h)
 
-proc bytesPerLineWithPlane*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): cint =
-
+proc bytesPerLine*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): cint =
   fcQVideoFrame_bytesPerLineWithPlane(self.h, plane)
 
 proc bits*(self: gen_qvideoframe_types.QVideoFrame, ): ptr uint8 =
-
   fcQVideoFrame_bits(self.h)
 
-proc bitsWithPlane*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): ptr uint8 =
-
+proc bits*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): ptr uint8 =
   fcQVideoFrame_bitsWithPlane(self.h, plane)
 
 proc bits2*(self: gen_qvideoframe_types.QVideoFrame, ): ptr uint8 =
-
   fcQVideoFrame_bits2(self.h)
 
-proc bits3*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): ptr uint8 =
-
+proc bits2*(self: gen_qvideoframe_types.QVideoFrame, plane: cint): ptr uint8 =
   fcQVideoFrame_bits3(self.h, plane)
 
 proc mappedBytes*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
-
   fcQVideoFrame_mappedBytes(self.h)
 
 proc planeCount*(self: gen_qvideoframe_types.QVideoFrame, ): cint =
-
   fcQVideoFrame_planeCount(self.h)
 
 proc handle*(self: gen_qvideoframe_types.QVideoFrame, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQVideoFrame_handle(self.h))
 
 proc startTime*(self: gen_qvideoframe_types.QVideoFrame, ): clonglong =
-
   fcQVideoFrame_startTime(self.h)
 
 proc setStartTime*(self: gen_qvideoframe_types.QVideoFrame, time: clonglong): void =
-
   fcQVideoFrame_setStartTime(self.h, time)
 
 proc endTime*(self: gen_qvideoframe_types.QVideoFrame, ): clonglong =
-
   fcQVideoFrame_endTime(self.h)
 
 proc setEndTime*(self: gen_qvideoframe_types.QVideoFrame, time: clonglong): void =
-
   fcQVideoFrame_setEndTime(self.h, time)
 
 proc availableMetaData*(self: gen_qvideoframe_types.QVideoFrame, ): Table[string,gen_qvariant.QVariant] =
-
   var v_mm = fcQVideoFrame_availableMetaData(self.h)
   var vx_ret: Table[string, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[struct_miqt_string]](v_mm.keys)
@@ -291,23 +260,18 @@ proc availableMetaData*(self: gen_qvideoframe_types.QVideoFrame, ): Table[string
   vx_ret
 
 proc metaData*(self: gen_qvideoframe_types.QVideoFrame, key: string): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQVideoFrame_metaData(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
 proc setMetaData*(self: gen_qvideoframe_types.QVideoFrame, key: string, value: gen_qvariant.QVariant): void =
-
   fcQVideoFrame_setMetaData(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), value.h)
 
 proc image*(self: gen_qvideoframe_types.QVideoFrame, ): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fcQVideoFrame_image(self.h))
 
 proc pixelFormatFromImageFormat*(_: type gen_qvideoframe_types.QVideoFrame, format: cint): cint =
-
   cint(fcQVideoFrame_pixelFormatFromImageFormat(cint(format)))
 
 proc imageFormatFromPixelFormat*(_: type gen_qvideoframe_types.QVideoFrame, format: cint): cint =
-
   cint(fcQVideoFrame_imageFormatFromPixelFormat(cint(format)))
 
 proc delete*(self: gen_qvideoframe_types.QVideoFrame) =

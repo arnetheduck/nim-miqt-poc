@@ -82,32 +82,27 @@ proc fcQAccessibleWidget_keyBindingsForAction(self: pointer, actionName: struct_
 func init*(T: type gen_qaccessiblewidget_types.QAccessibleWidget, h: ptr cQAccessibleWidget): gen_qaccessiblewidget_types.QAccessibleWidget =
   T(h: h)
 proc create*(T: type gen_qaccessiblewidget_types.QAccessibleWidget, o: gen_qwidget.QWidget): gen_qaccessiblewidget_types.QAccessibleWidget =
-
   gen_qaccessiblewidget_types.QAccessibleWidget.init(fcQAccessibleWidget_new(o.h))
+
 proc create*(T: type gen_qaccessiblewidget_types.QAccessibleWidget, o: gen_qwidget.QWidget, r: cint): gen_qaccessiblewidget_types.QAccessibleWidget =
-
   gen_qaccessiblewidget_types.QAccessibleWidget.init(fcQAccessibleWidget_new2(o.h, cint(r)))
+
 proc create*(T: type gen_qaccessiblewidget_types.QAccessibleWidget, o: gen_qwidget.QWidget, r: cint, name: string): gen_qaccessiblewidget_types.QAccessibleWidget =
-
   gen_qaccessiblewidget_types.QAccessibleWidget.init(fcQAccessibleWidget_new3(o.h, cint(r), struct_miqt_string(data: name, len: csize_t(len(name)))))
-proc isValid*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): bool =
 
+proc isValid*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): bool =
   fcQAccessibleWidget_isValid(self.h)
 
 proc window*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qwindow.QWindow =
-
   gen_qwindow.QWindow(h: fcQAccessibleWidget_window(self.h))
 
 proc childCount*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): cint =
-
   fcQAccessibleWidget_childCount(self.h)
 
 proc indexOfChild*(self: gen_qaccessiblewidget_types.QAccessibleWidget, child: gen_qaccessible.QAccessibleInterface): cint =
-
   fcQAccessibleWidget_indexOfChild(self.h, child.h)
 
 proc relations*(self: gen_qaccessiblewidget_types.QAccessibleWidget, match: cint): seq[tuple[first: gen_qaccessible.QAccessibleInterface, second: cint]] =
-
   var v_ma = fcQAccessibleWidget_relations(self.h, cint(match))
   var vx_ret = newSeq[tuple[first: gen_qaccessible.QAccessibleInterface, second: cint]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_map]](v_ma.data)
@@ -123,50 +118,39 @@ proc relations*(self: gen_qaccessiblewidget_types.QAccessibleWidget, match: cint
   vx_ret
 
 proc focusChild*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fcQAccessibleWidget_focusChild(self.h))
 
 proc rect*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQAccessibleWidget_rect(self.h))
 
 proc parent*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fcQAccessibleWidget_parent(self.h))
 
 proc child*(self: gen_qaccessiblewidget_types.QAccessibleWidget, index: cint): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fcQAccessibleWidget_child(self.h, index))
 
 proc text*(self: gen_qaccessiblewidget_types.QAccessibleWidget, t: cint): string =
-
   let v_ms = fcQAccessibleWidget_text(self.h, cint(t))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc role*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): cint =
-
   cint(fcQAccessibleWidget_role(self.h))
 
 proc state*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qaccessible_base.QAccessibleState =
-
   gen_qaccessible_base.QAccessibleState(h: fcQAccessibleWidget_state(self.h))
 
 proc foregroundColor*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQAccessibleWidget_foregroundColor(self.h))
 
 proc backgroundColor*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQAccessibleWidget_backgroundColor(self.h))
 
 proc interfaceCast*(self: gen_qaccessiblewidget_types.QAccessibleWidget, t: cint): pointer =
-
   fcQAccessibleWidget_interfaceCast(self.h, cint(t))
 
 proc actionNames*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): seq[string] =
-
   var v_ma = fcQAccessibleWidget_actionNames(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -178,11 +162,9 @@ proc actionNames*(self: gen_qaccessiblewidget_types.QAccessibleWidget, ): seq[st
   vx_ret
 
 proc doAction*(self: gen_qaccessiblewidget_types.QAccessibleWidget, actionName: string): void =
-
   fcQAccessibleWidget_doAction(self.h, struct_miqt_string(data: actionName, len: csize_t(len(actionName))))
 
 proc keyBindingsForAction*(self: gen_qaccessiblewidget_types.QAccessibleWidget, actionName: string): seq[string] =
-
   var v_ma = fcQAccessibleWidget_keyBindingsForAction(self.h, struct_miqt_string(data: actionName, len: csize_t(len(actionName))))
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)

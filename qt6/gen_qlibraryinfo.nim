@@ -74,33 +74,27 @@ proc fcQLibraryInfo_delete(self: pointer) {.importc: "QLibraryInfo_delete".}
 func init*(T: type gen_qlibraryinfo_types.QLibraryInfo, h: ptr cQLibraryInfo): gen_qlibraryinfo_types.QLibraryInfo =
   T(h: h)
 proc build*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): cstring =
-
   (fcQLibraryInfo_build())
 
 proc isDebugBuild*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): bool =
-
   fcQLibraryInfo_isDebugBuild()
 
 proc version*(_: type gen_qlibraryinfo_types.QLibraryInfo, ): gen_qversionnumber.QVersionNumber =
-
   gen_qversionnumber.QVersionNumber(h: fcQLibraryInfo_version())
 
 proc path*(_: type gen_qlibraryinfo_types.QLibraryInfo, p: cint): string =
-
   let v_ms = fcQLibraryInfo_path(cint(p))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc location*(_: type gen_qlibraryinfo_types.QLibraryInfo, location: cint): string =
-
   let v_ms = fcQLibraryInfo_location(cint(location))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc platformPluginArguments*(_: type gen_qlibraryinfo_types.QLibraryInfo, platformName: string): seq[string] =
-
   var v_ma = fcQLibraryInfo_platformPluginArguments(struct_miqt_string(data: platformName, len: csize_t(len(platformName))))
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)

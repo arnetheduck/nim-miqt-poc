@@ -110,192 +110,150 @@ proc fcQRegion_delete(self: pointer) {.importc: "QRegion_delete".}
 func init*(T: type gen_qregion_types.QRegion, h: ptr cQRegion): gen_qregion_types.QRegion =
   T(h: h)
 proc create*(T: type gen_qregion_types.QRegion, ): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion.init(fcQRegion_new())
+
 proc create*(T: type gen_qregion_types.QRegion, x: cint, y: cint, w: cint, h: cint): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion.init(fcQRegion_new2(x, y, w, h))
+
 proc create*(T: type gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion.init(fcQRegion_new3(r.h))
-proc create2*(T: type gen_qregion_types.QRegion, region: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
 
+proc create*(T: type gen_qregion_types.QRegion, region: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion.init(fcQRegion_new4(region.h))
-proc create2*(T: type gen_qregion_types.QRegion, bitmap: gen_qbitmap.QBitmap): gen_qregion_types.QRegion =
 
+proc create*(T: type gen_qregion_types.QRegion, bitmap: gen_qbitmap.QBitmap): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion.init(fcQRegion_new5(bitmap.h))
+
 proc create*(T: type gen_qregion_types.QRegion, x: cint, y: cint, w: cint, h: cint, t: cint): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion.init(fcQRegion_new6(x, y, w, h, cint(t)))
+
 proc create*(T: type gen_qregion_types.QRegion, r: gen_qrect.QRect, t: cint): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion.init(fcQRegion_new7(r.h, cint(t)))
-proc operatorAssign*(self: gen_qregion_types.QRegion, param1: gen_qregion_types.QRegion): void =
 
+proc operatorAssign*(self: gen_qregion_types.QRegion, param1: gen_qregion_types.QRegion): void =
   fcQRegion_operatorAssign(self.h, param1.h)
 
 proc swap*(self: gen_qregion_types.QRegion, other: gen_qregion_types.QRegion): void =
-
   fcQRegion_swap(self.h, other.h)
 
 proc isEmpty*(self: gen_qregion_types.QRegion, ): bool =
-
   fcQRegion_isEmpty(self.h)
 
 proc isNull*(self: gen_qregion_types.QRegion, ): bool =
-
   fcQRegion_isNull(self.h)
 
 proc begin*(self: gen_qregion_types.QRegion, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQRegion_begin(self.h))
 
 proc cbegin*(self: gen_qregion_types.QRegion, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQRegion_cbegin(self.h))
 
 proc endX*(self: gen_qregion_types.QRegion, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQRegion_endX(self.h))
 
 proc cend*(self: gen_qregion_types.QRegion, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQRegion_cend(self.h))
 
 proc contains*(self: gen_qregion_types.QRegion, p: gen_qpoint.QPoint): bool =
-
   fcQRegion_contains(self.h, p.h)
 
-proc containsWithQRect*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): bool =
-
+proc contains*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): bool =
   fcQRegion_containsWithQRect(self.h, r.h)
 
 proc translate*(self: gen_qregion_types.QRegion, dx: cint, dy: cint): void =
-
   fcQRegion_translate(self.h, dx, dy)
 
-proc translateWithQPoint*(self: gen_qregion_types.QRegion, p: gen_qpoint.QPoint): void =
-
+proc translate*(self: gen_qregion_types.QRegion, p: gen_qpoint.QPoint): void =
   fcQRegion_translateWithQPoint(self.h, p.h)
 
 proc translated*(self: gen_qregion_types.QRegion, dx: cint, dy: cint): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_translated(self.h, dx, dy))
 
-proc translatedWithQPoint*(self: gen_qregion_types.QRegion, p: gen_qpoint.QPoint): gen_qregion_types.QRegion =
-
+proc translated*(self: gen_qregion_types.QRegion, p: gen_qpoint.QPoint): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion(h: fcQRegion_translatedWithQPoint(self.h, p.h))
 
 proc united*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_united(self.h, r.h))
 
-proc unitedWithQRect*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
-
+proc united*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion(h: fcQRegion_unitedWithQRect(self.h, r.h))
 
 proc intersected*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_intersected(self.h, r.h))
 
-proc intersectedWithQRect*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
-
+proc intersected*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion(h: fcQRegion_intersectedWithQRect(self.h, r.h))
 
 proc subtracted*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_subtracted(self.h, r.h))
 
 proc xored*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_xored(self.h, r.h))
 
 proc intersects*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): bool =
-
   fcQRegion_intersects(self.h, r.h)
 
-proc intersectsWithQRect*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): bool =
-
+proc intersects*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): bool =
   fcQRegion_intersectsWithQRect(self.h, r.h)
 
 proc boundingRect*(self: gen_qregion_types.QRegion, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQRegion_boundingRect(self.h))
 
 proc setRects*(self: gen_qregion_types.QRegion, rect: gen_qrect.QRect, num: cint): void =
-
   fcQRegion_setRects(self.h, rect.h, num)
 
 proc rectCount*(self: gen_qregion_types.QRegion, ): cint =
-
   fcQRegion_rectCount(self.h)
 
 proc operatorBitwiseOr*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_operatorBitwiseOr(self.h, r.h))
 
 proc operatorPlus*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_operatorPlus(self.h, r.h))
 
-proc operatorPlusWithQRect*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
-
+proc operatorPlus*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion(h: fcQRegion_operatorPlusWithQRect(self.h, r.h))
 
 proc operatorBitwiseAnd*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_operatorBitwiseAnd(self.h, r.h))
 
-proc operatorBitwiseAndWithQRect*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
-
+proc operatorBitwiseAnd*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion(h: fcQRegion_operatorBitwiseAndWithQRect(self.h, r.h))
 
 proc operatorMinus*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_operatorMinus(self.h, r.h))
 
 proc operatorBitwiseNot*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_operatorBitwiseNot(self.h, r.h))
 
 proc operatorBitwiseOrAssign*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): void =
-
   fcQRegion_operatorBitwiseOrAssign(self.h, r.h)
 
 proc operatorPlusAssign*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_operatorPlusAssign(self.h, r.h))
 
-proc operatorPlusAssignWithQRect*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
-
+proc operatorPlusAssign*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): gen_qregion_types.QRegion =
   gen_qregion_types.QRegion(h: fcQRegion_operatorPlusAssignWithQRect(self.h, r.h))
 
 proc operatorBitwiseAndAssign*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): void =
-
   fcQRegion_operatorBitwiseAndAssign(self.h, r.h)
 
-proc operatorBitwiseAndAssignWithQRect*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): void =
-
+proc operatorBitwiseAndAssign*(self: gen_qregion_types.QRegion, r: gen_qrect.QRect): void =
   fcQRegion_operatorBitwiseAndAssignWithQRect(self.h, r.h)
 
 proc operatorMinusAssign*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): gen_qregion_types.QRegion =
-
   gen_qregion_types.QRegion(h: fcQRegion_operatorMinusAssign(self.h, r.h))
 
 proc operatorBitwiseNotAssign*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): void =
-
   fcQRegion_operatorBitwiseNotAssign(self.h, r.h)
 
 proc operatorEqual*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): bool =
-
   fcQRegion_operatorEqual(self.h, r.h)
 
 proc operatorNotEqual*(self: gen_qregion_types.QRegion, r: gen_qregion_types.QRegion): bool =
-
   fcQRegion_operatorNotEqual(self.h, r.h)
 
 proc ToQVariant*(self: gen_qregion_types.QRegion, ): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQRegion_ToQVariant(self.h))
 
 proc delete*(self: gen_qregion_types.QRegion) =

@@ -290,378 +290,304 @@ proc fcQTabBar_delete(self: pointer) {.importc: "QTabBar_delete".}
 func init*(T: type gen_qtabbar_types.QTabBar, h: ptr cQTabBar): gen_qtabbar_types.QTabBar =
   T(h: h)
 proc create*(T: type gen_qtabbar_types.QTabBar, parent: gen_qwidget.QWidget): gen_qtabbar_types.QTabBar =
-
   gen_qtabbar_types.QTabBar.init(fcQTabBar_new(parent.h))
+
 proc create*(T: type gen_qtabbar_types.QTabBar, ): gen_qtabbar_types.QTabBar =
-
   gen_qtabbar_types.QTabBar.init(fcQTabBar_new2())
-proc metaObject*(self: gen_qtabbar_types.QTabBar, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtabbar_types.QTabBar, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTabBar_metaObject(self.h))
 
 proc metacast*(self: gen_qtabbar_types.QTabBar, param1: cstring): pointer =
-
   fcQTabBar_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtabbar_types.QTabBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTabBar_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtabbar_types.QTabBar, s: cstring): string =
-
   let v_ms = fcQTabBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc shape*(self: gen_qtabbar_types.QTabBar, ): cint =
-
   cint(fcQTabBar_shape(self.h))
 
 proc setShape*(self: gen_qtabbar_types.QTabBar, shape: cint): void =
-
   fcQTabBar_setShape(self.h, cint(shape))
 
 proc addTab*(self: gen_qtabbar_types.QTabBar, text: string): cint =
-
   fcQTabBar_addTab(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc addTab2*(self: gen_qtabbar_types.QTabBar, icon: gen_qicon.QIcon, text: string): cint =
-
+proc addTab*(self: gen_qtabbar_types.QTabBar, icon: gen_qicon.QIcon, text: string): cint =
   fcQTabBar_addTab2(self.h, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc insertTab*(self: gen_qtabbar_types.QTabBar, index: cint, text: string): cint =
-
   fcQTabBar_insertTab(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))))
 
-proc insertTab2*(self: gen_qtabbar_types.QTabBar, index: cint, icon: gen_qicon.QIcon, text: string): cint =
-
+proc insertTab*(self: gen_qtabbar_types.QTabBar, index: cint, icon: gen_qicon.QIcon, text: string): cint =
   fcQTabBar_insertTab2(self.h, index, icon.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc removeTab*(self: gen_qtabbar_types.QTabBar, index: cint): void =
-
   fcQTabBar_removeTab(self.h, index)
 
 proc moveTab*(self: gen_qtabbar_types.QTabBar, fromVal: cint, to: cint): void =
-
   fcQTabBar_moveTab(self.h, fromVal, to)
 
 proc isTabEnabled*(self: gen_qtabbar_types.QTabBar, index: cint): bool =
-
   fcQTabBar_isTabEnabled(self.h, index)
 
 proc setTabEnabled*(self: gen_qtabbar_types.QTabBar, index: cint, enabled: bool): void =
-
   fcQTabBar_setTabEnabled(self.h, index, enabled)
 
 proc isTabVisible*(self: gen_qtabbar_types.QTabBar, index: cint): bool =
-
   fcQTabBar_isTabVisible(self.h, index)
 
 proc setTabVisible*(self: gen_qtabbar_types.QTabBar, index: cint, visible: bool): void =
-
   fcQTabBar_setTabVisible(self.h, index, visible)
 
 proc tabText*(self: gen_qtabbar_types.QTabBar, index: cint): string =
-
   let v_ms = fcQTabBar_tabText(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTabText*(self: gen_qtabbar_types.QTabBar, index: cint, text: string): void =
-
   fcQTabBar_setTabText(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc tabTextColor*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQTabBar_tabTextColor(self.h, index))
 
 proc setTabTextColor*(self: gen_qtabbar_types.QTabBar, index: cint, color: gen_qcolor.QColor): void =
-
   fcQTabBar_setTabTextColor(self.h, index, color.h)
 
 proc tabIcon*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQTabBar_tabIcon(self.h, index))
 
 proc setTabIcon*(self: gen_qtabbar_types.QTabBar, index: cint, icon: gen_qicon.QIcon): void =
-
   fcQTabBar_setTabIcon(self.h, index, icon.h)
 
 proc elideMode*(self: gen_qtabbar_types.QTabBar, ): cint =
-
   cint(fcQTabBar_elideMode(self.h))
 
 proc setElideMode*(self: gen_qtabbar_types.QTabBar, mode: cint): void =
-
   fcQTabBar_setElideMode(self.h, cint(mode))
 
 proc setTabToolTip*(self: gen_qtabbar_types.QTabBar, index: cint, tip: string): void =
-
   fcQTabBar_setTabToolTip(self.h, index, struct_miqt_string(data: tip, len: csize_t(len(tip))))
 
 proc tabToolTip*(self: gen_qtabbar_types.QTabBar, index: cint): string =
-
   let v_ms = fcQTabBar_tabToolTip(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTabWhatsThis*(self: gen_qtabbar_types.QTabBar, index: cint, text: string): void =
-
   fcQTabBar_setTabWhatsThis(self.h, index, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc tabWhatsThis*(self: gen_qtabbar_types.QTabBar, index: cint): string =
-
   let v_ms = fcQTabBar_tabWhatsThis(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTabData*(self: gen_qtabbar_types.QTabBar, index: cint, data: gen_qvariant.QVariant): void =
-
   fcQTabBar_setTabData(self.h, index, data.h)
 
 proc tabData*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQTabBar_tabData(self.h, index))
 
 proc tabRect*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQTabBar_tabRect(self.h, index))
 
 proc tabAt*(self: gen_qtabbar_types.QTabBar, pos: gen_qpoint.QPoint): cint =
-
   fcQTabBar_tabAt(self.h, pos.h)
 
 proc currentIndex*(self: gen_qtabbar_types.QTabBar, ): cint =
-
   fcQTabBar_currentIndex(self.h)
 
 proc count*(self: gen_qtabbar_types.QTabBar, ): cint =
-
   fcQTabBar_count(self.h)
 
 proc sizeHint*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQTabBar_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQTabBar_minimumSizeHint(self.h))
 
 proc setDrawBase*(self: gen_qtabbar_types.QTabBar, drawTheBase: bool): void =
-
   fcQTabBar_setDrawBase(self.h, drawTheBase)
 
 proc drawBase*(self: gen_qtabbar_types.QTabBar, ): bool =
-
   fcQTabBar_drawBase(self.h)
 
 proc iconSize*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQTabBar_iconSize(self.h))
 
 proc setIconSize*(self: gen_qtabbar_types.QTabBar, size: gen_qsize.QSize): void =
-
   fcQTabBar_setIconSize(self.h, size.h)
 
 proc usesScrollButtons*(self: gen_qtabbar_types.QTabBar, ): bool =
-
   fcQTabBar_usesScrollButtons(self.h)
 
 proc setUsesScrollButtons*(self: gen_qtabbar_types.QTabBar, useButtons: bool): void =
-
   fcQTabBar_setUsesScrollButtons(self.h, useButtons)
 
 proc tabsClosable*(self: gen_qtabbar_types.QTabBar, ): bool =
-
   fcQTabBar_tabsClosable(self.h)
 
 proc setTabsClosable*(self: gen_qtabbar_types.QTabBar, closable: bool): void =
-
   fcQTabBar_setTabsClosable(self.h, closable)
 
 proc setTabButton*(self: gen_qtabbar_types.QTabBar, index: cint, position: cint, widget: gen_qwidget.QWidget): void =
-
   fcQTabBar_setTabButton(self.h, index, cint(position), widget.h)
 
 proc tabButton*(self: gen_qtabbar_types.QTabBar, index: cint, position: cint): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQTabBar_tabButton(self.h, index, cint(position)))
 
 proc selectionBehaviorOnRemove*(self: gen_qtabbar_types.QTabBar, ): cint =
-
   cint(fcQTabBar_selectionBehaviorOnRemove(self.h))
 
 proc setSelectionBehaviorOnRemove*(self: gen_qtabbar_types.QTabBar, behavior: cint): void =
-
   fcQTabBar_setSelectionBehaviorOnRemove(self.h, cint(behavior))
 
 proc expanding*(self: gen_qtabbar_types.QTabBar, ): bool =
-
   fcQTabBar_expanding(self.h)
 
 proc setExpanding*(self: gen_qtabbar_types.QTabBar, enabled: bool): void =
-
   fcQTabBar_setExpanding(self.h, enabled)
 
 proc isMovable*(self: gen_qtabbar_types.QTabBar, ): bool =
-
   fcQTabBar_isMovable(self.h)
 
 proc setMovable*(self: gen_qtabbar_types.QTabBar, movable: bool): void =
-
   fcQTabBar_setMovable(self.h, movable)
 
 proc documentMode*(self: gen_qtabbar_types.QTabBar, ): bool =
-
   fcQTabBar_documentMode(self.h)
 
 proc setDocumentMode*(self: gen_qtabbar_types.QTabBar, set: bool): void =
-
   fcQTabBar_setDocumentMode(self.h, set)
 
 proc autoHide*(self: gen_qtabbar_types.QTabBar, ): bool =
-
   fcQTabBar_autoHide(self.h)
 
 proc setAutoHide*(self: gen_qtabbar_types.QTabBar, hide: bool): void =
-
   fcQTabBar_setAutoHide(self.h, hide)
 
 proc changeCurrentOnDrag*(self: gen_qtabbar_types.QTabBar, ): bool =
-
   fcQTabBar_changeCurrentOnDrag(self.h)
 
 proc setChangeCurrentOnDrag*(self: gen_qtabbar_types.QTabBar, change: bool): void =
-
   fcQTabBar_setChangeCurrentOnDrag(self.h, change)
 
 proc accessibleTabName*(self: gen_qtabbar_types.QTabBar, index: cint): string =
-
   let v_ms = fcQTabBar_accessibleTabName(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setAccessibleTabName*(self: gen_qtabbar_types.QTabBar, index: cint, name: string): void =
-
   fcQTabBar_setAccessibleTabName(self.h, index, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc setCurrentIndex*(self: gen_qtabbar_types.QTabBar, index: cint): void =
-
   fcQTabBar_setCurrentIndex(self.h, index)
 
 proc currentChanged*(self: gen_qtabbar_types.QTabBar, index: cint): void =
-
   fcQTabBar_currentChanged(self.h, index)
 
+type QTabBarcurrentChangedSlot* = proc(index: cint)
 proc miqt_exec_callback_QTabBar_currentChanged(slot: int, index: cint) {.exportc.} =
-  type Cb = proc(index: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTabBarcurrentChangedSlot](cast[pointer](slot))
   let slotval1 = index
-
 
   nimfunc[](slotval1)
 
-proc oncurrentChanged*(self: gen_qtabbar_types.QTabBar, slot: proc(index: cint)) =
-  type Cb = proc(index: cint)
-  var tmp = new Cb
+proc oncurrentChanged*(self: gen_qtabbar_types.QTabBar, slot: QTabBarcurrentChangedSlot) =
+  var tmp = new QTabBarcurrentChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_currentChanged(self.h, cast[int](addr tmp[]))
-proc tabCloseRequested*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
+proc tabCloseRequested*(self: gen_qtabbar_types.QTabBar, index: cint): void =
   fcQTabBar_tabCloseRequested(self.h, index)
 
+type QTabBartabCloseRequestedSlot* = proc(index: cint)
 proc miqt_exec_callback_QTabBar_tabCloseRequested(slot: int, index: cint) {.exportc.} =
-  type Cb = proc(index: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTabBartabCloseRequestedSlot](cast[pointer](slot))
   let slotval1 = index
-
 
   nimfunc[](slotval1)
 
-proc ontabCloseRequested*(self: gen_qtabbar_types.QTabBar, slot: proc(index: cint)) =
-  type Cb = proc(index: cint)
-  var tmp = new Cb
+proc ontabCloseRequested*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabCloseRequestedSlot) =
+  var tmp = new QTabBartabCloseRequestedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_tabCloseRequested(self.h, cast[int](addr tmp[]))
-proc tabMoved*(self: gen_qtabbar_types.QTabBar, fromVal: cint, to: cint): void =
 
+proc tabMoved*(self: gen_qtabbar_types.QTabBar, fromVal: cint, to: cint): void =
   fcQTabBar_tabMoved(self.h, fromVal, to)
 
+type QTabBartabMovedSlot* = proc(fromVal: cint, to: cint)
 proc miqt_exec_callback_QTabBar_tabMoved(slot: int, fromVal: cint, to: cint) {.exportc.} =
-  type Cb = proc(fromVal: cint, to: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTabBartabMovedSlot](cast[pointer](slot))
   let slotval1 = fromVal
 
   let slotval2 = to
 
-
   nimfunc[](slotval1, slotval2)
 
-proc ontabMoved*(self: gen_qtabbar_types.QTabBar, slot: proc(fromVal: cint, to: cint)) =
-  type Cb = proc(fromVal: cint, to: cint)
-  var tmp = new Cb
+proc ontabMoved*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabMovedSlot) =
+  var tmp = new QTabBartabMovedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_tabMoved(self.h, cast[int](addr tmp[]))
-proc tabBarClicked*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
+proc tabBarClicked*(self: gen_qtabbar_types.QTabBar, index: cint): void =
   fcQTabBar_tabBarClicked(self.h, index)
 
+type QTabBartabBarClickedSlot* = proc(index: cint)
 proc miqt_exec_callback_QTabBar_tabBarClicked(slot: int, index: cint) {.exportc.} =
-  type Cb = proc(index: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTabBartabBarClickedSlot](cast[pointer](slot))
   let slotval1 = index
-
 
   nimfunc[](slotval1)
 
-proc ontabBarClicked*(self: gen_qtabbar_types.QTabBar, slot: proc(index: cint)) =
-  type Cb = proc(index: cint)
-  var tmp = new Cb
+proc ontabBarClicked*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabBarClickedSlot) =
+  var tmp = new QTabBartabBarClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_tabBarClicked(self.h, cast[int](addr tmp[]))
-proc tabBarDoubleClicked*(self: gen_qtabbar_types.QTabBar, index: cint): void =
 
+proc tabBarDoubleClicked*(self: gen_qtabbar_types.QTabBar, index: cint): void =
   fcQTabBar_tabBarDoubleClicked(self.h, index)
 
+type QTabBartabBarDoubleClickedSlot* = proc(index: cint)
 proc miqt_exec_callback_QTabBar_tabBarDoubleClicked(slot: int, index: cint) {.exportc.} =
-  type Cb = proc(index: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QTabBartabBarDoubleClickedSlot](cast[pointer](slot))
   let slotval1 = index
-
 
   nimfunc[](slotval1)
 
-proc ontabBarDoubleClicked*(self: gen_qtabbar_types.QTabBar, slot: proc(index: cint)) =
-  type Cb = proc(index: cint)
-  var tmp = new Cb
+proc ontabBarDoubleClicked*(self: gen_qtabbar_types.QTabBar, slot: QTabBartabBarDoubleClickedSlot) =
+  var tmp = new QTabBartabBarDoubleClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQTabBar_connect_tabBarDoubleClicked(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qtabbar_types.QTabBar, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qtabbar_types.QTabBar, s: cstring, c: cstring): string =
   let v_ms = fcQTabBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtabbar_types.QTabBar, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtabbar_types.QTabBar, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTabBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QTabBarmetaObject*(self: gen_qtabbar_types.QTabBar, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTabBar_virtualbase_metaObject(self.h))
 
 type QTabBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -679,7 +605,6 @@ proc miqt_exec_callback_QTabBar_metaObject(self: ptr cQTabBar, slot: int): point
 
   virtualReturn.h
 proc QTabBarmetacast*(self: gen_qtabbar_types.QTabBar, param1: cstring): pointer =
-
   fQTabBar_virtualbase_metacast(self.h, param1)
 
 type QTabBarmetacastProc* = proc(param1: cstring): pointer
@@ -699,7 +624,6 @@ proc miqt_exec_callback_QTabBar_metacast(self: ptr cQTabBar, slot: int, param1: 
 
   virtualReturn
 proc QTabBarmetacall*(self: gen_qtabbar_types.QTabBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTabBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTabBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -723,7 +647,6 @@ proc miqt_exec_callback_QTabBar_metacall(self: ptr cQTabBar, slot: int, param1: 
 
   virtualReturn
 proc QTabBarsizeHint*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTabBar_virtualbase_sizeHint(self.h))
 
 type QTabBarsizeHintProc* = proc(): gen_qsize.QSize
@@ -741,7 +664,6 @@ proc miqt_exec_callback_QTabBar_sizeHint(self: ptr cQTabBar, slot: int): pointer
 
   virtualReturn.h
 proc QTabBarminimumSizeHint*(self: gen_qtabbar_types.QTabBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTabBar_virtualbase_minimumSizeHint(self.h))
 
 type QTabBarminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -759,7 +681,6 @@ proc miqt_exec_callback_QTabBar_minimumSizeHint(self: ptr cQTabBar, slot: int): 
 
   virtualReturn.h
 proc QTabBartabSizeHint*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTabBar_virtualbase_tabSizeHint(self.h, index))
 
 type QTabBartabSizeHintProc* = proc(index: cint): gen_qsize.QSize
@@ -779,7 +700,6 @@ proc miqt_exec_callback_QTabBar_tabSizeHint(self: ptr cQTabBar, slot: int, index
 
   virtualReturn.h
 proc QTabBarminimumTabSizeHint*(self: gen_qtabbar_types.QTabBar, index: cint): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQTabBar_virtualbase_minimumTabSizeHint(self.h, index))
 
 type QTabBarminimumTabSizeHintProc* = proc(index: cint): gen_qsize.QSize
@@ -799,7 +719,6 @@ proc miqt_exec_callback_QTabBar_minimumTabSizeHint(self: ptr cQTabBar, slot: int
 
   virtualReturn.h
 proc QTabBartabInserted*(self: gen_qtabbar_types.QTabBar, index: cint): void =
-
   fQTabBar_virtualbase_tabInserted(self.h, index)
 
 type QTabBartabInsertedProc* = proc(index: cint): void
@@ -817,7 +736,6 @@ proc miqt_exec_callback_QTabBar_tabInserted(self: ptr cQTabBar, slot: int, index
 
   nimfunc[](slotval1)
 proc QTabBartabRemoved*(self: gen_qtabbar_types.QTabBar, index: cint): void =
-
   fQTabBar_virtualbase_tabRemoved(self.h, index)
 
 type QTabBartabRemovedProc* = proc(index: cint): void
@@ -835,7 +753,6 @@ proc miqt_exec_callback_QTabBar_tabRemoved(self: ptr cQTabBar, slot: int, index:
 
   nimfunc[](slotval1)
 proc QTabBartabLayoutChange*(self: gen_qtabbar_types.QTabBar, ): void =
-
   fQTabBar_virtualbase_tabLayoutChange(self.h)
 
 type QTabBartabLayoutChangeProc* = proc(): void
@@ -851,7 +768,6 @@ proc miqt_exec_callback_QTabBar_tabLayoutChange(self: ptr cQTabBar, slot: int): 
 
   nimfunc[]()
 proc QTabBarevent*(self: gen_qtabbar_types.QTabBar, param1: gen_qcoreevent.QEvent): bool =
-
   fQTabBar_virtualbase_event(self.h, param1.h)
 
 type QTabBareventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -871,7 +787,6 @@ proc miqt_exec_callback_QTabBar_event(self: ptr cQTabBar, slot: int, param1: poi
 
   virtualReturn
 proc QTabBarresizeEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QResizeEvent): void =
-
   fQTabBar_virtualbase_resizeEvent(self.h, param1.h)
 
 type QTabBarresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -889,7 +804,6 @@ proc miqt_exec_callback_QTabBar_resizeEvent(self: ptr cQTabBar, slot: int, param
 
   nimfunc[](slotval1)
 proc QTabBarshowEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QShowEvent): void =
-
   fQTabBar_virtualbase_showEvent(self.h, param1.h)
 
 type QTabBarshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -907,7 +821,6 @@ proc miqt_exec_callback_QTabBar_showEvent(self: ptr cQTabBar, slot: int, param1:
 
   nimfunc[](slotval1)
 proc QTabBarhideEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QHideEvent): void =
-
   fQTabBar_virtualbase_hideEvent(self.h, param1.h)
 
 type QTabBarhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
@@ -925,7 +838,6 @@ proc miqt_exec_callback_QTabBar_hideEvent(self: ptr cQTabBar, slot: int, param1:
 
   nimfunc[](slotval1)
 proc QTabBarpaintEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QPaintEvent): void =
-
   fQTabBar_virtualbase_paintEvent(self.h, param1.h)
 
 type QTabBarpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -943,7 +855,6 @@ proc miqt_exec_callback_QTabBar_paintEvent(self: ptr cQTabBar, slot: int, param1
 
   nimfunc[](slotval1)
 proc QTabBarmousePressEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QMouseEvent): void =
-
   fQTabBar_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QTabBarmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -961,7 +872,6 @@ proc miqt_exec_callback_QTabBar_mousePressEvent(self: ptr cQTabBar, slot: int, p
 
   nimfunc[](slotval1)
 proc QTabBarmouseMoveEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QMouseEvent): void =
-
   fQTabBar_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QTabBarmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -979,7 +889,6 @@ proc miqt_exec_callback_QTabBar_mouseMoveEvent(self: ptr cQTabBar, slot: int, pa
 
   nimfunc[](slotval1)
 proc QTabBarmouseReleaseEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QMouseEvent): void =
-
   fQTabBar_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QTabBarmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -997,7 +906,6 @@ proc miqt_exec_callback_QTabBar_mouseReleaseEvent(self: ptr cQTabBar, slot: int,
 
   nimfunc[](slotval1)
 proc QTabBarmouseDoubleClickEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QMouseEvent): void =
-
   fQTabBar_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
 type QTabBarmouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -1015,7 +923,6 @@ proc miqt_exec_callback_QTabBar_mouseDoubleClickEvent(self: ptr cQTabBar, slot: 
 
   nimfunc[](slotval1)
 proc QTabBarwheelEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QWheelEvent): void =
-
   fQTabBar_virtualbase_wheelEvent(self.h, event.h)
 
 type QTabBarwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -1033,7 +940,6 @@ proc miqt_exec_callback_QTabBar_wheelEvent(self: ptr cQTabBar, slot: int, event:
 
   nimfunc[](slotval1)
 proc QTabBarkeyPressEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QKeyEvent): void =
-
   fQTabBar_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QTabBarkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -1051,7 +957,6 @@ proc miqt_exec_callback_QTabBar_keyPressEvent(self: ptr cQTabBar, slot: int, par
 
   nimfunc[](slotval1)
 proc QTabBarchangeEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qcoreevent.QEvent): void =
-
   fQTabBar_virtualbase_changeEvent(self.h, param1.h)
 
 type QTabBarchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1069,7 +974,6 @@ proc miqt_exec_callback_QTabBar_changeEvent(self: ptr cQTabBar, slot: int, param
 
   nimfunc[](slotval1)
 proc QTabBartimerEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTabBar_virtualbase_timerEvent(self.h, event.h)
 
 type QTabBartimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1087,7 +991,6 @@ proc miqt_exec_callback_QTabBar_timerEvent(self: ptr cQTabBar, slot: int, event:
 
   nimfunc[](slotval1)
 proc QTabBarinitStyleOption*(self: gen_qtabbar_types.QTabBar, option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): void =
-
   fQTabBar_virtualbase_initStyleOption(self.h, option.h, tabIndex)
 
 type QTabBarinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionTab, tabIndex: cint): void
@@ -1107,7 +1010,6 @@ proc miqt_exec_callback_QTabBar_initStyleOption(self: ptr cQTabBar, slot: int, o
 
   nimfunc[](slotval1, slotval2)
 proc QTabBardevType*(self: gen_qtabbar_types.QTabBar, ): cint =
-
   fQTabBar_virtualbase_devType(self.h)
 
 type QTabBardevTypeProc* = proc(): cint
@@ -1125,7 +1027,6 @@ proc miqt_exec_callback_QTabBar_devType(self: ptr cQTabBar, slot: int): cint {.e
 
   virtualReturn
 proc QTabBarsetVisible*(self: gen_qtabbar_types.QTabBar, visible: bool): void =
-
   fQTabBar_virtualbase_setVisible(self.h, visible)
 
 type QTabBarsetVisibleProc* = proc(visible: bool): void
@@ -1143,7 +1044,6 @@ proc miqt_exec_callback_QTabBar_setVisible(self: ptr cQTabBar, slot: int, visibl
 
   nimfunc[](slotval1)
 proc QTabBarheightForWidth*(self: gen_qtabbar_types.QTabBar, param1: cint): cint =
-
   fQTabBar_virtualbase_heightForWidth(self.h, param1)
 
 type QTabBarheightForWidthProc* = proc(param1: cint): cint
@@ -1163,7 +1063,6 @@ proc miqt_exec_callback_QTabBar_heightForWidth(self: ptr cQTabBar, slot: int, pa
 
   virtualReturn
 proc QTabBarhasHeightForWidth*(self: gen_qtabbar_types.QTabBar, ): bool =
-
   fQTabBar_virtualbase_hasHeightForWidth(self.h)
 
 type QTabBarhasHeightForWidthProc* = proc(): bool
@@ -1181,7 +1080,6 @@ proc miqt_exec_callback_QTabBar_hasHeightForWidth(self: ptr cQTabBar, slot: int)
 
   virtualReturn
 proc QTabBarpaintEngine*(self: gen_qtabbar_types.QTabBar, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQTabBar_virtualbase_paintEngine(self.h))
 
 type QTabBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1199,7 +1097,6 @@ proc miqt_exec_callback_QTabBar_paintEngine(self: ptr cQTabBar, slot: int): poin
 
   virtualReturn.h
 proc QTabBarkeyReleaseEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QKeyEvent): void =
-
   fQTabBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QTabBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1217,7 +1114,6 @@ proc miqt_exec_callback_QTabBar_keyReleaseEvent(self: ptr cQTabBar, slot: int, e
 
   nimfunc[](slotval1)
 proc QTabBarfocusInEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QFocusEvent): void =
-
   fQTabBar_virtualbase_focusInEvent(self.h, event.h)
 
 type QTabBarfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1235,7 +1131,6 @@ proc miqt_exec_callback_QTabBar_focusInEvent(self: ptr cQTabBar, slot: int, even
 
   nimfunc[](slotval1)
 proc QTabBarfocusOutEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QFocusEvent): void =
-
   fQTabBar_virtualbase_focusOutEvent(self.h, event.h)
 
 type QTabBarfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1253,7 +1148,6 @@ proc miqt_exec_callback_QTabBar_focusOutEvent(self: ptr cQTabBar, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTabBarenterEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QEnterEvent): void =
-
   fQTabBar_virtualbase_enterEvent(self.h, event.h)
 
 type QTabBarenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -1271,7 +1165,6 @@ proc miqt_exec_callback_QTabBar_enterEvent(self: ptr cQTabBar, slot: int, event:
 
   nimfunc[](slotval1)
 proc QTabBarleaveEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qcoreevent.QEvent): void =
-
   fQTabBar_virtualbase_leaveEvent(self.h, event.h)
 
 type QTabBarleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1289,7 +1182,6 @@ proc miqt_exec_callback_QTabBar_leaveEvent(self: ptr cQTabBar, slot: int, event:
 
   nimfunc[](slotval1)
 proc QTabBarmoveEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QMoveEvent): void =
-
   fQTabBar_virtualbase_moveEvent(self.h, event.h)
 
 type QTabBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1307,7 +1199,6 @@ proc miqt_exec_callback_QTabBar_moveEvent(self: ptr cQTabBar, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QTabBarcloseEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QCloseEvent): void =
-
   fQTabBar_virtualbase_closeEvent(self.h, event.h)
 
 type QTabBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1325,7 +1216,6 @@ proc miqt_exec_callback_QTabBar_closeEvent(self: ptr cQTabBar, slot: int, event:
 
   nimfunc[](slotval1)
 proc QTabBarcontextMenuEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QContextMenuEvent): void =
-
   fQTabBar_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QTabBarcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -1343,7 +1233,6 @@ proc miqt_exec_callback_QTabBar_contextMenuEvent(self: ptr cQTabBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QTabBartabletEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QTabletEvent): void =
-
   fQTabBar_virtualbase_tabletEvent(self.h, event.h)
 
 type QTabBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1361,7 +1250,6 @@ proc miqt_exec_callback_QTabBar_tabletEvent(self: ptr cQTabBar, slot: int, event
 
   nimfunc[](slotval1)
 proc QTabBaractionEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QActionEvent): void =
-
   fQTabBar_virtualbase_actionEvent(self.h, event.h)
 
 type QTabBaractionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1379,7 +1267,6 @@ proc miqt_exec_callback_QTabBar_actionEvent(self: ptr cQTabBar, slot: int, event
 
   nimfunc[](slotval1)
 proc QTabBardragEnterEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QDragEnterEvent): void =
-
   fQTabBar_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QTabBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1397,7 +1284,6 @@ proc miqt_exec_callback_QTabBar_dragEnterEvent(self: ptr cQTabBar, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTabBardragMoveEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QDragMoveEvent): void =
-
   fQTabBar_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QTabBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1415,7 +1301,6 @@ proc miqt_exec_callback_QTabBar_dragMoveEvent(self: ptr cQTabBar, slot: int, eve
 
   nimfunc[](slotval1)
 proc QTabBardragLeaveEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QDragLeaveEvent): void =
-
   fQTabBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QTabBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1433,7 +1318,6 @@ proc miqt_exec_callback_QTabBar_dragLeaveEvent(self: ptr cQTabBar, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTabBardropEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qevent.QDropEvent): void =
-
   fQTabBar_virtualbase_dropEvent(self.h, event.h)
 
 type QTabBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1451,7 +1335,6 @@ proc miqt_exec_callback_QTabBar_dropEvent(self: ptr cQTabBar, slot: int, event: 
 
   nimfunc[](slotval1)
 proc QTabBarnativeEvent*(self: gen_qtabbar_types.QTabBar, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQTabBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QTabBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1478,7 +1361,6 @@ proc miqt_exec_callback_QTabBar_nativeEvent(self: ptr cQTabBar, slot: int, event
 
   virtualReturn
 proc QTabBarmetric*(self: gen_qtabbar_types.QTabBar, param1: cint): cint =
-
   fQTabBar_virtualbase_metric(self.h, cint(param1))
 
 type QTabBarmetricProc* = proc(param1: cint): cint
@@ -1498,7 +1380,6 @@ proc miqt_exec_callback_QTabBar_metric(self: ptr cQTabBar, slot: int, param1: ci
 
   virtualReturn
 proc QTabBarinitPainter*(self: gen_qtabbar_types.QTabBar, painter: gen_qpainter.QPainter): void =
-
   fQTabBar_virtualbase_initPainter(self.h, painter.h)
 
 type QTabBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1516,7 +1397,6 @@ proc miqt_exec_callback_QTabBar_initPainter(self: ptr cQTabBar, slot: int, paint
 
   nimfunc[](slotval1)
 proc QTabBarredirected*(self: gen_qtabbar_types.QTabBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQTabBar_virtualbase_redirected(self.h, offset.h))
 
 type QTabBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1536,7 +1416,6 @@ proc miqt_exec_callback_QTabBar_redirected(self: ptr cQTabBar, slot: int, offset
 
   virtualReturn.h
 proc QTabBarsharedPainter*(self: gen_qtabbar_types.QTabBar, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQTabBar_virtualbase_sharedPainter(self.h))
 
 type QTabBarsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1554,7 +1433,6 @@ proc miqt_exec_callback_QTabBar_sharedPainter(self: ptr cQTabBar, slot: int): po
 
   virtualReturn.h
 proc QTabBarinputMethodEvent*(self: gen_qtabbar_types.QTabBar, param1: gen_qevent.QInputMethodEvent): void =
-
   fQTabBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QTabBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1572,7 +1450,6 @@ proc miqt_exec_callback_QTabBar_inputMethodEvent(self: ptr cQTabBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QTabBarinputMethodQuery*(self: gen_qtabbar_types.QTabBar, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQTabBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QTabBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1592,7 +1469,6 @@ proc miqt_exec_callback_QTabBar_inputMethodQuery(self: ptr cQTabBar, slot: int, 
 
   virtualReturn.h
 proc QTabBarfocusNextPrevChild*(self: gen_qtabbar_types.QTabBar, next: bool): bool =
-
   fQTabBar_virtualbase_focusNextPrevChild(self.h, next)
 
 type QTabBarfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1612,7 +1488,6 @@ proc miqt_exec_callback_QTabBar_focusNextPrevChild(self: ptr cQTabBar, slot: int
 
   virtualReturn
 proc QTabBareventFilter*(self: gen_qtabbar_types.QTabBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTabBar_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTabBareventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1634,7 +1509,6 @@ proc miqt_exec_callback_QTabBar_eventFilter(self: ptr cQTabBar, slot: int, watch
 
   virtualReturn
 proc QTabBarchildEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qcoreevent.QChildEvent): void =
-
   fQTabBar_virtualbase_childEvent(self.h, event.h)
 
 type QTabBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1652,7 +1526,6 @@ proc miqt_exec_callback_QTabBar_childEvent(self: ptr cQTabBar, slot: int, event:
 
   nimfunc[](slotval1)
 proc QTabBarcustomEvent*(self: gen_qtabbar_types.QTabBar, event: gen_qcoreevent.QEvent): void =
-
   fQTabBar_virtualbase_customEvent(self.h, event.h)
 
 type QTabBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1670,7 +1543,6 @@ proc miqt_exec_callback_QTabBar_customEvent(self: ptr cQTabBar, slot: int, event
 
   nimfunc[](slotval1)
 proc QTabBarconnectNotify*(self: gen_qtabbar_types.QTabBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTabBar_virtualbase_connectNotify(self.h, signal.h)
 
 type QTabBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1688,7 +1560,6 @@ proc miqt_exec_callback_QTabBar_connectNotify(self: ptr cQTabBar, slot: int, sig
 
   nimfunc[](slotval1)
 proc QTabBardisconnectNotify*(self: gen_qtabbar_types.QTabBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTabBar_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTabBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

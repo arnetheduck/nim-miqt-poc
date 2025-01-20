@@ -77,53 +77,42 @@ proc fcQWebEngineNewWindowRequest_delete(self: pointer) {.importc: "QWebEngineNe
 func init*(T: type gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, h: ptr cQWebEngineNewWindowRequest): gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest =
   T(h: h)
 proc metaObject*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineNewWindowRequest_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, param1: cstring): pointer =
-
   fcQWebEngineNewWindowRequest_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebEngineNewWindowRequest_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, s: cstring): string =
-
   let v_ms = fcQWebEngineNewWindowRequest_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc destination*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): cint =
-
   cint(fcQWebEngineNewWindowRequest_destination(self.h))
 
 proc requestedUrl*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineNewWindowRequest_requestedUrl(self.h))
 
 proc requestedGeometry*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQWebEngineNewWindowRequest_requestedGeometry(self.h))
 
 proc isUserInitiated*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, ): bool =
-
   fcQWebEngineNewWindowRequest_isUserInitiated(self.h)
 
 proc openIn*(self: gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, param1: gen_qwebenginepage.QWebEnginePage): void =
-
   fcQWebEngineNewWindowRequest_openIn(self.h, param1.h)
 
-proc tr2*(_: type gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineNewWindowRequest_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebenginenewwindowrequest_types.QWebEngineNewWindowRequest, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineNewWindowRequest_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

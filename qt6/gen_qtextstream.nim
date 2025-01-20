@@ -157,303 +157,234 @@ proc fcQTextStream_delete(self: pointer) {.importc: "QTextStream_delete".}
 func init*(T: type gen_qtextstream_types.QTextStream, h: ptr cQTextStream): gen_qtextstream_types.QTextStream =
   T(h: h)
 proc create*(T: type gen_qtextstream_types.QTextStream, ): gen_qtextstream_types.QTextStream =
-
   gen_qtextstream_types.QTextStream.init(fcQTextStream_new())
+
 proc create*(T: type gen_qtextstream_types.QTextStream, device: gen_qiodevice.QIODevice): gen_qtextstream_types.QTextStream =
-
   gen_qtextstream_types.QTextStream.init(fcQTextStream_new2(device.h))
+
 proc create*(T: type gen_qtextstream_types.QTextStream, array: seq[byte]): gen_qtextstream_types.QTextStream =
-
   gen_qtextstream_types.QTextStream.init(fcQTextStream_new3(struct_miqt_string(data: cast[cstring](if len(array) == 0: nil else: unsafeAddr array[0]), len: csize_t(len(array)))))
+
 proc create*(T: type gen_qtextstream_types.QTextStream, array: seq[byte], openMode: cint): gen_qtextstream_types.QTextStream =
-
   gen_qtextstream_types.QTextStream.init(fcQTextStream_new4(struct_miqt_string(data: cast[cstring](if len(array) == 0: nil else: unsafeAddr array[0]), len: csize_t(len(array))), cint(openMode)))
-proc setEncoding*(self: gen_qtextstream_types.QTextStream, encoding: cint): void =
 
+proc setEncoding*(self: gen_qtextstream_types.QTextStream, encoding: cint): void =
   fcQTextStream_setEncoding(self.h, cint(encoding))
 
 proc encoding*(self: gen_qtextstream_types.QTextStream, ): cint =
-
   cint(fcQTextStream_encoding(self.h))
 
 proc setAutoDetectUnicode*(self: gen_qtextstream_types.QTextStream, enabled: bool): void =
-
   fcQTextStream_setAutoDetectUnicode(self.h, enabled)
 
 proc autoDetectUnicode*(self: gen_qtextstream_types.QTextStream, ): bool =
-
   fcQTextStream_autoDetectUnicode(self.h)
 
 proc setGenerateByteOrderMark*(self: gen_qtextstream_types.QTextStream, generate: bool): void =
-
   fcQTextStream_setGenerateByteOrderMark(self.h, generate)
 
 proc generateByteOrderMark*(self: gen_qtextstream_types.QTextStream, ): bool =
-
   fcQTextStream_generateByteOrderMark(self.h)
 
 proc setLocale*(self: gen_qtextstream_types.QTextStream, locale: gen_qlocale.QLocale): void =
-
   fcQTextStream_setLocale(self.h, locale.h)
 
 proc locale*(self: gen_qtextstream_types.QTextStream, ): gen_qlocale.QLocale =
-
   gen_qlocale.QLocale(h: fcQTextStream_locale(self.h))
 
 proc setDevice*(self: gen_qtextstream_types.QTextStream, device: gen_qiodevice.QIODevice): void =
-
   fcQTextStream_setDevice(self.h, device.h)
 
 proc device*(self: gen_qtextstream_types.QTextStream, ): gen_qiodevice.QIODevice =
-
   gen_qiodevice.QIODevice(h: fcQTextStream_device(self.h))
 
 proc string*(self: gen_qtextstream_types.QTextStream, ): string =
-
   let v_ms = fcQTextStream_string(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc status*(self: gen_qtextstream_types.QTextStream, ): cint =
-
   cint(fcQTextStream_status(self.h))
 
 proc setStatus*(self: gen_qtextstream_types.QTextStream, status: cint): void =
-
   fcQTextStream_setStatus(self.h, cint(status))
 
 proc resetStatus*(self: gen_qtextstream_types.QTextStream, ): void =
-
   fcQTextStream_resetStatus(self.h)
 
 proc atEnd*(self: gen_qtextstream_types.QTextStream, ): bool =
-
   fcQTextStream_atEnd(self.h)
 
 proc reset*(self: gen_qtextstream_types.QTextStream, ): void =
-
   fcQTextStream_reset(self.h)
 
 proc flush*(self: gen_qtextstream_types.QTextStream, ): void =
-
   fcQTextStream_flush(self.h)
 
 proc seek*(self: gen_qtextstream_types.QTextStream, pos: clonglong): bool =
-
   fcQTextStream_seek(self.h, pos)
 
 proc pos*(self: gen_qtextstream_types.QTextStream, ): clonglong =
-
   fcQTextStream_pos(self.h)
 
 proc skipWhiteSpace*(self: gen_qtextstream_types.QTextStream, ): void =
-
   fcQTextStream_skipWhiteSpace(self.h)
 
 proc readLine*(self: gen_qtextstream_types.QTextStream, ): string =
-
   let v_ms = fcQTextStream_readLine(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc readAll*(self: gen_qtextstream_types.QTextStream, ): string =
-
   let v_ms = fcQTextStream_readAll(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc read*(self: gen_qtextstream_types.QTextStream, maxlen: clonglong): string =
-
   let v_ms = fcQTextStream_read(self.h, maxlen)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFieldAlignment*(self: gen_qtextstream_types.QTextStream, alignment: cint): void =
-
   fcQTextStream_setFieldAlignment(self.h, cint(alignment))
 
 proc fieldAlignment*(self: gen_qtextstream_types.QTextStream, ): cint =
-
   cint(fcQTextStream_fieldAlignment(self.h))
 
 proc setPadChar*(self: gen_qtextstream_types.QTextStream, ch: gen_qchar.QChar): void =
-
   fcQTextStream_setPadChar(self.h, ch.h)
 
 proc padChar*(self: gen_qtextstream_types.QTextStream, ): gen_qchar.QChar =
-
   gen_qchar.QChar(h: fcQTextStream_padChar(self.h))
 
 proc setFieldWidth*(self: gen_qtextstream_types.QTextStream, width: cint): void =
-
   fcQTextStream_setFieldWidth(self.h, width)
 
 proc fieldWidth*(self: gen_qtextstream_types.QTextStream, ): cint =
-
   fcQTextStream_fieldWidth(self.h)
 
 proc setNumberFlags*(self: gen_qtextstream_types.QTextStream, flags: cint): void =
-
   fcQTextStream_setNumberFlags(self.h, cint(flags))
 
 proc numberFlags*(self: gen_qtextstream_types.QTextStream, ): cint =
-
   cint(fcQTextStream_numberFlags(self.h))
 
 proc setIntegerBase*(self: gen_qtextstream_types.QTextStream, base: cint): void =
-
   fcQTextStream_setIntegerBase(self.h, base)
 
 proc integerBase*(self: gen_qtextstream_types.QTextStream, ): cint =
-
   fcQTextStream_integerBase(self.h)
 
 proc setRealNumberNotation*(self: gen_qtextstream_types.QTextStream, notation: cint): void =
-
   fcQTextStream_setRealNumberNotation(self.h, cint(notation))
 
 proc realNumberNotation*(self: gen_qtextstream_types.QTextStream, ): cint =
-
   cint(fcQTextStream_realNumberNotation(self.h))
 
 proc setRealNumberPrecision*(self: gen_qtextstream_types.QTextStream, precision: cint): void =
-
   fcQTextStream_setRealNumberPrecision(self.h, precision)
 
 proc realNumberPrecision*(self: gen_qtextstream_types.QTextStream, ): cint =
-
   fcQTextStream_realNumberPrecision(self.h)
 
 proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, ch: gen_qchar.QChar): gen_qtextstream_types.QTextStream =
-
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRight(self.h, ch.h))
 
-proc operatorShiftRightWithCh*(self: gen_qtextstream_types.QTextStream, ch: ptr cchar): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, ch: ptr cchar): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithCh(self.h, ch))
 
-proc operatorShiftRightWithShort*(self: gen_qtextstream_types.QTextStream, i: ptr cshort): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, i: ptr cshort): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithShort(self.h, i))
 
-proc operatorShiftRightWithUnsignedshort*(self: gen_qtextstream_types.QTextStream, i: ptr cushort): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, i: ptr cushort): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithUnsignedshort(self.h, i))
 
-proc operatorShiftRightWithInt*(self: gen_qtextstream_types.QTextStream, i: ptr cint): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, i: ptr cint): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithInt(self.h, i))
 
-proc operatorShiftRightWithUnsignedint*(self: gen_qtextstream_types.QTextStream, i: ptr cuint): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, i: ptr cuint): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithUnsignedint(self.h, i))
 
-proc operatorShiftRightWithLong*(self: gen_qtextstream_types.QTextStream, i: ptr clong): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, i: ptr clong): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithLong(self.h, i))
 
-proc operatorShiftRightWithUnsignedlong*(self: gen_qtextstream_types.QTextStream, i: ptr culong): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, i: ptr culong): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithUnsignedlong(self.h, i))
 
-proc operatorShiftRightWithQlonglong*(self: gen_qtextstream_types.QTextStream, i: ptr clonglong): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, i: ptr clonglong): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithQlonglong(self.h, i))
 
-proc operatorShiftRightWithQulonglong*(self: gen_qtextstream_types.QTextStream, i: ptr culonglong): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, i: ptr culonglong): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithQulonglong(self.h, i))
 
-proc operatorShiftRightWithFloat*(self: gen_qtextstream_types.QTextStream, f: ptr float32): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, f: ptr float32): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithFloat(self.h, f))
 
-proc operatorShiftRightWithDouble*(self: gen_qtextstream_types.QTextStream, f: ptr float64): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, f: ptr float64): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithDouble(self.h, f))
 
-proc operatorShiftRightWithQString*(self: gen_qtextstream_types.QTextStream, s: string): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, s: string): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithQString(self.h, struct_miqt_string(data: s, len: csize_t(len(s)))))
 
-proc operatorShiftRightWithArray*(self: gen_qtextstream_types.QTextStream, array: seq[byte]): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, array: seq[byte]): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithArray(self.h, struct_miqt_string(data: cast[cstring](if len(array) == 0: nil else: unsafeAddr array[0]), len: csize_t(len(array)))))
 
-proc operatorShiftRightWithChar*(self: gen_qtextstream_types.QTextStream, c: cstring): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftRight*(self: gen_qtextstream_types.QTextStream, c: cstring): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftRightWithChar(self.h, c))
 
 proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, ch: gen_qchar.QChar): gen_qtextstream_types.QTextStream =
-
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeft(self.h, ch.h))
 
-proc operatorShiftLeftWithCh*(self: gen_qtextstream_types.QTextStream, ch: cchar): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, ch: cchar): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithCh(self.h, ch))
 
-proc operatorShiftLeftWithShort*(self: gen_qtextstream_types.QTextStream, i: cshort): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, i: cshort): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithShort(self.h, i))
 
-proc operatorShiftLeftWithUnsignedshort*(self: gen_qtextstream_types.QTextStream, i: cushort): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, i: cushort): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithUnsignedshort(self.h, i))
 
-proc operatorShiftLeftWithInt*(self: gen_qtextstream_types.QTextStream, i: cint): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, i: cint): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithInt(self.h, i))
 
-proc operatorShiftLeftWithUnsignedint*(self: gen_qtextstream_types.QTextStream, i: cuint): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, i: cuint): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithUnsignedint(self.h, i))
 
-proc operatorShiftLeftWithLong*(self: gen_qtextstream_types.QTextStream, i: clong): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, i: clong): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithLong(self.h, i))
 
-proc operatorShiftLeftWithUnsignedlong*(self: gen_qtextstream_types.QTextStream, i: culong): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, i: culong): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithUnsignedlong(self.h, i))
 
-proc operatorShiftLeftWithQlonglong*(self: gen_qtextstream_types.QTextStream, i: clonglong): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, i: clonglong): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithQlonglong(self.h, i))
 
-proc operatorShiftLeftWithQulonglong*(self: gen_qtextstream_types.QTextStream, i: culonglong): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, i: culonglong): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithQulonglong(self.h, i))
 
-proc operatorShiftLeftWithFloat*(self: gen_qtextstream_types.QTextStream, f: float32): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, f: float32): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithFloat(self.h, f))
 
-proc operatorShiftLeftWithDouble*(self: gen_qtextstream_types.QTextStream, f: float64): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, f: float64): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithDouble(self.h, f))
 
-proc operatorShiftLeftWithQString*(self: gen_qtextstream_types.QTextStream, s: string): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, s: string): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithQString(self.h, struct_miqt_string(data: s, len: csize_t(len(s)))))
 
-proc operatorShiftLeftWithArray*(self: gen_qtextstream_types.QTextStream, array: seq[byte]): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, array: seq[byte]): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithArray(self.h, struct_miqt_string(data: cast[cstring](if len(array) == 0: nil else: unsafeAddr array[0]), len: csize_t(len(array)))))
 
-proc operatorShiftLeftWithChar*(self: gen_qtextstream_types.QTextStream, c: cstring): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, c: cstring): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithChar(self.h, c))
 
-proc operatorShiftLeftWithPtr*(self: gen_qtextstream_types.QTextStream, ptrVal: pointer): gen_qtextstream_types.QTextStream =
-
+proc operatorShiftLeft*(self: gen_qtextstream_types.QTextStream, ptrVal: pointer): gen_qtextstream_types.QTextStream =
   gen_qtextstream_types.QTextStream(h: fcQTextStream_operatorShiftLeftWithPtr(self.h, ptrVal))
 
-proc readLine1*(self: gen_qtextstream_types.QTextStream, maxlen: clonglong): string =
-
+proc readLine*(self: gen_qtextstream_types.QTextStream, maxlen: clonglong): string =
   let v_ms = fcQTextStream_readLine1(self.h, maxlen)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

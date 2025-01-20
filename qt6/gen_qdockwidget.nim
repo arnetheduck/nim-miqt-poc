@@ -223,196 +223,167 @@ proc fcQDockWidget_delete(self: pointer) {.importc: "QDockWidget_delete".}
 func init*(T: type gen_qdockwidget_types.QDockWidget, h: ptr cQDockWidget): gen_qdockwidget_types.QDockWidget =
   T(h: h)
 proc create*(T: type gen_qdockwidget_types.QDockWidget, parent: gen_qwidget.QWidget): gen_qdockwidget_types.QDockWidget =
-
   gen_qdockwidget_types.QDockWidget.init(fcQDockWidget_new(parent.h))
+
 proc create*(T: type gen_qdockwidget_types.QDockWidget, title: string): gen_qdockwidget_types.QDockWidget =
-
   gen_qdockwidget_types.QDockWidget.init(fcQDockWidget_new2(struct_miqt_string(data: title, len: csize_t(len(title)))))
+
 proc create*(T: type gen_qdockwidget_types.QDockWidget, ): gen_qdockwidget_types.QDockWidget =
-
   gen_qdockwidget_types.QDockWidget.init(fcQDockWidget_new3())
+
 proc create*(T: type gen_qdockwidget_types.QDockWidget, title: string, parent: gen_qwidget.QWidget): gen_qdockwidget_types.QDockWidget =
-
   gen_qdockwidget_types.QDockWidget.init(fcQDockWidget_new4(struct_miqt_string(data: title, len: csize_t(len(title))), parent.h))
+
 proc create*(T: type gen_qdockwidget_types.QDockWidget, title: string, parent: gen_qwidget.QWidget, flags: cint): gen_qdockwidget_types.QDockWidget =
-
   gen_qdockwidget_types.QDockWidget.init(fcQDockWidget_new5(struct_miqt_string(data: title, len: csize_t(len(title))), parent.h, cint(flags)))
+
 proc create*(T: type gen_qdockwidget_types.QDockWidget, parent: gen_qwidget.QWidget, flags: cint): gen_qdockwidget_types.QDockWidget =
-
   gen_qdockwidget_types.QDockWidget.init(fcQDockWidget_new6(parent.h, cint(flags)))
-proc metaObject*(self: gen_qdockwidget_types.QDockWidget, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qdockwidget_types.QDockWidget, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDockWidget_metaObject(self.h))
 
 proc metacast*(self: gen_qdockwidget_types.QDockWidget, param1: cstring): pointer =
-
   fcQDockWidget_metacast(self.h, param1)
 
 proc metacall*(self: gen_qdockwidget_types.QDockWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQDockWidget_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qdockwidget_types.QDockWidget, s: cstring): string =
-
   let v_ms = fcQDockWidget_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc widget*(self: gen_qdockwidget_types.QDockWidget, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQDockWidget_widget(self.h))
 
 proc setWidget*(self: gen_qdockwidget_types.QDockWidget, widget: gen_qwidget.QWidget): void =
-
   fcQDockWidget_setWidget(self.h, widget.h)
 
 proc setFeatures*(self: gen_qdockwidget_types.QDockWidget, features: cint): void =
-
   fcQDockWidget_setFeatures(self.h, cint(features))
 
 proc features*(self: gen_qdockwidget_types.QDockWidget, ): cint =
-
   cint(fcQDockWidget_features(self.h))
 
 proc setFloating*(self: gen_qdockwidget_types.QDockWidget, floating: bool): void =
-
   fcQDockWidget_setFloating(self.h, floating)
 
 proc isFloating*(self: gen_qdockwidget_types.QDockWidget, ): bool =
-
   fcQDockWidget_isFloating(self.h)
 
 proc setAllowedAreas*(self: gen_qdockwidget_types.QDockWidget, areas: cint): void =
-
   fcQDockWidget_setAllowedAreas(self.h, cint(areas))
 
 proc allowedAreas*(self: gen_qdockwidget_types.QDockWidget, ): cint =
-
   cint(fcQDockWidget_allowedAreas(self.h))
 
 proc setTitleBarWidget*(self: gen_qdockwidget_types.QDockWidget, widget: gen_qwidget.QWidget): void =
-
   fcQDockWidget_setTitleBarWidget(self.h, widget.h)
 
 proc titleBarWidget*(self: gen_qdockwidget_types.QDockWidget, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQDockWidget_titleBarWidget(self.h))
 
 proc isAreaAllowed*(self: gen_qdockwidget_types.QDockWidget, area: cint): bool =
-
   fcQDockWidget_isAreaAllowed(self.h, cint(area))
 
 proc toggleViewAction*(self: gen_qdockwidget_types.QDockWidget, ): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQDockWidget_toggleViewAction(self.h))
 
 proc featuresChanged*(self: gen_qdockwidget_types.QDockWidget, features: cint): void =
-
   fcQDockWidget_featuresChanged(self.h, cint(features))
 
+type QDockWidgetfeaturesChangedSlot* = proc(features: cint)
 proc miqt_exec_callback_QDockWidget_featuresChanged(slot: int, features: cint) {.exportc.} =
-  type Cb = proc(features: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDockWidgetfeaturesChangedSlot](cast[pointer](slot))
   let slotval1 = cint(features)
-
 
   nimfunc[](slotval1)
 
-proc onfeaturesChanged*(self: gen_qdockwidget_types.QDockWidget, slot: proc(features: cint)) =
-  type Cb = proc(features: cint)
-  var tmp = new Cb
+proc onfeaturesChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgetfeaturesChangedSlot) =
+  var tmp = new QDockWidgetfeaturesChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDockWidget_connect_featuresChanged(self.h, cast[int](addr tmp[]))
-proc topLevelChanged*(self: gen_qdockwidget_types.QDockWidget, topLevel: bool): void =
 
+proc topLevelChanged*(self: gen_qdockwidget_types.QDockWidget, topLevel: bool): void =
   fcQDockWidget_topLevelChanged(self.h, topLevel)
 
+type QDockWidgettopLevelChangedSlot* = proc(topLevel: bool)
 proc miqt_exec_callback_QDockWidget_topLevelChanged(slot: int, topLevel: bool) {.exportc.} =
-  type Cb = proc(topLevel: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDockWidgettopLevelChangedSlot](cast[pointer](slot))
   let slotval1 = topLevel
-
 
   nimfunc[](slotval1)
 
-proc ontopLevelChanged*(self: gen_qdockwidget_types.QDockWidget, slot: proc(topLevel: bool)) =
-  type Cb = proc(topLevel: bool)
-  var tmp = new Cb
+proc ontopLevelChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgettopLevelChangedSlot) =
+  var tmp = new QDockWidgettopLevelChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDockWidget_connect_topLevelChanged(self.h, cast[int](addr tmp[]))
-proc allowedAreasChanged*(self: gen_qdockwidget_types.QDockWidget, allowedAreas: cint): void =
 
+proc allowedAreasChanged*(self: gen_qdockwidget_types.QDockWidget, allowedAreas: cint): void =
   fcQDockWidget_allowedAreasChanged(self.h, cint(allowedAreas))
 
+type QDockWidgetallowedAreasChangedSlot* = proc(allowedAreas: cint)
 proc miqt_exec_callback_QDockWidget_allowedAreasChanged(slot: int, allowedAreas: cint) {.exportc.} =
-  type Cb = proc(allowedAreas: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDockWidgetallowedAreasChangedSlot](cast[pointer](slot))
   let slotval1 = cint(allowedAreas)
-
 
   nimfunc[](slotval1)
 
-proc onallowedAreasChanged*(self: gen_qdockwidget_types.QDockWidget, slot: proc(allowedAreas: cint)) =
-  type Cb = proc(allowedAreas: cint)
-  var tmp = new Cb
+proc onallowedAreasChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgetallowedAreasChangedSlot) =
+  var tmp = new QDockWidgetallowedAreasChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDockWidget_connect_allowedAreasChanged(self.h, cast[int](addr tmp[]))
-proc visibilityChanged*(self: gen_qdockwidget_types.QDockWidget, visible: bool): void =
 
+proc visibilityChanged*(self: gen_qdockwidget_types.QDockWidget, visible: bool): void =
   fcQDockWidget_visibilityChanged(self.h, visible)
 
+type QDockWidgetvisibilityChangedSlot* = proc(visible: bool)
 proc miqt_exec_callback_QDockWidget_visibilityChanged(slot: int, visible: bool) {.exportc.} =
-  type Cb = proc(visible: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDockWidgetvisibilityChangedSlot](cast[pointer](slot))
   let slotval1 = visible
-
 
   nimfunc[](slotval1)
 
-proc onvisibilityChanged*(self: gen_qdockwidget_types.QDockWidget, slot: proc(visible: bool)) =
-  type Cb = proc(visible: bool)
-  var tmp = new Cb
+proc onvisibilityChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgetvisibilityChangedSlot) =
+  var tmp = new QDockWidgetvisibilityChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDockWidget_connect_visibilityChanged(self.h, cast[int](addr tmp[]))
-proc dockLocationChanged*(self: gen_qdockwidget_types.QDockWidget, area: cint): void =
 
+proc dockLocationChanged*(self: gen_qdockwidget_types.QDockWidget, area: cint): void =
   fcQDockWidget_dockLocationChanged(self.h, cint(area))
 
+type QDockWidgetdockLocationChangedSlot* = proc(area: cint)
 proc miqt_exec_callback_QDockWidget_dockLocationChanged(slot: int, area: cint) {.exportc.} =
-  type Cb = proc(area: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDockWidgetdockLocationChangedSlot](cast[pointer](slot))
   let slotval1 = cint(area)
-
 
   nimfunc[](slotval1)
 
-proc ondockLocationChanged*(self: gen_qdockwidget_types.QDockWidget, slot: proc(area: cint)) =
-  type Cb = proc(area: cint)
-  var tmp = new Cb
+proc ondockLocationChanged*(self: gen_qdockwidget_types.QDockWidget, slot: QDockWidgetdockLocationChangedSlot) =
+  var tmp = new QDockWidgetdockLocationChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDockWidget_connect_dockLocationChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qdockwidget_types.QDockWidget, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qdockwidget_types.QDockWidget, s: cstring, c: cstring): string =
   let v_ms = fcQDockWidget_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qdockwidget_types.QDockWidget, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qdockwidget_types.QDockWidget, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDockWidget_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QDockWidgetmetaObject*(self: gen_qdockwidget_types.QDockWidget, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQDockWidget_virtualbase_metaObject(self.h))
 
 type QDockWidgetmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -430,7 +401,6 @@ proc miqt_exec_callback_QDockWidget_metaObject(self: ptr cQDockWidget, slot: int
 
   virtualReturn.h
 proc QDockWidgetmetacast*(self: gen_qdockwidget_types.QDockWidget, param1: cstring): pointer =
-
   fQDockWidget_virtualbase_metacast(self.h, param1)
 
 type QDockWidgetmetacastProc* = proc(param1: cstring): pointer
@@ -450,7 +420,6 @@ proc miqt_exec_callback_QDockWidget_metacast(self: ptr cQDockWidget, slot: int, 
 
   virtualReturn
 proc QDockWidgetmetacall*(self: gen_qdockwidget_types.QDockWidget, param1: cint, param2: cint, param3: pointer): cint =
-
   fQDockWidget_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QDockWidgetmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -474,7 +443,6 @@ proc miqt_exec_callback_QDockWidget_metacall(self: ptr cQDockWidget, slot: int, 
 
   virtualReturn
 proc QDockWidgetchangeEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qcoreevent.QEvent): void =
-
   fQDockWidget_virtualbase_changeEvent(self.h, event.h)
 
 type QDockWidgetchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -492,7 +460,6 @@ proc miqt_exec_callback_QDockWidget_changeEvent(self: ptr cQDockWidget, slot: in
 
   nimfunc[](slotval1)
 proc QDockWidgetcloseEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QCloseEvent): void =
-
   fQDockWidget_virtualbase_closeEvent(self.h, event.h)
 
 type QDockWidgetcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -510,7 +477,6 @@ proc miqt_exec_callback_QDockWidget_closeEvent(self: ptr cQDockWidget, slot: int
 
   nimfunc[](slotval1)
 proc QDockWidgetpaintEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QPaintEvent): void =
-
   fQDockWidget_virtualbase_paintEvent(self.h, event.h)
 
 type QDockWidgetpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -528,7 +494,6 @@ proc miqt_exec_callback_QDockWidget_paintEvent(self: ptr cQDockWidget, slot: int
 
   nimfunc[](slotval1)
 proc QDockWidgetevent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qcoreevent.QEvent): bool =
-
   fQDockWidget_virtualbase_event(self.h, event.h)
 
 type QDockWidgeteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -548,7 +513,6 @@ proc miqt_exec_callback_QDockWidget_event(self: ptr cQDockWidget, slot: int, eve
 
   virtualReturn
 proc QDockWidgetinitStyleOption*(self: gen_qdockwidget_types.QDockWidget, option: gen_qstyleoption.QStyleOptionDockWidget): void =
-
   fQDockWidget_virtualbase_initStyleOption(self.h, option.h)
 
 type QDockWidgetinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionDockWidget): void
@@ -566,7 +530,6 @@ proc miqt_exec_callback_QDockWidget_initStyleOption(self: ptr cQDockWidget, slot
 
   nimfunc[](slotval1)
 proc QDockWidgetdevType*(self: gen_qdockwidget_types.QDockWidget, ): cint =
-
   fQDockWidget_virtualbase_devType(self.h)
 
 type QDockWidgetdevTypeProc* = proc(): cint
@@ -584,7 +547,6 @@ proc miqt_exec_callback_QDockWidget_devType(self: ptr cQDockWidget, slot: int): 
 
   virtualReturn
 proc QDockWidgetsetVisible*(self: gen_qdockwidget_types.QDockWidget, visible: bool): void =
-
   fQDockWidget_virtualbase_setVisible(self.h, visible)
 
 type QDockWidgetsetVisibleProc* = proc(visible: bool): void
@@ -602,7 +564,6 @@ proc miqt_exec_callback_QDockWidget_setVisible(self: ptr cQDockWidget, slot: int
 
   nimfunc[](slotval1)
 proc QDockWidgetsizeHint*(self: gen_qdockwidget_types.QDockWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDockWidget_virtualbase_sizeHint(self.h))
 
 type QDockWidgetsizeHintProc* = proc(): gen_qsize.QSize
@@ -620,7 +581,6 @@ proc miqt_exec_callback_QDockWidget_sizeHint(self: ptr cQDockWidget, slot: int):
 
   virtualReturn.h
 proc QDockWidgetminimumSizeHint*(self: gen_qdockwidget_types.QDockWidget, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDockWidget_virtualbase_minimumSizeHint(self.h))
 
 type QDockWidgetminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -638,7 +598,6 @@ proc miqt_exec_callback_QDockWidget_minimumSizeHint(self: ptr cQDockWidget, slot
 
   virtualReturn.h
 proc QDockWidgetheightForWidth*(self: gen_qdockwidget_types.QDockWidget, param1: cint): cint =
-
   fQDockWidget_virtualbase_heightForWidth(self.h, param1)
 
 type QDockWidgetheightForWidthProc* = proc(param1: cint): cint
@@ -658,7 +617,6 @@ proc miqt_exec_callback_QDockWidget_heightForWidth(self: ptr cQDockWidget, slot:
 
   virtualReturn
 proc QDockWidgethasHeightForWidth*(self: gen_qdockwidget_types.QDockWidget, ): bool =
-
   fQDockWidget_virtualbase_hasHeightForWidth(self.h)
 
 type QDockWidgethasHeightForWidthProc* = proc(): bool
@@ -676,7 +634,6 @@ proc miqt_exec_callback_QDockWidget_hasHeightForWidth(self: ptr cQDockWidget, sl
 
   virtualReturn
 proc QDockWidgetpaintEngine*(self: gen_qdockwidget_types.QDockWidget, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQDockWidget_virtualbase_paintEngine(self.h))
 
 type QDockWidgetpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -694,7 +651,6 @@ proc miqt_exec_callback_QDockWidget_paintEngine(self: ptr cQDockWidget, slot: in
 
   virtualReturn.h
 proc QDockWidgetmousePressEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QMouseEvent): void =
-
   fQDockWidget_virtualbase_mousePressEvent(self.h, event.h)
 
 type QDockWidgetmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -712,7 +668,6 @@ proc miqt_exec_callback_QDockWidget_mousePressEvent(self: ptr cQDockWidget, slot
 
   nimfunc[](slotval1)
 proc QDockWidgetmouseReleaseEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QMouseEvent): void =
-
   fQDockWidget_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QDockWidgetmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -730,7 +685,6 @@ proc miqt_exec_callback_QDockWidget_mouseReleaseEvent(self: ptr cQDockWidget, sl
 
   nimfunc[](slotval1)
 proc QDockWidgetmouseDoubleClickEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QMouseEvent): void =
-
   fQDockWidget_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QDockWidgetmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -748,7 +702,6 @@ proc miqt_exec_callback_QDockWidget_mouseDoubleClickEvent(self: ptr cQDockWidget
 
   nimfunc[](slotval1)
 proc QDockWidgetmouseMoveEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QMouseEvent): void =
-
   fQDockWidget_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QDockWidgetmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -766,7 +719,6 @@ proc miqt_exec_callback_QDockWidget_mouseMoveEvent(self: ptr cQDockWidget, slot:
 
   nimfunc[](slotval1)
 proc QDockWidgetwheelEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QWheelEvent): void =
-
   fQDockWidget_virtualbase_wheelEvent(self.h, event.h)
 
 type QDockWidgetwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -784,7 +736,6 @@ proc miqt_exec_callback_QDockWidget_wheelEvent(self: ptr cQDockWidget, slot: int
 
   nimfunc[](slotval1)
 proc QDockWidgetkeyPressEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QKeyEvent): void =
-
   fQDockWidget_virtualbase_keyPressEvent(self.h, event.h)
 
 type QDockWidgetkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -802,7 +753,6 @@ proc miqt_exec_callback_QDockWidget_keyPressEvent(self: ptr cQDockWidget, slot: 
 
   nimfunc[](slotval1)
 proc QDockWidgetkeyReleaseEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QKeyEvent): void =
-
   fQDockWidget_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QDockWidgetkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -820,7 +770,6 @@ proc miqt_exec_callback_QDockWidget_keyReleaseEvent(self: ptr cQDockWidget, slot
 
   nimfunc[](slotval1)
 proc QDockWidgetfocusInEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QFocusEvent): void =
-
   fQDockWidget_virtualbase_focusInEvent(self.h, event.h)
 
 type QDockWidgetfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -838,7 +787,6 @@ proc miqt_exec_callback_QDockWidget_focusInEvent(self: ptr cQDockWidget, slot: i
 
   nimfunc[](slotval1)
 proc QDockWidgetfocusOutEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QFocusEvent): void =
-
   fQDockWidget_virtualbase_focusOutEvent(self.h, event.h)
 
 type QDockWidgetfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -856,7 +804,6 @@ proc miqt_exec_callback_QDockWidget_focusOutEvent(self: ptr cQDockWidget, slot: 
 
   nimfunc[](slotval1)
 proc QDockWidgetenterEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QEnterEvent): void =
-
   fQDockWidget_virtualbase_enterEvent(self.h, event.h)
 
 type QDockWidgetenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -874,7 +821,6 @@ proc miqt_exec_callback_QDockWidget_enterEvent(self: ptr cQDockWidget, slot: int
 
   nimfunc[](slotval1)
 proc QDockWidgetleaveEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qcoreevent.QEvent): void =
-
   fQDockWidget_virtualbase_leaveEvent(self.h, event.h)
 
 type QDockWidgetleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -892,7 +838,6 @@ proc miqt_exec_callback_QDockWidget_leaveEvent(self: ptr cQDockWidget, slot: int
 
   nimfunc[](slotval1)
 proc QDockWidgetmoveEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QMoveEvent): void =
-
   fQDockWidget_virtualbase_moveEvent(self.h, event.h)
 
 type QDockWidgetmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -910,7 +855,6 @@ proc miqt_exec_callback_QDockWidget_moveEvent(self: ptr cQDockWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QDockWidgetresizeEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QResizeEvent): void =
-
   fQDockWidget_virtualbase_resizeEvent(self.h, event.h)
 
 type QDockWidgetresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -928,7 +872,6 @@ proc miqt_exec_callback_QDockWidget_resizeEvent(self: ptr cQDockWidget, slot: in
 
   nimfunc[](slotval1)
 proc QDockWidgetcontextMenuEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QContextMenuEvent): void =
-
   fQDockWidget_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QDockWidgetcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -946,7 +889,6 @@ proc miqt_exec_callback_QDockWidget_contextMenuEvent(self: ptr cQDockWidget, slo
 
   nimfunc[](slotval1)
 proc QDockWidgettabletEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QTabletEvent): void =
-
   fQDockWidget_virtualbase_tabletEvent(self.h, event.h)
 
 type QDockWidgettabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -964,7 +906,6 @@ proc miqt_exec_callback_QDockWidget_tabletEvent(self: ptr cQDockWidget, slot: in
 
   nimfunc[](slotval1)
 proc QDockWidgetactionEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QActionEvent): void =
-
   fQDockWidget_virtualbase_actionEvent(self.h, event.h)
 
 type QDockWidgetactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -982,7 +923,6 @@ proc miqt_exec_callback_QDockWidget_actionEvent(self: ptr cQDockWidget, slot: in
 
   nimfunc[](slotval1)
 proc QDockWidgetdragEnterEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QDragEnterEvent): void =
-
   fQDockWidget_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QDockWidgetdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1000,7 +940,6 @@ proc miqt_exec_callback_QDockWidget_dragEnterEvent(self: ptr cQDockWidget, slot:
 
   nimfunc[](slotval1)
 proc QDockWidgetdragMoveEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QDragMoveEvent): void =
-
   fQDockWidget_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QDockWidgetdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1018,7 +957,6 @@ proc miqt_exec_callback_QDockWidget_dragMoveEvent(self: ptr cQDockWidget, slot: 
 
   nimfunc[](slotval1)
 proc QDockWidgetdragLeaveEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QDragLeaveEvent): void =
-
   fQDockWidget_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QDockWidgetdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1036,7 +974,6 @@ proc miqt_exec_callback_QDockWidget_dragLeaveEvent(self: ptr cQDockWidget, slot:
 
   nimfunc[](slotval1)
 proc QDockWidgetdropEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QDropEvent): void =
-
   fQDockWidget_virtualbase_dropEvent(self.h, event.h)
 
 type QDockWidgetdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1054,7 +991,6 @@ proc miqt_exec_callback_QDockWidget_dropEvent(self: ptr cQDockWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QDockWidgetshowEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QShowEvent): void =
-
   fQDockWidget_virtualbase_showEvent(self.h, event.h)
 
 type QDockWidgetshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1072,7 +1008,6 @@ proc miqt_exec_callback_QDockWidget_showEvent(self: ptr cQDockWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QDockWidgethideEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qevent.QHideEvent): void =
-
   fQDockWidget_virtualbase_hideEvent(self.h, event.h)
 
 type QDockWidgethideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1090,7 +1025,6 @@ proc miqt_exec_callback_QDockWidget_hideEvent(self: ptr cQDockWidget, slot: int,
 
   nimfunc[](slotval1)
 proc QDockWidgetnativeEvent*(self: gen_qdockwidget_types.QDockWidget, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQDockWidget_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QDockWidgetnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1117,7 +1051,6 @@ proc miqt_exec_callback_QDockWidget_nativeEvent(self: ptr cQDockWidget, slot: in
 
   virtualReturn
 proc QDockWidgetmetric*(self: gen_qdockwidget_types.QDockWidget, param1: cint): cint =
-
   fQDockWidget_virtualbase_metric(self.h, cint(param1))
 
 type QDockWidgetmetricProc* = proc(param1: cint): cint
@@ -1137,7 +1070,6 @@ proc miqt_exec_callback_QDockWidget_metric(self: ptr cQDockWidget, slot: int, pa
 
   virtualReturn
 proc QDockWidgetinitPainter*(self: gen_qdockwidget_types.QDockWidget, painter: gen_qpainter.QPainter): void =
-
   fQDockWidget_virtualbase_initPainter(self.h, painter.h)
 
 type QDockWidgetinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1155,7 +1087,6 @@ proc miqt_exec_callback_QDockWidget_initPainter(self: ptr cQDockWidget, slot: in
 
   nimfunc[](slotval1)
 proc QDockWidgetredirected*(self: gen_qdockwidget_types.QDockWidget, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQDockWidget_virtualbase_redirected(self.h, offset.h))
 
 type QDockWidgetredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1175,7 +1106,6 @@ proc miqt_exec_callback_QDockWidget_redirected(self: ptr cQDockWidget, slot: int
 
   virtualReturn.h
 proc QDockWidgetsharedPainter*(self: gen_qdockwidget_types.QDockWidget, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQDockWidget_virtualbase_sharedPainter(self.h))
 
 type QDockWidgetsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1193,7 +1123,6 @@ proc miqt_exec_callback_QDockWidget_sharedPainter(self: ptr cQDockWidget, slot: 
 
   virtualReturn.h
 proc QDockWidgetinputMethodEvent*(self: gen_qdockwidget_types.QDockWidget, param1: gen_qevent.QInputMethodEvent): void =
-
   fQDockWidget_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QDockWidgetinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1211,7 +1140,6 @@ proc miqt_exec_callback_QDockWidget_inputMethodEvent(self: ptr cQDockWidget, slo
 
   nimfunc[](slotval1)
 proc QDockWidgetinputMethodQuery*(self: gen_qdockwidget_types.QDockWidget, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQDockWidget_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QDockWidgetinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1231,7 +1159,6 @@ proc miqt_exec_callback_QDockWidget_inputMethodQuery(self: ptr cQDockWidget, slo
 
   virtualReturn.h
 proc QDockWidgetfocusNextPrevChild*(self: gen_qdockwidget_types.QDockWidget, next: bool): bool =
-
   fQDockWidget_virtualbase_focusNextPrevChild(self.h, next)
 
 type QDockWidgetfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1251,7 +1178,6 @@ proc miqt_exec_callback_QDockWidget_focusNextPrevChild(self: ptr cQDockWidget, s
 
   virtualReturn
 proc QDockWidgeteventFilter*(self: gen_qdockwidget_types.QDockWidget, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQDockWidget_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QDockWidgeteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1273,7 +1199,6 @@ proc miqt_exec_callback_QDockWidget_eventFilter(self: ptr cQDockWidget, slot: in
 
   virtualReturn
 proc QDockWidgettimerEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qcoreevent.QTimerEvent): void =
-
   fQDockWidget_virtualbase_timerEvent(self.h, event.h)
 
 type QDockWidgettimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1291,7 +1216,6 @@ proc miqt_exec_callback_QDockWidget_timerEvent(self: ptr cQDockWidget, slot: int
 
   nimfunc[](slotval1)
 proc QDockWidgetchildEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qcoreevent.QChildEvent): void =
-
   fQDockWidget_virtualbase_childEvent(self.h, event.h)
 
 type QDockWidgetchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1309,7 +1233,6 @@ proc miqt_exec_callback_QDockWidget_childEvent(self: ptr cQDockWidget, slot: int
 
   nimfunc[](slotval1)
 proc QDockWidgetcustomEvent*(self: gen_qdockwidget_types.QDockWidget, event: gen_qcoreevent.QEvent): void =
-
   fQDockWidget_virtualbase_customEvent(self.h, event.h)
 
 type QDockWidgetcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1327,7 +1250,6 @@ proc miqt_exec_callback_QDockWidget_customEvent(self: ptr cQDockWidget, slot: in
 
   nimfunc[](slotval1)
 proc QDockWidgetconnectNotify*(self: gen_qdockwidget_types.QDockWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDockWidget_virtualbase_connectNotify(self.h, signal.h)
 
 type QDockWidgetconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1345,7 +1267,6 @@ proc miqt_exec_callback_QDockWidget_connectNotify(self: ptr cQDockWidget, slot: 
 
   nimfunc[](slotval1)
 proc QDockWidgetdisconnectNotify*(self: gen_qdockwidget_types.QDockWidget, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDockWidget_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QDockWidgetdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

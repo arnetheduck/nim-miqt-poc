@@ -88,69 +88,54 @@ proc fcQMediaObject_delete(self: pointer) {.importc: "QMediaObject_delete".}
 func init*(T: type gen_qmediaobject_types.QMediaObject, h: ptr cQMediaObject): gen_qmediaobject_types.QMediaObject =
   T(h: h)
 proc metaObject*(self: gen_qmediaobject_types.QMediaObject, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQMediaObject_metaObject(self.h))
 
 proc metacast*(self: gen_qmediaobject_types.QMediaObject, param1: cstring): pointer =
-
   fcQMediaObject_metacast(self.h, param1)
 
 proc metacall*(self: gen_qmediaobject_types.QMediaObject, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMediaObject_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qmediaobject_types.QMediaObject, s: cstring): string =
-
   let v_ms = fcQMediaObject_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qmediaobject_types.QMediaObject, s: cstring): string =
-
   let v_ms = fcQMediaObject_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isAvailable*(self: gen_qmediaobject_types.QMediaObject, ): bool =
-
   fcQMediaObject_isAvailable(self.h)
 
 proc availability*(self: gen_qmediaobject_types.QMediaObject, ): cint =
-
   cint(fcQMediaObject_availability(self.h))
 
 proc service*(self: gen_qmediaobject_types.QMediaObject, ): gen_qmediaservice.QMediaService =
-
   gen_qmediaservice.QMediaService(h: fcQMediaObject_service(self.h))
 
 proc notifyInterval*(self: gen_qmediaobject_types.QMediaObject, ): cint =
-
   fcQMediaObject_notifyInterval(self.h)
 
 proc setNotifyInterval*(self: gen_qmediaobject_types.QMediaObject, milliSeconds: cint): void =
-
   fcQMediaObject_setNotifyInterval(self.h, milliSeconds)
 
 proc bindX*(self: gen_qmediaobject_types.QMediaObject, param1: gen_qobject.QObject): bool =
-
   fcQMediaObject_bindX(self.h, param1.h)
 
 proc unbind*(self: gen_qmediaobject_types.QMediaObject, param1: gen_qobject.QObject): void =
-
   fcQMediaObject_unbind(self.h, param1.h)
 
 proc isMetaDataAvailable*(self: gen_qmediaobject_types.QMediaObject, ): bool =
-
   fcQMediaObject_isMetaDataAvailable(self.h)
 
 proc metaData*(self: gen_qmediaobject_types.QMediaObject, key: string): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQMediaObject_metaData(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
 proc availableMetaData*(self: gen_qmediaobject_types.QMediaObject, ): seq[string] =
-
   var v_ma = fcQMediaObject_availableMetaData(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -162,64 +147,57 @@ proc availableMetaData*(self: gen_qmediaobject_types.QMediaObject, ): seq[string
   vx_ret
 
 proc notifyIntervalChanged*(self: gen_qmediaobject_types.QMediaObject, milliSeconds: cint): void =
-
   fcQMediaObject_notifyIntervalChanged(self.h, milliSeconds)
 
+type QMediaObjectnotifyIntervalChangedSlot* = proc(milliSeconds: cint)
 proc miqt_exec_callback_QMediaObject_notifyIntervalChanged(slot: int, milliSeconds: cint) {.exportc.} =
-  type Cb = proc(milliSeconds: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMediaObjectnotifyIntervalChangedSlot](cast[pointer](slot))
   let slotval1 = milliSeconds
-
 
   nimfunc[](slotval1)
 
-proc onnotifyIntervalChanged*(self: gen_qmediaobject_types.QMediaObject, slot: proc(milliSeconds: cint)) =
-  type Cb = proc(milliSeconds: cint)
-  var tmp = new Cb
+proc onnotifyIntervalChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectnotifyIntervalChangedSlot) =
+  var tmp = new QMediaObjectnotifyIntervalChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMediaObject_connect_notifyIntervalChanged(self.h, cast[int](addr tmp[]))
-proc metaDataAvailableChanged*(self: gen_qmediaobject_types.QMediaObject, available: bool): void =
 
+proc metaDataAvailableChanged*(self: gen_qmediaobject_types.QMediaObject, available: bool): void =
   fcQMediaObject_metaDataAvailableChanged(self.h, available)
 
+type QMediaObjectmetaDataAvailableChangedSlot* = proc(available: bool)
 proc miqt_exec_callback_QMediaObject_metaDataAvailableChanged(slot: int, available: bool) {.exportc.} =
-  type Cb = proc(available: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMediaObjectmetaDataAvailableChangedSlot](cast[pointer](slot))
   let slotval1 = available
-
 
   nimfunc[](slotval1)
 
-proc onmetaDataAvailableChanged*(self: gen_qmediaobject_types.QMediaObject, slot: proc(available: bool)) =
-  type Cb = proc(available: bool)
-  var tmp = new Cb
+proc onmetaDataAvailableChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectmetaDataAvailableChangedSlot) =
+  var tmp = new QMediaObjectmetaDataAvailableChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMediaObject_connect_metaDataAvailableChanged(self.h, cast[int](addr tmp[]))
-proc metaDataChanged*(self: gen_qmediaobject_types.QMediaObject, ): void =
 
+proc metaDataChanged*(self: gen_qmediaobject_types.QMediaObject, ): void =
   fcQMediaObject_metaDataChanged(self.h)
 
+type QMediaObjectmetaDataChangedSlot* = proc()
 proc miqt_exec_callback_QMediaObject_metaDataChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QMediaObjectmetaDataChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onmetaDataChanged*(self: gen_qmediaobject_types.QMediaObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onmetaDataChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectmetaDataChangedSlot) =
+  var tmp = new QMediaObjectmetaDataChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMediaObject_connect_metaDataChanged(self.h, cast[int](addr tmp[]))
-proc metaDataChanged2*(self: gen_qmediaobject_types.QMediaObject, key: string, value: gen_qvariant.QVariant): void =
 
+proc metaDataChanged*(self: gen_qmediaobject_types.QMediaObject, key: string, value: gen_qvariant.QVariant): void =
   fcQMediaObject_metaDataChanged2(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), value.h)
 
+type QMediaObjectmetaDataChanged2Slot* = proc(key: string, value: gen_qvariant.QVariant)
 proc miqt_exec_callback_QMediaObject_metaDataChanged2(slot: int, key: struct_miqt_string, value: pointer) {.exportc.} =
-  type Cb = proc(key: string, value: gen_qvariant.QVariant)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMediaObjectmetaDataChanged2Slot](cast[pointer](slot))
   let vkey_ms = key
   let vkeyx_ret = string.fromBytes(toOpenArrayByte(vkey_ms.data, 0, int(vkey_ms.len)-1))
   c_free(vkey_ms.data)
@@ -227,74 +205,65 @@ proc miqt_exec_callback_QMediaObject_metaDataChanged2(slot: int, key: struct_miq
 
   let slotval2 = gen_qvariant.QVariant(h: value)
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onmetaDataChanged2*(self: gen_qmediaobject_types.QMediaObject, slot: proc(key: string, value: gen_qvariant.QVariant)) =
-  type Cb = proc(key: string, value: gen_qvariant.QVariant)
-  var tmp = new Cb
+proc onmetaDataChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectmetaDataChanged2Slot) =
+  var tmp = new QMediaObjectmetaDataChanged2Slot
   tmp[] = slot
   GC_ref(tmp)
   fQMediaObject_connect_metaDataChanged2(self.h, cast[int](addr tmp[]))
-proc availabilityChanged*(self: gen_qmediaobject_types.QMediaObject, available: bool): void =
 
+proc availabilityChanged*(self: gen_qmediaobject_types.QMediaObject, available: bool): void =
   fcQMediaObject_availabilityChanged(self.h, available)
 
+type QMediaObjectavailabilityChangedSlot* = proc(available: bool)
 proc miqt_exec_callback_QMediaObject_availabilityChanged(slot: int, available: bool) {.exportc.} =
-  type Cb = proc(available: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMediaObjectavailabilityChangedSlot](cast[pointer](slot))
   let slotval1 = available
-
 
   nimfunc[](slotval1)
 
-proc onavailabilityChanged*(self: gen_qmediaobject_types.QMediaObject, slot: proc(available: bool)) =
-  type Cb = proc(available: bool)
-  var tmp = new Cb
+proc onavailabilityChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectavailabilityChangedSlot) =
+  var tmp = new QMediaObjectavailabilityChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMediaObject_connect_availabilityChanged(self.h, cast[int](addr tmp[]))
-proc availabilityChangedWithAvailability*(self: gen_qmediaobject_types.QMediaObject, availability: cint): void =
 
+proc availabilityChanged*(self: gen_qmediaobject_types.QMediaObject, availability: cint): void =
   fcQMediaObject_availabilityChangedWithAvailability(self.h, cint(availability))
 
+type QMediaObjectavailabilityChangedWithAvailabilitySlot* = proc(availability: cint)
 proc miqt_exec_callback_QMediaObject_availabilityChangedWithAvailability(slot: int, availability: cint) {.exportc.} =
-  type Cb = proc(availability: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMediaObjectavailabilityChangedWithAvailabilitySlot](cast[pointer](slot))
   let slotval1 = cint(availability)
-
 
   nimfunc[](slotval1)
 
-proc onavailabilityChangedWithAvailability*(self: gen_qmediaobject_types.QMediaObject, slot: proc(availability: cint)) =
-  type Cb = proc(availability: cint)
-  var tmp = new Cb
+proc onavailabilityChanged*(self: gen_qmediaobject_types.QMediaObject, slot: QMediaObjectavailabilityChangedWithAvailabilitySlot) =
+  var tmp = new QMediaObjectavailabilityChangedWithAvailabilitySlot
   tmp[] = slot
   GC_ref(tmp)
   fQMediaObject_connect_availabilityChangedWithAvailability(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qmediaobject_types.QMediaObject, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qmediaobject_types.QMediaObject, s: cstring, c: cstring): string =
   let v_ms = fcQMediaObject_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qmediaobject_types.QMediaObject, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qmediaobject_types.QMediaObject, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMediaObject_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qmediaobject_types.QMediaObject, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qmediaobject_types.QMediaObject, s: cstring, c: cstring): string =
   let v_ms = fcQMediaObject_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qmediaobject_types.QMediaObject, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qmediaobject_types.QMediaObject, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMediaObject_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

@@ -54,11 +54,9 @@ proc fcQQmlNetworkAccessManagerFactory_delete(self: pointer) {.importc: "QQmlNet
 func init*(T: type gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, h: ptr cQQmlNetworkAccessManagerFactory): gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory =
   T(h: h)
 proc create*(self: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, parent: gen_qobject.QObject): gen_qnetworkaccessmanager.QNetworkAccessManager =
-
   gen_qnetworkaccessmanager.QNetworkAccessManager(h: fcQQmlNetworkAccessManagerFactory_create(self.h, parent.h))
 
 proc operatorAssign*(self: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory, param1: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory): void =
-
   fcQQmlNetworkAccessManagerFactory_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qqmlnetworkaccessmanagerfactory_types.QQmlNetworkAccessManagerFactory) =

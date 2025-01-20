@@ -109,107 +109,87 @@ proc fcQTextList_delete(self: pointer) {.importc: "QTextList_delete".}
 func init*(T: type gen_qtextlist_types.QTextList, h: ptr cQTextList): gen_qtextlist_types.QTextList =
   T(h: h)
 proc create*(T: type gen_qtextlist_types.QTextList, doc: gen_qtextdocument.QTextDocument): gen_qtextlist_types.QTextList =
-
   gen_qtextlist_types.QTextList.init(fcQTextList_new(doc.h))
-proc metaObject*(self: gen_qtextlist_types.QTextList, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtextlist_types.QTextList, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTextList_metaObject(self.h))
 
 proc metacast*(self: gen_qtextlist_types.QTextList, param1: cstring): pointer =
-
   fcQTextList_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtextlist_types.QTextList, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTextList_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtextlist_types.QTextList, s: cstring): string =
-
   let v_ms = fcQTextList_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtextlist_types.QTextList, s: cstring): string =
-
   let v_ms = fcQTextList_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc count*(self: gen_qtextlist_types.QTextList, ): cint =
-
   fcQTextList_count(self.h)
 
 proc isEmpty*(self: gen_qtextlist_types.QTextList, ): bool =
-
   fcQTextList_isEmpty(self.h)
 
 proc item*(self: gen_qtextlist_types.QTextList, i: cint): gen_qtextobject.QTextBlock =
-
   gen_qtextobject.QTextBlock(h: fcQTextList_item(self.h, i))
 
 proc itemNumber*(self: gen_qtextlist_types.QTextList, param1: gen_qtextobject.QTextBlock): cint =
-
   fcQTextList_itemNumber(self.h, param1.h)
 
 proc itemText*(self: gen_qtextlist_types.QTextList, param1: gen_qtextobject.QTextBlock): string =
-
   let v_ms = fcQTextList_itemText(self.h, param1.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc removeItem*(self: gen_qtextlist_types.QTextList, i: cint): void =
-
   fcQTextList_removeItem(self.h, i)
 
 proc remove*(self: gen_qtextlist_types.QTextList, param1: gen_qtextobject.QTextBlock): void =
-
   fcQTextList_remove(self.h, param1.h)
 
 proc add*(self: gen_qtextlist_types.QTextList, blockVal: gen_qtextobject.QTextBlock): void =
-
   fcQTextList_add(self.h, blockVal.h)
 
 proc setFormat*(self: gen_qtextlist_types.QTextList, format: gen_qtextformat.QTextListFormat): void =
-
   fcQTextList_setFormat(self.h, format.h)
 
 proc format*(self: gen_qtextlist_types.QTextList, ): gen_qtextformat.QTextListFormat =
-
   gen_qtextformat.QTextListFormat(h: fcQTextList_format(self.h))
 
-proc tr2*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring): string =
   let v_ms = fcQTextList_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTextList_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring): string =
   let v_ms = fcQTextList_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtextlist_types.QTextList, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTextList_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QTextListmetaObject*(self: gen_qtextlist_types.QTextList, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTextList_virtualbase_metaObject(self.h))
 
 type QTextListmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -227,7 +207,6 @@ proc miqt_exec_callback_QTextList_metaObject(self: ptr cQTextList, slot: int): p
 
   virtualReturn.h
 proc QTextListmetacast*(self: gen_qtextlist_types.QTextList, param1: cstring): pointer =
-
   fQTextList_virtualbase_metacast(self.h, param1)
 
 type QTextListmetacastProc* = proc(param1: cstring): pointer
@@ -247,7 +226,6 @@ proc miqt_exec_callback_QTextList_metacast(self: ptr cQTextList, slot: int, para
 
   virtualReturn
 proc QTextListmetacall*(self: gen_qtextlist_types.QTextList, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTextList_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTextListmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -271,7 +249,6 @@ proc miqt_exec_callback_QTextList_metacall(self: ptr cQTextList, slot: int, para
 
   virtualReturn
 proc QTextListblockInserted*(self: gen_qtextlist_types.QTextList, blockVal: gen_qtextobject.QTextBlock): void =
-
   fQTextList_virtualbase_blockInserted(self.h, blockVal.h)
 
 type QTextListblockInsertedProc* = proc(blockVal: gen_qtextobject.QTextBlock): void
@@ -289,7 +266,6 @@ proc miqt_exec_callback_QTextList_blockInserted(self: ptr cQTextList, slot: int,
 
   nimfunc[](slotval1)
 proc QTextListblockRemoved*(self: gen_qtextlist_types.QTextList, blockVal: gen_qtextobject.QTextBlock): void =
-
   fQTextList_virtualbase_blockRemoved(self.h, blockVal.h)
 
 type QTextListblockRemovedProc* = proc(blockVal: gen_qtextobject.QTextBlock): void
@@ -307,7 +283,6 @@ proc miqt_exec_callback_QTextList_blockRemoved(self: ptr cQTextList, slot: int, 
 
   nimfunc[](slotval1)
 proc QTextListblockFormatChanged*(self: gen_qtextlist_types.QTextList, blockVal: gen_qtextobject.QTextBlock): void =
-
   fQTextList_virtualbase_blockFormatChanged(self.h, blockVal.h)
 
 type QTextListblockFormatChangedProc* = proc(blockVal: gen_qtextobject.QTextBlock): void
@@ -325,7 +300,6 @@ proc miqt_exec_callback_QTextList_blockFormatChanged(self: ptr cQTextList, slot:
 
   nimfunc[](slotval1)
 proc QTextListevent*(self: gen_qtextlist_types.QTextList, event: gen_qcoreevent.QEvent): bool =
-
   fQTextList_virtualbase_event(self.h, event.h)
 
 type QTextListeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -345,7 +319,6 @@ proc miqt_exec_callback_QTextList_event(self: ptr cQTextList, slot: int, event: 
 
   virtualReturn
 proc QTextListeventFilter*(self: gen_qtextlist_types.QTextList, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTextList_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTextListeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -367,7 +340,6 @@ proc miqt_exec_callback_QTextList_eventFilter(self: ptr cQTextList, slot: int, w
 
   virtualReturn
 proc QTextListtimerEvent*(self: gen_qtextlist_types.QTextList, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTextList_virtualbase_timerEvent(self.h, event.h)
 
 type QTextListtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -385,7 +357,6 @@ proc miqt_exec_callback_QTextList_timerEvent(self: ptr cQTextList, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTextListchildEvent*(self: gen_qtextlist_types.QTextList, event: gen_qcoreevent.QChildEvent): void =
-
   fQTextList_virtualbase_childEvent(self.h, event.h)
 
 type QTextListchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -403,7 +374,6 @@ proc miqt_exec_callback_QTextList_childEvent(self: ptr cQTextList, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTextListcustomEvent*(self: gen_qtextlist_types.QTextList, event: gen_qcoreevent.QEvent): void =
-
   fQTextList_virtualbase_customEvent(self.h, event.h)
 
 type QTextListcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -421,7 +391,6 @@ proc miqt_exec_callback_QTextList_customEvent(self: ptr cQTextList, slot: int, e
 
   nimfunc[](slotval1)
 proc QTextListconnectNotify*(self: gen_qtextlist_types.QTextList, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTextList_virtualbase_connectNotify(self.h, signal.h)
 
 type QTextListconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -439,7 +408,6 @@ proc miqt_exec_callback_QTextList_connectNotify(self: ptr cQTextList, slot: int,
 
   nimfunc[](slotval1)
 proc QTextListdisconnectNotify*(self: gen_qtextlist_types.QTextList, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTextList_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTextListdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

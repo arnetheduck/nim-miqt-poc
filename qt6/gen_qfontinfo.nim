@@ -70,87 +70,69 @@ proc fcQFontInfo_delete(self: pointer) {.importc: "QFontInfo_delete".}
 func init*(T: type gen_qfontinfo_types.QFontInfo, h: ptr cQFontInfo): gen_qfontinfo_types.QFontInfo =
   T(h: h)
 proc create*(T: type gen_qfontinfo_types.QFontInfo, param1: gen_qfont.QFont): gen_qfontinfo_types.QFontInfo =
-
   gen_qfontinfo_types.QFontInfo.init(fcQFontInfo_new(param1.h))
-proc create2*(T: type gen_qfontinfo_types.QFontInfo, param1: gen_qfontinfo_types.QFontInfo): gen_qfontinfo_types.QFontInfo =
 
+proc create*(T: type gen_qfontinfo_types.QFontInfo, param1: gen_qfontinfo_types.QFontInfo): gen_qfontinfo_types.QFontInfo =
   gen_qfontinfo_types.QFontInfo.init(fcQFontInfo_new2(param1.h))
-proc operatorAssign*(self: gen_qfontinfo_types.QFontInfo, param1: gen_qfontinfo_types.QFontInfo): void =
 
+proc operatorAssign*(self: gen_qfontinfo_types.QFontInfo, param1: gen_qfontinfo_types.QFontInfo): void =
   fcQFontInfo_operatorAssign(self.h, param1.h)
 
 proc swap*(self: gen_qfontinfo_types.QFontInfo, other: gen_qfontinfo_types.QFontInfo): void =
-
   fcQFontInfo_swap(self.h, other.h)
 
 proc family*(self: gen_qfontinfo_types.QFontInfo, ): string =
-
   let v_ms = fcQFontInfo_family(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc styleName*(self: gen_qfontinfo_types.QFontInfo, ): string =
-
   let v_ms = fcQFontInfo_styleName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc pixelSize*(self: gen_qfontinfo_types.QFontInfo, ): cint =
-
   fcQFontInfo_pixelSize(self.h)
 
 proc pointSize*(self: gen_qfontinfo_types.QFontInfo, ): cint =
-
   fcQFontInfo_pointSize(self.h)
 
 proc pointSizeF*(self: gen_qfontinfo_types.QFontInfo, ): float64 =
-
   fcQFontInfo_pointSizeF(self.h)
 
 proc italic*(self: gen_qfontinfo_types.QFontInfo, ): bool =
-
   fcQFontInfo_italic(self.h)
 
 proc style*(self: gen_qfontinfo_types.QFontInfo, ): cint =
-
   cint(fcQFontInfo_style(self.h))
 
 proc weight*(self: gen_qfontinfo_types.QFontInfo, ): cint =
-
   fcQFontInfo_weight(self.h)
 
 proc bold*(self: gen_qfontinfo_types.QFontInfo, ): bool =
-
   fcQFontInfo_bold(self.h)
 
 proc underline*(self: gen_qfontinfo_types.QFontInfo, ): bool =
-
   fcQFontInfo_underline(self.h)
 
 proc overline*(self: gen_qfontinfo_types.QFontInfo, ): bool =
-
   fcQFontInfo_overline(self.h)
 
 proc strikeOut*(self: gen_qfontinfo_types.QFontInfo, ): bool =
-
   fcQFontInfo_strikeOut(self.h)
 
 proc fixedPitch*(self: gen_qfontinfo_types.QFontInfo, ): bool =
-
   fcQFontInfo_fixedPitch(self.h)
 
 proc styleHint*(self: gen_qfontinfo_types.QFontInfo, ): cint =
-
   cint(fcQFontInfo_styleHint(self.h))
 
 proc legacyWeight*(self: gen_qfontinfo_types.QFontInfo, ): cint =
-
   fcQFontInfo_legacyWeight(self.h)
 
 proc exactMatch*(self: gen_qfontinfo_types.QFontInfo, ): bool =
-
   fcQFontInfo_exactMatch(self.h)
 
 proc delete*(self: gen_qfontinfo_types.QFontInfo) =

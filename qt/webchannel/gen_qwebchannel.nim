@@ -101,39 +101,33 @@ proc fcQWebChannel_delete(self: pointer) {.importc: "QWebChannel_delete".}
 func init*(T: type gen_qwebchannel_types.QWebChannel, h: ptr cQWebChannel): gen_qwebchannel_types.QWebChannel =
   T(h: h)
 proc create*(T: type gen_qwebchannel_types.QWebChannel, ): gen_qwebchannel_types.QWebChannel =
-
   gen_qwebchannel_types.QWebChannel.init(fcQWebChannel_new())
+
 proc create*(T: type gen_qwebchannel_types.QWebChannel, parent: gen_qobject.QObject): gen_qwebchannel_types.QWebChannel =
-
   gen_qwebchannel_types.QWebChannel.init(fcQWebChannel_new2(parent.h))
-proc metaObject*(self: gen_qwebchannel_types.QWebChannel, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qwebchannel_types.QWebChannel, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebChannel_metaObject(self.h))
 
 proc metacast*(self: gen_qwebchannel_types.QWebChannel, param1: cstring): pointer =
-
   fcQWebChannel_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebchannel_types.QWebChannel, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebChannel_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebchannel_types.QWebChannel, s: cstring): string =
-
   let v_ms = fcQWebChannel_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qwebchannel_types.QWebChannel, s: cstring): string =
-
   let v_ms = fcQWebChannel_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc registerObjects*(self: gen_qwebchannel_types.QWebChannel, objects: Table[string,gen_qobject.QObject]): void =
-
   var objects_Keys_CArray = newSeq[struct_miqt_string](len(objects))
   var objects_Values_CArray = newSeq[pointer](len(objects))
   var objects_ctr = 0
@@ -145,7 +139,6 @@ proc registerObjects*(self: gen_qwebchannel_types.QWebChannel, objects: Table[st
   fcQWebChannel_registerObjects(self.h, struct_miqt_map(len: csize_t(len(objects)),keys: if len(objects) == 0: nil else: addr(objects_Keys_CArray[0]), values: if len(objects) == 0: nil else: addr(objects_Values_CArray[0]),))
 
 proc registeredObjects*(self: gen_qwebchannel_types.QWebChannel, ): Table[string,gen_qobject.QObject] =
-
   var v_mm = fcQWebChannel_registeredObjects(self.h)
   var vx_ret: Table[string, gen_qobject.QObject]
   var v_Keys = cast[ptr UncheckedArray[struct_miqt_string]](v_mm.keys)
@@ -162,77 +155,64 @@ proc registeredObjects*(self: gen_qwebchannel_types.QWebChannel, ): Table[string
   vx_ret
 
 proc registerObject*(self: gen_qwebchannel_types.QWebChannel, id: string, objectVal: gen_qobject.QObject): void =
-
   fcQWebChannel_registerObject(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), objectVal.h)
 
 proc deregisterObject*(self: gen_qwebchannel_types.QWebChannel, objectVal: gen_qobject.QObject): void =
-
   fcQWebChannel_deregisterObject(self.h, objectVal.h)
 
 proc blockUpdates*(self: gen_qwebchannel_types.QWebChannel, ): bool =
-
   fcQWebChannel_blockUpdates(self.h)
 
 proc setBlockUpdates*(self: gen_qwebchannel_types.QWebChannel, blockVal: bool): void =
-
   fcQWebChannel_setBlockUpdates(self.h, blockVal)
 
 proc blockUpdatesChanged*(self: gen_qwebchannel_types.QWebChannel, blockVal: bool): void =
-
   fcQWebChannel_blockUpdatesChanged(self.h, blockVal)
 
+type QWebChannelblockUpdatesChangedSlot* = proc(blockVal: bool)
 proc miqt_exec_callback_QWebChannel_blockUpdatesChanged(slot: int, blockVal: bool) {.exportc.} =
-  type Cb = proc(blockVal: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebChannelblockUpdatesChangedSlot](cast[pointer](slot))
   let slotval1 = blockVal
-
 
   nimfunc[](slotval1)
 
-proc onblockUpdatesChanged*(self: gen_qwebchannel_types.QWebChannel, slot: proc(blockVal: bool)) =
-  type Cb = proc(blockVal: bool)
-  var tmp = new Cb
+proc onblockUpdatesChanged*(self: gen_qwebchannel_types.QWebChannel, slot: QWebChannelblockUpdatesChangedSlot) =
+  var tmp = new QWebChannelblockUpdatesChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebChannel_connect_blockUpdatesChanged(self.h, cast[int](addr tmp[]))
-proc connectTo*(self: gen_qwebchannel_types.QWebChannel, transport: gen_qwebchannelabstracttransport.QWebChannelAbstractTransport): void =
 
+proc connectTo*(self: gen_qwebchannel_types.QWebChannel, transport: gen_qwebchannelabstracttransport.QWebChannelAbstractTransport): void =
   fcQWebChannel_connectTo(self.h, transport.h)
 
 proc disconnectFrom*(self: gen_qwebchannel_types.QWebChannel, transport: gen_qwebchannelabstracttransport.QWebChannelAbstractTransport): void =
-
   fcQWebChannel_disconnectFrom(self.h, transport.h)
 
-proc tr2*(_: type gen_qwebchannel_types.QWebChannel, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qwebchannel_types.QWebChannel, s: cstring, c: cstring): string =
   let v_ms = fcQWebChannel_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebchannel_types.QWebChannel, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebchannel_types.QWebChannel, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebChannel_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qwebchannel_types.QWebChannel, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qwebchannel_types.QWebChannel, s: cstring, c: cstring): string =
   let v_ms = fcQWebChannel_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qwebchannel_types.QWebChannel, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qwebchannel_types.QWebChannel, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebChannel_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QWebChannelmetaObject*(self: gen_qwebchannel_types.QWebChannel, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQWebChannel_virtualbase_metaObject(self.h))
 
 type QWebChannelmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -250,7 +230,6 @@ proc miqt_exec_callback_QWebChannel_metaObject(self: ptr cQWebChannel, slot: int
 
   virtualReturn.h
 proc QWebChannelmetacast*(self: gen_qwebchannel_types.QWebChannel, param1: cstring): pointer =
-
   fQWebChannel_virtualbase_metacast(self.h, param1)
 
 type QWebChannelmetacastProc* = proc(param1: cstring): pointer
@@ -270,7 +249,6 @@ proc miqt_exec_callback_QWebChannel_metacast(self: ptr cQWebChannel, slot: int, 
 
   virtualReturn
 proc QWebChannelmetacall*(self: gen_qwebchannel_types.QWebChannel, param1: cint, param2: cint, param3: pointer): cint =
-
   fQWebChannel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QWebChannelmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -294,7 +272,6 @@ proc miqt_exec_callback_QWebChannel_metacall(self: ptr cQWebChannel, slot: int, 
 
   virtualReturn
 proc QWebChannelevent*(self: gen_qwebchannel_types.QWebChannel, event: gen_qcoreevent.QEvent): bool =
-
   fQWebChannel_virtualbase_event(self.h, event.h)
 
 type QWebChanneleventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -314,7 +291,6 @@ proc miqt_exec_callback_QWebChannel_event(self: ptr cQWebChannel, slot: int, eve
 
   virtualReturn
 proc QWebChanneleventFilter*(self: gen_qwebchannel_types.QWebChannel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQWebChannel_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QWebChanneleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -336,7 +312,6 @@ proc miqt_exec_callback_QWebChannel_eventFilter(self: ptr cQWebChannel, slot: in
 
   virtualReturn
 proc QWebChanneltimerEvent*(self: gen_qwebchannel_types.QWebChannel, event: gen_qcoreevent.QTimerEvent): void =
-
   fQWebChannel_virtualbase_timerEvent(self.h, event.h)
 
 type QWebChanneltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -354,7 +329,6 @@ proc miqt_exec_callback_QWebChannel_timerEvent(self: ptr cQWebChannel, slot: int
 
   nimfunc[](slotval1)
 proc QWebChannelchildEvent*(self: gen_qwebchannel_types.QWebChannel, event: gen_qcoreevent.QChildEvent): void =
-
   fQWebChannel_virtualbase_childEvent(self.h, event.h)
 
 type QWebChannelchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -372,7 +346,6 @@ proc miqt_exec_callback_QWebChannel_childEvent(self: ptr cQWebChannel, slot: int
 
   nimfunc[](slotval1)
 proc QWebChannelcustomEvent*(self: gen_qwebchannel_types.QWebChannel, event: gen_qcoreevent.QEvent): void =
-
   fQWebChannel_virtualbase_customEvent(self.h, event.h)
 
 type QWebChannelcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -390,7 +363,6 @@ proc miqt_exec_callback_QWebChannel_customEvent(self: ptr cQWebChannel, slot: in
 
   nimfunc[](slotval1)
 proc QWebChannelconnectNotify*(self: gen_qwebchannel_types.QWebChannel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebChannel_virtualbase_connectNotify(self.h, signal.h)
 
 type QWebChannelconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -408,7 +380,6 @@ proc miqt_exec_callback_QWebChannel_connectNotify(self: ptr cQWebChannel, slot: 
 
   nimfunc[](slotval1)
 proc QWebChanneldisconnectNotify*(self: gen_qwebchannel_types.QWebChannel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebChannel_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QWebChanneldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

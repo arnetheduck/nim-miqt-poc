@@ -267,55 +267,42 @@ proc fcQAccessibleActivationObserver_delete(self: pointer) {.importc: "QAccessib
 func init*(T: type gen_qaccessible_base_types.QAccessible, h: ptr cQAccessible): gen_qaccessible_base_types.QAccessible =
   T(h: h)
 proc installActivationObserver*(_: type gen_qaccessible_base_types.QAccessible, param1: gen_qaccessible_base_types.QAccessibleActivationObserver): void =
-
   fcQAccessible_installActivationObserver(param1.h)
 
 proc removeActivationObserver*(_: type gen_qaccessible_base_types.QAccessible, param1: gen_qaccessible_base_types.QAccessibleActivationObserver): void =
-
   fcQAccessible_removeActivationObserver(param1.h)
 
 proc queryAccessibleInterface*(_: type gen_qaccessible_base_types.QAccessible, param1: gen_qobject.QObject): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fcQAccessible_queryAccessibleInterface(param1.h))
 
 proc uniqueId*(_: type gen_qaccessible_base_types.QAccessible, iface: gen_qaccessible.QAccessibleInterface): cuint =
-
   fcQAccessible_uniqueId(iface.h)
 
 proc accessibleInterface*(_: type gen_qaccessible_base_types.QAccessible, uniqueId: cuint): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fcQAccessible_accessibleInterface(uniqueId))
 
 proc registerAccessibleInterface*(_: type gen_qaccessible_base_types.QAccessible, iface: gen_qaccessible.QAccessibleInterface): cuint =
-
   fcQAccessible_registerAccessibleInterface(iface.h)
 
 proc deleteAccessibleInterface*(_: type gen_qaccessible_base_types.QAccessible, uniqueId: cuint): void =
-
   fcQAccessible_deleteAccessibleInterface(uniqueId)
 
 proc updateAccessibility*(_: type gen_qaccessible_base_types.QAccessible, event: gen_qaccessible.QAccessibleEvent): void =
-
   fcQAccessible_updateAccessibility(event.h)
 
 proc isActive*(_: type gen_qaccessible_base_types.QAccessible, ): bool =
-
   fcQAccessible_isActive()
 
 proc setActive*(_: type gen_qaccessible_base_types.QAccessible, active: bool): void =
-
   fcQAccessible_setActive(active)
 
 proc setRootObject*(_: type gen_qaccessible_base_types.QAccessible, objectVal: gen_qobject.QObject): void =
-
   fcQAccessible_setRootObject(objectVal.h)
 
 proc cleanup*(_: type gen_qaccessible_base_types.QAccessible, ): void =
-
   fcQAccessible_cleanup()
 
 proc qAccessibleTextBoundaryHelper*(_: type gen_qaccessible_base_types.QAccessible, cursor: gen_qtextcursor.QTextCursor, boundaryType: cint): tuple[first: cint, second: cint] =
-
   var v_mm = fcQAccessible_qAccessibleTextBoundaryHelper(cursor.h, cint(boundaryType))
   var v_First_CArray = cast[ptr UncheckedArray[cint]](v_mm.keys)
   var v_Second_CArray = cast[ptr UncheckedArray[cint]](v_mm.values)
@@ -333,19 +320,17 @@ proc delete*(self: gen_qaccessible_base_types.QAccessible) =
 func init*(T: type gen_qaccessible_base_types.QAccessibleState, h: ptr cQAccessibleState): gen_qaccessible_base_types.QAccessibleState =
   T(h: h)
 proc create*(T: type gen_qaccessible_base_types.QAccessibleState, ): gen_qaccessible_base_types.QAccessibleState =
-
   gen_qaccessible_base_types.QAccessibleState.init(fcQAccessibleState_new())
+
 proc delete*(self: gen_qaccessible_base_types.QAccessibleState) =
   fcQAccessibleState_delete(self.h)
 
 func init*(T: type gen_qaccessible_base_types.QAccessibleActivationObserver, h: ptr cQAccessibleActivationObserver): gen_qaccessible_base_types.QAccessibleActivationObserver =
   T(h: h)
 proc accessibilityActiveChanged*(self: gen_qaccessible_base_types.QAccessibleActivationObserver, active: bool): void =
-
   fcQAccessibleActivationObserver_accessibilityActiveChanged(self.h, active)
 
 proc operatorAssign*(self: gen_qaccessible_base_types.QAccessibleActivationObserver, param1: gen_qaccessible_base_types.QAccessibleActivationObserver): void =
-
   fcQAccessibleActivationObserver_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qaccessible_base_types.QAccessibleActivationObserver) =

@@ -84,72 +84,60 @@ proc fcQTextBoundaryFinder_delete(self: pointer) {.importc: "QTextBoundaryFinder
 func init*(T: type gen_qtextboundaryfinder_types.QTextBoundaryFinder, h: ptr cQTextBoundaryFinder): gen_qtextboundaryfinder_types.QTextBoundaryFinder =
   T(h: h)
 proc create*(T: type gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): gen_qtextboundaryfinder_types.QTextBoundaryFinder =
-
   gen_qtextboundaryfinder_types.QTextBoundaryFinder.init(fcQTextBoundaryFinder_new())
+
 proc create*(T: type gen_qtextboundaryfinder_types.QTextBoundaryFinder, other: gen_qtextboundaryfinder_types.QTextBoundaryFinder): gen_qtextboundaryfinder_types.QTextBoundaryFinder =
-
   gen_qtextboundaryfinder_types.QTextBoundaryFinder.init(fcQTextBoundaryFinder_new2(other.h))
+
 proc create*(T: type gen_qtextboundaryfinder_types.QTextBoundaryFinder, typeVal: cint, string: string): gen_qtextboundaryfinder_types.QTextBoundaryFinder =
-
   gen_qtextboundaryfinder_types.QTextBoundaryFinder.init(fcQTextBoundaryFinder_new3(cint(typeVal), struct_miqt_string(data: string, len: csize_t(len(string)))))
+
 proc create*(T: type gen_qtextboundaryfinder_types.QTextBoundaryFinder, typeVal: cint, chars: gen_qchar.QChar, length: int64): gen_qtextboundaryfinder_types.QTextBoundaryFinder =
-
   gen_qtextboundaryfinder_types.QTextBoundaryFinder.init(fcQTextBoundaryFinder_new4(cint(typeVal), chars.h, length))
+
 proc create*(T: type gen_qtextboundaryfinder_types.QTextBoundaryFinder, typeVal: cint, chars: gen_qchar.QChar, length: int64, buffer: ptr uint8): gen_qtextboundaryfinder_types.QTextBoundaryFinder =
-
   gen_qtextboundaryfinder_types.QTextBoundaryFinder.init(fcQTextBoundaryFinder_new5(cint(typeVal), chars.h, length, buffer))
+
 proc create*(T: type gen_qtextboundaryfinder_types.QTextBoundaryFinder, typeVal: cint, chars: gen_qchar.QChar, length: int64, buffer: ptr uint8, bufferSize: int64): gen_qtextboundaryfinder_types.QTextBoundaryFinder =
-
   gen_qtextboundaryfinder_types.QTextBoundaryFinder.init(fcQTextBoundaryFinder_new6(cint(typeVal), chars.h, length, buffer, bufferSize))
-proc operatorAssign*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, other: gen_qtextboundaryfinder_types.QTextBoundaryFinder): void =
 
+proc operatorAssign*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, other: gen_qtextboundaryfinder_types.QTextBoundaryFinder): void =
   fcQTextBoundaryFinder_operatorAssign(self.h, other.h)
 
 proc isValid*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): bool =
-
   fcQTextBoundaryFinder_isValid(self.h)
 
 proc typeX*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): cint =
-
   cint(fcQTextBoundaryFinder_typeX(self.h))
 
 proc string*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): string =
-
   let v_ms = fcQTextBoundaryFinder_string(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc toStart*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): void =
-
   fcQTextBoundaryFinder_toStart(self.h)
 
 proc toEnd*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): void =
-
   fcQTextBoundaryFinder_toEnd(self.h)
 
 proc position*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): int64 =
-
   fcQTextBoundaryFinder_position(self.h)
 
 proc setPosition*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, position: int64): void =
-
   fcQTextBoundaryFinder_setPosition(self.h, position)
 
 proc toNextBoundary*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): int64 =
-
   fcQTextBoundaryFinder_toNextBoundary(self.h)
 
 proc toPreviousBoundary*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): int64 =
-
   fcQTextBoundaryFinder_toPreviousBoundary(self.h)
 
 proc isAtBoundary*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): bool =
-
   fcQTextBoundaryFinder_isAtBoundary(self.h)
 
 proc boundaryReasons*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder, ): cint =
-
   cint(fcQTextBoundaryFinder_boundaryReasons(self.h))
 
 proc delete*(self: gen_qtextboundaryfinder_types.QTextBoundaryFinder) =

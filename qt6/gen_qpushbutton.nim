@@ -212,102 +212,84 @@ proc fcQPushButton_delete(self: pointer) {.importc: "QPushButton_delete".}
 func init*(T: type gen_qpushbutton_types.QPushButton, h: ptr cQPushButton): gen_qpushbutton_types.QPushButton =
   T(h: h)
 proc create*(T: type gen_qpushbutton_types.QPushButton, parent: gen_qwidget.QWidget): gen_qpushbutton_types.QPushButton =
-
   gen_qpushbutton_types.QPushButton.init(fcQPushButton_new(parent.h))
+
 proc create*(T: type gen_qpushbutton_types.QPushButton, ): gen_qpushbutton_types.QPushButton =
-
   gen_qpushbutton_types.QPushButton.init(fcQPushButton_new2())
+
 proc create*(T: type gen_qpushbutton_types.QPushButton, text: string): gen_qpushbutton_types.QPushButton =
-
   gen_qpushbutton_types.QPushButton.init(fcQPushButton_new3(struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qpushbutton_types.QPushButton, icon: gen_qicon.QIcon, text: string): gen_qpushbutton_types.QPushButton =
-
   gen_qpushbutton_types.QPushButton.init(fcQPushButton_new4(icon.h, struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qpushbutton_types.QPushButton, text: string, parent: gen_qwidget.QWidget): gen_qpushbutton_types.QPushButton =
-
   gen_qpushbutton_types.QPushButton.init(fcQPushButton_new5(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
+
 proc create*(T: type gen_qpushbutton_types.QPushButton, icon: gen_qicon.QIcon, text: string, parent: gen_qwidget.QWidget): gen_qpushbutton_types.QPushButton =
-
   gen_qpushbutton_types.QPushButton.init(fcQPushButton_new6(icon.h, struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
-proc metaObject*(self: gen_qpushbutton_types.QPushButton, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qpushbutton_types.QPushButton, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQPushButton_metaObject(self.h))
 
 proc metacast*(self: gen_qpushbutton_types.QPushButton, param1: cstring): pointer =
-
   fcQPushButton_metacast(self.h, param1)
 
 proc metacall*(self: gen_qpushbutton_types.QPushButton, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQPushButton_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qpushbutton_types.QPushButton, s: cstring): string =
-
   let v_ms = fcQPushButton_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sizeHint*(self: gen_qpushbutton_types.QPushButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQPushButton_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qpushbutton_types.QPushButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQPushButton_minimumSizeHint(self.h))
 
 proc autoDefault*(self: gen_qpushbutton_types.QPushButton, ): bool =
-
   fcQPushButton_autoDefault(self.h)
 
 proc setAutoDefault*(self: gen_qpushbutton_types.QPushButton, autoDefault: bool): void =
-
   fcQPushButton_setAutoDefault(self.h, autoDefault)
 
 proc isDefault*(self: gen_qpushbutton_types.QPushButton, ): bool =
-
   fcQPushButton_isDefault(self.h)
 
 proc setDefault*(self: gen_qpushbutton_types.QPushButton, default: bool): void =
-
   fcQPushButton_setDefault(self.h, default)
 
 proc setMenu*(self: gen_qpushbutton_types.QPushButton, menu: gen_qmenu.QMenu): void =
-
   fcQPushButton_setMenu(self.h, menu.h)
 
 proc menu*(self: gen_qpushbutton_types.QPushButton, ): gen_qmenu.QMenu =
-
   gen_qmenu.QMenu(h: fcQPushButton_menu(self.h))
 
 proc setFlat*(self: gen_qpushbutton_types.QPushButton, flat: bool): void =
-
   fcQPushButton_setFlat(self.h, flat)
 
 proc isFlat*(self: gen_qpushbutton_types.QPushButton, ): bool =
-
   fcQPushButton_isFlat(self.h)
 
 proc showMenu*(self: gen_qpushbutton_types.QPushButton, ): void =
-
   fcQPushButton_showMenu(self.h)
 
-proc tr2*(_: type gen_qpushbutton_types.QPushButton, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qpushbutton_types.QPushButton, s: cstring, c: cstring): string =
   let v_ms = fcQPushButton_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qpushbutton_types.QPushButton, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qpushbutton_types.QPushButton, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQPushButton_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QPushButtonmetaObject*(self: gen_qpushbutton_types.QPushButton, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQPushButton_virtualbase_metaObject(self.h))
 
 type QPushButtonmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -325,7 +307,6 @@ proc miqt_exec_callback_QPushButton_metaObject(self: ptr cQPushButton, slot: int
 
   virtualReturn.h
 proc QPushButtonmetacast*(self: gen_qpushbutton_types.QPushButton, param1: cstring): pointer =
-
   fQPushButton_virtualbase_metacast(self.h, param1)
 
 type QPushButtonmetacastProc* = proc(param1: cstring): pointer
@@ -345,7 +326,6 @@ proc miqt_exec_callback_QPushButton_metacast(self: ptr cQPushButton, slot: int, 
 
   virtualReturn
 proc QPushButtonmetacall*(self: gen_qpushbutton_types.QPushButton, param1: cint, param2: cint, param3: pointer): cint =
-
   fQPushButton_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QPushButtonmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -369,7 +349,6 @@ proc miqt_exec_callback_QPushButton_metacall(self: ptr cQPushButton, slot: int, 
 
   virtualReturn
 proc QPushButtonsizeHint*(self: gen_qpushbutton_types.QPushButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQPushButton_virtualbase_sizeHint(self.h))
 
 type QPushButtonsizeHintProc* = proc(): gen_qsize.QSize
@@ -387,7 +366,6 @@ proc miqt_exec_callback_QPushButton_sizeHint(self: ptr cQPushButton, slot: int):
 
   virtualReturn.h
 proc QPushButtonminimumSizeHint*(self: gen_qpushbutton_types.QPushButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQPushButton_virtualbase_minimumSizeHint(self.h))
 
 type QPushButtonminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -405,7 +383,6 @@ proc miqt_exec_callback_QPushButton_minimumSizeHint(self: ptr cQPushButton, slot
 
   virtualReturn.h
 proc QPushButtonevent*(self: gen_qpushbutton_types.QPushButton, e: gen_qcoreevent.QEvent): bool =
-
   fQPushButton_virtualbase_event(self.h, e.h)
 
 type QPushButtoneventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -425,7 +402,6 @@ proc miqt_exec_callback_QPushButton_event(self: ptr cQPushButton, slot: int, e: 
 
   virtualReturn
 proc QPushButtonpaintEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QPaintEvent): void =
-
   fQPushButton_virtualbase_paintEvent(self.h, param1.h)
 
 type QPushButtonpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -443,7 +419,6 @@ proc miqt_exec_callback_QPushButton_paintEvent(self: ptr cQPushButton, slot: int
 
   nimfunc[](slotval1)
 proc QPushButtonkeyPressEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QKeyEvent): void =
-
   fQPushButton_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QPushButtonkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -461,7 +436,6 @@ proc miqt_exec_callback_QPushButton_keyPressEvent(self: ptr cQPushButton, slot: 
 
   nimfunc[](slotval1)
 proc QPushButtonfocusInEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QFocusEvent): void =
-
   fQPushButton_virtualbase_focusInEvent(self.h, param1.h)
 
 type QPushButtonfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -479,7 +453,6 @@ proc miqt_exec_callback_QPushButton_focusInEvent(self: ptr cQPushButton, slot: i
 
   nimfunc[](slotval1)
 proc QPushButtonfocusOutEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QFocusEvent): void =
-
   fQPushButton_virtualbase_focusOutEvent(self.h, param1.h)
 
 type QPushButtonfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -497,7 +470,6 @@ proc miqt_exec_callback_QPushButton_focusOutEvent(self: ptr cQPushButton, slot: 
 
   nimfunc[](slotval1)
 proc QPushButtonmouseMoveEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QMouseEvent): void =
-
   fQPushButton_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QPushButtonmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -515,7 +487,6 @@ proc miqt_exec_callback_QPushButton_mouseMoveEvent(self: ptr cQPushButton, slot:
 
   nimfunc[](slotval1)
 proc QPushButtoninitStyleOption*(self: gen_qpushbutton_types.QPushButton, option: gen_qstyleoption.QStyleOptionButton): void =
-
   fQPushButton_virtualbase_initStyleOption(self.h, option.h)
 
 type QPushButtoninitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionButton): void
@@ -533,7 +504,6 @@ proc miqt_exec_callback_QPushButton_initStyleOption(self: ptr cQPushButton, slot
 
   nimfunc[](slotval1)
 proc QPushButtonhitButton*(self: gen_qpushbutton_types.QPushButton, pos: gen_qpoint.QPoint): bool =
-
   fQPushButton_virtualbase_hitButton(self.h, pos.h)
 
 type QPushButtonhitButtonProc* = proc(pos: gen_qpoint.QPoint): bool
@@ -553,7 +523,6 @@ proc miqt_exec_callback_QPushButton_hitButton(self: ptr cQPushButton, slot: int,
 
   virtualReturn
 proc QPushButtoncheckStateSet*(self: gen_qpushbutton_types.QPushButton, ): void =
-
   fQPushButton_virtualbase_checkStateSet(self.h)
 
 type QPushButtoncheckStateSetProc* = proc(): void
@@ -569,7 +538,6 @@ proc miqt_exec_callback_QPushButton_checkStateSet(self: ptr cQPushButton, slot: 
 
   nimfunc[]()
 proc QPushButtonnextCheckState*(self: gen_qpushbutton_types.QPushButton, ): void =
-
   fQPushButton_virtualbase_nextCheckState(self.h)
 
 type QPushButtonnextCheckStateProc* = proc(): void
@@ -585,7 +553,6 @@ proc miqt_exec_callback_QPushButton_nextCheckState(self: ptr cQPushButton, slot:
 
   nimfunc[]()
 proc QPushButtonkeyReleaseEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qevent.QKeyEvent): void =
-
   fQPushButton_virtualbase_keyReleaseEvent(self.h, e.h)
 
 type QPushButtonkeyReleaseEventProc* = proc(e: gen_qevent.QKeyEvent): void
@@ -603,7 +570,6 @@ proc miqt_exec_callback_QPushButton_keyReleaseEvent(self: ptr cQPushButton, slot
 
   nimfunc[](slotval1)
 proc QPushButtonmousePressEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qevent.QMouseEvent): void =
-
   fQPushButton_virtualbase_mousePressEvent(self.h, e.h)
 
 type QPushButtonmousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -621,7 +587,6 @@ proc miqt_exec_callback_QPushButton_mousePressEvent(self: ptr cQPushButton, slot
 
   nimfunc[](slotval1)
 proc QPushButtonmouseReleaseEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qevent.QMouseEvent): void =
-
   fQPushButton_virtualbase_mouseReleaseEvent(self.h, e.h)
 
 type QPushButtonmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -639,7 +604,6 @@ proc miqt_exec_callback_QPushButton_mouseReleaseEvent(self: ptr cQPushButton, sl
 
   nimfunc[](slotval1)
 proc QPushButtonchangeEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qcoreevent.QEvent): void =
-
   fQPushButton_virtualbase_changeEvent(self.h, e.h)
 
 type QPushButtonchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -657,7 +621,6 @@ proc miqt_exec_callback_QPushButton_changeEvent(self: ptr cQPushButton, slot: in
 
   nimfunc[](slotval1)
 proc QPushButtontimerEvent*(self: gen_qpushbutton_types.QPushButton, e: gen_qcoreevent.QTimerEvent): void =
-
   fQPushButton_virtualbase_timerEvent(self.h, e.h)
 
 type QPushButtontimerEventProc* = proc(e: gen_qcoreevent.QTimerEvent): void
@@ -675,7 +638,6 @@ proc miqt_exec_callback_QPushButton_timerEvent(self: ptr cQPushButton, slot: int
 
   nimfunc[](slotval1)
 proc QPushButtondevType*(self: gen_qpushbutton_types.QPushButton, ): cint =
-
   fQPushButton_virtualbase_devType(self.h)
 
 type QPushButtondevTypeProc* = proc(): cint
@@ -693,7 +655,6 @@ proc miqt_exec_callback_QPushButton_devType(self: ptr cQPushButton, slot: int): 
 
   virtualReturn
 proc QPushButtonsetVisible*(self: gen_qpushbutton_types.QPushButton, visible: bool): void =
-
   fQPushButton_virtualbase_setVisible(self.h, visible)
 
 type QPushButtonsetVisibleProc* = proc(visible: bool): void
@@ -711,7 +672,6 @@ proc miqt_exec_callback_QPushButton_setVisible(self: ptr cQPushButton, slot: int
 
   nimfunc[](slotval1)
 proc QPushButtonheightForWidth*(self: gen_qpushbutton_types.QPushButton, param1: cint): cint =
-
   fQPushButton_virtualbase_heightForWidth(self.h, param1)
 
 type QPushButtonheightForWidthProc* = proc(param1: cint): cint
@@ -731,7 +691,6 @@ proc miqt_exec_callback_QPushButton_heightForWidth(self: ptr cQPushButton, slot:
 
   virtualReturn
 proc QPushButtonhasHeightForWidth*(self: gen_qpushbutton_types.QPushButton, ): bool =
-
   fQPushButton_virtualbase_hasHeightForWidth(self.h)
 
 type QPushButtonhasHeightForWidthProc* = proc(): bool
@@ -749,7 +708,6 @@ proc miqt_exec_callback_QPushButton_hasHeightForWidth(self: ptr cQPushButton, sl
 
   virtualReturn
 proc QPushButtonpaintEngine*(self: gen_qpushbutton_types.QPushButton, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQPushButton_virtualbase_paintEngine(self.h))
 
 type QPushButtonpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -767,7 +725,6 @@ proc miqt_exec_callback_QPushButton_paintEngine(self: ptr cQPushButton, slot: in
 
   virtualReturn.h
 proc QPushButtonmouseDoubleClickEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QMouseEvent): void =
-
   fQPushButton_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QPushButtonmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -785,7 +742,6 @@ proc miqt_exec_callback_QPushButton_mouseDoubleClickEvent(self: ptr cQPushButton
 
   nimfunc[](slotval1)
 proc QPushButtonwheelEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QWheelEvent): void =
-
   fQPushButton_virtualbase_wheelEvent(self.h, event.h)
 
 type QPushButtonwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -803,7 +759,6 @@ proc miqt_exec_callback_QPushButton_wheelEvent(self: ptr cQPushButton, slot: int
 
   nimfunc[](slotval1)
 proc QPushButtonenterEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QEnterEvent): void =
-
   fQPushButton_virtualbase_enterEvent(self.h, event.h)
 
 type QPushButtonenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -821,7 +776,6 @@ proc miqt_exec_callback_QPushButton_enterEvent(self: ptr cQPushButton, slot: int
 
   nimfunc[](slotval1)
 proc QPushButtonleaveEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qcoreevent.QEvent): void =
-
   fQPushButton_virtualbase_leaveEvent(self.h, event.h)
 
 type QPushButtonleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -839,7 +793,6 @@ proc miqt_exec_callback_QPushButton_leaveEvent(self: ptr cQPushButton, slot: int
 
   nimfunc[](slotval1)
 proc QPushButtonmoveEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QMoveEvent): void =
-
   fQPushButton_virtualbase_moveEvent(self.h, event.h)
 
 type QPushButtonmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -857,7 +810,6 @@ proc miqt_exec_callback_QPushButton_moveEvent(self: ptr cQPushButton, slot: int,
 
   nimfunc[](slotval1)
 proc QPushButtonresizeEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QResizeEvent): void =
-
   fQPushButton_virtualbase_resizeEvent(self.h, event.h)
 
 type QPushButtonresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -875,7 +827,6 @@ proc miqt_exec_callback_QPushButton_resizeEvent(self: ptr cQPushButton, slot: in
 
   nimfunc[](slotval1)
 proc QPushButtoncloseEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QCloseEvent): void =
-
   fQPushButton_virtualbase_closeEvent(self.h, event.h)
 
 type QPushButtoncloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -893,7 +844,6 @@ proc miqt_exec_callback_QPushButton_closeEvent(self: ptr cQPushButton, slot: int
 
   nimfunc[](slotval1)
 proc QPushButtoncontextMenuEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QContextMenuEvent): void =
-
   fQPushButton_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QPushButtoncontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -911,7 +861,6 @@ proc miqt_exec_callback_QPushButton_contextMenuEvent(self: ptr cQPushButton, slo
 
   nimfunc[](slotval1)
 proc QPushButtontabletEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QTabletEvent): void =
-
   fQPushButton_virtualbase_tabletEvent(self.h, event.h)
 
 type QPushButtontabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -929,7 +878,6 @@ proc miqt_exec_callback_QPushButton_tabletEvent(self: ptr cQPushButton, slot: in
 
   nimfunc[](slotval1)
 proc QPushButtonactionEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QActionEvent): void =
-
   fQPushButton_virtualbase_actionEvent(self.h, event.h)
 
 type QPushButtonactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -947,7 +895,6 @@ proc miqt_exec_callback_QPushButton_actionEvent(self: ptr cQPushButton, slot: in
 
   nimfunc[](slotval1)
 proc QPushButtondragEnterEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QDragEnterEvent): void =
-
   fQPushButton_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QPushButtondragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -965,7 +912,6 @@ proc miqt_exec_callback_QPushButton_dragEnterEvent(self: ptr cQPushButton, slot:
 
   nimfunc[](slotval1)
 proc QPushButtondragMoveEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QDragMoveEvent): void =
-
   fQPushButton_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QPushButtondragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -983,7 +929,6 @@ proc miqt_exec_callback_QPushButton_dragMoveEvent(self: ptr cQPushButton, slot: 
 
   nimfunc[](slotval1)
 proc QPushButtondragLeaveEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QDragLeaveEvent): void =
-
   fQPushButton_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QPushButtondragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1001,7 +946,6 @@ proc miqt_exec_callback_QPushButton_dragLeaveEvent(self: ptr cQPushButton, slot:
 
   nimfunc[](slotval1)
 proc QPushButtondropEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QDropEvent): void =
-
   fQPushButton_virtualbase_dropEvent(self.h, event.h)
 
 type QPushButtondropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1019,7 +963,6 @@ proc miqt_exec_callback_QPushButton_dropEvent(self: ptr cQPushButton, slot: int,
 
   nimfunc[](slotval1)
 proc QPushButtonshowEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QShowEvent): void =
-
   fQPushButton_virtualbase_showEvent(self.h, event.h)
 
 type QPushButtonshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1037,7 +980,6 @@ proc miqt_exec_callback_QPushButton_showEvent(self: ptr cQPushButton, slot: int,
 
   nimfunc[](slotval1)
 proc QPushButtonhideEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qevent.QHideEvent): void =
-
   fQPushButton_virtualbase_hideEvent(self.h, event.h)
 
 type QPushButtonhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1055,7 +997,6 @@ proc miqt_exec_callback_QPushButton_hideEvent(self: ptr cQPushButton, slot: int,
 
   nimfunc[](slotval1)
 proc QPushButtonnativeEvent*(self: gen_qpushbutton_types.QPushButton, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQPushButton_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QPushButtonnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1082,7 +1023,6 @@ proc miqt_exec_callback_QPushButton_nativeEvent(self: ptr cQPushButton, slot: in
 
   virtualReturn
 proc QPushButtonmetric*(self: gen_qpushbutton_types.QPushButton, param1: cint): cint =
-
   fQPushButton_virtualbase_metric(self.h, cint(param1))
 
 type QPushButtonmetricProc* = proc(param1: cint): cint
@@ -1102,7 +1042,6 @@ proc miqt_exec_callback_QPushButton_metric(self: ptr cQPushButton, slot: int, pa
 
   virtualReturn
 proc QPushButtoninitPainter*(self: gen_qpushbutton_types.QPushButton, painter: gen_qpainter.QPainter): void =
-
   fQPushButton_virtualbase_initPainter(self.h, painter.h)
 
 type QPushButtoninitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1120,7 +1059,6 @@ proc miqt_exec_callback_QPushButton_initPainter(self: ptr cQPushButton, slot: in
 
   nimfunc[](slotval1)
 proc QPushButtonredirected*(self: gen_qpushbutton_types.QPushButton, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQPushButton_virtualbase_redirected(self.h, offset.h))
 
 type QPushButtonredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1140,7 +1078,6 @@ proc miqt_exec_callback_QPushButton_redirected(self: ptr cQPushButton, slot: int
 
   virtualReturn.h
 proc QPushButtonsharedPainter*(self: gen_qpushbutton_types.QPushButton, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQPushButton_virtualbase_sharedPainter(self.h))
 
 type QPushButtonsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1158,7 +1095,6 @@ proc miqt_exec_callback_QPushButton_sharedPainter(self: ptr cQPushButton, slot: 
 
   virtualReturn.h
 proc QPushButtoninputMethodEvent*(self: gen_qpushbutton_types.QPushButton, param1: gen_qevent.QInputMethodEvent): void =
-
   fQPushButton_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QPushButtoninputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1176,7 +1112,6 @@ proc miqt_exec_callback_QPushButton_inputMethodEvent(self: ptr cQPushButton, slo
 
   nimfunc[](slotval1)
 proc QPushButtoninputMethodQuery*(self: gen_qpushbutton_types.QPushButton, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQPushButton_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QPushButtoninputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1196,7 +1131,6 @@ proc miqt_exec_callback_QPushButton_inputMethodQuery(self: ptr cQPushButton, slo
 
   virtualReturn.h
 proc QPushButtonfocusNextPrevChild*(self: gen_qpushbutton_types.QPushButton, next: bool): bool =
-
   fQPushButton_virtualbase_focusNextPrevChild(self.h, next)
 
 type QPushButtonfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1216,7 +1150,6 @@ proc miqt_exec_callback_QPushButton_focusNextPrevChild(self: ptr cQPushButton, s
 
   virtualReturn
 proc QPushButtoneventFilter*(self: gen_qpushbutton_types.QPushButton, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQPushButton_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QPushButtoneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1238,7 +1171,6 @@ proc miqt_exec_callback_QPushButton_eventFilter(self: ptr cQPushButton, slot: in
 
   virtualReturn
 proc QPushButtonchildEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qcoreevent.QChildEvent): void =
-
   fQPushButton_virtualbase_childEvent(self.h, event.h)
 
 type QPushButtonchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1256,7 +1188,6 @@ proc miqt_exec_callback_QPushButton_childEvent(self: ptr cQPushButton, slot: int
 
   nimfunc[](slotval1)
 proc QPushButtoncustomEvent*(self: gen_qpushbutton_types.QPushButton, event: gen_qcoreevent.QEvent): void =
-
   fQPushButton_virtualbase_customEvent(self.h, event.h)
 
 type QPushButtoncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1274,7 +1205,6 @@ proc miqt_exec_callback_QPushButton_customEvent(self: ptr cQPushButton, slot: in
 
   nimfunc[](slotval1)
 proc QPushButtonconnectNotify*(self: gen_qpushbutton_types.QPushButton, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPushButton_virtualbase_connectNotify(self.h, signal.h)
 
 type QPushButtonconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1292,7 +1222,6 @@ proc miqt_exec_callback_QPushButton_connectNotify(self: ptr cQPushButton, slot: 
 
   nimfunc[](slotval1)
 proc QPushButtondisconnectNotify*(self: gen_qpushbutton_types.QPushButton, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQPushButton_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QPushButtondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

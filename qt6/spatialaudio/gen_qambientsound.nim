@@ -113,155 +113,128 @@ proc fcQAmbientSound_delete(self: pointer) {.importc: "QAmbientSound_delete".}
 func init*(T: type gen_qambientsound_types.QAmbientSound, h: ptr cQAmbientSound): gen_qambientsound_types.QAmbientSound =
   T(h: h)
 proc create*(T: type gen_qambientsound_types.QAmbientSound, engine: gen_qaudioengine.QAudioEngine): gen_qambientsound_types.QAmbientSound =
-
   gen_qambientsound_types.QAmbientSound.init(fcQAmbientSound_new(engine.h))
-proc metaObject*(self: gen_qambientsound_types.QAmbientSound, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qambientsound_types.QAmbientSound, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAmbientSound_metaObject(self.h))
 
 proc metacast*(self: gen_qambientsound_types.QAmbientSound, param1: cstring): pointer =
-
   fcQAmbientSound_metacast(self.h, param1)
 
 proc metacall*(self: gen_qambientsound_types.QAmbientSound, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAmbientSound_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qambientsound_types.QAmbientSound, s: cstring): string =
-
   let v_ms = fcQAmbientSound_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setSource*(self: gen_qambientsound_types.QAmbientSound, url: gen_qurl.QUrl): void =
-
   fcQAmbientSound_setSource(self.h, url.h)
 
 proc source*(self: gen_qambientsound_types.QAmbientSound, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQAmbientSound_source(self.h))
 
 proc loops*(self: gen_qambientsound_types.QAmbientSound, ): cint =
-
   fcQAmbientSound_loops(self.h)
 
 proc setLoops*(self: gen_qambientsound_types.QAmbientSound, loops: cint): void =
-
   fcQAmbientSound_setLoops(self.h, loops)
 
 proc autoPlay*(self: gen_qambientsound_types.QAmbientSound, ): bool =
-
   fcQAmbientSound_autoPlay(self.h)
 
 proc setAutoPlay*(self: gen_qambientsound_types.QAmbientSound, autoPlay: bool): void =
-
   fcQAmbientSound_setAutoPlay(self.h, autoPlay)
 
 proc setVolume*(self: gen_qambientsound_types.QAmbientSound, volume: float32): void =
-
   fcQAmbientSound_setVolume(self.h, volume)
 
 proc volume*(self: gen_qambientsound_types.QAmbientSound, ): float32 =
-
   fcQAmbientSound_volume(self.h)
 
 proc engine*(self: gen_qambientsound_types.QAmbientSound, ): gen_qaudioengine.QAudioEngine =
-
   gen_qaudioengine.QAudioEngine(h: fcQAmbientSound_engine(self.h))
 
 proc sourceChanged*(self: gen_qambientsound_types.QAmbientSound, ): void =
-
   fcQAmbientSound_sourceChanged(self.h)
 
+type QAmbientSoundsourceChangedSlot* = proc()
 proc miqt_exec_callback_QAmbientSound_sourceChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QAmbientSoundsourceChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onsourceChanged*(self: gen_qambientsound_types.QAmbientSound, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onsourceChanged*(self: gen_qambientsound_types.QAmbientSound, slot: QAmbientSoundsourceChangedSlot) =
+  var tmp = new QAmbientSoundsourceChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAmbientSound_connect_sourceChanged(self.h, cast[int](addr tmp[]))
-proc loopsChanged*(self: gen_qambientsound_types.QAmbientSound, ): void =
 
+proc loopsChanged*(self: gen_qambientsound_types.QAmbientSound, ): void =
   fcQAmbientSound_loopsChanged(self.h)
 
+type QAmbientSoundloopsChangedSlot* = proc()
 proc miqt_exec_callback_QAmbientSound_loopsChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QAmbientSoundloopsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onloopsChanged*(self: gen_qambientsound_types.QAmbientSound, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onloopsChanged*(self: gen_qambientsound_types.QAmbientSound, slot: QAmbientSoundloopsChangedSlot) =
+  var tmp = new QAmbientSoundloopsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAmbientSound_connect_loopsChanged(self.h, cast[int](addr tmp[]))
-proc autoPlayChanged*(self: gen_qambientsound_types.QAmbientSound, ): void =
 
+proc autoPlayChanged*(self: gen_qambientsound_types.QAmbientSound, ): void =
   fcQAmbientSound_autoPlayChanged(self.h)
 
+type QAmbientSoundautoPlayChangedSlot* = proc()
 proc miqt_exec_callback_QAmbientSound_autoPlayChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QAmbientSoundautoPlayChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onautoPlayChanged*(self: gen_qambientsound_types.QAmbientSound, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onautoPlayChanged*(self: gen_qambientsound_types.QAmbientSound, slot: QAmbientSoundautoPlayChangedSlot) =
+  var tmp = new QAmbientSoundautoPlayChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAmbientSound_connect_autoPlayChanged(self.h, cast[int](addr tmp[]))
-proc volumeChanged*(self: gen_qambientsound_types.QAmbientSound, ): void =
 
+proc volumeChanged*(self: gen_qambientsound_types.QAmbientSound, ): void =
   fcQAmbientSound_volumeChanged(self.h)
 
+type QAmbientSoundvolumeChangedSlot* = proc()
 proc miqt_exec_callback_QAmbientSound_volumeChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QAmbientSoundvolumeChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onvolumeChanged*(self: gen_qambientsound_types.QAmbientSound, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onvolumeChanged*(self: gen_qambientsound_types.QAmbientSound, slot: QAmbientSoundvolumeChangedSlot) =
+  var tmp = new QAmbientSoundvolumeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAmbientSound_connect_volumeChanged(self.h, cast[int](addr tmp[]))
-proc play*(self: gen_qambientsound_types.QAmbientSound, ): void =
 
+proc play*(self: gen_qambientsound_types.QAmbientSound, ): void =
   fcQAmbientSound_play(self.h)
 
 proc pause*(self: gen_qambientsound_types.QAmbientSound, ): void =
-
   fcQAmbientSound_pause(self.h)
 
 proc stop*(self: gen_qambientsound_types.QAmbientSound, ): void =
-
   fcQAmbientSound_stop(self.h)
 
-proc tr2*(_: type gen_qambientsound_types.QAmbientSound, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qambientsound_types.QAmbientSound, s: cstring, c: cstring): string =
   let v_ms = fcQAmbientSound_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qambientsound_types.QAmbientSound, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qambientsound_types.QAmbientSound, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAmbientSound_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QAmbientSoundmetaObject*(self: gen_qambientsound_types.QAmbientSound, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQAmbientSound_virtualbase_metaObject(self.h))
 
 type QAmbientSoundmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -279,7 +252,6 @@ proc miqt_exec_callback_QAmbientSound_metaObject(self: ptr cQAmbientSound, slot:
 
   virtualReturn.h
 proc QAmbientSoundmetacast*(self: gen_qambientsound_types.QAmbientSound, param1: cstring): pointer =
-
   fQAmbientSound_virtualbase_metacast(self.h, param1)
 
 type QAmbientSoundmetacastProc* = proc(param1: cstring): pointer
@@ -299,7 +271,6 @@ proc miqt_exec_callback_QAmbientSound_metacast(self: ptr cQAmbientSound, slot: i
 
   virtualReturn
 proc QAmbientSoundmetacall*(self: gen_qambientsound_types.QAmbientSound, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAmbientSound_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAmbientSoundmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -323,7 +294,6 @@ proc miqt_exec_callback_QAmbientSound_metacall(self: ptr cQAmbientSound, slot: i
 
   virtualReturn
 proc QAmbientSoundevent*(self: gen_qambientsound_types.QAmbientSound, event: gen_qcoreevent.QEvent): bool =
-
   fQAmbientSound_virtualbase_event(self.h, event.h)
 
 type QAmbientSoundeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -343,7 +313,6 @@ proc miqt_exec_callback_QAmbientSound_event(self: ptr cQAmbientSound, slot: int,
 
   virtualReturn
 proc QAmbientSoundeventFilter*(self: gen_qambientsound_types.QAmbientSound, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAmbientSound_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAmbientSoundeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -365,7 +334,6 @@ proc miqt_exec_callback_QAmbientSound_eventFilter(self: ptr cQAmbientSound, slot
 
   virtualReturn
 proc QAmbientSoundtimerEvent*(self: gen_qambientsound_types.QAmbientSound, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAmbientSound_virtualbase_timerEvent(self.h, event.h)
 
 type QAmbientSoundtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -383,7 +351,6 @@ proc miqt_exec_callback_QAmbientSound_timerEvent(self: ptr cQAmbientSound, slot:
 
   nimfunc[](slotval1)
 proc QAmbientSoundchildEvent*(self: gen_qambientsound_types.QAmbientSound, event: gen_qcoreevent.QChildEvent): void =
-
   fQAmbientSound_virtualbase_childEvent(self.h, event.h)
 
 type QAmbientSoundchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -401,7 +368,6 @@ proc miqt_exec_callback_QAmbientSound_childEvent(self: ptr cQAmbientSound, slot:
 
   nimfunc[](slotval1)
 proc QAmbientSoundcustomEvent*(self: gen_qambientsound_types.QAmbientSound, event: gen_qcoreevent.QEvent): void =
-
   fQAmbientSound_virtualbase_customEvent(self.h, event.h)
 
 type QAmbientSoundcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -419,7 +385,6 @@ proc miqt_exec_callback_QAmbientSound_customEvent(self: ptr cQAmbientSound, slot
 
   nimfunc[](slotval1)
 proc QAmbientSoundconnectNotify*(self: gen_qambientsound_types.QAmbientSound, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAmbientSound_virtualbase_connectNotify(self.h, signal.h)
 
 type QAmbientSoundconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -437,7 +402,6 @@ proc miqt_exec_callback_QAmbientSound_connectNotify(self: ptr cQAmbientSound, sl
 
   nimfunc[](slotval1)
 proc QAmbientSounddisconnectNotify*(self: gen_qambientsound_types.QAmbientSound, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAmbientSound_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAmbientSounddisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

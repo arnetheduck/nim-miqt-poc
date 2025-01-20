@@ -49,10 +49,9 @@ proc fcQAbstractNativeEventFilter_delete(self: pointer) {.importc: "QAbstractNat
 func init*(T: type gen_qabstractnativeeventfilter_types.QAbstractNativeEventFilter, h: ptr cQAbstractNativeEventFilter): gen_qabstractnativeeventfilter_types.QAbstractNativeEventFilter =
   T(h: h)
 proc create*(T: type gen_qabstractnativeeventfilter_types.QAbstractNativeEventFilter, ): gen_qabstractnativeeventfilter_types.QAbstractNativeEventFilter =
-
   gen_qabstractnativeeventfilter_types.QAbstractNativeEventFilter.init(fcQAbstractNativeEventFilter_new())
-proc nativeEventFilter*(self: gen_qabstractnativeeventfilter_types.QAbstractNativeEventFilter, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
 
+proc nativeEventFilter*(self: gen_qabstractnativeeventfilter_types.QAbstractNativeEventFilter, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
   fcQAbstractNativeEventFilter_nativeEventFilter(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QAbstractNativeEventFilternativeEventFilterProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool

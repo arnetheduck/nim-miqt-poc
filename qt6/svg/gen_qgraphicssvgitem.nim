@@ -196,99 +196,81 @@ proc fcQGraphicsSvgItem_delete(self: pointer) {.importc: "QGraphicsSvgItem_delet
 func init*(T: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, h: ptr cQGraphicsSvgItem): gen_qgraphicssvgitem_types.QGraphicsSvgItem =
   T(h: h)
 proc create*(T: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qgraphicssvgitem_types.QGraphicsSvgItem =
-
   gen_qgraphicssvgitem_types.QGraphicsSvgItem.init(fcQGraphicsSvgItem_new())
+
 proc create*(T: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, fileName: string): gen_qgraphicssvgitem_types.QGraphicsSvgItem =
-
   gen_qgraphicssvgitem_types.QGraphicsSvgItem.init(fcQGraphicsSvgItem_new2(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+
 proc create*(T: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, parentItem: gen_qgraphicsitem.QGraphicsItem): gen_qgraphicssvgitem_types.QGraphicsSvgItem =
-
   gen_qgraphicssvgitem_types.QGraphicsSvgItem.init(fcQGraphicsSvgItem_new3(parentItem.h))
+
 proc create*(T: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, fileName: string, parentItem: gen_qgraphicsitem.QGraphicsItem): gen_qgraphicssvgitem_types.QGraphicsSvgItem =
-
   gen_qgraphicssvgitem_types.QGraphicsSvgItem.init(fcQGraphicsSvgItem_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), parentItem.h))
-proc metaObject*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsSvgItem_metaObject(self.h))
 
 proc metacast*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, param1: cstring): pointer =
-
   fcQGraphicsSvgItem_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGraphicsSvgItem_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, s: cstring): string =
-
   let v_ms = fcQGraphicsSvgItem_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setSharedRenderer*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, renderer: gen_qsvgrenderer.QSvgRenderer): void =
-
   fcQGraphicsSvgItem_setSharedRenderer(self.h, renderer.h)
 
 proc renderer*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qsvgrenderer.QSvgRenderer =
-
   gen_qsvgrenderer.QSvgRenderer(h: fcQGraphicsSvgItem_renderer(self.h))
 
 proc setElementId*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, id: string): void =
-
   fcQGraphicsSvgItem_setElementId(self.h, struct_miqt_string(data: id, len: csize_t(len(id))))
 
 proc elementId*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): string =
-
   let v_ms = fcQGraphicsSvgItem_elementId(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setCachingEnabled*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, cachingEnabled: bool): void =
-
   fcQGraphicsSvgItem_setCachingEnabled(self.h, cachingEnabled)
 
 proc isCachingEnabled*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): bool =
-
   fcQGraphicsSvgItem_isCachingEnabled(self.h)
 
 proc setMaximumCacheSize*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, size: gen_qsize.QSize): void =
-
   fcQGraphicsSvgItem_setMaximumCacheSize(self.h, size.h)
 
 proc maximumCacheSize*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQGraphicsSvgItem_maximumCacheSize(self.h))
 
 proc boundingRect*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsSvgItem_boundingRect(self.h))
 
 proc paint*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsSvgItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc typeX*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): cint =
-
   fcQGraphicsSvgItem_typeX(self.h)
 
-proc tr2*(_: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsSvgItem_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgraphicssvgitem_types.QGraphicsSvgItem, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsSvgItem_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QGraphicsSvgItemmetaObject*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQGraphicsSvgItem_virtualbase_metaObject(self.h))
 
 type QGraphicsSvgItemmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -306,7 +288,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_metaObject(self: ptr cQGraphicsSvgItem,
 
   virtualReturn.h
 proc QGraphicsSvgItemmetacast*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, param1: cstring): pointer =
-
   fQGraphicsSvgItem_virtualbase_metacast(self.h, param1)
 
 type QGraphicsSvgItemmetacastProc* = proc(param1: cstring): pointer
@@ -326,7 +307,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_metacast(self: ptr cQGraphicsSvgItem, s
 
   virtualReturn
 proc QGraphicsSvgItemmetacall*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGraphicsSvgItem_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGraphicsSvgItemmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -350,7 +330,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_metacall(self: ptr cQGraphicsSvgItem, s
 
   virtualReturn
 proc QGraphicsSvgItemboundingRect*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsSvgItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsSvgItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -368,7 +347,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_boundingRect(self: ptr cQGraphicsSvgIte
 
   virtualReturn.h
 proc QGraphicsSvgItempaint*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsSvgItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsSvgItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -390,7 +368,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_paint(self: ptr cQGraphicsSvgItem, slot
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsSvgItemtypeX*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): cint =
-
   fQGraphicsSvgItem_virtualbase_type(self.h)
 
 type QGraphicsSvgItemtypeXProc* = proc(): cint
@@ -408,7 +385,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_type(self: ptr cQGraphicsSvgItem, slot:
 
   virtualReturn
 proc QGraphicsSvgItemevent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ev: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsSvgItem_virtualbase_event(self.h, ev.h)
 
 type QGraphicsSvgItemeventProc* = proc(ev: gen_qcoreevent.QEvent): bool
@@ -428,7 +404,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_event(self: ptr cQGraphicsSvgItem, slot
 
   virtualReturn
 proc QGraphicsSvgItemeventFilter*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsSvgItem_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGraphicsSvgItemeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -450,7 +425,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_eventFilter(self: ptr cQGraphicsSvgItem
 
   virtualReturn
 proc QGraphicsSvgItemtimerEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGraphicsSvgItem_virtualbase_timerEvent(self.h, event.h)
 
 type QGraphicsSvgItemtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -468,7 +442,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_timerEvent(self: ptr cQGraphicsSvgItem,
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemchildEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qcoreevent.QChildEvent): void =
-
   fQGraphicsSvgItem_virtualbase_childEvent(self.h, event.h)
 
 type QGraphicsSvgItemchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -486,7 +459,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_childEvent(self: ptr cQGraphicsSvgItem,
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemcustomEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsSvgItem_virtualbase_customEvent(self.h, event.h)
 
 type QGraphicsSvgItemcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -504,7 +476,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_customEvent(self: ptr cQGraphicsSvgItem
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemconnectNotify*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsSvgItem_virtualbase_connectNotify(self.h, signal.h)
 
 type QGraphicsSvgItemconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -522,7 +493,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_connectNotify(self: ptr cQGraphicsSvgIt
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemdisconnectNotify*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsSvgItem_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGraphicsSvgItemdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -540,7 +510,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_disconnectNotify(self: ptr cQGraphicsSv
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemadvance*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, phase: cint): void =
-
   fQGraphicsSvgItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsSvgItemadvanceProc* = proc(phase: cint): void
@@ -558,7 +527,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_advance(self: ptr cQGraphicsSvgItem, sl
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemshape*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsSvgItem_virtualbase_shape(self.h))
 
 type QGraphicsSvgItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -576,7 +544,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_shape(self: ptr cQGraphicsSvgItem, slot
 
   virtualReturn.h
 proc QGraphicsSvgItemcontains*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsSvgItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsSvgItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -596,7 +563,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_contains(self: ptr cQGraphicsSvgItem, s
 
   virtualReturn
 proc QGraphicsSvgItemcollidesWithItem*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, other: gen_qgraphicsitem.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsSvgItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsSvgItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem.QGraphicsItem, mode: cint): bool
@@ -618,7 +584,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_collidesWithItem(self: ptr cQGraphicsSv
 
   virtualReturn
 proc QGraphicsSvgItemcollidesWithPath*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsSvgItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsSvgItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -640,7 +605,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_collidesWithPath(self: ptr cQGraphicsSv
 
   virtualReturn
 proc QGraphicsSvgItemisObscuredBy*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, item: gen_qgraphicsitem.QGraphicsItem): bool =
-
   fQGraphicsSvgItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsSvgItemisObscuredByProc* = proc(item: gen_qgraphicsitem.QGraphicsItem): bool
@@ -660,7 +624,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_isObscuredBy(self: ptr cQGraphicsSvgIte
 
   virtualReturn
 proc QGraphicsSvgItemopaqueArea*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsSvgItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsSvgItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -678,7 +641,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_opaqueArea(self: ptr cQGraphicsSvgItem,
 
   virtualReturn.h
 proc QGraphicsSvgItemsceneEventFilter*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsSvgItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsSvgItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -700,7 +662,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_sceneEventFilter(self: ptr cQGraphicsSv
 
   virtualReturn
 proc QGraphicsSvgItemsceneEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsSvgItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsSvgItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -720,7 +681,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_sceneEvent(self: ptr cQGraphicsSvgItem,
 
   virtualReturn
 proc QGraphicsSvgItemcontextMenuEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsSvgItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsSvgItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -738,7 +698,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_contextMenuEvent(self: ptr cQGraphicsSv
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemdragEnterEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsSvgItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsSvgItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -756,7 +715,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_dragEnterEvent(self: ptr cQGraphicsSvgI
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemdragLeaveEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsSvgItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsSvgItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -774,7 +732,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_dragLeaveEvent(self: ptr cQGraphicsSvgI
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemdragMoveEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsSvgItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsSvgItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -792,7 +749,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_dragMoveEvent(self: ptr cQGraphicsSvgIt
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemdropEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsSvgItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsSvgItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -810,7 +766,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_dropEvent(self: ptr cQGraphicsSvgItem, 
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemfocusInEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsSvgItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsSvgItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -828,7 +783,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_focusInEvent(self: ptr cQGraphicsSvgIte
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemfocusOutEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsSvgItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsSvgItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -846,7 +800,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_focusOutEvent(self: ptr cQGraphicsSvgIt
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemhoverEnterEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsSvgItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsSvgItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -864,7 +817,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_hoverEnterEvent(self: ptr cQGraphicsSvg
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemhoverMoveEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsSvgItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsSvgItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -882,7 +834,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_hoverMoveEvent(self: ptr cQGraphicsSvgI
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemhoverLeaveEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsSvgItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsSvgItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -900,7 +851,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_hoverLeaveEvent(self: ptr cQGraphicsSvg
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemkeyPressEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsSvgItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsSvgItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -918,7 +868,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_keyPressEvent(self: ptr cQGraphicsSvgIt
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemkeyReleaseEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsSvgItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsSvgItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -936,7 +885,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_keyReleaseEvent(self: ptr cQGraphicsSvg
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemmousePressEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsSvgItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsSvgItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -954,7 +902,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_mousePressEvent(self: ptr cQGraphicsSvg
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemmouseMoveEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsSvgItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsSvgItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -972,7 +919,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_mouseMoveEvent(self: ptr cQGraphicsSvgI
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemmouseReleaseEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsSvgItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsSvgItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -990,7 +936,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_mouseReleaseEvent(self: ptr cQGraphicsS
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemmouseDoubleClickEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsSvgItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsSvgItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -1008,7 +953,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_mouseDoubleClickEvent(self: ptr cQGraph
 
   nimfunc[](slotval1)
 proc QGraphicsSvgItemwheelEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsSvgItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsSvgItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -1026,7 +970,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_wheelEvent(self: ptr cQGraphicsSvgItem,
 
   nimfunc[](slotval1)
 proc QGraphicsSvgIteminputMethodEvent*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsSvgItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsSvgIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -1044,7 +987,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_inputMethodEvent(self: ptr cQGraphicsSv
 
   nimfunc[](slotval1)
 proc QGraphicsSvgIteminputMethodQuery*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsSvgItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsSvgIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -1064,7 +1006,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_inputMethodQuery(self: ptr cQGraphicsSv
 
   virtualReturn.h
 proc QGraphicsSvgItemitemChange*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsSvgItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsSvgItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -1086,7 +1027,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_itemChange(self: ptr cQGraphicsSvgItem,
 
   virtualReturn.h
 proc QGraphicsSvgItemsupportsExtension*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, extension: cint): bool =
-
   fQGraphicsSvgItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsSvgItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -1106,7 +1046,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_supportsExtension(self: ptr cQGraphicsS
 
   virtualReturn
 proc QGraphicsSvgItemsetExtension*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsSvgItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsSvgItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -1126,7 +1065,6 @@ proc miqt_exec_callback_QGraphicsSvgItem_setExtension(self: ptr cQGraphicsSvgIte
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsSvgItemextension*(self: gen_qgraphicssvgitem_types.QGraphicsSvgItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsSvgItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsSvgItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant

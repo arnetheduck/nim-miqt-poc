@@ -219,118 +219,97 @@ proc fcQFontComboBox_delete(self: pointer) {.importc: "QFontComboBox_delete".}
 func init*(T: type gen_qfontcombobox_types.QFontComboBox, h: ptr cQFontComboBox): gen_qfontcombobox_types.QFontComboBox =
   T(h: h)
 proc create*(T: type gen_qfontcombobox_types.QFontComboBox, parent: gen_qwidget.QWidget): gen_qfontcombobox_types.QFontComboBox =
-
   gen_qfontcombobox_types.QFontComboBox.init(fcQFontComboBox_new(parent.h))
+
 proc create*(T: type gen_qfontcombobox_types.QFontComboBox, ): gen_qfontcombobox_types.QFontComboBox =
-
   gen_qfontcombobox_types.QFontComboBox.init(fcQFontComboBox_new2())
-proc metaObject*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFontComboBox_metaObject(self.h))
 
 proc metacast*(self: gen_qfontcombobox_types.QFontComboBox, param1: cstring): pointer =
-
   fcQFontComboBox_metacast(self.h, param1)
 
 proc metacall*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQFontComboBox_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring): string =
-
   let v_ms = fcQFontComboBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWritingSystem*(self: gen_qfontcombobox_types.QFontComboBox, writingSystem: cint): void =
-
   fcQFontComboBox_setWritingSystem(self.h, cint(writingSystem))
 
 proc writingSystem*(self: gen_qfontcombobox_types.QFontComboBox, ): cint =
-
   cint(fcQFontComboBox_writingSystem(self.h))
 
 proc setFontFilters*(self: gen_qfontcombobox_types.QFontComboBox, filters: cint): void =
-
   fcQFontComboBox_setFontFilters(self.h, cint(filters))
 
 proc fontFilters*(self: gen_qfontcombobox_types.QFontComboBox, ): cint =
-
   cint(fcQFontComboBox_fontFilters(self.h))
 
 proc currentFont*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQFontComboBox_currentFont(self.h))
 
 proc sizeHint*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQFontComboBox_sizeHint(self.h))
 
 proc setSampleTextForSystem*(self: gen_qfontcombobox_types.QFontComboBox, writingSystem: cint, sampleText: string): void =
-
   fcQFontComboBox_setSampleTextForSystem(self.h, cint(writingSystem), struct_miqt_string(data: sampleText, len: csize_t(len(sampleText))))
 
 proc sampleTextForSystem*(self: gen_qfontcombobox_types.QFontComboBox, writingSystem: cint): string =
-
   let v_ms = fcQFontComboBox_sampleTextForSystem(self.h, cint(writingSystem))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setSampleTextForFont*(self: gen_qfontcombobox_types.QFontComboBox, fontFamily: string, sampleText: string): void =
-
   fcQFontComboBox_setSampleTextForFont(self.h, struct_miqt_string(data: fontFamily, len: csize_t(len(fontFamily))), struct_miqt_string(data: sampleText, len: csize_t(len(sampleText))))
 
 proc sampleTextForFont*(self: gen_qfontcombobox_types.QFontComboBox, fontFamily: string): string =
-
   let v_ms = fcQFontComboBox_sampleTextForFont(self.h, struct_miqt_string(data: fontFamily, len: csize_t(len(fontFamily))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDisplayFont*(self: gen_qfontcombobox_types.QFontComboBox, fontFamily: string, font: gen_qfont.QFont): void =
-
   fcQFontComboBox_setDisplayFont(self.h, struct_miqt_string(data: fontFamily, len: csize_t(len(fontFamily))), font.h)
 
 proc setCurrentFont*(self: gen_qfontcombobox_types.QFontComboBox, f: gen_qfont.QFont): void =
-
   fcQFontComboBox_setCurrentFont(self.h, f.h)
 
 proc currentFontChanged*(self: gen_qfontcombobox_types.QFontComboBox, f: gen_qfont.QFont): void =
-
   fcQFontComboBox_currentFontChanged(self.h, f.h)
 
+type QFontComboBoxcurrentFontChangedSlot* = proc(f: gen_qfont.QFont)
 proc miqt_exec_callback_QFontComboBox_currentFontChanged(slot: int, f: pointer) {.exportc.} =
-  type Cb = proc(f: gen_qfont.QFont)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QFontComboBoxcurrentFontChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qfont.QFont(h: f)
-
 
   nimfunc[](slotval1)
 
-proc oncurrentFontChanged*(self: gen_qfontcombobox_types.QFontComboBox, slot: proc(f: gen_qfont.QFont)) =
-  type Cb = proc(f: gen_qfont.QFont)
-  var tmp = new Cb
+proc oncurrentFontChanged*(self: gen_qfontcombobox_types.QFontComboBox, slot: QFontComboBoxcurrentFontChangedSlot) =
+  var tmp = new QFontComboBoxcurrentFontChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQFontComboBox_connect_currentFontChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring, c: cstring): string =
   let v_ms = fcQFontComboBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qfontcombobox_types.QFontComboBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFontComboBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QFontComboBoxmetaObject*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQFontComboBox_virtualbase_metaObject(self.h))
 
 type QFontComboBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -348,7 +327,6 @@ proc miqt_exec_callback_QFontComboBox_metaObject(self: ptr cQFontComboBox, slot:
 
   virtualReturn.h
 proc QFontComboBoxmetacast*(self: gen_qfontcombobox_types.QFontComboBox, param1: cstring): pointer =
-
   fQFontComboBox_virtualbase_metacast(self.h, param1)
 
 type QFontComboBoxmetacastProc* = proc(param1: cstring): pointer
@@ -368,7 +346,6 @@ proc miqt_exec_callback_QFontComboBox_metacast(self: ptr cQFontComboBox, slot: i
 
   virtualReturn
 proc QFontComboBoxmetacall*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fQFontComboBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QFontComboBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -392,7 +369,6 @@ proc miqt_exec_callback_QFontComboBox_metacall(self: ptr cQFontComboBox, slot: i
 
   virtualReturn
 proc QFontComboBoxsizeHint*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQFontComboBox_virtualbase_sizeHint(self.h))
 
 type QFontComboBoxsizeHintProc* = proc(): gen_qsize.QSize
@@ -410,7 +386,6 @@ proc miqt_exec_callback_QFontComboBox_sizeHint(self: ptr cQFontComboBox, slot: i
 
   virtualReturn.h
 proc QFontComboBoxevent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qcoreevent.QEvent): bool =
-
   fQFontComboBox_virtualbase_event(self.h, e.h)
 
 type QFontComboBoxeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -430,7 +405,6 @@ proc miqt_exec_callback_QFontComboBox_event(self: ptr cQFontComboBox, slot: int,
 
   virtualReturn
 proc QFontComboBoxsetModel*(self: gen_qfontcombobox_types.QFontComboBox, model: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fQFontComboBox_virtualbase_setModel(self.h, model.h)
 
 type QFontComboBoxsetModelProc* = proc(model: gen_qabstractitemmodel.QAbstractItemModel): void
@@ -448,7 +422,6 @@ proc miqt_exec_callback_QFontComboBox_setModel(self: ptr cQFontComboBox, slot: i
 
   nimfunc[](slotval1)
 proc QFontComboBoxminimumSizeHint*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQFontComboBox_virtualbase_minimumSizeHint(self.h))
 
 type QFontComboBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -466,7 +439,6 @@ proc miqt_exec_callback_QFontComboBox_minimumSizeHint(self: ptr cQFontComboBox, 
 
   virtualReturn.h
 proc QFontComboBoxshowPopup*(self: gen_qfontcombobox_types.QFontComboBox, ): void =
-
   fQFontComboBox_virtualbase_showPopup(self.h)
 
 type QFontComboBoxshowPopupProc* = proc(): void
@@ -482,7 +454,6 @@ proc miqt_exec_callback_QFontComboBox_showPopup(self: ptr cQFontComboBox, slot: 
 
   nimfunc[]()
 proc QFontComboBoxhidePopup*(self: gen_qfontcombobox_types.QFontComboBox, ): void =
-
   fQFontComboBox_virtualbase_hidePopup(self.h)
 
 type QFontComboBoxhidePopupProc* = proc(): void
@@ -498,7 +469,6 @@ proc miqt_exec_callback_QFontComboBox_hidePopup(self: ptr cQFontComboBox, slot: 
 
   nimfunc[]()
 proc QFontComboBoxinputMethodQuery*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQFontComboBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QFontComboBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -518,7 +488,6 @@ proc miqt_exec_callback_QFontComboBox_inputMethodQuery(self: ptr cQFontComboBox,
 
   virtualReturn.h
 proc QFontComboBoxfocusInEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QFocusEvent): void =
-
   fQFontComboBox_virtualbase_focusInEvent(self.h, e.h)
 
 type QFontComboBoxfocusInEventProc* = proc(e: gen_qevent.QFocusEvent): void
@@ -536,7 +505,6 @@ proc miqt_exec_callback_QFontComboBox_focusInEvent(self: ptr cQFontComboBox, slo
 
   nimfunc[](slotval1)
 proc QFontComboBoxfocusOutEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QFocusEvent): void =
-
   fQFontComboBox_virtualbase_focusOutEvent(self.h, e.h)
 
 type QFontComboBoxfocusOutEventProc* = proc(e: gen_qevent.QFocusEvent): void
@@ -554,7 +522,6 @@ proc miqt_exec_callback_QFontComboBox_focusOutEvent(self: ptr cQFontComboBox, sl
 
   nimfunc[](slotval1)
 proc QFontComboBoxchangeEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qcoreevent.QEvent): void =
-
   fQFontComboBox_virtualbase_changeEvent(self.h, e.h)
 
 type QFontComboBoxchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -572,7 +539,6 @@ proc miqt_exec_callback_QFontComboBox_changeEvent(self: ptr cQFontComboBox, slot
 
   nimfunc[](slotval1)
 proc QFontComboBoxresizeEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QResizeEvent): void =
-
   fQFontComboBox_virtualbase_resizeEvent(self.h, e.h)
 
 type QFontComboBoxresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
@@ -590,7 +556,6 @@ proc miqt_exec_callback_QFontComboBox_resizeEvent(self: ptr cQFontComboBox, slot
 
   nimfunc[](slotval1)
 proc QFontComboBoxpaintEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QPaintEvent): void =
-
   fQFontComboBox_virtualbase_paintEvent(self.h, e.h)
 
 type QFontComboBoxpaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
@@ -608,7 +573,6 @@ proc miqt_exec_callback_QFontComboBox_paintEvent(self: ptr cQFontComboBox, slot:
 
   nimfunc[](slotval1)
 proc QFontComboBoxshowEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QShowEvent): void =
-
   fQFontComboBox_virtualbase_showEvent(self.h, e.h)
 
 type QFontComboBoxshowEventProc* = proc(e: gen_qevent.QShowEvent): void
@@ -626,7 +590,6 @@ proc miqt_exec_callback_QFontComboBox_showEvent(self: ptr cQFontComboBox, slot: 
 
   nimfunc[](slotval1)
 proc QFontComboBoxhideEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QHideEvent): void =
-
   fQFontComboBox_virtualbase_hideEvent(self.h, e.h)
 
 type QFontComboBoxhideEventProc* = proc(e: gen_qevent.QHideEvent): void
@@ -644,7 +607,6 @@ proc miqt_exec_callback_QFontComboBox_hideEvent(self: ptr cQFontComboBox, slot: 
 
   nimfunc[](slotval1)
 proc QFontComboBoxmousePressEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QMouseEvent): void =
-
   fQFontComboBox_virtualbase_mousePressEvent(self.h, e.h)
 
 type QFontComboBoxmousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -662,7 +624,6 @@ proc miqt_exec_callback_QFontComboBox_mousePressEvent(self: ptr cQFontComboBox, 
 
   nimfunc[](slotval1)
 proc QFontComboBoxmouseReleaseEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QMouseEvent): void =
-
   fQFontComboBox_virtualbase_mouseReleaseEvent(self.h, e.h)
 
 type QFontComboBoxmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -680,7 +641,6 @@ proc miqt_exec_callback_QFontComboBox_mouseReleaseEvent(self: ptr cQFontComboBox
 
   nimfunc[](slotval1)
 proc QFontComboBoxkeyPressEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QKeyEvent): void =
-
   fQFontComboBox_virtualbase_keyPressEvent(self.h, e.h)
 
 type QFontComboBoxkeyPressEventProc* = proc(e: gen_qevent.QKeyEvent): void
@@ -698,7 +658,6 @@ proc miqt_exec_callback_QFontComboBox_keyPressEvent(self: ptr cQFontComboBox, sl
 
   nimfunc[](slotval1)
 proc QFontComboBoxkeyReleaseEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QKeyEvent): void =
-
   fQFontComboBox_virtualbase_keyReleaseEvent(self.h, e.h)
 
 type QFontComboBoxkeyReleaseEventProc* = proc(e: gen_qevent.QKeyEvent): void
@@ -716,7 +675,6 @@ proc miqt_exec_callback_QFontComboBox_keyReleaseEvent(self: ptr cQFontComboBox, 
 
   nimfunc[](slotval1)
 proc QFontComboBoxwheelEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QWheelEvent): void =
-
   fQFontComboBox_virtualbase_wheelEvent(self.h, e.h)
 
 type QFontComboBoxwheelEventProc* = proc(e: gen_qevent.QWheelEvent): void
@@ -734,7 +692,6 @@ proc miqt_exec_callback_QFontComboBox_wheelEvent(self: ptr cQFontComboBox, slot:
 
   nimfunc[](slotval1)
 proc QFontComboBoxcontextMenuEvent*(self: gen_qfontcombobox_types.QFontComboBox, e: gen_qevent.QContextMenuEvent): void =
-
   fQFontComboBox_virtualbase_contextMenuEvent(self.h, e.h)
 
 type QFontComboBoxcontextMenuEventProc* = proc(e: gen_qevent.QContextMenuEvent): void
@@ -752,7 +709,6 @@ proc miqt_exec_callback_QFontComboBox_contextMenuEvent(self: ptr cQFontComboBox,
 
   nimfunc[](slotval1)
 proc QFontComboBoxinputMethodEvent*(self: gen_qfontcombobox_types.QFontComboBox, param1: gen_qevent.QInputMethodEvent): void =
-
   fQFontComboBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QFontComboBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -770,7 +726,6 @@ proc miqt_exec_callback_QFontComboBox_inputMethodEvent(self: ptr cQFontComboBox,
 
   nimfunc[](slotval1)
 proc QFontComboBoxinitStyleOption*(self: gen_qfontcombobox_types.QFontComboBox, option: gen_qstyleoption.QStyleOptionComboBox): void =
-
   fQFontComboBox_virtualbase_initStyleOption(self.h, option.h)
 
 type QFontComboBoxinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionComboBox): void
@@ -788,7 +743,6 @@ proc miqt_exec_callback_QFontComboBox_initStyleOption(self: ptr cQFontComboBox, 
 
   nimfunc[](slotval1)
 proc QFontComboBoxdevType*(self: gen_qfontcombobox_types.QFontComboBox, ): cint =
-
   fQFontComboBox_virtualbase_devType(self.h)
 
 type QFontComboBoxdevTypeProc* = proc(): cint
@@ -806,7 +760,6 @@ proc miqt_exec_callback_QFontComboBox_devType(self: ptr cQFontComboBox, slot: in
 
   virtualReturn
 proc QFontComboBoxsetVisible*(self: gen_qfontcombobox_types.QFontComboBox, visible: bool): void =
-
   fQFontComboBox_virtualbase_setVisible(self.h, visible)
 
 type QFontComboBoxsetVisibleProc* = proc(visible: bool): void
@@ -824,7 +777,6 @@ proc miqt_exec_callback_QFontComboBox_setVisible(self: ptr cQFontComboBox, slot:
 
   nimfunc[](slotval1)
 proc QFontComboBoxheightForWidth*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint): cint =
-
   fQFontComboBox_virtualbase_heightForWidth(self.h, param1)
 
 type QFontComboBoxheightForWidthProc* = proc(param1: cint): cint
@@ -844,7 +796,6 @@ proc miqt_exec_callback_QFontComboBox_heightForWidth(self: ptr cQFontComboBox, s
 
   virtualReturn
 proc QFontComboBoxhasHeightForWidth*(self: gen_qfontcombobox_types.QFontComboBox, ): bool =
-
   fQFontComboBox_virtualbase_hasHeightForWidth(self.h)
 
 type QFontComboBoxhasHeightForWidthProc* = proc(): bool
@@ -862,7 +813,6 @@ proc miqt_exec_callback_QFontComboBox_hasHeightForWidth(self: ptr cQFontComboBox
 
   virtualReturn
 proc QFontComboBoxpaintEngine*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQFontComboBox_virtualbase_paintEngine(self.h))
 
 type QFontComboBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -880,7 +830,6 @@ proc miqt_exec_callback_QFontComboBox_paintEngine(self: ptr cQFontComboBox, slot
 
   virtualReturn.h
 proc QFontComboBoxmouseDoubleClickEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QMouseEvent): void =
-
   fQFontComboBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QFontComboBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -898,7 +847,6 @@ proc miqt_exec_callback_QFontComboBox_mouseDoubleClickEvent(self: ptr cQFontComb
 
   nimfunc[](slotval1)
 proc QFontComboBoxmouseMoveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QMouseEvent): void =
-
   fQFontComboBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QFontComboBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -916,7 +864,6 @@ proc miqt_exec_callback_QFontComboBox_mouseMoveEvent(self: ptr cQFontComboBox, s
 
   nimfunc[](slotval1)
 proc QFontComboBoxenterEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QEnterEvent): void =
-
   fQFontComboBox_virtualbase_enterEvent(self.h, event.h)
 
 type QFontComboBoxenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -934,7 +881,6 @@ proc miqt_exec_callback_QFontComboBox_enterEvent(self: ptr cQFontComboBox, slot:
 
   nimfunc[](slotval1)
 proc QFontComboBoxleaveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qcoreevent.QEvent): void =
-
   fQFontComboBox_virtualbase_leaveEvent(self.h, event.h)
 
 type QFontComboBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -952,7 +898,6 @@ proc miqt_exec_callback_QFontComboBox_leaveEvent(self: ptr cQFontComboBox, slot:
 
   nimfunc[](slotval1)
 proc QFontComboBoxmoveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QMoveEvent): void =
-
   fQFontComboBox_virtualbase_moveEvent(self.h, event.h)
 
 type QFontComboBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -970,7 +915,6 @@ proc miqt_exec_callback_QFontComboBox_moveEvent(self: ptr cQFontComboBox, slot: 
 
   nimfunc[](slotval1)
 proc QFontComboBoxcloseEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QCloseEvent): void =
-
   fQFontComboBox_virtualbase_closeEvent(self.h, event.h)
 
 type QFontComboBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -988,7 +932,6 @@ proc miqt_exec_callback_QFontComboBox_closeEvent(self: ptr cQFontComboBox, slot:
 
   nimfunc[](slotval1)
 proc QFontComboBoxtabletEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QTabletEvent): void =
-
   fQFontComboBox_virtualbase_tabletEvent(self.h, event.h)
 
 type QFontComboBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1006,7 +949,6 @@ proc miqt_exec_callback_QFontComboBox_tabletEvent(self: ptr cQFontComboBox, slot
 
   nimfunc[](slotval1)
 proc QFontComboBoxactionEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QActionEvent): void =
-
   fQFontComboBox_virtualbase_actionEvent(self.h, event.h)
 
 type QFontComboBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1024,7 +966,6 @@ proc miqt_exec_callback_QFontComboBox_actionEvent(self: ptr cQFontComboBox, slot
 
   nimfunc[](slotval1)
 proc QFontComboBoxdragEnterEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QDragEnterEvent): void =
-
   fQFontComboBox_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QFontComboBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1042,7 +983,6 @@ proc miqt_exec_callback_QFontComboBox_dragEnterEvent(self: ptr cQFontComboBox, s
 
   nimfunc[](slotval1)
 proc QFontComboBoxdragMoveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QDragMoveEvent): void =
-
   fQFontComboBox_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QFontComboBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1060,7 +1000,6 @@ proc miqt_exec_callback_QFontComboBox_dragMoveEvent(self: ptr cQFontComboBox, sl
 
   nimfunc[](slotval1)
 proc QFontComboBoxdragLeaveEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QDragLeaveEvent): void =
-
   fQFontComboBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QFontComboBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1078,7 +1017,6 @@ proc miqt_exec_callback_QFontComboBox_dragLeaveEvent(self: ptr cQFontComboBox, s
 
   nimfunc[](slotval1)
 proc QFontComboBoxdropEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qevent.QDropEvent): void =
-
   fQFontComboBox_virtualbase_dropEvent(self.h, event.h)
 
 type QFontComboBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1096,7 +1034,6 @@ proc miqt_exec_callback_QFontComboBox_dropEvent(self: ptr cQFontComboBox, slot: 
 
   nimfunc[](slotval1)
 proc QFontComboBoxnativeEvent*(self: gen_qfontcombobox_types.QFontComboBox, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQFontComboBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QFontComboBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1123,7 +1060,6 @@ proc miqt_exec_callback_QFontComboBox_nativeEvent(self: ptr cQFontComboBox, slot
 
   virtualReturn
 proc QFontComboBoxmetric*(self: gen_qfontcombobox_types.QFontComboBox, param1: cint): cint =
-
   fQFontComboBox_virtualbase_metric(self.h, cint(param1))
 
 type QFontComboBoxmetricProc* = proc(param1: cint): cint
@@ -1143,7 +1079,6 @@ proc miqt_exec_callback_QFontComboBox_metric(self: ptr cQFontComboBox, slot: int
 
   virtualReturn
 proc QFontComboBoxinitPainter*(self: gen_qfontcombobox_types.QFontComboBox, painter: gen_qpainter.QPainter): void =
-
   fQFontComboBox_virtualbase_initPainter(self.h, painter.h)
 
 type QFontComboBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1161,7 +1096,6 @@ proc miqt_exec_callback_QFontComboBox_initPainter(self: ptr cQFontComboBox, slot
 
   nimfunc[](slotval1)
 proc QFontComboBoxredirected*(self: gen_qfontcombobox_types.QFontComboBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQFontComboBox_virtualbase_redirected(self.h, offset.h))
 
 type QFontComboBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1181,7 +1115,6 @@ proc miqt_exec_callback_QFontComboBox_redirected(self: ptr cQFontComboBox, slot:
 
   virtualReturn.h
 proc QFontComboBoxsharedPainter*(self: gen_qfontcombobox_types.QFontComboBox, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQFontComboBox_virtualbase_sharedPainter(self.h))
 
 type QFontComboBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1199,7 +1132,6 @@ proc miqt_exec_callback_QFontComboBox_sharedPainter(self: ptr cQFontComboBox, sl
 
   virtualReturn.h
 proc QFontComboBoxfocusNextPrevChild*(self: gen_qfontcombobox_types.QFontComboBox, next: bool): bool =
-
   fQFontComboBox_virtualbase_focusNextPrevChild(self.h, next)
 
 type QFontComboBoxfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1219,7 +1151,6 @@ proc miqt_exec_callback_QFontComboBox_focusNextPrevChild(self: ptr cQFontComboBo
 
   virtualReturn
 proc QFontComboBoxeventFilter*(self: gen_qfontcombobox_types.QFontComboBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQFontComboBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QFontComboBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1241,7 +1172,6 @@ proc miqt_exec_callback_QFontComboBox_eventFilter(self: ptr cQFontComboBox, slot
 
   virtualReturn
 proc QFontComboBoxtimerEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qcoreevent.QTimerEvent): void =
-
   fQFontComboBox_virtualbase_timerEvent(self.h, event.h)
 
 type QFontComboBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1259,7 +1189,6 @@ proc miqt_exec_callback_QFontComboBox_timerEvent(self: ptr cQFontComboBox, slot:
 
   nimfunc[](slotval1)
 proc QFontComboBoxchildEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qcoreevent.QChildEvent): void =
-
   fQFontComboBox_virtualbase_childEvent(self.h, event.h)
 
 type QFontComboBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1277,7 +1206,6 @@ proc miqt_exec_callback_QFontComboBox_childEvent(self: ptr cQFontComboBox, slot:
 
   nimfunc[](slotval1)
 proc QFontComboBoxcustomEvent*(self: gen_qfontcombobox_types.QFontComboBox, event: gen_qcoreevent.QEvent): void =
-
   fQFontComboBox_virtualbase_customEvent(self.h, event.h)
 
 type QFontComboBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1295,7 +1223,6 @@ proc miqt_exec_callback_QFontComboBox_customEvent(self: ptr cQFontComboBox, slot
 
   nimfunc[](slotval1)
 proc QFontComboBoxconnectNotify*(self: gen_qfontcombobox_types.QFontComboBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFontComboBox_virtualbase_connectNotify(self.h, signal.h)
 
 type QFontComboBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1313,7 +1240,6 @@ proc miqt_exec_callback_QFontComboBox_connectNotify(self: ptr cQFontComboBox, sl
 
   nimfunc[](slotval1)
 proc QFontComboBoxdisconnectNotify*(self: gen_qfontcombobox_types.QFontComboBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFontComboBox_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QFontComboBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

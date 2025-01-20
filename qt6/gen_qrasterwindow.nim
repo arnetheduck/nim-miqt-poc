@@ -161,46 +161,39 @@ proc fcQRasterWindow_delete(self: pointer) {.importc: "QRasterWindow_delete".}
 func init*(T: type gen_qrasterwindow_types.QRasterWindow, h: ptr cQRasterWindow): gen_qrasterwindow_types.QRasterWindow =
   T(h: h)
 proc create*(T: type gen_qrasterwindow_types.QRasterWindow, ): gen_qrasterwindow_types.QRasterWindow =
-
   gen_qrasterwindow_types.QRasterWindow.init(fcQRasterWindow_new())
+
 proc create*(T: type gen_qrasterwindow_types.QRasterWindow, parent: gen_qwindow.QWindow): gen_qrasterwindow_types.QRasterWindow =
-
   gen_qrasterwindow_types.QRasterWindow.init(fcQRasterWindow_new2(parent.h))
-proc metaObject*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQRasterWindow_metaObject(self.h))
 
 proc metacast*(self: gen_qrasterwindow_types.QRasterWindow, param1: cstring): pointer =
-
   fcQRasterWindow_metacast(self.h, param1)
 
 proc metacall*(self: gen_qrasterwindow_types.QRasterWindow, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQRasterWindow_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qrasterwindow_types.QRasterWindow, s: cstring): string =
-
   let v_ms = fcQRasterWindow_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qrasterwindow_types.QRasterWindow, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qrasterwindow_types.QRasterWindow, s: cstring, c: cstring): string =
   let v_ms = fcQRasterWindow_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qrasterwindow_types.QRasterWindow, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qrasterwindow_types.QRasterWindow, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQRasterWindow_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QRasterWindowmetaObject*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQRasterWindow_virtualbase_metaObject(self.h))
 
 type QRasterWindowmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -218,7 +211,6 @@ proc miqt_exec_callback_QRasterWindow_metaObject(self: ptr cQRasterWindow, slot:
 
   virtualReturn.h
 proc QRasterWindowmetacast*(self: gen_qrasterwindow_types.QRasterWindow, param1: cstring): pointer =
-
   fQRasterWindow_virtualbase_metacast(self.h, param1)
 
 type QRasterWindowmetacastProc* = proc(param1: cstring): pointer
@@ -238,7 +230,6 @@ proc miqt_exec_callback_QRasterWindow_metacast(self: ptr cQRasterWindow, slot: i
 
   virtualReturn
 proc QRasterWindowmetacall*(self: gen_qrasterwindow_types.QRasterWindow, param1: cint, param2: cint, param3: pointer): cint =
-
   fQRasterWindow_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QRasterWindowmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -262,7 +253,6 @@ proc miqt_exec_callback_QRasterWindow_metacall(self: ptr cQRasterWindow, slot: i
 
   virtualReturn
 proc QRasterWindowmetric*(self: gen_qrasterwindow_types.QRasterWindow, metric: cint): cint =
-
   fQRasterWindow_virtualbase_metric(self.h, cint(metric))
 
 type QRasterWindowmetricProc* = proc(metric: cint): cint
@@ -282,7 +272,6 @@ proc miqt_exec_callback_QRasterWindow_metric(self: ptr cQRasterWindow, slot: int
 
   virtualReturn
 proc QRasterWindowredirected*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQRasterWindow_virtualbase_redirected(self.h, param1.h))
 
 type QRasterWindowredirectedProc* = proc(param1: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -302,7 +291,6 @@ proc miqt_exec_callback_QRasterWindow_redirected(self: ptr cQRasterWindow, slot:
 
   virtualReturn.h
 proc QRasterWindowexposeEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QExposeEvent): void =
-
   fQRasterWindow_virtualbase_exposeEvent(self.h, param1.h)
 
 type QRasterWindowexposeEventProc* = proc(param1: gen_qevent.QExposeEvent): void
@@ -320,7 +308,6 @@ proc miqt_exec_callback_QRasterWindow_exposeEvent(self: ptr cQRasterWindow, slot
 
   nimfunc[](slotval1)
 proc QRasterWindowpaintEvent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qevent.QPaintEvent): void =
-
   fQRasterWindow_virtualbase_paintEvent(self.h, event.h)
 
 type QRasterWindowpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -338,7 +325,6 @@ proc miqt_exec_callback_QRasterWindow_paintEvent(self: ptr cQRasterWindow, slot:
 
   nimfunc[](slotval1)
 proc QRasterWindowevent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qcoreevent.QEvent): bool =
-
   fQRasterWindow_virtualbase_event(self.h, event.h)
 
 type QRasterWindoweventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -358,7 +344,6 @@ proc miqt_exec_callback_QRasterWindow_event(self: ptr cQRasterWindow, slot: int,
 
   virtualReturn
 proc QRasterWindowsurfaceType*(self: gen_qrasterwindow_types.QRasterWindow, ): cint =
-
   cint(fQRasterWindow_virtualbase_surfaceType(self.h))
 
 type QRasterWindowsurfaceTypeProc* = proc(): cint
@@ -376,7 +361,6 @@ proc miqt_exec_callback_QRasterWindow_surfaceType(self: ptr cQRasterWindow, slot
 
   cint(virtualReturn)
 proc QRasterWindowformat*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qsurfaceformat.QSurfaceFormat =
-
   gen_qsurfaceformat.QSurfaceFormat(h: fQRasterWindow_virtualbase_format(self.h))
 
 type QRasterWindowformatProc* = proc(): gen_qsurfaceformat.QSurfaceFormat
@@ -394,7 +378,6 @@ proc miqt_exec_callback_QRasterWindow_format(self: ptr cQRasterWindow, slot: int
 
   virtualReturn.h
 proc QRasterWindowsize*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQRasterWindow_virtualbase_size(self.h))
 
 type QRasterWindowsizeProc* = proc(): gen_qsize.QSize
@@ -412,7 +395,6 @@ proc miqt_exec_callback_QRasterWindow_size(self: ptr cQRasterWindow, slot: int):
 
   virtualReturn.h
 proc QRasterWindowaccessibleRoot*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qaccessible.QAccessibleInterface =
-
   gen_qaccessible.QAccessibleInterface(h: fQRasterWindow_virtualbase_accessibleRoot(self.h))
 
 type QRasterWindowaccessibleRootProc* = proc(): gen_qaccessible.QAccessibleInterface
@@ -430,7 +412,6 @@ proc miqt_exec_callback_QRasterWindow_accessibleRoot(self: ptr cQRasterWindow, s
 
   virtualReturn.h
 proc QRasterWindowfocusObject*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fQRasterWindow_virtualbase_focusObject(self.h))
 
 type QRasterWindowfocusObjectProc* = proc(): gen_qobject.QObject
@@ -448,7 +429,6 @@ proc miqt_exec_callback_QRasterWindow_focusObject(self: ptr cQRasterWindow, slot
 
   virtualReturn.h
 proc QRasterWindowresizeEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QResizeEvent): void =
-
   fQRasterWindow_virtualbase_resizeEvent(self.h, param1.h)
 
 type QRasterWindowresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -466,7 +446,6 @@ proc miqt_exec_callback_QRasterWindow_resizeEvent(self: ptr cQRasterWindow, slot
 
   nimfunc[](slotval1)
 proc QRasterWindowmoveEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMoveEvent): void =
-
   fQRasterWindow_virtualbase_moveEvent(self.h, param1.h)
 
 type QRasterWindowmoveEventProc* = proc(param1: gen_qevent.QMoveEvent): void
@@ -484,7 +463,6 @@ proc miqt_exec_callback_QRasterWindow_moveEvent(self: ptr cQRasterWindow, slot: 
 
   nimfunc[](slotval1)
 proc QRasterWindowfocusInEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QFocusEvent): void =
-
   fQRasterWindow_virtualbase_focusInEvent(self.h, param1.h)
 
 type QRasterWindowfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -502,7 +480,6 @@ proc miqt_exec_callback_QRasterWindow_focusInEvent(self: ptr cQRasterWindow, slo
 
   nimfunc[](slotval1)
 proc QRasterWindowfocusOutEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QFocusEvent): void =
-
   fQRasterWindow_virtualbase_focusOutEvent(self.h, param1.h)
 
 type QRasterWindowfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -520,7 +497,6 @@ proc miqt_exec_callback_QRasterWindow_focusOutEvent(self: ptr cQRasterWindow, sl
 
   nimfunc[](slotval1)
 proc QRasterWindowshowEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QShowEvent): void =
-
   fQRasterWindow_virtualbase_showEvent(self.h, param1.h)
 
 type QRasterWindowshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -538,7 +514,6 @@ proc miqt_exec_callback_QRasterWindow_showEvent(self: ptr cQRasterWindow, slot: 
 
   nimfunc[](slotval1)
 proc QRasterWindowhideEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QHideEvent): void =
-
   fQRasterWindow_virtualbase_hideEvent(self.h, param1.h)
 
 type QRasterWindowhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
@@ -556,7 +531,6 @@ proc miqt_exec_callback_QRasterWindow_hideEvent(self: ptr cQRasterWindow, slot: 
 
   nimfunc[](slotval1)
 proc QRasterWindowcloseEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QCloseEvent): void =
-
   fQRasterWindow_virtualbase_closeEvent(self.h, param1.h)
 
 type QRasterWindowcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
@@ -574,7 +548,6 @@ proc miqt_exec_callback_QRasterWindow_closeEvent(self: ptr cQRasterWindow, slot:
 
   nimfunc[](slotval1)
 proc QRasterWindowkeyPressEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QKeyEvent): void =
-
   fQRasterWindow_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QRasterWindowkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -592,7 +565,6 @@ proc miqt_exec_callback_QRasterWindow_keyPressEvent(self: ptr cQRasterWindow, sl
 
   nimfunc[](slotval1)
 proc QRasterWindowkeyReleaseEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QKeyEvent): void =
-
   fQRasterWindow_virtualbase_keyReleaseEvent(self.h, param1.h)
 
 type QRasterWindowkeyReleaseEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -610,7 +582,6 @@ proc miqt_exec_callback_QRasterWindow_keyReleaseEvent(self: ptr cQRasterWindow, 
 
   nimfunc[](slotval1)
 proc QRasterWindowmousePressEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMouseEvent): void =
-
   fQRasterWindow_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QRasterWindowmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -628,7 +599,6 @@ proc miqt_exec_callback_QRasterWindow_mousePressEvent(self: ptr cQRasterWindow, 
 
   nimfunc[](slotval1)
 proc QRasterWindowmouseReleaseEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMouseEvent): void =
-
   fQRasterWindow_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QRasterWindowmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -646,7 +616,6 @@ proc miqt_exec_callback_QRasterWindow_mouseReleaseEvent(self: ptr cQRasterWindow
 
   nimfunc[](slotval1)
 proc QRasterWindowmouseDoubleClickEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMouseEvent): void =
-
   fQRasterWindow_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
 type QRasterWindowmouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -664,7 +633,6 @@ proc miqt_exec_callback_QRasterWindow_mouseDoubleClickEvent(self: ptr cQRasterWi
 
   nimfunc[](slotval1)
 proc QRasterWindowmouseMoveEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QMouseEvent): void =
-
   fQRasterWindow_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QRasterWindowmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -682,7 +650,6 @@ proc miqt_exec_callback_QRasterWindow_mouseMoveEvent(self: ptr cQRasterWindow, s
 
   nimfunc[](slotval1)
 proc QRasterWindowwheelEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QWheelEvent): void =
-
   fQRasterWindow_virtualbase_wheelEvent(self.h, param1.h)
 
 type QRasterWindowwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -700,7 +667,6 @@ proc miqt_exec_callback_QRasterWindow_wheelEvent(self: ptr cQRasterWindow, slot:
 
   nimfunc[](slotval1)
 proc QRasterWindowtouchEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QTouchEvent): void =
-
   fQRasterWindow_virtualbase_touchEvent(self.h, param1.h)
 
 type QRasterWindowtouchEventProc* = proc(param1: gen_qevent.QTouchEvent): void
@@ -718,7 +684,6 @@ proc miqt_exec_callback_QRasterWindow_touchEvent(self: ptr cQRasterWindow, slot:
 
   nimfunc[](slotval1)
 proc QRasterWindowtabletEvent*(self: gen_qrasterwindow_types.QRasterWindow, param1: gen_qevent.QTabletEvent): void =
-
   fQRasterWindow_virtualbase_tabletEvent(self.h, param1.h)
 
 type QRasterWindowtabletEventProc* = proc(param1: gen_qevent.QTabletEvent): void
@@ -736,7 +701,6 @@ proc miqt_exec_callback_QRasterWindow_tabletEvent(self: ptr cQRasterWindow, slot
 
   nimfunc[](slotval1)
 proc QRasterWindownativeEvent*(self: gen_qrasterwindow_types.QRasterWindow, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQRasterWindow_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QRasterWindownativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -763,7 +727,6 @@ proc miqt_exec_callback_QRasterWindow_nativeEvent(self: ptr cQRasterWindow, slot
 
   virtualReturn
 proc QRasterWindoweventFilter*(self: gen_qrasterwindow_types.QRasterWindow, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQRasterWindow_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QRasterWindoweventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -785,7 +748,6 @@ proc miqt_exec_callback_QRasterWindow_eventFilter(self: ptr cQRasterWindow, slot
 
   virtualReturn
 proc QRasterWindowtimerEvent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qcoreevent.QTimerEvent): void =
-
   fQRasterWindow_virtualbase_timerEvent(self.h, event.h)
 
 type QRasterWindowtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -803,7 +765,6 @@ proc miqt_exec_callback_QRasterWindow_timerEvent(self: ptr cQRasterWindow, slot:
 
   nimfunc[](slotval1)
 proc QRasterWindowchildEvent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qcoreevent.QChildEvent): void =
-
   fQRasterWindow_virtualbase_childEvent(self.h, event.h)
 
 type QRasterWindowchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -821,7 +782,6 @@ proc miqt_exec_callback_QRasterWindow_childEvent(self: ptr cQRasterWindow, slot:
 
   nimfunc[](slotval1)
 proc QRasterWindowcustomEvent*(self: gen_qrasterwindow_types.QRasterWindow, event: gen_qcoreevent.QEvent): void =
-
   fQRasterWindow_virtualbase_customEvent(self.h, event.h)
 
 type QRasterWindowcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -839,7 +799,6 @@ proc miqt_exec_callback_QRasterWindow_customEvent(self: ptr cQRasterWindow, slot
 
   nimfunc[](slotval1)
 proc QRasterWindowconnectNotify*(self: gen_qrasterwindow_types.QRasterWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQRasterWindow_virtualbase_connectNotify(self.h, signal.h)
 
 type QRasterWindowconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -857,7 +816,6 @@ proc miqt_exec_callback_QRasterWindow_connectNotify(self: ptr cQRasterWindow, sl
 
   nimfunc[](slotval1)
 proc QRasterWindowdisconnectNotify*(self: gen_qrasterwindow_types.QRasterWindow, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQRasterWindow_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QRasterWindowdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -875,7 +833,6 @@ proc miqt_exec_callback_QRasterWindow_disconnectNotify(self: ptr cQRasterWindow,
 
   nimfunc[](slotval1)
 proc QRasterWindowdevType*(self: gen_qrasterwindow_types.QRasterWindow, ): cint =
-
   fQRasterWindow_virtualbase_devType(self.h)
 
 type QRasterWindowdevTypeProc* = proc(): cint
@@ -893,7 +850,6 @@ proc miqt_exec_callback_QRasterWindow_devType(self: ptr cQRasterWindow, slot: in
 
   virtualReturn
 proc QRasterWindowinitPainter*(self: gen_qrasterwindow_types.QRasterWindow, painter: gen_qpainter.QPainter): void =
-
   fQRasterWindow_virtualbase_initPainter(self.h, painter.h)
 
 type QRasterWindowinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -911,7 +867,6 @@ proc miqt_exec_callback_QRasterWindow_initPainter(self: ptr cQRasterWindow, slot
 
   nimfunc[](slotval1)
 proc QRasterWindowsharedPainter*(self: gen_qrasterwindow_types.QRasterWindow, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQRasterWindow_virtualbase_sharedPainter(self.h))
 
 type QRasterWindowsharedPainterProc* = proc(): gen_qpainter.QPainter

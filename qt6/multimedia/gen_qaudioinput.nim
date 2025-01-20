@@ -101,128 +101,109 @@ proc fcQAudioInput_delete(self: pointer) {.importc: "QAudioInput_delete".}
 func init*(T: type gen_qaudioinput_types.QAudioInput, h: ptr cQAudioInput): gen_qaudioinput_types.QAudioInput =
   T(h: h)
 proc create*(T: type gen_qaudioinput_types.QAudioInput, ): gen_qaudioinput_types.QAudioInput =
-
   gen_qaudioinput_types.QAudioInput.init(fcQAudioInput_new())
+
 proc create*(T: type gen_qaudioinput_types.QAudioInput, deviceInfo: gen_qaudiodevice.QAudioDevice): gen_qaudioinput_types.QAudioInput =
-
   gen_qaudioinput_types.QAudioInput.init(fcQAudioInput_new2(deviceInfo.h))
-proc create2*(T: type gen_qaudioinput_types.QAudioInput, parent: gen_qobject.QObject): gen_qaudioinput_types.QAudioInput =
 
+proc create*(T: type gen_qaudioinput_types.QAudioInput, parent: gen_qobject.QObject): gen_qaudioinput_types.QAudioInput =
   gen_qaudioinput_types.QAudioInput.init(fcQAudioInput_new3(parent.h))
+
 proc create*(T: type gen_qaudioinput_types.QAudioInput, deviceInfo: gen_qaudiodevice.QAudioDevice, parent: gen_qobject.QObject): gen_qaudioinput_types.QAudioInput =
-
   gen_qaudioinput_types.QAudioInput.init(fcQAudioInput_new4(deviceInfo.h, parent.h))
-proc metaObject*(self: gen_qaudioinput_types.QAudioInput, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qaudioinput_types.QAudioInput, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioInput_metaObject(self.h))
 
 proc metacast*(self: gen_qaudioinput_types.QAudioInput, param1: cstring): pointer =
-
   fcQAudioInput_metacast(self.h, param1)
 
 proc metacall*(self: gen_qaudioinput_types.QAudioInput, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAudioInput_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qaudioinput_types.QAudioInput, s: cstring): string =
-
   let v_ms = fcQAudioInput_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc device*(self: gen_qaudioinput_types.QAudioInput, ): gen_qaudiodevice.QAudioDevice =
-
   gen_qaudiodevice.QAudioDevice(h: fcQAudioInput_device(self.h))
 
 proc volume*(self: gen_qaudioinput_types.QAudioInput, ): float32 =
-
   fcQAudioInput_volume(self.h)
 
 proc isMuted*(self: gen_qaudioinput_types.QAudioInput, ): bool =
-
   fcQAudioInput_isMuted(self.h)
 
 proc setDevice*(self: gen_qaudioinput_types.QAudioInput, device: gen_qaudiodevice.QAudioDevice): void =
-
   fcQAudioInput_setDevice(self.h, device.h)
 
 proc setVolume*(self: gen_qaudioinput_types.QAudioInput, volume: float32): void =
-
   fcQAudioInput_setVolume(self.h, volume)
 
 proc setMuted*(self: gen_qaudioinput_types.QAudioInput, muted: bool): void =
-
   fcQAudioInput_setMuted(self.h, muted)
 
 proc deviceChanged*(self: gen_qaudioinput_types.QAudioInput, ): void =
-
   fcQAudioInput_deviceChanged(self.h)
 
+type QAudioInputdeviceChangedSlot* = proc()
 proc miqt_exec_callback_QAudioInput_deviceChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QAudioInputdeviceChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc ondeviceChanged*(self: gen_qaudioinput_types.QAudioInput, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc ondeviceChanged*(self: gen_qaudioinput_types.QAudioInput, slot: QAudioInputdeviceChangedSlot) =
+  var tmp = new QAudioInputdeviceChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAudioInput_connect_deviceChanged(self.h, cast[int](addr tmp[]))
-proc volumeChanged*(self: gen_qaudioinput_types.QAudioInput, volume: float32): void =
 
+proc volumeChanged*(self: gen_qaudioinput_types.QAudioInput, volume: float32): void =
   fcQAudioInput_volumeChanged(self.h, volume)
 
+type QAudioInputvolumeChangedSlot* = proc(volume: float32)
 proc miqt_exec_callback_QAudioInput_volumeChanged(slot: int, volume: float32) {.exportc.} =
-  type Cb = proc(volume: float32)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAudioInputvolumeChangedSlot](cast[pointer](slot))
   let slotval1 = volume
-
 
   nimfunc[](slotval1)
 
-proc onvolumeChanged*(self: gen_qaudioinput_types.QAudioInput, slot: proc(volume: float32)) =
-  type Cb = proc(volume: float32)
-  var tmp = new Cb
+proc onvolumeChanged*(self: gen_qaudioinput_types.QAudioInput, slot: QAudioInputvolumeChangedSlot) =
+  var tmp = new QAudioInputvolumeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAudioInput_connect_volumeChanged(self.h, cast[int](addr tmp[]))
-proc mutedChanged*(self: gen_qaudioinput_types.QAudioInput, muted: bool): void =
 
+proc mutedChanged*(self: gen_qaudioinput_types.QAudioInput, muted: bool): void =
   fcQAudioInput_mutedChanged(self.h, muted)
 
+type QAudioInputmutedChangedSlot* = proc(muted: bool)
 proc miqt_exec_callback_QAudioInput_mutedChanged(slot: int, muted: bool) {.exportc.} =
-  type Cb = proc(muted: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAudioInputmutedChangedSlot](cast[pointer](slot))
   let slotval1 = muted
-
 
   nimfunc[](slotval1)
 
-proc onmutedChanged*(self: gen_qaudioinput_types.QAudioInput, slot: proc(muted: bool)) =
-  type Cb = proc(muted: bool)
-  var tmp = new Cb
+proc onmutedChanged*(self: gen_qaudioinput_types.QAudioInput, slot: QAudioInputmutedChangedSlot) =
+  var tmp = new QAudioInputmutedChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAudioInput_connect_mutedChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qaudioinput_types.QAudioInput, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qaudioinput_types.QAudioInput, s: cstring, c: cstring): string =
   let v_ms = fcQAudioInput_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qaudioinput_types.QAudioInput, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qaudioinput_types.QAudioInput, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAudioInput_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QAudioInputmetaObject*(self: gen_qaudioinput_types.QAudioInput, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQAudioInput_virtualbase_metaObject(self.h))
 
 type QAudioInputmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -240,7 +221,6 @@ proc miqt_exec_callback_QAudioInput_metaObject(self: ptr cQAudioInput, slot: int
 
   virtualReturn.h
 proc QAudioInputmetacast*(self: gen_qaudioinput_types.QAudioInput, param1: cstring): pointer =
-
   fQAudioInput_virtualbase_metacast(self.h, param1)
 
 type QAudioInputmetacastProc* = proc(param1: cstring): pointer
@@ -260,7 +240,6 @@ proc miqt_exec_callback_QAudioInput_metacast(self: ptr cQAudioInput, slot: int, 
 
   virtualReturn
 proc QAudioInputmetacall*(self: gen_qaudioinput_types.QAudioInput, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAudioInput_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAudioInputmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -284,7 +263,6 @@ proc miqt_exec_callback_QAudioInput_metacall(self: ptr cQAudioInput, slot: int, 
 
   virtualReturn
 proc QAudioInputevent*(self: gen_qaudioinput_types.QAudioInput, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioInput_virtualbase_event(self.h, event.h)
 
 type QAudioInputeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -304,7 +282,6 @@ proc miqt_exec_callback_QAudioInput_event(self: ptr cQAudioInput, slot: int, eve
 
   virtualReturn
 proc QAudioInputeventFilter*(self: gen_qaudioinput_types.QAudioInput, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioInput_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAudioInputeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -326,7 +303,6 @@ proc miqt_exec_callback_QAudioInput_eventFilter(self: ptr cQAudioInput, slot: in
 
   virtualReturn
 proc QAudioInputtimerEvent*(self: gen_qaudioinput_types.QAudioInput, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAudioInput_virtualbase_timerEvent(self.h, event.h)
 
 type QAudioInputtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -344,7 +320,6 @@ proc miqt_exec_callback_QAudioInput_timerEvent(self: ptr cQAudioInput, slot: int
 
   nimfunc[](slotval1)
 proc QAudioInputchildEvent*(self: gen_qaudioinput_types.QAudioInput, event: gen_qcoreevent.QChildEvent): void =
-
   fQAudioInput_virtualbase_childEvent(self.h, event.h)
 
 type QAudioInputchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -362,7 +337,6 @@ proc miqt_exec_callback_QAudioInput_childEvent(self: ptr cQAudioInput, slot: int
 
   nimfunc[](slotval1)
 proc QAudioInputcustomEvent*(self: gen_qaudioinput_types.QAudioInput, event: gen_qcoreevent.QEvent): void =
-
   fQAudioInput_virtualbase_customEvent(self.h, event.h)
 
 type QAudioInputcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -380,7 +354,6 @@ proc miqt_exec_callback_QAudioInput_customEvent(self: ptr cQAudioInput, slot: in
 
   nimfunc[](slotval1)
 proc QAudioInputconnectNotify*(self: gen_qaudioinput_types.QAudioInput, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioInput_virtualbase_connectNotify(self.h, signal.h)
 
 type QAudioInputconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -398,7 +371,6 @@ proc miqt_exec_callback_QAudioInput_connectNotify(self: ptr cQAudioInput, slot: 
 
   nimfunc[](slotval1)
 proc QAudioInputdisconnectNotify*(self: gen_qaudioinput_types.QAudioInput, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioInput_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAudioInputdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -75,75 +75,60 @@ proc fcQWebEngineScript_delete(self: pointer) {.importc: "QWebEngineScript_delet
 func init*(T: type gen_qwebenginescript_types.QWebEngineScript, h: ptr cQWebEngineScript): gen_qwebenginescript_types.QWebEngineScript =
   T(h: h)
 proc create*(T: type gen_qwebenginescript_types.QWebEngineScript, ): gen_qwebenginescript_types.QWebEngineScript =
-
   gen_qwebenginescript_types.QWebEngineScript.init(fcQWebEngineScript_new())
+
 proc create*(T: type gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): gen_qwebenginescript_types.QWebEngineScript =
-
   gen_qwebenginescript_types.QWebEngineScript.init(fcQWebEngineScript_new2(other.h))
-proc operatorAssign*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): void =
 
+proc operatorAssign*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): void =
   fcQWebEngineScript_operatorAssign(self.h, other.h)
 
 proc isNull*(self: gen_qwebenginescript_types.QWebEngineScript, ): bool =
-
   fcQWebEngineScript_isNull(self.h)
 
 proc name*(self: gen_qwebenginescript_types.QWebEngineScript, ): string =
-
   let v_ms = fcQWebEngineScript_name(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setName*(self: gen_qwebenginescript_types.QWebEngineScript, name: string): void =
-
   fcQWebEngineScript_setName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc sourceCode*(self: gen_qwebenginescript_types.QWebEngineScript, ): string =
-
   let v_ms = fcQWebEngineScript_sourceCode(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setSourceCode*(self: gen_qwebenginescript_types.QWebEngineScript, sourceCode: string): void =
-
   fcQWebEngineScript_setSourceCode(self.h, struct_miqt_string(data: sourceCode, len: csize_t(len(sourceCode))))
 
 proc injectionPoint*(self: gen_qwebenginescript_types.QWebEngineScript, ): cint =
-
   cint(fcQWebEngineScript_injectionPoint(self.h))
 
 proc setInjectionPoint*(self: gen_qwebenginescript_types.QWebEngineScript, injectionPoint: cint): void =
-
   fcQWebEngineScript_setInjectionPoint(self.h, cint(injectionPoint))
 
 proc worldId*(self: gen_qwebenginescript_types.QWebEngineScript, ): cuint =
-
   fcQWebEngineScript_worldId(self.h)
 
 proc setWorldId*(self: gen_qwebenginescript_types.QWebEngineScript, worldId: cuint): void =
-
   fcQWebEngineScript_setWorldId(self.h, worldId)
 
 proc runsOnSubFrames*(self: gen_qwebenginescript_types.QWebEngineScript, ): bool =
-
   fcQWebEngineScript_runsOnSubFrames(self.h)
 
 proc setRunsOnSubFrames*(self: gen_qwebenginescript_types.QWebEngineScript, on: bool): void =
-
   fcQWebEngineScript_setRunsOnSubFrames(self.h, on)
 
 proc operatorEqual*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): bool =
-
   fcQWebEngineScript_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): bool =
-
   fcQWebEngineScript_operatorNotEqual(self.h, other.h)
 
 proc swap*(self: gen_qwebenginescript_types.QWebEngineScript, other: gen_qwebenginescript_types.QWebEngineScript): void =
-
   fcQWebEngineScript_swap(self.h, other.h)
 
 proc delete*(self: gen_qwebenginescript_types.QWebEngineScript) =

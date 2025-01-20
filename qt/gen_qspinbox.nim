@@ -380,208 +380,174 @@ proc fcQDoubleSpinBox_delete(self: pointer) {.importc: "QDoubleSpinBox_delete".}
 func init*(T: type gen_qspinbox_types.QSpinBox, h: ptr cQSpinBox): gen_qspinbox_types.QSpinBox =
   T(h: h)
 proc create*(T: type gen_qspinbox_types.QSpinBox, parent: gen_qwidget.QWidget): gen_qspinbox_types.QSpinBox =
-
   gen_qspinbox_types.QSpinBox.init(fcQSpinBox_new(parent.h))
+
 proc create*(T: type gen_qspinbox_types.QSpinBox, ): gen_qspinbox_types.QSpinBox =
-
   gen_qspinbox_types.QSpinBox.init(fcQSpinBox_new2())
-proc metaObject*(self: gen_qspinbox_types.QSpinBox, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qspinbox_types.QSpinBox, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSpinBox_metaObject(self.h))
 
 proc metacast*(self: gen_qspinbox_types.QSpinBox, param1: cstring): pointer =
-
   fcQSpinBox_metacast(self.h, param1)
 
 proc metacall*(self: gen_qspinbox_types.QSpinBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSpinBox_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qspinbox_types.QSpinBox, s: cstring): string =
-
   let v_ms = fcQSpinBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qspinbox_types.QSpinBox, s: cstring): string =
-
   let v_ms = fcQSpinBox_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc value*(self: gen_qspinbox_types.QSpinBox, ): cint =
-
   fcQSpinBox_value(self.h)
 
 proc prefix*(self: gen_qspinbox_types.QSpinBox, ): string =
-
   let v_ms = fcQSpinBox_prefix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPrefix*(self: gen_qspinbox_types.QSpinBox, prefix: string): void =
-
   fcQSpinBox_setPrefix(self.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 proc suffix*(self: gen_qspinbox_types.QSpinBox, ): string =
-
   let v_ms = fcQSpinBox_suffix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setSuffix*(self: gen_qspinbox_types.QSpinBox, suffix: string): void =
-
   fcQSpinBox_setSuffix(self.h, struct_miqt_string(data: suffix, len: csize_t(len(suffix))))
 
 proc cleanText*(self: gen_qspinbox_types.QSpinBox, ): string =
-
   let v_ms = fcQSpinBox_cleanText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc singleStep*(self: gen_qspinbox_types.QSpinBox, ): cint =
-
   fcQSpinBox_singleStep(self.h)
 
 proc setSingleStep*(self: gen_qspinbox_types.QSpinBox, val: cint): void =
-
   fcQSpinBox_setSingleStep(self.h, val)
 
 proc minimum*(self: gen_qspinbox_types.QSpinBox, ): cint =
-
   fcQSpinBox_minimum(self.h)
 
 proc setMinimum*(self: gen_qspinbox_types.QSpinBox, min: cint): void =
-
   fcQSpinBox_setMinimum(self.h, min)
 
 proc maximum*(self: gen_qspinbox_types.QSpinBox, ): cint =
-
   fcQSpinBox_maximum(self.h)
 
 proc setMaximum*(self: gen_qspinbox_types.QSpinBox, max: cint): void =
-
   fcQSpinBox_setMaximum(self.h, max)
 
 proc setRange*(self: gen_qspinbox_types.QSpinBox, min: cint, max: cint): void =
-
   fcQSpinBox_setRange(self.h, min, max)
 
 proc stepType*(self: gen_qspinbox_types.QSpinBox, ): cint =
-
   cint(fcQSpinBox_stepType(self.h))
 
 proc setStepType*(self: gen_qspinbox_types.QSpinBox, stepType: cint): void =
-
   fcQSpinBox_setStepType(self.h, cint(stepType))
 
 proc displayIntegerBase*(self: gen_qspinbox_types.QSpinBox, ): cint =
-
   fcQSpinBox_displayIntegerBase(self.h)
 
 proc setDisplayIntegerBase*(self: gen_qspinbox_types.QSpinBox, base: cint): void =
-
   fcQSpinBox_setDisplayIntegerBase(self.h, base)
 
 proc setValue*(self: gen_qspinbox_types.QSpinBox, val: cint): void =
-
   fcQSpinBox_setValue(self.h, val)
 
 proc valueChanged*(self: gen_qspinbox_types.QSpinBox, param1: cint): void =
-
   fcQSpinBox_valueChanged(self.h, param1)
 
+type QSpinBoxvalueChangedSlot* = proc(param1: cint)
 proc miqt_exec_callback_QSpinBox_valueChanged(slot: int, param1: cint) {.exportc.} =
-  type Cb = proc(param1: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSpinBoxvalueChangedSlot](cast[pointer](slot))
   let slotval1 = param1
-
 
   nimfunc[](slotval1)
 
-proc onvalueChanged*(self: gen_qspinbox_types.QSpinBox, slot: proc(param1: cint)) =
-  type Cb = proc(param1: cint)
-  var tmp = new Cb
+proc onvalueChanged*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxvalueChangedSlot) =
+  var tmp = new QSpinBoxvalueChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSpinBox_connect_valueChanged(self.h, cast[int](addr tmp[]))
-proc textChanged*(self: gen_qspinbox_types.QSpinBox, param1: string): void =
 
+proc textChanged*(self: gen_qspinbox_types.QSpinBox, param1: string): void =
   fcQSpinBox_textChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
+type QSpinBoxtextChangedSlot* = proc(param1: string)
 proc miqt_exec_callback_QSpinBox_textChanged(slot: int, param1: struct_miqt_string) {.exportc.} =
-  type Cb = proc(param1: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSpinBoxtextChangedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
   c_free(vparam1_ms.data)
   let slotval1 = vparam1x_ret
 
-
   nimfunc[](slotval1)
 
-proc ontextChanged*(self: gen_qspinbox_types.QSpinBox, slot: proc(param1: string)) =
-  type Cb = proc(param1: string)
-  var tmp = new Cb
+proc ontextChanged*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxtextChangedSlot) =
+  var tmp = new QSpinBoxtextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSpinBox_connect_textChanged(self.h, cast[int](addr tmp[]))
-proc valueChangedWithQString*(self: gen_qspinbox_types.QSpinBox, param1: string): void =
 
+proc valueChanged*(self: gen_qspinbox_types.QSpinBox, param1: string): void =
   fcQSpinBox_valueChangedWithQString(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
+type QSpinBoxvalueChangedWithQStringSlot* = proc(param1: string)
 proc miqt_exec_callback_QSpinBox_valueChangedWithQString(slot: int, param1: struct_miqt_string) {.exportc.} =
-  type Cb = proc(param1: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSpinBoxvalueChangedWithQStringSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
   c_free(vparam1_ms.data)
   let slotval1 = vparam1x_ret
 
-
   nimfunc[](slotval1)
 
-proc onvalueChangedWithQString*(self: gen_qspinbox_types.QSpinBox, slot: proc(param1: string)) =
-  type Cb = proc(param1: string)
-  var tmp = new Cb
+proc onvalueChanged*(self: gen_qspinbox_types.QSpinBox, slot: QSpinBoxvalueChangedWithQStringSlot) =
+  var tmp = new QSpinBoxvalueChangedWithQStringSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSpinBox_connect_valueChangedWithQString(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring): string =
   let v_ms = fcQSpinBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSpinBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring): string =
   let v_ms = fcQSpinBox_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qspinbox_types.QSpinBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSpinBox_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QSpinBoxmetaObject*(self: gen_qspinbox_types.QSpinBox, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSpinBox_virtualbase_metaObject(self.h))
 
 type QSpinBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -599,7 +565,6 @@ proc miqt_exec_callback_QSpinBox_metaObject(self: ptr cQSpinBox, slot: int): poi
 
   virtualReturn.h
 proc QSpinBoxmetacast*(self: gen_qspinbox_types.QSpinBox, param1: cstring): pointer =
-
   fQSpinBox_virtualbase_metacast(self.h, param1)
 
 type QSpinBoxmetacastProc* = proc(param1: cstring): pointer
@@ -619,7 +584,6 @@ proc miqt_exec_callback_QSpinBox_metacast(self: ptr cQSpinBox, slot: int, param1
 
   virtualReturn
 proc QSpinBoxmetacall*(self: gen_qspinbox_types.QSpinBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSpinBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSpinBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -643,7 +607,6 @@ proc miqt_exec_callback_QSpinBox_metacall(self: ptr cQSpinBox, slot: int, param1
 
   virtualReturn
 proc QSpinBoxevent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): bool =
-
   fQSpinBox_virtualbase_event(self.h, event.h)
 
 type QSpinBoxeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -663,7 +626,6 @@ proc miqt_exec_callback_QSpinBox_event(self: ptr cQSpinBox, slot: int, event: po
 
   virtualReturn
 proc QSpinBoxvalidate*(self: gen_qspinbox_types.QSpinBox, input: string, pos: ptr cint): cint =
-
   cint(fQSpinBox_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
 type QSpinBoxvalidateProc* = proc(input: string, pos: ptr cint): cint
@@ -688,7 +650,6 @@ proc miqt_exec_callback_QSpinBox_validate(self: ptr cQSpinBox, slot: int, input:
 
   cint(virtualReturn)
 proc QSpinBoxvalueFromText*(self: gen_qspinbox_types.QSpinBox, text: string): cint =
-
   fQSpinBox_virtualbase_valueFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 type QSpinBoxvalueFromTextProc* = proc(text: string): cint
@@ -711,7 +672,6 @@ proc miqt_exec_callback_QSpinBox_valueFromText(self: ptr cQSpinBox, slot: int, t
 
   virtualReturn
 proc QSpinBoxtextFromValue*(self: gen_qspinbox_types.QSpinBox, val: cint): string =
-
   let v_ms = fQSpinBox_virtualbase_textFromValue(self.h, val)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -734,7 +694,6 @@ proc miqt_exec_callback_QSpinBox_textFromValue(self: ptr cQSpinBox, slot: int, v
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QSpinBoxfixup*(self: gen_qspinbox_types.QSpinBox, str: string): void =
-
   fQSpinBox_virtualbase_fixup(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
 type QSpinBoxfixupProc* = proc(str: string): void
@@ -755,7 +714,6 @@ proc miqt_exec_callback_QSpinBox_fixup(self: ptr cQSpinBox, slot: int, str: stru
 
   nimfunc[](slotval1)
 proc QSpinBoxsizeHint*(self: gen_qspinbox_types.QSpinBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSpinBox_virtualbase_sizeHint(self.h))
 
 type QSpinBoxsizeHintProc* = proc(): gen_qsize.QSize
@@ -773,7 +731,6 @@ proc miqt_exec_callback_QSpinBox_sizeHint(self: ptr cQSpinBox, slot: int): point
 
   virtualReturn.h
 proc QSpinBoxminimumSizeHint*(self: gen_qspinbox_types.QSpinBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSpinBox_virtualbase_minimumSizeHint(self.h))
 
 type QSpinBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -791,7 +748,6 @@ proc miqt_exec_callback_QSpinBox_minimumSizeHint(self: ptr cQSpinBox, slot: int)
 
   virtualReturn.h
 proc QSpinBoxinputMethodQuery*(self: gen_qspinbox_types.QSpinBox, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQSpinBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QSpinBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -811,7 +767,6 @@ proc miqt_exec_callback_QSpinBox_inputMethodQuery(self: ptr cQSpinBox, slot: int
 
   virtualReturn.h
 proc QSpinBoxstepBy*(self: gen_qspinbox_types.QSpinBox, steps: cint): void =
-
   fQSpinBox_virtualbase_stepBy(self.h, steps)
 
 type QSpinBoxstepByProc* = proc(steps: cint): void
@@ -829,7 +784,6 @@ proc miqt_exec_callback_QSpinBox_stepBy(self: ptr cQSpinBox, slot: int, steps: c
 
   nimfunc[](slotval1)
 proc QSpinBoxclear*(self: gen_qspinbox_types.QSpinBox, ): void =
-
   fQSpinBox_virtualbase_clear(self.h)
 
 type QSpinBoxclearProc* = proc(): void
@@ -845,7 +799,6 @@ proc miqt_exec_callback_QSpinBox_clear(self: ptr cQSpinBox, slot: int): void {.e
 
   nimfunc[]()
 proc QSpinBoxresizeEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QResizeEvent): void =
-
   fQSpinBox_virtualbase_resizeEvent(self.h, event.h)
 
 type QSpinBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -863,7 +816,6 @@ proc miqt_exec_callback_QSpinBox_resizeEvent(self: ptr cQSpinBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QSpinBoxkeyPressEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QKeyEvent): void =
-
   fQSpinBox_virtualbase_keyPressEvent(self.h, event.h)
 
 type QSpinBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -881,7 +833,6 @@ proc miqt_exec_callback_QSpinBox_keyPressEvent(self: ptr cQSpinBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QSpinBoxkeyReleaseEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QKeyEvent): void =
-
   fQSpinBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QSpinBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -899,7 +850,6 @@ proc miqt_exec_callback_QSpinBox_keyReleaseEvent(self: ptr cQSpinBox, slot: int,
 
   nimfunc[](slotval1)
 proc QSpinBoxwheelEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QWheelEvent): void =
-
   fQSpinBox_virtualbase_wheelEvent(self.h, event.h)
 
 type QSpinBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -917,7 +867,6 @@ proc miqt_exec_callback_QSpinBox_wheelEvent(self: ptr cQSpinBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QSpinBoxfocusInEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QFocusEvent): void =
-
   fQSpinBox_virtualbase_focusInEvent(self.h, event.h)
 
 type QSpinBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -935,7 +884,6 @@ proc miqt_exec_callback_QSpinBox_focusInEvent(self: ptr cQSpinBox, slot: int, ev
 
   nimfunc[](slotval1)
 proc QSpinBoxfocusOutEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QFocusEvent): void =
-
   fQSpinBox_virtualbase_focusOutEvent(self.h, event.h)
 
 type QSpinBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -953,7 +901,6 @@ proc miqt_exec_callback_QSpinBox_focusOutEvent(self: ptr cQSpinBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QSpinBoxcontextMenuEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QContextMenuEvent): void =
-
   fQSpinBox_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QSpinBoxcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -971,7 +918,6 @@ proc miqt_exec_callback_QSpinBox_contextMenuEvent(self: ptr cQSpinBox, slot: int
 
   nimfunc[](slotval1)
 proc QSpinBoxchangeEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): void =
-
   fQSpinBox_virtualbase_changeEvent(self.h, event.h)
 
 type QSpinBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -989,7 +935,6 @@ proc miqt_exec_callback_QSpinBox_changeEvent(self: ptr cQSpinBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QSpinBoxcloseEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QCloseEvent): void =
-
   fQSpinBox_virtualbase_closeEvent(self.h, event.h)
 
 type QSpinBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1007,7 +952,6 @@ proc miqt_exec_callback_QSpinBox_closeEvent(self: ptr cQSpinBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QSpinBoxhideEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QHideEvent): void =
-
   fQSpinBox_virtualbase_hideEvent(self.h, event.h)
 
 type QSpinBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1025,7 +969,6 @@ proc miqt_exec_callback_QSpinBox_hideEvent(self: ptr cQSpinBox, slot: int, event
 
   nimfunc[](slotval1)
 proc QSpinBoxmousePressEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMouseEvent): void =
-
   fQSpinBox_virtualbase_mousePressEvent(self.h, event.h)
 
 type QSpinBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1043,7 +986,6 @@ proc miqt_exec_callback_QSpinBox_mousePressEvent(self: ptr cQSpinBox, slot: int,
 
   nimfunc[](slotval1)
 proc QSpinBoxmouseReleaseEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMouseEvent): void =
-
   fQSpinBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QSpinBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1061,7 +1003,6 @@ proc miqt_exec_callback_QSpinBox_mouseReleaseEvent(self: ptr cQSpinBox, slot: in
 
   nimfunc[](slotval1)
 proc QSpinBoxmouseMoveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMouseEvent): void =
-
   fQSpinBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QSpinBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1079,7 +1020,6 @@ proc miqt_exec_callback_QSpinBox_mouseMoveEvent(self: ptr cQSpinBox, slot: int, 
 
   nimfunc[](slotval1)
 proc QSpinBoxtimerEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSpinBox_virtualbase_timerEvent(self.h, event.h)
 
 type QSpinBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1097,7 +1037,6 @@ proc miqt_exec_callback_QSpinBox_timerEvent(self: ptr cQSpinBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QSpinBoxpaintEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QPaintEvent): void =
-
   fQSpinBox_virtualbase_paintEvent(self.h, event.h)
 
 type QSpinBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1115,7 +1054,6 @@ proc miqt_exec_callback_QSpinBox_paintEvent(self: ptr cQSpinBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QSpinBoxshowEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QShowEvent): void =
-
   fQSpinBox_virtualbase_showEvent(self.h, event.h)
 
 type QSpinBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1133,7 +1071,6 @@ proc miqt_exec_callback_QSpinBox_showEvent(self: ptr cQSpinBox, slot: int, event
 
   nimfunc[](slotval1)
 proc QSpinBoxstepEnabled*(self: gen_qspinbox_types.QSpinBox, ): cint =
-
   cint(fQSpinBox_virtualbase_stepEnabled(self.h))
 
 type QSpinBoxstepEnabledProc* = proc(): cint
@@ -1151,7 +1088,6 @@ proc miqt_exec_callback_QSpinBox_stepEnabled(self: ptr cQSpinBox, slot: int): ci
 
   cint(virtualReturn)
 proc QSpinBoxdevType*(self: gen_qspinbox_types.QSpinBox, ): cint =
-
   fQSpinBox_virtualbase_devType(self.h)
 
 type QSpinBoxdevTypeProc* = proc(): cint
@@ -1169,7 +1105,6 @@ proc miqt_exec_callback_QSpinBox_devType(self: ptr cQSpinBox, slot: int): cint {
 
   virtualReturn
 proc QSpinBoxsetVisible*(self: gen_qspinbox_types.QSpinBox, visible: bool): void =
-
   fQSpinBox_virtualbase_setVisible(self.h, visible)
 
 type QSpinBoxsetVisibleProc* = proc(visible: bool): void
@@ -1187,7 +1122,6 @@ proc miqt_exec_callback_QSpinBox_setVisible(self: ptr cQSpinBox, slot: int, visi
 
   nimfunc[](slotval1)
 proc QSpinBoxheightForWidth*(self: gen_qspinbox_types.QSpinBox, param1: cint): cint =
-
   fQSpinBox_virtualbase_heightForWidth(self.h, param1)
 
 type QSpinBoxheightForWidthProc* = proc(param1: cint): cint
@@ -1207,7 +1141,6 @@ proc miqt_exec_callback_QSpinBox_heightForWidth(self: ptr cQSpinBox, slot: int, 
 
   virtualReturn
 proc QSpinBoxhasHeightForWidth*(self: gen_qspinbox_types.QSpinBox, ): bool =
-
   fQSpinBox_virtualbase_hasHeightForWidth(self.h)
 
 type QSpinBoxhasHeightForWidthProc* = proc(): bool
@@ -1225,7 +1158,6 @@ proc miqt_exec_callback_QSpinBox_hasHeightForWidth(self: ptr cQSpinBox, slot: in
 
   virtualReturn
 proc QSpinBoxpaintEngine*(self: gen_qspinbox_types.QSpinBox, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQSpinBox_virtualbase_paintEngine(self.h))
 
 type QSpinBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1243,7 +1175,6 @@ proc miqt_exec_callback_QSpinBox_paintEngine(self: ptr cQSpinBox, slot: int): po
 
   virtualReturn.h
 proc QSpinBoxmouseDoubleClickEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMouseEvent): void =
-
   fQSpinBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QSpinBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1261,7 +1192,6 @@ proc miqt_exec_callback_QSpinBox_mouseDoubleClickEvent(self: ptr cQSpinBox, slot
 
   nimfunc[](slotval1)
 proc QSpinBoxenterEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): void =
-
   fQSpinBox_virtualbase_enterEvent(self.h, event.h)
 
 type QSpinBoxenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1279,7 +1209,6 @@ proc miqt_exec_callback_QSpinBox_enterEvent(self: ptr cQSpinBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QSpinBoxleaveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): void =
-
   fQSpinBox_virtualbase_leaveEvent(self.h, event.h)
 
 type QSpinBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1297,7 +1226,6 @@ proc miqt_exec_callback_QSpinBox_leaveEvent(self: ptr cQSpinBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QSpinBoxmoveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QMoveEvent): void =
-
   fQSpinBox_virtualbase_moveEvent(self.h, event.h)
 
 type QSpinBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1315,7 +1243,6 @@ proc miqt_exec_callback_QSpinBox_moveEvent(self: ptr cQSpinBox, slot: int, event
 
   nimfunc[](slotval1)
 proc QSpinBoxtabletEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QTabletEvent): void =
-
   fQSpinBox_virtualbase_tabletEvent(self.h, event.h)
 
 type QSpinBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1333,7 +1260,6 @@ proc miqt_exec_callback_QSpinBox_tabletEvent(self: ptr cQSpinBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QSpinBoxactionEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QActionEvent): void =
-
   fQSpinBox_virtualbase_actionEvent(self.h, event.h)
 
 type QSpinBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1351,7 +1277,6 @@ proc miqt_exec_callback_QSpinBox_actionEvent(self: ptr cQSpinBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QSpinBoxdragEnterEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QDragEnterEvent): void =
-
   fQSpinBox_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QSpinBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1369,7 +1294,6 @@ proc miqt_exec_callback_QSpinBox_dragEnterEvent(self: ptr cQSpinBox, slot: int, 
 
   nimfunc[](slotval1)
 proc QSpinBoxdragMoveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QDragMoveEvent): void =
-
   fQSpinBox_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QSpinBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1387,7 +1311,6 @@ proc miqt_exec_callback_QSpinBox_dragMoveEvent(self: ptr cQSpinBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QSpinBoxdragLeaveEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QDragLeaveEvent): void =
-
   fQSpinBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QSpinBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1405,7 +1328,6 @@ proc miqt_exec_callback_QSpinBox_dragLeaveEvent(self: ptr cQSpinBox, slot: int, 
 
   nimfunc[](slotval1)
 proc QSpinBoxdropEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qevent.QDropEvent): void =
-
   fQSpinBox_virtualbase_dropEvent(self.h, event.h)
 
 type QSpinBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1423,7 +1345,6 @@ proc miqt_exec_callback_QSpinBox_dropEvent(self: ptr cQSpinBox, slot: int, event
 
   nimfunc[](slotval1)
 proc QSpinBoxnativeEvent*(self: gen_qspinbox_types.QSpinBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQSpinBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QSpinBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1450,7 +1371,6 @@ proc miqt_exec_callback_QSpinBox_nativeEvent(self: ptr cQSpinBox, slot: int, eve
 
   virtualReturn
 proc QSpinBoxmetric*(self: gen_qspinbox_types.QSpinBox, param1: cint): cint =
-
   fQSpinBox_virtualbase_metric(self.h, cint(param1))
 
 type QSpinBoxmetricProc* = proc(param1: cint): cint
@@ -1470,7 +1390,6 @@ proc miqt_exec_callback_QSpinBox_metric(self: ptr cQSpinBox, slot: int, param1: 
 
   virtualReturn
 proc QSpinBoxinitPainter*(self: gen_qspinbox_types.QSpinBox, painter: gen_qpainter.QPainter): void =
-
   fQSpinBox_virtualbase_initPainter(self.h, painter.h)
 
 type QSpinBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1488,7 +1407,6 @@ proc miqt_exec_callback_QSpinBox_initPainter(self: ptr cQSpinBox, slot: int, pai
 
   nimfunc[](slotval1)
 proc QSpinBoxredirected*(self: gen_qspinbox_types.QSpinBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQSpinBox_virtualbase_redirected(self.h, offset.h))
 
 type QSpinBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1508,7 +1426,6 @@ proc miqt_exec_callback_QSpinBox_redirected(self: ptr cQSpinBox, slot: int, offs
 
   virtualReturn.h
 proc QSpinBoxsharedPainter*(self: gen_qspinbox_types.QSpinBox, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQSpinBox_virtualbase_sharedPainter(self.h))
 
 type QSpinBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1526,7 +1443,6 @@ proc miqt_exec_callback_QSpinBox_sharedPainter(self: ptr cQSpinBox, slot: int): 
 
   virtualReturn.h
 proc QSpinBoxinputMethodEvent*(self: gen_qspinbox_types.QSpinBox, param1: gen_qevent.QInputMethodEvent): void =
-
   fQSpinBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QSpinBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1544,7 +1460,6 @@ proc miqt_exec_callback_QSpinBox_inputMethodEvent(self: ptr cQSpinBox, slot: int
 
   nimfunc[](slotval1)
 proc QSpinBoxfocusNextPrevChild*(self: gen_qspinbox_types.QSpinBox, next: bool): bool =
-
   fQSpinBox_virtualbase_focusNextPrevChild(self.h, next)
 
 type QSpinBoxfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1564,7 +1479,6 @@ proc miqt_exec_callback_QSpinBox_focusNextPrevChild(self: ptr cQSpinBox, slot: i
 
   virtualReturn
 proc QSpinBoxeventFilter*(self: gen_qspinbox_types.QSpinBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSpinBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSpinBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1586,7 +1500,6 @@ proc miqt_exec_callback_QSpinBox_eventFilter(self: ptr cQSpinBox, slot: int, wat
 
   virtualReturn
 proc QSpinBoxchildEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QChildEvent): void =
-
   fQSpinBox_virtualbase_childEvent(self.h, event.h)
 
 type QSpinBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1604,7 +1517,6 @@ proc miqt_exec_callback_QSpinBox_childEvent(self: ptr cQSpinBox, slot: int, even
 
   nimfunc[](slotval1)
 proc QSpinBoxcustomEvent*(self: gen_qspinbox_types.QSpinBox, event: gen_qcoreevent.QEvent): void =
-
   fQSpinBox_virtualbase_customEvent(self.h, event.h)
 
 type QSpinBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1622,7 +1534,6 @@ proc miqt_exec_callback_QSpinBox_customEvent(self: ptr cQSpinBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QSpinBoxconnectNotify*(self: gen_qspinbox_types.QSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSpinBox_virtualbase_connectNotify(self.h, signal.h)
 
 type QSpinBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1640,7 +1551,6 @@ proc miqt_exec_callback_QSpinBox_connectNotify(self: ptr cQSpinBox, slot: int, s
 
   nimfunc[](slotval1)
 proc QSpinBoxdisconnectNotify*(self: gen_qspinbox_types.QSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSpinBox_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSpinBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1665,227 +1575,189 @@ proc delete*(self: gen_qspinbox_types.QSpinBox) =
 func init*(T: type gen_qspinbox_types.QDoubleSpinBox, h: ptr cQDoubleSpinBox): gen_qspinbox_types.QDoubleSpinBox =
   T(h: h)
 proc create*(T: type gen_qspinbox_types.QDoubleSpinBox, parent: gen_qwidget.QWidget): gen_qspinbox_types.QDoubleSpinBox =
-
   gen_qspinbox_types.QDoubleSpinBox.init(fcQDoubleSpinBox_new(parent.h))
+
 proc create*(T: type gen_qspinbox_types.QDoubleSpinBox, ): gen_qspinbox_types.QDoubleSpinBox =
-
   gen_qspinbox_types.QDoubleSpinBox.init(fcQDoubleSpinBox_new2())
-proc metaObject*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQDoubleSpinBox_metaObject(self.h))
 
 proc metacast*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cstring): pointer =
-
   fcQDoubleSpinBox_metacast(self.h, param1)
 
 proc metacall*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQDoubleSpinBox_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring): string =
-
   let v_ms = fcQDoubleSpinBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring): string =
-
   let v_ms = fcQDoubleSpinBox_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc value*(self: gen_qspinbox_types.QDoubleSpinBox, ): float64 =
-
   fcQDoubleSpinBox_value(self.h)
 
 proc prefix*(self: gen_qspinbox_types.QDoubleSpinBox, ): string =
-
   let v_ms = fcQDoubleSpinBox_prefix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPrefix*(self: gen_qspinbox_types.QDoubleSpinBox, prefix: string): void =
-
   fcQDoubleSpinBox_setPrefix(self.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 proc suffix*(self: gen_qspinbox_types.QDoubleSpinBox, ): string =
-
   let v_ms = fcQDoubleSpinBox_suffix(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setSuffix*(self: gen_qspinbox_types.QDoubleSpinBox, suffix: string): void =
-
   fcQDoubleSpinBox_setSuffix(self.h, struct_miqt_string(data: suffix, len: csize_t(len(suffix))))
 
 proc cleanText*(self: gen_qspinbox_types.QDoubleSpinBox, ): string =
-
   let v_ms = fcQDoubleSpinBox_cleanText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc singleStep*(self: gen_qspinbox_types.QDoubleSpinBox, ): float64 =
-
   fcQDoubleSpinBox_singleStep(self.h)
 
 proc setSingleStep*(self: gen_qspinbox_types.QDoubleSpinBox, val: float64): void =
-
   fcQDoubleSpinBox_setSingleStep(self.h, val)
 
 proc minimum*(self: gen_qspinbox_types.QDoubleSpinBox, ): float64 =
-
   fcQDoubleSpinBox_minimum(self.h)
 
 proc setMinimum*(self: gen_qspinbox_types.QDoubleSpinBox, min: float64): void =
-
   fcQDoubleSpinBox_setMinimum(self.h, min)
 
 proc maximum*(self: gen_qspinbox_types.QDoubleSpinBox, ): float64 =
-
   fcQDoubleSpinBox_maximum(self.h)
 
 proc setMaximum*(self: gen_qspinbox_types.QDoubleSpinBox, max: float64): void =
-
   fcQDoubleSpinBox_setMaximum(self.h, max)
 
 proc setRange*(self: gen_qspinbox_types.QDoubleSpinBox, min: float64, max: float64): void =
-
   fcQDoubleSpinBox_setRange(self.h, min, max)
 
 proc stepType*(self: gen_qspinbox_types.QDoubleSpinBox, ): cint =
-
   cint(fcQDoubleSpinBox_stepType(self.h))
 
 proc setStepType*(self: gen_qspinbox_types.QDoubleSpinBox, stepType: cint): void =
-
   fcQDoubleSpinBox_setStepType(self.h, cint(stepType))
 
 proc decimals*(self: gen_qspinbox_types.QDoubleSpinBox, ): cint =
-
   fcQDoubleSpinBox_decimals(self.h)
 
 proc setDecimals*(self: gen_qspinbox_types.QDoubleSpinBox, prec: cint): void =
-
   fcQDoubleSpinBox_setDecimals(self.h, prec)
 
 proc validate*(self: gen_qspinbox_types.QDoubleSpinBox, input: string, pos: ptr cint): cint =
-
   cint(fcQDoubleSpinBox_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
 proc valueFromText*(self: gen_qspinbox_types.QDoubleSpinBox, text: string): float64 =
-
   fcQDoubleSpinBox_valueFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc textFromValue*(self: gen_qspinbox_types.QDoubleSpinBox, val: float64): string =
-
   let v_ms = fcQDoubleSpinBox_textFromValue(self.h, val)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc fixup*(self: gen_qspinbox_types.QDoubleSpinBox, str: string): void =
-
   fcQDoubleSpinBox_fixup(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
 proc setValue*(self: gen_qspinbox_types.QDoubleSpinBox, val: float64): void =
-
   fcQDoubleSpinBox_setValue(self.h, val)
 
 proc valueChanged*(self: gen_qspinbox_types.QDoubleSpinBox, param1: float64): void =
-
   fcQDoubleSpinBox_valueChanged(self.h, param1)
 
+type QDoubleSpinBoxvalueChangedSlot* = proc(param1: float64)
 proc miqt_exec_callback_QDoubleSpinBox_valueChanged(slot: int, param1: float64) {.exportc.} =
-  type Cb = proc(param1: float64)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDoubleSpinBoxvalueChangedSlot](cast[pointer](slot))
   let slotval1 = param1
-
 
   nimfunc[](slotval1)
 
-proc onvalueChanged*(self: gen_qspinbox_types.QDoubleSpinBox, slot: proc(param1: float64)) =
-  type Cb = proc(param1: float64)
-  var tmp = new Cb
+proc onvalueChanged*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxvalueChangedSlot) =
+  var tmp = new QDoubleSpinBoxvalueChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDoubleSpinBox_connect_valueChanged(self.h, cast[int](addr tmp[]))
-proc textChanged*(self: gen_qspinbox_types.QDoubleSpinBox, param1: string): void =
 
+proc textChanged*(self: gen_qspinbox_types.QDoubleSpinBox, param1: string): void =
   fcQDoubleSpinBox_textChanged(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
+type QDoubleSpinBoxtextChangedSlot* = proc(param1: string)
 proc miqt_exec_callback_QDoubleSpinBox_textChanged(slot: int, param1: struct_miqt_string) {.exportc.} =
-  type Cb = proc(param1: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDoubleSpinBoxtextChangedSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
   c_free(vparam1_ms.data)
   let slotval1 = vparam1x_ret
 
-
   nimfunc[](slotval1)
 
-proc ontextChanged*(self: gen_qspinbox_types.QDoubleSpinBox, slot: proc(param1: string)) =
-  type Cb = proc(param1: string)
-  var tmp = new Cb
+proc ontextChanged*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxtextChangedSlot) =
+  var tmp = new QDoubleSpinBoxtextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDoubleSpinBox_connect_textChanged(self.h, cast[int](addr tmp[]))
-proc valueChangedWithQString*(self: gen_qspinbox_types.QDoubleSpinBox, param1: string): void =
 
+proc valueChanged*(self: gen_qspinbox_types.QDoubleSpinBox, param1: string): void =
   fcQDoubleSpinBox_valueChangedWithQString(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))))
 
+type QDoubleSpinBoxvalueChangedWithQStringSlot* = proc(param1: string)
 proc miqt_exec_callback_QDoubleSpinBox_valueChangedWithQString(slot: int, param1: struct_miqt_string) {.exportc.} =
-  type Cb = proc(param1: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QDoubleSpinBoxvalueChangedWithQStringSlot](cast[pointer](slot))
   let vparam1_ms = param1
   let vparam1x_ret = string.fromBytes(toOpenArrayByte(vparam1_ms.data, 0, int(vparam1_ms.len)-1))
   c_free(vparam1_ms.data)
   let slotval1 = vparam1x_ret
 
-
   nimfunc[](slotval1)
 
-proc onvalueChangedWithQString*(self: gen_qspinbox_types.QDoubleSpinBox, slot: proc(param1: string)) =
-  type Cb = proc(param1: string)
-  var tmp = new Cb
+proc onvalueChanged*(self: gen_qspinbox_types.QDoubleSpinBox, slot: QDoubleSpinBoxvalueChangedWithQStringSlot) =
+  var tmp = new QDoubleSpinBoxvalueChangedWithQStringSlot
   tmp[] = slot
   GC_ref(tmp)
   fQDoubleSpinBox_connect_valueChangedWithQString(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring): string =
   let v_ms = fcQDoubleSpinBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDoubleSpinBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring): string =
   let v_ms = fcQDoubleSpinBox_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qspinbox_types.QDoubleSpinBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQDoubleSpinBox_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QDoubleSpinBoxmetaObject*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQDoubleSpinBox_virtualbase_metaObject(self.h))
 
 type QDoubleSpinBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -1903,7 +1775,6 @@ proc miqt_exec_callback_QDoubleSpinBox_metaObject(self: ptr cQDoubleSpinBox, slo
 
   virtualReturn.h
 proc QDoubleSpinBoxmetacast*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cstring): pointer =
-
   fQDoubleSpinBox_virtualbase_metacast(self.h, param1)
 
 type QDoubleSpinBoxmetacastProc* = proc(param1: cstring): pointer
@@ -1923,7 +1794,6 @@ proc miqt_exec_callback_QDoubleSpinBox_metacast(self: ptr cQDoubleSpinBox, slot:
 
   virtualReturn
 proc QDoubleSpinBoxmetacall*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fQDoubleSpinBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QDoubleSpinBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -1947,7 +1817,6 @@ proc miqt_exec_callback_QDoubleSpinBox_metacall(self: ptr cQDoubleSpinBox, slot:
 
   virtualReturn
 proc QDoubleSpinBoxvalidate*(self: gen_qspinbox_types.QDoubleSpinBox, input: string, pos: ptr cint): cint =
-
   cint(fQDoubleSpinBox_virtualbase_validate(self.h, struct_miqt_string(data: input, len: csize_t(len(input))), pos))
 
 type QDoubleSpinBoxvalidateProc* = proc(input: string, pos: ptr cint): cint
@@ -1972,7 +1841,6 @@ proc miqt_exec_callback_QDoubleSpinBox_validate(self: ptr cQDoubleSpinBox, slot:
 
   cint(virtualReturn)
 proc QDoubleSpinBoxvalueFromText*(self: gen_qspinbox_types.QDoubleSpinBox, text: string): float64 =
-
   fQDoubleSpinBox_virtualbase_valueFromText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 type QDoubleSpinBoxvalueFromTextProc* = proc(text: string): float64
@@ -1995,7 +1863,6 @@ proc miqt_exec_callback_QDoubleSpinBox_valueFromText(self: ptr cQDoubleSpinBox, 
 
   virtualReturn
 proc QDoubleSpinBoxtextFromValue*(self: gen_qspinbox_types.QDoubleSpinBox, val: float64): string =
-
   let v_ms = fQDoubleSpinBox_virtualbase_textFromValue(self.h, val)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -2018,7 +1885,6 @@ proc miqt_exec_callback_QDoubleSpinBox_textFromValue(self: ptr cQDoubleSpinBox, 
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QDoubleSpinBoxfixup*(self: gen_qspinbox_types.QDoubleSpinBox, str: string): void =
-
   fQDoubleSpinBox_virtualbase_fixup(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
 type QDoubleSpinBoxfixupProc* = proc(str: string): void
@@ -2039,7 +1905,6 @@ proc miqt_exec_callback_QDoubleSpinBox_fixup(self: ptr cQDoubleSpinBox, slot: in
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxsizeHint*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDoubleSpinBox_virtualbase_sizeHint(self.h))
 
 type QDoubleSpinBoxsizeHintProc* = proc(): gen_qsize.QSize
@@ -2057,7 +1922,6 @@ proc miqt_exec_callback_QDoubleSpinBox_sizeHint(self: ptr cQDoubleSpinBox, slot:
 
   virtualReturn.h
 proc QDoubleSpinBoxminimumSizeHint*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQDoubleSpinBox_virtualbase_minimumSizeHint(self.h))
 
 type QDoubleSpinBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -2075,7 +1939,6 @@ proc miqt_exec_callback_QDoubleSpinBox_minimumSizeHint(self: ptr cQDoubleSpinBox
 
   virtualReturn.h
 proc QDoubleSpinBoxevent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): bool =
-
   fQDoubleSpinBox_virtualbase_event(self.h, event.h)
 
 type QDoubleSpinBoxeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -2095,7 +1958,6 @@ proc miqt_exec_callback_QDoubleSpinBox_event(self: ptr cQDoubleSpinBox, slot: in
 
   virtualReturn
 proc QDoubleSpinBoxinputMethodQuery*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQDoubleSpinBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QDoubleSpinBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -2115,7 +1977,6 @@ proc miqt_exec_callback_QDoubleSpinBox_inputMethodQuery(self: ptr cQDoubleSpinBo
 
   virtualReturn.h
 proc QDoubleSpinBoxstepBy*(self: gen_qspinbox_types.QDoubleSpinBox, steps: cint): void =
-
   fQDoubleSpinBox_virtualbase_stepBy(self.h, steps)
 
 type QDoubleSpinBoxstepByProc* = proc(steps: cint): void
@@ -2133,7 +1994,6 @@ proc miqt_exec_callback_QDoubleSpinBox_stepBy(self: ptr cQDoubleSpinBox, slot: i
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxclear*(self: gen_qspinbox_types.QDoubleSpinBox, ): void =
-
   fQDoubleSpinBox_virtualbase_clear(self.h)
 
 type QDoubleSpinBoxclearProc* = proc(): void
@@ -2149,7 +2009,6 @@ proc miqt_exec_callback_QDoubleSpinBox_clear(self: ptr cQDoubleSpinBox, slot: in
 
   nimfunc[]()
 proc QDoubleSpinBoxresizeEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QResizeEvent): void =
-
   fQDoubleSpinBox_virtualbase_resizeEvent(self.h, event.h)
 
 type QDoubleSpinBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -2167,7 +2026,6 @@ proc miqt_exec_callback_QDoubleSpinBox_resizeEvent(self: ptr cQDoubleSpinBox, sl
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxkeyPressEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QKeyEvent): void =
-
   fQDoubleSpinBox_virtualbase_keyPressEvent(self.h, event.h)
 
 type QDoubleSpinBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2185,7 +2043,6 @@ proc miqt_exec_callback_QDoubleSpinBox_keyPressEvent(self: ptr cQDoubleSpinBox, 
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxkeyReleaseEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QKeyEvent): void =
-
   fQDoubleSpinBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QDoubleSpinBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -2203,7 +2060,6 @@ proc miqt_exec_callback_QDoubleSpinBox_keyReleaseEvent(self: ptr cQDoubleSpinBox
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxwheelEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QWheelEvent): void =
-
   fQDoubleSpinBox_virtualbase_wheelEvent(self.h, event.h)
 
 type QDoubleSpinBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -2221,7 +2077,6 @@ proc miqt_exec_callback_QDoubleSpinBox_wheelEvent(self: ptr cQDoubleSpinBox, slo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxfocusInEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QFocusEvent): void =
-
   fQDoubleSpinBox_virtualbase_focusInEvent(self.h, event.h)
 
 type QDoubleSpinBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2239,7 +2094,6 @@ proc miqt_exec_callback_QDoubleSpinBox_focusInEvent(self: ptr cQDoubleSpinBox, s
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxfocusOutEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QFocusEvent): void =
-
   fQDoubleSpinBox_virtualbase_focusOutEvent(self.h, event.h)
 
 type QDoubleSpinBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -2257,7 +2111,6 @@ proc miqt_exec_callback_QDoubleSpinBox_focusOutEvent(self: ptr cQDoubleSpinBox, 
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxcontextMenuEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QContextMenuEvent): void =
-
   fQDoubleSpinBox_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QDoubleSpinBoxcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -2275,7 +2128,6 @@ proc miqt_exec_callback_QDoubleSpinBox_contextMenuEvent(self: ptr cQDoubleSpinBo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxchangeEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
-
   fQDoubleSpinBox_virtualbase_changeEvent(self.h, event.h)
 
 type QDoubleSpinBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2293,7 +2145,6 @@ proc miqt_exec_callback_QDoubleSpinBox_changeEvent(self: ptr cQDoubleSpinBox, sl
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxcloseEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QCloseEvent): void =
-
   fQDoubleSpinBox_virtualbase_closeEvent(self.h, event.h)
 
 type QDoubleSpinBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -2311,7 +2162,6 @@ proc miqt_exec_callback_QDoubleSpinBox_closeEvent(self: ptr cQDoubleSpinBox, slo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxhideEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QHideEvent): void =
-
   fQDoubleSpinBox_virtualbase_hideEvent(self.h, event.h)
 
 type QDoubleSpinBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -2329,7 +2179,6 @@ proc miqt_exec_callback_QDoubleSpinBox_hideEvent(self: ptr cQDoubleSpinBox, slot
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxmousePressEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
-
   fQDoubleSpinBox_virtualbase_mousePressEvent(self.h, event.h)
 
 type QDoubleSpinBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2347,7 +2196,6 @@ proc miqt_exec_callback_QDoubleSpinBox_mousePressEvent(self: ptr cQDoubleSpinBox
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxmouseReleaseEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
-
   fQDoubleSpinBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QDoubleSpinBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2365,7 +2213,6 @@ proc miqt_exec_callback_QDoubleSpinBox_mouseReleaseEvent(self: ptr cQDoubleSpinB
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxmouseMoveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
-
   fQDoubleSpinBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QDoubleSpinBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2383,7 +2230,6 @@ proc miqt_exec_callback_QDoubleSpinBox_mouseMoveEvent(self: ptr cQDoubleSpinBox,
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxtimerEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QTimerEvent): void =
-
   fQDoubleSpinBox_virtualbase_timerEvent(self.h, event.h)
 
 type QDoubleSpinBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -2401,7 +2247,6 @@ proc miqt_exec_callback_QDoubleSpinBox_timerEvent(self: ptr cQDoubleSpinBox, slo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxpaintEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QPaintEvent): void =
-
   fQDoubleSpinBox_virtualbase_paintEvent(self.h, event.h)
 
 type QDoubleSpinBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -2419,7 +2264,6 @@ proc miqt_exec_callback_QDoubleSpinBox_paintEvent(self: ptr cQDoubleSpinBox, slo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxshowEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QShowEvent): void =
-
   fQDoubleSpinBox_virtualbase_showEvent(self.h, event.h)
 
 type QDoubleSpinBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -2437,7 +2281,6 @@ proc miqt_exec_callback_QDoubleSpinBox_showEvent(self: ptr cQDoubleSpinBox, slot
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxstepEnabled*(self: gen_qspinbox_types.QDoubleSpinBox, ): cint =
-
   cint(fQDoubleSpinBox_virtualbase_stepEnabled(self.h))
 
 type QDoubleSpinBoxstepEnabledProc* = proc(): cint
@@ -2455,7 +2298,6 @@ proc miqt_exec_callback_QDoubleSpinBox_stepEnabled(self: ptr cQDoubleSpinBox, sl
 
   cint(virtualReturn)
 proc QDoubleSpinBoxdevType*(self: gen_qspinbox_types.QDoubleSpinBox, ): cint =
-
   fQDoubleSpinBox_virtualbase_devType(self.h)
 
 type QDoubleSpinBoxdevTypeProc* = proc(): cint
@@ -2473,7 +2315,6 @@ proc miqt_exec_callback_QDoubleSpinBox_devType(self: ptr cQDoubleSpinBox, slot: 
 
   virtualReturn
 proc QDoubleSpinBoxsetVisible*(self: gen_qspinbox_types.QDoubleSpinBox, visible: bool): void =
-
   fQDoubleSpinBox_virtualbase_setVisible(self.h, visible)
 
 type QDoubleSpinBoxsetVisibleProc* = proc(visible: bool): void
@@ -2491,7 +2332,6 @@ proc miqt_exec_callback_QDoubleSpinBox_setVisible(self: ptr cQDoubleSpinBox, slo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxheightForWidth*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint): cint =
-
   fQDoubleSpinBox_virtualbase_heightForWidth(self.h, param1)
 
 type QDoubleSpinBoxheightForWidthProc* = proc(param1: cint): cint
@@ -2511,7 +2351,6 @@ proc miqt_exec_callback_QDoubleSpinBox_heightForWidth(self: ptr cQDoubleSpinBox,
 
   virtualReturn
 proc QDoubleSpinBoxhasHeightForWidth*(self: gen_qspinbox_types.QDoubleSpinBox, ): bool =
-
   fQDoubleSpinBox_virtualbase_hasHeightForWidth(self.h)
 
 type QDoubleSpinBoxhasHeightForWidthProc* = proc(): bool
@@ -2529,7 +2368,6 @@ proc miqt_exec_callback_QDoubleSpinBox_hasHeightForWidth(self: ptr cQDoubleSpinB
 
   virtualReturn
 proc QDoubleSpinBoxpaintEngine*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQDoubleSpinBox_virtualbase_paintEngine(self.h))
 
 type QDoubleSpinBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -2547,7 +2385,6 @@ proc miqt_exec_callback_QDoubleSpinBox_paintEngine(self: ptr cQDoubleSpinBox, sl
 
   virtualReturn.h
 proc QDoubleSpinBoxmouseDoubleClickEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMouseEvent): void =
-
   fQDoubleSpinBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QDoubleSpinBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -2565,7 +2402,6 @@ proc miqt_exec_callback_QDoubleSpinBox_mouseDoubleClickEvent(self: ptr cQDoubleS
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxenterEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
-
   fQDoubleSpinBox_virtualbase_enterEvent(self.h, event.h)
 
 type QDoubleSpinBoxenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2583,7 +2419,6 @@ proc miqt_exec_callback_QDoubleSpinBox_enterEvent(self: ptr cQDoubleSpinBox, slo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxleaveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
-
   fQDoubleSpinBox_virtualbase_leaveEvent(self.h, event.h)
 
 type QDoubleSpinBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2601,7 +2436,6 @@ proc miqt_exec_callback_QDoubleSpinBox_leaveEvent(self: ptr cQDoubleSpinBox, slo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxmoveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QMoveEvent): void =
-
   fQDoubleSpinBox_virtualbase_moveEvent(self.h, event.h)
 
 type QDoubleSpinBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -2619,7 +2453,6 @@ proc miqt_exec_callback_QDoubleSpinBox_moveEvent(self: ptr cQDoubleSpinBox, slot
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxtabletEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QTabletEvent): void =
-
   fQDoubleSpinBox_virtualbase_tabletEvent(self.h, event.h)
 
 type QDoubleSpinBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -2637,7 +2470,6 @@ proc miqt_exec_callback_QDoubleSpinBox_tabletEvent(self: ptr cQDoubleSpinBox, sl
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxactionEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QActionEvent): void =
-
   fQDoubleSpinBox_virtualbase_actionEvent(self.h, event.h)
 
 type QDoubleSpinBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -2655,7 +2487,6 @@ proc miqt_exec_callback_QDoubleSpinBox_actionEvent(self: ptr cQDoubleSpinBox, sl
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxdragEnterEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QDragEnterEvent): void =
-
   fQDoubleSpinBox_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QDoubleSpinBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -2673,7 +2504,6 @@ proc miqt_exec_callback_QDoubleSpinBox_dragEnterEvent(self: ptr cQDoubleSpinBox,
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxdragMoveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QDragMoveEvent): void =
-
   fQDoubleSpinBox_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QDoubleSpinBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -2691,7 +2521,6 @@ proc miqt_exec_callback_QDoubleSpinBox_dragMoveEvent(self: ptr cQDoubleSpinBox, 
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxdragLeaveEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QDragLeaveEvent): void =
-
   fQDoubleSpinBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QDoubleSpinBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -2709,7 +2538,6 @@ proc miqt_exec_callback_QDoubleSpinBox_dragLeaveEvent(self: ptr cQDoubleSpinBox,
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxdropEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qevent.QDropEvent): void =
-
   fQDoubleSpinBox_virtualbase_dropEvent(self.h, event.h)
 
 type QDoubleSpinBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -2727,7 +2555,6 @@ proc miqt_exec_callback_QDoubleSpinBox_dropEvent(self: ptr cQDoubleSpinBox, slot
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxnativeEvent*(self: gen_qspinbox_types.QDoubleSpinBox, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQDoubleSpinBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QDoubleSpinBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -2754,7 +2581,6 @@ proc miqt_exec_callback_QDoubleSpinBox_nativeEvent(self: ptr cQDoubleSpinBox, sl
 
   virtualReturn
 proc QDoubleSpinBoxmetric*(self: gen_qspinbox_types.QDoubleSpinBox, param1: cint): cint =
-
   fQDoubleSpinBox_virtualbase_metric(self.h, cint(param1))
 
 type QDoubleSpinBoxmetricProc* = proc(param1: cint): cint
@@ -2774,7 +2600,6 @@ proc miqt_exec_callback_QDoubleSpinBox_metric(self: ptr cQDoubleSpinBox, slot: i
 
   virtualReturn
 proc QDoubleSpinBoxinitPainter*(self: gen_qspinbox_types.QDoubleSpinBox, painter: gen_qpainter.QPainter): void =
-
   fQDoubleSpinBox_virtualbase_initPainter(self.h, painter.h)
 
 type QDoubleSpinBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -2792,7 +2617,6 @@ proc miqt_exec_callback_QDoubleSpinBox_initPainter(self: ptr cQDoubleSpinBox, sl
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxredirected*(self: gen_qspinbox_types.QDoubleSpinBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQDoubleSpinBox_virtualbase_redirected(self.h, offset.h))
 
 type QDoubleSpinBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -2812,7 +2636,6 @@ proc miqt_exec_callback_QDoubleSpinBox_redirected(self: ptr cQDoubleSpinBox, slo
 
   virtualReturn.h
 proc QDoubleSpinBoxsharedPainter*(self: gen_qspinbox_types.QDoubleSpinBox, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQDoubleSpinBox_virtualbase_sharedPainter(self.h))
 
 type QDoubleSpinBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -2830,7 +2653,6 @@ proc miqt_exec_callback_QDoubleSpinBox_sharedPainter(self: ptr cQDoubleSpinBox, 
 
   virtualReturn.h
 proc QDoubleSpinBoxinputMethodEvent*(self: gen_qspinbox_types.QDoubleSpinBox, param1: gen_qevent.QInputMethodEvent): void =
-
   fQDoubleSpinBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QDoubleSpinBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -2848,7 +2670,6 @@ proc miqt_exec_callback_QDoubleSpinBox_inputMethodEvent(self: ptr cQDoubleSpinBo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxfocusNextPrevChild*(self: gen_qspinbox_types.QDoubleSpinBox, next: bool): bool =
-
   fQDoubleSpinBox_virtualbase_focusNextPrevChild(self.h, next)
 
 type QDoubleSpinBoxfocusNextPrevChildProc* = proc(next: bool): bool
@@ -2868,7 +2689,6 @@ proc miqt_exec_callback_QDoubleSpinBox_focusNextPrevChild(self: ptr cQDoubleSpin
 
   virtualReturn
 proc QDoubleSpinBoxeventFilter*(self: gen_qspinbox_types.QDoubleSpinBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQDoubleSpinBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QDoubleSpinBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -2890,7 +2710,6 @@ proc miqt_exec_callback_QDoubleSpinBox_eventFilter(self: ptr cQDoubleSpinBox, sl
 
   virtualReturn
 proc QDoubleSpinBoxchildEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QChildEvent): void =
-
   fQDoubleSpinBox_virtualbase_childEvent(self.h, event.h)
 
 type QDoubleSpinBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -2908,7 +2727,6 @@ proc miqt_exec_callback_QDoubleSpinBox_childEvent(self: ptr cQDoubleSpinBox, slo
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxcustomEvent*(self: gen_qspinbox_types.QDoubleSpinBox, event: gen_qcoreevent.QEvent): void =
-
   fQDoubleSpinBox_virtualbase_customEvent(self.h, event.h)
 
 type QDoubleSpinBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -2926,7 +2744,6 @@ proc miqt_exec_callback_QDoubleSpinBox_customEvent(self: ptr cQDoubleSpinBox, sl
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxconnectNotify*(self: gen_qspinbox_types.QDoubleSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDoubleSpinBox_virtualbase_connectNotify(self.h, signal.h)
 
 type QDoubleSpinBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -2944,7 +2761,6 @@ proc miqt_exec_callback_QDoubleSpinBox_connectNotify(self: ptr cQDoubleSpinBox, 
 
   nimfunc[](slotval1)
 proc QDoubleSpinBoxdisconnectNotify*(self: gen_qspinbox_types.QDoubleSpinBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQDoubleSpinBox_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QDoubleSpinBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

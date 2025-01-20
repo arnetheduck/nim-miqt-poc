@@ -74,23 +74,18 @@ proc fcQSurface_delete(self: pointer) {.importc: "QSurface_delete".}
 func init*(T: type gen_qsurface_types.QSurface, h: ptr cQSurface): gen_qsurface_types.QSurface =
   T(h: h)
 proc surfaceClass*(self: gen_qsurface_types.QSurface, ): cint =
-
   cint(fcQSurface_surfaceClass(self.h))
 
 proc format*(self: gen_qsurface_types.QSurface, ): gen_qsurfaceformat.QSurfaceFormat =
-
   gen_qsurfaceformat.QSurfaceFormat(h: fcQSurface_format(self.h))
 
 proc surfaceType*(self: gen_qsurface_types.QSurface, ): cint =
-
   cint(fcQSurface_surfaceType(self.h))
 
 proc supportsOpenGL*(self: gen_qsurface_types.QSurface, ): bool =
-
   fcQSurface_supportsOpenGL(self.h)
 
 proc size*(self: gen_qsurface_types.QSurface, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSurface_size(self.h))
 
 proc staticMetaObject*(_: type gen_qsurface_types.QSurface): gen_qobjectdefs.QMetaObject =

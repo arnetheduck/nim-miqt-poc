@@ -251,48 +251,39 @@ proc fcQMdiArea_delete(self: pointer) {.importc: "QMdiArea_delete".}
 func init*(T: type gen_qmdiarea_types.QMdiArea, h: ptr cQMdiArea): gen_qmdiarea_types.QMdiArea =
   T(h: h)
 proc create*(T: type gen_qmdiarea_types.QMdiArea, parent: gen_qwidget.QWidget): gen_qmdiarea_types.QMdiArea =
-
   gen_qmdiarea_types.QMdiArea.init(fcQMdiArea_new(parent.h))
+
 proc create*(T: type gen_qmdiarea_types.QMdiArea, ): gen_qmdiarea_types.QMdiArea =
-
   gen_qmdiarea_types.QMdiArea.init(fcQMdiArea_new2())
-proc metaObject*(self: gen_qmdiarea_types.QMdiArea, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qmdiarea_types.QMdiArea, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMdiArea_metaObject(self.h))
 
 proc metacast*(self: gen_qmdiarea_types.QMdiArea, param1: cstring): pointer =
-
   fcQMdiArea_metacast(self.h, param1)
 
 proc metacall*(self: gen_qmdiarea_types.QMdiArea, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMdiArea_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qmdiarea_types.QMdiArea, s: cstring): string =
-
   let v_ms = fcQMdiArea_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQMdiArea_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQMdiArea_minimumSizeHint(self.h))
 
 proc currentSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): gen_qmdisubwindow.QMdiSubWindow =
-
   gen_qmdisubwindow.QMdiSubWindow(h: fcQMdiArea_currentSubWindow(self.h))
 
 proc activeSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): gen_qmdisubwindow.QMdiSubWindow =
-
   gen_qmdisubwindow.QMdiSubWindow(h: fcQMdiArea_activeSubWindow(self.h))
 
 proc subWindowList*(self: gen_qmdiarea_types.QMdiArea, ): seq[gen_qmdisubwindow.QMdiSubWindow] =
-
   var v_ma = fcQMdiArea_subWindowList(self.h)
   var vx_ret = newSeq[gen_qmdisubwindow.QMdiSubWindow](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -301,147 +292,115 @@ proc subWindowList*(self: gen_qmdiarea_types.QMdiArea, ): seq[gen_qmdisubwindow.
   vx_ret
 
 proc addSubWindow*(self: gen_qmdiarea_types.QMdiArea, widget: gen_qwidget.QWidget): gen_qmdisubwindow.QMdiSubWindow =
-
   gen_qmdisubwindow.QMdiSubWindow(h: fcQMdiArea_addSubWindow(self.h, widget.h))
 
 proc removeSubWindow*(self: gen_qmdiarea_types.QMdiArea, widget: gen_qwidget.QWidget): void =
-
   fcQMdiArea_removeSubWindow(self.h, widget.h)
 
 proc background*(self: gen_qmdiarea_types.QMdiArea, ): gen_qbrush.QBrush =
-
   gen_qbrush.QBrush(h: fcQMdiArea_background(self.h))
 
 proc setBackground*(self: gen_qmdiarea_types.QMdiArea, background: gen_qbrush.QBrush): void =
-
   fcQMdiArea_setBackground(self.h, background.h)
 
 proc activationOrder*(self: gen_qmdiarea_types.QMdiArea, ): cint =
-
   cint(fcQMdiArea_activationOrder(self.h))
 
 proc setActivationOrder*(self: gen_qmdiarea_types.QMdiArea, order: cint): void =
-
   fcQMdiArea_setActivationOrder(self.h, cint(order))
 
 proc setOption*(self: gen_qmdiarea_types.QMdiArea, option: cint): void =
-
   fcQMdiArea_setOption(self.h, cint(option))
 
 proc testOption*(self: gen_qmdiarea_types.QMdiArea, opton: cint): bool =
-
   fcQMdiArea_testOption(self.h, cint(opton))
 
 proc setViewMode*(self: gen_qmdiarea_types.QMdiArea, mode: cint): void =
-
   fcQMdiArea_setViewMode(self.h, cint(mode))
 
 proc viewMode*(self: gen_qmdiarea_types.QMdiArea, ): cint =
-
   cint(fcQMdiArea_viewMode(self.h))
 
 proc documentMode*(self: gen_qmdiarea_types.QMdiArea, ): bool =
-
   fcQMdiArea_documentMode(self.h)
 
 proc setDocumentMode*(self: gen_qmdiarea_types.QMdiArea, enabled: bool): void =
-
   fcQMdiArea_setDocumentMode(self.h, enabled)
 
 proc setTabsClosable*(self: gen_qmdiarea_types.QMdiArea, closable: bool): void =
-
   fcQMdiArea_setTabsClosable(self.h, closable)
 
 proc tabsClosable*(self: gen_qmdiarea_types.QMdiArea, ): bool =
-
   fcQMdiArea_tabsClosable(self.h)
 
 proc setTabsMovable*(self: gen_qmdiarea_types.QMdiArea, movable: bool): void =
-
   fcQMdiArea_setTabsMovable(self.h, movable)
 
 proc tabsMovable*(self: gen_qmdiarea_types.QMdiArea, ): bool =
-
   fcQMdiArea_tabsMovable(self.h)
 
 proc setTabShape*(self: gen_qmdiarea_types.QMdiArea, shape: cint): void =
-
   fcQMdiArea_setTabShape(self.h, cint(shape))
 
 proc tabShape*(self: gen_qmdiarea_types.QMdiArea, ): cint =
-
   cint(fcQMdiArea_tabShape(self.h))
 
 proc setTabPosition*(self: gen_qmdiarea_types.QMdiArea, position: cint): void =
-
   fcQMdiArea_setTabPosition(self.h, cint(position))
 
 proc tabPosition*(self: gen_qmdiarea_types.QMdiArea, ): cint =
-
   cint(fcQMdiArea_tabPosition(self.h))
 
 proc subWindowActivated*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qmdisubwindow.QMdiSubWindow): void =
-
   fcQMdiArea_subWindowActivated(self.h, param1.h)
 
+type QMdiAreasubWindowActivatedSlot* = proc(param1: gen_qmdisubwindow.QMdiSubWindow)
 proc miqt_exec_callback_QMdiArea_subWindowActivated(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qmdisubwindow.QMdiSubWindow)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMdiAreasubWindowActivatedSlot](cast[pointer](slot))
   let slotval1 = gen_qmdisubwindow.QMdiSubWindow(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc onsubWindowActivated*(self: gen_qmdiarea_types.QMdiArea, slot: proc(param1: gen_qmdisubwindow.QMdiSubWindow)) =
-  type Cb = proc(param1: gen_qmdisubwindow.QMdiSubWindow)
-  var tmp = new Cb
+proc onsubWindowActivated*(self: gen_qmdiarea_types.QMdiArea, slot: QMdiAreasubWindowActivatedSlot) =
+  var tmp = new QMdiAreasubWindowActivatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMdiArea_connect_subWindowActivated(self.h, cast[int](addr tmp[]))
-proc setActiveSubWindow*(self: gen_qmdiarea_types.QMdiArea, window: gen_qmdisubwindow.QMdiSubWindow): void =
 
+proc setActiveSubWindow*(self: gen_qmdiarea_types.QMdiArea, window: gen_qmdisubwindow.QMdiSubWindow): void =
   fcQMdiArea_setActiveSubWindow(self.h, window.h)
 
 proc tileSubWindows*(self: gen_qmdiarea_types.QMdiArea, ): void =
-
   fcQMdiArea_tileSubWindows(self.h)
 
 proc cascadeSubWindows*(self: gen_qmdiarea_types.QMdiArea, ): void =
-
   fcQMdiArea_cascadeSubWindows(self.h)
 
 proc closeActiveSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): void =
-
   fcQMdiArea_closeActiveSubWindow(self.h)
 
 proc closeAllSubWindows*(self: gen_qmdiarea_types.QMdiArea, ): void =
-
   fcQMdiArea_closeAllSubWindows(self.h)
 
 proc activateNextSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): void =
-
   fcQMdiArea_activateNextSubWindow(self.h)
 
 proc activatePreviousSubWindow*(self: gen_qmdiarea_types.QMdiArea, ): void =
-
   fcQMdiArea_activatePreviousSubWindow(self.h)
 
-proc tr2*(_: type gen_qmdiarea_types.QMdiArea, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qmdiarea_types.QMdiArea, s: cstring, c: cstring): string =
   let v_ms = fcQMdiArea_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qmdiarea_types.QMdiArea, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qmdiarea_types.QMdiArea, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMdiArea_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc subWindowList1*(self: gen_qmdiarea_types.QMdiArea, order: cint): seq[gen_qmdisubwindow.QMdiSubWindow] =
-
+proc subWindowList*(self: gen_qmdiarea_types.QMdiArea, order: cint): seq[gen_qmdisubwindow.QMdiSubWindow] =
   var v_ma = fcQMdiArea_subWindowList1(self.h, cint(order))
   var vx_ret = newSeq[gen_qmdisubwindow.QMdiSubWindow](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -449,16 +408,13 @@ proc subWindowList1*(self: gen_qmdiarea_types.QMdiArea, order: cint): seq[gen_qm
     vx_ret[i] = gen_qmdisubwindow.QMdiSubWindow(h: v_outCast[i])
   vx_ret
 
-proc addSubWindow2*(self: gen_qmdiarea_types.QMdiArea, widget: gen_qwidget.QWidget, flags: cint): gen_qmdisubwindow.QMdiSubWindow =
-
+proc addSubWindow*(self: gen_qmdiarea_types.QMdiArea, widget: gen_qwidget.QWidget, flags: cint): gen_qmdisubwindow.QMdiSubWindow =
   gen_qmdisubwindow.QMdiSubWindow(h: fcQMdiArea_addSubWindow2(self.h, widget.h, cint(flags)))
 
-proc setOption2*(self: gen_qmdiarea_types.QMdiArea, option: cint, on: bool): void =
-
+proc setOption*(self: gen_qmdiarea_types.QMdiArea, option: cint, on: bool): void =
   fcQMdiArea_setOption2(self.h, cint(option), on)
 
 proc QMdiAreametaObject*(self: gen_qmdiarea_types.QMdiArea, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQMdiArea_virtualbase_metaObject(self.h))
 
 type QMdiAreametaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -476,7 +432,6 @@ proc miqt_exec_callback_QMdiArea_metaObject(self: ptr cQMdiArea, slot: int): poi
 
   virtualReturn.h
 proc QMdiAreametacast*(self: gen_qmdiarea_types.QMdiArea, param1: cstring): pointer =
-
   fQMdiArea_virtualbase_metacast(self.h, param1)
 
 type QMdiAreametacastProc* = proc(param1: cstring): pointer
@@ -496,7 +451,6 @@ proc miqt_exec_callback_QMdiArea_metacast(self: ptr cQMdiArea, slot: int, param1
 
   virtualReturn
 proc QMdiAreametacall*(self: gen_qmdiarea_types.QMdiArea, param1: cint, param2: cint, param3: pointer): cint =
-
   fQMdiArea_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QMdiAreametacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -520,7 +474,6 @@ proc miqt_exec_callback_QMdiArea_metacall(self: ptr cQMdiArea, slot: int, param1
 
   virtualReturn
 proc QMdiAreasizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQMdiArea_virtualbase_sizeHint(self.h))
 
 type QMdiAreasizeHintProc* = proc(): gen_qsize.QSize
@@ -538,7 +491,6 @@ proc miqt_exec_callback_QMdiArea_sizeHint(self: ptr cQMdiArea, slot: int): point
 
   virtualReturn.h
 proc QMdiAreaminimumSizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQMdiArea_virtualbase_minimumSizeHint(self.h))
 
 type QMdiAreaminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -556,7 +508,6 @@ proc miqt_exec_callback_QMdiArea_minimumSizeHint(self: ptr cQMdiArea, slot: int)
 
   virtualReturn.h
 proc QMdiAreasetupViewport*(self: gen_qmdiarea_types.QMdiArea, viewport: gen_qwidget.QWidget): void =
-
   fQMdiArea_virtualbase_setupViewport(self.h, viewport.h)
 
 type QMdiAreasetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
@@ -574,7 +525,6 @@ proc miqt_exec_callback_QMdiArea_setupViewport(self: ptr cQMdiArea, slot: int, v
 
   nimfunc[](slotval1)
 proc QMdiAreaevent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qcoreevent.QEvent): bool =
-
   fQMdiArea_virtualbase_event(self.h, event.h)
 
 type QMdiAreaeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -594,7 +544,6 @@ proc miqt_exec_callback_QMdiArea_event(self: ptr cQMdiArea, slot: int, event: po
 
   virtualReturn
 proc QMdiAreaeventFilter*(self: gen_qmdiarea_types.QMdiArea, objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQMdiArea_virtualbase_eventFilter(self.h, objectVal.h, event.h)
 
 type QMdiAreaeventFilterProc* = proc(objectVal: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -616,7 +565,6 @@ proc miqt_exec_callback_QMdiArea_eventFilter(self: ptr cQMdiArea, slot: int, obj
 
   virtualReturn
 proc QMdiAreapaintEvent*(self: gen_qmdiarea_types.QMdiArea, paintEvent: gen_qevent.QPaintEvent): void =
-
   fQMdiArea_virtualbase_paintEvent(self.h, paintEvent.h)
 
 type QMdiAreapaintEventProc* = proc(paintEvent: gen_qevent.QPaintEvent): void
@@ -634,7 +582,6 @@ proc miqt_exec_callback_QMdiArea_paintEvent(self: ptr cQMdiArea, slot: int, pain
 
   nimfunc[](slotval1)
 proc QMdiAreachildEvent*(self: gen_qmdiarea_types.QMdiArea, childEvent: gen_qcoreevent.QChildEvent): void =
-
   fQMdiArea_virtualbase_childEvent(self.h, childEvent.h)
 
 type QMdiAreachildEventProc* = proc(childEvent: gen_qcoreevent.QChildEvent): void
@@ -652,7 +599,6 @@ proc miqt_exec_callback_QMdiArea_childEvent(self: ptr cQMdiArea, slot: int, chil
 
   nimfunc[](slotval1)
 proc QMdiArearesizeEvent*(self: gen_qmdiarea_types.QMdiArea, resizeEvent: gen_qevent.QResizeEvent): void =
-
   fQMdiArea_virtualbase_resizeEvent(self.h, resizeEvent.h)
 
 type QMdiArearesizeEventProc* = proc(resizeEvent: gen_qevent.QResizeEvent): void
@@ -670,7 +616,6 @@ proc miqt_exec_callback_QMdiArea_resizeEvent(self: ptr cQMdiArea, slot: int, res
 
   nimfunc[](slotval1)
 proc QMdiAreatimerEvent*(self: gen_qmdiarea_types.QMdiArea, timerEvent: gen_qcoreevent.QTimerEvent): void =
-
   fQMdiArea_virtualbase_timerEvent(self.h, timerEvent.h)
 
 type QMdiAreatimerEventProc* = proc(timerEvent: gen_qcoreevent.QTimerEvent): void
@@ -688,7 +633,6 @@ proc miqt_exec_callback_QMdiArea_timerEvent(self: ptr cQMdiArea, slot: int, time
 
   nimfunc[](slotval1)
 proc QMdiAreashowEvent*(self: gen_qmdiarea_types.QMdiArea, showEvent: gen_qevent.QShowEvent): void =
-
   fQMdiArea_virtualbase_showEvent(self.h, showEvent.h)
 
 type QMdiAreashowEventProc* = proc(showEvent: gen_qevent.QShowEvent): void
@@ -706,7 +650,6 @@ proc miqt_exec_callback_QMdiArea_showEvent(self: ptr cQMdiArea, slot: int, showE
 
   nimfunc[](slotval1)
 proc QMdiAreaviewportEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qcoreevent.QEvent): bool =
-
   fQMdiArea_virtualbase_viewportEvent(self.h, event.h)
 
 type QMdiAreaviewportEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -726,7 +669,6 @@ proc miqt_exec_callback_QMdiArea_viewportEvent(self: ptr cQMdiArea, slot: int, e
 
   virtualReturn
 proc QMdiAreascrollContentsBy*(self: gen_qmdiarea_types.QMdiArea, dx: cint, dy: cint): void =
-
   fQMdiArea_virtualbase_scrollContentsBy(self.h, dx, dy)
 
 type QMdiAreascrollContentsByProc* = proc(dx: cint, dy: cint): void
@@ -746,7 +688,6 @@ proc miqt_exec_callback_QMdiArea_scrollContentsBy(self: ptr cQMdiArea, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QMdiAreamousePressEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QMouseEvent): void =
-
   fQMdiArea_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QMdiAreamousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -764,7 +705,6 @@ proc miqt_exec_callback_QMdiArea_mousePressEvent(self: ptr cQMdiArea, slot: int,
 
   nimfunc[](slotval1)
 proc QMdiAreamouseReleaseEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QMouseEvent): void =
-
   fQMdiArea_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QMdiAreamouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -782,7 +722,6 @@ proc miqt_exec_callback_QMdiArea_mouseReleaseEvent(self: ptr cQMdiArea, slot: in
 
   nimfunc[](slotval1)
 proc QMdiAreamouseDoubleClickEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QMouseEvent): void =
-
   fQMdiArea_virtualbase_mouseDoubleClickEvent(self.h, param1.h)
 
 type QMdiAreamouseDoubleClickEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -800,7 +739,6 @@ proc miqt_exec_callback_QMdiArea_mouseDoubleClickEvent(self: ptr cQMdiArea, slot
 
   nimfunc[](slotval1)
 proc QMdiAreamouseMoveEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QMouseEvent): void =
-
   fQMdiArea_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QMdiAreamouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -818,7 +756,6 @@ proc miqt_exec_callback_QMdiArea_mouseMoveEvent(self: ptr cQMdiArea, slot: int, 
 
   nimfunc[](slotval1)
 proc QMdiAreawheelEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QWheelEvent): void =
-
   fQMdiArea_virtualbase_wheelEvent(self.h, param1.h)
 
 type QMdiAreawheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -836,7 +773,6 @@ proc miqt_exec_callback_QMdiArea_wheelEvent(self: ptr cQMdiArea, slot: int, para
 
   nimfunc[](slotval1)
 proc QMdiAreacontextMenuEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QContextMenuEvent): void =
-
   fQMdiArea_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QMdiAreacontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -854,7 +790,6 @@ proc miqt_exec_callback_QMdiArea_contextMenuEvent(self: ptr cQMdiArea, slot: int
 
   nimfunc[](slotval1)
 proc QMdiAreadragEnterEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QDragEnterEvent): void =
-
   fQMdiArea_virtualbase_dragEnterEvent(self.h, param1.h)
 
 type QMdiAreadragEnterEventProc* = proc(param1: gen_qevent.QDragEnterEvent): void
@@ -872,7 +807,6 @@ proc miqt_exec_callback_QMdiArea_dragEnterEvent(self: ptr cQMdiArea, slot: int, 
 
   nimfunc[](slotval1)
 proc QMdiAreadragMoveEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QDragMoveEvent): void =
-
   fQMdiArea_virtualbase_dragMoveEvent(self.h, param1.h)
 
 type QMdiAreadragMoveEventProc* = proc(param1: gen_qevent.QDragMoveEvent): void
@@ -890,7 +824,6 @@ proc miqt_exec_callback_QMdiArea_dragMoveEvent(self: ptr cQMdiArea, slot: int, p
 
   nimfunc[](slotval1)
 proc QMdiAreadragLeaveEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QDragLeaveEvent): void =
-
   fQMdiArea_virtualbase_dragLeaveEvent(self.h, param1.h)
 
 type QMdiAreadragLeaveEventProc* = proc(param1: gen_qevent.QDragLeaveEvent): void
@@ -908,7 +841,6 @@ proc miqt_exec_callback_QMdiArea_dragLeaveEvent(self: ptr cQMdiArea, slot: int, 
 
   nimfunc[](slotval1)
 proc QMdiAreadropEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QDropEvent): void =
-
   fQMdiArea_virtualbase_dropEvent(self.h, param1.h)
 
 type QMdiAreadropEventProc* = proc(param1: gen_qevent.QDropEvent): void
@@ -926,7 +858,6 @@ proc miqt_exec_callback_QMdiArea_dropEvent(self: ptr cQMdiArea, slot: int, param
 
   nimfunc[](slotval1)
 proc QMdiAreakeyPressEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QKeyEvent): void =
-
   fQMdiArea_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QMdiAreakeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -944,7 +875,6 @@ proc miqt_exec_callback_QMdiArea_keyPressEvent(self: ptr cQMdiArea, slot: int, p
 
   nimfunc[](slotval1)
 proc QMdiAreaviewportSizeHint*(self: gen_qmdiarea_types.QMdiArea, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQMdiArea_virtualbase_viewportSizeHint(self.h))
 
 type QMdiAreaviewportSizeHintProc* = proc(): gen_qsize.QSize
@@ -962,7 +892,6 @@ proc miqt_exec_callback_QMdiArea_viewportSizeHint(self: ptr cQMdiArea, slot: int
 
   virtualReturn.h
 proc QMdiAreachangeEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qcoreevent.QEvent): void =
-
   fQMdiArea_virtualbase_changeEvent(self.h, param1.h)
 
 type QMdiAreachangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -980,7 +909,6 @@ proc miqt_exec_callback_QMdiArea_changeEvent(self: ptr cQMdiArea, slot: int, par
 
   nimfunc[](slotval1)
 proc QMdiAreainitStyleOption*(self: gen_qmdiarea_types.QMdiArea, option: gen_qstyleoption.QStyleOptionFrame): void =
-
   fQMdiArea_virtualbase_initStyleOption(self.h, option.h)
 
 type QMdiAreainitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionFrame): void
@@ -998,7 +926,6 @@ proc miqt_exec_callback_QMdiArea_initStyleOption(self: ptr cQMdiArea, slot: int,
 
   nimfunc[](slotval1)
 proc QMdiAreadevType*(self: gen_qmdiarea_types.QMdiArea, ): cint =
-
   fQMdiArea_virtualbase_devType(self.h)
 
 type QMdiAreadevTypeProc* = proc(): cint
@@ -1016,7 +943,6 @@ proc miqt_exec_callback_QMdiArea_devType(self: ptr cQMdiArea, slot: int): cint {
 
   virtualReturn
 proc QMdiAreasetVisible*(self: gen_qmdiarea_types.QMdiArea, visible: bool): void =
-
   fQMdiArea_virtualbase_setVisible(self.h, visible)
 
 type QMdiAreasetVisibleProc* = proc(visible: bool): void
@@ -1034,7 +960,6 @@ proc miqt_exec_callback_QMdiArea_setVisible(self: ptr cQMdiArea, slot: int, visi
 
   nimfunc[](slotval1)
 proc QMdiAreaheightForWidth*(self: gen_qmdiarea_types.QMdiArea, param1: cint): cint =
-
   fQMdiArea_virtualbase_heightForWidth(self.h, param1)
 
 type QMdiAreaheightForWidthProc* = proc(param1: cint): cint
@@ -1054,7 +979,6 @@ proc miqt_exec_callback_QMdiArea_heightForWidth(self: ptr cQMdiArea, slot: int, 
 
   virtualReturn
 proc QMdiAreahasHeightForWidth*(self: gen_qmdiarea_types.QMdiArea, ): bool =
-
   fQMdiArea_virtualbase_hasHeightForWidth(self.h)
 
 type QMdiAreahasHeightForWidthProc* = proc(): bool
@@ -1072,7 +996,6 @@ proc miqt_exec_callback_QMdiArea_hasHeightForWidth(self: ptr cQMdiArea, slot: in
 
   virtualReturn
 proc QMdiAreapaintEngine*(self: gen_qmdiarea_types.QMdiArea, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQMdiArea_virtualbase_paintEngine(self.h))
 
 type QMdiAreapaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1090,7 +1013,6 @@ proc miqt_exec_callback_QMdiArea_paintEngine(self: ptr cQMdiArea, slot: int): po
 
   virtualReturn.h
 proc QMdiAreakeyReleaseEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QKeyEvent): void =
-
   fQMdiArea_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QMdiAreakeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1108,7 +1030,6 @@ proc miqt_exec_callback_QMdiArea_keyReleaseEvent(self: ptr cQMdiArea, slot: int,
 
   nimfunc[](slotval1)
 proc QMdiAreafocusInEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QFocusEvent): void =
-
   fQMdiArea_virtualbase_focusInEvent(self.h, event.h)
 
 type QMdiAreafocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1126,7 +1047,6 @@ proc miqt_exec_callback_QMdiArea_focusInEvent(self: ptr cQMdiArea, slot: int, ev
 
   nimfunc[](slotval1)
 proc QMdiAreafocusOutEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QFocusEvent): void =
-
   fQMdiArea_virtualbase_focusOutEvent(self.h, event.h)
 
 type QMdiAreafocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1144,7 +1064,6 @@ proc miqt_exec_callback_QMdiArea_focusOutEvent(self: ptr cQMdiArea, slot: int, e
 
   nimfunc[](slotval1)
 proc QMdiAreaenterEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QEnterEvent): void =
-
   fQMdiArea_virtualbase_enterEvent(self.h, event.h)
 
 type QMdiAreaenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -1162,7 +1081,6 @@ proc miqt_exec_callback_QMdiArea_enterEvent(self: ptr cQMdiArea, slot: int, even
 
   nimfunc[](slotval1)
 proc QMdiArealeaveEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qcoreevent.QEvent): void =
-
   fQMdiArea_virtualbase_leaveEvent(self.h, event.h)
 
 type QMdiArealeaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1180,7 +1098,6 @@ proc miqt_exec_callback_QMdiArea_leaveEvent(self: ptr cQMdiArea, slot: int, even
 
   nimfunc[](slotval1)
 proc QMdiAreamoveEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QMoveEvent): void =
-
   fQMdiArea_virtualbase_moveEvent(self.h, event.h)
 
 type QMdiAreamoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1198,7 +1115,6 @@ proc miqt_exec_callback_QMdiArea_moveEvent(self: ptr cQMdiArea, slot: int, event
 
   nimfunc[](slotval1)
 proc QMdiAreacloseEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QCloseEvent): void =
-
   fQMdiArea_virtualbase_closeEvent(self.h, event.h)
 
 type QMdiAreacloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -1216,7 +1132,6 @@ proc miqt_exec_callback_QMdiArea_closeEvent(self: ptr cQMdiArea, slot: int, even
 
   nimfunc[](slotval1)
 proc QMdiAreatabletEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QTabletEvent): void =
-
   fQMdiArea_virtualbase_tabletEvent(self.h, event.h)
 
 type QMdiAreatabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1234,7 +1149,6 @@ proc miqt_exec_callback_QMdiArea_tabletEvent(self: ptr cQMdiArea, slot: int, eve
 
   nimfunc[](slotval1)
 proc QMdiAreaactionEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QActionEvent): void =
-
   fQMdiArea_virtualbase_actionEvent(self.h, event.h)
 
 type QMdiAreaactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1252,7 +1166,6 @@ proc miqt_exec_callback_QMdiArea_actionEvent(self: ptr cQMdiArea, slot: int, eve
 
   nimfunc[](slotval1)
 proc QMdiAreahideEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qevent.QHideEvent): void =
-
   fQMdiArea_virtualbase_hideEvent(self.h, event.h)
 
 type QMdiAreahideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1270,7 +1183,6 @@ proc miqt_exec_callback_QMdiArea_hideEvent(self: ptr cQMdiArea, slot: int, event
 
   nimfunc[](slotval1)
 proc QMdiAreanativeEvent*(self: gen_qmdiarea_types.QMdiArea, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQMdiArea_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QMdiAreanativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1297,7 +1209,6 @@ proc miqt_exec_callback_QMdiArea_nativeEvent(self: ptr cQMdiArea, slot: int, eve
 
   virtualReturn
 proc QMdiAreametric*(self: gen_qmdiarea_types.QMdiArea, param1: cint): cint =
-
   fQMdiArea_virtualbase_metric(self.h, cint(param1))
 
 type QMdiAreametricProc* = proc(param1: cint): cint
@@ -1317,7 +1228,6 @@ proc miqt_exec_callback_QMdiArea_metric(self: ptr cQMdiArea, slot: int, param1: 
 
   virtualReturn
 proc QMdiAreainitPainter*(self: gen_qmdiarea_types.QMdiArea, painter: gen_qpainter.QPainter): void =
-
   fQMdiArea_virtualbase_initPainter(self.h, painter.h)
 
 type QMdiAreainitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1335,7 +1245,6 @@ proc miqt_exec_callback_QMdiArea_initPainter(self: ptr cQMdiArea, slot: int, pai
 
   nimfunc[](slotval1)
 proc QMdiArearedirected*(self: gen_qmdiarea_types.QMdiArea, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQMdiArea_virtualbase_redirected(self.h, offset.h))
 
 type QMdiArearedirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1355,7 +1264,6 @@ proc miqt_exec_callback_QMdiArea_redirected(self: ptr cQMdiArea, slot: int, offs
 
   virtualReturn.h
 proc QMdiAreasharedPainter*(self: gen_qmdiarea_types.QMdiArea, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQMdiArea_virtualbase_sharedPainter(self.h))
 
 type QMdiAreasharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1373,7 +1281,6 @@ proc miqt_exec_callback_QMdiArea_sharedPainter(self: ptr cQMdiArea, slot: int): 
 
   virtualReturn.h
 proc QMdiAreainputMethodEvent*(self: gen_qmdiarea_types.QMdiArea, param1: gen_qevent.QInputMethodEvent): void =
-
   fQMdiArea_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QMdiAreainputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1391,7 +1298,6 @@ proc miqt_exec_callback_QMdiArea_inputMethodEvent(self: ptr cQMdiArea, slot: int
 
   nimfunc[](slotval1)
 proc QMdiAreainputMethodQuery*(self: gen_qmdiarea_types.QMdiArea, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQMdiArea_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QMdiAreainputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1411,7 +1317,6 @@ proc miqt_exec_callback_QMdiArea_inputMethodQuery(self: ptr cQMdiArea, slot: int
 
   virtualReturn.h
 proc QMdiAreafocusNextPrevChild*(self: gen_qmdiarea_types.QMdiArea, next: bool): bool =
-
   fQMdiArea_virtualbase_focusNextPrevChild(self.h, next)
 
 type QMdiAreafocusNextPrevChildProc* = proc(next: bool): bool
@@ -1431,7 +1336,6 @@ proc miqt_exec_callback_QMdiArea_focusNextPrevChild(self: ptr cQMdiArea, slot: i
 
   virtualReturn
 proc QMdiAreacustomEvent*(self: gen_qmdiarea_types.QMdiArea, event: gen_qcoreevent.QEvent): void =
-
   fQMdiArea_virtualbase_customEvent(self.h, event.h)
 
 type QMdiAreacustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1449,7 +1353,6 @@ proc miqt_exec_callback_QMdiArea_customEvent(self: ptr cQMdiArea, slot: int, eve
 
   nimfunc[](slotval1)
 proc QMdiAreaconnectNotify*(self: gen_qmdiarea_types.QMdiArea, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMdiArea_virtualbase_connectNotify(self.h, signal.h)
 
 type QMdiAreaconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1467,7 +1370,6 @@ proc miqt_exec_callback_QMdiArea_connectNotify(self: ptr cQMdiArea, slot: int, s
 
   nimfunc[](slotval1)
 proc QMdiAreadisconnectNotify*(self: gen_qmdiarea_types.QMdiArea, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMdiArea_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QMdiAreadisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

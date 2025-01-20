@@ -350,69 +350,60 @@ proc fcQMessageBox_delete(self: pointer) {.importc: "QMessageBox_delete".}
 func init*(T: type gen_qmessagebox_types.QMessageBox, h: ptr cQMessageBox): gen_qmessagebox_types.QMessageBox =
   T(h: h)
 proc create*(T: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget): gen_qmessagebox_types.QMessageBox =
-
   gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new(parent.h))
+
 proc create*(T: type gen_qmessagebox_types.QMessageBox, ): gen_qmessagebox_types.QMessageBox =
-
   gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new2())
+
 proc create*(T: type gen_qmessagebox_types.QMessageBox, icon: cint, title: string, text: string): gen_qmessagebox_types.QMessageBox =
-
   gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new3(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qmessagebox_types.QMessageBox, title: string, text: string, icon: cint, button0: cint, button1: cint, button2: cint): gen_qmessagebox_types.QMessageBox =
-
   gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new4(struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(icon), button0, button1, button2))
+
 proc create*(T: type gen_qmessagebox_types.QMessageBox, icon: cint, title: string, text: string, buttons: cint): gen_qmessagebox_types.QMessageBox =
-
   gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new5(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
+
 proc create*(T: type gen_qmessagebox_types.QMessageBox, icon: cint, title: string, text: string, buttons: cint, parent: gen_qwidget.QWidget): gen_qmessagebox_types.QMessageBox =
-
   gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new6(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), parent.h))
+
 proc create*(T: type gen_qmessagebox_types.QMessageBox, icon: cint, title: string, text: string, buttons: cint, parent: gen_qwidget.QWidget, flags: cint): gen_qmessagebox_types.QMessageBox =
-
   gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new7(cint(icon), struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), parent.h, cint(flags)))
+
 proc create*(T: type gen_qmessagebox_types.QMessageBox, title: string, text: string, icon: cint, button0: cint, button1: cint, button2: cint, parent: gen_qwidget.QWidget): gen_qmessagebox_types.QMessageBox =
-
   gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new8(struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(icon), button0, button1, button2, parent.h))
+
 proc create*(T: type gen_qmessagebox_types.QMessageBox, title: string, text: string, icon: cint, button0: cint, button1: cint, button2: cint, parent: gen_qwidget.QWidget, f: cint): gen_qmessagebox_types.QMessageBox =
-
   gen_qmessagebox_types.QMessageBox.init(fcQMessageBox_new9(struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(icon), button0, button1, button2, parent.h, cint(f)))
-proc metaObject*(self: gen_qmessagebox_types.QMessageBox, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qmessagebox_types.QMessageBox, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQMessageBox_metaObject(self.h))
 
 proc metacast*(self: gen_qmessagebox_types.QMessageBox, param1: cstring): pointer =
-
   fcQMessageBox_metacast(self.h, param1)
 
 proc metacall*(self: gen_qmessagebox_types.QMessageBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQMessageBox_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qmessagebox_types.QMessageBox, s: cstring): string =
-
   let v_ms = fcQMessageBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc addButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton, role: cint): void =
-
   fcQMessageBox_addButton(self.h, button.h, cint(role))
 
-proc addButton2*(self: gen_qmessagebox_types.QMessageBox, text: string, role: cint): gen_qpushbutton.QPushButton =
-
+proc addButton*(self: gen_qmessagebox_types.QMessageBox, text: string, role: cint): gen_qpushbutton.QPushButton =
   gen_qpushbutton.QPushButton(h: fcQMessageBox_addButton2(self.h, struct_miqt_string(data: text, len: csize_t(len(text))), cint(role)))
 
-proc addButtonWithButton*(self: gen_qmessagebox_types.QMessageBox, button: cint): gen_qpushbutton.QPushButton =
-
+proc addButton*(self: gen_qmessagebox_types.QMessageBox, button: cint): gen_qpushbutton.QPushButton =
   gen_qpushbutton.QPushButton(h: fcQMessageBox_addButtonWithButton(self.h, cint(button)))
 
 proc removeButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): void =
-
   fcQMessageBox_removeButton(self.h, button.h)
 
 proc buttons*(self: gen_qmessagebox_types.QMessageBox, ): seq[gen_qabstractbutton.QAbstractButton] =
-
   var v_ma = fcQMessageBox_buttons(self.h)
   var vx_ret = newSeq[gen_qabstractbutton.QAbstractButton](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -421,383 +412,295 @@ proc buttons*(self: gen_qmessagebox_types.QMessageBox, ): seq[gen_qabstractbutto
   vx_ret
 
 proc buttonRole*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): cint =
-
   cint(fcQMessageBox_buttonRole(self.h, button.h))
 
 proc setStandardButtons*(self: gen_qmessagebox_types.QMessageBox, buttons: cint): void =
-
   fcQMessageBox_setStandardButtons(self.h, cint(buttons))
 
 proc standardButtons*(self: gen_qmessagebox_types.QMessageBox, ): cint =
-
   cint(fcQMessageBox_standardButtons(self.h))
 
 proc standardButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): cint =
-
   cint(fcQMessageBox_standardButton(self.h, button.h))
 
 proc button*(self: gen_qmessagebox_types.QMessageBox, which: cint): gen_qabstractbutton.QAbstractButton =
-
   gen_qabstractbutton.QAbstractButton(h: fcQMessageBox_button(self.h, cint(which)))
 
 proc defaultButton*(self: gen_qmessagebox_types.QMessageBox, ): gen_qpushbutton.QPushButton =
-
   gen_qpushbutton.QPushButton(h: fcQMessageBox_defaultButton(self.h))
 
 proc setDefaultButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qpushbutton.QPushButton): void =
-
   fcQMessageBox_setDefaultButton(self.h, button.h)
 
-proc setDefaultButtonWithButton*(self: gen_qmessagebox_types.QMessageBox, button: cint): void =
-
+proc setDefaultButton*(self: gen_qmessagebox_types.QMessageBox, button: cint): void =
   fcQMessageBox_setDefaultButtonWithButton(self.h, cint(button))
 
 proc escapeButton*(self: gen_qmessagebox_types.QMessageBox, ): gen_qabstractbutton.QAbstractButton =
-
   gen_qabstractbutton.QAbstractButton(h: fcQMessageBox_escapeButton(self.h))
 
 proc setEscapeButton*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): void =
-
   fcQMessageBox_setEscapeButton(self.h, button.h)
 
-proc setEscapeButtonWithButton*(self: gen_qmessagebox_types.QMessageBox, button: cint): void =
-
+proc setEscapeButton*(self: gen_qmessagebox_types.QMessageBox, button: cint): void =
   fcQMessageBox_setEscapeButtonWithButton(self.h, cint(button))
 
 proc clickedButton*(self: gen_qmessagebox_types.QMessageBox, ): gen_qabstractbutton.QAbstractButton =
-
   gen_qabstractbutton.QAbstractButton(h: fcQMessageBox_clickedButton(self.h))
 
 proc text*(self: gen_qmessagebox_types.QMessageBox, ): string =
-
   let v_ms = fcQMessageBox_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setText*(self: gen_qmessagebox_types.QMessageBox, text: string): void =
-
   fcQMessageBox_setText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc icon*(self: gen_qmessagebox_types.QMessageBox, ): cint =
-
   cint(fcQMessageBox_icon(self.h))
 
 proc setIcon*(self: gen_qmessagebox_types.QMessageBox, icon: cint): void =
-
   fcQMessageBox_setIcon(self.h, cint(icon))
 
 proc iconPixmap*(self: gen_qmessagebox_types.QMessageBox, ): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQMessageBox_iconPixmap(self.h))
 
 proc setIconPixmap*(self: gen_qmessagebox_types.QMessageBox, pixmap: gen_qpixmap.QPixmap): void =
-
   fcQMessageBox_setIconPixmap(self.h, pixmap.h)
 
 proc textFormat*(self: gen_qmessagebox_types.QMessageBox, ): cint =
-
   cint(fcQMessageBox_textFormat(self.h))
 
 proc setTextFormat*(self: gen_qmessagebox_types.QMessageBox, format: cint): void =
-
   fcQMessageBox_setTextFormat(self.h, cint(format))
 
 proc setTextInteractionFlags*(self: gen_qmessagebox_types.QMessageBox, flags: cint): void =
-
   fcQMessageBox_setTextInteractionFlags(self.h, cint(flags))
 
 proc textInteractionFlags*(self: gen_qmessagebox_types.QMessageBox, ): cint =
-
   cint(fcQMessageBox_textInteractionFlags(self.h))
 
 proc setCheckBox*(self: gen_qmessagebox_types.QMessageBox, cb: gen_qcheckbox.QCheckBox): void =
-
   fcQMessageBox_setCheckBox(self.h, cb.h)
 
 proc checkBox*(self: gen_qmessagebox_types.QMessageBox, ): gen_qcheckbox.QCheckBox =
-
   gen_qcheckbox.QCheckBox(h: fcQMessageBox_checkBox(self.h))
 
 proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): cint =
-
   cint(fcQMessageBox_information(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc information2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
-
+proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
   cint(fcQMessageBox_information2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0)))
 
 proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): cint =
-
   cint(fcQMessageBox_question(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc question2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
-
+proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
   fcQMessageBox_question2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0), cint(button1))
 
 proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): cint =
-
   cint(fcQMessageBox_warning(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc warning2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
-
+proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
   fcQMessageBox_warning2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0), cint(button1))
 
 proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): cint =
-
   cint(fcQMessageBox_critical(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text)))))
 
-proc critical2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
-
+proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
   fcQMessageBox_critical2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0), cint(button1))
 
 proc about*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string): void =
-
   fcQMessageBox_about(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc aboutQt*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget): void =
-
   fcQMessageBox_aboutQt(parent.h)
 
-proc information3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
-
+proc information2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
   fcQMessageBox_information3(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0)
 
-proc information4*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
-
+proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
   fcQMessageBox_information4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))))
 
-proc question3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
-
+proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint): cint =
   fcQMessageBox_question3(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0)
 
-proc question4*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
-
+proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
   fcQMessageBox_question4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))))
 
-proc warning3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
-
+proc warning2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
   fcQMessageBox_warning3(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1)
 
-proc warning4*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
-
+proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
   fcQMessageBox_warning4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))))
 
-proc critical3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
-
+proc critical2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
   fcQMessageBox_critical3(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1)
 
-proc critical4*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
-
+proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string): cint =
   fcQMessageBox_critical4(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))))
 
 proc buttonText*(self: gen_qmessagebox_types.QMessageBox, button: cint): string =
-
   let v_ms = fcQMessageBox_buttonText(self.h, button)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setButtonText*(self: gen_qmessagebox_types.QMessageBox, button: cint, text: string): void =
-
   fcQMessageBox_setButtonText(self.h, button, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc informativeText*(self: gen_qmessagebox_types.QMessageBox, ): string =
-
   let v_ms = fcQMessageBox_informativeText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setInformativeText*(self: gen_qmessagebox_types.QMessageBox, text: string): void =
-
   fcQMessageBox_setInformativeText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc detailedText*(self: gen_qmessagebox_types.QMessageBox, ): string =
-
   let v_ms = fcQMessageBox_detailedText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDetailedText*(self: gen_qmessagebox_types.QMessageBox, text: string): void =
-
   fcQMessageBox_setDetailedText(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc setWindowTitle*(self: gen_qmessagebox_types.QMessageBox, title: string): void =
-
   fcQMessageBox_setWindowTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
 proc setWindowModality*(self: gen_qmessagebox_types.QMessageBox, windowModality: cint): void =
-
   fcQMessageBox_setWindowModality(self.h, cint(windowModality))
 
 proc standardIcon*(_: type gen_qmessagebox_types.QMessageBox, icon: cint): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQMessageBox_standardIcon(cint(icon)))
 
 proc buttonClicked*(self: gen_qmessagebox_types.QMessageBox, button: gen_qabstractbutton.QAbstractButton): void =
-
   fcQMessageBox_buttonClicked(self.h, button.h)
 
+type QMessageBoxbuttonClickedSlot* = proc(button: gen_qabstractbutton.QAbstractButton)
 proc miqt_exec_callback_QMessageBox_buttonClicked(slot: int, button: pointer) {.exportc.} =
-  type Cb = proc(button: gen_qabstractbutton.QAbstractButton)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QMessageBoxbuttonClickedSlot](cast[pointer](slot))
   let slotval1 = gen_qabstractbutton.QAbstractButton(h: button)
-
 
   nimfunc[](slotval1)
 
-proc onbuttonClicked*(self: gen_qmessagebox_types.QMessageBox, slot: proc(button: gen_qabstractbutton.QAbstractButton)) =
-  type Cb = proc(button: gen_qabstractbutton.QAbstractButton)
-  var tmp = new Cb
+proc onbuttonClicked*(self: gen_qmessagebox_types.QMessageBox, slot: QMessageBoxbuttonClickedSlot) =
+  var tmp = new QMessageBoxbuttonClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQMessageBox_connect_buttonClicked(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qmessagebox_types.QMessageBox, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qmessagebox_types.QMessageBox, s: cstring, c: cstring): string =
   let v_ms = fcQMessageBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qmessagebox_types.QMessageBox, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qmessagebox_types.QMessageBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQMessageBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc information42*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
-
+proc information3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
   cint(fcQMessageBox_information42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
 
-proc information5*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
-
+proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
   cint(fcQMessageBox_information5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
 
-proc information52*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
-
+proc information2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
   cint(fcQMessageBox_information52(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(button0), cint(button1)))
 
-proc question42*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
-
+proc question2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
   cint(fcQMessageBox_question42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
 
-proc question5*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
-
+proc question2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
   cint(fcQMessageBox_question5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
 
-proc warning42*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
-
+proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
   cint(fcQMessageBox_warning42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
 
-proc warning5*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
-
+proc warning3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
   cint(fcQMessageBox_warning5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
 
-proc critical42*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
-
+proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint): cint =
   cint(fcQMessageBox_critical42(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons)))
 
-proc critical5*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
-
+proc critical3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, buttons: cint, defaultButton: cint): cint =
   cint(fcQMessageBox_critical5(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), cint(buttons), cint(defaultButton)))
 
-proc aboutQt2*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string): void =
-
+proc aboutQt*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string): void =
   fcQMessageBox_aboutQt2(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
-proc information53*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
-
+proc information3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
   fcQMessageBox_information53(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1)
 
-proc information6*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
-
+proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
   fcQMessageBox_information6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1, button2)
 
-proc information54*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
-
+proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
   fcQMessageBox_information54(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))))
 
-proc information62*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
-
+proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
   fcQMessageBox_information62(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))))
 
-proc information7*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
-
+proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
   fcQMessageBox_information7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber)
 
-proc information8*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
-
+proc information*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
   fcQMessageBox_information8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber, escapeButtonNumber)
 
-proc question52*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
-
+proc question3*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint): cint =
   fcQMessageBox_question52(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1)
 
-proc question6*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
-
+proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
   fcQMessageBox_question6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1, button2)
 
-proc question53*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
-
+proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
   fcQMessageBox_question53(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))))
 
-proc question62*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
-
+proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
   fcQMessageBox_question62(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))))
 
-proc question7*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
-
+proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
   fcQMessageBox_question7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber)
 
-proc question8*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
-
+proc question*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
   fcQMessageBox_question8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber, escapeButtonNumber)
 
-proc warning6*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
-
+proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
   fcQMessageBox_warning6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1, button2)
 
-proc warning52*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
-
+proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
   fcQMessageBox_warning52(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))))
 
-proc warning62*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
-
+proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
   fcQMessageBox_warning62(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))))
 
-proc warning7*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
-
+proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
   fcQMessageBox_warning7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber)
 
-proc warning8*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
-
+proc warning*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
   fcQMessageBox_warning8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber, escapeButtonNumber)
 
-proc critical6*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
-
+proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0: cint, button1: cint, button2: cint): cint =
   fcQMessageBox_critical6(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), button0, button1, button2)
 
-proc critical52*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
-
+proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string): cint =
   fcQMessageBox_critical52(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))))
 
-proc critical62*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
-
+proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string): cint =
   fcQMessageBox_critical62(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))))
 
-proc critical7*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
-
+proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint): cint =
   fcQMessageBox_critical7(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber)
 
-proc critical8*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
-
+proc critical*(_: type gen_qmessagebox_types.QMessageBox, parent: gen_qwidget.QWidget, title: string, text: string, button0Text: string, button1Text: string, button2Text: string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint =
   fcQMessageBox_critical8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber, escapeButtonNumber)
 
 proc QMessageBoxmetaObject*(self: gen_qmessagebox_types.QMessageBox, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQMessageBox_virtualbase_metaObject(self.h))
 
 type QMessageBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -815,7 +718,6 @@ proc miqt_exec_callback_QMessageBox_metaObject(self: ptr cQMessageBox, slot: int
 
   virtualReturn.h
 proc QMessageBoxmetacast*(self: gen_qmessagebox_types.QMessageBox, param1: cstring): pointer =
-
   fQMessageBox_virtualbase_metacast(self.h, param1)
 
 type QMessageBoxmetacastProc* = proc(param1: cstring): pointer
@@ -835,7 +737,6 @@ proc miqt_exec_callback_QMessageBox_metacast(self: ptr cQMessageBox, slot: int, 
 
   virtualReturn
 proc QMessageBoxmetacall*(self: gen_qmessagebox_types.QMessageBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fQMessageBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QMessageBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -859,7 +760,6 @@ proc miqt_exec_callback_QMessageBox_metacall(self: ptr cQMessageBox, slot: int, 
 
   virtualReturn
 proc QMessageBoxevent*(self: gen_qmessagebox_types.QMessageBox, e: gen_qcoreevent.QEvent): bool =
-
   fQMessageBox_virtualbase_event(self.h, e.h)
 
 type QMessageBoxeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -879,7 +779,6 @@ proc miqt_exec_callback_QMessageBox_event(self: ptr cQMessageBox, slot: int, e: 
 
   virtualReturn
 proc QMessageBoxresizeEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QResizeEvent): void =
-
   fQMessageBox_virtualbase_resizeEvent(self.h, event.h)
 
 type QMessageBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -897,7 +796,6 @@ proc miqt_exec_callback_QMessageBox_resizeEvent(self: ptr cQMessageBox, slot: in
 
   nimfunc[](slotval1)
 proc QMessageBoxshowEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QShowEvent): void =
-
   fQMessageBox_virtualbase_showEvent(self.h, event.h)
 
 type QMessageBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -915,7 +813,6 @@ proc miqt_exec_callback_QMessageBox_showEvent(self: ptr cQMessageBox, slot: int,
 
   nimfunc[](slotval1)
 proc QMessageBoxcloseEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QCloseEvent): void =
-
   fQMessageBox_virtualbase_closeEvent(self.h, event.h)
 
 type QMessageBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -933,7 +830,6 @@ proc miqt_exec_callback_QMessageBox_closeEvent(self: ptr cQMessageBox, slot: int
 
   nimfunc[](slotval1)
 proc QMessageBoxkeyPressEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QKeyEvent): void =
-
   fQMessageBox_virtualbase_keyPressEvent(self.h, event.h)
 
 type QMessageBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -951,7 +847,6 @@ proc miqt_exec_callback_QMessageBox_keyPressEvent(self: ptr cQMessageBox, slot: 
 
   nimfunc[](slotval1)
 proc QMessageBoxchangeEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QEvent): void =
-
   fQMessageBox_virtualbase_changeEvent(self.h, event.h)
 
 type QMessageBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -969,7 +864,6 @@ proc miqt_exec_callback_QMessageBox_changeEvent(self: ptr cQMessageBox, slot: in
 
   nimfunc[](slotval1)
 proc QMessageBoxsetVisible*(self: gen_qmessagebox_types.QMessageBox, visible: bool): void =
-
   fQMessageBox_virtualbase_setVisible(self.h, visible)
 
 type QMessageBoxsetVisibleProc* = proc(visible: bool): void
@@ -987,7 +881,6 @@ proc miqt_exec_callback_QMessageBox_setVisible(self: ptr cQMessageBox, slot: int
 
   nimfunc[](slotval1)
 proc QMessageBoxsizeHint*(self: gen_qmessagebox_types.QMessageBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQMessageBox_virtualbase_sizeHint(self.h))
 
 type QMessageBoxsizeHintProc* = proc(): gen_qsize.QSize
@@ -1005,7 +898,6 @@ proc miqt_exec_callback_QMessageBox_sizeHint(self: ptr cQMessageBox, slot: int):
 
   virtualReturn.h
 proc QMessageBoxminimumSizeHint*(self: gen_qmessagebox_types.QMessageBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQMessageBox_virtualbase_minimumSizeHint(self.h))
 
 type QMessageBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -1023,7 +915,6 @@ proc miqt_exec_callback_QMessageBox_minimumSizeHint(self: ptr cQMessageBox, slot
 
   virtualReturn.h
 proc QMessageBoxopen*(self: gen_qmessagebox_types.QMessageBox, ): void =
-
   fQMessageBox_virtualbase_open(self.h)
 
 type QMessageBoxopenProc* = proc(): void
@@ -1039,7 +930,6 @@ proc miqt_exec_callback_QMessageBox_open(self: ptr cQMessageBox, slot: int): voi
 
   nimfunc[]()
 proc QMessageBoxexec*(self: gen_qmessagebox_types.QMessageBox, ): cint =
-
   fQMessageBox_virtualbase_exec(self.h)
 
 type QMessageBoxexecProc* = proc(): cint
@@ -1057,7 +947,6 @@ proc miqt_exec_callback_QMessageBox_exec(self: ptr cQMessageBox, slot: int): cin
 
   virtualReturn
 proc QMessageBoxdone*(self: gen_qmessagebox_types.QMessageBox, param1: cint): void =
-
   fQMessageBox_virtualbase_done(self.h, param1)
 
 type QMessageBoxdoneProc* = proc(param1: cint): void
@@ -1075,7 +964,6 @@ proc miqt_exec_callback_QMessageBox_done(self: ptr cQMessageBox, slot: int, para
 
   nimfunc[](slotval1)
 proc QMessageBoxaccept*(self: gen_qmessagebox_types.QMessageBox, ): void =
-
   fQMessageBox_virtualbase_accept(self.h)
 
 type QMessageBoxacceptProc* = proc(): void
@@ -1091,7 +979,6 @@ proc miqt_exec_callback_QMessageBox_accept(self: ptr cQMessageBox, slot: int): v
 
   nimfunc[]()
 proc QMessageBoxreject*(self: gen_qmessagebox_types.QMessageBox, ): void =
-
   fQMessageBox_virtualbase_reject(self.h)
 
 type QMessageBoxrejectProc* = proc(): void
@@ -1107,7 +994,6 @@ proc miqt_exec_callback_QMessageBox_reject(self: ptr cQMessageBox, slot: int): v
 
   nimfunc[]()
 proc QMessageBoxcontextMenuEvent*(self: gen_qmessagebox_types.QMessageBox, param1: gen_qevent.QContextMenuEvent): void =
-
   fQMessageBox_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QMessageBoxcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -1125,7 +1011,6 @@ proc miqt_exec_callback_QMessageBox_contextMenuEvent(self: ptr cQMessageBox, slo
 
   nimfunc[](slotval1)
 proc QMessageBoxeventFilter*(self: gen_qmessagebox_types.QMessageBox, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQMessageBox_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QMessageBoxeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -1147,7 +1032,6 @@ proc miqt_exec_callback_QMessageBox_eventFilter(self: ptr cQMessageBox, slot: in
 
   virtualReturn
 proc QMessageBoxdevType*(self: gen_qmessagebox_types.QMessageBox, ): cint =
-
   fQMessageBox_virtualbase_devType(self.h)
 
 type QMessageBoxdevTypeProc* = proc(): cint
@@ -1165,7 +1049,6 @@ proc miqt_exec_callback_QMessageBox_devType(self: ptr cQMessageBox, slot: int): 
 
   virtualReturn
 proc QMessageBoxheightForWidth*(self: gen_qmessagebox_types.QMessageBox, param1: cint): cint =
-
   fQMessageBox_virtualbase_heightForWidth(self.h, param1)
 
 type QMessageBoxheightForWidthProc* = proc(param1: cint): cint
@@ -1185,7 +1068,6 @@ proc miqt_exec_callback_QMessageBox_heightForWidth(self: ptr cQMessageBox, slot:
 
   virtualReturn
 proc QMessageBoxhasHeightForWidth*(self: gen_qmessagebox_types.QMessageBox, ): bool =
-
   fQMessageBox_virtualbase_hasHeightForWidth(self.h)
 
 type QMessageBoxhasHeightForWidthProc* = proc(): bool
@@ -1203,7 +1085,6 @@ proc miqt_exec_callback_QMessageBox_hasHeightForWidth(self: ptr cQMessageBox, sl
 
   virtualReturn
 proc QMessageBoxpaintEngine*(self: gen_qmessagebox_types.QMessageBox, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQMessageBox_virtualbase_paintEngine(self.h))
 
 type QMessageBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -1221,7 +1102,6 @@ proc miqt_exec_callback_QMessageBox_paintEngine(self: ptr cQMessageBox, slot: in
 
   virtualReturn.h
 proc QMessageBoxmousePressEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMouseEvent): void =
-
   fQMessageBox_virtualbase_mousePressEvent(self.h, event.h)
 
 type QMessageBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1239,7 +1119,6 @@ proc miqt_exec_callback_QMessageBox_mousePressEvent(self: ptr cQMessageBox, slot
 
   nimfunc[](slotval1)
 proc QMessageBoxmouseReleaseEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMouseEvent): void =
-
   fQMessageBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QMessageBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1257,7 +1136,6 @@ proc miqt_exec_callback_QMessageBox_mouseReleaseEvent(self: ptr cQMessageBox, sl
 
   nimfunc[](slotval1)
 proc QMessageBoxmouseDoubleClickEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMouseEvent): void =
-
   fQMessageBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QMessageBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1275,7 +1153,6 @@ proc miqt_exec_callback_QMessageBox_mouseDoubleClickEvent(self: ptr cQMessageBox
 
   nimfunc[](slotval1)
 proc QMessageBoxmouseMoveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMouseEvent): void =
-
   fQMessageBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QMessageBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -1293,7 +1170,6 @@ proc miqt_exec_callback_QMessageBox_mouseMoveEvent(self: ptr cQMessageBox, slot:
 
   nimfunc[](slotval1)
 proc QMessageBoxwheelEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QWheelEvent): void =
-
   fQMessageBox_virtualbase_wheelEvent(self.h, event.h)
 
 type QMessageBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -1311,7 +1187,6 @@ proc miqt_exec_callback_QMessageBox_wheelEvent(self: ptr cQMessageBox, slot: int
 
   nimfunc[](slotval1)
 proc QMessageBoxkeyReleaseEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QKeyEvent): void =
-
   fQMessageBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QMessageBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1329,7 +1204,6 @@ proc miqt_exec_callback_QMessageBox_keyReleaseEvent(self: ptr cQMessageBox, slot
 
   nimfunc[](slotval1)
 proc QMessageBoxfocusInEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QFocusEvent): void =
-
   fQMessageBox_virtualbase_focusInEvent(self.h, event.h)
 
 type QMessageBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1347,7 +1221,6 @@ proc miqt_exec_callback_QMessageBox_focusInEvent(self: ptr cQMessageBox, slot: i
 
   nimfunc[](slotval1)
 proc QMessageBoxfocusOutEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QFocusEvent): void =
-
   fQMessageBox_virtualbase_focusOutEvent(self.h, event.h)
 
 type QMessageBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -1365,7 +1238,6 @@ proc miqt_exec_callback_QMessageBox_focusOutEvent(self: ptr cQMessageBox, slot: 
 
   nimfunc[](slotval1)
 proc QMessageBoxenterEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QEnterEvent): void =
-
   fQMessageBox_virtualbase_enterEvent(self.h, event.h)
 
 type QMessageBoxenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -1383,7 +1255,6 @@ proc miqt_exec_callback_QMessageBox_enterEvent(self: ptr cQMessageBox, slot: int
 
   nimfunc[](slotval1)
 proc QMessageBoxleaveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QEvent): void =
-
   fQMessageBox_virtualbase_leaveEvent(self.h, event.h)
 
 type QMessageBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1401,7 +1272,6 @@ proc miqt_exec_callback_QMessageBox_leaveEvent(self: ptr cQMessageBox, slot: int
 
   nimfunc[](slotval1)
 proc QMessageBoxpaintEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QPaintEvent): void =
-
   fQMessageBox_virtualbase_paintEvent(self.h, event.h)
 
 type QMessageBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1419,7 +1289,6 @@ proc miqt_exec_callback_QMessageBox_paintEvent(self: ptr cQMessageBox, slot: int
 
   nimfunc[](slotval1)
 proc QMessageBoxmoveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QMoveEvent): void =
-
   fQMessageBox_virtualbase_moveEvent(self.h, event.h)
 
 type QMessageBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1437,7 +1306,6 @@ proc miqt_exec_callback_QMessageBox_moveEvent(self: ptr cQMessageBox, slot: int,
 
   nimfunc[](slotval1)
 proc QMessageBoxtabletEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QTabletEvent): void =
-
   fQMessageBox_virtualbase_tabletEvent(self.h, event.h)
 
 type QMessageBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1455,7 +1323,6 @@ proc miqt_exec_callback_QMessageBox_tabletEvent(self: ptr cQMessageBox, slot: in
 
   nimfunc[](slotval1)
 proc QMessageBoxactionEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QActionEvent): void =
-
   fQMessageBox_virtualbase_actionEvent(self.h, event.h)
 
 type QMessageBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1473,7 +1340,6 @@ proc miqt_exec_callback_QMessageBox_actionEvent(self: ptr cQMessageBox, slot: in
 
   nimfunc[](slotval1)
 proc QMessageBoxdragEnterEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QDragEnterEvent): void =
-
   fQMessageBox_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QMessageBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1491,7 +1357,6 @@ proc miqt_exec_callback_QMessageBox_dragEnterEvent(self: ptr cQMessageBox, slot:
 
   nimfunc[](slotval1)
 proc QMessageBoxdragMoveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QDragMoveEvent): void =
-
   fQMessageBox_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QMessageBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1509,7 +1374,6 @@ proc miqt_exec_callback_QMessageBox_dragMoveEvent(self: ptr cQMessageBox, slot: 
 
   nimfunc[](slotval1)
 proc QMessageBoxdragLeaveEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QDragLeaveEvent): void =
-
   fQMessageBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QMessageBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1527,7 +1391,6 @@ proc miqt_exec_callback_QMessageBox_dragLeaveEvent(self: ptr cQMessageBox, slot:
 
   nimfunc[](slotval1)
 proc QMessageBoxdropEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QDropEvent): void =
-
   fQMessageBox_virtualbase_dropEvent(self.h, event.h)
 
 type QMessageBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1545,7 +1408,6 @@ proc miqt_exec_callback_QMessageBox_dropEvent(self: ptr cQMessageBox, slot: int,
 
   nimfunc[](slotval1)
 proc QMessageBoxhideEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qevent.QHideEvent): void =
-
   fQMessageBox_virtualbase_hideEvent(self.h, event.h)
 
 type QMessageBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1563,7 +1425,6 @@ proc miqt_exec_callback_QMessageBox_hideEvent(self: ptr cQMessageBox, slot: int,
 
   nimfunc[](slotval1)
 proc QMessageBoxnativeEvent*(self: gen_qmessagebox_types.QMessageBox, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQMessageBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QMessageBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1590,7 +1451,6 @@ proc miqt_exec_callback_QMessageBox_nativeEvent(self: ptr cQMessageBox, slot: in
 
   virtualReturn
 proc QMessageBoxmetric*(self: gen_qmessagebox_types.QMessageBox, param1: cint): cint =
-
   fQMessageBox_virtualbase_metric(self.h, cint(param1))
 
 type QMessageBoxmetricProc* = proc(param1: cint): cint
@@ -1610,7 +1470,6 @@ proc miqt_exec_callback_QMessageBox_metric(self: ptr cQMessageBox, slot: int, pa
 
   virtualReturn
 proc QMessageBoxinitPainter*(self: gen_qmessagebox_types.QMessageBox, painter: gen_qpainter.QPainter): void =
-
   fQMessageBox_virtualbase_initPainter(self.h, painter.h)
 
 type QMessageBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1628,7 +1487,6 @@ proc miqt_exec_callback_QMessageBox_initPainter(self: ptr cQMessageBox, slot: in
 
   nimfunc[](slotval1)
 proc QMessageBoxredirected*(self: gen_qmessagebox_types.QMessageBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQMessageBox_virtualbase_redirected(self.h, offset.h))
 
 type QMessageBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1648,7 +1506,6 @@ proc miqt_exec_callback_QMessageBox_redirected(self: ptr cQMessageBox, slot: int
 
   virtualReturn.h
 proc QMessageBoxsharedPainter*(self: gen_qmessagebox_types.QMessageBox, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQMessageBox_virtualbase_sharedPainter(self.h))
 
 type QMessageBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1666,7 +1523,6 @@ proc miqt_exec_callback_QMessageBox_sharedPainter(self: ptr cQMessageBox, slot: 
 
   virtualReturn.h
 proc QMessageBoxinputMethodEvent*(self: gen_qmessagebox_types.QMessageBox, param1: gen_qevent.QInputMethodEvent): void =
-
   fQMessageBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QMessageBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1684,7 +1540,6 @@ proc miqt_exec_callback_QMessageBox_inputMethodEvent(self: ptr cQMessageBox, slo
 
   nimfunc[](slotval1)
 proc QMessageBoxinputMethodQuery*(self: gen_qmessagebox_types.QMessageBox, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQMessageBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QMessageBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1704,7 +1559,6 @@ proc miqt_exec_callback_QMessageBox_inputMethodQuery(self: ptr cQMessageBox, slo
 
   virtualReturn.h
 proc QMessageBoxfocusNextPrevChild*(self: gen_qmessagebox_types.QMessageBox, next: bool): bool =
-
   fQMessageBox_virtualbase_focusNextPrevChild(self.h, next)
 
 type QMessageBoxfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1724,7 +1578,6 @@ proc miqt_exec_callback_QMessageBox_focusNextPrevChild(self: ptr cQMessageBox, s
 
   virtualReturn
 proc QMessageBoxtimerEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QTimerEvent): void =
-
   fQMessageBox_virtualbase_timerEvent(self.h, event.h)
 
 type QMessageBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1742,7 +1595,6 @@ proc miqt_exec_callback_QMessageBox_timerEvent(self: ptr cQMessageBox, slot: int
 
   nimfunc[](slotval1)
 proc QMessageBoxchildEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QChildEvent): void =
-
   fQMessageBox_virtualbase_childEvent(self.h, event.h)
 
 type QMessageBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1760,7 +1612,6 @@ proc miqt_exec_callback_QMessageBox_childEvent(self: ptr cQMessageBox, slot: int
 
   nimfunc[](slotval1)
 proc QMessageBoxcustomEvent*(self: gen_qmessagebox_types.QMessageBox, event: gen_qcoreevent.QEvent): void =
-
   fQMessageBox_virtualbase_customEvent(self.h, event.h)
 
 type QMessageBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1778,7 +1629,6 @@ proc miqt_exec_callback_QMessageBox_customEvent(self: ptr cQMessageBox, slot: in
 
   nimfunc[](slotval1)
 proc QMessageBoxconnectNotify*(self: gen_qmessagebox_types.QMessageBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMessageBox_virtualbase_connectNotify(self.h, signal.h)
 
 type QMessageBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1796,7 +1646,6 @@ proc miqt_exec_callback_QMessageBox_connectNotify(self: ptr cQMessageBox, slot: 
 
   nimfunc[](slotval1)
 proc QMessageBoxdisconnectNotify*(self: gen_qmessagebox_types.QMessageBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQMessageBox_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QMessageBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

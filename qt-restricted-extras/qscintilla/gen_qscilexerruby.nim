@@ -218,150 +218,120 @@ proc fcQsciLexerRuby_delete(self: pointer) {.importc: "QsciLexerRuby_delete".}
 func init*(T: type gen_qscilexerruby_types.QsciLexerRuby, h: ptr cQsciLexerRuby): gen_qscilexerruby_types.QsciLexerRuby =
   T(h: h)
 proc create*(T: type gen_qscilexerruby_types.QsciLexerRuby, ): gen_qscilexerruby_types.QsciLexerRuby =
-
   gen_qscilexerruby_types.QsciLexerRuby.init(fcQsciLexerRuby_new())
+
 proc create*(T: type gen_qscilexerruby_types.QsciLexerRuby, parent: gen_qobject.QObject): gen_qscilexerruby_types.QsciLexerRuby =
-
   gen_qscilexerruby_types.QsciLexerRuby.init(fcQsciLexerRuby_new2(parent.h))
-proc metaObject*(self: gen_qscilexerruby_types.QsciLexerRuby, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexerruby_types.QsciLexerRuby, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerRuby_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexerruby_types.QsciLexerRuby, param1: cstring): pointer =
-
   fcQsciLexerRuby_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexerruby_types.QsciLexerRuby, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerRuby_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring): string =
-
   let v_ms = fcQsciLexerRuby_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring): string =
-
   let v_ms = fcQsciLexerRuby_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cstring =
-
   (fcQsciLexerRuby_language(self.h))
 
 proc lexer*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cstring =
-
   (fcQsciLexerRuby_lexer(self.h))
 
 proc blockEnd*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cstring =
-
   (fcQsciLexerRuby_blockEnd(self.h))
 
 proc blockStart*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cstring =
-
   (fcQsciLexerRuby_blockStart(self.h))
 
 proc blockStartKeyword*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cstring =
-
   (fcQsciLexerRuby_blockStartKeyword(self.h))
 
 proc braceStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cint =
-
   fcQsciLexerRuby_braceStyle(self.h)
 
 proc defaultColor*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerRuby_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): bool =
-
   fcQsciLexerRuby_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerRuby_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerRuby_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexerruby_types.QsciLexerRuby, set: cint): cstring =
-
   (fcQsciLexerRuby_keywords(self.h, set))
 
 proc description*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): string =
-
   let v_ms = fcQsciLexerRuby_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexerruby_types.QsciLexerRuby, ): void =
-
   fcQsciLexerRuby_refreshProperties(self.h)
 
 proc setFoldComments*(self: gen_qscilexerruby_types.QsciLexerRuby, fold: bool): void =
-
   fcQsciLexerRuby_setFoldComments(self.h, fold)
 
 proc foldComments*(self: gen_qscilexerruby_types.QsciLexerRuby, ): bool =
-
   fcQsciLexerRuby_foldComments(self.h)
 
 proc setFoldCompact*(self: gen_qscilexerruby_types.QsciLexerRuby, fold: bool): void =
-
   fcQsciLexerRuby_setFoldCompact(self.h, fold)
 
 proc foldCompact*(self: gen_qscilexerruby_types.QsciLexerRuby, ): bool =
-
   fcQsciLexerRuby_foldCompact(self.h)
 
-proc tr2*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerRuby_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerRuby_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerRuby_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexerruby_types.QsciLexerRuby, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerRuby_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc blockEnd1*(self: gen_qscilexerruby_types.QsciLexerRuby, style: ptr cint): cstring =
-
+proc blockEnd*(self: gen_qscilexerruby_types.QsciLexerRuby, style: ptr cint): cstring =
   (fcQsciLexerRuby_blockEnd1(self.h, style))
 
-proc blockStart1*(self: gen_qscilexerruby_types.QsciLexerRuby, style: ptr cint): cstring =
-
+proc blockStart*(self: gen_qscilexerruby_types.QsciLexerRuby, style: ptr cint): cstring =
   (fcQsciLexerRuby_blockStart1(self.h, style))
 
-proc blockStartKeyword1*(self: gen_qscilexerruby_types.QsciLexerRuby, style: ptr cint): cstring =
-
+proc blockStartKeyword*(self: gen_qscilexerruby_types.QsciLexerRuby, style: ptr cint): cstring =
   (fcQsciLexerRuby_blockStartKeyword1(self.h, style))
 
 proc QsciLexerRubymetaObject*(self: gen_qscilexerruby_types.QsciLexerRuby, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerRuby_virtualbase_metaObject(self.h))
 
 type QsciLexerRubymetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -379,7 +349,6 @@ proc miqt_exec_callback_QsciLexerRuby_metaObject(self: ptr cQsciLexerRuby, slot:
 
   virtualReturn.h
 proc QsciLexerRubymetacast*(self: gen_qscilexerruby_types.QsciLexerRuby, param1: cstring): pointer =
-
   fQsciLexerRuby_virtualbase_metacast(self.h, param1)
 
 type QsciLexerRubymetacastProc* = proc(param1: cstring): pointer
@@ -399,7 +368,6 @@ proc miqt_exec_callback_QsciLexerRuby_metacast(self: ptr cQsciLexerRuby, slot: i
 
   virtualReturn
 proc QsciLexerRubymetacall*(self: gen_qscilexerruby_types.QsciLexerRuby, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerRuby_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerRubymetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -437,7 +405,6 @@ proc miqt_exec_callback_QsciLexerRuby_language(self: ptr cQsciLexerRuby, slot: i
 
   virtualReturn
 proc QsciLexerRubylexer*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cstring =
-
   (fQsciLexerRuby_virtualbase_lexer(self.h))
 
 type QsciLexerRubylexerProc* = proc(): cstring
@@ -455,7 +422,6 @@ proc miqt_exec_callback_QsciLexerRuby_lexer(self: ptr cQsciLexerRuby, slot: int)
 
   virtualReturn
 proc QsciLexerRubylexerId*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cint =
-
   fQsciLexerRuby_virtualbase_lexerId(self.h)
 
 type QsciLexerRubylexerIdProc* = proc(): cint
@@ -473,7 +439,6 @@ proc miqt_exec_callback_QsciLexerRuby_lexerId(self: ptr cQsciLexerRuby, slot: in
 
   virtualReturn
 proc QsciLexerRubyautoCompletionFillups*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cstring =
-
   (fQsciLexerRuby_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerRubyautoCompletionFillupsProc* = proc(): cstring
@@ -491,7 +456,6 @@ proc miqt_exec_callback_QsciLexerRuby_autoCompletionFillups(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerRubyautoCompletionWordSeparators*(self: gen_qscilexerruby_types.QsciLexerRuby, ): seq[string] =
-
   var v_ma = fQsciLexerRuby_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -521,7 +485,6 @@ proc miqt_exec_callback_QsciLexerRuby_autoCompletionWordSeparators(self: ptr cQs
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerRubyblockEnd*(self: gen_qscilexerruby_types.QsciLexerRuby, style: ptr cint): cstring =
-
   (fQsciLexerRuby_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerRubyblockEndProc* = proc(style: ptr cint): cstring
@@ -541,7 +504,6 @@ proc miqt_exec_callback_QsciLexerRuby_blockEnd(self: ptr cQsciLexerRuby, slot: i
 
   virtualReturn
 proc QsciLexerRubyblockLookback*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cint =
-
   fQsciLexerRuby_virtualbase_blockLookback(self.h)
 
 type QsciLexerRubyblockLookbackProc* = proc(): cint
@@ -559,7 +521,6 @@ proc miqt_exec_callback_QsciLexerRuby_blockLookback(self: ptr cQsciLexerRuby, sl
 
   virtualReturn
 proc QsciLexerRubyblockStart*(self: gen_qscilexerruby_types.QsciLexerRuby, style: ptr cint): cstring =
-
   (fQsciLexerRuby_virtualbase_blockStart(self.h, style))
 
 type QsciLexerRubyblockStartProc* = proc(style: ptr cint): cstring
@@ -579,7 +540,6 @@ proc miqt_exec_callback_QsciLexerRuby_blockStart(self: ptr cQsciLexerRuby, slot:
 
   virtualReturn
 proc QsciLexerRubyblockStartKeyword*(self: gen_qscilexerruby_types.QsciLexerRuby, style: ptr cint): cstring =
-
   (fQsciLexerRuby_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerRubyblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -599,7 +559,6 @@ proc miqt_exec_callback_QsciLexerRuby_blockStartKeyword(self: ptr cQsciLexerRuby
 
   virtualReturn
 proc QsciLexerRubybraceStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cint =
-
   fQsciLexerRuby_virtualbase_braceStyle(self.h)
 
 type QsciLexerRubybraceStyleProc* = proc(): cint
@@ -617,7 +576,6 @@ proc miqt_exec_callback_QsciLexerRuby_braceStyle(self: ptr cQsciLexerRuby, slot:
 
   virtualReturn
 proc QsciLexerRubycaseSensitive*(self: gen_qscilexerruby_types.QsciLexerRuby, ): bool =
-
   fQsciLexerRuby_virtualbase_caseSensitive(self.h)
 
 type QsciLexerRubycaseSensitiveProc* = proc(): bool
@@ -635,7 +593,6 @@ proc miqt_exec_callback_QsciLexerRuby_caseSensitive(self: ptr cQsciLexerRuby, sl
 
   virtualReturn
 proc QsciLexerRubycolor*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerRuby_virtualbase_color(self.h, style))
 
 type QsciLexerRubycolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -655,7 +612,6 @@ proc miqt_exec_callback_QsciLexerRuby_color(self: ptr cQsciLexerRuby, slot: int,
 
   virtualReturn.h
 proc QsciLexerRubyeolFill*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): bool =
-
   fQsciLexerRuby_virtualbase_eolFill(self.h, style)
 
 type QsciLexerRubyeolFillProc* = proc(style: cint): bool
@@ -675,7 +631,6 @@ proc miqt_exec_callback_QsciLexerRuby_eolFill(self: ptr cQsciLexerRuby, slot: in
 
   virtualReturn
 proc QsciLexerRubyfont*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerRuby_virtualbase_font(self.h, style))
 
 type QsciLexerRubyfontProc* = proc(style: cint): gen_qfont.QFont
@@ -695,7 +650,6 @@ proc miqt_exec_callback_QsciLexerRuby_font(self: ptr cQsciLexerRuby, slot: int, 
 
   virtualReturn.h
 proc QsciLexerRubyindentationGuideView*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cint =
-
   fQsciLexerRuby_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerRubyindentationGuideViewProc* = proc(): cint
@@ -713,7 +667,6 @@ proc miqt_exec_callback_QsciLexerRuby_indentationGuideView(self: ptr cQsciLexerR
 
   virtualReturn
 proc QsciLexerRubykeywords*(self: gen_qscilexerruby_types.QsciLexerRuby, set: cint): cstring =
-
   (fQsciLexerRuby_virtualbase_keywords(self.h, set))
 
 type QsciLexerRubykeywordsProc* = proc(set: cint): cstring
@@ -733,7 +686,6 @@ proc miqt_exec_callback_QsciLexerRuby_keywords(self: ptr cQsciLexerRuby, slot: i
 
   virtualReturn
 proc QsciLexerRubydefaultStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cint =
-
   fQsciLexerRuby_virtualbase_defaultStyle(self.h)
 
 type QsciLexerRubydefaultStyleProc* = proc(): cint
@@ -767,7 +719,6 @@ proc miqt_exec_callback_QsciLexerRuby_description(self: ptr cQsciLexerRuby, slot
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerRubypaper*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerRuby_virtualbase_paper(self.h, style))
 
 type QsciLexerRubypaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -786,12 +737,11 @@ proc miqt_exec_callback_QsciLexerRuby_paper(self: ptr cQsciLexerRuby, slot: int,
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerRubydefaultColorWithStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerRubydefaultColor*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerRuby_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerRubydefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, slot: QsciLexerRubydefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexerruby_types.QsciLexerRuby, slot: QsciLexerRubydefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerRubydefaultColorWithStyleProc
   tmp[] = slot
@@ -807,7 +757,6 @@ proc miqt_exec_callback_QsciLexerRuby_defaultColorWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerRubydefaultEolFill*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): bool =
-
   fQsciLexerRuby_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerRubydefaultEolFillProc* = proc(style: cint): bool
@@ -826,12 +775,11 @@ proc miqt_exec_callback_QsciLexerRuby_defaultEolFill(self: ptr cQsciLexerRuby, s
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerRubydefaultFontWithStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qfont.QFont =
-
+proc QsciLexerRubydefaultFont*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerRuby_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerRubydefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, slot: QsciLexerRubydefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexerruby_types.QsciLexerRuby, slot: QsciLexerRubydefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerRubydefaultFontWithStyleProc
   tmp[] = slot
@@ -846,12 +794,11 @@ proc miqt_exec_callback_QsciLexerRuby_defaultFontWithStyle(self: ptr cQsciLexerR
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerRubydefaultPaperWithStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerRubydefaultPaper*(self: gen_qscilexerruby_types.QsciLexerRuby, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerRuby_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerRubydefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, slot: QsciLexerRubydefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexerruby_types.QsciLexerRuby, slot: QsciLexerRubydefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerRubydefaultPaperWithStyleProc
   tmp[] = slot
@@ -867,7 +814,6 @@ proc miqt_exec_callback_QsciLexerRuby_defaultPaperWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerRubysetEditor*(self: gen_qscilexerruby_types.QsciLexerRuby, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerRuby_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerRubysetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -885,7 +831,6 @@ proc miqt_exec_callback_QsciLexerRuby_setEditor(self: ptr cQsciLexerRuby, slot: 
 
   nimfunc[](slotval1)
 proc QsciLexerRubyrefreshProperties*(self: gen_qscilexerruby_types.QsciLexerRuby, ): void =
-
   fQsciLexerRuby_virtualbase_refreshProperties(self.h)
 
 type QsciLexerRubyrefreshPropertiesProc* = proc(): void
@@ -901,7 +846,6 @@ proc miqt_exec_callback_QsciLexerRuby_refreshProperties(self: ptr cQsciLexerRuby
 
   nimfunc[]()
 proc QsciLexerRubystyleBitsNeeded*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cint =
-
   fQsciLexerRuby_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerRubystyleBitsNeededProc* = proc(): cint
@@ -919,7 +863,6 @@ proc miqt_exec_callback_QsciLexerRuby_styleBitsNeeded(self: ptr cQsciLexerRuby, 
 
   virtualReturn
 proc QsciLexerRubywordCharacters*(self: gen_qscilexerruby_types.QsciLexerRuby, ): cstring =
-
   (fQsciLexerRuby_virtualbase_wordCharacters(self.h))
 
 type QsciLexerRubywordCharactersProc* = proc(): cstring
@@ -937,7 +880,6 @@ proc miqt_exec_callback_QsciLexerRuby_wordCharacters(self: ptr cQsciLexerRuby, s
 
   virtualReturn
 proc QsciLexerRubysetAutoIndentStyle*(self: gen_qscilexerruby_types.QsciLexerRuby, autoindentstyle: cint): void =
-
   fQsciLexerRuby_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerRubysetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -955,7 +897,6 @@ proc miqt_exec_callback_QsciLexerRuby_setAutoIndentStyle(self: ptr cQsciLexerRub
 
   nimfunc[](slotval1)
 proc QsciLexerRubysetColor*(self: gen_qscilexerruby_types.QsciLexerRuby, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerRuby_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerRubysetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -975,7 +916,6 @@ proc miqt_exec_callback_QsciLexerRuby_setColor(self: ptr cQsciLexerRuby, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerRubysetEolFill*(self: gen_qscilexerruby_types.QsciLexerRuby, eoffill: bool, style: cint): void =
-
   fQsciLexerRuby_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerRubysetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -995,7 +935,6 @@ proc miqt_exec_callback_QsciLexerRuby_setEolFill(self: ptr cQsciLexerRuby, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerRubysetFont*(self: gen_qscilexerruby_types.QsciLexerRuby, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerRuby_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerRubysetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1015,7 +954,6 @@ proc miqt_exec_callback_QsciLexerRuby_setFont(self: ptr cQsciLexerRuby, slot: in
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerRubysetPaper*(self: gen_qscilexerruby_types.QsciLexerRuby, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerRuby_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerRubysetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1035,7 +973,6 @@ proc miqt_exec_callback_QsciLexerRuby_setPaper(self: ptr cQsciLexerRuby, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerRubyreadProperties*(self: gen_qscilexerruby_types.QsciLexerRuby, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerRuby_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerRubyreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1060,7 +997,6 @@ proc miqt_exec_callback_QsciLexerRuby_readProperties(self: ptr cQsciLexerRuby, s
 
   virtualReturn
 proc QsciLexerRubywriteProperties*(self: gen_qscilexerruby_types.QsciLexerRuby, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerRuby_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerRubywritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1085,7 +1021,6 @@ proc miqt_exec_callback_QsciLexerRuby_writeProperties(self: ptr cQsciLexerRuby, 
 
   virtualReturn
 proc QsciLexerRubyevent*(self: gen_qscilexerruby_types.QsciLexerRuby, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerRuby_virtualbase_event(self.h, event.h)
 
 type QsciLexerRubyeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1105,7 +1040,6 @@ proc miqt_exec_callback_QsciLexerRuby_event(self: ptr cQsciLexerRuby, slot: int,
 
   virtualReturn
 proc QsciLexerRubyeventFilter*(self: gen_qscilexerruby_types.QsciLexerRuby, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerRuby_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerRubyeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1127,7 +1061,6 @@ proc miqt_exec_callback_QsciLexerRuby_eventFilter(self: ptr cQsciLexerRuby, slot
 
   virtualReturn
 proc QsciLexerRubytimerEvent*(self: gen_qscilexerruby_types.QsciLexerRuby, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerRuby_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerRubytimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1145,7 +1078,6 @@ proc miqt_exec_callback_QsciLexerRuby_timerEvent(self: ptr cQsciLexerRuby, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerRubychildEvent*(self: gen_qscilexerruby_types.QsciLexerRuby, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerRuby_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerRubychildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1163,7 +1095,6 @@ proc miqt_exec_callback_QsciLexerRuby_childEvent(self: ptr cQsciLexerRuby, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerRubycustomEvent*(self: gen_qscilexerruby_types.QsciLexerRuby, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerRuby_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerRubycustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1181,7 +1112,6 @@ proc miqt_exec_callback_QsciLexerRuby_customEvent(self: ptr cQsciLexerRuby, slot
 
   nimfunc[](slotval1)
 proc QsciLexerRubyconnectNotify*(self: gen_qscilexerruby_types.QsciLexerRuby, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerRuby_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerRubyconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1199,7 +1129,6 @@ proc miqt_exec_callback_QsciLexerRuby_connectNotify(self: ptr cQsciLexerRuby, sl
 
   nimfunc[](slotval1)
 proc QsciLexerRubydisconnectNotify*(self: gen_qscilexerruby_types.QsciLexerRuby, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerRuby_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerRubydisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

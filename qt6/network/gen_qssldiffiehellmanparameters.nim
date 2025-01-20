@@ -69,56 +69,45 @@ proc fcQSslDiffieHellmanParameters_delete(self: pointer) {.importc: "QSslDiffieH
 func init*(T: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, h: ptr cQSslDiffieHellmanParameters): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
   T(h: h)
 proc create*(T: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, ): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
-
   gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters.init(fcQSslDiffieHellmanParameters_new())
+
 proc create*(T: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, other: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
-
   gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters.init(fcQSslDiffieHellmanParameters_new2(other.h))
-proc defaultParameters*(_: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, ): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
 
+proc defaultParameters*(_: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, ): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
   gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters(h: fcQSslDiffieHellmanParameters_defaultParameters())
 
 proc operatorAssign*(self: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, other: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters): void =
-
   fcQSslDiffieHellmanParameters_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, other: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters): void =
-
   fcQSslDiffieHellmanParameters_swap(self.h, other.h)
 
 proc fromEncoded*(_: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, encoded: seq[byte]): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
-
   gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters(h: fcQSslDiffieHellmanParameters_fromEncoded(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded)))))
 
-proc fromEncodedWithDevice*(_: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, device: gen_qiodevice.QIODevice): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
-
+proc fromEncoded*(_: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, device: gen_qiodevice.QIODevice): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
   gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters(h: fcQSslDiffieHellmanParameters_fromEncodedWithDevice(device.h))
 
 proc isEmpty*(self: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, ): bool =
-
   fcQSslDiffieHellmanParameters_isEmpty(self.h)
 
 proc isValid*(self: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, ): bool =
-
   fcQSslDiffieHellmanParameters_isValid(self.h)
 
 proc error*(self: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, ): cint =
-
   cint(fcQSslDiffieHellmanParameters_error(self.h))
 
 proc errorString*(self: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, ): string =
-
   let v_ms = fcQSslDiffieHellmanParameters_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc fromEncoded2*(_: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, encoded: seq[byte], format: cint): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
-
+proc fromEncoded*(_: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, encoded: seq[byte], format: cint): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
   gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters(h: fcQSslDiffieHellmanParameters_fromEncoded2(struct_miqt_string(data: cast[cstring](if len(encoded) == 0: nil else: unsafeAddr encoded[0]), len: csize_t(len(encoded))), cint(format)))
 
-proc fromEncoded22*(_: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, device: gen_qiodevice.QIODevice, format: cint): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
-
+proc fromEncoded*(_: type gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters, device: gen_qiodevice.QIODevice, format: cint): gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters =
   gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters(h: fcQSslDiffieHellmanParameters_fromEncoded22(device.h, cint(format)))
 
 proc delete*(self: gen_qssldiffiehellmanparameters_types.QSslDiffieHellmanParameters) =

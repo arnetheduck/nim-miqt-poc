@@ -149,248 +149,205 @@ proc fcQWebEngineDownloadItem_delete(self: pointer) {.importc: "QWebEngineDownlo
 func init*(T: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, h: ptr cQWebEngineDownloadItem): gen_qwebenginedownloaditem_types.QWebEngineDownloadItem =
   T(h: h)
 proc metaObject*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQWebEngineDownloadItem_metaObject(self.h))
 
 proc metacast*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, param1: cstring): pointer =
-
   fcQWebEngineDownloadItem_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebEngineDownloadItem_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring): string =
-
   let v_ms = fcQWebEngineDownloadItem_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring): string =
-
   let v_ms = fcQWebEngineDownloadItem_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc id*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): cuint =
-
   fcQWebEngineDownloadItem_id(self.h)
 
 proc state*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): cint =
-
   cint(fcQWebEngineDownloadItem_state(self.h))
 
 proc totalBytes*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): clonglong =
-
   fcQWebEngineDownloadItem_totalBytes(self.h)
 
 proc receivedBytes*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): clonglong =
-
   fcQWebEngineDownloadItem_receivedBytes(self.h)
 
 proc url*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineDownloadItem_url(self.h))
 
 proc mimeType*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): string =
-
   let v_ms = fcQWebEngineDownloadItem_mimeType(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc path*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): string =
-
   let v_ms = fcQWebEngineDownloadItem_path(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPath*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, path: string): void =
-
   fcQWebEngineDownloadItem_setPath(self.h, struct_miqt_string(data: path, len: csize_t(len(path))))
 
 proc isFinished*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): bool =
-
   fcQWebEngineDownloadItem_isFinished(self.h)
 
 proc isPaused*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): bool =
-
   fcQWebEngineDownloadItem_isPaused(self.h)
 
 proc savePageFormat*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): cint =
-
   cint(fcQWebEngineDownloadItem_savePageFormat(self.h))
 
 proc setSavePageFormat*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, format: cint): void =
-
   fcQWebEngineDownloadItem_setSavePageFormat(self.h, cint(format))
 
 proc typeX*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): cint =
-
   cint(fcQWebEngineDownloadItem_typeX(self.h))
 
 proc interruptReason*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): cint =
-
   cint(fcQWebEngineDownloadItem_interruptReason(self.h))
 
 proc interruptReasonString*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): string =
-
   let v_ms = fcQWebEngineDownloadItem_interruptReasonString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isSavePageDownload*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): bool =
-
   fcQWebEngineDownloadItem_isSavePageDownload(self.h)
 
 proc suggestedFileName*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): string =
-
   let v_ms = fcQWebEngineDownloadItem_suggestedFileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc downloadDirectory*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): string =
-
   let v_ms = fcQWebEngineDownloadItem_downloadDirectory(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDownloadDirectory*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, directory: string): void =
-
   fcQWebEngineDownloadItem_setDownloadDirectory(self.h, struct_miqt_string(data: directory, len: csize_t(len(directory))))
 
 proc downloadFileName*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): string =
-
   let v_ms = fcQWebEngineDownloadItem_downloadFileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDownloadFileName*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, fileName: string): void =
-
   fcQWebEngineDownloadItem_setDownloadFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc page*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): gen_qwebenginepage.QWebEnginePage =
-
   gen_qwebenginepage.QWebEnginePage(h: fcQWebEngineDownloadItem_page(self.h))
 
 proc accept*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): void =
-
   fcQWebEngineDownloadItem_accept(self.h)
 
 proc cancel*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): void =
-
   fcQWebEngineDownloadItem_cancel(self.h)
 
 proc pause*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): void =
-
   fcQWebEngineDownloadItem_pause(self.h)
 
 proc resume*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): void =
-
   fcQWebEngineDownloadItem_resume(self.h)
 
 proc finished*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, ): void =
-
   fcQWebEngineDownloadItem_finished(self.h)
 
+type QWebEngineDownloadItemfinishedSlot* = proc()
 proc miqt_exec_callback_QWebEngineDownloadItem_finished(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QWebEngineDownloadItemfinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onfinished*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onfinished*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: QWebEngineDownloadItemfinishedSlot) =
+  var tmp = new QWebEngineDownloadItemfinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadItem_connect_finished(self.h, cast[int](addr tmp[]))
-proc stateChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, state: cint): void =
 
+proc stateChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, state: cint): void =
   fcQWebEngineDownloadItem_stateChanged(self.h, cint(state))
 
+type QWebEngineDownloadItemstateChangedSlot* = proc(state: cint)
 proc miqt_exec_callback_QWebEngineDownloadItem_stateChanged(slot: int, state: cint) {.exportc.} =
-  type Cb = proc(state: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineDownloadItemstateChangedSlot](cast[pointer](slot))
   let slotval1 = cint(state)
-
 
   nimfunc[](slotval1)
 
-proc onstateChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: proc(state: cint)) =
-  type Cb = proc(state: cint)
-  var tmp = new Cb
+proc onstateChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: QWebEngineDownloadItemstateChangedSlot) =
+  var tmp = new QWebEngineDownloadItemstateChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadItem_connect_stateChanged(self.h, cast[int](addr tmp[]))
-proc downloadProgress*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, bytesReceived: clonglong, bytesTotal: clonglong): void =
 
+proc downloadProgress*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, bytesReceived: clonglong, bytesTotal: clonglong): void =
   fcQWebEngineDownloadItem_downloadProgress(self.h, bytesReceived, bytesTotal)
 
+type QWebEngineDownloadItemdownloadProgressSlot* = proc(bytesReceived: clonglong, bytesTotal: clonglong)
 proc miqt_exec_callback_QWebEngineDownloadItem_downloadProgress(slot: int, bytesReceived: clonglong, bytesTotal: clonglong) {.exportc.} =
-  type Cb = proc(bytesReceived: clonglong, bytesTotal: clonglong)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineDownloadItemdownloadProgressSlot](cast[pointer](slot))
   let slotval1 = bytesReceived
 
   let slotval2 = bytesTotal
 
-
   nimfunc[](slotval1, slotval2)
 
-proc ondownloadProgress*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: proc(bytesReceived: clonglong, bytesTotal: clonglong)) =
-  type Cb = proc(bytesReceived: clonglong, bytesTotal: clonglong)
-  var tmp = new Cb
+proc ondownloadProgress*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: QWebEngineDownloadItemdownloadProgressSlot) =
+  var tmp = new QWebEngineDownloadItemdownloadProgressSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadItem_connect_downloadProgress(self.h, cast[int](addr tmp[]))
-proc isPausedChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, isPaused: bool): void =
 
+proc isPausedChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, isPaused: bool): void =
   fcQWebEngineDownloadItem_isPausedChanged(self.h, isPaused)
 
+type QWebEngineDownloadItemisPausedChangedSlot* = proc(isPaused: bool)
 proc miqt_exec_callback_QWebEngineDownloadItem_isPausedChanged(slot: int, isPaused: bool) {.exportc.} =
-  type Cb = proc(isPaused: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QWebEngineDownloadItemisPausedChangedSlot](cast[pointer](slot))
   let slotval1 = isPaused
-
 
   nimfunc[](slotval1)
 
-proc onisPausedChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: proc(isPaused: bool)) =
-  type Cb = proc(isPaused: bool)
-  var tmp = new Cb
+proc onisPausedChanged*(self: gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, slot: QWebEngineDownloadItemisPausedChangedSlot) =
+  var tmp = new QWebEngineDownloadItemisPausedChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQWebEngineDownloadItem_connect_isPausedChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineDownloadItem_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineDownloadItem_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring, c: cstring): string =
   let v_ms = fcQWebEngineDownloadItem_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qwebenginedownloaditem_types.QWebEngineDownloadItem, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebEngineDownloadItem_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

@@ -97,40 +97,33 @@ proc fcQsciAbstractAPIs_delete(self: pointer) {.importc: "QsciAbstractAPIs_delet
 func init*(T: type gen_qsciabstractapis_types.QsciAbstractAPIs, h: ptr cQsciAbstractAPIs): gen_qsciabstractapis_types.QsciAbstractAPIs =
   T(h: h)
 proc create*(T: type gen_qsciabstractapis_types.QsciAbstractAPIs, lexer: gen_qscilexer.QsciLexer): gen_qsciabstractapis_types.QsciAbstractAPIs =
-
   gen_qsciabstractapis_types.QsciAbstractAPIs.init(fcQsciAbstractAPIs_new(lexer.h))
-proc metaObject*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciAbstractAPIs_metaObject(self.h))
 
 proc metacast*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, param1: cstring): pointer =
-
   fcQsciAbstractAPIs_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciAbstractAPIs_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring): string =
-
   let v_ms = fcQsciAbstractAPIs_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring): string =
-
   let v_ms = fcQsciAbstractAPIs_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc lexer*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, ): gen_qscilexer.QsciLexer =
-
   gen_qscilexer.QsciLexer(h: fcQsciAbstractAPIs_lexer(self.h))
 
 proc updateAutoCompletionList*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, context: seq[string], list: seq[string]): void =
-
   var context_CArray = newSeq[struct_miqt_string](len(context))
   for i in 0..<len(context):
     context_CArray[i] = struct_miqt_string(data: context[i], len: csize_t(len(context[i])))
@@ -142,11 +135,9 @@ proc updateAutoCompletionList*(self: gen_qsciabstractapis_types.QsciAbstractAPIs
   fcQsciAbstractAPIs_updateAutoCompletionList(self.h, struct_miqt_array(len: csize_t(len(context)), data: if len(context) == 0: nil else: addr(context_CArray[0])), struct_miqt_array(len: csize_t(len(list)), data: if len(list) == 0: nil else: addr(list_CArray[0])))
 
 proc autoCompletionSelected*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, selection: string): void =
-
   fcQsciAbstractAPIs_autoCompletionSelected(self.h, struct_miqt_string(data: selection, len: csize_t(len(selection))))
 
 proc callTips*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, context: seq[string], commas: cint, style: cint, shifts: seq[cint]): seq[string] =
-
   var context_CArray = newSeq[struct_miqt_string](len(context))
   for i in 0..<len(context):
     context_CArray[i] = struct_miqt_string(data: context[i], len: csize_t(len(context[i])))
@@ -165,36 +156,31 @@ proc callTips*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, context: seq[s
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc tr2*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring, c: cstring): string =
   let v_ms = fcQsciAbstractAPIs_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciAbstractAPIs_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring, c: cstring): string =
   let v_ms = fcQsciAbstractAPIs_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qsciabstractapis_types.QsciAbstractAPIs, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciAbstractAPIs_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciAbstractAPIsmetaObject*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciAbstractAPIs_virtualbase_metaObject(self.h))
 
 type QsciAbstractAPIsmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -212,7 +198,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_metaObject(self: ptr cQsciAbstractAPIs,
 
   virtualReturn.h
 proc QsciAbstractAPIsmetacast*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, param1: cstring): pointer =
-
   fQsciAbstractAPIs_virtualbase_metacast(self.h, param1)
 
 type QsciAbstractAPIsmetacastProc* = proc(param1: cstring): pointer
@@ -232,7 +217,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_metacast(self: ptr cQsciAbstractAPIs, s
 
   virtualReturn
 proc QsciAbstractAPIsmetacall*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciAbstractAPIs_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciAbstractAPIsmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -288,7 +272,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_updateAutoCompletionList(self: ptr cQsc
 
   nimfunc[](slotval1, slotval2)
 proc QsciAbstractAPIsautoCompletionSelected*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, selection: string): void =
-
   fQsciAbstractAPIs_virtualbase_autoCompletionSelected(self.h, struct_miqt_string(data: selection, len: csize_t(len(selection))))
 
 type QsciAbstractAPIsautoCompletionSelectedProc* = proc(selection: string): void
@@ -348,7 +331,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_callTips(self: ptr cQsciAbstractAPIs, s
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciAbstractAPIsevent*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, event: gen_qcoreevent.QEvent): bool =
-
   fQsciAbstractAPIs_virtualbase_event(self.h, event.h)
 
 type QsciAbstractAPIseventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -368,7 +350,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_event(self: ptr cQsciAbstractAPIs, slot
 
   virtualReturn
 proc QsciAbstractAPIseventFilter*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciAbstractAPIs_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciAbstractAPIseventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -390,7 +371,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_eventFilter(self: ptr cQsciAbstractAPIs
 
   virtualReturn
 proc QsciAbstractAPIstimerEvent*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciAbstractAPIs_virtualbase_timerEvent(self.h, event.h)
 
 type QsciAbstractAPIstimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -408,7 +388,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_timerEvent(self: ptr cQsciAbstractAPIs,
 
   nimfunc[](slotval1)
 proc QsciAbstractAPIschildEvent*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciAbstractAPIs_virtualbase_childEvent(self.h, event.h)
 
 type QsciAbstractAPIschildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -426,7 +405,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_childEvent(self: ptr cQsciAbstractAPIs,
 
   nimfunc[](slotval1)
 proc QsciAbstractAPIscustomEvent*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, event: gen_qcoreevent.QEvent): void =
-
   fQsciAbstractAPIs_virtualbase_customEvent(self.h, event.h)
 
 type QsciAbstractAPIscustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -444,7 +422,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_customEvent(self: ptr cQsciAbstractAPIs
 
   nimfunc[](slotval1)
 proc QsciAbstractAPIsconnectNotify*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciAbstractAPIs_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciAbstractAPIsconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -462,7 +439,6 @@ proc miqt_exec_callback_QsciAbstractAPIs_connectNotify(self: ptr cQsciAbstractAP
 
   nimfunc[](slotval1)
 proc QsciAbstractAPIsdisconnectNotify*(self: gen_qsciabstractapis_types.QsciAbstractAPIs, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciAbstractAPIs_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciAbstractAPIsdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

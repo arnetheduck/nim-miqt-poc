@@ -223,169 +223,137 @@ proc fcQLCDNumber_delete(self: pointer) {.importc: "QLCDNumber_delete".}
 func init*(T: type gen_qlcdnumber_types.QLCDNumber, h: ptr cQLCDNumber): gen_qlcdnumber_types.QLCDNumber =
   T(h: h)
 proc create*(T: type gen_qlcdnumber_types.QLCDNumber, parent: gen_qwidget.QWidget): gen_qlcdnumber_types.QLCDNumber =
-
   gen_qlcdnumber_types.QLCDNumber.init(fcQLCDNumber_new(parent.h))
+
 proc create*(T: type gen_qlcdnumber_types.QLCDNumber, ): gen_qlcdnumber_types.QLCDNumber =
-
   gen_qlcdnumber_types.QLCDNumber.init(fcQLCDNumber_new2())
+
 proc create*(T: type gen_qlcdnumber_types.QLCDNumber, numDigits: cuint): gen_qlcdnumber_types.QLCDNumber =
-
   gen_qlcdnumber_types.QLCDNumber.init(fcQLCDNumber_new3(numDigits))
+
 proc create*(T: type gen_qlcdnumber_types.QLCDNumber, numDigits: cuint, parent: gen_qwidget.QWidget): gen_qlcdnumber_types.QLCDNumber =
-
   gen_qlcdnumber_types.QLCDNumber.init(fcQLCDNumber_new4(numDigits, parent.h))
-proc metaObject*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQLCDNumber_metaObject(self.h))
 
 proc metacast*(self: gen_qlcdnumber_types.QLCDNumber, param1: cstring): pointer =
-
   fcQLCDNumber_metacast(self.h, param1)
 
 proc metacall*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQLCDNumber_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring): string =
-
   let v_ms = fcQLCDNumber_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring): string =
-
   let v_ms = fcQLCDNumber_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc smallDecimalPoint*(self: gen_qlcdnumber_types.QLCDNumber, ): bool =
-
   fcQLCDNumber_smallDecimalPoint(self.h)
 
 proc digitCount*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
-
   fcQLCDNumber_digitCount(self.h)
 
 proc setDigitCount*(self: gen_qlcdnumber_types.QLCDNumber, nDigits: cint): void =
-
   fcQLCDNumber_setDigitCount(self.h, nDigits)
 
 proc checkOverflow*(self: gen_qlcdnumber_types.QLCDNumber, num: float64): bool =
-
   fcQLCDNumber_checkOverflow(self.h, num)
 
-proc checkOverflowWithNum*(self: gen_qlcdnumber_types.QLCDNumber, num: cint): bool =
-
+proc checkOverflow*(self: gen_qlcdnumber_types.QLCDNumber, num: cint): bool =
   fcQLCDNumber_checkOverflowWithNum(self.h, num)
 
 proc mode*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
-
   cint(fcQLCDNumber_mode(self.h))
 
 proc setMode*(self: gen_qlcdnumber_types.QLCDNumber, mode: cint): void =
-
   fcQLCDNumber_setMode(self.h, cint(mode))
 
 proc segmentStyle*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
-
   cint(fcQLCDNumber_segmentStyle(self.h))
 
 proc setSegmentStyle*(self: gen_qlcdnumber_types.QLCDNumber, segmentStyle: cint): void =
-
   fcQLCDNumber_setSegmentStyle(self.h, cint(segmentStyle))
 
 proc value*(self: gen_qlcdnumber_types.QLCDNumber, ): float64 =
-
   fcQLCDNumber_value(self.h)
 
 proc intValue*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
-
   fcQLCDNumber_intValue(self.h)
 
 proc sizeHint*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQLCDNumber_sizeHint(self.h))
 
 proc display*(self: gen_qlcdnumber_types.QLCDNumber, str: string): void =
-
   fcQLCDNumber_display(self.h, struct_miqt_string(data: str, len: csize_t(len(str))))
 
-proc displayWithNum*(self: gen_qlcdnumber_types.QLCDNumber, num: cint): void =
-
+proc display*(self: gen_qlcdnumber_types.QLCDNumber, num: cint): void =
   fcQLCDNumber_displayWithNum(self.h, num)
 
-proc display2*(self: gen_qlcdnumber_types.QLCDNumber, num: float64): void =
-
+proc display*(self: gen_qlcdnumber_types.QLCDNumber, num: float64): void =
   fcQLCDNumber_display2(self.h, num)
 
 proc setHexMode*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
-
   fcQLCDNumber_setHexMode(self.h)
 
 proc setDecMode*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
-
   fcQLCDNumber_setDecMode(self.h)
 
 proc setOctMode*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
-
   fcQLCDNumber_setOctMode(self.h)
 
 proc setBinMode*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
-
   fcQLCDNumber_setBinMode(self.h)
 
 proc setSmallDecimalPoint*(self: gen_qlcdnumber_types.QLCDNumber, smallDecimalPoint: bool): void =
-
   fcQLCDNumber_setSmallDecimalPoint(self.h, smallDecimalPoint)
 
 proc overflow*(self: gen_qlcdnumber_types.QLCDNumber, ): void =
-
   fcQLCDNumber_overflow(self.h)
 
+type QLCDNumberoverflowSlot* = proc()
 proc miqt_exec_callback_QLCDNumber_overflow(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QLCDNumberoverflowSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onoverflow*(self: gen_qlcdnumber_types.QLCDNumber, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onoverflow*(self: gen_qlcdnumber_types.QLCDNumber, slot: QLCDNumberoverflowSlot) =
+  var tmp = new QLCDNumberoverflowSlot
   tmp[] = slot
   GC_ref(tmp)
   fQLCDNumber_connect_overflow(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring): string =
   let v_ms = fcQLCDNumber_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQLCDNumber_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring): string =
   let v_ms = fcQLCDNumber_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qlcdnumber_types.QLCDNumber, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQLCDNumber_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QLCDNumbermetaObject*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQLCDNumber_virtualbase_metaObject(self.h))
 
 type QLCDNumbermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -403,7 +371,6 @@ proc miqt_exec_callback_QLCDNumber_metaObject(self: ptr cQLCDNumber, slot: int):
 
   virtualReturn.h
 proc QLCDNumbermetacast*(self: gen_qlcdnumber_types.QLCDNumber, param1: cstring): pointer =
-
   fQLCDNumber_virtualbase_metacast(self.h, param1)
 
 type QLCDNumbermetacastProc* = proc(param1: cstring): pointer
@@ -423,7 +390,6 @@ proc miqt_exec_callback_QLCDNumber_metacast(self: ptr cQLCDNumber, slot: int, pa
 
   virtualReturn
 proc QLCDNumbermetacall*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint, param2: cint, param3: pointer): cint =
-
   fQLCDNumber_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QLCDNumbermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -447,7 +413,6 @@ proc miqt_exec_callback_QLCDNumber_metacall(self: ptr cQLCDNumber, slot: int, pa
 
   virtualReturn
 proc QLCDNumbersizeHint*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQLCDNumber_virtualbase_sizeHint(self.h))
 
 type QLCDNumbersizeHintProc* = proc(): gen_qsize.QSize
@@ -465,7 +430,6 @@ proc miqt_exec_callback_QLCDNumber_sizeHint(self: ptr cQLCDNumber, slot: int): p
 
   virtualReturn.h
 proc QLCDNumberevent*(self: gen_qlcdnumber_types.QLCDNumber, e: gen_qcoreevent.QEvent): bool =
-
   fQLCDNumber_virtualbase_event(self.h, e.h)
 
 type QLCDNumbereventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -485,7 +449,6 @@ proc miqt_exec_callback_QLCDNumber_event(self: ptr cQLCDNumber, slot: int, e: po
 
   virtualReturn
 proc QLCDNumberpaintEvent*(self: gen_qlcdnumber_types.QLCDNumber, param1: gen_qevent.QPaintEvent): void =
-
   fQLCDNumber_virtualbase_paintEvent(self.h, param1.h)
 
 type QLCDNumberpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -503,7 +466,6 @@ proc miqt_exec_callback_QLCDNumber_paintEvent(self: ptr cQLCDNumber, slot: int, 
 
   nimfunc[](slotval1)
 proc QLCDNumberchangeEvent*(self: gen_qlcdnumber_types.QLCDNumber, param1: gen_qcoreevent.QEvent): void =
-
   fQLCDNumber_virtualbase_changeEvent(self.h, param1.h)
 
 type QLCDNumberchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -521,7 +483,6 @@ proc miqt_exec_callback_QLCDNumber_changeEvent(self: ptr cQLCDNumber, slot: int,
 
   nimfunc[](slotval1)
 proc QLCDNumberdevType*(self: gen_qlcdnumber_types.QLCDNumber, ): cint =
-
   fQLCDNumber_virtualbase_devType(self.h)
 
 type QLCDNumberdevTypeProc* = proc(): cint
@@ -539,7 +500,6 @@ proc miqt_exec_callback_QLCDNumber_devType(self: ptr cQLCDNumber, slot: int): ci
 
   virtualReturn
 proc QLCDNumbersetVisible*(self: gen_qlcdnumber_types.QLCDNumber, visible: bool): void =
-
   fQLCDNumber_virtualbase_setVisible(self.h, visible)
 
 type QLCDNumbersetVisibleProc* = proc(visible: bool): void
@@ -557,7 +517,6 @@ proc miqt_exec_callback_QLCDNumber_setVisible(self: ptr cQLCDNumber, slot: int, 
 
   nimfunc[](slotval1)
 proc QLCDNumberminimumSizeHint*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQLCDNumber_virtualbase_minimumSizeHint(self.h))
 
 type QLCDNumberminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -575,7 +534,6 @@ proc miqt_exec_callback_QLCDNumber_minimumSizeHint(self: ptr cQLCDNumber, slot: 
 
   virtualReturn.h
 proc QLCDNumberheightForWidth*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint): cint =
-
   fQLCDNumber_virtualbase_heightForWidth(self.h, param1)
 
 type QLCDNumberheightForWidthProc* = proc(param1: cint): cint
@@ -595,7 +553,6 @@ proc miqt_exec_callback_QLCDNumber_heightForWidth(self: ptr cQLCDNumber, slot: i
 
   virtualReturn
 proc QLCDNumberhasHeightForWidth*(self: gen_qlcdnumber_types.QLCDNumber, ): bool =
-
   fQLCDNumber_virtualbase_hasHeightForWidth(self.h)
 
 type QLCDNumberhasHeightForWidthProc* = proc(): bool
@@ -613,7 +570,6 @@ proc miqt_exec_callback_QLCDNumber_hasHeightForWidth(self: ptr cQLCDNumber, slot
 
   virtualReturn
 proc QLCDNumberpaintEngine*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQLCDNumber_virtualbase_paintEngine(self.h))
 
 type QLCDNumberpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -631,7 +587,6 @@ proc miqt_exec_callback_QLCDNumber_paintEngine(self: ptr cQLCDNumber, slot: int)
 
   virtualReturn.h
 proc QLCDNumbermousePressEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMouseEvent): void =
-
   fQLCDNumber_virtualbase_mousePressEvent(self.h, event.h)
 
 type QLCDNumbermousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -649,7 +604,6 @@ proc miqt_exec_callback_QLCDNumber_mousePressEvent(self: ptr cQLCDNumber, slot: 
 
   nimfunc[](slotval1)
 proc QLCDNumbermouseReleaseEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMouseEvent): void =
-
   fQLCDNumber_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QLCDNumbermouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -667,7 +621,6 @@ proc miqt_exec_callback_QLCDNumber_mouseReleaseEvent(self: ptr cQLCDNumber, slot
 
   nimfunc[](slotval1)
 proc QLCDNumbermouseDoubleClickEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMouseEvent): void =
-
   fQLCDNumber_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QLCDNumbermouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -685,7 +638,6 @@ proc miqt_exec_callback_QLCDNumber_mouseDoubleClickEvent(self: ptr cQLCDNumber, 
 
   nimfunc[](slotval1)
 proc QLCDNumbermouseMoveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMouseEvent): void =
-
   fQLCDNumber_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QLCDNumbermouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -703,7 +655,6 @@ proc miqt_exec_callback_QLCDNumber_mouseMoveEvent(self: ptr cQLCDNumber, slot: i
 
   nimfunc[](slotval1)
 proc QLCDNumberwheelEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QWheelEvent): void =
-
   fQLCDNumber_virtualbase_wheelEvent(self.h, event.h)
 
 type QLCDNumberwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -721,7 +672,6 @@ proc miqt_exec_callback_QLCDNumber_wheelEvent(self: ptr cQLCDNumber, slot: int, 
 
   nimfunc[](slotval1)
 proc QLCDNumberkeyPressEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QKeyEvent): void =
-
   fQLCDNumber_virtualbase_keyPressEvent(self.h, event.h)
 
 type QLCDNumberkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -739,7 +689,6 @@ proc miqt_exec_callback_QLCDNumber_keyPressEvent(self: ptr cQLCDNumber, slot: in
 
   nimfunc[](slotval1)
 proc QLCDNumberkeyReleaseEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QKeyEvent): void =
-
   fQLCDNumber_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QLCDNumberkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -757,7 +706,6 @@ proc miqt_exec_callback_QLCDNumber_keyReleaseEvent(self: ptr cQLCDNumber, slot: 
 
   nimfunc[](slotval1)
 proc QLCDNumberfocusInEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QFocusEvent): void =
-
   fQLCDNumber_virtualbase_focusInEvent(self.h, event.h)
 
 type QLCDNumberfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -775,7 +723,6 @@ proc miqt_exec_callback_QLCDNumber_focusInEvent(self: ptr cQLCDNumber, slot: int
 
   nimfunc[](slotval1)
 proc QLCDNumberfocusOutEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QFocusEvent): void =
-
   fQLCDNumber_virtualbase_focusOutEvent(self.h, event.h)
 
 type QLCDNumberfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -793,7 +740,6 @@ proc miqt_exec_callback_QLCDNumber_focusOutEvent(self: ptr cQLCDNumber, slot: in
 
   nimfunc[](slotval1)
 proc QLCDNumberenterEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QEvent): void =
-
   fQLCDNumber_virtualbase_enterEvent(self.h, event.h)
 
 type QLCDNumberenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -811,7 +757,6 @@ proc miqt_exec_callback_QLCDNumber_enterEvent(self: ptr cQLCDNumber, slot: int, 
 
   nimfunc[](slotval1)
 proc QLCDNumberleaveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QEvent): void =
-
   fQLCDNumber_virtualbase_leaveEvent(self.h, event.h)
 
 type QLCDNumberleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -829,7 +774,6 @@ proc miqt_exec_callback_QLCDNumber_leaveEvent(self: ptr cQLCDNumber, slot: int, 
 
   nimfunc[](slotval1)
 proc QLCDNumbermoveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QMoveEvent): void =
-
   fQLCDNumber_virtualbase_moveEvent(self.h, event.h)
 
 type QLCDNumbermoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -847,7 +791,6 @@ proc miqt_exec_callback_QLCDNumber_moveEvent(self: ptr cQLCDNumber, slot: int, e
 
   nimfunc[](slotval1)
 proc QLCDNumberresizeEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QResizeEvent): void =
-
   fQLCDNumber_virtualbase_resizeEvent(self.h, event.h)
 
 type QLCDNumberresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -865,7 +808,6 @@ proc miqt_exec_callback_QLCDNumber_resizeEvent(self: ptr cQLCDNumber, slot: int,
 
   nimfunc[](slotval1)
 proc QLCDNumbercloseEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QCloseEvent): void =
-
   fQLCDNumber_virtualbase_closeEvent(self.h, event.h)
 
 type QLCDNumbercloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -883,7 +825,6 @@ proc miqt_exec_callback_QLCDNumber_closeEvent(self: ptr cQLCDNumber, slot: int, 
 
   nimfunc[](slotval1)
 proc QLCDNumbercontextMenuEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QContextMenuEvent): void =
-
   fQLCDNumber_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QLCDNumbercontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -901,7 +842,6 @@ proc miqt_exec_callback_QLCDNumber_contextMenuEvent(self: ptr cQLCDNumber, slot:
 
   nimfunc[](slotval1)
 proc QLCDNumbertabletEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QTabletEvent): void =
-
   fQLCDNumber_virtualbase_tabletEvent(self.h, event.h)
 
 type QLCDNumbertabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -919,7 +859,6 @@ proc miqt_exec_callback_QLCDNumber_tabletEvent(self: ptr cQLCDNumber, slot: int,
 
   nimfunc[](slotval1)
 proc QLCDNumberactionEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QActionEvent): void =
-
   fQLCDNumber_virtualbase_actionEvent(self.h, event.h)
 
 type QLCDNumberactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -937,7 +876,6 @@ proc miqt_exec_callback_QLCDNumber_actionEvent(self: ptr cQLCDNumber, slot: int,
 
   nimfunc[](slotval1)
 proc QLCDNumberdragEnterEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QDragEnterEvent): void =
-
   fQLCDNumber_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QLCDNumberdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -955,7 +893,6 @@ proc miqt_exec_callback_QLCDNumber_dragEnterEvent(self: ptr cQLCDNumber, slot: i
 
   nimfunc[](slotval1)
 proc QLCDNumberdragMoveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QDragMoveEvent): void =
-
   fQLCDNumber_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QLCDNumberdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -973,7 +910,6 @@ proc miqt_exec_callback_QLCDNumber_dragMoveEvent(self: ptr cQLCDNumber, slot: in
 
   nimfunc[](slotval1)
 proc QLCDNumberdragLeaveEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QDragLeaveEvent): void =
-
   fQLCDNumber_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QLCDNumberdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -991,7 +927,6 @@ proc miqt_exec_callback_QLCDNumber_dragLeaveEvent(self: ptr cQLCDNumber, slot: i
 
   nimfunc[](slotval1)
 proc QLCDNumberdropEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QDropEvent): void =
-
   fQLCDNumber_virtualbase_dropEvent(self.h, event.h)
 
 type QLCDNumberdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1009,7 +944,6 @@ proc miqt_exec_callback_QLCDNumber_dropEvent(self: ptr cQLCDNumber, slot: int, e
 
   nimfunc[](slotval1)
 proc QLCDNumbershowEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QShowEvent): void =
-
   fQLCDNumber_virtualbase_showEvent(self.h, event.h)
 
 type QLCDNumbershowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1027,7 +961,6 @@ proc miqt_exec_callback_QLCDNumber_showEvent(self: ptr cQLCDNumber, slot: int, e
 
   nimfunc[](slotval1)
 proc QLCDNumberhideEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qevent.QHideEvent): void =
-
   fQLCDNumber_virtualbase_hideEvent(self.h, event.h)
 
 type QLCDNumberhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1045,7 +978,6 @@ proc miqt_exec_callback_QLCDNumber_hideEvent(self: ptr cQLCDNumber, slot: int, e
 
   nimfunc[](slotval1)
 proc QLCDNumbernativeEvent*(self: gen_qlcdnumber_types.QLCDNumber, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQLCDNumber_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QLCDNumbernativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1072,7 +1004,6 @@ proc miqt_exec_callback_QLCDNumber_nativeEvent(self: ptr cQLCDNumber, slot: int,
 
   virtualReturn
 proc QLCDNumbermetric*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint): cint =
-
   fQLCDNumber_virtualbase_metric(self.h, cint(param1))
 
 type QLCDNumbermetricProc* = proc(param1: cint): cint
@@ -1092,7 +1023,6 @@ proc miqt_exec_callback_QLCDNumber_metric(self: ptr cQLCDNumber, slot: int, para
 
   virtualReturn
 proc QLCDNumberinitPainter*(self: gen_qlcdnumber_types.QLCDNumber, painter: gen_qpainter.QPainter): void =
-
   fQLCDNumber_virtualbase_initPainter(self.h, painter.h)
 
 type QLCDNumberinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1110,7 +1040,6 @@ proc miqt_exec_callback_QLCDNumber_initPainter(self: ptr cQLCDNumber, slot: int,
 
   nimfunc[](slotval1)
 proc QLCDNumberredirected*(self: gen_qlcdnumber_types.QLCDNumber, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQLCDNumber_virtualbase_redirected(self.h, offset.h))
 
 type QLCDNumberredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1130,7 +1059,6 @@ proc miqt_exec_callback_QLCDNumber_redirected(self: ptr cQLCDNumber, slot: int, 
 
   virtualReturn.h
 proc QLCDNumbersharedPainter*(self: gen_qlcdnumber_types.QLCDNumber, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQLCDNumber_virtualbase_sharedPainter(self.h))
 
 type QLCDNumbersharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1148,7 +1076,6 @@ proc miqt_exec_callback_QLCDNumber_sharedPainter(self: ptr cQLCDNumber, slot: in
 
   virtualReturn.h
 proc QLCDNumberinputMethodEvent*(self: gen_qlcdnumber_types.QLCDNumber, param1: gen_qevent.QInputMethodEvent): void =
-
   fQLCDNumber_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QLCDNumberinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1166,7 +1093,6 @@ proc miqt_exec_callback_QLCDNumber_inputMethodEvent(self: ptr cQLCDNumber, slot:
 
   nimfunc[](slotval1)
 proc QLCDNumberinputMethodQuery*(self: gen_qlcdnumber_types.QLCDNumber, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQLCDNumber_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QLCDNumberinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1186,7 +1112,6 @@ proc miqt_exec_callback_QLCDNumber_inputMethodQuery(self: ptr cQLCDNumber, slot:
 
   virtualReturn.h
 proc QLCDNumberfocusNextPrevChild*(self: gen_qlcdnumber_types.QLCDNumber, next: bool): bool =
-
   fQLCDNumber_virtualbase_focusNextPrevChild(self.h, next)
 
 type QLCDNumberfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1206,7 +1131,6 @@ proc miqt_exec_callback_QLCDNumber_focusNextPrevChild(self: ptr cQLCDNumber, slo
 
   virtualReturn
 proc QLCDNumbereventFilter*(self: gen_qlcdnumber_types.QLCDNumber, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQLCDNumber_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QLCDNumbereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1228,7 +1152,6 @@ proc miqt_exec_callback_QLCDNumber_eventFilter(self: ptr cQLCDNumber, slot: int,
 
   virtualReturn
 proc QLCDNumbertimerEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QTimerEvent): void =
-
   fQLCDNumber_virtualbase_timerEvent(self.h, event.h)
 
 type QLCDNumbertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1246,7 +1169,6 @@ proc miqt_exec_callback_QLCDNumber_timerEvent(self: ptr cQLCDNumber, slot: int, 
 
   nimfunc[](slotval1)
 proc QLCDNumberchildEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QChildEvent): void =
-
   fQLCDNumber_virtualbase_childEvent(self.h, event.h)
 
 type QLCDNumberchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1264,7 +1186,6 @@ proc miqt_exec_callback_QLCDNumber_childEvent(self: ptr cQLCDNumber, slot: int, 
 
   nimfunc[](slotval1)
 proc QLCDNumbercustomEvent*(self: gen_qlcdnumber_types.QLCDNumber, event: gen_qcoreevent.QEvent): void =
-
   fQLCDNumber_virtualbase_customEvent(self.h, event.h)
 
 type QLCDNumbercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1282,7 +1203,6 @@ proc miqt_exec_callback_QLCDNumber_customEvent(self: ptr cQLCDNumber, slot: int,
 
   nimfunc[](slotval1)
 proc QLCDNumberconnectNotify*(self: gen_qlcdnumber_types.QLCDNumber, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLCDNumber_virtualbase_connectNotify(self.h, signal.h)
 
 type QLCDNumberconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1300,7 +1220,6 @@ proc miqt_exec_callback_QLCDNumber_connectNotify(self: ptr cQLCDNumber, slot: in
 
   nimfunc[](slotval1)
 proc QLCDNumberdisconnectNotify*(self: gen_qlcdnumber_types.QLCDNumber, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLCDNumber_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QLCDNumberdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

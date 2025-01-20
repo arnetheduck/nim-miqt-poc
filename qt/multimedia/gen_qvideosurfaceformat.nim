@@ -101,119 +101,93 @@ proc fcQVideoSurfaceFormat_delete(self: pointer) {.importc: "QVideoSurfaceFormat
 func init*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, h: ptr cQVideoSurfaceFormat): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
   T(h: h)
 proc create*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
-
   gen_qvideosurfaceformat_types.QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new())
+
 proc create*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, size: gen_qsize.QSize, pixelFormat: cint): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
-
   gen_qvideosurfaceformat_types.QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new2(size.h, cint(pixelFormat)))
+
 proc create*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, format: gen_qvideosurfaceformat_types.QVideoSurfaceFormat): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
-
   gen_qvideosurfaceformat_types.QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new3(format.h))
+
 proc create*(T: type gen_qvideosurfaceformat_types.QVideoSurfaceFormat, size: gen_qsize.QSize, pixelFormat: cint, handleType: cint): gen_qvideosurfaceformat_types.QVideoSurfaceFormat =
-
   gen_qvideosurfaceformat_types.QVideoSurfaceFormat.init(fcQVideoSurfaceFormat_new4(size.h, cint(pixelFormat), cint(handleType)))
-proc operatorAssign*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, format: gen_qvideosurfaceformat_types.QVideoSurfaceFormat): void =
 
+proc operatorAssign*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, format: gen_qvideosurfaceformat_types.QVideoSurfaceFormat): void =
   fcQVideoSurfaceFormat_operatorAssign(self.h, format.h)
 
 proc operatorEqual*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, format: gen_qvideosurfaceformat_types.QVideoSurfaceFormat): bool =
-
   fcQVideoSurfaceFormat_operatorEqual(self.h, format.h)
 
 proc operatorNotEqual*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, format: gen_qvideosurfaceformat_types.QVideoSurfaceFormat): bool =
-
   fcQVideoSurfaceFormat_operatorNotEqual(self.h, format.h)
 
 proc isValid*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): bool =
-
   fcQVideoSurfaceFormat_isValid(self.h)
 
 proc pixelFormat*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
-
   cint(fcQVideoSurfaceFormat_pixelFormat(self.h))
 
 proc handleType*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
-
   cint(fcQVideoSurfaceFormat_handleType(self.h))
 
 proc frameSize*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQVideoSurfaceFormat_frameSize(self.h))
 
 proc setFrameSize*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, size: gen_qsize.QSize): void =
-
   fcQVideoSurfaceFormat_setFrameSize(self.h, size.h)
 
-proc setFrameSize2*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, width: cint, height: cint): void =
-
+proc setFrameSize*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, width: cint, height: cint): void =
   fcQVideoSurfaceFormat_setFrameSize2(self.h, width, height)
 
 proc frameWidth*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
-
   fcQVideoSurfaceFormat_frameWidth(self.h)
 
 proc frameHeight*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
-
   fcQVideoSurfaceFormat_frameHeight(self.h)
 
 proc viewport*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQVideoSurfaceFormat_viewport(self.h))
 
 proc setViewport*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, viewport: gen_qrect.QRect): void =
-
   fcQVideoSurfaceFormat_setViewport(self.h, viewport.h)
 
 proc scanLineDirection*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
-
   cint(fcQVideoSurfaceFormat_scanLineDirection(self.h))
 
 proc setScanLineDirection*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, direction: cint): void =
-
   fcQVideoSurfaceFormat_setScanLineDirection(self.h, cint(direction))
 
 proc frameRate*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): float64 =
-
   fcQVideoSurfaceFormat_frameRate(self.h)
 
 proc setFrameRate*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, rate: float64): void =
-
   fcQVideoSurfaceFormat_setFrameRate(self.h, rate)
 
 proc pixelAspectRatio*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQVideoSurfaceFormat_pixelAspectRatio(self.h))
 
 proc setPixelAspectRatio*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ratio: gen_qsize.QSize): void =
-
   fcQVideoSurfaceFormat_setPixelAspectRatio(self.h, ratio.h)
 
-proc setPixelAspectRatio2*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, width: cint, height: cint): void =
-
+proc setPixelAspectRatio*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, width: cint, height: cint): void =
   fcQVideoSurfaceFormat_setPixelAspectRatio2(self.h, width, height)
 
 proc yCbCrColorSpace*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): cint =
-
   cint(fcQVideoSurfaceFormat_yCbCrColorSpace(self.h))
 
 proc setYCbCrColorSpace*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, colorSpace: cint): void =
-
   fcQVideoSurfaceFormat_setYCbCrColorSpace(self.h, cint(colorSpace))
 
 proc isMirrored*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): bool =
-
   fcQVideoSurfaceFormat_isMirrored(self.h)
 
 proc setMirrored*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, mirrored: bool): void =
-
   fcQVideoSurfaceFormat_setMirrored(self.h, mirrored)
 
 proc sizeHint*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQVideoSurfaceFormat_sizeHint(self.h))
 
 proc propertyNames*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): seq[seq[byte]] =
-
   var v_ma = fcQVideoSurfaceFormat_propertyNames(self.h)
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -225,11 +199,9 @@ proc propertyNames*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, ): 
   vx_ret
 
 proc property*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, name: cstring): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQVideoSurfaceFormat_property(self.h, name))
 
 proc setProperty*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat, name: cstring, value: gen_qvariant.QVariant): void =
-
   fcQVideoSurfaceFormat_setProperty(self.h, name, value.h)
 
 proc delete*(self: gen_qvideosurfaceformat_types.QVideoSurfaceFormat) =

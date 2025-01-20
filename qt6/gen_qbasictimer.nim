@@ -57,30 +57,24 @@ proc fcQBasicTimer_delete(self: pointer) {.importc: "QBasicTimer_delete".}
 func init*(T: type gen_qbasictimer_types.QBasicTimer, h: ptr cQBasicTimer): gen_qbasictimer_types.QBasicTimer =
   T(h: h)
 proc create*(T: type gen_qbasictimer_types.QBasicTimer, ): gen_qbasictimer_types.QBasicTimer =
-
   gen_qbasictimer_types.QBasicTimer.init(fcQBasicTimer_new())
-proc swap*(self: gen_qbasictimer_types.QBasicTimer, other: gen_qbasictimer_types.QBasicTimer): void =
 
+proc swap*(self: gen_qbasictimer_types.QBasicTimer, other: gen_qbasictimer_types.QBasicTimer): void =
   fcQBasicTimer_swap(self.h, other.h)
 
 proc isActive*(self: gen_qbasictimer_types.QBasicTimer, ): bool =
-
   fcQBasicTimer_isActive(self.h)
 
 proc timerId*(self: gen_qbasictimer_types.QBasicTimer, ): cint =
-
   fcQBasicTimer_timerId(self.h)
 
 proc start*(self: gen_qbasictimer_types.QBasicTimer, msec: cint, obj: gen_qobject.QObject): void =
-
   fcQBasicTimer_start(self.h, msec, obj.h)
 
-proc start2*(self: gen_qbasictimer_types.QBasicTimer, msec: cint, timerType: cint, obj: gen_qobject.QObject): void =
-
+proc start*(self: gen_qbasictimer_types.QBasicTimer, msec: cint, timerType: cint, obj: gen_qobject.QObject): void =
   fcQBasicTimer_start2(self.h, msec, cint(timerType), obj.h)
 
 proc stop*(self: gen_qbasictimer_types.QBasicTimer, ): void =
-
   fcQBasicTimer_stop(self.h)
 
 proc delete*(self: gen_qbasictimer_types.QBasicTimer) =

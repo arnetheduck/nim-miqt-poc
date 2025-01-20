@@ -186,75 +186,63 @@ proc fcQFocusFrame_delete(self: pointer) {.importc: "QFocusFrame_delete".}
 func init*(T: type gen_qfocusframe_types.QFocusFrame, h: ptr cQFocusFrame): gen_qfocusframe_types.QFocusFrame =
   T(h: h)
 proc create*(T: type gen_qfocusframe_types.QFocusFrame, parent: gen_qwidget.QWidget): gen_qfocusframe_types.QFocusFrame =
-
   gen_qfocusframe_types.QFocusFrame.init(fcQFocusFrame_new(parent.h))
+
 proc create*(T: type gen_qfocusframe_types.QFocusFrame, ): gen_qfocusframe_types.QFocusFrame =
-
   gen_qfocusframe_types.QFocusFrame.init(fcQFocusFrame_new2())
-proc metaObject*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFocusFrame_metaObject(self.h))
 
 proc metacast*(self: gen_qfocusframe_types.QFocusFrame, param1: cstring): pointer =
-
   fcQFocusFrame_metacast(self.h, param1)
 
 proc metacall*(self: gen_qfocusframe_types.QFocusFrame, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQFocusFrame_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring): string =
-
   let v_ms = fcQFocusFrame_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring): string =
-
   let v_ms = fcQFocusFrame_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setWidget*(self: gen_qfocusframe_types.QFocusFrame, widget: gen_qwidget.QWidget): void =
-
   fcQFocusFrame_setWidget(self.h, widget.h)
 
 proc widget*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQFocusFrame_widget(self.h))
 
-proc tr2*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring): string =
   let v_ms = fcQFocusFrame_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFocusFrame_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring): string =
   let v_ms = fcQFocusFrame_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qfocusframe_types.QFocusFrame, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFocusFrame_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QFocusFramemetaObject*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQFocusFrame_virtualbase_metaObject(self.h))
 
 type QFocusFramemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -272,7 +260,6 @@ proc miqt_exec_callback_QFocusFrame_metaObject(self: ptr cQFocusFrame, slot: int
 
   virtualReturn.h
 proc QFocusFramemetacast*(self: gen_qfocusframe_types.QFocusFrame, param1: cstring): pointer =
-
   fQFocusFrame_virtualbase_metacast(self.h, param1)
 
 type QFocusFramemetacastProc* = proc(param1: cstring): pointer
@@ -292,7 +279,6 @@ proc miqt_exec_callback_QFocusFrame_metacast(self: ptr cQFocusFrame, slot: int, 
 
   virtualReturn
 proc QFocusFramemetacall*(self: gen_qfocusframe_types.QFocusFrame, param1: cint, param2: cint, param3: pointer): cint =
-
   fQFocusFrame_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QFocusFramemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -316,7 +302,6 @@ proc miqt_exec_callback_QFocusFrame_metacall(self: ptr cQFocusFrame, slot: int, 
 
   virtualReturn
 proc QFocusFrameevent*(self: gen_qfocusframe_types.QFocusFrame, e: gen_qcoreevent.QEvent): bool =
-
   fQFocusFrame_virtualbase_event(self.h, e.h)
 
 type QFocusFrameeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -336,7 +321,6 @@ proc miqt_exec_callback_QFocusFrame_event(self: ptr cQFocusFrame, slot: int, e: 
 
   virtualReturn
 proc QFocusFrameeventFilter*(self: gen_qfocusframe_types.QFocusFrame, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQFocusFrame_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QFocusFrameeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -358,7 +342,6 @@ proc miqt_exec_callback_QFocusFrame_eventFilter(self: ptr cQFocusFrame, slot: in
 
   virtualReturn
 proc QFocusFramepaintEvent*(self: gen_qfocusframe_types.QFocusFrame, param1: gen_qevent.QPaintEvent): void =
-
   fQFocusFrame_virtualbase_paintEvent(self.h, param1.h)
 
 type QFocusFramepaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -376,7 +359,6 @@ proc miqt_exec_callback_QFocusFrame_paintEvent(self: ptr cQFocusFrame, slot: int
 
   nimfunc[](slotval1)
 proc QFocusFramedevType*(self: gen_qfocusframe_types.QFocusFrame, ): cint =
-
   fQFocusFrame_virtualbase_devType(self.h)
 
 type QFocusFramedevTypeProc* = proc(): cint
@@ -394,7 +376,6 @@ proc miqt_exec_callback_QFocusFrame_devType(self: ptr cQFocusFrame, slot: int): 
 
   virtualReturn
 proc QFocusFramesetVisible*(self: gen_qfocusframe_types.QFocusFrame, visible: bool): void =
-
   fQFocusFrame_virtualbase_setVisible(self.h, visible)
 
 type QFocusFramesetVisibleProc* = proc(visible: bool): void
@@ -412,7 +393,6 @@ proc miqt_exec_callback_QFocusFrame_setVisible(self: ptr cQFocusFrame, slot: int
 
   nimfunc[](slotval1)
 proc QFocusFramesizeHint*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQFocusFrame_virtualbase_sizeHint(self.h))
 
 type QFocusFramesizeHintProc* = proc(): gen_qsize.QSize
@@ -430,7 +410,6 @@ proc miqt_exec_callback_QFocusFrame_sizeHint(self: ptr cQFocusFrame, slot: int):
 
   virtualReturn.h
 proc QFocusFrameminimumSizeHint*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQFocusFrame_virtualbase_minimumSizeHint(self.h))
 
 type QFocusFrameminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -448,7 +427,6 @@ proc miqt_exec_callback_QFocusFrame_minimumSizeHint(self: ptr cQFocusFrame, slot
 
   virtualReturn.h
 proc QFocusFrameheightForWidth*(self: gen_qfocusframe_types.QFocusFrame, param1: cint): cint =
-
   fQFocusFrame_virtualbase_heightForWidth(self.h, param1)
 
 type QFocusFrameheightForWidthProc* = proc(param1: cint): cint
@@ -468,7 +446,6 @@ proc miqt_exec_callback_QFocusFrame_heightForWidth(self: ptr cQFocusFrame, slot:
 
   virtualReturn
 proc QFocusFramehasHeightForWidth*(self: gen_qfocusframe_types.QFocusFrame, ): bool =
-
   fQFocusFrame_virtualbase_hasHeightForWidth(self.h)
 
 type QFocusFramehasHeightForWidthProc* = proc(): bool
@@ -486,7 +463,6 @@ proc miqt_exec_callback_QFocusFrame_hasHeightForWidth(self: ptr cQFocusFrame, sl
 
   virtualReturn
 proc QFocusFramepaintEngine*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQFocusFrame_virtualbase_paintEngine(self.h))
 
 type QFocusFramepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -504,7 +480,6 @@ proc miqt_exec_callback_QFocusFrame_paintEngine(self: ptr cQFocusFrame, slot: in
 
   virtualReturn.h
 proc QFocusFramemousePressEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMouseEvent): void =
-
   fQFocusFrame_virtualbase_mousePressEvent(self.h, event.h)
 
 type QFocusFramemousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -522,7 +497,6 @@ proc miqt_exec_callback_QFocusFrame_mousePressEvent(self: ptr cQFocusFrame, slot
 
   nimfunc[](slotval1)
 proc QFocusFramemouseReleaseEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMouseEvent): void =
-
   fQFocusFrame_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QFocusFramemouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -540,7 +514,6 @@ proc miqt_exec_callback_QFocusFrame_mouseReleaseEvent(self: ptr cQFocusFrame, sl
 
   nimfunc[](slotval1)
 proc QFocusFramemouseDoubleClickEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMouseEvent): void =
-
   fQFocusFrame_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QFocusFramemouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -558,7 +531,6 @@ proc miqt_exec_callback_QFocusFrame_mouseDoubleClickEvent(self: ptr cQFocusFrame
 
   nimfunc[](slotval1)
 proc QFocusFramemouseMoveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMouseEvent): void =
-
   fQFocusFrame_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QFocusFramemouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -576,7 +548,6 @@ proc miqt_exec_callback_QFocusFrame_mouseMoveEvent(self: ptr cQFocusFrame, slot:
 
   nimfunc[](slotval1)
 proc QFocusFramewheelEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QWheelEvent): void =
-
   fQFocusFrame_virtualbase_wheelEvent(self.h, event.h)
 
 type QFocusFramewheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -594,7 +565,6 @@ proc miqt_exec_callback_QFocusFrame_wheelEvent(self: ptr cQFocusFrame, slot: int
 
   nimfunc[](slotval1)
 proc QFocusFramekeyPressEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QKeyEvent): void =
-
   fQFocusFrame_virtualbase_keyPressEvent(self.h, event.h)
 
 type QFocusFramekeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -612,7 +582,6 @@ proc miqt_exec_callback_QFocusFrame_keyPressEvent(self: ptr cQFocusFrame, slot: 
 
   nimfunc[](slotval1)
 proc QFocusFramekeyReleaseEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QKeyEvent): void =
-
   fQFocusFrame_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QFocusFramekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -630,7 +599,6 @@ proc miqt_exec_callback_QFocusFrame_keyReleaseEvent(self: ptr cQFocusFrame, slot
 
   nimfunc[](slotval1)
 proc QFocusFramefocusInEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QFocusEvent): void =
-
   fQFocusFrame_virtualbase_focusInEvent(self.h, event.h)
 
 type QFocusFramefocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -648,7 +616,6 @@ proc miqt_exec_callback_QFocusFrame_focusInEvent(self: ptr cQFocusFrame, slot: i
 
   nimfunc[](slotval1)
 proc QFocusFramefocusOutEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QFocusEvent): void =
-
   fQFocusFrame_virtualbase_focusOutEvent(self.h, event.h)
 
 type QFocusFramefocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -666,7 +633,6 @@ proc miqt_exec_callback_QFocusFrame_focusOutEvent(self: ptr cQFocusFrame, slot: 
 
   nimfunc[](slotval1)
 proc QFocusFrameenterEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qcoreevent.QEvent): void =
-
   fQFocusFrame_virtualbase_enterEvent(self.h, event.h)
 
 type QFocusFrameenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -684,7 +650,6 @@ proc miqt_exec_callback_QFocusFrame_enterEvent(self: ptr cQFocusFrame, slot: int
 
   nimfunc[](slotval1)
 proc QFocusFrameleaveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qcoreevent.QEvent): void =
-
   fQFocusFrame_virtualbase_leaveEvent(self.h, event.h)
 
 type QFocusFrameleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -702,7 +667,6 @@ proc miqt_exec_callback_QFocusFrame_leaveEvent(self: ptr cQFocusFrame, slot: int
 
   nimfunc[](slotval1)
 proc QFocusFramemoveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QMoveEvent): void =
-
   fQFocusFrame_virtualbase_moveEvent(self.h, event.h)
 
 type QFocusFramemoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -720,7 +684,6 @@ proc miqt_exec_callback_QFocusFrame_moveEvent(self: ptr cQFocusFrame, slot: int,
 
   nimfunc[](slotval1)
 proc QFocusFrameresizeEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QResizeEvent): void =
-
   fQFocusFrame_virtualbase_resizeEvent(self.h, event.h)
 
 type QFocusFrameresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -738,7 +701,6 @@ proc miqt_exec_callback_QFocusFrame_resizeEvent(self: ptr cQFocusFrame, slot: in
 
   nimfunc[](slotval1)
 proc QFocusFramecloseEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QCloseEvent): void =
-
   fQFocusFrame_virtualbase_closeEvent(self.h, event.h)
 
 type QFocusFramecloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -756,7 +718,6 @@ proc miqt_exec_callback_QFocusFrame_closeEvent(self: ptr cQFocusFrame, slot: int
 
   nimfunc[](slotval1)
 proc QFocusFramecontextMenuEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QContextMenuEvent): void =
-
   fQFocusFrame_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QFocusFramecontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -774,7 +735,6 @@ proc miqt_exec_callback_QFocusFrame_contextMenuEvent(self: ptr cQFocusFrame, slo
 
   nimfunc[](slotval1)
 proc QFocusFrametabletEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QTabletEvent): void =
-
   fQFocusFrame_virtualbase_tabletEvent(self.h, event.h)
 
 type QFocusFrametabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -792,7 +752,6 @@ proc miqt_exec_callback_QFocusFrame_tabletEvent(self: ptr cQFocusFrame, slot: in
 
   nimfunc[](slotval1)
 proc QFocusFrameactionEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QActionEvent): void =
-
   fQFocusFrame_virtualbase_actionEvent(self.h, event.h)
 
 type QFocusFrameactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -810,7 +769,6 @@ proc miqt_exec_callback_QFocusFrame_actionEvent(self: ptr cQFocusFrame, slot: in
 
   nimfunc[](slotval1)
 proc QFocusFramedragEnterEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QDragEnterEvent): void =
-
   fQFocusFrame_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QFocusFramedragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -828,7 +786,6 @@ proc miqt_exec_callback_QFocusFrame_dragEnterEvent(self: ptr cQFocusFrame, slot:
 
   nimfunc[](slotval1)
 proc QFocusFramedragMoveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QDragMoveEvent): void =
-
   fQFocusFrame_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QFocusFramedragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -846,7 +803,6 @@ proc miqt_exec_callback_QFocusFrame_dragMoveEvent(self: ptr cQFocusFrame, slot: 
 
   nimfunc[](slotval1)
 proc QFocusFramedragLeaveEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QDragLeaveEvent): void =
-
   fQFocusFrame_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QFocusFramedragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -864,7 +820,6 @@ proc miqt_exec_callback_QFocusFrame_dragLeaveEvent(self: ptr cQFocusFrame, slot:
 
   nimfunc[](slotval1)
 proc QFocusFramedropEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QDropEvent): void =
-
   fQFocusFrame_virtualbase_dropEvent(self.h, event.h)
 
 type QFocusFramedropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -882,7 +837,6 @@ proc miqt_exec_callback_QFocusFrame_dropEvent(self: ptr cQFocusFrame, slot: int,
 
   nimfunc[](slotval1)
 proc QFocusFrameshowEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QShowEvent): void =
-
   fQFocusFrame_virtualbase_showEvent(self.h, event.h)
 
 type QFocusFrameshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -900,7 +854,6 @@ proc miqt_exec_callback_QFocusFrame_showEvent(self: ptr cQFocusFrame, slot: int,
 
   nimfunc[](slotval1)
 proc QFocusFramehideEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qevent.QHideEvent): void =
-
   fQFocusFrame_virtualbase_hideEvent(self.h, event.h)
 
 type QFocusFramehideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -918,7 +871,6 @@ proc miqt_exec_callback_QFocusFrame_hideEvent(self: ptr cQFocusFrame, slot: int,
 
   nimfunc[](slotval1)
 proc QFocusFramenativeEvent*(self: gen_qfocusframe_types.QFocusFrame, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQFocusFrame_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QFocusFramenativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -945,7 +897,6 @@ proc miqt_exec_callback_QFocusFrame_nativeEvent(self: ptr cQFocusFrame, slot: in
 
   virtualReturn
 proc QFocusFramechangeEvent*(self: gen_qfocusframe_types.QFocusFrame, param1: gen_qcoreevent.QEvent): void =
-
   fQFocusFrame_virtualbase_changeEvent(self.h, param1.h)
 
 type QFocusFramechangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -963,7 +914,6 @@ proc miqt_exec_callback_QFocusFrame_changeEvent(self: ptr cQFocusFrame, slot: in
 
   nimfunc[](slotval1)
 proc QFocusFramemetric*(self: gen_qfocusframe_types.QFocusFrame, param1: cint): cint =
-
   fQFocusFrame_virtualbase_metric(self.h, cint(param1))
 
 type QFocusFramemetricProc* = proc(param1: cint): cint
@@ -983,7 +933,6 @@ proc miqt_exec_callback_QFocusFrame_metric(self: ptr cQFocusFrame, slot: int, pa
 
   virtualReturn
 proc QFocusFrameinitPainter*(self: gen_qfocusframe_types.QFocusFrame, painter: gen_qpainter.QPainter): void =
-
   fQFocusFrame_virtualbase_initPainter(self.h, painter.h)
 
 type QFocusFrameinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1001,7 +950,6 @@ proc miqt_exec_callback_QFocusFrame_initPainter(self: ptr cQFocusFrame, slot: in
 
   nimfunc[](slotval1)
 proc QFocusFrameredirected*(self: gen_qfocusframe_types.QFocusFrame, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQFocusFrame_virtualbase_redirected(self.h, offset.h))
 
 type QFocusFrameredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1021,7 +969,6 @@ proc miqt_exec_callback_QFocusFrame_redirected(self: ptr cQFocusFrame, slot: int
 
   virtualReturn.h
 proc QFocusFramesharedPainter*(self: gen_qfocusframe_types.QFocusFrame, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQFocusFrame_virtualbase_sharedPainter(self.h))
 
 type QFocusFramesharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1039,7 +986,6 @@ proc miqt_exec_callback_QFocusFrame_sharedPainter(self: ptr cQFocusFrame, slot: 
 
   virtualReturn.h
 proc QFocusFrameinputMethodEvent*(self: gen_qfocusframe_types.QFocusFrame, param1: gen_qevent.QInputMethodEvent): void =
-
   fQFocusFrame_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QFocusFrameinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1057,7 +1003,6 @@ proc miqt_exec_callback_QFocusFrame_inputMethodEvent(self: ptr cQFocusFrame, slo
 
   nimfunc[](slotval1)
 proc QFocusFrameinputMethodQuery*(self: gen_qfocusframe_types.QFocusFrame, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQFocusFrame_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QFocusFrameinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1077,7 +1022,6 @@ proc miqt_exec_callback_QFocusFrame_inputMethodQuery(self: ptr cQFocusFrame, slo
 
   virtualReturn.h
 proc QFocusFramefocusNextPrevChild*(self: gen_qfocusframe_types.QFocusFrame, next: bool): bool =
-
   fQFocusFrame_virtualbase_focusNextPrevChild(self.h, next)
 
 type QFocusFramefocusNextPrevChildProc* = proc(next: bool): bool
@@ -1097,7 +1041,6 @@ proc miqt_exec_callback_QFocusFrame_focusNextPrevChild(self: ptr cQFocusFrame, s
 
   virtualReturn
 proc QFocusFrametimerEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qcoreevent.QTimerEvent): void =
-
   fQFocusFrame_virtualbase_timerEvent(self.h, event.h)
 
 type QFocusFrametimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1115,7 +1058,6 @@ proc miqt_exec_callback_QFocusFrame_timerEvent(self: ptr cQFocusFrame, slot: int
 
   nimfunc[](slotval1)
 proc QFocusFramechildEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qcoreevent.QChildEvent): void =
-
   fQFocusFrame_virtualbase_childEvent(self.h, event.h)
 
 type QFocusFramechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1133,7 +1075,6 @@ proc miqt_exec_callback_QFocusFrame_childEvent(self: ptr cQFocusFrame, slot: int
 
   nimfunc[](slotval1)
 proc QFocusFramecustomEvent*(self: gen_qfocusframe_types.QFocusFrame, event: gen_qcoreevent.QEvent): void =
-
   fQFocusFrame_virtualbase_customEvent(self.h, event.h)
 
 type QFocusFramecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1151,7 +1092,6 @@ proc miqt_exec_callback_QFocusFrame_customEvent(self: ptr cQFocusFrame, slot: in
 
   nimfunc[](slotval1)
 proc QFocusFrameconnectNotify*(self: gen_qfocusframe_types.QFocusFrame, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFocusFrame_virtualbase_connectNotify(self.h, signal.h)
 
 type QFocusFrameconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1169,7 +1109,6 @@ proc miqt_exec_callback_QFocusFrame_connectNotify(self: ptr cQFocusFrame, slot: 
 
   nimfunc[](slotval1)
 proc QFocusFramedisconnectNotify*(self: gen_qfocusframe_types.QFocusFrame, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFocusFrame_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QFocusFramedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

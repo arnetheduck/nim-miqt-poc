@@ -138,56 +138,45 @@ proc fcQMediaFormat_delete(self: pointer) {.importc: "QMediaFormat_delete".}
 func init*(T: type gen_qmediaformat_types.QMediaFormat, h: ptr cQMediaFormat): gen_qmediaformat_types.QMediaFormat =
   T(h: h)
 proc create*(T: type gen_qmediaformat_types.QMediaFormat, ): gen_qmediaformat_types.QMediaFormat =
-
   gen_qmediaformat_types.QMediaFormat.init(fcQMediaFormat_new())
+
 proc create*(T: type gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): gen_qmediaformat_types.QMediaFormat =
-
   gen_qmediaformat_types.QMediaFormat.init(fcQMediaFormat_new2(other.h))
+
 proc create*(T: type gen_qmediaformat_types.QMediaFormat, format: cint): gen_qmediaformat_types.QMediaFormat =
-
   gen_qmediaformat_types.QMediaFormat.init(fcQMediaFormat_new3(cint(format)))
-proc operatorAssign*(self: gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): void =
 
+proc operatorAssign*(self: gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): void =
   fcQMediaFormat_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): void =
-
   fcQMediaFormat_swap(self.h, other.h)
 
 proc fileFormat*(self: gen_qmediaformat_types.QMediaFormat, ): cint =
-
   cint(fcQMediaFormat_fileFormat(self.h))
 
 proc setFileFormat*(self: gen_qmediaformat_types.QMediaFormat, f: cint): void =
-
   fcQMediaFormat_setFileFormat(self.h, cint(f))
 
 proc setVideoCodec*(self: gen_qmediaformat_types.QMediaFormat, codec: cint): void =
-
   fcQMediaFormat_setVideoCodec(self.h, cint(codec))
 
 proc videoCodec*(self: gen_qmediaformat_types.QMediaFormat, ): cint =
-
   cint(fcQMediaFormat_videoCodec(self.h))
 
 proc setAudioCodec*(self: gen_qmediaformat_types.QMediaFormat, codec: cint): void =
-
   fcQMediaFormat_setAudioCodec(self.h, cint(codec))
 
 proc audioCodec*(self: gen_qmediaformat_types.QMediaFormat, ): cint =
-
   cint(fcQMediaFormat_audioCodec(self.h))
 
 proc isSupported*(self: gen_qmediaformat_types.QMediaFormat, mode: cint): bool =
-
   fcQMediaFormat_isSupported(self.h, cint(mode))
 
 proc mimeType*(self: gen_qmediaformat_types.QMediaFormat, ): gen_qmimetype.QMimeType =
-
   gen_qmimetype.QMimeType(h: fcQMediaFormat_mimeType(self.h))
 
 proc supportedFileFormats*(self: gen_qmediaformat_types.QMediaFormat, m: cint): seq[cint] =
-
   var v_ma = fcQMediaFormat_supportedFileFormats(self.h, cint(m))
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -196,7 +185,6 @@ proc supportedFileFormats*(self: gen_qmediaformat_types.QMediaFormat, m: cint): 
   vx_ret
 
 proc supportedVideoCodecs*(self: gen_qmediaformat_types.QMediaFormat, m: cint): seq[cint] =
-
   var v_ma = fcQMediaFormat_supportedVideoCodecs(self.h, cint(m))
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -205,7 +193,6 @@ proc supportedVideoCodecs*(self: gen_qmediaformat_types.QMediaFormat, m: cint): 
   vx_ret
 
 proc supportedAudioCodecs*(self: gen_qmediaformat_types.QMediaFormat, m: cint): seq[cint] =
-
   var v_ma = fcQMediaFormat_supportedAudioCodecs(self.h, cint(m))
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -214,57 +201,48 @@ proc supportedAudioCodecs*(self: gen_qmediaformat_types.QMediaFormat, m: cint): 
   vx_ret
 
 proc fileFormatName*(_: type gen_qmediaformat_types.QMediaFormat, fileFormat: cint): string =
-
   let v_ms = fcQMediaFormat_fileFormatName(cint(fileFormat))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc audioCodecName*(_: type gen_qmediaformat_types.QMediaFormat, codec: cint): string =
-
   let v_ms = fcQMediaFormat_audioCodecName(cint(codec))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc videoCodecName*(_: type gen_qmediaformat_types.QMediaFormat, codec: cint): string =
-
   let v_ms = fcQMediaFormat_videoCodecName(cint(codec))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc fileFormatDescription*(_: type gen_qmediaformat_types.QMediaFormat, fileFormat: cint): string =
-
   let v_ms = fcQMediaFormat_fileFormatDescription(cint(fileFormat))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc audioCodecDescription*(_: type gen_qmediaformat_types.QMediaFormat, codec: cint): string =
-
   let v_ms = fcQMediaFormat_audioCodecDescription(cint(codec))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc videoCodecDescription*(_: type gen_qmediaformat_types.QMediaFormat, codec: cint): string =
-
   let v_ms = fcQMediaFormat_videoCodecDescription(cint(codec))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc operatorEqual*(self: gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): bool =
-
   fcQMediaFormat_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qmediaformat_types.QMediaFormat, other: gen_qmediaformat_types.QMediaFormat): bool =
-
   fcQMediaFormat_operatorNotEqual(self.h, other.h)
 
 proc resolveForEncoding*(self: gen_qmediaformat_types.QMediaFormat, flags: cint): void =
-
   fcQMediaFormat_resolveForEncoding(self.h, cint(flags))
 
 proc staticMetaObject*(_: type gen_qmediaformat_types.QMediaFormat): gen_qobjectdefs.QMetaObject =

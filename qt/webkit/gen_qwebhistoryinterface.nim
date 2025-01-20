@@ -94,83 +94,69 @@ proc fcQWebHistoryInterface_delete(self: pointer) {.importc: "QWebHistoryInterfa
 func init*(T: type gen_qwebhistoryinterface_types.QWebHistoryInterface, h: ptr cQWebHistoryInterface): gen_qwebhistoryinterface_types.QWebHistoryInterface =
   T(h: h)
 proc create*(T: type gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qwebhistoryinterface_types.QWebHistoryInterface =
-
   gen_qwebhistoryinterface_types.QWebHistoryInterface.init(fcQWebHistoryInterface_new())
+
 proc create*(T: type gen_qwebhistoryinterface_types.QWebHistoryInterface, parent: gen_qobject.QObject): gen_qwebhistoryinterface_types.QWebHistoryInterface =
-
   gen_qwebhistoryinterface_types.QWebHistoryInterface.init(fcQWebHistoryInterface_new2(parent.h))
-proc metaObject*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQWebHistoryInterface_metaObject(self.h))
 
 proc metacast*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cstring): pointer =
-
   fcQWebHistoryInterface_metacast(self.h, param1)
 
 proc metacall*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQWebHistoryInterface_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring): string =
-
   let v_ms = fcQWebHistoryInterface_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring): string =
-
   let v_ms = fcQWebHistoryInterface_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDefaultInterface*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, defaultInterface: gen_qwebhistoryinterface_types.QWebHistoryInterface): void =
-
   fcQWebHistoryInterface_setDefaultInterface(defaultInterface.h)
 
 proc defaultInterface*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qwebhistoryinterface_types.QWebHistoryInterface =
-
   gen_qwebhistoryinterface_types.QWebHistoryInterface(h: fcQWebHistoryInterface_defaultInterface())
 
 proc historyContains*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, url: string): bool =
-
   fcQWebHistoryInterface_historyContains(self.h, struct_miqt_string(data: url, len: csize_t(len(url))))
 
 proc addHistoryEntry*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, url: string): void =
-
   fcQWebHistoryInterface_addHistoryEntry(self.h, struct_miqt_string(data: url, len: csize_t(len(url))))
 
-proc tr2*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring): string =
   let v_ms = fcQWebHistoryInterface_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebHistoryInterface_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring): string =
   let v_ms = fcQWebHistoryInterface_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qwebhistoryinterface_types.QWebHistoryInterface, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQWebHistoryInterface_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QWebHistoryInterfacemetaObject*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQWebHistoryInterface_virtualbase_metaObject(self.h))
 
 type QWebHistoryInterfacemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -188,7 +174,6 @@ proc miqt_exec_callback_QWebHistoryInterface_metaObject(self: ptr cQWebHistoryIn
 
   virtualReturn.h
 proc QWebHistoryInterfacemetacast*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cstring): pointer =
-
   fQWebHistoryInterface_virtualbase_metacast(self.h, param1)
 
 type QWebHistoryInterfacemetacastProc* = proc(param1: cstring): pointer
@@ -208,7 +193,6 @@ proc miqt_exec_callback_QWebHistoryInterface_metacast(self: ptr cQWebHistoryInte
 
   virtualReturn
 proc QWebHistoryInterfacemetacall*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, param1: cint, param2: cint, param3: pointer): cint =
-
   fQWebHistoryInterface_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QWebHistoryInterfacemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -268,7 +252,6 @@ proc miqt_exec_callback_QWebHistoryInterface_addHistoryEntry(self: ptr cQWebHist
 
   nimfunc[](slotval1)
 proc QWebHistoryInterfaceevent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, event: gen_qcoreevent.QEvent): bool =
-
   fQWebHistoryInterface_virtualbase_event(self.h, event.h)
 
 type QWebHistoryInterfaceeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -288,7 +271,6 @@ proc miqt_exec_callback_QWebHistoryInterface_event(self: ptr cQWebHistoryInterfa
 
   virtualReturn
 proc QWebHistoryInterfaceeventFilter*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQWebHistoryInterface_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QWebHistoryInterfaceeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -310,7 +292,6 @@ proc miqt_exec_callback_QWebHistoryInterface_eventFilter(self: ptr cQWebHistoryI
 
   virtualReturn
 proc QWebHistoryInterfacetimerEvent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, event: gen_qcoreevent.QTimerEvent): void =
-
   fQWebHistoryInterface_virtualbase_timerEvent(self.h, event.h)
 
 type QWebHistoryInterfacetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -328,7 +309,6 @@ proc miqt_exec_callback_QWebHistoryInterface_timerEvent(self: ptr cQWebHistoryIn
 
   nimfunc[](slotval1)
 proc QWebHistoryInterfacechildEvent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, event: gen_qcoreevent.QChildEvent): void =
-
   fQWebHistoryInterface_virtualbase_childEvent(self.h, event.h)
 
 type QWebHistoryInterfacechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -346,7 +326,6 @@ proc miqt_exec_callback_QWebHistoryInterface_childEvent(self: ptr cQWebHistoryIn
 
   nimfunc[](slotval1)
 proc QWebHistoryInterfacecustomEvent*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, event: gen_qcoreevent.QEvent): void =
-
   fQWebHistoryInterface_virtualbase_customEvent(self.h, event.h)
 
 type QWebHistoryInterfacecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -364,7 +343,6 @@ proc miqt_exec_callback_QWebHistoryInterface_customEvent(self: ptr cQWebHistoryI
 
   nimfunc[](slotval1)
 proc QWebHistoryInterfaceconnectNotify*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebHistoryInterface_virtualbase_connectNotify(self.h, signal.h)
 
 type QWebHistoryInterfaceconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -382,7 +360,6 @@ proc miqt_exec_callback_QWebHistoryInterface_connectNotify(self: ptr cQWebHistor
 
   nimfunc[](slotval1)
 proc QWebHistoryInterfacedisconnectNotify*(self: gen_qwebhistoryinterface_types.QWebHistoryInterface, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQWebHistoryInterface_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QWebHistoryInterfacedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

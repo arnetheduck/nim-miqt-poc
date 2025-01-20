@@ -110,114 +110,96 @@ proc fcQLibrary_delete(self: pointer) {.importc: "QLibrary_delete".}
 func init*(T: type gen_qlibrary_types.QLibrary, h: ptr cQLibrary): gen_qlibrary_types.QLibrary =
   T(h: h)
 proc create*(T: type gen_qlibrary_types.QLibrary, ): gen_qlibrary_types.QLibrary =
-
   gen_qlibrary_types.QLibrary.init(fcQLibrary_new())
+
 proc create*(T: type gen_qlibrary_types.QLibrary, fileName: string): gen_qlibrary_types.QLibrary =
-
   gen_qlibrary_types.QLibrary.init(fcQLibrary_new2(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+
 proc create*(T: type gen_qlibrary_types.QLibrary, fileName: string, verNum: cint): gen_qlibrary_types.QLibrary =
-
   gen_qlibrary_types.QLibrary.init(fcQLibrary_new3(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), verNum))
+
 proc create*(T: type gen_qlibrary_types.QLibrary, fileName: string, version: string): gen_qlibrary_types.QLibrary =
-
   gen_qlibrary_types.QLibrary.init(fcQLibrary_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: version, len: csize_t(len(version)))))
+
 proc create*(T: type gen_qlibrary_types.QLibrary, parent: gen_qobject.QObject): gen_qlibrary_types.QLibrary =
-
   gen_qlibrary_types.QLibrary.init(fcQLibrary_new5(parent.h))
+
 proc create*(T: type gen_qlibrary_types.QLibrary, fileName: string, parent: gen_qobject.QObject): gen_qlibrary_types.QLibrary =
-
   gen_qlibrary_types.QLibrary.init(fcQLibrary_new6(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), parent.h))
+
 proc create*(T: type gen_qlibrary_types.QLibrary, fileName: string, verNum: cint, parent: gen_qobject.QObject): gen_qlibrary_types.QLibrary =
-
   gen_qlibrary_types.QLibrary.init(fcQLibrary_new7(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), verNum, parent.h))
+
 proc create*(T: type gen_qlibrary_types.QLibrary, fileName: string, version: string, parent: gen_qobject.QObject): gen_qlibrary_types.QLibrary =
-
   gen_qlibrary_types.QLibrary.init(fcQLibrary_new8(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: version, len: csize_t(len(version))), parent.h))
-proc metaObject*(self: gen_qlibrary_types.QLibrary, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qlibrary_types.QLibrary, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQLibrary_metaObject(self.h))
 
 proc metacast*(self: gen_qlibrary_types.QLibrary, param1: cstring): pointer =
-
   fcQLibrary_metacast(self.h, param1)
 
 proc metacall*(self: gen_qlibrary_types.QLibrary, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQLibrary_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qlibrary_types.QLibrary, s: cstring): string =
-
   let v_ms = fcQLibrary_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc load*(self: gen_qlibrary_types.QLibrary, ): bool =
-
   fcQLibrary_load(self.h)
 
 proc unload*(self: gen_qlibrary_types.QLibrary, ): bool =
-
   fcQLibrary_unload(self.h)
 
 proc isLoaded*(self: gen_qlibrary_types.QLibrary, ): bool =
-
   fcQLibrary_isLoaded(self.h)
 
 proc isLibrary*(_: type gen_qlibrary_types.QLibrary, fileName: string): bool =
-
   fcQLibrary_isLibrary(struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc setFileName*(self: gen_qlibrary_types.QLibrary, fileName: string): void =
-
   fcQLibrary_setFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc fileName*(self: gen_qlibrary_types.QLibrary, ): string =
-
   let v_ms = fcQLibrary_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFileNameAndVersion*(self: gen_qlibrary_types.QLibrary, fileName: string, verNum: cint): void =
-
   fcQLibrary_setFileNameAndVersion(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), verNum)
 
-proc setFileNameAndVersion2*(self: gen_qlibrary_types.QLibrary, fileName: string, version: string): void =
-
+proc setFileNameAndVersion*(self: gen_qlibrary_types.QLibrary, fileName: string, version: string): void =
   fcQLibrary_setFileNameAndVersion2(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: version, len: csize_t(len(version))))
 
 proc errorString*(self: gen_qlibrary_types.QLibrary, ): string =
-
   let v_ms = fcQLibrary_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setLoadHints*(self: gen_qlibrary_types.QLibrary, hints: cint): void =
-
   fcQLibrary_setLoadHints(self.h, cint(hints))
 
 proc loadHints*(self: gen_qlibrary_types.QLibrary, ): cint =
-
   cint(fcQLibrary_loadHints(self.h))
 
-proc tr2*(_: type gen_qlibrary_types.QLibrary, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qlibrary_types.QLibrary, s: cstring, c: cstring): string =
   let v_ms = fcQLibrary_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qlibrary_types.QLibrary, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qlibrary_types.QLibrary, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQLibrary_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QLibrarymetaObject*(self: gen_qlibrary_types.QLibrary, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQLibrary_virtualbase_metaObject(self.h))
 
 type QLibrarymetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -235,7 +217,6 @@ proc miqt_exec_callback_QLibrary_metaObject(self: ptr cQLibrary, slot: int): poi
 
   virtualReturn.h
 proc QLibrarymetacast*(self: gen_qlibrary_types.QLibrary, param1: cstring): pointer =
-
   fQLibrary_virtualbase_metacast(self.h, param1)
 
 type QLibrarymetacastProc* = proc(param1: cstring): pointer
@@ -255,7 +236,6 @@ proc miqt_exec_callback_QLibrary_metacast(self: ptr cQLibrary, slot: int, param1
 
   virtualReturn
 proc QLibrarymetacall*(self: gen_qlibrary_types.QLibrary, param1: cint, param2: cint, param3: pointer): cint =
-
   fQLibrary_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QLibrarymetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -279,7 +259,6 @@ proc miqt_exec_callback_QLibrary_metacall(self: ptr cQLibrary, slot: int, param1
 
   virtualReturn
 proc QLibraryevent*(self: gen_qlibrary_types.QLibrary, event: gen_qcoreevent.QEvent): bool =
-
   fQLibrary_virtualbase_event(self.h, event.h)
 
 type QLibraryeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -299,7 +278,6 @@ proc miqt_exec_callback_QLibrary_event(self: ptr cQLibrary, slot: int, event: po
 
   virtualReturn
 proc QLibraryeventFilter*(self: gen_qlibrary_types.QLibrary, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQLibrary_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QLibraryeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -321,7 +299,6 @@ proc miqt_exec_callback_QLibrary_eventFilter(self: ptr cQLibrary, slot: int, wat
 
   virtualReturn
 proc QLibrarytimerEvent*(self: gen_qlibrary_types.QLibrary, event: gen_qcoreevent.QTimerEvent): void =
-
   fQLibrary_virtualbase_timerEvent(self.h, event.h)
 
 type QLibrarytimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -339,7 +316,6 @@ proc miqt_exec_callback_QLibrary_timerEvent(self: ptr cQLibrary, slot: int, even
 
   nimfunc[](slotval1)
 proc QLibrarychildEvent*(self: gen_qlibrary_types.QLibrary, event: gen_qcoreevent.QChildEvent): void =
-
   fQLibrary_virtualbase_childEvent(self.h, event.h)
 
 type QLibrarychildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -357,7 +333,6 @@ proc miqt_exec_callback_QLibrary_childEvent(self: ptr cQLibrary, slot: int, even
 
   nimfunc[](slotval1)
 proc QLibrarycustomEvent*(self: gen_qlibrary_types.QLibrary, event: gen_qcoreevent.QEvent): void =
-
   fQLibrary_virtualbase_customEvent(self.h, event.h)
 
 type QLibrarycustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -375,7 +350,6 @@ proc miqt_exec_callback_QLibrary_customEvent(self: ptr cQLibrary, slot: int, eve
 
   nimfunc[](slotval1)
 proc QLibraryconnectNotify*(self: gen_qlibrary_types.QLibrary, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLibrary_virtualbase_connectNotify(self.h, signal.h)
 
 type QLibraryconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -393,7 +367,6 @@ proc miqt_exec_callback_QLibrary_connectNotify(self: ptr cQLibrary, slot: int, s
 
   nimfunc[](slotval1)
 proc QLibrarydisconnectNotify*(self: gen_qlibrary_types.QLibrary, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQLibrary_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QLibrarydisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

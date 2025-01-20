@@ -130,115 +130,90 @@ proc fcQFileDevice_delete(self: pointer) {.importc: "QFileDevice_delete".}
 func init*(T: type gen_qfiledevice_types.QFileDevice, h: ptr cQFileDevice): gen_qfiledevice_types.QFileDevice =
   T(h: h)
 proc metaObject*(self: gen_qfiledevice_types.QFileDevice, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQFileDevice_metaObject(self.h))
 
 proc metacast*(self: gen_qfiledevice_types.QFileDevice, param1: cstring): pointer =
-
   fcQFileDevice_metacast(self.h, param1)
 
 proc metacall*(self: gen_qfiledevice_types.QFileDevice, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQFileDevice_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qfiledevice_types.QFileDevice, s: cstring): string =
-
   let v_ms = fcQFileDevice_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc error*(self: gen_qfiledevice_types.QFileDevice, ): cint =
-
   cint(fcQFileDevice_error(self.h))
 
 proc unsetError*(self: gen_qfiledevice_types.QFileDevice, ): void =
-
   fcQFileDevice_unsetError(self.h)
 
 proc close*(self: gen_qfiledevice_types.QFileDevice, ): void =
-
   fcQFileDevice_close(self.h)
 
 proc isSequential*(self: gen_qfiledevice_types.QFileDevice, ): bool =
-
   fcQFileDevice_isSequential(self.h)
 
 proc handle*(self: gen_qfiledevice_types.QFileDevice, ): cint =
-
   fcQFileDevice_handle(self.h)
 
 proc fileName*(self: gen_qfiledevice_types.QFileDevice, ): string =
-
   let v_ms = fcQFileDevice_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc pos*(self: gen_qfiledevice_types.QFileDevice, ): clonglong =
-
   fcQFileDevice_pos(self.h)
 
 proc seek*(self: gen_qfiledevice_types.QFileDevice, offset: clonglong): bool =
-
   fcQFileDevice_seek(self.h, offset)
 
 proc atEnd*(self: gen_qfiledevice_types.QFileDevice, ): bool =
-
   fcQFileDevice_atEnd(self.h)
 
 proc flush*(self: gen_qfiledevice_types.QFileDevice, ): bool =
-
   fcQFileDevice_flush(self.h)
 
 proc size*(self: gen_qfiledevice_types.QFileDevice, ): clonglong =
-
   fcQFileDevice_size(self.h)
 
 proc resize*(self: gen_qfiledevice_types.QFileDevice, sz: clonglong): bool =
-
   fcQFileDevice_resize(self.h, sz)
 
 proc permissions*(self: gen_qfiledevice_types.QFileDevice, ): cint =
-
   cint(fcQFileDevice_permissions(self.h))
 
 proc setPermissions*(self: gen_qfiledevice_types.QFileDevice, permissionSpec: cint): bool =
-
   fcQFileDevice_setPermissions(self.h, cint(permissionSpec))
 
 proc map*(self: gen_qfiledevice_types.QFileDevice, offset: clonglong, size: clonglong): ptr uint8 =
-
   fcQFileDevice_map(self.h, offset, size)
 
 proc unmap*(self: gen_qfiledevice_types.QFileDevice, address: ptr uint8): bool =
-
   fcQFileDevice_unmap(self.h, address)
 
 proc fileTime*(self: gen_qfiledevice_types.QFileDevice, time: cint): gen_qdatetime.QDateTime =
-
   gen_qdatetime.QDateTime(h: fcQFileDevice_fileTime(self.h, cint(time)))
 
 proc setFileTime*(self: gen_qfiledevice_types.QFileDevice, newDate: gen_qdatetime.QDateTime, fileTime: cint): bool =
-
   fcQFileDevice_setFileTime(self.h, newDate.h, cint(fileTime))
 
-proc tr2*(_: type gen_qfiledevice_types.QFileDevice, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qfiledevice_types.QFileDevice, s: cstring, c: cstring): string =
   let v_ms = fcQFileDevice_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qfiledevice_types.QFileDevice, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qfiledevice_types.QFileDevice, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFileDevice_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc map3*(self: gen_qfiledevice_types.QFileDevice, offset: clonglong, size: clonglong, flags: cint): ptr uint8 =
-
+proc map*(self: gen_qfiledevice_types.QFileDevice, offset: clonglong, size: clonglong, flags: cint): ptr uint8 =
   fcQFileDevice_map3(self.h, offset, size, cint(flags))
 
 proc staticMetaObject*(_: type gen_qfiledevice_types.QFileDevice): gen_qobjectdefs.QMetaObject =

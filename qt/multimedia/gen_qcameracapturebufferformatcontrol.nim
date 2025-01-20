@@ -67,33 +67,27 @@ proc fcQCameraCaptureBufferFormatControl_delete(self: pointer) {.importc: "QCame
 func init*(T: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, h: ptr cQCameraCaptureBufferFormatControl): gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl =
   T(h: h)
 proc metaObject*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQCameraCaptureBufferFormatControl_metaObject(self.h))
 
 proc metacast*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, param1: cstring): pointer =
-
   fcQCameraCaptureBufferFormatControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCameraCaptureBufferFormatControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring): string =
-
   let v_ms = fcQCameraCaptureBufferFormatControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring): string =
-
   let v_ms = fcQCameraCaptureBufferFormatControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportedBufferFormats*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, ): seq[cint] =
-
   var v_ma = fcQCameraCaptureBufferFormatControl_supportedBufferFormats(self.h)
   var vx_ret = newSeq[cint](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[cint]](v_ma.data)
@@ -102,54 +96,46 @@ proc supportedBufferFormats*(self: gen_qcameracapturebufferformatcontrol_types.Q
   vx_ret
 
 proc bufferFormat*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, ): cint =
-
   cint(fcQCameraCaptureBufferFormatControl_bufferFormat(self.h))
 
 proc setBufferFormat*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, format: cint): void =
-
   fcQCameraCaptureBufferFormatControl_setBufferFormat(self.h, cint(format))
 
 proc bufferFormatChanged*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, format: cint): void =
-
   fcQCameraCaptureBufferFormatControl_bufferFormatChanged(self.h, cint(format))
 
+type QCameraCaptureBufferFormatControlbufferFormatChangedSlot* = proc(format: cint)
 proc miqt_exec_callback_QCameraCaptureBufferFormatControl_bufferFormatChanged(slot: int, format: cint) {.exportc.} =
-  type Cb = proc(format: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QCameraCaptureBufferFormatControlbufferFormatChangedSlot](cast[pointer](slot))
   let slotval1 = cint(format)
-
 
   nimfunc[](slotval1)
 
-proc onbufferFormatChanged*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, slot: proc(format: cint)) =
-  type Cb = proc(format: cint)
-  var tmp = new Cb
+proc onbufferFormatChanged*(self: gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, slot: QCameraCaptureBufferFormatControlbufferFormatChangedSlot) =
+  var tmp = new QCameraCaptureBufferFormatControlbufferFormatChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQCameraCaptureBufferFormatControl_connect_bufferFormatChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraCaptureBufferFormatControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraCaptureBufferFormatControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring, c: cstring): string =
   let v_ms = fcQCameraCaptureBufferFormatControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcameracapturebufferformatcontrol_types.QCameraCaptureBufferFormatControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraCaptureBufferFormatControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

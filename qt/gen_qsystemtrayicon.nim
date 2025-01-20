@@ -133,182 +133,150 @@ proc fcQSystemTrayIcon_delete(self: pointer) {.importc: "QSystemTrayIcon_delete"
 func init*(T: type gen_qsystemtrayicon_types.QSystemTrayIcon, h: ptr cQSystemTrayIcon): gen_qsystemtrayicon_types.QSystemTrayIcon =
   T(h: h)
 proc create*(T: type gen_qsystemtrayicon_types.QSystemTrayIcon, ): gen_qsystemtrayicon_types.QSystemTrayIcon =
-
   gen_qsystemtrayicon_types.QSystemTrayIcon.init(fcQSystemTrayIcon_new())
+
 proc create*(T: type gen_qsystemtrayicon_types.QSystemTrayIcon, icon: gen_qicon.QIcon): gen_qsystemtrayicon_types.QSystemTrayIcon =
-
   gen_qsystemtrayicon_types.QSystemTrayIcon.init(fcQSystemTrayIcon_new2(icon.h))
-proc create2*(T: type gen_qsystemtrayicon_types.QSystemTrayIcon, parent: gen_qobject.QObject): gen_qsystemtrayicon_types.QSystemTrayIcon =
 
+proc create*(T: type gen_qsystemtrayicon_types.QSystemTrayIcon, parent: gen_qobject.QObject): gen_qsystemtrayicon_types.QSystemTrayIcon =
   gen_qsystemtrayicon_types.QSystemTrayIcon.init(fcQSystemTrayIcon_new3(parent.h))
+
 proc create*(T: type gen_qsystemtrayicon_types.QSystemTrayIcon, icon: gen_qicon.QIcon, parent: gen_qobject.QObject): gen_qsystemtrayicon_types.QSystemTrayIcon =
-
   gen_qsystemtrayicon_types.QSystemTrayIcon.init(fcQSystemTrayIcon_new4(icon.h, parent.h))
-proc metaObject*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSystemTrayIcon_metaObject(self.h))
 
 proc metacast*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, param1: cstring): pointer =
-
   fcQSystemTrayIcon_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSystemTrayIcon_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring): string =
-
   let v_ms = fcQSystemTrayIcon_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring): string =
-
   let v_ms = fcQSystemTrayIcon_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setContextMenu*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, menu: gen_qmenu.QMenu): void =
-
   fcQSystemTrayIcon_setContextMenu(self.h, menu.h)
 
 proc contextMenu*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): gen_qmenu.QMenu =
-
   gen_qmenu.QMenu(h: fcQSystemTrayIcon_contextMenu(self.h))
 
 proc icon*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): gen_qicon.QIcon =
-
   gen_qicon.QIcon(h: fcQSystemTrayIcon_icon(self.h))
 
 proc setIcon*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, icon: gen_qicon.QIcon): void =
-
   fcQSystemTrayIcon_setIcon(self.h, icon.h)
 
 proc toolTip*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): string =
-
   let v_ms = fcQSystemTrayIcon_toolTip(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setToolTip*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, tip: string): void =
-
   fcQSystemTrayIcon_setToolTip(self.h, struct_miqt_string(data: tip, len: csize_t(len(tip))))
 
 proc isSystemTrayAvailable*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, ): bool =
-
   fcQSystemTrayIcon_isSystemTrayAvailable()
 
 proc supportsMessages*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, ): bool =
-
   fcQSystemTrayIcon_supportsMessages()
 
 proc geometry*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fcQSystemTrayIcon_geometry(self.h))
 
 proc isVisible*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): bool =
-
   fcQSystemTrayIcon_isVisible(self.h)
 
 proc setVisible*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, visible: bool): void =
-
   fcQSystemTrayIcon_setVisible(self.h, visible)
 
 proc show*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): void =
-
   fcQSystemTrayIcon_show(self.h)
 
 proc hide*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): void =
-
   fcQSystemTrayIcon_hide(self.h)
 
 proc showMessage*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, title: string, msg: string, icon: gen_qicon.QIcon): void =
-
   fcQSystemTrayIcon_showMessage(self.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: msg, len: csize_t(len(msg))), icon.h)
 
-proc showMessage2*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, title: string, msg: string): void =
-
+proc showMessage*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, title: string, msg: string): void =
   fcQSystemTrayIcon_showMessage2(self.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: msg, len: csize_t(len(msg))))
 
 proc activated*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, reason: cint): void =
-
   fcQSystemTrayIcon_activated(self.h, cint(reason))
 
+type QSystemTrayIconactivatedSlot* = proc(reason: cint)
 proc miqt_exec_callback_QSystemTrayIcon_activated(slot: int, reason: cint) {.exportc.} =
-  type Cb = proc(reason: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSystemTrayIconactivatedSlot](cast[pointer](slot))
   let slotval1 = cint(reason)
-
 
   nimfunc[](slotval1)
 
-proc onactivated*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, slot: proc(reason: cint)) =
-  type Cb = proc(reason: cint)
-  var tmp = new Cb
+proc onactivated*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, slot: QSystemTrayIconactivatedSlot) =
+  var tmp = new QSystemTrayIconactivatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSystemTrayIcon_connect_activated(self.h, cast[int](addr tmp[]))
-proc messageClicked*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): void =
 
+proc messageClicked*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): void =
   fcQSystemTrayIcon_messageClicked(self.h)
 
+type QSystemTrayIconmessageClickedSlot* = proc()
 proc miqt_exec_callback_QSystemTrayIcon_messageClicked(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QSystemTrayIconmessageClickedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onmessageClicked*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onmessageClicked*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, slot: QSystemTrayIconmessageClickedSlot) =
+  var tmp = new QSystemTrayIconmessageClickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSystemTrayIcon_connect_messageClicked(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring, c: cstring): string =
   let v_ms = fcQSystemTrayIcon_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSystemTrayIcon_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring, c: cstring): string =
   let v_ms = fcQSystemTrayIcon_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qsystemtrayicon_types.QSystemTrayIcon, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSystemTrayIcon_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc showMessage4*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, title: string, msg: string, icon: gen_qicon.QIcon, msecs: cint): void =
-
+proc showMessage*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, title: string, msg: string, icon: gen_qicon.QIcon, msecs: cint): void =
   fcQSystemTrayIcon_showMessage4(self.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: msg, len: csize_t(len(msg))), icon.h, msecs)
 
-proc showMessage3*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, title: string, msg: string, icon: cint): void =
-
+proc showMessage*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, title: string, msg: string, icon: cint): void =
   fcQSystemTrayIcon_showMessage3(self.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: msg, len: csize_t(len(msg))), cint(icon))
 
-proc showMessage42*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, title: string, msg: string, icon: cint, msecs: cint): void =
-
+proc showMessage*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, title: string, msg: string, icon: cint, msecs: cint): void =
   fcQSystemTrayIcon_showMessage42(self.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: msg, len: csize_t(len(msg))), cint(icon), msecs)
 
 proc QSystemTrayIconmetaObject*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSystemTrayIcon_virtualbase_metaObject(self.h))
 
 type QSystemTrayIconmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -326,7 +294,6 @@ proc miqt_exec_callback_QSystemTrayIcon_metaObject(self: ptr cQSystemTrayIcon, s
 
   virtualReturn.h
 proc QSystemTrayIconmetacast*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, param1: cstring): pointer =
-
   fQSystemTrayIcon_virtualbase_metacast(self.h, param1)
 
 type QSystemTrayIconmetacastProc* = proc(param1: cstring): pointer
@@ -346,7 +313,6 @@ proc miqt_exec_callback_QSystemTrayIcon_metacast(self: ptr cQSystemTrayIcon, slo
 
   virtualReturn
 proc QSystemTrayIconmetacall*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSystemTrayIcon_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSystemTrayIconmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -370,7 +336,6 @@ proc miqt_exec_callback_QSystemTrayIcon_metacall(self: ptr cQSystemTrayIcon, slo
 
   virtualReturn
 proc QSystemTrayIconevent*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, event: gen_qcoreevent.QEvent): bool =
-
   fQSystemTrayIcon_virtualbase_event(self.h, event.h)
 
 type QSystemTrayIconeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -390,7 +355,6 @@ proc miqt_exec_callback_QSystemTrayIcon_event(self: ptr cQSystemTrayIcon, slot: 
 
   virtualReturn
 proc QSystemTrayIconeventFilter*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSystemTrayIcon_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSystemTrayIconeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -412,7 +376,6 @@ proc miqt_exec_callback_QSystemTrayIcon_eventFilter(self: ptr cQSystemTrayIcon, 
 
   virtualReturn
 proc QSystemTrayIcontimerEvent*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSystemTrayIcon_virtualbase_timerEvent(self.h, event.h)
 
 type QSystemTrayIcontimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -430,7 +393,6 @@ proc miqt_exec_callback_QSystemTrayIcon_timerEvent(self: ptr cQSystemTrayIcon, s
 
   nimfunc[](slotval1)
 proc QSystemTrayIconchildEvent*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, event: gen_qcoreevent.QChildEvent): void =
-
   fQSystemTrayIcon_virtualbase_childEvent(self.h, event.h)
 
 type QSystemTrayIconchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -448,7 +410,6 @@ proc miqt_exec_callback_QSystemTrayIcon_childEvent(self: ptr cQSystemTrayIcon, s
 
   nimfunc[](slotval1)
 proc QSystemTrayIconcustomEvent*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, event: gen_qcoreevent.QEvent): void =
-
   fQSystemTrayIcon_virtualbase_customEvent(self.h, event.h)
 
 type QSystemTrayIconcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -466,7 +427,6 @@ proc miqt_exec_callback_QSystemTrayIcon_customEvent(self: ptr cQSystemTrayIcon, 
 
   nimfunc[](slotval1)
 proc QSystemTrayIconconnectNotify*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSystemTrayIcon_virtualbase_connectNotify(self.h, signal.h)
 
 type QSystemTrayIconconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -484,7 +444,6 @@ proc miqt_exec_callback_QSystemTrayIcon_connectNotify(self: ptr cQSystemTrayIcon
 
   nimfunc[](slotval1)
 proc QSystemTrayIcondisconnectNotify*(self: gen_qsystemtrayicon_types.QSystemTrayIcon, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSystemTrayIcon_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSystemTrayIcondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

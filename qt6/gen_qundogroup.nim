@@ -119,40 +119,33 @@ proc fcQUndoGroup_delete(self: pointer) {.importc: "QUndoGroup_delete".}
 func init*(T: type gen_qundogroup_types.QUndoGroup, h: ptr cQUndoGroup): gen_qundogroup_types.QUndoGroup =
   T(h: h)
 proc create*(T: type gen_qundogroup_types.QUndoGroup, ): gen_qundogroup_types.QUndoGroup =
-
   gen_qundogroup_types.QUndoGroup.init(fcQUndoGroup_new())
+
 proc create*(T: type gen_qundogroup_types.QUndoGroup, parent: gen_qobject.QObject): gen_qundogroup_types.QUndoGroup =
-
   gen_qundogroup_types.QUndoGroup.init(fcQUndoGroup_new2(parent.h))
-proc metaObject*(self: gen_qundogroup_types.QUndoGroup, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qundogroup_types.QUndoGroup, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQUndoGroup_metaObject(self.h))
 
 proc metacast*(self: gen_qundogroup_types.QUndoGroup, param1: cstring): pointer =
-
   fcQUndoGroup_metacast(self.h, param1)
 
 proc metacall*(self: gen_qundogroup_types.QUndoGroup, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQUndoGroup_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qundogroup_types.QUndoGroup, s: cstring): string =
-
   let v_ms = fcQUndoGroup_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc addStack*(self: gen_qundogroup_types.QUndoGroup, stack: gen_qundostack.QUndoStack): void =
-
   fcQUndoGroup_addStack(self.h, stack.h)
 
 proc removeStack*(self: gen_qundogroup_types.QUndoGroup, stack: gen_qundostack.QUndoStack): void =
-
   fcQUndoGroup_removeStack(self.h, stack.h)
 
 proc stacks*(self: gen_qundogroup_types.QUndoGroup, ): seq[gen_qundostack.QUndoStack] =
-
   var v_ma = fcQUndoGroup_stacks(self.h)
   var vx_ret = newSeq[gen_qundostack.QUndoStack](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -161,211 +154,181 @@ proc stacks*(self: gen_qundogroup_types.QUndoGroup, ): seq[gen_qundostack.QUndoS
   vx_ret
 
 proc activeStack*(self: gen_qundogroup_types.QUndoGroup, ): gen_qundostack.QUndoStack =
-
   gen_qundostack.QUndoStack(h: fcQUndoGroup_activeStack(self.h))
 
 proc createUndoAction*(self: gen_qundogroup_types.QUndoGroup, parent: gen_qobject.QObject): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQUndoGroup_createUndoAction(self.h, parent.h))
 
 proc createRedoAction*(self: gen_qundogroup_types.QUndoGroup, parent: gen_qobject.QObject): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQUndoGroup_createRedoAction(self.h, parent.h))
 
 proc canUndo*(self: gen_qundogroup_types.QUndoGroup, ): bool =
-
   fcQUndoGroup_canUndo(self.h)
 
 proc canRedo*(self: gen_qundogroup_types.QUndoGroup, ): bool =
-
   fcQUndoGroup_canRedo(self.h)
 
 proc undoText*(self: gen_qundogroup_types.QUndoGroup, ): string =
-
   let v_ms = fcQUndoGroup_undoText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc redoText*(self: gen_qundogroup_types.QUndoGroup, ): string =
-
   let v_ms = fcQUndoGroup_redoText(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isClean*(self: gen_qundogroup_types.QUndoGroup, ): bool =
-
   fcQUndoGroup_isClean(self.h)
 
 proc undo*(self: gen_qundogroup_types.QUndoGroup, ): void =
-
   fcQUndoGroup_undo(self.h)
 
 proc redo*(self: gen_qundogroup_types.QUndoGroup, ): void =
-
   fcQUndoGroup_redo(self.h)
 
 proc setActiveStack*(self: gen_qundogroup_types.QUndoGroup, stack: gen_qundostack.QUndoStack): void =
-
   fcQUndoGroup_setActiveStack(self.h, stack.h)
 
 proc activeStackChanged*(self: gen_qundogroup_types.QUndoGroup, stack: gen_qundostack.QUndoStack): void =
-
   fcQUndoGroup_activeStackChanged(self.h, stack.h)
 
+type QUndoGroupactiveStackChangedSlot* = proc(stack: gen_qundostack.QUndoStack)
 proc miqt_exec_callback_QUndoGroup_activeStackChanged(slot: int, stack: pointer) {.exportc.} =
-  type Cb = proc(stack: gen_qundostack.QUndoStack)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QUndoGroupactiveStackChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qundostack.QUndoStack(h: stack)
-
 
   nimfunc[](slotval1)
 
-proc onactiveStackChanged*(self: gen_qundogroup_types.QUndoGroup, slot: proc(stack: gen_qundostack.QUndoStack)) =
-  type Cb = proc(stack: gen_qundostack.QUndoStack)
-  var tmp = new Cb
+proc onactiveStackChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupactiveStackChangedSlot) =
+  var tmp = new QUndoGroupactiveStackChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQUndoGroup_connect_activeStackChanged(self.h, cast[int](addr tmp[]))
-proc indexChanged*(self: gen_qundogroup_types.QUndoGroup, idx: cint): void =
 
+proc indexChanged*(self: gen_qundogroup_types.QUndoGroup, idx: cint): void =
   fcQUndoGroup_indexChanged(self.h, idx)
 
+type QUndoGroupindexChangedSlot* = proc(idx: cint)
 proc miqt_exec_callback_QUndoGroup_indexChanged(slot: int, idx: cint) {.exportc.} =
-  type Cb = proc(idx: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QUndoGroupindexChangedSlot](cast[pointer](slot))
   let slotval1 = idx
-
 
   nimfunc[](slotval1)
 
-proc onindexChanged*(self: gen_qundogroup_types.QUndoGroup, slot: proc(idx: cint)) =
-  type Cb = proc(idx: cint)
-  var tmp = new Cb
+proc onindexChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupindexChangedSlot) =
+  var tmp = new QUndoGroupindexChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQUndoGroup_connect_indexChanged(self.h, cast[int](addr tmp[]))
-proc cleanChanged*(self: gen_qundogroup_types.QUndoGroup, clean: bool): void =
 
+proc cleanChanged*(self: gen_qundogroup_types.QUndoGroup, clean: bool): void =
   fcQUndoGroup_cleanChanged(self.h, clean)
 
+type QUndoGroupcleanChangedSlot* = proc(clean: bool)
 proc miqt_exec_callback_QUndoGroup_cleanChanged(slot: int, clean: bool) {.exportc.} =
-  type Cb = proc(clean: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QUndoGroupcleanChangedSlot](cast[pointer](slot))
   let slotval1 = clean
-
 
   nimfunc[](slotval1)
 
-proc oncleanChanged*(self: gen_qundogroup_types.QUndoGroup, slot: proc(clean: bool)) =
-  type Cb = proc(clean: bool)
-  var tmp = new Cb
+proc oncleanChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupcleanChangedSlot) =
+  var tmp = new QUndoGroupcleanChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQUndoGroup_connect_cleanChanged(self.h, cast[int](addr tmp[]))
-proc canUndoChanged*(self: gen_qundogroup_types.QUndoGroup, canUndo: bool): void =
 
+proc canUndoChanged*(self: gen_qundogroup_types.QUndoGroup, canUndo: bool): void =
   fcQUndoGroup_canUndoChanged(self.h, canUndo)
 
+type QUndoGroupcanUndoChangedSlot* = proc(canUndo: bool)
 proc miqt_exec_callback_QUndoGroup_canUndoChanged(slot: int, canUndo: bool) {.exportc.} =
-  type Cb = proc(canUndo: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QUndoGroupcanUndoChangedSlot](cast[pointer](slot))
   let slotval1 = canUndo
-
 
   nimfunc[](slotval1)
 
-proc oncanUndoChanged*(self: gen_qundogroup_types.QUndoGroup, slot: proc(canUndo: bool)) =
-  type Cb = proc(canUndo: bool)
-  var tmp = new Cb
+proc oncanUndoChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupcanUndoChangedSlot) =
+  var tmp = new QUndoGroupcanUndoChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQUndoGroup_connect_canUndoChanged(self.h, cast[int](addr tmp[]))
-proc canRedoChanged*(self: gen_qundogroup_types.QUndoGroup, canRedo: bool): void =
 
+proc canRedoChanged*(self: gen_qundogroup_types.QUndoGroup, canRedo: bool): void =
   fcQUndoGroup_canRedoChanged(self.h, canRedo)
 
+type QUndoGroupcanRedoChangedSlot* = proc(canRedo: bool)
 proc miqt_exec_callback_QUndoGroup_canRedoChanged(slot: int, canRedo: bool) {.exportc.} =
-  type Cb = proc(canRedo: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QUndoGroupcanRedoChangedSlot](cast[pointer](slot))
   let slotval1 = canRedo
-
 
   nimfunc[](slotval1)
 
-proc oncanRedoChanged*(self: gen_qundogroup_types.QUndoGroup, slot: proc(canRedo: bool)) =
-  type Cb = proc(canRedo: bool)
-  var tmp = new Cb
+proc oncanRedoChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupcanRedoChangedSlot) =
+  var tmp = new QUndoGroupcanRedoChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQUndoGroup_connect_canRedoChanged(self.h, cast[int](addr tmp[]))
-proc undoTextChanged*(self: gen_qundogroup_types.QUndoGroup, undoText: string): void =
 
+proc undoTextChanged*(self: gen_qundogroup_types.QUndoGroup, undoText: string): void =
   fcQUndoGroup_undoTextChanged(self.h, struct_miqt_string(data: undoText, len: csize_t(len(undoText))))
 
+type QUndoGroupundoTextChangedSlot* = proc(undoText: string)
 proc miqt_exec_callback_QUndoGroup_undoTextChanged(slot: int, undoText: struct_miqt_string) {.exportc.} =
-  type Cb = proc(undoText: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QUndoGroupundoTextChangedSlot](cast[pointer](slot))
   let vundoText_ms = undoText
   let vundoTextx_ret = string.fromBytes(toOpenArrayByte(vundoText_ms.data, 0, int(vundoText_ms.len)-1))
   c_free(vundoText_ms.data)
   let slotval1 = vundoTextx_ret
 
-
   nimfunc[](slotval1)
 
-proc onundoTextChanged*(self: gen_qundogroup_types.QUndoGroup, slot: proc(undoText: string)) =
-  type Cb = proc(undoText: string)
-  var tmp = new Cb
+proc onundoTextChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupundoTextChangedSlot) =
+  var tmp = new QUndoGroupundoTextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQUndoGroup_connect_undoTextChanged(self.h, cast[int](addr tmp[]))
-proc redoTextChanged*(self: gen_qundogroup_types.QUndoGroup, redoText: string): void =
 
+proc redoTextChanged*(self: gen_qundogroup_types.QUndoGroup, redoText: string): void =
   fcQUndoGroup_redoTextChanged(self.h, struct_miqt_string(data: redoText, len: csize_t(len(redoText))))
 
+type QUndoGroupredoTextChangedSlot* = proc(redoText: string)
 proc miqt_exec_callback_QUndoGroup_redoTextChanged(slot: int, redoText: struct_miqt_string) {.exportc.} =
-  type Cb = proc(redoText: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QUndoGroupredoTextChangedSlot](cast[pointer](slot))
   let vredoText_ms = redoText
   let vredoTextx_ret = string.fromBytes(toOpenArrayByte(vredoText_ms.data, 0, int(vredoText_ms.len)-1))
   c_free(vredoText_ms.data)
   let slotval1 = vredoTextx_ret
 
-
   nimfunc[](slotval1)
 
-proc onredoTextChanged*(self: gen_qundogroup_types.QUndoGroup, slot: proc(redoText: string)) =
-  type Cb = proc(redoText: string)
-  var tmp = new Cb
+proc onredoTextChanged*(self: gen_qundogroup_types.QUndoGroup, slot: QUndoGroupredoTextChangedSlot) =
+  var tmp = new QUndoGroupredoTextChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQUndoGroup_connect_redoTextChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qundogroup_types.QUndoGroup, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qundogroup_types.QUndoGroup, s: cstring, c: cstring): string =
   let v_ms = fcQUndoGroup_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qundogroup_types.QUndoGroup, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qundogroup_types.QUndoGroup, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQUndoGroup_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc createUndoAction2*(self: gen_qundogroup_types.QUndoGroup, parent: gen_qobject.QObject, prefix: string): gen_qaction.QAction =
-
+proc createUndoAction*(self: gen_qundogroup_types.QUndoGroup, parent: gen_qobject.QObject, prefix: string): gen_qaction.QAction =
   gen_qaction.QAction(h: fcQUndoGroup_createUndoAction2(self.h, parent.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix)))))
 
-proc createRedoAction2*(self: gen_qundogroup_types.QUndoGroup, parent: gen_qobject.QObject, prefix: string): gen_qaction.QAction =
-
+proc createRedoAction*(self: gen_qundogroup_types.QUndoGroup, parent: gen_qobject.QObject, prefix: string): gen_qaction.QAction =
   gen_qaction.QAction(h: fcQUndoGroup_createRedoAction2(self.h, parent.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix)))))
 
 proc QUndoGroupmetaObject*(self: gen_qundogroup_types.QUndoGroup, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQUndoGroup_virtualbase_metaObject(self.h))
 
 type QUndoGroupmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -383,7 +346,6 @@ proc miqt_exec_callback_QUndoGroup_metaObject(self: ptr cQUndoGroup, slot: int):
 
   virtualReturn.h
 proc QUndoGroupmetacast*(self: gen_qundogroup_types.QUndoGroup, param1: cstring): pointer =
-
   fQUndoGroup_virtualbase_metacast(self.h, param1)
 
 type QUndoGroupmetacastProc* = proc(param1: cstring): pointer
@@ -403,7 +365,6 @@ proc miqt_exec_callback_QUndoGroup_metacast(self: ptr cQUndoGroup, slot: int, pa
 
   virtualReturn
 proc QUndoGroupmetacall*(self: gen_qundogroup_types.QUndoGroup, param1: cint, param2: cint, param3: pointer): cint =
-
   fQUndoGroup_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QUndoGroupmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -427,7 +388,6 @@ proc miqt_exec_callback_QUndoGroup_metacall(self: ptr cQUndoGroup, slot: int, pa
 
   virtualReturn
 proc QUndoGroupevent*(self: gen_qundogroup_types.QUndoGroup, event: gen_qcoreevent.QEvent): bool =
-
   fQUndoGroup_virtualbase_event(self.h, event.h)
 
 type QUndoGroupeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -447,7 +407,6 @@ proc miqt_exec_callback_QUndoGroup_event(self: ptr cQUndoGroup, slot: int, event
 
   virtualReturn
 proc QUndoGroupeventFilter*(self: gen_qundogroup_types.QUndoGroup, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQUndoGroup_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QUndoGroupeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -469,7 +428,6 @@ proc miqt_exec_callback_QUndoGroup_eventFilter(self: ptr cQUndoGroup, slot: int,
 
   virtualReturn
 proc QUndoGrouptimerEvent*(self: gen_qundogroup_types.QUndoGroup, event: gen_qcoreevent.QTimerEvent): void =
-
   fQUndoGroup_virtualbase_timerEvent(self.h, event.h)
 
 type QUndoGrouptimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -487,7 +445,6 @@ proc miqt_exec_callback_QUndoGroup_timerEvent(self: ptr cQUndoGroup, slot: int, 
 
   nimfunc[](slotval1)
 proc QUndoGroupchildEvent*(self: gen_qundogroup_types.QUndoGroup, event: gen_qcoreevent.QChildEvent): void =
-
   fQUndoGroup_virtualbase_childEvent(self.h, event.h)
 
 type QUndoGroupchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -505,7 +462,6 @@ proc miqt_exec_callback_QUndoGroup_childEvent(self: ptr cQUndoGroup, slot: int, 
 
   nimfunc[](slotval1)
 proc QUndoGroupcustomEvent*(self: gen_qundogroup_types.QUndoGroup, event: gen_qcoreevent.QEvent): void =
-
   fQUndoGroup_virtualbase_customEvent(self.h, event.h)
 
 type QUndoGroupcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -523,7 +479,6 @@ proc miqt_exec_callback_QUndoGroup_customEvent(self: ptr cQUndoGroup, slot: int,
 
   nimfunc[](slotval1)
 proc QUndoGroupconnectNotify*(self: gen_qundogroup_types.QUndoGroup, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQUndoGroup_virtualbase_connectNotify(self.h, signal.h)
 
 type QUndoGroupconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -541,7 +496,6 @@ proc miqt_exec_callback_QUndoGroup_connectNotify(self: ptr cQUndoGroup, slot: in
 
   nimfunc[](slotval1)
 proc QUndoGroupdisconnectNotify*(self: gen_qundogroup_types.QUndoGroup, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQUndoGroup_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QUndoGroupdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

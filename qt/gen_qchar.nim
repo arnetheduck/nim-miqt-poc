@@ -465,17 +465,15 @@ proc fcQChar_delete(self: pointer) {.importc: "QChar_delete".}
 func init*(T: type gen_qchar_types.QLatin1Char, h: ptr cQLatin1Char): gen_qchar_types.QLatin1Char =
   T(h: h)
 proc create*(T: type gen_qchar_types.QLatin1Char, c: cchar): gen_qchar_types.QLatin1Char =
-
   gen_qchar_types.QLatin1Char.init(fcQLatin1Char_new(c))
+
 proc create*(T: type gen_qchar_types.QLatin1Char, param1: gen_qchar_types.QLatin1Char): gen_qchar_types.QLatin1Char =
-
   gen_qchar_types.QLatin1Char.init(fcQLatin1Char_new2(param1.h))
-proc toLatin1*(self: gen_qchar_types.QLatin1Char, ): cchar =
 
+proc toLatin1*(self: gen_qchar_types.QLatin1Char, ): cchar =
   fcQLatin1Char_toLatin1(self.h)
 
 proc unicode*(self: gen_qchar_types.QLatin1Char, ): cushort =
-
   fcQLatin1Char_unicode(self.h)
 
 proc delete*(self: gen_qchar_types.QLatin1Char) =
@@ -484,354 +482,276 @@ proc delete*(self: gen_qchar_types.QLatin1Char) =
 func init*(T: type gen_qchar_types.QChar, h: ptr cQChar): gen_qchar_types.QChar =
   T(h: h)
 proc create*(T: type gen_qchar_types.QChar, ): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new())
+
 proc create*(T: type gen_qchar_types.QChar, rc: cushort): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new2(rc))
+
 proc create*(T: type gen_qchar_types.QChar, c: uint8, r: uint8): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new3(c, r))
+
 proc create*(T: type gen_qchar_types.QChar, rc: cshort): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new4(rc))
+
 proc create*(T: type gen_qchar_types.QChar, rc: cuint): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new5(rc))
+
 proc create*(T: type gen_qchar_types.QChar, rc: cint): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new6(rc))
+
 proc create2*(T: type gen_qchar_types.QChar, s: cint): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new7(cint(s)))
+
 proc create*(T: type gen_qchar_types.QChar, ch: gen_qchar_types.QLatin1Char): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new8(ch.h))
+
 proc create*(T: type gen_qchar_types.QChar, c: cchar): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new9(c))
+
 proc create*(T: type gen_qchar_types.QChar, c: uint8): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar.init(fcQChar_new10(c))
-proc create2*(T: type gen_qchar_types.QChar, param1: gen_qchar_types.QChar): gen_qchar_types.QChar =
 
+proc create*(T: type gen_qchar_types.QChar, param1: gen_qchar_types.QChar): gen_qchar_types.QChar =
   gen_qchar_types.QChar.init(fcQChar_new11(param1.h))
-proc category*(self: gen_qchar_types.QChar, ): cint =
 
+proc category*(self: gen_qchar_types.QChar, ): cint =
   cint(fcQChar_category(self.h))
 
 proc direction*(self: gen_qchar_types.QChar, ): cint =
-
   cint(fcQChar_direction(self.h))
 
 proc joiningType*(self: gen_qchar_types.QChar, ): cint =
-
   cint(fcQChar_joiningType(self.h))
 
 proc joining*(self: gen_qchar_types.QChar, ): cint =
-
   cint(fcQChar_joining(self.h))
 
 proc combiningClass*(self: gen_qchar_types.QChar, ): uint8 =
-
   fcQChar_combiningClass(self.h)
 
 proc mirroredChar*(self: gen_qchar_types.QChar, ): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar(h: fcQChar_mirroredChar(self.h))
 
 proc hasMirrored*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_hasMirrored(self.h)
 
 proc decomposition*(self: gen_qchar_types.QChar, ): string =
-
   let v_ms = fcQChar_decomposition(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc decompositionTag*(self: gen_qchar_types.QChar, ): cint =
-
   cint(fcQChar_decompositionTag(self.h))
 
 proc digitValue*(self: gen_qchar_types.QChar, ): cint =
-
   fcQChar_digitValue(self.h)
 
 proc toLower*(self: gen_qchar_types.QChar, ): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar(h: fcQChar_toLower(self.h))
 
 proc toUpper*(self: gen_qchar_types.QChar, ): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar(h: fcQChar_toUpper(self.h))
 
 proc toTitleCase*(self: gen_qchar_types.QChar, ): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar(h: fcQChar_toTitleCase(self.h))
 
 proc toCaseFolded*(self: gen_qchar_types.QChar, ): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar(h: fcQChar_toCaseFolded(self.h))
 
 proc script*(self: gen_qchar_types.QChar, ): cint =
-
   cint(fcQChar_script(self.h))
 
 proc unicodeVersion*(self: gen_qchar_types.QChar, ): cint =
-
   cint(fcQChar_unicodeVersion(self.h))
 
 proc toLatin1*(self: gen_qchar_types.QChar, ): cchar =
-
   fcQChar_toLatin1(self.h)
 
 proc unicode*(self: gen_qchar_types.QChar, ): cushort =
-
   fcQChar_unicode(self.h)
 
 proc fromLatin1*(_: type gen_qchar_types.QChar, c: cchar): gen_qchar_types.QChar =
-
   gen_qchar_types.QChar(h: fcQChar_fromLatin1(c))
 
 proc isNull*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isNull(self.h)
 
 proc isPrint*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isPrint(self.h)
 
 proc isSpace*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isSpace(self.h)
 
 proc isMark*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isMark(self.h)
 
 proc isPunct*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isPunct(self.h)
 
 proc isSymbol*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isSymbol(self.h)
 
 proc isLetter*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isLetter(self.h)
 
 proc isNumber*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isNumber(self.h)
 
 proc isLetterOrNumber*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isLetterOrNumber(self.h)
 
 proc isDigit*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isDigit(self.h)
 
 proc isLower*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isLower(self.h)
 
 proc isUpper*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isUpper(self.h)
 
 proc isTitleCase*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isTitleCase(self.h)
 
 proc isNonCharacter*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isNonCharacter(self.h)
 
 proc isHighSurrogate*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isHighSurrogate(self.h)
 
 proc isLowSurrogate*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isLowSurrogate(self.h)
 
 proc isSurrogate*(self: gen_qchar_types.QChar, ): bool =
-
   fcQChar_isSurrogate(self.h)
 
 proc cell*(self: gen_qchar_types.QChar, ): uint8 =
-
   fcQChar_cell(self.h)
 
 proc row*(self: gen_qchar_types.QChar, ): uint8 =
-
   fcQChar_row(self.h)
 
 proc setCell*(self: gen_qchar_types.QChar, acell: uint8): void =
-
   fcQChar_setCell(self.h, acell)
 
 proc setRow*(self: gen_qchar_types.QChar, arow: uint8): void =
-
   fcQChar_setRow(self.h, arow)
 
-proc isNonCharacterWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isNonCharacter*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isNonCharacterWithUcs4(ucs4)
 
-proc isHighSurrogateWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isHighSurrogate*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isHighSurrogateWithUcs4(ucs4)
 
-proc isLowSurrogateWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isLowSurrogate*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isLowSurrogateWithUcs4(ucs4)
 
-proc isSurrogateWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isSurrogate*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isSurrogateWithUcs4(ucs4)
 
 proc requiresSurrogates*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
   fcQChar_requiresSurrogates(ucs4)
 
 proc surrogateToUcs4*(_: type gen_qchar_types.QChar, high: cushort, low: cushort): cuint =
-
   fcQChar_surrogateToUcs4(high, low)
 
-proc surrogateToUcs42*(_: type gen_qchar_types.QChar, high: gen_qchar_types.QChar, low: gen_qchar_types.QChar): cuint =
-
+proc surrogateToUcs4*(_: type gen_qchar_types.QChar, high: gen_qchar_types.QChar, low: gen_qchar_types.QChar): cuint =
   fcQChar_surrogateToUcs42(high.h, low.h)
 
 proc highSurrogate*(_: type gen_qchar_types.QChar, ucs4: cuint): cushort =
-
   fcQChar_highSurrogate(ucs4)
 
 proc lowSurrogate*(_: type gen_qchar_types.QChar, ucs4: cuint): cushort =
-
   fcQChar_lowSurrogate(ucs4)
 
-proc categoryWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
-
+proc category*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
   cint(fcQChar_categoryWithUcs4(ucs4))
 
-proc directionWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
-
+proc direction*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
   cint(fcQChar_directionWithUcs4(ucs4))
 
-proc joiningTypeWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
-
+proc joiningType*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
   cint(fcQChar_joiningTypeWithUcs4(ucs4))
 
-proc joiningWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
-
+proc joining*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
   cint(fcQChar_joiningWithUcs4(ucs4))
 
-proc combiningClassWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): uint8 =
-
+proc combiningClass*(_: type gen_qchar_types.QChar, ucs4: cuint): uint8 =
   fcQChar_combiningClassWithUcs4(ucs4)
 
-proc mirroredCharWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
-
+proc mirroredChar*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
   fcQChar_mirroredCharWithUcs4(ucs4)
 
-proc hasMirroredWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc hasMirrored*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_hasMirroredWithUcs4(ucs4)
 
-proc decompositionWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): string =
-
+proc decomposition*(_: type gen_qchar_types.QChar, ucs4: cuint): string =
   let v_ms = fcQChar_decompositionWithUcs4(ucs4)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc decompositionTagWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
-
+proc decompositionTag*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
   cint(fcQChar_decompositionTagWithUcs4(ucs4))
 
-proc digitValueWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
-
+proc digitValue*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
   fcQChar_digitValueWithUcs4(ucs4)
 
-proc toLowerWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
-
+proc toLower*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
   fcQChar_toLowerWithUcs4(ucs4)
 
-proc toUpperWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
-
+proc toUpper*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
   fcQChar_toUpperWithUcs4(ucs4)
 
-proc toTitleCaseWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
-
+proc toTitleCase*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
   fcQChar_toTitleCaseWithUcs4(ucs4)
 
-proc toCaseFoldedWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
-
+proc toCaseFolded*(_: type gen_qchar_types.QChar, ucs4: cuint): cuint =
   fcQChar_toCaseFoldedWithUcs4(ucs4)
 
-proc scriptWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
-
+proc script*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
   cint(fcQChar_scriptWithUcs4(ucs4))
 
-proc unicodeVersionWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
-
+proc unicodeVersion*(_: type gen_qchar_types.QChar, ucs4: cuint): cint =
   cint(fcQChar_unicodeVersionWithUcs4(ucs4))
 
 proc currentUnicodeVersion*(_: type gen_qchar_types.QChar, ): cint =
-
   cint(fcQChar_currentUnicodeVersion())
 
-proc isPrintWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isPrint*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isPrintWithUcs4(ucs4)
 
-proc isSpaceWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isSpace*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isSpaceWithUcs4(ucs4)
 
-proc isMarkWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isMark*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isMarkWithUcs4(ucs4)
 
-proc isPunctWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isPunct*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isPunctWithUcs4(ucs4)
 
-proc isSymbolWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isSymbol*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isSymbolWithUcs4(ucs4)
 
-proc isLetterWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isLetter*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isLetterWithUcs4(ucs4)
 
-proc isNumberWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isNumber*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isNumberWithUcs4(ucs4)
 
-proc isLetterOrNumberWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isLetterOrNumber*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isLetterOrNumberWithUcs4(ucs4)
 
-proc isDigitWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isDigit*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isDigitWithUcs4(ucs4)
 
-proc isLowerWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isLower*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isLowerWithUcs4(ucs4)
 
-proc isUpperWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isUpper*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isUpperWithUcs4(ucs4)
 
-proc isTitleCaseWithUcs4*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
-
+proc isTitleCase*(_: type gen_qchar_types.QChar, ucs4: cuint): bool =
   fcQChar_isTitleCaseWithUcs4(ucs4)
 
 proc delete*(self: gen_qchar_types.QChar) =

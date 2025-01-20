@@ -221,174 +221,138 @@ proc fcQsciLexerSQL_delete(self: pointer) {.importc: "QsciLexerSQL_delete".}
 func init*(T: type gen_qscilexersql_types.QsciLexerSQL, h: ptr cQsciLexerSQL): gen_qscilexersql_types.QsciLexerSQL =
   T(h: h)
 proc create*(T: type gen_qscilexersql_types.QsciLexerSQL, ): gen_qscilexersql_types.QsciLexerSQL =
-
   gen_qscilexersql_types.QsciLexerSQL.init(fcQsciLexerSQL_new())
+
 proc create*(T: type gen_qscilexersql_types.QsciLexerSQL, parent: gen_qobject.QObject): gen_qscilexersql_types.QsciLexerSQL =
-
   gen_qscilexersql_types.QsciLexerSQL.init(fcQsciLexerSQL_new2(parent.h))
-proc metaObject*(self: gen_qscilexersql_types.QsciLexerSQL, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexersql_types.QsciLexerSQL, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerSQL_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexersql_types.QsciLexerSQL, param1: cstring): pointer =
-
   fcQsciLexerSQL_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexersql_types.QsciLexerSQL, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerSQL_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring): string =
-
   let v_ms = fcQsciLexerSQL_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring): string =
-
   let v_ms = fcQsciLexerSQL_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexersql_types.QsciLexerSQL, ): cstring =
-
   (fcQsciLexerSQL_language(self.h))
 
 proc lexer*(self: gen_qscilexersql_types.QsciLexerSQL, ): cstring =
-
   (fcQsciLexerSQL_lexer(self.h))
 
 proc braceStyle*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-
   fcQsciLexerSQL_braceStyle(self.h)
 
 proc defaultColor*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerSQL_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): bool =
-
   fcQsciLexerSQL_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerSQL_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerSQL_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexersql_types.QsciLexerSQL, set: cint): cstring =
-
   (fcQsciLexerSQL_keywords(self.h, set))
 
 proc description*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): string =
-
   let v_ms = fcQsciLexerSQL_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexersql_types.QsciLexerSQL, ): void =
-
   fcQsciLexerSQL_refreshProperties(self.h)
 
 proc backslashEscapes*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-
   fcQsciLexerSQL_backslashEscapes(self.h)
 
 proc setDottedWords*(self: gen_qscilexersql_types.QsciLexerSQL, enable: bool): void =
-
   fcQsciLexerSQL_setDottedWords(self.h, enable)
 
 proc dottedWords*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-
   fcQsciLexerSQL_dottedWords(self.h)
 
 proc setFoldAtElse*(self: gen_qscilexersql_types.QsciLexerSQL, fold: bool): void =
-
   fcQsciLexerSQL_setFoldAtElse(self.h, fold)
 
 proc foldAtElse*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-
   fcQsciLexerSQL_foldAtElse(self.h)
 
 proc foldComments*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-
   fcQsciLexerSQL_foldComments(self.h)
 
 proc foldCompact*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-
   fcQsciLexerSQL_foldCompact(self.h)
 
 proc setFoldOnlyBegin*(self: gen_qscilexersql_types.QsciLexerSQL, fold: bool): void =
-
   fcQsciLexerSQL_setFoldOnlyBegin(self.h, fold)
 
 proc foldOnlyBegin*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-
   fcQsciLexerSQL_foldOnlyBegin(self.h)
 
 proc setHashComments*(self: gen_qscilexersql_types.QsciLexerSQL, enable: bool): void =
-
   fcQsciLexerSQL_setHashComments(self.h, enable)
 
 proc hashComments*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-
   fcQsciLexerSQL_hashComments(self.h)
 
 proc setQuotedIdentifiers*(self: gen_qscilexersql_types.QsciLexerSQL, enable: bool): void =
-
   fcQsciLexerSQL_setQuotedIdentifiers(self.h, enable)
 
 proc quotedIdentifiers*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-
   fcQsciLexerSQL_quotedIdentifiers(self.h)
 
 proc setBackslashEscapes*(self: gen_qscilexersql_types.QsciLexerSQL, enable: bool): void =
-
   fcQsciLexerSQL_setBackslashEscapes(self.h, enable)
 
 proc setFoldComments*(self: gen_qscilexersql_types.QsciLexerSQL, fold: bool): void =
-
   fcQsciLexerSQL_setFoldComments(self.h, fold)
 
 proc setFoldCompact*(self: gen_qscilexersql_types.QsciLexerSQL, fold: bool): void =
-
   fcQsciLexerSQL_setFoldCompact(self.h, fold)
 
-proc tr2*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerSQL_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerSQL_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerSQL_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscilexersql_types.QsciLexerSQL, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerSQL_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerSQLmetaObject*(self: gen_qscilexersql_types.QsciLexerSQL, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerSQL_virtualbase_metaObject(self.h))
 
 type QsciLexerSQLmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -406,7 +370,6 @@ proc miqt_exec_callback_QsciLexerSQL_metaObject(self: ptr cQsciLexerSQL, slot: i
 
   virtualReturn.h
 proc QsciLexerSQLmetacast*(self: gen_qscilexersql_types.QsciLexerSQL, param1: cstring): pointer =
-
   fQsciLexerSQL_virtualbase_metacast(self.h, param1)
 
 type QsciLexerSQLmetacastProc* = proc(param1: cstring): pointer
@@ -426,7 +389,6 @@ proc miqt_exec_callback_QsciLexerSQL_metacast(self: ptr cQsciLexerSQL, slot: int
 
   virtualReturn
 proc QsciLexerSQLmetacall*(self: gen_qscilexersql_types.QsciLexerSQL, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerSQL_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerSQLmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -450,7 +412,6 @@ proc miqt_exec_callback_QsciLexerSQL_metacall(self: ptr cQsciLexerSQL, slot: int
 
   virtualReturn
 proc QsciLexerSQLsetBackslashEscapes*(self: gen_qscilexersql_types.QsciLexerSQL, enable: bool): void =
-
   fQsciLexerSQL_virtualbase_setBackslashEscapes(self.h, enable)
 
 type QsciLexerSQLsetBackslashEscapesProc* = proc(enable: bool): void
@@ -468,7 +429,6 @@ proc miqt_exec_callback_QsciLexerSQL_setBackslashEscapes(self: ptr cQsciLexerSQL
 
   nimfunc[](slotval1)
 proc QsciLexerSQLsetFoldComments*(self: gen_qscilexersql_types.QsciLexerSQL, fold: bool): void =
-
   fQsciLexerSQL_virtualbase_setFoldComments(self.h, fold)
 
 type QsciLexerSQLsetFoldCommentsProc* = proc(fold: bool): void
@@ -486,7 +446,6 @@ proc miqt_exec_callback_QsciLexerSQL_setFoldComments(self: ptr cQsciLexerSQL, sl
 
   nimfunc[](slotval1)
 proc QsciLexerSQLsetFoldCompact*(self: gen_qscilexersql_types.QsciLexerSQL, fold: bool): void =
-
   fQsciLexerSQL_virtualbase_setFoldCompact(self.h, fold)
 
 type QsciLexerSQLsetFoldCompactProc* = proc(fold: bool): void
@@ -518,7 +477,6 @@ proc miqt_exec_callback_QsciLexerSQL_language(self: ptr cQsciLexerSQL, slot: int
 
   virtualReturn
 proc QsciLexerSQLlexer*(self: gen_qscilexersql_types.QsciLexerSQL, ): cstring =
-
   (fQsciLexerSQL_virtualbase_lexer(self.h))
 
 type QsciLexerSQLlexerProc* = proc(): cstring
@@ -536,7 +494,6 @@ proc miqt_exec_callback_QsciLexerSQL_lexer(self: ptr cQsciLexerSQL, slot: int): 
 
   virtualReturn
 proc QsciLexerSQLlexerId*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-
   fQsciLexerSQL_virtualbase_lexerId(self.h)
 
 type QsciLexerSQLlexerIdProc* = proc(): cint
@@ -554,7 +511,6 @@ proc miqt_exec_callback_QsciLexerSQL_lexerId(self: ptr cQsciLexerSQL, slot: int)
 
   virtualReturn
 proc QsciLexerSQLautoCompletionFillups*(self: gen_qscilexersql_types.QsciLexerSQL, ): cstring =
-
   (fQsciLexerSQL_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerSQLautoCompletionFillupsProc* = proc(): cstring
@@ -572,7 +528,6 @@ proc miqt_exec_callback_QsciLexerSQL_autoCompletionFillups(self: ptr cQsciLexerS
 
   virtualReturn
 proc QsciLexerSQLautoCompletionWordSeparators*(self: gen_qscilexersql_types.QsciLexerSQL, ): seq[string] =
-
   var v_ma = fQsciLexerSQL_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -602,7 +557,6 @@ proc miqt_exec_callback_QsciLexerSQL_autoCompletionWordSeparators(self: ptr cQsc
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerSQLblockEnd*(self: gen_qscilexersql_types.QsciLexerSQL, style: ptr cint): cstring =
-
   (fQsciLexerSQL_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerSQLblockEndProc* = proc(style: ptr cint): cstring
@@ -622,7 +576,6 @@ proc miqt_exec_callback_QsciLexerSQL_blockEnd(self: ptr cQsciLexerSQL, slot: int
 
   virtualReturn
 proc QsciLexerSQLblockLookback*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-
   fQsciLexerSQL_virtualbase_blockLookback(self.h)
 
 type QsciLexerSQLblockLookbackProc* = proc(): cint
@@ -640,7 +593,6 @@ proc miqt_exec_callback_QsciLexerSQL_blockLookback(self: ptr cQsciLexerSQL, slot
 
   virtualReturn
 proc QsciLexerSQLblockStart*(self: gen_qscilexersql_types.QsciLexerSQL, style: ptr cint): cstring =
-
   (fQsciLexerSQL_virtualbase_blockStart(self.h, style))
 
 type QsciLexerSQLblockStartProc* = proc(style: ptr cint): cstring
@@ -660,7 +612,6 @@ proc miqt_exec_callback_QsciLexerSQL_blockStart(self: ptr cQsciLexerSQL, slot: i
 
   virtualReturn
 proc QsciLexerSQLblockStartKeyword*(self: gen_qscilexersql_types.QsciLexerSQL, style: ptr cint): cstring =
-
   (fQsciLexerSQL_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerSQLblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -680,7 +631,6 @@ proc miqt_exec_callback_QsciLexerSQL_blockStartKeyword(self: ptr cQsciLexerSQL, 
 
   virtualReturn
 proc QsciLexerSQLbraceStyle*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-
   fQsciLexerSQL_virtualbase_braceStyle(self.h)
 
 type QsciLexerSQLbraceStyleProc* = proc(): cint
@@ -698,7 +648,6 @@ proc miqt_exec_callback_QsciLexerSQL_braceStyle(self: ptr cQsciLexerSQL, slot: i
 
   virtualReturn
 proc QsciLexerSQLcaseSensitive*(self: gen_qscilexersql_types.QsciLexerSQL, ): bool =
-
   fQsciLexerSQL_virtualbase_caseSensitive(self.h)
 
 type QsciLexerSQLcaseSensitiveProc* = proc(): bool
@@ -716,7 +665,6 @@ proc miqt_exec_callback_QsciLexerSQL_caseSensitive(self: ptr cQsciLexerSQL, slot
 
   virtualReturn
 proc QsciLexerSQLcolor*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerSQL_virtualbase_color(self.h, style))
 
 type QsciLexerSQLcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -736,7 +684,6 @@ proc miqt_exec_callback_QsciLexerSQL_color(self: ptr cQsciLexerSQL, slot: int, s
 
   virtualReturn.h
 proc QsciLexerSQLeolFill*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): bool =
-
   fQsciLexerSQL_virtualbase_eolFill(self.h, style)
 
 type QsciLexerSQLeolFillProc* = proc(style: cint): bool
@@ -756,7 +703,6 @@ proc miqt_exec_callback_QsciLexerSQL_eolFill(self: ptr cQsciLexerSQL, slot: int,
 
   virtualReturn
 proc QsciLexerSQLfont*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerSQL_virtualbase_font(self.h, style))
 
 type QsciLexerSQLfontProc* = proc(style: cint): gen_qfont.QFont
@@ -776,7 +722,6 @@ proc miqt_exec_callback_QsciLexerSQL_font(self: ptr cQsciLexerSQL, slot: int, st
 
   virtualReturn.h
 proc QsciLexerSQLindentationGuideView*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-
   fQsciLexerSQL_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerSQLindentationGuideViewProc* = proc(): cint
@@ -794,7 +739,6 @@ proc miqt_exec_callback_QsciLexerSQL_indentationGuideView(self: ptr cQsciLexerSQ
 
   virtualReturn
 proc QsciLexerSQLkeywords*(self: gen_qscilexersql_types.QsciLexerSQL, set: cint): cstring =
-
   (fQsciLexerSQL_virtualbase_keywords(self.h, set))
 
 type QsciLexerSQLkeywordsProc* = proc(set: cint): cstring
@@ -814,7 +758,6 @@ proc miqt_exec_callback_QsciLexerSQL_keywords(self: ptr cQsciLexerSQL, slot: int
 
   virtualReturn
 proc QsciLexerSQLdefaultStyle*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-
   fQsciLexerSQL_virtualbase_defaultStyle(self.h)
 
 type QsciLexerSQLdefaultStyleProc* = proc(): cint
@@ -848,7 +791,6 @@ proc miqt_exec_callback_QsciLexerSQL_description(self: ptr cQsciLexerSQL, slot: 
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerSQLpaper*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerSQL_virtualbase_paper(self.h, style))
 
 type QsciLexerSQLpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -867,12 +809,11 @@ proc miqt_exec_callback_QsciLexerSQL_paper(self: ptr cQsciLexerSQL, slot: int, s
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerSQLdefaultColorWithStyle*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerSQLdefaultColor*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerSQL_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerSQLdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerSQLdefaultColorWithStyleProc
   tmp[] = slot
@@ -888,7 +829,6 @@ proc miqt_exec_callback_QsciLexerSQL_defaultColorWithStyle(self: ptr cQsciLexerS
 
   virtualReturn.h
 proc QsciLexerSQLdefaultEolFill*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): bool =
-
   fQsciLexerSQL_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerSQLdefaultEolFillProc* = proc(style: cint): bool
@@ -907,12 +847,11 @@ proc miqt_exec_callback_QsciLexerSQL_defaultEolFill(self: ptr cQsciLexerSQL, slo
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerSQLdefaultFontWithStyle*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont.QFont =
-
+proc QsciLexerSQLdefaultFont*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerSQL_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerSQLdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerSQLdefaultFontWithStyleProc
   tmp[] = slot
@@ -927,12 +866,11 @@ proc miqt_exec_callback_QsciLexerSQL_defaultFontWithStyle(self: ptr cQsciLexerSQ
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerSQLdefaultPaperWithStyle*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerSQLdefaultPaper*(self: gen_qscilexersql_types.QsciLexerSQL, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerSQL_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerSQLdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexersql_types.QsciLexerSQL, slot: QsciLexerSQLdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerSQLdefaultPaperWithStyleProc
   tmp[] = slot
@@ -948,7 +886,6 @@ proc miqt_exec_callback_QsciLexerSQL_defaultPaperWithStyle(self: ptr cQsciLexerS
 
   virtualReturn.h
 proc QsciLexerSQLsetEditor*(self: gen_qscilexersql_types.QsciLexerSQL, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerSQL_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerSQLsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -966,7 +903,6 @@ proc miqt_exec_callback_QsciLexerSQL_setEditor(self: ptr cQsciLexerSQL, slot: in
 
   nimfunc[](slotval1)
 proc QsciLexerSQLrefreshProperties*(self: gen_qscilexersql_types.QsciLexerSQL, ): void =
-
   fQsciLexerSQL_virtualbase_refreshProperties(self.h)
 
 type QsciLexerSQLrefreshPropertiesProc* = proc(): void
@@ -982,7 +918,6 @@ proc miqt_exec_callback_QsciLexerSQL_refreshProperties(self: ptr cQsciLexerSQL, 
 
   nimfunc[]()
 proc QsciLexerSQLstyleBitsNeeded*(self: gen_qscilexersql_types.QsciLexerSQL, ): cint =
-
   fQsciLexerSQL_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerSQLstyleBitsNeededProc* = proc(): cint
@@ -1000,7 +935,6 @@ proc miqt_exec_callback_QsciLexerSQL_styleBitsNeeded(self: ptr cQsciLexerSQL, sl
 
   virtualReturn
 proc QsciLexerSQLwordCharacters*(self: gen_qscilexersql_types.QsciLexerSQL, ): cstring =
-
   (fQsciLexerSQL_virtualbase_wordCharacters(self.h))
 
 type QsciLexerSQLwordCharactersProc* = proc(): cstring
@@ -1018,7 +952,6 @@ proc miqt_exec_callback_QsciLexerSQL_wordCharacters(self: ptr cQsciLexerSQL, slo
 
   virtualReturn
 proc QsciLexerSQLsetAutoIndentStyle*(self: gen_qscilexersql_types.QsciLexerSQL, autoindentstyle: cint): void =
-
   fQsciLexerSQL_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerSQLsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -1036,7 +969,6 @@ proc miqt_exec_callback_QsciLexerSQL_setAutoIndentStyle(self: ptr cQsciLexerSQL,
 
   nimfunc[](slotval1)
 proc QsciLexerSQLsetColor*(self: gen_qscilexersql_types.QsciLexerSQL, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerSQL_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerSQLsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1056,7 +988,6 @@ proc miqt_exec_callback_QsciLexerSQL_setColor(self: ptr cQsciLexerSQL, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerSQLsetEolFill*(self: gen_qscilexersql_types.QsciLexerSQL, eoffill: bool, style: cint): void =
-
   fQsciLexerSQL_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerSQLsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -1076,7 +1007,6 @@ proc miqt_exec_callback_QsciLexerSQL_setEolFill(self: ptr cQsciLexerSQL, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerSQLsetFont*(self: gen_qscilexersql_types.QsciLexerSQL, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerSQL_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerSQLsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -1096,7 +1026,6 @@ proc miqt_exec_callback_QsciLexerSQL_setFont(self: ptr cQsciLexerSQL, slot: int,
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerSQLsetPaper*(self: gen_qscilexersql_types.QsciLexerSQL, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerSQL_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerSQLsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -1116,7 +1045,6 @@ proc miqt_exec_callback_QsciLexerSQL_setPaper(self: ptr cQsciLexerSQL, slot: int
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerSQLreadProperties*(self: gen_qscilexersql_types.QsciLexerSQL, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerSQL_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerSQLreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1141,7 +1069,6 @@ proc miqt_exec_callback_QsciLexerSQL_readProperties(self: ptr cQsciLexerSQL, slo
 
   virtualReturn
 proc QsciLexerSQLwriteProperties*(self: gen_qscilexersql_types.QsciLexerSQL, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerSQL_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerSQLwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1166,7 +1093,6 @@ proc miqt_exec_callback_QsciLexerSQL_writeProperties(self: ptr cQsciLexerSQL, sl
 
   virtualReturn
 proc QsciLexerSQLevent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerSQL_virtualbase_event(self.h, event.h)
 
 type QsciLexerSQLeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1186,7 +1112,6 @@ proc miqt_exec_callback_QsciLexerSQL_event(self: ptr cQsciLexerSQL, slot: int, e
 
   virtualReturn
 proc QsciLexerSQLeventFilter*(self: gen_qscilexersql_types.QsciLexerSQL, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerSQL_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerSQLeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1208,7 +1133,6 @@ proc miqt_exec_callback_QsciLexerSQL_eventFilter(self: ptr cQsciLexerSQL, slot: 
 
   virtualReturn
 proc QsciLexerSQLtimerEvent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerSQL_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerSQLtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1226,7 +1150,6 @@ proc miqt_exec_callback_QsciLexerSQL_timerEvent(self: ptr cQsciLexerSQL, slot: i
 
   nimfunc[](slotval1)
 proc QsciLexerSQLchildEvent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerSQL_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerSQLchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1244,7 +1167,6 @@ proc miqt_exec_callback_QsciLexerSQL_childEvent(self: ptr cQsciLexerSQL, slot: i
 
   nimfunc[](slotval1)
 proc QsciLexerSQLcustomEvent*(self: gen_qscilexersql_types.QsciLexerSQL, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerSQL_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerSQLcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1262,7 +1184,6 @@ proc miqt_exec_callback_QsciLexerSQL_customEvent(self: ptr cQsciLexerSQL, slot: 
 
   nimfunc[](slotval1)
 proc QsciLexerSQLconnectNotify*(self: gen_qscilexersql_types.QsciLexerSQL, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerSQL_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerSQLconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1280,7 +1201,6 @@ proc miqt_exec_callback_QsciLexerSQL_connectNotify(self: ptr cQsciLexerSQL, slot
 
   nimfunc[](slotval1)
 proc QsciLexerSQLdisconnectNotify*(self: gen_qscilexersql_types.QsciLexerSQL, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerSQL_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerSQLdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

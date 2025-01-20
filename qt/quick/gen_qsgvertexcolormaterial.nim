@@ -62,14 +62,12 @@ proc fcQSGVertexColorMaterial_delete(self: pointer) {.importc: "QSGVertexColorMa
 func init*(T: type gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, h: ptr cQSGVertexColorMaterial): gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial =
   T(h: h)
 proc create*(T: type gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, ): gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial =
-
   gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial.init(fcQSGVertexColorMaterial_new())
-proc compare*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
 
+proc compare*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
   fcQSGVertexColorMaterial_compare(self.h, other.h)
 
 proc QSGVertexColorMaterialcompare*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, other: gen_qsgmaterial.QSGMaterial): cint =
-
   fQSGVertexColorMaterial_virtualbase_compare(self.h, other.h)
 
 type QSGVertexColorMaterialcompareProc* = proc(other: gen_qsgmaterial.QSGMaterial): cint
@@ -89,7 +87,6 @@ proc miqt_exec_callback_QSGVertexColorMaterial_compare(self: ptr cQSGVertexColor
 
   virtualReturn
 proc QSGVertexColorMaterialtypeX*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, ): gen_qsgmaterialtype.QSGMaterialType =
-
   gen_qsgmaterialtype.QSGMaterialType(h: fQSGVertexColorMaterial_virtualbase_type(self.h))
 
 type QSGVertexColorMaterialtypeXProc* = proc(): gen_qsgmaterialtype.QSGMaterialType
@@ -107,7 +104,6 @@ proc miqt_exec_callback_QSGVertexColorMaterial_type(self: ptr cQSGVertexColorMat
 
   virtualReturn.h
 proc QSGVertexColorMaterialcreateShader*(self: gen_qsgvertexcolormaterial_types.QSGVertexColorMaterial, ): gen_qsgmaterialshader.QSGMaterialShader =
-
   gen_qsgmaterialshader.QSGMaterialShader(h: fQSGVertexColorMaterial_virtualbase_createShader(self.h))
 
 type QSGVertexColorMaterialcreateShaderProc* = proc(): gen_qsgmaterialshader.QSGMaterialShader

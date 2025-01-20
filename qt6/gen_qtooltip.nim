@@ -69,50 +69,39 @@ proc fcQToolTip_delete(self: pointer) {.importc: "QToolTip_delete".}
 func init*(T: type gen_qtooltip_types.QToolTip, h: ptr cQToolTip): gen_qtooltip_types.QToolTip =
   T(h: h)
 proc showText*(_: type gen_qtooltip_types.QToolTip, pos: gen_qpoint.QPoint, text: string): void =
-
   fcQToolTip_showText(pos.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc hideText*(_: type gen_qtooltip_types.QToolTip, ): void =
-
   fcQToolTip_hideText()
 
 proc isVisible*(_: type gen_qtooltip_types.QToolTip, ): bool =
-
   fcQToolTip_isVisible()
 
 proc text*(_: type gen_qtooltip_types.QToolTip, ): string =
-
   let v_ms = fcQToolTip_text()
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc palette*(_: type gen_qtooltip_types.QToolTip, ): gen_qpalette.QPalette =
-
   gen_qpalette.QPalette(h: fcQToolTip_palette())
 
 proc setPalette*(_: type gen_qtooltip_types.QToolTip, palette: gen_qpalette.QPalette): void =
-
   fcQToolTip_setPalette(palette.h)
 
 proc font*(_: type gen_qtooltip_types.QToolTip, ): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQToolTip_font())
 
 proc setFont*(_: type gen_qtooltip_types.QToolTip, font: gen_qfont.QFont): void =
-
   fcQToolTip_setFont(font.h)
 
-proc showText3*(_: type gen_qtooltip_types.QToolTip, pos: gen_qpoint.QPoint, text: string, w: gen_qwidget.QWidget): void =
-
+proc showText*(_: type gen_qtooltip_types.QToolTip, pos: gen_qpoint.QPoint, text: string, w: gen_qwidget.QWidget): void =
   fcQToolTip_showText3(pos.h, struct_miqt_string(data: text, len: csize_t(len(text))), w.h)
 
-proc showText4*(_: type gen_qtooltip_types.QToolTip, pos: gen_qpoint.QPoint, text: string, w: gen_qwidget.QWidget, rect: gen_qrect.QRect): void =
-
+proc showText*(_: type gen_qtooltip_types.QToolTip, pos: gen_qpoint.QPoint, text: string, w: gen_qwidget.QWidget, rect: gen_qrect.QRect): void =
   fcQToolTip_showText4(pos.h, struct_miqt_string(data: text, len: csize_t(len(text))), w.h, rect.h)
 
-proc showText5*(_: type gen_qtooltip_types.QToolTip, pos: gen_qpoint.QPoint, text: string, w: gen_qwidget.QWidget, rect: gen_qrect.QRect, msecShowTime: cint): void =
-
+proc showText*(_: type gen_qtooltip_types.QToolTip, pos: gen_qpoint.QPoint, text: string, w: gen_qwidget.QWidget, rect: gen_qrect.QRect, msecShowTime: cint): void =
   fcQToolTip_showText5(pos.h, struct_miqt_string(data: text, len: csize_t(len(text))), w.h, rect.h, msecShowTime)
 
 proc delete*(self: gen_qtooltip_types.QToolTip) =

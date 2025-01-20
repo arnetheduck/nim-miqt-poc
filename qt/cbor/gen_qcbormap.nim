@@ -178,37 +178,30 @@ proc fcQCborMapConstIterator_delete(self: pointer) {.importc: "QCborMap__ConstIt
 func init*(T: type gen_qcbormap_types.QCborMap, h: ptr cQCborMap): gen_qcbormap_types.QCborMap =
   T(h: h)
 proc create*(T: type gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMap =
-
   gen_qcbormap_types.QCborMap.init(fcQCborMap_new())
+
 proc create*(T: type gen_qcbormap_types.QCborMap, other: gen_qcbormap_types.QCborMap): gen_qcbormap_types.QCborMap =
-
   gen_qcbormap_types.QCborMap.init(fcQCborMap_new2(other.h))
-proc operatorAssign*(self: gen_qcbormap_types.QCborMap, other: gen_qcbormap_types.QCborMap): void =
 
+proc operatorAssign*(self: gen_qcbormap_types.QCborMap, other: gen_qcbormap_types.QCborMap): void =
   fcQCborMap_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qcbormap_types.QCborMap, other: gen_qcbormap_types.QCborMap): void =
-
   fcQCborMap_swap(self.h, other.h)
 
 proc toCborValue*(self: gen_qcbormap_types.QCborMap, ): gen_qcborvalue.QCborValue =
-
   gen_qcborvalue.QCborValue(h: fcQCborMap_toCborValue(self.h))
 
 proc size*(self: gen_qcbormap_types.QCborMap, ): int64 =
-
   fcQCborMap_size(self.h)
 
 proc isEmpty*(self: gen_qcbormap_types.QCborMap, ): bool =
-
   fcQCborMap_isEmpty(self.h)
 
 proc clear*(self: gen_qcbormap_types.QCborMap, ): void =
-
   fcQCborMap_clear(self.h)
 
 proc keys*(self: gen_qcbormap_types.QCborMap, ): seq[gen_qcborvalue.QCborValue] =
-
   var v_ma = fcQCborMap_keys(self.h)
   var vx_ret = newSeq[gen_qcborvalue.QCborValue](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -217,195 +210,147 @@ proc keys*(self: gen_qcbormap_types.QCborMap, ): seq[gen_qcborvalue.QCborValue] 
   vx_ret
 
 proc value*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcborvalue.QCborValue =
-
   gen_qcborvalue.QCborValue(h: fcQCborMap_value(self.h, key))
 
-proc value2*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcborvalue.QCborValue =
-
+proc value*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcborvalue.QCborValue =
   gen_qcborvalue.QCborValue(h: fcQCborMap_value2(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc value3*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcborvalue.QCborValue =
-
+proc value*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcborvalue.QCborValue =
   gen_qcborvalue.QCborValue(h: fcQCborMap_value3(self.h, key.h))
 
 proc operatorSubscript*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcborvalue.QCborValue =
-
   gen_qcborvalue.QCborValue(h: fcQCborMap_operatorSubscript(self.h, key))
 
-proc operatorSubscript2*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcborvalue.QCborValue =
-
+proc operatorSubscript*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcborvalue.QCborValue =
   gen_qcborvalue.QCborValue(h: fcQCborMap_operatorSubscript2(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc operatorSubscript3*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcborvalue.QCborValue =
-
+proc operatorSubscript*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcborvalue.QCborValue =
   gen_qcborvalue.QCborValue(h: fcQCborMap_operatorSubscript3(self.h, key.h))
 
-proc operatorSubscript4*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcborvalue.QCborValueRef =
-
+proc operatorSubscript2*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcborvalue.QCborValueRef =
   gen_qcborvalue.QCborValueRef(h: fcQCborMap_operatorSubscript4(self.h, key))
 
-proc operatorSubscript6*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcborvalue.QCborValueRef =
-
+proc operatorSubscript2*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcborvalue.QCborValueRef =
   gen_qcborvalue.QCborValueRef(h: fcQCborMap_operatorSubscript6(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc operatorSubscript7*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcborvalue.QCborValueRef =
-
+proc operatorSubscript2*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcborvalue.QCborValueRef =
   gen_qcborvalue.QCborValueRef(h: fcQCborMap_operatorSubscript7(self.h, key.h))
 
 proc take*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcborvalue.QCborValue =
-
   gen_qcborvalue.QCborValue(h: fcQCborMap_take(self.h, key))
 
-proc take2*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcborvalue.QCborValue =
-
+proc take*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcborvalue.QCborValue =
   gen_qcborvalue.QCborValue(h: fcQCborMap_take2(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc take3*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcborvalue.QCborValue =
-
+proc take*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcborvalue.QCborValue =
   gen_qcborvalue.QCborValue(h: fcQCborMap_take3(self.h, key.h))
 
 proc remove*(self: gen_qcbormap_types.QCborMap, key: clonglong): void =
-
   fcQCborMap_remove(self.h, key)
 
-proc remove2*(self: gen_qcbormap_types.QCborMap, key: string): void =
-
+proc remove*(self: gen_qcbormap_types.QCborMap, key: string): void =
   fcQCborMap_remove2(self.h, struct_miqt_string(data: key, len: csize_t(len(key))))
 
-proc remove3*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): void =
-
+proc remove*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): void =
   fcQCborMap_remove3(self.h, key.h)
 
 proc contains*(self: gen_qcbormap_types.QCborMap, key: clonglong): bool =
-
   fcQCborMap_contains(self.h, key)
 
-proc contains2*(self: gen_qcbormap_types.QCborMap, key: string): bool =
-
+proc contains*(self: gen_qcbormap_types.QCborMap, key: string): bool =
   fcQCborMap_contains2(self.h, struct_miqt_string(data: key, len: csize_t(len(key))))
 
-proc contains3*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): bool =
-
+proc contains*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): bool =
   fcQCborMap_contains3(self.h, key.h)
 
 proc compare*(self: gen_qcbormap_types.QCborMap, other: gen_qcbormap_types.QCborMap): cint =
-
   fcQCborMap_compare(self.h, other.h)
 
 proc operatorEqual*(self: gen_qcbormap_types.QCborMap, other: gen_qcbormap_types.QCborMap): bool =
-
   fcQCborMap_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qcbormap_types.QCborMap, other: gen_qcbormap_types.QCborMap): bool =
-
   fcQCborMap_operatorNotEqual(self.h, other.h)
 
 proc operatorLesser*(self: gen_qcbormap_types.QCborMap, other: gen_qcbormap_types.QCborMap): bool =
-
   fcQCborMap_operatorLesser(self.h, other.h)
 
 proc begin*(self: gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_begin(self.h))
 
 proc constBegin*(self: gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_constBegin(self.h))
 
 proc begin2*(self: gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_begin2(self.h))
 
 proc cbegin*(self: gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_cbegin(self.h))
 
 proc endX*(self: gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_endX(self.h))
 
 proc constEnd*(self: gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_constEnd(self.h))
 
-proc end2*(self: gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMapConstIterator =
-
+proc endX2*(self: gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMapConstIterator =
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_end2(self.h))
 
 proc cend*(self: gen_qcbormap_types.QCborMap, ): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_cend(self.h))
 
 proc erase*(self: gen_qcbormap_types.QCborMap, it: gen_qcbormap_types.QCborMapIterator): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_erase(self.h, it.h))
 
-proc eraseWithIt*(self: gen_qcbormap_types.QCborMap, it: gen_qcbormap_types.QCborMapConstIterator): gen_qcbormap_types.QCborMapIterator =
-
+proc erase*(self: gen_qcbormap_types.QCborMap, it: gen_qcbormap_types.QCborMapConstIterator): gen_qcbormap_types.QCborMapIterator =
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_eraseWithIt(self.h, it.h))
 
 proc extract*(self: gen_qcbormap_types.QCborMap, it: gen_qcbormap_types.QCborMapIterator): gen_qcborvalue.QCborValue =
-
   gen_qcborvalue.QCborValue(h: fcQCborMap_extract(self.h, it.h))
 
-proc extractWithIt*(self: gen_qcbormap_types.QCborMap, it: gen_qcbormap_types.QCborMapConstIterator): gen_qcborvalue.QCborValue =
-
+proc extract*(self: gen_qcbormap_types.QCborMap, it: gen_qcbormap_types.QCborMapConstIterator): gen_qcborvalue.QCborValue =
   gen_qcborvalue.QCborValue(h: fcQCborMap_extractWithIt(self.h, it.h))
 
 proc empty*(self: gen_qcbormap_types.QCborMap, ): bool =
-
   fcQCborMap_empty(self.h)
 
 proc find*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_find(self.h, key))
 
-proc find2*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcbormap_types.QCborMapIterator =
-
+proc find*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcbormap_types.QCborMapIterator =
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_find2(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc find3*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapIterator =
-
+proc find*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapIterator =
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_find3(self.h, key.h))
 
 proc constFind*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_constFind(self.h, key))
 
-proc constFind2*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcbormap_types.QCborMapConstIterator =
-
+proc constFind*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcbormap_types.QCborMapConstIterator =
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_constFind2(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc constFind3*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapConstIterator =
-
+proc constFind*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapConstIterator =
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_constFind3(self.h, key.h))
 
-proc find4*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcbormap_types.QCborMapConstIterator =
-
+proc find2*(self: gen_qcbormap_types.QCborMap, key: clonglong): gen_qcbormap_types.QCborMapConstIterator =
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_find4(self.h, key))
 
-proc find6*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcbormap_types.QCborMapConstIterator =
-
+proc find2*(self: gen_qcbormap_types.QCborMap, key: string): gen_qcbormap_types.QCborMapConstIterator =
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_find6(self.h, struct_miqt_string(data: key, len: csize_t(len(key)))))
 
-proc find7*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapConstIterator =
-
+proc find2*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapConstIterator =
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMap_find7(self.h, key.h))
 
 proc insert*(self: gen_qcbormap_types.QCborMap, key: clonglong, value_x: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_insert(self.h, key, value_x.h))
 
-proc insert3*(self: gen_qcbormap_types.QCborMap, key: string, value_x: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapIterator =
-
+proc insert*(self: gen_qcbormap_types.QCborMap, key: string, value_x: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapIterator =
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_insert3(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), value_x.h))
 
-proc insert4*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue, value_x: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapIterator =
-
+proc insert*(self: gen_qcbormap_types.QCborMap, key: gen_qcborvalue.QCborValue, value_x: gen_qcborvalue.QCborValue): gen_qcbormap_types.QCborMapIterator =
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_insert4(self.h, key.h, value_x.h))
 
-proc insertWithQCborMapvalueType*(self: gen_qcbormap_types.QCborMap, v: tuple[first: gen_qcborvalue.QCborValue, second: gen_qcborvalue.QCborValue]): gen_qcbormap_types.QCborMapIterator =
-
+proc insert*(self: gen_qcbormap_types.QCborMap, v: tuple[first: gen_qcborvalue.QCborValue, second: gen_qcborvalue.QCborValue]): gen_qcbormap_types.QCborMapIterator =
   var v_CArray_First: pointer
   var v_CArray_Second: pointer
   v_CArray_First = v.first.h
@@ -413,7 +358,6 @@ proc insertWithQCborMapvalueType*(self: gen_qcbormap_types.QCborMap, v: tuple[fi
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMap_insertWithQCborMapvalueType(self.h, struct_miqt_map(len: 1,keys: addr(v_CArray_First),values: addr(v_CArray_Second),)))
 
 proc fromVariantMap*(_: type gen_qcbormap_types.QCborMap, map: Table[string,gen_qvariant.QVariant]): gen_qcbormap_types.QCborMap =
-
   var map_Keys_CArray = newSeq[struct_miqt_string](len(map))
   var map_Values_CArray = newSeq[pointer](len(map))
   var map_ctr = 0
@@ -425,7 +369,6 @@ proc fromVariantMap*(_: type gen_qcbormap_types.QCborMap, map: Table[string,gen_
   gen_qcbormap_types.QCborMap(h: fcQCborMap_fromVariantMap(struct_miqt_map(len: csize_t(len(map)),keys: if len(map) == 0: nil else: addr(map_Keys_CArray[0]), values: if len(map) == 0: nil else: addr(map_Values_CArray[0]),)))
 
 proc fromVariantHash*(_: type gen_qcbormap_types.QCborMap, hash: Table[string,gen_qvariant.QVariant]): gen_qcbormap_types.QCborMap =
-
   var hash_Keys_CArray = newSeq[struct_miqt_string](len(hash))
   var hash_Values_CArray = newSeq[pointer](len(hash))
   var hash_ctr = 0
@@ -437,11 +380,9 @@ proc fromVariantHash*(_: type gen_qcbormap_types.QCborMap, hash: Table[string,ge
   gen_qcbormap_types.QCborMap(h: fcQCborMap_fromVariantHash(struct_miqt_map(len: csize_t(len(hash)),keys: if len(hash) == 0: nil else: addr(hash_Keys_CArray[0]), values: if len(hash) == 0: nil else: addr(hash_Values_CArray[0]),)))
 
 proc fromJsonObject*(_: type gen_qcbormap_types.QCborMap, o: gen_qjsonobject.QJsonObject): gen_qcbormap_types.QCborMap =
-
   gen_qcbormap_types.QCborMap(h: fcQCborMap_fromJsonObject(o.h))
 
 proc toVariantMap*(self: gen_qcbormap_types.QCborMap, ): Table[string,gen_qvariant.QVariant] =
-
   var v_mm = fcQCborMap_toVariantMap(self.h)
   var vx_ret: Table[string, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[struct_miqt_string]](v_mm.keys)
@@ -458,7 +399,6 @@ proc toVariantMap*(self: gen_qcbormap_types.QCborMap, ): Table[string,gen_qvaria
   vx_ret
 
 proc toVariantHash*(self: gen_qcbormap_types.QCborMap, ): Table[string,gen_qvariant.QVariant] =
-
   var v_mm = fcQCborMap_toVariantHash(self.h)
   var vx_ret: Table[string, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[struct_miqt_string]](v_mm.keys)
@@ -475,7 +415,6 @@ proc toVariantHash*(self: gen_qcbormap_types.QCborMap, ): Table[string,gen_qvari
   vx_ret
 
 proc toJsonObject*(self: gen_qcbormap_types.QCborMap, ): gen_qjsonobject.QJsonObject =
-
   gen_qjsonobject.QJsonObject(h: fcQCborMap_toJsonObject(self.h))
 
 proc delete*(self: gen_qcbormap_types.QCborMap) =
@@ -484,17 +423,15 @@ proc delete*(self: gen_qcbormap_types.QCborMap) =
 func init*(T: type gen_qcbormap_types.QCborMapIterator, h: ptr cQCborMapIterator): gen_qcbormap_types.QCborMapIterator =
   T(h: h)
 proc create*(T: type gen_qcbormap_types.QCborMapIterator, ): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator.init(fcQCborMapIterator_new())
+
 proc create*(T: type gen_qcbormap_types.QCborMapIterator, param1: gen_qcbormap_types.QCborMapIterator): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator.init(fcQCborMapIterator_new2(param1.h))
-proc operatorAssign*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapIterator): void =
 
+proc operatorAssign*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapIterator): void =
   fcQCborMapIterator_operatorAssign(self.h, other.h)
 
 proc operatorMultiply*(self: gen_qcbormap_types.QCborMapIterator, ): tuple[first: gen_qcborvalue.QCborValueRef, second: gen_qcborvalue.QCborValueRef] =
-
   var v_mm = fcQCborMapIterator_operatorMultiply(self.h)
   var v_First_CArray = cast[ptr UncheckedArray[pointer]](v_mm.keys)
   var v_Second_CArray = cast[ptr UncheckedArray[pointer]](v_mm.values)
@@ -505,99 +442,75 @@ proc operatorMultiply*(self: gen_qcbormap_types.QCborMapIterator, ): tuple[first
   (first: v_entry_First , second: v_entry_Second )
 
 proc operatorMinusGreater*(self: gen_qcbormap_types.QCborMapIterator, ): gen_qcborvalue.QCborValueRef =
-
   gen_qcborvalue.QCborValueRef(h: fcQCborMapIterator_operatorMinusGreater(self.h))
 
 proc key*(self: gen_qcbormap_types.QCborMapIterator, ): gen_qcborvalue.QCborValue =
-
   gen_qcborvalue.QCborValue(h: fcQCborMapIterator_key(self.h))
 
 proc value*(self: gen_qcbormap_types.QCborMapIterator, ): gen_qcborvalue.QCborValueRef =
-
   gen_qcborvalue.QCborValueRef(h: fcQCborMapIterator_value(self.h))
 
 proc operatorEqual*(self: gen_qcbormap_types.QCborMapIterator, o: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapIterator_operatorEqual(self.h, o.h)
 
 proc operatorNotEqual*(self: gen_qcbormap_types.QCborMapIterator, o: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapIterator_operatorNotEqual(self.h, o.h)
 
 proc operatorLesser*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapIterator_operatorLesser(self.h, other.h)
 
 proc operatorLesserOrEqual*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapIterator_operatorLesserOrEqual(self.h, other.h)
 
 proc operatorGreater*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapIterator_operatorGreater(self.h, other.h)
 
 proc operatorGreaterOrEqual*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapIterator_operatorGreaterOrEqual(self.h, other.h)
 
-proc operatorEqualWithQCborMapConstIterator*(self: gen_qcbormap_types.QCborMapIterator, o: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorEqual*(self: gen_qcbormap_types.QCborMapIterator, o: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapIterator_operatorEqualWithQCborMapConstIterator(self.h, o.h)
 
-proc operatorNotEqualWithQCborMapConstIterator*(self: gen_qcbormap_types.QCborMapIterator, o: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorNotEqual*(self: gen_qcbormap_types.QCborMapIterator, o: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapIterator_operatorNotEqualWithQCborMapConstIterator(self.h, o.h)
 
-proc operatorLesserWithOther*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorLesser*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapIterator_operatorLesserWithOther(self.h, other.h)
 
-proc operatorLesserOrEqualWithOther*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorLesserOrEqual*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapIterator_operatorLesserOrEqualWithOther(self.h, other.h)
 
-proc operatorGreaterWithOther*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorGreater*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapIterator_operatorGreaterWithOther(self.h, other.h)
 
-proc operatorGreaterOrEqualWithOther*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorGreaterOrEqual*(self: gen_qcbormap_types.QCborMapIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapIterator_operatorGreaterOrEqualWithOther(self.h, other.h)
 
 proc operatorPlusPlus*(self: gen_qcbormap_types.QCborMapIterator, ): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMapIterator_operatorPlusPlus(self.h))
 
-proc operatorPlusPlusWithInt*(self: gen_qcbormap_types.QCborMapIterator, param1: cint): gen_qcbormap_types.QCborMapIterator =
-
+proc operatorPlusPlus*(self: gen_qcbormap_types.QCborMapIterator, param1: cint): gen_qcbormap_types.QCborMapIterator =
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMapIterator_operatorPlusPlusWithInt(self.h, param1))
 
 proc operatorMinusMinus*(self: gen_qcbormap_types.QCborMapIterator, ): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMapIterator_operatorMinusMinus(self.h))
 
-proc operatorMinusMinusWithInt*(self: gen_qcbormap_types.QCborMapIterator, param1: cint): gen_qcbormap_types.QCborMapIterator =
-
+proc operatorMinusMinus*(self: gen_qcbormap_types.QCborMapIterator, param1: cint): gen_qcbormap_types.QCborMapIterator =
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMapIterator_operatorMinusMinusWithInt(self.h, param1))
 
 proc operatorPlusAssign*(self: gen_qcbormap_types.QCborMapIterator, j: int64): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMapIterator_operatorPlusAssign(self.h, j))
 
 proc operatorMinusAssign*(self: gen_qcbormap_types.QCborMapIterator, j: int64): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMapIterator_operatorMinusAssign(self.h, j))
 
 proc operatorPlus*(self: gen_qcbormap_types.QCborMapIterator, j: int64): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMapIterator_operatorPlus(self.h, j))
 
 proc operatorMinus*(self: gen_qcbormap_types.QCborMapIterator, j: int64): gen_qcbormap_types.QCborMapIterator =
-
   gen_qcbormap_types.QCborMapIterator(h: fcQCborMapIterator_operatorMinus(self.h, j))
 
-proc operatorMinusWithQCborMapIterator*(self: gen_qcbormap_types.QCborMapIterator, j: gen_qcbormap_types.QCborMapIterator): int64 =
-
+proc operatorMinus*(self: gen_qcbormap_types.QCborMapIterator, j: gen_qcbormap_types.QCborMapIterator): int64 =
   fcQCborMapIterator_operatorMinusWithQCborMapIterator(self.h, j.h)
 
 proc delete*(self: gen_qcbormap_types.QCborMapIterator) =
@@ -606,17 +519,15 @@ proc delete*(self: gen_qcbormap_types.QCborMapIterator) =
 func init*(T: type gen_qcbormap_types.QCborMapConstIterator, h: ptr cQCborMapConstIterator): gen_qcbormap_types.QCborMapConstIterator =
   T(h: h)
 proc create*(T: type gen_qcbormap_types.QCborMapConstIterator, ): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator.init(fcQCborMapConstIterator_new())
+
 proc create*(T: type gen_qcbormap_types.QCborMapConstIterator, param1: gen_qcbormap_types.QCborMapConstIterator): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator.init(fcQCborMapConstIterator_new2(param1.h))
-proc operatorAssign*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): void =
 
+proc operatorAssign*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): void =
   fcQCborMapConstIterator_operatorAssign(self.h, other.h)
 
 proc operatorMultiply*(self: gen_qcbormap_types.QCborMapConstIterator, ): tuple[first: gen_qcborvalue.QCborValueRef, second: gen_qcborvalue.QCborValueRef] =
-
   var v_mm = fcQCborMapConstIterator_operatorMultiply(self.h)
   var v_First_CArray = cast[ptr UncheckedArray[pointer]](v_mm.keys)
   var v_Second_CArray = cast[ptr UncheckedArray[pointer]](v_mm.values)
@@ -627,99 +538,75 @@ proc operatorMultiply*(self: gen_qcbormap_types.QCborMapConstIterator, ): tuple[
   (first: v_entry_First , second: v_entry_Second )
 
 proc operatorMinusGreater*(self: gen_qcbormap_types.QCborMapConstIterator, ): gen_qcborvalue.QCborValueRef =
-
   gen_qcborvalue.QCborValueRef(h: fcQCborMapConstIterator_operatorMinusGreater(self.h))
 
 proc key*(self: gen_qcbormap_types.QCborMapConstIterator, ): gen_qcborvalue.QCborValue =
-
   gen_qcborvalue.QCborValue(h: fcQCborMapConstIterator_key(self.h))
 
 proc value*(self: gen_qcbormap_types.QCborMapConstIterator, ): gen_qcborvalue.QCborValueRef =
-
   gen_qcborvalue.QCborValueRef(h: fcQCborMapConstIterator_value(self.h))
 
 proc operatorEqual*(self: gen_qcbormap_types.QCborMapConstIterator, o: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapConstIterator_operatorEqual(self.h, o.h)
 
 proc operatorNotEqual*(self: gen_qcbormap_types.QCborMapConstIterator, o: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapConstIterator_operatorNotEqual(self.h, o.h)
 
 proc operatorLesser*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapConstIterator_operatorLesser(self.h, other.h)
 
 proc operatorLesserOrEqual*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapConstIterator_operatorLesserOrEqual(self.h, other.h)
 
 proc operatorGreater*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapConstIterator_operatorGreater(self.h, other.h)
 
 proc operatorGreaterOrEqual*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapIterator): bool =
-
   fcQCborMapConstIterator_operatorGreaterOrEqual(self.h, other.h)
 
-proc operatorEqualWithQCborMapConstIterator*(self: gen_qcbormap_types.QCborMapConstIterator, o: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorEqual*(self: gen_qcbormap_types.QCborMapConstIterator, o: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapConstIterator_operatorEqualWithQCborMapConstIterator(self.h, o.h)
 
-proc operatorNotEqualWithQCborMapConstIterator*(self: gen_qcbormap_types.QCborMapConstIterator, o: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorNotEqual*(self: gen_qcbormap_types.QCborMapConstIterator, o: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapConstIterator_operatorNotEqualWithQCborMapConstIterator(self.h, o.h)
 
-proc operatorLesserWithOther*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorLesser*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapConstIterator_operatorLesserWithOther(self.h, other.h)
 
-proc operatorLesserOrEqualWithOther*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorLesserOrEqual*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapConstIterator_operatorLesserOrEqualWithOther(self.h, other.h)
 
-proc operatorGreaterWithOther*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorGreater*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapConstIterator_operatorGreaterWithOther(self.h, other.h)
 
-proc operatorGreaterOrEqualWithOther*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
-
+proc operatorGreaterOrEqual*(self: gen_qcbormap_types.QCborMapConstIterator, other: gen_qcbormap_types.QCborMapConstIterator): bool =
   fcQCborMapConstIterator_operatorGreaterOrEqualWithOther(self.h, other.h)
 
 proc operatorPlusPlus*(self: gen_qcbormap_types.QCborMapConstIterator, ): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMapConstIterator_operatorPlusPlus(self.h))
 
-proc operatorPlusPlusWithInt*(self: gen_qcbormap_types.QCborMapConstIterator, param1: cint): gen_qcbormap_types.QCborMapConstIterator =
-
+proc operatorPlusPlus*(self: gen_qcbormap_types.QCborMapConstIterator, param1: cint): gen_qcbormap_types.QCborMapConstIterator =
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMapConstIterator_operatorPlusPlusWithInt(self.h, param1))
 
 proc operatorMinusMinus*(self: gen_qcbormap_types.QCborMapConstIterator, ): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMapConstIterator_operatorMinusMinus(self.h))
 
-proc operatorMinusMinusWithInt*(self: gen_qcbormap_types.QCborMapConstIterator, param1: cint): gen_qcbormap_types.QCborMapConstIterator =
-
+proc operatorMinusMinus*(self: gen_qcbormap_types.QCborMapConstIterator, param1: cint): gen_qcbormap_types.QCborMapConstIterator =
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMapConstIterator_operatorMinusMinusWithInt(self.h, param1))
 
 proc operatorPlusAssign*(self: gen_qcbormap_types.QCborMapConstIterator, j: int64): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMapConstIterator_operatorPlusAssign(self.h, j))
 
 proc operatorMinusAssign*(self: gen_qcbormap_types.QCborMapConstIterator, j: int64): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMapConstIterator_operatorMinusAssign(self.h, j))
 
 proc operatorPlus*(self: gen_qcbormap_types.QCborMapConstIterator, j: int64): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMapConstIterator_operatorPlus(self.h, j))
 
 proc operatorMinus*(self: gen_qcbormap_types.QCborMapConstIterator, j: int64): gen_qcbormap_types.QCborMapConstIterator =
-
   gen_qcbormap_types.QCborMapConstIterator(h: fcQCborMapConstIterator_operatorMinus(self.h, j))
 
-proc operatorMinusWithQCborMapConstIterator*(self: gen_qcbormap_types.QCborMapConstIterator, j: gen_qcbormap_types.QCborMapConstIterator): int64 =
-
+proc operatorMinus*(self: gen_qcbormap_types.QCborMapConstIterator, j: gen_qcbormap_types.QCborMapConstIterator): int64 =
   fcQCborMapConstIterator_operatorMinusWithQCborMapConstIterator(self.h, j.h)
 
 proc delete*(self: gen_qcbormap_types.QCborMapConstIterator) =

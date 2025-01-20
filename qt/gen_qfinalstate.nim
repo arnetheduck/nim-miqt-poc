@@ -96,67 +96,57 @@ proc fcQFinalState_delete(self: pointer) {.importc: "QFinalState_delete".}
 func init*(T: type gen_qfinalstate_types.QFinalState, h: ptr cQFinalState): gen_qfinalstate_types.QFinalState =
   T(h: h)
 proc create*(T: type gen_qfinalstate_types.QFinalState, ): gen_qfinalstate_types.QFinalState =
-
   gen_qfinalstate_types.QFinalState.init(fcQFinalState_new())
+
 proc create*(T: type gen_qfinalstate_types.QFinalState, parent: gen_qstate.QState): gen_qfinalstate_types.QFinalState =
-
   gen_qfinalstate_types.QFinalState.init(fcQFinalState_new2(parent.h))
-proc metaObject*(self: gen_qfinalstate_types.QFinalState, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qfinalstate_types.QFinalState, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFinalState_metaObject(self.h))
 
 proc metacast*(self: gen_qfinalstate_types.QFinalState, param1: cstring): pointer =
-
   fcQFinalState_metacast(self.h, param1)
 
 proc metacall*(self: gen_qfinalstate_types.QFinalState, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQFinalState_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qfinalstate_types.QFinalState, s: cstring): string =
-
   let v_ms = fcQFinalState_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qfinalstate_types.QFinalState, s: cstring): string =
-
   let v_ms = fcQFinalState_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr2*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring): string =
   let v_ms = fcQFinalState_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFinalState_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring): string =
   let v_ms = fcQFinalState_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qfinalstate_types.QFinalState, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFinalState_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QFinalStatemetaObject*(self: gen_qfinalstate_types.QFinalState, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQFinalState_virtualbase_metaObject(self.h))
 
 type QFinalStatemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -174,7 +164,6 @@ proc miqt_exec_callback_QFinalState_metaObject(self: ptr cQFinalState, slot: int
 
   virtualReturn.h
 proc QFinalStatemetacast*(self: gen_qfinalstate_types.QFinalState, param1: cstring): pointer =
-
   fQFinalState_virtualbase_metacast(self.h, param1)
 
 type QFinalStatemetacastProc* = proc(param1: cstring): pointer
@@ -194,7 +183,6 @@ proc miqt_exec_callback_QFinalState_metacast(self: ptr cQFinalState, slot: int, 
 
   virtualReturn
 proc QFinalStatemetacall*(self: gen_qfinalstate_types.QFinalState, param1: cint, param2: cint, param3: pointer): cint =
-
   fQFinalState_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QFinalStatemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -218,7 +206,6 @@ proc miqt_exec_callback_QFinalState_metacall(self: ptr cQFinalState, slot: int, 
 
   virtualReturn
 proc QFinalStateonEntry*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QEvent): void =
-
   fQFinalState_virtualbase_onEntry(self.h, event.h)
 
 type QFinalStateonEntryProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -236,7 +223,6 @@ proc miqt_exec_callback_QFinalState_onEntry(self: ptr cQFinalState, slot: int, e
 
   nimfunc[](slotval1)
 proc QFinalStateonExit*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QEvent): void =
-
   fQFinalState_virtualbase_onExit(self.h, event.h)
 
 type QFinalStateonExitProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -254,7 +240,6 @@ proc miqt_exec_callback_QFinalState_onExit(self: ptr cQFinalState, slot: int, ev
 
   nimfunc[](slotval1)
 proc QFinalStateevent*(self: gen_qfinalstate_types.QFinalState, e: gen_qcoreevent.QEvent): bool =
-
   fQFinalState_virtualbase_event(self.h, e.h)
 
 type QFinalStateeventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -274,7 +259,6 @@ proc miqt_exec_callback_QFinalState_event(self: ptr cQFinalState, slot: int, e: 
 
   virtualReturn
 proc QFinalStateeventFilter*(self: gen_qfinalstate_types.QFinalState, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQFinalState_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QFinalStateeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -296,7 +280,6 @@ proc miqt_exec_callback_QFinalState_eventFilter(self: ptr cQFinalState, slot: in
 
   virtualReturn
 proc QFinalStatetimerEvent*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QTimerEvent): void =
-
   fQFinalState_virtualbase_timerEvent(self.h, event.h)
 
 type QFinalStatetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -314,7 +297,6 @@ proc miqt_exec_callback_QFinalState_timerEvent(self: ptr cQFinalState, slot: int
 
   nimfunc[](slotval1)
 proc QFinalStatechildEvent*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QChildEvent): void =
-
   fQFinalState_virtualbase_childEvent(self.h, event.h)
 
 type QFinalStatechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -332,7 +314,6 @@ proc miqt_exec_callback_QFinalState_childEvent(self: ptr cQFinalState, slot: int
 
   nimfunc[](slotval1)
 proc QFinalStatecustomEvent*(self: gen_qfinalstate_types.QFinalState, event: gen_qcoreevent.QEvent): void =
-
   fQFinalState_virtualbase_customEvent(self.h, event.h)
 
 type QFinalStatecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -350,7 +331,6 @@ proc miqt_exec_callback_QFinalState_customEvent(self: ptr cQFinalState, slot: in
 
   nimfunc[](slotval1)
 proc QFinalStateconnectNotify*(self: gen_qfinalstate_types.QFinalState, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFinalState_virtualbase_connectNotify(self.h, signal.h)
 
 type QFinalStateconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -368,7 +348,6 @@ proc miqt_exec_callback_QFinalState_connectNotify(self: ptr cQFinalState, slot: 
 
   nimfunc[](slotval1)
 proc QFinalStatedisconnectNotify*(self: gen_qfinalstate_types.QFinalState, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFinalState_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QFinalStatedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

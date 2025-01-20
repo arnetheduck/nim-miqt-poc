@@ -204,151 +204,127 @@ proc fcQGroupBox_delete(self: pointer) {.importc: "QGroupBox_delete".}
 func init*(T: type gen_qgroupbox_types.QGroupBox, h: ptr cQGroupBox): gen_qgroupbox_types.QGroupBox =
   T(h: h)
 proc create*(T: type gen_qgroupbox_types.QGroupBox, parent: gen_qwidget.QWidget): gen_qgroupbox_types.QGroupBox =
-
   gen_qgroupbox_types.QGroupBox.init(fcQGroupBox_new(parent.h))
+
 proc create*(T: type gen_qgroupbox_types.QGroupBox, ): gen_qgroupbox_types.QGroupBox =
-
   gen_qgroupbox_types.QGroupBox.init(fcQGroupBox_new2())
+
 proc create*(T: type gen_qgroupbox_types.QGroupBox, title: string): gen_qgroupbox_types.QGroupBox =
-
   gen_qgroupbox_types.QGroupBox.init(fcQGroupBox_new3(struct_miqt_string(data: title, len: csize_t(len(title)))))
+
 proc create*(T: type gen_qgroupbox_types.QGroupBox, title: string, parent: gen_qwidget.QWidget): gen_qgroupbox_types.QGroupBox =
-
   gen_qgroupbox_types.QGroupBox.init(fcQGroupBox_new4(struct_miqt_string(data: title, len: csize_t(len(title))), parent.h))
-proc metaObject*(self: gen_qgroupbox_types.QGroupBox, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgroupbox_types.QGroupBox, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGroupBox_metaObject(self.h))
 
 proc metacast*(self: gen_qgroupbox_types.QGroupBox, param1: cstring): pointer =
-
   fcQGroupBox_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgroupbox_types.QGroupBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGroupBox_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgroupbox_types.QGroupBox, s: cstring): string =
-
   let v_ms = fcQGroupBox_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc title*(self: gen_qgroupbox_types.QGroupBox, ): string =
-
   let v_ms = fcQGroupBox_title(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTitle*(self: gen_qgroupbox_types.QGroupBox, title: string): void =
-
   fcQGroupBox_setTitle(self.h, struct_miqt_string(data: title, len: csize_t(len(title))))
 
 proc alignment*(self: gen_qgroupbox_types.QGroupBox, ): cint =
-
   cint(fcQGroupBox_alignment(self.h))
 
 proc setAlignment*(self: gen_qgroupbox_types.QGroupBox, alignment: cint): void =
-
   fcQGroupBox_setAlignment(self.h, alignment)
 
 proc minimumSizeHint*(self: gen_qgroupbox_types.QGroupBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQGroupBox_minimumSizeHint(self.h))
 
 proc isFlat*(self: gen_qgroupbox_types.QGroupBox, ): bool =
-
   fcQGroupBox_isFlat(self.h)
 
 proc setFlat*(self: gen_qgroupbox_types.QGroupBox, flat: bool): void =
-
   fcQGroupBox_setFlat(self.h, flat)
 
 proc isCheckable*(self: gen_qgroupbox_types.QGroupBox, ): bool =
-
   fcQGroupBox_isCheckable(self.h)
 
 proc setCheckable*(self: gen_qgroupbox_types.QGroupBox, checkable: bool): void =
-
   fcQGroupBox_setCheckable(self.h, checkable)
 
 proc isChecked*(self: gen_qgroupbox_types.QGroupBox, ): bool =
-
   fcQGroupBox_isChecked(self.h)
 
 proc setChecked*(self: gen_qgroupbox_types.QGroupBox, checked: bool): void =
-
   fcQGroupBox_setChecked(self.h, checked)
 
 proc clicked*(self: gen_qgroupbox_types.QGroupBox, ): void =
-
   fcQGroupBox_clicked(self.h)
 
+type QGroupBoxclickedSlot* = proc()
 proc miqt_exec_callback_QGroupBox_clicked(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QGroupBoxclickedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onclicked*(self: gen_qgroupbox_types.QGroupBox, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onclicked*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxclickedSlot) =
+  var tmp = new QGroupBoxclickedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGroupBox_connect_clicked(self.h, cast[int](addr tmp[]))
-proc toggled*(self: gen_qgroupbox_types.QGroupBox, param1: bool): void =
 
+proc toggled*(self: gen_qgroupbox_types.QGroupBox, param1: bool): void =
   fcQGroupBox_toggled(self.h, param1)
 
+type QGroupBoxtoggledSlot* = proc(param1: bool)
 proc miqt_exec_callback_QGroupBox_toggled(slot: int, param1: bool) {.exportc.} =
-  type Cb = proc(param1: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGroupBoxtoggledSlot](cast[pointer](slot))
   let slotval1 = param1
-
 
   nimfunc[](slotval1)
 
-proc ontoggled*(self: gen_qgroupbox_types.QGroupBox, slot: proc(param1: bool)) =
-  type Cb = proc(param1: bool)
-  var tmp = new Cb
+proc ontoggled*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxtoggledSlot) =
+  var tmp = new QGroupBoxtoggledSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGroupBox_connect_toggled(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qgroupbox_types.QGroupBox, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qgroupbox_types.QGroupBox, s: cstring, c: cstring): string =
   let v_ms = fcQGroupBox_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgroupbox_types.QGroupBox, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgroupbox_types.QGroupBox, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGroupBox_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc clicked1*(self: gen_qgroupbox_types.QGroupBox, checked: bool): void =
-
+proc clicked*(self: gen_qgroupbox_types.QGroupBox, checked: bool): void =
   fcQGroupBox_clicked1(self.h, checked)
 
+type QGroupBoxclicked1Slot* = proc(checked: bool)
 proc miqt_exec_callback_QGroupBox_clicked1(slot: int, checked: bool) {.exportc.} =
-  type Cb = proc(checked: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGroupBoxclicked1Slot](cast[pointer](slot))
   let slotval1 = checked
-
 
   nimfunc[](slotval1)
 
-proc onclicked1*(self: gen_qgroupbox_types.QGroupBox, slot: proc(checked: bool)) =
-  type Cb = proc(checked: bool)
-  var tmp = new Cb
+proc onclicked*(self: gen_qgroupbox_types.QGroupBox, slot: QGroupBoxclicked1Slot) =
+  var tmp = new QGroupBoxclicked1Slot
   tmp[] = slot
   GC_ref(tmp)
   fQGroupBox_connect_clicked1(self.h, cast[int](addr tmp[]))
-proc QGroupBoxmetaObject*(self: gen_qgroupbox_types.QGroupBox, ): gen_qobjectdefs.QMetaObject =
 
+proc QGroupBoxmetaObject*(self: gen_qgroupbox_types.QGroupBox, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fQGroupBox_virtualbase_metaObject(self.h))
 
 type QGroupBoxmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -366,7 +342,6 @@ proc miqt_exec_callback_QGroupBox_metaObject(self: ptr cQGroupBox, slot: int): p
 
   virtualReturn.h
 proc QGroupBoxmetacast*(self: gen_qgroupbox_types.QGroupBox, param1: cstring): pointer =
-
   fQGroupBox_virtualbase_metacast(self.h, param1)
 
 type QGroupBoxmetacastProc* = proc(param1: cstring): pointer
@@ -386,7 +361,6 @@ proc miqt_exec_callback_QGroupBox_metacast(self: ptr cQGroupBox, slot: int, para
 
   virtualReturn
 proc QGroupBoxmetacall*(self: gen_qgroupbox_types.QGroupBox, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGroupBox_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGroupBoxmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -410,7 +384,6 @@ proc miqt_exec_callback_QGroupBox_metacall(self: ptr cQGroupBox, slot: int, para
 
   virtualReturn
 proc QGroupBoxminimumSizeHint*(self: gen_qgroupbox_types.QGroupBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQGroupBox_virtualbase_minimumSizeHint(self.h))
 
 type QGroupBoxminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -428,7 +401,6 @@ proc miqt_exec_callback_QGroupBox_minimumSizeHint(self: ptr cQGroupBox, slot: in
 
   virtualReturn.h
 proc QGroupBoxevent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QEvent): bool =
-
   fQGroupBox_virtualbase_event(self.h, event.h)
 
 type QGroupBoxeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -448,7 +420,6 @@ proc miqt_exec_callback_QGroupBox_event(self: ptr cQGroupBox, slot: int, event: 
 
   virtualReturn
 proc QGroupBoxchildEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QChildEvent): void =
-
   fQGroupBox_virtualbase_childEvent(self.h, event.h)
 
 type QGroupBoxchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -466,7 +437,6 @@ proc miqt_exec_callback_QGroupBox_childEvent(self: ptr cQGroupBox, slot: int, ev
 
   nimfunc[](slotval1)
 proc QGroupBoxresizeEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QResizeEvent): void =
-
   fQGroupBox_virtualbase_resizeEvent(self.h, event.h)
 
 type QGroupBoxresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -484,7 +454,6 @@ proc miqt_exec_callback_QGroupBox_resizeEvent(self: ptr cQGroupBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QGroupBoxpaintEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QPaintEvent): void =
-
   fQGroupBox_virtualbase_paintEvent(self.h, event.h)
 
 type QGroupBoxpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -502,7 +471,6 @@ proc miqt_exec_callback_QGroupBox_paintEvent(self: ptr cQGroupBox, slot: int, ev
 
   nimfunc[](slotval1)
 proc QGroupBoxfocusInEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QFocusEvent): void =
-
   fQGroupBox_virtualbase_focusInEvent(self.h, event.h)
 
 type QGroupBoxfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -520,7 +488,6 @@ proc miqt_exec_callback_QGroupBox_focusInEvent(self: ptr cQGroupBox, slot: int, 
 
   nimfunc[](slotval1)
 proc QGroupBoxchangeEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QEvent): void =
-
   fQGroupBox_virtualbase_changeEvent(self.h, event.h)
 
 type QGroupBoxchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -538,7 +505,6 @@ proc miqt_exec_callback_QGroupBox_changeEvent(self: ptr cQGroupBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QGroupBoxmousePressEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMouseEvent): void =
-
   fQGroupBox_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGroupBoxmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -556,7 +522,6 @@ proc miqt_exec_callback_QGroupBox_mousePressEvent(self: ptr cQGroupBox, slot: in
 
   nimfunc[](slotval1)
 proc QGroupBoxmouseMoveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMouseEvent): void =
-
   fQGroupBox_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGroupBoxmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -574,7 +539,6 @@ proc miqt_exec_callback_QGroupBox_mouseMoveEvent(self: ptr cQGroupBox, slot: int
 
   nimfunc[](slotval1)
 proc QGroupBoxmouseReleaseEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMouseEvent): void =
-
   fQGroupBox_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGroupBoxmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -592,7 +556,6 @@ proc miqt_exec_callback_QGroupBox_mouseReleaseEvent(self: ptr cQGroupBox, slot: 
 
   nimfunc[](slotval1)
 proc QGroupBoxinitStyleOption*(self: gen_qgroupbox_types.QGroupBox, option: gen_qstyleoption.QStyleOptionGroupBox): void =
-
   fQGroupBox_virtualbase_initStyleOption(self.h, option.h)
 
 type QGroupBoxinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionGroupBox): void
@@ -610,7 +573,6 @@ proc miqt_exec_callback_QGroupBox_initStyleOption(self: ptr cQGroupBox, slot: in
 
   nimfunc[](slotval1)
 proc QGroupBoxdevType*(self: gen_qgroupbox_types.QGroupBox, ): cint =
-
   fQGroupBox_virtualbase_devType(self.h)
 
 type QGroupBoxdevTypeProc* = proc(): cint
@@ -628,7 +590,6 @@ proc miqt_exec_callback_QGroupBox_devType(self: ptr cQGroupBox, slot: int): cint
 
   virtualReturn
 proc QGroupBoxsetVisible*(self: gen_qgroupbox_types.QGroupBox, visible: bool): void =
-
   fQGroupBox_virtualbase_setVisible(self.h, visible)
 
 type QGroupBoxsetVisibleProc* = proc(visible: bool): void
@@ -646,7 +607,6 @@ proc miqt_exec_callback_QGroupBox_setVisible(self: ptr cQGroupBox, slot: int, vi
 
   nimfunc[](slotval1)
 proc QGroupBoxsizeHint*(self: gen_qgroupbox_types.QGroupBox, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQGroupBox_virtualbase_sizeHint(self.h))
 
 type QGroupBoxsizeHintProc* = proc(): gen_qsize.QSize
@@ -664,7 +624,6 @@ proc miqt_exec_callback_QGroupBox_sizeHint(self: ptr cQGroupBox, slot: int): poi
 
   virtualReturn.h
 proc QGroupBoxheightForWidth*(self: gen_qgroupbox_types.QGroupBox, param1: cint): cint =
-
   fQGroupBox_virtualbase_heightForWidth(self.h, param1)
 
 type QGroupBoxheightForWidthProc* = proc(param1: cint): cint
@@ -684,7 +643,6 @@ proc miqt_exec_callback_QGroupBox_heightForWidth(self: ptr cQGroupBox, slot: int
 
   virtualReturn
 proc QGroupBoxhasHeightForWidth*(self: gen_qgroupbox_types.QGroupBox, ): bool =
-
   fQGroupBox_virtualbase_hasHeightForWidth(self.h)
 
 type QGroupBoxhasHeightForWidthProc* = proc(): bool
@@ -702,7 +660,6 @@ proc miqt_exec_callback_QGroupBox_hasHeightForWidth(self: ptr cQGroupBox, slot: 
 
   virtualReturn
 proc QGroupBoxpaintEngine*(self: gen_qgroupbox_types.QGroupBox, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQGroupBox_virtualbase_paintEngine(self.h))
 
 type QGroupBoxpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -720,7 +677,6 @@ proc miqt_exec_callback_QGroupBox_paintEngine(self: ptr cQGroupBox, slot: int): 
 
   virtualReturn.h
 proc QGroupBoxmouseDoubleClickEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMouseEvent): void =
-
   fQGroupBox_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGroupBoxmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -738,7 +694,6 @@ proc miqt_exec_callback_QGroupBox_mouseDoubleClickEvent(self: ptr cQGroupBox, sl
 
   nimfunc[](slotval1)
 proc QGroupBoxwheelEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QWheelEvent): void =
-
   fQGroupBox_virtualbase_wheelEvent(self.h, event.h)
 
 type QGroupBoxwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -756,7 +711,6 @@ proc miqt_exec_callback_QGroupBox_wheelEvent(self: ptr cQGroupBox, slot: int, ev
 
   nimfunc[](slotval1)
 proc QGroupBoxkeyPressEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QKeyEvent): void =
-
   fQGroupBox_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGroupBoxkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -774,7 +728,6 @@ proc miqt_exec_callback_QGroupBox_keyPressEvent(self: ptr cQGroupBox, slot: int,
 
   nimfunc[](slotval1)
 proc QGroupBoxkeyReleaseEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QKeyEvent): void =
-
   fQGroupBox_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGroupBoxkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -792,7 +745,6 @@ proc miqt_exec_callback_QGroupBox_keyReleaseEvent(self: ptr cQGroupBox, slot: in
 
   nimfunc[](slotval1)
 proc QGroupBoxfocusOutEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QFocusEvent): void =
-
   fQGroupBox_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGroupBoxfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -810,7 +762,6 @@ proc miqt_exec_callback_QGroupBox_focusOutEvent(self: ptr cQGroupBox, slot: int,
 
   nimfunc[](slotval1)
 proc QGroupBoxenterEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QEnterEvent): void =
-
   fQGroupBox_virtualbase_enterEvent(self.h, event.h)
 
 type QGroupBoxenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -828,7 +779,6 @@ proc miqt_exec_callback_QGroupBox_enterEvent(self: ptr cQGroupBox, slot: int, ev
 
   nimfunc[](slotval1)
 proc QGroupBoxleaveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QEvent): void =
-
   fQGroupBox_virtualbase_leaveEvent(self.h, event.h)
 
 type QGroupBoxleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -846,7 +796,6 @@ proc miqt_exec_callback_QGroupBox_leaveEvent(self: ptr cQGroupBox, slot: int, ev
 
   nimfunc[](slotval1)
 proc QGroupBoxmoveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QMoveEvent): void =
-
   fQGroupBox_virtualbase_moveEvent(self.h, event.h)
 
 type QGroupBoxmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -864,7 +813,6 @@ proc miqt_exec_callback_QGroupBox_moveEvent(self: ptr cQGroupBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QGroupBoxcloseEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QCloseEvent): void =
-
   fQGroupBox_virtualbase_closeEvent(self.h, event.h)
 
 type QGroupBoxcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -882,7 +830,6 @@ proc miqt_exec_callback_QGroupBox_closeEvent(self: ptr cQGroupBox, slot: int, ev
 
   nimfunc[](slotval1)
 proc QGroupBoxcontextMenuEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QContextMenuEvent): void =
-
   fQGroupBox_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGroupBoxcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -900,7 +847,6 @@ proc miqt_exec_callback_QGroupBox_contextMenuEvent(self: ptr cQGroupBox, slot: i
 
   nimfunc[](slotval1)
 proc QGroupBoxtabletEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QTabletEvent): void =
-
   fQGroupBox_virtualbase_tabletEvent(self.h, event.h)
 
 type QGroupBoxtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -918,7 +864,6 @@ proc miqt_exec_callback_QGroupBox_tabletEvent(self: ptr cQGroupBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QGroupBoxactionEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QActionEvent): void =
-
   fQGroupBox_virtualbase_actionEvent(self.h, event.h)
 
 type QGroupBoxactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -936,7 +881,6 @@ proc miqt_exec_callback_QGroupBox_actionEvent(self: ptr cQGroupBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QGroupBoxdragEnterEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QDragEnterEvent): void =
-
   fQGroupBox_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGroupBoxdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -954,7 +898,6 @@ proc miqt_exec_callback_QGroupBox_dragEnterEvent(self: ptr cQGroupBox, slot: int
 
   nimfunc[](slotval1)
 proc QGroupBoxdragMoveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QDragMoveEvent): void =
-
   fQGroupBox_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGroupBoxdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -972,7 +915,6 @@ proc miqt_exec_callback_QGroupBox_dragMoveEvent(self: ptr cQGroupBox, slot: int,
 
   nimfunc[](slotval1)
 proc QGroupBoxdragLeaveEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QDragLeaveEvent): void =
-
   fQGroupBox_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGroupBoxdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -990,7 +932,6 @@ proc miqt_exec_callback_QGroupBox_dragLeaveEvent(self: ptr cQGroupBox, slot: int
 
   nimfunc[](slotval1)
 proc QGroupBoxdropEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QDropEvent): void =
-
   fQGroupBox_virtualbase_dropEvent(self.h, event.h)
 
 type QGroupBoxdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1008,7 +949,6 @@ proc miqt_exec_callback_QGroupBox_dropEvent(self: ptr cQGroupBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QGroupBoxshowEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QShowEvent): void =
-
   fQGroupBox_virtualbase_showEvent(self.h, event.h)
 
 type QGroupBoxshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1026,7 +966,6 @@ proc miqt_exec_callback_QGroupBox_showEvent(self: ptr cQGroupBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QGroupBoxhideEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qevent.QHideEvent): void =
-
   fQGroupBox_virtualbase_hideEvent(self.h, event.h)
 
 type QGroupBoxhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1044,7 +983,6 @@ proc miqt_exec_callback_QGroupBox_hideEvent(self: ptr cQGroupBox, slot: int, eve
 
   nimfunc[](slotval1)
 proc QGroupBoxnativeEvent*(self: gen_qgroupbox_types.QGroupBox, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQGroupBox_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QGroupBoxnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1071,7 +1009,6 @@ proc miqt_exec_callback_QGroupBox_nativeEvent(self: ptr cQGroupBox, slot: int, e
 
   virtualReturn
 proc QGroupBoxmetric*(self: gen_qgroupbox_types.QGroupBox, param1: cint): cint =
-
   fQGroupBox_virtualbase_metric(self.h, cint(param1))
 
 type QGroupBoxmetricProc* = proc(param1: cint): cint
@@ -1091,7 +1028,6 @@ proc miqt_exec_callback_QGroupBox_metric(self: ptr cQGroupBox, slot: int, param1
 
   virtualReturn
 proc QGroupBoxinitPainter*(self: gen_qgroupbox_types.QGroupBox, painter: gen_qpainter.QPainter): void =
-
   fQGroupBox_virtualbase_initPainter(self.h, painter.h)
 
 type QGroupBoxinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1109,7 +1045,6 @@ proc miqt_exec_callback_QGroupBox_initPainter(self: ptr cQGroupBox, slot: int, p
 
   nimfunc[](slotval1)
 proc QGroupBoxredirected*(self: gen_qgroupbox_types.QGroupBox, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQGroupBox_virtualbase_redirected(self.h, offset.h))
 
 type QGroupBoxredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1129,7 +1064,6 @@ proc miqt_exec_callback_QGroupBox_redirected(self: ptr cQGroupBox, slot: int, of
 
   virtualReturn.h
 proc QGroupBoxsharedPainter*(self: gen_qgroupbox_types.QGroupBox, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQGroupBox_virtualbase_sharedPainter(self.h))
 
 type QGroupBoxsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1147,7 +1081,6 @@ proc miqt_exec_callback_QGroupBox_sharedPainter(self: ptr cQGroupBox, slot: int)
 
   virtualReturn.h
 proc QGroupBoxinputMethodEvent*(self: gen_qgroupbox_types.QGroupBox, param1: gen_qevent.QInputMethodEvent): void =
-
   fQGroupBox_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QGroupBoxinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1165,7 +1098,6 @@ proc miqt_exec_callback_QGroupBox_inputMethodEvent(self: ptr cQGroupBox, slot: i
 
   nimfunc[](slotval1)
 proc QGroupBoxinputMethodQuery*(self: gen_qgroupbox_types.QGroupBox, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGroupBox_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QGroupBoxinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1185,7 +1117,6 @@ proc miqt_exec_callback_QGroupBox_inputMethodQuery(self: ptr cQGroupBox, slot: i
 
   virtualReturn.h
 proc QGroupBoxfocusNextPrevChild*(self: gen_qgroupbox_types.QGroupBox, next: bool): bool =
-
   fQGroupBox_virtualbase_focusNextPrevChild(self.h, next)
 
 type QGroupBoxfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1205,7 +1136,6 @@ proc miqt_exec_callback_QGroupBox_focusNextPrevChild(self: ptr cQGroupBox, slot:
 
   virtualReturn
 proc QGroupBoxeventFilter*(self: gen_qgroupbox_types.QGroupBox, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGroupBox_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGroupBoxeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1227,7 +1157,6 @@ proc miqt_exec_callback_QGroupBox_eventFilter(self: ptr cQGroupBox, slot: int, w
 
   virtualReturn
 proc QGroupBoxtimerEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGroupBox_virtualbase_timerEvent(self.h, event.h)
 
 type QGroupBoxtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1245,7 +1174,6 @@ proc miqt_exec_callback_QGroupBox_timerEvent(self: ptr cQGroupBox, slot: int, ev
 
   nimfunc[](slotval1)
 proc QGroupBoxcustomEvent*(self: gen_qgroupbox_types.QGroupBox, event: gen_qcoreevent.QEvent): void =
-
   fQGroupBox_virtualbase_customEvent(self.h, event.h)
 
 type QGroupBoxcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1263,7 +1191,6 @@ proc miqt_exec_callback_QGroupBox_customEvent(self: ptr cQGroupBox, slot: int, e
 
   nimfunc[](slotval1)
 proc QGroupBoxconnectNotify*(self: gen_qgroupbox_types.QGroupBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGroupBox_virtualbase_connectNotify(self.h, signal.h)
 
 type QGroupBoxconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1281,7 +1208,6 @@ proc miqt_exec_callback_QGroupBox_connectNotify(self: ptr cQGroupBox, slot: int,
 
   nimfunc[](slotval1)
 proc QGroupBoxdisconnectNotify*(self: gen_qgroupbox_types.QGroupBox, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGroupBox_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGroupBoxdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

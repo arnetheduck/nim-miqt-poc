@@ -192,81 +192,69 @@ proc fcQScrollBar_delete(self: pointer) {.importc: "QScrollBar_delete".}
 func init*(T: type gen_qscrollbar_types.QScrollBar, h: ptr cQScrollBar): gen_qscrollbar_types.QScrollBar =
   T(h: h)
 proc create*(T: type gen_qscrollbar_types.QScrollBar, parent: gen_qwidget.QWidget): gen_qscrollbar_types.QScrollBar =
-
   gen_qscrollbar_types.QScrollBar.init(fcQScrollBar_new(parent.h))
+
 proc create*(T: type gen_qscrollbar_types.QScrollBar, ): gen_qscrollbar_types.QScrollBar =
-
   gen_qscrollbar_types.QScrollBar.init(fcQScrollBar_new2())
+
 proc create*(T: type gen_qscrollbar_types.QScrollBar, param1: cint): gen_qscrollbar_types.QScrollBar =
-
   gen_qscrollbar_types.QScrollBar.init(fcQScrollBar_new3(cint(param1)))
+
 proc create*(T: type gen_qscrollbar_types.QScrollBar, param1: cint, parent: gen_qwidget.QWidget): gen_qscrollbar_types.QScrollBar =
-
   gen_qscrollbar_types.QScrollBar.init(fcQScrollBar_new4(cint(param1), parent.h))
-proc metaObject*(self: gen_qscrollbar_types.QScrollBar, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscrollbar_types.QScrollBar, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQScrollBar_metaObject(self.h))
 
 proc metacast*(self: gen_qscrollbar_types.QScrollBar, param1: cstring): pointer =
-
   fcQScrollBar_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscrollbar_types.QScrollBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQScrollBar_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscrollbar_types.QScrollBar, s: cstring): string =
-
   let v_ms = fcQScrollBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscrollbar_types.QScrollBar, s: cstring): string =
-
   let v_ms = fcQScrollBar_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sizeHint*(self: gen_qscrollbar_types.QScrollBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQScrollBar_sizeHint(self.h))
 
 proc event*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): bool =
-
   fcQScrollBar_event(self.h, event.h)
 
-proc tr2*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring): string =
   let v_ms = fcQScrollBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQScrollBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring): string =
   let v_ms = fcQScrollBar_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscrollbar_types.QScrollBar, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQScrollBar_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QScrollBarmetaObject*(self: gen_qscrollbar_types.QScrollBar, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQScrollBar_virtualbase_metaObject(self.h))
 
 type QScrollBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -284,7 +272,6 @@ proc miqt_exec_callback_QScrollBar_metaObject(self: ptr cQScrollBar, slot: int):
 
   virtualReturn.h
 proc QScrollBarmetacast*(self: gen_qscrollbar_types.QScrollBar, param1: cstring): pointer =
-
   fQScrollBar_virtualbase_metacast(self.h, param1)
 
 type QScrollBarmetacastProc* = proc(param1: cstring): pointer
@@ -304,7 +291,6 @@ proc miqt_exec_callback_QScrollBar_metacast(self: ptr cQScrollBar, slot: int, pa
 
   virtualReturn
 proc QScrollBarmetacall*(self: gen_qscrollbar_types.QScrollBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fQScrollBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QScrollBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -328,7 +314,6 @@ proc miqt_exec_callback_QScrollBar_metacall(self: ptr cQScrollBar, slot: int, pa
 
   virtualReturn
 proc QScrollBarsizeHint*(self: gen_qscrollbar_types.QScrollBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQScrollBar_virtualbase_sizeHint(self.h))
 
 type QScrollBarsizeHintProc* = proc(): gen_qsize.QSize
@@ -346,7 +331,6 @@ proc miqt_exec_callback_QScrollBar_sizeHint(self: ptr cQScrollBar, slot: int): p
 
   virtualReturn.h
 proc QScrollBarevent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): bool =
-
   fQScrollBar_virtualbase_event(self.h, event.h)
 
 type QScrollBareventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -366,7 +350,6 @@ proc miqt_exec_callback_QScrollBar_event(self: ptr cQScrollBar, slot: int, event
 
   virtualReturn
 proc QScrollBarwheelEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QWheelEvent): void =
-
   fQScrollBar_virtualbase_wheelEvent(self.h, param1.h)
 
 type QScrollBarwheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -384,7 +367,6 @@ proc miqt_exec_callback_QScrollBar_wheelEvent(self: ptr cQScrollBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QScrollBarpaintEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QPaintEvent): void =
-
   fQScrollBar_virtualbase_paintEvent(self.h, param1.h)
 
 type QScrollBarpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -402,7 +384,6 @@ proc miqt_exec_callback_QScrollBar_paintEvent(self: ptr cQScrollBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QScrollBarmousePressEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QMouseEvent): void =
-
   fQScrollBar_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QScrollBarmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -420,7 +401,6 @@ proc miqt_exec_callback_QScrollBar_mousePressEvent(self: ptr cQScrollBar, slot: 
 
   nimfunc[](slotval1)
 proc QScrollBarmouseReleaseEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QMouseEvent): void =
-
   fQScrollBar_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QScrollBarmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -438,7 +418,6 @@ proc miqt_exec_callback_QScrollBar_mouseReleaseEvent(self: ptr cQScrollBar, slot
 
   nimfunc[](slotval1)
 proc QScrollBarmouseMoveEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QMouseEvent): void =
-
   fQScrollBar_virtualbase_mouseMoveEvent(self.h, param1.h)
 
 type QScrollBarmouseMoveEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -456,7 +435,6 @@ proc miqt_exec_callback_QScrollBar_mouseMoveEvent(self: ptr cQScrollBar, slot: i
 
   nimfunc[](slotval1)
 proc QScrollBarhideEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QHideEvent): void =
-
   fQScrollBar_virtualbase_hideEvent(self.h, param1.h)
 
 type QScrollBarhideEventProc* = proc(param1: gen_qevent.QHideEvent): void
@@ -474,7 +452,6 @@ proc miqt_exec_callback_QScrollBar_hideEvent(self: ptr cQScrollBar, slot: int, p
 
   nimfunc[](slotval1)
 proc QScrollBarsliderChange*(self: gen_qscrollbar_types.QScrollBar, change: cint): void =
-
   fQScrollBar_virtualbase_sliderChange(self.h, cint(change))
 
 type QScrollBarsliderChangeProc* = proc(change: cint): void
@@ -492,7 +469,6 @@ proc miqt_exec_callback_QScrollBar_sliderChange(self: ptr cQScrollBar, slot: int
 
   nimfunc[](slotval1)
 proc QScrollBarcontextMenuEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QContextMenuEvent): void =
-
   fQScrollBar_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QScrollBarcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -510,7 +486,6 @@ proc miqt_exec_callback_QScrollBar_contextMenuEvent(self: ptr cQScrollBar, slot:
 
   nimfunc[](slotval1)
 proc QScrollBarkeyPressEvent*(self: gen_qscrollbar_types.QScrollBar, ev: gen_qevent.QKeyEvent): void =
-
   fQScrollBar_virtualbase_keyPressEvent(self.h, ev.h)
 
 type QScrollBarkeyPressEventProc* = proc(ev: gen_qevent.QKeyEvent): void
@@ -528,7 +503,6 @@ proc miqt_exec_callback_QScrollBar_keyPressEvent(self: ptr cQScrollBar, slot: in
 
   nimfunc[](slotval1)
 proc QScrollBartimerEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qcoreevent.QTimerEvent): void =
-
   fQScrollBar_virtualbase_timerEvent(self.h, param1.h)
 
 type QScrollBartimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
@@ -546,7 +520,6 @@ proc miqt_exec_callback_QScrollBar_timerEvent(self: ptr cQScrollBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QScrollBarchangeEvent*(self: gen_qscrollbar_types.QScrollBar, e: gen_qcoreevent.QEvent): void =
-
   fQScrollBar_virtualbase_changeEvent(self.h, e.h)
 
 type QScrollBarchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -564,7 +537,6 @@ proc miqt_exec_callback_QScrollBar_changeEvent(self: ptr cQScrollBar, slot: int,
 
   nimfunc[](slotval1)
 proc QScrollBardevType*(self: gen_qscrollbar_types.QScrollBar, ): cint =
-
   fQScrollBar_virtualbase_devType(self.h)
 
 type QScrollBardevTypeProc* = proc(): cint
@@ -582,7 +554,6 @@ proc miqt_exec_callback_QScrollBar_devType(self: ptr cQScrollBar, slot: int): ci
 
   virtualReturn
 proc QScrollBarsetVisible*(self: gen_qscrollbar_types.QScrollBar, visible: bool): void =
-
   fQScrollBar_virtualbase_setVisible(self.h, visible)
 
 type QScrollBarsetVisibleProc* = proc(visible: bool): void
@@ -600,7 +571,6 @@ proc miqt_exec_callback_QScrollBar_setVisible(self: ptr cQScrollBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QScrollBarminimumSizeHint*(self: gen_qscrollbar_types.QScrollBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQScrollBar_virtualbase_minimumSizeHint(self.h))
 
 type QScrollBarminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -618,7 +588,6 @@ proc miqt_exec_callback_QScrollBar_minimumSizeHint(self: ptr cQScrollBar, slot: 
 
   virtualReturn.h
 proc QScrollBarheightForWidth*(self: gen_qscrollbar_types.QScrollBar, param1: cint): cint =
-
   fQScrollBar_virtualbase_heightForWidth(self.h, param1)
 
 type QScrollBarheightForWidthProc* = proc(param1: cint): cint
@@ -638,7 +607,6 @@ proc miqt_exec_callback_QScrollBar_heightForWidth(self: ptr cQScrollBar, slot: i
 
   virtualReturn
 proc QScrollBarhasHeightForWidth*(self: gen_qscrollbar_types.QScrollBar, ): bool =
-
   fQScrollBar_virtualbase_hasHeightForWidth(self.h)
 
 type QScrollBarhasHeightForWidthProc* = proc(): bool
@@ -656,7 +624,6 @@ proc miqt_exec_callback_QScrollBar_hasHeightForWidth(self: ptr cQScrollBar, slot
 
   virtualReturn
 proc QScrollBarpaintEngine*(self: gen_qscrollbar_types.QScrollBar, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQScrollBar_virtualbase_paintEngine(self.h))
 
 type QScrollBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -674,7 +641,6 @@ proc miqt_exec_callback_QScrollBar_paintEngine(self: ptr cQScrollBar, slot: int)
 
   virtualReturn.h
 proc QScrollBarmouseDoubleClickEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QMouseEvent): void =
-
   fQScrollBar_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QScrollBarmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -692,7 +658,6 @@ proc miqt_exec_callback_QScrollBar_mouseDoubleClickEvent(self: ptr cQScrollBar, 
 
   nimfunc[](slotval1)
 proc QScrollBarkeyReleaseEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QKeyEvent): void =
-
   fQScrollBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QScrollBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -710,7 +675,6 @@ proc miqt_exec_callback_QScrollBar_keyReleaseEvent(self: ptr cQScrollBar, slot: 
 
   nimfunc[](slotval1)
 proc QScrollBarfocusInEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QFocusEvent): void =
-
   fQScrollBar_virtualbase_focusInEvent(self.h, event.h)
 
 type QScrollBarfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -728,7 +692,6 @@ proc miqt_exec_callback_QScrollBar_focusInEvent(self: ptr cQScrollBar, slot: int
 
   nimfunc[](slotval1)
 proc QScrollBarfocusOutEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QFocusEvent): void =
-
   fQScrollBar_virtualbase_focusOutEvent(self.h, event.h)
 
 type QScrollBarfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -746,7 +709,6 @@ proc miqt_exec_callback_QScrollBar_focusOutEvent(self: ptr cQScrollBar, slot: in
 
   nimfunc[](slotval1)
 proc QScrollBarenterEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): void =
-
   fQScrollBar_virtualbase_enterEvent(self.h, event.h)
 
 type QScrollBarenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -764,7 +726,6 @@ proc miqt_exec_callback_QScrollBar_enterEvent(self: ptr cQScrollBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QScrollBarleaveEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): void =
-
   fQScrollBar_virtualbase_leaveEvent(self.h, event.h)
 
 type QScrollBarleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -782,7 +743,6 @@ proc miqt_exec_callback_QScrollBar_leaveEvent(self: ptr cQScrollBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QScrollBarmoveEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QMoveEvent): void =
-
   fQScrollBar_virtualbase_moveEvent(self.h, event.h)
 
 type QScrollBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -800,7 +760,6 @@ proc miqt_exec_callback_QScrollBar_moveEvent(self: ptr cQScrollBar, slot: int, e
 
   nimfunc[](slotval1)
 proc QScrollBarresizeEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QResizeEvent): void =
-
   fQScrollBar_virtualbase_resizeEvent(self.h, event.h)
 
 type QScrollBarresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -818,7 +777,6 @@ proc miqt_exec_callback_QScrollBar_resizeEvent(self: ptr cQScrollBar, slot: int,
 
   nimfunc[](slotval1)
 proc QScrollBarcloseEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QCloseEvent): void =
-
   fQScrollBar_virtualbase_closeEvent(self.h, event.h)
 
 type QScrollBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -836,7 +794,6 @@ proc miqt_exec_callback_QScrollBar_closeEvent(self: ptr cQScrollBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QScrollBartabletEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QTabletEvent): void =
-
   fQScrollBar_virtualbase_tabletEvent(self.h, event.h)
 
 type QScrollBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -854,7 +811,6 @@ proc miqt_exec_callback_QScrollBar_tabletEvent(self: ptr cQScrollBar, slot: int,
 
   nimfunc[](slotval1)
 proc QScrollBaractionEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QActionEvent): void =
-
   fQScrollBar_virtualbase_actionEvent(self.h, event.h)
 
 type QScrollBaractionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -872,7 +828,6 @@ proc miqt_exec_callback_QScrollBar_actionEvent(self: ptr cQScrollBar, slot: int,
 
   nimfunc[](slotval1)
 proc QScrollBardragEnterEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QDragEnterEvent): void =
-
   fQScrollBar_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QScrollBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -890,7 +845,6 @@ proc miqt_exec_callback_QScrollBar_dragEnterEvent(self: ptr cQScrollBar, slot: i
 
   nimfunc[](slotval1)
 proc QScrollBardragMoveEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QDragMoveEvent): void =
-
   fQScrollBar_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QScrollBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -908,7 +862,6 @@ proc miqt_exec_callback_QScrollBar_dragMoveEvent(self: ptr cQScrollBar, slot: in
 
   nimfunc[](slotval1)
 proc QScrollBardragLeaveEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QDragLeaveEvent): void =
-
   fQScrollBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QScrollBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -926,7 +879,6 @@ proc miqt_exec_callback_QScrollBar_dragLeaveEvent(self: ptr cQScrollBar, slot: i
 
   nimfunc[](slotval1)
 proc QScrollBardropEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QDropEvent): void =
-
   fQScrollBar_virtualbase_dropEvent(self.h, event.h)
 
 type QScrollBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -944,7 +896,6 @@ proc miqt_exec_callback_QScrollBar_dropEvent(self: ptr cQScrollBar, slot: int, e
 
   nimfunc[](slotval1)
 proc QScrollBarshowEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qevent.QShowEvent): void =
-
   fQScrollBar_virtualbase_showEvent(self.h, event.h)
 
 type QScrollBarshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -962,7 +913,6 @@ proc miqt_exec_callback_QScrollBar_showEvent(self: ptr cQScrollBar, slot: int, e
 
   nimfunc[](slotval1)
 proc QScrollBarnativeEvent*(self: gen_qscrollbar_types.QScrollBar, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQScrollBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QScrollBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -989,7 +939,6 @@ proc miqt_exec_callback_QScrollBar_nativeEvent(self: ptr cQScrollBar, slot: int,
 
   virtualReturn
 proc QScrollBarmetric*(self: gen_qscrollbar_types.QScrollBar, param1: cint): cint =
-
   fQScrollBar_virtualbase_metric(self.h, cint(param1))
 
 type QScrollBarmetricProc* = proc(param1: cint): cint
@@ -1009,7 +958,6 @@ proc miqt_exec_callback_QScrollBar_metric(self: ptr cQScrollBar, slot: int, para
 
   virtualReturn
 proc QScrollBarinitPainter*(self: gen_qscrollbar_types.QScrollBar, painter: gen_qpainter.QPainter): void =
-
   fQScrollBar_virtualbase_initPainter(self.h, painter.h)
 
 type QScrollBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1027,7 +975,6 @@ proc miqt_exec_callback_QScrollBar_initPainter(self: ptr cQScrollBar, slot: int,
 
   nimfunc[](slotval1)
 proc QScrollBarredirected*(self: gen_qscrollbar_types.QScrollBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQScrollBar_virtualbase_redirected(self.h, offset.h))
 
 type QScrollBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1047,7 +994,6 @@ proc miqt_exec_callback_QScrollBar_redirected(self: ptr cQScrollBar, slot: int, 
 
   virtualReturn.h
 proc QScrollBarsharedPainter*(self: gen_qscrollbar_types.QScrollBar, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQScrollBar_virtualbase_sharedPainter(self.h))
 
 type QScrollBarsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1065,7 +1011,6 @@ proc miqt_exec_callback_QScrollBar_sharedPainter(self: ptr cQScrollBar, slot: in
 
   virtualReturn.h
 proc QScrollBarinputMethodEvent*(self: gen_qscrollbar_types.QScrollBar, param1: gen_qevent.QInputMethodEvent): void =
-
   fQScrollBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QScrollBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1083,7 +1028,6 @@ proc miqt_exec_callback_QScrollBar_inputMethodEvent(self: ptr cQScrollBar, slot:
 
   nimfunc[](slotval1)
 proc QScrollBarinputMethodQuery*(self: gen_qscrollbar_types.QScrollBar, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQScrollBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QScrollBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1103,7 +1047,6 @@ proc miqt_exec_callback_QScrollBar_inputMethodQuery(self: ptr cQScrollBar, slot:
 
   virtualReturn.h
 proc QScrollBarfocusNextPrevChild*(self: gen_qscrollbar_types.QScrollBar, next: bool): bool =
-
   fQScrollBar_virtualbase_focusNextPrevChild(self.h, next)
 
 type QScrollBarfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1123,7 +1066,6 @@ proc miqt_exec_callback_QScrollBar_focusNextPrevChild(self: ptr cQScrollBar, slo
 
   virtualReturn
 proc QScrollBareventFilter*(self: gen_qscrollbar_types.QScrollBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQScrollBar_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QScrollBareventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1145,7 +1087,6 @@ proc miqt_exec_callback_QScrollBar_eventFilter(self: ptr cQScrollBar, slot: int,
 
   virtualReturn
 proc QScrollBarchildEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QChildEvent): void =
-
   fQScrollBar_virtualbase_childEvent(self.h, event.h)
 
 type QScrollBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1163,7 +1104,6 @@ proc miqt_exec_callback_QScrollBar_childEvent(self: ptr cQScrollBar, slot: int, 
 
   nimfunc[](slotval1)
 proc QScrollBarcustomEvent*(self: gen_qscrollbar_types.QScrollBar, event: gen_qcoreevent.QEvent): void =
-
   fQScrollBar_virtualbase_customEvent(self.h, event.h)
 
 type QScrollBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1181,7 +1121,6 @@ proc miqt_exec_callback_QScrollBar_customEvent(self: ptr cQScrollBar, slot: int,
 
   nimfunc[](slotval1)
 proc QScrollBarconnectNotify*(self: gen_qscrollbar_types.QScrollBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQScrollBar_virtualbase_connectNotify(self.h, signal.h)
 
 type QScrollBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1199,7 +1138,6 @@ proc miqt_exec_callback_QScrollBar_connectNotify(self: ptr cQScrollBar, slot: in
 
   nimfunc[](slotval1)
 proc QScrollBardisconnectNotify*(self: gen_qscrollbar_types.QScrollBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQScrollBar_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QScrollBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

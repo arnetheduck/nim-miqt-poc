@@ -90,14 +90,12 @@ proc fcQStandardPaths_staticMetaObject(): pointer {.importc: "QStandardPaths_sta
 func init*(T: type gen_qstandardpaths_types.QStandardPaths, h: ptr cQStandardPaths): gen_qstandardpaths_types.QStandardPaths =
   T(h: h)
 proc writableLocation*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint): string =
-
   let v_ms = fcQStandardPaths_writableLocation(cint(typeVal))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc standardLocations*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint): seq[string] =
-
   var v_ma = fcQStandardPaths_standardLocations(cint(typeVal))
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -109,14 +107,12 @@ proc standardLocations*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal
   vx_ret
 
 proc locate*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string): string =
-
   let v_ms = fcQStandardPaths_locate(cint(typeVal), struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc locateAll*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string): seq[string] =
-
   var v_ma = fcQStandardPaths_locateAll(cint(typeVal), struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -128,36 +124,30 @@ proc locateAll*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, 
   vx_ret
 
 proc displayName*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint): string =
-
   let v_ms = fcQStandardPaths_displayName(cint(typeVal))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc findExecutable*(_: type gen_qstandardpaths_types.QStandardPaths, executableName: string): string =
-
   let v_ms = fcQStandardPaths_findExecutable(struct_miqt_string(data: executableName, len: csize_t(len(executableName))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTestModeEnabled*(_: type gen_qstandardpaths_types.QStandardPaths, testMode: bool): void =
-
   fcQStandardPaths_setTestModeEnabled(testMode)
 
 proc isTestModeEnabled*(_: type gen_qstandardpaths_types.QStandardPaths, ): bool =
-
   fcQStandardPaths_isTestModeEnabled()
 
-proc locate3*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string, options: cint): string =
-
+proc locate*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string, options: cint): string =
   let v_ms = fcQStandardPaths_locate3(cint(typeVal), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(options))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc locateAll3*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string, options: cint): seq[string] =
-
+proc locateAll*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint, fileName: string, options: cint): seq[string] =
   var v_ma = fcQStandardPaths_locateAll3(cint(typeVal), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), cint(options))
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -168,8 +158,7 @@ proc locateAll3*(_: type gen_qstandardpaths_types.QStandardPaths, typeVal: cint,
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc findExecutable2*(_: type gen_qstandardpaths_types.QStandardPaths, executableName: string, paths: seq[string]): string =
-
+proc findExecutable*(_: type gen_qstandardpaths_types.QStandardPaths, executableName: string, paths: seq[string]): string =
   var paths_CArray = newSeq[struct_miqt_string](len(paths))
   for i in 0..<len(paths):
     paths_CArray[i] = struct_miqt_string(data: paths[i], len: csize_t(len(paths[i])))

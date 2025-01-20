@@ -71,33 +71,27 @@ proc fcQImageEncoderControl_delete(self: pointer) {.importc: "QImageEncoderContr
 func init*(T: type gen_qimageencodercontrol_types.QImageEncoderControl, h: ptr cQImageEncoderControl): gen_qimageencodercontrol_types.QImageEncoderControl =
   T(h: h)
 proc metaObject*(self: gen_qimageencodercontrol_types.QImageEncoderControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQImageEncoderControl_metaObject(self.h))
 
 proc metacast*(self: gen_qimageencodercontrol_types.QImageEncoderControl, param1: cstring): pointer =
-
   fcQImageEncoderControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qimageencodercontrol_types.QImageEncoderControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQImageEncoderControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring): string =
-
   let v_ms = fcQImageEncoderControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring): string =
-
   let v_ms = fcQImageEncoderControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportedImageCodecs*(self: gen_qimageencodercontrol_types.QImageEncoderControl, ): seq[string] =
-
   var v_ma = fcQImageEncoderControl_supportedImageCodecs(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -109,14 +103,12 @@ proc supportedImageCodecs*(self: gen_qimageencodercontrol_types.QImageEncoderCon
   vx_ret
 
 proc imageCodecDescription*(self: gen_qimageencodercontrol_types.QImageEncoderControl, codec: string): string =
-
   let v_ms = fcQImageEncoderControl_imageCodecDescription(self.h, struct_miqt_string(data: codec, len: csize_t(len(codec))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportedResolutions*(self: gen_qimageencodercontrol_types.QImageEncoderControl, settings: gen_qmediaencodersettings.QImageEncoderSettings, continuous: ptr bool): seq[gen_qsize.QSize] =
-
   var v_ma = fcQImageEncoderControl_supportedResolutions(self.h, settings.h, continuous)
   var vx_ret = newSeq[gen_qsize.QSize](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -125,36 +117,30 @@ proc supportedResolutions*(self: gen_qimageencodercontrol_types.QImageEncoderCon
   vx_ret
 
 proc imageSettings*(self: gen_qimageencodercontrol_types.QImageEncoderControl, ): gen_qmediaencodersettings.QImageEncoderSettings =
-
   gen_qmediaencodersettings.QImageEncoderSettings(h: fcQImageEncoderControl_imageSettings(self.h))
 
 proc setImageSettings*(self: gen_qimageencodercontrol_types.QImageEncoderControl, settings: gen_qmediaencodersettings.QImageEncoderSettings): void =
-
   fcQImageEncoderControl_setImageSettings(self.h, settings.h)
 
-proc tr2*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring, c: cstring): string =
   let v_ms = fcQImageEncoderControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQImageEncoderControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring, c: cstring): string =
   let v_ms = fcQImageEncoderControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qimageencodercontrol_types.QImageEncoderControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQImageEncoderControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

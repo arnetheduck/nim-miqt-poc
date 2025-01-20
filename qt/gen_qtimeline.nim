@@ -142,186 +142,147 @@ proc fcQTimeLine_delete(self: pointer) {.importc: "QTimeLine_delete".}
 func init*(T: type gen_qtimeline_types.QTimeLine, h: ptr cQTimeLine): gen_qtimeline_types.QTimeLine =
   T(h: h)
 proc create*(T: type gen_qtimeline_types.QTimeLine, ): gen_qtimeline_types.QTimeLine =
-
   gen_qtimeline_types.QTimeLine.init(fcQTimeLine_new())
+
 proc create*(T: type gen_qtimeline_types.QTimeLine, duration: cint): gen_qtimeline_types.QTimeLine =
-
   gen_qtimeline_types.QTimeLine.init(fcQTimeLine_new2(duration))
+
 proc create*(T: type gen_qtimeline_types.QTimeLine, duration: cint, parent: gen_qobject.QObject): gen_qtimeline_types.QTimeLine =
-
   gen_qtimeline_types.QTimeLine.init(fcQTimeLine_new3(duration, parent.h))
-proc metaObject*(self: gen_qtimeline_types.QTimeLine, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtimeline_types.QTimeLine, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTimeLine_metaObject(self.h))
 
 proc metacast*(self: gen_qtimeline_types.QTimeLine, param1: cstring): pointer =
-
   fcQTimeLine_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtimeline_types.QTimeLine, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTimeLine_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtimeline_types.QTimeLine, s: cstring): string =
-
   let v_ms = fcQTimeLine_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtimeline_types.QTimeLine, s: cstring): string =
-
   let v_ms = fcQTimeLine_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc state*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   cint(fcQTimeLine_state(self.h))
 
 proc loopCount*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   fcQTimeLine_loopCount(self.h)
 
 proc setLoopCount*(self: gen_qtimeline_types.QTimeLine, count: cint): void =
-
   fcQTimeLine_setLoopCount(self.h, count)
 
 proc direction*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   cint(fcQTimeLine_direction(self.h))
 
 proc setDirection*(self: gen_qtimeline_types.QTimeLine, direction: cint): void =
-
   fcQTimeLine_setDirection(self.h, cint(direction))
 
 proc duration*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   fcQTimeLine_duration(self.h)
 
 proc setDuration*(self: gen_qtimeline_types.QTimeLine, duration: cint): void =
-
   fcQTimeLine_setDuration(self.h, duration)
 
 proc startFrame*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   fcQTimeLine_startFrame(self.h)
 
 proc setStartFrame*(self: gen_qtimeline_types.QTimeLine, frame: cint): void =
-
   fcQTimeLine_setStartFrame(self.h, frame)
 
 proc endFrame*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   fcQTimeLine_endFrame(self.h)
 
 proc setEndFrame*(self: gen_qtimeline_types.QTimeLine, frame: cint): void =
-
   fcQTimeLine_setEndFrame(self.h, frame)
 
 proc setFrameRange*(self: gen_qtimeline_types.QTimeLine, startFrame: cint, endFrame: cint): void =
-
   fcQTimeLine_setFrameRange(self.h, startFrame, endFrame)
 
 proc updateInterval*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   fcQTimeLine_updateInterval(self.h)
 
 proc setUpdateInterval*(self: gen_qtimeline_types.QTimeLine, interval: cint): void =
-
   fcQTimeLine_setUpdateInterval(self.h, interval)
 
 proc curveShape*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   cint(fcQTimeLine_curveShape(self.h))
 
 proc setCurveShape*(self: gen_qtimeline_types.QTimeLine, shape: cint): void =
-
   fcQTimeLine_setCurveShape(self.h, cint(shape))
 
 proc easingCurve*(self: gen_qtimeline_types.QTimeLine, ): gen_qeasingcurve.QEasingCurve =
-
   gen_qeasingcurve.QEasingCurve(h: fcQTimeLine_easingCurve(self.h))
 
 proc setEasingCurve*(self: gen_qtimeline_types.QTimeLine, curve: gen_qeasingcurve.QEasingCurve): void =
-
   fcQTimeLine_setEasingCurve(self.h, curve.h)
 
 proc currentTime*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   fcQTimeLine_currentTime(self.h)
 
 proc currentFrame*(self: gen_qtimeline_types.QTimeLine, ): cint =
-
   fcQTimeLine_currentFrame(self.h)
 
 proc currentValue*(self: gen_qtimeline_types.QTimeLine, ): float64 =
-
   fcQTimeLine_currentValue(self.h)
 
 proc frameForTime*(self: gen_qtimeline_types.QTimeLine, msec: cint): cint =
-
   fcQTimeLine_frameForTime(self.h, msec)
 
 proc valueForTime*(self: gen_qtimeline_types.QTimeLine, msec: cint): float64 =
-
   fcQTimeLine_valueForTime(self.h, msec)
 
 proc start*(self: gen_qtimeline_types.QTimeLine, ): void =
-
   fcQTimeLine_start(self.h)
 
 proc resume*(self: gen_qtimeline_types.QTimeLine, ): void =
-
   fcQTimeLine_resume(self.h)
 
 proc stop*(self: gen_qtimeline_types.QTimeLine, ): void =
-
   fcQTimeLine_stop(self.h)
 
 proc setPaused*(self: gen_qtimeline_types.QTimeLine, paused: bool): void =
-
   fcQTimeLine_setPaused(self.h, paused)
 
 proc setCurrentTime*(self: gen_qtimeline_types.QTimeLine, msec: cint): void =
-
   fcQTimeLine_setCurrentTime(self.h, msec)
 
 proc toggleDirection*(self: gen_qtimeline_types.QTimeLine, ): void =
-
   fcQTimeLine_toggleDirection(self.h)
 
-proc tr2*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring): string =
   let v_ms = fcQTimeLine_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTimeLine_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring): string =
   let v_ms = fcQTimeLine_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtimeline_types.QTimeLine, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTimeLine_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QTimeLinemetaObject*(self: gen_qtimeline_types.QTimeLine, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTimeLine_virtualbase_metaObject(self.h))
 
 type QTimeLinemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -339,7 +300,6 @@ proc miqt_exec_callback_QTimeLine_metaObject(self: ptr cQTimeLine, slot: int): p
 
   virtualReturn.h
 proc QTimeLinemetacast*(self: gen_qtimeline_types.QTimeLine, param1: cstring): pointer =
-
   fQTimeLine_virtualbase_metacast(self.h, param1)
 
 type QTimeLinemetacastProc* = proc(param1: cstring): pointer
@@ -359,7 +319,6 @@ proc miqt_exec_callback_QTimeLine_metacast(self: ptr cQTimeLine, slot: int, para
 
   virtualReturn
 proc QTimeLinemetacall*(self: gen_qtimeline_types.QTimeLine, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTimeLine_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTimeLinemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -383,7 +342,6 @@ proc miqt_exec_callback_QTimeLine_metacall(self: ptr cQTimeLine, slot: int, para
 
   virtualReturn
 proc QTimeLinevalueForTime*(self: gen_qtimeline_types.QTimeLine, msec: cint): float64 =
-
   fQTimeLine_virtualbase_valueForTime(self.h, msec)
 
 type QTimeLinevalueForTimeProc* = proc(msec: cint): float64
@@ -403,7 +361,6 @@ proc miqt_exec_callback_QTimeLine_valueForTime(self: ptr cQTimeLine, slot: int, 
 
   virtualReturn
 proc QTimeLinetimerEvent*(self: gen_qtimeline_types.QTimeLine, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTimeLine_virtualbase_timerEvent(self.h, event.h)
 
 type QTimeLinetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -421,7 +378,6 @@ proc miqt_exec_callback_QTimeLine_timerEvent(self: ptr cQTimeLine, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTimeLineevent*(self: gen_qtimeline_types.QTimeLine, event: gen_qcoreevent.QEvent): bool =
-
   fQTimeLine_virtualbase_event(self.h, event.h)
 
 type QTimeLineeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -441,7 +397,6 @@ proc miqt_exec_callback_QTimeLine_event(self: ptr cQTimeLine, slot: int, event: 
 
   virtualReturn
 proc QTimeLineeventFilter*(self: gen_qtimeline_types.QTimeLine, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTimeLine_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTimeLineeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -463,7 +418,6 @@ proc miqt_exec_callback_QTimeLine_eventFilter(self: ptr cQTimeLine, slot: int, w
 
   virtualReturn
 proc QTimeLinechildEvent*(self: gen_qtimeline_types.QTimeLine, event: gen_qcoreevent.QChildEvent): void =
-
   fQTimeLine_virtualbase_childEvent(self.h, event.h)
 
 type QTimeLinechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -481,7 +435,6 @@ proc miqt_exec_callback_QTimeLine_childEvent(self: ptr cQTimeLine, slot: int, ev
 
   nimfunc[](slotval1)
 proc QTimeLinecustomEvent*(self: gen_qtimeline_types.QTimeLine, event: gen_qcoreevent.QEvent): void =
-
   fQTimeLine_virtualbase_customEvent(self.h, event.h)
 
 type QTimeLinecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -499,7 +452,6 @@ proc miqt_exec_callback_QTimeLine_customEvent(self: ptr cQTimeLine, slot: int, e
 
   nimfunc[](slotval1)
 proc QTimeLineconnectNotify*(self: gen_qtimeline_types.QTimeLine, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTimeLine_virtualbase_connectNotify(self.h, signal.h)
 
 type QTimeLineconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -517,7 +469,6 @@ proc miqt_exec_callback_QTimeLine_connectNotify(self: ptr cQTimeLine, slot: int,
 
   nimfunc[](slotval1)
 proc QTimeLinedisconnectNotify*(self: gen_qtimeline_types.QTimeLine, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTimeLine_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTimeLinedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

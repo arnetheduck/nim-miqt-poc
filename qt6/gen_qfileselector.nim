@@ -92,43 +92,36 @@ proc fcQFileSelector_delete(self: pointer) {.importc: "QFileSelector_delete".}
 func init*(T: type gen_qfileselector_types.QFileSelector, h: ptr cQFileSelector): gen_qfileselector_types.QFileSelector =
   T(h: h)
 proc create*(T: type gen_qfileselector_types.QFileSelector, ): gen_qfileselector_types.QFileSelector =
-
   gen_qfileselector_types.QFileSelector.init(fcQFileSelector_new())
+
 proc create*(T: type gen_qfileselector_types.QFileSelector, parent: gen_qobject.QObject): gen_qfileselector_types.QFileSelector =
-
   gen_qfileselector_types.QFileSelector.init(fcQFileSelector_new2(parent.h))
-proc metaObject*(self: gen_qfileselector_types.QFileSelector, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qfileselector_types.QFileSelector, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFileSelector_metaObject(self.h))
 
 proc metacast*(self: gen_qfileselector_types.QFileSelector, param1: cstring): pointer =
-
   fcQFileSelector_metacast(self.h, param1)
 
 proc metacall*(self: gen_qfileselector_types.QFileSelector, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQFileSelector_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qfileselector_types.QFileSelector, s: cstring): string =
-
   let v_ms = fcQFileSelector_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc select*(self: gen_qfileselector_types.QFileSelector, filePath: string): string =
-
   let v_ms = fcQFileSelector_select(self.h, struct_miqt_string(data: filePath, len: csize_t(len(filePath))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc selectWithFilePath*(self: gen_qfileselector_types.QFileSelector, filePath: gen_qurl.QUrl): gen_qurl.QUrl =
-
+proc select*(self: gen_qfileselector_types.QFileSelector, filePath: gen_qurl.QUrl): gen_qurl.QUrl =
   gen_qurl.QUrl(h: fcQFileSelector_selectWithFilePath(self.h, filePath.h))
 
 proc extraSelectors*(self: gen_qfileselector_types.QFileSelector, ): seq[string] =
-
   var v_ma = fcQFileSelector_extraSelectors(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -140,7 +133,6 @@ proc extraSelectors*(self: gen_qfileselector_types.QFileSelector, ): seq[string]
   vx_ret
 
 proc setExtraSelectors*(self: gen_qfileselector_types.QFileSelector, list: seq[string]): void =
-
   var list_CArray = newSeq[struct_miqt_string](len(list))
   for i in 0..<len(list):
     list_CArray[i] = struct_miqt_string(data: list[i], len: csize_t(len(list[i])))
@@ -148,7 +140,6 @@ proc setExtraSelectors*(self: gen_qfileselector_types.QFileSelector, list: seq[s
   fcQFileSelector_setExtraSelectors(self.h, struct_miqt_array(len: csize_t(len(list)), data: if len(list) == 0: nil else: addr(list_CArray[0])))
 
 proc allSelectors*(self: gen_qfileselector_types.QFileSelector, ): seq[string] =
-
   var v_ma = fcQFileSelector_allSelectors(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -159,22 +150,19 @@ proc allSelectors*(self: gen_qfileselector_types.QFileSelector, ): seq[string] =
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc tr2*(_: type gen_qfileselector_types.QFileSelector, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qfileselector_types.QFileSelector, s: cstring, c: cstring): string =
   let v_ms = fcQFileSelector_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qfileselector_types.QFileSelector, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qfileselector_types.QFileSelector, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFileSelector_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QFileSelectormetaObject*(self: gen_qfileselector_types.QFileSelector, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQFileSelector_virtualbase_metaObject(self.h))
 
 type QFileSelectormetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -192,7 +180,6 @@ proc miqt_exec_callback_QFileSelector_metaObject(self: ptr cQFileSelector, slot:
 
   virtualReturn.h
 proc QFileSelectormetacast*(self: gen_qfileselector_types.QFileSelector, param1: cstring): pointer =
-
   fQFileSelector_virtualbase_metacast(self.h, param1)
 
 type QFileSelectormetacastProc* = proc(param1: cstring): pointer
@@ -212,7 +199,6 @@ proc miqt_exec_callback_QFileSelector_metacast(self: ptr cQFileSelector, slot: i
 
   virtualReturn
 proc QFileSelectormetacall*(self: gen_qfileselector_types.QFileSelector, param1: cint, param2: cint, param3: pointer): cint =
-
   fQFileSelector_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QFileSelectormetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -236,7 +222,6 @@ proc miqt_exec_callback_QFileSelector_metacall(self: ptr cQFileSelector, slot: i
 
   virtualReturn
 proc QFileSelectorevent*(self: gen_qfileselector_types.QFileSelector, event: gen_qcoreevent.QEvent): bool =
-
   fQFileSelector_virtualbase_event(self.h, event.h)
 
 type QFileSelectoreventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -256,7 +241,6 @@ proc miqt_exec_callback_QFileSelector_event(self: ptr cQFileSelector, slot: int,
 
   virtualReturn
 proc QFileSelectoreventFilter*(self: gen_qfileselector_types.QFileSelector, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQFileSelector_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QFileSelectoreventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -278,7 +262,6 @@ proc miqt_exec_callback_QFileSelector_eventFilter(self: ptr cQFileSelector, slot
 
   virtualReturn
 proc QFileSelectortimerEvent*(self: gen_qfileselector_types.QFileSelector, event: gen_qcoreevent.QTimerEvent): void =
-
   fQFileSelector_virtualbase_timerEvent(self.h, event.h)
 
 type QFileSelectortimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -296,7 +279,6 @@ proc miqt_exec_callback_QFileSelector_timerEvent(self: ptr cQFileSelector, slot:
 
   nimfunc[](slotval1)
 proc QFileSelectorchildEvent*(self: gen_qfileselector_types.QFileSelector, event: gen_qcoreevent.QChildEvent): void =
-
   fQFileSelector_virtualbase_childEvent(self.h, event.h)
 
 type QFileSelectorchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -314,7 +296,6 @@ proc miqt_exec_callback_QFileSelector_childEvent(self: ptr cQFileSelector, slot:
 
   nimfunc[](slotval1)
 proc QFileSelectorcustomEvent*(self: gen_qfileselector_types.QFileSelector, event: gen_qcoreevent.QEvent): void =
-
   fQFileSelector_virtualbase_customEvent(self.h, event.h)
 
 type QFileSelectorcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -332,7 +313,6 @@ proc miqt_exec_callback_QFileSelector_customEvent(self: ptr cQFileSelector, slot
 
   nimfunc[](slotval1)
 proc QFileSelectorconnectNotify*(self: gen_qfileselector_types.QFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFileSelector_virtualbase_connectNotify(self.h, signal.h)
 
 type QFileSelectorconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -350,7 +330,6 @@ proc miqt_exec_callback_QFileSelector_connectNotify(self: ptr cQFileSelector, sl
 
   nimfunc[](slotval1)
 proc QFileSelectordisconnectNotify*(self: gen_qfileselector_types.QFileSelector, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFileSelector_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QFileSelectordisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

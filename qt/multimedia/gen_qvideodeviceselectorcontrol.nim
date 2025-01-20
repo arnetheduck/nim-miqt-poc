@@ -74,139 +74,118 @@ proc fcQVideoDeviceSelectorControl_delete(self: pointer) {.importc: "QVideoDevic
 func init*(T: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, h: ptr cQVideoDeviceSelectorControl): gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl =
   T(h: h)
 proc metaObject*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQVideoDeviceSelectorControl_metaObject(self.h))
 
 proc metacast*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, param1: cstring): pointer =
-
   fcQVideoDeviceSelectorControl_metacast(self.h, param1)
 
 proc metacall*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQVideoDeviceSelectorControl_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring): string =
-
   let v_ms = fcQVideoDeviceSelectorControl_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring): string =
-
   let v_ms = fcQVideoDeviceSelectorControl_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc deviceCount*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, ): cint =
-
   fcQVideoDeviceSelectorControl_deviceCount(self.h)
 
 proc deviceName*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, index: cint): string =
-
   let v_ms = fcQVideoDeviceSelectorControl_deviceName(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc deviceDescription*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, index: cint): string =
-
   let v_ms = fcQVideoDeviceSelectorControl_deviceDescription(self.h, index)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc defaultDevice*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, ): cint =
-
   fcQVideoDeviceSelectorControl_defaultDevice(self.h)
 
 proc selectedDevice*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, ): cint =
-
   fcQVideoDeviceSelectorControl_selectedDevice(self.h)
 
 proc setSelectedDevice*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, index: cint): void =
-
   fcQVideoDeviceSelectorControl_setSelectedDevice(self.h, index)
 
 proc selectedDeviceChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, index: cint): void =
-
   fcQVideoDeviceSelectorControl_selectedDeviceChanged(self.h, index)
 
+type QVideoDeviceSelectorControlselectedDeviceChangedSlot* = proc(index: cint)
 proc miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged(slot: int, index: cint) {.exportc.} =
-  type Cb = proc(index: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QVideoDeviceSelectorControlselectedDeviceChangedSlot](cast[pointer](slot))
   let slotval1 = index
-
 
   nimfunc[](slotval1)
 
-proc onselectedDeviceChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, slot: proc(index: cint)) =
-  type Cb = proc(index: cint)
-  var tmp = new Cb
+proc onselectedDeviceChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, slot: QVideoDeviceSelectorControlselectedDeviceChangedSlot) =
+  var tmp = new QVideoDeviceSelectorControlselectedDeviceChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQVideoDeviceSelectorControl_connect_selectedDeviceChanged(self.h, cast[int](addr tmp[]))
-proc selectedDeviceChangedWithName*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, name: string): void =
 
+proc selectedDeviceChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, name: string): void =
   fcQVideoDeviceSelectorControl_selectedDeviceChangedWithName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
+type QVideoDeviceSelectorControlselectedDeviceChangedWithNameSlot* = proc(name: string)
 proc miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithName(slot: int, name: struct_miqt_string) {.exportc.} =
-  type Cb = proc(name: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QVideoDeviceSelectorControlselectedDeviceChangedWithNameSlot](cast[pointer](slot))
   let vname_ms = name
   let vnamex_ret = string.fromBytes(toOpenArrayByte(vname_ms.data, 0, int(vname_ms.len)-1))
   c_free(vname_ms.data)
   let slotval1 = vnamex_ret
 
-
   nimfunc[](slotval1)
 
-proc onselectedDeviceChangedWithName*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, slot: proc(name: string)) =
-  type Cb = proc(name: string)
-  var tmp = new Cb
+proc onselectedDeviceChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, slot: QVideoDeviceSelectorControlselectedDeviceChangedWithNameSlot) =
+  var tmp = new QVideoDeviceSelectorControlselectedDeviceChangedWithNameSlot
   tmp[] = slot
   GC_ref(tmp)
   fQVideoDeviceSelectorControl_connect_selectedDeviceChangedWithName(self.h, cast[int](addr tmp[]))
-proc devicesChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, ): void =
 
+proc devicesChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, ): void =
   fcQVideoDeviceSelectorControl_devicesChanged(self.h)
 
+type QVideoDeviceSelectorControldevicesChangedSlot* = proc()
 proc miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QVideoDeviceSelectorControldevicesChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc ondevicesChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc ondevicesChanged*(self: gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, slot: QVideoDeviceSelectorControldevicesChangedSlot) =
+  var tmp = new QVideoDeviceSelectorControldevicesChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQVideoDeviceSelectorControl_connect_devicesChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring, c: cstring): string =
   let v_ms = fcQVideoDeviceSelectorControl_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQVideoDeviceSelectorControl_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring, c: cstring): string =
   let v_ms = fcQVideoDeviceSelectorControl_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qvideodeviceselectorcontrol_types.QVideoDeviceSelectorControl, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQVideoDeviceSelectorControl_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

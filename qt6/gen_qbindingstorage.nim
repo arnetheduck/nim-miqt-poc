@@ -61,18 +61,15 @@ proc delete*(self: gen_qbindingstorage_types.QBindingStatus) =
 func init*(T: type gen_qbindingstorage_types.QBindingStorage, h: ptr cQBindingStorage): gen_qbindingstorage_types.QBindingStorage =
   T(h: h)
 proc create*(T: type gen_qbindingstorage_types.QBindingStorage, ): gen_qbindingstorage_types.QBindingStorage =
-
   gen_qbindingstorage_types.QBindingStorage.init(fcQBindingStorage_new())
-proc isEmpty*(self: gen_qbindingstorage_types.QBindingStorage, ): bool =
 
+proc isEmpty*(self: gen_qbindingstorage_types.QBindingStorage, ): bool =
   fcQBindingStorage_isEmpty(self.h)
 
 proc isValid*(self: gen_qbindingstorage_types.QBindingStorage, ): bool =
-
   fcQBindingStorage_isValid(self.h)
 
 proc registerDependency*(self: gen_qbindingstorage_types.QBindingStorage, data: gen_qpropertyprivate.QUntypedPropertyData): void =
-
   fcQBindingStorage_registerDependency(self.h, data.h)
 
 proc delete*(self: gen_qbindingstorage_types.QBindingStorage) =

@@ -101,98 +101,81 @@ proc fcQImageWriter_delete(self: pointer) {.importc: "QImageWriter_delete".}
 func init*(T: type gen_qimagewriter_types.QImageWriter, h: ptr cQImageWriter): gen_qimagewriter_types.QImageWriter =
   T(h: h)
 proc create*(T: type gen_qimagewriter_types.QImageWriter, ): gen_qimagewriter_types.QImageWriter =
-
   gen_qimagewriter_types.QImageWriter.init(fcQImageWriter_new())
+
 proc create*(T: type gen_qimagewriter_types.QImageWriter, device: gen_qiodevice.QIODevice, format: seq[byte]): gen_qimagewriter_types.QImageWriter =
-
   gen_qimagewriter_types.QImageWriter.init(fcQImageWriter_new2(device.h, struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format)))))
+
 proc create*(T: type gen_qimagewriter_types.QImageWriter, fileName: string): gen_qimagewriter_types.QImageWriter =
-
   gen_qimagewriter_types.QImageWriter.init(fcQImageWriter_new3(struct_miqt_string(data: fileName, len: csize_t(len(fileName)))))
+
 proc create*(T: type gen_qimagewriter_types.QImageWriter, fileName: string, format: seq[byte]): gen_qimagewriter_types.QImageWriter =
-
   gen_qimagewriter_types.QImageWriter.init(fcQImageWriter_new4(struct_miqt_string(data: fileName, len: csize_t(len(fileName))), struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format)))))
-proc tr*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring): string =
 
+proc tr*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring): string =
   let v_ms = fcQImageWriter_tr(sourceText)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring): string =
-
   let v_ms = fcQImageWriter_trUtf8(sourceText)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFormat*(self: gen_qimagewriter_types.QImageWriter, format: seq[byte]): void =
-
   fcQImageWriter_setFormat(self.h, struct_miqt_string(data: cast[cstring](if len(format) == 0: nil else: unsafeAddr format[0]), len: csize_t(len(format))))
 
 proc format*(self: gen_qimagewriter_types.QImageWriter, ): seq[byte] =
-
   var v_bytearray = fcQImageWriter_format(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc setDevice*(self: gen_qimagewriter_types.QImageWriter, device: gen_qiodevice.QIODevice): void =
-
   fcQImageWriter_setDevice(self.h, device.h)
 
 proc device*(self: gen_qimagewriter_types.QImageWriter, ): gen_qiodevice.QIODevice =
-
   gen_qiodevice.QIODevice(h: fcQImageWriter_device(self.h))
 
 proc setFileName*(self: gen_qimagewriter_types.QImageWriter, fileName: string): void =
-
   fcQImageWriter_setFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc fileName*(self: gen_qimagewriter_types.QImageWriter, ): string =
-
   let v_ms = fcQImageWriter_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setQuality*(self: gen_qimagewriter_types.QImageWriter, quality: cint): void =
-
   fcQImageWriter_setQuality(self.h, quality)
 
 proc quality*(self: gen_qimagewriter_types.QImageWriter, ): cint =
-
   fcQImageWriter_quality(self.h)
 
 proc setCompression*(self: gen_qimagewriter_types.QImageWriter, compression: cint): void =
-
   fcQImageWriter_setCompression(self.h, compression)
 
 proc compression*(self: gen_qimagewriter_types.QImageWriter, ): cint =
-
   fcQImageWriter_compression(self.h)
 
 proc setGamma*(self: gen_qimagewriter_types.QImageWriter, gamma: float32): void =
-
   fcQImageWriter_setGamma(self.h, gamma)
 
 proc gamma*(self: gen_qimagewriter_types.QImageWriter, ): float32 =
-
   fcQImageWriter_gamma(self.h)
 
 proc setSubType*(self: gen_qimagewriter_types.QImageWriter, typeVal: seq[byte]): void =
-
   fcQImageWriter_setSubType(self.h, struct_miqt_string(data: cast[cstring](if len(typeVal) == 0: nil else: unsafeAddr typeVal[0]), len: csize_t(len(typeVal))))
 
 proc subType*(self: gen_qimagewriter_types.QImageWriter, ): seq[byte] =
-
   var v_bytearray = fcQImageWriter_subType(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc supportedSubTypes*(self: gen_qimagewriter_types.QImageWriter, ): seq[seq[byte]] =
-
   var v_ma = fcQImageWriter_supportedSubTypes(self.h)
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -204,69 +187,54 @@ proc supportedSubTypes*(self: gen_qimagewriter_types.QImageWriter, ): seq[seq[by
   vx_ret
 
 proc setOptimizedWrite*(self: gen_qimagewriter_types.QImageWriter, optimize: bool): void =
-
   fcQImageWriter_setOptimizedWrite(self.h, optimize)
 
 proc optimizedWrite*(self: gen_qimagewriter_types.QImageWriter, ): bool =
-
   fcQImageWriter_optimizedWrite(self.h)
 
 proc setProgressiveScanWrite*(self: gen_qimagewriter_types.QImageWriter, progressive: bool): void =
-
   fcQImageWriter_setProgressiveScanWrite(self.h, progressive)
 
 proc progressiveScanWrite*(self: gen_qimagewriter_types.QImageWriter, ): bool =
-
   fcQImageWriter_progressiveScanWrite(self.h)
 
 proc transformation*(self: gen_qimagewriter_types.QImageWriter, ): cint =
-
   cint(fcQImageWriter_transformation(self.h))
 
 proc setTransformation*(self: gen_qimagewriter_types.QImageWriter, orientation: cint): void =
-
   fcQImageWriter_setTransformation(self.h, cint(orientation))
 
 proc setDescription*(self: gen_qimagewriter_types.QImageWriter, description: string): void =
-
   fcQImageWriter_setDescription(self.h, struct_miqt_string(data: description, len: csize_t(len(description))))
 
 proc description*(self: gen_qimagewriter_types.QImageWriter, ): string =
-
   let v_ms = fcQImageWriter_description(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setText*(self: gen_qimagewriter_types.QImageWriter, key: string, text: string): void =
-
   fcQImageWriter_setText(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc canWrite*(self: gen_qimagewriter_types.QImageWriter, ): bool =
-
   fcQImageWriter_canWrite(self.h)
 
 proc write*(self: gen_qimagewriter_types.QImageWriter, image: gen_qimage.QImage): bool =
-
   fcQImageWriter_write(self.h, image.h)
 
 proc error*(self: gen_qimagewriter_types.QImageWriter, ): cint =
-
   cint(fcQImageWriter_error(self.h))
 
 proc errorString*(self: gen_qimagewriter_types.QImageWriter, ): string =
-
   let v_ms = fcQImageWriter_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc supportsOption*(self: gen_qimagewriter_types.QImageWriter, option: cint): bool =
-
   fcQImageWriter_supportsOption(self.h, cint(option))
 
 proc supportedImageFormats*(_: type gen_qimagewriter_types.QImageWriter, ): seq[seq[byte]] =
-
   var v_ma = fcQImageWriter_supportedImageFormats()
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -278,7 +246,6 @@ proc supportedImageFormats*(_: type gen_qimagewriter_types.QImageWriter, ): seq[
   vx_ret
 
 proc supportedMimeTypes*(_: type gen_qimagewriter_types.QImageWriter, ): seq[seq[byte]] =
-
   var v_ma = fcQImageWriter_supportedMimeTypes()
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -290,7 +257,6 @@ proc supportedMimeTypes*(_: type gen_qimagewriter_types.QImageWriter, ): seq[seq
   vx_ret
 
 proc imageFormatsForMimeType*(_: type gen_qimagewriter_types.QImageWriter, mimeType: seq[byte]): seq[seq[byte]] =
-
   var v_ma = fcQImageWriter_imageFormatsForMimeType(struct_miqt_string(data: cast[cstring](if len(mimeType) == 0: nil else: unsafeAddr mimeType[0]), len: csize_t(len(mimeType))))
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -301,29 +267,25 @@ proc imageFormatsForMimeType*(_: type gen_qimagewriter_types.QImageWriter, mimeT
     vx_ret[i] = vx_lvx_ret
   vx_ret
 
-proc tr2*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring, disambiguation: cstring): string =
-
+proc tr*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring, disambiguation: cstring): string =
   let v_ms = fcQImageWriter_tr2(sourceText, disambiguation)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring, disambiguation: cstring, n: cint): string =
-
+proc tr*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring, disambiguation: cstring, n: cint): string =
   let v_ms = fcQImageWriter_tr3(sourceText, disambiguation, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring, disambiguation: cstring): string =
-
+proc trUtf8*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring, disambiguation: cstring): string =
   let v_ms = fcQImageWriter_trUtf82(sourceText, disambiguation)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring, disambiguation: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qimagewriter_types.QImageWriter, sourceText: cstring, disambiguation: cstring, n: cint): string =
   let v_ms = fcQImageWriter_trUtf83(sourceText, disambiguation, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

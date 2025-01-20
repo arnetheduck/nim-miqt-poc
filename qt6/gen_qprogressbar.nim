@@ -218,166 +218,133 @@ proc fcQProgressBar_delete(self: pointer) {.importc: "QProgressBar_delete".}
 func init*(T: type gen_qprogressbar_types.QProgressBar, h: ptr cQProgressBar): gen_qprogressbar_types.QProgressBar =
   T(h: h)
 proc create*(T: type gen_qprogressbar_types.QProgressBar, parent: gen_qwidget.QWidget): gen_qprogressbar_types.QProgressBar =
-
   gen_qprogressbar_types.QProgressBar.init(fcQProgressBar_new(parent.h))
+
 proc create*(T: type gen_qprogressbar_types.QProgressBar, ): gen_qprogressbar_types.QProgressBar =
-
   gen_qprogressbar_types.QProgressBar.init(fcQProgressBar_new2())
-proc metaObject*(self: gen_qprogressbar_types.QProgressBar, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qprogressbar_types.QProgressBar, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQProgressBar_metaObject(self.h))
 
 proc metacast*(self: gen_qprogressbar_types.QProgressBar, param1: cstring): pointer =
-
   fcQProgressBar_metacast(self.h, param1)
 
 proc metacall*(self: gen_qprogressbar_types.QProgressBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQProgressBar_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qprogressbar_types.QProgressBar, s: cstring): string =
-
   let v_ms = fcQProgressBar_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc minimum*(self: gen_qprogressbar_types.QProgressBar, ): cint =
-
   fcQProgressBar_minimum(self.h)
 
 proc maximum*(self: gen_qprogressbar_types.QProgressBar, ): cint =
-
   fcQProgressBar_maximum(self.h)
 
 proc value*(self: gen_qprogressbar_types.QProgressBar, ): cint =
-
   fcQProgressBar_value(self.h)
 
 proc text*(self: gen_qprogressbar_types.QProgressBar, ): string =
-
   let v_ms = fcQProgressBar_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setTextVisible*(self: gen_qprogressbar_types.QProgressBar, visible: bool): void =
-
   fcQProgressBar_setTextVisible(self.h, visible)
 
 proc isTextVisible*(self: gen_qprogressbar_types.QProgressBar, ): bool =
-
   fcQProgressBar_isTextVisible(self.h)
 
 proc alignment*(self: gen_qprogressbar_types.QProgressBar, ): cint =
-
   cint(fcQProgressBar_alignment(self.h))
 
 proc setAlignment*(self: gen_qprogressbar_types.QProgressBar, alignment: cint): void =
-
   fcQProgressBar_setAlignment(self.h, cint(alignment))
 
 proc sizeHint*(self: gen_qprogressbar_types.QProgressBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQProgressBar_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qprogressbar_types.QProgressBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQProgressBar_minimumSizeHint(self.h))
 
 proc orientation*(self: gen_qprogressbar_types.QProgressBar, ): cint =
-
   cint(fcQProgressBar_orientation(self.h))
 
 proc setInvertedAppearance*(self: gen_qprogressbar_types.QProgressBar, invert: bool): void =
-
   fcQProgressBar_setInvertedAppearance(self.h, invert)
 
 proc invertedAppearance*(self: gen_qprogressbar_types.QProgressBar, ): bool =
-
   fcQProgressBar_invertedAppearance(self.h)
 
 proc setTextDirection*(self: gen_qprogressbar_types.QProgressBar, textDirection: cint): void =
-
   fcQProgressBar_setTextDirection(self.h, cint(textDirection))
 
 proc textDirection*(self: gen_qprogressbar_types.QProgressBar, ): cint =
-
   cint(fcQProgressBar_textDirection(self.h))
 
 proc setFormat*(self: gen_qprogressbar_types.QProgressBar, format: string): void =
-
   fcQProgressBar_setFormat(self.h, struct_miqt_string(data: format, len: csize_t(len(format))))
 
 proc resetFormat*(self: gen_qprogressbar_types.QProgressBar, ): void =
-
   fcQProgressBar_resetFormat(self.h)
 
 proc format*(self: gen_qprogressbar_types.QProgressBar, ): string =
-
   let v_ms = fcQProgressBar_format(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc reset*(self: gen_qprogressbar_types.QProgressBar, ): void =
-
   fcQProgressBar_reset(self.h)
 
 proc setRange*(self: gen_qprogressbar_types.QProgressBar, minimum: cint, maximum: cint): void =
-
   fcQProgressBar_setRange(self.h, minimum, maximum)
 
 proc setMinimum*(self: gen_qprogressbar_types.QProgressBar, minimum: cint): void =
-
   fcQProgressBar_setMinimum(self.h, minimum)
 
 proc setMaximum*(self: gen_qprogressbar_types.QProgressBar, maximum: cint): void =
-
   fcQProgressBar_setMaximum(self.h, maximum)
 
 proc setValue*(self: gen_qprogressbar_types.QProgressBar, value: cint): void =
-
   fcQProgressBar_setValue(self.h, value)
 
 proc setOrientation*(self: gen_qprogressbar_types.QProgressBar, orientation: cint): void =
-
   fcQProgressBar_setOrientation(self.h, cint(orientation))
 
 proc valueChanged*(self: gen_qprogressbar_types.QProgressBar, value: cint): void =
-
   fcQProgressBar_valueChanged(self.h, value)
 
+type QProgressBarvalueChangedSlot* = proc(value: cint)
 proc miqt_exec_callback_QProgressBar_valueChanged(slot: int, value: cint) {.exportc.} =
-  type Cb = proc(value: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QProgressBarvalueChangedSlot](cast[pointer](slot))
   let slotval1 = value
-
 
   nimfunc[](slotval1)
 
-proc onvalueChanged*(self: gen_qprogressbar_types.QProgressBar, slot: proc(value: cint)) =
-  type Cb = proc(value: cint)
-  var tmp = new Cb
+proc onvalueChanged*(self: gen_qprogressbar_types.QProgressBar, slot: QProgressBarvalueChangedSlot) =
+  var tmp = new QProgressBarvalueChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQProgressBar_connect_valueChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qprogressbar_types.QProgressBar, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qprogressbar_types.QProgressBar, s: cstring, c: cstring): string =
   let v_ms = fcQProgressBar_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qprogressbar_types.QProgressBar, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qprogressbar_types.QProgressBar, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQProgressBar_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QProgressBarmetaObject*(self: gen_qprogressbar_types.QProgressBar, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQProgressBar_virtualbase_metaObject(self.h))
 
 type QProgressBarmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -395,7 +362,6 @@ proc miqt_exec_callback_QProgressBar_metaObject(self: ptr cQProgressBar, slot: i
 
   virtualReturn.h
 proc QProgressBarmetacast*(self: gen_qprogressbar_types.QProgressBar, param1: cstring): pointer =
-
   fQProgressBar_virtualbase_metacast(self.h, param1)
 
 type QProgressBarmetacastProc* = proc(param1: cstring): pointer
@@ -415,7 +381,6 @@ proc miqt_exec_callback_QProgressBar_metacast(self: ptr cQProgressBar, slot: int
 
   virtualReturn
 proc QProgressBarmetacall*(self: gen_qprogressbar_types.QProgressBar, param1: cint, param2: cint, param3: pointer): cint =
-
   fQProgressBar_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QProgressBarmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -439,7 +404,6 @@ proc miqt_exec_callback_QProgressBar_metacall(self: ptr cQProgressBar, slot: int
 
   virtualReturn
 proc QProgressBartext*(self: gen_qprogressbar_types.QProgressBar, ): string =
-
   let v_ms = fQProgressBar_virtualbase_text(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -460,7 +424,6 @@ proc miqt_exec_callback_QProgressBar_text(self: ptr cQProgressBar, slot: int): s
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QProgressBarsizeHint*(self: gen_qprogressbar_types.QProgressBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQProgressBar_virtualbase_sizeHint(self.h))
 
 type QProgressBarsizeHintProc* = proc(): gen_qsize.QSize
@@ -478,7 +441,6 @@ proc miqt_exec_callback_QProgressBar_sizeHint(self: ptr cQProgressBar, slot: int
 
   virtualReturn.h
 proc QProgressBarminimumSizeHint*(self: gen_qprogressbar_types.QProgressBar, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQProgressBar_virtualbase_minimumSizeHint(self.h))
 
 type QProgressBarminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -496,7 +458,6 @@ proc miqt_exec_callback_QProgressBar_minimumSizeHint(self: ptr cQProgressBar, sl
 
   virtualReturn.h
 proc QProgressBarevent*(self: gen_qprogressbar_types.QProgressBar, e: gen_qcoreevent.QEvent): bool =
-
   fQProgressBar_virtualbase_event(self.h, e.h)
 
 type QProgressBareventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -516,7 +477,6 @@ proc miqt_exec_callback_QProgressBar_event(self: ptr cQProgressBar, slot: int, e
 
   virtualReturn
 proc QProgressBarpaintEvent*(self: gen_qprogressbar_types.QProgressBar, param1: gen_qevent.QPaintEvent): void =
-
   fQProgressBar_virtualbase_paintEvent(self.h, param1.h)
 
 type QProgressBarpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -534,7 +494,6 @@ proc miqt_exec_callback_QProgressBar_paintEvent(self: ptr cQProgressBar, slot: i
 
   nimfunc[](slotval1)
 proc QProgressBarinitStyleOption*(self: gen_qprogressbar_types.QProgressBar, option: gen_qstyleoption.QStyleOptionProgressBar): void =
-
   fQProgressBar_virtualbase_initStyleOption(self.h, option.h)
 
 type QProgressBarinitStyleOptionProc* = proc(option: gen_qstyleoption.QStyleOptionProgressBar): void
@@ -552,7 +511,6 @@ proc miqt_exec_callback_QProgressBar_initStyleOption(self: ptr cQProgressBar, sl
 
   nimfunc[](slotval1)
 proc QProgressBardevType*(self: gen_qprogressbar_types.QProgressBar, ): cint =
-
   fQProgressBar_virtualbase_devType(self.h)
 
 type QProgressBardevTypeProc* = proc(): cint
@@ -570,7 +528,6 @@ proc miqt_exec_callback_QProgressBar_devType(self: ptr cQProgressBar, slot: int)
 
   virtualReturn
 proc QProgressBarsetVisible*(self: gen_qprogressbar_types.QProgressBar, visible: bool): void =
-
   fQProgressBar_virtualbase_setVisible(self.h, visible)
 
 type QProgressBarsetVisibleProc* = proc(visible: bool): void
@@ -588,7 +545,6 @@ proc miqt_exec_callback_QProgressBar_setVisible(self: ptr cQProgressBar, slot: i
 
   nimfunc[](slotval1)
 proc QProgressBarheightForWidth*(self: gen_qprogressbar_types.QProgressBar, param1: cint): cint =
-
   fQProgressBar_virtualbase_heightForWidth(self.h, param1)
 
 type QProgressBarheightForWidthProc* = proc(param1: cint): cint
@@ -608,7 +564,6 @@ proc miqt_exec_callback_QProgressBar_heightForWidth(self: ptr cQProgressBar, slo
 
   virtualReturn
 proc QProgressBarhasHeightForWidth*(self: gen_qprogressbar_types.QProgressBar, ): bool =
-
   fQProgressBar_virtualbase_hasHeightForWidth(self.h)
 
 type QProgressBarhasHeightForWidthProc* = proc(): bool
@@ -626,7 +581,6 @@ proc miqt_exec_callback_QProgressBar_hasHeightForWidth(self: ptr cQProgressBar, 
 
   virtualReturn
 proc QProgressBarpaintEngine*(self: gen_qprogressbar_types.QProgressBar, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQProgressBar_virtualbase_paintEngine(self.h))
 
 type QProgressBarpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -644,7 +598,6 @@ proc miqt_exec_callback_QProgressBar_paintEngine(self: ptr cQProgressBar, slot: 
 
   virtualReturn.h
 proc QProgressBarmousePressEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMouseEvent): void =
-
   fQProgressBar_virtualbase_mousePressEvent(self.h, event.h)
 
 type QProgressBarmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -662,7 +615,6 @@ proc miqt_exec_callback_QProgressBar_mousePressEvent(self: ptr cQProgressBar, sl
 
   nimfunc[](slotval1)
 proc QProgressBarmouseReleaseEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMouseEvent): void =
-
   fQProgressBar_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QProgressBarmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -680,7 +632,6 @@ proc miqt_exec_callback_QProgressBar_mouseReleaseEvent(self: ptr cQProgressBar, 
 
   nimfunc[](slotval1)
 proc QProgressBarmouseDoubleClickEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMouseEvent): void =
-
   fQProgressBar_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QProgressBarmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -698,7 +649,6 @@ proc miqt_exec_callback_QProgressBar_mouseDoubleClickEvent(self: ptr cQProgressB
 
   nimfunc[](slotval1)
 proc QProgressBarmouseMoveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMouseEvent): void =
-
   fQProgressBar_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QProgressBarmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -716,7 +666,6 @@ proc miqt_exec_callback_QProgressBar_mouseMoveEvent(self: ptr cQProgressBar, slo
 
   nimfunc[](slotval1)
 proc QProgressBarwheelEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QWheelEvent): void =
-
   fQProgressBar_virtualbase_wheelEvent(self.h, event.h)
 
 type QProgressBarwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -734,7 +683,6 @@ proc miqt_exec_callback_QProgressBar_wheelEvent(self: ptr cQProgressBar, slot: i
 
   nimfunc[](slotval1)
 proc QProgressBarkeyPressEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QKeyEvent): void =
-
   fQProgressBar_virtualbase_keyPressEvent(self.h, event.h)
 
 type QProgressBarkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -752,7 +700,6 @@ proc miqt_exec_callback_QProgressBar_keyPressEvent(self: ptr cQProgressBar, slot
 
   nimfunc[](slotval1)
 proc QProgressBarkeyReleaseEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QKeyEvent): void =
-
   fQProgressBar_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QProgressBarkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -770,7 +717,6 @@ proc miqt_exec_callback_QProgressBar_keyReleaseEvent(self: ptr cQProgressBar, sl
 
   nimfunc[](slotval1)
 proc QProgressBarfocusInEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QFocusEvent): void =
-
   fQProgressBar_virtualbase_focusInEvent(self.h, event.h)
 
 type QProgressBarfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -788,7 +734,6 @@ proc miqt_exec_callback_QProgressBar_focusInEvent(self: ptr cQProgressBar, slot:
 
   nimfunc[](slotval1)
 proc QProgressBarfocusOutEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QFocusEvent): void =
-
   fQProgressBar_virtualbase_focusOutEvent(self.h, event.h)
 
 type QProgressBarfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -806,7 +751,6 @@ proc miqt_exec_callback_QProgressBar_focusOutEvent(self: ptr cQProgressBar, slot
 
   nimfunc[](slotval1)
 proc QProgressBarenterEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QEnterEvent): void =
-
   fQProgressBar_virtualbase_enterEvent(self.h, event.h)
 
 type QProgressBarenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -824,7 +768,6 @@ proc miqt_exec_callback_QProgressBar_enterEvent(self: ptr cQProgressBar, slot: i
 
   nimfunc[](slotval1)
 proc QProgressBarleaveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qcoreevent.QEvent): void =
-
   fQProgressBar_virtualbase_leaveEvent(self.h, event.h)
 
 type QProgressBarleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -842,7 +785,6 @@ proc miqt_exec_callback_QProgressBar_leaveEvent(self: ptr cQProgressBar, slot: i
 
   nimfunc[](slotval1)
 proc QProgressBarmoveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QMoveEvent): void =
-
   fQProgressBar_virtualbase_moveEvent(self.h, event.h)
 
 type QProgressBarmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -860,7 +802,6 @@ proc miqt_exec_callback_QProgressBar_moveEvent(self: ptr cQProgressBar, slot: in
 
   nimfunc[](slotval1)
 proc QProgressBarresizeEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QResizeEvent): void =
-
   fQProgressBar_virtualbase_resizeEvent(self.h, event.h)
 
 type QProgressBarresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -878,7 +819,6 @@ proc miqt_exec_callback_QProgressBar_resizeEvent(self: ptr cQProgressBar, slot: 
 
   nimfunc[](slotval1)
 proc QProgressBarcloseEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QCloseEvent): void =
-
   fQProgressBar_virtualbase_closeEvent(self.h, event.h)
 
 type QProgressBarcloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -896,7 +836,6 @@ proc miqt_exec_callback_QProgressBar_closeEvent(self: ptr cQProgressBar, slot: i
 
   nimfunc[](slotval1)
 proc QProgressBarcontextMenuEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QContextMenuEvent): void =
-
   fQProgressBar_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QProgressBarcontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -914,7 +853,6 @@ proc miqt_exec_callback_QProgressBar_contextMenuEvent(self: ptr cQProgressBar, s
 
   nimfunc[](slotval1)
 proc QProgressBartabletEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QTabletEvent): void =
-
   fQProgressBar_virtualbase_tabletEvent(self.h, event.h)
 
 type QProgressBartabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -932,7 +870,6 @@ proc miqt_exec_callback_QProgressBar_tabletEvent(self: ptr cQProgressBar, slot: 
 
   nimfunc[](slotval1)
 proc QProgressBaractionEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QActionEvent): void =
-
   fQProgressBar_virtualbase_actionEvent(self.h, event.h)
 
 type QProgressBaractionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -950,7 +887,6 @@ proc miqt_exec_callback_QProgressBar_actionEvent(self: ptr cQProgressBar, slot: 
 
   nimfunc[](slotval1)
 proc QProgressBardragEnterEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QDragEnterEvent): void =
-
   fQProgressBar_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QProgressBardragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -968,7 +904,6 @@ proc miqt_exec_callback_QProgressBar_dragEnterEvent(self: ptr cQProgressBar, slo
 
   nimfunc[](slotval1)
 proc QProgressBardragMoveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QDragMoveEvent): void =
-
   fQProgressBar_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QProgressBardragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -986,7 +921,6 @@ proc miqt_exec_callback_QProgressBar_dragMoveEvent(self: ptr cQProgressBar, slot
 
   nimfunc[](slotval1)
 proc QProgressBardragLeaveEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QDragLeaveEvent): void =
-
   fQProgressBar_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QProgressBardragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1004,7 +938,6 @@ proc miqt_exec_callback_QProgressBar_dragLeaveEvent(self: ptr cQProgressBar, slo
 
   nimfunc[](slotval1)
 proc QProgressBardropEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QDropEvent): void =
-
   fQProgressBar_virtualbase_dropEvent(self.h, event.h)
 
 type QProgressBardropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1022,7 +955,6 @@ proc miqt_exec_callback_QProgressBar_dropEvent(self: ptr cQProgressBar, slot: in
 
   nimfunc[](slotval1)
 proc QProgressBarshowEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QShowEvent): void =
-
   fQProgressBar_virtualbase_showEvent(self.h, event.h)
 
 type QProgressBarshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1040,7 +972,6 @@ proc miqt_exec_callback_QProgressBar_showEvent(self: ptr cQProgressBar, slot: in
 
   nimfunc[](slotval1)
 proc QProgressBarhideEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qevent.QHideEvent): void =
-
   fQProgressBar_virtualbase_hideEvent(self.h, event.h)
 
 type QProgressBarhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1058,7 +989,6 @@ proc miqt_exec_callback_QProgressBar_hideEvent(self: ptr cQProgressBar, slot: in
 
   nimfunc[](slotval1)
 proc QProgressBarnativeEvent*(self: gen_qprogressbar_types.QProgressBar, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQProgressBar_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QProgressBarnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1085,7 +1015,6 @@ proc miqt_exec_callback_QProgressBar_nativeEvent(self: ptr cQProgressBar, slot: 
 
   virtualReturn
 proc QProgressBarchangeEvent*(self: gen_qprogressbar_types.QProgressBar, param1: gen_qcoreevent.QEvent): void =
-
   fQProgressBar_virtualbase_changeEvent(self.h, param1.h)
 
 type QProgressBarchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -1103,7 +1032,6 @@ proc miqt_exec_callback_QProgressBar_changeEvent(self: ptr cQProgressBar, slot: 
 
   nimfunc[](slotval1)
 proc QProgressBarmetric*(self: gen_qprogressbar_types.QProgressBar, param1: cint): cint =
-
   fQProgressBar_virtualbase_metric(self.h, cint(param1))
 
 type QProgressBarmetricProc* = proc(param1: cint): cint
@@ -1123,7 +1051,6 @@ proc miqt_exec_callback_QProgressBar_metric(self: ptr cQProgressBar, slot: int, 
 
   virtualReturn
 proc QProgressBarinitPainter*(self: gen_qprogressbar_types.QProgressBar, painter: gen_qpainter.QPainter): void =
-
   fQProgressBar_virtualbase_initPainter(self.h, painter.h)
 
 type QProgressBarinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1141,7 +1068,6 @@ proc miqt_exec_callback_QProgressBar_initPainter(self: ptr cQProgressBar, slot: 
 
   nimfunc[](slotval1)
 proc QProgressBarredirected*(self: gen_qprogressbar_types.QProgressBar, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQProgressBar_virtualbase_redirected(self.h, offset.h))
 
 type QProgressBarredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1161,7 +1087,6 @@ proc miqt_exec_callback_QProgressBar_redirected(self: ptr cQProgressBar, slot: i
 
   virtualReturn.h
 proc QProgressBarsharedPainter*(self: gen_qprogressbar_types.QProgressBar, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQProgressBar_virtualbase_sharedPainter(self.h))
 
 type QProgressBarsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1179,7 +1104,6 @@ proc miqt_exec_callback_QProgressBar_sharedPainter(self: ptr cQProgressBar, slot
 
   virtualReturn.h
 proc QProgressBarinputMethodEvent*(self: gen_qprogressbar_types.QProgressBar, param1: gen_qevent.QInputMethodEvent): void =
-
   fQProgressBar_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QProgressBarinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1197,7 +1121,6 @@ proc miqt_exec_callback_QProgressBar_inputMethodEvent(self: ptr cQProgressBar, s
 
   nimfunc[](slotval1)
 proc QProgressBarinputMethodQuery*(self: gen_qprogressbar_types.QProgressBar, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQProgressBar_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QProgressBarinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1217,7 +1140,6 @@ proc miqt_exec_callback_QProgressBar_inputMethodQuery(self: ptr cQProgressBar, s
 
   virtualReturn.h
 proc QProgressBarfocusNextPrevChild*(self: gen_qprogressbar_types.QProgressBar, next: bool): bool =
-
   fQProgressBar_virtualbase_focusNextPrevChild(self.h, next)
 
 type QProgressBarfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1237,7 +1159,6 @@ proc miqt_exec_callback_QProgressBar_focusNextPrevChild(self: ptr cQProgressBar,
 
   virtualReturn
 proc QProgressBareventFilter*(self: gen_qprogressbar_types.QProgressBar, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQProgressBar_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QProgressBareventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1259,7 +1180,6 @@ proc miqt_exec_callback_QProgressBar_eventFilter(self: ptr cQProgressBar, slot: 
 
   virtualReturn
 proc QProgressBartimerEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qcoreevent.QTimerEvent): void =
-
   fQProgressBar_virtualbase_timerEvent(self.h, event.h)
 
 type QProgressBartimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1277,7 +1197,6 @@ proc miqt_exec_callback_QProgressBar_timerEvent(self: ptr cQProgressBar, slot: i
 
   nimfunc[](slotval1)
 proc QProgressBarchildEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qcoreevent.QChildEvent): void =
-
   fQProgressBar_virtualbase_childEvent(self.h, event.h)
 
 type QProgressBarchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1295,7 +1214,6 @@ proc miqt_exec_callback_QProgressBar_childEvent(self: ptr cQProgressBar, slot: i
 
   nimfunc[](slotval1)
 proc QProgressBarcustomEvent*(self: gen_qprogressbar_types.QProgressBar, event: gen_qcoreevent.QEvent): void =
-
   fQProgressBar_virtualbase_customEvent(self.h, event.h)
 
 type QProgressBarcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1313,7 +1231,6 @@ proc miqt_exec_callback_QProgressBar_customEvent(self: ptr cQProgressBar, slot: 
 
   nimfunc[](slotval1)
 proc QProgressBarconnectNotify*(self: gen_qprogressbar_types.QProgressBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQProgressBar_virtualbase_connectNotify(self.h, signal.h)
 
 type QProgressBarconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1331,7 +1248,6 @@ proc miqt_exec_callback_QProgressBar_connectNotify(self: ptr cQProgressBar, slot
 
   nimfunc[](slotval1)
 proc QProgressBardisconnectNotify*(self: gen_qprogressbar_types.QProgressBar, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQProgressBar_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QProgressBardisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

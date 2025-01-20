@@ -193,71 +193,60 @@ proc fcQCameraViewfinder_delete(self: pointer) {.importc: "QCameraViewfinder_del
 func init*(T: type gen_qcameraviewfinder_types.QCameraViewfinder, h: ptr cQCameraViewfinder): gen_qcameraviewfinder_types.QCameraViewfinder =
   T(h: h)
 proc create*(T: type gen_qcameraviewfinder_types.QCameraViewfinder, parent: gen_qwidget.QWidget): gen_qcameraviewfinder_types.QCameraViewfinder =
-
   gen_qcameraviewfinder_types.QCameraViewfinder.init(fcQCameraViewfinder_new(parent.h))
+
 proc create*(T: type gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qcameraviewfinder_types.QCameraViewfinder =
-
   gen_qcameraviewfinder_types.QCameraViewfinder.init(fcQCameraViewfinder_new2())
-proc metaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCameraViewfinder_metaObject(self.h))
 
 proc metacast*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cstring): pointer =
-
   fcQCameraViewfinder_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCameraViewfinder_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring): string =
-
   let v_ms = fcQCameraViewfinder_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring): string =
-
   let v_ms = fcQCameraViewfinder_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc mediaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qmediaobject.QMediaObject =
-
   gen_qmediaobject.QMediaObject(h: fcQCameraViewfinder_mediaObject(self.h))
 
-proc tr2*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring): string =
   let v_ms = fcQCameraViewfinder_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraViewfinder_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring): string =
   let v_ms = fcQCameraViewfinder_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcameraviewfinder_types.QCameraViewfinder, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCameraViewfinder_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QCameraViewfindermetaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQCameraViewfinder_virtualbase_metaObject(self.h))
 
 type QCameraViewfindermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -275,7 +264,6 @@ proc miqt_exec_callback_QCameraViewfinder_metaObject(self: ptr cQCameraViewfinde
 
   virtualReturn.h
 proc QCameraViewfindermetacast*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cstring): pointer =
-
   fQCameraViewfinder_virtualbase_metacast(self.h, param1)
 
 type QCameraViewfindermetacastProc* = proc(param1: cstring): pointer
@@ -295,7 +283,6 @@ proc miqt_exec_callback_QCameraViewfinder_metacast(self: ptr cQCameraViewfinder,
 
   virtualReturn
 proc QCameraViewfindermetacall*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint, param2: cint, param3: pointer): cint =
-
   fQCameraViewfinder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QCameraViewfindermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -319,7 +306,6 @@ proc miqt_exec_callback_QCameraViewfinder_metacall(self: ptr cQCameraViewfinder,
 
   virtualReturn
 proc QCameraViewfindermediaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qmediaobject.QMediaObject =
-
   gen_qmediaobject.QMediaObject(h: fQCameraViewfinder_virtualbase_mediaObject(self.h))
 
 type QCameraViewfindermediaObjectProc* = proc(): gen_qmediaobject.QMediaObject
@@ -337,7 +323,6 @@ proc miqt_exec_callback_QCameraViewfinder_mediaObject(self: ptr cQCameraViewfind
 
   virtualReturn.h
 proc QCameraViewfindersetMediaObject*(self: gen_qcameraviewfinder_types.QCameraViewfinder, objectVal: gen_qmediaobject.QMediaObject): bool =
-
   fQCameraViewfinder_virtualbase_setMediaObject(self.h, objectVal.h)
 
 type QCameraViewfindersetMediaObjectProc* = proc(objectVal: gen_qmediaobject.QMediaObject): bool
@@ -357,7 +342,6 @@ proc miqt_exec_callback_QCameraViewfinder_setMediaObject(self: ptr cQCameraViewf
 
   virtualReturn
 proc QCameraViewfindersizeHint*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQCameraViewfinder_virtualbase_sizeHint(self.h))
 
 type QCameraViewfindersizeHintProc* = proc(): gen_qsize.QSize
@@ -375,7 +359,6 @@ proc miqt_exec_callback_QCameraViewfinder_sizeHint(self: ptr cQCameraViewfinder,
 
   virtualReturn.h
 proc QCameraViewfinderevent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QEvent): bool =
-
   fQCameraViewfinder_virtualbase_event(self.h, event.h)
 
 type QCameraViewfindereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -395,7 +378,6 @@ proc miqt_exec_callback_QCameraViewfinder_event(self: ptr cQCameraViewfinder, sl
 
   virtualReturn
 proc QCameraViewfindershowEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QShowEvent): void =
-
   fQCameraViewfinder_virtualbase_showEvent(self.h, event.h)
 
 type QCameraViewfindershowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -413,7 +395,6 @@ proc miqt_exec_callback_QCameraViewfinder_showEvent(self: ptr cQCameraViewfinder
 
   nimfunc[](slotval1)
 proc QCameraViewfinderhideEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QHideEvent): void =
-
   fQCameraViewfinder_virtualbase_hideEvent(self.h, event.h)
 
 type QCameraViewfinderhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -431,7 +412,6 @@ proc miqt_exec_callback_QCameraViewfinder_hideEvent(self: ptr cQCameraViewfinder
 
   nimfunc[](slotval1)
 proc QCameraViewfinderresizeEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QResizeEvent): void =
-
   fQCameraViewfinder_virtualbase_resizeEvent(self.h, event.h)
 
 type QCameraViewfinderresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -449,7 +429,6 @@ proc miqt_exec_callback_QCameraViewfinder_resizeEvent(self: ptr cQCameraViewfind
 
   nimfunc[](slotval1)
 proc QCameraViewfindermoveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMoveEvent): void =
-
   fQCameraViewfinder_virtualbase_moveEvent(self.h, event.h)
 
 type QCameraViewfindermoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -467,7 +446,6 @@ proc miqt_exec_callback_QCameraViewfinder_moveEvent(self: ptr cQCameraViewfinder
 
   nimfunc[](slotval1)
 proc QCameraViewfinderpaintEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QPaintEvent): void =
-
   fQCameraViewfinder_virtualbase_paintEvent(self.h, event.h)
 
 type QCameraViewfinderpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -485,7 +463,6 @@ proc miqt_exec_callback_QCameraViewfinder_paintEvent(self: ptr cQCameraViewfinde
 
   nimfunc[](slotval1)
 proc QCameraViewfinderdevType*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): cint =
-
   fQCameraViewfinder_virtualbase_devType(self.h)
 
 type QCameraViewfinderdevTypeProc* = proc(): cint
@@ -503,7 +480,6 @@ proc miqt_exec_callback_QCameraViewfinder_devType(self: ptr cQCameraViewfinder, 
 
   virtualReturn
 proc QCameraViewfindersetVisible*(self: gen_qcameraviewfinder_types.QCameraViewfinder, visible: bool): void =
-
   fQCameraViewfinder_virtualbase_setVisible(self.h, visible)
 
 type QCameraViewfindersetVisibleProc* = proc(visible: bool): void
@@ -521,7 +497,6 @@ proc miqt_exec_callback_QCameraViewfinder_setVisible(self: ptr cQCameraViewfinde
 
   nimfunc[](slotval1)
 proc QCameraViewfinderminimumSizeHint*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQCameraViewfinder_virtualbase_minimumSizeHint(self.h))
 
 type QCameraViewfinderminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -539,7 +514,6 @@ proc miqt_exec_callback_QCameraViewfinder_minimumSizeHint(self: ptr cQCameraView
 
   virtualReturn.h
 proc QCameraViewfinderheightForWidth*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint): cint =
-
   fQCameraViewfinder_virtualbase_heightForWidth(self.h, param1)
 
 type QCameraViewfinderheightForWidthProc* = proc(param1: cint): cint
@@ -559,7 +533,6 @@ proc miqt_exec_callback_QCameraViewfinder_heightForWidth(self: ptr cQCameraViewf
 
   virtualReturn
 proc QCameraViewfinderhasHeightForWidth*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): bool =
-
   fQCameraViewfinder_virtualbase_hasHeightForWidth(self.h)
 
 type QCameraViewfinderhasHeightForWidthProc* = proc(): bool
@@ -577,7 +550,6 @@ proc miqt_exec_callback_QCameraViewfinder_hasHeightForWidth(self: ptr cQCameraVi
 
   virtualReturn
 proc QCameraViewfinderpaintEngine*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQCameraViewfinder_virtualbase_paintEngine(self.h))
 
 type QCameraViewfinderpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -595,7 +567,6 @@ proc miqt_exec_callback_QCameraViewfinder_paintEngine(self: ptr cQCameraViewfind
 
   virtualReturn.h
 proc QCameraViewfindermousePressEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
-
   fQCameraViewfinder_virtualbase_mousePressEvent(self.h, event.h)
 
 type QCameraViewfindermousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -613,7 +584,6 @@ proc miqt_exec_callback_QCameraViewfinder_mousePressEvent(self: ptr cQCameraView
 
   nimfunc[](slotval1)
 proc QCameraViewfindermouseReleaseEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
-
   fQCameraViewfinder_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QCameraViewfindermouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -631,7 +601,6 @@ proc miqt_exec_callback_QCameraViewfinder_mouseReleaseEvent(self: ptr cQCameraVi
 
   nimfunc[](slotval1)
 proc QCameraViewfindermouseDoubleClickEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
-
   fQCameraViewfinder_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QCameraViewfindermouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -649,7 +618,6 @@ proc miqt_exec_callback_QCameraViewfinder_mouseDoubleClickEvent(self: ptr cQCame
 
   nimfunc[](slotval1)
 proc QCameraViewfindermouseMoveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QMouseEvent): void =
-
   fQCameraViewfinder_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QCameraViewfindermouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -667,7 +635,6 @@ proc miqt_exec_callback_QCameraViewfinder_mouseMoveEvent(self: ptr cQCameraViewf
 
   nimfunc[](slotval1)
 proc QCameraViewfinderwheelEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QWheelEvent): void =
-
   fQCameraViewfinder_virtualbase_wheelEvent(self.h, event.h)
 
 type QCameraViewfinderwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -685,7 +652,6 @@ proc miqt_exec_callback_QCameraViewfinder_wheelEvent(self: ptr cQCameraViewfinde
 
   nimfunc[](slotval1)
 proc QCameraViewfinderkeyPressEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QKeyEvent): void =
-
   fQCameraViewfinder_virtualbase_keyPressEvent(self.h, event.h)
 
 type QCameraViewfinderkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -703,7 +669,6 @@ proc miqt_exec_callback_QCameraViewfinder_keyPressEvent(self: ptr cQCameraViewfi
 
   nimfunc[](slotval1)
 proc QCameraViewfinderkeyReleaseEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QKeyEvent): void =
-
   fQCameraViewfinder_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QCameraViewfinderkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -721,7 +686,6 @@ proc miqt_exec_callback_QCameraViewfinder_keyReleaseEvent(self: ptr cQCameraView
 
   nimfunc[](slotval1)
 proc QCameraViewfinderfocusInEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QFocusEvent): void =
-
   fQCameraViewfinder_virtualbase_focusInEvent(self.h, event.h)
 
 type QCameraViewfinderfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -739,7 +703,6 @@ proc miqt_exec_callback_QCameraViewfinder_focusInEvent(self: ptr cQCameraViewfin
 
   nimfunc[](slotval1)
 proc QCameraViewfinderfocusOutEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QFocusEvent): void =
-
   fQCameraViewfinder_virtualbase_focusOutEvent(self.h, event.h)
 
 type QCameraViewfinderfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -757,7 +720,6 @@ proc miqt_exec_callback_QCameraViewfinder_focusOutEvent(self: ptr cQCameraViewfi
 
   nimfunc[](slotval1)
 proc QCameraViewfinderenterEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QEvent): void =
-
   fQCameraViewfinder_virtualbase_enterEvent(self.h, event.h)
 
 type QCameraViewfinderenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -775,7 +737,6 @@ proc miqt_exec_callback_QCameraViewfinder_enterEvent(self: ptr cQCameraViewfinde
 
   nimfunc[](slotval1)
 proc QCameraViewfinderleaveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QEvent): void =
-
   fQCameraViewfinder_virtualbase_leaveEvent(self.h, event.h)
 
 type QCameraViewfinderleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -793,7 +754,6 @@ proc miqt_exec_callback_QCameraViewfinder_leaveEvent(self: ptr cQCameraViewfinde
 
   nimfunc[](slotval1)
 proc QCameraViewfindercloseEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QCloseEvent): void =
-
   fQCameraViewfinder_virtualbase_closeEvent(self.h, event.h)
 
 type QCameraViewfindercloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -811,7 +771,6 @@ proc miqt_exec_callback_QCameraViewfinder_closeEvent(self: ptr cQCameraViewfinde
 
   nimfunc[](slotval1)
 proc QCameraViewfindercontextMenuEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QContextMenuEvent): void =
-
   fQCameraViewfinder_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QCameraViewfindercontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -829,7 +788,6 @@ proc miqt_exec_callback_QCameraViewfinder_contextMenuEvent(self: ptr cQCameraVie
 
   nimfunc[](slotval1)
 proc QCameraViewfindertabletEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QTabletEvent): void =
-
   fQCameraViewfinder_virtualbase_tabletEvent(self.h, event.h)
 
 type QCameraViewfindertabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -847,7 +805,6 @@ proc miqt_exec_callback_QCameraViewfinder_tabletEvent(self: ptr cQCameraViewfind
 
   nimfunc[](slotval1)
 proc QCameraViewfinderactionEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QActionEvent): void =
-
   fQCameraViewfinder_virtualbase_actionEvent(self.h, event.h)
 
 type QCameraViewfinderactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -865,7 +822,6 @@ proc miqt_exec_callback_QCameraViewfinder_actionEvent(self: ptr cQCameraViewfind
 
   nimfunc[](slotval1)
 proc QCameraViewfinderdragEnterEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QDragEnterEvent): void =
-
   fQCameraViewfinder_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QCameraViewfinderdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -883,7 +839,6 @@ proc miqt_exec_callback_QCameraViewfinder_dragEnterEvent(self: ptr cQCameraViewf
 
   nimfunc[](slotval1)
 proc QCameraViewfinderdragMoveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QDragMoveEvent): void =
-
   fQCameraViewfinder_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QCameraViewfinderdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -901,7 +856,6 @@ proc miqt_exec_callback_QCameraViewfinder_dragMoveEvent(self: ptr cQCameraViewfi
 
   nimfunc[](slotval1)
 proc QCameraViewfinderdragLeaveEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QDragLeaveEvent): void =
-
   fQCameraViewfinder_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QCameraViewfinderdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -919,7 +873,6 @@ proc miqt_exec_callback_QCameraViewfinder_dragLeaveEvent(self: ptr cQCameraViewf
 
   nimfunc[](slotval1)
 proc QCameraViewfinderdropEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qevent.QDropEvent): void =
-
   fQCameraViewfinder_virtualbase_dropEvent(self.h, event.h)
 
 type QCameraViewfinderdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -937,7 +890,6 @@ proc miqt_exec_callback_QCameraViewfinder_dropEvent(self: ptr cQCameraViewfinder
 
   nimfunc[](slotval1)
 proc QCameraViewfindernativeEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQCameraViewfinder_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QCameraViewfindernativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -964,7 +916,6 @@ proc miqt_exec_callback_QCameraViewfinder_nativeEvent(self: ptr cQCameraViewfind
 
   virtualReturn
 proc QCameraViewfinderchangeEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: gen_qcoreevent.QEvent): void =
-
   fQCameraViewfinder_virtualbase_changeEvent(self.h, param1.h)
 
 type QCameraViewfinderchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -982,7 +933,6 @@ proc miqt_exec_callback_QCameraViewfinder_changeEvent(self: ptr cQCameraViewfind
 
   nimfunc[](slotval1)
 proc QCameraViewfindermetric*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint): cint =
-
   fQCameraViewfinder_virtualbase_metric(self.h, cint(param1))
 
 type QCameraViewfindermetricProc* = proc(param1: cint): cint
@@ -1002,7 +952,6 @@ proc miqt_exec_callback_QCameraViewfinder_metric(self: ptr cQCameraViewfinder, s
 
   virtualReturn
 proc QCameraViewfinderinitPainter*(self: gen_qcameraviewfinder_types.QCameraViewfinder, painter: gen_qpainter.QPainter): void =
-
   fQCameraViewfinder_virtualbase_initPainter(self.h, painter.h)
 
 type QCameraViewfinderinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1020,7 +969,6 @@ proc miqt_exec_callback_QCameraViewfinder_initPainter(self: ptr cQCameraViewfind
 
   nimfunc[](slotval1)
 proc QCameraViewfinderredirected*(self: gen_qcameraviewfinder_types.QCameraViewfinder, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQCameraViewfinder_virtualbase_redirected(self.h, offset.h))
 
 type QCameraViewfinderredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1040,7 +988,6 @@ proc miqt_exec_callback_QCameraViewfinder_redirected(self: ptr cQCameraViewfinde
 
   virtualReturn.h
 proc QCameraViewfindersharedPainter*(self: gen_qcameraviewfinder_types.QCameraViewfinder, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQCameraViewfinder_virtualbase_sharedPainter(self.h))
 
 type QCameraViewfindersharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1058,7 +1005,6 @@ proc miqt_exec_callback_QCameraViewfinder_sharedPainter(self: ptr cQCameraViewfi
 
   virtualReturn.h
 proc QCameraViewfinderinputMethodEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: gen_qevent.QInputMethodEvent): void =
-
   fQCameraViewfinder_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QCameraViewfinderinputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1076,7 +1022,6 @@ proc miqt_exec_callback_QCameraViewfinder_inputMethodEvent(self: ptr cQCameraVie
 
   nimfunc[](slotval1)
 proc QCameraViewfinderinputMethodQuery*(self: gen_qcameraviewfinder_types.QCameraViewfinder, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQCameraViewfinder_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QCameraViewfinderinputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1096,7 +1041,6 @@ proc miqt_exec_callback_QCameraViewfinder_inputMethodQuery(self: ptr cQCameraVie
 
   virtualReturn.h
 proc QCameraViewfinderfocusNextPrevChild*(self: gen_qcameraviewfinder_types.QCameraViewfinder, next: bool): bool =
-
   fQCameraViewfinder_virtualbase_focusNextPrevChild(self.h, next)
 
 type QCameraViewfinderfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1116,7 +1060,6 @@ proc miqt_exec_callback_QCameraViewfinder_focusNextPrevChild(self: ptr cQCameraV
 
   virtualReturn
 proc QCameraViewfindereventFilter*(self: gen_qcameraviewfinder_types.QCameraViewfinder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQCameraViewfinder_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QCameraViewfindereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1138,7 +1081,6 @@ proc miqt_exec_callback_QCameraViewfinder_eventFilter(self: ptr cQCameraViewfind
 
   virtualReturn
 proc QCameraViewfindertimerEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QTimerEvent): void =
-
   fQCameraViewfinder_virtualbase_timerEvent(self.h, event.h)
 
 type QCameraViewfindertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1156,7 +1098,6 @@ proc miqt_exec_callback_QCameraViewfinder_timerEvent(self: ptr cQCameraViewfinde
 
   nimfunc[](slotval1)
 proc QCameraViewfinderchildEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QChildEvent): void =
-
   fQCameraViewfinder_virtualbase_childEvent(self.h, event.h)
 
 type QCameraViewfinderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1174,7 +1115,6 @@ proc miqt_exec_callback_QCameraViewfinder_childEvent(self: ptr cQCameraViewfinde
 
   nimfunc[](slotval1)
 proc QCameraViewfindercustomEvent*(self: gen_qcameraviewfinder_types.QCameraViewfinder, event: gen_qcoreevent.QEvent): void =
-
   fQCameraViewfinder_virtualbase_customEvent(self.h, event.h)
 
 type QCameraViewfindercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1192,7 +1132,6 @@ proc miqt_exec_callback_QCameraViewfinder_customEvent(self: ptr cQCameraViewfind
 
   nimfunc[](slotval1)
 proc QCameraViewfinderconnectNotify*(self: gen_qcameraviewfinder_types.QCameraViewfinder, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCameraViewfinder_virtualbase_connectNotify(self.h, signal.h)
 
 type QCameraViewfinderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1210,7 +1149,6 @@ proc miqt_exec_callback_QCameraViewfinder_connectNotify(self: ptr cQCameraViewfi
 
   nimfunc[](slotval1)
 proc QCameraViewfinderdisconnectNotify*(self: gen_qcameraviewfinder_types.QCameraViewfinder, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCameraViewfinder_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QCameraViewfinderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

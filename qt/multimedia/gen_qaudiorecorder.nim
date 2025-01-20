@@ -105,39 +105,33 @@ proc fcQAudioRecorder_delete(self: pointer) {.importc: "QAudioRecorder_delete".}
 func init*(T: type gen_qaudiorecorder_types.QAudioRecorder, h: ptr cQAudioRecorder): gen_qaudiorecorder_types.QAudioRecorder =
   T(h: h)
 proc create*(T: type gen_qaudiorecorder_types.QAudioRecorder, ): gen_qaudiorecorder_types.QAudioRecorder =
-
   gen_qaudiorecorder_types.QAudioRecorder.init(fcQAudioRecorder_new())
+
 proc create*(T: type gen_qaudiorecorder_types.QAudioRecorder, parent: gen_qobject.QObject): gen_qaudiorecorder_types.QAudioRecorder =
-
   gen_qaudiorecorder_types.QAudioRecorder.init(fcQAudioRecorder_new2(parent.h))
-proc metaObject*(self: gen_qaudiorecorder_types.QAudioRecorder, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qaudiorecorder_types.QAudioRecorder, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAudioRecorder_metaObject(self.h))
 
 proc metacast*(self: gen_qaudiorecorder_types.QAudioRecorder, param1: cstring): pointer =
-
   fcQAudioRecorder_metacast(self.h, param1)
 
 proc metacall*(self: gen_qaudiorecorder_types.QAudioRecorder, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAudioRecorder_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring): string =
-
   let v_ms = fcQAudioRecorder_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring): string =
-
   let v_ms = fcQAudioRecorder_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc audioInputs*(self: gen_qaudiorecorder_types.QAudioRecorder, ): seq[string] =
-
   var v_ma = fcQAudioRecorder_audioInputs(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -149,97 +143,84 @@ proc audioInputs*(self: gen_qaudiorecorder_types.QAudioRecorder, ): seq[string] 
   vx_ret
 
 proc defaultAudioInput*(self: gen_qaudiorecorder_types.QAudioRecorder, ): string =
-
   let v_ms = fcQAudioRecorder_defaultAudioInput(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc audioInputDescription*(self: gen_qaudiorecorder_types.QAudioRecorder, name: string): string =
-
   let v_ms = fcQAudioRecorder_audioInputDescription(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc audioInput*(self: gen_qaudiorecorder_types.QAudioRecorder, ): string =
-
   let v_ms = fcQAudioRecorder_audioInput(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setAudioInput*(self: gen_qaudiorecorder_types.QAudioRecorder, name: string): void =
-
   fcQAudioRecorder_setAudioInput(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc audioInputChanged*(self: gen_qaudiorecorder_types.QAudioRecorder, name: string): void =
-
   fcQAudioRecorder_audioInputChanged(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
+type QAudioRecorderaudioInputChangedSlot* = proc(name: string)
 proc miqt_exec_callback_QAudioRecorder_audioInputChanged(slot: int, name: struct_miqt_string) {.exportc.} =
-  type Cb = proc(name: string)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAudioRecorderaudioInputChangedSlot](cast[pointer](slot))
   let vname_ms = name
   let vnamex_ret = string.fromBytes(toOpenArrayByte(vname_ms.data, 0, int(vname_ms.len)-1))
   c_free(vname_ms.data)
   let slotval1 = vnamex_ret
 
-
   nimfunc[](slotval1)
 
-proc onaudioInputChanged*(self: gen_qaudiorecorder_types.QAudioRecorder, slot: proc(name: string)) =
-  type Cb = proc(name: string)
-  var tmp = new Cb
+proc onaudioInputChanged*(self: gen_qaudiorecorder_types.QAudioRecorder, slot: QAudioRecorderaudioInputChangedSlot) =
+  var tmp = new QAudioRecorderaudioInputChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAudioRecorder_connect_audioInputChanged(self.h, cast[int](addr tmp[]))
-proc availableAudioInputsChanged*(self: gen_qaudiorecorder_types.QAudioRecorder, ): void =
 
+proc availableAudioInputsChanged*(self: gen_qaudiorecorder_types.QAudioRecorder, ): void =
   fcQAudioRecorder_availableAudioInputsChanged(self.h)
 
+type QAudioRecorderavailableAudioInputsChangedSlot* = proc()
 proc miqt_exec_callback_QAudioRecorder_availableAudioInputsChanged(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QAudioRecorderavailableAudioInputsChangedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onavailableAudioInputsChanged*(self: gen_qaudiorecorder_types.QAudioRecorder, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onavailableAudioInputsChanged*(self: gen_qaudiorecorder_types.QAudioRecorder, slot: QAudioRecorderavailableAudioInputsChangedSlot) =
+  var tmp = new QAudioRecorderavailableAudioInputsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAudioRecorder_connect_availableAudioInputsChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring, c: cstring): string =
   let v_ms = fcQAudioRecorder_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAudioRecorder_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring, c: cstring): string =
   let v_ms = fcQAudioRecorder_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qaudiorecorder_types.QAudioRecorder, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAudioRecorder_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QAudioRecordermetaObject*(self: gen_qaudiorecorder_types.QAudioRecorder, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQAudioRecorder_virtualbase_metaObject(self.h))
 
 type QAudioRecordermetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -257,7 +238,6 @@ proc miqt_exec_callback_QAudioRecorder_metaObject(self: ptr cQAudioRecorder, slo
 
   virtualReturn.h
 proc QAudioRecordermetacast*(self: gen_qaudiorecorder_types.QAudioRecorder, param1: cstring): pointer =
-
   fQAudioRecorder_virtualbase_metacast(self.h, param1)
 
 type QAudioRecordermetacastProc* = proc(param1: cstring): pointer
@@ -277,7 +257,6 @@ proc miqt_exec_callback_QAudioRecorder_metacast(self: ptr cQAudioRecorder, slot:
 
   virtualReturn
 proc QAudioRecordermetacall*(self: gen_qaudiorecorder_types.QAudioRecorder, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAudioRecorder_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAudioRecordermetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -301,7 +280,6 @@ proc miqt_exec_callback_QAudioRecorder_metacall(self: ptr cQAudioRecorder, slot:
 
   virtualReturn
 proc QAudioRecordermediaObject*(self: gen_qaudiorecorder_types.QAudioRecorder, ): gen_qmediaobject.QMediaObject =
-
   gen_qmediaobject.QMediaObject(h: fQAudioRecorder_virtualbase_mediaObject(self.h))
 
 type QAudioRecordermediaObjectProc* = proc(): gen_qmediaobject.QMediaObject
@@ -319,7 +297,6 @@ proc miqt_exec_callback_QAudioRecorder_mediaObject(self: ptr cQAudioRecorder, sl
 
   virtualReturn.h
 proc QAudioRecordersetMediaObject*(self: gen_qaudiorecorder_types.QAudioRecorder, objectVal: gen_qmediaobject.QMediaObject): bool =
-
   fQAudioRecorder_virtualbase_setMediaObject(self.h, objectVal.h)
 
 type QAudioRecordersetMediaObjectProc* = proc(objectVal: gen_qmediaobject.QMediaObject): bool
@@ -339,7 +316,6 @@ proc miqt_exec_callback_QAudioRecorder_setMediaObject(self: ptr cQAudioRecorder,
 
   virtualReturn
 proc QAudioRecorderevent*(self: gen_qaudiorecorder_types.QAudioRecorder, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioRecorder_virtualbase_event(self.h, event.h)
 
 type QAudioRecordereventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -359,7 +335,6 @@ proc miqt_exec_callback_QAudioRecorder_event(self: ptr cQAudioRecorder, slot: in
 
   virtualReturn
 proc QAudioRecordereventFilter*(self: gen_qaudiorecorder_types.QAudioRecorder, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAudioRecorder_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAudioRecordereventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -381,7 +356,6 @@ proc miqt_exec_callback_QAudioRecorder_eventFilter(self: ptr cQAudioRecorder, sl
 
   virtualReturn
 proc QAudioRecordertimerEvent*(self: gen_qaudiorecorder_types.QAudioRecorder, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAudioRecorder_virtualbase_timerEvent(self.h, event.h)
 
 type QAudioRecordertimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -399,7 +373,6 @@ proc miqt_exec_callback_QAudioRecorder_timerEvent(self: ptr cQAudioRecorder, slo
 
   nimfunc[](slotval1)
 proc QAudioRecorderchildEvent*(self: gen_qaudiorecorder_types.QAudioRecorder, event: gen_qcoreevent.QChildEvent): void =
-
   fQAudioRecorder_virtualbase_childEvent(self.h, event.h)
 
 type QAudioRecorderchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -417,7 +390,6 @@ proc miqt_exec_callback_QAudioRecorder_childEvent(self: ptr cQAudioRecorder, slo
 
   nimfunc[](slotval1)
 proc QAudioRecordercustomEvent*(self: gen_qaudiorecorder_types.QAudioRecorder, event: gen_qcoreevent.QEvent): void =
-
   fQAudioRecorder_virtualbase_customEvent(self.h, event.h)
 
 type QAudioRecordercustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -435,7 +407,6 @@ proc miqt_exec_callback_QAudioRecorder_customEvent(self: ptr cQAudioRecorder, sl
 
   nimfunc[](slotval1)
 proc QAudioRecorderconnectNotify*(self: gen_qaudiorecorder_types.QAudioRecorder, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioRecorder_virtualbase_connectNotify(self.h, signal.h)
 
 type QAudioRecorderconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -453,7 +424,6 @@ proc miqt_exec_callback_QAudioRecorder_connectNotify(self: ptr cQAudioRecorder, 
 
   nimfunc[](slotval1)
 proc QAudioRecorderdisconnectNotify*(self: gen_qaudiorecorder_types.QAudioRecorder, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAudioRecorder_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAudioRecorderdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

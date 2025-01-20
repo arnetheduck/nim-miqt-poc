@@ -262,196 +262,150 @@ proc fcQSortFilterProxyModel_delete(self: pointer) {.importc: "QSortFilterProxyM
 func init*(T: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel, h: ptr cQSortFilterProxyModel): gen_qsortfilterproxymodel_types.QSortFilterProxyModel =
   T(h: h)
 proc create*(T: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): gen_qsortfilterproxymodel_types.QSortFilterProxyModel =
-
   gen_qsortfilterproxymodel_types.QSortFilterProxyModel.init(fcQSortFilterProxyModel_new())
+
 proc create*(T: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qobject.QObject): gen_qsortfilterproxymodel_types.QSortFilterProxyModel =
-
   gen_qsortfilterproxymodel_types.QSortFilterProxyModel.init(fcQSortFilterProxyModel_new2(parent.h))
-proc metaObject*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSortFilterProxyModel_metaObject(self.h))
 
 proc metacast*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, param1: cstring): pointer =
-
   fcQSortFilterProxyModel_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSortFilterProxyModel_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel, s: cstring): string =
-
   let v_ms = fcQSortFilterProxyModel_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setSourceModel*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fcQSortFilterProxyModel_setSourceModel(self.h, sourceModel.h)
 
 proc mapToSource*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQSortFilterProxyModel_mapToSource(self.h, proxyIndex.h))
 
 proc mapFromSource*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQSortFilterProxyModel_mapFromSource(self.h, sourceIndex.h))
 
 proc mapSelectionToSource*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, proxySelection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
   gen_qitemselectionmodel.QItemSelection(h: fcQSortFilterProxyModel_mapSelectionToSource(self.h, proxySelection.h))
 
 proc mapSelectionFromSource*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sourceSelection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
   gen_qitemselectionmodel.QItemSelection(h: fcQSortFilterProxyModel_mapSelectionFromSource(self.h, sourceSelection.h))
 
 proc filterRegularExpression*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): gen_qregularexpression.QRegularExpression =
-
   gen_qregularexpression.QRegularExpression(h: fcQSortFilterProxyModel_filterRegularExpression(self.h))
 
 proc filterKeyColumn*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   fcQSortFilterProxyModel_filterKeyColumn(self.h)
 
 proc setFilterKeyColumn*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, column: cint): void =
-
   fcQSortFilterProxyModel_setFilterKeyColumn(self.h, column)
 
 proc filterCaseSensitivity*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   cint(fcQSortFilterProxyModel_filterCaseSensitivity(self.h))
 
 proc setFilterCaseSensitivity*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, cs: cint): void =
-
   fcQSortFilterProxyModel_setFilterCaseSensitivity(self.h, cint(cs))
 
 proc sortCaseSensitivity*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   cint(fcQSortFilterProxyModel_sortCaseSensitivity(self.h))
 
 proc setSortCaseSensitivity*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, cs: cint): void =
-
   fcQSortFilterProxyModel_setSortCaseSensitivity(self.h, cint(cs))
 
 proc isSortLocaleAware*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): bool =
-
   fcQSortFilterProxyModel_isSortLocaleAware(self.h)
 
 proc setSortLocaleAware*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, on: bool): void =
-
   fcQSortFilterProxyModel_setSortLocaleAware(self.h, on)
 
 proc sortColumn*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   fcQSortFilterProxyModel_sortColumn(self.h)
 
 proc sortOrder*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   cint(fcQSortFilterProxyModel_sortOrder(self.h))
 
 proc dynamicSortFilter*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): bool =
-
   fcQSortFilterProxyModel_dynamicSortFilter(self.h)
 
 proc setDynamicSortFilter*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, enable: bool): void =
-
   fcQSortFilterProxyModel_setDynamicSortFilter(self.h, enable)
 
 proc sortRole*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   fcQSortFilterProxyModel_sortRole(self.h)
 
 proc setSortRole*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, role: cint): void =
-
   fcQSortFilterProxyModel_setSortRole(self.h, role)
 
 proc filterRole*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   fcQSortFilterProxyModel_filterRole(self.h)
 
 proc setFilterRole*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, role: cint): void =
-
   fcQSortFilterProxyModel_setFilterRole(self.h, role)
 
 proc isRecursiveFilteringEnabled*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): bool =
-
   fcQSortFilterProxyModel_isRecursiveFilteringEnabled(self.h)
 
 proc setRecursiveFilteringEnabled*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, recursive: bool): void =
-
   fcQSortFilterProxyModel_setRecursiveFilteringEnabled(self.h, recursive)
 
 proc autoAcceptChildRows*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): bool =
-
   fcQSortFilterProxyModel_autoAcceptChildRows(self.h)
 
 proc setAutoAcceptChildRows*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, accept: bool): void =
-
   fcQSortFilterProxyModel_setAutoAcceptChildRows(self.h, accept)
 
 proc setFilterRegularExpression*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, pattern: string): void =
-
   fcQSortFilterProxyModel_setFilterRegularExpression(self.h, struct_miqt_string(data: pattern, len: csize_t(len(pattern))))
 
-proc setFilterRegularExpressionWithRegularExpression*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, regularExpression: gen_qregularexpression.QRegularExpression): void =
-
+proc setFilterRegularExpression*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, regularExpression: gen_qregularexpression.QRegularExpression): void =
   fcQSortFilterProxyModel_setFilterRegularExpressionWithRegularExpression(self.h, regularExpression.h)
 
 proc setFilterWildcard*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, pattern: string): void =
-
   fcQSortFilterProxyModel_setFilterWildcard(self.h, struct_miqt_string(data: pattern, len: csize_t(len(pattern))))
 
 proc setFilterFixedString*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, pattern: string): void =
-
   fcQSortFilterProxyModel_setFilterFixedString(self.h, struct_miqt_string(data: pattern, len: csize_t(len(pattern))))
 
 proc invalidate*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): void =
-
   fcQSortFilterProxyModel_invalidate(self.h)
 
 proc index*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQSortFilterProxyModel_index(self.h, row, column, parent.h))
 
 proc parent*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQSortFilterProxyModel_parent(self.h, child.h))
 
 proc sibling*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQSortFilterProxyModel_sibling(self.h, row, column, idx.h))
 
 proc rowCount*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fcQSortFilterProxyModel_rowCount(self.h, parent.h)
 
 proc columnCount*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fcQSortFilterProxyModel_columnCount(self.h, parent.h)
 
 proc hasChildren*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQSortFilterProxyModel_hasChildren(self.h, parent.h)
 
 proc data*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQSortFilterProxyModel_data(self.h, index.h, role))
 
 proc setData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
-
   fcQSortFilterProxyModel_setData(self.h, index.h, value.h, role)
 
 proc headerData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQSortFilterProxyModel_headerData(self.h, section, cint(orientation), role))
 
 proc setHeaderData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool =
-
   fcQSortFilterProxyModel_setHeaderData(self.h, section, cint(orientation), value.h, role)
 
 proc mimeData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
-
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
     indexes_CArray[i] = indexes[i].h
@@ -459,43 +413,33 @@ proc mimeData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, inde
   gen_qmimedata.QMimeData(h: fcQSortFilterProxyModel_mimeData(self.h, struct_miqt_array(len: csize_t(len(indexes)), data: if len(indexes) == 0: nil else: addr(indexes_CArray[0]))))
 
 proc dropMimeData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQSortFilterProxyModel_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
 proc insertRows*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQSortFilterProxyModel_insertRows(self.h, row, count, parent.h)
 
 proc insertColumns*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQSortFilterProxyModel_insertColumns(self.h, column, count, parent.h)
 
 proc removeRows*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQSortFilterProxyModel_removeRows(self.h, row, count, parent.h)
 
 proc removeColumns*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQSortFilterProxyModel_removeColumns(self.h, column, count, parent.h)
 
 proc fetchMore*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): void =
-
   fcQSortFilterProxyModel_fetchMore(self.h, parent.h)
 
 proc canFetchMore*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fcQSortFilterProxyModel_canFetchMore(self.h, parent.h)
 
 proc flags*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex): cint =
-
   cint(fcQSortFilterProxyModel_flags(self.h, index.h))
 
 proc buddy*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fcQSortFilterProxyModel_buddy(self.h, index.h))
 
 proc match*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fcQSortFilterProxyModel_match(self.h, start.h, role, value.h, hits, cint(flags))
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -504,15 +448,12 @@ proc match*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, start: 
   vx_ret
 
 proc span*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSortFilterProxyModel_span(self.h, index.h))
 
 proc sort*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, column: cint, order: cint): void =
-
   fcQSortFilterProxyModel_sort(self.h, column, cint(order))
 
 proc mimeTypes*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): seq[string] =
-
   var v_ma = fcQSortFilterProxyModel_mimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -524,169 +465,149 @@ proc mimeTypes*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): 
   vx_ret
 
 proc supportedDropActions*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   cint(fcQSortFilterProxyModel_supportedDropActions(self.h))
 
 proc dynamicSortFilterChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, dynamicSortFilter: bool): void =
-
   fcQSortFilterProxyModel_dynamicSortFilterChanged(self.h, dynamicSortFilter)
 
+type QSortFilterProxyModeldynamicSortFilterChangedSlot* = proc(dynamicSortFilter: bool)
 proc miqt_exec_callback_QSortFilterProxyModel_dynamicSortFilterChanged(slot: int, dynamicSortFilter: bool) {.exportc.} =
-  type Cb = proc(dynamicSortFilter: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSortFilterProxyModeldynamicSortFilterChangedSlot](cast[pointer](slot))
   let slotval1 = dynamicSortFilter
-
 
   nimfunc[](slotval1)
 
-proc ondynamicSortFilterChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: proc(dynamicSortFilter: bool)) =
-  type Cb = proc(dynamicSortFilter: bool)
-  var tmp = new Cb
+proc ondynamicSortFilterChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModeldynamicSortFilterChangedSlot) =
+  var tmp = new QSortFilterProxyModeldynamicSortFilterChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSortFilterProxyModel_connect_dynamicSortFilterChanged(self.h, cast[int](addr tmp[]))
-proc filterCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, filterCaseSensitivity: cint): void =
 
+proc filterCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, filterCaseSensitivity: cint): void =
   fcQSortFilterProxyModel_filterCaseSensitivityChanged(self.h, cint(filterCaseSensitivity))
 
+type QSortFilterProxyModelfilterCaseSensitivityChangedSlot* = proc(filterCaseSensitivity: cint)
 proc miqt_exec_callback_QSortFilterProxyModel_filterCaseSensitivityChanged(slot: int, filterCaseSensitivity: cint) {.exportc.} =
-  type Cb = proc(filterCaseSensitivity: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSortFilterProxyModelfilterCaseSensitivityChangedSlot](cast[pointer](slot))
   let slotval1 = cint(filterCaseSensitivity)
-
 
   nimfunc[](slotval1)
 
-proc onfilterCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: proc(filterCaseSensitivity: cint)) =
-  type Cb = proc(filterCaseSensitivity: cint)
-  var tmp = new Cb
+proc onfilterCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelfilterCaseSensitivityChangedSlot) =
+  var tmp = new QSortFilterProxyModelfilterCaseSensitivityChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSortFilterProxyModel_connect_filterCaseSensitivityChanged(self.h, cast[int](addr tmp[]))
-proc sortCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sortCaseSensitivity: cint): void =
 
+proc sortCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sortCaseSensitivity: cint): void =
   fcQSortFilterProxyModel_sortCaseSensitivityChanged(self.h, cint(sortCaseSensitivity))
 
+type QSortFilterProxyModelsortCaseSensitivityChangedSlot* = proc(sortCaseSensitivity: cint)
 proc miqt_exec_callback_QSortFilterProxyModel_sortCaseSensitivityChanged(slot: int, sortCaseSensitivity: cint) {.exportc.} =
-  type Cb = proc(sortCaseSensitivity: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSortFilterProxyModelsortCaseSensitivityChangedSlot](cast[pointer](slot))
   let slotval1 = cint(sortCaseSensitivity)
-
 
   nimfunc[](slotval1)
 
-proc onsortCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: proc(sortCaseSensitivity: cint)) =
-  type Cb = proc(sortCaseSensitivity: cint)
-  var tmp = new Cb
+proc onsortCaseSensitivityChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelsortCaseSensitivityChangedSlot) =
+  var tmp = new QSortFilterProxyModelsortCaseSensitivityChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSortFilterProxyModel_connect_sortCaseSensitivityChanged(self.h, cast[int](addr tmp[]))
-proc sortLocaleAwareChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sortLocaleAware: bool): void =
 
+proc sortLocaleAwareChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sortLocaleAware: bool): void =
   fcQSortFilterProxyModel_sortLocaleAwareChanged(self.h, sortLocaleAware)
 
+type QSortFilterProxyModelsortLocaleAwareChangedSlot* = proc(sortLocaleAware: bool)
 proc miqt_exec_callback_QSortFilterProxyModel_sortLocaleAwareChanged(slot: int, sortLocaleAware: bool) {.exportc.} =
-  type Cb = proc(sortLocaleAware: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSortFilterProxyModelsortLocaleAwareChangedSlot](cast[pointer](slot))
   let slotval1 = sortLocaleAware
-
 
   nimfunc[](slotval1)
 
-proc onsortLocaleAwareChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: proc(sortLocaleAware: bool)) =
-  type Cb = proc(sortLocaleAware: bool)
-  var tmp = new Cb
+proc onsortLocaleAwareChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelsortLocaleAwareChangedSlot) =
+  var tmp = new QSortFilterProxyModelsortLocaleAwareChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSortFilterProxyModel_connect_sortLocaleAwareChanged(self.h, cast[int](addr tmp[]))
-proc sortRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sortRole: cint): void =
 
+proc sortRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sortRole: cint): void =
   fcQSortFilterProxyModel_sortRoleChanged(self.h, sortRole)
 
+type QSortFilterProxyModelsortRoleChangedSlot* = proc(sortRole: cint)
 proc miqt_exec_callback_QSortFilterProxyModel_sortRoleChanged(slot: int, sortRole: cint) {.exportc.} =
-  type Cb = proc(sortRole: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSortFilterProxyModelsortRoleChangedSlot](cast[pointer](slot))
   let slotval1 = sortRole
-
 
   nimfunc[](slotval1)
 
-proc onsortRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: proc(sortRole: cint)) =
-  type Cb = proc(sortRole: cint)
-  var tmp = new Cb
+proc onsortRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelsortRoleChangedSlot) =
+  var tmp = new QSortFilterProxyModelsortRoleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSortFilterProxyModel_connect_sortRoleChanged(self.h, cast[int](addr tmp[]))
-proc filterRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, filterRole: cint): void =
 
+proc filterRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, filterRole: cint): void =
   fcQSortFilterProxyModel_filterRoleChanged(self.h, filterRole)
 
+type QSortFilterProxyModelfilterRoleChangedSlot* = proc(filterRole: cint)
 proc miqt_exec_callback_QSortFilterProxyModel_filterRoleChanged(slot: int, filterRole: cint) {.exportc.} =
-  type Cb = proc(filterRole: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSortFilterProxyModelfilterRoleChangedSlot](cast[pointer](slot))
   let slotval1 = filterRole
-
 
   nimfunc[](slotval1)
 
-proc onfilterRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: proc(filterRole: cint)) =
-  type Cb = proc(filterRole: cint)
-  var tmp = new Cb
+proc onfilterRoleChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelfilterRoleChangedSlot) =
+  var tmp = new QSortFilterProxyModelfilterRoleChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSortFilterProxyModel_connect_filterRoleChanged(self.h, cast[int](addr tmp[]))
-proc recursiveFilteringEnabledChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, recursiveFilteringEnabled: bool): void =
 
+proc recursiveFilteringEnabledChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, recursiveFilteringEnabled: bool): void =
   fcQSortFilterProxyModel_recursiveFilteringEnabledChanged(self.h, recursiveFilteringEnabled)
 
+type QSortFilterProxyModelrecursiveFilteringEnabledChangedSlot* = proc(recursiveFilteringEnabled: bool)
 proc miqt_exec_callback_QSortFilterProxyModel_recursiveFilteringEnabledChanged(slot: int, recursiveFilteringEnabled: bool) {.exportc.} =
-  type Cb = proc(recursiveFilteringEnabled: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSortFilterProxyModelrecursiveFilteringEnabledChangedSlot](cast[pointer](slot))
   let slotval1 = recursiveFilteringEnabled
-
 
   nimfunc[](slotval1)
 
-proc onrecursiveFilteringEnabledChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: proc(recursiveFilteringEnabled: bool)) =
-  type Cb = proc(recursiveFilteringEnabled: bool)
-  var tmp = new Cb
+proc onrecursiveFilteringEnabledChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelrecursiveFilteringEnabledChangedSlot) =
+  var tmp = new QSortFilterProxyModelrecursiveFilteringEnabledChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSortFilterProxyModel_connect_recursiveFilteringEnabledChanged(self.h, cast[int](addr tmp[]))
-proc autoAcceptChildRowsChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, autoAcceptChildRows: bool): void =
 
+proc autoAcceptChildRowsChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, autoAcceptChildRows: bool): void =
   fcQSortFilterProxyModel_autoAcceptChildRowsChanged(self.h, autoAcceptChildRows)
 
+type QSortFilterProxyModelautoAcceptChildRowsChangedSlot* = proc(autoAcceptChildRows: bool)
 proc miqt_exec_callback_QSortFilterProxyModel_autoAcceptChildRowsChanged(slot: int, autoAcceptChildRows: bool) {.exportc.} =
-  type Cb = proc(autoAcceptChildRows: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QSortFilterProxyModelautoAcceptChildRowsChangedSlot](cast[pointer](slot))
   let slotval1 = autoAcceptChildRows
-
 
   nimfunc[](slotval1)
 
-proc onautoAcceptChildRowsChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: proc(autoAcceptChildRows: bool)) =
-  type Cb = proc(autoAcceptChildRows: bool)
-  var tmp = new Cb
+proc onautoAcceptChildRowsChanged*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, slot: QSortFilterProxyModelautoAcceptChildRowsChangedSlot) =
+  var tmp = new QSortFilterProxyModelautoAcceptChildRowsChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQSortFilterProxyModel_connect_autoAcceptChildRowsChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel, s: cstring, c: cstring): string =
   let v_ms = fcQSortFilterProxyModel_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsortfilterproxymodel_types.QSortFilterProxyModel, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSortFilterProxyModel_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QSortFilterProxyModelmetaObject*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSortFilterProxyModel_virtualbase_metaObject(self.h))
 
 type QSortFilterProxyModelmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -704,7 +625,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_metaObject(self: ptr cQSortFilterP
 
   virtualReturn.h
 proc QSortFilterProxyModelmetacast*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, param1: cstring): pointer =
-
   fQSortFilterProxyModel_virtualbase_metacast(self.h, param1)
 
 type QSortFilterProxyModelmetacastProc* = proc(param1: cstring): pointer
@@ -724,7 +644,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_metacast(self: ptr cQSortFilterPro
 
   virtualReturn
 proc QSortFilterProxyModelmetacall*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSortFilterProxyModel_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSortFilterProxyModelmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -748,7 +667,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_metacall(self: ptr cQSortFilterPro
 
   virtualReturn
 proc QSortFilterProxyModelsetSourceModel*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void =
-
   fQSortFilterProxyModel_virtualbase_setSourceModel(self.h, sourceModel.h)
 
 type QSortFilterProxyModelsetSourceModelProc* = proc(sourceModel: gen_qabstractitemmodel.QAbstractItemModel): void
@@ -766,7 +684,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_setSourceModel(self: ptr cQSortFil
 
   nimfunc[](slotval1)
 proc QSortFilterProxyModelmapToSource*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQSortFilterProxyModel_virtualbase_mapToSource(self.h, proxyIndex.h))
 
 type QSortFilterProxyModelmapToSourceProc* = proc(proxyIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -786,7 +703,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_mapToSource(self: ptr cQSortFilter
 
   virtualReturn.h
 proc QSortFilterProxyModelmapFromSource*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQSortFilterProxyModel_virtualbase_mapFromSource(self.h, sourceIndex.h))
 
 type QSortFilterProxyModelmapFromSourceProc* = proc(sourceIndex: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -806,7 +722,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_mapFromSource(self: ptr cQSortFilt
 
   virtualReturn.h
 proc QSortFilterProxyModelmapSelectionToSource*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, proxySelection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
   gen_qitemselectionmodel.QItemSelection(h: fQSortFilterProxyModel_virtualbase_mapSelectionToSource(self.h, proxySelection.h))
 
 type QSortFilterProxyModelmapSelectionToSourceProc* = proc(proxySelection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
@@ -826,7 +741,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_mapSelectionToSource(self: ptr cQS
 
   virtualReturn.h
 proc QSortFilterProxyModelmapSelectionFromSource*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sourceSelection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection =
-
   gen_qitemselectionmodel.QItemSelection(h: fQSortFilterProxyModel_virtualbase_mapSelectionFromSource(self.h, sourceSelection.h))
 
 type QSortFilterProxyModelmapSelectionFromSourceProc* = proc(sourceSelection: gen_qitemselectionmodel.QItemSelection): gen_qitemselectionmodel.QItemSelection
@@ -846,7 +760,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_mapSelectionFromSource(self: ptr c
 
   virtualReturn.h
 proc QSortFilterProxyModelfilterAcceptsRow*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, source_row: cint, source_parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_filterAcceptsRow(self.h, source_row, source_parent.h)
 
 type QSortFilterProxyModelfilterAcceptsRowProc* = proc(source_row: cint, source_parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -868,7 +781,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_filterAcceptsRow(self: ptr cQSortF
 
   virtualReturn
 proc QSortFilterProxyModelfilterAcceptsColumn*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, source_column: cint, source_parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_filterAcceptsColumn(self.h, source_column, source_parent.h)
 
 type QSortFilterProxyModelfilterAcceptsColumnProc* = proc(source_column: cint, source_parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -890,7 +802,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_filterAcceptsColumn(self: ptr cQSo
 
   virtualReturn
 proc QSortFilterProxyModellessThan*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, source_left: gen_qabstractitemmodel.QModelIndex, source_right: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_lessThan(self.h, source_left.h, source_right.h)
 
 type QSortFilterProxyModellessThanProc* = proc(source_left: gen_qabstractitemmodel.QModelIndex, source_right: gen_qabstractitemmodel.QModelIndex): bool
@@ -912,7 +823,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_lessThan(self: ptr cQSortFilterPro
 
   virtualReturn
 proc QSortFilterProxyModelindex*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQSortFilterProxyModel_virtualbase_index(self.h, row, column, parent.h))
 
 type QSortFilterProxyModelindexProc* = proc(row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -936,7 +846,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_index(self: ptr cQSortFilterProxyM
 
   virtualReturn.h
 proc QSortFilterProxyModelparent*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQSortFilterProxyModel_virtualbase_parent(self.h, child.h))
 
 type QSortFilterProxyModelparentProc* = proc(child: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -956,7 +865,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_parent(self: ptr cQSortFilterProxy
 
   virtualReturn.h
 proc QSortFilterProxyModelsibling*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQSortFilterProxyModel_virtualbase_sibling(self.h, row, column, idx.h))
 
 type QSortFilterProxyModelsiblingProc* = proc(row: cint, column: cint, idx: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -980,7 +888,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_sibling(self: ptr cQSortFilterProx
 
   virtualReturn.h
 proc QSortFilterProxyModelrowCount*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fQSortFilterProxyModel_virtualbase_rowCount(self.h, parent.h)
 
 type QSortFilterProxyModelrowCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
@@ -1000,7 +907,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_rowCount(self: ptr cQSortFilterPro
 
   virtualReturn
 proc QSortFilterProxyModelcolumnCount*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): cint =
-
   fQSortFilterProxyModel_virtualbase_columnCount(self.h, parent.h)
 
 type QSortFilterProxyModelcolumnCountProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): cint
@@ -1020,7 +926,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_columnCount(self: ptr cQSortFilter
 
   virtualReturn
 proc QSortFilterProxyModelhasChildren*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_hasChildren(self.h, parent.h)
 
 type QSortFilterProxyModelhasChildrenProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1040,7 +945,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_hasChildren(self: ptr cQSortFilter
 
   virtualReturn
 proc QSortFilterProxyModeldata*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQSortFilterProxyModel_virtualbase_data(self.h, index.h, role))
 
 type QSortFilterProxyModeldataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, role: cint): gen_qvariant.QVariant
@@ -1062,7 +966,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_data(self: ptr cQSortFilterProxyMo
 
   virtualReturn.h
 proc QSortFilterProxyModelsetData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool =
-
   fQSortFilterProxyModel_virtualbase_setData(self.h, index.h, value.h, role)
 
 type QSortFilterProxyModelsetDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, value: gen_qvariant.QVariant, role: cint): bool
@@ -1086,7 +989,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_setData(self: ptr cQSortFilterProx
 
   virtualReturn
 proc QSortFilterProxyModelheaderData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, section: cint, orientation: cint, role: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQSortFilterProxyModel_virtualbase_headerData(self.h, section, cint(orientation), role))
 
 type QSortFilterProxyModelheaderDataProc* = proc(section: cint, orientation: cint, role: cint): gen_qvariant.QVariant
@@ -1110,7 +1012,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_headerData(self: ptr cQSortFilterP
 
   virtualReturn.h
 proc QSortFilterProxyModelsetHeaderData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool =
-
   fQSortFilterProxyModel_virtualbase_setHeaderData(self.h, section, cint(orientation), value.h, role)
 
 type QSortFilterProxyModelsetHeaderDataProc* = proc(section: cint, orientation: cint, value: gen_qvariant.QVariant, role: cint): bool
@@ -1136,7 +1037,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_setHeaderData(self: ptr cQSortFilt
 
   virtualReturn
 proc QSortFilterProxyModelmimeData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, indexes: seq[gen_qabstractitemmodel.QModelIndex]): gen_qmimedata.QMimeData =
-
   var indexes_CArray = newSeq[pointer](len(indexes))
   for i in 0..<len(indexes):
     indexes_CArray[i] = indexes[i].h
@@ -1165,7 +1065,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_mimeData(self: ptr cQSortFilterPro
 
   virtualReturn.h
 proc QSortFilterProxyModeldropMimeData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_dropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
 type QSortFilterProxyModeldropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1193,7 +1092,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_dropMimeData(self: ptr cQSortFilte
 
   virtualReturn
 proc QSortFilterProxyModelinsertRows*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_insertRows(self.h, row, count, parent.h)
 
 type QSortFilterProxyModelinsertRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1217,7 +1115,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_insertRows(self: ptr cQSortFilterP
 
   virtualReturn
 proc QSortFilterProxyModelinsertColumns*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_insertColumns(self.h, column, count, parent.h)
 
 type QSortFilterProxyModelinsertColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1241,7 +1138,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_insertColumns(self: ptr cQSortFilt
 
   virtualReturn
 proc QSortFilterProxyModelremoveRows*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_removeRows(self.h, row, count, parent.h)
 
 type QSortFilterProxyModelremoveRowsProc* = proc(row: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1265,7 +1161,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_removeRows(self: ptr cQSortFilterP
 
   virtualReturn
 proc QSortFilterProxyModelremoveColumns*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_removeColumns(self.h, column, count, parent.h)
 
 type QSortFilterProxyModelremoveColumnsProc* = proc(column: cint, count: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1289,7 +1184,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_removeColumns(self: ptr cQSortFilt
 
   virtualReturn
 proc QSortFilterProxyModelfetchMore*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): void =
-
   fQSortFilterProxyModel_virtualbase_fetchMore(self.h, parent.h)
 
 type QSortFilterProxyModelfetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): void
@@ -1307,7 +1201,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_fetchMore(self: ptr cQSortFilterPr
 
   nimfunc[](slotval1)
 proc QSortFilterProxyModelcanFetchMore*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_canFetchMore(self.h, parent.h)
 
 type QSortFilterProxyModelcanFetchMoreProc* = proc(parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1327,7 +1220,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_canFetchMore(self: ptr cQSortFilte
 
   virtualReturn
 proc QSortFilterProxyModelflags*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex): cint =
-
   cint(fQSortFilterProxyModel_virtualbase_flags(self.h, index.h))
 
 type QSortFilterProxyModelflagsProc* = proc(index: gen_qabstractitemmodel.QModelIndex): cint
@@ -1347,7 +1239,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_flags(self: ptr cQSortFilterProxyM
 
   cint(virtualReturn)
 proc QSortFilterProxyModelbuddy*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex =
-
   gen_qabstractitemmodel.QModelIndex(h: fQSortFilterProxyModel_virtualbase_buddy(self.h, index.h))
 
 type QSortFilterProxyModelbuddyProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qabstractitemmodel.QModelIndex
@@ -1367,7 +1258,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_buddy(self: ptr cQSortFilterProxyM
 
   virtualReturn.h
 proc QSortFilterProxyModelmatch*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, start: gen_qabstractitemmodel.QModelIndex, role: cint, value: gen_qvariant.QVariant, hits: cint, flags: cint): seq[gen_qabstractitemmodel.QModelIndex] =
-
   var v_ma = fQSortFilterProxyModel_virtualbase_match(self.h, start.h, role, value.h, hits, cint(flags))
   var vx_ret = newSeq[gen_qabstractitemmodel.QModelIndex](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -1404,7 +1294,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_match(self: ptr cQSortFilterProxyM
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QSortFilterProxyModelspan*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQSortFilterProxyModel_virtualbase_span(self.h, index.h))
 
 type QSortFilterProxyModelspanProc* = proc(index: gen_qabstractitemmodel.QModelIndex): gen_qsize.QSize
@@ -1424,7 +1313,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_span(self: ptr cQSortFilterProxyMo
 
   virtualReturn.h
 proc QSortFilterProxyModelsort*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, column: cint, order: cint): void =
-
   fQSortFilterProxyModel_virtualbase_sort(self.h, column, cint(order))
 
 type QSortFilterProxyModelsortProc* = proc(column: cint, order: cint): void
@@ -1444,7 +1332,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_sort(self: ptr cQSortFilterProxyMo
 
   nimfunc[](slotval1, slotval2)
 proc QSortFilterProxyModelmimeTypes*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): seq[string] =
-
   var v_ma = fQSortFilterProxyModel_virtualbase_mimeTypes(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -1474,7 +1361,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_mimeTypes(self: ptr cQSortFilterPr
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QSortFilterProxyModelsupportedDropActions*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   cint(fQSortFilterProxyModel_virtualbase_supportedDropActions(self.h))
 
 type QSortFilterProxyModelsupportedDropActionsProc* = proc(): cint
@@ -1492,7 +1378,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_supportedDropActions(self: ptr cQS
 
   cint(virtualReturn)
 proc QSortFilterProxyModelsubmit*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): bool =
-
   fQSortFilterProxyModel_virtualbase_submit(self.h)
 
 type QSortFilterProxyModelsubmitProc* = proc(): bool
@@ -1510,7 +1395,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_submit(self: ptr cQSortFilterProxy
 
   virtualReturn
 proc QSortFilterProxyModelrevert*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): void =
-
   fQSortFilterProxyModel_virtualbase_revert(self.h)
 
 type QSortFilterProxyModelrevertProc* = proc(): void
@@ -1526,7 +1410,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_revert(self: ptr cQSortFilterProxy
 
   nimfunc[]()
 proc QSortFilterProxyModelitemData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex): Table[cint,gen_qvariant.QVariant] =
-
   var v_mm = fQSortFilterProxyModel_virtualbase_itemData(self.h, index.h)
   var vx_ret: Table[cint, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -1564,7 +1447,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_itemData(self: ptr cQSortFilterPro
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
 proc QSortFilterProxyModelsetItemData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex, roles: Table[cint,gen_qvariant.QVariant]): bool =
-
   var roles_Keys_CArray = newSeq[cint](len(roles))
   var roles_Values_CArray = newSeq[pointer](len(roles))
   var roles_ctr = 0
@@ -1604,7 +1486,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_setItemData(self: ptr cQSortFilter
 
   virtualReturn
 proc QSortFilterProxyModelclearItemData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_clearItemData(self.h, index.h)
 
 type QSortFilterProxyModelclearItemDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex): bool
@@ -1624,7 +1505,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_clearItemData(self: ptr cQSortFilt
 
   virtualReturn
 proc QSortFilterProxyModelcanDropMimeData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool =
-
   fQSortFilterProxyModel_virtualbase_canDropMimeData(self.h, data.h, cint(action), row, column, parent.h)
 
 type QSortFilterProxyModelcanDropMimeDataProc* = proc(data: gen_qmimedata.QMimeData, action: cint, row: cint, column: cint, parent: gen_qabstractitemmodel.QModelIndex): bool
@@ -1652,7 +1532,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_canDropMimeData(self: ptr cQSortFi
 
   virtualReturn
 proc QSortFilterProxyModelsupportedDragActions*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): cint =
-
   cint(fQSortFilterProxyModel_virtualbase_supportedDragActions(self.h))
 
 type QSortFilterProxyModelsupportedDragActionsProc* = proc(): cint
@@ -1670,7 +1549,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_supportedDragActions(self: ptr cQS
 
   cint(virtualReturn)
 proc QSortFilterProxyModelroleNames*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): Table[cint,seq[byte]] =
-
   var v_mm = fQSortFilterProxyModel_virtualbase_roleNames(self.h)
   var vx_ret: Table[cint, seq[byte]]
   var v_Keys = cast[ptr UncheckedArray[cint]](v_mm.keys)
@@ -1709,7 +1587,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_roleNames(self: ptr cQSortFilterPr
 
   struct_miqt_map(len: csize_t(len(virtualReturn)),keys: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Keys_CArray[0]), values: if len(virtualReturn) == 0: nil else: addr(virtualReturn_Values_CArray[0]),)
 proc QSortFilterProxyModelmoveRows*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
   fQSortFilterProxyModel_virtualbase_moveRows(self.h, sourceParent.h, sourceRow, count, destinationParent.h, destinationChild)
 
 type QSortFilterProxyModelmoveRowsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceRow: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
@@ -1737,7 +1614,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_moveRows(self: ptr cQSortFilterPro
 
   virtualReturn
 proc QSortFilterProxyModelmoveColumns*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool =
-
   fQSortFilterProxyModel_virtualbase_moveColumns(self.h, sourceParent.h, sourceColumn, count, destinationParent.h, destinationChild)
 
 type QSortFilterProxyModelmoveColumnsProc* = proc(sourceParent: gen_qabstractitemmodel.QModelIndex, sourceColumn: cint, count: cint, destinationParent: gen_qabstractitemmodel.QModelIndex, destinationChild: cint): bool
@@ -1765,7 +1641,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_moveColumns(self: ptr cQSortFilter
 
   virtualReturn
 proc QSortFilterProxyModelmultiData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void =
-
   fQSortFilterProxyModel_virtualbase_multiData(self.h, index.h, roleDataSpan.h)
 
 type QSortFilterProxyModelmultiDataProc* = proc(index: gen_qabstractitemmodel.QModelIndex, roleDataSpan: gen_qabstractitemmodel.QModelRoleDataSpan): void
@@ -1785,7 +1660,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_multiData(self: ptr cQSortFilterPr
 
   nimfunc[](slotval1, slotval2)
 proc QSortFilterProxyModelresetInternalData*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, ): void =
-
   fQSortFilterProxyModel_virtualbase_resetInternalData(self.h)
 
 type QSortFilterProxyModelresetInternalDataProc* = proc(): void
@@ -1801,7 +1675,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_resetInternalData(self: ptr cQSort
 
   nimfunc[]()
 proc QSortFilterProxyModelevent*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, event: gen_qcoreevent.QEvent): bool =
-
   fQSortFilterProxyModel_virtualbase_event(self.h, event.h)
 
 type QSortFilterProxyModeleventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1821,7 +1694,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_event(self: ptr cQSortFilterProxyM
 
   virtualReturn
 proc QSortFilterProxyModeleventFilter*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSortFilterProxyModel_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSortFilterProxyModeleventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1843,7 +1715,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_eventFilter(self: ptr cQSortFilter
 
   virtualReturn
 proc QSortFilterProxyModeltimerEvent*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSortFilterProxyModel_virtualbase_timerEvent(self.h, event.h)
 
 type QSortFilterProxyModeltimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1861,7 +1732,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_timerEvent(self: ptr cQSortFilterP
 
   nimfunc[](slotval1)
 proc QSortFilterProxyModelchildEvent*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, event: gen_qcoreevent.QChildEvent): void =
-
   fQSortFilterProxyModel_virtualbase_childEvent(self.h, event.h)
 
 type QSortFilterProxyModelchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1879,7 +1749,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_childEvent(self: ptr cQSortFilterP
 
   nimfunc[](slotval1)
 proc QSortFilterProxyModelcustomEvent*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, event: gen_qcoreevent.QEvent): void =
-
   fQSortFilterProxyModel_virtualbase_customEvent(self.h, event.h)
 
 type QSortFilterProxyModelcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1897,7 +1766,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_customEvent(self: ptr cQSortFilter
 
   nimfunc[](slotval1)
 proc QSortFilterProxyModelconnectNotify*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSortFilterProxyModel_virtualbase_connectNotify(self.h, signal.h)
 
 type QSortFilterProxyModelconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1915,7 +1783,6 @@ proc miqt_exec_callback_QSortFilterProxyModel_connectNotify(self: ptr cQSortFilt
 
   nimfunc[](slotval1)
 proc QSortFilterProxyModeldisconnectNotify*(self: gen_qsortfilterproxymodel_types.QSortFilterProxyModel, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSortFilterProxyModel_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSortFilterProxyModeldisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

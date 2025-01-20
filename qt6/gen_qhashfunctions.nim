@@ -51,21 +51,18 @@ proc fcQHashSeed_delete(self: pointer) {.importc: "QHashSeed_delete".}
 func init*(T: type gen_qhashfunctions_types.QHashSeed, h: ptr cQHashSeed): gen_qhashfunctions_types.QHashSeed =
   T(h: h)
 proc create*(T: type gen_qhashfunctions_types.QHashSeed, ): gen_qhashfunctions_types.QHashSeed =
-
   gen_qhashfunctions_types.QHashSeed.init(fcQHashSeed_new())
+
 proc create*(T: type gen_qhashfunctions_types.QHashSeed, d: csize_t): gen_qhashfunctions_types.QHashSeed =
-
   gen_qhashfunctions_types.QHashSeed.init(fcQHashSeed_new2(d))
-proc globalSeed*(_: type gen_qhashfunctions_types.QHashSeed, ): gen_qhashfunctions_types.QHashSeed =
 
+proc globalSeed*(_: type gen_qhashfunctions_types.QHashSeed, ): gen_qhashfunctions_types.QHashSeed =
   gen_qhashfunctions_types.QHashSeed(h: fcQHashSeed_globalSeed())
 
 proc setDeterministicGlobalSeed*(_: type gen_qhashfunctions_types.QHashSeed, ): void =
-
   fcQHashSeed_setDeterministicGlobalSeed()
 
 proc resetRandomGlobalSeed*(_: type gen_qhashfunctions_types.QHashSeed, ): void =
-
   fcQHashSeed_resetRandomGlobalSeed()
 
 proc delete*(self: gen_qhashfunctions_types.QHashSeed) =

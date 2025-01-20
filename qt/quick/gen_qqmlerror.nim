@@ -67,64 +67,51 @@ proc fcQQmlError_delete(self: pointer) {.importc: "QQmlError_delete".}
 func init*(T: type gen_qqmlerror_types.QQmlError, h: ptr cQQmlError): gen_qqmlerror_types.QQmlError =
   T(h: h)
 proc create*(T: type gen_qqmlerror_types.QQmlError, ): gen_qqmlerror_types.QQmlError =
-
   gen_qqmlerror_types.QQmlError.init(fcQQmlError_new())
+
 proc create*(T: type gen_qqmlerror_types.QQmlError, param1: gen_qqmlerror_types.QQmlError): gen_qqmlerror_types.QQmlError =
-
   gen_qqmlerror_types.QQmlError.init(fcQQmlError_new2(param1.h))
-proc operatorAssign*(self: gen_qqmlerror_types.QQmlError, param1: gen_qqmlerror_types.QQmlError): void =
 
+proc operatorAssign*(self: gen_qqmlerror_types.QQmlError, param1: gen_qqmlerror_types.QQmlError): void =
   fcQQmlError_operatorAssign(self.h, param1.h)
 
 proc isValid*(self: gen_qqmlerror_types.QQmlError, ): bool =
-
   fcQQmlError_isValid(self.h)
 
 proc url*(self: gen_qqmlerror_types.QQmlError, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQQmlError_url(self.h))
 
 proc setUrl*(self: gen_qqmlerror_types.QQmlError, url: gen_qurl.QUrl): void =
-
   fcQQmlError_setUrl(self.h, url.h)
 
 proc description*(self: gen_qqmlerror_types.QQmlError, ): string =
-
   let v_ms = fcQQmlError_description(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDescription*(self: gen_qqmlerror_types.QQmlError, description: string): void =
-
   fcQQmlError_setDescription(self.h, struct_miqt_string(data: description, len: csize_t(len(description))))
 
 proc line*(self: gen_qqmlerror_types.QQmlError, ): cint =
-
   fcQQmlError_line(self.h)
 
 proc setLine*(self: gen_qqmlerror_types.QQmlError, line: cint): void =
-
   fcQQmlError_setLine(self.h, line)
 
 proc column*(self: gen_qqmlerror_types.QQmlError, ): cint =
-
   fcQQmlError_column(self.h)
 
 proc setColumn*(self: gen_qqmlerror_types.QQmlError, column: cint): void =
-
   fcQQmlError_setColumn(self.h, column)
 
 proc objectX*(self: gen_qqmlerror_types.QQmlError, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQQmlError_objectX(self.h))
 
 proc setObject*(self: gen_qqmlerror_types.QQmlError, objectVal: gen_qobject.QObject): void =
-
   fcQQmlError_setObject(self.h, objectVal.h)
 
 proc toString*(self: gen_qqmlerror_types.QQmlError, ): string =
-
   let v_ms = fcQQmlError_toString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

@@ -146,7 +146,6 @@ proc fcQSignalBlocker_delete(self: pointer) {.importc: "QSignalBlocker_delete".}
 func init*(T: type gen_qobject_types.QObjectData, h: ptr cQObjectData): gen_qobject_types.QObjectData =
   T(h: h)
 proc dynamicMetaObject*(self: gen_qobject_types.QObjectData, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQObjectData_dynamicMetaObject(self.h))
 
 proc delete*(self: gen_qobject_types.QObjectData) =
@@ -155,90 +154,72 @@ proc delete*(self: gen_qobject_types.QObjectData) =
 func init*(T: type gen_qobject_types.QObject, h: ptr cQObject): gen_qobject_types.QObject =
   T(h: h)
 proc create*(T: type gen_qobject_types.QObject, ): gen_qobject_types.QObject =
-
   gen_qobject_types.QObject.init(fcQObject_new())
+
 proc create*(T: type gen_qobject_types.QObject, parent: gen_qobject_types.QObject): gen_qobject_types.QObject =
-
   gen_qobject_types.QObject.init(fcQObject_new2(parent.h))
-proc metaObject*(self: gen_qobject_types.QObject, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qobject_types.QObject, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQObject_metaObject(self.h))
 
 proc metacast*(self: gen_qobject_types.QObject, param1: cstring): pointer =
-
   fcQObject_metacast(self.h, param1)
 
 proc metacall*(self: gen_qobject_types.QObject, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQObject_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qobject_types.QObject, s: cstring): string =
-
   let v_ms = fcQObject_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qobject_types.QObject, s: cstring): string =
-
   let v_ms = fcQObject_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc event*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fcQObject_event(self.h, event.h)
 
 proc eventFilter*(self: gen_qobject_types.QObject, watched: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fcQObject_eventFilter(self.h, watched.h, event.h)
 
 proc objectName*(self: gen_qobject_types.QObject, ): string =
-
   let v_ms = fcQObject_objectName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setObjectName*(self: gen_qobject_types.QObject, name: string): void =
-
   fcQObject_setObjectName(self.h, struct_miqt_string(data: name, len: csize_t(len(name))))
 
 proc isWidgetType*(self: gen_qobject_types.QObject, ): bool =
-
   fcQObject_isWidgetType(self.h)
 
 proc isWindowType*(self: gen_qobject_types.QObject, ): bool =
-
   fcQObject_isWindowType(self.h)
 
 proc signalsBlocked*(self: gen_qobject_types.QObject, ): bool =
-
   fcQObject_signalsBlocked(self.h)
 
 proc blockSignals*(self: gen_qobject_types.QObject, b: bool): bool =
-
   fcQObject_blockSignals(self.h, b)
 
 proc thread*(self: gen_qobject_types.QObject, ): gen_qthread.QThread =
-
   gen_qthread.QThread(h: fcQObject_thread(self.h))
 
 proc moveToThread*(self: gen_qobject_types.QObject, thread: gen_qthread.QThread): void =
-
   fcQObject_moveToThread(self.h, thread.h)
 
 proc startTimer*(self: gen_qobject_types.QObject, interval: cint): cint =
-
   fcQObject_startTimer(self.h, interval)
 
 proc killTimer*(self: gen_qobject_types.QObject, id: cint): void =
-
   fcQObject_killTimer(self.h, id)
 
 proc children*(self: gen_qobject_types.QObject, ): seq[gen_qobject_types.QObject] =
-
   var v_ma = fcQObject_children(self.h)
   var vx_ret = newSeq[gen_qobject_types.QObject](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[pointer]](v_ma.data)
@@ -247,59 +228,45 @@ proc children*(self: gen_qobject_types.QObject, ): seq[gen_qobject_types.QObject
   vx_ret
 
 proc setParent*(self: gen_qobject_types.QObject, parent: gen_qobject_types.QObject): void =
-
   fcQObject_setParent(self.h, parent.h)
 
 proc installEventFilter*(self: gen_qobject_types.QObject, filterObj: gen_qobject_types.QObject): void =
-
   fcQObject_installEventFilter(self.h, filterObj.h)
 
 proc removeEventFilter*(self: gen_qobject_types.QObject, obj: gen_qobject_types.QObject): void =
-
   fcQObject_removeEventFilter(self.h, obj.h)
 
 proc connect*(_: type gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod, receiver: gen_qobject_types.QObject, methodVal: gen_qmetaobject.QMetaMethod): gen_qobjectdefs.QMetaObjectConnection =
-
   gen_qobjectdefs.QMetaObjectConnection(h: fcQObject_connect(sender.h, signal.h, receiver.h, methodVal.h))
 
-proc connect2*(self: gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: cstring, member: cstring): gen_qobjectdefs.QMetaObjectConnection =
-
+proc connect*(self: gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: cstring, member: cstring): gen_qobjectdefs.QMetaObjectConnection =
   gen_qobjectdefs.QMetaObjectConnection(h: fcQObject_connect2(self.h, sender.h, signal, member))
 
 proc disconnect*(_: type gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod, receiver: gen_qobject_types.QObject, member: gen_qmetaobject.QMetaMethod): bool =
-
   fcQObject_disconnect(sender.h, signal.h, receiver.h, member.h)
 
-proc disconnectWithQMetaObjectConnection*(_: type gen_qobject_types.QObject, param1: gen_qobjectdefs.QMetaObjectConnection): bool =
-
+proc disconnect*(_: type gen_qobject_types.QObject, param1: gen_qobjectdefs.QMetaObjectConnection): bool =
   fcQObject_disconnectWithQMetaObjectConnection(param1.h)
 
 proc dumpObjectTree*(self: gen_qobject_types.QObject, ): void =
-
   fcQObject_dumpObjectTree(self.h)
 
 proc dumpObjectInfo*(self: gen_qobject_types.QObject, ): void =
-
   fcQObject_dumpObjectInfo(self.h)
 
 proc dumpObjectTree2*(self: gen_qobject_types.QObject, ): void =
-
   fcQObject_dumpObjectTree2(self.h)
 
 proc dumpObjectInfo2*(self: gen_qobject_types.QObject, ): void =
-
   fcQObject_dumpObjectInfo2(self.h)
 
 proc setProperty*(self: gen_qobject_types.QObject, name: cstring, value: gen_qvariant.QVariant): bool =
-
   fcQObject_setProperty(self.h, name, value.h)
 
 proc property*(self: gen_qobject_types.QObject, name: cstring): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQObject_property(self.h, name))
 
 proc dynamicPropertyNames*(self: gen_qobject_types.QObject, ): seq[seq[byte]] =
-
   var v_ma = fcQObject_dynamicPropertyNames(self.h)
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -311,105 +278,87 @@ proc dynamicPropertyNames*(self: gen_qobject_types.QObject, ): seq[seq[byte]] =
   vx_ret
 
 proc registerUserData*(_: type gen_qobject_types.QObject, ): cuint =
-
   fcQObject_registerUserData()
 
 proc setUserData*(self: gen_qobject_types.QObject, id: cuint, data: gen_qobject_types.QObjectUserData): void =
-
   fcQObject_setUserData(self.h, id, data.h)
 
 proc userData*(self: gen_qobject_types.QObject, id: cuint): gen_qobject_types.QObjectUserData =
-
   gen_qobject_types.QObjectUserData(h: fcQObject_userData(self.h, id))
 
 proc destroyed*(self: gen_qobject_types.QObject, ): void =
-
   fcQObject_destroyed(self.h)
 
+type QObjectdestroyedSlot* = proc()
 proc miqt_exec_callback_QObject_destroyed(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QObjectdestroyedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc ondestroyed*(self: gen_qobject_types.QObject, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc ondestroyed*(self: gen_qobject_types.QObject, slot: QObjectdestroyedSlot) =
+  var tmp = new QObjectdestroyedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQObject_connect_destroyed(self.h, cast[int](addr tmp[]))
-proc parent*(self: gen_qobject_types.QObject, ): gen_qobject_types.QObject =
 
+proc parent*(self: gen_qobject_types.QObject, ): gen_qobject_types.QObject =
   gen_qobject_types.QObject(h: fcQObject_parent(self.h))
 
 proc inherits*(self: gen_qobject_types.QObject, classname: cstring): bool =
-
   fcQObject_inherits(self.h, classname)
 
 proc deleteLater*(self: gen_qobject_types.QObject, ): void =
-
   fcQObject_deleteLater(self.h)
 
-proc tr2*(_: type gen_qobject_types.QObject, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qobject_types.QObject, s: cstring, c: cstring): string =
   let v_ms = fcQObject_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qobject_types.QObject, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qobject_types.QObject, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQObject_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qobject_types.QObject, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qobject_types.QObject, s: cstring, c: cstring): string =
   let v_ms = fcQObject_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qobject_types.QObject, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qobject_types.QObject, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQObject_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc startTimer2*(self: gen_qobject_types.QObject, interval: cint, timerType: cint): cint =
-
+proc startTimer*(self: gen_qobject_types.QObject, interval: cint, timerType: cint): cint =
   fcQObject_startTimer2(self.h, interval, cint(timerType))
 
-proc connect5*(_: type gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod, receiver: gen_qobject_types.QObject, methodVal: gen_qmetaobject.QMetaMethod, typeVal: cint): gen_qobjectdefs.QMetaObjectConnection =
-
+proc connect*(_: type gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod, receiver: gen_qobject_types.QObject, methodVal: gen_qmetaobject.QMetaMethod, typeVal: cint): gen_qobjectdefs.QMetaObjectConnection =
   gen_qobjectdefs.QMetaObjectConnection(h: fcQObject_connect5(sender.h, signal.h, receiver.h, methodVal.h, cint(typeVal)))
 
-proc connect4*(self: gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: cstring, member: cstring, typeVal: cint): gen_qobjectdefs.QMetaObjectConnection =
-
+proc connect*(self: gen_qobject_types.QObject, sender: gen_qobject_types.QObject, signal: cstring, member: cstring, typeVal: cint): gen_qobjectdefs.QMetaObjectConnection =
   gen_qobjectdefs.QMetaObjectConnection(h: fcQObject_connect4(self.h, sender.h, signal, member, cint(typeVal)))
 
-proc destroyed1*(self: gen_qobject_types.QObject, param1: gen_qobject_types.QObject): void =
-
+proc destroyed*(self: gen_qobject_types.QObject, param1: gen_qobject_types.QObject): void =
   fcQObject_destroyed1(self.h, param1.h)
 
+type QObjectdestroyed1Slot* = proc(param1: gen_qobject_types.QObject)
 proc miqt_exec_callback_QObject_destroyed1(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qobject_types.QObject)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QObjectdestroyed1Slot](cast[pointer](slot))
   let slotval1 = gen_qobject_types.QObject(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc ondestroyed1*(self: gen_qobject_types.QObject, slot: proc(param1: gen_qobject_types.QObject)) =
-  type Cb = proc(param1: gen_qobject_types.QObject)
-  var tmp = new Cb
+proc ondestroyed*(self: gen_qobject_types.QObject, slot: QObjectdestroyed1Slot) =
+  var tmp = new QObjectdestroyed1Slot
   tmp[] = slot
   GC_ref(tmp)
   fQObject_connect_destroyed1(self.h, cast[int](addr tmp[]))
-proc QObjectmetaObject*(self: gen_qobject_types.QObject, ): gen_qobjectdefs.QMetaObject =
 
+proc QObjectmetaObject*(self: gen_qobject_types.QObject, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fQObject_virtualbase_metaObject(self.h))
 
 type QObjectmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -427,7 +376,6 @@ proc miqt_exec_callback_QObject_metaObject(self: ptr cQObject, slot: int): point
 
   virtualReturn.h
 proc QObjectmetacast*(self: gen_qobject_types.QObject, param1: cstring): pointer =
-
   fQObject_virtualbase_metacast(self.h, param1)
 
 type QObjectmetacastProc* = proc(param1: cstring): pointer
@@ -447,7 +395,6 @@ proc miqt_exec_callback_QObject_metacast(self: ptr cQObject, slot: int, param1: 
 
   virtualReturn
 proc QObjectmetacall*(self: gen_qobject_types.QObject, param1: cint, param2: cint, param3: pointer): cint =
-
   fQObject_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QObjectmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -471,7 +418,6 @@ proc miqt_exec_callback_QObject_metacall(self: ptr cQObject, slot: int, param1: 
 
   virtualReturn
 proc QObjectevent*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQObject_virtualbase_event(self.h, event.h)
 
 type QObjecteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -491,7 +437,6 @@ proc miqt_exec_callback_QObject_event(self: ptr cQObject, slot: int, event: poin
 
   virtualReturn
 proc QObjecteventFilter*(self: gen_qobject_types.QObject, watched: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQObject_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QObjecteventFilterProc* = proc(watched: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): bool
@@ -513,7 +458,6 @@ proc miqt_exec_callback_QObject_eventFilter(self: ptr cQObject, slot: int, watch
 
   virtualReturn
 proc QObjecttimerEvent*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QTimerEvent): void =
-
   fQObject_virtualbase_timerEvent(self.h, event.h)
 
 type QObjecttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -531,7 +475,6 @@ proc miqt_exec_callback_QObject_timerEvent(self: ptr cQObject, slot: int, event:
 
   nimfunc[](slotval1)
 proc QObjectchildEvent*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QChildEvent): void =
-
   fQObject_virtualbase_childEvent(self.h, event.h)
 
 type QObjectchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -549,7 +492,6 @@ proc miqt_exec_callback_QObject_childEvent(self: ptr cQObject, slot: int, event:
 
   nimfunc[](slotval1)
 proc QObjectcustomEvent*(self: gen_qobject_types.QObject, event: gen_qcoreevent.QEvent): void =
-
   fQObject_virtualbase_customEvent(self.h, event.h)
 
 type QObjectcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -567,7 +509,6 @@ proc miqt_exec_callback_QObject_customEvent(self: ptr cQObject, slot: int, event
 
   nimfunc[](slotval1)
 proc QObjectconnectNotify*(self: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQObject_virtualbase_connectNotify(self.h, signal.h)
 
 type QObjectconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -585,7 +526,6 @@ proc miqt_exec_callback_QObject_connectNotify(self: ptr cQObject, slot: int, sig
 
   nimfunc[](slotval1)
 proc QObjectdisconnectNotify*(self: gen_qobject_types.QObject, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQObject_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QObjectdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -610,25 +550,23 @@ proc delete*(self: gen_qobject_types.QObject) =
 func init*(T: type gen_qobject_types.QObjectUserData, h: ptr cQObjectUserData): gen_qobject_types.QObjectUserData =
   T(h: h)
 proc create*(T: type gen_qobject_types.QObjectUserData, ): gen_qobject_types.QObjectUserData =
-
   gen_qobject_types.QObjectUserData.init(fcQObjectUserData_new())
+
 proc delete*(self: gen_qobject_types.QObjectUserData) =
   fcQObjectUserData_delete(self.h)
 
 func init*(T: type gen_qobject_types.QSignalBlocker, h: ptr cQSignalBlocker): gen_qobject_types.QSignalBlocker =
   T(h: h)
 proc create*(T: type gen_qobject_types.QSignalBlocker, o: gen_qobject_types.QObject): gen_qobject_types.QSignalBlocker =
-
   gen_qobject_types.QSignalBlocker.init(fcQSignalBlocker_new(o.h))
+
 proc create2*(T: type gen_qobject_types.QSignalBlocker, o: gen_qobject_types.QObject): gen_qobject_types.QSignalBlocker =
-
   gen_qobject_types.QSignalBlocker.init(fcQSignalBlocker_new2(o.h))
-proc reblock*(self: gen_qobject_types.QSignalBlocker, ): void =
 
+proc reblock*(self: gen_qobject_types.QSignalBlocker, ): void =
   fcQSignalBlocker_reblock(self.h)
 
 proc unblock*(self: gen_qobject_types.QSignalBlocker, ): void =
-
   fcQSignalBlocker_unblock(self.h)
 
 proc delete*(self: gen_qobject_types.QSignalBlocker) =

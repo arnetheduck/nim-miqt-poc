@@ -113,77 +113,63 @@ proc fcQQmlContextPropertyPair_delete(self: pointer) {.importc: "QQmlContext__Pr
 func init*(T: type gen_qqmlcontext_types.QQmlContext, h: ptr cQQmlContext): gen_qqmlcontext_types.QQmlContext =
   T(h: h)
 proc create*(T: type gen_qqmlcontext_types.QQmlContext, parent: gen_qqmlengine.QQmlEngine): gen_qqmlcontext_types.QQmlContext =
-
   gen_qqmlcontext_types.QQmlContext.init(fcQQmlContext_new(parent.h))
-proc create2*(T: type gen_qqmlcontext_types.QQmlContext, parent: gen_qqmlcontext_types.QQmlContext): gen_qqmlcontext_types.QQmlContext =
 
+proc create*(T: type gen_qqmlcontext_types.QQmlContext, parent: gen_qqmlcontext_types.QQmlContext): gen_qqmlcontext_types.QQmlContext =
   gen_qqmlcontext_types.QQmlContext.init(fcQQmlContext_new2(parent.h))
+
 proc create*(T: type gen_qqmlcontext_types.QQmlContext, parent: gen_qqmlengine.QQmlEngine, objParent: gen_qobject.QObject): gen_qqmlcontext_types.QQmlContext =
-
   gen_qqmlcontext_types.QQmlContext.init(fcQQmlContext_new3(parent.h, objParent.h))
-proc create2*(T: type gen_qqmlcontext_types.QQmlContext, parent: gen_qqmlcontext_types.QQmlContext, objParent: gen_qobject.QObject): gen_qqmlcontext_types.QQmlContext =
 
+proc create*(T: type gen_qqmlcontext_types.QQmlContext, parent: gen_qqmlcontext_types.QQmlContext, objParent: gen_qobject.QObject): gen_qqmlcontext_types.QQmlContext =
   gen_qqmlcontext_types.QQmlContext.init(fcQQmlContext_new4(parent.h, objParent.h))
-proc metaObject*(self: gen_qqmlcontext_types.QQmlContext, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qqmlcontext_types.QQmlContext, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQmlContext_metaObject(self.h))
 
 proc metacast*(self: gen_qqmlcontext_types.QQmlContext, param1: cstring): pointer =
-
   fcQQmlContext_metacast(self.h, param1)
 
 proc metacall*(self: gen_qqmlcontext_types.QQmlContext, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQmlContext_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring): string =
-
   let v_ms = fcQQmlContext_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring): string =
-
   let v_ms = fcQQmlContext_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc isValid*(self: gen_qqmlcontext_types.QQmlContext, ): bool =
-
   fcQQmlContext_isValid(self.h)
 
 proc engine*(self: gen_qqmlcontext_types.QQmlContext, ): gen_qqmlengine.QQmlEngine =
-
   gen_qqmlengine.QQmlEngine(h: fcQQmlContext_engine(self.h))
 
 proc parentContext*(self: gen_qqmlcontext_types.QQmlContext, ): gen_qqmlcontext_types.QQmlContext =
-
   gen_qqmlcontext_types.QQmlContext(h: fcQQmlContext_parentContext(self.h))
 
 proc contextObject*(self: gen_qqmlcontext_types.QQmlContext, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQQmlContext_contextObject(self.h))
 
 proc setContextObject*(self: gen_qqmlcontext_types.QQmlContext, contextObject: gen_qobject.QObject): void =
-
   fcQQmlContext_setContextObject(self.h, contextObject.h)
 
 proc contextProperty*(self: gen_qqmlcontext_types.QQmlContext, param1: string): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQQmlContext_contextProperty(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1)))))
 
 proc setContextProperty*(self: gen_qqmlcontext_types.QQmlContext, param1: string, param2: gen_qobject.QObject): void =
-
   fcQQmlContext_setContextProperty(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))), param2.h)
 
-proc setContextProperty2*(self: gen_qqmlcontext_types.QQmlContext, param1: string, param2: gen_qvariant.QVariant): void =
-
+proc setContextProperty*(self: gen_qqmlcontext_types.QQmlContext, param1: string, param2: gen_qvariant.QVariant): void =
   fcQQmlContext_setContextProperty2(self.h, struct_miqt_string(data: param1, len: csize_t(len(param1))), param2.h)
 
 proc setContextProperties*(self: gen_qqmlcontext_types.QQmlContext, properties: seq[gen_qqmlcontext_types.QQmlContextPropertyPair]): void =
-
   var properties_CArray = newSeq[pointer](len(properties))
   for i in 0..<len(properties):
     properties_CArray[i] = properties[i].h
@@ -191,54 +177,45 @@ proc setContextProperties*(self: gen_qqmlcontext_types.QQmlContext, properties: 
   fcQQmlContext_setContextProperties(self.h, struct_miqt_array(len: csize_t(len(properties)), data: if len(properties) == 0: nil else: addr(properties_CArray[0])))
 
 proc nameForObject*(self: gen_qqmlcontext_types.QQmlContext, param1: gen_qobject.QObject): string =
-
   let v_ms = fcQQmlContext_nameForObject(self.h, param1.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc resolvedUrl*(self: gen_qqmlcontext_types.QQmlContext, param1: gen_qurl.QUrl): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQQmlContext_resolvedUrl(self.h, param1.h))
 
 proc setBaseUrl*(self: gen_qqmlcontext_types.QQmlContext, baseUrl: gen_qurl.QUrl): void =
-
   fcQQmlContext_setBaseUrl(self.h, baseUrl.h)
 
 proc baseUrl*(self: gen_qqmlcontext_types.QQmlContext, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQQmlContext_baseUrl(self.h))
 
-proc tr2*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring, c: cstring): string =
   let v_ms = fcQQmlContext_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQmlContext_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring, c: cstring): string =
   let v_ms = fcQQmlContext_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qqmlcontext_types.QQmlContext, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQmlContext_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QQmlContextmetaObject*(self: gen_qqmlcontext_types.QQmlContext, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQmlContext_virtualbase_metaObject(self.h))
 
 type QQmlContextmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -256,7 +233,6 @@ proc miqt_exec_callback_QQmlContext_metaObject(self: ptr cQQmlContext, slot: int
 
   virtualReturn.h
 proc QQmlContextmetacast*(self: gen_qqmlcontext_types.QQmlContext, param1: cstring): pointer =
-
   fQQmlContext_virtualbase_metacast(self.h, param1)
 
 type QQmlContextmetacastProc* = proc(param1: cstring): pointer
@@ -276,7 +252,6 @@ proc miqt_exec_callback_QQmlContext_metacast(self: ptr cQQmlContext, slot: int, 
 
   virtualReturn
 proc QQmlContextmetacall*(self: gen_qqmlcontext_types.QQmlContext, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQmlContext_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQmlContextmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -300,7 +275,6 @@ proc miqt_exec_callback_QQmlContext_metacall(self: ptr cQQmlContext, slot: int, 
 
   virtualReturn
 proc QQmlContextevent*(self: gen_qqmlcontext_types.QQmlContext, event: gen_qcoreevent.QEvent): bool =
-
   fQQmlContext_virtualbase_event(self.h, event.h)
 
 type QQmlContexteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -320,7 +294,6 @@ proc miqt_exec_callback_QQmlContext_event(self: ptr cQQmlContext, slot: int, eve
 
   virtualReturn
 proc QQmlContexteventFilter*(self: gen_qqmlcontext_types.QQmlContext, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQmlContext_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQmlContexteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -342,7 +315,6 @@ proc miqt_exec_callback_QQmlContext_eventFilter(self: ptr cQQmlContext, slot: in
 
   virtualReturn
 proc QQmlContexttimerEvent*(self: gen_qqmlcontext_types.QQmlContext, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQmlContext_virtualbase_timerEvent(self.h, event.h)
 
 type QQmlContexttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -360,7 +332,6 @@ proc miqt_exec_callback_QQmlContext_timerEvent(self: ptr cQQmlContext, slot: int
 
   nimfunc[](slotval1)
 proc QQmlContextchildEvent*(self: gen_qqmlcontext_types.QQmlContext, event: gen_qcoreevent.QChildEvent): void =
-
   fQQmlContext_virtualbase_childEvent(self.h, event.h)
 
 type QQmlContextchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -378,7 +349,6 @@ proc miqt_exec_callback_QQmlContext_childEvent(self: ptr cQQmlContext, slot: int
 
   nimfunc[](slotval1)
 proc QQmlContextcustomEvent*(self: gen_qqmlcontext_types.QQmlContext, event: gen_qcoreevent.QEvent): void =
-
   fQQmlContext_virtualbase_customEvent(self.h, event.h)
 
 type QQmlContextcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -396,7 +366,6 @@ proc miqt_exec_callback_QQmlContext_customEvent(self: ptr cQQmlContext, slot: in
 
   nimfunc[](slotval1)
 proc QQmlContextconnectNotify*(self: gen_qqmlcontext_types.QQmlContext, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQmlContext_virtualbase_connectNotify(self.h, signal.h)
 
 type QQmlContextconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -414,7 +383,6 @@ proc miqt_exec_callback_QQmlContext_connectNotify(self: ptr cQQmlContext, slot: 
 
   nimfunc[](slotval1)
 proc QQmlContextdisconnectNotify*(self: gen_qqmlcontext_types.QQmlContext, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQmlContext_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQmlContextdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -439,10 +407,9 @@ proc delete*(self: gen_qqmlcontext_types.QQmlContext) =
 func init*(T: type gen_qqmlcontext_types.QQmlContextPropertyPair, h: ptr cQQmlContextPropertyPair): gen_qqmlcontext_types.QQmlContextPropertyPair =
   T(h: h)
 proc create*(T: type gen_qqmlcontext_types.QQmlContextPropertyPair, param1: gen_qqmlcontext_types.QQmlContextPropertyPair): gen_qqmlcontext_types.QQmlContextPropertyPair =
-
   gen_qqmlcontext_types.QQmlContextPropertyPair.init(fcQQmlContextPropertyPair_new(param1.h))
-proc operatorAssign*(self: gen_qqmlcontext_types.QQmlContextPropertyPair, param1: gen_qqmlcontext_types.QQmlContextPropertyPair): void =
 
+proc operatorAssign*(self: gen_qqmlcontext_types.QQmlContextPropertyPair, param1: gen_qqmlcontext_types.QQmlContextPropertyPair): void =
   fcQQmlContextPropertyPair_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qqmlcontext_types.QQmlContextPropertyPair) =

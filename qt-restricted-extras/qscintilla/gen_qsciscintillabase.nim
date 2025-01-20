@@ -1475,166 +1475,136 @@ proc fcQsciScintillaBase_delete(self: pointer) {.importc: "QsciScintillaBase_del
 func init*(T: type gen_qsciscintillabase_types.QsciScintillaBase, h: ptr cQsciScintillaBase): gen_qsciscintillabase_types.QsciScintillaBase =
   T(h: h)
 proc create*(T: type gen_qsciscintillabase_types.QsciScintillaBase, parent: gen_qwidget.QWidget): gen_qsciscintillabase_types.QsciScintillaBase =
-
   gen_qsciscintillabase_types.QsciScintillaBase.init(fcQsciScintillaBase_new(parent.h))
+
 proc create*(T: type gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qsciscintillabase_types.QsciScintillaBase =
-
   gen_qsciscintillabase_types.QsciScintillaBase.init(fcQsciScintillaBase_new2())
-proc metaObject*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciScintillaBase_metaObject(self.h))
 
 proc metacast*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cstring): pointer =
-
   fcQsciScintillaBase_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciScintillaBase_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring): string =
-
   let v_ms = fcQsciScintillaBase_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring): string =
-
   let v_ms = fcQsciScintillaBase_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc pool*(_: type gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qsciscintillabase_types.QsciScintillaBase =
-
   gen_qsciscintillabase_types.QsciScintillaBase(h: fcQsciScintillaBase_pool())
 
 proc replaceHorizontalScrollBar*(self: gen_qsciscintillabase_types.QsciScintillaBase, scrollBar: gen_qscrollbar.QScrollBar): void =
-
   fcQsciScintillaBase_replaceHorizontalScrollBar(self.h, scrollBar.h)
 
 proc replaceVerticalScrollBar*(self: gen_qsciscintillabase_types.QsciScintillaBase, scrollBar: gen_qscrollbar.QScrollBar): void =
-
   fcQsciScintillaBase_replaceVerticalScrollBar(self.h, scrollBar.h)
 
 proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint): clong =
-
   fcQsciScintillaBase_SendScintilla(self.h, msg)
 
-proc SendScintilla2*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, lParam: pointer): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, lParam: pointer): clong =
   fcQsciScintillaBase_SendScintilla2(self.h, msg, wParam, lParam)
 
-proc SendScintilla3*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: miqt_uintptr_t, lParam: cstring): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: miqt_uintptr_t, lParam: cstring): clong =
   fcQsciScintillaBase_SendScintilla3(self.h, msg, wParam, lParam)
 
-proc SendScintilla4*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, lParam: cstring): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, lParam: cstring): clong =
   fcQsciScintillaBase_SendScintilla4(self.h, msg, lParam)
 
-proc SendScintilla5*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: cstring, lParam: cstring): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: cstring, lParam: cstring): clong =
   fcQsciScintillaBase_SendScintilla5(self.h, msg, wParam, lParam)
 
-proc SendScintilla6*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: clong): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: clong): clong =
   fcQsciScintillaBase_SendScintilla6(self.h, msg, wParam)
 
-proc SendScintilla7*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: cint): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: cint): clong =
   fcQsciScintillaBase_SendScintilla7(self.h, msg, wParam)
 
-proc SendScintilla8*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, cpMin: clong, cpMax: clong, lpstrText: cstring): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, cpMin: clong, cpMax: clong, lpstrText: cstring): clong =
   fcQsciScintillaBase_SendScintilla8(self.h, msg, cpMin, cpMax, lpstrText)
 
-proc SendScintilla9*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, col: gen_qcolor.QColor): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, col: gen_qcolor.QColor): clong =
   fcQsciScintillaBase_SendScintilla9(self.h, msg, wParam, col.h)
 
-proc SendScintilla10*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, col: gen_qcolor.QColor): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, col: gen_qcolor.QColor): clong =
   fcQsciScintillaBase_SendScintilla10(self.h, msg, col.h)
 
-proc SendScintilla11*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, hdc: gen_qpainter.QPainter, rc: gen_qrect.QRect, cpMin: clong, cpMax: clong): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, hdc: gen_qpainter.QPainter, rc: gen_qrect.QRect, cpMin: clong, cpMax: clong): clong =
   fcQsciScintillaBase_SendScintilla11(self.h, msg, wParam, hdc.h, rc.h, cpMin, cpMax)
 
-proc SendScintilla12*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, lParam: gen_qpixmap.QPixmap): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, lParam: gen_qpixmap.QPixmap): clong =
   fcQsciScintillaBase_SendScintilla12(self.h, msg, wParam, lParam.h)
 
-proc SendScintilla13*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, lParam: gen_qimage.QImage): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, lParam: gen_qimage.QImage): clong =
   fcQsciScintillaBase_SendScintilla13(self.h, msg, wParam, lParam.h)
 
 proc SendScintillaPtrResult*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint): pointer =
-
   fcQsciScintillaBase_SendScintillaPtrResult(self.h, msg)
 
 proc commandKey*(_: type gen_qsciscintillabase_types.QsciScintillaBase, qt_key: cint, modifiers: ptr cint): cint =
-
   fcQsciScintillaBase_commandKey(qt_key, modifiers)
 
 proc QSCN_SELCHANGED*(self: gen_qsciscintillabase_types.QsciScintillaBase, yes: bool): void =
-
   fcQsciScintillaBase_QSCN_SELCHANGED(self.h, yes)
 
+type QsciScintillaBaseQSCN_SELCHANGEDSlot* = proc(yes: bool)
 proc miqt_exec_callback_QsciScintillaBase_QSCN_SELCHANGED(slot: int, yes: bool) {.exportc.} =
-  type Cb = proc(yes: bool)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseQSCN_SELCHANGEDSlot](cast[pointer](slot))
   let slotval1 = yes
-
 
   nimfunc[](slotval1)
 
-proc onQSCN_SELCHANGED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(yes: bool)) =
-  type Cb = proc(yes: bool)
-  var tmp = new Cb
+proc onQSCN_SELCHANGED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseQSCN_SELCHANGEDSlot) =
+  var tmp = new QsciScintillaBaseQSCN_SELCHANGEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_QSCN_SELCHANGED(self.h, cast[int](addr tmp[]))
-proc SCN_AUTOCCANCELLED*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCN_AUTOCCANCELLED*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCN_AUTOCCANCELLED(self.h)
 
+type QsciScintillaBaseSCN_AUTOCCANCELLEDSlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCANCELLED(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_AUTOCCANCELLEDSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCN_AUTOCCANCELLED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCN_AUTOCCANCELLED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCCANCELLEDSlot) =
+  var tmp = new QsciScintillaBaseSCN_AUTOCCANCELLEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_AUTOCCANCELLED(self.h, cast[int](addr tmp[]))
-proc SCN_AUTOCCHARDELETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCN_AUTOCCHARDELETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCN_AUTOCCHARDELETED(self.h)
 
+type QsciScintillaBaseSCN_AUTOCCHARDELETEDSlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCHARDELETED(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_AUTOCCHARDELETEDSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCN_AUTOCCHARDELETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCN_AUTOCCHARDELETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCCHARDELETEDSlot) =
+  var tmp = new QsciScintillaBaseSCN_AUTOCCHARDELETEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_AUTOCCHARDELETED(self.h, cast[int](addr tmp[]))
-proc SCN_AUTOCCOMPLETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, position: cint, ch: cint, methodVal: cint): void =
 
+proc SCN_AUTOCCOMPLETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, position: cint, ch: cint, methodVal: cint): void =
   fcQsciScintillaBase_SCN_AUTOCCOMPLETED(self.h, selection, position, ch, methodVal)
 
+type QsciScintillaBaseSCN_AUTOCCOMPLETEDSlot* = proc(selection: cstring, position: cint, ch: cint, methodVal: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCOMPLETED(slot: int, selection: cstring, position: cint, ch: cint, methodVal: cint) {.exportc.} =
-  type Cb = proc(selection: cstring, position: cint, ch: cint, methodVal: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_AUTOCCOMPLETEDSlot](cast[pointer](slot))
   let slotval1 = (selection)
 
   let slotval2 = position
@@ -1643,22 +1613,20 @@ proc miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCOMPLETED(slot: int, selectio
 
   let slotval4 = methodVal
 
-
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
-proc onSCN_AUTOCCOMPLETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(selection: cstring, position: cint, ch: cint, methodVal: cint)) =
-  type Cb = proc(selection: cstring, position: cint, ch: cint, methodVal: cint)
-  var tmp = new Cb
+proc onSCN_AUTOCCOMPLETED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCCOMPLETEDSlot) =
+  var tmp = new QsciScintillaBaseSCN_AUTOCCOMPLETEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_AUTOCCOMPLETED(self.h, cast[int](addr tmp[]))
-proc SCN_AUTOCSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, position: cint, ch: cint, methodVal: cint): void =
 
+proc SCN_AUTOCSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, position: cint, ch: cint, methodVal: cint): void =
   fcQsciScintillaBase_SCN_AUTOCSELECTION(self.h, selection, position, ch, methodVal)
 
+type QsciScintillaBaseSCN_AUTOCSELECTIONSlot* = proc(selection: cstring, position: cint, ch: cint, methodVal: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION(slot: int, selection: cstring, position: cint, ch: cint, methodVal: cint) {.exportc.} =
-  type Cb = proc(selection: cstring, position: cint, ch: cint, methodVal: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_AUTOCSELECTIONSlot](cast[pointer](slot))
   let slotval1 = (selection)
 
   let slotval2 = position
@@ -1667,380 +1635,342 @@ proc miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION(slot: int, selectio
 
   let slotval4 = methodVal
 
-
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
-proc onSCN_AUTOCSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(selection: cstring, position: cint, ch: cint, methodVal: cint)) =
-  type Cb = proc(selection: cstring, position: cint, ch: cint, methodVal: cint)
-  var tmp = new Cb
+proc onSCN_AUTOCSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCSELECTIONSlot) =
+  var tmp = new QsciScintillaBaseSCN_AUTOCSELECTIONSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_AUTOCSELECTION(self.h, cast[int](addr tmp[]))
-proc SCN_AUTOCSELECTION2*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, position: cint): void =
 
+proc SCN_AUTOCSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, position: cint): void =
   fcQsciScintillaBase_SCN_AUTOCSELECTION2(self.h, selection, position)
 
+type QsciScintillaBaseSCN_AUTOCSELECTION2Slot* = proc(selection: cstring, position: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION2(slot: int, selection: cstring, position: cint) {.exportc.} =
-  type Cb = proc(selection: cstring, position: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_AUTOCSELECTION2Slot](cast[pointer](slot))
   let slotval1 = (selection)
 
   let slotval2 = position
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onSCN_AUTOCSELECTION2*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(selection: cstring, position: cint)) =
-  type Cb = proc(selection: cstring, position: cint)
-  var tmp = new Cb
+proc onSCN_AUTOCSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCSELECTION2Slot) =
+  var tmp = new QsciScintillaBaseSCN_AUTOCSELECTION2Slot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_AUTOCSELECTION2(self.h, cast[int](addr tmp[]))
-proc SCN_AUTOCSELECTIONCHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, id: cint, position: cint): void =
 
+proc SCN_AUTOCSELECTIONCHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, id: cint, position: cint): void =
   fcQsciScintillaBase_SCN_AUTOCSELECTIONCHANGE(self.h, selection, id, position)
 
+type QsciScintillaBaseSCN_AUTOCSELECTIONCHANGESlot* = proc(selection: cstring, id: cint, position: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE(slot: int, selection: cstring, id: cint, position: cint) {.exportc.} =
-  type Cb = proc(selection: cstring, id: cint, position: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_AUTOCSELECTIONCHANGESlot](cast[pointer](slot))
   let slotval1 = (selection)
 
   let slotval2 = id
 
   let slotval3 = position
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onSCN_AUTOCSELECTIONCHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(selection: cstring, id: cint, position: cint)) =
-  type Cb = proc(selection: cstring, id: cint, position: cint)
-  var tmp = new Cb
+proc onSCN_AUTOCSELECTIONCHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_AUTOCSELECTIONCHANGESlot) =
+  var tmp = new QsciScintillaBaseSCN_AUTOCSELECTIONCHANGESlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_AUTOCSELECTIONCHANGE(self.h, cast[int](addr tmp[]))
-proc SCEN_CHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCEN_CHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCEN_CHANGE(self.h)
 
+type QsciScintillaBaseSCEN_CHANGESlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCEN_CHANGE(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCEN_CHANGESlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCEN_CHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCEN_CHANGE*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCEN_CHANGESlot) =
+  var tmp = new QsciScintillaBaseSCEN_CHANGESlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCEN_CHANGE(self.h, cast[int](addr tmp[]))
-proc SCN_CALLTIPCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, direction: cint): void =
 
+proc SCN_CALLTIPCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, direction: cint): void =
   fcQsciScintillaBase_SCN_CALLTIPCLICK(self.h, direction)
 
+type QsciScintillaBaseSCN_CALLTIPCLICKSlot* = proc(direction: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_CALLTIPCLICK(slot: int, direction: cint) {.exportc.} =
-  type Cb = proc(direction: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_CALLTIPCLICKSlot](cast[pointer](slot))
   let slotval1 = direction
-
 
   nimfunc[](slotval1)
 
-proc onSCN_CALLTIPCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(direction: cint)) =
-  type Cb = proc(direction: cint)
-  var tmp = new Cb
+proc onSCN_CALLTIPCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_CALLTIPCLICKSlot) =
+  var tmp = new QsciScintillaBaseSCN_CALLTIPCLICKSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_CALLTIPCLICK(self.h, cast[int](addr tmp[]))
-proc SCN_CHARADDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, charadded: cint): void =
 
+proc SCN_CHARADDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, charadded: cint): void =
   fcQsciScintillaBase_SCN_CHARADDED(self.h, charadded)
 
+type QsciScintillaBaseSCN_CHARADDEDSlot* = proc(charadded: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_CHARADDED(slot: int, charadded: cint) {.exportc.} =
-  type Cb = proc(charadded: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_CHARADDEDSlot](cast[pointer](slot))
   let slotval1 = charadded
-
 
   nimfunc[](slotval1)
 
-proc onSCN_CHARADDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(charadded: cint)) =
-  type Cb = proc(charadded: cint)
-  var tmp = new Cb
+proc onSCN_CHARADDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_CHARADDEDSlot) =
+  var tmp = new QsciScintillaBaseSCN_CHARADDEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_CHARADDED(self.h, cast[int](addr tmp[]))
-proc SCN_DOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, line: cint, modifiers: cint): void =
 
+proc SCN_DOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, line: cint, modifiers: cint): void =
   fcQsciScintillaBase_SCN_DOUBLECLICK(self.h, position, line, modifiers)
 
+type QsciScintillaBaseSCN_DOUBLECLICKSlot* = proc(position: cint, line: cint, modifiers: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_DOUBLECLICK(slot: int, position: cint, line: cint, modifiers: cint) {.exportc.} =
-  type Cb = proc(position: cint, line: cint, modifiers: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_DOUBLECLICKSlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = line
 
   let slotval3 = modifiers
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onSCN_DOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, line: cint, modifiers: cint)) =
-  type Cb = proc(position: cint, line: cint, modifiers: cint)
-  var tmp = new Cb
+proc onSCN_DOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_DOUBLECLICKSlot) =
+  var tmp = new QsciScintillaBaseSCN_DOUBLECLICKSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_DOUBLECLICK(self.h, cast[int](addr tmp[]))
-proc SCN_DWELLEND*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, x: cint, y: cint): void =
 
+proc SCN_DWELLEND*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, x: cint, y: cint): void =
   fcQsciScintillaBase_SCN_DWELLEND(self.h, position, x, y)
 
+type QsciScintillaBaseSCN_DWELLENDSlot* = proc(position: cint, x: cint, y: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_DWELLEND(slot: int, position: cint, x: cint, y: cint) {.exportc.} =
-  type Cb = proc(position: cint, x: cint, y: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_DWELLENDSlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = x
 
   let slotval3 = y
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onSCN_DWELLEND*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, x: cint, y: cint)) =
-  type Cb = proc(position: cint, x: cint, y: cint)
-  var tmp = new Cb
+proc onSCN_DWELLEND*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_DWELLENDSlot) =
+  var tmp = new QsciScintillaBaseSCN_DWELLENDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_DWELLEND(self.h, cast[int](addr tmp[]))
-proc SCN_DWELLSTART*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, x: cint, y: cint): void =
 
+proc SCN_DWELLSTART*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, x: cint, y: cint): void =
   fcQsciScintillaBase_SCN_DWELLSTART(self.h, position, x, y)
 
+type QsciScintillaBaseSCN_DWELLSTARTSlot* = proc(position: cint, x: cint, y: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_DWELLSTART(slot: int, position: cint, x: cint, y: cint) {.exportc.} =
-  type Cb = proc(position: cint, x: cint, y: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_DWELLSTARTSlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = x
 
   let slotval3 = y
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onSCN_DWELLSTART*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, x: cint, y: cint)) =
-  type Cb = proc(position: cint, x: cint, y: cint)
-  var tmp = new Cb
+proc onSCN_DWELLSTART*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_DWELLSTARTSlot) =
+  var tmp = new QsciScintillaBaseSCN_DWELLSTARTSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_DWELLSTART(self.h, cast[int](addr tmp[]))
-proc SCN_FOCUSIN*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCN_FOCUSIN*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCN_FOCUSIN(self.h)
 
+type QsciScintillaBaseSCN_FOCUSINSlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCN_FOCUSIN(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_FOCUSINSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCN_FOCUSIN*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCN_FOCUSIN*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_FOCUSINSlot) =
+  var tmp = new QsciScintillaBaseSCN_FOCUSINSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_FOCUSIN(self.h, cast[int](addr tmp[]))
-proc SCN_FOCUSOUT*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCN_FOCUSOUT*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCN_FOCUSOUT(self.h)
 
+type QsciScintillaBaseSCN_FOCUSOUTSlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCN_FOCUSOUT(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_FOCUSOUTSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCN_FOCUSOUT*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCN_FOCUSOUT*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_FOCUSOUTSlot) =
+  var tmp = new QsciScintillaBaseSCN_FOCUSOUTSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_FOCUSOUT(self.h, cast[int](addr tmp[]))
-proc SCN_HOTSPOTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
 
+proc SCN_HOTSPOTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
   fcQsciScintillaBase_SCN_HOTSPOTCLICK(self.h, position, modifiers)
 
+type QsciScintillaBaseSCN_HOTSPOTCLICKSlot* = proc(position: cint, modifiers: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTCLICK(slot: int, position: cint, modifiers: cint) {.exportc.} =
-  type Cb = proc(position: cint, modifiers: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_HOTSPOTCLICKSlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = modifiers
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onSCN_HOTSPOTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, modifiers: cint)) =
-  type Cb = proc(position: cint, modifiers: cint)
-  var tmp = new Cb
+proc onSCN_HOTSPOTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_HOTSPOTCLICKSlot) =
+  var tmp = new QsciScintillaBaseSCN_HOTSPOTCLICKSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_HOTSPOTCLICK(self.h, cast[int](addr tmp[]))
-proc SCN_HOTSPOTDOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
 
+proc SCN_HOTSPOTDOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
   fcQsciScintillaBase_SCN_HOTSPOTDOUBLECLICK(self.h, position, modifiers)
 
+type QsciScintillaBaseSCN_HOTSPOTDOUBLECLICKSlot* = proc(position: cint, modifiers: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK(slot: int, position: cint, modifiers: cint) {.exportc.} =
-  type Cb = proc(position: cint, modifiers: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_HOTSPOTDOUBLECLICKSlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = modifiers
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onSCN_HOTSPOTDOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, modifiers: cint)) =
-  type Cb = proc(position: cint, modifiers: cint)
-  var tmp = new Cb
+proc onSCN_HOTSPOTDOUBLECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_HOTSPOTDOUBLECLICKSlot) =
+  var tmp = new QsciScintillaBaseSCN_HOTSPOTDOUBLECLICKSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_HOTSPOTDOUBLECLICK(self.h, cast[int](addr tmp[]))
-proc SCN_HOTSPOTRELEASECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
 
+proc SCN_HOTSPOTRELEASECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
   fcQsciScintillaBase_SCN_HOTSPOTRELEASECLICK(self.h, position, modifiers)
 
+type QsciScintillaBaseSCN_HOTSPOTRELEASECLICKSlot* = proc(position: cint, modifiers: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTRELEASECLICK(slot: int, position: cint, modifiers: cint) {.exportc.} =
-  type Cb = proc(position: cint, modifiers: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_HOTSPOTRELEASECLICKSlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = modifiers
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onSCN_HOTSPOTRELEASECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, modifiers: cint)) =
-  type Cb = proc(position: cint, modifiers: cint)
-  var tmp = new Cb
+proc onSCN_HOTSPOTRELEASECLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_HOTSPOTRELEASECLICKSlot) =
+  var tmp = new QsciScintillaBaseSCN_HOTSPOTRELEASECLICKSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_HOTSPOTRELEASECLICK(self.h, cast[int](addr tmp[]))
-proc SCN_INDICATORCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
 
+proc SCN_INDICATORCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
   fcQsciScintillaBase_SCN_INDICATORCLICK(self.h, position, modifiers)
 
+type QsciScintillaBaseSCN_INDICATORCLICKSlot* = proc(position: cint, modifiers: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_INDICATORCLICK(slot: int, position: cint, modifiers: cint) {.exportc.} =
-  type Cb = proc(position: cint, modifiers: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_INDICATORCLICKSlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = modifiers
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onSCN_INDICATORCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, modifiers: cint)) =
-  type Cb = proc(position: cint, modifiers: cint)
-  var tmp = new Cb
+proc onSCN_INDICATORCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_INDICATORCLICKSlot) =
+  var tmp = new QsciScintillaBaseSCN_INDICATORCLICKSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_INDICATORCLICK(self.h, cast[int](addr tmp[]))
-proc SCN_INDICATORRELEASE*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
 
+proc SCN_INDICATORRELEASE*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint): void =
   fcQsciScintillaBase_SCN_INDICATORRELEASE(self.h, position, modifiers)
 
+type QsciScintillaBaseSCN_INDICATORRELEASESlot* = proc(position: cint, modifiers: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_INDICATORRELEASE(slot: int, position: cint, modifiers: cint) {.exportc.} =
-  type Cb = proc(position: cint, modifiers: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_INDICATORRELEASESlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = modifiers
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onSCN_INDICATORRELEASE*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, modifiers: cint)) =
-  type Cb = proc(position: cint, modifiers: cint)
-  var tmp = new Cb
+proc onSCN_INDICATORRELEASE*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_INDICATORRELEASESlot) =
+  var tmp = new QsciScintillaBaseSCN_INDICATORRELEASESlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_INDICATORRELEASE(self.h, cast[int](addr tmp[]))
-proc SCN_MACRORECORD*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cuint, param2: culong, param3: pointer): void =
 
+proc SCN_MACRORECORD*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cuint, param2: culong, param3: pointer): void =
   fcQsciScintillaBase_SCN_MACRORECORD(self.h, param1, param2, param3)
 
+type QsciScintillaBaseSCN_MACRORECORDSlot* = proc(param1: cuint, param2: culong, param3: pointer)
 proc miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD(slot: int, param1: cuint, param2: culong, param3: pointer) {.exportc.} =
-  type Cb = proc(param1: cuint, param2: culong, param3: pointer)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_MACRORECORDSlot](cast[pointer](slot))
   let slotval1 = param1
 
   let slotval2 = param2
 
   let slotval3 = param3
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onSCN_MACRORECORD*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(param1: cuint, param2: culong, param3: pointer)) =
-  type Cb = proc(param1: cuint, param2: culong, param3: pointer)
-  var tmp = new Cb
+proc onSCN_MACRORECORD*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MACRORECORDSlot) =
+  var tmp = new QsciScintillaBaseSCN_MACRORECORDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_MACRORECORD(self.h, cast[int](addr tmp[]))
-proc SCN_MARGINCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint, margin: cint): void =
 
+proc SCN_MARGINCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint, margin: cint): void =
   fcQsciScintillaBase_SCN_MARGINCLICK(self.h, position, modifiers, margin)
 
+type QsciScintillaBaseSCN_MARGINCLICKSlot* = proc(position: cint, modifiers: cint, margin: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_MARGINCLICK(slot: int, position: cint, modifiers: cint, margin: cint) {.exportc.} =
-  type Cb = proc(position: cint, modifiers: cint, margin: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_MARGINCLICKSlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = modifiers
 
   let slotval3 = margin
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onSCN_MARGINCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, modifiers: cint, margin: cint)) =
-  type Cb = proc(position: cint, modifiers: cint, margin: cint)
-  var tmp = new Cb
+proc onSCN_MARGINCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MARGINCLICKSlot) =
+  var tmp = new QsciScintillaBaseSCN_MARGINCLICKSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_MARGINCLICK(self.h, cast[int](addr tmp[]))
-proc SCN_MARGINRIGHTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint, margin: cint): void =
 
+proc SCN_MARGINRIGHTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint, modifiers: cint, margin: cint): void =
   fcQsciScintillaBase_SCN_MARGINRIGHTCLICK(self.h, position, modifiers, margin)
 
+type QsciScintillaBaseSCN_MARGINRIGHTCLICKSlot* = proc(position: cint, modifiers: cint, margin: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_MARGINRIGHTCLICK(slot: int, position: cint, modifiers: cint, margin: cint) {.exportc.} =
-  type Cb = proc(position: cint, modifiers: cint, margin: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_MARGINRIGHTCLICKSlot](cast[pointer](slot))
   let slotval1 = position
 
   let slotval2 = modifiers
 
   let slotval3 = margin
 
-
   nimfunc[](slotval1, slotval2, slotval3)
 
-proc onSCN_MARGINRIGHTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint, modifiers: cint, margin: cint)) =
-  type Cb = proc(position: cint, modifiers: cint, margin: cint)
-  var tmp = new Cb
+proc onSCN_MARGINRIGHTCLICK*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MARGINRIGHTCLICKSlot) =
+  var tmp = new QsciScintillaBaseSCN_MARGINRIGHTCLICKSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_MARGINRIGHTCLICK(self.h, cast[int](addr tmp[]))
-proc SCN_MODIFIED*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cint, param2: cint, param3: cstring, param4: cint, param5: cint, param6: cint, param7: cint, param8: cint, param9: cint, param10: cint): void =
 
+proc SCN_MODIFIED*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cint, param2: cint, param3: cstring, param4: cint, param5: cint, param6: cint, param7: cint, param8: cint, param9: cint, param10: cint): void =
   fcQsciScintillaBase_SCN_MODIFIED(self.h, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10)
 
+type QsciScintillaBaseSCN_MODIFIEDSlot* = proc(param1: cint, param2: cint, param3: cstring, param4: cint, param5: cint, param6: cint, param7: cint, param8: cint, param9: cint, param10: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_MODIFIED(slot: int, param1: cint, param2: cint, param3: cstring, param4: cint, param5: cint, param6: cint, param7: cint, param8: cint, param9: cint, param10: cint) {.exportc.} =
-  type Cb = proc(param1: cint, param2: cint, param3: cstring, param4: cint, param5: cint, param6: cint, param7: cint, param8: cint, param9: cint, param10: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_MODIFIEDSlot](cast[pointer](slot))
   let slotval1 = param1
 
   let slotval2 = param2
@@ -2061,160 +1991,142 @@ proc miqt_exec_callback_QsciScintillaBase_SCN_MODIFIED(slot: int, param1: cint, 
 
   let slotval10 = param10
 
-
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5, slotval6, slotval7, slotval8, slotval9, slotval10)
 
-proc onSCN_MODIFIED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(param1: cint, param2: cint, param3: cstring, param4: cint, param5: cint, param6: cint, param7: cint, param8: cint, param9: cint, param10: cint)) =
-  type Cb = proc(param1: cint, param2: cint, param3: cstring, param4: cint, param5: cint, param6: cint, param7: cint, param8: cint, param9: cint, param10: cint)
-  var tmp = new Cb
+proc onSCN_MODIFIED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MODIFIEDSlot) =
+  var tmp = new QsciScintillaBaseSCN_MODIFIEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_MODIFIED(self.h, cast[int](addr tmp[]))
-proc SCN_MODIFYATTEMPTRO*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCN_MODIFYATTEMPTRO*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCN_MODIFYATTEMPTRO(self.h)
 
+type QsciScintillaBaseSCN_MODIFYATTEMPTROSlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCN_MODIFYATTEMPTRO(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_MODIFYATTEMPTROSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCN_MODIFYATTEMPTRO*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCN_MODIFYATTEMPTRO*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_MODIFYATTEMPTROSlot) =
+  var tmp = new QsciScintillaBaseSCN_MODIFYATTEMPTROSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_MODIFYATTEMPTRO(self.h, cast[int](addr tmp[]))
-proc SCN_NEEDSHOWN*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cint, param2: cint): void =
 
+proc SCN_NEEDSHOWN*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cint, param2: cint): void =
   fcQsciScintillaBase_SCN_NEEDSHOWN(self.h, param1, param2)
 
+type QsciScintillaBaseSCN_NEEDSHOWNSlot* = proc(param1: cint, param2: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_NEEDSHOWN(slot: int, param1: cint, param2: cint) {.exportc.} =
-  type Cb = proc(param1: cint, param2: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_NEEDSHOWNSlot](cast[pointer](slot))
   let slotval1 = param1
 
   let slotval2 = param2
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onSCN_NEEDSHOWN*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(param1: cint, param2: cint)) =
-  type Cb = proc(param1: cint, param2: cint)
-  var tmp = new Cb
+proc onSCN_NEEDSHOWN*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_NEEDSHOWNSlot) =
+  var tmp = new QsciScintillaBaseSCN_NEEDSHOWNSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_NEEDSHOWN(self.h, cast[int](addr tmp[]))
-proc SCN_PAINTED*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCN_PAINTED*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCN_PAINTED(self.h)
 
+type QsciScintillaBaseSCN_PAINTEDSlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCN_PAINTED(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_PAINTEDSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCN_PAINTED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCN_PAINTED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_PAINTEDSlot) =
+  var tmp = new QsciScintillaBaseSCN_PAINTEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_PAINTED(self.h, cast[int](addr tmp[]))
-proc SCN_SAVEPOINTLEFT*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCN_SAVEPOINTLEFT*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCN_SAVEPOINTLEFT(self.h)
 
+type QsciScintillaBaseSCN_SAVEPOINTLEFTSlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTLEFT(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_SAVEPOINTLEFTSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCN_SAVEPOINTLEFT*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCN_SAVEPOINTLEFT*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_SAVEPOINTLEFTSlot) =
+  var tmp = new QsciScintillaBaseSCN_SAVEPOINTLEFTSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_SAVEPOINTLEFT(self.h, cast[int](addr tmp[]))
-proc SCN_SAVEPOINTREACHED*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCN_SAVEPOINTREACHED*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCN_SAVEPOINTREACHED(self.h)
 
+type QsciScintillaBaseSCN_SAVEPOINTREACHEDSlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTREACHED(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_SAVEPOINTREACHEDSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCN_SAVEPOINTREACHED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCN_SAVEPOINTREACHED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_SAVEPOINTREACHEDSlot) =
+  var tmp = new QsciScintillaBaseSCN_SAVEPOINTREACHEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_SAVEPOINTREACHED(self.h, cast[int](addr tmp[]))
-proc SCN_STYLENEEDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint): void =
 
+proc SCN_STYLENEEDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, position: cint): void =
   fcQsciScintillaBase_SCN_STYLENEEDED(self.h, position)
 
+type QsciScintillaBaseSCN_STYLENEEDEDSlot* = proc(position: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_STYLENEEDED(slot: int, position: cint) {.exportc.} =
-  type Cb = proc(position: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_STYLENEEDEDSlot](cast[pointer](slot))
   let slotval1 = position
-
 
   nimfunc[](slotval1)
 
-proc onSCN_STYLENEEDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(position: cint)) =
-  type Cb = proc(position: cint)
-  var tmp = new Cb
+proc onSCN_STYLENEEDED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_STYLENEEDEDSlot) =
+  var tmp = new QsciScintillaBaseSCN_STYLENEEDEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_STYLENEEDED(self.h, cast[int](addr tmp[]))
-proc SCN_URIDROPPED*(self: gen_qsciscintillabase_types.QsciScintillaBase, url: gen_qurl.QUrl): void =
 
+proc SCN_URIDROPPED*(self: gen_qsciscintillabase_types.QsciScintillaBase, url: gen_qurl.QUrl): void =
   fcQsciScintillaBase_SCN_URIDROPPED(self.h, url.h)
 
+type QsciScintillaBaseSCN_URIDROPPEDSlot* = proc(url: gen_qurl.QUrl)
 proc miqt_exec_callback_QsciScintillaBase_SCN_URIDROPPED(slot: int, url: pointer) {.exportc.} =
-  type Cb = proc(url: gen_qurl.QUrl)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_URIDROPPEDSlot](cast[pointer](slot))
   let slotval1 = gen_qurl.QUrl(h: url)
-
 
   nimfunc[](slotval1)
 
-proc onSCN_URIDROPPED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(url: gen_qurl.QUrl)) =
-  type Cb = proc(url: gen_qurl.QUrl)
-  var tmp = new Cb
+proc onSCN_URIDROPPED*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_URIDROPPEDSlot) =
+  var tmp = new QsciScintillaBaseSCN_URIDROPPEDSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_URIDROPPED(self.h, cast[int](addr tmp[]))
-proc SCN_UPDATEUI*(self: gen_qsciscintillabase_types.QsciScintillaBase, updated: cint): void =
 
+proc SCN_UPDATEUI*(self: gen_qsciscintillabase_types.QsciScintillaBase, updated: cint): void =
   fcQsciScintillaBase_SCN_UPDATEUI(self.h, updated)
 
+type QsciScintillaBaseSCN_UPDATEUISlot* = proc(updated: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_UPDATEUI(slot: int, updated: cint) {.exportc.} =
-  type Cb = proc(updated: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_UPDATEUISlot](cast[pointer](slot))
   let slotval1 = updated
-
 
   nimfunc[](slotval1)
 
-proc onSCN_UPDATEUI*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(updated: cint)) =
-  type Cb = proc(updated: cint)
-  var tmp = new Cb
+proc onSCN_UPDATEUI*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_UPDATEUISlot) =
+  var tmp = new QsciScintillaBaseSCN_UPDATEUISlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_UPDATEUI(self.h, cast[int](addr tmp[]))
-proc SCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, id: cint, ch: cint, methodVal: cint, position: cint): void =
 
+proc SCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, id: cint, ch: cint, methodVal: cint, position: cint): void =
   fcQsciScintillaBase_SCN_USERLISTSELECTION(self.h, selection, id, ch, methodVal, position)
 
+type QsciScintillaBaseSCN_USERLISTSELECTIONSlot* = proc(selection: cstring, id: cint, ch: cint, methodVal: cint, position: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION(slot: int, selection: cstring, id: cint, ch: cint, methodVal: cint, position: cint) {.exportc.} =
-  type Cb = proc(selection: cstring, id: cint, ch: cint, methodVal: cint, position: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_USERLISTSELECTIONSlot](cast[pointer](slot))
   let slotval1 = (selection)
 
   let slotval2 = id
@@ -2225,22 +2137,20 @@ proc miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION(slot: int, selec
 
   let slotval5 = position
 
-
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5)
 
-proc onSCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(selection: cstring, id: cint, ch: cint, methodVal: cint, position: cint)) =
-  type Cb = proc(selection: cstring, id: cint, ch: cint, methodVal: cint, position: cint)
-  var tmp = new Cb
+proc onSCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_USERLISTSELECTIONSlot) =
+  var tmp = new QsciScintillaBaseSCN_USERLISTSELECTIONSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_USERLISTSELECTION(self.h, cast[int](addr tmp[]))
-proc SCN_USERLISTSELECTION2*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, id: cint, ch: cint, methodVal: cint): void =
 
+proc SCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, id: cint, ch: cint, methodVal: cint): void =
   fcQsciScintillaBase_SCN_USERLISTSELECTION2(self.h, selection, id, ch, methodVal)
 
+type QsciScintillaBaseSCN_USERLISTSELECTION2Slot* = proc(selection: cstring, id: cint, ch: cint, methodVal: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION2(slot: int, selection: cstring, id: cint, ch: cint, methodVal: cint) {.exportc.} =
-  type Cb = proc(selection: cstring, id: cint, ch: cint, methodVal: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_USERLISTSELECTION2Slot](cast[pointer](slot))
   let slotval1 = (selection)
 
   let slotval2 = id
@@ -2249,89 +2159,77 @@ proc miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION2(slot: int, sele
 
   let slotval4 = methodVal
 
-
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 
-proc onSCN_USERLISTSELECTION2*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(selection: cstring, id: cint, ch: cint, methodVal: cint)) =
-  type Cb = proc(selection: cstring, id: cint, ch: cint, methodVal: cint)
-  var tmp = new Cb
+proc onSCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_USERLISTSELECTION2Slot) =
+  var tmp = new QsciScintillaBaseSCN_USERLISTSELECTION2Slot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_USERLISTSELECTION2(self.h, cast[int](addr tmp[]))
-proc SCN_USERLISTSELECTION3*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, id: cint): void =
 
+proc SCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, selection: cstring, id: cint): void =
   fcQsciScintillaBase_SCN_USERLISTSELECTION3(self.h, selection, id)
 
+type QsciScintillaBaseSCN_USERLISTSELECTION3Slot* = proc(selection: cstring, id: cint)
 proc miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION3(slot: int, selection: cstring, id: cint) {.exportc.} =
-  type Cb = proc(selection: cstring, id: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_USERLISTSELECTION3Slot](cast[pointer](slot))
   let slotval1 = (selection)
 
   let slotval2 = id
 
-
   nimfunc[](slotval1, slotval2)
 
-proc onSCN_USERLISTSELECTION3*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc(selection: cstring, id: cint)) =
-  type Cb = proc(selection: cstring, id: cint)
-  var tmp = new Cb
+proc onSCN_USERLISTSELECTION*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_USERLISTSELECTION3Slot) =
+  var tmp = new QsciScintillaBaseSCN_USERLISTSELECTION3Slot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_USERLISTSELECTION3(self.h, cast[int](addr tmp[]))
-proc SCN_ZOOM*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
 
+proc SCN_ZOOM*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): void =
   fcQsciScintillaBase_SCN_ZOOM(self.h)
 
+type QsciScintillaBaseSCN_ZOOMSlot* = proc()
 proc miqt_exec_callback_QsciScintillaBase_SCN_ZOOM(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QsciScintillaBaseSCN_ZOOMSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onSCN_ZOOM*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onSCN_ZOOM*(self: gen_qsciscintillabase_types.QsciScintillaBase, slot: QsciScintillaBaseSCN_ZOOMSlot) =
+  var tmp = new QsciScintillaBaseSCN_ZOOMSlot
   tmp[] = slot
   GC_ref(tmp)
   fQsciScintillaBase_connect_SCN_ZOOM(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring, c: cstring): string =
   let v_ms = fcQsciScintillaBase_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciScintillaBase_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring, c: cstring): string =
   let v_ms = fcQsciScintillaBase_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qsciscintillabase_types.QsciScintillaBase, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciScintillaBase_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc SendScintilla22*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong): clong =
   fcQsciScintillaBase_SendScintilla22(self.h, msg, wParam)
 
-proc SendScintilla32*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, lParam: clong): clong =
-
+proc SendScintilla*(self: gen_qsciscintillabase_types.QsciScintillaBase, msg: cuint, wParam: culong, lParam: clong): clong =
   fcQsciScintillaBase_SendScintilla32(self.h, msg, wParam, lParam)
 
 proc QsciScintillaBasemetaObject*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciScintillaBase_virtualbase_metaObject(self.h))
 
 type QsciScintillaBasemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -2349,7 +2247,6 @@ proc miqt_exec_callback_QsciScintillaBase_metaObject(self: ptr cQsciScintillaBas
 
   virtualReturn.h
 proc QsciScintillaBasemetacast*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cstring): pointer =
-
   fQsciScintillaBase_virtualbase_metacast(self.h, param1)
 
 type QsciScintillaBasemetacastProc* = proc(param1: cstring): pointer
@@ -2369,7 +2266,6 @@ proc miqt_exec_callback_QsciScintillaBase_metacast(self: ptr cQsciScintillaBase,
 
   virtualReturn
 proc QsciScintillaBasemetacall*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciScintillaBase_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciScintillaBasemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -2393,7 +2289,6 @@ proc miqt_exec_callback_QsciScintillaBase_metacall(self: ptr cQsciScintillaBase,
 
   virtualReturn
 proc QsciScintillaBasecanInsertFromMimeData*(self: gen_qsciscintillabase_types.QsciScintillaBase, source: gen_qmimedata.QMimeData): bool =
-
   fQsciScintillaBase_virtualbase_canInsertFromMimeData(self.h, source.h)
 
 type QsciScintillaBasecanInsertFromMimeDataProc* = proc(source: gen_qmimedata.QMimeData): bool
@@ -2413,7 +2308,6 @@ proc miqt_exec_callback_QsciScintillaBase_canInsertFromMimeData(self: ptr cQsciS
 
   virtualReturn
 proc QsciScintillaBasefromMimeData*(self: gen_qsciscintillabase_types.QsciScintillaBase, source: gen_qmimedata.QMimeData, rectangular: ptr bool): seq[byte] =
-
   var v_bytearray = fQsciScintillaBase_virtualbase_fromMimeData(self.h, source.h, rectangular)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
@@ -2438,7 +2332,6 @@ proc miqt_exec_callback_QsciScintillaBase_fromMimeData(self: ptr cQsciScintillaB
 
   struct_miqt_string(data: cast[cstring](if len(virtualReturn) == 0: nil else: unsafeAddr virtualReturn[0]), len: csize_t(len(virtualReturn)))
 proc QsciScintillaBasetoMimeData*(self: gen_qsciscintillabase_types.QsciScintillaBase, text: seq[byte], rectangular: bool): gen_qmimedata.QMimeData =
-
   gen_qmimedata.QMimeData(h: fQsciScintillaBase_virtualbase_toMimeData(self.h, struct_miqt_string(data: cast[cstring](if len(text) == 0: nil else: unsafeAddr text[0]), len: csize_t(len(text))), rectangular))
 
 type QsciScintillaBasetoMimeDataProc* = proc(text: seq[byte], rectangular: bool): gen_qmimedata.QMimeData
@@ -2463,7 +2356,6 @@ proc miqt_exec_callback_QsciScintillaBase_toMimeData(self: ptr cQsciScintillaBas
 
   virtualReturn.h
 proc QsciScintillaBasechangeEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qcoreevent.QEvent): void =
-
   fQsciScintillaBase_virtualbase_changeEvent(self.h, e.h)
 
 type QsciScintillaBasechangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -2481,7 +2373,6 @@ proc miqt_exec_callback_QsciScintillaBase_changeEvent(self: ptr cQsciScintillaBa
 
   nimfunc[](slotval1)
 proc QsciScintillaBasecontextMenuEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QContextMenuEvent): void =
-
   fQsciScintillaBase_virtualbase_contextMenuEvent(self.h, e.h)
 
 type QsciScintillaBasecontextMenuEventProc* = proc(e: gen_qevent.QContextMenuEvent): void
@@ -2499,7 +2390,6 @@ proc miqt_exec_callback_QsciScintillaBase_contextMenuEvent(self: ptr cQsciScinti
 
   nimfunc[](slotval1)
 proc QsciScintillaBasedragEnterEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QDragEnterEvent): void =
-
   fQsciScintillaBase_virtualbase_dragEnterEvent(self.h, e.h)
 
 type QsciScintillaBasedragEnterEventProc* = proc(e: gen_qevent.QDragEnterEvent): void
@@ -2517,7 +2407,6 @@ proc miqt_exec_callback_QsciScintillaBase_dragEnterEvent(self: ptr cQsciScintill
 
   nimfunc[](slotval1)
 proc QsciScintillaBasedragLeaveEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QDragLeaveEvent): void =
-
   fQsciScintillaBase_virtualbase_dragLeaveEvent(self.h, e.h)
 
 type QsciScintillaBasedragLeaveEventProc* = proc(e: gen_qevent.QDragLeaveEvent): void
@@ -2535,7 +2424,6 @@ proc miqt_exec_callback_QsciScintillaBase_dragLeaveEvent(self: ptr cQsciScintill
 
   nimfunc[](slotval1)
 proc QsciScintillaBasedragMoveEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QDragMoveEvent): void =
-
   fQsciScintillaBase_virtualbase_dragMoveEvent(self.h, e.h)
 
 type QsciScintillaBasedragMoveEventProc* = proc(e: gen_qevent.QDragMoveEvent): void
@@ -2553,7 +2441,6 @@ proc miqt_exec_callback_QsciScintillaBase_dragMoveEvent(self: ptr cQsciScintilla
 
   nimfunc[](slotval1)
 proc QsciScintillaBasedropEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QDropEvent): void =
-
   fQsciScintillaBase_virtualbase_dropEvent(self.h, e.h)
 
 type QsciScintillaBasedropEventProc* = proc(e: gen_qevent.QDropEvent): void
@@ -2571,7 +2458,6 @@ proc miqt_exec_callback_QsciScintillaBase_dropEvent(self: ptr cQsciScintillaBase
 
   nimfunc[](slotval1)
 proc QsciScintillaBasefocusInEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QFocusEvent): void =
-
   fQsciScintillaBase_virtualbase_focusInEvent(self.h, e.h)
 
 type QsciScintillaBasefocusInEventProc* = proc(e: gen_qevent.QFocusEvent): void
@@ -2589,7 +2475,6 @@ proc miqt_exec_callback_QsciScintillaBase_focusInEvent(self: ptr cQsciScintillaB
 
   nimfunc[](slotval1)
 proc QsciScintillaBasefocusOutEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QFocusEvent): void =
-
   fQsciScintillaBase_virtualbase_focusOutEvent(self.h, e.h)
 
 type QsciScintillaBasefocusOutEventProc* = proc(e: gen_qevent.QFocusEvent): void
@@ -2607,7 +2492,6 @@ proc miqt_exec_callback_QsciScintillaBase_focusOutEvent(self: ptr cQsciScintilla
 
   nimfunc[](slotval1)
 proc QsciScintillaBasefocusNextPrevChild*(self: gen_qsciscintillabase_types.QsciScintillaBase, next: bool): bool =
-
   fQsciScintillaBase_virtualbase_focusNextPrevChild(self.h, next)
 
 type QsciScintillaBasefocusNextPrevChildProc* = proc(next: bool): bool
@@ -2627,7 +2511,6 @@ proc miqt_exec_callback_QsciScintillaBase_focusNextPrevChild(self: ptr cQsciScin
 
   virtualReturn
 proc QsciScintillaBasekeyPressEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QKeyEvent): void =
-
   fQsciScintillaBase_virtualbase_keyPressEvent(self.h, e.h)
 
 type QsciScintillaBasekeyPressEventProc* = proc(e: gen_qevent.QKeyEvent): void
@@ -2645,7 +2528,6 @@ proc miqt_exec_callback_QsciScintillaBase_keyPressEvent(self: ptr cQsciScintilla
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseinputMethodEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qevent.QInputMethodEvent): void =
-
   fQsciScintillaBase_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QsciScintillaBaseinputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -2663,7 +2545,6 @@ proc miqt_exec_callback_QsciScintillaBase_inputMethodEvent(self: ptr cQsciScinti
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseinputMethodQuery*(self: gen_qsciscintillabase_types.QsciScintillaBase, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQsciScintillaBase_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QsciScintillaBaseinputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -2683,7 +2564,6 @@ proc miqt_exec_callback_QsciScintillaBase_inputMethodQuery(self: ptr cQsciScinti
 
   virtualReturn.h
 proc QsciScintillaBasemouseDoubleClickEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QMouseEvent): void =
-
   fQsciScintillaBase_virtualbase_mouseDoubleClickEvent(self.h, e.h)
 
 type QsciScintillaBasemouseDoubleClickEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -2701,7 +2581,6 @@ proc miqt_exec_callback_QsciScintillaBase_mouseDoubleClickEvent(self: ptr cQsciS
 
   nimfunc[](slotval1)
 proc QsciScintillaBasemouseMoveEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QMouseEvent): void =
-
   fQsciScintillaBase_virtualbase_mouseMoveEvent(self.h, e.h)
 
 type QsciScintillaBasemouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -2719,7 +2598,6 @@ proc miqt_exec_callback_QsciScintillaBase_mouseMoveEvent(self: ptr cQsciScintill
 
   nimfunc[](slotval1)
 proc QsciScintillaBasemousePressEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QMouseEvent): void =
-
   fQsciScintillaBase_virtualbase_mousePressEvent(self.h, e.h)
 
 type QsciScintillaBasemousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -2737,7 +2615,6 @@ proc miqt_exec_callback_QsciScintillaBase_mousePressEvent(self: ptr cQsciScintil
 
   nimfunc[](slotval1)
 proc QsciScintillaBasemouseReleaseEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QMouseEvent): void =
-
   fQsciScintillaBase_virtualbase_mouseReleaseEvent(self.h, e.h)
 
 type QsciScintillaBasemouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -2755,7 +2632,6 @@ proc miqt_exec_callback_QsciScintillaBase_mouseReleaseEvent(self: ptr cQsciScint
 
   nimfunc[](slotval1)
 proc QsciScintillaBasepaintEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QPaintEvent): void =
-
   fQsciScintillaBase_virtualbase_paintEvent(self.h, e.h)
 
 type QsciScintillaBasepaintEventProc* = proc(e: gen_qevent.QPaintEvent): void
@@ -2773,7 +2649,6 @@ proc miqt_exec_callback_QsciScintillaBase_paintEvent(self: ptr cQsciScintillaBas
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseresizeEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, e: gen_qevent.QResizeEvent): void =
-
   fQsciScintillaBase_virtualbase_resizeEvent(self.h, e.h)
 
 type QsciScintillaBaseresizeEventProc* = proc(e: gen_qevent.QResizeEvent): void
@@ -2791,7 +2666,6 @@ proc miqt_exec_callback_QsciScintillaBase_resizeEvent(self: ptr cQsciScintillaBa
 
   nimfunc[](slotval1)
 proc QsciScintillaBasescrollContentsBy*(self: gen_qsciscintillabase_types.QsciScintillaBase, dx: cint, dy: cint): void =
-
   fQsciScintillaBase_virtualbase_scrollContentsBy(self.h, dx, dy)
 
 type QsciScintillaBasescrollContentsByProc* = proc(dx: cint, dy: cint): void
@@ -2811,7 +2685,6 @@ proc miqt_exec_callback_QsciScintillaBase_scrollContentsBy(self: ptr cQsciScinti
 
   nimfunc[](slotval1, slotval2)
 proc QsciScintillaBaseminimumSizeHint*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQsciScintillaBase_virtualbase_minimumSizeHint(self.h))
 
 type QsciScintillaBaseminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -2829,7 +2702,6 @@ proc miqt_exec_callback_QsciScintillaBase_minimumSizeHint(self: ptr cQsciScintil
 
   virtualReturn.h
 proc QsciScintillaBasesizeHint*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQsciScintillaBase_virtualbase_sizeHint(self.h))
 
 type QsciScintillaBasesizeHintProc* = proc(): gen_qsize.QSize
@@ -2847,7 +2719,6 @@ proc miqt_exec_callback_QsciScintillaBase_sizeHint(self: ptr cQsciScintillaBase,
 
   virtualReturn.h
 proc QsciScintillaBasesetupViewport*(self: gen_qsciscintillabase_types.QsciScintillaBase, viewport: gen_qwidget.QWidget): void =
-
   fQsciScintillaBase_virtualbase_setupViewport(self.h, viewport.h)
 
 type QsciScintillaBasesetupViewportProc* = proc(viewport: gen_qwidget.QWidget): void
@@ -2865,7 +2736,6 @@ proc miqt_exec_callback_QsciScintillaBase_setupViewport(self: ptr cQsciScintilla
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseeventFilter*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQsciScintillaBase_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QsciScintillaBaseeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -2887,7 +2757,6 @@ proc miqt_exec_callback_QsciScintillaBase_eventFilter(self: ptr cQsciScintillaBa
 
   virtualReturn
 proc QsciScintillaBaseevent*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: gen_qcoreevent.QEvent): bool =
-
   fQsciScintillaBase_virtualbase_event(self.h, param1.h)
 
 type QsciScintillaBaseeventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -2907,7 +2776,6 @@ proc miqt_exec_callback_QsciScintillaBase_event(self: ptr cQsciScintillaBase, sl
 
   virtualReturn
 proc QsciScintillaBaseviewportEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: gen_qcoreevent.QEvent): bool =
-
   fQsciScintillaBase_virtualbase_viewportEvent(self.h, param1.h)
 
 type QsciScintillaBaseviewportEventProc* = proc(param1: gen_qcoreevent.QEvent): bool
@@ -2927,7 +2795,6 @@ proc miqt_exec_callback_QsciScintillaBase_viewportEvent(self: ptr cQsciScintilla
 
   virtualReturn
 proc QsciScintillaBasewheelEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: gen_qevent.QWheelEvent): void =
-
   fQsciScintillaBase_virtualbase_wheelEvent(self.h, param1.h)
 
 type QsciScintillaBasewheelEventProc* = proc(param1: gen_qevent.QWheelEvent): void
@@ -2945,7 +2812,6 @@ proc miqt_exec_callback_QsciScintillaBase_wheelEvent(self: ptr cQsciScintillaBas
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseviewportSizeHint*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQsciScintillaBase_virtualbase_viewportSizeHint(self.h))
 
 type QsciScintillaBaseviewportSizeHintProc* = proc(): gen_qsize.QSize
@@ -2963,7 +2829,6 @@ proc miqt_exec_callback_QsciScintillaBase_viewportSizeHint(self: ptr cQsciScinti
 
   virtualReturn.h
 proc QsciScintillaBasedevType*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): cint =
-
   fQsciScintillaBase_virtualbase_devType(self.h)
 
 type QsciScintillaBasedevTypeProc* = proc(): cint
@@ -2981,7 +2846,6 @@ proc miqt_exec_callback_QsciScintillaBase_devType(self: ptr cQsciScintillaBase, 
 
   virtualReturn
 proc QsciScintillaBasesetVisible*(self: gen_qsciscintillabase_types.QsciScintillaBase, visible: bool): void =
-
   fQsciScintillaBase_virtualbase_setVisible(self.h, visible)
 
 type QsciScintillaBasesetVisibleProc* = proc(visible: bool): void
@@ -2999,7 +2863,6 @@ proc miqt_exec_callback_QsciScintillaBase_setVisible(self: ptr cQsciScintillaBas
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseheightForWidth*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cint): cint =
-
   fQsciScintillaBase_virtualbase_heightForWidth(self.h, param1)
 
 type QsciScintillaBaseheightForWidthProc* = proc(param1: cint): cint
@@ -3019,7 +2882,6 @@ proc miqt_exec_callback_QsciScintillaBase_heightForWidth(self: ptr cQsciScintill
 
   virtualReturn
 proc QsciScintillaBasehasHeightForWidth*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): bool =
-
   fQsciScintillaBase_virtualbase_hasHeightForWidth(self.h)
 
 type QsciScintillaBasehasHeightForWidthProc* = proc(): bool
@@ -3037,7 +2899,6 @@ proc miqt_exec_callback_QsciScintillaBase_hasHeightForWidth(self: ptr cQsciScint
 
   virtualReturn
 proc QsciScintillaBasepaintEngine*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQsciScintillaBase_virtualbase_paintEngine(self.h))
 
 type QsciScintillaBasepaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -3055,7 +2916,6 @@ proc miqt_exec_callback_QsciScintillaBase_paintEngine(self: ptr cQsciScintillaBa
 
   virtualReturn.h
 proc QsciScintillaBasekeyReleaseEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qevent.QKeyEvent): void =
-
   fQsciScintillaBase_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QsciScintillaBasekeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -3073,7 +2933,6 @@ proc miqt_exec_callback_QsciScintillaBase_keyReleaseEvent(self: ptr cQsciScintil
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseenterEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qcoreevent.QEvent): void =
-
   fQsciScintillaBase_virtualbase_enterEvent(self.h, event.h)
 
 type QsciScintillaBaseenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -3091,7 +2950,6 @@ proc miqt_exec_callback_QsciScintillaBase_enterEvent(self: ptr cQsciScintillaBas
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseleaveEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qcoreevent.QEvent): void =
-
   fQsciScintillaBase_virtualbase_leaveEvent(self.h, event.h)
 
 type QsciScintillaBaseleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -3109,7 +2967,6 @@ proc miqt_exec_callback_QsciScintillaBase_leaveEvent(self: ptr cQsciScintillaBas
 
   nimfunc[](slotval1)
 proc QsciScintillaBasemoveEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qevent.QMoveEvent): void =
-
   fQsciScintillaBase_virtualbase_moveEvent(self.h, event.h)
 
 type QsciScintillaBasemoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -3127,7 +2984,6 @@ proc miqt_exec_callback_QsciScintillaBase_moveEvent(self: ptr cQsciScintillaBase
 
   nimfunc[](slotval1)
 proc QsciScintillaBasecloseEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qevent.QCloseEvent): void =
-
   fQsciScintillaBase_virtualbase_closeEvent(self.h, event.h)
 
 type QsciScintillaBasecloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -3145,7 +3001,6 @@ proc miqt_exec_callback_QsciScintillaBase_closeEvent(self: ptr cQsciScintillaBas
 
   nimfunc[](slotval1)
 proc QsciScintillaBasetabletEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qevent.QTabletEvent): void =
-
   fQsciScintillaBase_virtualbase_tabletEvent(self.h, event.h)
 
 type QsciScintillaBasetabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -3163,7 +3018,6 @@ proc miqt_exec_callback_QsciScintillaBase_tabletEvent(self: ptr cQsciScintillaBa
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseactionEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qevent.QActionEvent): void =
-
   fQsciScintillaBase_virtualbase_actionEvent(self.h, event.h)
 
 type QsciScintillaBaseactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -3181,7 +3035,6 @@ proc miqt_exec_callback_QsciScintillaBase_actionEvent(self: ptr cQsciScintillaBa
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseshowEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qevent.QShowEvent): void =
-
   fQsciScintillaBase_virtualbase_showEvent(self.h, event.h)
 
 type QsciScintillaBaseshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -3199,7 +3052,6 @@ proc miqt_exec_callback_QsciScintillaBase_showEvent(self: ptr cQsciScintillaBase
 
   nimfunc[](slotval1)
 proc QsciScintillaBasehideEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qevent.QHideEvent): void =
-
   fQsciScintillaBase_virtualbase_hideEvent(self.h, event.h)
 
 type QsciScintillaBasehideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -3217,7 +3069,6 @@ proc miqt_exec_callback_QsciScintillaBase_hideEvent(self: ptr cQsciScintillaBase
 
   nimfunc[](slotval1)
 proc QsciScintillaBasenativeEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQsciScintillaBase_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QsciScintillaBasenativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -3244,7 +3095,6 @@ proc miqt_exec_callback_QsciScintillaBase_nativeEvent(self: ptr cQsciScintillaBa
 
   virtualReturn
 proc QsciScintillaBasemetric*(self: gen_qsciscintillabase_types.QsciScintillaBase, param1: cint): cint =
-
   fQsciScintillaBase_virtualbase_metric(self.h, cint(param1))
 
 type QsciScintillaBasemetricProc* = proc(param1: cint): cint
@@ -3264,7 +3114,6 @@ proc miqt_exec_callback_QsciScintillaBase_metric(self: ptr cQsciScintillaBase, s
 
   virtualReturn
 proc QsciScintillaBaseinitPainter*(self: gen_qsciscintillabase_types.QsciScintillaBase, painter: gen_qpainter.QPainter): void =
-
   fQsciScintillaBase_virtualbase_initPainter(self.h, painter.h)
 
 type QsciScintillaBaseinitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -3282,7 +3131,6 @@ proc miqt_exec_callback_QsciScintillaBase_initPainter(self: ptr cQsciScintillaBa
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseredirected*(self: gen_qsciscintillabase_types.QsciScintillaBase, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQsciScintillaBase_virtualbase_redirected(self.h, offset.h))
 
 type QsciScintillaBaseredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -3302,7 +3150,6 @@ proc miqt_exec_callback_QsciScintillaBase_redirected(self: ptr cQsciScintillaBas
 
   virtualReturn.h
 proc QsciScintillaBasesharedPainter*(self: gen_qsciscintillabase_types.QsciScintillaBase, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQsciScintillaBase_virtualbase_sharedPainter(self.h))
 
 type QsciScintillaBasesharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -3320,7 +3167,6 @@ proc miqt_exec_callback_QsciScintillaBase_sharedPainter(self: ptr cQsciScintilla
 
   virtualReturn.h
 proc QsciScintillaBasetimerEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciScintillaBase_virtualbase_timerEvent(self.h, event.h)
 
 type QsciScintillaBasetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -3338,7 +3184,6 @@ proc miqt_exec_callback_QsciScintillaBase_timerEvent(self: ptr cQsciScintillaBas
 
   nimfunc[](slotval1)
 proc QsciScintillaBasechildEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciScintillaBase_virtualbase_childEvent(self.h, event.h)
 
 type QsciScintillaBasechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -3356,7 +3201,6 @@ proc miqt_exec_callback_QsciScintillaBase_childEvent(self: ptr cQsciScintillaBas
 
   nimfunc[](slotval1)
 proc QsciScintillaBasecustomEvent*(self: gen_qsciscintillabase_types.QsciScintillaBase, event: gen_qcoreevent.QEvent): void =
-
   fQsciScintillaBase_virtualbase_customEvent(self.h, event.h)
 
 type QsciScintillaBasecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -3374,7 +3218,6 @@ proc miqt_exec_callback_QsciScintillaBase_customEvent(self: ptr cQsciScintillaBa
 
   nimfunc[](slotval1)
 proc QsciScintillaBaseconnectNotify*(self: gen_qsciscintillabase_types.QsciScintillaBase, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciScintillaBase_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciScintillaBaseconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -3392,7 +3235,6 @@ proc miqt_exec_callback_QsciScintillaBase_connectNotify(self: ptr cQsciScintilla
 
   nimfunc[](slotval1)
 proc QsciScintillaBasedisconnectNotify*(self: gen_qsciscintillabase_types.QsciScintillaBase, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciScintillaBase_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciScintillaBasedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

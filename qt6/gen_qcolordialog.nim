@@ -226,164 +226,134 @@ proc fcQColorDialog_delete(self: pointer) {.importc: "QColorDialog_delete".}
 func init*(T: type gen_qcolordialog_types.QColorDialog, h: ptr cQColorDialog): gen_qcolordialog_types.QColorDialog =
   T(h: h)
 proc create*(T: type gen_qcolordialog_types.QColorDialog, parent: gen_qwidget.QWidget): gen_qcolordialog_types.QColorDialog =
-
   gen_qcolordialog_types.QColorDialog.init(fcQColorDialog_new(parent.h))
+
 proc create*(T: type gen_qcolordialog_types.QColorDialog, ): gen_qcolordialog_types.QColorDialog =
-
   gen_qcolordialog_types.QColorDialog.init(fcQColorDialog_new2())
-proc create2*(T: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor): gen_qcolordialog_types.QColorDialog =
 
+proc create*(T: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor): gen_qcolordialog_types.QColorDialog =
   gen_qcolordialog_types.QColorDialog.init(fcQColorDialog_new3(initial.h))
+
 proc create*(T: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget): gen_qcolordialog_types.QColorDialog =
-
   gen_qcolordialog_types.QColorDialog.init(fcQColorDialog_new4(initial.h, parent.h))
-proc metaObject*(self: gen_qcolordialog_types.QColorDialog, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qcolordialog_types.QColorDialog, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQColorDialog_metaObject(self.h))
 
 proc metacast*(self: gen_qcolordialog_types.QColorDialog, param1: cstring): pointer =
-
   fcQColorDialog_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcolordialog_types.QColorDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQColorDialog_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcolordialog_types.QColorDialog, s: cstring): string =
-
   let v_ms = fcQColorDialog_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setCurrentColor*(self: gen_qcolordialog_types.QColorDialog, color: gen_qcolor.QColor): void =
-
   fcQColorDialog_setCurrentColor(self.h, color.h)
 
 proc currentColor*(self: gen_qcolordialog_types.QColorDialog, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQColorDialog_currentColor(self.h))
 
 proc selectedColor*(self: gen_qcolordialog_types.QColorDialog, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQColorDialog_selectedColor(self.h))
 
 proc setOption*(self: gen_qcolordialog_types.QColorDialog, option: cint): void =
-
   fcQColorDialog_setOption(self.h, cint(option))
 
 proc testOption*(self: gen_qcolordialog_types.QColorDialog, option: cint): bool =
-
   fcQColorDialog_testOption(self.h, cint(option))
 
 proc setOptions*(self: gen_qcolordialog_types.QColorDialog, options: cint): void =
-
   fcQColorDialog_setOptions(self.h, cint(options))
 
 proc options*(self: gen_qcolordialog_types.QColorDialog, ): cint =
-
   cint(fcQColorDialog_options(self.h))
 
 proc setVisible*(self: gen_qcolordialog_types.QColorDialog, visible: bool): void =
-
   fcQColorDialog_setVisible(self.h, visible)
 
 proc getColor*(_: type gen_qcolordialog_types.QColorDialog, ): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQColorDialog_getColor())
 
 proc customCount*(_: type gen_qcolordialog_types.QColorDialog, ): cint =
-
   fcQColorDialog_customCount()
 
 proc customColor*(_: type gen_qcolordialog_types.QColorDialog, index: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQColorDialog_customColor(index))
 
 proc setCustomColor*(_: type gen_qcolordialog_types.QColorDialog, index: cint, color: gen_qcolor.QColor): void =
-
   fcQColorDialog_setCustomColor(index, color.h)
 
 proc standardColor*(_: type gen_qcolordialog_types.QColorDialog, index: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQColorDialog_standardColor(index))
 
 proc setStandardColor*(_: type gen_qcolordialog_types.QColorDialog, index: cint, color: gen_qcolor.QColor): void =
-
   fcQColorDialog_setStandardColor(index, color.h)
 
 proc currentColorChanged*(self: gen_qcolordialog_types.QColorDialog, color: gen_qcolor.QColor): void =
-
   fcQColorDialog_currentColorChanged(self.h, color.h)
 
+type QColorDialogcurrentColorChangedSlot* = proc(color: gen_qcolor.QColor)
 proc miqt_exec_callback_QColorDialog_currentColorChanged(slot: int, color: pointer) {.exportc.} =
-  type Cb = proc(color: gen_qcolor.QColor)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QColorDialogcurrentColorChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qcolor.QColor(h: color)
-
 
   nimfunc[](slotval1)
 
-proc oncurrentColorChanged*(self: gen_qcolordialog_types.QColorDialog, slot: proc(color: gen_qcolor.QColor)) =
-  type Cb = proc(color: gen_qcolor.QColor)
-  var tmp = new Cb
+proc oncurrentColorChanged*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogcurrentColorChangedSlot) =
+  var tmp = new QColorDialogcurrentColorChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQColorDialog_connect_currentColorChanged(self.h, cast[int](addr tmp[]))
-proc colorSelected*(self: gen_qcolordialog_types.QColorDialog, color: gen_qcolor.QColor): void =
 
+proc colorSelected*(self: gen_qcolordialog_types.QColorDialog, color: gen_qcolor.QColor): void =
   fcQColorDialog_colorSelected(self.h, color.h)
 
+type QColorDialogcolorSelectedSlot* = proc(color: gen_qcolor.QColor)
 proc miqt_exec_callback_QColorDialog_colorSelected(slot: int, color: pointer) {.exportc.} =
-  type Cb = proc(color: gen_qcolor.QColor)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QColorDialogcolorSelectedSlot](cast[pointer](slot))
   let slotval1 = gen_qcolor.QColor(h: color)
-
 
   nimfunc[](slotval1)
 
-proc oncolorSelected*(self: gen_qcolordialog_types.QColorDialog, slot: proc(color: gen_qcolor.QColor)) =
-  type Cb = proc(color: gen_qcolor.QColor)
-  var tmp = new Cb
+proc oncolorSelected*(self: gen_qcolordialog_types.QColorDialog, slot: QColorDialogcolorSelectedSlot) =
+  var tmp = new QColorDialogcolorSelectedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQColorDialog_connect_colorSelected(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qcolordialog_types.QColorDialog, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qcolordialog_types.QColorDialog, s: cstring, c: cstring): string =
   let v_ms = fcQColorDialog_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcolordialog_types.QColorDialog, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcolordialog_types.QColorDialog, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQColorDialog_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc setOption2*(self: gen_qcolordialog_types.QColorDialog, option: cint, on: bool): void =
-
+proc setOption*(self: gen_qcolordialog_types.QColorDialog, option: cint, on: bool): void =
   fcQColorDialog_setOption2(self.h, cint(option), on)
 
-proc getColor1*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor): gen_qcolor.QColor =
-
+proc getColor*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fcQColorDialog_getColor1(initial.h))
 
-proc getColor2*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget): gen_qcolor.QColor =
-
+proc getColor*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fcQColorDialog_getColor2(initial.h, parent.h))
 
-proc getColor3*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget, title: string): gen_qcolor.QColor =
-
+proc getColor*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget, title: string): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fcQColorDialog_getColor3(initial.h, parent.h, struct_miqt_string(data: title, len: csize_t(len(title)))))
 
-proc getColor4*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget, title: string, options: cint): gen_qcolor.QColor =
-
+proc getColor*(_: type gen_qcolordialog_types.QColorDialog, initial: gen_qcolor.QColor, parent: gen_qwidget.QWidget, title: string, options: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fcQColorDialog_getColor4(initial.h, parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), cint(options)))
 
 proc QColorDialogmetaObject*(self: gen_qcolordialog_types.QColorDialog, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQColorDialog_virtualbase_metaObject(self.h))
 
 type QColorDialogmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -401,7 +371,6 @@ proc miqt_exec_callback_QColorDialog_metaObject(self: ptr cQColorDialog, slot: i
 
   virtualReturn.h
 proc QColorDialogmetacast*(self: gen_qcolordialog_types.QColorDialog, param1: cstring): pointer =
-
   fQColorDialog_virtualbase_metacast(self.h, param1)
 
 type QColorDialogmetacastProc* = proc(param1: cstring): pointer
@@ -421,7 +390,6 @@ proc miqt_exec_callback_QColorDialog_metacast(self: ptr cQColorDialog, slot: int
 
   virtualReturn
 proc QColorDialogmetacall*(self: gen_qcolordialog_types.QColorDialog, param1: cint, param2: cint, param3: pointer): cint =
-
   fQColorDialog_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QColorDialogmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -445,7 +413,6 @@ proc miqt_exec_callback_QColorDialog_metacall(self: ptr cQColorDialog, slot: int
 
   virtualReturn
 proc QColorDialogsetVisible*(self: gen_qcolordialog_types.QColorDialog, visible: bool): void =
-
   fQColorDialog_virtualbase_setVisible(self.h, visible)
 
 type QColorDialogsetVisibleProc* = proc(visible: bool): void
@@ -463,7 +430,6 @@ proc miqt_exec_callback_QColorDialog_setVisible(self: ptr cQColorDialog, slot: i
 
   nimfunc[](slotval1)
 proc QColorDialogchangeEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QEvent): void =
-
   fQColorDialog_virtualbase_changeEvent(self.h, event.h)
 
 type QColorDialogchangeEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -481,7 +447,6 @@ proc miqt_exec_callback_QColorDialog_changeEvent(self: ptr cQColorDialog, slot: 
 
   nimfunc[](slotval1)
 proc QColorDialogdone*(self: gen_qcolordialog_types.QColorDialog, resultVal: cint): void =
-
   fQColorDialog_virtualbase_done(self.h, resultVal)
 
 type QColorDialogdoneProc* = proc(resultVal: cint): void
@@ -499,7 +464,6 @@ proc miqt_exec_callback_QColorDialog_done(self: ptr cQColorDialog, slot: int, re
 
   nimfunc[](slotval1)
 proc QColorDialogsizeHint*(self: gen_qcolordialog_types.QColorDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQColorDialog_virtualbase_sizeHint(self.h))
 
 type QColorDialogsizeHintProc* = proc(): gen_qsize.QSize
@@ -517,7 +481,6 @@ proc miqt_exec_callback_QColorDialog_sizeHint(self: ptr cQColorDialog, slot: int
 
   virtualReturn.h
 proc QColorDialogminimumSizeHint*(self: gen_qcolordialog_types.QColorDialog, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQColorDialog_virtualbase_minimumSizeHint(self.h))
 
 type QColorDialogminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -535,7 +498,6 @@ proc miqt_exec_callback_QColorDialog_minimumSizeHint(self: ptr cQColorDialog, sl
 
   virtualReturn.h
 proc QColorDialogopen*(self: gen_qcolordialog_types.QColorDialog, ): void =
-
   fQColorDialog_virtualbase_open(self.h)
 
 type QColorDialogopenProc* = proc(): void
@@ -551,7 +513,6 @@ proc miqt_exec_callback_QColorDialog_open(self: ptr cQColorDialog, slot: int): v
 
   nimfunc[]()
 proc QColorDialogexec*(self: gen_qcolordialog_types.QColorDialog, ): cint =
-
   fQColorDialog_virtualbase_exec(self.h)
 
 type QColorDialogexecProc* = proc(): cint
@@ -569,7 +530,6 @@ proc miqt_exec_callback_QColorDialog_exec(self: ptr cQColorDialog, slot: int): c
 
   virtualReturn
 proc QColorDialogaccept*(self: gen_qcolordialog_types.QColorDialog, ): void =
-
   fQColorDialog_virtualbase_accept(self.h)
 
 type QColorDialogacceptProc* = proc(): void
@@ -585,7 +545,6 @@ proc miqt_exec_callback_QColorDialog_accept(self: ptr cQColorDialog, slot: int):
 
   nimfunc[]()
 proc QColorDialogreject*(self: gen_qcolordialog_types.QColorDialog, ): void =
-
   fQColorDialog_virtualbase_reject(self.h)
 
 type QColorDialogrejectProc* = proc(): void
@@ -601,7 +560,6 @@ proc miqt_exec_callback_QColorDialog_reject(self: ptr cQColorDialog, slot: int):
 
   nimfunc[]()
 proc QColorDialogkeyPressEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QKeyEvent): void =
-
   fQColorDialog_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QColorDialogkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -619,7 +577,6 @@ proc miqt_exec_callback_QColorDialog_keyPressEvent(self: ptr cQColorDialog, slot
 
   nimfunc[](slotval1)
 proc QColorDialogcloseEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QCloseEvent): void =
-
   fQColorDialog_virtualbase_closeEvent(self.h, param1.h)
 
 type QColorDialogcloseEventProc* = proc(param1: gen_qevent.QCloseEvent): void
@@ -637,7 +594,6 @@ proc miqt_exec_callback_QColorDialog_closeEvent(self: ptr cQColorDialog, slot: i
 
   nimfunc[](slotval1)
 proc QColorDialogshowEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QShowEvent): void =
-
   fQColorDialog_virtualbase_showEvent(self.h, param1.h)
 
 type QColorDialogshowEventProc* = proc(param1: gen_qevent.QShowEvent): void
@@ -655,7 +611,6 @@ proc miqt_exec_callback_QColorDialog_showEvent(self: ptr cQColorDialog, slot: in
 
   nimfunc[](slotval1)
 proc QColorDialogresizeEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QResizeEvent): void =
-
   fQColorDialog_virtualbase_resizeEvent(self.h, param1.h)
 
 type QColorDialogresizeEventProc* = proc(param1: gen_qevent.QResizeEvent): void
@@ -673,7 +628,6 @@ proc miqt_exec_callback_QColorDialog_resizeEvent(self: ptr cQColorDialog, slot: 
 
   nimfunc[](slotval1)
 proc QColorDialogcontextMenuEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QContextMenuEvent): void =
-
   fQColorDialog_virtualbase_contextMenuEvent(self.h, param1.h)
 
 type QColorDialogcontextMenuEventProc* = proc(param1: gen_qevent.QContextMenuEvent): void
@@ -691,7 +645,6 @@ proc miqt_exec_callback_QColorDialog_contextMenuEvent(self: ptr cQColorDialog, s
 
   nimfunc[](slotval1)
 proc QColorDialogeventFilter*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool =
-
   fQColorDialog_virtualbase_eventFilter(self.h, param1.h, param2.h)
 
 type QColorDialogeventFilterProc* = proc(param1: gen_qobject.QObject, param2: gen_qcoreevent.QEvent): bool
@@ -713,7 +666,6 @@ proc miqt_exec_callback_QColorDialog_eventFilter(self: ptr cQColorDialog, slot: 
 
   virtualReturn
 proc QColorDialogdevType*(self: gen_qcolordialog_types.QColorDialog, ): cint =
-
   fQColorDialog_virtualbase_devType(self.h)
 
 type QColorDialogdevTypeProc* = proc(): cint
@@ -731,7 +683,6 @@ proc miqt_exec_callback_QColorDialog_devType(self: ptr cQColorDialog, slot: int)
 
   virtualReturn
 proc QColorDialogheightForWidth*(self: gen_qcolordialog_types.QColorDialog, param1: cint): cint =
-
   fQColorDialog_virtualbase_heightForWidth(self.h, param1)
 
 type QColorDialogheightForWidthProc* = proc(param1: cint): cint
@@ -751,7 +702,6 @@ proc miqt_exec_callback_QColorDialog_heightForWidth(self: ptr cQColorDialog, slo
 
   virtualReturn
 proc QColorDialoghasHeightForWidth*(self: gen_qcolordialog_types.QColorDialog, ): bool =
-
   fQColorDialog_virtualbase_hasHeightForWidth(self.h)
 
 type QColorDialoghasHeightForWidthProc* = proc(): bool
@@ -769,7 +719,6 @@ proc miqt_exec_callback_QColorDialog_hasHeightForWidth(self: ptr cQColorDialog, 
 
   virtualReturn
 proc QColorDialogpaintEngine*(self: gen_qcolordialog_types.QColorDialog, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQColorDialog_virtualbase_paintEngine(self.h))
 
 type QColorDialogpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -787,7 +736,6 @@ proc miqt_exec_callback_QColorDialog_paintEngine(self: ptr cQColorDialog, slot: 
 
   virtualReturn.h
 proc QColorDialogevent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QEvent): bool =
-
   fQColorDialog_virtualbase_event(self.h, event.h)
 
 type QColorDialogeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -807,7 +755,6 @@ proc miqt_exec_callback_QColorDialog_event(self: ptr cQColorDialog, slot: int, e
 
   virtualReturn
 proc QColorDialogmousePressEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMouseEvent): void =
-
   fQColorDialog_virtualbase_mousePressEvent(self.h, event.h)
 
 type QColorDialogmousePressEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -825,7 +772,6 @@ proc miqt_exec_callback_QColorDialog_mousePressEvent(self: ptr cQColorDialog, sl
 
   nimfunc[](slotval1)
 proc QColorDialogmouseReleaseEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMouseEvent): void =
-
   fQColorDialog_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QColorDialogmouseReleaseEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -843,7 +789,6 @@ proc miqt_exec_callback_QColorDialog_mouseReleaseEvent(self: ptr cQColorDialog, 
 
   nimfunc[](slotval1)
 proc QColorDialogmouseDoubleClickEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMouseEvent): void =
-
   fQColorDialog_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QColorDialogmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -861,7 +806,6 @@ proc miqt_exec_callback_QColorDialog_mouseDoubleClickEvent(self: ptr cQColorDial
 
   nimfunc[](slotval1)
 proc QColorDialogmouseMoveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMouseEvent): void =
-
   fQColorDialog_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QColorDialogmouseMoveEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -879,7 +823,6 @@ proc miqt_exec_callback_QColorDialog_mouseMoveEvent(self: ptr cQColorDialog, slo
 
   nimfunc[](slotval1)
 proc QColorDialogwheelEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QWheelEvent): void =
-
   fQColorDialog_virtualbase_wheelEvent(self.h, event.h)
 
 type QColorDialogwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -897,7 +840,6 @@ proc miqt_exec_callback_QColorDialog_wheelEvent(self: ptr cQColorDialog, slot: i
 
   nimfunc[](slotval1)
 proc QColorDialogkeyReleaseEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QKeyEvent): void =
-
   fQColorDialog_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QColorDialogkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -915,7 +857,6 @@ proc miqt_exec_callback_QColorDialog_keyReleaseEvent(self: ptr cQColorDialog, sl
 
   nimfunc[](slotval1)
 proc QColorDialogfocusInEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QFocusEvent): void =
-
   fQColorDialog_virtualbase_focusInEvent(self.h, event.h)
 
 type QColorDialogfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -933,7 +874,6 @@ proc miqt_exec_callback_QColorDialog_focusInEvent(self: ptr cQColorDialog, slot:
 
   nimfunc[](slotval1)
 proc QColorDialogfocusOutEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QFocusEvent): void =
-
   fQColorDialog_virtualbase_focusOutEvent(self.h, event.h)
 
 type QColorDialogfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -951,7 +891,6 @@ proc miqt_exec_callback_QColorDialog_focusOutEvent(self: ptr cQColorDialog, slot
 
   nimfunc[](slotval1)
 proc QColorDialogenterEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QEnterEvent): void =
-
   fQColorDialog_virtualbase_enterEvent(self.h, event.h)
 
 type QColorDialogenterEventProc* = proc(event: gen_qevent.QEnterEvent): void
@@ -969,7 +908,6 @@ proc miqt_exec_callback_QColorDialog_enterEvent(self: ptr cQColorDialog, slot: i
 
   nimfunc[](slotval1)
 proc QColorDialogleaveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QEvent): void =
-
   fQColorDialog_virtualbase_leaveEvent(self.h, event.h)
 
 type QColorDialogleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -987,7 +925,6 @@ proc miqt_exec_callback_QColorDialog_leaveEvent(self: ptr cQColorDialog, slot: i
 
   nimfunc[](slotval1)
 proc QColorDialogpaintEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QPaintEvent): void =
-
   fQColorDialog_virtualbase_paintEvent(self.h, event.h)
 
 type QColorDialogpaintEventProc* = proc(event: gen_qevent.QPaintEvent): void
@@ -1005,7 +942,6 @@ proc miqt_exec_callback_QColorDialog_paintEvent(self: ptr cQColorDialog, slot: i
 
   nimfunc[](slotval1)
 proc QColorDialogmoveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QMoveEvent): void =
-
   fQColorDialog_virtualbase_moveEvent(self.h, event.h)
 
 type QColorDialogmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -1023,7 +959,6 @@ proc miqt_exec_callback_QColorDialog_moveEvent(self: ptr cQColorDialog, slot: in
 
   nimfunc[](slotval1)
 proc QColorDialogtabletEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QTabletEvent): void =
-
   fQColorDialog_virtualbase_tabletEvent(self.h, event.h)
 
 type QColorDialogtabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -1041,7 +976,6 @@ proc miqt_exec_callback_QColorDialog_tabletEvent(self: ptr cQColorDialog, slot: 
 
   nimfunc[](slotval1)
 proc QColorDialogactionEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QActionEvent): void =
-
   fQColorDialog_virtualbase_actionEvent(self.h, event.h)
 
 type QColorDialogactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -1059,7 +993,6 @@ proc miqt_exec_callback_QColorDialog_actionEvent(self: ptr cQColorDialog, slot: 
 
   nimfunc[](slotval1)
 proc QColorDialogdragEnterEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QDragEnterEvent): void =
-
   fQColorDialog_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QColorDialogdragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -1077,7 +1010,6 @@ proc miqt_exec_callback_QColorDialog_dragEnterEvent(self: ptr cQColorDialog, slo
 
   nimfunc[](slotval1)
 proc QColorDialogdragMoveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QDragMoveEvent): void =
-
   fQColorDialog_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QColorDialogdragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1095,7 +1027,6 @@ proc miqt_exec_callback_QColorDialog_dragMoveEvent(self: ptr cQColorDialog, slot
 
   nimfunc[](slotval1)
 proc QColorDialogdragLeaveEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QDragLeaveEvent): void =
-
   fQColorDialog_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QColorDialogdragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1113,7 +1044,6 @@ proc miqt_exec_callback_QColorDialog_dragLeaveEvent(self: ptr cQColorDialog, slo
 
   nimfunc[](slotval1)
 proc QColorDialogdropEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QDropEvent): void =
-
   fQColorDialog_virtualbase_dropEvent(self.h, event.h)
 
 type QColorDialogdropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1131,7 +1061,6 @@ proc miqt_exec_callback_QColorDialog_dropEvent(self: ptr cQColorDialog, slot: in
 
   nimfunc[](slotval1)
 proc QColorDialoghideEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qevent.QHideEvent): void =
-
   fQColorDialog_virtualbase_hideEvent(self.h, event.h)
 
 type QColorDialoghideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1149,7 +1078,6 @@ proc miqt_exec_callback_QColorDialog_hideEvent(self: ptr cQColorDialog, slot: in
 
   nimfunc[](slotval1)
 proc QColorDialognativeEvent*(self: gen_qcolordialog_types.QColorDialog, eventType: seq[byte], message: pointer, resultVal: ptr uint): bool =
-
   fQColorDialog_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QColorDialognativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr uint): bool
@@ -1176,7 +1104,6 @@ proc miqt_exec_callback_QColorDialog_nativeEvent(self: ptr cQColorDialog, slot: 
 
   virtualReturn
 proc QColorDialogmetric*(self: gen_qcolordialog_types.QColorDialog, param1: cint): cint =
-
   fQColorDialog_virtualbase_metric(self.h, cint(param1))
 
 type QColorDialogmetricProc* = proc(param1: cint): cint
@@ -1196,7 +1123,6 @@ proc miqt_exec_callback_QColorDialog_metric(self: ptr cQColorDialog, slot: int, 
 
   virtualReturn
 proc QColorDialoginitPainter*(self: gen_qcolordialog_types.QColorDialog, painter: gen_qpainter.QPainter): void =
-
   fQColorDialog_virtualbase_initPainter(self.h, painter.h)
 
 type QColorDialoginitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1214,7 +1140,6 @@ proc miqt_exec_callback_QColorDialog_initPainter(self: ptr cQColorDialog, slot: 
 
   nimfunc[](slotval1)
 proc QColorDialogredirected*(self: gen_qcolordialog_types.QColorDialog, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQColorDialog_virtualbase_redirected(self.h, offset.h))
 
 type QColorDialogredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1234,7 +1159,6 @@ proc miqt_exec_callback_QColorDialog_redirected(self: ptr cQColorDialog, slot: i
 
   virtualReturn.h
 proc QColorDialogsharedPainter*(self: gen_qcolordialog_types.QColorDialog, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQColorDialog_virtualbase_sharedPainter(self.h))
 
 type QColorDialogsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1252,7 +1176,6 @@ proc miqt_exec_callback_QColorDialog_sharedPainter(self: ptr cQColorDialog, slot
 
   virtualReturn.h
 proc QColorDialoginputMethodEvent*(self: gen_qcolordialog_types.QColorDialog, param1: gen_qevent.QInputMethodEvent): void =
-
   fQColorDialog_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QColorDialoginputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1270,7 +1193,6 @@ proc miqt_exec_callback_QColorDialog_inputMethodEvent(self: ptr cQColorDialog, s
 
   nimfunc[](slotval1)
 proc QColorDialoginputMethodQuery*(self: gen_qcolordialog_types.QColorDialog, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQColorDialog_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QColorDialoginputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1290,7 +1212,6 @@ proc miqt_exec_callback_QColorDialog_inputMethodQuery(self: ptr cQColorDialog, s
 
   virtualReturn.h
 proc QColorDialogfocusNextPrevChild*(self: gen_qcolordialog_types.QColorDialog, next: bool): bool =
-
   fQColorDialog_virtualbase_focusNextPrevChild(self.h, next)
 
 type QColorDialogfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1310,7 +1231,6 @@ proc miqt_exec_callback_QColorDialog_focusNextPrevChild(self: ptr cQColorDialog,
 
   virtualReturn
 proc QColorDialogtimerEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QTimerEvent): void =
-
   fQColorDialog_virtualbase_timerEvent(self.h, event.h)
 
 type QColorDialogtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1328,7 +1248,6 @@ proc miqt_exec_callback_QColorDialog_timerEvent(self: ptr cQColorDialog, slot: i
 
   nimfunc[](slotval1)
 proc QColorDialogchildEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QChildEvent): void =
-
   fQColorDialog_virtualbase_childEvent(self.h, event.h)
 
 type QColorDialogchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1346,7 +1265,6 @@ proc miqt_exec_callback_QColorDialog_childEvent(self: ptr cQColorDialog, slot: i
 
   nimfunc[](slotval1)
 proc QColorDialogcustomEvent*(self: gen_qcolordialog_types.QColorDialog, event: gen_qcoreevent.QEvent): void =
-
   fQColorDialog_virtualbase_customEvent(self.h, event.h)
 
 type QColorDialogcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1364,7 +1282,6 @@ proc miqt_exec_callback_QColorDialog_customEvent(self: ptr cQColorDialog, slot: 
 
   nimfunc[](slotval1)
 proc QColorDialogconnectNotify*(self: gen_qcolordialog_types.QColorDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQColorDialog_virtualbase_connectNotify(self.h, signal.h)
 
 type QColorDialogconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1382,7 +1299,6 @@ proc miqt_exec_callback_QColorDialog_connectNotify(self: ptr cQColorDialog, slot
 
   nimfunc[](slotval1)
 proc QColorDialogdisconnectNotify*(self: gen_qcolordialog_types.QColorDialog, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQColorDialog_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QColorDialogdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

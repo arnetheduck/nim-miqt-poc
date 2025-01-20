@@ -187,93 +187,75 @@ proc fcQsciLexerYAML_delete(self: pointer) {.importc: "QsciLexerYAML_delete".}
 func init*(T: type gen_qscilexeryaml_types.QsciLexerYAML, h: ptr cQsciLexerYAML): gen_qscilexeryaml_types.QsciLexerYAML =
   T(h: h)
 proc create*(T: type gen_qscilexeryaml_types.QsciLexerYAML, ): gen_qscilexeryaml_types.QsciLexerYAML =
-
   gen_qscilexeryaml_types.QsciLexerYAML.init(fcQsciLexerYAML_new())
+
 proc create*(T: type gen_qscilexeryaml_types.QsciLexerYAML, parent: gen_qobject.QObject): gen_qscilexeryaml_types.QsciLexerYAML =
-
   gen_qscilexeryaml_types.QsciLexerYAML.init(fcQsciLexerYAML_new2(parent.h))
-proc metaObject*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQsciLexerYAML_metaObject(self.h))
 
 proc metacast*(self: gen_qscilexeryaml_types.QsciLexerYAML, param1: cstring): pointer =
-
   fcQsciLexerYAML_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscilexeryaml_types.QsciLexerYAML, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQsciLexerYAML_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscilexeryaml_types.QsciLexerYAML, s: cstring): string =
-
   let v_ms = fcQsciLexerYAML_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc language*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cstring =
-
   (fcQsciLexerYAML_language(self.h))
 
 proc lexer*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cstring =
-
   (fcQsciLexerYAML_lexer(self.h))
 
 proc defaultColor*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerYAML_defaultColor(self.h, style))
 
 proc defaultEolFill*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): bool =
-
   fcQsciLexerYAML_defaultEolFill(self.h, style)
 
 proc defaultFont*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fcQsciLexerYAML_defaultFont(self.h, style))
 
 proc defaultPaper*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fcQsciLexerYAML_defaultPaper(self.h, style))
 
 proc keywords*(self: gen_qscilexeryaml_types.QsciLexerYAML, set: cint): cstring =
-
   (fcQsciLexerYAML_keywords(self.h, set))
 
 proc description*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): string =
-
   let v_ms = fcQsciLexerYAML_description(self.h, style)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc refreshProperties*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): void =
-
   fcQsciLexerYAML_refreshProperties(self.h)
 
 proc foldComments*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): bool =
-
   fcQsciLexerYAML_foldComments(self.h)
 
 proc setFoldComments*(self: gen_qscilexeryaml_types.QsciLexerYAML, fold: bool): void =
-
   fcQsciLexerYAML_setFoldComments(self.h, fold)
 
-proc tr2*(_: type gen_qscilexeryaml_types.QsciLexerYAML, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscilexeryaml_types.QsciLexerYAML, s: cstring, c: cstring): string =
   let v_ms = fcQsciLexerYAML_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscilexeryaml_types.QsciLexerYAML, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscilexeryaml_types.QsciLexerYAML, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQsciLexerYAML_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QsciLexerYAMLmetaObject*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQsciLexerYAML_virtualbase_metaObject(self.h))
 
 type QsciLexerYAMLmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -291,7 +273,6 @@ proc miqt_exec_callback_QsciLexerYAML_metaObject(self: ptr cQsciLexerYAML, slot:
 
   virtualReturn.h
 proc QsciLexerYAMLmetacast*(self: gen_qscilexeryaml_types.QsciLexerYAML, param1: cstring): pointer =
-
   fQsciLexerYAML_virtualbase_metacast(self.h, param1)
 
 type QsciLexerYAMLmetacastProc* = proc(param1: cstring): pointer
@@ -311,7 +292,6 @@ proc miqt_exec_callback_QsciLexerYAML_metacast(self: ptr cQsciLexerYAML, slot: i
 
   virtualReturn
 proc QsciLexerYAMLmetacall*(self: gen_qscilexeryaml_types.QsciLexerYAML, param1: cint, param2: cint, param3: pointer): cint =
-
   fQsciLexerYAML_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QsciLexerYAMLmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -335,7 +315,6 @@ proc miqt_exec_callback_QsciLexerYAML_metacall(self: ptr cQsciLexerYAML, slot: i
 
   virtualReturn
 proc QsciLexerYAMLsetFoldComments*(self: gen_qscilexeryaml_types.QsciLexerYAML, fold: bool): void =
-
   fQsciLexerYAML_virtualbase_setFoldComments(self.h, fold)
 
 type QsciLexerYAMLsetFoldCommentsProc* = proc(fold: bool): void
@@ -367,7 +346,6 @@ proc miqt_exec_callback_QsciLexerYAML_language(self: ptr cQsciLexerYAML, slot: i
 
   virtualReturn
 proc QsciLexerYAMLlexer*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cstring =
-
   (fQsciLexerYAML_virtualbase_lexer(self.h))
 
 type QsciLexerYAMLlexerProc* = proc(): cstring
@@ -385,7 +363,6 @@ proc miqt_exec_callback_QsciLexerYAML_lexer(self: ptr cQsciLexerYAML, slot: int)
 
   virtualReturn
 proc QsciLexerYAMLlexerId*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cint =
-
   fQsciLexerYAML_virtualbase_lexerId(self.h)
 
 type QsciLexerYAMLlexerIdProc* = proc(): cint
@@ -403,7 +380,6 @@ proc miqt_exec_callback_QsciLexerYAML_lexerId(self: ptr cQsciLexerYAML, slot: in
 
   virtualReturn
 proc QsciLexerYAMLautoCompletionFillups*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cstring =
-
   (fQsciLexerYAML_virtualbase_autoCompletionFillups(self.h))
 
 type QsciLexerYAMLautoCompletionFillupsProc* = proc(): cstring
@@ -421,7 +397,6 @@ proc miqt_exec_callback_QsciLexerYAML_autoCompletionFillups(self: ptr cQsciLexer
 
   virtualReturn
 proc QsciLexerYAMLautoCompletionWordSeparators*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): seq[string] =
-
   var v_ma = fQsciLexerYAML_virtualbase_autoCompletionWordSeparators(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -451,7 +426,6 @@ proc miqt_exec_callback_QsciLexerYAML_autoCompletionWordSeparators(self: ptr cQs
 
   struct_miqt_array(len: csize_t(len(virtualReturn)), data: if len(virtualReturn) == 0: nil else: addr(virtualReturn_CArray[0]))
 proc QsciLexerYAMLblockEnd*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: ptr cint): cstring =
-
   (fQsciLexerYAML_virtualbase_blockEnd(self.h, style))
 
 type QsciLexerYAMLblockEndProc* = proc(style: ptr cint): cstring
@@ -471,7 +445,6 @@ proc miqt_exec_callback_QsciLexerYAML_blockEnd(self: ptr cQsciLexerYAML, slot: i
 
   virtualReturn
 proc QsciLexerYAMLblockLookback*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cint =
-
   fQsciLexerYAML_virtualbase_blockLookback(self.h)
 
 type QsciLexerYAMLblockLookbackProc* = proc(): cint
@@ -489,7 +462,6 @@ proc miqt_exec_callback_QsciLexerYAML_blockLookback(self: ptr cQsciLexerYAML, sl
 
   virtualReturn
 proc QsciLexerYAMLblockStart*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: ptr cint): cstring =
-
   (fQsciLexerYAML_virtualbase_blockStart(self.h, style))
 
 type QsciLexerYAMLblockStartProc* = proc(style: ptr cint): cstring
@@ -509,7 +481,6 @@ proc miqt_exec_callback_QsciLexerYAML_blockStart(self: ptr cQsciLexerYAML, slot:
 
   virtualReturn
 proc QsciLexerYAMLblockStartKeyword*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: ptr cint): cstring =
-
   (fQsciLexerYAML_virtualbase_blockStartKeyword(self.h, style))
 
 type QsciLexerYAMLblockStartKeywordProc* = proc(style: ptr cint): cstring
@@ -529,7 +500,6 @@ proc miqt_exec_callback_QsciLexerYAML_blockStartKeyword(self: ptr cQsciLexerYAML
 
   virtualReturn
 proc QsciLexerYAMLbraceStyle*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cint =
-
   fQsciLexerYAML_virtualbase_braceStyle(self.h)
 
 type QsciLexerYAMLbraceStyleProc* = proc(): cint
@@ -547,7 +517,6 @@ proc miqt_exec_callback_QsciLexerYAML_braceStyle(self: ptr cQsciLexerYAML, slot:
 
   virtualReturn
 proc QsciLexerYAMLcaseSensitive*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): bool =
-
   fQsciLexerYAML_virtualbase_caseSensitive(self.h)
 
 type QsciLexerYAMLcaseSensitiveProc* = proc(): bool
@@ -565,7 +534,6 @@ proc miqt_exec_callback_QsciLexerYAML_caseSensitive(self: ptr cQsciLexerYAML, sl
 
   virtualReturn
 proc QsciLexerYAMLcolor*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerYAML_virtualbase_color(self.h, style))
 
 type QsciLexerYAMLcolorProc* = proc(style: cint): gen_qcolor.QColor
@@ -585,7 +553,6 @@ proc miqt_exec_callback_QsciLexerYAML_color(self: ptr cQsciLexerYAML, slot: int,
 
   virtualReturn.h
 proc QsciLexerYAMLeolFill*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): bool =
-
   fQsciLexerYAML_virtualbase_eolFill(self.h, style)
 
 type QsciLexerYAMLeolFillProc* = proc(style: cint): bool
@@ -605,7 +572,6 @@ proc miqt_exec_callback_QsciLexerYAML_eolFill(self: ptr cQsciLexerYAML, slot: in
 
   virtualReturn
 proc QsciLexerYAMLfont*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qfont.QFont =
-
   gen_qfont.QFont(h: fQsciLexerYAML_virtualbase_font(self.h, style))
 
 type QsciLexerYAMLfontProc* = proc(style: cint): gen_qfont.QFont
@@ -625,7 +591,6 @@ proc miqt_exec_callback_QsciLexerYAML_font(self: ptr cQsciLexerYAML, slot: int, 
 
   virtualReturn.h
 proc QsciLexerYAMLindentationGuideView*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cint =
-
   fQsciLexerYAML_virtualbase_indentationGuideView(self.h)
 
 type QsciLexerYAMLindentationGuideViewProc* = proc(): cint
@@ -643,7 +608,6 @@ proc miqt_exec_callback_QsciLexerYAML_indentationGuideView(self: ptr cQsciLexerY
 
   virtualReturn
 proc QsciLexerYAMLkeywords*(self: gen_qscilexeryaml_types.QsciLexerYAML, set: cint): cstring =
-
   (fQsciLexerYAML_virtualbase_keywords(self.h, set))
 
 type QsciLexerYAMLkeywordsProc* = proc(set: cint): cstring
@@ -663,7 +627,6 @@ proc miqt_exec_callback_QsciLexerYAML_keywords(self: ptr cQsciLexerYAML, slot: i
 
   virtualReturn
 proc QsciLexerYAMLdefaultStyle*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cint =
-
   fQsciLexerYAML_virtualbase_defaultStyle(self.h)
 
 type QsciLexerYAMLdefaultStyleProc* = proc(): cint
@@ -697,7 +660,6 @@ proc miqt_exec_callback_QsciLexerYAML_description(self: ptr cQsciLexerYAML, slot
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QsciLexerYAMLpaper*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qcolor.QColor =
-
   gen_qcolor.QColor(h: fQsciLexerYAML_virtualbase_paper(self.h, style))
 
 type QsciLexerYAMLpaperProc* = proc(style: cint): gen_qcolor.QColor
@@ -716,12 +678,11 @@ proc miqt_exec_callback_QsciLexerYAML_paper(self: ptr cQsciLexerYAML, slot: int,
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerYAMLdefaultColorWithStyle*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerYAMLdefaultColor*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerYAML_virtualbase_defaultColorWithStyle(self.h, style))
 
 type QsciLexerYAMLdefaultColorWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultColorWithStyle*(self: gen_qscilexeryaml_types.QsciLexerYAML, slot: QsciLexerYAMLdefaultColorWithStyleProc) =
+proc ondefaultColor*(self: gen_qscilexeryaml_types.QsciLexerYAML, slot: QsciLexerYAMLdefaultColorWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerYAMLdefaultColorWithStyleProc
   tmp[] = slot
@@ -737,7 +698,6 @@ proc miqt_exec_callback_QsciLexerYAML_defaultColorWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerYAMLdefaultEolFill*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): bool =
-
   fQsciLexerYAML_virtualbase_defaultEolFill(self.h, style)
 
 type QsciLexerYAMLdefaultEolFillProc* = proc(style: cint): bool
@@ -756,12 +716,11 @@ proc miqt_exec_callback_QsciLexerYAML_defaultEolFill(self: ptr cQsciLexerYAML, s
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn
-proc QsciLexerYAMLdefaultFontWithStyle*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qfont.QFont =
-
+proc QsciLexerYAMLdefaultFont*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qfont.QFont =
   gen_qfont.QFont(h: fQsciLexerYAML_virtualbase_defaultFontWithStyle(self.h, style))
 
 type QsciLexerYAMLdefaultFontWithStyleProc* = proc(style: cint): gen_qfont.QFont
-proc ondefaultFontWithStyle*(self: gen_qscilexeryaml_types.QsciLexerYAML, slot: QsciLexerYAMLdefaultFontWithStyleProc) =
+proc ondefaultFont*(self: gen_qscilexeryaml_types.QsciLexerYAML, slot: QsciLexerYAMLdefaultFontWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerYAMLdefaultFontWithStyleProc
   tmp[] = slot
@@ -776,12 +735,11 @@ proc miqt_exec_callback_QsciLexerYAML_defaultFontWithStyle(self: ptr cQsciLexerY
   let virtualReturn = nimfunc[](slotval1 )
 
   virtualReturn.h
-proc QsciLexerYAMLdefaultPaperWithStyle*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qcolor.QColor =
-
+proc QsciLexerYAMLdefaultPaper*(self: gen_qscilexeryaml_types.QsciLexerYAML, style: cint): gen_qcolor.QColor =
   gen_qcolor.QColor(h: fQsciLexerYAML_virtualbase_defaultPaperWithStyle(self.h, style))
 
 type QsciLexerYAMLdefaultPaperWithStyleProc* = proc(style: cint): gen_qcolor.QColor
-proc ondefaultPaperWithStyle*(self: gen_qscilexeryaml_types.QsciLexerYAML, slot: QsciLexerYAMLdefaultPaperWithStyleProc) =
+proc ondefaultPaper*(self: gen_qscilexeryaml_types.QsciLexerYAML, slot: QsciLexerYAMLdefaultPaperWithStyleProc) =
   # TODO check subclass
   var tmp = new QsciLexerYAMLdefaultPaperWithStyleProc
   tmp[] = slot
@@ -797,7 +755,6 @@ proc miqt_exec_callback_QsciLexerYAML_defaultPaperWithStyle(self: ptr cQsciLexer
 
   virtualReturn.h
 proc QsciLexerYAMLsetEditor*(self: gen_qscilexeryaml_types.QsciLexerYAML, editor: gen_qsciscintilla.QsciScintilla): void =
-
   fQsciLexerYAML_virtualbase_setEditor(self.h, editor.h)
 
 type QsciLexerYAMLsetEditorProc* = proc(editor: gen_qsciscintilla.QsciScintilla): void
@@ -815,7 +772,6 @@ proc miqt_exec_callback_QsciLexerYAML_setEditor(self: ptr cQsciLexerYAML, slot: 
 
   nimfunc[](slotval1)
 proc QsciLexerYAMLrefreshProperties*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): void =
-
   fQsciLexerYAML_virtualbase_refreshProperties(self.h)
 
 type QsciLexerYAMLrefreshPropertiesProc* = proc(): void
@@ -831,7 +787,6 @@ proc miqt_exec_callback_QsciLexerYAML_refreshProperties(self: ptr cQsciLexerYAML
 
   nimfunc[]()
 proc QsciLexerYAMLstyleBitsNeeded*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cint =
-
   fQsciLexerYAML_virtualbase_styleBitsNeeded(self.h)
 
 type QsciLexerYAMLstyleBitsNeededProc* = proc(): cint
@@ -849,7 +804,6 @@ proc miqt_exec_callback_QsciLexerYAML_styleBitsNeeded(self: ptr cQsciLexerYAML, 
 
   virtualReturn
 proc QsciLexerYAMLwordCharacters*(self: gen_qscilexeryaml_types.QsciLexerYAML, ): cstring =
-
   (fQsciLexerYAML_virtualbase_wordCharacters(self.h))
 
 type QsciLexerYAMLwordCharactersProc* = proc(): cstring
@@ -867,7 +821,6 @@ proc miqt_exec_callback_QsciLexerYAML_wordCharacters(self: ptr cQsciLexerYAML, s
 
   virtualReturn
 proc QsciLexerYAMLsetAutoIndentStyle*(self: gen_qscilexeryaml_types.QsciLexerYAML, autoindentstyle: cint): void =
-
   fQsciLexerYAML_virtualbase_setAutoIndentStyle(self.h, autoindentstyle)
 
 type QsciLexerYAMLsetAutoIndentStyleProc* = proc(autoindentstyle: cint): void
@@ -885,7 +838,6 @@ proc miqt_exec_callback_QsciLexerYAML_setAutoIndentStyle(self: ptr cQsciLexerYAM
 
   nimfunc[](slotval1)
 proc QsciLexerYAMLsetColor*(self: gen_qscilexeryaml_types.QsciLexerYAML, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerYAML_virtualbase_setColor(self.h, c.h, style)
 
 type QsciLexerYAMLsetColorProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -905,7 +857,6 @@ proc miqt_exec_callback_QsciLexerYAML_setColor(self: ptr cQsciLexerYAML, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerYAMLsetEolFill*(self: gen_qscilexeryaml_types.QsciLexerYAML, eoffill: bool, style: cint): void =
-
   fQsciLexerYAML_virtualbase_setEolFill(self.h, eoffill, style)
 
 type QsciLexerYAMLsetEolFillProc* = proc(eoffill: bool, style: cint): void
@@ -925,7 +876,6 @@ proc miqt_exec_callback_QsciLexerYAML_setEolFill(self: ptr cQsciLexerYAML, slot:
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerYAMLsetFont*(self: gen_qscilexeryaml_types.QsciLexerYAML, f: gen_qfont.QFont, style: cint): void =
-
   fQsciLexerYAML_virtualbase_setFont(self.h, f.h, style)
 
 type QsciLexerYAMLsetFontProc* = proc(f: gen_qfont.QFont, style: cint): void
@@ -945,7 +895,6 @@ proc miqt_exec_callback_QsciLexerYAML_setFont(self: ptr cQsciLexerYAML, slot: in
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerYAMLsetPaper*(self: gen_qscilexeryaml_types.QsciLexerYAML, c: gen_qcolor.QColor, style: cint): void =
-
   fQsciLexerYAML_virtualbase_setPaper(self.h, c.h, style)
 
 type QsciLexerYAMLsetPaperProc* = proc(c: gen_qcolor.QColor, style: cint): void
@@ -965,7 +914,6 @@ proc miqt_exec_callback_QsciLexerYAML_setPaper(self: ptr cQsciLexerYAML, slot: i
 
   nimfunc[](slotval1, slotval2)
 proc QsciLexerYAMLreadProperties*(self: gen_qscilexeryaml_types.QsciLexerYAML, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerYAML_virtualbase_readProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerYAMLreadPropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -990,7 +938,6 @@ proc miqt_exec_callback_QsciLexerYAML_readProperties(self: ptr cQsciLexerYAML, s
 
   virtualReturn
 proc QsciLexerYAMLwriteProperties*(self: gen_qscilexeryaml_types.QsciLexerYAML, qs: gen_qsettings.QSettings, prefix: string): bool =
-
   fQsciLexerYAML_virtualbase_writeProperties(self.h, qs.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix))))
 
 type QsciLexerYAMLwritePropertiesProc* = proc(qs: gen_qsettings.QSettings, prefix: string): bool
@@ -1015,7 +962,6 @@ proc miqt_exec_callback_QsciLexerYAML_writeProperties(self: ptr cQsciLexerYAML, 
 
   virtualReturn
 proc QsciLexerYAMLevent*(self: gen_qscilexeryaml_types.QsciLexerYAML, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerYAML_virtualbase_event(self.h, event.h)
 
 type QsciLexerYAMLeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -1035,7 +981,6 @@ proc miqt_exec_callback_QsciLexerYAML_event(self: ptr cQsciLexerYAML, slot: int,
 
   virtualReturn
 proc QsciLexerYAMLeventFilter*(self: gen_qscilexeryaml_types.QsciLexerYAML, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQsciLexerYAML_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QsciLexerYAMLeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1057,7 +1002,6 @@ proc miqt_exec_callback_QsciLexerYAML_eventFilter(self: ptr cQsciLexerYAML, slot
 
   virtualReturn
 proc QsciLexerYAMLtimerEvent*(self: gen_qscilexeryaml_types.QsciLexerYAML, event: gen_qcoreevent.QTimerEvent): void =
-
   fQsciLexerYAML_virtualbase_timerEvent(self.h, event.h)
 
 type QsciLexerYAMLtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -1075,7 +1019,6 @@ proc miqt_exec_callback_QsciLexerYAML_timerEvent(self: ptr cQsciLexerYAML, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerYAMLchildEvent*(self: gen_qscilexeryaml_types.QsciLexerYAML, event: gen_qcoreevent.QChildEvent): void =
-
   fQsciLexerYAML_virtualbase_childEvent(self.h, event.h)
 
 type QsciLexerYAMLchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1093,7 +1036,6 @@ proc miqt_exec_callback_QsciLexerYAML_childEvent(self: ptr cQsciLexerYAML, slot:
 
   nimfunc[](slotval1)
 proc QsciLexerYAMLcustomEvent*(self: gen_qscilexeryaml_types.QsciLexerYAML, event: gen_qcoreevent.QEvent): void =
-
   fQsciLexerYAML_virtualbase_customEvent(self.h, event.h)
 
 type QsciLexerYAMLcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1111,7 +1053,6 @@ proc miqt_exec_callback_QsciLexerYAML_customEvent(self: ptr cQsciLexerYAML, slot
 
   nimfunc[](slotval1)
 proc QsciLexerYAMLconnectNotify*(self: gen_qscilexeryaml_types.QsciLexerYAML, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerYAML_virtualbase_connectNotify(self.h, signal.h)
 
 type QsciLexerYAMLconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1129,7 +1070,6 @@ proc miqt_exec_callback_QsciLexerYAML_connectNotify(self: ptr cQsciLexerYAML, sl
 
   nimfunc[](slotval1)
 proc QsciLexerYAMLdisconnectNotify*(self: gen_qscilexeryaml_types.QsciLexerYAML, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQsciLexerYAML_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QsciLexerYAMLdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

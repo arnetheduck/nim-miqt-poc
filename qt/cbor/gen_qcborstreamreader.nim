@@ -134,218 +134,168 @@ proc fcQCborStreamReader_delete(self: pointer) {.importc: "QCborStreamReader_del
 func init*(T: type gen_qcborstreamreader_types.QCborStreamReader, h: ptr cQCborStreamReader): gen_qcborstreamreader_types.QCborStreamReader =
   T(h: h)
 proc create*(T: type gen_qcborstreamreader_types.QCborStreamReader, ): gen_qcborstreamreader_types.QCborStreamReader =
-
   gen_qcborstreamreader_types.QCborStreamReader.init(fcQCborStreamReader_new())
+
 proc create*(T: type gen_qcborstreamreader_types.QCborStreamReader, data: cstring, len: int64): gen_qcborstreamreader_types.QCborStreamReader =
-
   gen_qcborstreamreader_types.QCborStreamReader.init(fcQCborStreamReader_new2(data, len))
+
 proc create*(T: type gen_qcborstreamreader_types.QCborStreamReader, data: ptr uint8, len: int64): gen_qcborstreamreader_types.QCborStreamReader =
-
   gen_qcborstreamreader_types.QCborStreamReader.init(fcQCborStreamReader_new3(data, len))
+
 proc create*(T: type gen_qcborstreamreader_types.QCborStreamReader, data: seq[byte]): gen_qcborstreamreader_types.QCborStreamReader =
-
   gen_qcborstreamreader_types.QCborStreamReader.init(fcQCborStreamReader_new4(struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data)))))
+
 proc create*(T: type gen_qcborstreamreader_types.QCborStreamReader, device: gen_qiodevice.QIODevice): gen_qcborstreamreader_types.QCborStreamReader =
-
   gen_qcborstreamreader_types.QCborStreamReader.init(fcQCborStreamReader_new5(device.h))
-proc setDevice*(self: gen_qcborstreamreader_types.QCborStreamReader, device: gen_qiodevice.QIODevice): void =
 
+proc setDevice*(self: gen_qcborstreamreader_types.QCborStreamReader, device: gen_qiodevice.QIODevice): void =
   fcQCborStreamReader_setDevice(self.h, device.h)
 
 proc device*(self: gen_qcborstreamreader_types.QCborStreamReader, ): gen_qiodevice.QIODevice =
-
   gen_qiodevice.QIODevice(h: fcQCborStreamReader_device(self.h))
 
 proc addData*(self: gen_qcborstreamreader_types.QCborStreamReader, data: seq[byte]): void =
-
   fcQCborStreamReader_addData(self.h, struct_miqt_string(data: cast[cstring](if len(data) == 0: nil else: unsafeAddr data[0]), len: csize_t(len(data))))
 
-proc addData2*(self: gen_qcborstreamreader_types.QCborStreamReader, data: cstring, len: int64): void =
-
+proc addData*(self: gen_qcborstreamreader_types.QCborStreamReader, data: cstring, len: int64): void =
   fcQCborStreamReader_addData2(self.h, data, len)
 
-proc addData3*(self: gen_qcborstreamreader_types.QCborStreamReader, data: ptr uint8, len: int64): void =
-
+proc addData*(self: gen_qcborstreamreader_types.QCborStreamReader, data: ptr uint8, len: int64): void =
   fcQCborStreamReader_addData3(self.h, data, len)
 
 proc reparse*(self: gen_qcborstreamreader_types.QCborStreamReader, ): void =
-
   fcQCborStreamReader_reparse(self.h)
 
 proc clear*(self: gen_qcborstreamreader_types.QCborStreamReader, ): void =
-
   fcQCborStreamReader_clear(self.h)
 
 proc reset*(self: gen_qcborstreamreader_types.QCborStreamReader, ): void =
-
   fcQCborStreamReader_reset(self.h)
 
 proc lastError*(self: gen_qcborstreamreader_types.QCborStreamReader, ): gen_qcborcommon.QCborError =
-
   gen_qcborcommon.QCborError(h: fcQCborStreamReader_lastError(self.h))
 
 proc currentOffset*(self: gen_qcborstreamreader_types.QCborStreamReader, ): clonglong =
-
   fcQCborStreamReader_currentOffset(self.h)
 
 proc isValid*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isValid(self.h)
 
 proc containerDepth*(self: gen_qcborstreamreader_types.QCborStreamReader, ): cint =
-
   fcQCborStreamReader_containerDepth(self.h)
 
 proc parentContainerType*(self: gen_qcborstreamreader_types.QCborStreamReader, ): cint =
-
   cint(fcQCborStreamReader_parentContainerType(self.h))
 
 proc hasNext*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_hasNext(self.h)
 
 proc next*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_next(self.h)
 
 proc typeX*(self: gen_qcborstreamreader_types.QCborStreamReader, ): cint =
-
   cint(fcQCborStreamReader_typeX(self.h))
 
 proc isUnsignedInteger*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isUnsignedInteger(self.h)
 
 proc isNegativeInteger*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isNegativeInteger(self.h)
 
 proc isInteger*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isInteger(self.h)
 
 proc isByteArray*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isByteArray(self.h)
 
 proc isString*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isString(self.h)
 
 proc isArray*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isArray(self.h)
 
 proc isMap*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isMap(self.h)
 
 proc isTag*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isTag(self.h)
 
 proc isSimpleType*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isSimpleType(self.h)
 
 proc isFloat16*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isFloat16(self.h)
 
 proc isFloat*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isFloat(self.h)
 
 proc isDouble*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isDouble(self.h)
 
 proc isInvalid*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isInvalid(self.h)
 
-proc isSimpleTypeWithSt*(self: gen_qcborstreamreader_types.QCborStreamReader, st: cint): bool =
-
+proc isSimpleType*(self: gen_qcborstreamreader_types.QCborStreamReader, st: cint): bool =
   fcQCborStreamReader_isSimpleTypeWithSt(self.h, cint(st))
 
 proc isFalse*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isFalse(self.h)
 
 proc isTrue*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isTrue(self.h)
 
 proc isBool*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isBool(self.h)
 
 proc isNull*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isNull(self.h)
 
 proc isUndefined*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isUndefined(self.h)
 
 proc isLengthKnown*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isLengthKnown(self.h)
 
 proc length*(self: gen_qcborstreamreader_types.QCborStreamReader, ): culonglong =
-
   fcQCborStreamReader_length(self.h)
 
 proc isContainer*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_isContainer(self.h)
 
 proc enterContainer*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_enterContainer(self.h)
 
 proc leaveContainer*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_leaveContainer(self.h)
 
 proc currentStringChunkSize*(self: gen_qcborstreamreader_types.QCborStreamReader, ): int64 =
-
   fcQCborStreamReader_currentStringChunkSize(self.h)
 
 proc toBool*(self: gen_qcborstreamreader_types.QCborStreamReader, ): bool =
-
   fcQCborStreamReader_toBool(self.h)
 
 proc toTag*(self: gen_qcborstreamreader_types.QCborStreamReader, ): cint =
-
   cint(fcQCborStreamReader_toTag(self.h))
 
 proc toUnsignedInteger*(self: gen_qcborstreamreader_types.QCborStreamReader, ): culonglong =
-
   fcQCborStreamReader_toUnsignedInteger(self.h)
 
 proc toNegativeInteger*(self: gen_qcborstreamreader_types.QCborStreamReader, ): cint =
-
   cint(fcQCborStreamReader_toNegativeInteger(self.h))
 
 proc toSimpleType*(self: gen_qcborstreamreader_types.QCborStreamReader, ): cint =
-
   cint(fcQCborStreamReader_toSimpleType(self.h))
 
 proc toFloat*(self: gen_qcborstreamreader_types.QCborStreamReader, ): float32 =
-
   fcQCborStreamReader_toFloat(self.h)
 
 proc toDouble*(self: gen_qcborstreamreader_types.QCborStreamReader, ): float64 =
-
   fcQCborStreamReader_toDouble(self.h)
 
 proc toInteger*(self: gen_qcborstreamreader_types.QCborStreamReader, ): clonglong =
-
   fcQCborStreamReader_toInteger(self.h)
 
-proc next1*(self: gen_qcborstreamreader_types.QCborStreamReader, maxRecursion: cint): bool =
-
+proc next*(self: gen_qcborstreamreader_types.QCborStreamReader, maxRecursion: cint): bool =
   fcQCborStreamReader_next1(self.h, maxRecursion)
 
 proc staticMetaObject*(_: type gen_qcborstreamreader_types.QCborStreamReader): gen_qobjectdefs.QMetaObject =

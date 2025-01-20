@@ -188,84 +188,69 @@ proc fcQQuickAsyncImageProvider_delete(self: pointer) {.importc: "QQuickAsyncIma
 func init*(T: type gen_qquickimageprovider_types.QQuickTextureFactory, h: ptr cQQuickTextureFactory): gen_qquickimageprovider_types.QQuickTextureFactory =
   T(h: h)
 proc create*(T: type gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qquickimageprovider_types.QQuickTextureFactory =
-
   gen_qquickimageprovider_types.QQuickTextureFactory.init(fcQQuickTextureFactory_new())
-proc metaObject*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickTextureFactory_metaObject(self.h))
 
 proc metacast*(self: gen_qquickimageprovider_types.QQuickTextureFactory, param1: cstring): pointer =
-
   fcQQuickTextureFactory_metacast(self.h, param1)
 
 proc metacall*(self: gen_qquickimageprovider_types.QQuickTextureFactory, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQuickTextureFactory_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring): string =
-
   let v_ms = fcQQuickTextureFactory_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring): string =
-
   let v_ms = fcQQuickTextureFactory_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc createTexture*(self: gen_qquickimageprovider_types.QQuickTextureFactory, window: gen_qquickwindow.QQuickWindow): gen_qsgtexture.QSGTexture =
-
   gen_qsgtexture.QSGTexture(h: fcQQuickTextureFactory_createTexture(self.h, window.h))
 
 proc textureSize*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQQuickTextureFactory_textureSize(self.h))
 
 proc textureByteCount*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): cint =
-
   fcQQuickTextureFactory_textureByteCount(self.h)
 
 proc image*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fcQQuickTextureFactory_image(self.h))
 
 proc textureFactoryForImage*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, image: gen_qimage.QImage): gen_qquickimageprovider_types.QQuickTextureFactory =
-
   gen_qquickimageprovider_types.QQuickTextureFactory(h: fcQQuickTextureFactory_textureFactoryForImage(image.h))
 
-proc tr2*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring): string =
   let v_ms = fcQQuickTextureFactory_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickTextureFactory_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring): string =
   let v_ms = fcQQuickTextureFactory_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qquickimageprovider_types.QQuickTextureFactory, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickTextureFactory_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QQuickTextureFactorymetaObject*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQuickTextureFactory_virtualbase_metaObject(self.h))
 
 type QQuickTextureFactorymetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -283,7 +268,6 @@ proc miqt_exec_callback_QQuickTextureFactory_metaObject(self: ptr cQQuickTexture
 
   virtualReturn.h
 proc QQuickTextureFactorymetacast*(self: gen_qquickimageprovider_types.QQuickTextureFactory, param1: cstring): pointer =
-
   fQQuickTextureFactory_virtualbase_metacast(self.h, param1)
 
 type QQuickTextureFactorymetacastProc* = proc(param1: cstring): pointer
@@ -303,7 +287,6 @@ proc miqt_exec_callback_QQuickTextureFactory_metacast(self: ptr cQQuickTextureFa
 
   virtualReturn
 proc QQuickTextureFactorymetacall*(self: gen_qquickimageprovider_types.QQuickTextureFactory, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQuickTextureFactory_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQuickTextureFactorymetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -371,7 +354,6 @@ proc miqt_exec_callback_QQuickTextureFactory_textureByteCount(self: ptr cQQuickT
 
   virtualReturn
 proc QQuickTextureFactoryimage*(self: gen_qquickimageprovider_types.QQuickTextureFactory, ): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fQQuickTextureFactory_virtualbase_image(self.h))
 
 type QQuickTextureFactoryimageProc* = proc(): gen_qimage.QImage
@@ -389,7 +371,6 @@ proc miqt_exec_callback_QQuickTextureFactory_image(self: ptr cQQuickTextureFacto
 
   virtualReturn.h
 proc QQuickTextureFactoryevent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickTextureFactory_virtualbase_event(self.h, event.h)
 
 type QQuickTextureFactoryeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -409,7 +390,6 @@ proc miqt_exec_callback_QQuickTextureFactory_event(self: ptr cQQuickTextureFacto
 
   virtualReturn
 proc QQuickTextureFactoryeventFilter*(self: gen_qquickimageprovider_types.QQuickTextureFactory, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickTextureFactory_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQuickTextureFactoryeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -431,7 +411,6 @@ proc miqt_exec_callback_QQuickTextureFactory_eventFilter(self: ptr cQQuickTextur
 
   virtualReturn
 proc QQuickTextureFactorytimerEvent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQuickTextureFactory_virtualbase_timerEvent(self.h, event.h)
 
 type QQuickTextureFactorytimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -449,7 +428,6 @@ proc miqt_exec_callback_QQuickTextureFactory_timerEvent(self: ptr cQQuickTexture
 
   nimfunc[](slotval1)
 proc QQuickTextureFactorychildEvent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, event: gen_qcoreevent.QChildEvent): void =
-
   fQQuickTextureFactory_virtualbase_childEvent(self.h, event.h)
 
 type QQuickTextureFactorychildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -467,7 +445,6 @@ proc miqt_exec_callback_QQuickTextureFactory_childEvent(self: ptr cQQuickTexture
 
   nimfunc[](slotval1)
 proc QQuickTextureFactorycustomEvent*(self: gen_qquickimageprovider_types.QQuickTextureFactory, event: gen_qcoreevent.QEvent): void =
-
   fQQuickTextureFactory_virtualbase_customEvent(self.h, event.h)
 
 type QQuickTextureFactorycustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -485,7 +462,6 @@ proc miqt_exec_callback_QQuickTextureFactory_customEvent(self: ptr cQQuickTextur
 
   nimfunc[](slotval1)
 proc QQuickTextureFactoryconnectNotify*(self: gen_qquickimageprovider_types.QQuickTextureFactory, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickTextureFactory_virtualbase_connectNotify(self.h, signal.h)
 
 type QQuickTextureFactoryconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -503,7 +479,6 @@ proc miqt_exec_callback_QQuickTextureFactory_connectNotify(self: ptr cQQuickText
 
   nimfunc[](slotval1)
 proc QQuickTextureFactorydisconnectNotify*(self: gen_qquickimageprovider_types.QQuickTextureFactory, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickTextureFactory_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQuickTextureFactorydisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -528,95 +503,80 @@ proc delete*(self: gen_qquickimageprovider_types.QQuickTextureFactory) =
 func init*(T: type gen_qquickimageprovider_types.QQuickImageResponse, h: ptr cQQuickImageResponse): gen_qquickimageprovider_types.QQuickImageResponse =
   T(h: h)
 proc create*(T: type gen_qquickimageprovider_types.QQuickImageResponse, ): gen_qquickimageprovider_types.QQuickImageResponse =
-
   gen_qquickimageprovider_types.QQuickImageResponse.init(fcQQuickImageResponse_new())
-proc metaObject*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQQuickImageResponse_metaObject(self.h))
 
 proc metacast*(self: gen_qquickimageprovider_types.QQuickImageResponse, param1: cstring): pointer =
-
   fcQQuickImageResponse_metacast(self.h, param1)
 
 proc metacall*(self: gen_qquickimageprovider_types.QQuickImageResponse, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQuickImageResponse_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring): string =
-
   let v_ms = fcQQuickImageResponse_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring): string =
-
   let v_ms = fcQQuickImageResponse_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc textureFactory*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): gen_qquickimageprovider_types.QQuickTextureFactory =
-
   gen_qquickimageprovider_types.QQuickTextureFactory(h: fcQQuickImageResponse_textureFactory(self.h))
 
 proc errorString*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): string =
-
   let v_ms = fcQQuickImageResponse_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc cancel*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): void =
-
   fcQQuickImageResponse_cancel(self.h)
 
 proc finished*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): void =
-
   fcQQuickImageResponse_finished(self.h)
 
+type QQuickImageResponsefinishedSlot* = proc()
 proc miqt_exec_callback_QQuickImageResponse_finished(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickImageResponsefinishedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onfinished*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onfinished*(self: gen_qquickimageprovider_types.QQuickImageResponse, slot: QQuickImageResponsefinishedSlot) =
+  var tmp = new QQuickImageResponsefinishedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickImageResponse_connect_finished(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring): string =
   let v_ms = fcQQuickImageResponse_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickImageResponse_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring): string =
   let v_ms = fcQQuickImageResponse_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qquickimageprovider_types.QQuickImageResponse, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickImageResponse_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QQuickImageResponsemetaObject*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQQuickImageResponse_virtualbase_metaObject(self.h))
 
 type QQuickImageResponsemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -634,7 +594,6 @@ proc miqt_exec_callback_QQuickImageResponse_metaObject(self: ptr cQQuickImageRes
 
   virtualReturn.h
 proc QQuickImageResponsemetacast*(self: gen_qquickimageprovider_types.QQuickImageResponse, param1: cstring): pointer =
-
   fQQuickImageResponse_virtualbase_metacast(self.h, param1)
 
 type QQuickImageResponsemetacastProc* = proc(param1: cstring): pointer
@@ -654,7 +613,6 @@ proc miqt_exec_callback_QQuickImageResponse_metacast(self: ptr cQQuickImageRespo
 
   virtualReturn
 proc QQuickImageResponsemetacall*(self: gen_qquickimageprovider_types.QQuickImageResponse, param1: cint, param2: cint, param3: pointer): cint =
-
   fQQuickImageResponse_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QQuickImageResponsemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -692,7 +650,6 @@ proc miqt_exec_callback_QQuickImageResponse_textureFactory(self: ptr cQQuickImag
 
   virtualReturn.h
 proc QQuickImageResponseerrorString*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): string =
-
   let v_ms = fQQuickImageResponse_virtualbase_errorString(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
@@ -713,7 +670,6 @@ proc miqt_exec_callback_QQuickImageResponse_errorString(self: ptr cQQuickImageRe
 
   struct_miqt_string(data: virtualReturn, len: csize_t(len(virtualReturn)))
 proc QQuickImageResponsecancel*(self: gen_qquickimageprovider_types.QQuickImageResponse, ): void =
-
   fQQuickImageResponse_virtualbase_cancel(self.h)
 
 type QQuickImageResponsecancelProc* = proc(): void
@@ -729,7 +685,6 @@ proc miqt_exec_callback_QQuickImageResponse_cancel(self: ptr cQQuickImageRespons
 
   nimfunc[]()
 proc QQuickImageResponseevent*(self: gen_qquickimageprovider_types.QQuickImageResponse, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickImageResponse_virtualbase_event(self.h, event.h)
 
 type QQuickImageResponseeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -749,7 +704,6 @@ proc miqt_exec_callback_QQuickImageResponse_event(self: ptr cQQuickImageResponse
 
   virtualReturn
 proc QQuickImageResponseeventFilter*(self: gen_qquickimageprovider_types.QQuickImageResponse, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQQuickImageResponse_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QQuickImageResponseeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -771,7 +725,6 @@ proc miqt_exec_callback_QQuickImageResponse_eventFilter(self: ptr cQQuickImageRe
 
   virtualReturn
 proc QQuickImageResponsetimerEvent*(self: gen_qquickimageprovider_types.QQuickImageResponse, event: gen_qcoreevent.QTimerEvent): void =
-
   fQQuickImageResponse_virtualbase_timerEvent(self.h, event.h)
 
 type QQuickImageResponsetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -789,7 +742,6 @@ proc miqt_exec_callback_QQuickImageResponse_timerEvent(self: ptr cQQuickImageRes
 
   nimfunc[](slotval1)
 proc QQuickImageResponsechildEvent*(self: gen_qquickimageprovider_types.QQuickImageResponse, event: gen_qcoreevent.QChildEvent): void =
-
   fQQuickImageResponse_virtualbase_childEvent(self.h, event.h)
 
 type QQuickImageResponsechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -807,7 +759,6 @@ proc miqt_exec_callback_QQuickImageResponse_childEvent(self: ptr cQQuickImageRes
 
   nimfunc[](slotval1)
 proc QQuickImageResponsecustomEvent*(self: gen_qquickimageprovider_types.QQuickImageResponse, event: gen_qcoreevent.QEvent): void =
-
   fQQuickImageResponse_virtualbase_customEvent(self.h, event.h)
 
 type QQuickImageResponsecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -825,7 +776,6 @@ proc miqt_exec_callback_QQuickImageResponse_customEvent(self: ptr cQQuickImageRe
 
   nimfunc[](slotval1)
 proc QQuickImageResponseconnectNotify*(self: gen_qquickimageprovider_types.QQuickImageResponse, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickImageResponse_virtualbase_connectNotify(self.h, signal.h)
 
 type QQuickImageResponseconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -843,7 +793,6 @@ proc miqt_exec_callback_QQuickImageResponse_connectNotify(self: ptr cQQuickImage
 
   nimfunc[](slotval1)
 proc QQuickImageResponsedisconnectNotify*(self: gen_qquickimageprovider_types.QQuickImageResponse, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQQuickImageResponse_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QQuickImageResponsedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -868,36 +817,30 @@ proc delete*(self: gen_qquickimageprovider_types.QQuickImageResponse) =
 func init*(T: type gen_qquickimageprovider_types.QQuickImageProvider, h: ptr cQQuickImageProvider): gen_qquickimageprovider_types.QQuickImageProvider =
   T(h: h)
 proc create*(T: type gen_qquickimageprovider_types.QQuickImageProvider, typeVal: cint): gen_qquickimageprovider_types.QQuickImageProvider =
-
   gen_qquickimageprovider_types.QQuickImageProvider.init(fcQQuickImageProvider_new(cint(typeVal)))
+
 proc create*(T: type gen_qquickimageprovider_types.QQuickImageProvider, param1: gen_qquickimageprovider_types.QQuickImageProvider): gen_qquickimageprovider_types.QQuickImageProvider =
-
   gen_qquickimageprovider_types.QQuickImageProvider.init(fcQQuickImageProvider_new2(param1.h))
+
 proc create*(T: type gen_qquickimageprovider_types.QQuickImageProvider, typeVal: cint, flags: cint): gen_qquickimageprovider_types.QQuickImageProvider =
-
   gen_qquickimageprovider_types.QQuickImageProvider.init(fcQQuickImageProvider_new3(cint(typeVal), cint(flags)))
-proc imageType*(self: gen_qquickimageprovider_types.QQuickImageProvider, ): cint =
 
+proc imageType*(self: gen_qquickimageprovider_types.QQuickImageProvider, ): cint =
   cint(fcQQuickImageProvider_imageType(self.h))
 
 proc flags*(self: gen_qquickimageprovider_types.QQuickImageProvider, ): cint =
-
   cint(fcQQuickImageProvider_flags(self.h))
 
 proc requestImage*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fcQQuickImageProvider_requestImage(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
 proc requestPixmap*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fcQQuickImageProvider_requestPixmap(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
 proc requestTexture*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory =
-
   gen_qquickimageprovider_types.QQuickTextureFactory(h: fcQQuickImageProvider_requestTexture(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
 proc QQuickImageProviderimageType*(self: gen_qquickimageprovider_types.QQuickImageProvider, ): cint =
-
   cint(fQQuickImageProvider_virtualbase_imageType(self.h))
 
 type QQuickImageProviderimageTypeProc* = proc(): cint
@@ -915,7 +858,6 @@ proc miqt_exec_callback_QQuickImageProvider_imageType(self: ptr cQQuickImageProv
 
   cint(virtualReturn)
 proc QQuickImageProviderflags*(self: gen_qquickimageprovider_types.QQuickImageProvider, ): cint =
-
   cint(fQQuickImageProvider_virtualbase_flags(self.h))
 
 type QQuickImageProviderflagsProc* = proc(): cint
@@ -933,7 +875,6 @@ proc miqt_exec_callback_QQuickImageProvider_flags(self: ptr cQQuickImageProvider
 
   cint(virtualReturn)
 proc QQuickImageProviderrequestImage*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fQQuickImageProvider_virtualbase_requestImage(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
 type QQuickImageProviderrequestImageProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
@@ -960,7 +901,6 @@ proc miqt_exec_callback_QQuickImageProvider_requestImage(self: ptr cQQuickImageP
 
   virtualReturn.h
 proc QQuickImageProviderrequestPixmap*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fQQuickImageProvider_virtualbase_requestPixmap(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
 type QQuickImageProviderrequestPixmapProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
@@ -987,7 +927,6 @@ proc miqt_exec_callback_QQuickImageProvider_requestPixmap(self: ptr cQQuickImage
 
   virtualReturn.h
 proc QQuickImageProviderrequestTexture*(self: gen_qquickimageprovider_types.QQuickImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory =
-
   gen_qquickimageprovider_types.QQuickTextureFactory(h: fQQuickImageProvider_virtualbase_requestTexture(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
 type QQuickImageProviderrequestTextureProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory
@@ -1019,13 +958,12 @@ proc delete*(self: gen_qquickimageprovider_types.QQuickImageProvider) =
 func init*(T: type gen_qquickimageprovider_types.QQuickAsyncImageProvider, h: ptr cQQuickAsyncImageProvider): gen_qquickimageprovider_types.QQuickAsyncImageProvider =
   T(h: h)
 proc create*(T: type gen_qquickimageprovider_types.QQuickAsyncImageProvider, ): gen_qquickimageprovider_types.QQuickAsyncImageProvider =
-
   gen_qquickimageprovider_types.QQuickAsyncImageProvider.init(fcQQuickAsyncImageProvider_new())
+
 proc create*(T: type gen_qquickimageprovider_types.QQuickAsyncImageProvider, param1: gen_qquickimageprovider_types.QQuickAsyncImageProvider): gen_qquickimageprovider_types.QQuickAsyncImageProvider =
-
   gen_qquickimageprovider_types.QQuickAsyncImageProvider.init(fcQQuickAsyncImageProvider_new2(param1.h))
-proc requestImageResponse*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, id: string, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickImageResponse =
 
+proc requestImageResponse*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, id: string, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickImageResponse =
   gen_qquickimageprovider_types.QQuickImageResponse(h: fcQQuickAsyncImageProvider_requestImageResponse(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), requestedSize.h))
 
 type QQuickAsyncImageProviderrequestImageResponseProc* = proc(id: string, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickImageResponse
@@ -1050,7 +988,6 @@ proc miqt_exec_callback_QQuickAsyncImageProvider_requestImageResponse(self: ptr 
 
   virtualReturn.h
 proc QQuickAsyncImageProviderimageType*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, ): cint =
-
   cint(fQQuickAsyncImageProvider_virtualbase_imageType(self.h))
 
 type QQuickAsyncImageProviderimageTypeProc* = proc(): cint
@@ -1068,7 +1005,6 @@ proc miqt_exec_callback_QQuickAsyncImageProvider_imageType(self: ptr cQQuickAsyn
 
   cint(virtualReturn)
 proc QQuickAsyncImageProviderflags*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, ): cint =
-
   cint(fQQuickAsyncImageProvider_virtualbase_flags(self.h))
 
 type QQuickAsyncImageProviderflagsProc* = proc(): cint
@@ -1086,7 +1022,6 @@ proc miqt_exec_callback_QQuickAsyncImageProvider_flags(self: ptr cQQuickAsyncIma
 
   cint(virtualReturn)
 proc QQuickAsyncImageProviderrequestImage*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fQQuickAsyncImageProvider_virtualbase_requestImage(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
 type QQuickAsyncImageProviderrequestImageProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qimage.QImage
@@ -1113,7 +1048,6 @@ proc miqt_exec_callback_QQuickAsyncImageProvider_requestImage(self: ptr cQQuickA
 
   virtualReturn.h
 proc QQuickAsyncImageProviderrequestPixmap*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap =
-
   gen_qpixmap.QPixmap(h: fQQuickAsyncImageProvider_virtualbase_requestPixmap(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
 type QQuickAsyncImageProviderrequestPixmapProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qpixmap.QPixmap
@@ -1140,7 +1074,6 @@ proc miqt_exec_callback_QQuickAsyncImageProvider_requestPixmap(self: ptr cQQuick
 
   virtualReturn.h
 proc QQuickAsyncImageProviderrequestTexture*(self: gen_qquickimageprovider_types.QQuickAsyncImageProvider, id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory =
-
   gen_qquickimageprovider_types.QQuickTextureFactory(h: fQQuickAsyncImageProvider_virtualbase_requestTexture(self.h, struct_miqt_string(data: id, len: csize_t(len(id))), size.h, requestedSize.h))
 
 type QQuickAsyncImageProviderrequestTextureProc* = proc(id: string, size: gen_qsize.QSize, requestedSize: gen_qsize.QSize): gen_qquickimageprovider_types.QQuickTextureFactory

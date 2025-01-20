@@ -193,156 +193,123 @@ proc fcQSGTextureNativeTexture_delete(self: pointer) {.importc: "QSGTexture__Nat
 func init*(T: type gen_qsgtexture_types.QSGTexture, h: ptr cQSGTexture): gen_qsgtexture_types.QSGTexture =
   T(h: h)
 proc create*(T: type gen_qsgtexture_types.QSGTexture, ): gen_qsgtexture_types.QSGTexture =
-
   gen_qsgtexture_types.QSGTexture.init(fcQSGTexture_new())
-proc metaObject*(self: gen_qsgtexture_types.QSGTexture, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsgtexture_types.QSGTexture, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSGTexture_metaObject(self.h))
 
 proc metacast*(self: gen_qsgtexture_types.QSGTexture, param1: cstring): pointer =
-
   fcQSGTexture_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsgtexture_types.QSGTexture, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSGTexture_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsgtexture_types.QSGTexture, s: cstring): string =
-
   let v_ms = fcQSGTexture_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qsgtexture_types.QSGTexture, s: cstring): string =
-
   let v_ms = fcQSGTexture_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc textureId*(self: gen_qsgtexture_types.QSGTexture, ): cint =
-
   fcQSGTexture_textureId(self.h)
 
 proc nativeTexture*(self: gen_qsgtexture_types.QSGTexture, ): gen_qsgtexture_types.QSGTextureNativeTexture =
-
   gen_qsgtexture_types.QSGTextureNativeTexture(h: fcQSGTexture_nativeTexture(self.h))
 
 proc textureSize*(self: gen_qsgtexture_types.QSGTexture, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQSGTexture_textureSize(self.h))
 
 proc hasAlphaChannel*(self: gen_qsgtexture_types.QSGTexture, ): bool =
-
   fcQSGTexture_hasAlphaChannel(self.h)
 
 proc hasMipmaps*(self: gen_qsgtexture_types.QSGTexture, ): bool =
-
   fcQSGTexture_hasMipmaps(self.h)
 
 proc normalizedTextureSubRect*(self: gen_qsgtexture_types.QSGTexture, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQSGTexture_normalizedTextureSubRect(self.h))
 
 proc isAtlasTexture*(self: gen_qsgtexture_types.QSGTexture, ): bool =
-
   fcQSGTexture_isAtlasTexture(self.h)
 
 proc removedFromAtlas*(self: gen_qsgtexture_types.QSGTexture, ): gen_qsgtexture_types.QSGTexture =
-
   gen_qsgtexture_types.QSGTexture(h: fcQSGTexture_removedFromAtlas(self.h))
 
 proc bindX*(self: gen_qsgtexture_types.QSGTexture, ): void =
-
   fcQSGTexture_bindX(self.h)
 
 proc updateBindOptions*(self: gen_qsgtexture_types.QSGTexture, ): void =
-
   fcQSGTexture_updateBindOptions(self.h)
 
 proc setMipmapFiltering*(self: gen_qsgtexture_types.QSGTexture, filter: cint): void =
-
   fcQSGTexture_setMipmapFiltering(self.h, cint(filter))
 
 proc mipmapFiltering*(self: gen_qsgtexture_types.QSGTexture, ): cint =
-
   cint(fcQSGTexture_mipmapFiltering(self.h))
 
 proc setFiltering*(self: gen_qsgtexture_types.QSGTexture, filter: cint): void =
-
   fcQSGTexture_setFiltering(self.h, cint(filter))
 
 proc filtering*(self: gen_qsgtexture_types.QSGTexture, ): cint =
-
   cint(fcQSGTexture_filtering(self.h))
 
 proc setAnisotropyLevel*(self: gen_qsgtexture_types.QSGTexture, level: cint): void =
-
   fcQSGTexture_setAnisotropyLevel(self.h, cint(level))
 
 proc anisotropyLevel*(self: gen_qsgtexture_types.QSGTexture, ): cint =
-
   cint(fcQSGTexture_anisotropyLevel(self.h))
 
 proc setHorizontalWrapMode*(self: gen_qsgtexture_types.QSGTexture, hwrap: cint): void =
-
   fcQSGTexture_setHorizontalWrapMode(self.h, cint(hwrap))
 
 proc horizontalWrapMode*(self: gen_qsgtexture_types.QSGTexture, ): cint =
-
   cint(fcQSGTexture_horizontalWrapMode(self.h))
 
 proc setVerticalWrapMode*(self: gen_qsgtexture_types.QSGTexture, vwrap: cint): void =
-
   fcQSGTexture_setVerticalWrapMode(self.h, cint(vwrap))
 
 proc verticalWrapMode*(self: gen_qsgtexture_types.QSGTexture, ): cint =
-
   cint(fcQSGTexture_verticalWrapMode(self.h))
 
 proc convertToNormalizedSourceRect*(self: gen_qsgtexture_types.QSGTexture, rect: gen_qrect.QRectF): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQSGTexture_convertToNormalizedSourceRect(self.h, rect.h))
 
 proc comparisonKey*(self: gen_qsgtexture_types.QSGTexture, ): cint =
-
   fcQSGTexture_comparisonKey(self.h)
 
-proc tr2*(_: type gen_qsgtexture_types.QSGTexture, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qsgtexture_types.QSGTexture, s: cstring, c: cstring): string =
   let v_ms = fcQSGTexture_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsgtexture_types.QSGTexture, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsgtexture_types.QSGTexture, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSGTexture_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qsgtexture_types.QSGTexture, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qsgtexture_types.QSGTexture, s: cstring, c: cstring): string =
   let v_ms = fcQSGTexture_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qsgtexture_types.QSGTexture, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qsgtexture_types.QSGTexture, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSGTexture_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc updateBindOptions1*(self: gen_qsgtexture_types.QSGTexture, force: bool): void =
-
+proc updateBindOptions*(self: gen_qsgtexture_types.QSGTexture, force: bool): void =
   fcQSGTexture_updateBindOptions1(self.h, force)
 
 proc QSGTexturemetaObject*(self: gen_qsgtexture_types.QSGTexture, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSGTexture_virtualbase_metaObject(self.h))
 
 type QSGTexturemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -360,7 +327,6 @@ proc miqt_exec_callback_QSGTexture_metaObject(self: ptr cQSGTexture, slot: int):
 
   virtualReturn.h
 proc QSGTexturemetacast*(self: gen_qsgtexture_types.QSGTexture, param1: cstring): pointer =
-
   fQSGTexture_virtualbase_metacast(self.h, param1)
 
 type QSGTexturemetacastProc* = proc(param1: cstring): pointer
@@ -380,7 +346,6 @@ proc miqt_exec_callback_QSGTexture_metacast(self: ptr cQSGTexture, slot: int, pa
 
   virtualReturn
 proc QSGTexturemetacall*(self: gen_qsgtexture_types.QSGTexture, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSGTexture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSGTexturemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -460,7 +425,6 @@ proc miqt_exec_callback_QSGTexture_hasMipmaps(self: ptr cQSGTexture, slot: int):
 
   virtualReturn
 proc QSGTexturenormalizedTextureSubRect*(self: gen_qsgtexture_types.QSGTexture, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQSGTexture_virtualbase_normalizedTextureSubRect(self.h))
 
 type QSGTexturenormalizedTextureSubRectProc* = proc(): gen_qrect.QRectF
@@ -478,7 +442,6 @@ proc miqt_exec_callback_QSGTexture_normalizedTextureSubRect(self: ptr cQSGTextur
 
   virtualReturn.h
 proc QSGTextureisAtlasTexture*(self: gen_qsgtexture_types.QSGTexture, ): bool =
-
   fQSGTexture_virtualbase_isAtlasTexture(self.h)
 
 type QSGTextureisAtlasTextureProc* = proc(): bool
@@ -496,7 +459,6 @@ proc miqt_exec_callback_QSGTexture_isAtlasTexture(self: ptr cQSGTexture, slot: i
 
   virtualReturn
 proc QSGTextureremovedFromAtlas*(self: gen_qsgtexture_types.QSGTexture, ): gen_qsgtexture_types.QSGTexture =
-
   gen_qsgtexture_types.QSGTexture(h: fQSGTexture_virtualbase_removedFromAtlas(self.h))
 
 type QSGTextureremovedFromAtlasProc* = proc(): gen_qsgtexture_types.QSGTexture
@@ -526,7 +488,6 @@ proc miqt_exec_callback_QSGTexture_bind(self: ptr cQSGTexture, slot: int): void 
 
   nimfunc[]()
 proc QSGTextureevent*(self: gen_qsgtexture_types.QSGTexture, event: gen_qcoreevent.QEvent): bool =
-
   fQSGTexture_virtualbase_event(self.h, event.h)
 
 type QSGTextureeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -546,7 +507,6 @@ proc miqt_exec_callback_QSGTexture_event(self: ptr cQSGTexture, slot: int, event
 
   virtualReturn
 proc QSGTextureeventFilter*(self: gen_qsgtexture_types.QSGTexture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSGTexture_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSGTextureeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -568,7 +528,6 @@ proc miqt_exec_callback_QSGTexture_eventFilter(self: ptr cQSGTexture, slot: int,
 
   virtualReturn
 proc QSGTexturetimerEvent*(self: gen_qsgtexture_types.QSGTexture, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSGTexture_virtualbase_timerEvent(self.h, event.h)
 
 type QSGTexturetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -586,7 +545,6 @@ proc miqt_exec_callback_QSGTexture_timerEvent(self: ptr cQSGTexture, slot: int, 
 
   nimfunc[](slotval1)
 proc QSGTexturechildEvent*(self: gen_qsgtexture_types.QSGTexture, event: gen_qcoreevent.QChildEvent): void =
-
   fQSGTexture_virtualbase_childEvent(self.h, event.h)
 
 type QSGTexturechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -604,7 +562,6 @@ proc miqt_exec_callback_QSGTexture_childEvent(self: ptr cQSGTexture, slot: int, 
 
   nimfunc[](slotval1)
 proc QSGTexturecustomEvent*(self: gen_qsgtexture_types.QSGTexture, event: gen_qcoreevent.QEvent): void =
-
   fQSGTexture_virtualbase_customEvent(self.h, event.h)
 
 type QSGTexturecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -622,7 +579,6 @@ proc miqt_exec_callback_QSGTexture_customEvent(self: ptr cQSGTexture, slot: int,
 
   nimfunc[](slotval1)
 proc QSGTextureconnectNotify*(self: gen_qsgtexture_types.QSGTexture, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSGTexture_virtualbase_connectNotify(self.h, signal.h)
 
 type QSGTextureconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -640,7 +596,6 @@ proc miqt_exec_callback_QSGTexture_connectNotify(self: ptr cQSGTexture, slot: in
 
   nimfunc[](slotval1)
 proc QSGTexturedisconnectNotify*(self: gen_qsgtexture_types.QSGTexture, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSGTexture_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSGTexturedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -665,68 +620,57 @@ proc delete*(self: gen_qsgtexture_types.QSGTexture) =
 func init*(T: type gen_qsgtexture_types.QSGDynamicTexture, h: ptr cQSGDynamicTexture): gen_qsgtexture_types.QSGDynamicTexture =
   T(h: h)
 proc create*(T: type gen_qsgtexture_types.QSGDynamicTexture, ): gen_qsgtexture_types.QSGDynamicTexture =
-
   gen_qsgtexture_types.QSGDynamicTexture.init(fcQSGDynamicTexture_new())
-proc metaObject*(self: gen_qsgtexture_types.QSGDynamicTexture, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qsgtexture_types.QSGDynamicTexture, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQSGDynamicTexture_metaObject(self.h))
 
 proc metacast*(self: gen_qsgtexture_types.QSGDynamicTexture, param1: cstring): pointer =
-
   fcQSGDynamicTexture_metacast(self.h, param1)
 
 proc metacall*(self: gen_qsgtexture_types.QSGDynamicTexture, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQSGDynamicTexture_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring): string =
-
   let v_ms = fcQSGDynamicTexture_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring): string =
-
   let v_ms = fcQSGDynamicTexture_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc updateTexture*(self: gen_qsgtexture_types.QSGDynamicTexture, ): bool =
-
   fcQSGDynamicTexture_updateTexture(self.h)
 
-proc tr2*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring, c: cstring): string =
   let v_ms = fcQSGDynamicTexture_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSGDynamicTexture_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring, c: cstring): string =
   let v_ms = fcQSGDynamicTexture_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qsgtexture_types.QSGDynamicTexture, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQSGDynamicTexture_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QSGDynamicTexturemetaObject*(self: gen_qsgtexture_types.QSGDynamicTexture, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQSGDynamicTexture_virtualbase_metaObject(self.h))
 
 type QSGDynamicTexturemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -744,7 +688,6 @@ proc miqt_exec_callback_QSGDynamicTexture_metaObject(self: ptr cQSGDynamicTextur
 
   virtualReturn.h
 proc QSGDynamicTexturemetacast*(self: gen_qsgtexture_types.QSGDynamicTexture, param1: cstring): pointer =
-
   fQSGDynamicTexture_virtualbase_metacast(self.h, param1)
 
 type QSGDynamicTexturemetacastProc* = proc(param1: cstring): pointer
@@ -764,7 +707,6 @@ proc miqt_exec_callback_QSGDynamicTexture_metacast(self: ptr cQSGDynamicTexture,
 
   virtualReturn
 proc QSGDynamicTexturemetacall*(self: gen_qsgtexture_types.QSGDynamicTexture, param1: cint, param2: cint, param3: pointer): cint =
-
   fQSGDynamicTexture_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QSGDynamicTexturemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -858,7 +800,6 @@ proc miqt_exec_callback_QSGDynamicTexture_hasMipmaps(self: ptr cQSGDynamicTextur
 
   virtualReturn
 proc QSGDynamicTexturenormalizedTextureSubRect*(self: gen_qsgtexture_types.QSGDynamicTexture, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQSGDynamicTexture_virtualbase_normalizedTextureSubRect(self.h))
 
 type QSGDynamicTexturenormalizedTextureSubRectProc* = proc(): gen_qrect.QRectF
@@ -876,7 +817,6 @@ proc miqt_exec_callback_QSGDynamicTexture_normalizedTextureSubRect(self: ptr cQS
 
   virtualReturn.h
 proc QSGDynamicTextureisAtlasTexture*(self: gen_qsgtexture_types.QSGDynamicTexture, ): bool =
-
   fQSGDynamicTexture_virtualbase_isAtlasTexture(self.h)
 
 type QSGDynamicTextureisAtlasTextureProc* = proc(): bool
@@ -894,7 +834,6 @@ proc miqt_exec_callback_QSGDynamicTexture_isAtlasTexture(self: ptr cQSGDynamicTe
 
   virtualReturn
 proc QSGDynamicTextureremovedFromAtlas*(self: gen_qsgtexture_types.QSGDynamicTexture, ): gen_qsgtexture_types.QSGTexture =
-
   gen_qsgtexture_types.QSGTexture(h: fQSGDynamicTexture_virtualbase_removedFromAtlas(self.h))
 
 type QSGDynamicTextureremovedFromAtlasProc* = proc(): gen_qsgtexture_types.QSGTexture
@@ -924,7 +863,6 @@ proc miqt_exec_callback_QSGDynamicTexture_bind(self: ptr cQSGDynamicTexture, slo
 
   nimfunc[]()
 proc QSGDynamicTextureevent*(self: gen_qsgtexture_types.QSGDynamicTexture, event: gen_qcoreevent.QEvent): bool =
-
   fQSGDynamicTexture_virtualbase_event(self.h, event.h)
 
 type QSGDynamicTextureeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -944,7 +882,6 @@ proc miqt_exec_callback_QSGDynamicTexture_event(self: ptr cQSGDynamicTexture, sl
 
   virtualReturn
 proc QSGDynamicTextureeventFilter*(self: gen_qsgtexture_types.QSGDynamicTexture, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQSGDynamicTexture_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QSGDynamicTextureeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -966,7 +903,6 @@ proc miqt_exec_callback_QSGDynamicTexture_eventFilter(self: ptr cQSGDynamicTextu
 
   virtualReturn
 proc QSGDynamicTexturetimerEvent*(self: gen_qsgtexture_types.QSGDynamicTexture, event: gen_qcoreevent.QTimerEvent): void =
-
   fQSGDynamicTexture_virtualbase_timerEvent(self.h, event.h)
 
 type QSGDynamicTexturetimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -984,7 +920,6 @@ proc miqt_exec_callback_QSGDynamicTexture_timerEvent(self: ptr cQSGDynamicTextur
 
   nimfunc[](slotval1)
 proc QSGDynamicTexturechildEvent*(self: gen_qsgtexture_types.QSGDynamicTexture, event: gen_qcoreevent.QChildEvent): void =
-
   fQSGDynamicTexture_virtualbase_childEvent(self.h, event.h)
 
 type QSGDynamicTexturechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1002,7 +937,6 @@ proc miqt_exec_callback_QSGDynamicTexture_childEvent(self: ptr cQSGDynamicTextur
 
   nimfunc[](slotval1)
 proc QSGDynamicTexturecustomEvent*(self: gen_qsgtexture_types.QSGDynamicTexture, event: gen_qcoreevent.QEvent): void =
-
   fQSGDynamicTexture_virtualbase_customEvent(self.h, event.h)
 
 type QSGDynamicTexturecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1020,7 +954,6 @@ proc miqt_exec_callback_QSGDynamicTexture_customEvent(self: ptr cQSGDynamicTextu
 
   nimfunc[](slotval1)
 proc QSGDynamicTextureconnectNotify*(self: gen_qsgtexture_types.QSGDynamicTexture, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSGDynamicTexture_virtualbase_connectNotify(self.h, signal.h)
 
 type QSGDynamicTextureconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1038,7 +971,6 @@ proc miqt_exec_callback_QSGDynamicTexture_connectNotify(self: ptr cQSGDynamicTex
 
   nimfunc[](slotval1)
 proc QSGDynamicTexturedisconnectNotify*(self: gen_qsgtexture_types.QSGDynamicTexture, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQSGDynamicTexture_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QSGDynamicTexturedisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

@@ -201,129 +201,106 @@ proc fcQGraphicsVideoItem_delete(self: pointer) {.importc: "QGraphicsVideoItem_d
 func init*(T: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, h: ptr cQGraphicsVideoItem): gen_qgraphicsvideoitem_types.QGraphicsVideoItem =
   T(h: h)
 proc create*(T: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qgraphicsvideoitem_types.QGraphicsVideoItem =
-
   gen_qgraphicsvideoitem_types.QGraphicsVideoItem.init(fcQGraphicsVideoItem_new())
+
 proc create*(T: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, parent: gen_qgraphicsitem.QGraphicsItem): gen_qgraphicsvideoitem_types.QGraphicsVideoItem =
-
   gen_qgraphicsvideoitem_types.QGraphicsVideoItem.init(fcQGraphicsVideoItem_new2(parent.h))
-proc metaObject*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQGraphicsVideoItem_metaObject(self.h))
 
 proc metacast*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, param1: cstring): pointer =
-
   fcQGraphicsVideoItem_metacast(self.h, param1)
 
 proc metacall*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQGraphicsVideoItem_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring): string =
-
   let v_ms = fcQGraphicsVideoItem_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring): string =
-
   let v_ms = fcQGraphicsVideoItem_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc mediaObject*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qmediaobject.QMediaObject =
-
   gen_qmediaobject.QMediaObject(h: fcQGraphicsVideoItem_mediaObject(self.h))
 
 proc videoSurface*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qabstractvideosurface.QAbstractVideoSurface =
-
   gen_qabstractvideosurface.QAbstractVideoSurface(h: fcQGraphicsVideoItem_videoSurface(self.h))
 
 proc aspectRatioMode*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): cint =
-
   cint(fcQGraphicsVideoItem_aspectRatioMode(self.h))
 
 proc setAspectRatioMode*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, mode: cint): void =
-
   fcQGraphicsVideoItem_setAspectRatioMode(self.h, cint(mode))
 
 proc offset*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qpoint.QPointF =
-
   gen_qpoint.QPointF(h: fcQGraphicsVideoItem_offset(self.h))
 
 proc setOffset*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, offset: gen_qpoint.QPointF): void =
-
   fcQGraphicsVideoItem_setOffset(self.h, offset.h)
 
 proc size*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fcQGraphicsVideoItem_size(self.h))
 
 proc setSize*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, size: gen_qsize.QSizeF): void =
-
   fcQGraphicsVideoItem_setSize(self.h, size.h)
 
 proc nativeSize*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fcQGraphicsVideoItem_nativeSize(self.h))
 
 proc boundingRect*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQGraphicsVideoItem_boundingRect(self.h))
 
 proc paint*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fcQGraphicsVideoItem_paint(self.h, painter.h, option.h, widget.h)
 
 proc nativeSizeChanged*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, size: gen_qsize.QSizeF): void =
-
   fcQGraphicsVideoItem_nativeSizeChanged(self.h, size.h)
 
+type QGraphicsVideoItemnativeSizeChangedSlot* = proc(size: gen_qsize.QSizeF)
 proc miqt_exec_callback_QGraphicsVideoItem_nativeSizeChanged(slot: int, size: pointer) {.exportc.} =
-  type Cb = proc(size: gen_qsize.QSizeF)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QGraphicsVideoItemnativeSizeChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qsize.QSizeF(h: size)
-
 
   nimfunc[](slotval1)
 
-proc onnativeSizeChanged*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, slot: proc(size: gen_qsize.QSizeF)) =
-  type Cb = proc(size: gen_qsize.QSizeF)
-  var tmp = new Cb
+proc onnativeSizeChanged*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, slot: QGraphicsVideoItemnativeSizeChangedSlot) =
+  var tmp = new QGraphicsVideoItemnativeSizeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQGraphicsVideoItem_connect_nativeSizeChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsVideoItem_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsVideoItem_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring, c: cstring): string =
   let v_ms = fcQGraphicsVideoItem_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qgraphicsvideoitem_types.QGraphicsVideoItem, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQGraphicsVideoItem_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QGraphicsVideoItemmetaObject*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQGraphicsVideoItem_virtualbase_metaObject(self.h))
 
 type QGraphicsVideoItemmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -341,7 +318,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_metaObject(self: ptr cQGraphicsVideoI
 
   virtualReturn.h
 proc QGraphicsVideoItemmetacast*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, param1: cstring): pointer =
-
   fQGraphicsVideoItem_virtualbase_metacast(self.h, param1)
 
 type QGraphicsVideoItemmetacastProc* = proc(param1: cstring): pointer
@@ -361,7 +337,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_metacast(self: ptr cQGraphicsVideoIte
 
   virtualReturn
 proc QGraphicsVideoItemmetacall*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, param1: cint, param2: cint, param3: pointer): cint =
-
   fQGraphicsVideoItem_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QGraphicsVideoItemmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -385,7 +360,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_metacall(self: ptr cQGraphicsVideoIte
 
   virtualReturn
 proc QGraphicsVideoItemmediaObject*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qmediaobject.QMediaObject =
-
   gen_qmediaobject.QMediaObject(h: fQGraphicsVideoItem_virtualbase_mediaObject(self.h))
 
 type QGraphicsVideoItemmediaObjectProc* = proc(): gen_qmediaobject.QMediaObject
@@ -403,7 +377,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_mediaObject(self: ptr cQGraphicsVideo
 
   virtualReturn.h
 proc QGraphicsVideoItemboundingRect*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fQGraphicsVideoItem_virtualbase_boundingRect(self.h))
 
 type QGraphicsVideoItemboundingRectProc* = proc(): gen_qrect.QRectF
@@ -421,7 +394,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_boundingRect(self: ptr cQGraphicsVide
 
   virtualReturn.h
 proc QGraphicsVideoItempaint*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void =
-
   fQGraphicsVideoItem_virtualbase_paint(self.h, painter.h, option.h, widget.h)
 
 type QGraphicsVideoItempaintProc* = proc(painter: gen_qpainter.QPainter, option: gen_qstyleoption.QStyleOptionGraphicsItem, widget: gen_qwidget.QWidget): void
@@ -443,7 +415,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_paint(self: ptr cQGraphicsVideoItem, 
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QGraphicsVideoItemtimerEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qcoreevent.QTimerEvent): void =
-
   fQGraphicsVideoItem_virtualbase_timerEvent(self.h, event.h)
 
 type QGraphicsVideoItemtimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -461,7 +432,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_timerEvent(self: ptr cQGraphicsVideoI
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemitemChange*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsVideoItem_virtualbase_itemChange(self.h, cint(change), value.h))
 
 type QGraphicsVideoItemitemChangeProc* = proc(change: cint, value: gen_qvariant.QVariant): gen_qvariant.QVariant
@@ -483,7 +453,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_itemChange(self: ptr cQGraphicsVideoI
 
   virtualReturn.h
 proc QGraphicsVideoItemsetMediaObject*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, objectVal: gen_qmediaobject.QMediaObject): bool =
-
   fQGraphicsVideoItem_virtualbase_setMediaObject(self.h, objectVal.h)
 
 type QGraphicsVideoItemsetMediaObjectProc* = proc(objectVal: gen_qmediaobject.QMediaObject): bool
@@ -503,7 +472,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_setMediaObject(self: ptr cQGraphicsVi
 
   virtualReturn
 proc QGraphicsVideoItemevent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ev: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsVideoItem_virtualbase_event(self.h, ev.h)
 
 type QGraphicsVideoItemeventProc* = proc(ev: gen_qcoreevent.QEvent): bool
@@ -523,7 +491,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_event(self: ptr cQGraphicsVideoItem, 
 
   virtualReturn
 proc QGraphicsVideoItemeventFilter*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsVideoItem_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QGraphicsVideoItemeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -545,7 +512,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_eventFilter(self: ptr cQGraphicsVideo
 
   virtualReturn
 proc QGraphicsVideoItemchildEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qcoreevent.QChildEvent): void =
-
   fQGraphicsVideoItem_virtualbase_childEvent(self.h, event.h)
 
 type QGraphicsVideoItemchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -563,7 +529,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_childEvent(self: ptr cQGraphicsVideoI
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemcustomEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qcoreevent.QEvent): void =
-
   fQGraphicsVideoItem_virtualbase_customEvent(self.h, event.h)
 
 type QGraphicsVideoItemcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -581,7 +546,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_customEvent(self: ptr cQGraphicsVideo
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemconnectNotify*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsVideoItem_virtualbase_connectNotify(self.h, signal.h)
 
 type QGraphicsVideoItemconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -599,7 +563,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_connectNotify(self: ptr cQGraphicsVid
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemdisconnectNotify*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQGraphicsVideoItem_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QGraphicsVideoItemdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -617,7 +580,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_disconnectNotify(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemadvance*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, phase: cint): void =
-
   fQGraphicsVideoItem_virtualbase_advance(self.h, phase)
 
 type QGraphicsVideoItemadvanceProc* = proc(phase: cint): void
@@ -635,7 +597,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_advance(self: ptr cQGraphicsVideoItem
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemshape*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsVideoItem_virtualbase_shape(self.h))
 
 type QGraphicsVideoItemshapeProc* = proc(): gen_qpainterpath.QPainterPath
@@ -653,7 +614,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_shape(self: ptr cQGraphicsVideoItem, 
 
   virtualReturn.h
 proc QGraphicsVideoItemcontains*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, point: gen_qpoint.QPointF): bool =
-
   fQGraphicsVideoItem_virtualbase_contains(self.h, point.h)
 
 type QGraphicsVideoItemcontainsProc* = proc(point: gen_qpoint.QPointF): bool
@@ -673,7 +633,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_contains(self: ptr cQGraphicsVideoIte
 
   virtualReturn
 proc QGraphicsVideoItemcollidesWithItem*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, other: gen_qgraphicsitem.QGraphicsItem, mode: cint): bool =
-
   fQGraphicsVideoItem_virtualbase_collidesWithItem(self.h, other.h, cint(mode))
 
 type QGraphicsVideoItemcollidesWithItemProc* = proc(other: gen_qgraphicsitem.QGraphicsItem, mode: cint): bool
@@ -695,7 +654,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_collidesWithItem(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsVideoItemcollidesWithPath*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, path: gen_qpainterpath.QPainterPath, mode: cint): bool =
-
   fQGraphicsVideoItem_virtualbase_collidesWithPath(self.h, path.h, cint(mode))
 
 type QGraphicsVideoItemcollidesWithPathProc* = proc(path: gen_qpainterpath.QPainterPath, mode: cint): bool
@@ -717,7 +675,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_collidesWithPath(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsVideoItemisObscuredBy*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, item: gen_qgraphicsitem.QGraphicsItem): bool =
-
   fQGraphicsVideoItem_virtualbase_isObscuredBy(self.h, item.h)
 
 type QGraphicsVideoItemisObscuredByProc* = proc(item: gen_qgraphicsitem.QGraphicsItem): bool
@@ -737,7 +694,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_isObscuredBy(self: ptr cQGraphicsVide
 
   virtualReturn
 proc QGraphicsVideoItemopaqueArea*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): gen_qpainterpath.QPainterPath =
-
   gen_qpainterpath.QPainterPath(h: fQGraphicsVideoItem_virtualbase_opaqueArea(self.h))
 
 type QGraphicsVideoItemopaqueAreaProc* = proc(): gen_qpainterpath.QPainterPath
@@ -755,7 +711,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_opaqueArea(self: ptr cQGraphicsVideoI
 
   virtualReturn.h
 proc QGraphicsVideoItemtypeX*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, ): cint =
-
   fQGraphicsVideoItem_virtualbase_type(self.h)
 
 type QGraphicsVideoItemtypeXProc* = proc(): cint
@@ -773,7 +728,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_type(self: ptr cQGraphicsVideoItem, s
 
   virtualReturn
 proc QGraphicsVideoItemsceneEventFilter*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsVideoItem_virtualbase_sceneEventFilter(self.h, watched.h, event.h)
 
 type QGraphicsVideoItemsceneEventFilterProc* = proc(watched: gen_qgraphicsitem.QGraphicsItem, event: gen_qcoreevent.QEvent): bool
@@ -795,7 +749,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_sceneEventFilter(self: ptr cQGraphics
 
   virtualReturn
 proc QGraphicsVideoItemsceneEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qcoreevent.QEvent): bool =
-
   fQGraphicsVideoItem_virtualbase_sceneEvent(self.h, event.h)
 
 type QGraphicsVideoItemsceneEventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -815,7 +768,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_sceneEvent(self: ptr cQGraphicsVideoI
 
   virtualReturn
 proc QGraphicsVideoItemcontextMenuEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void =
-
   fQGraphicsVideoItem_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QGraphicsVideoItemcontextMenuEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneContextMenuEvent): void
@@ -833,7 +785,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_contextMenuEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemdragEnterEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsVideoItem_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QGraphicsVideoItemdragEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -851,7 +802,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_dragEnterEvent(self: ptr cQGraphicsVi
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemdragLeaveEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsVideoItem_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QGraphicsVideoItemdragLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -869,7 +819,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_dragLeaveEvent(self: ptr cQGraphicsVi
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemdragMoveEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsVideoItem_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QGraphicsVideoItemdragMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -887,7 +836,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_dragMoveEvent(self: ptr cQGraphicsVid
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemdropEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void =
-
   fQGraphicsVideoItem_virtualbase_dropEvent(self.h, event.h)
 
 type QGraphicsVideoItemdropEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneDragDropEvent): void
@@ -905,7 +853,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_dropEvent(self: ptr cQGraphicsVideoIt
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemfocusInEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsVideoItem_virtualbase_focusInEvent(self.h, event.h)
 
 type QGraphicsVideoItemfocusInEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -923,7 +870,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_focusInEvent(self: ptr cQGraphicsVide
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemfocusOutEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qevent.QFocusEvent): void =
-
   fQGraphicsVideoItem_virtualbase_focusOutEvent(self.h, event.h)
 
 type QGraphicsVideoItemfocusOutEventProc* = proc(event: gen_qevent.QFocusEvent): void
@@ -941,7 +887,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_focusOutEvent(self: ptr cQGraphicsVid
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemhoverEnterEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsVideoItem_virtualbase_hoverEnterEvent(self.h, event.h)
 
 type QGraphicsVideoItemhoverEnterEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -959,7 +904,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_hoverEnterEvent(self: ptr cQGraphicsV
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemhoverMoveEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsVideoItem_virtualbase_hoverMoveEvent(self.h, event.h)
 
 type QGraphicsVideoItemhoverMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -977,7 +921,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_hoverMoveEvent(self: ptr cQGraphicsVi
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemhoverLeaveEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void =
-
   fQGraphicsVideoItem_virtualbase_hoverLeaveEvent(self.h, event.h)
 
 type QGraphicsVideoItemhoverLeaveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneHoverEvent): void
@@ -995,7 +938,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_hoverLeaveEvent(self: ptr cQGraphicsV
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemkeyPressEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsVideoItem_virtualbase_keyPressEvent(self.h, event.h)
 
 type QGraphicsVideoItemkeyPressEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1013,7 +955,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_keyPressEvent(self: ptr cQGraphicsVid
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemkeyReleaseEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qevent.QKeyEvent): void =
-
   fQGraphicsVideoItem_virtualbase_keyReleaseEvent(self.h, event.h)
 
 type QGraphicsVideoItemkeyReleaseEventProc* = proc(event: gen_qevent.QKeyEvent): void
@@ -1031,7 +972,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_keyReleaseEvent(self: ptr cQGraphicsV
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemmousePressEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsVideoItem_virtualbase_mousePressEvent(self.h, event.h)
 
 type QGraphicsVideoItemmousePressEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -1049,7 +989,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_mousePressEvent(self: ptr cQGraphicsV
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemmouseMoveEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsVideoItem_virtualbase_mouseMoveEvent(self.h, event.h)
 
 type QGraphicsVideoItemmouseMoveEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -1067,7 +1006,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_mouseMoveEvent(self: ptr cQGraphicsVi
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemmouseReleaseEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsVideoItem_virtualbase_mouseReleaseEvent(self.h, event.h)
 
 type QGraphicsVideoItemmouseReleaseEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -1085,7 +1023,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_mouseReleaseEvent(self: ptr cQGraphic
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemmouseDoubleClickEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void =
-
   fQGraphicsVideoItem_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QGraphicsVideoItemmouseDoubleClickEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneMouseEvent): void
@@ -1103,7 +1040,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_mouseDoubleClickEvent(self: ptr cQGra
 
   nimfunc[](slotval1)
 proc QGraphicsVideoItemwheelEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void =
-
   fQGraphicsVideoItem_virtualbase_wheelEvent(self.h, event.h)
 
 type QGraphicsVideoItemwheelEventProc* = proc(event: gen_qgraphicssceneevent.QGraphicsSceneWheelEvent): void
@@ -1121,7 +1057,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_wheelEvent(self: ptr cQGraphicsVideoI
 
   nimfunc[](slotval1)
 proc QGraphicsVideoIteminputMethodEvent*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, event: gen_qevent.QInputMethodEvent): void =
-
   fQGraphicsVideoItem_virtualbase_inputMethodEvent(self.h, event.h)
 
 type QGraphicsVideoIteminputMethodEventProc* = proc(event: gen_qevent.QInputMethodEvent): void
@@ -1139,7 +1074,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_inputMethodEvent(self: ptr cQGraphics
 
   nimfunc[](slotval1)
 proc QGraphicsVideoIteminputMethodQuery*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, query: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsVideoItem_virtualbase_inputMethodQuery(self.h, cint(query)))
 
 type QGraphicsVideoIteminputMethodQueryProc* = proc(query: cint): gen_qvariant.QVariant
@@ -1159,7 +1093,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_inputMethodQuery(self: ptr cQGraphics
 
   virtualReturn.h
 proc QGraphicsVideoItemsupportsExtension*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, extension: cint): bool =
-
   fQGraphicsVideoItem_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QGraphicsVideoItemsupportsExtensionProc* = proc(extension: cint): bool
@@ -1179,7 +1112,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_supportsExtension(self: ptr cQGraphic
 
   virtualReturn
 proc QGraphicsVideoItemsetExtension*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, extension: cint, variant: gen_qvariant.QVariant): void =
-
   fQGraphicsVideoItem_virtualbase_setExtension(self.h, cint(extension), variant.h)
 
 type QGraphicsVideoItemsetExtensionProc* = proc(extension: cint, variant: gen_qvariant.QVariant): void
@@ -1199,7 +1131,6 @@ proc miqt_exec_callback_QGraphicsVideoItem_setExtension(self: ptr cQGraphicsVide
 
   nimfunc[](slotval1, slotval2)
 proc QGraphicsVideoItemextension*(self: gen_qgraphicsvideoitem_types.QGraphicsVideoItem, variant: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQGraphicsVideoItem_virtualbase_extension(self.h, variant.h))
 
 type QGraphicsVideoItemextensionProc* = proc(variant: gen_qvariant.QVariant): gen_qvariant.QVariant

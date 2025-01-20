@@ -198,90 +198,78 @@ proc fcQCommandLinkButton_delete(self: pointer) {.importc: "QCommandLinkButton_d
 func init*(T: type gen_qcommandlinkbutton_types.QCommandLinkButton, h: ptr cQCommandLinkButton): gen_qcommandlinkbutton_types.QCommandLinkButton =
   T(h: h)
 proc create*(T: type gen_qcommandlinkbutton_types.QCommandLinkButton, parent: gen_qwidget.QWidget): gen_qcommandlinkbutton_types.QCommandLinkButton =
-
   gen_qcommandlinkbutton_types.QCommandLinkButton.init(fcQCommandLinkButton_new(parent.h))
+
 proc create*(T: type gen_qcommandlinkbutton_types.QCommandLinkButton, ): gen_qcommandlinkbutton_types.QCommandLinkButton =
-
   gen_qcommandlinkbutton_types.QCommandLinkButton.init(fcQCommandLinkButton_new2())
+
 proc create*(T: type gen_qcommandlinkbutton_types.QCommandLinkButton, text: string): gen_qcommandlinkbutton_types.QCommandLinkButton =
-
   gen_qcommandlinkbutton_types.QCommandLinkButton.init(fcQCommandLinkButton_new3(struct_miqt_string(data: text, len: csize_t(len(text)))))
+
 proc create*(T: type gen_qcommandlinkbutton_types.QCommandLinkButton, text: string, description: string): gen_qcommandlinkbutton_types.QCommandLinkButton =
-
   gen_qcommandlinkbutton_types.QCommandLinkButton.init(fcQCommandLinkButton_new4(struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: description, len: csize_t(len(description)))))
+
 proc create*(T: type gen_qcommandlinkbutton_types.QCommandLinkButton, text: string, parent: gen_qwidget.QWidget): gen_qcommandlinkbutton_types.QCommandLinkButton =
-
   gen_qcommandlinkbutton_types.QCommandLinkButton.init(fcQCommandLinkButton_new5(struct_miqt_string(data: text, len: csize_t(len(text))), parent.h))
+
 proc create*(T: type gen_qcommandlinkbutton_types.QCommandLinkButton, text: string, description: string, parent: gen_qwidget.QWidget): gen_qcommandlinkbutton_types.QCommandLinkButton =
-
   gen_qcommandlinkbutton_types.QCommandLinkButton.init(fcQCommandLinkButton_new6(struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: description, len: csize_t(len(description))), parent.h))
-proc metaObject*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQCommandLinkButton_metaObject(self.h))
 
 proc metacast*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: cstring): pointer =
-
   fcQCommandLinkButton_metacast(self.h, param1)
 
 proc metacall*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQCommandLinkButton_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring): string =
-
   let v_ms = fcQCommandLinkButton_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring): string =
-
   let v_ms = fcQCommandLinkButton_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc description*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): string =
-
   let v_ms = fcQCommandLinkButton_description(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setDescription*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, description: string): void =
-
   fcQCommandLinkButton_setDescription(self.h, struct_miqt_string(data: description, len: csize_t(len(description))))
 
-proc tr2*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring, c: cstring): string =
   let v_ms = fcQCommandLinkButton_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCommandLinkButton_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring, c: cstring): string =
   let v_ms = fcQCommandLinkButton_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qcommandlinkbutton_types.QCommandLinkButton, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQCommandLinkButton_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QCommandLinkButtonmetaObject*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQCommandLinkButton_virtualbase_metaObject(self.h))
 
 type QCommandLinkButtonmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -299,7 +287,6 @@ proc miqt_exec_callback_QCommandLinkButton_metaObject(self: ptr cQCommandLinkBut
 
   virtualReturn.h
 proc QCommandLinkButtonmetacast*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: cstring): pointer =
-
   fQCommandLinkButton_virtualbase_metacast(self.h, param1)
 
 type QCommandLinkButtonmetacastProc* = proc(param1: cstring): pointer
@@ -319,7 +306,6 @@ proc miqt_exec_callback_QCommandLinkButton_metacast(self: ptr cQCommandLinkButto
 
   virtualReturn
 proc QCommandLinkButtonmetacall*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: cint, param2: cint, param3: pointer): cint =
-
   fQCommandLinkButton_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QCommandLinkButtonmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -343,7 +329,6 @@ proc miqt_exec_callback_QCommandLinkButton_metacall(self: ptr cQCommandLinkButto
 
   virtualReturn
 proc QCommandLinkButtonsizeHint*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQCommandLinkButton_virtualbase_sizeHint(self.h))
 
 type QCommandLinkButtonsizeHintProc* = proc(): gen_qsize.QSize
@@ -361,7 +346,6 @@ proc miqt_exec_callback_QCommandLinkButton_sizeHint(self: ptr cQCommandLinkButto
 
   virtualReturn.h
 proc QCommandLinkButtonheightForWidth*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: cint): cint =
-
   fQCommandLinkButton_virtualbase_heightForWidth(self.h, param1)
 
 type QCommandLinkButtonheightForWidthProc* = proc(param1: cint): cint
@@ -381,7 +365,6 @@ proc miqt_exec_callback_QCommandLinkButton_heightForWidth(self: ptr cQCommandLin
 
   virtualReturn
 proc QCommandLinkButtonminimumSizeHint*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQCommandLinkButton_virtualbase_minimumSizeHint(self.h))
 
 type QCommandLinkButtonminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -399,7 +382,6 @@ proc miqt_exec_callback_QCommandLinkButton_minimumSizeHint(self: ptr cQCommandLi
 
   virtualReturn.h
 proc QCommandLinkButtonevent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, e: gen_qcoreevent.QEvent): bool =
-
   fQCommandLinkButton_virtualbase_event(self.h, e.h)
 
 type QCommandLinkButtoneventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -419,7 +401,6 @@ proc miqt_exec_callback_QCommandLinkButton_event(self: ptr cQCommandLinkButton, 
 
   virtualReturn
 proc QCommandLinkButtonpaintEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: gen_qevent.QPaintEvent): void =
-
   fQCommandLinkButton_virtualbase_paintEvent(self.h, param1.h)
 
 type QCommandLinkButtonpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -437,7 +418,6 @@ proc miqt_exec_callback_QCommandLinkButton_paintEvent(self: ptr cQCommandLinkBut
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonkeyPressEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: gen_qevent.QKeyEvent): void =
-
   fQCommandLinkButton_virtualbase_keyPressEvent(self.h, param1.h)
 
 type QCommandLinkButtonkeyPressEventProc* = proc(param1: gen_qevent.QKeyEvent): void
@@ -455,7 +435,6 @@ proc miqt_exec_callback_QCommandLinkButton_keyPressEvent(self: ptr cQCommandLink
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonfocusInEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: gen_qevent.QFocusEvent): void =
-
   fQCommandLinkButton_virtualbase_focusInEvent(self.h, param1.h)
 
 type QCommandLinkButtonfocusInEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -473,7 +452,6 @@ proc miqt_exec_callback_QCommandLinkButton_focusInEvent(self: ptr cQCommandLinkB
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonfocusOutEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: gen_qevent.QFocusEvent): void =
-
   fQCommandLinkButton_virtualbase_focusOutEvent(self.h, param1.h)
 
 type QCommandLinkButtonfocusOutEventProc* = proc(param1: gen_qevent.QFocusEvent): void
@@ -491,7 +469,6 @@ proc miqt_exec_callback_QCommandLinkButton_focusOutEvent(self: ptr cQCommandLink
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonhitButton*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, pos: gen_qpoint.QPoint): bool =
-
   fQCommandLinkButton_virtualbase_hitButton(self.h, pos.h)
 
 type QCommandLinkButtonhitButtonProc* = proc(pos: gen_qpoint.QPoint): bool
@@ -511,7 +488,6 @@ proc miqt_exec_callback_QCommandLinkButton_hitButton(self: ptr cQCommandLinkButt
 
   virtualReturn
 proc QCommandLinkButtoncheckStateSet*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): void =
-
   fQCommandLinkButton_virtualbase_checkStateSet(self.h)
 
 type QCommandLinkButtoncheckStateSetProc* = proc(): void
@@ -527,7 +503,6 @@ proc miqt_exec_callback_QCommandLinkButton_checkStateSet(self: ptr cQCommandLink
 
   nimfunc[]()
 proc QCommandLinkButtonnextCheckState*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): void =
-
   fQCommandLinkButton_virtualbase_nextCheckState(self.h)
 
 type QCommandLinkButtonnextCheckStateProc* = proc(): void
@@ -543,7 +518,6 @@ proc miqt_exec_callback_QCommandLinkButton_nextCheckState(self: ptr cQCommandLin
 
   nimfunc[]()
 proc QCommandLinkButtonkeyReleaseEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, e: gen_qevent.QKeyEvent): void =
-
   fQCommandLinkButton_virtualbase_keyReleaseEvent(self.h, e.h)
 
 type QCommandLinkButtonkeyReleaseEventProc* = proc(e: gen_qevent.QKeyEvent): void
@@ -561,7 +535,6 @@ proc miqt_exec_callback_QCommandLinkButton_keyReleaseEvent(self: ptr cQCommandLi
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonmousePressEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, e: gen_qevent.QMouseEvent): void =
-
   fQCommandLinkButton_virtualbase_mousePressEvent(self.h, e.h)
 
 type QCommandLinkButtonmousePressEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -579,7 +552,6 @@ proc miqt_exec_callback_QCommandLinkButton_mousePressEvent(self: ptr cQCommandLi
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonmouseReleaseEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, e: gen_qevent.QMouseEvent): void =
-
   fQCommandLinkButton_virtualbase_mouseReleaseEvent(self.h, e.h)
 
 type QCommandLinkButtonmouseReleaseEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -597,7 +569,6 @@ proc miqt_exec_callback_QCommandLinkButton_mouseReleaseEvent(self: ptr cQCommand
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonmouseMoveEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, e: gen_qevent.QMouseEvent): void =
-
   fQCommandLinkButton_virtualbase_mouseMoveEvent(self.h, e.h)
 
 type QCommandLinkButtonmouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -615,7 +586,6 @@ proc miqt_exec_callback_QCommandLinkButton_mouseMoveEvent(self: ptr cQCommandLin
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonchangeEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, e: gen_qcoreevent.QEvent): void =
-
   fQCommandLinkButton_virtualbase_changeEvent(self.h, e.h)
 
 type QCommandLinkButtonchangeEventProc* = proc(e: gen_qcoreevent.QEvent): void
@@ -633,7 +603,6 @@ proc miqt_exec_callback_QCommandLinkButton_changeEvent(self: ptr cQCommandLinkBu
 
   nimfunc[](slotval1)
 proc QCommandLinkButtontimerEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, e: gen_qcoreevent.QTimerEvent): void =
-
   fQCommandLinkButton_virtualbase_timerEvent(self.h, e.h)
 
 type QCommandLinkButtontimerEventProc* = proc(e: gen_qcoreevent.QTimerEvent): void
@@ -651,7 +620,6 @@ proc miqt_exec_callback_QCommandLinkButton_timerEvent(self: ptr cQCommandLinkBut
 
   nimfunc[](slotval1)
 proc QCommandLinkButtondevType*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): cint =
-
   fQCommandLinkButton_virtualbase_devType(self.h)
 
 type QCommandLinkButtondevTypeProc* = proc(): cint
@@ -669,7 +637,6 @@ proc miqt_exec_callback_QCommandLinkButton_devType(self: ptr cQCommandLinkButton
 
   virtualReturn
 proc QCommandLinkButtonsetVisible*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, visible: bool): void =
-
   fQCommandLinkButton_virtualbase_setVisible(self.h, visible)
 
 type QCommandLinkButtonsetVisibleProc* = proc(visible: bool): void
@@ -687,7 +654,6 @@ proc miqt_exec_callback_QCommandLinkButton_setVisible(self: ptr cQCommandLinkBut
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonhasHeightForWidth*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): bool =
-
   fQCommandLinkButton_virtualbase_hasHeightForWidth(self.h)
 
 type QCommandLinkButtonhasHeightForWidthProc* = proc(): bool
@@ -705,7 +671,6 @@ proc miqt_exec_callback_QCommandLinkButton_hasHeightForWidth(self: ptr cQCommand
 
   virtualReturn
 proc QCommandLinkButtonpaintEngine*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQCommandLinkButton_virtualbase_paintEngine(self.h))
 
 type QCommandLinkButtonpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -723,7 +688,6 @@ proc miqt_exec_callback_QCommandLinkButton_paintEngine(self: ptr cQCommandLinkBu
 
   virtualReturn.h
 proc QCommandLinkButtonmouseDoubleClickEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QMouseEvent): void =
-
   fQCommandLinkButton_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QCommandLinkButtonmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -741,7 +705,6 @@ proc miqt_exec_callback_QCommandLinkButton_mouseDoubleClickEvent(self: ptr cQCom
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonwheelEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QWheelEvent): void =
-
   fQCommandLinkButton_virtualbase_wheelEvent(self.h, event.h)
 
 type QCommandLinkButtonwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -759,7 +722,6 @@ proc miqt_exec_callback_QCommandLinkButton_wheelEvent(self: ptr cQCommandLinkBut
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonenterEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qcoreevent.QEvent): void =
-
   fQCommandLinkButton_virtualbase_enterEvent(self.h, event.h)
 
 type QCommandLinkButtonenterEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -777,7 +739,6 @@ proc miqt_exec_callback_QCommandLinkButton_enterEvent(self: ptr cQCommandLinkBut
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonleaveEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qcoreevent.QEvent): void =
-
   fQCommandLinkButton_virtualbase_leaveEvent(self.h, event.h)
 
 type QCommandLinkButtonleaveEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -795,7 +756,6 @@ proc miqt_exec_callback_QCommandLinkButton_leaveEvent(self: ptr cQCommandLinkBut
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonmoveEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QMoveEvent): void =
-
   fQCommandLinkButton_virtualbase_moveEvent(self.h, event.h)
 
 type QCommandLinkButtonmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -813,7 +773,6 @@ proc miqt_exec_callback_QCommandLinkButton_moveEvent(self: ptr cQCommandLinkButt
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonresizeEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QResizeEvent): void =
-
   fQCommandLinkButton_virtualbase_resizeEvent(self.h, event.h)
 
 type QCommandLinkButtonresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -831,7 +790,6 @@ proc miqt_exec_callback_QCommandLinkButton_resizeEvent(self: ptr cQCommandLinkBu
 
   nimfunc[](slotval1)
 proc QCommandLinkButtoncloseEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QCloseEvent): void =
-
   fQCommandLinkButton_virtualbase_closeEvent(self.h, event.h)
 
 type QCommandLinkButtoncloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -849,7 +807,6 @@ proc miqt_exec_callback_QCommandLinkButton_closeEvent(self: ptr cQCommandLinkBut
 
   nimfunc[](slotval1)
 proc QCommandLinkButtoncontextMenuEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QContextMenuEvent): void =
-
   fQCommandLinkButton_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QCommandLinkButtoncontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -867,7 +824,6 @@ proc miqt_exec_callback_QCommandLinkButton_contextMenuEvent(self: ptr cQCommandL
 
   nimfunc[](slotval1)
 proc QCommandLinkButtontabletEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QTabletEvent): void =
-
   fQCommandLinkButton_virtualbase_tabletEvent(self.h, event.h)
 
 type QCommandLinkButtontabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -885,7 +841,6 @@ proc miqt_exec_callback_QCommandLinkButton_tabletEvent(self: ptr cQCommandLinkBu
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonactionEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QActionEvent): void =
-
   fQCommandLinkButton_virtualbase_actionEvent(self.h, event.h)
 
 type QCommandLinkButtonactionEventProc* = proc(event: gen_qevent.QActionEvent): void
@@ -903,7 +858,6 @@ proc miqt_exec_callback_QCommandLinkButton_actionEvent(self: ptr cQCommandLinkBu
 
   nimfunc[](slotval1)
 proc QCommandLinkButtondragEnterEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QDragEnterEvent): void =
-
   fQCommandLinkButton_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QCommandLinkButtondragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -921,7 +875,6 @@ proc miqt_exec_callback_QCommandLinkButton_dragEnterEvent(self: ptr cQCommandLin
 
   nimfunc[](slotval1)
 proc QCommandLinkButtondragMoveEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QDragMoveEvent): void =
-
   fQCommandLinkButton_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QCommandLinkButtondragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -939,7 +892,6 @@ proc miqt_exec_callback_QCommandLinkButton_dragMoveEvent(self: ptr cQCommandLink
 
   nimfunc[](slotval1)
 proc QCommandLinkButtondragLeaveEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QDragLeaveEvent): void =
-
   fQCommandLinkButton_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QCommandLinkButtondragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -957,7 +909,6 @@ proc miqt_exec_callback_QCommandLinkButton_dragLeaveEvent(self: ptr cQCommandLin
 
   nimfunc[](slotval1)
 proc QCommandLinkButtondropEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QDropEvent): void =
-
   fQCommandLinkButton_virtualbase_dropEvent(self.h, event.h)
 
 type QCommandLinkButtondropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -975,7 +926,6 @@ proc miqt_exec_callback_QCommandLinkButton_dropEvent(self: ptr cQCommandLinkButt
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonshowEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QShowEvent): void =
-
   fQCommandLinkButton_virtualbase_showEvent(self.h, event.h)
 
 type QCommandLinkButtonshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -993,7 +943,6 @@ proc miqt_exec_callback_QCommandLinkButton_showEvent(self: ptr cQCommandLinkButt
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonhideEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qevent.QHideEvent): void =
-
   fQCommandLinkButton_virtualbase_hideEvent(self.h, event.h)
 
 type QCommandLinkButtonhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1011,7 +960,6 @@ proc miqt_exec_callback_QCommandLinkButton_hideEvent(self: ptr cQCommandLinkButt
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonnativeEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQCommandLinkButton_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QCommandLinkButtonnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1038,7 +986,6 @@ proc miqt_exec_callback_QCommandLinkButton_nativeEvent(self: ptr cQCommandLinkBu
 
   virtualReturn
 proc QCommandLinkButtonmetric*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: cint): cint =
-
   fQCommandLinkButton_virtualbase_metric(self.h, cint(param1))
 
 type QCommandLinkButtonmetricProc* = proc(param1: cint): cint
@@ -1058,7 +1005,6 @@ proc miqt_exec_callback_QCommandLinkButton_metric(self: ptr cQCommandLinkButton,
 
   virtualReturn
 proc QCommandLinkButtoninitPainter*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, painter: gen_qpainter.QPainter): void =
-
   fQCommandLinkButton_virtualbase_initPainter(self.h, painter.h)
 
 type QCommandLinkButtoninitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1076,7 +1022,6 @@ proc miqt_exec_callback_QCommandLinkButton_initPainter(self: ptr cQCommandLinkBu
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonredirected*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQCommandLinkButton_virtualbase_redirected(self.h, offset.h))
 
 type QCommandLinkButtonredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1096,7 +1041,6 @@ proc miqt_exec_callback_QCommandLinkButton_redirected(self: ptr cQCommandLinkBut
 
   virtualReturn.h
 proc QCommandLinkButtonsharedPainter*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQCommandLinkButton_virtualbase_sharedPainter(self.h))
 
 type QCommandLinkButtonsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1114,7 +1058,6 @@ proc miqt_exec_callback_QCommandLinkButton_sharedPainter(self: ptr cQCommandLink
 
   virtualReturn.h
 proc QCommandLinkButtoninputMethodEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: gen_qevent.QInputMethodEvent): void =
-
   fQCommandLinkButton_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QCommandLinkButtoninputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1132,7 +1075,6 @@ proc miqt_exec_callback_QCommandLinkButton_inputMethodEvent(self: ptr cQCommandL
 
   nimfunc[](slotval1)
 proc QCommandLinkButtoninputMethodQuery*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQCommandLinkButton_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QCommandLinkButtoninputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1152,7 +1094,6 @@ proc miqt_exec_callback_QCommandLinkButton_inputMethodQuery(self: ptr cQCommandL
 
   virtualReturn.h
 proc QCommandLinkButtonfocusNextPrevChild*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, next: bool): bool =
-
   fQCommandLinkButton_virtualbase_focusNextPrevChild(self.h, next)
 
 type QCommandLinkButtonfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1172,7 +1113,6 @@ proc miqt_exec_callback_QCommandLinkButton_focusNextPrevChild(self: ptr cQComman
 
   virtualReturn
 proc QCommandLinkButtoneventFilter*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQCommandLinkButton_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QCommandLinkButtoneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1194,7 +1134,6 @@ proc miqt_exec_callback_QCommandLinkButton_eventFilter(self: ptr cQCommandLinkBu
 
   virtualReturn
 proc QCommandLinkButtonchildEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qcoreevent.QChildEvent): void =
-
   fQCommandLinkButton_virtualbase_childEvent(self.h, event.h)
 
 type QCommandLinkButtonchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1212,7 +1151,6 @@ proc miqt_exec_callback_QCommandLinkButton_childEvent(self: ptr cQCommandLinkBut
 
   nimfunc[](slotval1)
 proc QCommandLinkButtoncustomEvent*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, event: gen_qcoreevent.QEvent): void =
-
   fQCommandLinkButton_virtualbase_customEvent(self.h, event.h)
 
 type QCommandLinkButtoncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1230,7 +1168,6 @@ proc miqt_exec_callback_QCommandLinkButton_customEvent(self: ptr cQCommandLinkBu
 
   nimfunc[](slotval1)
 proc QCommandLinkButtonconnectNotify*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCommandLinkButton_virtualbase_connectNotify(self.h, signal.h)
 
 type QCommandLinkButtonconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1248,7 +1185,6 @@ proc miqt_exec_callback_QCommandLinkButton_connectNotify(self: ptr cQCommandLink
 
   nimfunc[](slotval1)
 proc QCommandLinkButtondisconnectNotify*(self: gen_qcommandlinkbutton_types.QCommandLinkButton, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQCommandLinkButton_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QCommandLinkButtondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

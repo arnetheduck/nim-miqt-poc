@@ -95,45 +95,35 @@ proc fcQWebEngineUrlRequestInfo_setHttpHeader(self: pointer, name: struct_miqt_s
 func init*(T: type gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, h: ptr cQWebEngineUrlRequestInfo): gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo =
   T(h: h)
 proc resourceType*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): cint =
-
   cint(fcQWebEngineUrlRequestInfo_resourceType(self.h))
 
 proc navigationType*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): cint =
-
   cint(fcQWebEngineUrlRequestInfo_navigationType(self.h))
 
 proc requestUrl*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineUrlRequestInfo_requestUrl(self.h))
 
 proc firstPartyUrl*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineUrlRequestInfo_firstPartyUrl(self.h))
 
 proc initiator*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQWebEngineUrlRequestInfo_initiator(self.h))
 
 proc requestMethod*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): seq[byte] =
-
   var v_bytearray = fcQWebEngineUrlRequestInfo_requestMethod(self.h)
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc changed*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, ): bool =
-
   fcQWebEngineUrlRequestInfo_changed(self.h)
 
 proc blockX*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, shouldBlock: bool): void =
-
   fcQWebEngineUrlRequestInfo_blockX(self.h, shouldBlock)
 
 proc redirect*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, url: gen_qurl.QUrl): void =
-
   fcQWebEngineUrlRequestInfo_redirect(self.h, url.h)
 
 proc setHttpHeader*(self: gen_qwebengineurlrequestinfo_types.QWebEngineUrlRequestInfo, name: seq[byte], value: seq[byte]): void =
-
   fcQWebEngineUrlRequestInfo_setHttpHeader(self.h, struct_miqt_string(data: cast[cstring](if len(name) == 0: nil else: unsafeAddr name[0]), len: csize_t(len(name))), struct_miqt_string(data: cast[cstring](if len(value) == 0: nil else: unsafeAddr value[0]), len: csize_t(len(value))))
 

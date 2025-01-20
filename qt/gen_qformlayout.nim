@@ -208,267 +208,207 @@ proc fcQFormLayoutTakeRowResult_delete(self: pointer) {.importc: "QFormLayout__T
 func init*(T: type gen_qformlayout_types.QFormLayout, h: ptr cQFormLayout): gen_qformlayout_types.QFormLayout =
   T(h: h)
 proc create*(T: type gen_qformlayout_types.QFormLayout, parent: gen_qwidget.QWidget): gen_qformlayout_types.QFormLayout =
-
   gen_qformlayout_types.QFormLayout.init(fcQFormLayout_new(parent.h))
+
 proc create*(T: type gen_qformlayout_types.QFormLayout, ): gen_qformlayout_types.QFormLayout =
-
   gen_qformlayout_types.QFormLayout.init(fcQFormLayout_new2())
-proc metaObject*(self: gen_qformlayout_types.QFormLayout, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qformlayout_types.QFormLayout, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQFormLayout_metaObject(self.h))
 
 proc metacast*(self: gen_qformlayout_types.QFormLayout, param1: cstring): pointer =
-
   fcQFormLayout_metacast(self.h, param1)
 
 proc metacall*(self: gen_qformlayout_types.QFormLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQFormLayout_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qformlayout_types.QFormLayout, s: cstring): string =
-
   let v_ms = fcQFormLayout_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qformlayout_types.QFormLayout, s: cstring): string =
-
   let v_ms = fcQFormLayout_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setFieldGrowthPolicy*(self: gen_qformlayout_types.QFormLayout, policy: cint): void =
-
   fcQFormLayout_setFieldGrowthPolicy(self.h, cint(policy))
 
 proc fieldGrowthPolicy*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   cint(fcQFormLayout_fieldGrowthPolicy(self.h))
 
 proc setRowWrapPolicy*(self: gen_qformlayout_types.QFormLayout, policy: cint): void =
-
   fcQFormLayout_setRowWrapPolicy(self.h, cint(policy))
 
 proc rowWrapPolicy*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   cint(fcQFormLayout_rowWrapPolicy(self.h))
 
 proc setLabelAlignment*(self: gen_qformlayout_types.QFormLayout, alignment: cint): void =
-
   fcQFormLayout_setLabelAlignment(self.h, cint(alignment))
 
 proc labelAlignment*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   cint(fcQFormLayout_labelAlignment(self.h))
 
 proc setFormAlignment*(self: gen_qformlayout_types.QFormLayout, alignment: cint): void =
-
   fcQFormLayout_setFormAlignment(self.h, cint(alignment))
 
 proc formAlignment*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   cint(fcQFormLayout_formAlignment(self.h))
 
 proc setHorizontalSpacing*(self: gen_qformlayout_types.QFormLayout, spacing: cint): void =
-
   fcQFormLayout_setHorizontalSpacing(self.h, spacing)
 
 proc horizontalSpacing*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   fcQFormLayout_horizontalSpacing(self.h)
 
 proc setVerticalSpacing*(self: gen_qformlayout_types.QFormLayout, spacing: cint): void =
-
   fcQFormLayout_setVerticalSpacing(self.h, spacing)
 
 proc verticalSpacing*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   fcQFormLayout_verticalSpacing(self.h)
 
 proc spacing*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   fcQFormLayout_spacing(self.h)
 
 proc setSpacing*(self: gen_qformlayout_types.QFormLayout, spacing: cint): void =
-
   fcQFormLayout_setSpacing(self.h, spacing)
 
 proc addRow*(self: gen_qformlayout_types.QFormLayout, label: gen_qwidget.QWidget, field: gen_qwidget.QWidget): void =
-
   fcQFormLayout_addRow(self.h, label.h, field.h)
 
-proc addRow2*(self: gen_qformlayout_types.QFormLayout, label: gen_qwidget.QWidget, field: gen_qlayout.QLayout): void =
-
+proc addRow*(self: gen_qformlayout_types.QFormLayout, label: gen_qwidget.QWidget, field: gen_qlayout.QLayout): void =
   fcQFormLayout_addRow2(self.h, label.h, field.h)
 
-proc addRow3*(self: gen_qformlayout_types.QFormLayout, labelText: string, field: gen_qwidget.QWidget): void =
-
+proc addRow*(self: gen_qformlayout_types.QFormLayout, labelText: string, field: gen_qwidget.QWidget): void =
   fcQFormLayout_addRow3(self.h, struct_miqt_string(data: labelText, len: csize_t(len(labelText))), field.h)
 
-proc addRow4*(self: gen_qformlayout_types.QFormLayout, labelText: string, field: gen_qlayout.QLayout): void =
-
+proc addRow*(self: gen_qformlayout_types.QFormLayout, labelText: string, field: gen_qlayout.QLayout): void =
   fcQFormLayout_addRow4(self.h, struct_miqt_string(data: labelText, len: csize_t(len(labelText))), field.h)
 
-proc addRowWithWidget*(self: gen_qformlayout_types.QFormLayout, widget: gen_qwidget.QWidget): void =
-
+proc addRow*(self: gen_qformlayout_types.QFormLayout, widget: gen_qwidget.QWidget): void =
   fcQFormLayout_addRowWithWidget(self.h, widget.h)
 
-proc addRowWithLayout*(self: gen_qformlayout_types.QFormLayout, layout: gen_qlayout.QLayout): void =
-
+proc addRow*(self: gen_qformlayout_types.QFormLayout, layout: gen_qlayout.QLayout): void =
   fcQFormLayout_addRowWithLayout(self.h, layout.h)
 
 proc insertRow*(self: gen_qformlayout_types.QFormLayout, row: cint, label: gen_qwidget.QWidget, field: gen_qwidget.QWidget): void =
-
   fcQFormLayout_insertRow(self.h, row, label.h, field.h)
 
-proc insertRow2*(self: gen_qformlayout_types.QFormLayout, row: cint, label: gen_qwidget.QWidget, field: gen_qlayout.QLayout): void =
-
+proc insertRow*(self: gen_qformlayout_types.QFormLayout, row: cint, label: gen_qwidget.QWidget, field: gen_qlayout.QLayout): void =
   fcQFormLayout_insertRow2(self.h, row, label.h, field.h)
 
-proc insertRow3*(self: gen_qformlayout_types.QFormLayout, row: cint, labelText: string, field: gen_qwidget.QWidget): void =
-
+proc insertRow*(self: gen_qformlayout_types.QFormLayout, row: cint, labelText: string, field: gen_qwidget.QWidget): void =
   fcQFormLayout_insertRow3(self.h, row, struct_miqt_string(data: labelText, len: csize_t(len(labelText))), field.h)
 
-proc insertRow4*(self: gen_qformlayout_types.QFormLayout, row: cint, labelText: string, field: gen_qlayout.QLayout): void =
-
+proc insertRow*(self: gen_qformlayout_types.QFormLayout, row: cint, labelText: string, field: gen_qlayout.QLayout): void =
   fcQFormLayout_insertRow4(self.h, row, struct_miqt_string(data: labelText, len: csize_t(len(labelText))), field.h)
 
-proc insertRow5*(self: gen_qformlayout_types.QFormLayout, row: cint, widget: gen_qwidget.QWidget): void =
-
+proc insertRow*(self: gen_qformlayout_types.QFormLayout, row: cint, widget: gen_qwidget.QWidget): void =
   fcQFormLayout_insertRow5(self.h, row, widget.h)
 
-proc insertRow6*(self: gen_qformlayout_types.QFormLayout, row: cint, layout: gen_qlayout.QLayout): void =
-
+proc insertRow*(self: gen_qformlayout_types.QFormLayout, row: cint, layout: gen_qlayout.QLayout): void =
   fcQFormLayout_insertRow6(self.h, row, layout.h)
 
 proc removeRow*(self: gen_qformlayout_types.QFormLayout, row: cint): void =
-
   fcQFormLayout_removeRow(self.h, row)
 
-proc removeRowWithWidget*(self: gen_qformlayout_types.QFormLayout, widget: gen_qwidget.QWidget): void =
-
+proc removeRow*(self: gen_qformlayout_types.QFormLayout, widget: gen_qwidget.QWidget): void =
   fcQFormLayout_removeRowWithWidget(self.h, widget.h)
 
-proc removeRowWithLayout*(self: gen_qformlayout_types.QFormLayout, layout: gen_qlayout.QLayout): void =
-
+proc removeRow*(self: gen_qformlayout_types.QFormLayout, layout: gen_qlayout.QLayout): void =
   fcQFormLayout_removeRowWithLayout(self.h, layout.h)
 
 proc takeRow*(self: gen_qformlayout_types.QFormLayout, row: cint): gen_qformlayout_types.QFormLayoutTakeRowResult =
-
   gen_qformlayout_types.QFormLayoutTakeRowResult(h: fcQFormLayout_takeRow(self.h, row))
 
-proc takeRowWithWidget*(self: gen_qformlayout_types.QFormLayout, widget: gen_qwidget.QWidget): gen_qformlayout_types.QFormLayoutTakeRowResult =
-
+proc takeRow*(self: gen_qformlayout_types.QFormLayout, widget: gen_qwidget.QWidget): gen_qformlayout_types.QFormLayoutTakeRowResult =
   gen_qformlayout_types.QFormLayoutTakeRowResult(h: fcQFormLayout_takeRowWithWidget(self.h, widget.h))
 
-proc takeRowWithLayout*(self: gen_qformlayout_types.QFormLayout, layout: gen_qlayout.QLayout): gen_qformlayout_types.QFormLayoutTakeRowResult =
-
+proc takeRow*(self: gen_qformlayout_types.QFormLayout, layout: gen_qlayout.QLayout): gen_qformlayout_types.QFormLayoutTakeRowResult =
   gen_qformlayout_types.QFormLayoutTakeRowResult(h: fcQFormLayout_takeRowWithLayout(self.h, layout.h))
 
 proc setItem*(self: gen_qformlayout_types.QFormLayout, row: cint, role: cint, item: gen_qlayoutitem.QLayoutItem): void =
-
   fcQFormLayout_setItem(self.h, row, cint(role), item.h)
 
 proc setWidget*(self: gen_qformlayout_types.QFormLayout, row: cint, role: cint, widget: gen_qwidget.QWidget): void =
-
   fcQFormLayout_setWidget(self.h, row, cint(role), widget.h)
 
 proc setLayout*(self: gen_qformlayout_types.QFormLayout, row: cint, role: cint, layout: gen_qlayout.QLayout): void =
-
   fcQFormLayout_setLayout(self.h, row, cint(role), layout.h)
 
 proc itemAt*(self: gen_qformlayout_types.QFormLayout, row: cint, role: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fcQFormLayout_itemAt(self.h, row, cint(role)))
 
 proc labelForField*(self: gen_qformlayout_types.QFormLayout, field: gen_qwidget.QWidget): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQFormLayout_labelForField(self.h, field.h))
 
-proc labelForFieldWithField*(self: gen_qformlayout_types.QFormLayout, field: gen_qlayout.QLayout): gen_qwidget.QWidget =
-
+proc labelForField*(self: gen_qformlayout_types.QFormLayout, field: gen_qlayout.QLayout): gen_qwidget.QWidget =
   gen_qwidget.QWidget(h: fcQFormLayout_labelForFieldWithField(self.h, field.h))
 
 proc addItem*(self: gen_qformlayout_types.QFormLayout, item: gen_qlayoutitem.QLayoutItem): void =
-
   fcQFormLayout_addItem(self.h, item.h)
 
-proc itemAtWithIndex*(self: gen_qformlayout_types.QFormLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
+proc itemAt*(self: gen_qformlayout_types.QFormLayout, index: cint): gen_qlayoutitem.QLayoutItem =
   gen_qlayoutitem.QLayoutItem(h: fcQFormLayout_itemAtWithIndex(self.h, index))
 
 proc takeAt*(self: gen_qformlayout_types.QFormLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fcQFormLayout_takeAt(self.h, index))
 
 proc setGeometry*(self: gen_qformlayout_types.QFormLayout, rect: gen_qrect.QRect): void =
-
   fcQFormLayout_setGeometry(self.h, rect.h)
 
 proc minimumSize*(self: gen_qformlayout_types.QFormLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQFormLayout_minimumSize(self.h))
 
 proc sizeHint*(self: gen_qformlayout_types.QFormLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQFormLayout_sizeHint(self.h))
 
 proc invalidate*(self: gen_qformlayout_types.QFormLayout, ): void =
-
   fcQFormLayout_invalidate(self.h)
 
 proc hasHeightForWidth*(self: gen_qformlayout_types.QFormLayout, ): bool =
-
   fcQFormLayout_hasHeightForWidth(self.h)
 
 proc heightForWidth*(self: gen_qformlayout_types.QFormLayout, width: cint): cint =
-
   fcQFormLayout_heightForWidth(self.h, width)
 
 proc expandingDirections*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   cint(fcQFormLayout_expandingDirections(self.h))
 
 proc count*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   fcQFormLayout_count(self.h)
 
 proc rowCount*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   fcQFormLayout_rowCount(self.h)
 
-proc tr2*(_: type gen_qformlayout_types.QFormLayout, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qformlayout_types.QFormLayout, s: cstring, c: cstring): string =
   let v_ms = fcQFormLayout_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qformlayout_types.QFormLayout, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qformlayout_types.QFormLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFormLayout_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qformlayout_types.QFormLayout, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qformlayout_types.QFormLayout, s: cstring, c: cstring): string =
   let v_ms = fcQFormLayout_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qformlayout_types.QFormLayout, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qformlayout_types.QFormLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQFormLayout_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QFormLayoutmetaObject*(self: gen_qformlayout_types.QFormLayout, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQFormLayout_virtualbase_metaObject(self.h))
 
 type QFormLayoutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -486,7 +426,6 @@ proc miqt_exec_callback_QFormLayout_metaObject(self: ptr cQFormLayout, slot: int
 
   virtualReturn.h
 proc QFormLayoutmetacast*(self: gen_qformlayout_types.QFormLayout, param1: cstring): pointer =
-
   fQFormLayout_virtualbase_metacast(self.h, param1)
 
 type QFormLayoutmetacastProc* = proc(param1: cstring): pointer
@@ -506,7 +445,6 @@ proc miqt_exec_callback_QFormLayout_metacast(self: ptr cQFormLayout, slot: int, 
 
   virtualReturn
 proc QFormLayoutmetacall*(self: gen_qformlayout_types.QFormLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fQFormLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QFormLayoutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -530,7 +468,6 @@ proc miqt_exec_callback_QFormLayout_metacall(self: ptr cQFormLayout, slot: int, 
 
   virtualReturn
 proc QFormLayoutaddItem*(self: gen_qformlayout_types.QFormLayout, item: gen_qlayoutitem.QLayoutItem): void =
-
   fQFormLayout_virtualbase_addItem(self.h, item.h)
 
 type QFormLayoutaddItemProc* = proc(item: gen_qlayoutitem.QLayoutItem): void
@@ -547,12 +484,11 @@ proc miqt_exec_callback_QFormLayout_addItem(self: ptr cQFormLayout, slot: int, i
 
 
   nimfunc[](slotval1)
-proc QFormLayoutitemAtWithIndex*(self: gen_qformlayout_types.QFormLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
+proc QFormLayoutitemAt*(self: gen_qformlayout_types.QFormLayout, index: cint): gen_qlayoutitem.QLayoutItem =
   gen_qlayoutitem.QLayoutItem(h: fQFormLayout_virtualbase_itemAtWithIndex(self.h, index))
 
 type QFormLayoutitemAtWithIndexProc* = proc(index: cint): gen_qlayoutitem.QLayoutItem
-proc onitemAtWithIndex*(self: gen_qformlayout_types.QFormLayout, slot: QFormLayoutitemAtWithIndexProc) =
+proc onitemAt*(self: gen_qformlayout_types.QFormLayout, slot: QFormLayoutitemAtWithIndexProc) =
   # TODO check subclass
   var tmp = new QFormLayoutitemAtWithIndexProc
   tmp[] = slot
@@ -568,7 +504,6 @@ proc miqt_exec_callback_QFormLayout_itemAtWithIndex(self: ptr cQFormLayout, slot
 
   virtualReturn.h
 proc QFormLayouttakeAt*(self: gen_qformlayout_types.QFormLayout, index: cint): gen_qlayoutitem.QLayoutItem =
-
   gen_qlayoutitem.QLayoutItem(h: fQFormLayout_virtualbase_takeAt(self.h, index))
 
 type QFormLayouttakeAtProc* = proc(index: cint): gen_qlayoutitem.QLayoutItem
@@ -588,7 +523,6 @@ proc miqt_exec_callback_QFormLayout_takeAt(self: ptr cQFormLayout, slot: int, in
 
   virtualReturn.h
 proc QFormLayoutsetGeometry*(self: gen_qformlayout_types.QFormLayout, rect: gen_qrect.QRect): void =
-
   fQFormLayout_virtualbase_setGeometry(self.h, rect.h)
 
 type QFormLayoutsetGeometryProc* = proc(rect: gen_qrect.QRect): void
@@ -606,7 +540,6 @@ proc miqt_exec_callback_QFormLayout_setGeometry(self: ptr cQFormLayout, slot: in
 
   nimfunc[](slotval1)
 proc QFormLayoutminimumSize*(self: gen_qformlayout_types.QFormLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQFormLayout_virtualbase_minimumSize(self.h))
 
 type QFormLayoutminimumSizeProc* = proc(): gen_qsize.QSize
@@ -624,7 +557,6 @@ proc miqt_exec_callback_QFormLayout_minimumSize(self: ptr cQFormLayout, slot: in
 
   virtualReturn.h
 proc QFormLayoutsizeHint*(self: gen_qformlayout_types.QFormLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQFormLayout_virtualbase_sizeHint(self.h))
 
 type QFormLayoutsizeHintProc* = proc(): gen_qsize.QSize
@@ -642,7 +574,6 @@ proc miqt_exec_callback_QFormLayout_sizeHint(self: ptr cQFormLayout, slot: int):
 
   virtualReturn.h
 proc QFormLayoutinvalidate*(self: gen_qformlayout_types.QFormLayout, ): void =
-
   fQFormLayout_virtualbase_invalidate(self.h)
 
 type QFormLayoutinvalidateProc* = proc(): void
@@ -658,7 +589,6 @@ proc miqt_exec_callback_QFormLayout_invalidate(self: ptr cQFormLayout, slot: int
 
   nimfunc[]()
 proc QFormLayouthasHeightForWidth*(self: gen_qformlayout_types.QFormLayout, ): bool =
-
   fQFormLayout_virtualbase_hasHeightForWidth(self.h)
 
 type QFormLayouthasHeightForWidthProc* = proc(): bool
@@ -676,7 +606,6 @@ proc miqt_exec_callback_QFormLayout_hasHeightForWidth(self: ptr cQFormLayout, sl
 
   virtualReturn
 proc QFormLayoutheightForWidth*(self: gen_qformlayout_types.QFormLayout, width: cint): cint =
-
   fQFormLayout_virtualbase_heightForWidth(self.h, width)
 
 type QFormLayoutheightForWidthProc* = proc(width: cint): cint
@@ -696,7 +625,6 @@ proc miqt_exec_callback_QFormLayout_heightForWidth(self: ptr cQFormLayout, slot:
 
   virtualReturn
 proc QFormLayoutexpandingDirections*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   cint(fQFormLayout_virtualbase_expandingDirections(self.h))
 
 type QFormLayoutexpandingDirectionsProc* = proc(): cint
@@ -714,7 +642,6 @@ proc miqt_exec_callback_QFormLayout_expandingDirections(self: ptr cQFormLayout, 
 
   cint(virtualReturn)
 proc QFormLayoutcount*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   fQFormLayout_virtualbase_count(self.h)
 
 type QFormLayoutcountProc* = proc(): cint
@@ -732,7 +659,6 @@ proc miqt_exec_callback_QFormLayout_count(self: ptr cQFormLayout, slot: int): ci
 
   virtualReturn
 proc QFormLayoutgeometry*(self: gen_qformlayout_types.QFormLayout, ): gen_qrect.QRect =
-
   gen_qrect.QRect(h: fQFormLayout_virtualbase_geometry(self.h))
 
 type QFormLayoutgeometryProc* = proc(): gen_qrect.QRect
@@ -750,7 +676,6 @@ proc miqt_exec_callback_QFormLayout_geometry(self: ptr cQFormLayout, slot: int):
 
   virtualReturn.h
 proc QFormLayoutmaximumSize*(self: gen_qformlayout_types.QFormLayout, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQFormLayout_virtualbase_maximumSize(self.h))
 
 type QFormLayoutmaximumSizeProc* = proc(): gen_qsize.QSize
@@ -768,7 +693,6 @@ proc miqt_exec_callback_QFormLayout_maximumSize(self: ptr cQFormLayout, slot: in
 
   virtualReturn.h
 proc QFormLayoutindexOf*(self: gen_qformlayout_types.QFormLayout, param1: gen_qwidget.QWidget): cint =
-
   fQFormLayout_virtualbase_indexOf(self.h, param1.h)
 
 type QFormLayoutindexOfProc* = proc(param1: gen_qwidget.QWidget): cint
@@ -788,7 +712,6 @@ proc miqt_exec_callback_QFormLayout_indexOf(self: ptr cQFormLayout, slot: int, p
 
   virtualReturn
 proc QFormLayoutisEmpty*(self: gen_qformlayout_types.QFormLayout, ): bool =
-
   fQFormLayout_virtualbase_isEmpty(self.h)
 
 type QFormLayoutisEmptyProc* = proc(): bool
@@ -806,7 +729,6 @@ proc miqt_exec_callback_QFormLayout_isEmpty(self: ptr cQFormLayout, slot: int): 
 
   virtualReturn
 proc QFormLayoutcontrolTypes*(self: gen_qformlayout_types.QFormLayout, ): cint =
-
   cint(fQFormLayout_virtualbase_controlTypes(self.h))
 
 type QFormLayoutcontrolTypesProc* = proc(): cint
@@ -824,7 +746,6 @@ proc miqt_exec_callback_QFormLayout_controlTypes(self: ptr cQFormLayout, slot: i
 
   cint(virtualReturn)
 proc QFormLayoutlayout*(self: gen_qformlayout_types.QFormLayout, ): gen_qlayout.QLayout =
-
   gen_qlayout.QLayout(h: fQFormLayout_virtualbase_layout(self.h))
 
 type QFormLayoutlayoutProc* = proc(): gen_qlayout.QLayout
@@ -842,7 +763,6 @@ proc miqt_exec_callback_QFormLayout_layout(self: ptr cQFormLayout, slot: int): p
 
   virtualReturn.h
 proc QFormLayoutchildEvent*(self: gen_qformlayout_types.QFormLayout, e: gen_qcoreevent.QChildEvent): void =
-
   fQFormLayout_virtualbase_childEvent(self.h, e.h)
 
 type QFormLayoutchildEventProc* = proc(e: gen_qcoreevent.QChildEvent): void
@@ -860,7 +780,6 @@ proc miqt_exec_callback_QFormLayout_childEvent(self: ptr cQFormLayout, slot: int
 
   nimfunc[](slotval1)
 proc QFormLayoutevent*(self: gen_qformlayout_types.QFormLayout, event: gen_qcoreevent.QEvent): bool =
-
   fQFormLayout_virtualbase_event(self.h, event.h)
 
 type QFormLayouteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -880,7 +799,6 @@ proc miqt_exec_callback_QFormLayout_event(self: ptr cQFormLayout, slot: int, eve
 
   virtualReturn
 proc QFormLayouteventFilter*(self: gen_qformlayout_types.QFormLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQFormLayout_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QFormLayouteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -902,7 +820,6 @@ proc miqt_exec_callback_QFormLayout_eventFilter(self: ptr cQFormLayout, slot: in
 
   virtualReturn
 proc QFormLayouttimerEvent*(self: gen_qformlayout_types.QFormLayout, event: gen_qcoreevent.QTimerEvent): void =
-
   fQFormLayout_virtualbase_timerEvent(self.h, event.h)
 
 type QFormLayouttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -920,7 +837,6 @@ proc miqt_exec_callback_QFormLayout_timerEvent(self: ptr cQFormLayout, slot: int
 
   nimfunc[](slotval1)
 proc QFormLayoutcustomEvent*(self: gen_qformlayout_types.QFormLayout, event: gen_qcoreevent.QEvent): void =
-
   fQFormLayout_virtualbase_customEvent(self.h, event.h)
 
 type QFormLayoutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -938,7 +854,6 @@ proc miqt_exec_callback_QFormLayout_customEvent(self: ptr cQFormLayout, slot: in
 
   nimfunc[](slotval1)
 proc QFormLayoutconnectNotify*(self: gen_qformlayout_types.QFormLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFormLayout_virtualbase_connectNotify(self.h, signal.h)
 
 type QFormLayoutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -956,7 +871,6 @@ proc miqt_exec_callback_QFormLayout_connectNotify(self: ptr cQFormLayout, slot: 
 
   nimfunc[](slotval1)
 proc QFormLayoutdisconnectNotify*(self: gen_qformlayout_types.QFormLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQFormLayout_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QFormLayoutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -974,7 +888,6 @@ proc miqt_exec_callback_QFormLayout_disconnectNotify(self: ptr cQFormLayout, slo
 
   nimfunc[](slotval1)
 proc QFormLayoutminimumHeightForWidth*(self: gen_qformlayout_types.QFormLayout, param1: cint): cint =
-
   fQFormLayout_virtualbase_minimumHeightForWidth(self.h, param1)
 
 type QFormLayoutminimumHeightForWidthProc* = proc(param1: cint): cint
@@ -994,7 +907,6 @@ proc miqt_exec_callback_QFormLayout_minimumHeightForWidth(self: ptr cQFormLayout
 
   virtualReturn
 proc QFormLayoutwidget*(self: gen_qformlayout_types.QFormLayout, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fQFormLayout_virtualbase_widget(self.h))
 
 type QFormLayoutwidgetProc* = proc(): gen_qwidget.QWidget
@@ -1012,7 +924,6 @@ proc miqt_exec_callback_QFormLayout_widget(self: ptr cQFormLayout, slot: int): p
 
   virtualReturn.h
 proc QFormLayoutspacerItem*(self: gen_qformlayout_types.QFormLayout, ): gen_qlayoutitem.QSpacerItem =
-
   gen_qlayoutitem.QSpacerItem(h: fQFormLayout_virtualbase_spacerItem(self.h))
 
 type QFormLayoutspacerItemProc* = proc(): gen_qlayoutitem.QSpacerItem

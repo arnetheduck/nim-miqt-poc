@@ -67,62 +67,51 @@ proc fcQAuthenticator_delete(self: pointer) {.importc: "QAuthenticator_delete".}
 func init*(T: type gen_qauthenticator_types.QAuthenticator, h: ptr cQAuthenticator): gen_qauthenticator_types.QAuthenticator =
   T(h: h)
 proc create*(T: type gen_qauthenticator_types.QAuthenticator, ): gen_qauthenticator_types.QAuthenticator =
-
   gen_qauthenticator_types.QAuthenticator.init(fcQAuthenticator_new())
+
 proc create*(T: type gen_qauthenticator_types.QAuthenticator, other: gen_qauthenticator_types.QAuthenticator): gen_qauthenticator_types.QAuthenticator =
-
   gen_qauthenticator_types.QAuthenticator.init(fcQAuthenticator_new2(other.h))
-proc operatorAssign*(self: gen_qauthenticator_types.QAuthenticator, other: gen_qauthenticator_types.QAuthenticator): void =
 
+proc operatorAssign*(self: gen_qauthenticator_types.QAuthenticator, other: gen_qauthenticator_types.QAuthenticator): void =
   fcQAuthenticator_operatorAssign(self.h, other.h)
 
 proc operatorEqual*(self: gen_qauthenticator_types.QAuthenticator, other: gen_qauthenticator_types.QAuthenticator): bool =
-
   fcQAuthenticator_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qauthenticator_types.QAuthenticator, other: gen_qauthenticator_types.QAuthenticator): bool =
-
   fcQAuthenticator_operatorNotEqual(self.h, other.h)
 
 proc user*(self: gen_qauthenticator_types.QAuthenticator, ): string =
-
   let v_ms = fcQAuthenticator_user(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setUser*(self: gen_qauthenticator_types.QAuthenticator, user: string): void =
-
   fcQAuthenticator_setUser(self.h, struct_miqt_string(data: user, len: csize_t(len(user))))
 
 proc password*(self: gen_qauthenticator_types.QAuthenticator, ): string =
-
   let v_ms = fcQAuthenticator_password(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPassword*(self: gen_qauthenticator_types.QAuthenticator, password: string): void =
-
   fcQAuthenticator_setPassword(self.h, struct_miqt_string(data: password, len: csize_t(len(password))))
 
 proc realm*(self: gen_qauthenticator_types.QAuthenticator, ): string =
-
   let v_ms = fcQAuthenticator_realm(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setRealm*(self: gen_qauthenticator_types.QAuthenticator, realm: string): void =
-
   fcQAuthenticator_setRealm(self.h, struct_miqt_string(data: realm, len: csize_t(len(realm))))
 
 proc option*(self: gen_qauthenticator_types.QAuthenticator, opt: string): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQAuthenticator_option(self.h, struct_miqt_string(data: opt, len: csize_t(len(opt)))))
 
 proc options*(self: gen_qauthenticator_types.QAuthenticator, ): Table[string,gen_qvariant.QVariant] =
-
   var v_mm = fcQAuthenticator_options(self.h)
   var vx_ret: Table[string, gen_qvariant.QVariant]
   var v_Keys = cast[ptr UncheckedArray[struct_miqt_string]](v_mm.keys)
@@ -139,15 +128,12 @@ proc options*(self: gen_qauthenticator_types.QAuthenticator, ): Table[string,gen
   vx_ret
 
 proc setOption*(self: gen_qauthenticator_types.QAuthenticator, opt: string, value: gen_qvariant.QVariant): void =
-
   fcQAuthenticator_setOption(self.h, struct_miqt_string(data: opt, len: csize_t(len(opt))), value.h)
 
 proc isNull*(self: gen_qauthenticator_types.QAuthenticator, ): bool =
-
   fcQAuthenticator_isNull(self.h)
 
 proc detach*(self: gen_qauthenticator_types.QAuthenticator, ): void =
-
   fcQAuthenticator_detach(self.h)
 
 proc delete*(self: gen_qauthenticator_types.QAuthenticator) =

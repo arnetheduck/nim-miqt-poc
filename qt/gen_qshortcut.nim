@@ -111,159 +111,133 @@ proc fcQShortcut_delete(self: pointer) {.importc: "QShortcut_delete".}
 func init*(T: type gen_qshortcut_types.QShortcut, h: ptr cQShortcut): gen_qshortcut_types.QShortcut =
   T(h: h)
 proc create*(T: type gen_qshortcut_types.QShortcut, parent: gen_qwidget.QWidget): gen_qshortcut_types.QShortcut =
-
   gen_qshortcut_types.QShortcut.init(fcQShortcut_new(parent.h))
+
 proc create*(T: type gen_qshortcut_types.QShortcut, key: gen_qkeysequence.QKeySequence, parent: gen_qwidget.QWidget): gen_qshortcut_types.QShortcut =
-
   gen_qshortcut_types.QShortcut.init(fcQShortcut_new2(key.h, parent.h))
+
 proc create*(T: type gen_qshortcut_types.QShortcut, key: gen_qkeysequence.QKeySequence, parent: gen_qwidget.QWidget, member: cstring): gen_qshortcut_types.QShortcut =
-
   gen_qshortcut_types.QShortcut.init(fcQShortcut_new3(key.h, parent.h, member))
+
 proc create*(T: type gen_qshortcut_types.QShortcut, key: gen_qkeysequence.QKeySequence, parent: gen_qwidget.QWidget, member: cstring, ambiguousMember: cstring): gen_qshortcut_types.QShortcut =
-
   gen_qshortcut_types.QShortcut.init(fcQShortcut_new4(key.h, parent.h, member, ambiguousMember))
+
 proc create*(T: type gen_qshortcut_types.QShortcut, key: gen_qkeysequence.QKeySequence, parent: gen_qwidget.QWidget, member: cstring, ambiguousMember: cstring, shortcutContext: cint): gen_qshortcut_types.QShortcut =
-
   gen_qshortcut_types.QShortcut.init(fcQShortcut_new5(key.h, parent.h, member, ambiguousMember, cint(shortcutContext)))
-proc metaObject*(self: gen_qshortcut_types.QShortcut, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qshortcut_types.QShortcut, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQShortcut_metaObject(self.h))
 
 proc metacast*(self: gen_qshortcut_types.QShortcut, param1: cstring): pointer =
-
   fcQShortcut_metacast(self.h, param1)
 
 proc metacall*(self: gen_qshortcut_types.QShortcut, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQShortcut_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qshortcut_types.QShortcut, s: cstring): string =
-
   let v_ms = fcQShortcut_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qshortcut_types.QShortcut, s: cstring): string =
-
   let v_ms = fcQShortcut_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setKey*(self: gen_qshortcut_types.QShortcut, key: gen_qkeysequence.QKeySequence): void =
-
   fcQShortcut_setKey(self.h, key.h)
 
 proc key*(self: gen_qshortcut_types.QShortcut, ): gen_qkeysequence.QKeySequence =
-
   gen_qkeysequence.QKeySequence(h: fcQShortcut_key(self.h))
 
 proc setEnabled*(self: gen_qshortcut_types.QShortcut, enable: bool): void =
-
   fcQShortcut_setEnabled(self.h, enable)
 
 proc isEnabled*(self: gen_qshortcut_types.QShortcut, ): bool =
-
   fcQShortcut_isEnabled(self.h)
 
 proc setContext*(self: gen_qshortcut_types.QShortcut, context: cint): void =
-
   fcQShortcut_setContext(self.h, cint(context))
 
 proc context*(self: gen_qshortcut_types.QShortcut, ): cint =
-
   cint(fcQShortcut_context(self.h))
 
 proc setWhatsThis*(self: gen_qshortcut_types.QShortcut, text: string): void =
-
   fcQShortcut_setWhatsThis(self.h, struct_miqt_string(data: text, len: csize_t(len(text))))
 
 proc whatsThis*(self: gen_qshortcut_types.QShortcut, ): string =
-
   let v_ms = fcQShortcut_whatsThis(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setAutoRepeat*(self: gen_qshortcut_types.QShortcut, on: bool): void =
-
   fcQShortcut_setAutoRepeat(self.h, on)
 
 proc autoRepeat*(self: gen_qshortcut_types.QShortcut, ): bool =
-
   fcQShortcut_autoRepeat(self.h)
 
 proc id*(self: gen_qshortcut_types.QShortcut, ): cint =
-
   fcQShortcut_id(self.h)
 
 proc parentWidget*(self: gen_qshortcut_types.QShortcut, ): gen_qwidget.QWidget =
-
   gen_qwidget.QWidget(h: fcQShortcut_parentWidget(self.h))
 
 proc activated*(self: gen_qshortcut_types.QShortcut, ): void =
-
   fcQShortcut_activated(self.h)
 
+type QShortcutactivatedSlot* = proc()
 proc miqt_exec_callback_QShortcut_activated(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QShortcutactivatedSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onactivated*(self: gen_qshortcut_types.QShortcut, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onactivated*(self: gen_qshortcut_types.QShortcut, slot: QShortcutactivatedSlot) =
+  var tmp = new QShortcutactivatedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQShortcut_connect_activated(self.h, cast[int](addr tmp[]))
-proc activatedAmbiguously*(self: gen_qshortcut_types.QShortcut, ): void =
 
+proc activatedAmbiguously*(self: gen_qshortcut_types.QShortcut, ): void =
   fcQShortcut_activatedAmbiguously(self.h)
 
+type QShortcutactivatedAmbiguouslySlot* = proc()
 proc miqt_exec_callback_QShortcut_activatedAmbiguously(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QShortcutactivatedAmbiguouslySlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onactivatedAmbiguously*(self: gen_qshortcut_types.QShortcut, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onactivatedAmbiguously*(self: gen_qshortcut_types.QShortcut, slot: QShortcutactivatedAmbiguouslySlot) =
+  var tmp = new QShortcutactivatedAmbiguouslySlot
   tmp[] = slot
   GC_ref(tmp)
   fQShortcut_connect_activatedAmbiguously(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qshortcut_types.QShortcut, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qshortcut_types.QShortcut, s: cstring, c: cstring): string =
   let v_ms = fcQShortcut_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qshortcut_types.QShortcut, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qshortcut_types.QShortcut, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQShortcut_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qshortcut_types.QShortcut, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qshortcut_types.QShortcut, s: cstring, c: cstring): string =
   let v_ms = fcQShortcut_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qshortcut_types.QShortcut, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qshortcut_types.QShortcut, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQShortcut_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QShortcutmetaObject*(self: gen_qshortcut_types.QShortcut, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQShortcut_virtualbase_metaObject(self.h))
 
 type QShortcutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -281,7 +255,6 @@ proc miqt_exec_callback_QShortcut_metaObject(self: ptr cQShortcut, slot: int): p
 
   virtualReturn.h
 proc QShortcutmetacast*(self: gen_qshortcut_types.QShortcut, param1: cstring): pointer =
-
   fQShortcut_virtualbase_metacast(self.h, param1)
 
 type QShortcutmetacastProc* = proc(param1: cstring): pointer
@@ -301,7 +274,6 @@ proc miqt_exec_callback_QShortcut_metacast(self: ptr cQShortcut, slot: int, para
 
   virtualReturn
 proc QShortcutmetacall*(self: gen_qshortcut_types.QShortcut, param1: cint, param2: cint, param3: pointer): cint =
-
   fQShortcut_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QShortcutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -325,7 +297,6 @@ proc miqt_exec_callback_QShortcut_metacall(self: ptr cQShortcut, slot: int, para
 
   virtualReturn
 proc QShortcutevent*(self: gen_qshortcut_types.QShortcut, e: gen_qcoreevent.QEvent): bool =
-
   fQShortcut_virtualbase_event(self.h, e.h)
 
 type QShortcuteventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -345,7 +316,6 @@ proc miqt_exec_callback_QShortcut_event(self: ptr cQShortcut, slot: int, e: poin
 
   virtualReturn
 proc QShortcuteventFilter*(self: gen_qshortcut_types.QShortcut, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQShortcut_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QShortcuteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -367,7 +337,6 @@ proc miqt_exec_callback_QShortcut_eventFilter(self: ptr cQShortcut, slot: int, w
 
   virtualReturn
 proc QShortcuttimerEvent*(self: gen_qshortcut_types.QShortcut, event: gen_qcoreevent.QTimerEvent): void =
-
   fQShortcut_virtualbase_timerEvent(self.h, event.h)
 
 type QShortcuttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -385,7 +354,6 @@ proc miqt_exec_callback_QShortcut_timerEvent(self: ptr cQShortcut, slot: int, ev
 
   nimfunc[](slotval1)
 proc QShortcutchildEvent*(self: gen_qshortcut_types.QShortcut, event: gen_qcoreevent.QChildEvent): void =
-
   fQShortcut_virtualbase_childEvent(self.h, event.h)
 
 type QShortcutchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -403,7 +371,6 @@ proc miqt_exec_callback_QShortcut_childEvent(self: ptr cQShortcut, slot: int, ev
 
   nimfunc[](slotval1)
 proc QShortcutcustomEvent*(self: gen_qshortcut_types.QShortcut, event: gen_qcoreevent.QEvent): void =
-
   fQShortcut_virtualbase_customEvent(self.h, event.h)
 
 type QShortcutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -421,7 +388,6 @@ proc miqt_exec_callback_QShortcut_customEvent(self: ptr cQShortcut, slot: int, e
 
   nimfunc[](slotval1)
 proc QShortcutconnectNotify*(self: gen_qshortcut_types.QShortcut, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQShortcut_virtualbase_connectNotify(self.h, signal.h)
 
 type QShortcutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -439,7 +405,6 @@ proc miqt_exec_callback_QShortcut_connectNotify(self: ptr cQShortcut, slot: int,
 
   nimfunc[](slotval1)
 proc QShortcutdisconnectNotify*(self: gen_qshortcut_types.QShortcut, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQShortcut_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QShortcutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

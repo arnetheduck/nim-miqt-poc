@@ -93,58 +93,45 @@ proc fcQScriptEngineAgent_delete(self: pointer) {.importc: "QScriptEngineAgent_d
 func init*(T: type gen_qscriptengineagent_types.QScriptEngineAgent, h: ptr cQScriptEngineAgent): gen_qscriptengineagent_types.QScriptEngineAgent =
   T(h: h)
 proc create*(T: type gen_qscriptengineagent_types.QScriptEngineAgent, engine: gen_qscriptengine.QScriptEngine): gen_qscriptengineagent_types.QScriptEngineAgent =
-
   gen_qscriptengineagent_types.QScriptEngineAgent.init(fcQScriptEngineAgent_new(engine.h))
-proc scriptLoad*(self: gen_qscriptengineagent_types.QScriptEngineAgent, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void =
 
+proc scriptLoad*(self: gen_qscriptengineagent_types.QScriptEngineAgent, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void =
   fcQScriptEngineAgent_scriptLoad(self.h, id, struct_miqt_string(data: program, len: csize_t(len(program))), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), baseLineNumber)
 
 proc scriptUnload*(self: gen_qscriptengineagent_types.QScriptEngineAgent, id: clonglong): void =
-
   fcQScriptEngineAgent_scriptUnload(self.h, id)
 
 proc contextPush*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): void =
-
   fcQScriptEngineAgent_contextPush(self.h)
 
 proc contextPop*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): void =
-
   fcQScriptEngineAgent_contextPop(self.h)
 
 proc functionEntry*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong): void =
-
   fcQScriptEngineAgent_functionEntry(self.h, scriptId)
 
 proc functionExit*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void =
-
   fcQScriptEngineAgent_functionExit(self.h, scriptId, returnValue.h)
 
 proc positionChange*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void =
-
   fcQScriptEngineAgent_positionChange(self.h, scriptId, lineNumber, columnNumber)
 
 proc exceptionThrow*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void =
-
   fcQScriptEngineAgent_exceptionThrow(self.h, scriptId, exception.h, hasHandler)
 
 proc exceptionCatch*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void =
-
   fcQScriptEngineAgent_exceptionCatch(self.h, scriptId, exception.h)
 
 proc supportsExtension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, extension: cint): bool =
-
   fcQScriptEngineAgent_supportsExtension(self.h, cint(extension))
 
 proc extension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, extension: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQScriptEngineAgent_extension(self.h, cint(extension), argument.h))
 
 proc engine*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): gen_qscriptengine.QScriptEngine =
-
   gen_qscriptengine.QScriptEngine(h: fcQScriptEngineAgent_engine(self.h))
 
 proc QScriptEngineAgentscriptLoad*(self: gen_qscriptengineagent_types.QScriptEngineAgent, id: clonglong, program: string, fileName: string, baseLineNumber: cint): void =
-
   fQScriptEngineAgent_virtualbase_scriptLoad(self.h, id, struct_miqt_string(data: program, len: csize_t(len(program))), struct_miqt_string(data: fileName, len: csize_t(len(fileName))), baseLineNumber)
 
 type QScriptEngineAgentscriptLoadProc* = proc(id: clonglong, program: string, fileName: string, baseLineNumber: cint): void
@@ -174,7 +161,6 @@ proc miqt_exec_callback_QScriptEngineAgent_scriptLoad(self: ptr cQScriptEngineAg
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4)
 proc QScriptEngineAgentscriptUnload*(self: gen_qscriptengineagent_types.QScriptEngineAgent, id: clonglong): void =
-
   fQScriptEngineAgent_virtualbase_scriptUnload(self.h, id)
 
 type QScriptEngineAgentscriptUnloadProc* = proc(id: clonglong): void
@@ -192,7 +178,6 @@ proc miqt_exec_callback_QScriptEngineAgent_scriptUnload(self: ptr cQScriptEngine
 
   nimfunc[](slotval1)
 proc QScriptEngineAgentcontextPush*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): void =
-
   fQScriptEngineAgent_virtualbase_contextPush(self.h)
 
 type QScriptEngineAgentcontextPushProc* = proc(): void
@@ -208,7 +193,6 @@ proc miqt_exec_callback_QScriptEngineAgent_contextPush(self: ptr cQScriptEngineA
 
   nimfunc[]()
 proc QScriptEngineAgentcontextPop*(self: gen_qscriptengineagent_types.QScriptEngineAgent, ): void =
-
   fQScriptEngineAgent_virtualbase_contextPop(self.h)
 
 type QScriptEngineAgentcontextPopProc* = proc(): void
@@ -224,7 +208,6 @@ proc miqt_exec_callback_QScriptEngineAgent_contextPop(self: ptr cQScriptEngineAg
 
   nimfunc[]()
 proc QScriptEngineAgentfunctionEntry*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong): void =
-
   fQScriptEngineAgent_virtualbase_functionEntry(self.h, scriptId)
 
 type QScriptEngineAgentfunctionEntryProc* = proc(scriptId: clonglong): void
@@ -242,7 +225,6 @@ proc miqt_exec_callback_QScriptEngineAgent_functionEntry(self: ptr cQScriptEngin
 
   nimfunc[](slotval1)
 proc QScriptEngineAgentfunctionExit*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void =
-
   fQScriptEngineAgent_virtualbase_functionExit(self.h, scriptId, returnValue.h)
 
 type QScriptEngineAgentfunctionExitProc* = proc(scriptId: clonglong, returnValue: gen_qscriptvalue.QScriptValue): void
@@ -262,7 +244,6 @@ proc miqt_exec_callback_QScriptEngineAgent_functionExit(self: ptr cQScriptEngine
 
   nimfunc[](slotval1, slotval2)
 proc QScriptEngineAgentpositionChange*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, lineNumber: cint, columnNumber: cint): void =
-
   fQScriptEngineAgent_virtualbase_positionChange(self.h, scriptId, lineNumber, columnNumber)
 
 type QScriptEngineAgentpositionChangeProc* = proc(scriptId: clonglong, lineNumber: cint, columnNumber: cint): void
@@ -284,7 +265,6 @@ proc miqt_exec_callback_QScriptEngineAgent_positionChange(self: ptr cQScriptEngi
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QScriptEngineAgentexceptionThrow*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void =
-
   fQScriptEngineAgent_virtualbase_exceptionThrow(self.h, scriptId, exception.h, hasHandler)
 
 type QScriptEngineAgentexceptionThrowProc* = proc(scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue, hasHandler: bool): void
@@ -306,7 +286,6 @@ proc miqt_exec_callback_QScriptEngineAgent_exceptionThrow(self: ptr cQScriptEngi
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QScriptEngineAgentexceptionCatch*(self: gen_qscriptengineagent_types.QScriptEngineAgent, scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void =
-
   fQScriptEngineAgent_virtualbase_exceptionCatch(self.h, scriptId, exception.h)
 
 type QScriptEngineAgentexceptionCatchProc* = proc(scriptId: clonglong, exception: gen_qscriptvalue.QScriptValue): void
@@ -326,7 +305,6 @@ proc miqt_exec_callback_QScriptEngineAgent_exceptionCatch(self: ptr cQScriptEngi
 
   nimfunc[](slotval1, slotval2)
 proc QScriptEngineAgentsupportsExtension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, extension: cint): bool =
-
   fQScriptEngineAgent_virtualbase_supportsExtension(self.h, cint(extension))
 
 type QScriptEngineAgentsupportsExtensionProc* = proc(extension: cint): bool
@@ -346,7 +324,6 @@ proc miqt_exec_callback_QScriptEngineAgent_supportsExtension(self: ptr cQScriptE
 
   virtualReturn
 proc QScriptEngineAgentextension*(self: gen_qscriptengineagent_types.QScriptEngineAgent, extension: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQScriptEngineAgent_virtualbase_extension(self.h, cint(extension), argument.h))
 
 type QScriptEngineAgentextensionProc* = proc(extension: cint, argument: gen_qvariant.QVariant): gen_qvariant.QVariant

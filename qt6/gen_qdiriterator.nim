@@ -74,79 +74,72 @@ proc fcQDirIterator_delete(self: pointer) {.importc: "QDirIterator_delete".}
 func init*(T: type gen_qdiriterator_types.QDirIterator, h: ptr cQDirIterator): gen_qdiriterator_types.QDirIterator =
   T(h: h)
 proc create*(T: type gen_qdiriterator_types.QDirIterator, dir: gen_qdir.QDir): gen_qdiriterator_types.QDirIterator =
-
   gen_qdiriterator_types.QDirIterator.init(fcQDirIterator_new(dir.h))
+
 proc create*(T: type gen_qdiriterator_types.QDirIterator, path: string): gen_qdiriterator_types.QDirIterator =
-
   gen_qdiriterator_types.QDirIterator.init(fcQDirIterator_new2(struct_miqt_string(data: path, len: csize_t(len(path)))))
+
 proc create*(T: type gen_qdiriterator_types.QDirIterator, path: string, filter: cint): gen_qdiriterator_types.QDirIterator =
-
   gen_qdiriterator_types.QDirIterator.init(fcQDirIterator_new3(struct_miqt_string(data: path, len: csize_t(len(path))), cint(filter)))
-proc create*(T: type gen_qdiriterator_types.QDirIterator, path: string, nameFilters: seq[string]): gen_qdiriterator_types.QDirIterator =
 
+proc create*(T: type gen_qdiriterator_types.QDirIterator, path: string, nameFilters: seq[string]): gen_qdiriterator_types.QDirIterator =
   var nameFilters_CArray = newSeq[struct_miqt_string](len(nameFilters))
   for i in 0..<len(nameFilters):
     nameFilters_CArray[i] = struct_miqt_string(data: nameFilters[i], len: csize_t(len(nameFilters[i])))
 
   gen_qdiriterator_types.QDirIterator.init(fcQDirIterator_new4(struct_miqt_string(data: path, len: csize_t(len(path))), struct_miqt_array(len: csize_t(len(nameFilters)), data: if len(nameFilters) == 0: nil else: addr(nameFilters_CArray[0]))))
+
 proc create*(T: type gen_qdiriterator_types.QDirIterator, dir: gen_qdir.QDir, flags: cint): gen_qdiriterator_types.QDirIterator =
-
   gen_qdiriterator_types.QDirIterator.init(fcQDirIterator_new5(dir.h, cint(flags)))
+
 proc create2*(T: type gen_qdiriterator_types.QDirIterator, path: string, flags: cint): gen_qdiriterator_types.QDirIterator =
-
   gen_qdiriterator_types.QDirIterator.init(fcQDirIterator_new6(struct_miqt_string(data: path, len: csize_t(len(path))), cint(flags)))
+
 proc create*(T: type gen_qdiriterator_types.QDirIterator, path: string, filter: cint, flags: cint): gen_qdiriterator_types.QDirIterator =
-
   gen_qdiriterator_types.QDirIterator.init(fcQDirIterator_new7(struct_miqt_string(data: path, len: csize_t(len(path))), cint(filter), cint(flags)))
-proc create*(T: type gen_qdiriterator_types.QDirIterator, path: string, nameFilters: seq[string], filters: cint): gen_qdiriterator_types.QDirIterator =
 
+proc create*(T: type gen_qdiriterator_types.QDirIterator, path: string, nameFilters: seq[string], filters: cint): gen_qdiriterator_types.QDirIterator =
   var nameFilters_CArray = newSeq[struct_miqt_string](len(nameFilters))
   for i in 0..<len(nameFilters):
     nameFilters_CArray[i] = struct_miqt_string(data: nameFilters[i], len: csize_t(len(nameFilters[i])))
 
   gen_qdiriterator_types.QDirIterator.init(fcQDirIterator_new8(struct_miqt_string(data: path, len: csize_t(len(path))), struct_miqt_array(len: csize_t(len(nameFilters)), data: if len(nameFilters) == 0: nil else: addr(nameFilters_CArray[0])), cint(filters)))
-proc create*(T: type gen_qdiriterator_types.QDirIterator, path: string, nameFilters: seq[string], filters: cint, flags: cint): gen_qdiriterator_types.QDirIterator =
 
+proc create*(T: type gen_qdiriterator_types.QDirIterator, path: string, nameFilters: seq[string], filters: cint, flags: cint): gen_qdiriterator_types.QDirIterator =
   var nameFilters_CArray = newSeq[struct_miqt_string](len(nameFilters))
   for i in 0..<len(nameFilters):
     nameFilters_CArray[i] = struct_miqt_string(data: nameFilters[i], len: csize_t(len(nameFilters[i])))
 
   gen_qdiriterator_types.QDirIterator.init(fcQDirIterator_new9(struct_miqt_string(data: path, len: csize_t(len(path))), struct_miqt_array(len: csize_t(len(nameFilters)), data: if len(nameFilters) == 0: nil else: addr(nameFilters_CArray[0])), cint(filters), cint(flags)))
-proc next*(self: gen_qdiriterator_types.QDirIterator, ): string =
 
+proc next*(self: gen_qdiriterator_types.QDirIterator, ): string =
   let v_ms = fcQDirIterator_next(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc nextFileInfo*(self: gen_qdiriterator_types.QDirIterator, ): gen_qfileinfo.QFileInfo =
-
   gen_qfileinfo.QFileInfo(h: fcQDirIterator_nextFileInfo(self.h))
 
 proc hasNext*(self: gen_qdiriterator_types.QDirIterator, ): bool =
-
   fcQDirIterator_hasNext(self.h)
 
 proc fileName*(self: gen_qdiriterator_types.QDirIterator, ): string =
-
   let v_ms = fcQDirIterator_fileName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc filePath*(self: gen_qdiriterator_types.QDirIterator, ): string =
-
   let v_ms = fcQDirIterator_filePath(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc fileInfo*(self: gen_qdiriterator_types.QDirIterator, ): gen_qfileinfo.QFileInfo =
-
   gen_qfileinfo.QFileInfo(h: fcQDirIterator_fileInfo(self.h))
 
 proc path*(self: gen_qdiriterator_types.QDirIterator, ): string =
-
   let v_ms = fcQDirIterator_path(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

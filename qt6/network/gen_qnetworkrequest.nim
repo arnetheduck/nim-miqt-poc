@@ -171,52 +171,42 @@ proc fcQNetworkRequest_delete(self: pointer) {.importc: "QNetworkRequest_delete"
 func init*(T: type gen_qnetworkrequest_types.QNetworkRequest, h: ptr cQNetworkRequest): gen_qnetworkrequest_types.QNetworkRequest =
   T(h: h)
 proc create*(T: type gen_qnetworkrequest_types.QNetworkRequest, ): gen_qnetworkrequest_types.QNetworkRequest =
-
   gen_qnetworkrequest_types.QNetworkRequest.init(fcQNetworkRequest_new())
+
 proc create*(T: type gen_qnetworkrequest_types.QNetworkRequest, url: gen_qurl.QUrl): gen_qnetworkrequest_types.QNetworkRequest =
-
   gen_qnetworkrequest_types.QNetworkRequest.init(fcQNetworkRequest_new2(url.h))
-proc create2*(T: type gen_qnetworkrequest_types.QNetworkRequest, other: gen_qnetworkrequest_types.QNetworkRequest): gen_qnetworkrequest_types.QNetworkRequest =
 
+proc create*(T: type gen_qnetworkrequest_types.QNetworkRequest, other: gen_qnetworkrequest_types.QNetworkRequest): gen_qnetworkrequest_types.QNetworkRequest =
   gen_qnetworkrequest_types.QNetworkRequest.init(fcQNetworkRequest_new3(other.h))
-proc operatorAssign*(self: gen_qnetworkrequest_types.QNetworkRequest, other: gen_qnetworkrequest_types.QNetworkRequest): void =
 
+proc operatorAssign*(self: gen_qnetworkrequest_types.QNetworkRequest, other: gen_qnetworkrequest_types.QNetworkRequest): void =
   fcQNetworkRequest_operatorAssign(self.h, other.h)
 
 proc swap*(self: gen_qnetworkrequest_types.QNetworkRequest, other: gen_qnetworkrequest_types.QNetworkRequest): void =
-
   fcQNetworkRequest_swap(self.h, other.h)
 
 proc operatorEqual*(self: gen_qnetworkrequest_types.QNetworkRequest, other: gen_qnetworkrequest_types.QNetworkRequest): bool =
-
   fcQNetworkRequest_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qnetworkrequest_types.QNetworkRequest, other: gen_qnetworkrequest_types.QNetworkRequest): bool =
-
   fcQNetworkRequest_operatorNotEqual(self.h, other.h)
 
 proc url*(self: gen_qnetworkrequest_types.QNetworkRequest, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQNetworkRequest_url(self.h))
 
 proc setUrl*(self: gen_qnetworkrequest_types.QNetworkRequest, url: gen_qurl.QUrl): void =
-
   fcQNetworkRequest_setUrl(self.h, url.h)
 
 proc header*(self: gen_qnetworkrequest_types.QNetworkRequest, header: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQNetworkRequest_header(self.h, cint(header)))
 
 proc setHeader*(self: gen_qnetworkrequest_types.QNetworkRequest, header: cint, value: gen_qvariant.QVariant): void =
-
   fcQNetworkRequest_setHeader(self.h, cint(header), value.h)
 
 proc hasRawHeader*(self: gen_qnetworkrequest_types.QNetworkRequest, headerName: seq[byte]): bool =
-
   fcQNetworkRequest_hasRawHeader(self.h, struct_miqt_string(data: cast[cstring](if len(headerName) == 0: nil else: unsafeAddr headerName[0]), len: csize_t(len(headerName))))
 
 proc rawHeaderList*(self: gen_qnetworkrequest_types.QNetworkRequest, ): seq[seq[byte]] =
-
   var v_ma = fcQNetworkRequest_rawHeaderList(self.h)
   var vx_ret = newSeq[seq[byte]](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -228,97 +218,75 @@ proc rawHeaderList*(self: gen_qnetworkrequest_types.QNetworkRequest, ): seq[seq[
   vx_ret
 
 proc rawHeader*(self: gen_qnetworkrequest_types.QNetworkRequest, headerName: seq[byte]): seq[byte] =
-
   var v_bytearray = fcQNetworkRequest_rawHeader(self.h, struct_miqt_string(data: cast[cstring](if len(headerName) == 0: nil else: unsafeAddr headerName[0]), len: csize_t(len(headerName))))
   var vx_ret = @(toOpenArrayByte(v_bytearray.data, 0, int(v_bytearray.len)-1))
   c_free(v_bytearray.data)
   vx_ret
 
 proc setRawHeader*(self: gen_qnetworkrequest_types.QNetworkRequest, headerName: seq[byte], value: seq[byte]): void =
-
   fcQNetworkRequest_setRawHeader(self.h, struct_miqt_string(data: cast[cstring](if len(headerName) == 0: nil else: unsafeAddr headerName[0]), len: csize_t(len(headerName))), struct_miqt_string(data: cast[cstring](if len(value) == 0: nil else: unsafeAddr value[0]), len: csize_t(len(value))))
 
 proc attribute*(self: gen_qnetworkrequest_types.QNetworkRequest, code: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fcQNetworkRequest_attribute(self.h, cint(code)))
 
 proc setAttribute*(self: gen_qnetworkrequest_types.QNetworkRequest, code: cint, value: gen_qvariant.QVariant): void =
-
   fcQNetworkRequest_setAttribute(self.h, cint(code), value.h)
 
 proc sslConfiguration*(self: gen_qnetworkrequest_types.QNetworkRequest, ): gen_qsslconfiguration.QSslConfiguration =
-
   gen_qsslconfiguration.QSslConfiguration(h: fcQNetworkRequest_sslConfiguration(self.h))
 
 proc setSslConfiguration*(self: gen_qnetworkrequest_types.QNetworkRequest, configuration: gen_qsslconfiguration.QSslConfiguration): void =
-
   fcQNetworkRequest_setSslConfiguration(self.h, configuration.h)
 
 proc setOriginatingObject*(self: gen_qnetworkrequest_types.QNetworkRequest, objectVal: gen_qobject.QObject): void =
-
   fcQNetworkRequest_setOriginatingObject(self.h, objectVal.h)
 
 proc originatingObject*(self: gen_qnetworkrequest_types.QNetworkRequest, ): gen_qobject.QObject =
-
   gen_qobject.QObject(h: fcQNetworkRequest_originatingObject(self.h))
 
 proc priority*(self: gen_qnetworkrequest_types.QNetworkRequest, ): cint =
-
   cint(fcQNetworkRequest_priority(self.h))
 
 proc setPriority*(self: gen_qnetworkrequest_types.QNetworkRequest, priority: cint): void =
-
   fcQNetworkRequest_setPriority(self.h, cint(priority))
 
 proc maximumRedirectsAllowed*(self: gen_qnetworkrequest_types.QNetworkRequest, ): cint =
-
   fcQNetworkRequest_maximumRedirectsAllowed(self.h)
 
 proc setMaximumRedirectsAllowed*(self: gen_qnetworkrequest_types.QNetworkRequest, maximumRedirectsAllowed: cint): void =
-
   fcQNetworkRequest_setMaximumRedirectsAllowed(self.h, maximumRedirectsAllowed)
 
 proc peerVerifyName*(self: gen_qnetworkrequest_types.QNetworkRequest, ): string =
-
   let v_ms = fcQNetworkRequest_peerVerifyName(self.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc setPeerVerifyName*(self: gen_qnetworkrequest_types.QNetworkRequest, peerName: string): void =
-
   fcQNetworkRequest_setPeerVerifyName(self.h, struct_miqt_string(data: peerName, len: csize_t(len(peerName))))
 
 proc http2Configuration*(self: gen_qnetworkrequest_types.QNetworkRequest, ): gen_qhttp2configuration.QHttp2Configuration =
-
   gen_qhttp2configuration.QHttp2Configuration(h: fcQNetworkRequest_http2Configuration(self.h))
 
 proc setHttp2Configuration*(self: gen_qnetworkrequest_types.QNetworkRequest, configuration: gen_qhttp2configuration.QHttp2Configuration): void =
-
   fcQNetworkRequest_setHttp2Configuration(self.h, configuration.h)
 
 proc decompressedSafetyCheckThreshold*(self: gen_qnetworkrequest_types.QNetworkRequest, ): clonglong =
-
   fcQNetworkRequest_decompressedSafetyCheckThreshold(self.h)
 
 proc setDecompressedSafetyCheckThreshold*(self: gen_qnetworkrequest_types.QNetworkRequest, threshold: clonglong): void =
-
   fcQNetworkRequest_setDecompressedSafetyCheckThreshold(self.h, threshold)
 
 proc transferTimeout*(self: gen_qnetworkrequest_types.QNetworkRequest, ): cint =
-
   fcQNetworkRequest_transferTimeout(self.h)
 
 proc setTransferTimeout*(self: gen_qnetworkrequest_types.QNetworkRequest, ): void =
-
   fcQNetworkRequest_setTransferTimeout(self.h)
 
-proc attribute2*(self: gen_qnetworkrequest_types.QNetworkRequest, code: cint, defaultValue: gen_qvariant.QVariant): gen_qvariant.QVariant =
-
+proc attribute*(self: gen_qnetworkrequest_types.QNetworkRequest, code: cint, defaultValue: gen_qvariant.QVariant): gen_qvariant.QVariant =
   gen_qvariant.QVariant(h: fcQNetworkRequest_attribute2(self.h, cint(code), defaultValue.h))
 
-proc setTransferTimeout1*(self: gen_qnetworkrequest_types.QNetworkRequest, timeout: cint): void =
-
+proc setTransferTimeout*(self: gen_qnetworkrequest_types.QNetworkRequest, timeout: cint): void =
   fcQNetworkRequest_setTransferTimeout1(self.h, timeout)
 
 proc delete*(self: gen_qnetworkrequest_types.QNetworkRequest) =

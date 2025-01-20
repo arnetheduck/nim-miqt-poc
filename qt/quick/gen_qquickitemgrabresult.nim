@@ -72,86 +72,71 @@ proc fcQQuickItemGrabResult_delete(self: pointer) {.importc: "QQuickItemGrabResu
 func init*(T: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, h: ptr cQQuickItemGrabResult): gen_qquickitemgrabresult_types.QQuickItemGrabResult =
   T(h: h)
 proc metaObject*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fcQQuickItemGrabResult_metaObject(self.h))
 
 proc metacast*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, param1: cstring): pointer =
-
   fcQQuickItemGrabResult_metacast(self.h, param1)
 
 proc metacall*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQQuickItemGrabResult_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring): string =
-
   let v_ms = fcQQuickItemGrabResult_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring): string =
-
   let v_ms = fcQQuickItemGrabResult_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc image*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): gen_qimage.QImage =
-
   gen_qimage.QImage(h: fcQQuickItemGrabResult_image(self.h))
 
 proc url*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): gen_qurl.QUrl =
-
   gen_qurl.QUrl(h: fcQQuickItemGrabResult_url(self.h))
 
 proc saveToFile*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, fileName: string): bool =
-
   fcQQuickItemGrabResult_saveToFile(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
-proc saveToFileWithFileName*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, fileName: string): bool =
-
+proc saveToFile2*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, fileName: string): bool =
   fcQQuickItemGrabResult_saveToFileWithFileName(self.h, struct_miqt_string(data: fileName, len: csize_t(len(fileName))))
 
 proc ready*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, ): void =
-
   fcQQuickItemGrabResult_ready(self.h)
 
+type QQuickItemGrabResultreadySlot* = proc()
 proc miqt_exec_callback_QQuickItemGrabResult_ready(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QQuickItemGrabResultreadySlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onready*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onready*(self: gen_qquickitemgrabresult_types.QQuickItemGrabResult, slot: QQuickItemGrabResultreadySlot) =
+  var tmp = new QQuickItemGrabResultreadySlot
   tmp[] = slot
   GC_ref(tmp)
   fQQuickItemGrabResult_connect_ready(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring, c: cstring): string =
   let v_ms = fcQQuickItemGrabResult_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickItemGrabResult_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring, c: cstring): string =
   let v_ms = fcQQuickItemGrabResult_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qquickitemgrabresult_types.QQuickItemGrabResult, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQQuickItemGrabResult_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)

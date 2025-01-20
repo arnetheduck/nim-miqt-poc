@@ -156,205 +156,171 @@ proc fcQAbstractTextDocumentLayoutPaintContext_delete(self: pointer) {.importc: 
 func init*(T: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, h: ptr cQAbstractTextDocumentLayout): gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout =
   T(h: h)
 proc create*(T: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, doc: gen_qtextdocument.QTextDocument): gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout =
-
   gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout.init(fcQAbstractTextDocumentLayout_new(doc.h))
-proc metaObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQAbstractTextDocumentLayout_metaObject(self.h))
 
 proc metacast*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, param1: cstring): pointer =
-
   fcQAbstractTextDocumentLayout_metacast(self.h, param1)
 
 proc metacall*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQAbstractTextDocumentLayout_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, s: cstring): string =
-
   let v_ms = fcQAbstractTextDocumentLayout_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc draw*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, painter: gen_qpainter.QPainter, context: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext): void =
-
   fcQAbstractTextDocumentLayout_draw(self.h, painter.h, context.h)
 
 proc hitTest*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, point: gen_qpoint.QPointF, accuracy: cint): cint =
-
   fcQAbstractTextDocumentLayout_hitTest(self.h, point.h, cint(accuracy))
 
 proc anchorAt*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, pos: gen_qpoint.QPointF): string =
-
   let v_ms = fcQAbstractTextDocumentLayout_anchorAt(self.h, pos.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc imageAt*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, pos: gen_qpoint.QPointF): string =
-
   let v_ms = fcQAbstractTextDocumentLayout_imageAt(self.h, pos.h)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc formatAt*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, pos: gen_qpoint.QPointF): gen_qtextformat.QTextFormat =
-
   gen_qtextformat.QTextFormat(h: fcQAbstractTextDocumentLayout_formatAt(self.h, pos.h))
 
 proc blockWithMarkerAt*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, pos: gen_qpoint.QPointF): gen_qtextobject.QTextBlock =
-
   gen_qtextobject.QTextBlock(h: fcQAbstractTextDocumentLayout_blockWithMarkerAt(self.h, pos.h))
 
 proc pageCount*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): cint =
-
   fcQAbstractTextDocumentLayout_pageCount(self.h)
 
 proc documentSize*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fcQAbstractTextDocumentLayout_documentSize(self.h))
 
 proc frameBoundingRect*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, frame: gen_qtextobject.QTextFrame): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQAbstractTextDocumentLayout_frameBoundingRect(self.h, frame.h))
 
 proc blockBoundingRect*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, blockVal: gen_qtextobject.QTextBlock): gen_qrect.QRectF =
-
   gen_qrect.QRectF(h: fcQAbstractTextDocumentLayout_blockBoundingRect(self.h, blockVal.h))
 
 proc setPaintDevice*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, device: gen_qpaintdevice.QPaintDevice): void =
-
   fcQAbstractTextDocumentLayout_setPaintDevice(self.h, device.h)
 
 proc paintDevice*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fcQAbstractTextDocumentLayout_paintDevice(self.h))
 
 proc document*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): gen_qtextdocument.QTextDocument =
-
   gen_qtextdocument.QTextDocument(h: fcQAbstractTextDocumentLayout_document(self.h))
 
 proc registerHandler*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, objectType: cint, component: gen_qobject.QObject): void =
-
   fcQAbstractTextDocumentLayout_registerHandler(self.h, objectType, component.h)
 
 proc unregisterHandler*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, objectType: cint): void =
-
   fcQAbstractTextDocumentLayout_unregisterHandler(self.h, objectType)
 
 proc handlerForObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, objectType: cint): gen_qabstracttextdocumentlayout_types.QTextObjectInterface =
-
   gen_qabstracttextdocumentlayout_types.QTextObjectInterface(h: fcQAbstractTextDocumentLayout_handlerForObject(self.h, objectType))
 
 proc update*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): void =
-
   fcQAbstractTextDocumentLayout_update(self.h)
 
+type QAbstractTextDocumentLayoutupdateSlot* = proc()
 proc miqt_exec_callback_QAbstractTextDocumentLayout_update(slot: int) {.exportc.} =
-  type Cb = proc()
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
-
+  let nimfunc = cast[ptr QAbstractTextDocumentLayoutupdateSlot](cast[pointer](slot))
   nimfunc[]()
 
-proc onupdate*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: proc()) =
-  type Cb = proc()
-  var tmp = new Cb
+proc onupdate*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutupdateSlot) =
+  var tmp = new QAbstractTextDocumentLayoutupdateSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractTextDocumentLayout_connect_update(self.h, cast[int](addr tmp[]))
-proc updateBlock*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, blockVal: gen_qtextobject.QTextBlock): void =
 
+proc updateBlock*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, blockVal: gen_qtextobject.QTextBlock): void =
   fcQAbstractTextDocumentLayout_updateBlock(self.h, blockVal.h)
 
+type QAbstractTextDocumentLayoutupdateBlockSlot* = proc(blockVal: gen_qtextobject.QTextBlock)
 proc miqt_exec_callback_QAbstractTextDocumentLayout_updateBlock(slot: int, blockVal: pointer) {.exportc.} =
-  type Cb = proc(blockVal: gen_qtextobject.QTextBlock)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAbstractTextDocumentLayoutupdateBlockSlot](cast[pointer](slot))
   let slotval1 = gen_qtextobject.QTextBlock(h: blockVal)
-
 
   nimfunc[](slotval1)
 
-proc onupdateBlock*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: proc(blockVal: gen_qtextobject.QTextBlock)) =
-  type Cb = proc(blockVal: gen_qtextobject.QTextBlock)
-  var tmp = new Cb
+proc onupdateBlock*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutupdateBlockSlot) =
+  var tmp = new QAbstractTextDocumentLayoutupdateBlockSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractTextDocumentLayout_connect_updateBlock(self.h, cast[int](addr tmp[]))
-proc documentSizeChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, newSize: gen_qsize.QSizeF): void =
 
+proc documentSizeChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, newSize: gen_qsize.QSizeF): void =
   fcQAbstractTextDocumentLayout_documentSizeChanged(self.h, newSize.h)
 
+type QAbstractTextDocumentLayoutdocumentSizeChangedSlot* = proc(newSize: gen_qsize.QSizeF)
 proc miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged(slot: int, newSize: pointer) {.exportc.} =
-  type Cb = proc(newSize: gen_qsize.QSizeF)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAbstractTextDocumentLayoutdocumentSizeChangedSlot](cast[pointer](slot))
   let slotval1 = gen_qsize.QSizeF(h: newSize)
-
 
   nimfunc[](slotval1)
 
-proc ondocumentSizeChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: proc(newSize: gen_qsize.QSizeF)) =
-  type Cb = proc(newSize: gen_qsize.QSizeF)
-  var tmp = new Cb
+proc ondocumentSizeChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutdocumentSizeChangedSlot) =
+  var tmp = new QAbstractTextDocumentLayoutdocumentSizeChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractTextDocumentLayout_connect_documentSizeChanged(self.h, cast[int](addr tmp[]))
-proc pageCountChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, newPages: cint): void =
 
+proc pageCountChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, newPages: cint): void =
   fcQAbstractTextDocumentLayout_pageCountChanged(self.h, newPages)
 
+type QAbstractTextDocumentLayoutpageCountChangedSlot* = proc(newPages: cint)
 proc miqt_exec_callback_QAbstractTextDocumentLayout_pageCountChanged(slot: int, newPages: cint) {.exportc.} =
-  type Cb = proc(newPages: cint)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAbstractTextDocumentLayoutpageCountChangedSlot](cast[pointer](slot))
   let slotval1 = newPages
-
 
   nimfunc[](slotval1)
 
-proc onpageCountChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: proc(newPages: cint)) =
-  type Cb = proc(newPages: cint)
-  var tmp = new Cb
+proc onpageCountChanged*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutpageCountChangedSlot) =
+  var tmp = new QAbstractTextDocumentLayoutpageCountChangedSlot
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractTextDocumentLayout_connect_pageCountChanged(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, s: cstring, c: cstring): string =
   let v_ms = fcQAbstractTextDocumentLayout_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQAbstractTextDocumentLayout_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc unregisterHandler2*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, objectType: cint, component: gen_qobject.QObject): void =
-
+proc unregisterHandler*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, objectType: cint, component: gen_qobject.QObject): void =
   fcQAbstractTextDocumentLayout_unregisterHandler2(self.h, objectType, component.h)
 
-proc update1*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, param1: gen_qrect.QRectF): void =
-
+proc update*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, param1: gen_qrect.QRectF): void =
   fcQAbstractTextDocumentLayout_update1(self.h, param1.h)
 
+type QAbstractTextDocumentLayoutupdate1Slot* = proc(param1: gen_qrect.QRectF)
 proc miqt_exec_callback_QAbstractTextDocumentLayout_update1(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qrect.QRectF)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QAbstractTextDocumentLayoutupdate1Slot](cast[pointer](slot))
   let slotval1 = gen_qrect.QRectF(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc onupdate1*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: proc(param1: gen_qrect.QRectF)) =
-  type Cb = proc(param1: gen_qrect.QRectF)
-  var tmp = new Cb
+proc onupdate*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, slot: QAbstractTextDocumentLayoutupdate1Slot) =
+  var tmp = new QAbstractTextDocumentLayoutupdate1Slot
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractTextDocumentLayout_connect_update1(self.h, cast[int](addr tmp[]))
-proc QAbstractTextDocumentLayoutmetaObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): gen_qobjectdefs.QMetaObject =
 
+proc QAbstractTextDocumentLayoutmetaObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fQAbstractTextDocumentLayout_virtualbase_metaObject(self.h))
 
 type QAbstractTextDocumentLayoutmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -372,7 +338,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_metaObject(self: ptr cQAbstr
 
   virtualReturn.h
 proc QAbstractTextDocumentLayoutmetacast*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, param1: cstring): pointer =
-
   fQAbstractTextDocumentLayout_virtualbase_metacast(self.h, param1)
 
 type QAbstractTextDocumentLayoutmetacastProc* = proc(param1: cstring): pointer
@@ -392,7 +357,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_metacast(self: ptr cQAbstrac
 
   virtualReturn
 proc QAbstractTextDocumentLayoutmetacall*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, param1: cint, param2: cint, param3: pointer): cint =
-
   fQAbstractTextDocumentLayout_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QAbstractTextDocumentLayoutmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -528,7 +492,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_documentChanged(self: ptr cQ
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QAbstractTextDocumentLayoutresizeInlineObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, item: gen_qtextlayout.QTextInlineObject, posInDocument: cint, format: gen_qtextformat.QTextFormat): void =
-
   fQAbstractTextDocumentLayout_virtualbase_resizeInlineObject(self.h, item.h, posInDocument, format.h)
 
 type QAbstractTextDocumentLayoutresizeInlineObjectProc* = proc(item: gen_qtextlayout.QTextInlineObject, posInDocument: cint, format: gen_qtextformat.QTextFormat): void
@@ -550,7 +513,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_resizeInlineObject(self: ptr
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QAbstractTextDocumentLayoutpositionInlineObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, item: gen_qtextlayout.QTextInlineObject, posInDocument: cint, format: gen_qtextformat.QTextFormat): void =
-
   fQAbstractTextDocumentLayout_virtualbase_positionInlineObject(self.h, item.h, posInDocument, format.h)
 
 type QAbstractTextDocumentLayoutpositionInlineObjectProc* = proc(item: gen_qtextlayout.QTextInlineObject, posInDocument: cint, format: gen_qtextformat.QTextFormat): void
@@ -572,7 +534,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_positionInlineObject(self: p
 
   nimfunc[](slotval1, slotval2, slotval3)
 proc QAbstractTextDocumentLayoutdrawInlineObject*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF, objectVal: gen_qtextlayout.QTextInlineObject, posInDocument: cint, format: gen_qtextformat.QTextFormat): void =
-
   fQAbstractTextDocumentLayout_virtualbase_drawInlineObject(self.h, painter.h, rect.h, objectVal.h, posInDocument, format.h)
 
 type QAbstractTextDocumentLayoutdrawInlineObjectProc* = proc(painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF, objectVal: gen_qtextlayout.QTextInlineObject, posInDocument: cint, format: gen_qtextformat.QTextFormat): void
@@ -598,7 +559,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_drawInlineObject(self: ptr c
 
   nimfunc[](slotval1, slotval2, slotval3, slotval4, slotval5)
 proc QAbstractTextDocumentLayoutevent*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, event: gen_qcoreevent.QEvent): bool =
-
   fQAbstractTextDocumentLayout_virtualbase_event(self.h, event.h)
 
 type QAbstractTextDocumentLayouteventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -618,7 +578,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_event(self: ptr cQAbstractTe
 
   virtualReturn
 proc QAbstractTextDocumentLayouteventFilter*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQAbstractTextDocumentLayout_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QAbstractTextDocumentLayouteventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -640,7 +599,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_eventFilter(self: ptr cQAbst
 
   virtualReturn
 proc QAbstractTextDocumentLayouttimerEvent*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, event: gen_qcoreevent.QTimerEvent): void =
-
   fQAbstractTextDocumentLayout_virtualbase_timerEvent(self.h, event.h)
 
 type QAbstractTextDocumentLayouttimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -658,7 +616,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_timerEvent(self: ptr cQAbstr
 
   nimfunc[](slotval1)
 proc QAbstractTextDocumentLayoutchildEvent*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, event: gen_qcoreevent.QChildEvent): void =
-
   fQAbstractTextDocumentLayout_virtualbase_childEvent(self.h, event.h)
 
 type QAbstractTextDocumentLayoutchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -676,7 +633,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_childEvent(self: ptr cQAbstr
 
   nimfunc[](slotval1)
 proc QAbstractTextDocumentLayoutcustomEvent*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, event: gen_qcoreevent.QEvent): void =
-
   fQAbstractTextDocumentLayout_virtualbase_customEvent(self.h, event.h)
 
 type QAbstractTextDocumentLayoutcustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -694,7 +650,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_customEvent(self: ptr cQAbst
 
   nimfunc[](slotval1)
 proc QAbstractTextDocumentLayoutconnectNotify*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAbstractTextDocumentLayout_virtualbase_connectNotify(self.h, signal.h)
 
 type QAbstractTextDocumentLayoutconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -712,7 +667,6 @@ proc miqt_exec_callback_QAbstractTextDocumentLayout_connectNotify(self: ptr cQAb
 
   nimfunc[](slotval1)
 proc QAbstractTextDocumentLayoutdisconnectNotify*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayout, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQAbstractTextDocumentLayout_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QAbstractTextDocumentLayoutdisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -737,15 +691,12 @@ proc delete*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLa
 func init*(T: type gen_qabstracttextdocumentlayout_types.QTextObjectInterface, h: ptr cQTextObjectInterface): gen_qabstracttextdocumentlayout_types.QTextObjectInterface =
   T(h: h)
 proc intrinsicSize*(self: gen_qabstracttextdocumentlayout_types.QTextObjectInterface, doc: gen_qtextdocument.QTextDocument, posInDocument: cint, format: gen_qtextformat.QTextFormat): gen_qsize.QSizeF =
-
   gen_qsize.QSizeF(h: fcQTextObjectInterface_intrinsicSize(self.h, doc.h, posInDocument, format.h))
 
 proc drawObject*(self: gen_qabstracttextdocumentlayout_types.QTextObjectInterface, painter: gen_qpainter.QPainter, rect: gen_qrect.QRectF, doc: gen_qtextdocument.QTextDocument, posInDocument: cint, format: gen_qtextformat.QTextFormat): void =
-
   fcQTextObjectInterface_drawObject(self.h, painter.h, rect.h, doc.h, posInDocument, format.h)
 
 proc operatorAssign*(self: gen_qabstracttextdocumentlayout_types.QTextObjectInterface, param1: gen_qabstracttextdocumentlayout_types.QTextObjectInterface): void =
-
   fcQTextObjectInterface_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qabstracttextdocumentlayout_types.QTextObjectInterface) =
@@ -754,10 +705,9 @@ proc delete*(self: gen_qabstracttextdocumentlayout_types.QTextObjectInterface) =
 func init*(T: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection, h: ptr cQAbstractTextDocumentLayoutSelection): gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection =
   T(h: h)
 proc create*(T: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection, param1: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection): gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection =
-
   gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection.init(fcQAbstractTextDocumentLayoutSelection_new(param1.h))
-proc operatorAssign*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection, param1: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection): void =
 
+proc operatorAssign*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection, param1: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection): void =
   fcQAbstractTextDocumentLayoutSelection_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutSelection) =
@@ -766,13 +716,12 @@ proc delete*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLa
 func init*(T: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext, h: ptr cQAbstractTextDocumentLayoutPaintContext): gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext =
   T(h: h)
 proc create*(T: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext, ): gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext =
-
   gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext.init(fcQAbstractTextDocumentLayoutPaintContext_new())
+
 proc create*(T: type gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext, param1: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext): gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext =
-
   gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext.init(fcQAbstractTextDocumentLayoutPaintContext_new2(param1.h))
-proc operatorAssign*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext, param1: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext): void =
 
+proc operatorAssign*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext, param1: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext): void =
   fcQAbstractTextDocumentLayoutPaintContext_operatorAssign(self.h, param1.h)
 
 proc delete*(self: gen_qabstracttextdocumentlayout_types.QAbstractTextDocumentLayoutPaintContext) =

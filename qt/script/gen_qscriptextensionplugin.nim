@@ -97,39 +97,33 @@ proc fcQScriptExtensionPlugin_delete(self: pointer) {.importc: "QScriptExtension
 func init*(T: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, h: ptr cQScriptExtensionPlugin): gen_qscriptextensionplugin_types.QScriptExtensionPlugin =
   T(h: h)
 proc create*(T: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, ): gen_qscriptextensionplugin_types.QScriptExtensionPlugin =
-
   gen_qscriptextensionplugin_types.QScriptExtensionPlugin.init(fcQScriptExtensionPlugin_new())
+
 proc create*(T: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, parent: gen_qobject.QObject): gen_qscriptextensionplugin_types.QScriptExtensionPlugin =
-
   gen_qscriptextensionplugin_types.QScriptExtensionPlugin.init(fcQScriptExtensionPlugin_new2(parent.h))
-proc metaObject*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQScriptExtensionPlugin_metaObject(self.h))
 
 proc metacast*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, param1: cstring): pointer =
-
   fcQScriptExtensionPlugin_metacast(self.h, param1)
 
 proc metacall*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQScriptExtensionPlugin_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring): string =
-
   let v_ms = fcQScriptExtensionPlugin_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring): string =
-
   let v_ms = fcQScriptExtensionPlugin_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc keys*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, ): seq[string] =
-
   var v_ma = fcQScriptExtensionPlugin_keys(self.h)
   var vx_ret = newSeq[string](int(v_ma.len))
   let v_outCast = cast[ptr UncheckedArray[struct_miqt_string]](v_ma.data)
@@ -141,43 +135,36 @@ proc keys*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, ): seq
   vx_ret
 
 proc initialize*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, key: string, engine: gen_qscriptengine.QScriptEngine): void =
-
   fcQScriptExtensionPlugin_initialize(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), engine.h)
 
 proc setupPackage*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, key: string, engine: gen_qscriptengine.QScriptEngine): gen_qscriptvalue.QScriptValue =
-
   gen_qscriptvalue.QScriptValue(h: fcQScriptExtensionPlugin_setupPackage(self.h, struct_miqt_string(data: key, len: csize_t(len(key))), engine.h))
 
-proc tr2*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQScriptExtensionPlugin_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQScriptExtensionPlugin_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring, c: cstring): string =
   let v_ms = fcQScriptExtensionPlugin_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qscriptextensionplugin_types.QScriptExtensionPlugin, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQScriptExtensionPlugin_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QScriptExtensionPluginmetaObject*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQScriptExtensionPlugin_virtualbase_metaObject(self.h))
 
 type QScriptExtensionPluginmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -195,7 +182,6 @@ proc miqt_exec_callback_QScriptExtensionPlugin_metaObject(self: ptr cQScriptExte
 
   virtualReturn.h
 proc QScriptExtensionPluginmetacast*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, param1: cstring): pointer =
-
   fQScriptExtensionPlugin_virtualbase_metacast(self.h, param1)
 
 type QScriptExtensionPluginmetacastProc* = proc(param1: cstring): pointer
@@ -215,7 +201,6 @@ proc miqt_exec_callback_QScriptExtensionPlugin_metacast(self: ptr cQScriptExtens
 
   virtualReturn
 proc QScriptExtensionPluginmetacall*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, param1: cint, param2: cint, param3: pointer): cint =
-
   fQScriptExtensionPlugin_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QScriptExtensionPluginmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -276,7 +261,6 @@ proc miqt_exec_callback_QScriptExtensionPlugin_initialize(self: ptr cQScriptExte
 
   nimfunc[](slotval1, slotval2)
 proc QScriptExtensionPluginevent*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, event: gen_qcoreevent.QEvent): bool =
-
   fQScriptExtensionPlugin_virtualbase_event(self.h, event.h)
 
 type QScriptExtensionPlugineventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -296,7 +280,6 @@ proc miqt_exec_callback_QScriptExtensionPlugin_event(self: ptr cQScriptExtension
 
   virtualReturn
 proc QScriptExtensionPlugineventFilter*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQScriptExtensionPlugin_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QScriptExtensionPlugineventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -318,7 +301,6 @@ proc miqt_exec_callback_QScriptExtensionPlugin_eventFilter(self: ptr cQScriptExt
 
   virtualReturn
 proc QScriptExtensionPlugintimerEvent*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, event: gen_qcoreevent.QTimerEvent): void =
-
   fQScriptExtensionPlugin_virtualbase_timerEvent(self.h, event.h)
 
 type QScriptExtensionPlugintimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -336,7 +318,6 @@ proc miqt_exec_callback_QScriptExtensionPlugin_timerEvent(self: ptr cQScriptExte
 
   nimfunc[](slotval1)
 proc QScriptExtensionPluginchildEvent*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, event: gen_qcoreevent.QChildEvent): void =
-
   fQScriptExtensionPlugin_virtualbase_childEvent(self.h, event.h)
 
 type QScriptExtensionPluginchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -354,7 +335,6 @@ proc miqt_exec_callback_QScriptExtensionPlugin_childEvent(self: ptr cQScriptExte
 
   nimfunc[](slotval1)
 proc QScriptExtensionPlugincustomEvent*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, event: gen_qcoreevent.QEvent): void =
-
   fQScriptExtensionPlugin_virtualbase_customEvent(self.h, event.h)
 
 type QScriptExtensionPlugincustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -372,7 +352,6 @@ proc miqt_exec_callback_QScriptExtensionPlugin_customEvent(self: ptr cQScriptExt
 
   nimfunc[](slotval1)
 proc QScriptExtensionPluginconnectNotify*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQScriptExtensionPlugin_virtualbase_connectNotify(self.h, signal.h)
 
 type QScriptExtensionPluginconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -390,7 +369,6 @@ proc miqt_exec_callback_QScriptExtensionPlugin_connectNotify(self: ptr cQScriptE
 
   nimfunc[](slotval1)
 proc QScriptExtensionPlugindisconnectNotify*(self: gen_qscriptextensionplugin_types.QScriptExtensionPlugin, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQScriptExtensionPlugin_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QScriptExtensionPlugindisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

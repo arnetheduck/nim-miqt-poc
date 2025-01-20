@@ -219,145 +219,118 @@ proc fcQToolButton_delete(self: pointer) {.importc: "QToolButton_delete".}
 func init*(T: type gen_qtoolbutton_types.QToolButton, h: ptr cQToolButton): gen_qtoolbutton_types.QToolButton =
   T(h: h)
 proc create*(T: type gen_qtoolbutton_types.QToolButton, parent: gen_qwidget.QWidget): gen_qtoolbutton_types.QToolButton =
-
   gen_qtoolbutton_types.QToolButton.init(fcQToolButton_new(parent.h))
+
 proc create*(T: type gen_qtoolbutton_types.QToolButton, ): gen_qtoolbutton_types.QToolButton =
-
   gen_qtoolbutton_types.QToolButton.init(fcQToolButton_new2())
-proc metaObject*(self: gen_qtoolbutton_types.QToolButton, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtoolbutton_types.QToolButton, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQToolButton_metaObject(self.h))
 
 proc metacast*(self: gen_qtoolbutton_types.QToolButton, param1: cstring): pointer =
-
   fcQToolButton_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtoolbutton_types.QToolButton, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQToolButton_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtoolbutton_types.QToolButton, s: cstring): string =
-
   let v_ms = fcQToolButton_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc trUtf8*(_: type gen_qtoolbutton_types.QToolButton, s: cstring): string =
-
   let v_ms = fcQToolButton_trUtf8(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc sizeHint*(self: gen_qtoolbutton_types.QToolButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQToolButton_sizeHint(self.h))
 
 proc minimumSizeHint*(self: gen_qtoolbutton_types.QToolButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fcQToolButton_minimumSizeHint(self.h))
 
 proc toolButtonStyle*(self: gen_qtoolbutton_types.QToolButton, ): cint =
-
   cint(fcQToolButton_toolButtonStyle(self.h))
 
 proc arrowType*(self: gen_qtoolbutton_types.QToolButton, ): cint =
-
   cint(fcQToolButton_arrowType(self.h))
 
 proc setArrowType*(self: gen_qtoolbutton_types.QToolButton, typeVal: cint): void =
-
   fcQToolButton_setArrowType(self.h, cint(typeVal))
 
 proc setMenu*(self: gen_qtoolbutton_types.QToolButton, menu: gen_qmenu.QMenu): void =
-
   fcQToolButton_setMenu(self.h, menu.h)
 
 proc menu*(self: gen_qtoolbutton_types.QToolButton, ): gen_qmenu.QMenu =
-
   gen_qmenu.QMenu(h: fcQToolButton_menu(self.h))
 
 proc setPopupMode*(self: gen_qtoolbutton_types.QToolButton, mode: cint): void =
-
   fcQToolButton_setPopupMode(self.h, cint(mode))
 
 proc popupMode*(self: gen_qtoolbutton_types.QToolButton, ): cint =
-
   cint(fcQToolButton_popupMode(self.h))
 
 proc defaultAction*(self: gen_qtoolbutton_types.QToolButton, ): gen_qaction.QAction =
-
   gen_qaction.QAction(h: fcQToolButton_defaultAction(self.h))
 
 proc setAutoRaise*(self: gen_qtoolbutton_types.QToolButton, enable: bool): void =
-
   fcQToolButton_setAutoRaise(self.h, enable)
 
 proc autoRaise*(self: gen_qtoolbutton_types.QToolButton, ): bool =
-
   fcQToolButton_autoRaise(self.h)
 
 proc showMenu*(self: gen_qtoolbutton_types.QToolButton, ): void =
-
   fcQToolButton_showMenu(self.h)
 
 proc setToolButtonStyle*(self: gen_qtoolbutton_types.QToolButton, style: cint): void =
-
   fcQToolButton_setToolButtonStyle(self.h, cint(style))
 
 proc setDefaultAction*(self: gen_qtoolbutton_types.QToolButton, defaultAction: gen_qaction.QAction): void =
-
   fcQToolButton_setDefaultAction(self.h, defaultAction.h)
 
 proc triggered*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qaction.QAction): void =
-
   fcQToolButton_triggered(self.h, param1.h)
 
+type QToolButtontriggeredSlot* = proc(param1: gen_qaction.QAction)
 proc miqt_exec_callback_QToolButton_triggered(slot: int, param1: pointer) {.exportc.} =
-  type Cb = proc(param1: gen_qaction.QAction)
-  let nimfunc = cast[ptr Cb](cast[pointer](slot))
+  let nimfunc = cast[ptr QToolButtontriggeredSlot](cast[pointer](slot))
   let slotval1 = gen_qaction.QAction(h: param1)
-
 
   nimfunc[](slotval1)
 
-proc ontriggered*(self: gen_qtoolbutton_types.QToolButton, slot: proc(param1: gen_qaction.QAction)) =
-  type Cb = proc(param1: gen_qaction.QAction)
-  var tmp = new Cb
+proc ontriggered*(self: gen_qtoolbutton_types.QToolButton, slot: QToolButtontriggeredSlot) =
+  var tmp = new QToolButtontriggeredSlot
   tmp[] = slot
   GC_ref(tmp)
   fQToolButton_connect_triggered(self.h, cast[int](addr tmp[]))
-proc tr2*(_: type gen_qtoolbutton_types.QToolButton, s: cstring, c: cstring): string =
 
+proc tr*(_: type gen_qtoolbutton_types.QToolButton, s: cstring, c: cstring): string =
   let v_ms = fcQToolButton_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtoolbutton_types.QToolButton, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtoolbutton_types.QToolButton, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQToolButton_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf82*(_: type gen_qtoolbutton_types.QToolButton, s: cstring, c: cstring): string =
-
+proc trUtf8*(_: type gen_qtoolbutton_types.QToolButton, s: cstring, c: cstring): string =
   let v_ms = fcQToolButton_trUtf82(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc trUtf83*(_: type gen_qtoolbutton_types.QToolButton, s: cstring, c: cstring, n: cint): string =
-
+proc trUtf8*(_: type gen_qtoolbutton_types.QToolButton, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQToolButton_trUtf83(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QToolButtonmetaObject*(self: gen_qtoolbutton_types.QToolButton, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQToolButton_virtualbase_metaObject(self.h))
 
 type QToolButtonmetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -375,7 +348,6 @@ proc miqt_exec_callback_QToolButton_metaObject(self: ptr cQToolButton, slot: int
 
   virtualReturn.h
 proc QToolButtonmetacast*(self: gen_qtoolbutton_types.QToolButton, param1: cstring): pointer =
-
   fQToolButton_virtualbase_metacast(self.h, param1)
 
 type QToolButtonmetacastProc* = proc(param1: cstring): pointer
@@ -395,7 +367,6 @@ proc miqt_exec_callback_QToolButton_metacast(self: ptr cQToolButton, slot: int, 
 
   virtualReturn
 proc QToolButtonmetacall*(self: gen_qtoolbutton_types.QToolButton, param1: cint, param2: cint, param3: pointer): cint =
-
   fQToolButton_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QToolButtonmetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -419,7 +390,6 @@ proc miqt_exec_callback_QToolButton_metacall(self: ptr cQToolButton, slot: int, 
 
   virtualReturn
 proc QToolButtonsizeHint*(self: gen_qtoolbutton_types.QToolButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQToolButton_virtualbase_sizeHint(self.h))
 
 type QToolButtonsizeHintProc* = proc(): gen_qsize.QSize
@@ -437,7 +407,6 @@ proc miqt_exec_callback_QToolButton_sizeHint(self: ptr cQToolButton, slot: int):
 
   virtualReturn.h
 proc QToolButtonminimumSizeHint*(self: gen_qtoolbutton_types.QToolButton, ): gen_qsize.QSize =
-
   gen_qsize.QSize(h: fQToolButton_virtualbase_minimumSizeHint(self.h))
 
 type QToolButtonminimumSizeHintProc* = proc(): gen_qsize.QSize
@@ -455,7 +424,6 @@ proc miqt_exec_callback_QToolButton_minimumSizeHint(self: ptr cQToolButton, slot
 
   virtualReturn.h
 proc QToolButtonevent*(self: gen_qtoolbutton_types.QToolButton, e: gen_qcoreevent.QEvent): bool =
-
   fQToolButton_virtualbase_event(self.h, e.h)
 
 type QToolButtoneventProc* = proc(e: gen_qcoreevent.QEvent): bool
@@ -475,7 +443,6 @@ proc miqt_exec_callback_QToolButton_event(self: ptr cQToolButton, slot: int, e: 
 
   virtualReturn
 proc QToolButtonmousePressEvent*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qevent.QMouseEvent): void =
-
   fQToolButton_virtualbase_mousePressEvent(self.h, param1.h)
 
 type QToolButtonmousePressEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -493,7 +460,6 @@ proc miqt_exec_callback_QToolButton_mousePressEvent(self: ptr cQToolButton, slot
 
   nimfunc[](slotval1)
 proc QToolButtonmouseReleaseEvent*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qevent.QMouseEvent): void =
-
   fQToolButton_virtualbase_mouseReleaseEvent(self.h, param1.h)
 
 type QToolButtonmouseReleaseEventProc* = proc(param1: gen_qevent.QMouseEvent): void
@@ -511,7 +477,6 @@ proc miqt_exec_callback_QToolButton_mouseReleaseEvent(self: ptr cQToolButton, sl
 
   nimfunc[](slotval1)
 proc QToolButtonpaintEvent*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qevent.QPaintEvent): void =
-
   fQToolButton_virtualbase_paintEvent(self.h, param1.h)
 
 type QToolButtonpaintEventProc* = proc(param1: gen_qevent.QPaintEvent): void
@@ -529,7 +494,6 @@ proc miqt_exec_callback_QToolButton_paintEvent(self: ptr cQToolButton, slot: int
 
   nimfunc[](slotval1)
 proc QToolButtonactionEvent*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qevent.QActionEvent): void =
-
   fQToolButton_virtualbase_actionEvent(self.h, param1.h)
 
 type QToolButtonactionEventProc* = proc(param1: gen_qevent.QActionEvent): void
@@ -547,7 +511,6 @@ proc miqt_exec_callback_QToolButton_actionEvent(self: ptr cQToolButton, slot: in
 
   nimfunc[](slotval1)
 proc QToolButtonenterEvent*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qcoreevent.QEvent): void =
-
   fQToolButton_virtualbase_enterEvent(self.h, param1.h)
 
 type QToolButtonenterEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -565,7 +528,6 @@ proc miqt_exec_callback_QToolButton_enterEvent(self: ptr cQToolButton, slot: int
 
   nimfunc[](slotval1)
 proc QToolButtonleaveEvent*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qcoreevent.QEvent): void =
-
   fQToolButton_virtualbase_leaveEvent(self.h, param1.h)
 
 type QToolButtonleaveEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -583,7 +545,6 @@ proc miqt_exec_callback_QToolButton_leaveEvent(self: ptr cQToolButton, slot: int
 
   nimfunc[](slotval1)
 proc QToolButtontimerEvent*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qcoreevent.QTimerEvent): void =
-
   fQToolButton_virtualbase_timerEvent(self.h, param1.h)
 
 type QToolButtontimerEventProc* = proc(param1: gen_qcoreevent.QTimerEvent): void
@@ -601,7 +562,6 @@ proc miqt_exec_callback_QToolButton_timerEvent(self: ptr cQToolButton, slot: int
 
   nimfunc[](slotval1)
 proc QToolButtonchangeEvent*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qcoreevent.QEvent): void =
-
   fQToolButton_virtualbase_changeEvent(self.h, param1.h)
 
 type QToolButtonchangeEventProc* = proc(param1: gen_qcoreevent.QEvent): void
@@ -619,7 +579,6 @@ proc miqt_exec_callback_QToolButton_changeEvent(self: ptr cQToolButton, slot: in
 
   nimfunc[](slotval1)
 proc QToolButtonhitButton*(self: gen_qtoolbutton_types.QToolButton, pos: gen_qpoint.QPoint): bool =
-
   fQToolButton_virtualbase_hitButton(self.h, pos.h)
 
 type QToolButtonhitButtonProc* = proc(pos: gen_qpoint.QPoint): bool
@@ -639,7 +598,6 @@ proc miqt_exec_callback_QToolButton_hitButton(self: ptr cQToolButton, slot: int,
 
   virtualReturn
 proc QToolButtonnextCheckState*(self: gen_qtoolbutton_types.QToolButton, ): void =
-
   fQToolButton_virtualbase_nextCheckState(self.h)
 
 type QToolButtonnextCheckStateProc* = proc(): void
@@ -655,7 +613,6 @@ proc miqt_exec_callback_QToolButton_nextCheckState(self: ptr cQToolButton, slot:
 
   nimfunc[]()
 proc QToolButtoncheckStateSet*(self: gen_qtoolbutton_types.QToolButton, ): void =
-
   fQToolButton_virtualbase_checkStateSet(self.h)
 
 type QToolButtoncheckStateSetProc* = proc(): void
@@ -671,7 +628,6 @@ proc miqt_exec_callback_QToolButton_checkStateSet(self: ptr cQToolButton, slot: 
 
   nimfunc[]()
 proc QToolButtonkeyPressEvent*(self: gen_qtoolbutton_types.QToolButton, e: gen_qevent.QKeyEvent): void =
-
   fQToolButton_virtualbase_keyPressEvent(self.h, e.h)
 
 type QToolButtonkeyPressEventProc* = proc(e: gen_qevent.QKeyEvent): void
@@ -689,7 +645,6 @@ proc miqt_exec_callback_QToolButton_keyPressEvent(self: ptr cQToolButton, slot: 
 
   nimfunc[](slotval1)
 proc QToolButtonkeyReleaseEvent*(self: gen_qtoolbutton_types.QToolButton, e: gen_qevent.QKeyEvent): void =
-
   fQToolButton_virtualbase_keyReleaseEvent(self.h, e.h)
 
 type QToolButtonkeyReleaseEventProc* = proc(e: gen_qevent.QKeyEvent): void
@@ -707,7 +662,6 @@ proc miqt_exec_callback_QToolButton_keyReleaseEvent(self: ptr cQToolButton, slot
 
   nimfunc[](slotval1)
 proc QToolButtonmouseMoveEvent*(self: gen_qtoolbutton_types.QToolButton, e: gen_qevent.QMouseEvent): void =
-
   fQToolButton_virtualbase_mouseMoveEvent(self.h, e.h)
 
 type QToolButtonmouseMoveEventProc* = proc(e: gen_qevent.QMouseEvent): void
@@ -725,7 +679,6 @@ proc miqt_exec_callback_QToolButton_mouseMoveEvent(self: ptr cQToolButton, slot:
 
   nimfunc[](slotval1)
 proc QToolButtonfocusInEvent*(self: gen_qtoolbutton_types.QToolButton, e: gen_qevent.QFocusEvent): void =
-
   fQToolButton_virtualbase_focusInEvent(self.h, e.h)
 
 type QToolButtonfocusInEventProc* = proc(e: gen_qevent.QFocusEvent): void
@@ -743,7 +696,6 @@ proc miqt_exec_callback_QToolButton_focusInEvent(self: ptr cQToolButton, slot: i
 
   nimfunc[](slotval1)
 proc QToolButtonfocusOutEvent*(self: gen_qtoolbutton_types.QToolButton, e: gen_qevent.QFocusEvent): void =
-
   fQToolButton_virtualbase_focusOutEvent(self.h, e.h)
 
 type QToolButtonfocusOutEventProc* = proc(e: gen_qevent.QFocusEvent): void
@@ -761,7 +713,6 @@ proc miqt_exec_callback_QToolButton_focusOutEvent(self: ptr cQToolButton, slot: 
 
   nimfunc[](slotval1)
 proc QToolButtondevType*(self: gen_qtoolbutton_types.QToolButton, ): cint =
-
   fQToolButton_virtualbase_devType(self.h)
 
 type QToolButtondevTypeProc* = proc(): cint
@@ -779,7 +730,6 @@ proc miqt_exec_callback_QToolButton_devType(self: ptr cQToolButton, slot: int): 
 
   virtualReturn
 proc QToolButtonsetVisible*(self: gen_qtoolbutton_types.QToolButton, visible: bool): void =
-
   fQToolButton_virtualbase_setVisible(self.h, visible)
 
 type QToolButtonsetVisibleProc* = proc(visible: bool): void
@@ -797,7 +747,6 @@ proc miqt_exec_callback_QToolButton_setVisible(self: ptr cQToolButton, slot: int
 
   nimfunc[](slotval1)
 proc QToolButtonheightForWidth*(self: gen_qtoolbutton_types.QToolButton, param1: cint): cint =
-
   fQToolButton_virtualbase_heightForWidth(self.h, param1)
 
 type QToolButtonheightForWidthProc* = proc(param1: cint): cint
@@ -817,7 +766,6 @@ proc miqt_exec_callback_QToolButton_heightForWidth(self: ptr cQToolButton, slot:
 
   virtualReturn
 proc QToolButtonhasHeightForWidth*(self: gen_qtoolbutton_types.QToolButton, ): bool =
-
   fQToolButton_virtualbase_hasHeightForWidth(self.h)
 
 type QToolButtonhasHeightForWidthProc* = proc(): bool
@@ -835,7 +783,6 @@ proc miqt_exec_callback_QToolButton_hasHeightForWidth(self: ptr cQToolButton, sl
 
   virtualReturn
 proc QToolButtonpaintEngine*(self: gen_qtoolbutton_types.QToolButton, ): gen_qpaintengine.QPaintEngine =
-
   gen_qpaintengine.QPaintEngine(h: fQToolButton_virtualbase_paintEngine(self.h))
 
 type QToolButtonpaintEngineProc* = proc(): gen_qpaintengine.QPaintEngine
@@ -853,7 +800,6 @@ proc miqt_exec_callback_QToolButton_paintEngine(self: ptr cQToolButton, slot: in
 
   virtualReturn.h
 proc QToolButtonmouseDoubleClickEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QMouseEvent): void =
-
   fQToolButton_virtualbase_mouseDoubleClickEvent(self.h, event.h)
 
 type QToolButtonmouseDoubleClickEventProc* = proc(event: gen_qevent.QMouseEvent): void
@@ -871,7 +817,6 @@ proc miqt_exec_callback_QToolButton_mouseDoubleClickEvent(self: ptr cQToolButton
 
   nimfunc[](slotval1)
 proc QToolButtonwheelEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QWheelEvent): void =
-
   fQToolButton_virtualbase_wheelEvent(self.h, event.h)
 
 type QToolButtonwheelEventProc* = proc(event: gen_qevent.QWheelEvent): void
@@ -889,7 +834,6 @@ proc miqt_exec_callback_QToolButton_wheelEvent(self: ptr cQToolButton, slot: int
 
   nimfunc[](slotval1)
 proc QToolButtonmoveEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QMoveEvent): void =
-
   fQToolButton_virtualbase_moveEvent(self.h, event.h)
 
 type QToolButtonmoveEventProc* = proc(event: gen_qevent.QMoveEvent): void
@@ -907,7 +851,6 @@ proc miqt_exec_callback_QToolButton_moveEvent(self: ptr cQToolButton, slot: int,
 
   nimfunc[](slotval1)
 proc QToolButtonresizeEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QResizeEvent): void =
-
   fQToolButton_virtualbase_resizeEvent(self.h, event.h)
 
 type QToolButtonresizeEventProc* = proc(event: gen_qevent.QResizeEvent): void
@@ -925,7 +868,6 @@ proc miqt_exec_callback_QToolButton_resizeEvent(self: ptr cQToolButton, slot: in
 
   nimfunc[](slotval1)
 proc QToolButtoncloseEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QCloseEvent): void =
-
   fQToolButton_virtualbase_closeEvent(self.h, event.h)
 
 type QToolButtoncloseEventProc* = proc(event: gen_qevent.QCloseEvent): void
@@ -943,7 +885,6 @@ proc miqt_exec_callback_QToolButton_closeEvent(self: ptr cQToolButton, slot: int
 
   nimfunc[](slotval1)
 proc QToolButtoncontextMenuEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QContextMenuEvent): void =
-
   fQToolButton_virtualbase_contextMenuEvent(self.h, event.h)
 
 type QToolButtoncontextMenuEventProc* = proc(event: gen_qevent.QContextMenuEvent): void
@@ -961,7 +902,6 @@ proc miqt_exec_callback_QToolButton_contextMenuEvent(self: ptr cQToolButton, slo
 
   nimfunc[](slotval1)
 proc QToolButtontabletEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QTabletEvent): void =
-
   fQToolButton_virtualbase_tabletEvent(self.h, event.h)
 
 type QToolButtontabletEventProc* = proc(event: gen_qevent.QTabletEvent): void
@@ -979,7 +919,6 @@ proc miqt_exec_callback_QToolButton_tabletEvent(self: ptr cQToolButton, slot: in
 
   nimfunc[](slotval1)
 proc QToolButtondragEnterEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QDragEnterEvent): void =
-
   fQToolButton_virtualbase_dragEnterEvent(self.h, event.h)
 
 type QToolButtondragEnterEventProc* = proc(event: gen_qevent.QDragEnterEvent): void
@@ -997,7 +936,6 @@ proc miqt_exec_callback_QToolButton_dragEnterEvent(self: ptr cQToolButton, slot:
 
   nimfunc[](slotval1)
 proc QToolButtondragMoveEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QDragMoveEvent): void =
-
   fQToolButton_virtualbase_dragMoveEvent(self.h, event.h)
 
 type QToolButtondragMoveEventProc* = proc(event: gen_qevent.QDragMoveEvent): void
@@ -1015,7 +953,6 @@ proc miqt_exec_callback_QToolButton_dragMoveEvent(self: ptr cQToolButton, slot: 
 
   nimfunc[](slotval1)
 proc QToolButtondragLeaveEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QDragLeaveEvent): void =
-
   fQToolButton_virtualbase_dragLeaveEvent(self.h, event.h)
 
 type QToolButtondragLeaveEventProc* = proc(event: gen_qevent.QDragLeaveEvent): void
@@ -1033,7 +970,6 @@ proc miqt_exec_callback_QToolButton_dragLeaveEvent(self: ptr cQToolButton, slot:
 
   nimfunc[](slotval1)
 proc QToolButtondropEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QDropEvent): void =
-
   fQToolButton_virtualbase_dropEvent(self.h, event.h)
 
 type QToolButtondropEventProc* = proc(event: gen_qevent.QDropEvent): void
@@ -1051,7 +987,6 @@ proc miqt_exec_callback_QToolButton_dropEvent(self: ptr cQToolButton, slot: int,
 
   nimfunc[](slotval1)
 proc QToolButtonshowEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QShowEvent): void =
-
   fQToolButton_virtualbase_showEvent(self.h, event.h)
 
 type QToolButtonshowEventProc* = proc(event: gen_qevent.QShowEvent): void
@@ -1069,7 +1004,6 @@ proc miqt_exec_callback_QToolButton_showEvent(self: ptr cQToolButton, slot: int,
 
   nimfunc[](slotval1)
 proc QToolButtonhideEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qevent.QHideEvent): void =
-
   fQToolButton_virtualbase_hideEvent(self.h, event.h)
 
 type QToolButtonhideEventProc* = proc(event: gen_qevent.QHideEvent): void
@@ -1087,7 +1021,6 @@ proc miqt_exec_callback_QToolButton_hideEvent(self: ptr cQToolButton, slot: int,
 
   nimfunc[](slotval1)
 proc QToolButtonnativeEvent*(self: gen_qtoolbutton_types.QToolButton, eventType: seq[byte], message: pointer, resultVal: ptr clong): bool =
-
   fQToolButton_virtualbase_nativeEvent(self.h, struct_miqt_string(data: cast[cstring](if len(eventType) == 0: nil else: unsafeAddr eventType[0]), len: csize_t(len(eventType))), message, resultVal)
 
 type QToolButtonnativeEventProc* = proc(eventType: seq[byte], message: pointer, resultVal: ptr clong): bool
@@ -1114,7 +1047,6 @@ proc miqt_exec_callback_QToolButton_nativeEvent(self: ptr cQToolButton, slot: in
 
   virtualReturn
 proc QToolButtonmetric*(self: gen_qtoolbutton_types.QToolButton, param1: cint): cint =
-
   fQToolButton_virtualbase_metric(self.h, cint(param1))
 
 type QToolButtonmetricProc* = proc(param1: cint): cint
@@ -1134,7 +1066,6 @@ proc miqt_exec_callback_QToolButton_metric(self: ptr cQToolButton, slot: int, pa
 
   virtualReturn
 proc QToolButtoninitPainter*(self: gen_qtoolbutton_types.QToolButton, painter: gen_qpainter.QPainter): void =
-
   fQToolButton_virtualbase_initPainter(self.h, painter.h)
 
 type QToolButtoninitPainterProc* = proc(painter: gen_qpainter.QPainter): void
@@ -1152,7 +1083,6 @@ proc miqt_exec_callback_QToolButton_initPainter(self: ptr cQToolButton, slot: in
 
   nimfunc[](slotval1)
 proc QToolButtonredirected*(self: gen_qtoolbutton_types.QToolButton, offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice =
-
   gen_qpaintdevice.QPaintDevice(h: fQToolButton_virtualbase_redirected(self.h, offset.h))
 
 type QToolButtonredirectedProc* = proc(offset: gen_qpoint.QPoint): gen_qpaintdevice.QPaintDevice
@@ -1172,7 +1102,6 @@ proc miqt_exec_callback_QToolButton_redirected(self: ptr cQToolButton, slot: int
 
   virtualReturn.h
 proc QToolButtonsharedPainter*(self: gen_qtoolbutton_types.QToolButton, ): gen_qpainter.QPainter =
-
   gen_qpainter.QPainter(h: fQToolButton_virtualbase_sharedPainter(self.h))
 
 type QToolButtonsharedPainterProc* = proc(): gen_qpainter.QPainter
@@ -1190,7 +1119,6 @@ proc miqt_exec_callback_QToolButton_sharedPainter(self: ptr cQToolButton, slot: 
 
   virtualReturn.h
 proc QToolButtoninputMethodEvent*(self: gen_qtoolbutton_types.QToolButton, param1: gen_qevent.QInputMethodEvent): void =
-
   fQToolButton_virtualbase_inputMethodEvent(self.h, param1.h)
 
 type QToolButtoninputMethodEventProc* = proc(param1: gen_qevent.QInputMethodEvent): void
@@ -1208,7 +1136,6 @@ proc miqt_exec_callback_QToolButton_inputMethodEvent(self: ptr cQToolButton, slo
 
   nimfunc[](slotval1)
 proc QToolButtoninputMethodQuery*(self: gen_qtoolbutton_types.QToolButton, param1: cint): gen_qvariant.QVariant =
-
   gen_qvariant.QVariant(h: fQToolButton_virtualbase_inputMethodQuery(self.h, cint(param1)))
 
 type QToolButtoninputMethodQueryProc* = proc(param1: cint): gen_qvariant.QVariant
@@ -1228,7 +1155,6 @@ proc miqt_exec_callback_QToolButton_inputMethodQuery(self: ptr cQToolButton, slo
 
   virtualReturn.h
 proc QToolButtonfocusNextPrevChild*(self: gen_qtoolbutton_types.QToolButton, next: bool): bool =
-
   fQToolButton_virtualbase_focusNextPrevChild(self.h, next)
 
 type QToolButtonfocusNextPrevChildProc* = proc(next: bool): bool
@@ -1248,7 +1174,6 @@ proc miqt_exec_callback_QToolButton_focusNextPrevChild(self: ptr cQToolButton, s
 
   virtualReturn
 proc QToolButtoneventFilter*(self: gen_qtoolbutton_types.QToolButton, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQToolButton_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QToolButtoneventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -1270,7 +1195,6 @@ proc miqt_exec_callback_QToolButton_eventFilter(self: ptr cQToolButton, slot: in
 
   virtualReturn
 proc QToolButtonchildEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qcoreevent.QChildEvent): void =
-
   fQToolButton_virtualbase_childEvent(self.h, event.h)
 
 type QToolButtonchildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -1288,7 +1212,6 @@ proc miqt_exec_callback_QToolButton_childEvent(self: ptr cQToolButton, slot: int
 
   nimfunc[](slotval1)
 proc QToolButtoncustomEvent*(self: gen_qtoolbutton_types.QToolButton, event: gen_qcoreevent.QEvent): void =
-
   fQToolButton_virtualbase_customEvent(self.h, event.h)
 
 type QToolButtoncustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -1306,7 +1229,6 @@ proc miqt_exec_callback_QToolButton_customEvent(self: ptr cQToolButton, slot: in
 
   nimfunc[](slotval1)
 proc QToolButtonconnectNotify*(self: gen_qtoolbutton_types.QToolButton, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQToolButton_virtualbase_connectNotify(self.h, signal.h)
 
 type QToolButtonconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -1324,7 +1246,6 @@ proc miqt_exec_callback_QToolButton_connectNotify(self: ptr cQToolButton, slot: 
 
   nimfunc[](slotval1)
 proc QToolButtondisconnectNotify*(self: gen_qtoolbutton_types.QToolButton, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQToolButton_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QToolButtondisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void

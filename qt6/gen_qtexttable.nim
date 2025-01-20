@@ -132,77 +132,60 @@ proc fcQTextTable_delete(self: pointer) {.importc: "QTextTable_delete".}
 func init*(T: type gen_qtexttable_types.QTextTableCell, h: ptr cQTextTableCell): gen_qtexttable_types.QTextTableCell =
   T(h: h)
 proc create*(T: type gen_qtexttable_types.QTextTableCell, ): gen_qtexttable_types.QTextTableCell =
-
   gen_qtexttable_types.QTextTableCell.init(fcQTextTableCell_new())
+
 proc create*(T: type gen_qtexttable_types.QTextTableCell, o: gen_qtexttable_types.QTextTableCell): gen_qtexttable_types.QTextTableCell =
-
   gen_qtexttable_types.QTextTableCell.init(fcQTextTableCell_new2(o.h))
-proc operatorAssign*(self: gen_qtexttable_types.QTextTableCell, o: gen_qtexttable_types.QTextTableCell): void =
 
+proc operatorAssign*(self: gen_qtexttable_types.QTextTableCell, o: gen_qtexttable_types.QTextTableCell): void =
   fcQTextTableCell_operatorAssign(self.h, o.h)
 
 proc setFormat*(self: gen_qtexttable_types.QTextTableCell, format: gen_qtextformat.QTextCharFormat): void =
-
   fcQTextTableCell_setFormat(self.h, format.h)
 
 proc format*(self: gen_qtexttable_types.QTextTableCell, ): gen_qtextformat.QTextCharFormat =
-
   gen_qtextformat.QTextCharFormat(h: fcQTextTableCell_format(self.h))
 
 proc row*(self: gen_qtexttable_types.QTextTableCell, ): cint =
-
   fcQTextTableCell_row(self.h)
 
 proc column*(self: gen_qtexttable_types.QTextTableCell, ): cint =
-
   fcQTextTableCell_column(self.h)
 
 proc rowSpan*(self: gen_qtexttable_types.QTextTableCell, ): cint =
-
   fcQTextTableCell_rowSpan(self.h)
 
 proc columnSpan*(self: gen_qtexttable_types.QTextTableCell, ): cint =
-
   fcQTextTableCell_columnSpan(self.h)
 
 proc isValid*(self: gen_qtexttable_types.QTextTableCell, ): bool =
-
   fcQTextTableCell_isValid(self.h)
 
 proc firstCursorPosition*(self: gen_qtexttable_types.QTextTableCell, ): gen_qtextcursor.QTextCursor =
-
   gen_qtextcursor.QTextCursor(h: fcQTextTableCell_firstCursorPosition(self.h))
 
 proc lastCursorPosition*(self: gen_qtexttable_types.QTextTableCell, ): gen_qtextcursor.QTextCursor =
-
   gen_qtextcursor.QTextCursor(h: fcQTextTableCell_lastCursorPosition(self.h))
 
 proc firstPosition*(self: gen_qtexttable_types.QTextTableCell, ): cint =
-
   fcQTextTableCell_firstPosition(self.h)
 
 proc lastPosition*(self: gen_qtexttable_types.QTextTableCell, ): cint =
-
   fcQTextTableCell_lastPosition(self.h)
 
 proc operatorEqual*(self: gen_qtexttable_types.QTextTableCell, other: gen_qtexttable_types.QTextTableCell): bool =
-
   fcQTextTableCell_operatorEqual(self.h, other.h)
 
 proc operatorNotEqual*(self: gen_qtexttable_types.QTextTableCell, other: gen_qtexttable_types.QTextTableCell): bool =
-
   fcQTextTableCell_operatorNotEqual(self.h, other.h)
 
 proc begin*(self: gen_qtexttable_types.QTextTableCell, ): gen_qtextobject.QTextFrameiterator =
-
   gen_qtextobject.QTextFrameiterator(h: fcQTextTableCell_begin(self.h))
 
 proc endX*(self: gen_qtexttable_types.QTextTableCell, ): gen_qtextobject.QTextFrameiterator =
-
   gen_qtextobject.QTextFrameiterator(h: fcQTextTableCell_endX(self.h))
 
 proc tableCellFormatIndex*(self: gen_qtexttable_types.QTextTableCell, ): cint =
-
   fcQTextTableCell_tableCellFormatIndex(self.h)
 
 proc delete*(self: gen_qtexttable_types.QTextTableCell) =
@@ -211,119 +194,93 @@ proc delete*(self: gen_qtexttable_types.QTextTableCell) =
 func init*(T: type gen_qtexttable_types.QTextTable, h: ptr cQTextTable): gen_qtexttable_types.QTextTable =
   T(h: h)
 proc create*(T: type gen_qtexttable_types.QTextTable, doc: gen_qtextdocument.QTextDocument): gen_qtexttable_types.QTextTable =
-
   gen_qtexttable_types.QTextTable.init(fcQTextTable_new(doc.h))
-proc metaObject*(self: gen_qtexttable_types.QTextTable, ): gen_qobjectdefs.QMetaObject =
 
+proc metaObject*(self: gen_qtexttable_types.QTextTable, ): gen_qobjectdefs.QMetaObject =
   gen_qobjectdefs.QMetaObject(h: fcQTextTable_metaObject(self.h))
 
 proc metacast*(self: gen_qtexttable_types.QTextTable, param1: cstring): pointer =
-
   fcQTextTable_metacast(self.h, param1)
 
 proc metacall*(self: gen_qtexttable_types.QTextTable, param1: cint, param2: cint, param3: pointer): cint =
-
   fcQTextTable_metacall(self.h, cint(param1), param2, param3)
 
 proc tr*(_: type gen_qtexttable_types.QTextTable, s: cstring): string =
-
   let v_ms = fcQTextTable_tr(s)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc resize*(self: gen_qtexttable_types.QTextTable, rows: cint, cols: cint): void =
-
   fcQTextTable_resize(self.h, rows, cols)
 
 proc insertRows*(self: gen_qtexttable_types.QTextTable, pos: cint, num: cint): void =
-
   fcQTextTable_insertRows(self.h, pos, num)
 
 proc insertColumns*(self: gen_qtexttable_types.QTextTable, pos: cint, num: cint): void =
-
   fcQTextTable_insertColumns(self.h, pos, num)
 
 proc appendRows*(self: gen_qtexttable_types.QTextTable, count: cint): void =
-
   fcQTextTable_appendRows(self.h, count)
 
 proc appendColumns*(self: gen_qtexttable_types.QTextTable, count: cint): void =
-
   fcQTextTable_appendColumns(self.h, count)
 
 proc removeRows*(self: gen_qtexttable_types.QTextTable, pos: cint, num: cint): void =
-
   fcQTextTable_removeRows(self.h, pos, num)
 
 proc removeColumns*(self: gen_qtexttable_types.QTextTable, pos: cint, num: cint): void =
-
   fcQTextTable_removeColumns(self.h, pos, num)
 
 proc mergeCells*(self: gen_qtexttable_types.QTextTable, row: cint, col: cint, numRows: cint, numCols: cint): void =
-
   fcQTextTable_mergeCells(self.h, row, col, numRows, numCols)
 
-proc mergeCellsWithCursor*(self: gen_qtexttable_types.QTextTable, cursor: gen_qtextcursor.QTextCursor): void =
-
+proc mergeCells*(self: gen_qtexttable_types.QTextTable, cursor: gen_qtextcursor.QTextCursor): void =
   fcQTextTable_mergeCellsWithCursor(self.h, cursor.h)
 
 proc splitCell*(self: gen_qtexttable_types.QTextTable, row: cint, col: cint, numRows: cint, numCols: cint): void =
-
   fcQTextTable_splitCell(self.h, row, col, numRows, numCols)
 
 proc rows*(self: gen_qtexttable_types.QTextTable, ): cint =
-
   fcQTextTable_rows(self.h)
 
 proc columns*(self: gen_qtexttable_types.QTextTable, ): cint =
-
   fcQTextTable_columns(self.h)
 
 proc cellAt*(self: gen_qtexttable_types.QTextTable, row: cint, col: cint): gen_qtexttable_types.QTextTableCell =
-
   gen_qtexttable_types.QTextTableCell(h: fcQTextTable_cellAt(self.h, row, col))
 
-proc cellAtWithPosition*(self: gen_qtexttable_types.QTextTable, position: cint): gen_qtexttable_types.QTextTableCell =
-
+proc cellAt*(self: gen_qtexttable_types.QTextTable, position: cint): gen_qtexttable_types.QTextTableCell =
   gen_qtexttable_types.QTextTableCell(h: fcQTextTable_cellAtWithPosition(self.h, position))
 
-proc cellAtWithQTextCursor*(self: gen_qtexttable_types.QTextTable, c: gen_qtextcursor.QTextCursor): gen_qtexttable_types.QTextTableCell =
-
+proc cellAt*(self: gen_qtexttable_types.QTextTable, c: gen_qtextcursor.QTextCursor): gen_qtexttable_types.QTextTableCell =
   gen_qtexttable_types.QTextTableCell(h: fcQTextTable_cellAtWithQTextCursor(self.h, c.h))
 
 proc rowStart*(self: gen_qtexttable_types.QTextTable, c: gen_qtextcursor.QTextCursor): gen_qtextcursor.QTextCursor =
-
   gen_qtextcursor.QTextCursor(h: fcQTextTable_rowStart(self.h, c.h))
 
 proc rowEnd*(self: gen_qtexttable_types.QTextTable, c: gen_qtextcursor.QTextCursor): gen_qtextcursor.QTextCursor =
-
   gen_qtextcursor.QTextCursor(h: fcQTextTable_rowEnd(self.h, c.h))
 
 proc setFormat*(self: gen_qtexttable_types.QTextTable, format: gen_qtextformat.QTextTableFormat): void =
-
   fcQTextTable_setFormat(self.h, format.h)
 
 proc format*(self: gen_qtexttable_types.QTextTable, ): gen_qtextformat.QTextTableFormat =
-
   gen_qtextformat.QTextTableFormat(h: fcQTextTable_format(self.h))
 
-proc tr2*(_: type gen_qtexttable_types.QTextTable, s: cstring, c: cstring): string =
-
+proc tr*(_: type gen_qtexttable_types.QTextTable, s: cstring, c: cstring): string =
   let v_ms = fcQTextTable_tr2(s, c)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
-proc tr3*(_: type gen_qtexttable_types.QTextTable, s: cstring, c: cstring, n: cint): string =
-
+proc tr*(_: type gen_qtexttable_types.QTextTable, s: cstring, c: cstring, n: cint): string =
   let v_ms = fcQTextTable_tr3(s, c, n)
   let vx_ret = string.fromBytes(toOpenArrayByte(v_ms.data, 0, int(v_ms.len)-1))
   c_free(v_ms.data)
   vx_ret
 
 proc QTextTablemetaObject*(self: gen_qtexttable_types.QTextTable, ): gen_qobjectdefs.QMetaObject =
-
   gen_qobjectdefs.QMetaObject(h: fQTextTable_virtualbase_metaObject(self.h))
 
 type QTextTablemetaObjectProc* = proc(): gen_qobjectdefs.QMetaObject
@@ -341,7 +298,6 @@ proc miqt_exec_callback_QTextTable_metaObject(self: ptr cQTextTable, slot: int):
 
   virtualReturn.h
 proc QTextTablemetacast*(self: gen_qtexttable_types.QTextTable, param1: cstring): pointer =
-
   fQTextTable_virtualbase_metacast(self.h, param1)
 
 type QTextTablemetacastProc* = proc(param1: cstring): pointer
@@ -361,7 +317,6 @@ proc miqt_exec_callback_QTextTable_metacast(self: ptr cQTextTable, slot: int, pa
 
   virtualReturn
 proc QTextTablemetacall*(self: gen_qtexttable_types.QTextTable, param1: cint, param2: cint, param3: pointer): cint =
-
   fQTextTable_virtualbase_metacall(self.h, cint(param1), param2, param3)
 
 type QTextTablemetacallProc* = proc(param1: cint, param2: cint, param3: pointer): cint
@@ -385,7 +340,6 @@ proc miqt_exec_callback_QTextTable_metacall(self: ptr cQTextTable, slot: int, pa
 
   virtualReturn
 proc QTextTableevent*(self: gen_qtexttable_types.QTextTable, event: gen_qcoreevent.QEvent): bool =
-
   fQTextTable_virtualbase_event(self.h, event.h)
 
 type QTextTableeventProc* = proc(event: gen_qcoreevent.QEvent): bool
@@ -405,7 +359,6 @@ proc miqt_exec_callback_QTextTable_event(self: ptr cQTextTable, slot: int, event
 
   virtualReturn
 proc QTextTableeventFilter*(self: gen_qtexttable_types.QTextTable, watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool =
-
   fQTextTable_virtualbase_eventFilter(self.h, watched.h, event.h)
 
 type QTextTableeventFilterProc* = proc(watched: gen_qobject.QObject, event: gen_qcoreevent.QEvent): bool
@@ -427,7 +380,6 @@ proc miqt_exec_callback_QTextTable_eventFilter(self: ptr cQTextTable, slot: int,
 
   virtualReturn
 proc QTextTabletimerEvent*(self: gen_qtexttable_types.QTextTable, event: gen_qcoreevent.QTimerEvent): void =
-
   fQTextTable_virtualbase_timerEvent(self.h, event.h)
 
 type QTextTabletimerEventProc* = proc(event: gen_qcoreevent.QTimerEvent): void
@@ -445,7 +397,6 @@ proc miqt_exec_callback_QTextTable_timerEvent(self: ptr cQTextTable, slot: int, 
 
   nimfunc[](slotval1)
 proc QTextTablechildEvent*(self: gen_qtexttable_types.QTextTable, event: gen_qcoreevent.QChildEvent): void =
-
   fQTextTable_virtualbase_childEvent(self.h, event.h)
 
 type QTextTablechildEventProc* = proc(event: gen_qcoreevent.QChildEvent): void
@@ -463,7 +414,6 @@ proc miqt_exec_callback_QTextTable_childEvent(self: ptr cQTextTable, slot: int, 
 
   nimfunc[](slotval1)
 proc QTextTablecustomEvent*(self: gen_qtexttable_types.QTextTable, event: gen_qcoreevent.QEvent): void =
-
   fQTextTable_virtualbase_customEvent(self.h, event.h)
 
 type QTextTablecustomEventProc* = proc(event: gen_qcoreevent.QEvent): void
@@ -481,7 +431,6 @@ proc miqt_exec_callback_QTextTable_customEvent(self: ptr cQTextTable, slot: int,
 
   nimfunc[](slotval1)
 proc QTextTableconnectNotify*(self: gen_qtexttable_types.QTextTable, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTextTable_virtualbase_connectNotify(self.h, signal.h)
 
 type QTextTableconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
@@ -499,7 +448,6 @@ proc miqt_exec_callback_QTextTable_connectNotify(self: ptr cQTextTable, slot: in
 
   nimfunc[](slotval1)
 proc QTextTabledisconnectNotify*(self: gen_qtexttable_types.QTextTable, signal: gen_qmetaobject.QMetaMethod): void =
-
   fQTextTable_virtualbase_disconnectNotify(self.h, signal.h)
 
 type QTextTabledisconnectNotifyProc* = proc(signal: gen_qmetaobject.QMetaMethod): void
