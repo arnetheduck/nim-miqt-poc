@@ -95,6 +95,10 @@ proc fcQUndoGroup_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc:
 proc fcQUndoGroup_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QUndoGroup_trUtf83".}
 proc fcQUndoGroup_createUndoAction2(self: pointer, parent: pointer, prefix: struct_miqt_string): pointer {.importc: "QUndoGroup_createUndoAction2".}
 proc fcQUndoGroup_createRedoAction2(self: pointer, parent: pointer, prefix: struct_miqt_string): pointer {.importc: "QUndoGroup_createRedoAction2".}
+proc fQUndoGroup_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QUndoGroup_virtualbase_metaObject".}
+proc fcQUndoGroup_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QUndoGroup_override_virtual_metaObject".}
+proc fQUndoGroup_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QUndoGroup_virtualbase_metacast".}
+proc fcQUndoGroup_override_virtual_metacast(self: pointer, slot: int) {.importc: "QUndoGroup_override_virtual_metacast".}
 proc fQUndoGroup_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QUndoGroup_virtualbase_metacall".}
 proc fcQUndoGroup_override_virtual_metacall(self: pointer, slot: int) {.importc: "QUndoGroup_override_virtual_metacall".}
 proc fQUndoGroup_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QUndoGroup_virtualbase_event".}
@@ -384,6 +388,54 @@ proc createRedoAction2*(self: QUndoGroup, parent: gen_qobject.QObject, prefix: s
 
   gen_qaction.QAction(h: fcQUndoGroup_createRedoAction2(self.h, parent.h, struct_miqt_string(data: prefix, len: csize_t(len(prefix)))))
 
+proc callVirtualBase_metaObject(self: QUndoGroup, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQUndoGroup_virtualbase_metaObject(self.h))
+
+type QUndoGroupmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QUndoGroup, slot: proc(super: QUndoGroupmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QUndoGroupmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQUndoGroup_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QUndoGroup_metaObject(self: ptr cQUndoGroup, slot: int): pointer {.exportc: "miqt_exec_callback_QUndoGroup_metaObject ".} =
+  type Cb = proc(super: QUndoGroupmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QUndoGroup(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QUndoGroup, param1: cstring): pointer =
+
+
+  fQUndoGroup_virtualbase_metacast(self.h, param1)
+
+type QUndoGroupmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QUndoGroup, slot: proc(super: QUndoGroupmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QUndoGroupmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQUndoGroup_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QUndoGroup_metacast(self: ptr cQUndoGroup, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QUndoGroup_metacast ".} =
+  type Cb = proc(super: QUndoGroupmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QUndoGroup(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QUndoGroup, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

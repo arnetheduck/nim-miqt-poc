@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QsciLexerDiff_metaObject(const QsciLexerDiff*, intptr_t);
+void* miqt_exec_callback_QsciLexerDiff_metacast(QsciLexerDiff*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexerDiff_metacall(QsciLexerDiff*, intptr_t, int, int, void**);
 const char* miqt_exec_callback_QsciLexerDiff_language(const QsciLexerDiff*, intptr_t);
 const char* miqt_exec_callback_QsciLexerDiff_lexer(const QsciLexerDiff*, intptr_t);
@@ -71,6 +73,51 @@ public:
 	MiqtVirtualQsciLexerDiff(QObject* parent): QsciLexerDiff(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerDiff() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexerDiff::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexerDiff_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexerDiff::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexerDiff::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexerDiff_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexerDiff::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1171,6 +1218,34 @@ struct miqt_string QsciLexerDiff_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QsciLexerDiff_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerDiff* self_cast = dynamic_cast<MiqtVirtualQsciLexerDiff*>( (QsciLexerDiff*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexerDiff_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexerDiff*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexerDiff_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerDiff* self_cast = dynamic_cast<MiqtVirtualQsciLexerDiff*>( (QsciLexerDiff*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexerDiff_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexerDiff*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexerDiff_override_virtual_metacall(void* self, intptr_t slot) {

@@ -28,6 +28,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QStyle_metaObject(const QStyle*, intptr_t);
+void* miqt_exec_callback_QStyle_metacast(QStyle*, intptr_t, const char*);
 int miqt_exec_callback_QStyle_metacall(QStyle*, intptr_t, int, int, void**);
 void miqt_exec_callback_QStyle_polish(QStyle*, intptr_t, QWidget*);
 void miqt_exec_callback_QStyle_unpolish(QStyle*, intptr_t, QWidget*);
@@ -69,6 +71,51 @@ public:
 	MiqtVirtualQStyle(): QStyle() {};
 
 	virtual ~MiqtVirtualQStyle() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QStyle::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QStyle_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QStyle::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QStyle::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QStyle_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QStyle::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1026,6 +1073,34 @@ int QStyle_combinedLayoutSpacing4(const QStyle* self, int controls1, int control
 
 int QStyle_combinedLayoutSpacing5(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option, QWidget* widget) {
 	return self->combinedLayoutSpacing(static_cast<QSizePolicy::ControlTypes>(controls1), static_cast<QSizePolicy::ControlTypes>(controls2), static_cast<Qt::Orientation>(orientation), option, widget);
+}
+
+bool QStyle_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QStyle_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQStyle*)(self) )->virtualbase_metaObject();
+}
+
+bool QStyle_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QStyle_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQStyle*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QStyle_override_virtual_metacall(void* self, intptr_t slot) {

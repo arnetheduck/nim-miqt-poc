@@ -45,6 +45,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QPrintDialog_accepted(intptr_t, QPrinter*);
+QMetaObject* miqt_exec_callback_QPrintDialog_metaObject(const QPrintDialog*, intptr_t);
+void* miqt_exec_callback_QPrintDialog_metacast(QPrintDialog*, intptr_t, const char*);
 int miqt_exec_callback_QPrintDialog_metacall(QPrintDialog*, intptr_t, int, int, void**);
 int miqt_exec_callback_QPrintDialog_exec(QPrintDialog*, intptr_t);
 void miqt_exec_callback_QPrintDialog_accept(QPrintDialog*, intptr_t);
@@ -111,6 +113,51 @@ public:
 	MiqtVirtualQPrintDialog(QPrinter* printer, QWidget* parent): QPrintDialog(printer, parent) {};
 
 	virtual ~MiqtVirtualQPrintDialog() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QPrintDialog::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QPrintDialog_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QPrintDialog::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QPrintDialog::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QPrintDialog_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QPrintDialog::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1522,6 +1569,34 @@ struct miqt_string QPrintDialog_trUtf83(const char* s, const char* c, int n) {
 
 void QPrintDialog_setOption2(QPrintDialog* self, int option, bool on) {
 	self->setOption(static_cast<QAbstractPrintDialog::PrintDialogOption>(option), on);
+}
+
+bool QPrintDialog_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQPrintDialog* self_cast = dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QPrintDialog_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQPrintDialog*)(self) )->virtualbase_metaObject();
+}
+
+bool QPrintDialog_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQPrintDialog* self_cast = dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QPrintDialog_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QPrintDialog_override_virtual_metacall(void* self, intptr_t slot) {

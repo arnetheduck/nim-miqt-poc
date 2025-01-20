@@ -89,6 +89,10 @@ proc fcQStyledItemDelegate_setItemEditorFactory(self: pointer, factory: pointer)
 proc fcQStyledItemDelegate_displayText(self: pointer, value: pointer, locale: pointer): struct_miqt_string {.importc: "QStyledItemDelegate_displayText".}
 proc fcQStyledItemDelegate_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QStyledItemDelegate_tr2".}
 proc fcQStyledItemDelegate_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QStyledItemDelegate_tr3".}
+proc fQStyledItemDelegate_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QStyledItemDelegate_virtualbase_metaObject".}
+proc fcQStyledItemDelegate_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QStyledItemDelegate_override_virtual_metaObject".}
+proc fQStyledItemDelegate_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QStyledItemDelegate_virtualbase_metacast".}
+proc fcQStyledItemDelegate_override_virtual_metacast(self: pointer, slot: int) {.importc: "QStyledItemDelegate_override_virtual_metacast".}
 proc fQStyledItemDelegate_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QStyledItemDelegate_virtualbase_metacall".}
 proc fcQStyledItemDelegate_override_virtual_metacall(self: pointer, slot: int) {.importc: "QStyledItemDelegate_override_virtual_metacall".}
 proc fQStyledItemDelegate_virtualbase_paint(self: pointer, painter: pointer, option: pointer, index: pointer): void{.importc: "QStyledItemDelegate_virtualbase_paint".}
@@ -213,6 +217,54 @@ proc tr3*(_: type QStyledItemDelegate, s: cstring, c: cstring, n: cint): string 
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QStyledItemDelegate, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQStyledItemDelegate_virtualbase_metaObject(self.h))
+
+type QStyledItemDelegatemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QStyledItemDelegate, slot: proc(super: QStyledItemDelegatemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QStyledItemDelegatemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStyledItemDelegate_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStyledItemDelegate_metaObject(self: ptr cQStyledItemDelegate, slot: int): pointer {.exportc: "miqt_exec_callback_QStyledItemDelegate_metaObject ".} =
+  type Cb = proc(super: QStyledItemDelegatemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QStyledItemDelegate(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QStyledItemDelegate, param1: cstring): pointer =
+
+
+  fQStyledItemDelegate_virtualbase_metacast(self.h, param1)
+
+type QStyledItemDelegatemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QStyledItemDelegate, slot: proc(super: QStyledItemDelegatemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QStyledItemDelegatemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStyledItemDelegate_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStyledItemDelegate_metacast(self: ptr cQStyledItemDelegate, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStyledItemDelegate_metacast ".} =
+  type Cb = proc(super: QStyledItemDelegatemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QStyledItemDelegate(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QStyledItemDelegate, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -121,6 +121,10 @@ proc fcQLCDNumber_overflow(self: pointer, ): void {.importc: "QLCDNumber_overflo
 proc fQLCDNumber_connect_overflow(self: pointer, slot: int) {.importc: "QLCDNumber_connect_overflow".}
 proc fcQLCDNumber_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QLCDNumber_tr2".}
 proc fcQLCDNumber_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QLCDNumber_tr3".}
+proc fQLCDNumber_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QLCDNumber_virtualbase_metaObject".}
+proc fcQLCDNumber_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QLCDNumber_override_virtual_metaObject".}
+proc fQLCDNumber_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QLCDNumber_virtualbase_metacast".}
+proc fcQLCDNumber_override_virtual_metacast(self: pointer, slot: int) {.importc: "QLCDNumber_override_virtual_metacast".}
 proc fQLCDNumber_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QLCDNumber_virtualbase_metacall".}
 proc fcQLCDNumber_override_virtual_metacall(self: pointer, slot: int) {.importc: "QLCDNumber_override_virtual_metacall".}
 proc fQLCDNumber_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QLCDNumber_virtualbase_sizeHint".}
@@ -366,6 +370,54 @@ proc tr3*(_: type QLCDNumber, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QLCDNumber, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQLCDNumber_virtualbase_metaObject(self.h))
+
+type QLCDNumbermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QLCDNumber, slot: proc(super: QLCDNumbermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QLCDNumbermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLCDNumber_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLCDNumber_metaObject(self: ptr cQLCDNumber, slot: int): pointer {.exportc: "miqt_exec_callback_QLCDNumber_metaObject ".} =
+  type Cb = proc(super: QLCDNumbermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QLCDNumber(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QLCDNumber, param1: cstring): pointer =
+
+
+  fQLCDNumber_virtualbase_metacast(self.h, param1)
+
+type QLCDNumbermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QLCDNumber, slot: proc(super: QLCDNumbermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QLCDNumbermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLCDNumber_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLCDNumber_metacast(self: ptr cQLCDNumber, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QLCDNumber_metacast ".} =
+  type Cb = proc(super: QLCDNumbermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QLCDNumber(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QLCDNumber, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

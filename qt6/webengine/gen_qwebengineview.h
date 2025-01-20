@@ -192,6 +192,10 @@ void QWebEngineView_setContent3(QWebEngineView* self, struct miqt_string data, s
 void QWebEngineView_triggerPageAction2(QWebEngineView* self, int action, bool checked);
 void QWebEngineView_printToPdf2(QWebEngineView* self, struct miqt_string filePath, QPageLayout* layout);
 void QWebEngineView_printToPdf3(QWebEngineView* self, struct miqt_string filePath, QPageLayout* layout, QPageRanges* ranges);
+bool QWebEngineView_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QWebEngineView_virtualbase_metaObject(const void* self);
+bool QWebEngineView_override_virtual_metacast(void* self, intptr_t slot);
+void* QWebEngineView_virtualbase_metacast(void* self, const char* param1);
 bool QWebEngineView_override_virtual_metacall(void* self, intptr_t slot);
 int QWebEngineView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebEngineView_override_virtual_sizeHint(void* self, intptr_t slot);

@@ -100,6 +100,10 @@ proc fcQAbstractItemDelegate_tr2(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQAbstractItemDelegate_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractItemDelegate_tr3".}
 proc fcQAbstractItemDelegate_closeEditor2(self: pointer, editor: pointer, hint: cint): void {.importc: "QAbstractItemDelegate_closeEditor2".}
 proc fQAbstractItemDelegate_connect_closeEditor2(self: pointer, slot: int) {.importc: "QAbstractItemDelegate_connect_closeEditor2".}
+proc fQAbstractItemDelegate_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractItemDelegate_virtualbase_metaObject".}
+proc fcQAbstractItemDelegate_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractItemDelegate_override_virtual_metaObject".}
+proc fQAbstractItemDelegate_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractItemDelegate_virtualbase_metacast".}
+proc fcQAbstractItemDelegate_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractItemDelegate_override_virtual_metacast".}
 proc fQAbstractItemDelegate_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractItemDelegate_virtualbase_metacall".}
 proc fcQAbstractItemDelegate_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractItemDelegate_override_virtual_metacall".}
 proc fcQAbstractItemDelegate_override_virtual_paint(self: pointer, slot: int) {.importc: "QAbstractItemDelegate_override_virtual_paint".}
@@ -298,6 +302,54 @@ proc oncloseEditor2*(self: QAbstractItemDelegate, slot: proc(editor: gen_qwidget
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractItemDelegate_connect_closeEditor2(self.h, cast[int](addr tmp[]))
+proc callVirtualBase_metaObject(self: QAbstractItemDelegate, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAbstractItemDelegate_virtualbase_metaObject(self.h))
+
+type QAbstractItemDelegatemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAbstractItemDelegate, slot: proc(super: QAbstractItemDelegatemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractItemDelegatemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractItemDelegate_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractItemDelegate_metaObject(self: ptr cQAbstractItemDelegate, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemDelegate_metaObject ".} =
+  type Cb = proc(super: QAbstractItemDelegatemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAbstractItemDelegate(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAbstractItemDelegate, param1: cstring): pointer =
+
+
+  fQAbstractItemDelegate_virtualbase_metacast(self.h, param1)
+
+type QAbstractItemDelegatemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAbstractItemDelegate, slot: proc(super: QAbstractItemDelegatemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractItemDelegatemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractItemDelegate_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractItemDelegate_metacast(self: ptr cQAbstractItemDelegate, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractItemDelegate_metacast ".} =
+  type Cb = proc(super: QAbstractItemDelegatemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAbstractItemDelegate(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAbstractItemDelegate, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

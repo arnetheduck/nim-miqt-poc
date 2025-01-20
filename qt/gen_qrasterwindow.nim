@@ -81,6 +81,10 @@ proc fcQRasterWindow_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQRasterWindow_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QRasterWindow_tr3".}
 proc fcQRasterWindow_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QRasterWindow_trUtf82".}
 proc fcQRasterWindow_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QRasterWindow_trUtf83".}
+proc fQRasterWindow_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QRasterWindow_virtualbase_metaObject".}
+proc fcQRasterWindow_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QRasterWindow_override_virtual_metaObject".}
+proc fQRasterWindow_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QRasterWindow_virtualbase_metacast".}
+proc fcQRasterWindow_override_virtual_metacast(self: pointer, slot: int) {.importc: "QRasterWindow_override_virtual_metacast".}
 proc fQRasterWindow_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QRasterWindow_virtualbase_metacall".}
 proc fcQRasterWindow_override_virtual_metacall(self: pointer, slot: int) {.importc: "QRasterWindow_override_virtual_metacall".}
 proc fQRasterWindow_virtualbase_metric(self: pointer, metric: cint): cint{.importc: "QRasterWindow_virtualbase_metric".}
@@ -219,6 +223,54 @@ proc trUtf83*(_: type QRasterWindow, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QRasterWindow, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQRasterWindow_virtualbase_metaObject(self.h))
+
+type QRasterWindowmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QRasterWindow, slot: proc(super: QRasterWindowmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QRasterWindowmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQRasterWindow_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QRasterWindow_metaObject(self: ptr cQRasterWindow, slot: int): pointer {.exportc: "miqt_exec_callback_QRasterWindow_metaObject ".} =
+  type Cb = proc(super: QRasterWindowmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QRasterWindow(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QRasterWindow, param1: cstring): pointer =
+
+
+  fQRasterWindow_virtualbase_metacast(self.h, param1)
+
+type QRasterWindowmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QRasterWindow, slot: proc(super: QRasterWindowmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QRasterWindowmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQRasterWindow_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QRasterWindow_metacast(self: ptr cQRasterWindow, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QRasterWindow_metacast ".} =
+  type Cb = proc(super: QRasterWindowmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QRasterWindow(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QRasterWindow, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

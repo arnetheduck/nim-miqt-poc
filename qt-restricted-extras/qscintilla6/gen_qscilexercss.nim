@@ -119,6 +119,10 @@ proc fcQsciLexerCSS_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "
 proc fcQsciLexerCSS_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerCSS_tr3".}
 proc fcQsciLexerCSS_blockEnd1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCSS_blockEnd1".}
 proc fcQsciLexerCSS_blockStart1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCSS_blockStart1".}
+proc fQsciLexerCSS_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerCSS_virtualbase_metaObject".}
+proc fcQsciLexerCSS_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerCSS_override_virtual_metaObject".}
+proc fQsciLexerCSS_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerCSS_virtualbase_metacast".}
+proc fcQsciLexerCSS_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerCSS_override_virtual_metacast".}
 proc fQsciLexerCSS_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerCSS_virtualbase_metacall".}
 proc fcQsciLexerCSS_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerCSS_override_virtual_metacall".}
 proc fQsciLexerCSS_virtualbase_setFoldComments(self: pointer, fold: bool): void{.importc: "QsciLexerCSS_virtualbase_setFoldComments".}
@@ -341,6 +345,54 @@ proc blockStart1*(self: QsciLexerCSS, style: ptr cint): cstring =
 
   (fcQsciLexerCSS_blockStart1(self.h, style))
 
+proc callVirtualBase_metaObject(self: QsciLexerCSS, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerCSS_virtualbase_metaObject(self.h))
+
+type QsciLexerCSSmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerCSS, slot: proc(super: QsciLexerCSSmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerCSSmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerCSS_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerCSS_metaObject(self: ptr cQsciLexerCSS, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerCSS_metaObject ".} =
+  type Cb = proc(super: QsciLexerCSSmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerCSS(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerCSS, param1: cstring): pointer =
+
+
+  fQsciLexerCSS_virtualbase_metacast(self.h, param1)
+
+type QsciLexerCSSmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerCSS, slot: proc(super: QsciLexerCSSmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerCSSmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerCSS_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerCSS_metacast(self: ptr cQsciLexerCSS, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerCSS_metacast ".} =
+  type Cb = proc(super: QsciLexerCSSmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerCSS(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerCSS, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

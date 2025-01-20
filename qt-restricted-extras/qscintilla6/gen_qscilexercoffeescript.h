@@ -77,6 +77,10 @@ struct miqt_string QsciLexerCoffeeScript_tr3(const char* s, const char* c, int n
 const char* QsciLexerCoffeeScript_blockEnd1(const QsciLexerCoffeeScript* self, int* style);
 const char* QsciLexerCoffeeScript_blockStart1(const QsciLexerCoffeeScript* self, int* style);
 const char* QsciLexerCoffeeScript_blockStartKeyword1(const QsciLexerCoffeeScript* self, int* style);
+bool QsciLexerCoffeeScript_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QsciLexerCoffeeScript_virtualbase_metaObject(const void* self);
+bool QsciLexerCoffeeScript_override_virtual_metacast(void* self, intptr_t slot);
+void* QsciLexerCoffeeScript_virtualbase_metacast(void* self, const char* param1);
 bool QsciLexerCoffeeScript_override_virtual_metacall(void* self, intptr_t slot);
 int QsciLexerCoffeeScript_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QsciLexerCoffeeScript_override_virtual_language(void* self, intptr_t slot);

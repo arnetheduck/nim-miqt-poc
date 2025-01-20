@@ -979,6 +979,62 @@ func miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2(cb C.intptr_t
 	gofunc(slotval1, slotval2)
 }
 
+func (this *QAbstractItemModel) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QAbstractItemModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QAbstractItemModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QAbstractItemModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAbstractItemModel_metaObject
+func miqt_exec_callback_QAbstractItemModel_metaObject(self *C.QAbstractItemModel, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAbstractItemModel{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QAbstractItemModel) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QAbstractItemModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QAbstractItemModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QAbstractItemModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAbstractItemModel_metacast
+func miqt_exec_callback_QAbstractItemModel_metacast(self *C.QAbstractItemModel, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QAbstractItemModel{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QAbstractItemModel) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QAbstractItemModel_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
@@ -2485,6 +2541,62 @@ func QAbstractTableModel_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QAbstractTableModel) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QAbstractTableModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QAbstractTableModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QAbstractTableModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAbstractTableModel_metaObject
+func miqt_exec_callback_QAbstractTableModel_metaObject(self *C.QAbstractTableModel, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAbstractTableModel{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QAbstractTableModel) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QAbstractTableModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QAbstractTableModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QAbstractTableModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAbstractTableModel_metacast
+func miqt_exec_callback_QAbstractTableModel_metacast(self *C.QAbstractTableModel, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QAbstractTableModel{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QAbstractTableModel) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QAbstractTableModel_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
@@ -3947,6 +4059,62 @@ func QAbstractListModel_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QAbstractListModel) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QAbstractListModel_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QAbstractListModel) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QAbstractListModel_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAbstractListModel_metaObject
+func miqt_exec_callback_QAbstractListModel_metaObject(self *C.QAbstractListModel, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAbstractListModel{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QAbstractListModel) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QAbstractListModel_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QAbstractListModel) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QAbstractListModel_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAbstractListModel_metacast
+func miqt_exec_callback_QAbstractListModel_metacast(self *C.QAbstractListModel, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QAbstractListModel{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
 }
 
 func (this *QAbstractListModel) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {

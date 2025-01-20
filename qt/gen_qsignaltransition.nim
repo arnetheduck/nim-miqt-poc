@@ -71,6 +71,10 @@ proc fcQSignalTransition_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQSignalTransition_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSignalTransition_tr3".}
 proc fcQSignalTransition_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSignalTransition_trUtf82".}
 proc fcQSignalTransition_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSignalTransition_trUtf83".}
+proc fQSignalTransition_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSignalTransition_virtualbase_metaObject".}
+proc fcQSignalTransition_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSignalTransition_override_virtual_metaObject".}
+proc fQSignalTransition_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSignalTransition_virtualbase_metacast".}
+proc fcQSignalTransition_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSignalTransition_override_virtual_metacast".}
 proc fQSignalTransition_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSignalTransition_virtualbase_metacall".}
 proc fcQSignalTransition_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSignalTransition_override_virtual_metacall".}
 proc fQSignalTransition_virtualbase_eventTest(self: pointer, event: pointer): bool{.importc: "QSignalTransition_virtualbase_eventTest".}
@@ -182,6 +186,54 @@ proc trUtf83*(_: type QSignalTransition, s: cstring, c: cstring, n: cint): strin
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QSignalTransition, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQSignalTransition_virtualbase_metaObject(self.h))
+
+type QSignalTransitionmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QSignalTransition, slot: proc(super: QSignalTransitionmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QSignalTransitionmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSignalTransition_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSignalTransition_metaObject(self: ptr cQSignalTransition, slot: int): pointer {.exportc: "miqt_exec_callback_QSignalTransition_metaObject ".} =
+  type Cb = proc(super: QSignalTransitionmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QSignalTransition(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QSignalTransition, param1: cstring): pointer =
+
+
+  fQSignalTransition_virtualbase_metacast(self.h, param1)
+
+type QSignalTransitionmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QSignalTransition, slot: proc(super: QSignalTransitionmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QSignalTransitionmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSignalTransition_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSignalTransition_metacast(self: ptr cQSignalTransition, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSignalTransition_metacast ".} =
+  type Cb = proc(super: QSignalTransitionmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QSignalTransition(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QSignalTransition, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

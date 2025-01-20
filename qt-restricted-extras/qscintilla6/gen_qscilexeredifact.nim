@@ -86,6 +86,10 @@ proc fcQsciLexerEDIFACT_defaultColor(self: pointer, style: cint): pointer {.impo
 proc fcQsciLexerEDIFACT_description(self: pointer, style: cint): struct_miqt_string {.importc: "QsciLexerEDIFACT_description".}
 proc fcQsciLexerEDIFACT_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerEDIFACT_tr2".}
 proc fcQsciLexerEDIFACT_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerEDIFACT_tr3".}
+proc fQsciLexerEDIFACT_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerEDIFACT_virtualbase_metaObject".}
+proc fcQsciLexerEDIFACT_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerEDIFACT_override_virtual_metaObject".}
+proc fQsciLexerEDIFACT_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerEDIFACT_virtualbase_metacast".}
+proc fcQsciLexerEDIFACT_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerEDIFACT_override_virtual_metacast".}
 proc fQsciLexerEDIFACT_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerEDIFACT_virtualbase_metacall".}
 proc fcQsciLexerEDIFACT_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerEDIFACT_override_virtual_metacall".}
 proc fcQsciLexerEDIFACT_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerEDIFACT_override_virtual_language".}
@@ -232,6 +236,54 @@ proc tr3*(_: type QsciLexerEDIFACT, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QsciLexerEDIFACT, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerEDIFACT_virtualbase_metaObject(self.h))
+
+type QsciLexerEDIFACTmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerEDIFACT, slot: proc(super: QsciLexerEDIFACTmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerEDIFACTmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerEDIFACT_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerEDIFACT_metaObject(self: ptr cQsciLexerEDIFACT, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerEDIFACT_metaObject ".} =
+  type Cb = proc(super: QsciLexerEDIFACTmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerEDIFACT(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerEDIFACT, param1: cstring): pointer =
+
+
+  fQsciLexerEDIFACT_virtualbase_metacast(self.h, param1)
+
+type QsciLexerEDIFACTmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerEDIFACT, slot: proc(super: QsciLexerEDIFACTmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerEDIFACTmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerEDIFACT_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerEDIFACT_metacast(self: ptr cQsciLexerEDIFACT, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerEDIFACT_metacast ".} =
+  type Cb = proc(super: QsciLexerEDIFACTmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerEDIFACT(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerEDIFACT, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

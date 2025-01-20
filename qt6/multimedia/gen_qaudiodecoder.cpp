@@ -28,6 +28,8 @@ void miqt_exec_callback_QAudioDecoder_errorWithError(intptr_t, int);
 void miqt_exec_callback_QAudioDecoder_sourceChanged(intptr_t);
 void miqt_exec_callback_QAudioDecoder_positionChanged(intptr_t, long long);
 void miqt_exec_callback_QAudioDecoder_durationChanged(intptr_t, long long);
+QMetaObject* miqt_exec_callback_QAudioDecoder_metaObject(const QAudioDecoder*, intptr_t);
+void* miqt_exec_callback_QAudioDecoder_metacast(QAudioDecoder*, intptr_t, const char*);
 int miqt_exec_callback_QAudioDecoder_metacall(QAudioDecoder*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QAudioDecoder_event(QAudioDecoder*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAudioDecoder_eventFilter(QAudioDecoder*, intptr_t, QObject*, QEvent*);
@@ -47,6 +49,51 @@ public:
 	MiqtVirtualQAudioDecoder(QObject* parent): QAudioDecoder(parent) {};
 
 	virtual ~MiqtVirtualQAudioDecoder() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAudioDecoder::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAudioDecoder_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAudioDecoder::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAudioDecoder::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAudioDecoder_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAudioDecoder::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -477,6 +524,34 @@ struct miqt_string QAudioDecoder_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAudioDecoder_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAudioDecoder_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->virtualbase_metaObject();
+}
+
+bool QAudioDecoder_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAudioDecoder_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAudioDecoder_override_virtual_metacall(void* self, intptr_t slot) {

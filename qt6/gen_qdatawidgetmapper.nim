@@ -101,6 +101,10 @@ proc fcQDataWidgetMapper_currentIndexChanged(self: pointer, index: cint): void {
 proc fQDataWidgetMapper_connect_currentIndexChanged(self: pointer, slot: int) {.importc: "QDataWidgetMapper_connect_currentIndexChanged".}
 proc fcQDataWidgetMapper_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QDataWidgetMapper_tr2".}
 proc fcQDataWidgetMapper_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDataWidgetMapper_tr3".}
+proc fQDataWidgetMapper_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDataWidgetMapper_virtualbase_metaObject".}
+proc fcQDataWidgetMapper_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDataWidgetMapper_override_virtual_metaObject".}
+proc fQDataWidgetMapper_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDataWidgetMapper_virtualbase_metacast".}
+proc fcQDataWidgetMapper_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDataWidgetMapper_override_virtual_metacast".}
 proc fQDataWidgetMapper_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDataWidgetMapper_virtualbase_metacall".}
 proc fcQDataWidgetMapper_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDataWidgetMapper_override_virtual_metacall".}
 proc fQDataWidgetMapper_virtualbase_setCurrentIndex(self: pointer, index: cint): void{.importc: "QDataWidgetMapper_virtualbase_setCurrentIndex".}
@@ -289,6 +293,54 @@ proc tr3*(_: type QDataWidgetMapper, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QDataWidgetMapper, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDataWidgetMapper_virtualbase_metaObject(self.h))
+
+type QDataWidgetMappermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDataWidgetMapper, slot: proc(super: QDataWidgetMappermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDataWidgetMappermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDataWidgetMapper_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDataWidgetMapper_metaObject(self: ptr cQDataWidgetMapper, slot: int): pointer {.exportc: "miqt_exec_callback_QDataWidgetMapper_metaObject ".} =
+  type Cb = proc(super: QDataWidgetMappermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDataWidgetMapper(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDataWidgetMapper, param1: cstring): pointer =
+
+
+  fQDataWidgetMapper_virtualbase_metacast(self.h, param1)
+
+type QDataWidgetMappermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDataWidgetMapper, slot: proc(super: QDataWidgetMappermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDataWidgetMappermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDataWidgetMapper_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDataWidgetMapper_metacast(self: ptr cQDataWidgetMapper, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDataWidgetMapper_metacast ".} =
+  type Cb = proc(super: QDataWidgetMappermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDataWidgetMapper(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDataWidgetMapper, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -73,6 +73,10 @@ proc fcQPropertyAnimation_tr2(s: cstring, c: cstring): struct_miqt_string {.impo
 proc fcQPropertyAnimation_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPropertyAnimation_tr3".}
 proc fcQPropertyAnimation_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QPropertyAnimation_trUtf82".}
 proc fcQPropertyAnimation_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPropertyAnimation_trUtf83".}
+proc fQPropertyAnimation_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPropertyAnimation_virtualbase_metaObject".}
+proc fcQPropertyAnimation_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPropertyAnimation_override_virtual_metaObject".}
+proc fQPropertyAnimation_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPropertyAnimation_virtualbase_metacast".}
+proc fcQPropertyAnimation_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPropertyAnimation_override_virtual_metacast".}
 proc fQPropertyAnimation_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPropertyAnimation_virtualbase_metacall".}
 proc fcQPropertyAnimation_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPropertyAnimation_override_virtual_metacall".}
 proc fQPropertyAnimation_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QPropertyAnimation_virtualbase_event".}
@@ -192,6 +196,54 @@ proc trUtf83*(_: type QPropertyAnimation, s: cstring, c: cstring, n: cint): stri
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QPropertyAnimation, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQPropertyAnimation_virtualbase_metaObject(self.h))
+
+type QPropertyAnimationmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QPropertyAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPropertyAnimation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPropertyAnimation_metaObject(self: ptr cQPropertyAnimation, slot: int): pointer {.exportc: "miqt_exec_callback_QPropertyAnimation_metaObject ".} =
+  type Cb = proc(super: QPropertyAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QPropertyAnimation(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QPropertyAnimation, param1: cstring): pointer =
+
+
+  fQPropertyAnimation_virtualbase_metacast(self.h, param1)
+
+type QPropertyAnimationmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QPropertyAnimation, slot: proc(super: QPropertyAnimationmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QPropertyAnimationmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPropertyAnimation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPropertyAnimation_metacast(self: ptr cQPropertyAnimation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPropertyAnimation_metacast ".} =
+  type Cb = proc(super: QPropertyAnimationmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QPropertyAnimation(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QPropertyAnimation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

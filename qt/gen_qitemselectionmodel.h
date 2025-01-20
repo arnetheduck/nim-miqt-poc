@@ -120,6 +120,10 @@ bool QItemSelectionModel_rowIntersectsSelection2(const QItemSelectionModel* self
 bool QItemSelectionModel_columnIntersectsSelection2(const QItemSelectionModel* self, int column, QModelIndex* parent);
 struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedRows1(const QItemSelectionModel* self, int column);
 struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedColumns1(const QItemSelectionModel* self, int row);
+bool QItemSelectionModel_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QItemSelectionModel_virtualbase_metaObject(const void* self);
+bool QItemSelectionModel_override_virtual_metacast(void* self, intptr_t slot);
+void* QItemSelectionModel_virtualbase_metacast(void* self, const char* param1);
 bool QItemSelectionModel_override_virtual_metacall(void* self, intptr_t slot);
 int QItemSelectionModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QItemSelectionModel_override_virtual_setCurrentIndex(void* self, intptr_t slot);

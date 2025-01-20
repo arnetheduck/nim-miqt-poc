@@ -47,6 +47,8 @@ void miqt_exec_callback_QAbstractSlider_sliderMoved(intptr_t, int);
 void miqt_exec_callback_QAbstractSlider_sliderReleased(intptr_t);
 void miqt_exec_callback_QAbstractSlider_rangeChanged(intptr_t, int, int);
 void miqt_exec_callback_QAbstractSlider_actionTriggered(intptr_t, int);
+QMetaObject* miqt_exec_callback_QAbstractSlider_metaObject(const QAbstractSlider*, intptr_t);
+void* miqt_exec_callback_QAbstractSlider_metacast(QAbstractSlider*, intptr_t, const char*);
 int miqt_exec_callback_QAbstractSlider_metacall(QAbstractSlider*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QAbstractSlider_event(QAbstractSlider*, intptr_t, QEvent*);
 void miqt_exec_callback_QAbstractSlider_sliderChange(QAbstractSlider*, intptr_t, int);
@@ -107,6 +109,51 @@ public:
 	MiqtVirtualQAbstractSlider(): QAbstractSlider() {};
 
 	virtual ~MiqtVirtualQAbstractSlider() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAbstractSlider::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAbstractSlider_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAbstractSlider::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAbstractSlider::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAbstractSlider_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAbstractSlider::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1534,6 +1581,34 @@ struct miqt_string QAbstractSlider_trUtf83(const char* s, const char* c, int n) 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAbstractSlider_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAbstractSlider_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_metaObject();
+}
+
+bool QAbstractSlider_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAbstractSlider_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAbstractSlider_override_virtual_metacall(void* self, intptr_t slot) {

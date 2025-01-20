@@ -288,6 +288,62 @@ func (this *QBoxLayout) InsertLayout3(index int, layout *QLayout, stretch int) {
 	C.QBoxLayout_insertLayout3(this.h, (C.int)(index), layout.cPointer(), (C.int)(stretch))
 }
 
+func (this *QBoxLayout) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QBoxLayout_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QBoxLayout) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QBoxLayout_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QBoxLayout_metaObject
+func miqt_exec_callback_QBoxLayout_metaObject(self *C.QBoxLayout, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QBoxLayout) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QBoxLayout_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QBoxLayout) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QBoxLayout_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QBoxLayout_metacast
+func miqt_exec_callback_QBoxLayout_metacast(self *C.QBoxLayout, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QBoxLayout{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QBoxLayout) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QBoxLayout_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
@@ -1221,6 +1277,62 @@ func QHBoxLayout_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QHBoxLayout) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QHBoxLayout_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QHBoxLayout) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QHBoxLayout_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QHBoxLayout_metaObject
+func miqt_exec_callback_QHBoxLayout_metaObject(self *C.QHBoxLayout, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QHBoxLayout) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QHBoxLayout_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QHBoxLayout) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QHBoxLayout_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QHBoxLayout_metacast
+func miqt_exec_callback_QHBoxLayout_metacast(self *C.QHBoxLayout, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QHBoxLayout{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QHBoxLayout) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QHBoxLayout_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
@@ -2152,6 +2264,62 @@ func QVBoxLayout_Tr3(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QVBoxLayout) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QVBoxLayout_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QVBoxLayout) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QVBoxLayout_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QVBoxLayout_metaObject
+func miqt_exec_callback_QVBoxLayout_metaObject(self *C.QVBoxLayout, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QVBoxLayout) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QVBoxLayout_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QVBoxLayout) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QVBoxLayout_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QVBoxLayout_metacast
+func miqt_exec_callback_QVBoxLayout_metacast(self *C.QVBoxLayout, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QVBoxLayout{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
 }
 
 func (this *QVBoxLayout) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {

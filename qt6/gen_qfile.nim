@@ -94,6 +94,10 @@ proc fcQFile_setPermissions2(filename: struct_miqt_string, permissionSpec: cint)
 proc fcQFile_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QFile_tr2".}
 proc fcQFile_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFile_tr3".}
 proc fcQFile_open33(self: pointer, fd: cint, ioFlags: cint, handleFlags: cint): bool {.importc: "QFile_open33".}
+proc fQFile_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QFile_virtualbase_metaObject".}
+proc fcQFile_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QFile_override_virtual_metaObject".}
+proc fQFile_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QFile_virtualbase_metacast".}
+proc fcQFile_override_virtual_metacast(self: pointer, slot: int) {.importc: "QFile_override_virtual_metacast".}
 proc fQFile_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QFile_virtualbase_metacall".}
 proc fcQFile_override_virtual_metacall(self: pointer, slot: int) {.importc: "QFile_override_virtual_metacall".}
 proc fQFile_virtualbase_fileName(self: pointer, ): struct_miqt_string{.importc: "QFile_virtualbase_fileName".}
@@ -341,6 +345,54 @@ proc open33*(self: QFile, fd: cint, ioFlags: gen_qiodevicebase.QIODeviceBaseOpen
 
   fcQFile_open33(self.h, fd, cint(ioFlags), cint(handleFlags))
 
+proc callVirtualBase_metaObject(self: QFile, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQFile_virtualbase_metaObject(self.h))
+
+type QFilemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QFile, slot: proc(super: QFilemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QFilemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFile_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFile_metaObject(self: ptr cQFile, slot: int): pointer {.exportc: "miqt_exec_callback_QFile_metaObject ".} =
+  type Cb = proc(super: QFilemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QFile(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QFile, param1: cstring): pointer =
+
+
+  fQFile_virtualbase_metacast(self.h, param1)
+
+type QFilemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QFile, slot: proc(super: QFilemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QFilemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFile_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFile_metacast(self: ptr cQFile, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFile_metacast ".} =
+  type Cb = proc(super: QFilemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QFile(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QFile, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -130,6 +130,10 @@ QSizeF* QGraphicsProxyWidget_sizeHint(const QGraphicsProxyWidget* self, int whic
 void QGraphicsProxyWidget_resizeEvent(QGraphicsProxyWidget* self, QGraphicsSceneResizeEvent* event);
 struct miqt_string QGraphicsProxyWidget_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsProxyWidget_tr3(const char* s, const char* c, int n);
+bool QGraphicsProxyWidget_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QGraphicsProxyWidget_virtualbase_metaObject(const void* self);
+bool QGraphicsProxyWidget_override_virtual_metacast(void* self, intptr_t slot);
+void* QGraphicsProxyWidget_virtualbase_metacast(void* self, const char* param1);
 bool QGraphicsProxyWidget_override_virtual_metacall(void* self, intptr_t slot);
 int QGraphicsProxyWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsProxyWidget_override_virtual_setGeometry(void* self, intptr_t slot);

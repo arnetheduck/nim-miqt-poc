@@ -127,6 +127,10 @@ proc fcQQuickView_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QQ
 proc fcQQuickView_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickView_tr3".}
 proc fcQQuickView_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QQuickView_trUtf82".}
 proc fcQQuickView_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickView_trUtf83".}
+proc fQQuickView_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQuickView_virtualbase_metaObject".}
+proc fcQQuickView_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQuickView_override_virtual_metaObject".}
+proc fQQuickView_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQuickView_virtualbase_metacast".}
+proc fcQQuickView_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQuickView_override_virtual_metacast".}
 proc fQQuickView_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQuickView_virtualbase_metacall".}
 proc fcQQuickView_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQuickView_override_virtual_metacall".}
 proc fQQuickView_virtualbase_resizeEvent(self: pointer, param1: pointer): void{.importc: "QQuickView_virtualbase_resizeEvent".}
@@ -348,6 +352,54 @@ proc trUtf83*(_: type QQuickView, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QQuickView, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQQuickView_virtualbase_metaObject(self.h))
+
+type QQuickViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QQuickView, slot: proc(super: QQuickViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QQuickViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickView_metaObject(self: ptr cQQuickView, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickView_metaObject ".} =
+  type Cb = proc(super: QQuickViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QQuickView(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QQuickView, param1: cstring): pointer =
+
+
+  fQQuickView_virtualbase_metacast(self.h, param1)
+
+type QQuickViewmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QQuickView, slot: proc(super: QQuickViewmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QQuickViewmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickView_metacast(self: ptr cQQuickView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickView_metacast ".} =
+  type Cb = proc(super: QQuickViewmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QQuickView(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QQuickView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

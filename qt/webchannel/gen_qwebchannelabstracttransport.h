@@ -49,6 +49,10 @@ struct miqt_string QWebChannelAbstractTransport_tr2(const char* s, const char* c
 struct miqt_string QWebChannelAbstractTransport_tr3(const char* s, const char* c, int n);
 struct miqt_string QWebChannelAbstractTransport_trUtf82(const char* s, const char* c);
 struct miqt_string QWebChannelAbstractTransport_trUtf83(const char* s, const char* c, int n);
+bool QWebChannelAbstractTransport_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QWebChannelAbstractTransport_virtualbase_metaObject(const void* self);
+bool QWebChannelAbstractTransport_override_virtual_metacast(void* self, intptr_t slot);
+void* QWebChannelAbstractTransport_virtualbase_metacast(void* self, const char* param1);
 bool QWebChannelAbstractTransport_override_virtual_metacall(void* self, intptr_t slot);
 int QWebChannelAbstractTransport_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebChannelAbstractTransport_override_virtual_sendMessage(void* self, intptr_t slot);

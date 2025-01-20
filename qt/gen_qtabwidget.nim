@@ -159,6 +159,10 @@ proc fcQTabWidget_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc:
 proc fcQTabWidget_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTabWidget_trUtf83".}
 proc fcQTabWidget_setCornerWidget2(self: pointer, w: pointer, corner: cint): void {.importc: "QTabWidget_setCornerWidget2".}
 proc fcQTabWidget_cornerWidget1(self: pointer, corner: cint): pointer {.importc: "QTabWidget_cornerWidget1".}
+proc fQTabWidget_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTabWidget_virtualbase_metaObject".}
+proc fcQTabWidget_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTabWidget_override_virtual_metaObject".}
+proc fQTabWidget_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTabWidget_virtualbase_metacast".}
+proc fcQTabWidget_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTabWidget_override_virtual_metacast".}
 proc fQTabWidget_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTabWidget_virtualbase_metacall".}
 proc fcQTabWidget_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTabWidget_override_virtual_metacall".}
 proc fQTabWidget_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QTabWidget_virtualbase_sizeHint".}
@@ -614,6 +618,54 @@ proc cornerWidget1*(self: QTabWidget, corner: gen_qnamespace.Corner): gen_qwidge
 
   gen_qwidget.QWidget(h: fcQTabWidget_cornerWidget1(self.h, cint(corner)))
 
+proc callVirtualBase_metaObject(self: QTabWidget, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQTabWidget_virtualbase_metaObject(self.h))
+
+type QTabWidgetmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QTabWidget, slot: proc(super: QTabWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QTabWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTabWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTabWidget_metaObject(self: ptr cQTabWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QTabWidget_metaObject ".} =
+  type Cb = proc(super: QTabWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QTabWidget(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QTabWidget, param1: cstring): pointer =
+
+
+  fQTabWidget_virtualbase_metacast(self.h, param1)
+
+type QTabWidgetmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QTabWidget, slot: proc(super: QTabWidgetmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QTabWidgetmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTabWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTabWidget_metacast(self: ptr cQTabWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTabWidget_metacast ".} =
+  type Cb = proc(super: QTabWidgetmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QTabWidget(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QTabWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

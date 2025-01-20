@@ -177,6 +177,10 @@ proc fcQAction_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.im
 proc fcQAction_showStatusText1(self: pointer, widget: pointer): bool {.importc: "QAction_showStatusText1".}
 proc fcQAction_triggered1(self: pointer, checked: bool): void {.importc: "QAction_triggered1".}
 proc fQAction_connect_triggered1(self: pointer, slot: int) {.importc: "QAction_connect_triggered1".}
+proc fQAction_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAction_virtualbase_metaObject".}
+proc fcQAction_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAction_override_virtual_metaObject".}
+proc fQAction_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAction_virtualbase_metacast".}
+proc fcQAction_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAction_override_virtual_metacast".}
 proc fQAction_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAction_virtualbase_metacall".}
 proc fcQAction_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAction_override_virtual_metacall".}
 proc fQAction_virtualbase_event(self: pointer, param1: pointer): bool{.importc: "QAction_virtualbase_event".}
@@ -617,6 +621,54 @@ proc ontriggered1*(self: QAction, slot: proc(checked: bool)) =
   tmp[] = slot
   GC_ref(tmp)
   fQAction_connect_triggered1(self.h, cast[int](addr tmp[]))
+proc callVirtualBase_metaObject(self: QAction, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAction_virtualbase_metaObject(self.h))
+
+type QActionmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAction, slot: proc(super: QActionmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QActionmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAction_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAction_metaObject(self: ptr cQAction, slot: int): pointer {.exportc: "miqt_exec_callback_QAction_metaObject ".} =
+  type Cb = proc(super: QActionmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAction(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAction, param1: cstring): pointer =
+
+
+  fQAction_virtualbase_metacast(self.h, param1)
+
+type QActionmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAction, slot: proc(super: QActionmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QActionmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAction_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAction_metacast(self: ptr cQAction, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAction_metacast ".} =
+  type Cb = proc(super: QActionmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAction(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAction, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

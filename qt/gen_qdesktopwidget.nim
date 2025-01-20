@@ -105,6 +105,10 @@ proc fcQDesktopWidget_screenNumber1(self: pointer, widget: pointer): cint {.impo
 proc fcQDesktopWidget_screen1(self: pointer, screen: cint): pointer {.importc: "QDesktopWidget_screen1".}
 proc fcQDesktopWidget_screenGeometry1(self: pointer, screen: cint): pointer {.importc: "QDesktopWidget_screenGeometry1".}
 proc fcQDesktopWidget_availableGeometry1(self: pointer, screen: cint): pointer {.importc: "QDesktopWidget_availableGeometry1".}
+proc fQDesktopWidget_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDesktopWidget_virtualbase_metaObject".}
+proc fcQDesktopWidget_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDesktopWidget_override_virtual_metaObject".}
+proc fQDesktopWidget_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDesktopWidget_virtualbase_metacast".}
+proc fcQDesktopWidget_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDesktopWidget_override_virtual_metacast".}
 proc fQDesktopWidget_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDesktopWidget_virtualbase_metacall".}
 proc fcQDesktopWidget_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDesktopWidget_override_virtual_metacall".}
 proc fQDesktopWidget_virtualbase_resizeEvent(self: pointer, e: pointer): void{.importc: "QDesktopWidget_virtualbase_resizeEvent".}
@@ -402,6 +406,54 @@ proc availableGeometry1*(self: QDesktopWidget, screen: cint): gen_qrect.QRect =
 
   gen_qrect.QRect(h: fcQDesktopWidget_availableGeometry1(self.h, screen))
 
+proc callVirtualBase_metaObject(self: QDesktopWidget, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDesktopWidget_virtualbase_metaObject(self.h))
+
+type QDesktopWidgetmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDesktopWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDesktopWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDesktopWidget_metaObject(self: ptr cQDesktopWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_metaObject ".} =
+  type Cb = proc(super: QDesktopWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDesktopWidget(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDesktopWidget, param1: cstring): pointer =
+
+
+  fQDesktopWidget_virtualbase_metacast(self.h, param1)
+
+type QDesktopWidgetmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDesktopWidget, slot: proc(super: QDesktopWidgetmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDesktopWidgetmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDesktopWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDesktopWidget_metacast(self: ptr cQDesktopWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDesktopWidget_metacast ".} =
+  type Cb = proc(super: QDesktopWidgetmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDesktopWidget(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDesktopWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

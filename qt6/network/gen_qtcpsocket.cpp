@@ -20,6 +20,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QTcpSocket_metaObject(const QTcpSocket*, intptr_t);
+void* miqt_exec_callback_QTcpSocket_metacast(QTcpSocket*, intptr_t, const char*);
 int miqt_exec_callback_QTcpSocket_metacall(QTcpSocket*, intptr_t, int, int, void**);
 void miqt_exec_callback_QTcpSocket_resume(QTcpSocket*, intptr_t);
 bool miqt_exec_callback_QTcpSocket_bind(QTcpSocket*, intptr_t, QHostAddress*, uint16_t, int);
@@ -67,6 +69,51 @@ public:
 	MiqtVirtualQTcpSocket(QObject* parent): QTcpSocket(parent) {};
 
 	virtual ~MiqtVirtualQTcpSocket() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QTcpSocket::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QTcpSocket_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QTcpSocket::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QTcpSocket::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QTcpSocket_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QTcpSocket::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1021,6 +1068,34 @@ bool QTcpSocket_bind2(QTcpSocket* self, int addr, uint16_t port) {
 
 bool QTcpSocket_bind3(QTcpSocket* self, int addr, uint16_t port, int mode) {
 	return self->bind(static_cast<QHostAddress::SpecialAddress>(addr), static_cast<quint16>(port), static_cast<QAbstractSocket::BindMode>(mode));
+}
+
+bool QTcpSocket_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQTcpSocket* self_cast = dynamic_cast<MiqtVirtualQTcpSocket*>( (QTcpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QTcpSocket_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQTcpSocket*)(self) )->virtualbase_metaObject();
+}
+
+bool QTcpSocket_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQTcpSocket* self_cast = dynamic_cast<MiqtVirtualQTcpSocket*>( (QTcpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QTcpSocket_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQTcpSocket*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QTcpSocket_override_virtual_metacall(void* self, intptr_t slot) {

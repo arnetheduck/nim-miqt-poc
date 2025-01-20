@@ -186,6 +186,10 @@ double QInputDialog_getDouble6(QWidget* parent, struct miqt_string title, struct
 double QInputDialog_getDouble7(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals);
 double QInputDialog_getDouble8(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok);
 double QInputDialog_getDouble9(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok, int flags);
+bool QInputDialog_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QInputDialog_virtualbase_metaObject(const void* self);
+bool QInputDialog_override_virtual_metacast(void* self, intptr_t slot);
+void* QInputDialog_virtualbase_metacast(void* self, const char* param1);
 bool QInputDialog_override_virtual_metacall(void* self, intptr_t slot);
 int QInputDialog_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QInputDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot);

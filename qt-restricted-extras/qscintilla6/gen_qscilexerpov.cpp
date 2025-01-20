@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QsciLexerPOV_metaObject(const QsciLexerPOV*, intptr_t);
+void* miqt_exec_callback_QsciLexerPOV_metacast(QsciLexerPOV*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexerPOV_metacall(QsciLexerPOV*, intptr_t, int, int, void**);
 void miqt_exec_callback_QsciLexerPOV_setFoldComments(QsciLexerPOV*, intptr_t, bool);
 void miqt_exec_callback_QsciLexerPOV_setFoldCompact(QsciLexerPOV*, intptr_t, bool);
@@ -74,6 +76,51 @@ public:
 	MiqtVirtualQsciLexerPOV(QObject* parent): QsciLexerPOV(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerPOV() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexerPOV::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexerPOV_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexerPOV::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexerPOV::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexerPOV_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexerPOV::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1294,6 +1341,34 @@ struct miqt_string QsciLexerPOV_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QsciLexerPOV_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerPOV* self_cast = dynamic_cast<MiqtVirtualQsciLexerPOV*>( (QsciLexerPOV*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexerPOV_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexerPOV*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexerPOV_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerPOV* self_cast = dynamic_cast<MiqtVirtualQsciLexerPOV*>( (QsciLexerPOV*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexerPOV_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexerPOV*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexerPOV_override_virtual_metacall(void* self, intptr_t slot) {

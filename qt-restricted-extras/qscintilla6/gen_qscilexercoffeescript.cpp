@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QsciLexerCoffeeScript_metaObject(const QsciLexerCoffeeScript*, intptr_t);
+void* miqt_exec_callback_QsciLexerCoffeeScript_metacast(QsciLexerCoffeeScript*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexerCoffeeScript_metacall(QsciLexerCoffeeScript*, intptr_t, int, int, void**);
 const char* miqt_exec_callback_QsciLexerCoffeeScript_language(const QsciLexerCoffeeScript*, intptr_t);
 const char* miqt_exec_callback_QsciLexerCoffeeScript_lexer(const QsciLexerCoffeeScript*, intptr_t);
@@ -71,6 +73,51 @@ public:
 	MiqtVirtualQsciLexerCoffeeScript(QObject* parent): QsciLexerCoffeeScript(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerCoffeeScript() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexerCoffeeScript::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexerCoffeeScript_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexerCoffeeScript::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexerCoffeeScript::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexerCoffeeScript_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexerCoffeeScript::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1271,6 +1318,34 @@ const char* QsciLexerCoffeeScript_blockStart1(const QsciLexerCoffeeScript* self,
 
 const char* QsciLexerCoffeeScript_blockStartKeyword1(const QsciLexerCoffeeScript* self, int* style) {
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
+}
+
+bool QsciLexerCoffeeScript_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexerCoffeeScript_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexerCoffeeScript_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexerCoffeeScript_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexerCoffeeScript_override_virtual_metacall(void* self, intptr_t slot) {

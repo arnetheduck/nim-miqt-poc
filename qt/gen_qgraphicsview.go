@@ -692,6 +692,62 @@ func (this *QGraphicsView) InvalidateScene2(rect *QRectF, layers QGraphicsScene_
 	C.QGraphicsView_invalidateScene2(this.h, rect.cPointer(), (C.int)(layers))
 }
 
+func (this *QGraphicsView) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QGraphicsView_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsView) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QGraphicsView_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsView_metaObject
+func miqt_exec_callback_QGraphicsView_metaObject(self *C.QGraphicsView, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QGraphicsView) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QGraphicsView_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QGraphicsView) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QGraphicsView_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsView_metacast
+func miqt_exec_callback_QGraphicsView_metacast(self *C.QGraphicsView, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QGraphicsView{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QGraphicsView) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QGraphicsView_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))

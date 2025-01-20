@@ -98,6 +98,10 @@ proc fcQGraphicsItemAnimation_tr2(s: cstring, c: cstring): struct_miqt_string {.
 proc fcQGraphicsItemAnimation_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsItemAnimation_tr3".}
 proc fcQGraphicsItemAnimation_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsItemAnimation_trUtf82".}
 proc fcQGraphicsItemAnimation_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsItemAnimation_trUtf83".}
+proc fQGraphicsItemAnimation_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsItemAnimation_virtualbase_metaObject".}
+proc fcQGraphicsItemAnimation_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsItemAnimation_override_virtual_metaObject".}
+proc fQGraphicsItemAnimation_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsItemAnimation_virtualbase_metacast".}
+proc fcQGraphicsItemAnimation_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsItemAnimation_override_virtual_metacast".}
 proc fQGraphicsItemAnimation_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsItemAnimation_virtualbase_metacall".}
 proc fcQGraphicsItemAnimation_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsItemAnimation_override_virtual_metacall".}
 proc fQGraphicsItemAnimation_virtualbase_beforeAnimationStep(self: pointer, step: float64): void{.importc: "QGraphicsItemAnimation_virtualbase_beforeAnimationStep".}
@@ -352,6 +356,54 @@ proc trUtf83*(_: type QGraphicsItemAnimation, s: cstring, c: cstring, n: cint): 
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QGraphicsItemAnimation, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQGraphicsItemAnimation_virtualbase_metaObject(self.h))
+
+type QGraphicsItemAnimationmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QGraphicsItemAnimation, slot: proc(super: QGraphicsItemAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsItemAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsItemAnimation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsItemAnimation_metaObject(self: ptr cQGraphicsItemAnimation, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsItemAnimation_metaObject ".} =
+  type Cb = proc(super: QGraphicsItemAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QGraphicsItemAnimation(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QGraphicsItemAnimation, param1: cstring): pointer =
+
+
+  fQGraphicsItemAnimation_virtualbase_metacast(self.h, param1)
+
+type QGraphicsItemAnimationmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QGraphicsItemAnimation, slot: proc(super: QGraphicsItemAnimationmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsItemAnimationmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsItemAnimation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsItemAnimation_metacast(self: ptr cQGraphicsItemAnimation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsItemAnimation_metacast ".} =
+  type Cb = proc(super: QGraphicsItemAnimationmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QGraphicsItemAnimation(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QGraphicsItemAnimation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

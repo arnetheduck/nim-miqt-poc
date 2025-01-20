@@ -90,6 +90,10 @@ proc fcQsciAPIs_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.i
 proc fcQsciAPIs_isPrepared1(self: pointer, filename: struct_miqt_string): bool {.importc: "QsciAPIs_isPrepared1".}
 proc fcQsciAPIs_loadPrepared1(self: pointer, filename: struct_miqt_string): bool {.importc: "QsciAPIs_loadPrepared1".}
 proc fcQsciAPIs_savePrepared1(self: pointer, filename: struct_miqt_string): bool {.importc: "QsciAPIs_savePrepared1".}
+proc fQsciAPIs_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciAPIs_virtualbase_metaObject".}
+proc fcQsciAPIs_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciAPIs_override_virtual_metaObject".}
+proc fQsciAPIs_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciAPIs_virtualbase_metacast".}
+proc fcQsciAPIs_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciAPIs_override_virtual_metacast".}
 proc fQsciAPIs_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciAPIs_virtualbase_metacall".}
 proc fcQsciAPIs_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciAPIs_override_virtual_metacall".}
 proc fQsciAPIs_virtualbase_updateAutoCompletionList(self: pointer, context: struct_miqt_array, list: struct_miqt_array): void{.importc: "QsciAPIs_virtualbase_updateAutoCompletionList".}
@@ -330,6 +334,54 @@ proc savePrepared1*(self: QsciAPIs, filename: string): bool =
 
   fcQsciAPIs_savePrepared1(self.h, struct_miqt_string(data: filename, len: csize_t(len(filename))))
 
+proc callVirtualBase_metaObject(self: QsciAPIs, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciAPIs_virtualbase_metaObject(self.h))
+
+type QsciAPIsmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciAPIs, slot: proc(super: QsciAPIsmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciAPIsmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciAPIs_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciAPIs_metaObject(self: ptr cQsciAPIs, slot: int): pointer {.exportc: "miqt_exec_callback_QsciAPIs_metaObject ".} =
+  type Cb = proc(super: QsciAPIsmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciAPIs(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciAPIs, param1: cstring): pointer =
+
+
+  fQsciAPIs_virtualbase_metacast(self.h, param1)
+
+type QsciAPIsmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciAPIs, slot: proc(super: QsciAPIsmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciAPIsmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciAPIs_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciAPIs_metacast(self: ptr cQsciAPIs, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciAPIs_metacast ".} =
+  type Cb = proc(super: QsciAPIsmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciAPIs(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciAPIs, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

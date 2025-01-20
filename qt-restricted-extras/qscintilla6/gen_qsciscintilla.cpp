@@ -64,6 +64,8 @@ void miqt_exec_callback_QsciScintilla_modificationChanged(intptr_t, bool);
 void miqt_exec_callback_QsciScintilla_selectionChanged(intptr_t);
 void miqt_exec_callback_QsciScintilla_textChanged(intptr_t);
 void miqt_exec_callback_QsciScintilla_userListActivated(intptr_t, int, struct miqt_string);
+QMetaObject* miqt_exec_callback_QsciScintilla_metaObject(const QsciScintilla*, intptr_t);
+void* miqt_exec_callback_QsciScintilla_metacast(QsciScintilla*, intptr_t, const char*);
 int miqt_exec_callback_QsciScintilla_metacall(QsciScintilla*, intptr_t, int, int, void**);
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciScintilla_apiContext(QsciScintilla*, intptr_t, int, int*, int*);
 bool miqt_exec_callback_QsciScintilla_findFirst(QsciScintilla*, intptr_t, struct miqt_string, bool, bool, bool, bool, bool, int, int, bool, bool, bool);
@@ -214,6 +216,51 @@ public:
 	MiqtVirtualQsciScintilla(): QsciScintilla() {};
 
 	virtual ~MiqtVirtualQsciScintilla() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciScintilla::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciScintilla_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciScintilla::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciScintilla::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciScintilla_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciScintilla::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -5133,6 +5180,34 @@ void QsciScintilla_setWrapVisualFlags2(QsciScintilla* self, int endFlag, int sta
 
 void QsciScintilla_setWrapVisualFlags3(QsciScintilla* self, int endFlag, int startFlag, int indent) {
 	self->setWrapVisualFlags(static_cast<QsciScintilla::WrapVisualFlag>(endFlag), static_cast<QsciScintilla::WrapVisualFlag>(startFlag), static_cast<int>(indent));
+}
+
+bool QsciScintilla_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciScintilla_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciScintilla_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciScintilla_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciScintilla_override_virtual_metacall(void* self, intptr_t slot) {

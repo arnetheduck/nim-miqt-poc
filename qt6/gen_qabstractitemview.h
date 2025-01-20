@@ -245,6 +245,10 @@ bool QAbstractItemView_eventFilter(QAbstractItemView* self, QObject* object, QEv
 QSize* QAbstractItemView_viewportSizeHint(const QAbstractItemView* self);
 struct miqt_string QAbstractItemView_tr2(const char* s, const char* c);
 struct miqt_string QAbstractItemView_tr3(const char* s, const char* c, int n);
+bool QAbstractItemView_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QAbstractItemView_virtualbase_metaObject(const void* self);
+bool QAbstractItemView_override_virtual_metacast(void* self, intptr_t slot);
+void* QAbstractItemView_virtualbase_metacast(void* self, const char* param1);
 bool QAbstractItemView_override_virtual_metacall(void* self, intptr_t slot);
 int QAbstractItemView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAbstractItemView_override_virtual_setModel(void* self, intptr_t slot);

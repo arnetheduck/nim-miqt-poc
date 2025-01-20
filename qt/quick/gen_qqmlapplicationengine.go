@@ -270,6 +270,62 @@ func (this *QQmlApplicationEngine) LoadData2(data []byte, url *qt.QUrl) {
 	C.QQmlApplicationEngine_loadData2(this.h, data_alias, (*C.QUrl)(url.UnsafePointer()))
 }
 
+func (this *QQmlApplicationEngine) callVirtualBase_MetaObject() *qt.QMetaObject {
+
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QQmlApplicationEngine_virtualbase_metaObject(unsafe.Pointer(this.h))))
+
+}
+func (this *QQmlApplicationEngine) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+	ok := C.QQmlApplicationEngine_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QQmlApplicationEngine_metaObject
+func miqt_exec_callback_QQmlApplicationEngine_metaObject(self *C.QQmlApplicationEngine, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QMetaObject) *qt.QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QQmlApplicationEngine{h: self}).callVirtualBase_MetaObject)
+
+	return (*C.QMetaObject)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QQmlApplicationEngine) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QQmlApplicationEngine_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QQmlApplicationEngine) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QQmlApplicationEngine_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QQmlApplicationEngine_metacast
+func miqt_exec_callback_QQmlApplicationEngine_metacast(self *C.QQmlApplicationEngine, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QQmlApplicationEngine{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QQmlApplicationEngine) callVirtualBase_Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QQmlApplicationEngine_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))

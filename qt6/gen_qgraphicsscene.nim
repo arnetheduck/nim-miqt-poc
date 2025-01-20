@@ -242,6 +242,10 @@ proc fcQGraphicsScene_invalidate5(self: pointer, x: float64, y: float64, w: floa
 proc fcQGraphicsScene_update1(self: pointer, rect: pointer): void {.importc: "QGraphicsScene_update1".}
 proc fcQGraphicsScene_invalidate1(self: pointer, rect: pointer): void {.importc: "QGraphicsScene_invalidate1".}
 proc fcQGraphicsScene_invalidate22(self: pointer, rect: pointer, layers: cint): void {.importc: "QGraphicsScene_invalidate22".}
+proc fQGraphicsScene_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsScene_virtualbase_metaObject".}
+proc fcQGraphicsScene_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsScene_override_virtual_metaObject".}
+proc fQGraphicsScene_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsScene_virtualbase_metacast".}
+proc fcQGraphicsScene_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsScene_override_virtual_metacast".}
 proc fQGraphicsScene_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsScene_virtualbase_metacall".}
 proc fcQGraphicsScene_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsScene_override_virtual_metacall".}
 proc fQGraphicsScene_virtualbase_inputMethodQuery(self: pointer, query: cint): pointer{.importc: "QGraphicsScene_virtualbase_inputMethodQuery".}
@@ -998,6 +1002,54 @@ proc invalidate22*(self: QGraphicsScene, rect: gen_qrect.QRectF, layers: QGraphi
 
   fcQGraphicsScene_invalidate22(self.h, rect.h, cint(layers))
 
+proc callVirtualBase_metaObject(self: QGraphicsScene, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQGraphicsScene_virtualbase_metaObject(self.h))
+
+type QGraphicsScenemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QGraphicsScene, slot: proc(super: QGraphicsScenemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsScenemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsScene_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsScene_metaObject(self: ptr cQGraphicsScene, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsScene_metaObject ".} =
+  type Cb = proc(super: QGraphicsScenemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QGraphicsScene(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QGraphicsScene, param1: cstring): pointer =
+
+
+  fQGraphicsScene_virtualbase_metacast(self.h, param1)
+
+type QGraphicsScenemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QGraphicsScene, slot: proc(super: QGraphicsScenemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsScenemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsScene_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsScene_metacast(self: ptr cQGraphicsScene, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsScene_metacast ".} =
+  type Cb = proc(super: QGraphicsScenemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QGraphicsScene(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QGraphicsScene, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

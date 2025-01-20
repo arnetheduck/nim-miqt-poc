@@ -209,6 +209,10 @@ proc fcQPlainTextEdit_find22(self: pointer, exp: pointer, options: cint): bool {
 proc fcQPlainTextEdit_moveCursor2(self: pointer, operation: cint, mode: cint): void {.importc: "QPlainTextEdit_moveCursor2".}
 proc fcQPlainTextEdit_zoomIn1(self: pointer, range: cint): void {.importc: "QPlainTextEdit_zoomIn1".}
 proc fcQPlainTextEdit_zoomOut1(self: pointer, range: cint): void {.importc: "QPlainTextEdit_zoomOut1".}
+proc fQPlainTextEdit_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPlainTextEdit_virtualbase_metaObject".}
+proc fcQPlainTextEdit_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPlainTextEdit_override_virtual_metaObject".}
+proc fQPlainTextEdit_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPlainTextEdit_virtualbase_metacast".}
+proc fcQPlainTextEdit_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPlainTextEdit_override_virtual_metacast".}
 proc fQPlainTextEdit_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPlainTextEdit_virtualbase_metacall".}
 proc fcQPlainTextEdit_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPlainTextEdit_override_virtual_metacall".}
 proc fQPlainTextEdit_virtualbase_loadResource(self: pointer, typeVal: cint, name: pointer): pointer{.importc: "QPlainTextEdit_virtualbase_loadResource".}
@@ -344,6 +348,10 @@ proc fcQPlainTextDocumentLayout_cursorWidth(self: pointer, ): cint {.importc: "Q
 proc fcQPlainTextDocumentLayout_requestUpdate(self: pointer, ): void {.importc: "QPlainTextDocumentLayout_requestUpdate".}
 proc fcQPlainTextDocumentLayout_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QPlainTextDocumentLayout_tr2".}
 proc fcQPlainTextDocumentLayout_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPlainTextDocumentLayout_tr3".}
+proc fQPlainTextDocumentLayout_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPlainTextDocumentLayout_virtualbase_metaObject".}
+proc fcQPlainTextDocumentLayout_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPlainTextDocumentLayout_override_virtual_metaObject".}
+proc fQPlainTextDocumentLayout_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPlainTextDocumentLayout_virtualbase_metacast".}
+proc fcQPlainTextDocumentLayout_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPlainTextDocumentLayout_override_virtual_metacast".}
 proc fQPlainTextDocumentLayout_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPlainTextDocumentLayout_virtualbase_metacall".}
 proc fcQPlainTextDocumentLayout_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPlainTextDocumentLayout_override_virtual_metacall".}
 proc fQPlainTextDocumentLayout_virtualbase_draw(self: pointer, param1: pointer, param2: pointer): void{.importc: "QPlainTextDocumentLayout_virtualbase_draw".}
@@ -902,6 +910,54 @@ proc zoomOut1*(self: QPlainTextEdit, range: cint): void =
 
   fcQPlainTextEdit_zoomOut1(self.h, range)
 
+proc callVirtualBase_metaObject(self: QPlainTextEdit, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQPlainTextEdit_virtualbase_metaObject(self.h))
+
+type QPlainTextEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QPlainTextEdit, slot: proc(super: QPlainTextEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QPlainTextEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPlainTextEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPlainTextEdit_metaObject(self: ptr cQPlainTextEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QPlainTextEdit_metaObject ".} =
+  type Cb = proc(super: QPlainTextEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QPlainTextEdit(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QPlainTextEdit, param1: cstring): pointer =
+
+
+  fQPlainTextEdit_virtualbase_metacast(self.h, param1)
+
+type QPlainTextEditmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QPlainTextEdit, slot: proc(super: QPlainTextEditmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QPlainTextEditmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPlainTextEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPlainTextEdit_metacast(self: ptr cQPlainTextEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPlainTextEdit_metacast ".} =
+  type Cb = proc(super: QPlainTextEditmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QPlainTextEdit(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QPlainTextEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -2360,6 +2416,54 @@ proc tr3*(_: type QPlainTextDocumentLayout, s: cstring, c: cstring, n: cint): st
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QPlainTextDocumentLayout, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQPlainTextDocumentLayout_virtualbase_metaObject(self.h))
+
+type QPlainTextDocumentLayoutmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QPlainTextDocumentLayout, slot: proc(super: QPlainTextDocumentLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QPlainTextDocumentLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPlainTextDocumentLayout_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPlainTextDocumentLayout_metaObject(self: ptr cQPlainTextDocumentLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QPlainTextDocumentLayout_metaObject ".} =
+  type Cb = proc(super: QPlainTextDocumentLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QPlainTextDocumentLayout(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QPlainTextDocumentLayout, param1: cstring): pointer =
+
+
+  fQPlainTextDocumentLayout_virtualbase_metacast(self.h, param1)
+
+type QPlainTextDocumentLayoutmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QPlainTextDocumentLayout, slot: proc(super: QPlainTextDocumentLayoutmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QPlainTextDocumentLayoutmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPlainTextDocumentLayout_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPlainTextDocumentLayout_metacast(self: ptr cQPlainTextDocumentLayout, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPlainTextDocumentLayout_metacast ".} =
+  type Cb = proc(super: QPlainTextDocumentLayoutmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QPlainTextDocumentLayout(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QPlainTextDocumentLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

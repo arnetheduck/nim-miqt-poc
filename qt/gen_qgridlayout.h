@@ -104,6 +104,10 @@ void QGridLayout_addLayout6(QGridLayout* self, QLayout* param1, int row, int col
 void QGridLayout_addItem4(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan);
 void QGridLayout_addItem5(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan);
 void QGridLayout_addItem6(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int param6);
+bool QGridLayout_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QGridLayout_virtualbase_metaObject(const void* self);
+bool QGridLayout_override_virtual_metacast(void* self, intptr_t slot);
+void* QGridLayout_virtualbase_metacast(void* self, const char* param1);
 bool QGridLayout_override_virtual_metacall(void* self, intptr_t slot);
 int QGridLayout_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGridLayout_override_virtual_sizeHint(void* self, intptr_t slot);

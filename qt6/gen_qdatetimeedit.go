@@ -455,6 +455,62 @@ func QDateTimeEdit_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QDateTimeEdit) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QDateTimeEdit_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateTimeEdit) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QDateTimeEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_metaObject
+func miqt_exec_callback_QDateTimeEdit_metaObject(self *C.QDateTimeEdit, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QDateTimeEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QDateTimeEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QDateTimeEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_metacast
+func miqt_exec_callback_QDateTimeEdit_metacast(self *C.QDateTimeEdit, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QDateTimeEdit) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QDateTimeEdit_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
@@ -2121,6 +2177,62 @@ func QTimeEdit_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QTimeEdit) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QTimeEdit_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QTimeEdit) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QTimeEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_metaObject
+func miqt_exec_callback_QTimeEdit_metaObject(self *C.QTimeEdit, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTimeEdit) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QTimeEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QTimeEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QTimeEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_metacast
+func miqt_exec_callback_QTimeEdit_metacast(self *C.QTimeEdit, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QTimeEdit) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QTimeEdit_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
@@ -3785,6 +3897,62 @@ func QDateEdit_Tr3(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QDateEdit) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QDateEdit_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateEdit) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QDateEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_metaObject
+func miqt_exec_callback_QDateEdit_metaObject(self *C.QDateEdit, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateEdit) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QDateEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QDateEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QDateEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_metacast
+func miqt_exec_callback_QDateEdit_metacast(self *C.QDateEdit, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
 }
 
 func (this *QDateEdit) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {

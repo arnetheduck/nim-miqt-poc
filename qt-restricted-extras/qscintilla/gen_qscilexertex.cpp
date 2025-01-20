@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QsciLexerTeX_metaObject(const QsciLexerTeX*, intptr_t);
+void* miqt_exec_callback_QsciLexerTeX_metacast(QsciLexerTeX*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexerTeX_metacall(QsciLexerTeX*, intptr_t, int, int, void**);
 const char* miqt_exec_callback_QsciLexerTeX_language(const QsciLexerTeX*, intptr_t);
 const char* miqt_exec_callback_QsciLexerTeX_lexer(const QsciLexerTeX*, intptr_t);
@@ -71,6 +73,51 @@ public:
 	MiqtVirtualQsciLexerTeX(QObject* parent): QsciLexerTeX(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerTeX() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexerTeX::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexerTeX_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexerTeX::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexerTeX::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexerTeX_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexerTeX::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1244,6 +1291,34 @@ struct miqt_string QsciLexerTeX_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QsciLexerTeX_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerTeX* self_cast = dynamic_cast<MiqtVirtualQsciLexerTeX*>( (QsciLexerTeX*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexerTeX_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexerTeX*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexerTeX_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerTeX* self_cast = dynamic_cast<MiqtVirtualQsciLexerTeX*>( (QsciLexerTeX*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexerTeX_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexerTeX*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexerTeX_override_virtual_metacall(void* self, intptr_t slot) {

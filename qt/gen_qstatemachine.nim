@@ -113,6 +113,10 @@ proc fcQStateMachine_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.
 proc fcQStateMachine_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QStateMachine_trUtf82".}
 proc fcQStateMachine_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QStateMachine_trUtf83".}
 proc fcQStateMachine_postEvent2(self: pointer, event: pointer, priority: cint): void {.importc: "QStateMachine_postEvent2".}
+proc fQStateMachine_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QStateMachine_virtualbase_metaObject".}
+proc fcQStateMachine_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QStateMachine_override_virtual_metaObject".}
+proc fQStateMachine_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QStateMachine_virtualbase_metacast".}
+proc fcQStateMachine_override_virtual_metacast(self: pointer, slot: int) {.importc: "QStateMachine_override_virtual_metacast".}
 proc fQStateMachine_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QStateMachine_virtualbase_metacall".}
 proc fcQStateMachine_override_virtual_metacall(self: pointer, slot: int) {.importc: "QStateMachine_override_virtual_metacall".}
 proc fQStateMachine_virtualbase_eventFilter(self: pointer, watched: pointer, event: pointer): bool{.importc: "QStateMachine_virtualbase_eventFilter".}
@@ -341,6 +345,54 @@ proc postEvent2*(self: QStateMachine, event: gen_qcoreevent.QEvent, priority: QS
 
   fcQStateMachine_postEvent2(self.h, event.h, cint(priority))
 
+proc callVirtualBase_metaObject(self: QStateMachine, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQStateMachine_virtualbase_metaObject(self.h))
+
+type QStateMachinemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QStateMachine, slot: proc(super: QStateMachinemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QStateMachinemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStateMachine_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStateMachine_metaObject(self: ptr cQStateMachine, slot: int): pointer {.exportc: "miqt_exec_callback_QStateMachine_metaObject ".} =
+  type Cb = proc(super: QStateMachinemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QStateMachine(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QStateMachine, param1: cstring): pointer =
+
+
+  fQStateMachine_virtualbase_metacast(self.h, param1)
+
+type QStateMachinemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QStateMachine, slot: proc(super: QStateMachinemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QStateMachinemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStateMachine_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStateMachine_metacast(self: ptr cQStateMachine, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStateMachine_metacast ".} =
+  type Cb = proc(super: QStateMachinemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QStateMachine(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QStateMachine, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

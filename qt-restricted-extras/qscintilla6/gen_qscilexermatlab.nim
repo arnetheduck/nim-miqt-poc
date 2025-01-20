@@ -88,6 +88,10 @@ proc fcQsciLexerMatlab_keywords(self: pointer, set: cint): cstring {.importc: "Q
 proc fcQsciLexerMatlab_description(self: pointer, style: cint): struct_miqt_string {.importc: "QsciLexerMatlab_description".}
 proc fcQsciLexerMatlab_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerMatlab_tr2".}
 proc fcQsciLexerMatlab_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerMatlab_tr3".}
+proc fQsciLexerMatlab_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerMatlab_virtualbase_metaObject".}
+proc fcQsciLexerMatlab_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerMatlab_override_virtual_metaObject".}
+proc fQsciLexerMatlab_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerMatlab_virtualbase_metacast".}
+proc fcQsciLexerMatlab_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerMatlab_override_virtual_metacast".}
 proc fQsciLexerMatlab_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerMatlab_virtualbase_metacall".}
 proc fcQsciLexerMatlab_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerMatlab_override_virtual_metacall".}
 proc fcQsciLexerMatlab_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerMatlab_override_virtual_language".}
@@ -242,6 +246,54 @@ proc tr3*(_: type QsciLexerMatlab, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QsciLexerMatlab, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerMatlab_virtualbase_metaObject(self.h))
+
+type QsciLexerMatlabmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerMatlab, slot: proc(super: QsciLexerMatlabmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerMatlabmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerMatlab_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerMatlab_metaObject(self: ptr cQsciLexerMatlab, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerMatlab_metaObject ".} =
+  type Cb = proc(super: QsciLexerMatlabmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerMatlab(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerMatlab, param1: cstring): pointer =
+
+
+  fQsciLexerMatlab_virtualbase_metacast(self.h, param1)
+
+type QsciLexerMatlabmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerMatlab, slot: proc(super: QsciLexerMatlabmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerMatlabmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerMatlab_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerMatlab_metacast(self: ptr cQsciLexerMatlab, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerMatlab_metacast ".} =
+  type Cb = proc(super: QsciLexerMatlabmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerMatlab(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerMatlab, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

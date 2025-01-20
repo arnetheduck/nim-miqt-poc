@@ -23,6 +23,8 @@ void miqt_exec_callback_QsciLexer_eolFillChanged(intptr_t, bool, int);
 void miqt_exec_callback_QsciLexer_fontChanged(intptr_t, QFont*, int);
 void miqt_exec_callback_QsciLexer_paperChanged(intptr_t, QColor*, int);
 void miqt_exec_callback_QsciLexer_propertyChanged(intptr_t, const char*, const char*);
+QMetaObject* miqt_exec_callback_QsciLexer_metaObject(const QsciLexer*, intptr_t);
+void* miqt_exec_callback_QsciLexer_metacast(QsciLexer*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexer_metacall(QsciLexer*, intptr_t, int, int, void**);
 const char* miqt_exec_callback_QsciLexer_language(const QsciLexer*, intptr_t);
 const char* miqt_exec_callback_QsciLexer_lexer(const QsciLexer*, intptr_t);
@@ -76,6 +78,51 @@ public:
 	MiqtVirtualQsciLexer(QObject* parent): QsciLexer(parent) {};
 
 	virtual ~MiqtVirtualQsciLexer() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexer::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexer_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexer::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexer::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexer_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexer::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1455,6 +1502,34 @@ bool QsciLexer_readSettings2(QsciLexer* self, QSettings* qs, const char* prefix)
 
 bool QsciLexer_writeSettings2(const QsciLexer* self, QSettings* qs, const char* prefix) {
 	return self->writeSettings(*qs, prefix);
+}
+
+bool QsciLexer_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexer* self_cast = dynamic_cast<MiqtVirtualQsciLexer*>( (QsciLexer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexer_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexer*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexer_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexer* self_cast = dynamic_cast<MiqtVirtualQsciLexer*>( (QsciLexer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexer_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexer*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexer_override_virtual_metacall(void* self, intptr_t slot) {

@@ -605,6 +605,62 @@ func (this *QUndoStack) SetActive1(active bool) {
 	C.QUndoStack_setActive1(this.h, (C.bool)(active))
 }
 
+func (this *QUndoStack) callVirtualBase_MetaObject() *QMetaObject {
+
+	return newQMetaObject(C.QUndoStack_virtualbase_metaObject(unsafe.Pointer(this.h)))
+
+}
+func (this *QUndoStack) OnmetaObject(slot func(super func() *QMetaObject) *QMetaObject) {
+	ok := C.QUndoStack_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QUndoStack_metaObject
+func miqt_exec_callback_QUndoStack_metaObject(self *C.QUndoStack, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMetaObject) *QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QUndoStack{h: self}).callVirtualBase_MetaObject)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QUndoStack) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QUndoStack_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QUndoStack) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QUndoStack_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QUndoStack_metacast
+func miqt_exec_callback_QUndoStack_metacast(self *C.QUndoStack, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QUndoStack{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QUndoStack) callVirtualBase_Metacall(param1 QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QUndoStack_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))

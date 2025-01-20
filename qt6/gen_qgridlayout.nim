@@ -119,6 +119,10 @@ proc fcQGridLayout_addLayout6(self: pointer, param1: pointer, row: cint, column:
 proc fcQGridLayout_addItem4(self: pointer, item: pointer, row: cint, column: cint, rowSpan: cint): void {.importc: "QGridLayout_addItem4".}
 proc fcQGridLayout_addItem5(self: pointer, item: pointer, row: cint, column: cint, rowSpan: cint, columnSpan: cint): void {.importc: "QGridLayout_addItem5".}
 proc fcQGridLayout_addItem6(self: pointer, item: pointer, row: cint, column: cint, rowSpan: cint, columnSpan: cint, param6: cint): void {.importc: "QGridLayout_addItem6".}
+proc fQGridLayout_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGridLayout_virtualbase_metaObject".}
+proc fcQGridLayout_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGridLayout_override_virtual_metaObject".}
+proc fQGridLayout_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGridLayout_virtualbase_metacast".}
+proc fcQGridLayout_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGridLayout_override_virtual_metacast".}
 proc fQGridLayout_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGridLayout_virtualbase_metacall".}
 proc fcQGridLayout_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGridLayout_override_virtual_metacall".}
 proc fQGridLayout_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QGridLayout_virtualbase_sizeHint".}
@@ -414,6 +418,54 @@ proc addItem6*(self: QGridLayout, item: gen_qlayoutitem.QLayoutItem, row: cint, 
 
   fcQGridLayout_addItem6(self.h, item.h, row, column, rowSpan, columnSpan, cint(param6))
 
+proc callVirtualBase_metaObject(self: QGridLayout, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQGridLayout_virtualbase_metaObject(self.h))
+
+type QGridLayoutmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QGridLayout, slot: proc(super: QGridLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QGridLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGridLayout_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGridLayout_metaObject(self: ptr cQGridLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QGridLayout_metaObject ".} =
+  type Cb = proc(super: QGridLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QGridLayout(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QGridLayout, param1: cstring): pointer =
+
+
+  fQGridLayout_virtualbase_metacast(self.h, param1)
+
+type QGridLayoutmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QGridLayout, slot: proc(super: QGridLayoutmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QGridLayoutmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGridLayout_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGridLayout_metacast(self: ptr cQGridLayout, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGridLayout_metacast ".} =
+  type Cb = proc(super: QGridLayoutmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QGridLayout(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QGridLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

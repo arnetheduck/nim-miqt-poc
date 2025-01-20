@@ -16,6 +16,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QTranslator_metaObject(const QTranslator*, intptr_t);
+void* miqt_exec_callback_QTranslator_metacast(QTranslator*, intptr_t, const char*);
 int miqt_exec_callback_QTranslator_metacall(QTranslator*, intptr_t, int, int, void**);
 struct miqt_string miqt_exec_callback_QTranslator_translate(const QTranslator*, intptr_t, const char*, const char*, const char*, int);
 bool miqt_exec_callback_QTranslator_isEmpty(const QTranslator*, intptr_t);
@@ -37,6 +39,51 @@ public:
 	MiqtVirtualQTranslator(QObject* parent): QTranslator(parent) {};
 
 	virtual ~MiqtVirtualQTranslator() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QTranslator::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QTranslator_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QTranslator::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QTranslator::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QTranslator_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QTranslator::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -479,6 +526,34 @@ bool QTranslator_load5(QTranslator* self, QLocale* locale, struct miqt_string fi
 bool QTranslator_load34(QTranslator* self, const unsigned char* data, int len, struct miqt_string directory) {
 	QString directory_QString = QString::fromUtf8(directory.data, directory.len);
 	return self->load(static_cast<const uchar*>(data), static_cast<int>(len), directory_QString);
+}
+
+bool QTranslator_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QTranslator_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQTranslator*)(self) )->virtualbase_metaObject();
+}
+
+bool QTranslator_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QTranslator_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQTranslator*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QTranslator_override_virtual_metacall(void* self, intptr_t slot) {

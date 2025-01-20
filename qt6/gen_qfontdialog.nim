@@ -112,6 +112,10 @@ proc fcQFontDialog_getFont22(ok: ptr bool, parent: pointer): pointer {.importc: 
 proc fcQFontDialog_getFont3(ok: ptr bool, initial: pointer, parent: pointer): pointer {.importc: "QFontDialog_getFont3".}
 proc fcQFontDialog_getFont4(ok: ptr bool, initial: pointer, parent: pointer, title: struct_miqt_string): pointer {.importc: "QFontDialog_getFont4".}
 proc fcQFontDialog_getFont5(ok: ptr bool, initial: pointer, parent: pointer, title: struct_miqt_string, options: cint): pointer {.importc: "QFontDialog_getFont5".}
+proc fQFontDialog_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QFontDialog_virtualbase_metaObject".}
+proc fcQFontDialog_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QFontDialog_override_virtual_metaObject".}
+proc fQFontDialog_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QFontDialog_virtualbase_metacast".}
+proc fcQFontDialog_override_virtual_metacast(self: pointer, slot: int) {.importc: "QFontDialog_override_virtual_metacast".}
 proc fQFontDialog_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QFontDialog_virtualbase_metacall".}
 proc fcQFontDialog_override_virtual_metacall(self: pointer, slot: int) {.importc: "QFontDialog_override_virtual_metacall".}
 proc fQFontDialog_virtualbase_setVisible(self: pointer, visible: bool): void{.importc: "QFontDialog_virtualbase_setVisible".}
@@ -365,6 +369,54 @@ proc getFont5*(_: type QFontDialog, ok: ptr bool, initial: gen_qfont.QFont, pare
 
   gen_qfont.QFont(h: fcQFontDialog_getFont5(ok, initial.h, parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), cint(options)))
 
+proc callVirtualBase_metaObject(self: QFontDialog, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQFontDialog_virtualbase_metaObject(self.h))
+
+type QFontDialogmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QFontDialog, slot: proc(super: QFontDialogmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QFontDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFontDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFontDialog_metaObject(self: ptr cQFontDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QFontDialog_metaObject ".} =
+  type Cb = proc(super: QFontDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QFontDialog(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QFontDialog, param1: cstring): pointer =
+
+
+  fQFontDialog_virtualbase_metacast(self.h, param1)
+
+type QFontDialogmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QFontDialog, slot: proc(super: QFontDialogmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QFontDialogmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFontDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFontDialog_metacast(self: ptr cQFontDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFontDialog_metacast ".} =
+  type Cb = proc(super: QFontDialogmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QFontDialog(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QFontDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

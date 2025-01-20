@@ -2167,6 +2167,10 @@ proc fcScintillaEditBase_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcScintillaEditBase_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "ScintillaEditBase_tr3".}
 proc fcScintillaEditBase_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "ScintillaEditBase_trUtf82".}
 proc fcScintillaEditBase_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "ScintillaEditBase_trUtf83".}
+proc fScintillaEditBase_virtualbase_metaObject(self: pointer, ): pointer{.importc: "ScintillaEditBase_virtualbase_metaObject".}
+proc fcScintillaEditBase_override_virtual_metaObject(self: pointer, slot: int) {.importc: "ScintillaEditBase_override_virtual_metaObject".}
+proc fScintillaEditBase_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "ScintillaEditBase_virtualbase_metacast".}
+proc fcScintillaEditBase_override_virtual_metacast(self: pointer, slot: int) {.importc: "ScintillaEditBase_override_virtual_metacast".}
 proc fScintillaEditBase_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "ScintillaEditBase_virtualbase_metacall".}
 proc fcScintillaEditBase_override_virtual_metacall(self: pointer, slot: int) {.importc: "ScintillaEditBase_override_virtual_metacall".}
 proc fScintillaEditBase_virtualbase_send(self: pointer, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t{.importc: "ScintillaEditBase_virtualbase_send".}
@@ -2340,6 +2344,10 @@ proc fcScintillaDocument_tr3(s: cstring, c: cstring, n: cint): struct_miqt_strin
 proc fcScintillaDocument_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "ScintillaDocument_trUtf82".}
 proc fcScintillaDocument_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "ScintillaDocument_trUtf83".}
 proc fcScintillaDocument_beginUndoAction1(self: pointer, coalesceWithPrior: bool): void {.importc: "ScintillaDocument_beginUndoAction1".}
+proc fScintillaDocument_virtualbase_metaObject(self: pointer, ): pointer{.importc: "ScintillaDocument_virtualbase_metaObject".}
+proc fcScintillaDocument_override_virtual_metaObject(self: pointer, slot: int) {.importc: "ScintillaDocument_override_virtual_metaObject".}
+proc fScintillaDocument_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "ScintillaDocument_virtualbase_metacast".}
+proc fcScintillaDocument_override_virtual_metacast(self: pointer, slot: int) {.importc: "ScintillaDocument_override_virtual_metacast".}
 proc fScintillaDocument_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "ScintillaDocument_virtualbase_metacall".}
 proc fcScintillaDocument_override_virtual_metacall(self: pointer, slot: int) {.importc: "ScintillaDocument_override_virtual_metacall".}
 proc fScintillaDocument_virtualbase_event(self: pointer, event: pointer): bool{.importc: "ScintillaDocument_virtualbase_event".}
@@ -3178,6 +3186,10 @@ proc fcScintillaEdit_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcScintillaEdit_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "ScintillaEdit_tr3".}
 proc fcScintillaEdit_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "ScintillaEdit_trUtf82".}
 proc fcScintillaEdit_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "ScintillaEdit_trUtf83".}
+proc fScintillaEdit_virtualbase_metaObject(self: pointer, ): pointer{.importc: "ScintillaEdit_virtualbase_metaObject".}
+proc fcScintillaEdit_override_virtual_metaObject(self: pointer, slot: int) {.importc: "ScintillaEdit_override_virtual_metaObject".}
+proc fScintillaEdit_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "ScintillaEdit_virtualbase_metacast".}
+proc fcScintillaEdit_override_virtual_metacast(self: pointer, slot: int) {.importc: "ScintillaEdit_override_virtual_metacast".}
 proc fScintillaEdit_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "ScintillaEdit_virtualbase_metacall".}
 proc fcScintillaEdit_override_virtual_metacall(self: pointer, slot: int) {.importc: "ScintillaEdit_override_virtual_metacall".}
 proc fScintillaEdit_virtualbase_send(self: pointer, iMessage: cuint, wParam: miqt_uintptr_t, lParam: miqt_intptr_t): miqt_intptr_t{.importc: "ScintillaEdit_virtualbase_send".}
@@ -5834,6 +5846,54 @@ proc trUtf83*(_: type ScintillaEditBase, s: cstring, c: cstring, n: cint): strin
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: ScintillaEditBase, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fScintillaEditBase_virtualbase_metaObject(self.h))
+
+type ScintillaEditBasemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: ScintillaEditBasemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcScintillaEditBase_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_ScintillaEditBase_metaObject(self: ptr cScintillaEditBase, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_metaObject ".} =
+  type Cb = proc(super: ScintillaEditBasemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(ScintillaEditBase(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: ScintillaEditBase, param1: cstring): pointer =
+
+
+  fScintillaEditBase_virtualbase_metacast(self.h, param1)
+
+type ScintillaEditBasemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: ScintillaEditBase, slot: proc(super: ScintillaEditBasemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: ScintillaEditBasemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcScintillaEditBase_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_ScintillaEditBase_metacast(self: ptr cScintillaEditBase, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_ScintillaEditBase_metacast ".} =
+  type Cb = proc(super: ScintillaEditBasemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(ScintillaEditBase(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: ScintillaEditBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -7465,6 +7525,54 @@ proc beginUndoAction1*(self: ScintillaDocument, coalesceWithPrior: bool): void =
 
   fcScintillaDocument_beginUndoAction1(self.h, coalesceWithPrior)
 
+proc callVirtualBase_metaObject(self: ScintillaDocument, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fScintillaDocument_virtualbase_metaObject(self.h))
+
+type ScintillaDocumentmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: ScintillaDocument, slot: proc(super: ScintillaDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: ScintillaDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcScintillaDocument_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_ScintillaDocument_metaObject(self: ptr cScintillaDocument, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaDocument_metaObject ".} =
+  type Cb = proc(super: ScintillaDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(ScintillaDocument(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: ScintillaDocument, param1: cstring): pointer =
+
+
+  fScintillaDocument_virtualbase_metacast(self.h, param1)
+
+type ScintillaDocumentmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: ScintillaDocument, slot: proc(super: ScintillaDocumentmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: ScintillaDocumentmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcScintillaDocument_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_ScintillaDocument_metacast(self: ptr cScintillaDocument, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_ScintillaDocument_metacast ".} =
+  type Cb = proc(super: ScintillaDocumentmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(ScintillaDocument(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: ScintillaDocument, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -11089,6 +11197,54 @@ proc trUtf83*(_: type ScintillaEdit, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: ScintillaEdit, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fScintillaEdit_virtualbase_metaObject(self.h))
+
+type ScintillaEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: ScintillaEdit, slot: proc(super: ScintillaEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: ScintillaEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcScintillaEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_ScintillaEdit_metaObject(self: ptr cScintillaEdit, slot: int): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_metaObject ".} =
+  type Cb = proc(super: ScintillaEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(ScintillaEdit(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: ScintillaEdit, param1: cstring): pointer =
+
+
+  fScintillaEdit_virtualbase_metacast(self.h, param1)
+
+type ScintillaEditmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: ScintillaEdit, slot: proc(super: ScintillaEditmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: ScintillaEditmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcScintillaEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_ScintillaEdit_metacast(self: ptr cScintillaEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_ScintillaEdit_metacast ".} =
+  type Cb = proc(super: ScintillaEditmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(ScintillaEdit(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: ScintillaEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

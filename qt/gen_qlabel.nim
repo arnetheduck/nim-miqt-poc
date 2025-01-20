@@ -133,6 +133,10 @@ proc fcQLabel_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QLabel
 proc fcQLabel_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QLabel_tr3".}
 proc fcQLabel_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QLabel_trUtf82".}
 proc fcQLabel_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QLabel_trUtf83".}
+proc fQLabel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QLabel_virtualbase_metaObject".}
+proc fcQLabel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QLabel_override_virtual_metaObject".}
+proc fQLabel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QLabel_virtualbase_metacast".}
+proc fcQLabel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QLabel_override_virtual_metacast".}
 proc fQLabel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QLabel_virtualbase_metacall".}
 proc fcQLabel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QLabel_override_virtual_metacall".}
 proc fQLabel_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QLabel_virtualbase_sizeHint".}
@@ -507,6 +511,54 @@ proc trUtf83*(_: type QLabel, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QLabel, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQLabel_virtualbase_metaObject(self.h))
+
+type QLabelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QLabel, slot: proc(super: QLabelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QLabelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLabel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLabel_metaObject(self: ptr cQLabel, slot: int): pointer {.exportc: "miqt_exec_callback_QLabel_metaObject ".} =
+  type Cb = proc(super: QLabelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QLabel(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QLabel, param1: cstring): pointer =
+
+
+  fQLabel_virtualbase_metacast(self.h, param1)
+
+type QLabelmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QLabel, slot: proc(super: QLabelmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QLabelmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLabel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLabel_metacast(self: ptr cQLabel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QLabel_metacast ".} =
+  type Cb = proc(super: QLabelmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QLabel(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QLabel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

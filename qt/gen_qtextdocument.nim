@@ -260,6 +260,10 @@ proc fcQTextDocument_find37(self: pointer, expr: pointer, cursor: pointer, optio
 proc fcQTextDocument_drawContents2(self: pointer, painter: pointer, rect: pointer): void {.importc: "QTextDocument_drawContents2".}
 proc fcQTextDocument_clearUndoRedoStacks1(self: pointer, historyToClear: cint): void {.importc: "QTextDocument_clearUndoRedoStacks1".}
 proc fcQTextDocument_setModified1(self: pointer, m: bool): void {.importc: "QTextDocument_setModified1".}
+proc fQTextDocument_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTextDocument_virtualbase_metaObject".}
+proc fcQTextDocument_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTextDocument_override_virtual_metaObject".}
+proc fQTextDocument_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTextDocument_virtualbase_metacast".}
+proc fcQTextDocument_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTextDocument_override_virtual_metacast".}
 proc fQTextDocument_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTextDocument_virtualbase_metacall".}
 proc fcQTextDocument_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTextDocument_override_virtual_metacall".}
 proc fQTextDocument_virtualbase_clear(self: pointer, ): void{.importc: "QTextDocument_virtualbase_clear".}
@@ -970,6 +974,54 @@ proc setModified1*(self: QTextDocument, m: bool): void =
 
   fcQTextDocument_setModified1(self.h, m)
 
+proc callVirtualBase_metaObject(self: QTextDocument, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQTextDocument_virtualbase_metaObject(self.h))
+
+type QTextDocumentmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QTextDocument, slot: proc(super: QTextDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QTextDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextDocument_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextDocument_metaObject(self: ptr cQTextDocument, slot: int): pointer {.exportc: "miqt_exec_callback_QTextDocument_metaObject ".} =
+  type Cb = proc(super: QTextDocumentmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QTextDocument(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QTextDocument, param1: cstring): pointer =
+
+
+  fQTextDocument_virtualbase_metacast(self.h, param1)
+
+type QTextDocumentmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QTextDocument, slot: proc(super: QTextDocumentmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QTextDocumentmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextDocument_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextDocument_metacast(self: ptr cQTextDocument, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTextDocument_metacast ".} =
+  type Cb = proc(super: QTextDocumentmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QTextDocument(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QTextDocument, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

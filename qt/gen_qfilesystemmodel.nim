@@ -160,6 +160,10 @@ proc fcQFileSystemModel_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_st
 proc fcQFileSystemModel_index2(self: pointer, path: struct_miqt_string, column: cint): pointer {.importc: "QFileSystemModel_index2".}
 proc fcQFileSystemModel_myComputer1(self: pointer, role: cint): pointer {.importc: "QFileSystemModel_myComputer1".}
 proc fcQFileSystemModel_setOption2(self: pointer, option: cint, on: bool): void {.importc: "QFileSystemModel_setOption2".}
+proc fQFileSystemModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QFileSystemModel_virtualbase_metaObject".}
+proc fcQFileSystemModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QFileSystemModel_override_virtual_metaObject".}
+proc fQFileSystemModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QFileSystemModel_virtualbase_metacast".}
+proc fcQFileSystemModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QFileSystemModel_override_virtual_metacast".}
 proc fQFileSystemModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QFileSystemModel_virtualbase_metacall".}
 proc fcQFileSystemModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QFileSystemModel_override_virtual_metacall".}
 proc fQFileSystemModel_virtualbase_index(self: pointer, row: cint, column: cint, parent: pointer): pointer{.importc: "QFileSystemModel_virtualbase_index".}
@@ -631,6 +635,54 @@ proc setOption2*(self: QFileSystemModel, option: QFileSystemModelOption, on: boo
 
   fcQFileSystemModel_setOption2(self.h, cint(option), on)
 
+proc callVirtualBase_metaObject(self: QFileSystemModel, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQFileSystemModel_virtualbase_metaObject(self.h))
+
+type QFileSystemModelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QFileSystemModel, slot: proc(super: QFileSystemModelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QFileSystemModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFileSystemModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFileSystemModel_metaObject(self: ptr cQFileSystemModel, slot: int): pointer {.exportc: "miqt_exec_callback_QFileSystemModel_metaObject ".} =
+  type Cb = proc(super: QFileSystemModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QFileSystemModel(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QFileSystemModel, param1: cstring): pointer =
+
+
+  fQFileSystemModel_virtualbase_metacast(self.h, param1)
+
+type QFileSystemModelmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QFileSystemModel, slot: proc(super: QFileSystemModelmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QFileSystemModelmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFileSystemModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFileSystemModel_metacast(self: ptr cQFileSystemModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFileSystemModel_metacast ".} =
+  type Cb = proc(super: QFileSystemModelmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QFileSystemModel(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QFileSystemModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -70,6 +70,10 @@ proc fcQsciLexerJava_language(self: pointer, ): cstring {.importc: "QsciLexerJav
 proc fcQsciLexerJava_keywords(self: pointer, set: cint): cstring {.importc: "QsciLexerJava_keywords".}
 proc fcQsciLexerJava_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerJava_tr2".}
 proc fcQsciLexerJava_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerJava_tr3".}
+proc fQsciLexerJava_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerJava_virtualbase_metaObject".}
+proc fcQsciLexerJava_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerJava_override_virtual_metaObject".}
+proc fQsciLexerJava_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerJava_virtualbase_metacast".}
+proc fcQsciLexerJava_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerJava_override_virtual_metacast".}
 proc fQsciLexerJava_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerJava_virtualbase_metacall".}
 proc fcQsciLexerJava_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerJava_override_virtual_metacall".}
 proc fQsciLexerJava_virtualbase_setFoldAtElse(self: pointer, fold: bool): void{.importc: "QsciLexerJava_virtualbase_setFoldAtElse".}
@@ -215,6 +219,54 @@ proc tr3*(_: type QsciLexerJava, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QsciLexerJava, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerJava_virtualbase_metaObject(self.h))
+
+type QsciLexerJavametaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerJava, slot: proc(super: QsciLexerJavametaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerJavametaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerJava_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerJava_metaObject(self: ptr cQsciLexerJava, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_metaObject ".} =
+  type Cb = proc(super: QsciLexerJavametaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerJava(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerJava, param1: cstring): pointer =
+
+
+  fQsciLexerJava_virtualbase_metacast(self.h, param1)
+
+type QsciLexerJavametacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerJava, slot: proc(super: QsciLexerJavametacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerJavametacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerJava_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerJava_metacast(self: ptr cQsciLexerJava, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerJava_metacast ".} =
+  type Cb = proc(super: QsciLexerJavametacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerJava(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerJava, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

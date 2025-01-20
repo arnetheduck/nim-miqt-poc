@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QsciLexerRuby_metaObject(const QsciLexerRuby*, intptr_t);
+void* miqt_exec_callback_QsciLexerRuby_metacast(QsciLexerRuby*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexerRuby_metacall(QsciLexerRuby*, intptr_t, int, int, void**);
 const char* miqt_exec_callback_QsciLexerRuby_language(const QsciLexerRuby*, intptr_t);
 const char* miqt_exec_callback_QsciLexerRuby_lexer(const QsciLexerRuby*, intptr_t);
@@ -71,6 +73,51 @@ public:
 	MiqtVirtualQsciLexerRuby(QObject* parent): QsciLexerRuby(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerRuby() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexerRuby::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexerRuby_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexerRuby::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexerRuby::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexerRuby_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexerRuby::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1231,6 +1278,34 @@ const char* QsciLexerRuby_blockStart1(const QsciLexerRuby* self, int* style) {
 
 const char* QsciLexerRuby_blockStartKeyword1(const QsciLexerRuby* self, int* style) {
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
+}
+
+bool QsciLexerRuby_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerRuby* self_cast = dynamic_cast<MiqtVirtualQsciLexerRuby*>( (QsciLexerRuby*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexerRuby_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexerRuby_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerRuby* self_cast = dynamic_cast<MiqtVirtualQsciLexerRuby*>( (QsciLexerRuby*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexerRuby_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexerRuby*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexerRuby_override_virtual_metacall(void* self, intptr_t slot) {

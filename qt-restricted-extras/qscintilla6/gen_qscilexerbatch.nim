@@ -91,6 +91,10 @@ proc fcQsciLexerBatch_keywords(self: pointer, set: cint): cstring {.importc: "Qs
 proc fcQsciLexerBatch_description(self: pointer, style: cint): struct_miqt_string {.importc: "QsciLexerBatch_description".}
 proc fcQsciLexerBatch_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerBatch_tr2".}
 proc fcQsciLexerBatch_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerBatch_tr3".}
+proc fQsciLexerBatch_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerBatch_virtualbase_metaObject".}
+proc fcQsciLexerBatch_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerBatch_override_virtual_metaObject".}
+proc fQsciLexerBatch_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerBatch_virtualbase_metacast".}
+proc fcQsciLexerBatch_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerBatch_override_virtual_metacast".}
 proc fQsciLexerBatch_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerBatch_virtualbase_metacall".}
 proc fcQsciLexerBatch_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerBatch_override_virtual_metacall".}
 proc fcQsciLexerBatch_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerBatch_override_virtual_language".}
@@ -261,6 +265,54 @@ proc tr3*(_: type QsciLexerBatch, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QsciLexerBatch, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerBatch_virtualbase_metaObject(self.h))
+
+type QsciLexerBatchmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerBatch, slot: proc(super: QsciLexerBatchmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerBatchmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerBatch_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerBatch_metaObject(self: ptr cQsciLexerBatch, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerBatch_metaObject ".} =
+  type Cb = proc(super: QsciLexerBatchmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerBatch(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerBatch, param1: cstring): pointer =
+
+
+  fQsciLexerBatch_virtualbase_metacast(self.h, param1)
+
+type QsciLexerBatchmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerBatch, slot: proc(super: QsciLexerBatchmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerBatchmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerBatch_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerBatch_metacast(self: ptr cQsciLexerBatch, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerBatch_metacast ".} =
+  type Cb = proc(super: QsciLexerBatchmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerBatch(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerBatch, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

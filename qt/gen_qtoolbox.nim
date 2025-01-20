@@ -106,6 +106,10 @@ proc fcQToolBox_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QToo
 proc fcQToolBox_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QToolBox_tr3".}
 proc fcQToolBox_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QToolBox_trUtf82".}
 proc fcQToolBox_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QToolBox_trUtf83".}
+proc fQToolBox_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QToolBox_virtualbase_metaObject".}
+proc fcQToolBox_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QToolBox_override_virtual_metaObject".}
+proc fQToolBox_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QToolBox_virtualbase_metacast".}
+proc fcQToolBox_override_virtual_metacast(self: pointer, slot: int) {.importc: "QToolBox_override_virtual_metacast".}
 proc fQToolBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QToolBox_virtualbase_metacall".}
 proc fcQToolBox_override_virtual_metacall(self: pointer, slot: int) {.importc: "QToolBox_override_virtual_metacall".}
 proc fQToolBox_virtualbase_event(self: pointer, e: pointer): bool{.importc: "QToolBox_virtualbase_event".}
@@ -379,6 +383,54 @@ proc trUtf83*(_: type QToolBox, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QToolBox, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQToolBox_virtualbase_metaObject(self.h))
+
+type QToolBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QToolBox, slot: proc(super: QToolBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QToolBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQToolBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QToolBox_metaObject(self: ptr cQToolBox, slot: int): pointer {.exportc: "miqt_exec_callback_QToolBox_metaObject ".} =
+  type Cb = proc(super: QToolBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QToolBox(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QToolBox, param1: cstring): pointer =
+
+
+  fQToolBox_virtualbase_metacast(self.h, param1)
+
+type QToolBoxmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QToolBox, slot: proc(super: QToolBoxmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QToolBoxmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQToolBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QToolBox_metacast(self: ptr cQToolBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QToolBox_metacast ".} =
+  type Cb = proc(super: QToolBoxmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QToolBox(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QToolBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

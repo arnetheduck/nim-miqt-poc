@@ -194,6 +194,10 @@ proc fcQLineEdit_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QLi
 proc fcQLineEdit_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QLineEdit_tr3".}
 proc fcQLineEdit_cursorForward2(self: pointer, mark: bool, steps: cint): void {.importc: "QLineEdit_cursorForward2".}
 proc fcQLineEdit_cursorBackward2(self: pointer, mark: bool, steps: cint): void {.importc: "QLineEdit_cursorBackward2".}
+proc fQLineEdit_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QLineEdit_virtualbase_metaObject".}
+proc fcQLineEdit_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QLineEdit_override_virtual_metaObject".}
+proc fQLineEdit_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QLineEdit_virtualbase_metacast".}
+proc fcQLineEdit_override_virtual_metacast(self: pointer, slot: int) {.importc: "QLineEdit_override_virtual_metacast".}
 proc fQLineEdit_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QLineEdit_virtualbase_metacall".}
 proc fcQLineEdit_override_virtual_metacall(self: pointer, slot: int) {.importc: "QLineEdit_override_virtual_metacall".}
 proc fQLineEdit_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QLineEdit_virtualbase_sizeHint".}
@@ -772,6 +776,54 @@ proc cursorBackward2*(self: QLineEdit, mark: bool, steps: cint): void =
 
   fcQLineEdit_cursorBackward2(self.h, mark, steps)
 
+proc callVirtualBase_metaObject(self: QLineEdit, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQLineEdit_virtualbase_metaObject(self.h))
+
+type QLineEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QLineEdit, slot: proc(super: QLineEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QLineEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLineEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLineEdit_metaObject(self: ptr cQLineEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QLineEdit_metaObject ".} =
+  type Cb = proc(super: QLineEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QLineEdit(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QLineEdit, param1: cstring): pointer =
+
+
+  fQLineEdit_virtualbase_metacast(self.h, param1)
+
+type QLineEditmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QLineEdit, slot: proc(super: QLineEditmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QLineEditmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLineEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLineEdit_metacast(self: ptr cQLineEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QLineEdit_metacast ".} =
+  type Cb = proc(super: QLineEditmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QLineEdit(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QLineEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

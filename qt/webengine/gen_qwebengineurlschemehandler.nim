@@ -64,6 +64,10 @@ proc fcQWebEngineUrlSchemeHandler_tr2(s: cstring, c: cstring): struct_miqt_strin
 proc fcQWebEngineUrlSchemeHandler_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineUrlSchemeHandler_tr3".}
 proc fcQWebEngineUrlSchemeHandler_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebEngineUrlSchemeHandler_trUtf82".}
 proc fcQWebEngineUrlSchemeHandler_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebEngineUrlSchemeHandler_trUtf83".}
+proc fQWebEngineUrlSchemeHandler_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebEngineUrlSchemeHandler_virtualbase_metaObject".}
+proc fcQWebEngineUrlSchemeHandler_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_metaObject".}
+proc fQWebEngineUrlSchemeHandler_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebEngineUrlSchemeHandler_virtualbase_metacast".}
+proc fcQWebEngineUrlSchemeHandler_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_metacast".}
 proc fQWebEngineUrlSchemeHandler_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebEngineUrlSchemeHandler_virtualbase_metacall".}
 proc fcQWebEngineUrlSchemeHandler_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_metacall".}
 proc fcQWebEngineUrlSchemeHandler_override_virtual_requestStarted(self: pointer, slot: int) {.importc: "QWebEngineUrlSchemeHandler_override_virtual_requestStarted".}
@@ -151,6 +155,54 @@ proc trUtf83*(_: type QWebEngineUrlSchemeHandler, s: cstring, c: cstring, n: cin
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QWebEngineUrlSchemeHandler, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQWebEngineUrlSchemeHandler_virtualbase_metaObject(self.h))
+
+type QWebEngineUrlSchemeHandlermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QWebEngineUrlSchemeHandlermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebEngineUrlSchemeHandler_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebEngineUrlSchemeHandler_metaObject(self: ptr cQWebEngineUrlSchemeHandler, slot: int): pointer {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_metaObject ".} =
+  type Cb = proc(super: QWebEngineUrlSchemeHandlermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QWebEngineUrlSchemeHandler(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QWebEngineUrlSchemeHandler, param1: cstring): pointer =
+
+
+  fQWebEngineUrlSchemeHandler_virtualbase_metacast(self.h, param1)
+
+type QWebEngineUrlSchemeHandlermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QWebEngineUrlSchemeHandler, slot: proc(super: QWebEngineUrlSchemeHandlermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QWebEngineUrlSchemeHandlermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebEngineUrlSchemeHandler_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebEngineUrlSchemeHandler_metacast(self: ptr cQWebEngineUrlSchemeHandler, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebEngineUrlSchemeHandler_metacast ".} =
+  type Cb = proc(super: QWebEngineUrlSchemeHandlermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QWebEngineUrlSchemeHandler(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QWebEngineUrlSchemeHandler, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

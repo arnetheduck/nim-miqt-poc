@@ -171,6 +171,10 @@ struct miqt_array /* of int */  QSslSocket_implementedClasses1(struct miqt_strin
 bool QSslSocket_isClassImplemented2(int cl, struct miqt_string backendName);
 struct miqt_array /* of int */  QSslSocket_supportedFeatures1(struct miqt_string backendName);
 bool QSslSocket_isFeatureSupported2(int feat, struct miqt_string backendName);
+bool QSslSocket_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QSslSocket_virtualbase_metaObject(const void* self);
+bool QSslSocket_override_virtual_metacast(void* self, intptr_t slot);
+void* QSslSocket_virtualbase_metacast(void* self, const char* param1);
 bool QSslSocket_override_virtual_metacall(void* self, intptr_t slot);
 int QSslSocket_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QSslSocket_override_virtual_resume(void* self, intptr_t slot);

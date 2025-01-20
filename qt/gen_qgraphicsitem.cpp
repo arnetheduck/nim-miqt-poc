@@ -106,6 +106,8 @@ void miqt_exec_callback_QGraphicsObject_scaleChanged(intptr_t);
 void miqt_exec_callback_QGraphicsObject_childrenChanged(intptr_t);
 void miqt_exec_callback_QGraphicsObject_widthChanged(intptr_t);
 void miqt_exec_callback_QGraphicsObject_heightChanged(intptr_t);
+QMetaObject* miqt_exec_callback_QGraphicsObject_metaObject(const QGraphicsObject*, intptr_t);
+void* miqt_exec_callback_QGraphicsObject_metacast(QGraphicsObject*, intptr_t, const char*);
 int miqt_exec_callback_QGraphicsObject_metacall(QGraphicsObject*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QGraphicsObject_event(QGraphicsObject*, intptr_t, QEvent*);
 bool miqt_exec_callback_QGraphicsObject_eventFilter(QGraphicsObject*, intptr_t, QObject*, QEvent*);
@@ -396,6 +398,8 @@ QVariant* miqt_exec_callback_QGraphicsPixmapItem_inputMethodQuery(const QGraphic
 QVariant* miqt_exec_callback_QGraphicsPixmapItem_itemChange(QGraphicsPixmapItem*, intptr_t, int, QVariant*);
 void miqt_exec_callback_QGraphicsTextItem_linkActivated(intptr_t, struct miqt_string);
 void miqt_exec_callback_QGraphicsTextItem_linkHovered(intptr_t, struct miqt_string);
+QMetaObject* miqt_exec_callback_QGraphicsTextItem_metaObject(const QGraphicsTextItem*, intptr_t);
+void* miqt_exec_callback_QGraphicsTextItem_metacast(QGraphicsTextItem*, intptr_t, const char*);
 int miqt_exec_callback_QGraphicsTextItem_metacall(QGraphicsTextItem*, intptr_t, int, int, void**);
 QRectF* miqt_exec_callback_QGraphicsTextItem_boundingRect(const QGraphicsTextItem*, intptr_t);
 QPainterPath* miqt_exec_callback_QGraphicsTextItem_shape(const QGraphicsTextItem*, intptr_t);
@@ -2639,6 +2643,51 @@ public:
 	virtual ~MiqtVirtualQGraphicsObject() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QGraphicsObject::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QGraphicsObject_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QGraphicsObject::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QGraphicsObject::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QGraphicsObject_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QGraphicsObject::qt_metacast(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -3888,6 +3937,34 @@ struct miqt_string QGraphicsObject_trUtf83(const char* s, const char* c, int n) 
 
 void QGraphicsObject_grabGesture2(QGraphicsObject* self, int type, int flags) {
 	self->grabGesture(static_cast<Qt::GestureType>(type), static_cast<Qt::GestureFlags>(flags));
+}
+
+bool QGraphicsObject_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsObject* self_cast = dynamic_cast<MiqtVirtualQGraphicsObject*>( (QGraphicsObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QGraphicsObject_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQGraphicsObject*)(self) )->virtualbase_metaObject();
+}
+
+bool QGraphicsObject_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsObject* self_cast = dynamic_cast<MiqtVirtualQGraphicsObject*>( (QGraphicsObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QGraphicsObject_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQGraphicsObject*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QGraphicsObject_override_virtual_metacall(void* self, intptr_t slot) {
@@ -14391,6 +14468,51 @@ public:
 	virtual ~MiqtVirtualQGraphicsTextItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QGraphicsTextItem::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QGraphicsTextItem_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QGraphicsTextItem::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QGraphicsTextItem::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QGraphicsTextItem_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QGraphicsTextItem::qt_metacast(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -15700,6 +15822,34 @@ struct miqt_string QGraphicsTextItem_trUtf83(const char* s, const char* c, int n
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QGraphicsTextItem_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTextItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsTextItem*>( (QGraphicsTextItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QGraphicsTextItem_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQGraphicsTextItem*)(self) )->virtualbase_metaObject();
+}
+
+bool QGraphicsTextItem_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTextItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsTextItem*>( (QGraphicsTextItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QGraphicsTextItem_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQGraphicsTextItem*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QGraphicsTextItem_override_virtual_metacall(void* self, intptr_t slot) {

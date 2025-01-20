@@ -80,6 +80,10 @@ proc fcQAbstractVideoFilter_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQAbstractVideoFilter_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractVideoFilter_tr3".}
 proc fcQAbstractVideoFilter_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractVideoFilter_trUtf82".}
 proc fcQAbstractVideoFilter_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractVideoFilter_trUtf83".}
+proc fQAbstractVideoFilter_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractVideoFilter_virtualbase_metaObject".}
+proc fcQAbstractVideoFilter_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractVideoFilter_override_virtual_metaObject".}
+proc fQAbstractVideoFilter_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractVideoFilter_virtualbase_metacast".}
+proc fcQAbstractVideoFilter_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractVideoFilter_override_virtual_metacast".}
 proc fQAbstractVideoFilter_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractVideoFilter_virtualbase_metacall".}
 proc fcQAbstractVideoFilter_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractVideoFilter_override_virtual_metacall".}
 proc fcQAbstractVideoFilter_override_virtual_createFilterRunnable(self: pointer, slot: int) {.importc: "QAbstractVideoFilter_override_virtual_createFilterRunnable".}
@@ -204,6 +208,54 @@ proc trUtf83*(_: type QAbstractVideoFilter, s: cstring, c: cstring, n: cint): st
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QAbstractVideoFilter, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAbstractVideoFilter_virtualbase_metaObject(self.h))
+
+type QAbstractVideoFiltermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAbstractVideoFilter, slot: proc(super: QAbstractVideoFiltermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractVideoFiltermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractVideoFilter_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractVideoFilter_metaObject(self: ptr cQAbstractVideoFilter, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractVideoFilter_metaObject ".} =
+  type Cb = proc(super: QAbstractVideoFiltermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAbstractVideoFilter(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAbstractVideoFilter, param1: cstring): pointer =
+
+
+  fQAbstractVideoFilter_virtualbase_metacast(self.h, param1)
+
+type QAbstractVideoFiltermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAbstractVideoFilter, slot: proc(super: QAbstractVideoFiltermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractVideoFiltermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractVideoFilter_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractVideoFilter_metacast(self: ptr cQAbstractVideoFilter, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractVideoFilter_metacast ".} =
+  type Cb = proc(super: QAbstractVideoFiltermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAbstractVideoFilter(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAbstractVideoFilter, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

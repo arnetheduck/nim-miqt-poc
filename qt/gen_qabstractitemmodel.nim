@@ -202,6 +202,10 @@ proc fcQAbstractItemModel_layoutAboutToBeChanged1(self: pointer, parents: struct
 proc fQAbstractItemModel_connect_layoutAboutToBeChanged1(self: pointer, slot: int) {.importc: "QAbstractItemModel_connect_layoutAboutToBeChanged1".}
 proc fcQAbstractItemModel_layoutAboutToBeChanged2(self: pointer, parents: struct_miqt_array, hint: cint): void {.importc: "QAbstractItemModel_layoutAboutToBeChanged2".}
 proc fQAbstractItemModel_connect_layoutAboutToBeChanged2(self: pointer, slot: int) {.importc: "QAbstractItemModel_connect_layoutAboutToBeChanged2".}
+proc fQAbstractItemModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractItemModel_virtualbase_metaObject".}
+proc fcQAbstractItemModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractItemModel_override_virtual_metaObject".}
+proc fQAbstractItemModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractItemModel_virtualbase_metacast".}
+proc fcQAbstractItemModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractItemModel_override_virtual_metacast".}
 proc fQAbstractItemModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractItemModel_virtualbase_metacall".}
 proc fcQAbstractItemModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractItemModel_override_virtual_metacall".}
 proc fcQAbstractItemModel_override_virtual_index(self: pointer, slot: int) {.importc: "QAbstractItemModel_override_virtual_index".}
@@ -298,6 +302,10 @@ proc fcQAbstractTableModel_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQAbstractTableModel_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractTableModel_tr3".}
 proc fcQAbstractTableModel_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractTableModel_trUtf82".}
 proc fcQAbstractTableModel_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractTableModel_trUtf83".}
+proc fQAbstractTableModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractTableModel_virtualbase_metaObject".}
+proc fcQAbstractTableModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractTableModel_override_virtual_metaObject".}
+proc fQAbstractTableModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractTableModel_virtualbase_metacast".}
+proc fcQAbstractTableModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractTableModel_override_virtual_metacast".}
 proc fQAbstractTableModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractTableModel_virtualbase_metacall".}
 proc fcQAbstractTableModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractTableModel_override_virtual_metacall".}
 proc fQAbstractTableModel_virtualbase_index(self: pointer, row: cint, column: cint, parent: pointer): pointer{.importc: "QAbstractTableModel_virtualbase_index".}
@@ -392,6 +400,10 @@ proc fcQAbstractListModel_tr2(s: cstring, c: cstring): struct_miqt_string {.impo
 proc fcQAbstractListModel_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractListModel_tr3".}
 proc fcQAbstractListModel_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractListModel_trUtf82".}
 proc fcQAbstractListModel_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractListModel_trUtf83".}
+proc fQAbstractListModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractListModel_virtualbase_metaObject".}
+proc fcQAbstractListModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractListModel_override_virtual_metaObject".}
+proc fQAbstractListModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractListModel_virtualbase_metacast".}
+proc fcQAbstractListModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractListModel_override_virtual_metacast".}
 proc fQAbstractListModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractListModel_virtualbase_metacall".}
 proc fcQAbstractListModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractListModel_override_virtual_metacall".}
 proc fQAbstractListModel_virtualbase_index(self: pointer, row: cint, column: cint, parent: pointer): pointer{.importc: "QAbstractListModel_virtualbase_index".}
@@ -1168,6 +1180,54 @@ proc onlayoutAboutToBeChanged2*(self: QAbstractItemModel, slot: proc(parents: se
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractItemModel_connect_layoutAboutToBeChanged2(self.h, cast[int](addr tmp[]))
+proc callVirtualBase_metaObject(self: QAbstractItemModel, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAbstractItemModel_virtualbase_metaObject(self.h))
+
+type QAbstractItemModelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAbstractItemModel, slot: proc(super: QAbstractItemModelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractItemModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractItemModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractItemModel_metaObject(self: ptr cQAbstractItemModel, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemModel_metaObject ".} =
+  type Cb = proc(super: QAbstractItemModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAbstractItemModel(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAbstractItemModel, param1: cstring): pointer =
+
+
+  fQAbstractItemModel_virtualbase_metacast(self.h, param1)
+
+type QAbstractItemModelmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAbstractItemModel, slot: proc(super: QAbstractItemModelmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractItemModelmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractItemModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractItemModel_metacast(self: ptr cQAbstractItemModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractItemModel_metacast ".} =
+  type Cb = proc(super: QAbstractItemModelmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAbstractItemModel(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAbstractItemModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -2415,6 +2475,54 @@ proc trUtf83*(_: type QAbstractTableModel, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QAbstractTableModel, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAbstractTableModel_virtualbase_metaObject(self.h))
+
+type QAbstractTableModelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAbstractTableModel, slot: proc(super: QAbstractTableModelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractTableModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractTableModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractTableModel_metaObject(self: ptr cQAbstractTableModel, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractTableModel_metaObject ".} =
+  type Cb = proc(super: QAbstractTableModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAbstractTableModel(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAbstractTableModel, param1: cstring): pointer =
+
+
+  fQAbstractTableModel_virtualbase_metacast(self.h, param1)
+
+type QAbstractTableModelmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAbstractTableModel, slot: proc(super: QAbstractTableModelmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractTableModelmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractTableModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractTableModel_metacast(self: ptr cQAbstractTableModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractTableModel_metacast ".} =
+  type Cb = proc(super: QAbstractTableModelmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAbstractTableModel(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAbstractTableModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -3626,6 +3734,54 @@ proc trUtf83*(_: type QAbstractListModel, s: cstring, c: cstring, n: cint): stri
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QAbstractListModel, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAbstractListModel_virtualbase_metaObject(self.h))
+
+type QAbstractListModelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAbstractListModel, slot: proc(super: QAbstractListModelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractListModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractListModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractListModel_metaObject(self: ptr cQAbstractListModel, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractListModel_metaObject ".} =
+  type Cb = proc(super: QAbstractListModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAbstractListModel(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAbstractListModel, param1: cstring): pointer =
+
+
+  fQAbstractListModel_virtualbase_metacast(self.h, param1)
+
+type QAbstractListModelmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAbstractListModel, slot: proc(super: QAbstractListModelmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractListModelmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractListModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractListModel_metacast(self: ptr cQAbstractListModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractListModel_metacast ".} =
+  type Cb = proc(super: QAbstractListModelmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAbstractListModel(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAbstractListModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QKeyEventTransition_metaObject(const QKeyEventTransition*, intptr_t);
+void* miqt_exec_callback_QKeyEventTransition_metacast(QKeyEventTransition*, intptr_t, const char*);
 int miqt_exec_callback_QKeyEventTransition_metacall(QKeyEventTransition*, intptr_t, int, int, void**);
 void miqt_exec_callback_QKeyEventTransition_onTransition(QKeyEventTransition*, intptr_t, QEvent*);
 bool miqt_exec_callback_QKeyEventTransition_eventTest(QKeyEventTransition*, intptr_t, QEvent*);
@@ -41,6 +43,51 @@ public:
 	MiqtVirtualQKeyEventTransition(QObject* object, QEvent::Type type, int key, QState* sourceState): QKeyEventTransition(object, type, key, sourceState) {};
 
 	virtual ~MiqtVirtualQKeyEventTransition() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QKeyEventTransition::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QKeyEventTransition_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QKeyEventTransition::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QKeyEventTransition::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QKeyEventTransition_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QKeyEventTransition::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -401,6 +448,34 @@ struct miqt_string QKeyEventTransition_trUtf83(const char* s, const char* c, int
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QKeyEventTransition_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQKeyEventTransition* self_cast = dynamic_cast<MiqtVirtualQKeyEventTransition*>( (QKeyEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QKeyEventTransition_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQKeyEventTransition*)(self) )->virtualbase_metaObject();
+}
+
+bool QKeyEventTransition_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQKeyEventTransition* self_cast = dynamic_cast<MiqtVirtualQKeyEventTransition*>( (QKeyEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QKeyEventTransition_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQKeyEventTransition*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QKeyEventTransition_override_virtual_metacall(void* self, intptr_t slot) {

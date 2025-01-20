@@ -609,6 +609,10 @@ proc fcQsciScintilla_setMarkerBackgroundColor2(self: pointer, col: pointer, mark
 proc fcQsciScintilla_setMarkerForegroundColor2(self: pointer, col: pointer, markerNumber: cint): void {.importc: "QsciScintilla_setMarkerForegroundColor2".}
 proc fcQsciScintilla_setWrapVisualFlags2(self: pointer, endFlag: cint, startFlag: cint): void {.importc: "QsciScintilla_setWrapVisualFlags2".}
 proc fcQsciScintilla_setWrapVisualFlags3(self: pointer, endFlag: cint, startFlag: cint, indent: cint): void {.importc: "QsciScintilla_setWrapVisualFlags3".}
+proc fQsciScintilla_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciScintilla_virtualbase_metaObject".}
+proc fcQsciScintilla_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_metaObject".}
+proc fQsciScintilla_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciScintilla_virtualbase_metacast".}
+proc fcQsciScintilla_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_metacast".}
 proc fQsciScintilla_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciScintilla_virtualbase_metacall".}
 proc fcQsciScintilla_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciScintilla_override_virtual_metacall".}
 proc fQsciScintilla_virtualbase_apiContext(self: pointer, pos: cint, context_start: ptr cint, last_word_start: ptr cint): struct_miqt_array{.importc: "QsciScintilla_virtualbase_apiContext".}
@@ -2320,6 +2324,54 @@ proc setWrapVisualFlags3*(self: QsciScintilla, endFlag: QsciScintillaWrapVisualF
 
   fcQsciScintilla_setWrapVisualFlags3(self.h, cint(endFlag), cint(startFlag), indent)
 
+proc callVirtualBase_metaObject(self: QsciScintilla, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciScintilla_virtualbase_metaObject(self.h))
+
+type QsciScintillametaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciScintilla, slot: proc(super: QsciScintillametaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciScintillametaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciScintilla_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciScintilla_metaObject(self: ptr cQsciScintilla, slot: int): pointer {.exportc: "miqt_exec_callback_QsciScintilla_metaObject ".} =
+  type Cb = proc(super: QsciScintillametaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciScintilla(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciScintilla, param1: cstring): pointer =
+
+
+  fQsciScintilla_virtualbase_metacast(self.h, param1)
+
+type QsciScintillametacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciScintilla, slot: proc(super: QsciScintillametacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciScintillametacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciScintilla_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciScintilla_metacast(self: ptr cQsciScintilla, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciScintilla_metacast ".} =
+  type Cb = proc(super: QsciScintillametacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciScintilla(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciScintilla, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

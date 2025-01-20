@@ -20,6 +20,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QQmlContext_metaObject(const QQmlContext*, intptr_t);
+void* miqt_exec_callback_QQmlContext_metacast(QQmlContext*, intptr_t, const char*);
 int miqt_exec_callback_QQmlContext_metacall(QQmlContext*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QQmlContext_event(QQmlContext*, intptr_t, QEvent*);
 bool miqt_exec_callback_QQmlContext_eventFilter(QQmlContext*, intptr_t, QObject*, QEvent*);
@@ -41,6 +43,51 @@ public:
 	MiqtVirtualQQmlContext(QQmlContext* parent, QObject* objParent): QQmlContext(parent, objParent) {};
 
 	virtual ~MiqtVirtualQQmlContext() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QQmlContext::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QQmlContext_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QQmlContext::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QQmlContext::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QQmlContext_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QQmlContext::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -405,6 +452,34 @@ struct miqt_string QQmlContext_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QQmlContext_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQQmlContext* self_cast = dynamic_cast<MiqtVirtualQQmlContext*>( (QQmlContext*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QQmlContext_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQQmlContext*)(self) )->virtualbase_metaObject();
+}
+
+bool QQmlContext_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQQmlContext* self_cast = dynamic_cast<MiqtVirtualQQmlContext*>( (QQmlContext*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QQmlContext_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQQmlContext*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QQmlContext_override_virtual_metacall(void* self, intptr_t slot) {

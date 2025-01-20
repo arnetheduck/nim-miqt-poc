@@ -191,6 +191,62 @@ func QQuickTransform_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QQuickTransform) callVirtualBase_MetaObject() *qt.QMetaObject {
+
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QQuickTransform_virtualbase_metaObject(unsafe.Pointer(this.h))))
+
+}
+func (this *QQuickTransform) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+	ok := C.QQuickTransform_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QQuickTransform_metaObject
+func miqt_exec_callback_QQuickTransform_metaObject(self *C.QQuickTransform, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QMetaObject) *qt.QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QQuickTransform{h: self}).callVirtualBase_MetaObject)
+
+	return (*C.QMetaObject)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QQuickTransform) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QQuickTransform_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QQuickTransform) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QQuickTransform_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QQuickTransform_metacast
+func miqt_exec_callback_QQuickTransform_metacast(self *C.QQuickTransform, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QQuickTransform{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QQuickTransform) callVirtualBase_Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QQuickTransform_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
@@ -1581,6 +1637,62 @@ func (this *QQuickItem) GrabToImage22(callback *QJSValue, targetSize *qt.QSize) 
 
 func (this *QQuickItem) NextItemInFocusChain1(forward bool) *QQuickItem {
 	return newQQuickItem(C.QQuickItem_nextItemInFocusChain1(this.h, (C.bool)(forward)))
+}
+
+func (this *QQuickItem) callVirtualBase_MetaObject() *qt.QMetaObject {
+
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QQuickItem_virtualbase_metaObject(unsafe.Pointer(this.h))))
+
+}
+func (this *QQuickItem) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+	ok := C.QQuickItem_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QQuickItem_metaObject
+func miqt_exec_callback_QQuickItem_metaObject(self *C.QQuickItem, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QMetaObject) *qt.QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QQuickItem{h: self}).callVirtualBase_MetaObject)
+
+	return (*C.QMetaObject)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QQuickItem) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QQuickItem_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QQuickItem) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QQuickItem_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QQuickItem_metacast
+func miqt_exec_callback_QQuickItem_metacast(self *C.QQuickItem, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QQuickItem{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
 }
 
 func (this *QQuickItem) callVirtualBase_Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {

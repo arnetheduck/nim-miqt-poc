@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QsciLexerCPP_metaObject(const QsciLexerCPP*, intptr_t);
+void* miqt_exec_callback_QsciLexerCPP_metacast(QsciLexerCPP*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexerCPP_metacall(QsciLexerCPP*, intptr_t, int, int, void**);
 void miqt_exec_callback_QsciLexerCPP_setFoldAtElse(QsciLexerCPP*, intptr_t, bool);
 void miqt_exec_callback_QsciLexerCPP_setFoldComments(QsciLexerCPP*, intptr_t, bool);
@@ -77,6 +79,51 @@ public:
 	MiqtVirtualQsciLexerCPP(QObject* parent, bool caseInsensitiveKeywords): QsciLexerCPP(parent, caseInsensitiveKeywords) {};
 
 	virtual ~MiqtVirtualQsciLexerCPP() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexerCPP::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexerCPP_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexerCPP::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexerCPP::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexerCPP_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexerCPP::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1457,6 +1504,34 @@ const char* QsciLexerCPP_blockStart1(const QsciLexerCPP* self, int* style) {
 
 const char* QsciLexerCPP_blockStartKeyword1(const QsciLexerCPP* self, int* style) {
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
+}
+
+bool QsciLexerCPP_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexerCPP_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexerCPP_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexerCPP_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexerCPP_override_virtual_metacall(void* self, intptr_t slot) {

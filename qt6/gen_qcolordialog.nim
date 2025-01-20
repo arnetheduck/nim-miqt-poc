@@ -113,6 +113,10 @@ proc fcQColorDialog_getColor1(initial: pointer): pointer {.importc: "QColorDialo
 proc fcQColorDialog_getColor2(initial: pointer, parent: pointer): pointer {.importc: "QColorDialog_getColor2".}
 proc fcQColorDialog_getColor3(initial: pointer, parent: pointer, title: struct_miqt_string): pointer {.importc: "QColorDialog_getColor3".}
 proc fcQColorDialog_getColor4(initial: pointer, parent: pointer, title: struct_miqt_string, options: cint): pointer {.importc: "QColorDialog_getColor4".}
+proc fQColorDialog_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QColorDialog_virtualbase_metaObject".}
+proc fcQColorDialog_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QColorDialog_override_virtual_metaObject".}
+proc fQColorDialog_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QColorDialog_virtualbase_metacast".}
+proc fcQColorDialog_override_virtual_metacast(self: pointer, slot: int) {.importc: "QColorDialog_override_virtual_metacast".}
 proc fQColorDialog_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QColorDialog_virtualbase_metacall".}
 proc fcQColorDialog_override_virtual_metacall(self: pointer, slot: int) {.importc: "QColorDialog_override_virtual_metacall".}
 proc fQColorDialog_virtualbase_setVisible(self: pointer, visible: bool): void{.importc: "QColorDialog_virtualbase_setVisible".}
@@ -382,6 +386,54 @@ proc getColor4*(_: type QColorDialog, initial: gen_qcolor.QColor, parent: gen_qw
 
   gen_qcolor.QColor(h: fcQColorDialog_getColor4(initial.h, parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), cint(options)))
 
+proc callVirtualBase_metaObject(self: QColorDialog, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQColorDialog_virtualbase_metaObject(self.h))
+
+type QColorDialogmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QColorDialog, slot: proc(super: QColorDialogmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QColorDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQColorDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QColorDialog_metaObject(self: ptr cQColorDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QColorDialog_metaObject ".} =
+  type Cb = proc(super: QColorDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QColorDialog(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QColorDialog, param1: cstring): pointer =
+
+
+  fQColorDialog_virtualbase_metacast(self.h, param1)
+
+type QColorDialogmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QColorDialog, slot: proc(super: QColorDialogmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QColorDialogmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQColorDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QColorDialog_metacast(self: ptr cQColorDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QColorDialog_metacast ".} =
+  type Cb = proc(super: QColorDialogmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QColorDialog(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QColorDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

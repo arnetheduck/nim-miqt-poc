@@ -744,6 +744,10 @@ proc fcQStyle_sliderPositionFromValue5(min: cint, max: cint, val: cint, space: c
 proc fcQStyle_sliderValueFromPosition5(min: cint, max: cint, pos: cint, space: cint, upsideDown: bool): cint {.importc: "QStyle_sliderValueFromPosition5".}
 proc fcQStyle_combinedLayoutSpacing4(self: pointer, controls1: cint, controls2: cint, orientation: cint, option: pointer): cint {.importc: "QStyle_combinedLayoutSpacing4".}
 proc fcQStyle_combinedLayoutSpacing5(self: pointer, controls1: cint, controls2: cint, orientation: cint, option: pointer, widget: pointer): cint {.importc: "QStyle_combinedLayoutSpacing5".}
+proc fQStyle_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QStyle_virtualbase_metaObject".}
+proc fcQStyle_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QStyle_override_virtual_metaObject".}
+proc fQStyle_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QStyle_virtualbase_metacast".}
+proc fcQStyle_override_virtual_metacast(self: pointer, slot: int) {.importc: "QStyle_override_virtual_metacast".}
 proc fQStyle_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QStyle_virtualbase_metacall".}
 proc fcQStyle_override_virtual_metacall(self: pointer, slot: int) {.importc: "QStyle_override_virtual_metacall".}
 proc fQStyle_virtualbase_polish(self: pointer, widget: pointer): void{.importc: "QStyle_virtualbase_polish".}
@@ -996,6 +1000,54 @@ proc combinedLayoutSpacing5*(self: QStyle, controls1: gen_qsizepolicy.QSizePolic
 
   fcQStyle_combinedLayoutSpacing5(self.h, cint(controls1), cint(controls2), cint(orientation), option.h, widget.h)
 
+proc callVirtualBase_metaObject(self: QStyle, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQStyle_virtualbase_metaObject(self.h))
+
+type QStylemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QStyle, slot: proc(super: QStylemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QStylemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStyle_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStyle_metaObject(self: ptr cQStyle, slot: int): pointer {.exportc: "miqt_exec_callback_QStyle_metaObject ".} =
+  type Cb = proc(super: QStylemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QStyle(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QStyle, param1: cstring): pointer =
+
+
+  fQStyle_virtualbase_metacast(self.h, param1)
+
+type QStylemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QStyle, slot: proc(super: QStylemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QStylemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStyle_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStyle_metacast(self: ptr cQStyle, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStyle_metacast ".} =
+  type Cb = proc(super: QStylemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QStyle(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QStyle, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

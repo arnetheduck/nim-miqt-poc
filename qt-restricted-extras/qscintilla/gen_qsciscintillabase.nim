@@ -1358,6 +1358,10 @@ proc fcQsciScintillaBase_trUtf82(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQsciScintillaBase_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciScintillaBase_trUtf83".}
 proc fcQsciScintillaBase_SendScintilla22(self: pointer, msg: cuint, wParam: culong): clong {.importc: "QsciScintillaBase_SendScintilla22".}
 proc fcQsciScintillaBase_SendScintilla32(self: pointer, msg: cuint, wParam: culong, lParam: clong): clong {.importc: "QsciScintillaBase_SendScintilla32".}
+proc fQsciScintillaBase_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciScintillaBase_virtualbase_metaObject".}
+proc fcQsciScintillaBase_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciScintillaBase_override_virtual_metaObject".}
+proc fQsciScintillaBase_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciScintillaBase_virtualbase_metacast".}
+proc fcQsciScintillaBase_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciScintillaBase_override_virtual_metacast".}
 proc fQsciScintillaBase_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciScintillaBase_virtualbase_metacall".}
 proc fcQsciScintillaBase_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciScintillaBase_override_virtual_metacall".}
 proc fQsciScintillaBase_virtualbase_canInsertFromMimeData(self: pointer, source: pointer): bool{.importc: "QsciScintillaBase_virtualbase_canInsertFromMimeData".}
@@ -2330,6 +2334,54 @@ proc SendScintilla32*(self: QsciScintillaBase, msg: cuint, wParam: culong, lPara
 
   fcQsciScintillaBase_SendScintilla32(self.h, msg, wParam, lParam)
 
+proc callVirtualBase_metaObject(self: QsciScintillaBase, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciScintillaBase_virtualbase_metaObject(self.h))
+
+type QsciScintillaBasemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciScintillaBase, slot: proc(super: QsciScintillaBasemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciScintillaBasemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciScintillaBase_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciScintillaBase_metaObject(self: ptr cQsciScintillaBase, slot: int): pointer {.exportc: "miqt_exec_callback_QsciScintillaBase_metaObject ".} =
+  type Cb = proc(super: QsciScintillaBasemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciScintillaBase(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciScintillaBase, param1: cstring): pointer =
+
+
+  fQsciScintillaBase_virtualbase_metacast(self.h, param1)
+
+type QsciScintillaBasemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciScintillaBase, slot: proc(super: QsciScintillaBasemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciScintillaBasemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciScintillaBase_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciScintillaBase_metacast(self: ptr cQsciScintillaBase, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciScintillaBase_metacast ".} =
+  type Cb = proc(super: QsciScintillaBasemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciScintillaBase(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciScintillaBase, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

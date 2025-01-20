@@ -34,6 +34,8 @@ void miqt_exec_callback_QAbstractItemModel_layoutChanged1(intptr_t, struct miqt_
 void miqt_exec_callback_QAbstractItemModel_layoutChanged2(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ , int);
 void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged1(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ );
 void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ , int);
+QMetaObject* miqt_exec_callback_QAbstractItemModel_metaObject(const QAbstractItemModel*, intptr_t);
+void* miqt_exec_callback_QAbstractItemModel_metacast(QAbstractItemModel*, intptr_t, const char*);
 int miqt_exec_callback_QAbstractItemModel_metacall(QAbstractItemModel*, intptr_t, int, int, void**);
 QModelIndex* miqt_exec_callback_QAbstractItemModel_index(const QAbstractItemModel*, intptr_t, int, int, QModelIndex*);
 QModelIndex* miqt_exec_callback_QAbstractItemModel_parent(const QAbstractItemModel*, intptr_t, QModelIndex*);
@@ -76,6 +78,8 @@ void miqt_exec_callback_QAbstractItemModel_childEvent(QAbstractItemModel*, intpt
 void miqt_exec_callback_QAbstractItemModel_customEvent(QAbstractItemModel*, intptr_t, QEvent*);
 void miqt_exec_callback_QAbstractItemModel_connectNotify(QAbstractItemModel*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QAbstractItemModel_disconnectNotify(QAbstractItemModel*, intptr_t, QMetaMethod*);
+QMetaObject* miqt_exec_callback_QAbstractTableModel_metaObject(const QAbstractTableModel*, intptr_t);
+void* miqt_exec_callback_QAbstractTableModel_metacast(QAbstractTableModel*, intptr_t, const char*);
 int miqt_exec_callback_QAbstractTableModel_metacall(QAbstractTableModel*, intptr_t, int, int, void**);
 QModelIndex* miqt_exec_callback_QAbstractTableModel_index(const QAbstractTableModel*, intptr_t, int, int, QModelIndex*);
 QModelIndex* miqt_exec_callback_QAbstractTableModel_sibling(const QAbstractTableModel*, intptr_t, int, int, QModelIndex*);
@@ -116,6 +120,8 @@ void miqt_exec_callback_QAbstractTableModel_childEvent(QAbstractTableModel*, int
 void miqt_exec_callback_QAbstractTableModel_customEvent(QAbstractTableModel*, intptr_t, QEvent*);
 void miqt_exec_callback_QAbstractTableModel_connectNotify(QAbstractTableModel*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QAbstractTableModel_disconnectNotify(QAbstractTableModel*, intptr_t, QMetaMethod*);
+QMetaObject* miqt_exec_callback_QAbstractListModel_metaObject(const QAbstractListModel*, intptr_t);
+void* miqt_exec_callback_QAbstractListModel_metacast(QAbstractListModel*, intptr_t, const char*);
 int miqt_exec_callback_QAbstractListModel_metacall(QAbstractListModel*, intptr_t, int, int, void**);
 QModelIndex* miqt_exec_callback_QAbstractListModel_index(const QAbstractListModel*, intptr_t, int, int, QModelIndex*);
 QModelIndex* miqt_exec_callback_QAbstractListModel_sibling(const QAbstractListModel*, intptr_t, int, int, QModelIndex*);
@@ -352,6 +358,51 @@ public:
 	MiqtVirtualQAbstractItemModel(QObject* parent): QAbstractItemModel(parent) {};
 
 	virtual ~MiqtVirtualQAbstractItemModel() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAbstractItemModel::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAbstractItemModel_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAbstractItemModel::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAbstractItemModel::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAbstractItemModel_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAbstractItemModel::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -2070,6 +2121,34 @@ void QAbstractItemModel_connect_layoutAboutToBeChanged2(QAbstractItemModel* self
 	});
 }
 
+bool QAbstractItemModel_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel* self_cast = dynamic_cast<MiqtVirtualQAbstractItemModel*>( (QAbstractItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAbstractItemModel_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_metaObject();
+}
+
+bool QAbstractItemModel_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel* self_cast = dynamic_cast<MiqtVirtualQAbstractItemModel*>( (QAbstractItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAbstractItemModel_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_metacast(param1);
+}
+
 bool QAbstractItemModel_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualQAbstractItemModel* self_cast = dynamic_cast<MiqtVirtualQAbstractItemModel*>( (QAbstractItemModel*)(self) );
 	if (self_cast == nullptr) {
@@ -2650,6 +2729,51 @@ public:
 	MiqtVirtualQAbstractTableModel(QObject* parent): QAbstractTableModel(parent) {};
 
 	virtual ~MiqtVirtualQAbstractTableModel() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAbstractTableModel::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAbstractTableModel_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAbstractTableModel::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAbstractTableModel::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAbstractTableModel_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAbstractTableModel::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -3894,6 +4018,34 @@ struct miqt_string QAbstractTableModel_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
+bool QAbstractTableModel_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAbstractTableModel_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_metaObject();
+}
+
+bool QAbstractTableModel_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAbstractTableModel_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_metacast(param1);
+}
+
 bool QAbstractTableModel_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
 	if (self_cast == nullptr) {
@@ -4454,6 +4606,51 @@ public:
 	MiqtVirtualQAbstractListModel(QObject* parent): QAbstractListModel(parent) {};
 
 	virtual ~MiqtVirtualQAbstractListModel() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAbstractListModel::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAbstractListModel_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAbstractListModel::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAbstractListModel::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAbstractListModel_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAbstractListModel::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -5678,6 +5875,34 @@ struct miqt_string QAbstractListModel_trUtf83(const char* s, const char* c, int 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAbstractListModel_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAbstractListModel_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_metaObject();
+}
+
+bool QAbstractListModel_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAbstractListModel_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAbstractListModel_override_virtual_metacall(void* self, intptr_t slot) {

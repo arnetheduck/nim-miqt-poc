@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QsciLexerCSS_metaObject(const QsciLexerCSS*, intptr_t);
+void* miqt_exec_callback_QsciLexerCSS_metacast(QsciLexerCSS*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexerCSS_metacall(QsciLexerCSS*, intptr_t, int, int, void**);
 void miqt_exec_callback_QsciLexerCSS_setFoldComments(QsciLexerCSS*, intptr_t, bool);
 void miqt_exec_callback_QsciLexerCSS_setFoldCompact(QsciLexerCSS*, intptr_t, bool);
@@ -73,6 +75,51 @@ public:
 	MiqtVirtualQsciLexerCSS(QObject* parent): QsciLexerCSS(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerCSS() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexerCSS::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexerCSS_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexerCSS::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexerCSS::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexerCSS_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexerCSS::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1289,6 +1336,34 @@ const char* QsciLexerCSS_blockEnd1(const QsciLexerCSS* self, int* style) {
 
 const char* QsciLexerCSS_blockStart1(const QsciLexerCSS* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
+}
+
+bool QsciLexerCSS_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCSS* self_cast = dynamic_cast<MiqtVirtualQsciLexerCSS*>( (QsciLexerCSS*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexerCSS_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexerCSS*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexerCSS_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCSS* self_cast = dynamic_cast<MiqtVirtualQsciLexerCSS*>( (QsciLexerCSS*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexerCSS_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexerCSS*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexerCSS_override_virtual_metacall(void* self, intptr_t slot) {

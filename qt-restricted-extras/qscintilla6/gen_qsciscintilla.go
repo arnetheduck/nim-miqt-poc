@@ -1805,6 +1805,62 @@ func (this *QsciScintilla) SetWrapVisualFlags3(endFlag QsciScintilla__WrapVisual
 	C.QsciScintilla_setWrapVisualFlags3(this.h, (C.int)(endFlag), (C.int)(startFlag), (C.int)(indent))
 }
 
+func (this *QsciScintilla) callVirtualBase_MetaObject() *qt6.QMetaObject {
+
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciScintilla_virtualbase_metaObject(unsafe.Pointer(this.h))))
+
+}
+func (this *QsciScintilla) OnmetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
+	ok := C.QsciScintilla_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintilla_metaObject
+func miqt_exec_callback_QsciScintilla_metaObject(self *C.QsciScintilla, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QMetaObject) *qt6.QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_MetaObject)
+
+	return (*C.QMetaObject)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciScintilla) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QsciScintilla_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QsciScintilla) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QsciScintilla_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintilla_metacast
+func miqt_exec_callback_QsciScintilla_metacast(self *C.QsciScintilla, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QsciScintilla) callVirtualBase_Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QsciScintilla_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))

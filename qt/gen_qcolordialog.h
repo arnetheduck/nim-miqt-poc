@@ -129,6 +129,10 @@ QColor* QColorDialog_getColor4(QColor* initial, QWidget* parent, struct miqt_str
 unsigned int QColorDialog_getRgba1(unsigned int rgba);
 unsigned int QColorDialog_getRgba2(unsigned int rgba, bool* ok);
 unsigned int QColorDialog_getRgba3(unsigned int rgba, bool* ok, QWidget* parent);
+bool QColorDialog_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QColorDialog_virtualbase_metaObject(const void* self);
+bool QColorDialog_override_virtual_metacast(void* self, intptr_t slot);
+void* QColorDialog_virtualbase_metacast(void* self, const char* param1);
 bool QColorDialog_override_virtual_metacall(void* self, intptr_t slot);
 int QColorDialog_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QColorDialog_override_virtual_setVisible(void* self, intptr_t slot);

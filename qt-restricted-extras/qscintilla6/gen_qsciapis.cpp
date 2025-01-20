@@ -18,6 +18,8 @@ extern "C" {
 void miqt_exec_callback_QsciAPIs_apiPreparationCancelled(intptr_t);
 void miqt_exec_callback_QsciAPIs_apiPreparationStarted(intptr_t);
 void miqt_exec_callback_QsciAPIs_apiPreparationFinished(intptr_t);
+QMetaObject* miqt_exec_callback_QsciAPIs_metaObject(const QsciAPIs*, intptr_t);
+void* miqt_exec_callback_QsciAPIs_metacast(QsciAPIs*, intptr_t, const char*);
 int miqt_exec_callback_QsciAPIs_metacall(QsciAPIs*, intptr_t, int, int, void**);
 void miqt_exec_callback_QsciAPIs_updateAutoCompletionList(QsciAPIs*, intptr_t, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
 void miqt_exec_callback_QsciAPIs_autoCompletionSelected(QsciAPIs*, intptr_t, struct miqt_string);
@@ -39,6 +41,51 @@ public:
 	MiqtVirtualQsciAPIs(QsciLexer* lexer): QsciAPIs(lexer) {};
 
 	virtual ~MiqtVirtualQsciAPIs() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciAPIs::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciAPIs_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciAPIs::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciAPIs::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciAPIs_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciAPIs::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -656,6 +703,34 @@ bool QsciAPIs_loadPrepared1(QsciAPIs* self, struct miqt_string filename) {
 bool QsciAPIs_savePrepared1(const QsciAPIs* self, struct miqt_string filename) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	return self->savePrepared(filename_QString);
+}
+
+bool QsciAPIs_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAPIs*>( (QsciAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciAPIs_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciAPIs*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciAPIs_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAPIs*>( (QsciAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciAPIs_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciAPIs_override_virtual_metacall(void* self, intptr_t slot) {

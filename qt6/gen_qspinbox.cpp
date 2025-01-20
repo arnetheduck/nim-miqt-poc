@@ -47,6 +47,8 @@ extern "C" {
 
 void miqt_exec_callback_QSpinBox_valueChanged(intptr_t, int);
 void miqt_exec_callback_QSpinBox_textChanged(intptr_t, struct miqt_string);
+QMetaObject* miqt_exec_callback_QSpinBox_metaObject(const QSpinBox*, intptr_t);
+void* miqt_exec_callback_QSpinBox_metacast(QSpinBox*, intptr_t, const char*);
 int miqt_exec_callback_QSpinBox_metacall(QSpinBox*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QSpinBox_event(QSpinBox*, intptr_t, QEvent*);
 int miqt_exec_callback_QSpinBox_validate(const QSpinBox*, intptr_t, struct miqt_string, int*);
@@ -105,6 +107,8 @@ void miqt_exec_callback_QSpinBox_connectNotify(QSpinBox*, intptr_t, QMetaMethod*
 void miqt_exec_callback_QSpinBox_disconnectNotify(QSpinBox*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QDoubleSpinBox_valueChanged(intptr_t, double);
 void miqt_exec_callback_QDoubleSpinBox_textChanged(intptr_t, struct miqt_string);
+QMetaObject* miqt_exec_callback_QDoubleSpinBox_metaObject(const QDoubleSpinBox*, intptr_t);
+void* miqt_exec_callback_QDoubleSpinBox_metacast(QDoubleSpinBox*, intptr_t, const char*);
 int miqt_exec_callback_QDoubleSpinBox_metacall(QDoubleSpinBox*, intptr_t, int, int, void**);
 int miqt_exec_callback_QDoubleSpinBox_validate(const QDoubleSpinBox*, intptr_t, struct miqt_string, int*);
 double miqt_exec_callback_QDoubleSpinBox_valueFromText(const QDoubleSpinBox*, intptr_t, struct miqt_string);
@@ -172,6 +176,51 @@ public:
 	MiqtVirtualQSpinBox(): QSpinBox() {};
 
 	virtual ~MiqtVirtualQSpinBox() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QSpinBox::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QSpinBox_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QSpinBox::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QSpinBox::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QSpinBox_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QSpinBox::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1729,6 +1778,34 @@ struct miqt_string QSpinBox_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
+bool QSpinBox_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQSpinBox* self_cast = dynamic_cast<MiqtVirtualQSpinBox*>( (QSpinBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QSpinBox_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQSpinBox*)(self) )->virtualbase_metaObject();
+}
+
+bool QSpinBox_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQSpinBox* self_cast = dynamic_cast<MiqtVirtualQSpinBox*>( (QSpinBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QSpinBox_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQSpinBox*)(self) )->virtualbase_metacast(param1);
+}
+
 bool QSpinBox_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualQSpinBox* self_cast = dynamic_cast<MiqtVirtualQSpinBox*>( (QSpinBox*)(self) );
 	if (self_cast == nullptr) {
@@ -2525,6 +2602,51 @@ public:
 	MiqtVirtualQDoubleSpinBox(): QDoubleSpinBox() {};
 
 	virtual ~MiqtVirtualQDoubleSpinBox() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QDoubleSpinBox::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QDoubleSpinBox_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QDoubleSpinBox::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QDoubleSpinBox::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QDoubleSpinBox_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QDoubleSpinBox::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -4107,6 +4229,34 @@ struct miqt_string QDoubleSpinBox_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QDoubleSpinBox_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQDoubleSpinBox* self_cast = dynamic_cast<MiqtVirtualQDoubleSpinBox*>( (QDoubleSpinBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QDoubleSpinBox_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->virtualbase_metaObject();
+}
+
+bool QDoubleSpinBox_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQDoubleSpinBox* self_cast = dynamic_cast<MiqtVirtualQDoubleSpinBox*>( (QDoubleSpinBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QDoubleSpinBox_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQDoubleSpinBox*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QDoubleSpinBox_override_virtual_metacall(void* self, intptr_t slot) {

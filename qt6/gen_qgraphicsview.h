@@ -235,6 +235,10 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items5(const QGraphicsV
 struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items24(const QGraphicsView* self, QPainterPath* path, int mode);
 void QGraphicsView_invalidateScene1(QGraphicsView* self, QRectF* rect);
 void QGraphicsView_invalidateScene2(QGraphicsView* self, QRectF* rect, int layers);
+bool QGraphicsView_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QGraphicsView_virtualbase_metaObject(const void* self);
+bool QGraphicsView_override_virtual_metacast(void* self, intptr_t slot);
+void* QGraphicsView_virtualbase_metacast(void* self, const char* param1);
 bool QGraphicsView_override_virtual_metacall(void* self, intptr_t slot);
 int QGraphicsView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsView_override_virtual_sizeHint(void* self, intptr_t slot);

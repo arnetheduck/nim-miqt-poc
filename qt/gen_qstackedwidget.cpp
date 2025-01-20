@@ -44,6 +44,8 @@ extern "C" {
 
 void miqt_exec_callback_QStackedWidget_currentChanged(intptr_t, int);
 void miqt_exec_callback_QStackedWidget_widgetRemoved(intptr_t, int);
+QMetaObject* miqt_exec_callback_QStackedWidget_metaObject(const QStackedWidget*, intptr_t);
+void* miqt_exec_callback_QStackedWidget_metacast(QStackedWidget*, intptr_t, const char*);
 int miqt_exec_callback_QStackedWidget_metacall(QStackedWidget*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QStackedWidget_event(QStackedWidget*, intptr_t, QEvent*);
 QSize* miqt_exec_callback_QStackedWidget_sizeHint(const QStackedWidget*, intptr_t);
@@ -103,6 +105,51 @@ public:
 	MiqtVirtualQStackedWidget(): QStackedWidget() {};
 
 	virtual ~MiqtVirtualQStackedWidget() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QStackedWidget::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QStackedWidget_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QStackedWidget::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QStackedWidget::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QStackedWidget_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QStackedWidget::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1405,6 +1452,34 @@ struct miqt_string QStackedWidget_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QStackedWidget_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QStackedWidget_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQStackedWidget*)(self) )->virtualbase_metaObject();
+}
+
+bool QStackedWidget_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QStackedWidget_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QStackedWidget_override_virtual_metacall(void* self, intptr_t slot) {

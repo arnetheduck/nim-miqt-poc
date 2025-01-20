@@ -58,6 +58,8 @@ void miqt_exec_callback_QFileDialog_urlsSelected(intptr_t, struct miqt_array /* 
 void miqt_exec_callback_QFileDialog_currentUrlChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QFileDialog_directoryUrlEntered(intptr_t, QUrl*);
 void miqt_exec_callback_QFileDialog_filterSelected(intptr_t, struct miqt_string);
+QMetaObject* miqt_exec_callback_QFileDialog_metaObject(const QFileDialog*, intptr_t);
+void* miqt_exec_callback_QFileDialog_metacast(QFileDialog*, intptr_t, const char*);
 int miqt_exec_callback_QFileDialog_metacall(QFileDialog*, intptr_t, int, int, void**);
 void miqt_exec_callback_QFileDialog_setVisible(QFileDialog*, intptr_t, bool);
 void miqt_exec_callback_QFileDialog_done(QFileDialog*, intptr_t, int);
@@ -126,6 +128,51 @@ public:
 	MiqtVirtualQFileDialog(QWidget* parent, const QString& caption, const QString& directory, const QString& filter): QFileDialog(parent, caption, directory, filter) {};
 
 	virtual ~MiqtVirtualQFileDialog() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QFileDialog::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QFileDialog_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QFileDialog::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QFileDialog::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QFileDialog_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QFileDialog::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -2470,6 +2517,34 @@ struct miqt_array /* of QUrl* */  QFileDialog_getOpenFileUrls4(QWidget* parent, 
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
+}
+
+bool QFileDialog_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QFileDialog_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_metaObject();
+}
+
+bool QFileDialog_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QFileDialog_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQFileDialog*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QFileDialog_override_virtual_metacall(void* self, intptr_t slot) {

@@ -96,6 +96,10 @@ proc fcQSGEngine_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQSGEngine_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSGEngine_trUtf83".}
 proc fcQSGEngine_createTextureFromImage2(self: pointer, image: pointer, options: cint): pointer {.importc: "QSGEngine_createTextureFromImage2".}
 proc fcQSGEngine_createTextureFromId3(self: pointer, id: cuint, size: pointer, options: cint): pointer {.importc: "QSGEngine_createTextureFromId3".}
+proc fQSGEngine_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSGEngine_virtualbase_metaObject".}
+proc fcQSGEngine_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSGEngine_override_virtual_metaObject".}
+proc fQSGEngine_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSGEngine_virtualbase_metacast".}
+proc fcQSGEngine_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSGEngine_override_virtual_metacast".}
 proc fQSGEngine_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSGEngine_virtualbase_metacall".}
 proc fcQSGEngine_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSGEngine_override_virtual_metacall".}
 proc fQSGEngine_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSGEngine_virtualbase_event".}
@@ -218,6 +222,54 @@ proc createTextureFromId3*(self: QSGEngine, id: cuint, size: gen_qsize.QSize, op
 
   gen_qsgtexture.QSGTexture(h: fcQSGEngine_createTextureFromId3(self.h, id, size.h, cint(options)))
 
+proc callVirtualBase_metaObject(self: QSGEngine, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQSGEngine_virtualbase_metaObject(self.h))
+
+type QSGEnginemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QSGEngine, slot: proc(super: QSGEnginemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QSGEnginemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSGEngine_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSGEngine_metaObject(self: ptr cQSGEngine, slot: int): pointer {.exportc: "miqt_exec_callback_QSGEngine_metaObject ".} =
+  type Cb = proc(super: QSGEnginemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QSGEngine(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QSGEngine, param1: cstring): pointer =
+
+
+  fQSGEngine_virtualbase_metacast(self.h, param1)
+
+type QSGEnginemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QSGEngine, slot: proc(super: QSGEnginemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QSGEnginemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSGEngine_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSGEngine_metacast(self: ptr cQSGEngine, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSGEngine_metacast ".} =
+  type Cb = proc(super: QSGEnginemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QSGEngine(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QSGEngine, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

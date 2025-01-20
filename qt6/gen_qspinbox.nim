@@ -105,6 +105,10 @@ proc fcQSpinBox_textChanged(self: pointer, param1: struct_miqt_string): void {.i
 proc fQSpinBox_connect_textChanged(self: pointer, slot: int) {.importc: "QSpinBox_connect_textChanged".}
 proc fcQSpinBox_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSpinBox_tr2".}
 proc fcQSpinBox_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSpinBox_tr3".}
+proc fQSpinBox_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSpinBox_virtualbase_metaObject".}
+proc fcQSpinBox_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSpinBox_override_virtual_metaObject".}
+proc fQSpinBox_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSpinBox_virtualbase_metacast".}
+proc fcQSpinBox_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSpinBox_override_virtual_metacast".}
 proc fQSpinBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSpinBox_virtualbase_metacall".}
 proc fcQSpinBox_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSpinBox_override_virtual_metacall".}
 proc fQSpinBox_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSpinBox_virtualbase_event".}
@@ -253,6 +257,10 @@ proc fcQDoubleSpinBox_textChanged(self: pointer, param1: struct_miqt_string): vo
 proc fQDoubleSpinBox_connect_textChanged(self: pointer, slot: int) {.importc: "QDoubleSpinBox_connect_textChanged".}
 proc fcQDoubleSpinBox_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QDoubleSpinBox_tr2".}
 proc fcQDoubleSpinBox_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDoubleSpinBox_tr3".}
+proc fQDoubleSpinBox_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDoubleSpinBox_virtualbase_metaObject".}
+proc fcQDoubleSpinBox_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDoubleSpinBox_override_virtual_metaObject".}
+proc fQDoubleSpinBox_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDoubleSpinBox_virtualbase_metacast".}
+proc fcQDoubleSpinBox_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDoubleSpinBox_override_virtual_metacast".}
 proc fQDoubleSpinBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDoubleSpinBox_virtualbase_metacall".}
 proc fcQDoubleSpinBox_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDoubleSpinBox_override_virtual_metacall".}
 proc fQDoubleSpinBox_virtualbase_validate(self: pointer, input: struct_miqt_string, pos: ptr cint): cint{.importc: "QDoubleSpinBox_virtualbase_validate".}
@@ -530,6 +538,54 @@ proc tr3*(_: type QSpinBox, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QSpinBox, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQSpinBox_virtualbase_metaObject(self.h))
+
+type QSpinBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QSpinBox, slot: proc(super: QSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSpinBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSpinBox_metaObject(self: ptr cQSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QSpinBox_metaObject ".} =
+  type Cb = proc(super: QSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QSpinBox(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QSpinBox, param1: cstring): pointer =
+
+
+  fQSpinBox_virtualbase_metacast(self.h, param1)
+
+type QSpinBoxmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QSpinBox, slot: proc(super: QSpinBoxmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QSpinBoxmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSpinBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSpinBox_metacast(self: ptr cQSpinBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSpinBox_metacast ".} =
+  type Cb = proc(super: QSpinBoxmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QSpinBox(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QSpinBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -2052,6 +2108,54 @@ proc tr3*(_: type QDoubleSpinBox, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QDoubleSpinBox, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDoubleSpinBox_virtualbase_metaObject(self.h))
+
+type QDoubleSpinBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDoubleSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDoubleSpinBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDoubleSpinBox_metaObject(self: ptr cQDoubleSpinBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_metaObject ".} =
+  type Cb = proc(super: QDoubleSpinBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDoubleSpinBox(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDoubleSpinBox, param1: cstring): pointer =
+
+
+  fQDoubleSpinBox_virtualbase_metacast(self.h, param1)
+
+type QDoubleSpinBoxmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDoubleSpinBox, slot: proc(super: QDoubleSpinBoxmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDoubleSpinBoxmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDoubleSpinBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDoubleSpinBox_metacast(self: ptr cQDoubleSpinBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDoubleSpinBox_metacast ".} =
+  type Cb = proc(super: QDoubleSpinBoxmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDoubleSpinBox(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDoubleSpinBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

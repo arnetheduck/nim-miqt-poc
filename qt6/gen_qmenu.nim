@@ -138,6 +138,10 @@ proc fcQMenu_popup2(self: pointer, pos: pointer, at: pointer): void {.importc: "
 proc fcQMenu_exec22(self: pointer, pos: pointer, at: pointer): pointer {.importc: "QMenu_exec22".}
 proc fcQMenu_exec3(actions: struct_miqt_array, pos: pointer, at: pointer): pointer {.importc: "QMenu_exec3".}
 proc fcQMenu_exec4(actions: struct_miqt_array, pos: pointer, at: pointer, parent: pointer): pointer {.importc: "QMenu_exec4".}
+proc fQMenu_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QMenu_virtualbase_metaObject".}
+proc fcQMenu_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QMenu_override_virtual_metaObject".}
+proc fQMenu_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QMenu_virtualbase_metacast".}
+proc fcQMenu_override_virtual_metacast(self: pointer, slot: int) {.importc: "QMenu_override_virtual_metacast".}
 proc fQMenu_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QMenu_virtualbase_metacall".}
 proc fcQMenu_override_virtual_metacall(self: pointer, slot: int) {.importc: "QMenu_override_virtual_metacall".}
 proc fQMenu_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QMenu_virtualbase_sizeHint".}
@@ -546,6 +550,54 @@ proc exec4*(_: type QMenu, actions: seq[gen_qaction.QAction], pos: gen_qpoint.QP
 
   gen_qaction.QAction(h: fcQMenu_exec4(struct_miqt_array(len: csize_t(len(actions)), data: if len(actions) == 0: nil else: addr(actions_CArray[0])), pos.h, at.h, parent.h))
 
+proc callVirtualBase_metaObject(self: QMenu, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQMenu_virtualbase_metaObject(self.h))
+
+type QMenumetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QMenu, slot: proc(super: QMenumetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QMenumetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMenu_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMenu_metaObject(self: ptr cQMenu, slot: int): pointer {.exportc: "miqt_exec_callback_QMenu_metaObject ".} =
+  type Cb = proc(super: QMenumetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QMenu(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QMenu, param1: cstring): pointer =
+
+
+  fQMenu_virtualbase_metacast(self.h, param1)
+
+type QMenumetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QMenu, slot: proc(super: QMenumetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QMenumetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMenu_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMenu_metacast(self: ptr cQMenu, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMenu_metacast ".} =
+  type Cb = proc(super: QMenumetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QMenu(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QMenu, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

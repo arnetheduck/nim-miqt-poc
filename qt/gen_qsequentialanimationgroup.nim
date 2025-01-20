@@ -73,6 +73,10 @@ proc fcQSequentialAnimationGroup_tr2(s: cstring, c: cstring): struct_miqt_string
 proc fcQSequentialAnimationGroup_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSequentialAnimationGroup_tr3".}
 proc fcQSequentialAnimationGroup_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSequentialAnimationGroup_trUtf82".}
 proc fcQSequentialAnimationGroup_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSequentialAnimationGroup_trUtf83".}
+proc fQSequentialAnimationGroup_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSequentialAnimationGroup_virtualbase_metaObject".}
+proc fcQSequentialAnimationGroup_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSequentialAnimationGroup_override_virtual_metaObject".}
+proc fQSequentialAnimationGroup_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSequentialAnimationGroup_virtualbase_metacast".}
+proc fcQSequentialAnimationGroup_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSequentialAnimationGroup_override_virtual_metacast".}
 proc fQSequentialAnimationGroup_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSequentialAnimationGroup_virtualbase_metacall".}
 proc fcQSequentialAnimationGroup_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSequentialAnimationGroup_override_virtual_metacall".}
 proc fQSequentialAnimationGroup_virtualbase_duration(self: pointer, ): cint{.importc: "QSequentialAnimationGroup_virtualbase_duration".}
@@ -197,6 +201,54 @@ proc trUtf83*(_: type QSequentialAnimationGroup, s: cstring, c: cstring, n: cint
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QSequentialAnimationGroup, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQSequentialAnimationGroup_virtualbase_metaObject(self.h))
+
+type QSequentialAnimationGroupmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QSequentialAnimationGroup, slot: proc(super: QSequentialAnimationGroupmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QSequentialAnimationGroupmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSequentialAnimationGroup_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSequentialAnimationGroup_metaObject(self: ptr cQSequentialAnimationGroup, slot: int): pointer {.exportc: "miqt_exec_callback_QSequentialAnimationGroup_metaObject ".} =
+  type Cb = proc(super: QSequentialAnimationGroupmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QSequentialAnimationGroup(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QSequentialAnimationGroup, param1: cstring): pointer =
+
+
+  fQSequentialAnimationGroup_virtualbase_metacast(self.h, param1)
+
+type QSequentialAnimationGroupmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QSequentialAnimationGroup, slot: proc(super: QSequentialAnimationGroupmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QSequentialAnimationGroupmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSequentialAnimationGroup_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSequentialAnimationGroup_metacast(self: ptr cQSequentialAnimationGroup, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSequentialAnimationGroup_metacast ".} =
+  type Cb = proc(super: QSequentialAnimationGroupmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QSequentialAnimationGroup(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QSequentialAnimationGroup, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

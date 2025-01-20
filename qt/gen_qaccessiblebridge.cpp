@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QAccessibleBridgePlugin_metaObject(const QAccessibleBridgePlugin*, intptr_t);
+void* miqt_exec_callback_QAccessibleBridgePlugin_metacast(QAccessibleBridgePlugin*, intptr_t, const char*);
 int miqt_exec_callback_QAccessibleBridgePlugin_metacall(QAccessibleBridgePlugin*, intptr_t, int, int, void**);
 QAccessibleBridge* miqt_exec_callback_QAccessibleBridgePlugin_create(QAccessibleBridgePlugin*, intptr_t, struct miqt_string);
 bool miqt_exec_callback_QAccessibleBridgePlugin_event(QAccessibleBridgePlugin*, intptr_t, QEvent*);
@@ -54,6 +56,51 @@ public:
 	MiqtVirtualQAccessibleBridgePlugin(QObject* parent): QAccessibleBridgePlugin(parent) {};
 
 	virtual ~MiqtVirtualQAccessibleBridgePlugin() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAccessibleBridgePlugin::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAccessibleBridgePlugin_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAccessibleBridgePlugin::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAccessibleBridgePlugin::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAccessibleBridgePlugin_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAccessibleBridgePlugin::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -370,6 +417,34 @@ struct miqt_string QAccessibleBridgePlugin_trUtf83(const char* s, const char* c,
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAccessibleBridgePlugin_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAccessibleBridgePlugin_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAccessibleBridgePlugin*)(self) )->virtualbase_metaObject();
+}
+
+bool QAccessibleBridgePlugin_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAccessibleBridgePlugin* self_cast = dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( (QAccessibleBridgePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAccessibleBridgePlugin_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAccessibleBridgePlugin_override_virtual_metacall(void* self, intptr_t slot) {

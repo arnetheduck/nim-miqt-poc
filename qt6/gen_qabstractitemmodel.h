@@ -199,6 +199,10 @@ void QAbstractItemModel_layoutAboutToBeChanged1(QAbstractItemModel* self, struct
 void QAbstractItemModel_connect_layoutAboutToBeChanged1(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_layoutAboutToBeChanged2(QAbstractItemModel* self, struct miqt_array /* of QPersistentModelIndex* */  parents, int hint);
 void QAbstractItemModel_connect_layoutAboutToBeChanged2(QAbstractItemModel* self, intptr_t slot);
+bool QAbstractItemModel_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QAbstractItemModel_virtualbase_metaObject(const void* self);
+bool QAbstractItemModel_override_virtual_metacast(void* self, intptr_t slot);
+void* QAbstractItemModel_virtualbase_metacast(void* self, const char* param1);
 bool QAbstractItemModel_override_virtual_metacall(void* self, intptr_t slot);
 int QAbstractItemModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAbstractItemModel_override_virtual_index(void* self, intptr_t slot);
@@ -305,6 +309,10 @@ bool QAbstractTableModel_dropMimeData(QAbstractTableModel* self, QMimeData* data
 int QAbstractTableModel_flags(const QAbstractTableModel* self, QModelIndex* index);
 struct miqt_string QAbstractTableModel_tr2(const char* s, const char* c);
 struct miqt_string QAbstractTableModel_tr3(const char* s, const char* c, int n);
+bool QAbstractTableModel_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QAbstractTableModel_virtualbase_metaObject(const void* self);
+bool QAbstractTableModel_override_virtual_metacast(void* self, intptr_t slot);
+void* QAbstractTableModel_virtualbase_metacast(void* self, const char* param1);
 bool QAbstractTableModel_override_virtual_metacall(void* self, intptr_t slot);
 int QAbstractTableModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAbstractTableModel_override_virtual_index(void* self, intptr_t slot);
@@ -407,6 +415,10 @@ bool QAbstractListModel_dropMimeData(QAbstractListModel* self, QMimeData* data, 
 int QAbstractListModel_flags(const QAbstractListModel* self, QModelIndex* index);
 struct miqt_string QAbstractListModel_tr2(const char* s, const char* c);
 struct miqt_string QAbstractListModel_tr3(const char* s, const char* c, int n);
+bool QAbstractListModel_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QAbstractListModel_virtualbase_metaObject(const void* self);
+bool QAbstractListModel_override_virtual_metacast(void* self, intptr_t slot);
+void* QAbstractListModel_virtualbase_metacast(void* self, const char* param1);
 bool QAbstractListModel_override_virtual_metacall(void* self, intptr_t slot);
 int QAbstractListModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAbstractListModel_override_virtual_index(void* self, intptr_t slot);

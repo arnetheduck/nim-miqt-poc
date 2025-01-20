@@ -108,6 +108,10 @@ proc fcQTextTable_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QT
 proc fcQTextTable_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTextTable_tr3".}
 proc fcQTextTable_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QTextTable_trUtf82".}
 proc fcQTextTable_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTextTable_trUtf83".}
+proc fQTextTable_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTextTable_virtualbase_metaObject".}
+proc fcQTextTable_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTextTable_override_virtual_metaObject".}
+proc fQTextTable_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTextTable_virtualbase_metacast".}
+proc fcQTextTable_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTextTable_override_virtual_metacast".}
 proc fQTextTable_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTextTable_virtualbase_metacall".}
 proc fcQTextTable_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTextTable_override_virtual_metacall".}
 proc fQTextTable_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QTextTable_virtualbase_event".}
@@ -342,6 +346,54 @@ proc trUtf83*(_: type QTextTable, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QTextTable, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQTextTable_virtualbase_metaObject(self.h))
+
+type QTextTablemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QTextTable, slot: proc(super: QTextTablemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QTextTablemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextTable_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextTable_metaObject(self: ptr cQTextTable, slot: int): pointer {.exportc: "miqt_exec_callback_QTextTable_metaObject ".} =
+  type Cb = proc(super: QTextTablemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QTextTable(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QTextTable, param1: cstring): pointer =
+
+
+  fQTextTable_virtualbase_metacast(self.h, param1)
+
+type QTextTablemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QTextTable, slot: proc(super: QTextTablemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QTextTablemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextTable_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextTable_metacast(self: ptr cQTextTable, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTextTable_metacast ".} =
+  type Cb = proc(super: QTextTablemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QTextTable(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QTextTable, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

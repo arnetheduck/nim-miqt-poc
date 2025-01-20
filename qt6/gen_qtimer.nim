@@ -72,6 +72,10 @@ proc fcQTimer_start2(self: pointer, ): void {.importc: "QTimer_start2".}
 proc fcQTimer_stop(self: pointer, ): void {.importc: "QTimer_stop".}
 proc fcQTimer_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QTimer_tr2".}
 proc fcQTimer_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTimer_tr3".}
+proc fQTimer_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTimer_virtualbase_metaObject".}
+proc fcQTimer_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTimer_override_virtual_metaObject".}
+proc fQTimer_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTimer_virtualbase_metacast".}
+proc fcQTimer_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTimer_override_virtual_metacast".}
 proc fQTimer_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTimer_virtualbase_metacall".}
 proc fcQTimer_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTimer_override_virtual_metacall".}
 proc fQTimer_virtualbase_timerEvent(self: pointer, param1: pointer): void{.importc: "QTimer_virtualbase_timerEvent".}
@@ -181,6 +185,54 @@ proc tr3*(_: type QTimer, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QTimer, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQTimer_virtualbase_metaObject(self.h))
+
+type QTimermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QTimer, slot: proc(super: QTimermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QTimermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTimer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTimer_metaObject(self: ptr cQTimer, slot: int): pointer {.exportc: "miqt_exec_callback_QTimer_metaObject ".} =
+  type Cb = proc(super: QTimermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QTimer(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QTimer, param1: cstring): pointer =
+
+
+  fQTimer_virtualbase_metacast(self.h, param1)
+
+type QTimermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QTimer, slot: proc(super: QTimermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QTimermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTimer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTimer_metacast(self: ptr cQTimer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTimer_metacast ".} =
+  type Cb = proc(super: QTimermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QTimer(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QTimer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

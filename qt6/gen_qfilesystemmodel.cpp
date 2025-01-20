@@ -32,6 +32,8 @@ extern "C" {
 void miqt_exec_callback_QFileSystemModel_rootPathChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QFileSystemModel_fileRenamed(intptr_t, struct miqt_string, struct miqt_string, struct miqt_string);
 void miqt_exec_callback_QFileSystemModel_directoryLoaded(intptr_t, struct miqt_string);
+QMetaObject* miqt_exec_callback_QFileSystemModel_metaObject(const QFileSystemModel*, intptr_t);
+void* miqt_exec_callback_QFileSystemModel_metacast(QFileSystemModel*, intptr_t, const char*);
 int miqt_exec_callback_QFileSystemModel_metacall(QFileSystemModel*, intptr_t, int, int, void**);
 QModelIndex* miqt_exec_callback_QFileSystemModel_index(const QFileSystemModel*, intptr_t, int, int, QModelIndex*);
 QModelIndex* miqt_exec_callback_QFileSystemModel_parent(const QFileSystemModel*, intptr_t, QModelIndex*);
@@ -88,6 +90,51 @@ public:
 	MiqtVirtualQFileSystemModel(QObject* parent): QFileSystemModel(parent) {};
 
 	virtual ~MiqtVirtualQFileSystemModel() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QFileSystemModel::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QFileSystemModel_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QFileSystemModel::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QFileSystemModel::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QFileSystemModel_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QFileSystemModel::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1819,6 +1866,34 @@ QVariant* QFileSystemModel_myComputer1(const QFileSystemModel* self, int role) {
 
 void QFileSystemModel_setOption2(QFileSystemModel* self, int option, bool on) {
 	self->setOption(static_cast<QFileSystemModel::Option>(option), on);
+}
+
+bool QFileSystemModel_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QFileSystemModel_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_metaObject();
+}
+
+bool QFileSystemModel_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QFileSystemModel_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QFileSystemModel_override_virtual_metacall(void* self, intptr_t slot) {

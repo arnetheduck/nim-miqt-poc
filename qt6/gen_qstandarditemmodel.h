@@ -241,6 +241,10 @@ bool QStandardItemModel_insertColumn2(QStandardItemModel* self, int column, QMod
 QStandardItem* QStandardItemModel_takeItem2(QStandardItemModel* self, int row, int column);
 struct miqt_array /* of QStandardItem* */  QStandardItemModel_findItems2(const QStandardItemModel* self, struct miqt_string text, int flags);
 struct miqt_array /* of QStandardItem* */  QStandardItemModel_findItems3(const QStandardItemModel* self, struct miqt_string text, int flags, int column);
+bool QStandardItemModel_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QStandardItemModel_virtualbase_metaObject(const void* self);
+bool QStandardItemModel_override_virtual_metacast(void* self, intptr_t slot);
+void* QStandardItemModel_virtualbase_metacast(void* self, const char* param1);
 bool QStandardItemModel_override_virtual_metacall(void* self, intptr_t slot);
 int QStandardItemModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QStandardItemModel_override_virtual_roleNames(void* self, intptr_t slot);

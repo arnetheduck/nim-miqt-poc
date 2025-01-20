@@ -183,6 +183,10 @@ void QListView_currentChanged(QListView* self, QModelIndex* current, QModelIndex
 QSize* QListView_viewportSizeHint(const QListView* self);
 struct miqt_string QListView_tr2(const char* s, const char* c);
 struct miqt_string QListView_tr3(const char* s, const char* c, int n);
+bool QListView_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QListView_virtualbase_metaObject(const void* self);
+bool QListView_override_virtual_metacast(void* self, intptr_t slot);
+void* QListView_virtualbase_metacast(void* self, const char* param1);
 bool QListView_override_virtual_metacall(void* self, intptr_t slot);
 int QListView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QListView_override_virtual_visualRect(void* self, intptr_t slot);

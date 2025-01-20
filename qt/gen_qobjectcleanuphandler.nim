@@ -64,6 +64,10 @@ proc fcQObjectCleanupHandler_tr2(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQObjectCleanupHandler_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QObjectCleanupHandler_tr3".}
 proc fcQObjectCleanupHandler_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QObjectCleanupHandler_trUtf82".}
 proc fcQObjectCleanupHandler_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QObjectCleanupHandler_trUtf83".}
+proc fQObjectCleanupHandler_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QObjectCleanupHandler_virtualbase_metaObject".}
+proc fcQObjectCleanupHandler_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QObjectCleanupHandler_override_virtual_metaObject".}
+proc fQObjectCleanupHandler_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QObjectCleanupHandler_virtualbase_metacast".}
+proc fcQObjectCleanupHandler_override_virtual_metacast(self: pointer, slot: int) {.importc: "QObjectCleanupHandler_override_virtual_metacast".}
 proc fQObjectCleanupHandler_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QObjectCleanupHandler_virtualbase_metacall".}
 proc fcQObjectCleanupHandler_override_virtual_metacall(self: pointer, slot: int) {.importc: "QObjectCleanupHandler_override_virtual_metacall".}
 proc fQObjectCleanupHandler_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QObjectCleanupHandler_virtualbase_event".}
@@ -159,6 +163,54 @@ proc trUtf83*(_: type QObjectCleanupHandler, s: cstring, c: cstring, n: cint): s
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QObjectCleanupHandler, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQObjectCleanupHandler_virtualbase_metaObject(self.h))
+
+type QObjectCleanupHandlermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QObjectCleanupHandlermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQObjectCleanupHandler_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QObjectCleanupHandler_metaObject(self: ptr cQObjectCleanupHandler, slot: int): pointer {.exportc: "miqt_exec_callback_QObjectCleanupHandler_metaObject ".} =
+  type Cb = proc(super: QObjectCleanupHandlermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QObjectCleanupHandler(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QObjectCleanupHandler, param1: cstring): pointer =
+
+
+  fQObjectCleanupHandler_virtualbase_metacast(self.h, param1)
+
+type QObjectCleanupHandlermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QObjectCleanupHandler, slot: proc(super: QObjectCleanupHandlermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QObjectCleanupHandlermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQObjectCleanupHandler_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QObjectCleanupHandler_metacast(self: ptr cQObjectCleanupHandler, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QObjectCleanupHandler_metacast ".} =
+  type Cb = proc(super: QObjectCleanupHandlermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QObjectCleanupHandler(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QObjectCleanupHandler, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

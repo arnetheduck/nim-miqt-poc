@@ -93,6 +93,10 @@ proc fcQsciLexerDiff_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQsciLexerDiff_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerDiff_tr3".}
 proc fcQsciLexerDiff_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerDiff_trUtf82".}
 proc fcQsciLexerDiff_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerDiff_trUtf83".}
+proc fQsciLexerDiff_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerDiff_virtualbase_metaObject".}
+proc fcQsciLexerDiff_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerDiff_override_virtual_metaObject".}
+proc fQsciLexerDiff_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerDiff_virtualbase_metacast".}
+proc fcQsciLexerDiff_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerDiff_override_virtual_metacast".}
 proc fQsciLexerDiff_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerDiff_virtualbase_metacall".}
 proc fcQsciLexerDiff_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerDiff_override_virtual_metacall".}
 proc fcQsciLexerDiff_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerDiff_override_virtual_language".}
@@ -264,6 +268,54 @@ proc trUtf83*(_: type QsciLexerDiff, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QsciLexerDiff, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerDiff_virtualbase_metaObject(self.h))
+
+type QsciLexerDiffmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerDiff, slot: proc(super: QsciLexerDiffmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerDiffmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerDiff_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerDiff_metaObject(self: ptr cQsciLexerDiff, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerDiff_metaObject ".} =
+  type Cb = proc(super: QsciLexerDiffmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerDiff(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerDiff, param1: cstring): pointer =
+
+
+  fQsciLexerDiff_virtualbase_metacast(self.h, param1)
+
+type QsciLexerDiffmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerDiff, slot: proc(super: QsciLexerDiffmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerDiffmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerDiff_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerDiff_metacast(self: ptr cQsciLexerDiff, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerDiff_metacast ".} =
+  type Cb = proc(super: QsciLexerDiffmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerDiff(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerDiff, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

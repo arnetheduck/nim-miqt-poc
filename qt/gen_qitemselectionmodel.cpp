@@ -26,6 +26,8 @@ void miqt_exec_callback_QItemSelectionModel_currentChanged(intptr_t, QModelIndex
 void miqt_exec_callback_QItemSelectionModel_currentRowChanged(intptr_t, QModelIndex*, QModelIndex*);
 void miqt_exec_callback_QItemSelectionModel_currentColumnChanged(intptr_t, QModelIndex*, QModelIndex*);
 void miqt_exec_callback_QItemSelectionModel_modelChanged(intptr_t, QAbstractItemModel*);
+QMetaObject* miqt_exec_callback_QItemSelectionModel_metaObject(const QItemSelectionModel*, intptr_t);
+void* miqt_exec_callback_QItemSelectionModel_metacast(QItemSelectionModel*, intptr_t, const char*);
 int miqt_exec_callback_QItemSelectionModel_metacall(QItemSelectionModel*, intptr_t, int, int, void**);
 void miqt_exec_callback_QItemSelectionModel_setCurrentIndex(QItemSelectionModel*, intptr_t, QModelIndex*, int);
 void miqt_exec_callback_QItemSelectionModel_select(QItemSelectionModel*, intptr_t, QModelIndex*, int);
@@ -173,6 +175,51 @@ public:
 	MiqtVirtualQItemSelectionModel(QAbstractItemModel* model): QItemSelectionModel(model) {};
 
 	virtual ~MiqtVirtualQItemSelectionModel() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QItemSelectionModel::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QItemSelectionModel_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QItemSelectionModel::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QItemSelectionModel::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QItemSelectionModel_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QItemSelectionModel::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -846,6 +893,34 @@ struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedColumns1(co
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
+}
+
+bool QItemSelectionModel_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QItemSelectionModel_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_metaObject();
+}
+
+bool QItemSelectionModel_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QItemSelectionModel_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QItemSelectionModel_override_virtual_metacall(void* self, intptr_t slot) {

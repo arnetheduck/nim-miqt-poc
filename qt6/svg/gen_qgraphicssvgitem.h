@@ -92,6 +92,10 @@ void QGraphicsSvgItem_paint(QGraphicsSvgItem* self, QPainter* painter, QStyleOpt
 int QGraphicsSvgItem_type(const QGraphicsSvgItem* self);
 struct miqt_string QGraphicsSvgItem_tr2(const char* s, const char* c);
 struct miqt_string QGraphicsSvgItem_tr3(const char* s, const char* c, int n);
+bool QGraphicsSvgItem_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QGraphicsSvgItem_virtualbase_metaObject(const void* self);
+bool QGraphicsSvgItem_override_virtual_metacast(void* self, intptr_t slot);
+void* QGraphicsSvgItem_virtualbase_metacast(void* self, const char* param1);
 bool QGraphicsSvgItem_override_virtual_metacall(void* self, intptr_t slot);
 int QGraphicsSvgItem_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QGraphicsSvgItem_override_virtual_boundingRect(void* self, intptr_t slot);

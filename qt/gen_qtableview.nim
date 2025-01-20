@@ -144,6 +144,10 @@ proc fcQTableView_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QT
 proc fcQTableView_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTableView_tr3".}
 proc fcQTableView_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QTableView_trUtf82".}
 proc fcQTableView_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTableView_trUtf83".}
+proc fQTableView_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTableView_virtualbase_metaObject".}
+proc fcQTableView_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTableView_override_virtual_metaObject".}
+proc fQTableView_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTableView_virtualbase_metacast".}
+proc fcQTableView_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTableView_override_virtual_metacast".}
 proc fQTableView_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTableView_virtualbase_metacall".}
 proc fcQTableView_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTableView_override_virtual_metacall".}
 proc fQTableView_virtualbase_setModel(self: pointer, model: pointer): void{.importc: "QTableView_virtualbase_setModel".}
@@ -586,6 +590,54 @@ proc trUtf83*(_: type QTableView, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QTableView, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQTableView_virtualbase_metaObject(self.h))
+
+type QTableViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QTableView, slot: proc(super: QTableViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QTableViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTableView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTableView_metaObject(self: ptr cQTableView, slot: int): pointer {.exportc: "miqt_exec_callback_QTableView_metaObject ".} =
+  type Cb = proc(super: QTableViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QTableView(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QTableView, param1: cstring): pointer =
+
+
+  fQTableView_virtualbase_metacast(self.h, param1)
+
+type QTableViewmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QTableView, slot: proc(super: QTableViewmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QTableViewmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTableView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTableView_metacast(self: ptr cQTableView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTableView_metacast ".} =
+  type Cb = proc(super: QTableViewmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QTableView(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QTableView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

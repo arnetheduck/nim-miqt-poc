@@ -131,6 +131,10 @@ proc fcQLayout_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.import
 proc fcQLayout_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QLayout_trUtf82".}
 proc fcQLayout_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QLayout_trUtf83".}
 proc fcQLayout_replaceWidget3(self: pointer, fromVal: pointer, to: pointer, options: cint): pointer {.importc: "QLayout_replaceWidget3".}
+proc fQLayout_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QLayout_virtualbase_metaObject".}
+proc fcQLayout_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QLayout_override_virtual_metaObject".}
+proc fQLayout_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QLayout_virtualbase_metacast".}
+proc fcQLayout_override_virtual_metacast(self: pointer, slot: int) {.importc: "QLayout_override_virtual_metacast".}
 proc fQLayout_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QLayout_virtualbase_metacall".}
 proc fcQLayout_override_virtual_metacall(self: pointer, slot: int) {.importc: "QLayout_override_virtual_metacall".}
 proc fQLayout_virtualbase_invalidate(self: pointer, ): void{.importc: "QLayout_virtualbase_invalidate".}
@@ -428,6 +432,54 @@ proc replaceWidget3*(self: QLayout, fromVal: gen_qwidget.QWidget, to: gen_qwidge
 
   gen_qlayoutitem.QLayoutItem(h: fcQLayout_replaceWidget3(self.h, fromVal.h, to.h, cint(options)))
 
+proc callVirtualBase_metaObject(self: QLayout, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQLayout_virtualbase_metaObject(self.h))
+
+type QLayoutmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QLayout, slot: proc(super: QLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLayout_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLayout_metaObject(self: ptr cQLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QLayout_metaObject ".} =
+  type Cb = proc(super: QLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QLayout(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QLayout, param1: cstring): pointer =
+
+
+  fQLayout_virtualbase_metacast(self.h, param1)
+
+type QLayoutmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QLayout, slot: proc(super: QLayoutmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QLayoutmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQLayout_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QLayout_metacast(self: ptr cQLayout, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QLayout_metacast ".} =
+  type Cb = proc(super: QLayoutmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QLayout(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

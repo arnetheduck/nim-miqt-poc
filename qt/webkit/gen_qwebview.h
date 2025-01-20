@@ -190,6 +190,10 @@ void QWebView_setContent3(QWebView* self, struct miqt_string data, struct miqt_s
 void QWebView_triggerPageAction2(QWebView* self, int action, bool checked);
 void QWebView_setRenderHint2(QWebView* self, int hint, bool enabled);
 bool QWebView_findText2(QWebView* self, struct miqt_string subString, int options);
+bool QWebView_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QWebView_virtualbase_metaObject(const void* self);
+bool QWebView_override_virtual_metacast(void* self, intptr_t slot);
+void* QWebView_virtualbase_metacast(void* self, const char* param1);
 bool QWebView_override_virtual_metacall(void* self, intptr_t slot);
 int QWebView_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QWebView_override_virtual_inputMethodQuery(void* self, intptr_t slot);

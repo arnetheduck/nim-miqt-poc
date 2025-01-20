@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QFile_metaObject(const QFile*, intptr_t);
+void* miqt_exec_callback_QFile_metacast(QFile*, intptr_t, const char*);
 int miqt_exec_callback_QFile_metacall(QFile*, intptr_t, int, int, void**);
 struct miqt_string miqt_exec_callback_QFile_fileName(const QFile*, intptr_t);
 bool miqt_exec_callback_QFile_open(QFile*, intptr_t, int);
@@ -59,6 +61,51 @@ public:
 	MiqtVirtualQFile(const QString& name, QObject* parent): QFile(name, parent) {};
 
 	virtual ~MiqtVirtualQFile() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QFile::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QFile_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QFile::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QFile::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QFile_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QFile::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1034,6 +1081,34 @@ struct miqt_string QFile_trUtf83(const char* s, const char* c, int n) {
 
 bool QFile_open33(QFile* self, int fd, int ioFlags, int handleFlags) {
 	return self->open(static_cast<int>(fd), static_cast<QIODevice::OpenMode>(ioFlags), static_cast<QFileDevice::FileHandleFlags>(handleFlags));
+}
+
+bool QFile_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QFile_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQFile*)(self) )->virtualbase_metaObject();
+}
+
+bool QFile_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQFile* self_cast = dynamic_cast<MiqtVirtualQFile*>( (QFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QFile_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQFile*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QFile_override_virtual_metacall(void* self, intptr_t slot) {

@@ -19,6 +19,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAudioSink_stateChanged(intptr_t, int);
+QMetaObject* miqt_exec_callback_QAudioSink_metaObject(const QAudioSink*, intptr_t);
+void* miqt_exec_callback_QAudioSink_metacast(QAudioSink*, intptr_t, const char*);
 int miqt_exec_callback_QAudioSink_metacall(QAudioSink*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QAudioSink_event(QAudioSink*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAudioSink_eventFilter(QAudioSink*, intptr_t, QObject*, QEvent*);
@@ -42,6 +44,51 @@ public:
 	MiqtVirtualQAudioSink(const QAudioDevice& audioDeviceInfo, const QAudioFormat& format, QObject* parent): QAudioSink(audioDeviceInfo, format, parent) {};
 
 	virtual ~MiqtVirtualQAudioSink() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAudioSink::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAudioSink_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAudioSink::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAudioSink::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAudioSink_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAudioSink::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -400,6 +447,34 @@ struct miqt_string QAudioSink_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAudioSink_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSink* self_cast = dynamic_cast<MiqtVirtualQAudioSink*>( (QAudioSink*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAudioSink_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAudioSink*)(self) )->virtualbase_metaObject();
+}
+
+bool QAudioSink_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSink* self_cast = dynamic_cast<MiqtVirtualQAudioSink*>( (QAudioSink*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAudioSink_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAudioSink*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAudioSink_override_virtual_metacall(void* self, intptr_t slot) {

@@ -32,6 +32,8 @@ void miqt_exec_callback_QCameraImageCapture_imageCaptured(intptr_t, int, QImage*
 void miqt_exec_callback_QCameraImageCapture_imageMetadataAvailable(intptr_t, int, struct miqt_string, QVariant*);
 void miqt_exec_callback_QCameraImageCapture_imageAvailable(intptr_t, int, QVideoFrame*);
 void miqt_exec_callback_QCameraImageCapture_imageSaved(intptr_t, int, struct miqt_string);
+QMetaObject* miqt_exec_callback_QCameraImageCapture_metaObject(const QCameraImageCapture*, intptr_t);
+void* miqt_exec_callback_QCameraImageCapture_metacast(QCameraImageCapture*, intptr_t, const char*);
 int miqt_exec_callback_QCameraImageCapture_metacall(QCameraImageCapture*, intptr_t, int, int, void**);
 QMediaObject* miqt_exec_callback_QCameraImageCapture_mediaObject(const QCameraImageCapture*, intptr_t);
 bool miqt_exec_callback_QCameraImageCapture_setMediaObject(QCameraImageCapture*, intptr_t, QMediaObject*);
@@ -53,6 +55,51 @@ public:
 	MiqtVirtualQCameraImageCapture(QMediaObject* mediaObject, QObject* parent): QCameraImageCapture(mediaObject, parent) {};
 
 	virtual ~MiqtVirtualQCameraImageCapture() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QCameraImageCapture::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QCameraImageCapture_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QCameraImageCapture::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QCameraImageCapture::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QCameraImageCapture_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QCameraImageCapture::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -687,6 +734,34 @@ struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions2(con
 int QCameraImageCapture_capture1(QCameraImageCapture* self, struct miqt_string location) {
 	QString location_QString = QString::fromUtf8(location.data, location.len);
 	return self->capture(location_QString);
+}
+
+bool QCameraImageCapture_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QCameraImageCapture_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_metaObject();
+}
+
+bool QCameraImageCapture_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QCameraImageCapture_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QCameraImageCapture_override_virtual_metacall(void* self, intptr_t slot) {

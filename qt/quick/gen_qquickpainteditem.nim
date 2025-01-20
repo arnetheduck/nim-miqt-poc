@@ -134,6 +134,10 @@ proc fcQQuickPaintedItem_trUtf82(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQQuickPaintedItem_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickPaintedItem_trUtf83".}
 proc fcQQuickPaintedItem_update1(self: pointer, rect: pointer): void {.importc: "QQuickPaintedItem_update1".}
 proc fcQQuickPaintedItem_setPerformanceHint2(self: pointer, hint: cint, enabled: bool): void {.importc: "QQuickPaintedItem_setPerformanceHint2".}
+proc fQQuickPaintedItem_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQuickPaintedItem_virtualbase_metaObject".}
+proc fcQQuickPaintedItem_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQuickPaintedItem_override_virtual_metaObject".}
+proc fQQuickPaintedItem_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQuickPaintedItem_virtualbase_metacast".}
+proc fcQQuickPaintedItem_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQuickPaintedItem_override_virtual_metacast".}
 proc fQQuickPaintedItem_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQuickPaintedItem_virtualbase_metacall".}
 proc fcQQuickPaintedItem_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQuickPaintedItem_override_virtual_metacall".}
 proc fcQQuickPaintedItem_override_virtual_paint(self: pointer, slot: int) {.importc: "QQuickPaintedItem_override_virtual_paint".}
@@ -475,6 +479,54 @@ proc setPerformanceHint2*(self: QQuickPaintedItem, hint: QQuickPaintedItemPerfor
 
   fcQQuickPaintedItem_setPerformanceHint2(self.h, cint(hint), enabled)
 
+proc callVirtualBase_metaObject(self: QQuickPaintedItem, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQQuickPaintedItem_virtualbase_metaObject(self.h))
+
+type QQuickPaintedItemmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QQuickPaintedItem, slot: proc(super: QQuickPaintedItemmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QQuickPaintedItemmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickPaintedItem_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickPaintedItem_metaObject(self: ptr cQQuickPaintedItem, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickPaintedItem_metaObject ".} =
+  type Cb = proc(super: QQuickPaintedItemmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QQuickPaintedItem(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QQuickPaintedItem, param1: cstring): pointer =
+
+
+  fQQuickPaintedItem_virtualbase_metacast(self.h, param1)
+
+type QQuickPaintedItemmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QQuickPaintedItem, slot: proc(super: QQuickPaintedItemmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QQuickPaintedItemmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickPaintedItem_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickPaintedItem_metacast(self: ptr cQQuickPaintedItem, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickPaintedItem_metacast ".} =
+  type Cb = proc(super: QQuickPaintedItemmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QQuickPaintedItem(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QQuickPaintedItem, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

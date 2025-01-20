@@ -169,6 +169,10 @@ proc fcQDnsLookup_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QD
 proc fcQDnsLookup_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDnsLookup_tr3".}
 proc fcQDnsLookup_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QDnsLookup_trUtf82".}
 proc fcQDnsLookup_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDnsLookup_trUtf83".}
+proc fQDnsLookup_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDnsLookup_virtualbase_metaObject".}
+proc fcQDnsLookup_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDnsLookup_override_virtual_metaObject".}
+proc fQDnsLookup_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDnsLookup_virtualbase_metacast".}
+proc fcQDnsLookup_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDnsLookup_override_virtual_metacast".}
 proc fQDnsLookup_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDnsLookup_virtualbase_metacall".}
 proc fcQDnsLookup_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDnsLookup_override_virtual_metacall".}
 proc fQDnsLookup_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QDnsLookup_virtualbase_event".}
@@ -652,6 +656,54 @@ proc trUtf83*(_: type QDnsLookup, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QDnsLookup, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDnsLookup_virtualbase_metaObject(self.h))
+
+type QDnsLookupmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDnsLookup, slot: proc(super: QDnsLookupmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDnsLookupmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDnsLookup_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDnsLookup_metaObject(self: ptr cQDnsLookup, slot: int): pointer {.exportc: "miqt_exec_callback_QDnsLookup_metaObject ".} =
+  type Cb = proc(super: QDnsLookupmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDnsLookup(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDnsLookup, param1: cstring): pointer =
+
+
+  fQDnsLookup_virtualbase_metacast(self.h, param1)
+
+type QDnsLookupmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDnsLookup, slot: proc(super: QDnsLookupmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDnsLookupmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDnsLookup_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDnsLookup_metacast(self: ptr cQDnsLookup, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDnsLookup_metacast ".} =
+  type Cb = proc(super: QDnsLookupmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDnsLookup(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDnsLookup, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

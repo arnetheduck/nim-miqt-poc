@@ -69,6 +69,10 @@ proc fcQQmlExtensionPlugin_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQQmlExtensionPlugin_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlExtensionPlugin_tr3".}
 proc fcQQmlExtensionPlugin_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QQmlExtensionPlugin_trUtf82".}
 proc fcQQmlExtensionPlugin_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlExtensionPlugin_trUtf83".}
+proc fQQmlExtensionPlugin_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQmlExtensionPlugin_virtualbase_metaObject".}
+proc fcQQmlExtensionPlugin_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQmlExtensionPlugin_override_virtual_metaObject".}
+proc fQQmlExtensionPlugin_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQmlExtensionPlugin_virtualbase_metacast".}
+proc fcQQmlExtensionPlugin_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQmlExtensionPlugin_override_virtual_metacast".}
 proc fQQmlExtensionPlugin_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQmlExtensionPlugin_virtualbase_metacall".}
 proc fcQQmlExtensionPlugin_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQmlExtensionPlugin_override_virtual_metacall".}
 proc fcQQmlExtensionPlugin_override_virtual_registerTypes(self: pointer, slot: int) {.importc: "QQmlExtensionPlugin_override_virtual_registerTypes".}
@@ -102,6 +106,10 @@ proc fcQQmlEngineExtensionPlugin_tr2(s: cstring, c: cstring): struct_miqt_string
 proc fcQQmlEngineExtensionPlugin_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlEngineExtensionPlugin_tr3".}
 proc fcQQmlEngineExtensionPlugin_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QQmlEngineExtensionPlugin_trUtf82".}
 proc fcQQmlEngineExtensionPlugin_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQmlEngineExtensionPlugin_trUtf83".}
+proc fQQmlEngineExtensionPlugin_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQmlEngineExtensionPlugin_virtualbase_metaObject".}
+proc fcQQmlEngineExtensionPlugin_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQmlEngineExtensionPlugin_override_virtual_metaObject".}
+proc fQQmlEngineExtensionPlugin_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQmlEngineExtensionPlugin_virtualbase_metacast".}
+proc fcQQmlEngineExtensionPlugin_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQmlEngineExtensionPlugin_override_virtual_metacast".}
 proc fQQmlEngineExtensionPlugin_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQmlEngineExtensionPlugin_virtualbase_metacall".}
 proc fcQQmlEngineExtensionPlugin_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQmlEngineExtensionPlugin_override_virtual_metacall".}
 proc fQQmlEngineExtensionPlugin_virtualbase_initializeEngine(self: pointer, engine: pointer, uri: cstring): void{.importc: "QQmlEngineExtensionPlugin_virtualbase_initializeEngine".}
@@ -198,6 +206,54 @@ proc trUtf83*(_: type QQmlExtensionPlugin, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QQmlExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQQmlExtensionPlugin_virtualbase_metaObject(self.h))
+
+type QQmlExtensionPluginmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QQmlExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlExtensionPlugin_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlExtensionPlugin_metaObject(self: ptr cQQmlExtensionPlugin, slot: int): pointer {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_metaObject ".} =
+  type Cb = proc(super: QQmlExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QQmlExtensionPlugin(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QQmlExtensionPlugin, param1: cstring): pointer =
+
+
+  fQQmlExtensionPlugin_virtualbase_metacast(self.h, param1)
+
+type QQmlExtensionPluginmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QQmlExtensionPlugin, slot: proc(super: QQmlExtensionPluginmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QQmlExtensionPluginmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlExtensionPlugin_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlExtensionPlugin_metacast(self: ptr cQQmlExtensionPlugin, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQmlExtensionPlugin_metacast ".} =
+  type Cb = proc(super: QQmlExtensionPluginmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QQmlExtensionPlugin(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QQmlExtensionPlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -506,6 +562,54 @@ proc trUtf83*(_: type QQmlEngineExtensionPlugin, s: cstring, c: cstring, n: cint
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QQmlEngineExtensionPlugin, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQQmlEngineExtensionPlugin_virtualbase_metaObject(self.h))
+
+type QQmlEngineExtensionPluginmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QQmlEngineExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlEngineExtensionPlugin_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlEngineExtensionPlugin_metaObject(self: ptr cQQmlEngineExtensionPlugin, slot: int): pointer {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_metaObject ".} =
+  type Cb = proc(super: QQmlEngineExtensionPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QQmlEngineExtensionPlugin(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QQmlEngineExtensionPlugin, param1: cstring): pointer =
+
+
+  fQQmlEngineExtensionPlugin_virtualbase_metacast(self.h, param1)
+
+type QQmlEngineExtensionPluginmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QQmlEngineExtensionPlugin, slot: proc(super: QQmlEngineExtensionPluginmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QQmlEngineExtensionPluginmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQmlEngineExtensionPlugin_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQmlEngineExtensionPlugin_metacast(self: ptr cQQmlEngineExtensionPlugin, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQmlEngineExtensionPlugin_metacast ".} =
+  type Cb = proc(super: QQmlEngineExtensionPluginmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QQmlEngineExtensionPlugin(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QQmlEngineExtensionPlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

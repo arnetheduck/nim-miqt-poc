@@ -57,6 +57,8 @@ void miqt_exec_callback_QWindow_contentOrientationChanged(intptr_t, int);
 void miqt_exec_callback_QWindow_focusObjectChanged(intptr_t, QObject*);
 void miqt_exec_callback_QWindow_opacityChanged(intptr_t, double);
 void miqt_exec_callback_QWindow_transientParentChanged(intptr_t, QWindow*);
+QMetaObject* miqt_exec_callback_QWindow_metaObject(const QWindow*, intptr_t);
+void* miqt_exec_callback_QWindow_metacast(QWindow*, intptr_t, const char*);
 int miqt_exec_callback_QWindow_metacall(QWindow*, intptr_t, int, int, void**);
 int miqt_exec_callback_QWindow_surfaceType(const QWindow*, intptr_t);
 QSurfaceFormat* miqt_exec_callback_QWindow_format(const QWindow*, intptr_t);
@@ -99,6 +101,51 @@ public:
 	MiqtVirtualQWindow(QScreen* screen): QWindow(screen) {};
 
 	virtual ~MiqtVirtualQWindow() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QWindow::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QWindow_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QWindow::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QWindow::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QWindow_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QWindow::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1606,6 +1653,34 @@ void QWindow_setFlag2(QWindow* self, int param1, bool on) {
 
 bool QWindow_isAncestorOf2(const QWindow* self, QWindow* child, int mode) {
 	return self->isAncestorOf(child, static_cast<QWindow::AncestorMode>(mode));
+}
+
+bool QWindow_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQWindow* self_cast = dynamic_cast<MiqtVirtualQWindow*>( (QWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QWindow_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQWindow*)(self) )->virtualbase_metaObject();
+}
+
+bool QWindow_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQWindow* self_cast = dynamic_cast<MiqtVirtualQWindow*>( (QWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QWindow_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQWindow*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QWindow_override_virtual_metacall(void* self, intptr_t slot) {

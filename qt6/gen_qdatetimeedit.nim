@@ -168,6 +168,10 @@ proc fcQDateTimeEdit_setDate(self: pointer, date: pointer): void {.importc: "QDa
 proc fcQDateTimeEdit_setTime(self: pointer, time: pointer): void {.importc: "QDateTimeEdit_setTime".}
 proc fcQDateTimeEdit_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QDateTimeEdit_tr2".}
 proc fcQDateTimeEdit_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDateTimeEdit_tr3".}
+proc fQDateTimeEdit_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDateTimeEdit_virtualbase_metaObject".}
+proc fcQDateTimeEdit_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDateTimeEdit_override_virtual_metaObject".}
+proc fQDateTimeEdit_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDateTimeEdit_virtualbase_metacast".}
+proc fcQDateTimeEdit_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDateTimeEdit_override_virtual_metacast".}
 proc fQDateTimeEdit_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDateTimeEdit_virtualbase_metacall".}
 proc fcQDateTimeEdit_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDateTimeEdit_override_virtual_metacall".}
 proc fQDateTimeEdit_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QDateTimeEdit_virtualbase_sizeHint".}
@@ -294,6 +298,10 @@ proc fcQTimeEdit_userTimeChanged(self: pointer, time: pointer): void {.importc: 
 proc fQTimeEdit_connect_userTimeChanged(self: pointer, slot: int) {.importc: "QTimeEdit_connect_userTimeChanged".}
 proc fcQTimeEdit_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QTimeEdit_tr2".}
 proc fcQTimeEdit_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTimeEdit_tr3".}
+proc fQTimeEdit_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTimeEdit_virtualbase_metaObject".}
+proc fcQTimeEdit_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTimeEdit_override_virtual_metaObject".}
+proc fQTimeEdit_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTimeEdit_virtualbase_metacast".}
+proc fcQTimeEdit_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTimeEdit_override_virtual_metacast".}
 proc fQTimeEdit_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTimeEdit_virtualbase_metacall".}
 proc fcQTimeEdit_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTimeEdit_override_virtual_metacall".}
 proc fQTimeEdit_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QTimeEdit_virtualbase_sizeHint".}
@@ -420,6 +428,10 @@ proc fcQDateEdit_userDateChanged(self: pointer, date: pointer): void {.importc: 
 proc fQDateEdit_connect_userDateChanged(self: pointer, slot: int) {.importc: "QDateEdit_connect_userDateChanged".}
 proc fcQDateEdit_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QDateEdit_tr2".}
 proc fcQDateEdit_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDateEdit_tr3".}
+proc fQDateEdit_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDateEdit_virtualbase_metaObject".}
+proc fcQDateEdit_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDateEdit_override_virtual_metaObject".}
+proc fQDateEdit_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDateEdit_virtualbase_metacast".}
+proc fcQDateEdit_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDateEdit_override_virtual_metacast".}
 proc fQDateEdit_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDateEdit_virtualbase_metacall".}
 proc fcQDateEdit_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDateEdit_override_virtual_metacall".}
 proc fQDateEdit_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QDateEdit_virtualbase_sizeHint".}
@@ -855,6 +867,54 @@ proc tr3*(_: type QDateTimeEdit, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QDateTimeEdit, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDateTimeEdit_virtualbase_metaObject(self.h))
+
+type QDateTimeEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDateTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDateTimeEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDateTimeEdit_metaObject(self: ptr cQDateTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_metaObject ".} =
+  type Cb = proc(super: QDateTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDateTimeEdit(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDateTimeEdit, param1: cstring): pointer =
+
+
+  fQDateTimeEdit_virtualbase_metacast(self.h, param1)
+
+type QDateTimeEditmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDateTimeEdit, slot: proc(super: QDateTimeEditmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDateTimeEditmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDateTimeEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDateTimeEdit_metacast(self: ptr cQDateTimeEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDateTimeEdit_metacast ".} =
+  type Cb = proc(super: QDateTimeEditmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDateTimeEdit(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDateTimeEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -2262,6 +2322,54 @@ proc tr3*(_: type QTimeEdit, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QTimeEdit, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQTimeEdit_virtualbase_metaObject(self.h))
+
+type QTimeEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QTimeEdit, slot: proc(super: QTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTimeEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTimeEdit_metaObject(self: ptr cQTimeEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QTimeEdit_metaObject ".} =
+  type Cb = proc(super: QTimeEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QTimeEdit(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QTimeEdit, param1: cstring): pointer =
+
+
+  fQTimeEdit_virtualbase_metacast(self.h, param1)
+
+type QTimeEditmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QTimeEdit, slot: proc(super: QTimeEditmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QTimeEditmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTimeEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTimeEdit_metacast(self: ptr cQTimeEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTimeEdit_metacast ".} =
+  type Cb = proc(super: QTimeEditmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QTimeEdit(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QTimeEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -3669,6 +3777,54 @@ proc tr3*(_: type QDateEdit, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QDateEdit, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDateEdit_virtualbase_metaObject(self.h))
+
+type QDateEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDateEdit, slot: proc(super: QDateEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDateEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDateEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDateEdit_metaObject(self: ptr cQDateEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QDateEdit_metaObject ".} =
+  type Cb = proc(super: QDateEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDateEdit(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDateEdit, param1: cstring): pointer =
+
+
+  fQDateEdit_virtualbase_metacast(self.h, param1)
+
+type QDateEditmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDateEdit, slot: proc(super: QDateEditmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDateEditmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDateEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDateEdit_metacast(self: ptr cQDateEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDateEdit_metacast ".} =
+  type Cb = proc(super: QDateEditmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDateEdit(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDateEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -584,6 +584,62 @@ func (this *QWebEngineView) PrintToPdf3(filePath string, layout *qt6.QPageLayout
 	C.QWebEngineView_printToPdf3(this.h, filePath_ms, (*C.QPageLayout)(layout.UnsafePointer()), (*C.QPageRanges)(ranges.UnsafePointer()))
 }
 
+func (this *QWebEngineView) callVirtualBase_MetaObject() *qt6.QMetaObject {
+
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineView_virtualbase_metaObject(unsafe.Pointer(this.h))))
+
+}
+func (this *QWebEngineView) OnmetaObject(slot func(super func() *qt6.QMetaObject) *qt6.QMetaObject) {
+	ok := C.QWebEngineView_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWebEngineView_metaObject
+func miqt_exec_callback_QWebEngineView_metaObject(self *C.QWebEngineView, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt6.QMetaObject) *qt6.QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QWebEngineView{h: self}).callVirtualBase_MetaObject)
+
+	return (*C.QMetaObject)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QWebEngineView) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.QWebEngineView_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *QWebEngineView) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.QWebEngineView_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWebEngineView_metacast
+func miqt_exec_callback_QWebEngineView_metacast(self *C.QWebEngineView, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&QWebEngineView{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *QWebEngineView) callVirtualBase_Metacall(param1 qt6.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.QWebEngineView_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))

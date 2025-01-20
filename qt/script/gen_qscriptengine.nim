@@ -176,6 +176,10 @@ proc fcQScriptEngine_newQObject32(self: pointer, scriptObject: pointer, qtObject
 proc fcQScriptEngine_newQObject4(self: pointer, scriptObject: pointer, qtObject: pointer, ownership: cint, options: ptr cint): pointer {.importc: "QScriptEngine_newQObject4".}
 proc fcQScriptEngine_newQMetaObject2(self: pointer, metaObject: pointer, ctor: pointer): pointer {.importc: "QScriptEngine_newQMetaObject2".}
 proc fcQScriptEngine_installTranslatorFunctions1(self: pointer, objectVal: pointer): void {.importc: "QScriptEngine_installTranslatorFunctions1".}
+proc fQScriptEngine_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QScriptEngine_virtualbase_metaObject".}
+proc fcQScriptEngine_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_metaObject".}
+proc fQScriptEngine_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QScriptEngine_virtualbase_metacast".}
+proc fcQScriptEngine_override_virtual_metacast(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_metacast".}
 proc fQScriptEngine_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QScriptEngine_virtualbase_metacall".}
 proc fcQScriptEngine_override_virtual_metacall(self: pointer, slot: int) {.importc: "QScriptEngine_override_virtual_metacall".}
 proc fQScriptEngine_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QScriptEngine_virtualbase_event".}
@@ -559,6 +563,54 @@ proc installTranslatorFunctions1*(self: QScriptEngine, objectVal: gen_qscriptval
 
   fcQScriptEngine_installTranslatorFunctions1(self.h, objectVal.h)
 
+proc callVirtualBase_metaObject(self: QScriptEngine, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQScriptEngine_virtualbase_metaObject(self.h))
+
+type QScriptEnginemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QScriptEngine, slot: proc(super: QScriptEnginemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QScriptEnginemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQScriptEngine_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QScriptEngine_metaObject(self: ptr cQScriptEngine, slot: int): pointer {.exportc: "miqt_exec_callback_QScriptEngine_metaObject ".} =
+  type Cb = proc(super: QScriptEnginemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QScriptEngine(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QScriptEngine, param1: cstring): pointer =
+
+
+  fQScriptEngine_virtualbase_metacast(self.h, param1)
+
+type QScriptEnginemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QScriptEngine, slot: proc(super: QScriptEnginemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QScriptEnginemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQScriptEngine_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QScriptEngine_metacast(self: ptr cQScriptEngine, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QScriptEngine_metacast ".} =
+  type Cb = proc(super: QScriptEnginemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QScriptEngine(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QScriptEngine, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

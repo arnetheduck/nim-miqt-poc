@@ -244,6 +244,10 @@ proc fcQMessageBox_critical52(parent: pointer, title: struct_miqt_string, text: 
 proc fcQMessageBox_critical62(parent: pointer, title: struct_miqt_string, text: struct_miqt_string, button0Text: struct_miqt_string, button1Text: struct_miqt_string, button2Text: struct_miqt_string): cint {.importc: "QMessageBox_critical62".}
 proc fcQMessageBox_critical7(parent: pointer, title: struct_miqt_string, text: struct_miqt_string, button0Text: struct_miqt_string, button1Text: struct_miqt_string, button2Text: struct_miqt_string, defaultButtonNumber: cint): cint {.importc: "QMessageBox_critical7".}
 proc fcQMessageBox_critical8(parent: pointer, title: struct_miqt_string, text: struct_miqt_string, button0Text: struct_miqt_string, button1Text: struct_miqt_string, button2Text: struct_miqt_string, defaultButtonNumber: cint, escapeButtonNumber: cint): cint {.importc: "QMessageBox_critical8".}
+proc fQMessageBox_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QMessageBox_virtualbase_metaObject".}
+proc fcQMessageBox_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QMessageBox_override_virtual_metaObject".}
+proc fQMessageBox_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QMessageBox_virtualbase_metacast".}
+proc fcQMessageBox_override_virtual_metacast(self: pointer, slot: int) {.importc: "QMessageBox_override_virtual_metacast".}
 proc fQMessageBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QMessageBox_virtualbase_metacall".}
 proc fcQMessageBox_override_virtual_metacall(self: pointer, slot: int) {.importc: "QMessageBox_override_virtual_metacall".}
 proc fQMessageBox_virtualbase_event(self: pointer, e: pointer): bool{.importc: "QMessageBox_virtualbase_event".}
@@ -824,6 +828,54 @@ proc critical8*(_: type QMessageBox, parent: gen_qwidget.QWidget, title: string,
 
   fcQMessageBox_critical8(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: text, len: csize_t(len(text))), struct_miqt_string(data: button0Text, len: csize_t(len(button0Text))), struct_miqt_string(data: button1Text, len: csize_t(len(button1Text))), struct_miqt_string(data: button2Text, len: csize_t(len(button2Text))), defaultButtonNumber, escapeButtonNumber)
 
+proc callVirtualBase_metaObject(self: QMessageBox, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQMessageBox_virtualbase_metaObject(self.h))
+
+type QMessageBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QMessageBox, slot: proc(super: QMessageBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QMessageBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMessageBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMessageBox_metaObject(self: ptr cQMessageBox, slot: int): pointer {.exportc: "miqt_exec_callback_QMessageBox_metaObject ".} =
+  type Cb = proc(super: QMessageBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QMessageBox(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QMessageBox, param1: cstring): pointer =
+
+
+  fQMessageBox_virtualbase_metacast(self.h, param1)
+
+type QMessageBoxmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QMessageBox, slot: proc(super: QMessageBoxmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QMessageBoxmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQMessageBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QMessageBox_metacast(self: ptr cQMessageBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QMessageBox_metacast ".} =
+  type Cb = proc(super: QMessageBoxmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QMessageBox(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QMessageBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

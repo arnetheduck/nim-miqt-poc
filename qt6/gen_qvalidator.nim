@@ -86,6 +86,10 @@ proc fcQValidator_changed(self: pointer, ): void {.importc: "QValidator_changed"
 proc fQValidator_connect_changed(self: pointer, slot: int) {.importc: "QValidator_connect_changed".}
 proc fcQValidator_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QValidator_tr2".}
 proc fcQValidator_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QValidator_tr3".}
+proc fQValidator_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QValidator_virtualbase_metaObject".}
+proc fcQValidator_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QValidator_override_virtual_metaObject".}
+proc fQValidator_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QValidator_virtualbase_metacast".}
+proc fcQValidator_override_virtual_metacast(self: pointer, slot: int) {.importc: "QValidator_override_virtual_metacast".}
 proc fQValidator_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QValidator_virtualbase_metacall".}
 proc fcQValidator_override_virtual_metacall(self: pointer, slot: int) {.importc: "QValidator_override_virtual_metacall".}
 proc fcQValidator_override_virtual_validate(self: pointer, slot: int) {.importc: "QValidator_override_virtual_validate".}
@@ -128,6 +132,10 @@ proc fcQIntValidator_topChanged(self: pointer, top: cint): void {.importc: "QInt
 proc fQIntValidator_connect_topChanged(self: pointer, slot: int) {.importc: "QIntValidator_connect_topChanged".}
 proc fcQIntValidator_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QIntValidator_tr2".}
 proc fcQIntValidator_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QIntValidator_tr3".}
+proc fQIntValidator_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QIntValidator_virtualbase_metaObject".}
+proc fcQIntValidator_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QIntValidator_override_virtual_metaObject".}
+proc fQIntValidator_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QIntValidator_virtualbase_metacast".}
+proc fcQIntValidator_override_virtual_metacast(self: pointer, slot: int) {.importc: "QIntValidator_override_virtual_metacast".}
 proc fQIntValidator_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QIntValidator_virtualbase_metacall".}
 proc fcQIntValidator_override_virtual_metacall(self: pointer, slot: int) {.importc: "QIntValidator_override_virtual_metacall".}
 proc fQIntValidator_virtualbase_validate(self: pointer, param1: struct_miqt_string, param2: ptr cint): cint{.importc: "QIntValidator_virtualbase_validate".}
@@ -180,6 +188,10 @@ proc fcQDoubleValidator_notationChanged(self: pointer, notation: cint): void {.i
 proc fQDoubleValidator_connect_notationChanged(self: pointer, slot: int) {.importc: "QDoubleValidator_connect_notationChanged".}
 proc fcQDoubleValidator_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QDoubleValidator_tr2".}
 proc fcQDoubleValidator_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDoubleValidator_tr3".}
+proc fQDoubleValidator_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDoubleValidator_virtualbase_metaObject".}
+proc fcQDoubleValidator_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDoubleValidator_override_virtual_metaObject".}
+proc fQDoubleValidator_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDoubleValidator_virtualbase_metacast".}
+proc fcQDoubleValidator_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDoubleValidator_override_virtual_metacast".}
 proc fQDoubleValidator_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDoubleValidator_virtualbase_metacall".}
 proc fcQDoubleValidator_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDoubleValidator_override_virtual_metacall".}
 proc fQDoubleValidator_virtualbase_validate(self: pointer, param1: struct_miqt_string, param2: ptr cint): cint{.importc: "QDoubleValidator_virtualbase_validate".}
@@ -217,6 +229,10 @@ proc fcQRegularExpressionValidator_regularExpressionChanged(self: pointer, re: p
 proc fQRegularExpressionValidator_connect_regularExpressionChanged(self: pointer, slot: int) {.importc: "QRegularExpressionValidator_connect_regularExpressionChanged".}
 proc fcQRegularExpressionValidator_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QRegularExpressionValidator_tr2".}
 proc fcQRegularExpressionValidator_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QRegularExpressionValidator_tr3".}
+proc fQRegularExpressionValidator_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QRegularExpressionValidator_virtualbase_metaObject".}
+proc fcQRegularExpressionValidator_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QRegularExpressionValidator_override_virtual_metaObject".}
+proc fQRegularExpressionValidator_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QRegularExpressionValidator_virtualbase_metacast".}
+proc fcQRegularExpressionValidator_override_virtual_metacast(self: pointer, slot: int) {.importc: "QRegularExpressionValidator_override_virtual_metacast".}
 proc fQRegularExpressionValidator_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QRegularExpressionValidator_virtualbase_metacall".}
 proc fcQRegularExpressionValidator_override_virtual_metacall(self: pointer, slot: int) {.importc: "QRegularExpressionValidator_override_virtual_metacall".}
 proc fQRegularExpressionValidator_virtualbase_validate(self: pointer, input: struct_miqt_string, pos: ptr cint): cint{.importc: "QRegularExpressionValidator_virtualbase_validate".}
@@ -314,6 +330,54 @@ proc tr3*(_: type QValidator, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QValidator, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQValidator_virtualbase_metaObject(self.h))
+
+type QValidatormetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QValidator, slot: proc(super: QValidatormetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QValidatormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQValidator_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QValidator_metaObject(self: ptr cQValidator, slot: int): pointer {.exportc: "miqt_exec_callback_QValidator_metaObject ".} =
+  type Cb = proc(super: QValidatormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QValidator(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QValidator, param1: cstring): pointer =
+
+
+  fQValidator_virtualbase_metacast(self.h, param1)
+
+type QValidatormetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QValidator, slot: proc(super: QValidatormetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QValidatormetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQValidator_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QValidator_metacast(self: ptr cQValidator, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QValidator_metacast ".} =
+  type Cb = proc(super: QValidatormetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QValidator(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QValidator, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -675,6 +739,54 @@ proc tr3*(_: type QIntValidator, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QIntValidator, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQIntValidator_virtualbase_metaObject(self.h))
+
+type QIntValidatormetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QIntValidator, slot: proc(super: QIntValidatormetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QIntValidatormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQIntValidator_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QIntValidator_metaObject(self: ptr cQIntValidator, slot: int): pointer {.exportc: "miqt_exec_callback_QIntValidator_metaObject ".} =
+  type Cb = proc(super: QIntValidatormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QIntValidator(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QIntValidator, param1: cstring): pointer =
+
+
+  fQIntValidator_virtualbase_metacast(self.h, param1)
+
+type QIntValidatormetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QIntValidator, slot: proc(super: QIntValidatormetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QIntValidatormetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQIntValidator_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QIntValidator_metacast(self: ptr cQIntValidator, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QIntValidator_metacast ".} =
+  type Cb = proc(super: QIntValidatormetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QIntValidator(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QIntValidator, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -1099,6 +1211,54 @@ proc tr3*(_: type QDoubleValidator, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QDoubleValidator, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDoubleValidator_virtualbase_metaObject(self.h))
+
+type QDoubleValidatormetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDoubleValidator, slot: proc(super: QDoubleValidatormetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDoubleValidatormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDoubleValidator_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDoubleValidator_metaObject(self: ptr cQDoubleValidator, slot: int): pointer {.exportc: "miqt_exec_callback_QDoubleValidator_metaObject ".} =
+  type Cb = proc(super: QDoubleValidatormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDoubleValidator(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDoubleValidator, param1: cstring): pointer =
+
+
+  fQDoubleValidator_virtualbase_metacast(self.h, param1)
+
+type QDoubleValidatormetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDoubleValidator, slot: proc(super: QDoubleValidatormetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDoubleValidatormetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDoubleValidator_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDoubleValidator_metacast(self: ptr cQDoubleValidator, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDoubleValidator_metacast ".} =
+  type Cb = proc(super: QDoubleValidatormetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDoubleValidator(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDoubleValidator, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -1433,6 +1593,54 @@ proc tr3*(_: type QRegularExpressionValidator, s: cstring, c: cstring, n: cint):
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QRegularExpressionValidator, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQRegularExpressionValidator_virtualbase_metaObject(self.h))
+
+type QRegularExpressionValidatormetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QRegularExpressionValidator, slot: proc(super: QRegularExpressionValidatormetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QRegularExpressionValidatormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQRegularExpressionValidator_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QRegularExpressionValidator_metaObject(self: ptr cQRegularExpressionValidator, slot: int): pointer {.exportc: "miqt_exec_callback_QRegularExpressionValidator_metaObject ".} =
+  type Cb = proc(super: QRegularExpressionValidatormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QRegularExpressionValidator(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QRegularExpressionValidator, param1: cstring): pointer =
+
+
+  fQRegularExpressionValidator_virtualbase_metacast(self.h, param1)
+
+type QRegularExpressionValidatormetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QRegularExpressionValidator, slot: proc(super: QRegularExpressionValidatormetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QRegularExpressionValidatormetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQRegularExpressionValidator_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QRegularExpressionValidator_metacast(self: ptr cQRegularExpressionValidator, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QRegularExpressionValidator_metacast ".} =
+  type Cb = proc(super: QRegularExpressionValidatormetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QRegularExpressionValidator(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QRegularExpressionValidator, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

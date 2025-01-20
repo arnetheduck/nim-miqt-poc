@@ -45,6 +45,8 @@ extern "C" {
 
 void miqt_exec_callback_QVideoWidget_fullScreenChanged(intptr_t, bool);
 void miqt_exec_callback_QVideoWidget_aspectRatioModeChanged(intptr_t, int);
+QMetaObject* miqt_exec_callback_QVideoWidget_metaObject(const QVideoWidget*, intptr_t);
+void* miqt_exec_callback_QVideoWidget_metacast(QVideoWidget*, intptr_t, const char*);
 int miqt_exec_callback_QVideoWidget_metacall(QVideoWidget*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QVideoWidget_sizeHint(const QVideoWidget*, intptr_t);
 bool miqt_exec_callback_QVideoWidget_event(QVideoWidget*, intptr_t, QEvent*);
@@ -104,6 +106,51 @@ public:
 	MiqtVirtualQVideoWidget(): QVideoWidget() {};
 
 	virtual ~MiqtVirtualQVideoWidget() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QVideoWidget::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QVideoWidget_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QVideoWidget::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QVideoWidget::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QVideoWidget_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QVideoWidget::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1356,6 +1403,34 @@ struct miqt_string QVideoWidget_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QVideoWidget_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QVideoWidget_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_metaObject();
+}
+
+bool QVideoWidget_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QVideoWidget_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QVideoWidget_override_virtual_metacall(void* self, intptr_t slot) {

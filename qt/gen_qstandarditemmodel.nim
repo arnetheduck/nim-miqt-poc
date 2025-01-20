@@ -263,6 +263,10 @@ proc fcQStandardItemModel_insertColumn2(self: pointer, column: cint, parent: poi
 proc fcQStandardItemModel_takeItem2(self: pointer, row: cint, column: cint): pointer {.importc: "QStandardItemModel_takeItem2".}
 proc fcQStandardItemModel_findItems2(self: pointer, text: struct_miqt_string, flags: cint): struct_miqt_array {.importc: "QStandardItemModel_findItems2".}
 proc fcQStandardItemModel_findItems3(self: pointer, text: struct_miqt_string, flags: cint, column: cint): struct_miqt_array {.importc: "QStandardItemModel_findItems3".}
+proc fQStandardItemModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QStandardItemModel_virtualbase_metaObject".}
+proc fcQStandardItemModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QStandardItemModel_override_virtual_metaObject".}
+proc fQStandardItemModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QStandardItemModel_virtualbase_metacast".}
+proc fcQStandardItemModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QStandardItemModel_override_virtual_metacast".}
 proc fQStandardItemModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QStandardItemModel_virtualbase_metacall".}
 proc fcQStandardItemModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QStandardItemModel_override_virtual_metacall".}
 proc fQStandardItemModel_virtualbase_index(self: pointer, row: cint, column: cint, parent: pointer): pointer{.importc: "QStandardItemModel_virtualbase_index".}
@@ -1367,6 +1371,54 @@ proc findItems3*(self: QStandardItemModel, text: string, flags: gen_qnamespace.M
     vx_ret[i] = QStandardItem(h: v_outCast[i])
   vx_ret
 
+proc callVirtualBase_metaObject(self: QStandardItemModel, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQStandardItemModel_virtualbase_metaObject(self.h))
+
+type QStandardItemModelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QStandardItemModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStandardItemModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStandardItemModel_metaObject(self: ptr cQStandardItemModel, slot: int): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_metaObject ".} =
+  type Cb = proc(super: QStandardItemModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QStandardItemModel(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QStandardItemModel, param1: cstring): pointer =
+
+
+  fQStandardItemModel_virtualbase_metacast(self.h, param1)
+
+type QStandardItemModelmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QStandardItemModel, slot: proc(super: QStandardItemModelmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QStandardItemModelmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQStandardItemModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QStandardItemModel_metacast(self: ptr cQStandardItemModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QStandardItemModel_metacast ".} =
+  type Cb = proc(super: QStandardItemModelmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QStandardItemModel(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QStandardItemModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

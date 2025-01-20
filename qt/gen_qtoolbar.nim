@@ -129,6 +129,10 @@ proc fcQToolBar_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QToo
 proc fcQToolBar_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QToolBar_tr3".}
 proc fcQToolBar_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QToolBar_trUtf82".}
 proc fcQToolBar_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QToolBar_trUtf83".}
+proc fQToolBar_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QToolBar_virtualbase_metaObject".}
+proc fcQToolBar_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QToolBar_override_virtual_metaObject".}
+proc fQToolBar_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QToolBar_virtualbase_metacast".}
+proc fcQToolBar_override_virtual_metacast(self: pointer, slot: int) {.importc: "QToolBar_override_virtual_metacast".}
 proc fQToolBar_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QToolBar_virtualbase_metacall".}
 proc fcQToolBar_override_virtual_metacall(self: pointer, slot: int) {.importc: "QToolBar_override_virtual_metacall".}
 proc fQToolBar_virtualbase_actionEvent(self: pointer, event: pointer): void{.importc: "QToolBar_virtualbase_actionEvent".}
@@ -545,6 +549,54 @@ proc trUtf83*(_: type QToolBar, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QToolBar, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQToolBar_virtualbase_metaObject(self.h))
+
+type QToolBarmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QToolBar, slot: proc(super: QToolBarmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QToolBarmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQToolBar_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QToolBar_metaObject(self: ptr cQToolBar, slot: int): pointer {.exportc: "miqt_exec_callback_QToolBar_metaObject ".} =
+  type Cb = proc(super: QToolBarmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QToolBar(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QToolBar, param1: cstring): pointer =
+
+
+  fQToolBar_virtualbase_metacast(self.h, param1)
+
+type QToolBarmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QToolBar, slot: proc(super: QToolBarmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QToolBarmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQToolBar_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QToolBar_metacast(self: ptr cQToolBar, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QToolBar_metacast ".} =
+  type Cb = proc(super: QToolBarmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QToolBar(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QToolBar, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

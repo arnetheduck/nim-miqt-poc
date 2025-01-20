@@ -95,6 +95,10 @@ proc fcQTransposeProxyModel_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQTransposeProxyModel_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTransposeProxyModel_tr3".}
 proc fcQTransposeProxyModel_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QTransposeProxyModel_trUtf82".}
 proc fcQTransposeProxyModel_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTransposeProxyModel_trUtf83".}
+proc fQTransposeProxyModel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTransposeProxyModel_virtualbase_metaObject".}
+proc fcQTransposeProxyModel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTransposeProxyModel_override_virtual_metaObject".}
+proc fQTransposeProxyModel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTransposeProxyModel_virtualbase_metacast".}
+proc fcQTransposeProxyModel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTransposeProxyModel_override_virtual_metacast".}
 proc fQTransposeProxyModel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTransposeProxyModel_virtualbase_metacall".}
 proc fcQTransposeProxyModel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTransposeProxyModel_override_virtual_metacall".}
 proc fQTransposeProxyModel_virtualbase_setSourceModel(self: pointer, newSourceModel: pointer): void{.importc: "QTransposeProxyModel_virtualbase_setSourceModel".}
@@ -349,6 +353,54 @@ proc trUtf83*(_: type QTransposeProxyModel, s: cstring, c: cstring, n: cint): st
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QTransposeProxyModel, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQTransposeProxyModel_virtualbase_metaObject(self.h))
+
+type QTransposeProxyModelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QTransposeProxyModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTransposeProxyModel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTransposeProxyModel_metaObject(self: ptr cQTransposeProxyModel, slot: int): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_metaObject ".} =
+  type Cb = proc(super: QTransposeProxyModelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QTransposeProxyModel(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QTransposeProxyModel, param1: cstring): pointer =
+
+
+  fQTransposeProxyModel_virtualbase_metacast(self.h, param1)
+
+type QTransposeProxyModelmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QTransposeProxyModel, slot: proc(super: QTransposeProxyModelmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QTransposeProxyModelmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTransposeProxyModel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTransposeProxyModel_metacast(self: ptr cQTransposeProxyModel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTransposeProxyModel_metacast ".} =
+  type Cb = proc(super: QTransposeProxyModelmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QTransposeProxyModel(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QTransposeProxyModel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

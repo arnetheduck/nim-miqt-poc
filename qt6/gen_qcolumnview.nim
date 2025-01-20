@@ -106,6 +106,10 @@ proc fcQColumnView_setColumnWidths(self: pointer, list: struct_miqt_array): void
 proc fcQColumnView_columnWidths(self: pointer, ): struct_miqt_array {.importc: "QColumnView_columnWidths".}
 proc fcQColumnView_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QColumnView_tr2".}
 proc fcQColumnView_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QColumnView_tr3".}
+proc fQColumnView_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QColumnView_virtualbase_metaObject".}
+proc fcQColumnView_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QColumnView_override_virtual_metaObject".}
+proc fQColumnView_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QColumnView_virtualbase_metacast".}
+proc fcQColumnView_override_virtual_metacast(self: pointer, slot: int) {.importc: "QColumnView_override_virtual_metacast".}
 proc fQColumnView_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QColumnView_virtualbase_metacall".}
 proc fcQColumnView_override_virtual_metacall(self: pointer, slot: int) {.importc: "QColumnView_override_virtual_metacall".}
 proc fQColumnView_virtualbase_indexAt(self: pointer, point: pointer): pointer{.importc: "QColumnView_virtualbase_indexAt".}
@@ -420,6 +424,54 @@ proc tr3*(_: type QColumnView, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QColumnView, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQColumnView_virtualbase_metaObject(self.h))
+
+type QColumnViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QColumnView, slot: proc(super: QColumnViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QColumnViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQColumnView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QColumnView_metaObject(self: ptr cQColumnView, slot: int): pointer {.exportc: "miqt_exec_callback_QColumnView_metaObject ".} =
+  type Cb = proc(super: QColumnViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QColumnView(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QColumnView, param1: cstring): pointer =
+
+
+  fQColumnView_virtualbase_metacast(self.h, param1)
+
+type QColumnViewmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QColumnView, slot: proc(super: QColumnViewmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QColumnViewmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQColumnView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QColumnView_metacast(self: ptr cQColumnView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QColumnView_metacast ".} =
+  type Cb = proc(super: QColumnViewmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QColumnView(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QColumnView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

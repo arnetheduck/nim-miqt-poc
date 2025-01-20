@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QsciLexerMatlab_metaObject(const QsciLexerMatlab*, intptr_t);
+void* miqt_exec_callback_QsciLexerMatlab_metacast(QsciLexerMatlab*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexerMatlab_metacall(QsciLexerMatlab*, intptr_t, int, int, void**);
 const char* miqt_exec_callback_QsciLexerMatlab_language(const QsciLexerMatlab*, intptr_t);
 const char* miqt_exec_callback_QsciLexerMatlab_lexer(const QsciLexerMatlab*, intptr_t);
@@ -71,6 +73,51 @@ public:
 	MiqtVirtualQsciLexerMatlab(QObject* parent): QsciLexerMatlab(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerMatlab() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexerMatlab::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexerMatlab_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexerMatlab::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexerMatlab::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexerMatlab_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexerMatlab::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1208,6 +1255,34 @@ struct miqt_string QsciLexerMatlab_trUtf83(const char* s, const char* c, int n) 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QsciLexerMatlab_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerMatlab* self_cast = dynamic_cast<MiqtVirtualQsciLexerMatlab*>( (QsciLexerMatlab*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexerMatlab_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexerMatlab_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerMatlab* self_cast = dynamic_cast<MiqtVirtualQsciLexerMatlab*>( (QsciLexerMatlab*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexerMatlab_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexerMatlab*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexerMatlab_override_virtual_metacall(void* self, intptr_t slot) {

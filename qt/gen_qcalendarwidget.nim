@@ -162,6 +162,10 @@ proc fcQCalendarWidget_tr2(s: cstring, c: cstring): struct_miqt_string {.importc
 proc fcQCalendarWidget_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCalendarWidget_tr3".}
 proc fcQCalendarWidget_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QCalendarWidget_trUtf82".}
 proc fcQCalendarWidget_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCalendarWidget_trUtf83".}
+proc fQCalendarWidget_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QCalendarWidget_virtualbase_metaObject".}
+proc fcQCalendarWidget_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QCalendarWidget_override_virtual_metaObject".}
+proc fQCalendarWidget_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QCalendarWidget_virtualbase_metacast".}
+proc fcQCalendarWidget_override_virtual_metacast(self: pointer, slot: int) {.importc: "QCalendarWidget_override_virtual_metacast".}
 proc fQCalendarWidget_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QCalendarWidget_virtualbase_metacall".}
 proc fcQCalendarWidget_override_virtual_metacall(self: pointer, slot: int) {.importc: "QCalendarWidget_override_virtual_metacall".}
 proc fQCalendarWidget_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QCalendarWidget_virtualbase_sizeHint".}
@@ -580,6 +584,54 @@ proc trUtf83*(_: type QCalendarWidget, s: cstring, c: cstring, n: cint): string 
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QCalendarWidget, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQCalendarWidget_virtualbase_metaObject(self.h))
+
+type QCalendarWidgetmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QCalendarWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCalendarWidget_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCalendarWidget_metaObject(self: ptr cQCalendarWidget, slot: int): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_metaObject ".} =
+  type Cb = proc(super: QCalendarWidgetmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QCalendarWidget(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QCalendarWidget, param1: cstring): pointer =
+
+
+  fQCalendarWidget_virtualbase_metacast(self.h, param1)
+
+type QCalendarWidgetmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QCalendarWidget, slot: proc(super: QCalendarWidgetmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QCalendarWidgetmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCalendarWidget_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCalendarWidget_metacast(self: ptr cQCalendarWidget, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QCalendarWidget_metacast ".} =
+  type Cb = proc(super: QCalendarWidgetmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QCalendarWidget(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QCalendarWidget, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

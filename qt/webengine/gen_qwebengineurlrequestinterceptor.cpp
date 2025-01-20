@@ -16,6 +16,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QWebEngineUrlRequestInterceptor_metaObject(const QWebEngineUrlRequestInterceptor*, intptr_t);
+void* miqt_exec_callback_QWebEngineUrlRequestInterceptor_metacast(QWebEngineUrlRequestInterceptor*, intptr_t, const char*);
 int miqt_exec_callback_QWebEngineUrlRequestInterceptor_metacall(QWebEngineUrlRequestInterceptor*, intptr_t, int, int, void**);
 void miqt_exec_callback_QWebEngineUrlRequestInterceptor_interceptRequest(QWebEngineUrlRequestInterceptor*, intptr_t, QWebEngineUrlRequestInfo*);
 bool miqt_exec_callback_QWebEngineUrlRequestInterceptor_event(QWebEngineUrlRequestInterceptor*, intptr_t, QEvent*);
@@ -36,6 +38,51 @@ public:
 	MiqtVirtualQWebEngineUrlRequestInterceptor(QObject* p): QWebEngineUrlRequestInterceptor(p) {};
 
 	virtual ~MiqtVirtualQWebEngineUrlRequestInterceptor() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QWebEngineUrlRequestInterceptor::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QWebEngineUrlRequestInterceptor_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QWebEngineUrlRequestInterceptor::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QWebEngineUrlRequestInterceptor::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QWebEngineUrlRequestInterceptor_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QWebEngineUrlRequestInterceptor::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -346,6 +393,34 @@ struct miqt_string QWebEngineUrlRequestInterceptor_trUtf83(const char* s, const 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QWebEngineUrlRequestInterceptor_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QWebEngineUrlRequestInterceptor_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_metaObject();
+}
+
+bool QWebEngineUrlRequestInterceptor_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QWebEngineUrlRequestInterceptor_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QWebEngineUrlRequestInterceptor_override_virtual_metacall(void* self, intptr_t slot) {

@@ -77,6 +77,10 @@ proc fcQSctpSocket_readDatagram(self: pointer, ): pointer {.importc: "QSctpSocke
 proc fcQSctpSocket_writeDatagram(self: pointer, datagram: pointer): bool {.importc: "QSctpSocket_writeDatagram".}
 proc fcQSctpSocket_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSctpSocket_tr2".}
 proc fcQSctpSocket_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSctpSocket_tr3".}
+proc fQSctpSocket_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSctpSocket_virtualbase_metaObject".}
+proc fcQSctpSocket_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSctpSocket_override_virtual_metaObject".}
+proc fQSctpSocket_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSctpSocket_virtualbase_metacast".}
+proc fcQSctpSocket_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSctpSocket_override_virtual_metacast".}
 proc fQSctpSocket_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSctpSocket_virtualbase_metacall".}
 proc fcQSctpSocket_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSctpSocket_override_virtual_metacall".}
 proc fQSctpSocket_virtualbase_close(self: pointer, ): void{.importc: "QSctpSocket_virtualbase_close".}
@@ -222,6 +226,54 @@ proc tr3*(_: type QSctpSocket, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QSctpSocket, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQSctpSocket_virtualbase_metaObject(self.h))
+
+type QSctpSocketmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QSctpSocket, slot: proc(super: QSctpSocketmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QSctpSocketmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSctpSocket_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSctpSocket_metaObject(self: ptr cQSctpSocket, slot: int): pointer {.exportc: "miqt_exec_callback_QSctpSocket_metaObject ".} =
+  type Cb = proc(super: QSctpSocketmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QSctpSocket(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QSctpSocket, param1: cstring): pointer =
+
+
+  fQSctpSocket_virtualbase_metacast(self.h, param1)
+
+type QSctpSocketmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QSctpSocket, slot: proc(super: QSctpSocketmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QSctpSocketmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSctpSocket_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSctpSocket_metacast(self: ptr cQSctpSocket, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSctpSocket_metacast ".} =
+  type Cb = proc(super: QSctpSocketmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QSctpSocket(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QSctpSocket, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -17,6 +17,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QParallelAnimationGroup_metaObject(const QParallelAnimationGroup*, intptr_t);
+void* miqt_exec_callback_QParallelAnimationGroup_metacast(QParallelAnimationGroup*, intptr_t, const char*);
 int miqt_exec_callback_QParallelAnimationGroup_metacall(QParallelAnimationGroup*, intptr_t, int, int, void**);
 int miqt_exec_callback_QParallelAnimationGroup_duration(const QParallelAnimationGroup*, intptr_t);
 bool miqt_exec_callback_QParallelAnimationGroup_event(QParallelAnimationGroup*, intptr_t, QEvent*);
@@ -40,6 +42,51 @@ public:
 	MiqtVirtualQParallelAnimationGroup(QObject* parent): QParallelAnimationGroup(parent) {};
 
 	virtual ~MiqtVirtualQParallelAnimationGroup() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QParallelAnimationGroup::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QParallelAnimationGroup_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QParallelAnimationGroup::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QParallelAnimationGroup::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QParallelAnimationGroup_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QParallelAnimationGroup::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -430,6 +477,34 @@ struct miqt_string QParallelAnimationGroup_trUtf83(const char* s, const char* c,
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QParallelAnimationGroup_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQParallelAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QParallelAnimationGroup_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQParallelAnimationGroup*)(self) )->virtualbase_metaObject();
+}
+
+bool QParallelAnimationGroup_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQParallelAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQParallelAnimationGroup*>( (QParallelAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QParallelAnimationGroup_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQParallelAnimationGroup*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QParallelAnimationGroup_override_virtual_metacall(void* self, intptr_t slot) {

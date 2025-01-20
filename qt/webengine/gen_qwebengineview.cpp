@@ -57,6 +57,8 @@ void miqt_exec_callback_QWebEngineView_urlChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QWebEngineView_iconUrlChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QWebEngineView_iconChanged(intptr_t, QIcon*);
 void miqt_exec_callback_QWebEngineView_renderProcessTerminated(intptr_t, int, int);
+QMetaObject* miqt_exec_callback_QWebEngineView_metaObject(const QWebEngineView*, intptr_t);
+void* miqt_exec_callback_QWebEngineView_metacast(QWebEngineView*, intptr_t, const char*);
 int miqt_exec_callback_QWebEngineView_metacall(QWebEngineView*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QWebEngineView_sizeHint(const QWebEngineView*, intptr_t);
 QWebEngineView* miqt_exec_callback_QWebEngineView_createWindow(QWebEngineView*, intptr_t, int);
@@ -117,6 +119,51 @@ public:
 	MiqtVirtualQWebEngineView(): QWebEngineView() {};
 
 	virtual ~MiqtVirtualQWebEngineView() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QWebEngineView::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QWebEngineView_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QWebEngineView::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QWebEngineView::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QWebEngineView_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QWebEngineView::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1638,6 +1685,34 @@ void QWebEngineView_triggerPageAction2(QWebEngineView* self, int action, bool ch
 void QWebEngineView_findText2(QWebEngineView* self, struct miqt_string subString, int options) {
 	QString subString_QString = QString::fromUtf8(subString.data, subString.len);
 	self->findText(subString_QString, static_cast<QWebEnginePage::FindFlags>(options));
+}
+
+bool QWebEngineView_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QWebEngineView_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->virtualbase_metaObject();
+}
+
+bool QWebEngineView_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineView* self_cast = dynamic_cast<MiqtVirtualQWebEngineView*>( (QWebEngineView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QWebEngineView_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQWebEngineView*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QWebEngineView_override_virtual_metacall(void* self, intptr_t slot) {

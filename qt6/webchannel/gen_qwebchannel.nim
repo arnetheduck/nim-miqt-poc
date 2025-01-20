@@ -73,6 +73,10 @@ proc fcQWebChannel_connectTo(self: pointer, transport: pointer): void {.importc:
 proc fcQWebChannel_disconnectFrom(self: pointer, transport: pointer): void {.importc: "QWebChannel_disconnectFrom".}
 proc fcQWebChannel_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebChannel_tr2".}
 proc fcQWebChannel_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebChannel_tr3".}
+proc fQWebChannel_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebChannel_virtualbase_metaObject".}
+proc fcQWebChannel_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebChannel_override_virtual_metaObject".}
+proc fQWebChannel_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebChannel_virtualbase_metacast".}
+proc fcQWebChannel_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebChannel_override_virtual_metacast".}
 proc fQWebChannel_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebChannel_virtualbase_metacall".}
 proc fcQWebChannel_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebChannel_override_virtual_metacall".}
 proc fQWebChannel_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QWebChannel_virtualbase_event".}
@@ -213,6 +217,54 @@ proc tr3*(_: type QWebChannel, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QWebChannel, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQWebChannel_virtualbase_metaObject(self.h))
+
+type QWebChannelmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QWebChannel, slot: proc(super: QWebChannelmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QWebChannelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebChannel_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebChannel_metaObject(self: ptr cQWebChannel, slot: int): pointer {.exportc: "miqt_exec_callback_QWebChannel_metaObject ".} =
+  type Cb = proc(super: QWebChannelmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QWebChannel(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QWebChannel, param1: cstring): pointer =
+
+
+  fQWebChannel_virtualbase_metacast(self.h, param1)
+
+type QWebChannelmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QWebChannel, slot: proc(super: QWebChannelmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QWebChannelmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebChannel_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebChannel_metacast(self: ptr cQWebChannel, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebChannel_metacast ".} =
+  type Cb = proc(super: QWebChannelmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QWebChannel(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QWebChannel, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -58,6 +58,8 @@ void miqt_exec_callback_QQuickWindow_activeFocusItemChanged(intptr_t);
 void miqt_exec_callback_QQuickWindow_sceneGraphError(intptr_t, int, struct miqt_string);
 void miqt_exec_callback_QQuickWindow_beforeRenderPassRecording(intptr_t);
 void miqt_exec_callback_QQuickWindow_afterRenderPassRecording(intptr_t);
+QMetaObject* miqt_exec_callback_QQuickWindow_metaObject(const QQuickWindow*, intptr_t);
+void* miqt_exec_callback_QQuickWindow_metacast(QQuickWindow*, intptr_t, const char*);
 int miqt_exec_callback_QQuickWindow_metacall(QQuickWindow*, intptr_t, int, int, void**);
 QObject* miqt_exec_callback_QQuickWindow_focusObject(const QQuickWindow*, intptr_t);
 QAccessibleInterface* miqt_exec_callback_QQuickWindow_accessibleRoot(const QQuickWindow*, intptr_t);
@@ -100,6 +102,51 @@ public:
 	MiqtVirtualQQuickWindow(QWindow* parent): QQuickWindow(parent) {};
 
 	virtual ~MiqtVirtualQQuickWindow() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QQuickWindow::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QQuickWindow_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QQuickWindow::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QQuickWindow::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QQuickWindow_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QQuickWindow::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1265,6 +1312,34 @@ QSGTexture* QQuickWindow_createTextureFromId3(const QQuickWindow* self, unsigned
 
 QSGTexture* QQuickWindow_createTextureFromNativeObject5(const QQuickWindow* self, int type, const void* nativeObjectPtr, int nativeLayout, QSize* size, int options) {
 	return self->createTextureFromNativeObject(static_cast<QQuickWindow::NativeObjectType>(type), nativeObjectPtr, static_cast<int>(nativeLayout), *size, static_cast<QQuickWindow::CreateTextureOptions>(options));
+}
+
+bool QQuickWindow_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQQuickWindow* self_cast = dynamic_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QQuickWindow_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQQuickWindow*)(self) )->virtualbase_metaObject();
+}
+
+bool QQuickWindow_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQQuickWindow* self_cast = dynamic_cast<MiqtVirtualQQuickWindow*>( (QQuickWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QQuickWindow_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQQuickWindow*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QQuickWindow_override_virtual_metacall(void* self, intptr_t slot) {

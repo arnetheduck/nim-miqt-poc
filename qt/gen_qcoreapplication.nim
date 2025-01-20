@@ -140,6 +140,10 @@ proc fcQCoreApplication_sendPostedEvents2(receiver: pointer, event_type: cint): 
 proc fcQCoreApplication_removePostedEvents2(receiver: pointer, eventType: cint): void {.importc: "QCoreApplication_removePostedEvents2".}
 proc fcQCoreApplication_translate3(context: cstring, key: cstring, disambiguation: cstring): struct_miqt_string {.importc: "QCoreApplication_translate3".}
 proc fcQCoreApplication_translate4(context: cstring, key: cstring, disambiguation: cstring, n: cint): struct_miqt_string {.importc: "QCoreApplication_translate4".}
+proc fQCoreApplication_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QCoreApplication_virtualbase_metaObject".}
+proc fcQCoreApplication_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QCoreApplication_override_virtual_metaObject".}
+proc fQCoreApplication_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QCoreApplication_virtualbase_metacast".}
+proc fcQCoreApplication_override_virtual_metacast(self: pointer, slot: int) {.importc: "QCoreApplication_override_virtual_metacast".}
 proc fQCoreApplication_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QCoreApplication_virtualbase_metacall".}
 proc fcQCoreApplication_override_virtual_metacall(self: pointer, slot: int) {.importc: "QCoreApplication_override_virtual_metacall".}
 proc fQCoreApplication_virtualbase_notify(self: pointer, param1: pointer, param2: pointer): bool{.importc: "QCoreApplication_virtualbase_notify".}
@@ -559,6 +563,54 @@ proc translate4*(_: type QCoreApplication, context: cstring, key: cstring, disam
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QCoreApplication, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQCoreApplication_virtualbase_metaObject(self.h))
+
+type QCoreApplicationmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QCoreApplication, slot: proc(super: QCoreApplicationmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QCoreApplicationmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCoreApplication_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCoreApplication_metaObject(self: ptr cQCoreApplication, slot: int): pointer {.exportc: "miqt_exec_callback_QCoreApplication_metaObject ".} =
+  type Cb = proc(super: QCoreApplicationmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QCoreApplication(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QCoreApplication, param1: cstring): pointer =
+
+
+  fQCoreApplication_virtualbase_metacast(self.h, param1)
+
+type QCoreApplicationmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QCoreApplication, slot: proc(super: QCoreApplicationmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QCoreApplicationmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCoreApplication_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCoreApplication_metacast(self: ptr cQCoreApplication, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QCoreApplication_metacast ".} =
+  type Cb = proc(super: QCoreApplicationmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QCoreApplication(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QCoreApplication, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

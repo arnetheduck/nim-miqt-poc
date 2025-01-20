@@ -92,6 +92,10 @@ proc fcQNetworkConfigurationManager_tr3(s: cstring, c: cstring, n: cint): struct
 proc fcQNetworkConfigurationManager_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QNetworkConfigurationManager_trUtf82".}
 proc fcQNetworkConfigurationManager_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QNetworkConfigurationManager_trUtf83".}
 proc fcQNetworkConfigurationManager_allConfigurations1(self: pointer, flags: cint): struct_miqt_array {.importc: "QNetworkConfigurationManager_allConfigurations1".}
+proc fQNetworkConfigurationManager_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QNetworkConfigurationManager_virtualbase_metaObject".}
+proc fcQNetworkConfigurationManager_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QNetworkConfigurationManager_override_virtual_metaObject".}
+proc fQNetworkConfigurationManager_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QNetworkConfigurationManager_virtualbase_metacast".}
+proc fcQNetworkConfigurationManager_override_virtual_metacast(self: pointer, slot: int) {.importc: "QNetworkConfigurationManager_override_virtual_metacast".}
 proc fQNetworkConfigurationManager_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QNetworkConfigurationManager_virtualbase_metacall".}
 proc fcQNetworkConfigurationManager_override_virtual_metacall(self: pointer, slot: int) {.importc: "QNetworkConfigurationManager_override_virtual_metacall".}
 proc fQNetworkConfigurationManager_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QNetworkConfigurationManager_virtualbase_event".}
@@ -300,6 +304,54 @@ proc allConfigurations1*(self: QNetworkConfigurationManager, flags: gen_qnetwork
     vx_ret[i] = gen_qnetworkconfiguration.QNetworkConfiguration(h: v_outCast[i])
   vx_ret
 
+proc callVirtualBase_metaObject(self: QNetworkConfigurationManager, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQNetworkConfigurationManager_virtualbase_metaObject(self.h))
+
+type QNetworkConfigurationManagermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QNetworkConfigurationManager, slot: proc(super: QNetworkConfigurationManagermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QNetworkConfigurationManagermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQNetworkConfigurationManager_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QNetworkConfigurationManager_metaObject(self: ptr cQNetworkConfigurationManager, slot: int): pointer {.exportc: "miqt_exec_callback_QNetworkConfigurationManager_metaObject ".} =
+  type Cb = proc(super: QNetworkConfigurationManagermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QNetworkConfigurationManager(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QNetworkConfigurationManager, param1: cstring): pointer =
+
+
+  fQNetworkConfigurationManager_virtualbase_metacast(self.h, param1)
+
+type QNetworkConfigurationManagermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QNetworkConfigurationManager, slot: proc(super: QNetworkConfigurationManagermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QNetworkConfigurationManagermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQNetworkConfigurationManager_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QNetworkConfigurationManager_metacast(self: ptr cQNetworkConfigurationManager, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QNetworkConfigurationManager_metacast ".} =
+  type Cb = proc(super: QNetworkConfigurationManagermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QNetworkConfigurationManager(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QNetworkConfigurationManager, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

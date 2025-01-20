@@ -189,6 +189,10 @@ proc fcQInputDialog_getDouble6(parent: pointer, title: struct_miqt_string, label
 proc fcQInputDialog_getDouble7(parent: pointer, title: struct_miqt_string, label: struct_miqt_string, value: float64, minValue: float64, maxValue: float64, decimals: cint): float64 {.importc: "QInputDialog_getDouble7".}
 proc fcQInputDialog_getDouble8(parent: pointer, title: struct_miqt_string, label: struct_miqt_string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool): float64 {.importc: "QInputDialog_getDouble8".}
 proc fcQInputDialog_getDouble9(parent: pointer, title: struct_miqt_string, label: struct_miqt_string, value: float64, minValue: float64, maxValue: float64, decimals: cint, ok: ptr bool, flags: cint): float64 {.importc: "QInputDialog_getDouble9".}
+proc fQInputDialog_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QInputDialog_virtualbase_metaObject".}
+proc fcQInputDialog_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metaObject".}
+proc fQInputDialog_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QInputDialog_virtualbase_metacast".}
+proc fcQInputDialog_override_virtual_metacast(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metacast".}
 proc fQInputDialog_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QInputDialog_virtualbase_metacall".}
 proc fcQInputDialog_override_virtual_metacall(self: pointer, slot: int) {.importc: "QInputDialog_override_virtual_metacall".}
 proc fQInputDialog_virtualbase_minimumSizeHint(self: pointer, ): pointer{.importc: "QInputDialog_virtualbase_minimumSizeHint".}
@@ -885,6 +889,54 @@ proc getDouble9*(_: type QInputDialog, parent: gen_qwidget.QWidget, title: strin
 
   fcQInputDialog_getDouble9(parent.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: label, len: csize_t(len(label))), value, minValue, maxValue, decimals, ok, cint(flags))
 
+proc callVirtualBase_metaObject(self: QInputDialog, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQInputDialog_virtualbase_metaObject(self.h))
+
+type QInputDialogmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QInputDialog, slot: proc(super: QInputDialogmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QInputDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQInputDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QInputDialog_metaObject(self: ptr cQInputDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QInputDialog_metaObject ".} =
+  type Cb = proc(super: QInputDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QInputDialog(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QInputDialog, param1: cstring): pointer =
+
+
+  fQInputDialog_virtualbase_metacast(self.h, param1)
+
+type QInputDialogmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QInputDialog, slot: proc(super: QInputDialogmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QInputDialogmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQInputDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QInputDialog_metacast(self: ptr cQInputDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QInputDialog_metacast ".} =
+  type Cb = proc(super: QInputDialogmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QInputDialog(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QInputDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -97,6 +97,10 @@ proc fcQState_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QState
 proc fcQState_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QState_tr3".}
 proc fcQState_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QState_trUtf82".}
 proc fcQState_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QState_trUtf83".}
+proc fQState_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QState_virtualbase_metaObject".}
+proc fcQState_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QState_override_virtual_metaObject".}
+proc fQState_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QState_virtualbase_metacast".}
+proc fcQState_override_virtual_metacast(self: pointer, slot: int) {.importc: "QState_override_virtual_metacast".}
 proc fQState_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QState_virtualbase_metacall".}
 proc fcQState_override_virtual_metacall(self: pointer, slot: int) {.importc: "QState_override_virtual_metacall".}
 proc fQState_virtualbase_onEntry(self: pointer, event: pointer): void{.importc: "QState_virtualbase_onEntry".}
@@ -242,6 +246,54 @@ proc trUtf83*(_: type QState, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QState, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQState_virtualbase_metaObject(self.h))
+
+type QStatemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QState, slot: proc(super: QStatemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QStatemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQState_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QState_metaObject(self: ptr cQState, slot: int): pointer {.exportc: "miqt_exec_callback_QState_metaObject ".} =
+  type Cb = proc(super: QStatemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QState(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QState, param1: cstring): pointer =
+
+
+  fQState_virtualbase_metacast(self.h, param1)
+
+type QStatemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QState, slot: proc(super: QStatemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QStatemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQState_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QState_metacast(self: ptr cQState, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QState_metacast ".} =
+  type Cb = proc(super: QStatemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QState(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QState, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

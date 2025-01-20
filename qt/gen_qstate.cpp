@@ -20,6 +20,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QState_metaObject(const QState*, intptr_t);
+void* miqt_exec_callback_QState_metacast(QState*, intptr_t, const char*);
 int miqt_exec_callback_QState_metacall(QState*, intptr_t, int, int, void**);
 void miqt_exec_callback_QState_onEntry(QState*, intptr_t, QEvent*);
 void miqt_exec_callback_QState_onExit(QState*, intptr_t, QEvent*);
@@ -43,6 +45,51 @@ public:
 	MiqtVirtualQState(QState::ChildMode childMode, QState* parent): QState(childMode, parent) {};
 
 	virtual ~MiqtVirtualQState() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QState::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QState_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QState::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QState::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QState_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QState::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -445,6 +492,34 @@ struct miqt_string QState_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QState_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QState_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQState*)(self) )->virtualbase_metaObject();
+}
+
+bool QState_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QState_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQState*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QState_override_virtual_metacall(void* self, intptr_t slot) {

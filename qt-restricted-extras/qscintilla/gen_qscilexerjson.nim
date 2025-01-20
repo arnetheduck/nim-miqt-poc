@@ -105,6 +105,10 @@ proc fcQsciLexerJSON_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQsciLexerJSON_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerJSON_tr3".}
 proc fcQsciLexerJSON_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerJSON_trUtf82".}
 proc fcQsciLexerJSON_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerJSON_trUtf83".}
+proc fQsciLexerJSON_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerJSON_virtualbase_metaObject".}
+proc fcQsciLexerJSON_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerJSON_override_virtual_metaObject".}
+proc fQsciLexerJSON_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerJSON_virtualbase_metacast".}
+proc fcQsciLexerJSON_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerJSON_override_virtual_metacast".}
 proc fQsciLexerJSON_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerJSON_virtualbase_metacall".}
 proc fcQsciLexerJSON_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerJSON_override_virtual_metacall".}
 proc fcQsciLexerJSON_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerJSON_override_virtual_language".}
@@ -316,6 +320,54 @@ proc trUtf83*(_: type QsciLexerJSON, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QsciLexerJSON, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerJSON_virtualbase_metaObject(self.h))
+
+type QsciLexerJSONmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerJSON, slot: proc(super: QsciLexerJSONmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerJSONmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerJSON_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerJSON_metaObject(self: ptr cQsciLexerJSON, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerJSON_metaObject ".} =
+  type Cb = proc(super: QsciLexerJSONmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerJSON(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerJSON, param1: cstring): pointer =
+
+
+  fQsciLexerJSON_virtualbase_metacast(self.h, param1)
+
+type QsciLexerJSONmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerJSON, slot: proc(super: QsciLexerJSONmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerJSONmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerJSON_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerJSON_metacast(self: ptr cQsciLexerJSON, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerJSON_metacast ".} =
+  type Cb = proc(super: QsciLexerJSONmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerJSON(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerJSON, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

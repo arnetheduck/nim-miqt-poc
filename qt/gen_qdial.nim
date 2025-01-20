@@ -90,6 +90,10 @@ proc fcQDial_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QDial_t
 proc fcQDial_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDial_tr3".}
 proc fcQDial_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QDial_trUtf82".}
 proc fcQDial_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDial_trUtf83".}
+proc fQDial_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDial_virtualbase_metaObject".}
+proc fcQDial_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDial_override_virtual_metaObject".}
+proc fQDial_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDial_virtualbase_metacast".}
+proc fcQDial_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDial_override_virtual_metacast".}
 proc fQDial_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDial_virtualbase_metacall".}
 proc fcQDial_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDial_override_virtual_metacall".}
 proc fQDial_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QDial_virtualbase_sizeHint".}
@@ -290,6 +294,54 @@ proc trUtf83*(_: type QDial, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QDial, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDial_virtualbase_metaObject(self.h))
+
+type QDialmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDial, slot: proc(super: QDialmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDialmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDial_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDial_metaObject(self: ptr cQDial, slot: int): pointer {.exportc: "miqt_exec_callback_QDial_metaObject ".} =
+  type Cb = proc(super: QDialmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDial(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDial, param1: cstring): pointer =
+
+
+  fQDial_virtualbase_metacast(self.h, param1)
+
+type QDialmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDial, slot: proc(super: QDialmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDialmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDial_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDial_metacast(self: ptr cQDial, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDial_metacast ".} =
+  type Cb = proc(super: QDialmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDial(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDial, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

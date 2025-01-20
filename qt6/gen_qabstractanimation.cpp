@@ -21,6 +21,8 @@ void miqt_exec_callback_QAbstractAnimation_finished(intptr_t);
 void miqt_exec_callback_QAbstractAnimation_stateChanged(intptr_t, int, int);
 void miqt_exec_callback_QAbstractAnimation_currentLoopChanged(intptr_t, int);
 void miqt_exec_callback_QAbstractAnimation_directionChanged(intptr_t, int);
+QMetaObject* miqt_exec_callback_QAbstractAnimation_metaObject(const QAbstractAnimation*, intptr_t);
+void* miqt_exec_callback_QAbstractAnimation_metacast(QAbstractAnimation*, intptr_t, const char*);
 int miqt_exec_callback_QAbstractAnimation_metacall(QAbstractAnimation*, intptr_t, int, int, void**);
 int miqt_exec_callback_QAbstractAnimation_duration(const QAbstractAnimation*, intptr_t);
 bool miqt_exec_callback_QAbstractAnimation_event(QAbstractAnimation*, intptr_t, QEvent*);
@@ -35,6 +37,8 @@ void miqt_exec_callback_QAbstractAnimation_connectNotify(QAbstractAnimation*, in
 void miqt_exec_callback_QAbstractAnimation_disconnectNotify(QAbstractAnimation*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QAnimationDriver_started(intptr_t);
 void miqt_exec_callback_QAnimationDriver_stopped(intptr_t);
+QMetaObject* miqt_exec_callback_QAnimationDriver_metaObject(const QAnimationDriver*, intptr_t);
+void* miqt_exec_callback_QAnimationDriver_metacast(QAnimationDriver*, intptr_t, const char*);
 int miqt_exec_callback_QAnimationDriver_metacall(QAnimationDriver*, intptr_t, int, int, void**);
 void miqt_exec_callback_QAnimationDriver_advance(QAnimationDriver*, intptr_t);
 long long miqt_exec_callback_QAnimationDriver_elapsed(const QAnimationDriver*, intptr_t);
@@ -58,6 +62,51 @@ public:
 	MiqtVirtualQAbstractAnimation(QObject* parent): QAbstractAnimation(parent) {};
 
 	virtual ~MiqtVirtualQAbstractAnimation() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAbstractAnimation::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAbstractAnimation_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAbstractAnimation::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAbstractAnimation::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAbstractAnimation_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAbstractAnimation::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -519,6 +568,34 @@ void QAbstractAnimation_start1(QAbstractAnimation* self, int policy) {
 	self->start(static_cast<QAbstractAnimation::DeletionPolicy>(policy));
 }
 
+bool QAbstractAnimation_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAbstractAnimation_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_metaObject();
+}
+
+bool QAbstractAnimation_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAbstractAnimation_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_metacast(param1);
+}
+
 bool QAbstractAnimation_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
 	if (self_cast == nullptr) {
@@ -691,6 +768,51 @@ public:
 	MiqtVirtualQAnimationDriver(QObject* parent): QAnimationDriver(parent) {};
 
 	virtual ~MiqtVirtualQAnimationDriver() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAnimationDriver::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAnimationDriver_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAnimationDriver::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAnimationDriver::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAnimationDriver_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAnimationDriver::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1079,6 +1201,34 @@ struct miqt_string QAnimationDriver_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QAnimationDriver_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAnimationDriver_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAnimationDriver*)(self) )->virtualbase_metaObject();
+}
+
+bool QAnimationDriver_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAnimationDriver_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAnimationDriver_override_virtual_metacall(void* self, intptr_t slot) {

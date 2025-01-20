@@ -109,6 +109,10 @@ proc fcQAbstractAnimation_setCurrentTime(self: pointer, msecs: cint): void {.imp
 proc fcQAbstractAnimation_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractAnimation_tr2".}
 proc fcQAbstractAnimation_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractAnimation_tr3".}
 proc fcQAbstractAnimation_start1(self: pointer, policy: cint): void {.importc: "QAbstractAnimation_start1".}
+proc fQAbstractAnimation_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractAnimation_virtualbase_metaObject".}
+proc fcQAbstractAnimation_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractAnimation_override_virtual_metaObject".}
+proc fQAbstractAnimation_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractAnimation_virtualbase_metacast".}
+proc fcQAbstractAnimation_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractAnimation_override_virtual_metacast".}
 proc fQAbstractAnimation_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractAnimation_virtualbase_metacall".}
 proc fcQAbstractAnimation_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractAnimation_override_virtual_metacall".}
 proc fcQAbstractAnimation_override_virtual_duration(self: pointer, slot: int) {.importc: "QAbstractAnimation_override_virtual_duration".}
@@ -150,6 +154,10 @@ proc fcQAnimationDriver_stopped(self: pointer, ): void {.importc: "QAnimationDri
 proc fQAnimationDriver_connect_stopped(self: pointer, slot: int) {.importc: "QAnimationDriver_connect_stopped".}
 proc fcQAnimationDriver_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAnimationDriver_tr2".}
 proc fcQAnimationDriver_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAnimationDriver_tr3".}
+proc fQAnimationDriver_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAnimationDriver_virtualbase_metaObject".}
+proc fcQAnimationDriver_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAnimationDriver_override_virtual_metaObject".}
+proc fQAnimationDriver_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAnimationDriver_virtualbase_metacast".}
+proc fcQAnimationDriver_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAnimationDriver_override_virtual_metacast".}
 proc fQAnimationDriver_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAnimationDriver_virtualbase_metacall".}
 proc fcQAnimationDriver_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAnimationDriver_override_virtual_metacall".}
 proc fQAnimationDriver_virtualbase_advance(self: pointer, ): void{.importc: "QAnimationDriver_virtualbase_advance".}
@@ -363,6 +371,54 @@ proc start1*(self: QAbstractAnimation, policy: QAbstractAnimationDeletionPolicy)
 
   fcQAbstractAnimation_start1(self.h, cint(policy))
 
+proc callVirtualBase_metaObject(self: QAbstractAnimation, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAbstractAnimation_virtualbase_metaObject(self.h))
+
+type QAbstractAnimationmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractAnimation_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractAnimation_metaObject(self: ptr cQAbstractAnimation, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractAnimation_metaObject ".} =
+  type Cb = proc(super: QAbstractAnimationmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAbstractAnimation(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAbstractAnimation, param1: cstring): pointer =
+
+
+  fQAbstractAnimation_virtualbase_metacast(self.h, param1)
+
+type QAbstractAnimationmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAbstractAnimation, slot: proc(super: QAbstractAnimationmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractAnimationmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractAnimation_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractAnimation_metacast(self: ptr cQAbstractAnimation, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractAnimation_metacast ".} =
+  type Cb = proc(super: QAbstractAnimationmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAbstractAnimation(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAbstractAnimation, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -737,6 +793,54 @@ proc tr3*(_: type QAnimationDriver, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QAnimationDriver, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAnimationDriver_virtualbase_metaObject(self.h))
+
+type QAnimationDrivermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAnimationDriver, slot: proc(super: QAnimationDrivermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAnimationDrivermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAnimationDriver_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAnimationDriver_metaObject(self: ptr cQAnimationDriver, slot: int): pointer {.exportc: "miqt_exec_callback_QAnimationDriver_metaObject ".} =
+  type Cb = proc(super: QAnimationDrivermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAnimationDriver(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAnimationDriver, param1: cstring): pointer =
+
+
+  fQAnimationDriver_virtualbase_metacast(self.h, param1)
+
+type QAnimationDrivermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAnimationDriver, slot: proc(super: QAnimationDrivermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAnimationDrivermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAnimationDriver_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAnimationDriver_metacast(self: ptr cQAnimationDriver, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAnimationDriver_metacast ".} =
+  type Cb = proc(super: QAnimationDrivermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAnimationDriver(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAnimationDriver, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -164,6 +164,8 @@ void miqt_exec_callback_ScintillaEditBase_buttonPressed(intptr_t, QMouseEvent*);
 void miqt_exec_callback_ScintillaEditBase_buttonReleased(intptr_t, QMouseEvent*);
 void miqt_exec_callback_ScintillaEditBase_keyPressed(intptr_t, QKeyEvent*);
 void miqt_exec_callback_ScintillaEditBase_resized(intptr_t);
+QMetaObject* miqt_exec_callback_ScintillaEditBase_metaObject(const ScintillaEditBase*, intptr_t);
+void* miqt_exec_callback_ScintillaEditBase_metacast(ScintillaEditBase*, intptr_t, const char*);
 int miqt_exec_callback_ScintillaEditBase_metacall(ScintillaEditBase*, intptr_t, int, int, void**);
 intptr_t miqt_exec_callback_ScintillaEditBase_send(const ScintillaEditBase*, intptr_t, unsigned int, uintptr_t, intptr_t);
 intptr_t miqt_exec_callback_ScintillaEditBase_sends(const ScintillaEditBase*, intptr_t, unsigned int, uintptr_t, const char*);
@@ -223,6 +225,8 @@ void miqt_exec_callback_ScintillaDocument_savePoint(intptr_t, bool);
 void miqt_exec_callback_ScintillaDocument_modified(intptr_t, int, int, struct miqt_string, int, int, int, int, int);
 void miqt_exec_callback_ScintillaDocument_styleNeeded(intptr_t, int);
 void miqt_exec_callback_ScintillaDocument_errorOccurred(intptr_t, int);
+QMetaObject* miqt_exec_callback_ScintillaDocument_metaObject(const ScintillaDocument*, intptr_t);
+void* miqt_exec_callback_ScintillaDocument_metacast(ScintillaDocument*, intptr_t, const char*);
 int miqt_exec_callback_ScintillaDocument_metacall(ScintillaDocument*, intptr_t, int, int, void**);
 bool miqt_exec_callback_ScintillaDocument_event(ScintillaDocument*, intptr_t, QEvent*);
 bool miqt_exec_callback_ScintillaDocument_eventFilter(ScintillaDocument*, intptr_t, QObject*, QEvent*);
@@ -231,6 +235,8 @@ void miqt_exec_callback_ScintillaDocument_childEvent(ScintillaDocument*, intptr_
 void miqt_exec_callback_ScintillaDocument_customEvent(ScintillaDocument*, intptr_t, QEvent*);
 void miqt_exec_callback_ScintillaDocument_connectNotify(ScintillaDocument*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_ScintillaDocument_disconnectNotify(ScintillaDocument*, intptr_t, QMetaMethod*);
+QMetaObject* miqt_exec_callback_ScintillaEdit_metaObject(const ScintillaEdit*, intptr_t);
+void* miqt_exec_callback_ScintillaEdit_metacast(ScintillaEdit*, intptr_t, const char*);
 int miqt_exec_callback_ScintillaEdit_metacall(ScintillaEdit*, intptr_t, int, int, void**);
 intptr_t miqt_exec_callback_ScintillaEdit_send(const ScintillaEdit*, intptr_t, unsigned int, uintptr_t, intptr_t);
 intptr_t miqt_exec_callback_ScintillaEdit_sends(const ScintillaEdit*, intptr_t, unsigned int, uintptr_t, const char*);
@@ -2561,6 +2567,51 @@ public:
 	virtual ~MiqtVirtualScintillaEditBase() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return ScintillaEditBase::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_ScintillaEditBase_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) ScintillaEditBase::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return ScintillaEditBase::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_ScintillaEditBase_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return ScintillaEditBase::qt_metacast(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -4447,6 +4498,34 @@ struct miqt_string ScintillaEditBase_trUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
+bool ScintillaEditBase_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* ScintillaEditBase_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_metaObject();
+}
+
+bool ScintillaEditBase_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* ScintillaEditBase_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_metacast(param1);
+}
+
 bool ScintillaEditBase_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
@@ -5218,6 +5297,51 @@ public:
 	virtual ~MiqtVirtualScintillaDocument() override = default;
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return ScintillaDocument::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_ScintillaDocument_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) ScintillaDocument::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return ScintillaDocument::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_ScintillaDocument_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return ScintillaDocument::qt_metacast(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -5747,6 +5871,34 @@ void ScintillaDocument_beginUndoAction1(ScintillaDocument* self, bool coalesceWi
 	self->begin_undo_action(coalesceWithPrior);
 }
 
+bool ScintillaDocument_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* ScintillaDocument_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualScintillaDocument*)(self) )->virtualbase_metaObject();
+}
+
+bool ScintillaDocument_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* ScintillaDocument_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_metacast(param1);
+}
+
 bool ScintillaDocument_override_virtual_metacall(void* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
 	if (self_cast == nullptr) {
@@ -5871,6 +6023,51 @@ public:
 	MiqtVirtualScintillaEdit(): ScintillaEdit() {};
 
 	virtual ~MiqtVirtualScintillaEdit() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return ScintillaEdit::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_ScintillaEdit_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) ScintillaEdit::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return ScintillaEdit::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_ScintillaEdit_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return ScintillaEdit::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -10946,6 +11143,34 @@ struct miqt_string ScintillaEdit_trUtf83(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool ScintillaEdit_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* ScintillaEdit_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_metaObject();
+}
+
+bool ScintillaEdit_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* ScintillaEdit_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_metacast(param1);
 }
 
 bool ScintillaEdit_override_virtual_metacall(void* self, intptr_t slot) {

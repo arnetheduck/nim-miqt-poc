@@ -97,6 +97,10 @@ proc fcQGroupBox_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QGr
 proc fcQGroupBox_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGroupBox_tr3".}
 proc fcQGroupBox_clicked1(self: pointer, checked: bool): void {.importc: "QGroupBox_clicked1".}
 proc fQGroupBox_connect_clicked1(self: pointer, slot: int) {.importc: "QGroupBox_connect_clicked1".}
+proc fQGroupBox_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGroupBox_virtualbase_metaObject".}
+proc fcQGroupBox_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGroupBox_override_virtual_metaObject".}
+proc fQGroupBox_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGroupBox_virtualbase_metacast".}
+proc fcQGroupBox_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGroupBox_override_virtual_metacast".}
 proc fQGroupBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGroupBox_virtualbase_metacall".}
 proc fcQGroupBox_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGroupBox_override_virtual_metacall".}
 proc fQGroupBox_virtualbase_minimumSizeHint(self: pointer, ): pointer{.importc: "QGroupBox_virtualbase_minimumSizeHint".}
@@ -345,6 +349,54 @@ proc onclicked1*(self: QGroupBox, slot: proc(checked: bool)) =
   tmp[] = slot
   GC_ref(tmp)
   fQGroupBox_connect_clicked1(self.h, cast[int](addr tmp[]))
+proc callVirtualBase_metaObject(self: QGroupBox, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQGroupBox_virtualbase_metaObject(self.h))
+
+type QGroupBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QGroupBox, slot: proc(super: QGroupBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QGroupBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGroupBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGroupBox_metaObject(self: ptr cQGroupBox, slot: int): pointer {.exportc: "miqt_exec_callback_QGroupBox_metaObject ".} =
+  type Cb = proc(super: QGroupBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QGroupBox(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QGroupBox, param1: cstring): pointer =
+
+
+  fQGroupBox_virtualbase_metacast(self.h, param1)
+
+type QGroupBoxmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QGroupBox, slot: proc(super: QGroupBoxmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QGroupBoxmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGroupBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGroupBox_metacast(self: ptr cQGroupBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGroupBox_metacast ".} =
+  type Cb = proc(super: QGroupBoxmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QGroupBox(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QGroupBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

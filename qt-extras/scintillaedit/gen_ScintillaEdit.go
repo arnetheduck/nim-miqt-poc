@@ -6574,6 +6574,62 @@ func ScintillaEditBase_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *ScintillaEditBase) callVirtualBase_MetaObject() *qt.QMetaObject {
+
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEditBase_virtualbase_metaObject(unsafe.Pointer(this.h))))
+
+}
+func (this *ScintillaEditBase) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+	ok := C.ScintillaEditBase_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_ScintillaEditBase_metaObject
+func miqt_exec_callback_ScintillaEditBase_metaObject(self *C.ScintillaEditBase, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QMetaObject) *qt.QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_MetaObject)
+
+	return (*C.QMetaObject)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *ScintillaEditBase) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.ScintillaEditBase_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *ScintillaEditBase) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.ScintillaEditBase_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_ScintillaEditBase_metacast
+func miqt_exec_callback_ScintillaEditBase_metacast(self *C.ScintillaEditBase, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&ScintillaEditBase{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
+}
+
 func (this *ScintillaEditBase) callVirtualBase_Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
 
 	return (int)(C.ScintillaEditBase_virtualbase_metacall(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2), param3))
@@ -8471,6 +8527,62 @@ func ScintillaDocument_TrUtf83(s string, c string, n int) string {
 
 func (this *ScintillaDocument) BeginUndoAction1(coalesceWithPrior bool) {
 	C.ScintillaDocument_beginUndoAction1(this.h, (C.bool)(coalesceWithPrior))
+}
+
+func (this *ScintillaDocument) callVirtualBase_MetaObject() *qt.QMetaObject {
+
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaDocument_virtualbase_metaObject(unsafe.Pointer(this.h))))
+
+}
+func (this *ScintillaDocument) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+	ok := C.ScintillaDocument_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_ScintillaDocument_metaObject
+func miqt_exec_callback_ScintillaDocument_metaObject(self *C.ScintillaDocument, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QMetaObject) *qt.QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&ScintillaDocument{h: self}).callVirtualBase_MetaObject)
+
+	return (*C.QMetaObject)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *ScintillaDocument) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.ScintillaDocument_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *ScintillaDocument) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.ScintillaDocument_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_ScintillaDocument_metacast
+func miqt_exec_callback_ScintillaDocument_metacast(self *C.ScintillaDocument, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&ScintillaDocument{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
 }
 
 func (this *ScintillaDocument) callVirtualBase_Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {
@@ -12326,6 +12438,62 @@ func ScintillaEdit_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *ScintillaEdit) callVirtualBase_MetaObject() *qt.QMetaObject {
+
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEdit_virtualbase_metaObject(unsafe.Pointer(this.h))))
+
+}
+func (this *ScintillaEdit) OnmetaObject(slot func(super func() *qt.QMetaObject) *qt.QMetaObject) {
+	ok := C.ScintillaEdit_override_virtual_metaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_ScintillaEdit_metaObject
+func miqt_exec_callback_ScintillaEdit_metaObject(self *C.ScintillaEdit, cb C.intptr_t) *C.QMetaObject {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QMetaObject) *qt.QMetaObject)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&ScintillaEdit{h: self}).callVirtualBase_MetaObject)
+
+	return (*C.QMetaObject)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *ScintillaEdit) callVirtualBase_Metacast(param1 string) unsafe.Pointer {
+	param1_Cstring := C.CString(param1)
+	defer C.free(unsafe.Pointer(param1_Cstring))
+
+	return (unsafe.Pointer)(C.ScintillaEdit_virtualbase_metacast(unsafe.Pointer(this.h), param1_Cstring))
+
+}
+func (this *ScintillaEdit) Onmetacast(slot func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer) {
+	ok := C.ScintillaEdit_override_virtual_metacast(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_ScintillaEdit_metacast
+func miqt_exec_callback_ScintillaEdit_metacast(self *C.ScintillaEdit, cb C.intptr_t, param1 *C.const_char) unsafe.Pointer {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string) unsafe.Pointer, param1 string) unsafe.Pointer)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	param1_ret := param1
+	slotval1 := C.GoString(param1_ret)
+
+	virtualReturn := gofunc((&ScintillaEdit{h: self}).callVirtualBase_Metacast, slotval1)
+
+	return virtualReturn
+
 }
 
 func (this *ScintillaEdit) callVirtualBase_Metacall(param1 qt.QMetaObject__Call, param2 int, param3 unsafe.Pointer) int {

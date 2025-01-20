@@ -116,6 +116,10 @@ proc fcQsciLexerPascal_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_str
 proc fcQsciLexerPascal_blockEnd1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPascal_blockEnd1".}
 proc fcQsciLexerPascal_blockStart1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPascal_blockStart1".}
 proc fcQsciLexerPascal_blockStartKeyword1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerPascal_blockStartKeyword1".}
+proc fQsciLexerPascal_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerPascal_virtualbase_metaObject".}
+proc fcQsciLexerPascal_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_metaObject".}
+proc fQsciLexerPascal_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerPascal_virtualbase_metacast".}
+proc fcQsciLexerPascal_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_metacast".}
 proc fQsciLexerPascal_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerPascal_virtualbase_metacall".}
 proc fcQsciLexerPascal_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerPascal_override_virtual_metacall".}
 proc fQsciLexerPascal_virtualbase_setFoldComments(self: pointer, fold: bool): void{.importc: "QsciLexerPascal_virtualbase_setFoldComments".}
@@ -381,6 +385,54 @@ proc blockStartKeyword1*(self: QsciLexerPascal, style: ptr cint): cstring =
 
   (fcQsciLexerPascal_blockStartKeyword1(self.h, style))
 
+proc callVirtualBase_metaObject(self: QsciLexerPascal, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerPascal_virtualbase_metaObject(self.h))
+
+type QsciLexerPascalmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerPascal, slot: proc(super: QsciLexerPascalmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerPascalmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerPascal_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerPascal_metaObject(self: ptr cQsciLexerPascal, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_metaObject ".} =
+  type Cb = proc(super: QsciLexerPascalmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerPascal(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerPascal, param1: cstring): pointer =
+
+
+  fQsciLexerPascal_virtualbase_metacast(self.h, param1)
+
+type QsciLexerPascalmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerPascal, slot: proc(super: QsciLexerPascalmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerPascalmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerPascal_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerPascal_metacast(self: ptr cQsciLexerPascal, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerPascal_metacast ".} =
+  type Cb = proc(super: QsciLexerPascalmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerPascal(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerPascal, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

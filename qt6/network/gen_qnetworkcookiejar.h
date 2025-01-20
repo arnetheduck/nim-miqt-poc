@@ -51,6 +51,10 @@ bool QNetworkCookieJar_deleteCookie(QNetworkCookieJar* self, QNetworkCookie* coo
 bool QNetworkCookieJar_validateCookie(const QNetworkCookieJar* self, QNetworkCookie* cookie, QUrl* url);
 struct miqt_string QNetworkCookieJar_tr2(const char* s, const char* c);
 struct miqt_string QNetworkCookieJar_tr3(const char* s, const char* c, int n);
+bool QNetworkCookieJar_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QNetworkCookieJar_virtualbase_metaObject(const void* self);
+bool QNetworkCookieJar_override_virtual_metacast(void* self, intptr_t slot);
+void* QNetworkCookieJar_virtualbase_metacast(void* self, const char* param1);
 bool QNetworkCookieJar_override_virtual_metacall(void* self, intptr_t slot);
 int QNetworkCookieJar_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QNetworkCookieJar_override_virtual_cookiesForUrl(void* self, intptr_t slot);

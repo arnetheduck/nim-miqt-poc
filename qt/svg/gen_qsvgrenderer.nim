@@ -108,6 +108,10 @@ proc fcQSvgRenderer_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.i
 proc fcQSvgRenderer_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QSvgRenderer_trUtf82".}
 proc fcQSvgRenderer_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSvgRenderer_trUtf83".}
 proc fcQSvgRenderer_render32(self: pointer, p: pointer, elementId: struct_miqt_string, bounds: pointer): void {.importc: "QSvgRenderer_render32".}
+proc fQSvgRenderer_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSvgRenderer_virtualbase_metaObject".}
+proc fcQSvgRenderer_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_metaObject".}
+proc fQSvgRenderer_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSvgRenderer_virtualbase_metacast".}
+proc fcQSvgRenderer_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_metacast".}
 proc fQSvgRenderer_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSvgRenderer_virtualbase_metacall".}
 proc fcQSvgRenderer_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSvgRenderer_override_virtual_metacall".}
 proc fQSvgRenderer_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSvgRenderer_virtualbase_event".}
@@ -324,6 +328,54 @@ proc render32*(self: QSvgRenderer, p: gen_qpainter.QPainter, elementId: string, 
 
   fcQSvgRenderer_render32(self.h, p.h, struct_miqt_string(data: elementId, len: csize_t(len(elementId))), bounds.h)
 
+proc callVirtualBase_metaObject(self: QSvgRenderer, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQSvgRenderer_virtualbase_metaObject(self.h))
+
+type QSvgRenderermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QSvgRenderer, slot: proc(super: QSvgRenderermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QSvgRenderermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSvgRenderer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSvgRenderer_metaObject(self: ptr cQSvgRenderer, slot: int): pointer {.exportc: "miqt_exec_callback_QSvgRenderer_metaObject ".} =
+  type Cb = proc(super: QSvgRenderermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QSvgRenderer(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QSvgRenderer, param1: cstring): pointer =
+
+
+  fQSvgRenderer_virtualbase_metacast(self.h, param1)
+
+type QSvgRenderermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QSvgRenderer, slot: proc(super: QSvgRenderermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QSvgRenderermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSvgRenderer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSvgRenderer_metacast(self: ptr cQSvgRenderer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSvgRenderer_metacast ".} =
+  type Cb = proc(super: QSvgRenderermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QSvgRenderer(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QSvgRenderer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

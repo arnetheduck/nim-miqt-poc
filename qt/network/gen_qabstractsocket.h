@@ -113,6 +113,10 @@ bool QAbstractSocket_bind22(QAbstractSocket* self, QHostAddress* address, uint16
 bool QAbstractSocket_bind3(QAbstractSocket* self, QHostAddress* address, uint16_t port, int mode);
 bool QAbstractSocket_bind1(QAbstractSocket* self, uint16_t port);
 bool QAbstractSocket_bind23(QAbstractSocket* self, uint16_t port, int mode);
+bool QAbstractSocket_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QAbstractSocket_virtualbase_metaObject(const void* self);
+bool QAbstractSocket_override_virtual_metacast(void* self, intptr_t slot);
+void* QAbstractSocket_virtualbase_metacast(void* self, const char* param1);
 bool QAbstractSocket_override_virtual_metacall(void* self, intptr_t slot);
 int QAbstractSocket_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QAbstractSocket_override_virtual_resume(void* self, intptr_t slot);

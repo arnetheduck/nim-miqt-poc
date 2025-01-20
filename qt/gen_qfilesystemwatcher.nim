@@ -69,6 +69,10 @@ proc fcQFileSystemWatcher_tr2(s: cstring, c: cstring): struct_miqt_string {.impo
 proc fcQFileSystemWatcher_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFileSystemWatcher_tr3".}
 proc fcQFileSystemWatcher_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QFileSystemWatcher_trUtf82".}
 proc fcQFileSystemWatcher_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QFileSystemWatcher_trUtf83".}
+proc fQFileSystemWatcher_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QFileSystemWatcher_virtualbase_metaObject".}
+proc fcQFileSystemWatcher_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QFileSystemWatcher_override_virtual_metaObject".}
+proc fQFileSystemWatcher_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QFileSystemWatcher_virtualbase_metacast".}
+proc fcQFileSystemWatcher_override_virtual_metacast(self: pointer, slot: int) {.importc: "QFileSystemWatcher_override_virtual_metacast".}
 proc fQFileSystemWatcher_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QFileSystemWatcher_virtualbase_metacall".}
 proc fcQFileSystemWatcher_override_virtual_metacall(self: pointer, slot: int) {.importc: "QFileSystemWatcher_override_virtual_metacall".}
 proc fQFileSystemWatcher_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QFileSystemWatcher_virtualbase_event".}
@@ -229,6 +233,54 @@ proc trUtf83*(_: type QFileSystemWatcher, s: cstring, c: cstring, n: cint): stri
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QFileSystemWatcher, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQFileSystemWatcher_virtualbase_metaObject(self.h))
+
+type QFileSystemWatchermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatchermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QFileSystemWatchermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFileSystemWatcher_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFileSystemWatcher_metaObject(self: ptr cQFileSystemWatcher, slot: int): pointer {.exportc: "miqt_exec_callback_QFileSystemWatcher_metaObject ".} =
+  type Cb = proc(super: QFileSystemWatchermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QFileSystemWatcher(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QFileSystemWatcher, param1: cstring): pointer =
+
+
+  fQFileSystemWatcher_virtualbase_metacast(self.h, param1)
+
+type QFileSystemWatchermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QFileSystemWatcher, slot: proc(super: QFileSystemWatchermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QFileSystemWatchermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQFileSystemWatcher_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QFileSystemWatcher_metacast(self: ptr cQFileSystemWatcher, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QFileSystemWatcher_metacast ".} =
+  type Cb = proc(super: QFileSystemWatchermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QFileSystemWatcher(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QFileSystemWatcher, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

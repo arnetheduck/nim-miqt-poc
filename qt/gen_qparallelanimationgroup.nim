@@ -66,6 +66,10 @@ proc fcQParallelAnimationGroup_tr2(s: cstring, c: cstring): struct_miqt_string {
 proc fcQParallelAnimationGroup_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QParallelAnimationGroup_tr3".}
 proc fcQParallelAnimationGroup_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QParallelAnimationGroup_trUtf82".}
 proc fcQParallelAnimationGroup_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QParallelAnimationGroup_trUtf83".}
+proc fQParallelAnimationGroup_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QParallelAnimationGroup_virtualbase_metaObject".}
+proc fcQParallelAnimationGroup_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QParallelAnimationGroup_override_virtual_metaObject".}
+proc fQParallelAnimationGroup_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QParallelAnimationGroup_virtualbase_metacast".}
+proc fcQParallelAnimationGroup_override_virtual_metacast(self: pointer, slot: int) {.importc: "QParallelAnimationGroup_override_virtual_metacast".}
 proc fQParallelAnimationGroup_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QParallelAnimationGroup_virtualbase_metacall".}
 proc fcQParallelAnimationGroup_override_virtual_metacall(self: pointer, slot: int) {.importc: "QParallelAnimationGroup_override_virtual_metacall".}
 proc fQParallelAnimationGroup_virtualbase_duration(self: pointer, ): cint{.importc: "QParallelAnimationGroup_virtualbase_duration".}
@@ -160,6 +164,54 @@ proc trUtf83*(_: type QParallelAnimationGroup, s: cstring, c: cstring, n: cint):
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QParallelAnimationGroup, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQParallelAnimationGroup_virtualbase_metaObject(self.h))
+
+type QParallelAnimationGroupmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QParallelAnimationGroup, slot: proc(super: QParallelAnimationGroupmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QParallelAnimationGroupmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQParallelAnimationGroup_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QParallelAnimationGroup_metaObject(self: ptr cQParallelAnimationGroup, slot: int): pointer {.exportc: "miqt_exec_callback_QParallelAnimationGroup_metaObject ".} =
+  type Cb = proc(super: QParallelAnimationGroupmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QParallelAnimationGroup(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QParallelAnimationGroup, param1: cstring): pointer =
+
+
+  fQParallelAnimationGroup_virtualbase_metacast(self.h, param1)
+
+type QParallelAnimationGroupmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QParallelAnimationGroup, slot: proc(super: QParallelAnimationGroupmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QParallelAnimationGroupmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQParallelAnimationGroup_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QParallelAnimationGroup_metacast(self: ptr cQParallelAnimationGroup, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QParallelAnimationGroup_metacast ".} =
+  type Cb = proc(super: QParallelAnimationGroupmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QParallelAnimationGroup(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QParallelAnimationGroup, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

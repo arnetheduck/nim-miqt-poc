@@ -90,6 +90,10 @@ bool QLocalSocket_setSocketDescriptor2(QLocalSocket* self, intptr_t socketDescri
 bool QLocalSocket_setSocketDescriptor3(QLocalSocket* self, intptr_t socketDescriptor, int socketState, int openMode);
 bool QLocalSocket_waitForConnected1(QLocalSocket* self, int msecs);
 bool QLocalSocket_waitForDisconnected1(QLocalSocket* self, int msecs);
+bool QLocalSocket_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QLocalSocket_virtualbase_metaObject(const void* self);
+bool QLocalSocket_override_virtual_metacast(void* self, intptr_t slot);
+void* QLocalSocket_virtualbase_metacast(void* self, const char* param1);
 bool QLocalSocket_override_virtual_metacall(void* self, intptr_t slot);
 int QLocalSocket_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QLocalSocket_override_virtual_isSequential(void* self, intptr_t slot);

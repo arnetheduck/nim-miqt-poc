@@ -94,6 +94,10 @@ proc fcQTcpServer_listen1(self: pointer, address: pointer): bool {.importc: "QTc
 proc fcQTcpServer_listen2(self: pointer, address: pointer, port: cushort): bool {.importc: "QTcpServer_listen2".}
 proc fcQTcpServer_waitForNewConnection1(self: pointer, msec: cint): bool {.importc: "QTcpServer_waitForNewConnection1".}
 proc fcQTcpServer_waitForNewConnection2(self: pointer, msec: cint, timedOut: ptr bool): bool {.importc: "QTcpServer_waitForNewConnection2".}
+proc fQTcpServer_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTcpServer_virtualbase_metaObject".}
+proc fcQTcpServer_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTcpServer_override_virtual_metaObject".}
+proc fQTcpServer_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTcpServer_virtualbase_metacast".}
+proc fcQTcpServer_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTcpServer_override_virtual_metacast".}
 proc fQTcpServer_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTcpServer_virtualbase_metacall".}
 proc fcQTcpServer_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTcpServer_override_virtual_metacall".}
 proc fQTcpServer_virtualbase_hasPendingConnections(self: pointer, ): bool{.importc: "QTcpServer_virtualbase_hasPendingConnections".}
@@ -294,6 +298,54 @@ proc waitForNewConnection2*(self: QTcpServer, msec: cint, timedOut: ptr bool): b
 
   fcQTcpServer_waitForNewConnection2(self.h, msec, timedOut)
 
+proc callVirtualBase_metaObject(self: QTcpServer, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQTcpServer_virtualbase_metaObject(self.h))
+
+type QTcpServermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QTcpServer, slot: proc(super: QTcpServermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QTcpServermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTcpServer_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTcpServer_metaObject(self: ptr cQTcpServer, slot: int): pointer {.exportc: "miqt_exec_callback_QTcpServer_metaObject ".} =
+  type Cb = proc(super: QTcpServermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QTcpServer(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QTcpServer, param1: cstring): pointer =
+
+
+  fQTcpServer_virtualbase_metacast(self.h, param1)
+
+type QTcpServermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QTcpServer, slot: proc(super: QTcpServermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QTcpServermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTcpServer_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTcpServer_metacast(self: ptr cQTcpServer, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTcpServer_metacast ".} =
+  type Cb = proc(super: QTcpServermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QTcpServer(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QTcpServer, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

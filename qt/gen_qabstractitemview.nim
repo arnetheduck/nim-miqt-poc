@@ -269,6 +269,10 @@ proc fcQAbstractItemView_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQAbstractItemView_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractItemView_tr3".}
 proc fcQAbstractItemView_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractItemView_trUtf82".}
 proc fcQAbstractItemView_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractItemView_trUtf83".}
+proc fQAbstractItemView_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractItemView_virtualbase_metaObject".}
+proc fcQAbstractItemView_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractItemView_override_virtual_metaObject".}
+proc fQAbstractItemView_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractItemView_virtualbase_metacast".}
+proc fcQAbstractItemView_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractItemView_override_virtual_metacast".}
 proc fQAbstractItemView_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractItemView_virtualbase_metacall".}
 proc fcQAbstractItemView_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractItemView_override_virtual_metacall".}
 proc fQAbstractItemView_virtualbase_setModel(self: pointer, model: pointer): void{.importc: "QAbstractItemView_virtualbase_setModel".}
@@ -910,6 +914,54 @@ proc trUtf83*(_: type QAbstractItemView, s: cstring, c: cstring, n: cint): strin
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QAbstractItemView, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAbstractItemView_virtualbase_metaObject(self.h))
+
+type QAbstractItemViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractItemViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractItemView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractItemView_metaObject(self: ptr cQAbstractItemView, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_metaObject ".} =
+  type Cb = proc(super: QAbstractItemViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAbstractItemView(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAbstractItemView, param1: cstring): pointer =
+
+
+  fQAbstractItemView_virtualbase_metacast(self.h, param1)
+
+type QAbstractItemViewmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAbstractItemView, slot: proc(super: QAbstractItemViewmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractItemViewmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractItemView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractItemView_metacast(self: ptr cQAbstractItemView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractItemView_metacast ".} =
+  type Cb = proc(super: QAbstractItemViewmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAbstractItemView(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAbstractItemView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

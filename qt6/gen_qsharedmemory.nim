@@ -99,6 +99,10 @@ proc fcQSharedMemory_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQSharedMemory_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSharedMemory_tr3".}
 proc fcQSharedMemory_create2(self: pointer, size: int64, mode: cint): bool {.importc: "QSharedMemory_create2".}
 proc fcQSharedMemory_attach1(self: pointer, mode: cint): bool {.importc: "QSharedMemory_attach1".}
+proc fQSharedMemory_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSharedMemory_virtualbase_metaObject".}
+proc fcQSharedMemory_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSharedMemory_override_virtual_metaObject".}
+proc fQSharedMemory_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSharedMemory_virtualbase_metacast".}
+proc fcQSharedMemory_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSharedMemory_override_virtual_metacast".}
 proc fQSharedMemory_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSharedMemory_virtualbase_metacall".}
 proc fcQSharedMemory_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSharedMemory_override_virtual_metacall".}
 proc fQSharedMemory_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSharedMemory_virtualbase_event".}
@@ -247,6 +251,54 @@ proc attach1*(self: QSharedMemory, mode: QSharedMemoryAccessMode): bool =
 
   fcQSharedMemory_attach1(self.h, cint(mode))
 
+proc callVirtualBase_metaObject(self: QSharedMemory, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQSharedMemory_virtualbase_metaObject(self.h))
+
+type QSharedMemorymetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QSharedMemory, slot: proc(super: QSharedMemorymetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QSharedMemorymetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSharedMemory_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSharedMemory_metaObject(self: ptr cQSharedMemory, slot: int): pointer {.exportc: "miqt_exec_callback_QSharedMemory_metaObject ".} =
+  type Cb = proc(super: QSharedMemorymetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QSharedMemory(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QSharedMemory, param1: cstring): pointer =
+
+
+  fQSharedMemory_virtualbase_metacast(self.h, param1)
+
+type QSharedMemorymetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QSharedMemory, slot: proc(super: QSharedMemorymetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QSharedMemorymetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSharedMemory_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSharedMemory_metacast(self: ptr cQSharedMemory, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSharedMemory_metacast ".} =
+  type Cb = proc(super: QSharedMemorymetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QSharedMemory(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QSharedMemory, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

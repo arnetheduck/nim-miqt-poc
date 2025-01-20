@@ -439,9 +439,9 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 		if m.IsSignal {
 			continue
 		}
-		if c.ClassName != "QObject" && !AllowVirtual(m) {
-			continue
-		}
+		// if c.ClassName != "QObject" && !AllowVirtual(m) {
+		// 	continue
+		// }
 
 		ret = append(ret, m)
 		retNames[m.CppCallTarget()] = struct{}{}

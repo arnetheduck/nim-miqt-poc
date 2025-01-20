@@ -87,6 +87,10 @@ proc fcQEventLoop_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {
 proc fcQEventLoop_processEvents1(self: pointer, flags: cint): bool {.importc: "QEventLoop_processEvents1".}
 proc fcQEventLoop_exec1(self: pointer, flags: cint): cint {.importc: "QEventLoop_exec1".}
 proc fcQEventLoop_exit1(self: pointer, returnCode: cint): void {.importc: "QEventLoop_exit1".}
+proc fQEventLoop_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QEventLoop_virtualbase_metaObject".}
+proc fcQEventLoop_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QEventLoop_override_virtual_metaObject".}
+proc fQEventLoop_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QEventLoop_virtualbase_metacast".}
+proc fcQEventLoop_override_virtual_metacast(self: pointer, slot: int) {.importc: "QEventLoop_override_virtual_metacast".}
 proc fQEventLoop_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QEventLoop_virtualbase_metacall".}
 proc fcQEventLoop_override_virtual_metacall(self: pointer, slot: int) {.importc: "QEventLoop_override_virtual_metacall".}
 proc fQEventLoop_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QEventLoop_virtualbase_event".}
@@ -217,6 +221,54 @@ proc exit1*(self: QEventLoop, returnCode: cint): void =
 
   fcQEventLoop_exit1(self.h, returnCode)
 
+proc callVirtualBase_metaObject(self: QEventLoop, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQEventLoop_virtualbase_metaObject(self.h))
+
+type QEventLoopmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QEventLoop, slot: proc(super: QEventLoopmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QEventLoopmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQEventLoop_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QEventLoop_metaObject(self: ptr cQEventLoop, slot: int): pointer {.exportc: "miqt_exec_callback_QEventLoop_metaObject ".} =
+  type Cb = proc(super: QEventLoopmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QEventLoop(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QEventLoop, param1: cstring): pointer =
+
+
+  fQEventLoop_virtualbase_metacast(self.h, param1)
+
+type QEventLoopmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QEventLoop, slot: proc(super: QEventLoopmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QEventLoopmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQEventLoop_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QEventLoop_metacast(self: ptr cQEventLoop, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QEventLoop_metacast ".} =
+  type Cb = proc(super: QEventLoopmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QEventLoop(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QEventLoop, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

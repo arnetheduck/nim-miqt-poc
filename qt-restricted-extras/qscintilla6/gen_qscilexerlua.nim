@@ -108,6 +108,10 @@ proc fcQsciLexerLua_setFoldCompact(self: pointer, fold: bool): void {.importc: "
 proc fcQsciLexerLua_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerLua_tr2".}
 proc fcQsciLexerLua_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerLua_tr3".}
 proc fcQsciLexerLua_blockStart1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerLua_blockStart1".}
+proc fQsciLexerLua_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerLua_virtualbase_metaObject".}
+proc fcQsciLexerLua_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerLua_override_virtual_metaObject".}
+proc fQsciLexerLua_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerLua_virtualbase_metacast".}
+proc fcQsciLexerLua_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerLua_override_virtual_metacast".}
 proc fQsciLexerLua_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerLua_virtualbase_metacall".}
 proc fcQsciLexerLua_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerLua_override_virtual_metacall".}
 proc fQsciLexerLua_virtualbase_setFoldCompact(self: pointer, fold: bool): void{.importc: "QsciLexerLua_virtualbase_setFoldCompact".}
@@ -308,6 +312,54 @@ proc blockStart1*(self: QsciLexerLua, style: ptr cint): cstring =
 
   (fcQsciLexerLua_blockStart1(self.h, style))
 
+proc callVirtualBase_metaObject(self: QsciLexerLua, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerLua_virtualbase_metaObject(self.h))
+
+type QsciLexerLuametaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerLua, slot: proc(super: QsciLexerLuametaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerLuametaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerLua_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerLua_metaObject(self: ptr cQsciLexerLua, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerLua_metaObject ".} =
+  type Cb = proc(super: QsciLexerLuametaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerLua(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerLua, param1: cstring): pointer =
+
+
+  fQsciLexerLua_virtualbase_metacast(self.h, param1)
+
+type QsciLexerLuametacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerLua, slot: proc(super: QsciLexerLuametacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerLuametacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerLua_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerLua_metacast(self: ptr cQsciLexerLua, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerLua_metacast ".} =
+  type Cb = proc(super: QsciLexerLuametacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerLua(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerLua, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

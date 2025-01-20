@@ -30,6 +30,8 @@ void miqt_exec_callback_QRadioTuner_mutedChanged(intptr_t, bool);
 void miqt_exec_callback_QRadioTuner_stationFound(intptr_t, int, struct miqt_string);
 void miqt_exec_callback_QRadioTuner_antennaConnectedChanged(intptr_t, bool);
 void miqt_exec_callback_QRadioTuner_errorWithError(intptr_t, int);
+QMetaObject* miqt_exec_callback_QRadioTuner_metaObject(const QRadioTuner*, intptr_t);
+void* miqt_exec_callback_QRadioTuner_metacast(QRadioTuner*, intptr_t, const char*);
 int miqt_exec_callback_QRadioTuner_metacall(QRadioTuner*, intptr_t, int, int, void**);
 int miqt_exec_callback_QRadioTuner_availability(const QRadioTuner*, intptr_t);
 bool miqt_exec_callback_QRadioTuner_isAvailable(const QRadioTuner*, intptr_t);
@@ -54,6 +56,51 @@ public:
 	MiqtVirtualQRadioTuner(QObject* parent): QRadioTuner(parent) {};
 
 	virtual ~MiqtVirtualQRadioTuner() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QRadioTuner::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QRadioTuner_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QRadioTuner::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QRadioTuner::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QRadioTuner_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QRadioTuner::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -727,6 +774,34 @@ struct miqt_string QRadioTuner_trUtf83(const char* s, const char* c, int n) {
 
 void QRadioTuner_searchAllStations1(QRadioTuner* self, int searchMode) {
 	self->searchAllStations(static_cast<QRadioTuner::SearchMode>(searchMode));
+}
+
+bool QRadioTuner_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQRadioTuner* self_cast = dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QRadioTuner_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQRadioTuner*)(self) )->virtualbase_metaObject();
+}
+
+bool QRadioTuner_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQRadioTuner* self_cast = dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QRadioTuner_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQRadioTuner*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QRadioTuner_override_virtual_metacall(void* self, intptr_t slot) {

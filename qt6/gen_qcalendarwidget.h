@@ -158,6 +158,10 @@ void QCalendarWidget_currentPageChanged(QCalendarWidget* self, int year, int mon
 void QCalendarWidget_connect_currentPageChanged(QCalendarWidget* self, intptr_t slot);
 struct miqt_string QCalendarWidget_tr2(const char* s, const char* c);
 struct miqt_string QCalendarWidget_tr3(const char* s, const char* c, int n);
+bool QCalendarWidget_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QCalendarWidget_virtualbase_metaObject(const void* self);
+bool QCalendarWidget_override_virtual_metacast(void* self, intptr_t slot);
+void* QCalendarWidget_virtualbase_metacast(void* self, const char* param1);
 bool QCalendarWidget_override_virtual_metacall(void* self, intptr_t slot);
 int QCalendarWidget_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QCalendarWidget_override_virtual_sizeHint(void* self, intptr_t slot);

@@ -91,6 +91,10 @@ proc fQCheckBox_connect_stateChanged(self: pointer, slot: int) {.importc: "QChec
 proc fcQCheckBox_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QCheckBox_tr2".}
 proc fcQCheckBox_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QCheckBox_tr3".}
 proc fcQCheckBox_setTristate1(self: pointer, y: bool): void {.importc: "QCheckBox_setTristate1".}
+proc fQCheckBox_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QCheckBox_virtualbase_metaObject".}
+proc fcQCheckBox_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QCheckBox_override_virtual_metaObject".}
+proc fQCheckBox_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QCheckBox_virtualbase_metacast".}
+proc fcQCheckBox_override_virtual_metacast(self: pointer, slot: int) {.importc: "QCheckBox_override_virtual_metacast".}
 proc fQCheckBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QCheckBox_virtualbase_metacall".}
 proc fcQCheckBox_override_virtual_metacall(self: pointer, slot: int) {.importc: "QCheckBox_override_virtual_metacall".}
 proc fQCheckBox_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QCheckBox_virtualbase_sizeHint".}
@@ -292,6 +296,54 @@ proc setTristate1*(self: QCheckBox, y: bool): void =
 
   fcQCheckBox_setTristate1(self.h, y)
 
+proc callVirtualBase_metaObject(self: QCheckBox, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQCheckBox_virtualbase_metaObject(self.h))
+
+type QCheckBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QCheckBox, slot: proc(super: QCheckBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QCheckBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCheckBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCheckBox_metaObject(self: ptr cQCheckBox, slot: int): pointer {.exportc: "miqt_exec_callback_QCheckBox_metaObject ".} =
+  type Cb = proc(super: QCheckBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QCheckBox(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QCheckBox, param1: cstring): pointer =
+
+
+  fQCheckBox_virtualbase_metacast(self.h, param1)
+
+type QCheckBoxmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QCheckBox, slot: proc(super: QCheckBoxmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QCheckBoxmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQCheckBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QCheckBox_metacast(self: ptr cQCheckBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QCheckBox_metacast ".} =
+  type Cb = proc(super: QCheckBoxmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QCheckBox(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QCheckBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

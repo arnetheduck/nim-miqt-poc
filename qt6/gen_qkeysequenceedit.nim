@@ -89,6 +89,10 @@ proc fcQKeySequenceEdit_keySequenceChanged(self: pointer, keySequence: pointer):
 proc fQKeySequenceEdit_connect_keySequenceChanged(self: pointer, slot: int) {.importc: "QKeySequenceEdit_connect_keySequenceChanged".}
 proc fcQKeySequenceEdit_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QKeySequenceEdit_tr2".}
 proc fcQKeySequenceEdit_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QKeySequenceEdit_tr3".}
+proc fQKeySequenceEdit_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QKeySequenceEdit_virtualbase_metaObject".}
+proc fcQKeySequenceEdit_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QKeySequenceEdit_override_virtual_metaObject".}
+proc fQKeySequenceEdit_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QKeySequenceEdit_virtualbase_metacast".}
+proc fcQKeySequenceEdit_override_virtual_metacast(self: pointer, slot: int) {.importc: "QKeySequenceEdit_override_virtual_metacast".}
 proc fQKeySequenceEdit_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QKeySequenceEdit_virtualbase_metacall".}
 proc fcQKeySequenceEdit_override_virtual_metacall(self: pointer, slot: int) {.importc: "QKeySequenceEdit_override_virtual_metacall".}
 proc fQKeySequenceEdit_virtualbase_event(self: pointer, param1: pointer): bool{.importc: "QKeySequenceEdit_virtualbase_event".}
@@ -290,6 +294,54 @@ proc tr3*(_: type QKeySequenceEdit, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QKeySequenceEdit, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQKeySequenceEdit_virtualbase_metaObject(self.h))
+
+type QKeySequenceEditmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QKeySequenceEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQKeySequenceEdit_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QKeySequenceEdit_metaObject(self: ptr cQKeySequenceEdit, slot: int): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_metaObject ".} =
+  type Cb = proc(super: QKeySequenceEditmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QKeySequenceEdit(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QKeySequenceEdit, param1: cstring): pointer =
+
+
+  fQKeySequenceEdit_virtualbase_metacast(self.h, param1)
+
+type QKeySequenceEditmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QKeySequenceEdit, slot: proc(super: QKeySequenceEditmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QKeySequenceEditmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQKeySequenceEdit_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QKeySequenceEdit_metacast(self: ptr cQKeySequenceEdit, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QKeySequenceEdit_metacast ".} =
+  type Cb = proc(super: QKeySequenceEditmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QKeySequenceEdit(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QKeySequenceEdit, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

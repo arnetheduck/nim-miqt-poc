@@ -110,6 +110,10 @@ proc fcQDtlsClientVerifier_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQDtlsClientVerifier_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDtlsClientVerifier_tr3".}
 proc fcQDtlsClientVerifier_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QDtlsClientVerifier_trUtf82".}
 proc fcQDtlsClientVerifier_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDtlsClientVerifier_trUtf83".}
+proc fQDtlsClientVerifier_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDtlsClientVerifier_virtualbase_metaObject".}
+proc fcQDtlsClientVerifier_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDtlsClientVerifier_override_virtual_metaObject".}
+proc fQDtlsClientVerifier_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDtlsClientVerifier_virtualbase_metacast".}
+proc fcQDtlsClientVerifier_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDtlsClientVerifier_override_virtual_metacast".}
 proc fQDtlsClientVerifier_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDtlsClientVerifier_virtualbase_metacall".}
 proc fcQDtlsClientVerifier_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDtlsClientVerifier_override_virtual_metacall".}
 proc fQDtlsClientVerifier_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QDtlsClientVerifier_virtualbase_event".}
@@ -172,6 +176,10 @@ proc fcQDtls_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QDt
 proc fcQDtls_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDtls_trUtf83".}
 proc fcQDtls_setPeer3(self: pointer, address: pointer, port: cushort, verificationName: struct_miqt_string): bool {.importc: "QDtls_setPeer3".}
 proc fcQDtls_doHandshake2(self: pointer, socket: pointer, dgram: struct_miqt_string): bool {.importc: "QDtls_doHandshake2".}
+proc fQDtls_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDtls_virtualbase_metaObject".}
+proc fcQDtls_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDtls_override_virtual_metaObject".}
+proc fQDtls_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDtls_virtualbase_metacast".}
+proc fcQDtls_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDtls_override_virtual_metacast".}
 proc fQDtls_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDtls_virtualbase_metacall".}
 proc fcQDtls_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDtls_override_virtual_metacall".}
 proc fQDtls_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QDtls_virtualbase_event".}
@@ -289,6 +297,54 @@ proc trUtf83*(_: type QDtlsClientVerifier, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QDtlsClientVerifier, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDtlsClientVerifier_virtualbase_metaObject(self.h))
+
+type QDtlsClientVerifiermetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDtlsClientVerifier, slot: proc(super: QDtlsClientVerifiermetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDtlsClientVerifiermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDtlsClientVerifier_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDtlsClientVerifier_metaObject(self: ptr cQDtlsClientVerifier, slot: int): pointer {.exportc: "miqt_exec_callback_QDtlsClientVerifier_metaObject ".} =
+  type Cb = proc(super: QDtlsClientVerifiermetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDtlsClientVerifier(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDtlsClientVerifier, param1: cstring): pointer =
+
+
+  fQDtlsClientVerifier_virtualbase_metacast(self.h, param1)
+
+type QDtlsClientVerifiermetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDtlsClientVerifier, slot: proc(super: QDtlsClientVerifiermetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDtlsClientVerifiermetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDtlsClientVerifier_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDtlsClientVerifier_metacast(self: ptr cQDtlsClientVerifier, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDtlsClientVerifier_metacast ".} =
+  type Cb = proc(super: QDtlsClientVerifiermetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDtlsClientVerifier(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDtlsClientVerifier, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -720,6 +776,54 @@ proc doHandshake2*(self: QDtls, socket: gen_qudpsocket.QUdpSocket, dgram: seq[by
 
   fcQDtls_doHandshake2(self.h, socket.h, struct_miqt_string(data: cast[cstring](if len(dgram) == 0: nil else: unsafeAddr dgram[0]), len: csize_t(len(dgram))))
 
+proc callVirtualBase_metaObject(self: QDtls, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDtls_virtualbase_metaObject(self.h))
+
+type QDtlsmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDtls, slot: proc(super: QDtlsmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDtlsmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDtls_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDtls_metaObject(self: ptr cQDtls, slot: int): pointer {.exportc: "miqt_exec_callback_QDtls_metaObject ".} =
+  type Cb = proc(super: QDtlsmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDtls(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDtls, param1: cstring): pointer =
+
+
+  fQDtls_virtualbase_metacast(self.h, param1)
+
+type QDtlsmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDtls, slot: proc(super: QDtlsmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDtlsmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDtls_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDtls_metacast(self: ptr cQDtls, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDtls_metacast ".} =
+  type Cb = proc(super: QDtlsmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDtls(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDtls, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

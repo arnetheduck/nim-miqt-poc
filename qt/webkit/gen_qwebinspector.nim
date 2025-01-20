@@ -85,6 +85,10 @@ proc fcQWebInspector_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQWebInspector_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebInspector_tr3".}
 proc fcQWebInspector_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebInspector_trUtf82".}
 proc fcQWebInspector_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebInspector_trUtf83".}
+proc fQWebInspector_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebInspector_virtualbase_metaObject".}
+proc fcQWebInspector_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebInspector_override_virtual_metaObject".}
+proc fQWebInspector_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebInspector_virtualbase_metacast".}
+proc fcQWebInspector_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebInspector_override_virtual_metacast".}
 proc fQWebInspector_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebInspector_virtualbase_metacall".}
 proc fcQWebInspector_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebInspector_override_virtual_metacall".}
 proc fQWebInspector_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QWebInspector_virtualbase_sizeHint".}
@@ -263,6 +267,54 @@ proc trUtf83*(_: type QWebInspector, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QWebInspector, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQWebInspector_virtualbase_metaObject(self.h))
+
+type QWebInspectormetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QWebInspector, slot: proc(super: QWebInspectormetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QWebInspectormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebInspector_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebInspector_metaObject(self: ptr cQWebInspector, slot: int): pointer {.exportc: "miqt_exec_callback_QWebInspector_metaObject ".} =
+  type Cb = proc(super: QWebInspectormetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QWebInspector(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QWebInspector, param1: cstring): pointer =
+
+
+  fQWebInspector_virtualbase_metacast(self.h, param1)
+
+type QWebInspectormetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QWebInspector, slot: proc(super: QWebInspectormetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QWebInspectormetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebInspector_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebInspector_metacast(self: ptr cQWebInspector, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebInspector_metacast ".} =
+  type Cb = proc(super: QWebInspectormetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QWebInspector(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QWebInspector, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

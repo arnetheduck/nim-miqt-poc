@@ -548,6 +548,10 @@ proc fQGraphicsObject_connect_heightChanged(self: pointer, slot: int) {.importc:
 proc fcQGraphicsObject_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsObject_tr2".}
 proc fcQGraphicsObject_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsObject_tr3".}
 proc fcQGraphicsObject_grabGesture2(self: pointer, typeVal: cint, flags: cint): void {.importc: "QGraphicsObject_grabGesture2".}
+proc fQGraphicsObject_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsObject_virtualbase_metaObject".}
+proc fcQGraphicsObject_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsObject_override_virtual_metaObject".}
+proc fQGraphicsObject_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsObject_virtualbase_metacast".}
+proc fcQGraphicsObject_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsObject_override_virtual_metacast".}
 proc fQGraphicsObject_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsObject_virtualbase_metacall".}
 proc fcQGraphicsObject_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsObject_override_virtual_metacall".}
 proc fQGraphicsObject_virtualbase_event(self: pointer, ev: pointer): bool{.importc: "QGraphicsObject_virtualbase_event".}
@@ -1277,6 +1281,10 @@ proc fcQGraphicsTextItem_linkHovered(self: pointer, param1: struct_miqt_string):
 proc fQGraphicsTextItem_connect_linkHovered(self: pointer, slot: int) {.importc: "QGraphicsTextItem_connect_linkHovered".}
 proc fcQGraphicsTextItem_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QGraphicsTextItem_tr2".}
 proc fcQGraphicsTextItem_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QGraphicsTextItem_tr3".}
+proc fQGraphicsTextItem_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsTextItem_virtualbase_metaObject".}
+proc fcQGraphicsTextItem_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsTextItem_override_virtual_metaObject".}
+proc fQGraphicsTextItem_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsTextItem_virtualbase_metacast".}
+proc fcQGraphicsTextItem_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsTextItem_override_virtual_metacast".}
 proc fQGraphicsTextItem_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsTextItem_virtualbase_metacall".}
 proc fcQGraphicsTextItem_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsTextItem_override_virtual_metacall".}
 proc fQGraphicsTextItem_virtualbase_boundingRect(self: pointer, ): pointer{.importc: "QGraphicsTextItem_virtualbase_boundingRect".}
@@ -3341,6 +3349,54 @@ proc grabGesture2*(self: QGraphicsObject, typeVal: gen_qnamespace.GestureType, f
 
   fcQGraphicsObject_grabGesture2(self.h, cint(typeVal), cint(flags))
 
+proc callVirtualBase_metaObject(self: QGraphicsObject, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQGraphicsObject_virtualbase_metaObject(self.h))
+
+type QGraphicsObjectmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QGraphicsObject, slot: proc(super: QGraphicsObjectmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsObjectmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsObject_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsObject_metaObject(self: ptr cQGraphicsObject, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsObject_metaObject ".} =
+  type Cb = proc(super: QGraphicsObjectmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QGraphicsObject(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QGraphicsObject, param1: cstring): pointer =
+
+
+  fQGraphicsObject_virtualbase_metacast(self.h, param1)
+
+type QGraphicsObjectmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QGraphicsObject, slot: proc(super: QGraphicsObjectmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsObjectmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsObject_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsObject_metacast(self: ptr cQGraphicsObject, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsObject_metacast ".} =
+  type Cb = proc(super: QGraphicsObjectmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QGraphicsObject(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QGraphicsObject, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -10862,6 +10918,54 @@ proc tr3*(_: type QGraphicsTextItem, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QGraphicsTextItem, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQGraphicsTextItem_virtualbase_metaObject(self.h))
+
+type QGraphicsTextItemmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QGraphicsTextItem, slot: proc(super: QGraphicsTextItemmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsTextItemmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsTextItem_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsTextItem_metaObject(self: ptr cQGraphicsTextItem, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsTextItem_metaObject ".} =
+  type Cb = proc(super: QGraphicsTextItemmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QGraphicsTextItem(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QGraphicsTextItem, param1: cstring): pointer =
+
+
+  fQGraphicsTextItem_virtualbase_metacast(self.h, param1)
+
+type QGraphicsTextItemmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QGraphicsTextItem, slot: proc(super: QGraphicsTextItemmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsTextItemmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsTextItem_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsTextItem_metacast(self: ptr cQGraphicsTextItem, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsTextItem_metacast ".} =
+  type Cb = proc(super: QGraphicsTextItemmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QGraphicsTextItem(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QGraphicsTextItem, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

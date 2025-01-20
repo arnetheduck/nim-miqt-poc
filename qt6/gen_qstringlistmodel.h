@@ -72,6 +72,10 @@ void QStringListModel_setStringList(QStringListModel* self, struct miqt_array /*
 int QStringListModel_supportedDropActions(const QStringListModel* self);
 struct miqt_string QStringListModel_tr2(const char* s, const char* c);
 struct miqt_string QStringListModel_tr3(const char* s, const char* c, int n);
+bool QStringListModel_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QStringListModel_virtualbase_metaObject(const void* self);
+bool QStringListModel_override_virtual_metacast(void* self, intptr_t slot);
+void* QStringListModel_virtualbase_metacast(void* self, const char* param1);
 bool QStringListModel_override_virtual_metacall(void* self, intptr_t slot);
 int QStringListModel_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QStringListModel_override_virtual_rowCount(void* self, intptr_t slot);

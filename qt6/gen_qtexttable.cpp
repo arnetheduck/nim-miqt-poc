@@ -23,6 +23,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QTextTable_metaObject(const QTextTable*, intptr_t);
+void* miqt_exec_callback_QTextTable_metacast(QTextTable*, intptr_t, const char*);
 int miqt_exec_callback_QTextTable_metacall(QTextTable*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QTextTable_event(QTextTable*, intptr_t, QEvent*);
 bool miqt_exec_callback_QTextTable_eventFilter(QTextTable*, intptr_t, QObject*, QEvent*);
@@ -121,6 +123,51 @@ public:
 	MiqtVirtualQTextTable(QTextDocument* doc): QTextTable(doc) {};
 
 	virtual ~MiqtVirtualQTextTable() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QTextTable::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QTextTable_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QTextTable::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QTextTable::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QTextTable_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QTextTable::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -448,6 +495,34 @@ struct miqt_string QTextTable_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QTextTable_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QTextTable_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQTextTable*)(self) )->virtualbase_metaObject();
+}
+
+bool QTextTable_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QTextTable_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQTextTable*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QTextTable_override_virtual_metacall(void* self, intptr_t slot) {

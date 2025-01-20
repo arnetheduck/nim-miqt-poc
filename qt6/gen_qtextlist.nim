@@ -72,6 +72,10 @@ proc fcQTextList_setFormat(self: pointer, format: pointer): void {.importc: "QTe
 proc fcQTextList_format(self: pointer, ): pointer {.importc: "QTextList_format".}
 proc fcQTextList_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QTextList_tr2".}
 proc fcQTextList_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QTextList_tr3".}
+proc fQTextList_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QTextList_virtualbase_metaObject".}
+proc fcQTextList_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QTextList_override_virtual_metaObject".}
+proc fQTextList_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QTextList_virtualbase_metacast".}
+proc fcQTextList_override_virtual_metacast(self: pointer, slot: int) {.importc: "QTextList_override_virtual_metacast".}
 proc fQTextList_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QTextList_virtualbase_metacall".}
 proc fcQTextList_override_virtual_metacall(self: pointer, slot: int) {.importc: "QTextList_override_virtual_metacall".}
 proc fQTextList_virtualbase_blockInserted(self: pointer, blockVal: pointer): void{.importc: "QTextList_virtualbase_blockInserted".}
@@ -175,6 +179,54 @@ proc tr3*(_: type QTextList, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QTextList, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQTextList_virtualbase_metaObject(self.h))
+
+type QTextListmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QTextList, slot: proc(super: QTextListmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QTextListmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextList_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextList_metaObject(self: ptr cQTextList, slot: int): pointer {.exportc: "miqt_exec_callback_QTextList_metaObject ".} =
+  type Cb = proc(super: QTextListmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QTextList(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QTextList, param1: cstring): pointer =
+
+
+  fQTextList_virtualbase_metacast(self.h, param1)
+
+type QTextListmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QTextList, slot: proc(super: QTextListmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QTextListmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQTextList_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QTextList_metacast(self: ptr cQTextList, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QTextList_metacast ".} =
+  type Cb = proc(super: QTextListmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QTextList(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QTextList, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

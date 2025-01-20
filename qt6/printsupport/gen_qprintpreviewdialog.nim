@@ -89,6 +89,10 @@ proc fcQPrintPreviewDialog_paintRequested(self: pointer, printer: pointer): void
 proc fQPrintPreviewDialog_connect_paintRequested(self: pointer, slot: int) {.importc: "QPrintPreviewDialog_connect_paintRequested".}
 proc fcQPrintPreviewDialog_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QPrintPreviewDialog_tr2".}
 proc fcQPrintPreviewDialog_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPrintPreviewDialog_tr3".}
+proc fQPrintPreviewDialog_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPrintPreviewDialog_virtualbase_metaObject".}
+proc fcQPrintPreviewDialog_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPrintPreviewDialog_override_virtual_metaObject".}
+proc fQPrintPreviewDialog_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPrintPreviewDialog_virtualbase_metacast".}
+proc fcQPrintPreviewDialog_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPrintPreviewDialog_override_virtual_metacast".}
 proc fQPrintPreviewDialog_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPrintPreviewDialog_virtualbase_metacall".}
 proc fcQPrintPreviewDialog_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPrintPreviewDialog_override_virtual_metacall".}
 proc fQPrintPreviewDialog_virtualbase_setVisible(self: pointer, visible: bool): void{.importc: "QPrintPreviewDialog_virtualbase_setVisible".}
@@ -282,6 +286,54 @@ proc tr3*(_: type QPrintPreviewDialog, s: cstring, c: cstring, n: cint): string 
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QPrintPreviewDialog, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQPrintPreviewDialog_virtualbase_metaObject(self.h))
+
+type QPrintPreviewDialogmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QPrintPreviewDialog, slot: proc(super: QPrintPreviewDialogmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QPrintPreviewDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPrintPreviewDialog_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPrintPreviewDialog_metaObject(self: ptr cQPrintPreviewDialog, slot: int): pointer {.exportc: "miqt_exec_callback_QPrintPreviewDialog_metaObject ".} =
+  type Cb = proc(super: QPrintPreviewDialogmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QPrintPreviewDialog(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QPrintPreviewDialog, param1: cstring): pointer =
+
+
+  fQPrintPreviewDialog_virtualbase_metacast(self.h, param1)
+
+type QPrintPreviewDialogmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QPrintPreviewDialog, slot: proc(super: QPrintPreviewDialogmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QPrintPreviewDialogmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPrintPreviewDialog_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPrintPreviewDialog_metacast(self: ptr cQPrintPreviewDialog, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPrintPreviewDialog_metacast ".} =
+  type Cb = proc(super: QPrintPreviewDialogmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QPrintPreviewDialog(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QPrintPreviewDialog, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

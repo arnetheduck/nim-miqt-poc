@@ -66,6 +66,10 @@ proc fcQAccessibleBridgePlugin_tr(s: cstring): struct_miqt_string {.importc: "QA
 proc fcQAccessibleBridgePlugin_create(self: pointer, key: struct_miqt_string): pointer {.importc: "QAccessibleBridgePlugin_create".}
 proc fcQAccessibleBridgePlugin_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAccessibleBridgePlugin_tr2".}
 proc fcQAccessibleBridgePlugin_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAccessibleBridgePlugin_tr3".}
+proc fQAccessibleBridgePlugin_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAccessibleBridgePlugin_virtualbase_metaObject".}
+proc fcQAccessibleBridgePlugin_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_metaObject".}
+proc fQAccessibleBridgePlugin_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAccessibleBridgePlugin_virtualbase_metacast".}
+proc fcQAccessibleBridgePlugin_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_metacast".}
 proc fQAccessibleBridgePlugin_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAccessibleBridgePlugin_virtualbase_metacall".}
 proc fcQAccessibleBridgePlugin_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_metacall".}
 proc fcQAccessibleBridgePlugin_override_virtual_create(self: pointer, slot: int) {.importc: "QAccessibleBridgePlugin_override_virtual_create".}
@@ -149,6 +153,54 @@ proc tr3*(_: type QAccessibleBridgePlugin, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QAccessibleBridgePlugin, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAccessibleBridgePlugin_virtualbase_metaObject(self.h))
+
+type QAccessibleBridgePluginmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAccessibleBridgePlugin, slot: proc(super: QAccessibleBridgePluginmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAccessibleBridgePluginmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAccessibleBridgePlugin_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAccessibleBridgePlugin_metaObject(self: ptr cQAccessibleBridgePlugin, slot: int): pointer {.exportc: "miqt_exec_callback_QAccessibleBridgePlugin_metaObject ".} =
+  type Cb = proc(super: QAccessibleBridgePluginmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAccessibleBridgePlugin(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAccessibleBridgePlugin, param1: cstring): pointer =
+
+
+  fQAccessibleBridgePlugin_virtualbase_metacast(self.h, param1)
+
+type QAccessibleBridgePluginmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAccessibleBridgePlugin, slot: proc(super: QAccessibleBridgePluginmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAccessibleBridgePluginmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAccessibleBridgePlugin_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAccessibleBridgePlugin_metacast(self: ptr cQAccessibleBridgePlugin, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAccessibleBridgePlugin_metacast ".} =
+  type Cb = proc(super: QAccessibleBridgePluginmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAccessibleBridgePlugin(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAccessibleBridgePlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

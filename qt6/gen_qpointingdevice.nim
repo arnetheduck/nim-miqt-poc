@@ -112,6 +112,10 @@ proc fQPointingDevice_connect_grabChanged(self: pointer, slot: int) {.importc: "
 proc fcQPointingDevice_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QPointingDevice_tr2".}
 proc fcQPointingDevice_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QPointingDevice_tr3".}
 proc fcQPointingDevice_primaryPointingDevice1(seatName: struct_miqt_string): pointer {.importc: "QPointingDevice_primaryPointingDevice1".}
+proc fQPointingDevice_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QPointingDevice_virtualbase_metaObject".}
+proc fcQPointingDevice_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QPointingDevice_override_virtual_metaObject".}
+proc fQPointingDevice_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QPointingDevice_virtualbase_metacast".}
+proc fcQPointingDevice_override_virtual_metacast(self: pointer, slot: int) {.importc: "QPointingDevice_override_virtual_metacast".}
 proc fQPointingDevice_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QPointingDevice_virtualbase_metacall".}
 proc fcQPointingDevice_override_virtual_metacall(self: pointer, slot: int) {.importc: "QPointingDevice_override_virtual_metacall".}
 proc fQPointingDevice_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QPointingDevice_virtualbase_event".}
@@ -274,6 +278,54 @@ proc primaryPointingDevice1*(_: type QPointingDevice, seatName: string): QPointi
 
   QPointingDevice(h: fcQPointingDevice_primaryPointingDevice1(struct_miqt_string(data: seatName, len: csize_t(len(seatName)))))
 
+proc callVirtualBase_metaObject(self: QPointingDevice, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQPointingDevice_virtualbase_metaObject(self.h))
+
+type QPointingDevicemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QPointingDevice, slot: proc(super: QPointingDevicemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QPointingDevicemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPointingDevice_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPointingDevice_metaObject(self: ptr cQPointingDevice, slot: int): pointer {.exportc: "miqt_exec_callback_QPointingDevice_metaObject ".} =
+  type Cb = proc(super: QPointingDevicemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QPointingDevice(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QPointingDevice, param1: cstring): pointer =
+
+
+  fQPointingDevice_virtualbase_metacast(self.h, param1)
+
+type QPointingDevicemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QPointingDevice, slot: proc(super: QPointingDevicemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QPointingDevicemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQPointingDevice_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QPointingDevice_metacast(self: ptr cQPointingDevice, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QPointingDevice_metacast ".} =
+  type Cb = proc(super: QPointingDevicemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QPointingDevice(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QPointingDevice, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

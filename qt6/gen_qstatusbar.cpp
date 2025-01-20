@@ -43,6 +43,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QStatusBar_messageChanged(intptr_t, struct miqt_string);
+QMetaObject* miqt_exec_callback_QStatusBar_metaObject(const QStatusBar*, intptr_t);
+void* miqt_exec_callback_QStatusBar_metacast(QStatusBar*, intptr_t, const char*);
 int miqt_exec_callback_QStatusBar_metacall(QStatusBar*, intptr_t, int, int, void**);
 void miqt_exec_callback_QStatusBar_showEvent(QStatusBar*, intptr_t, QShowEvent*);
 void miqt_exec_callback_QStatusBar_paintEvent(QStatusBar*, intptr_t, QPaintEvent*);
@@ -102,6 +104,51 @@ public:
 	MiqtVirtualQStatusBar(): QStatusBar() {};
 
 	virtual ~MiqtVirtualQStatusBar() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QStatusBar::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QStatusBar_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QStatusBar::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QStatusBar::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QStatusBar_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QStatusBar::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1398,6 +1445,34 @@ int QStatusBar_insertPermanentWidget3(QStatusBar* self, int index, QWidget* widg
 void QStatusBar_showMessage2(QStatusBar* self, struct miqt_string text, int timeout) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->showMessage(text_QString, static_cast<int>(timeout));
+}
+
+bool QStatusBar_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QStatusBar_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_metaObject();
+}
+
+bool QStatusBar_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QStatusBar_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQStatusBar*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QStatusBar_override_virtual_metacall(void* self, intptr_t slot) {

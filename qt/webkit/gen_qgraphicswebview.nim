@@ -163,6 +163,10 @@ proc fcQGraphicsWebView_setContent3(self: pointer, data: struct_miqt_string, mim
 proc fcQGraphicsWebView_triggerPageAction2(self: pointer, action: cint, checked: bool): void {.importc: "QGraphicsWebView_triggerPageAction2".}
 proc fcQGraphicsWebView_findText2(self: pointer, subString: struct_miqt_string, options: cint): bool {.importc: "QGraphicsWebView_findText2".}
 proc fcQGraphicsWebView_setRenderHint2(self: pointer, param1: cint, enabled: bool): void {.importc: "QGraphicsWebView_setRenderHint2".}
+proc fQGraphicsWebView_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QGraphicsWebView_virtualbase_metaObject".}
+proc fcQGraphicsWebView_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QGraphicsWebView_override_virtual_metaObject".}
+proc fQGraphicsWebView_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QGraphicsWebView_virtualbase_metacast".}
+proc fcQGraphicsWebView_override_virtual_metacast(self: pointer, slot: int) {.importc: "QGraphicsWebView_override_virtual_metacast".}
 proc fQGraphicsWebView_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QGraphicsWebView_virtualbase_metacall".}
 proc fcQGraphicsWebView_override_virtual_metacall(self: pointer, slot: int) {.importc: "QGraphicsWebView_override_virtual_metacall".}
 proc fQGraphicsWebView_virtualbase_setGeometry(self: pointer, rect: pointer): void{.importc: "QGraphicsWebView_virtualbase_setGeometry".}
@@ -682,6 +686,54 @@ proc setRenderHint2*(self: QGraphicsWebView, param1: gen_qpainter.QPainterRender
 
   fcQGraphicsWebView_setRenderHint2(self.h, cint(param1), enabled)
 
+proc callVirtualBase_metaObject(self: QGraphicsWebView, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQGraphicsWebView_virtualbase_metaObject(self.h))
+
+type QGraphicsWebViewmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsWebViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsWebView_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsWebView_metaObject(self: ptr cQGraphicsWebView, slot: int): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_metaObject ".} =
+  type Cb = proc(super: QGraphicsWebViewmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QGraphicsWebView(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QGraphicsWebView, param1: cstring): pointer =
+
+
+  fQGraphicsWebView_virtualbase_metacast(self.h, param1)
+
+type QGraphicsWebViewmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QGraphicsWebView, slot: proc(super: QGraphicsWebViewmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QGraphicsWebViewmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQGraphicsWebView_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QGraphicsWebView_metacast(self: ptr cQGraphicsWebView, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QGraphicsWebView_metacast ".} =
+  type Cb = proc(super: QGraphicsWebViewmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QGraphicsWebView(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QGraphicsWebView, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

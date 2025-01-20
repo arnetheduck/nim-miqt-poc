@@ -77,6 +77,10 @@ proc fcQSizeGrip_sizeHint(self: pointer, ): pointer {.importc: "QSizeGrip_sizeHi
 proc fcQSizeGrip_setVisible(self: pointer, visible: bool): void {.importc: "QSizeGrip_setVisible".}
 proc fcQSizeGrip_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QSizeGrip_tr2".}
 proc fcQSizeGrip_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QSizeGrip_tr3".}
+proc fQSizeGrip_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSizeGrip_virtualbase_metaObject".}
+proc fcQSizeGrip_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSizeGrip_override_virtual_metaObject".}
+proc fQSizeGrip_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSizeGrip_virtualbase_metacast".}
+proc fcQSizeGrip_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSizeGrip_override_virtual_metacast".}
 proc fQSizeGrip_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSizeGrip_virtualbase_metacall".}
 proc fcQSizeGrip_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSizeGrip_override_virtual_metacall".}
 proc fQSizeGrip_virtualbase_sizeHint(self: pointer, ): pointer{.importc: "QSizeGrip_virtualbase_sizeHint".}
@@ -223,6 +227,54 @@ proc tr3*(_: type QSizeGrip, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QSizeGrip, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQSizeGrip_virtualbase_metaObject(self.h))
+
+type QSizeGripmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QSizeGrip, slot: proc(super: QSizeGripmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QSizeGripmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSizeGrip_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSizeGrip_metaObject(self: ptr cQSizeGrip, slot: int): pointer {.exportc: "miqt_exec_callback_QSizeGrip_metaObject ".} =
+  type Cb = proc(super: QSizeGripmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QSizeGrip(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QSizeGrip, param1: cstring): pointer =
+
+
+  fQSizeGrip_virtualbase_metacast(self.h, param1)
+
+type QSizeGripmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QSizeGrip, slot: proc(super: QSizeGripmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QSizeGripmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSizeGrip_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSizeGrip_metacast(self: ptr cQSizeGrip, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSizeGrip_metacast ".} =
+  type Cb = proc(super: QSizeGripmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QSizeGrip(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QSizeGrip, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

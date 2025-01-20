@@ -429,6 +429,10 @@ void QsciScintilla_setMarkerBackgroundColor2(QsciScintilla* self, QColor* col, i
 void QsciScintilla_setMarkerForegroundColor2(QsciScintilla* self, QColor* col, int markerNumber);
 void QsciScintilla_setWrapVisualFlags2(QsciScintilla* self, int endFlag, int startFlag);
 void QsciScintilla_setWrapVisualFlags3(QsciScintilla* self, int endFlag, int startFlag, int indent);
+bool QsciScintilla_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QsciScintilla_virtualbase_metaObject(const void* self);
+bool QsciScintilla_override_virtual_metacast(void* self, intptr_t slot);
+void* QsciScintilla_virtualbase_metacast(void* self, const char* param1);
 bool QsciScintilla_override_virtual_metacall(void* self, intptr_t slot);
 int QsciScintilla_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QsciScintilla_override_virtual_apiContext(void* self, intptr_t slot);

@@ -76,6 +76,10 @@ proc fcQAudioSystemPlugin_tr2(s: cstring, c: cstring): struct_miqt_string {.impo
 proc fcQAudioSystemPlugin_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioSystemPlugin_tr3".}
 proc fcQAudioSystemPlugin_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioSystemPlugin_trUtf82".}
 proc fcQAudioSystemPlugin_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioSystemPlugin_trUtf83".}
+proc fQAudioSystemPlugin_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAudioSystemPlugin_virtualbase_metaObject".}
+proc fcQAudioSystemPlugin_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAudioSystemPlugin_override_virtual_metaObject".}
+proc fQAudioSystemPlugin_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAudioSystemPlugin_virtualbase_metacast".}
+proc fcQAudioSystemPlugin_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAudioSystemPlugin_override_virtual_metacast".}
 proc fQAudioSystemPlugin_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAudioSystemPlugin_virtualbase_metacall".}
 proc fcQAudioSystemPlugin_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAudioSystemPlugin_override_virtual_metacall".}
 proc fcQAudioSystemPlugin_override_virtual_availableDevices(self: pointer, slot: int) {.importc: "QAudioSystemPlugin_override_virtual_availableDevices".}
@@ -219,6 +223,54 @@ proc trUtf83*(_: type QAudioSystemPlugin, s: cstring, c: cstring, n: cint): stri
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QAudioSystemPlugin, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAudioSystemPlugin_virtualbase_metaObject(self.h))
+
+type QAudioSystemPluginmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAudioSystemPlugin, slot: proc(super: QAudioSystemPluginmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAudioSystemPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioSystemPlugin_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioSystemPlugin_metaObject(self: ptr cQAudioSystemPlugin, slot: int): pointer {.exportc: "miqt_exec_callback_QAudioSystemPlugin_metaObject ".} =
+  type Cb = proc(super: QAudioSystemPluginmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAudioSystemPlugin(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAudioSystemPlugin, param1: cstring): pointer =
+
+
+  fQAudioSystemPlugin_virtualbase_metacast(self.h, param1)
+
+type QAudioSystemPluginmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAudioSystemPlugin, slot: proc(super: QAudioSystemPluginmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAudioSystemPluginmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioSystemPlugin_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioSystemPlugin_metacast(self: ptr cQAudioSystemPlugin, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAudioSystemPlugin_metacast ".} =
+  type Cb = proc(super: QAudioSystemPluginmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAudioSystemPlugin(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAudioSystemPlugin, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

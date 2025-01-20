@@ -75,6 +75,10 @@ proc fcQsciLexerJavaScript_keywords(self: pointer, set: cint): cstring {.importc
 proc fcQsciLexerJavaScript_description(self: pointer, style: cint): struct_miqt_string {.importc: "QsciLexerJavaScript_description".}
 proc fcQsciLexerJavaScript_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerJavaScript_tr2".}
 proc fcQsciLexerJavaScript_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerJavaScript_tr3".}
+proc fQsciLexerJavaScript_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerJavaScript_virtualbase_metaObject".}
+proc fcQsciLexerJavaScript_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerJavaScript_override_virtual_metaObject".}
+proc fQsciLexerJavaScript_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerJavaScript_virtualbase_metacast".}
+proc fcQsciLexerJavaScript_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerJavaScript_override_virtual_metacast".}
 proc fQsciLexerJavaScript_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerJavaScript_virtualbase_metacall".}
 proc fcQsciLexerJavaScript_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerJavaScript_override_virtual_metacall".}
 proc fQsciLexerJavaScript_virtualbase_setFoldAtElse(self: pointer, fold: bool): void{.importc: "QsciLexerJavaScript_virtualbase_setFoldAtElse".}
@@ -243,6 +247,54 @@ proc tr3*(_: type QsciLexerJavaScript, s: cstring, c: cstring, n: cint): string 
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QsciLexerJavaScript, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerJavaScript_virtualbase_metaObject(self.h))
+
+type QsciLexerJavaScriptmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerJavaScript, slot: proc(super: QsciLexerJavaScriptmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerJavaScriptmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerJavaScript_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerJavaScript_metaObject(self: ptr cQsciLexerJavaScript, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerJavaScript_metaObject ".} =
+  type Cb = proc(super: QsciLexerJavaScriptmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerJavaScript(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerJavaScript, param1: cstring): pointer =
+
+
+  fQsciLexerJavaScript_virtualbase_metacast(self.h, param1)
+
+type QsciLexerJavaScriptmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerJavaScript, slot: proc(super: QsciLexerJavaScriptmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerJavaScriptmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerJavaScript_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerJavaScript_metacast(self: ptr cQsciLexerJavaScript, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerJavaScript_metacast ".} =
+  type Cb = proc(super: QsciLexerJavaScriptmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerJavaScript(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerJavaScript, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

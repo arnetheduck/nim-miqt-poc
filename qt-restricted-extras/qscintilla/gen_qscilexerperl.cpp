@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QsciLexerPerl_metaObject(const QsciLexerPerl*, intptr_t);
+void* miqt_exec_callback_QsciLexerPerl_metacast(QsciLexerPerl*, intptr_t, const char*);
 int miqt_exec_callback_QsciLexerPerl_metacall(QsciLexerPerl*, intptr_t, int, int, void**);
 void miqt_exec_callback_QsciLexerPerl_setFoldComments(QsciLexerPerl*, intptr_t, bool);
 void miqt_exec_callback_QsciLexerPerl_setFoldCompact(QsciLexerPerl*, intptr_t, bool);
@@ -73,6 +75,51 @@ public:
 	MiqtVirtualQsciLexerPerl(QObject* parent): QsciLexerPerl(parent) {};
 
 	virtual ~MiqtVirtualQsciLexerPerl() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QsciLexerPerl::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QsciLexerPerl_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QsciLexerPerl::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QsciLexerPerl::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QsciLexerPerl_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QsciLexerPerl::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1354,6 +1401,34 @@ const char* QsciLexerPerl_blockEnd1(const QsciLexerPerl* self, int* style) {
 
 const char* QsciLexerPerl_blockStart1(const QsciLexerPerl* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
+}
+
+bool QsciLexerPerl_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerPerl* self_cast = dynamic_cast<MiqtVirtualQsciLexerPerl*>( (QsciLexerPerl*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QsciLexerPerl_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQsciLexerPerl*)(self) )->virtualbase_metaObject();
+}
+
+bool QsciLexerPerl_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerPerl* self_cast = dynamic_cast<MiqtVirtualQsciLexerPerl*>( (QsciLexerPerl*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QsciLexerPerl_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQsciLexerPerl*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QsciLexerPerl_override_virtual_metacall(void* self, intptr_t slot) {

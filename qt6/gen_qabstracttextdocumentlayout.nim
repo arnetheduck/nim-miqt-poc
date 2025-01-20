@@ -107,6 +107,10 @@ proc fcQAbstractTextDocumentLayout_tr3(s: cstring, c: cstring, n: cint): struct_
 proc fcQAbstractTextDocumentLayout_unregisterHandler2(self: pointer, objectType: cint, component: pointer): void {.importc: "QAbstractTextDocumentLayout_unregisterHandler2".}
 proc fcQAbstractTextDocumentLayout_update1(self: pointer, param1: pointer): void {.importc: "QAbstractTextDocumentLayout_update1".}
 proc fQAbstractTextDocumentLayout_connect_update1(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_connect_update1".}
+proc fQAbstractTextDocumentLayout_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractTextDocumentLayout_virtualbase_metaObject".}
+proc fcQAbstractTextDocumentLayout_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_metaObject".}
+proc fQAbstractTextDocumentLayout_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractTextDocumentLayout_virtualbase_metacast".}
+proc fcQAbstractTextDocumentLayout_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_metacast".}
 proc fQAbstractTextDocumentLayout_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractTextDocumentLayout_virtualbase_metacall".}
 proc fcQAbstractTextDocumentLayout_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_metacall".}
 proc fcQAbstractTextDocumentLayout_override_virtual_draw(self: pointer, slot: int) {.importc: "QAbstractTextDocumentLayout_override_virtual_draw".}
@@ -351,6 +355,54 @@ proc onupdate1*(self: QAbstractTextDocumentLayout, slot: proc(param1: gen_qrect.
   tmp[] = slot
   GC_ref(tmp)
   fQAbstractTextDocumentLayout_connect_update1(self.h, cast[int](addr tmp[]))
+proc callVirtualBase_metaObject(self: QAbstractTextDocumentLayout, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAbstractTextDocumentLayout_virtualbase_metaObject(self.h))
+
+type QAbstractTextDocumentLayoutmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAbstractTextDocumentLayout, slot: proc(super: QAbstractTextDocumentLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractTextDocumentLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractTextDocumentLayout_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractTextDocumentLayout_metaObject(self: ptr cQAbstractTextDocumentLayout, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractTextDocumentLayout_metaObject ".} =
+  type Cb = proc(super: QAbstractTextDocumentLayoutmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAbstractTextDocumentLayout(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAbstractTextDocumentLayout, param1: cstring): pointer =
+
+
+  fQAbstractTextDocumentLayout_virtualbase_metacast(self.h, param1)
+
+type QAbstractTextDocumentLayoutmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAbstractTextDocumentLayout, slot: proc(super: QAbstractTextDocumentLayoutmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractTextDocumentLayoutmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractTextDocumentLayout_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractTextDocumentLayout_metacast(self: ptr cQAbstractTextDocumentLayout, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractTextDocumentLayout_metacast ".} =
+  type Cb = proc(super: QAbstractTextDocumentLayoutmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAbstractTextDocumentLayout(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAbstractTextDocumentLayout, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

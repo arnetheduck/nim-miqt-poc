@@ -44,6 +44,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QSlider_metaObject(const QSlider*, intptr_t);
+void* miqt_exec_callback_QSlider_metacast(QSlider*, intptr_t, const char*);
 int miqt_exec_callback_QSlider_metacall(QSlider*, intptr_t, int, int, void**);
 QSize* miqt_exec_callback_QSlider_sizeHint(const QSlider*, intptr_t);
 QSize* miqt_exec_callback_QSlider_minimumSizeHint(const QSlider*, intptr_t);
@@ -107,6 +109,51 @@ public:
 	MiqtVirtualQSlider(Qt::Orientation orientation, QWidget* parent): QSlider(orientation, parent) {};
 
 	virtual ~MiqtVirtualQSlider() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QSlider::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QSlider_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QSlider::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QSlider::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QSlider_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QSlider::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1401,6 +1448,34 @@ struct miqt_string QSlider_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QSlider_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QSlider_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQSlider*)(self) )->virtualbase_metaObject();
+}
+
+bool QSlider_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QSlider_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQSlider*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QSlider_override_virtual_metacall(void* self, intptr_t slot) {

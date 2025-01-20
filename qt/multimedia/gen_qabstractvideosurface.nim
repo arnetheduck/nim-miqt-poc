@@ -97,6 +97,10 @@ proc fcQAbstractVideoSurface_tr2(s: cstring, c: cstring): struct_miqt_string {.i
 proc fcQAbstractVideoSurface_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractVideoSurface_tr3".}
 proc fcQAbstractVideoSurface_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QAbstractVideoSurface_trUtf82".}
 proc fcQAbstractVideoSurface_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAbstractVideoSurface_trUtf83".}
+proc fQAbstractVideoSurface_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAbstractVideoSurface_virtualbase_metaObject".}
+proc fcQAbstractVideoSurface_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAbstractVideoSurface_override_virtual_metaObject".}
+proc fQAbstractVideoSurface_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAbstractVideoSurface_virtualbase_metacast".}
+proc fcQAbstractVideoSurface_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAbstractVideoSurface_override_virtual_metacast".}
 proc fQAbstractVideoSurface_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAbstractVideoSurface_virtualbase_metacall".}
 proc fcQAbstractVideoSurface_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAbstractVideoSurface_override_virtual_metacall".}
 proc fcQAbstractVideoSurface_override_virtual_supportedPixelFormats(self: pointer, slot: int) {.importc: "QAbstractVideoSurface_override_virtual_supportedPixelFormats".}
@@ -304,6 +308,54 @@ proc trUtf83*(_: type QAbstractVideoSurface, s: cstring, c: cstring, n: cint): s
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QAbstractVideoSurface, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAbstractVideoSurface_virtualbase_metaObject(self.h))
+
+type QAbstractVideoSurfacemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAbstractVideoSurface, slot: proc(super: QAbstractVideoSurfacemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractVideoSurfacemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractVideoSurface_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractVideoSurface_metaObject(self: ptr cQAbstractVideoSurface, slot: int): pointer {.exportc: "miqt_exec_callback_QAbstractVideoSurface_metaObject ".} =
+  type Cb = proc(super: QAbstractVideoSurfacemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAbstractVideoSurface(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAbstractVideoSurface, param1: cstring): pointer =
+
+
+  fQAbstractVideoSurface_virtualbase_metacast(self.h, param1)
+
+type QAbstractVideoSurfacemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAbstractVideoSurface, slot: proc(super: QAbstractVideoSurfacemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAbstractVideoSurfacemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAbstractVideoSurface_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAbstractVideoSurface_metacast(self: ptr cQAbstractVideoSurface, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAbstractVideoSurface_metacast ".} =
+  type Cb = proc(super: QAbstractVideoSurfacemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAbstractVideoSurface(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAbstractVideoSurface, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

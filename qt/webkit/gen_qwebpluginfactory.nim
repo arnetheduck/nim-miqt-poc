@@ -74,6 +74,10 @@ proc fcQWebPluginFactory_tr2(s: cstring, c: cstring): struct_miqt_string {.impor
 proc fcQWebPluginFactory_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebPluginFactory_tr3".}
 proc fcQWebPluginFactory_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QWebPluginFactory_trUtf82".}
 proc fcQWebPluginFactory_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QWebPluginFactory_trUtf83".}
+proc fQWebPluginFactory_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QWebPluginFactory_virtualbase_metaObject".}
+proc fcQWebPluginFactory_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QWebPluginFactory_override_virtual_metaObject".}
+proc fQWebPluginFactory_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QWebPluginFactory_virtualbase_metacast".}
+proc fcQWebPluginFactory_override_virtual_metacast(self: pointer, slot: int) {.importc: "QWebPluginFactory_override_virtual_metacast".}
 proc fQWebPluginFactory_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QWebPluginFactory_virtualbase_metacall".}
 proc fcQWebPluginFactory_override_virtual_metacall(self: pointer, slot: int) {.importc: "QWebPluginFactory_override_virtual_metacall".}
 proc fcQWebPluginFactory_override_virtual_plugins(self: pointer, slot: int) {.importc: "QWebPluginFactory_override_virtual_plugins".}
@@ -207,6 +211,54 @@ proc trUtf83*(_: type QWebPluginFactory, s: cstring, c: cstring, n: cint): strin
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QWebPluginFactory, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQWebPluginFactory_virtualbase_metaObject(self.h))
+
+type QWebPluginFactorymetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorymetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QWebPluginFactorymetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebPluginFactory_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebPluginFactory_metaObject(self: ptr cQWebPluginFactory, slot: int): pointer {.exportc: "miqt_exec_callback_QWebPluginFactory_metaObject ".} =
+  type Cb = proc(super: QWebPluginFactorymetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QWebPluginFactory(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QWebPluginFactory, param1: cstring): pointer =
+
+
+  fQWebPluginFactory_virtualbase_metacast(self.h, param1)
+
+type QWebPluginFactorymetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QWebPluginFactory, slot: proc(super: QWebPluginFactorymetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QWebPluginFactorymetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQWebPluginFactory_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QWebPluginFactory_metacast(self: ptr cQWebPluginFactory, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QWebPluginFactory_metacast ".} =
+  type Cb = proc(super: QWebPluginFactorymetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QWebPluginFactory(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QWebPluginFactory, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

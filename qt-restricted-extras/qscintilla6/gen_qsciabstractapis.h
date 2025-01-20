@@ -46,6 +46,10 @@ void QsciAbstractAPIs_autoCompletionSelected(QsciAbstractAPIs* self, struct miqt
 struct miqt_array /* of struct miqt_string */  QsciAbstractAPIs_callTips(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
 struct miqt_string QsciAbstractAPIs_tr2(const char* s, const char* c);
 struct miqt_string QsciAbstractAPIs_tr3(const char* s, const char* c, int n);
+bool QsciAbstractAPIs_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QsciAbstractAPIs_virtualbase_metaObject(const void* self);
+bool QsciAbstractAPIs_override_virtual_metacast(void* self, intptr_t slot);
+void* QsciAbstractAPIs_virtualbase_metacast(void* self, const char* param1);
 bool QsciAbstractAPIs_override_virtual_metacall(void* self, intptr_t slot);
 int QsciAbstractAPIs_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QsciAbstractAPIs_override_virtual_updateAutoCompletionList(void* self, intptr_t slot);

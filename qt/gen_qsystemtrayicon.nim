@@ -110,6 +110,10 @@ proc fcQSystemTrayIcon_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_str
 proc fcQSystemTrayIcon_showMessage4(self: pointer, title: struct_miqt_string, msg: struct_miqt_string, icon: pointer, msecs: cint): void {.importc: "QSystemTrayIcon_showMessage4".}
 proc fcQSystemTrayIcon_showMessage3(self: pointer, title: struct_miqt_string, msg: struct_miqt_string, icon: cint): void {.importc: "QSystemTrayIcon_showMessage3".}
 proc fcQSystemTrayIcon_showMessage42(self: pointer, title: struct_miqt_string, msg: struct_miqt_string, icon: cint, msecs: cint): void {.importc: "QSystemTrayIcon_showMessage42".}
+proc fQSystemTrayIcon_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QSystemTrayIcon_virtualbase_metaObject".}
+proc fcQSystemTrayIcon_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QSystemTrayIcon_override_virtual_metaObject".}
+proc fQSystemTrayIcon_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QSystemTrayIcon_virtualbase_metacast".}
+proc fcQSystemTrayIcon_override_virtual_metacast(self: pointer, slot: int) {.importc: "QSystemTrayIcon_override_virtual_metacast".}
 proc fQSystemTrayIcon_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QSystemTrayIcon_virtualbase_metacall".}
 proc fcQSystemTrayIcon_override_virtual_metacall(self: pointer, slot: int) {.importc: "QSystemTrayIcon_override_virtual_metacall".}
 proc fQSystemTrayIcon_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QSystemTrayIcon_virtualbase_event".}
@@ -307,6 +311,54 @@ proc showMessage42*(self: QSystemTrayIcon, title: string, msg: string, icon: QSy
 
   fcQSystemTrayIcon_showMessage42(self.h, struct_miqt_string(data: title, len: csize_t(len(title))), struct_miqt_string(data: msg, len: csize_t(len(msg))), cint(icon), msecs)
 
+proc callVirtualBase_metaObject(self: QSystemTrayIcon, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQSystemTrayIcon_virtualbase_metaObject(self.h))
+
+type QSystemTrayIconmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QSystemTrayIcon, slot: proc(super: QSystemTrayIconmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QSystemTrayIconmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSystemTrayIcon_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSystemTrayIcon_metaObject(self: ptr cQSystemTrayIcon, slot: int): pointer {.exportc: "miqt_exec_callback_QSystemTrayIcon_metaObject ".} =
+  type Cb = proc(super: QSystemTrayIconmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QSystemTrayIcon(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QSystemTrayIcon, param1: cstring): pointer =
+
+
+  fQSystemTrayIcon_virtualbase_metacast(self.h, param1)
+
+type QSystemTrayIconmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QSystemTrayIcon, slot: proc(super: QSystemTrayIconmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QSystemTrayIconmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQSystemTrayIcon_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QSystemTrayIcon_metacast(self: ptr cQSystemTrayIcon, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QSystemTrayIcon_metacast ".} =
+  type Cb = proc(super: QSystemTrayIconmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QSystemTrayIcon(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QSystemTrayIcon, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -161,6 +161,10 @@ proc fcQDialogButtonBox_rejected(self: pointer, ): void {.importc: "QDialogButto
 proc fQDialogButtonBox_connect_rejected(self: pointer, slot: int) {.importc: "QDialogButtonBox_connect_rejected".}
 proc fcQDialogButtonBox_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QDialogButtonBox_tr2".}
 proc fcQDialogButtonBox_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QDialogButtonBox_tr3".}
+proc fQDialogButtonBox_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QDialogButtonBox_virtualbase_metaObject".}
+proc fcQDialogButtonBox_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QDialogButtonBox_override_virtual_metaObject".}
+proc fQDialogButtonBox_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QDialogButtonBox_virtualbase_metacast".}
+proc fcQDialogButtonBox_override_virtual_metacast(self: pointer, slot: int) {.importc: "QDialogButtonBox_override_virtual_metacast".}
 proc fQDialogButtonBox_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QDialogButtonBox_virtualbase_metacall".}
 proc fcQDialogButtonBox_override_virtual_metacall(self: pointer, slot: int) {.importc: "QDialogButtonBox_override_virtual_metacall".}
 proc fQDialogButtonBox_virtualbase_changeEvent(self: pointer, event: pointer): void{.importc: "QDialogButtonBox_virtualbase_changeEvent".}
@@ -451,6 +455,54 @@ proc tr3*(_: type QDialogButtonBox, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QDialogButtonBox, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQDialogButtonBox_virtualbase_metaObject(self.h))
+
+type QDialogButtonBoxmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QDialogButtonBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDialogButtonBox_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDialogButtonBox_metaObject(self: ptr cQDialogButtonBox, slot: int): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_metaObject ".} =
+  type Cb = proc(super: QDialogButtonBoxmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QDialogButtonBox(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QDialogButtonBox, param1: cstring): pointer =
+
+
+  fQDialogButtonBox_virtualbase_metacast(self.h, param1)
+
+type QDialogButtonBoxmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QDialogButtonBox, slot: proc(super: QDialogButtonBoxmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QDialogButtonBoxmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQDialogButtonBox_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QDialogButtonBox_metacast(self: ptr cQDialogButtonBox, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QDialogButtonBox_metacast ".} =
+  type Cb = proc(super: QDialogButtonBoxmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QDialogButtonBox(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QDialogButtonBox, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

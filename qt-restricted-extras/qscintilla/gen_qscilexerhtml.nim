@@ -211,6 +211,10 @@ proc fcQsciLexerHTML_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: 
 proc fcQsciLexerHTML_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerHTML_tr3".}
 proc fcQsciLexerHTML_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QsciLexerHTML_trUtf82".}
 proc fcQsciLexerHTML_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QsciLexerHTML_trUtf83".}
+proc fQsciLexerHTML_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerHTML_virtualbase_metaObject".}
+proc fcQsciLexerHTML_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_metaObject".}
+proc fQsciLexerHTML_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerHTML_virtualbase_metacast".}
+proc fcQsciLexerHTML_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_metacast".}
 proc fQsciLexerHTML_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerHTML_virtualbase_metacall".}
 proc fcQsciLexerHTML_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerHTML_override_virtual_metacall".}
 proc fQsciLexerHTML_virtualbase_setFoldCompact(self: pointer, fold: bool): void{.importc: "QsciLexerHTML_virtualbase_setFoldCompact".}
@@ -468,6 +472,54 @@ proc trUtf83*(_: type QsciLexerHTML, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QsciLexerHTML, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerHTML_virtualbase_metaObject(self.h))
+
+type QsciLexerHTMLmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerHTML, slot: proc(super: QsciLexerHTMLmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerHTMLmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerHTML_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerHTML_metaObject(self: ptr cQsciLexerHTML, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_metaObject ".} =
+  type Cb = proc(super: QsciLexerHTMLmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerHTML(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerHTML, param1: cstring): pointer =
+
+
+  fQsciLexerHTML_virtualbase_metacast(self.h, param1)
+
+type QsciLexerHTMLmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerHTML, slot: proc(super: QsciLexerHTMLmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerHTMLmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerHTML_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerHTML_metacast(self: ptr cQsciLexerHTML, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerHTML_metacast ".} =
+  type Cb = proc(super: QsciLexerHTMLmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerHTML(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerHTML, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -16,6 +16,8 @@
 extern "C" {
 #endif
 
+QMetaObject* miqt_exec_callback_QSocketNotifier_metaObject(const QSocketNotifier*, intptr_t);
+void* miqt_exec_callback_QSocketNotifier_metacast(QSocketNotifier*, intptr_t, const char*);
 int miqt_exec_callback_QSocketNotifier_metacall(QSocketNotifier*, intptr_t, int, int, void**);
 bool miqt_exec_callback_QSocketNotifier_event(QSocketNotifier*, intptr_t, QEvent*);
 bool miqt_exec_callback_QSocketNotifier_eventFilter(QSocketNotifier*, intptr_t, QObject*, QEvent*);
@@ -35,6 +37,51 @@ public:
 	MiqtVirtualQSocketNotifier(qintptr socket, QSocketNotifier::Type param2, QObject* parent): QSocketNotifier(socket, param2, parent) {};
 
 	virtual ~MiqtVirtualQSocketNotifier() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QSocketNotifier::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QSocketNotifier_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QSocketNotifier::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QSocketNotifier::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QSocketNotifier_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QSocketNotifier::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -341,6 +388,34 @@ struct miqt_string QSocketNotifier_trUtf83(const char* s, const char* c, int n) 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QSocketNotifier_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QSocketNotifier_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQSocketNotifier*)(self) )->virtualbase_metaObject();
+}
+
+bool QSocketNotifier_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QSocketNotifier_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QSocketNotifier_override_virtual_metacall(void* self, intptr_t slot) {

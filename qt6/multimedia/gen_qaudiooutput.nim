@@ -74,6 +74,10 @@ proc fcQAudioOutput_mutedChanged(self: pointer, muted: bool): void {.importc: "Q
 proc fQAudioOutput_connect_mutedChanged(self: pointer, slot: int) {.importc: "QAudioOutput_connect_mutedChanged".}
 proc fcQAudioOutput_tr2(s: cstring, c: cstring): struct_miqt_string {.importc: "QAudioOutput_tr2".}
 proc fcQAudioOutput_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QAudioOutput_tr3".}
+proc fQAudioOutput_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QAudioOutput_virtualbase_metaObject".}
+proc fcQAudioOutput_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QAudioOutput_override_virtual_metaObject".}
+proc fQAudioOutput_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QAudioOutput_virtualbase_metacast".}
+proc fcQAudioOutput_override_virtual_metacast(self: pointer, slot: int) {.importc: "QAudioOutput_override_virtual_metacast".}
 proc fQAudioOutput_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QAudioOutput_virtualbase_metacall".}
 proc fcQAudioOutput_override_virtual_metacall(self: pointer, slot: int) {.importc: "QAudioOutput_override_virtual_metacall".}
 proc fQAudioOutput_virtualbase_event(self: pointer, event: pointer): bool{.importc: "QAudioOutput_virtualbase_event".}
@@ -217,6 +221,54 @@ proc tr3*(_: type QAudioOutput, s: cstring, c: cstring, n: cint): string =
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QAudioOutput, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQAudioOutput_virtualbase_metaObject(self.h))
+
+type QAudioOutputmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QAudioOutput, slot: proc(super: QAudioOutputmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QAudioOutputmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioOutput_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioOutput_metaObject(self: ptr cQAudioOutput, slot: int): pointer {.exportc: "miqt_exec_callback_QAudioOutput_metaObject ".} =
+  type Cb = proc(super: QAudioOutputmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QAudioOutput(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QAudioOutput, param1: cstring): pointer =
+
+
+  fQAudioOutput_virtualbase_metacast(self.h, param1)
+
+type QAudioOutputmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QAudioOutput, slot: proc(super: QAudioOutputmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QAudioOutputmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQAudioOutput_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QAudioOutput_metacast(self: ptr cQAudioOutput, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QAudioOutput_metacast ".} =
+  type Cb = proc(super: QAudioOutputmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QAudioOutput(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QAudioOutput, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

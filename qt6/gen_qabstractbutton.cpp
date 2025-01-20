@@ -50,6 +50,8 @@ void miqt_exec_callback_QAbstractButton_released(intptr_t);
 void miqt_exec_callback_QAbstractButton_clicked(intptr_t);
 void miqt_exec_callback_QAbstractButton_toggled(intptr_t, bool);
 void miqt_exec_callback_QAbstractButton_clicked1(intptr_t, bool);
+QMetaObject* miqt_exec_callback_QAbstractButton_metaObject(const QAbstractButton*, intptr_t);
+void* miqt_exec_callback_QAbstractButton_metacast(QAbstractButton*, intptr_t, const char*);
 int miqt_exec_callback_QAbstractButton_metacall(QAbstractButton*, intptr_t, int, int, void**);
 void miqt_exec_callback_QAbstractButton_paintEvent(QAbstractButton*, intptr_t, QPaintEvent*);
 bool miqt_exec_callback_QAbstractButton_hitButton(const QAbstractButton*, intptr_t, QPoint*);
@@ -112,6 +114,51 @@ public:
 	MiqtVirtualQAbstractButton(): QAbstractButton() {};
 
 	virtual ~MiqtVirtualQAbstractButton() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metaObject = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual const QMetaObject* metaObject() const override {
+		if (handle__metaObject == 0) {
+			return QAbstractButton::metaObject();
+		}
+		
+
+		QMetaObject* callback_return_value = miqt_exec_callback_QAbstractButton_metaObject(this, handle__metaObject);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QMetaObject* virtualbase_metaObject() const {
+
+		return (QMetaObject*) QAbstractButton::metaObject();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__metacast = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void* qt_metacast(const char* param1) override {
+		if (handle__metacast == 0) {
+			return QAbstractButton::qt_metacast(param1);
+		}
+		
+		const char* sigval1 = (const char*) param1;
+
+		void* callback_return_value = miqt_exec_callback_QAbstractButton_metacast(this, handle__metacast, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	void* virtualbase_metacast(const char* param1) {
+
+		return QAbstractButton::qt_metacast(param1);
+
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metacall = 0;
@@ -1547,6 +1594,34 @@ void QAbstractButton_connect_clicked1(QAbstractButton* self, intptr_t slot) {
 		bool sigval1 = checked;
 		miqt_exec_callback_QAbstractButton_clicked1(slot, sigval1);
 	});
+}
+
+bool QAbstractButton_override_virtual_metaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metaObject = slot;
+	return true;
+}
+
+QMetaObject* QAbstractButton_virtualbase_metaObject(const void* self) {
+	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_metaObject();
+}
+
+bool QAbstractButton_override_virtual_metacast(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__metacast = slot;
+	return true;
+}
+
+void* QAbstractButton_virtualbase_metacast(void* self, const char* param1) {
+	return ( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_metacast(param1);
 }
 
 bool QAbstractButton_override_virtual_metacall(void* self, intptr_t slot) {

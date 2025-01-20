@@ -80,6 +80,10 @@ proc fcQQuickTextureFactory_tr2(s: cstring, c: cstring): struct_miqt_string {.im
 proc fcQQuickTextureFactory_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickTextureFactory_tr3".}
 proc fcQQuickTextureFactory_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QQuickTextureFactory_trUtf82".}
 proc fcQQuickTextureFactory_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickTextureFactory_trUtf83".}
+proc fQQuickTextureFactory_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQuickTextureFactory_virtualbase_metaObject".}
+proc fcQQuickTextureFactory_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQuickTextureFactory_override_virtual_metaObject".}
+proc fQQuickTextureFactory_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQuickTextureFactory_virtualbase_metacast".}
+proc fcQQuickTextureFactory_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQuickTextureFactory_override_virtual_metacast".}
 proc fQQuickTextureFactory_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQuickTextureFactory_virtualbase_metacall".}
 proc fcQQuickTextureFactory_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQuickTextureFactory_override_virtual_metacall".}
 proc fcQQuickTextureFactory_override_virtual_createTexture(self: pointer, slot: int) {.importc: "QQuickTextureFactory_override_virtual_createTexture".}
@@ -118,6 +122,10 @@ proc fcQQuickImageResponse_tr2(s: cstring, c: cstring): struct_miqt_string {.imp
 proc fcQQuickImageResponse_tr3(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickImageResponse_tr3".}
 proc fcQQuickImageResponse_trUtf82(s: cstring, c: cstring): struct_miqt_string {.importc: "QQuickImageResponse_trUtf82".}
 proc fcQQuickImageResponse_trUtf83(s: cstring, c: cstring, n: cint): struct_miqt_string {.importc: "QQuickImageResponse_trUtf83".}
+proc fQQuickImageResponse_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QQuickImageResponse_virtualbase_metaObject".}
+proc fcQQuickImageResponse_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QQuickImageResponse_override_virtual_metaObject".}
+proc fQQuickImageResponse_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QQuickImageResponse_virtualbase_metacast".}
+proc fcQQuickImageResponse_override_virtual_metacast(self: pointer, slot: int) {.importc: "QQuickImageResponse_override_virtual_metacast".}
 proc fQQuickImageResponse_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QQuickImageResponse_virtualbase_metacall".}
 proc fcQQuickImageResponse_override_virtual_metacall(self: pointer, slot: int) {.importc: "QQuickImageResponse_override_virtual_metacall".}
 proc fcQQuickImageResponse_override_virtual_textureFactory(self: pointer, slot: int) {.importc: "QQuickImageResponse_override_virtual_textureFactory".}
@@ -256,6 +264,54 @@ proc trUtf83*(_: type QQuickTextureFactory, s: cstring, c: cstring, n: cint): st
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QQuickTextureFactory, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQQuickTextureFactory_virtualbase_metaObject(self.h))
+
+type QQuickTextureFactorymetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactorymetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QQuickTextureFactorymetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickTextureFactory_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickTextureFactory_metaObject(self: ptr cQQuickTextureFactory, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickTextureFactory_metaObject ".} =
+  type Cb = proc(super: QQuickTextureFactorymetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QQuickTextureFactory(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QQuickTextureFactory, param1: cstring): pointer =
+
+
+  fQQuickTextureFactory_virtualbase_metacast(self.h, param1)
+
+type QQuickTextureFactorymetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QQuickTextureFactory, slot: proc(super: QQuickTextureFactorymetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QQuickTextureFactorymetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickTextureFactory_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickTextureFactory_metacast(self: ptr cQQuickTextureFactory, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickTextureFactory_metacast ".} =
+  type Cb = proc(super: QQuickTextureFactorymetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QQuickTextureFactory(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QQuickTextureFactory, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 
@@ -620,6 +676,54 @@ proc trUtf83*(_: type QQuickImageResponse, s: cstring, c: cstring, n: cint): str
   c_free(v_ms.data)
   vx_ret
 
+proc callVirtualBase_metaObject(self: QQuickImageResponse, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQQuickImageResponse_virtualbase_metaObject(self.h))
+
+type QQuickImageResponsemetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsemetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QQuickImageResponsemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickImageResponse_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickImageResponse_metaObject(self: ptr cQQuickImageResponse, slot: int): pointer {.exportc: "miqt_exec_callback_QQuickImageResponse_metaObject ".} =
+  type Cb = proc(super: QQuickImageResponsemetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QQuickImageResponse(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QQuickImageResponse, param1: cstring): pointer =
+
+
+  fQQuickImageResponse_virtualbase_metacast(self.h, param1)
+
+type QQuickImageResponsemetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QQuickImageResponse, slot: proc(super: QQuickImageResponsemetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QQuickImageResponsemetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQQuickImageResponse_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QQuickImageResponse_metacast(self: ptr cQQuickImageResponse, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QQuickImageResponse_metacast ".} =
+  type Cb = proc(super: QQuickImageResponsemetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QQuickImageResponse(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QQuickImageResponse, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

@@ -126,6 +126,10 @@ proc fcQsciLexerCoffeeScript_trUtf83(s: cstring, c: cstring, n: cint): struct_mi
 proc fcQsciLexerCoffeeScript_blockEnd1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCoffeeScript_blockEnd1".}
 proc fcQsciLexerCoffeeScript_blockStart1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCoffeeScript_blockStart1".}
 proc fcQsciLexerCoffeeScript_blockStartKeyword1(self: pointer, style: ptr cint): cstring {.importc: "QsciLexerCoffeeScript_blockStartKeyword1".}
+proc fQsciLexerCoffeeScript_virtualbase_metaObject(self: pointer, ): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_metaObject".}
+proc fcQsciLexerCoffeeScript_override_virtual_metaObject(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_metaObject".}
+proc fQsciLexerCoffeeScript_virtualbase_metacast(self: pointer, param1: cstring): pointer{.importc: "QsciLexerCoffeeScript_virtualbase_metacast".}
+proc fcQsciLexerCoffeeScript_override_virtual_metacast(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_metacast".}
 proc fQsciLexerCoffeeScript_virtualbase_metacall(self: pointer, param1: cint, param2: cint, param3: pointer): cint{.importc: "QsciLexerCoffeeScript_virtualbase_metacall".}
 proc fcQsciLexerCoffeeScript_override_virtual_metacall(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_metacall".}
 proc fcQsciLexerCoffeeScript_override_virtual_language(self: pointer, slot: int) {.importc: "QsciLexerCoffeeScript_override_virtual_language".}
@@ -389,6 +393,54 @@ proc blockStartKeyword1*(self: QsciLexerCoffeeScript, style: ptr cint): cstring 
 
   (fcQsciLexerCoffeeScript_blockStartKeyword1(self.h, style))
 
+proc callVirtualBase_metaObject(self: QsciLexerCoffeeScript, ): gen_qobjectdefs.QMetaObject =
+
+
+  gen_qobjectdefs.QMetaObject(h: fQsciLexerCoffeeScript_virtualbase_metaObject(self.h))
+
+type QsciLexerCoffeeScriptmetaObjectBase* = proc(): gen_qobjectdefs.QMetaObject
+proc onmetaObject*(self: QsciLexerCoffeeScript, slot: proc(super: QsciLexerCoffeeScriptmetaObjectBase): gen_qobjectdefs.QMetaObject) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerCoffeeScriptmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerCoffeeScript_override_virtual_metaObject(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerCoffeeScript_metaObject(self: ptr cQsciLexerCoffeeScript, slot: int): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_metaObject ".} =
+  type Cb = proc(super: QsciLexerCoffeeScriptmetaObjectBase): gen_qobjectdefs.QMetaObject
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(): auto =
+    callVirtualBase_metaObject(QsciLexerCoffeeScript(h: self), )
+
+  let virtualReturn = nimfunc[](superCall )
+
+  virtualReturn.h
+proc callVirtualBase_metacast(self: QsciLexerCoffeeScript, param1: cstring): pointer =
+
+
+  fQsciLexerCoffeeScript_virtualbase_metacast(self.h, param1)
+
+type QsciLexerCoffeeScriptmetacastBase* = proc(param1: cstring): pointer
+proc onmetacast*(self: QsciLexerCoffeeScript, slot: proc(super: QsciLexerCoffeeScriptmetacastBase, param1: cstring): pointer) =
+  # TODO check subclass
+  type Cb = proc(super: QsciLexerCoffeeScriptmetacastBase, param1: cstring): pointer
+  var tmp = new Cb
+  tmp[] = slot
+  GC_ref(tmp)
+  fcQsciLexerCoffeeScript_override_virtual_metacast(self.h, cast[int](addr tmp[]))
+
+proc miqt_exec_callback_QsciLexerCoffeeScript_metacast(self: ptr cQsciLexerCoffeeScript, slot: int, param1: cstring): pointer {.exportc: "miqt_exec_callback_QsciLexerCoffeeScript_metacast ".} =
+  type Cb = proc(super: QsciLexerCoffeeScriptmetacastBase, param1: cstring): pointer
+  var nimfunc = cast[ptr Cb](cast[pointer](slot))
+  proc superCall(param1: cstring): auto =
+    callVirtualBase_metacast(QsciLexerCoffeeScript(h: self), param1)
+  let slotval1 = (param1)
+
+
+  let virtualReturn = nimfunc[](superCall, slotval1 )
+
+  virtualReturn
 proc callVirtualBase_metacall(self: QsciLexerCoffeeScript, param1: gen_qobjectdefs.QMetaObjectCall, param2: cint, param3: pointer): cint =
 
 

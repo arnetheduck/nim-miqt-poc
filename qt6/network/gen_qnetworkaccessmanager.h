@@ -124,6 +124,10 @@ void QNetworkAccessManager_connectToHostEncrypted22(QNetworkAccessManager* self,
 void QNetworkAccessManager_connectToHostEncrypted3(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port, QSslConfiguration* sslConfiguration);
 void QNetworkAccessManager_connectToHost2(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port);
 void QNetworkAccessManager_setTransferTimeout1(QNetworkAccessManager* self, int timeout);
+bool QNetworkAccessManager_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QNetworkAccessManager_virtualbase_metaObject(const void* self);
+bool QNetworkAccessManager_override_virtual_metacast(void* self, intptr_t slot);
+void* QNetworkAccessManager_virtualbase_metacast(void* self, const char* param1);
 bool QNetworkAccessManager_override_virtual_metacall(void* self, intptr_t slot);
 int QNetworkAccessManager_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QNetworkAccessManager_override_virtual_supportedSchemes(void* self, intptr_t slot);

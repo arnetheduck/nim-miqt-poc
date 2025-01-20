@@ -60,6 +60,10 @@ const char* QsciLexerJavaScript_keywords(const QsciLexerJavaScript* self, int se
 struct miqt_string QsciLexerJavaScript_description(const QsciLexerJavaScript* self, int style);
 struct miqt_string QsciLexerJavaScript_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerJavaScript_tr3(const char* s, const char* c, int n);
+bool QsciLexerJavaScript_override_virtual_metaObject(void* self, intptr_t slot);
+QMetaObject* QsciLexerJavaScript_virtualbase_metaObject(const void* self);
+bool QsciLexerJavaScript_override_virtual_metacast(void* self, intptr_t slot);
+void* QsciLexerJavaScript_virtualbase_metacast(void* self, const char* param1);
 bool QsciLexerJavaScript_override_virtual_metacall(void* self, intptr_t slot);
 int QsciLexerJavaScript_virtualbase_metacall(void* self, int param1, int param2, void** param3);
 bool QsciLexerJavaScript_override_virtual_setFoldAtElse(void* self, intptr_t slot);
